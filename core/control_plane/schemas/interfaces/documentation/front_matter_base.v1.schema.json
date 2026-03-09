@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
+  "title": "Documentation Front Matter Base",
+  "description": "Shared field definitions for parsed front matter objects used by governed documentation families.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$",
+      "minLength": 1,
+      "description": "Stable machine-usable document identifier."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable human-readable document title."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One-line description used for listings and indexes."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "reference",
+        "standard",
+        "workflow"
+      ],
+      "description": "Governed document family."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "draft",
+        "deprecated"
+      ],
+      "description": "Document lifecycle state."
+    },
+    "tags": {
+      "type": "array",
+      "description": "Reusable labels for grouping and search.",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Responsible maintainer or role."
+    },
+    "updated": {
+      "type": "string",
+      "format": "date",
+      "description": "Last meaningful content update date."
+    },
+    "audience": {
+      "type": "string",
+      "enum": [
+        "shared",
+        "maintainers",
+        "contributors"
+      ],
+      "description": "Intended readership."
+    },
+    "authority": {
+      "type": "string",
+      "enum": [
+        "authoritative",
+        "supporting",
+        "reference",
+        "historical"
+      ],
+      "description": "Retrieval and precedence signal for the document."
+    },
+    "applies_to": {
+      "type": "array",
+      "description": "Concrete repository surfaces or governed concepts the document applies to.",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "aliases": {
+      "type": "array",
+      "description": "Important alternate phrasings or synonyms that improve retrieval.",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "additionalProperties": false
+}

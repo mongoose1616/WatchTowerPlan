@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1",
+  "id": "index.repository_paths",
+  "title": "Repository Path Index",
+  "status": "active",
+  "coverage_mode": "entrypoints",
+  "root_path": ".",
+  "entries": [
+    {
+      "path": "README.md",
+      "kind": "file",
+      "surface_kind": "root_readme",
+      "parent_path": "."
+    }
+  ]
+}

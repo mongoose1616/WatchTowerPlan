@@ -1,0 +1,10 @@
+{
+  "id": "ref.front_matter",
+  "title": "Front Matter Reference",
+  "summary": "Working reference for when and how to use front matter in repository documents.",
+  "type": "reference",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated": "2026-03-09",
+  "audience": "shared"
+}

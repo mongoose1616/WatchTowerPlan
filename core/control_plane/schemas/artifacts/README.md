@@ -1,0 +1,14 @@
+# `core/control_plane/schemas/artifacts`
+
+## Description
+`This directory holds schemas for artifacts authored and owned by the control plane itself, such as registries, policies, indexes, contracts, and committed ledgers.`
+
+## Paths
+| Path | Description |
+|---|---|
+| `core/control_plane/schemas/artifacts/README.md` | Describes the purpose of the artifact schema directory and its current contents. |
+| `core/control_plane/schemas/artifacts/command_index.v1.schema.json` | Schema for the machine-readable command-index artifact family. |
+| `core/control_plane/schemas/artifacts/design_document_index.v1.schema.json` | Schema for the machine-readable design-document index artifact family. |
+| `core/control_plane/schemas/artifacts/repository_path_index.v1.schema.json` | Schema for the generated repository path index artifact family. |
+| `core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json` | Schema for the authored schema catalog registry artifact family. |
+| `core/control_plane/schemas/artifacts/validator_registry.v1.schema.json` | Schema for the authored validator registry artifact family. |

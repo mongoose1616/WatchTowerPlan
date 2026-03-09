@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1",
+  "id": "index.repository_paths",
+  "title": "Repository Path Index",
+  "status": "active",
+  "coverage_mode": "entrypoints",
+  "root_path": ".",
+  "entries": [
+    {
+      "path": "README.md",
+      "kind": "file",
+      "surface_kind": "root_readme",
+      "summary": "Repository entrypoint and top-level orientation surface.",
+      "parent_path": ".",
+      "aliases": [
+        "repo root"
+      ],
+      "tags": [
+        "entrypoint"
+      ],
+      "related_paths": [
+        "AGENTS.md",
+        "docs/"
+      ]
+    },
+    {
+      "path": "docs/",
+      "kind": "directory",
+      "surface_kind": "documentation",
+      "summary": "Documentation root for standards, references, designs, and templates.",
+      "parent_path": ".",
+      "tags": [
+        "docs"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "docs/references/"
+      ]
+    }
+  ]
+}

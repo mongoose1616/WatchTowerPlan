@@ -1,0 +1,107 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:design-document-index:v1",
+  "id": "index.design_documents",
+  "title": "Design Document Index",
+  "status": "active",
+  "entries": [
+    {
+      "document_id": "design.features.command_documentation_and_lookup",
+      "family": "feature_design",
+      "title": "Command Documentation and Lookup Design",
+      "summary": "Feature design for human-readable command pages and the machine-readable command index.",
+      "status": "active",
+      "doc_path": "docs/design/features/command_documentation_and_lookup.md",
+      "last_synced": "2026-03-09",
+      "related_paths": [
+        "docs/commands/",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ],
+      "tags": [
+        "design",
+        "commands",
+        "lookup"
+      ]
+    },
+    {
+      "document_id": "design.features.core_python_workspace_and_harness",
+      "family": "feature_design",
+      "title": "Core Python Workspace and Harness Design",
+      "summary": "Feature design for the consolidated core Python workspace and the first helper-harness package boundaries.",
+      "status": "active",
+      "doc_path": "docs/design/features/core_python_workspace_and_harness.md",
+      "last_synced": "2026-03-09",
+      "related_paths": [
+        "docs/design/implementation/control_plane_loaders_and_schema_store.md",
+        "core/python/"
+      ],
+      "tags": [
+        "design",
+        "python",
+        "workspace"
+      ]
+    },
+    {
+      "document_id": "design.features.python_validator_execution",
+      "family": "feature_design",
+      "title": "Python Validator Execution Design",
+      "summary": "Feature design for registry-driven validator execution in the core Python layer.",
+      "status": "active",
+      "doc_path": "docs/design/features/python_validator_execution.md",
+      "last_synced": "2026-03-09",
+      "related_paths": [
+        "docs/design/implementation/control_plane_loaders_and_schema_store.md",
+        "core/control_plane/registries/validators/validator_registry.v1.json"
+      ],
+      "tags": [
+        "design",
+        "validation",
+        "python"
+      ]
+    },
+    {
+      "document_id": "design.features.schema_resolution_and_index_search",
+      "family": "feature_design",
+      "title": "Schema Resolution and Index Search Design",
+      "summary": "Feature design for deterministic schema resolution and index-backed repository search.",
+      "status": "active",
+      "doc_path": "docs/design/features/schema_resolution_and_index_search.md",
+      "last_synced": "2026-03-09",
+      "related_paths": [
+        "docs/design/implementation/control_plane_loaders_and_schema_store.md",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "tags": [
+        "design",
+        "schema",
+        "query"
+      ]
+    },
+    {
+      "document_id": "design.implementation.control_plane_loaders_and_schema_store",
+      "family": "implementation_plan",
+      "title": "Control-Plane Loaders and SchemaStore Implementation Plan",
+      "summary": "Implementation plan for the first core Python slice covering control-plane loaders and SchemaStore.",
+      "status": "active",
+      "doc_path": "docs/design/implementation/control_plane_loaders_and_schema_store.md",
+      "last_synced": "2026-03-09",
+      "source_paths": [
+        "docs/design/features/core_python_workspace_and_harness.md",
+        "docs/design/features/python_validator_execution.md",
+        "docs/design/features/schema_resolution_and_index_search.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json"
+      ],
+      "tags": [
+        "design",
+        "implementation",
+        "control_plane",
+        "schema_store"
+      ],
+      "notes": "First executable slice for the core Python helper and harness layer."
+    }
+  ]
+}

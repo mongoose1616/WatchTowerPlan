@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+  "id": "registry.validators",
+  "title": "Validator Registry",
+  "status": "active",
+  "validators": [
+    {
+      "id": "validator.documentation.reference_front_matter",
+      "title": "Reference Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed reference documents.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "docs/references/**"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+  "id": "registry.schema_catalog",
+  "title": "Schema Catalog",
+  "status": "active",
+  "schemas": [
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:command-index:v1",
+      "title": "Command Index",
+      "description": "Schema for machine-readable command index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "command_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/command_index.v1.schema.json",
+      "aliases": [
+        "command lookup schema",
+        "command man page index schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:design-document-index:v1",
+      "title": "Design Document Index",
+      "description": "Schema for machine-readable design-document index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "design_document_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/design_document_index.v1.schema.json",
+      "aliases": [
+        "design tracking index schema",
+        "design document lookup schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1",
+      "title": "Repository Path Index",
+      "description": "Schema for generated repository path index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "repository_path_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/repository_path_index.v1.schema.json",
+      "aliases": [
+        "path index schema",
+        "repository search index schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+      "title": "Schema Catalog",
+      "description": "Schema for the authored schema catalog registry artifact family.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "schema_catalog",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json",
+      "aliases": [
+        "schema registry schema",
+        "schema lookup catalog schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+      "title": "Validator Registry",
+      "description": "Schema for authored validator registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "validator_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/validator_registry.v1.schema.json",
+      "aliases": [
+        "validator catalog schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
+      "title": "Documentation Front Matter Base",
+      "description": "Shared field-definition schema for governed documentation front matter profiles.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter_base",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/front_matter_base.v1.schema.json",
+      "aliases": [
+        "front matter base schema"
+      ],
+      "notes": "Used as the shared base for documentation front matter profiles."
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
+      "title": "Reference Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed reference documents.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json",
+      "aliases": [
+        "reference metadata schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
+      "title": "Standard Front Matter",
+      "description": "Schema for parsed front matter metadata used by standards that adopt governed front matter.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/standard_front_matter.v1.schema.json",
+      "aliases": [
+        "standard metadata schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1",
+      "title": "Workflow Front Matter",
+      "description": "Schema for parsed front matter metadata used by workflow documents that adopt governed front matter.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/workflow_front_matter.v1.schema.json",
+      "aliases": [
+        "workflow metadata schema"
+      ]
+    }
+  ]
+}

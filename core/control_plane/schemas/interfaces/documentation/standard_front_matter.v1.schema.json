@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
+  "title": "Standard Front Matter",
+  "description": "Parsed front matter profile for standards that adopt governed metadata.",
+  "allOf": [
+    {
+      "$ref": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1"
+    },
+    {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "type",
+        "status",
+        "owner",
+        "updated",
+        "audience"
+      ],
+      "properties": {
+        "type": {
+          "const": "standard"
+        }
+      }
+    }
+  ]
+}

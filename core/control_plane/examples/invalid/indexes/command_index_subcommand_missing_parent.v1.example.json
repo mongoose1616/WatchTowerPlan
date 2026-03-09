@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:command-index:v1",
+  "id": "index.commands",
+  "title": "Command Index",
+  "status": "active",
+  "workspace": "core_python",
+  "entries": [
+    {
+      "command_id": "command.watchtower_core.doctor",
+      "command": "watchtower-core doctor",
+      "summary": "Lightweight workspace smoke check.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_doctor.md",
+      "synopsis": "uv run watchtower-core doctor",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py"
+    }
+  ]
+}

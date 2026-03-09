@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+  "id": "registry.schema_catalog",
+  "title": "Schema Catalog",
+  "status": "active",
+  "schemas": [
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+      "title": "Schema Catalog",
+      "description": "Schema for the schema catalog registry artifact family.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "schema_catalog",
+      "version": "v1"
+    }
+  ]
+}

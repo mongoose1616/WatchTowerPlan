@@ -1,0 +1,11 @@
+{
+  "id": "std.front_matter",
+  "title": "Front Matter Standard",
+  "summary": "Defines when repository documents should use front matter and how parsed metadata is validated.",
+  "type": "standard",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated": "2026-03-09",
+  "audience": "shared",
+  "unexpected": "not allowed"
+}

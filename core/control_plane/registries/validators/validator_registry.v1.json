@@ -1,0 +1,51 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+  "id": "registry.validators",
+  "title": "Validator Registry",
+  "status": "active",
+  "validators": [
+    {
+      "id": "validator.documentation.reference_front_matter",
+      "title": "Reference Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed reference documents.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "docs/references/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1"
+      ],
+      "notes": "Validate the parsed front matter object rather than the raw Markdown file."
+    },
+    {
+      "id": "validator.documentation.standard_front_matter",
+      "title": "Standard Front Matter Validator",
+      "description": "Validates parsed front matter metadata for standards that adopt governed front matter.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "docs/standards/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"
+      ]
+    },
+    {
+      "id": "validator.documentation.workflow_front_matter",
+      "title": "Workflow Front Matter Validator",
+      "description": "Validates parsed front matter metadata for workflow documents that adopt governed front matter.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "workflows/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1"
+      ]
+    }
+  ]
+}

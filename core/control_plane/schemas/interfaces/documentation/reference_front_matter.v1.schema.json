@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
+  "title": "Reference Front Matter",
+  "description": "Parsed front matter profile for governed reference documents.",
+  "allOf": [
+    {
+      "$ref": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1"
+    },
+    {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "type",
+        "status",
+        "tags",
+        "owner",
+        "updated",
+        "audience"
+      ],
+      "properties": {
+        "type": {
+          "const": "reference"
+        }
+      }
+    }
+  ]
+}

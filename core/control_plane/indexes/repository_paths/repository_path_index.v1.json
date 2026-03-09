@@ -1,0 +1,510 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1",
+  "id": "index.repository_paths",
+  "title": "Repository Path Index",
+  "status": "active",
+  "coverage_mode": "entrypoints",
+  "root_path": ".",
+  "entries": [
+    {
+      "path": "README.md",
+      "kind": "file",
+      "surface_kind": "root_readme",
+      "summary": "Repository entrypoint and top-level orientation surface.",
+      "parent_path": ".",
+      "aliases": [
+        "repo root",
+        "top-level readme"
+      ],
+      "tags": [
+        "entrypoint",
+        "orientation"
+      ],
+      "related_paths": [
+        "AGENTS.md",
+        "docs/",
+        "workflows/",
+        "core/"
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Repository-wide instruction wrapper and routing entrypoint.",
+      "parent_path": ".",
+      "aliases": [
+        "repo instructions",
+        "agent rules"
+      ],
+      "tags": [
+        "instructions",
+        "routing"
+      ],
+      "related_paths": [
+        "README.md",
+        "workflows/ROUTING_TABLE.md"
+      ]
+    },
+    {
+      "path": "docs/",
+      "kind": "directory",
+      "surface_kind": "documentation",
+      "summary": "Repository-native documentation root for foundations, standards, references, and templates.",
+      "parent_path": ".",
+      "tags": [
+        "docs",
+        "entrypoint"
+      ],
+      "related_paths": [
+        "docs/commands/",
+        "docs/foundations/",
+        "docs/design/",
+        "docs/references/",
+        "docs/standards/",
+        "docs/templates/"
+      ]
+    },
+    {
+      "path": "docs/commands/",
+      "kind": "directory",
+      "surface_kind": "command_docs",
+      "summary": "Human-readable command pages for repository commands and subcommands.",
+      "parent_path": "docs/",
+      "aliases": [
+        "command docs",
+        "man pages"
+      ],
+      "tags": [
+        "commands",
+        "documentation"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/"
+      ]
+    },
+    {
+      "path": "docs/foundations/",
+      "kind": "directory",
+      "surface_kind": "documentation_family",
+      "summary": "Foundational product, philosophy, and standards-context documents.",
+      "parent_path": "docs/",
+      "tags": [
+        "foundations",
+        "product"
+      ],
+      "related_paths": [
+        "docs/standards/"
+      ]
+    },
+    {
+      "path": "docs/design/",
+      "kind": "directory",
+      "surface_kind": "design",
+      "summary": "Technical design document area for feature designs, implementation plans, and design tracking.",
+      "parent_path": "docs/",
+      "tags": [
+        "design"
+      ],
+      "related_paths": [
+        "docs/design/design_tracking.md",
+        "docs/design/features/",
+        "docs/design/implementation/"
+      ]
+    },
+    {
+      "path": "docs/design/design_tracking.md",
+      "kind": "file",
+      "surface_kind": "design_tracker",
+      "summary": "Human-readable tracker for current feature designs, implementation plans, and their main relationships.",
+      "parent_path": "docs/design/",
+      "aliases": [
+        "design tracker",
+        "design tracking"
+      ],
+      "tags": [
+        "design",
+        "tracking"
+      ],
+      "related_paths": [
+        "docs/design/features/",
+        "docs/design/implementation/",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+      ]
+    },
+    {
+      "path": "docs/design/implementation/",
+      "kind": "directory",
+      "surface_kind": "implementation_plan",
+      "summary": "Implementation-plan directory that turns approved feature designs into concrete engineering work breakdown.",
+      "parent_path": "docs/design/",
+      "aliases": [
+        "implementation plans"
+      ],
+      "tags": [
+        "design",
+        "implementation"
+      ],
+      "related_paths": [
+        "docs/design/features/",
+        "docs/design/design_tracking.md"
+      ]
+    },
+    {
+      "path": "docs/references/",
+      "kind": "directory",
+      "surface_kind": "reference",
+      "summary": "Working reference documents for external standards, frameworks, and tooling.",
+      "parent_path": "docs/",
+      "aliases": [
+        "reference docs"
+      ],
+      "tags": [
+        "references"
+      ],
+      "related_paths": [
+        "docs/standards/"
+      ]
+    },
+    {
+      "path": "docs/standards/",
+      "kind": "directory",
+      "surface_kind": "standard",
+      "summary": "Normative repository standards organized by family.",
+      "parent_path": "docs/",
+      "aliases": [
+        "repo standards"
+      ],
+      "tags": [
+        "standards",
+        "authority"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/",
+        "docs/standards/documentation/",
+        "docs/standards/metadata/",
+        "docs/standards/workflows/"
+      ]
+    },
+    {
+      "path": "docs/templates/",
+      "kind": "directory",
+      "surface_kind": "template",
+      "summary": "Reusable templates for repository documents and structured Markdown surfaces.",
+      "parent_path": "docs/",
+      "tags": [
+        "templates"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/"
+      ]
+    },
+    {
+      "path": "workflows/",
+      "kind": "directory",
+      "surface_kind": "workflow_root",
+      "summary": "Routing and task-execution workflow root.",
+      "parent_path": ".",
+      "tags": [
+        "workflows",
+        "routing"
+      ],
+      "related_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/"
+      ]
+    },
+    {
+      "path": "workflows/ROUTING_TABLE.md",
+      "kind": "file",
+      "surface_kind": "routing_table",
+      "summary": "Canonical task-to-workflow routing surface.",
+      "parent_path": "workflows/",
+      "aliases": [
+        "routing table"
+      ],
+      "tags": [
+        "routing",
+        "workflow selection"
+      ],
+      "related_paths": [
+        "AGENTS.md",
+        "workflows/modules/"
+      ]
+    },
+    {
+      "path": "workflows/modules/",
+      "kind": "directory",
+      "surface_kind": "workflow_module",
+      "summary": "Task-specific workflow modules loaded after routing.",
+      "parent_path": "workflows/",
+      "aliases": [
+        "workflow modules"
+      ],
+      "tags": [
+        "workflow execution"
+      ],
+      "related_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "docs/standards/workflows/"
+      ]
+    },
+    {
+      "path": "core/",
+      "kind": "directory",
+      "surface_kind": "implementation_root",
+      "summary": "Shared implementation asset root for the control plane and future Python helper code.",
+      "parent_path": ".",
+      "tags": [
+        "core",
+        "implementation"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/"
+      ]
+    },
+    {
+      "path": "core/control_plane/",
+      "kind": "directory",
+      "surface_kind": "control_plane",
+      "summary": "Canonical, versioned, machine-readable authority for shared core artifacts.",
+      "parent_path": "core/",
+      "aliases": [
+        "control plane"
+      ],
+      "tags": [
+        "authority",
+        "machine-readable"
+      ],
+      "related_paths": [
+        "core/control_plane/schemas/",
+        "core/control_plane/registries/",
+        "core/control_plane/contracts/",
+        "core/control_plane/policies/",
+        "core/control_plane/indexes/"
+      ]
+    },
+    {
+      "path": "core/control_plane/schemas/",
+      "kind": "directory",
+      "surface_kind": "schema_root",
+      "summary": "Published JSON Schemas for core-owned artifacts and validated external interfaces.",
+      "parent_path": "core/control_plane/",
+      "tags": [
+        "schemas",
+        "validation"
+      ],
+      "related_paths": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/schemas/interfaces/"
+      ]
+    },
+    {
+      "path": "core/control_plane/registries/",
+      "kind": "directory",
+      "surface_kind": "registry_root",
+      "summary": "Governed registry artifacts for stable machine-usable catalogs owned by core.",
+      "parent_path": "core/control_plane/",
+      "tags": [
+        "registries",
+        "catalogs"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/validators/"
+      ]
+    },
+    {
+      "path": "core/control_plane/contracts/",
+      "kind": "directory",
+      "surface_kind": "contract_root",
+      "summary": "Versioned intake and compatibility boundaries for governed artifacts.",
+      "parent_path": "core/control_plane/",
+      "tags": [
+        "contracts",
+        "compatibility"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/intake/",
+        "core/control_plane/contracts/compatibility/"
+      ]
+    },
+    {
+      "path": "core/control_plane/policies/",
+      "kind": "directory",
+      "surface_kind": "policy_root",
+      "summary": "Machine-readable guardrails for validation, execution, and release behavior.",
+      "parent_path": "core/control_plane/",
+      "tags": [
+        "policies",
+        "guardrails"
+      ],
+      "related_paths": [
+        "core/control_plane/policies/validation/",
+        "core/control_plane/policies/execution/",
+        "core/control_plane/policies/release/"
+      ]
+    },
+    {
+      "path": "core/control_plane/indexes/",
+      "kind": "directory",
+      "surface_kind": "index_root",
+      "summary": "Derived and reviewable machine lookup surfaces, including schema, registry, and repository path indexes.",
+      "parent_path": "core/control_plane/",
+      "aliases": [
+        "indexes"
+      ],
+      "tags": [
+        "derived",
+        "lookup"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/commands/",
+        "core/control_plane/indexes/design_documents/",
+        "core/control_plane/indexes/repository_paths/",
+        "core/control_plane/indexes/schemas/",
+        "core/control_plane/indexes/registries/"
+      ]
+    },
+    {
+      "path": "core/control_plane/indexes/commands/",
+      "kind": "directory",
+      "surface_kind": "command_index_root",
+      "summary": "Machine-readable command lookup indexes that route commands to command pages and implementation surfaces.",
+      "parent_path": "core/control_plane/indexes/",
+      "aliases": [
+        "command index"
+      ],
+      "tags": [
+        "commands",
+        "lookup"
+      ],
+      "related_paths": [
+        "docs/commands/",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ]
+    },
+    {
+      "path": "core/control_plane/indexes/design_documents/",
+      "kind": "directory",
+      "surface_kind": "design_document_index_root",
+      "summary": "Machine-readable design-document indexes for lookup and tracking of feature designs and implementation plans.",
+      "parent_path": "core/control_plane/indexes/",
+      "aliases": [
+        "design index",
+        "design document index"
+      ],
+      "tags": [
+        "design",
+        "lookup",
+        "tracking"
+      ],
+      "related_paths": [
+        "docs/design/design_tracking.md",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+      ]
+    },
+    {
+      "path": "core/python/",
+      "kind": "directory",
+      "surface_kind": "python_workspace",
+      "summary": "Consolidated Python workspace for the helper and harness layer, including packaging, tooling, tests, and onboarding surfaces.",
+      "parent_path": "core/",
+      "aliases": [
+        "python workspace",
+        "core python"
+      ],
+      "tags": [
+        "python",
+        "tooling",
+        "implementation"
+      ],
+      "related_paths": [
+        "core/python/AGENTS.md",
+        "core/python/src/",
+        "core/python/tests/",
+        "core/python/pyproject.toml",
+        "docs/commands/core_python/",
+        "core/control_plane/"
+      ]
+    },
+    {
+      "path": "core/python/AGENTS.md",
+      "kind": "file",
+      "surface_kind": "instruction",
+      "summary": "Python-workspace-specific agent instructions for execution, validation, and environment usage.",
+      "parent_path": "core/python/",
+      "aliases": [
+        "python agent instructions"
+      ],
+      "tags": [
+        "python",
+        "instructions",
+        "workspace"
+      ],
+      "related_paths": [
+        "AGENTS.md",
+        "core/python/README.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
+      "path": "core/python/pyproject.toml",
+      "kind": "file",
+      "surface_kind": "python_project_config",
+      "summary": "Canonical Python project and tool configuration for the core helper and harness workspace.",
+      "parent_path": "core/python/",
+      "aliases": [
+        "python project config"
+      ],
+      "tags": [
+        "python",
+        "packaging",
+        "tooling"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/python/src/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "path": "core/python/src/",
+      "kind": "directory",
+      "surface_kind": "source",
+      "summary": "Python source tree for the watchtower_core helper and harness package.",
+      "parent_path": "core/python/",
+      "aliases": [
+        "python source"
+      ],
+      "tags": [
+        "python",
+        "source"
+      ],
+      "related_paths": [
+        "core/python/tests/",
+        "core/python/pyproject.toml",
+        "core/control_plane/"
+      ]
+    },
+    {
+      "path": "core/python/tests/",
+      "kind": "directory",
+      "surface_kind": "test",
+      "summary": "Python test tree aligned with the helper and harness package and authored control-plane artifacts.",
+      "parent_path": "core/python/",
+      "aliases": [
+        "python tests"
+      ],
+      "tags": [
+        "tests",
+        "python"
+      ],
+      "related_paths": [
+        "core/python/src/",
+        "core/control_plane/examples/"
+      ]
+    }
+  ]
+}

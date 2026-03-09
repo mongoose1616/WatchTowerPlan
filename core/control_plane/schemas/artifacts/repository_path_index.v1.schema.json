@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1",
+  "title": "Repository Path Index",
+  "description": "Generated index of repository paths and high-signal entrypoints used for retrieval and navigation.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "coverage_mode",
+    "root_path",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1",
+      "description": "Schema identifier for this repository path index artifact."
+    },
+    "id": {
+      "type": "string",
+      "const": "index.repository_paths",
+      "description": "Stable identifier for the repository path index artifact."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable title for the index artifact."
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "coverage_mode": {
+      "type": "string",
+      "enum": [
+        "entrypoints",
+        "full_tree"
+      ],
+      "description": "Declares whether the index covers curated entrypoints or a broader generated repository tree."
+    },
+    "root_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repository-relative root path for the index scope."
+    },
+    "entries": {
+      "type": "array",
+      "description": "Indexed repository path records used for retrieval and navigation.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/pathEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "pathString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "pathEntry": {
+      "type": "object",
+      "required": [
+        "path",
+        "kind",
+        "surface_kind",
+        "summary",
+        "parent_path"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/pathString",
+          "description": "Repository-relative path for the indexed file or directory."
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "file",
+            "directory"
+          ],
+          "description": "Whether the indexed path points to a file or directory."
+        },
+        "surface_kind": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short label for the surface family such as workflow, standard, template, or control_plane."
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Concise retrieval-oriented description of why the path matters."
+        },
+        "parent_path": {
+          "$ref": "#/$defs/pathString",
+          "description": "Repository-relative parent path or . for root-level entries."
+        },
+        "aliases": {
+          "$ref": "#/$defs/stringList",
+          "description": "Optional alternate query terms for the path."
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList",
+          "description": "Optional retrieval-oriented tags for the path."
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList",
+          "description": "Optional related repository paths strongly associated with the entry."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

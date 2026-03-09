@@ -1,0 +1,53 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:command-index:v1",
+  "id": "index.commands",
+  "title": "Command Index",
+  "status": "active",
+  "workspace": "core_python",
+  "entries": [
+    {
+      "command_id": "command.watchtower_core",
+      "command": "watchtower-core",
+      "summary": "Root CLI entrypoint for the core Python workspace and helper-harness package.",
+      "kind": "root_command",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core.md",
+      "synopsis": "uv run watchtower-core <command>",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "aliases": [
+        "core python cli",
+        "watchtower core cli"
+      ],
+      "tags": [
+        "python",
+        "cli",
+        "core"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.doctor",
+      "command": "watchtower-core doctor",
+      "summary": "Lightweight workspace smoke check for the core Python workspace.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_doctor.md",
+      "synopsis": "uv run watchtower-core doctor",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "aliases": [
+        "workspace doctor",
+        "core doctor"
+      ],
+      "tags": [
+        "python",
+        "cli",
+        "doctor"
+      ],
+      "notes": "Current behavior is a minimal scaffold-level smoke check with no mutation."
+    }
+  ]
+}

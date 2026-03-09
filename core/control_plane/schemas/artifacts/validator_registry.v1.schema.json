@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+  "title": "Validator Registry",
+  "description": "Catalog of validators exposed by core, including stable identifiers and machine-usable selection metadata.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "validators"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+      "description": "Schema identifier for this validator registry artifact."
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.validators",
+      "description": "Stable identifier for the validator registry artifact."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable title for the registry."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ],
+      "description": "Lifecycle status of the registry artifact."
+    },
+    "validators": {
+      "type": "array",
+      "description": "Catalog entries for validators exposed by core.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/validatorRecord"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "validatorRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "status",
+        "engine",
+        "artifact_kind",
+        "applies_to"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/idPattern",
+          "description": "Stable identifier for the validator entry."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable validator name."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short description of what the validator checks."
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "engine": {
+          "type": "string",
+          "enum": [
+            "json_schema",
+            "python",
+            "external_command",
+            "composite"
+          ],
+          "description": "Execution mode used by the validator."
+        },
+        "artifact_kind": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Artifact family the validator is designed to check."
+        },
+        "applies_to": {
+          "type": "array",
+          "description": "Concrete repository surfaces or artifact families the validator applies to.",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "schema_ids": {
+          "type": "array",
+          "description": "Published schema identifiers used by schema-backed validators.",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional implementation or selection notes."
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "engine": {
+                "const": "json_schema"
+              }
+            },
+            "required": [
+              "engine"
+            ]
+          },
+          "then": {
+            "required": [
+              "schema_ids"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "wf.documentation_generation",
+  "title": "Documentation Generation Workflow",
+  "summary": "Defines how new repository documentation is created and reviewed.",
+  "type": "workflow",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated": "2026-03-09",
+  "audience": "contributors",
+  "authority": "authoritative",
+  "applies_to": [
+    "workflows/modules/documentation_generation.md"
+  ],
+  "aliases": [
+    "doc_generation"
+  ]
+}

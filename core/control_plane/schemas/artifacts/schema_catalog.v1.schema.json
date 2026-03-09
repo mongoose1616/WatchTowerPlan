@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+  "title": "Schema Catalog",
+  "description": "Catalog of published schema identifiers, canonical repository paths, and lightweight local resolution metadata.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "schemas"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+      "description": "Schema identifier for this schema catalog artifact."
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.schema_catalog",
+      "description": "Stable identifier for the schema catalog artifact."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable title for the registry artifact."
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "schemas": {
+      "type": "array",
+      "description": "Catalog records for published schemas that core resolves locally.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/schemaRecord"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "schemaId": {
+      "type": "string",
+      "pattern": "^urn:watchtower:schema:(?:[a-z0-9-]+:)+v[1-9][0-9]*$"
+    },
+    "pathString": {
+      "type": "string",
+      "pattern": "^core/control_plane/schemas/.+\\.schema\\.json$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^v[1-9][0-9]*$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "schemaRecord": {
+      "type": "object",
+      "required": [
+        "schema_id",
+        "title",
+        "description",
+        "status",
+        "schema_family",
+        "subject_kind",
+        "version",
+        "canonical_path"
+      ],
+      "properties": {
+        "schema_id": {
+          "$ref": "#/$defs/schemaId",
+          "description": "Published schema identifier resolved locally by core."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable schema name."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short description of the schema boundary."
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "schema_family": {
+          "type": "string",
+          "enum": [
+            "artifact",
+            "interface",
+            "common"
+          ],
+          "description": "Published schema subtree family."
+        },
+        "subject_kind": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Machine-usable label for the governed subject the schema covers."
+        },
+        "version": {
+          "$ref": "#/$defs/version",
+          "description": "Major schema version token."
+        },
+        "canonical_path": {
+          "$ref": "#/$defs/pathString",
+          "description": "Repository-relative canonical path to the published schema file."
+        },
+        "aliases": {
+          "$ref": "#/$defs/stringList",
+          "description": "Optional alternate terms that materially improve local resolution."
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional implementation or resolution notes."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

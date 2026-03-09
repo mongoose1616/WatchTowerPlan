@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:design-document-index:v1",
+  "id": "index.design_documents",
+  "title": "Design Document Index",
+  "status": "active",
+  "entries": [
+    {
+      "document_id": "design.features.example_feature",
+      "family": "feature_design",
+      "title": "Example Feature Design",
+      "summary": "Example feature design entry for the design-document index schema.",
+      "status": "active",
+      "doc_path": "docs/design/features/example_feature.md",
+      "last_synced": "2026-03-09",
+      "related_paths": [
+        "docs/design/implementation/example_feature_plan.md"
+      ],
+      "tags": [
+        "design",
+        "example"
+      ]
+    },
+    {
+      "document_id": "design.implementation.example_feature_plan",
+      "family": "implementation_plan",
+      "title": "Example Feature Implementation Plan",
+      "summary": "Example implementation-plan entry for the design-document index schema.",
+      "status": "active",
+      "doc_path": "docs/design/implementation/example_feature_plan.md",
+      "last_synced": "2026-03-09",
+      "source_paths": [
+        "docs/design/features/example_feature.md"
+      ],
+      "tags": [
+        "design",
+        "implementation",
+        "example"
+      ]
+    }
+  ]
+}

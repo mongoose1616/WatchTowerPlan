@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+  "id": "registry.schema_catalog",
+  "title": "Schema Catalog",
+  "status": "active",
+  "schemas": [
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+      "title": "Schema Catalog",
+      "description": "Schema for the schema catalog registry artifact family.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "schema_catalog",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json",
+      "aliases": [
+        "schema lookup catalog schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
+      "title": "Reference Front Matter",
+      "description": "Schema for parsed front matter metadata for governed reference documents.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json"
+    }
+  ]
+}

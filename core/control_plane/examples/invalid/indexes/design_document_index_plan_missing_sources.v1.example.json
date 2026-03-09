@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:design-document-index:v1",
+  "id": "index.design_documents",
+  "title": "Design Document Index",
+  "status": "active",
+  "entries": [
+    {
+      "document_id": "design.implementation.example_feature_plan",
+      "family": "implementation_plan",
+      "title": "Example Feature Implementation Plan",
+      "summary": "Invalid implementation-plan entry missing required source paths.",
+      "status": "active",
+      "doc_path": "docs/design/implementation/example_feature_plan.md",
+      "last_synced": "2026-03-09"
+    }
+  ]
+}
