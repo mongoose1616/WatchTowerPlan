@@ -7,6 +7,7 @@
 | Path | Description |
 |---|---|
 | `docs/planning/design/features/README.md` | Describes the purpose of the feature-design directory, its current documents, and the standards that govern them. |
+| `docs/planning/design/features/acceptance_evidence_reconciliation.md` | Feature design for a future reusable acceptance and validation-evidence reconciliation phase. |
 | `docs/planning/design/features/command_documentation_and_lookup.md` | Feature design for human-readable command pages and machine-readable command lookup. |
 | `docs/planning/design/features/core_python_workspace_and_harness.md` | Feature design for the consolidated core Python workspace and the first helper-harness package boundaries. |
 | `docs/planning/design/features/python_validator_execution.md` | Feature design for the Python validator execution layer driven by the control-plane validator registry. |

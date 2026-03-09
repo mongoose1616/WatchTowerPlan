@@ -5,6 +5,29 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.acceptance_evidence_reconciliation",
+      "title": "Acceptance and Evidence Reconciliation Trace",
+      "summary": "Joins the planned design and related artifact families for future acceptance-contract and validation-evidence reconciliation.",
+      "status": "active",
+      "updated_at": "2026-03-09T06:29:13Z",
+      "design_ids": [
+        "design.features.acceptance_evidence_reconciliation"
+      ],
+      "related_paths": [
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/registries/validators/validator_registry.v1.json"
+      ],
+      "tags": [
+        "traceability",
+        "acceptance",
+        "evidence",
+        "reconciliation"
+      ],
+      "notes": "Planned feature; no PRD, decision, or implementation plan yet."
+    },
+    {
       "trace_id": "trace.core_python_foundation",
       "title": "Core Python Foundation Trace",
       "summary": "Joins the active PRD, decision, designs, implementation plan, acceptance contract, validators, and validation evidence for the core Python foundation initiative.",

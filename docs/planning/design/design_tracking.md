@@ -6,6 +6,7 @@ This document provides the human-readable tracking view for the current design d
 ## Feature Designs
 | Trace ID | Path | Summary | Linked Plans | Notes |
 |---|---|---|---|---|
+| `trace.acceptance_evidence_reconciliation` | `docs/planning/design/features/acceptance_evidence_reconciliation.md` | Defines the planned feature for reconciling acceptance contracts, validator expectations, validation evidence, and traceability joins. | None yet. | Activate when acceptance and evidence reconciliation becomes a recurring workflow concern. |
 | `trace.command_documentation_and_lookup` | `docs/planning/design/features/command_documentation_and_lookup.md` | Defines the feature design for human-readable command pages and the machine-readable command index. | None yet. | Governs the command-doc and command-index family shape. |
 | `trace.core_python_foundation` | `docs/planning/design/features/core_python_workspace_and_harness.md` | Defines the feature design for the consolidated `core/python/` workspace and the first harness package boundaries. | `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` | Provides the workspace and package boundary assumptions used by the first implementation slice. |
 | `trace.core_python_foundation` | `docs/planning/design/features/python_validator_execution.md` | Defines the feature design for registry-driven validator execution in Python. | `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` | The current implementation plan depends on its control-plane loading assumptions. |
@@ -29,4 +30,4 @@ This document provides the human-readable tracking view for the current design d
 - [design_document_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/design_documents/design_document_index.v1.json)
 
 ## Updated At
-- `2026-03-09T04:55:49Z`
+- `2026-03-09T06:29:13Z`

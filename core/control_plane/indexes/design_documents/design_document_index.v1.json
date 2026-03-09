@@ -5,6 +5,27 @@
   "status": "active",
   "entries": [
     {
+      "document_id": "design.features.acceptance_evidence_reconciliation",
+      "trace_id": "trace.acceptance_evidence_reconciliation",
+      "family": "feature_design",
+      "title": "Acceptance and Evidence Reconciliation Design",
+      "summary": "Feature design for a future reusable reconciliation phase across acceptance contracts, validators, validation evidence, and traceability surfaces.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+      "updated_at": "2026-03-09T06:29:13Z",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "tags": [
+        "design",
+        "acceptance",
+        "evidence",
+        "reconciliation"
+      ]
+    },
+    {
       "document_id": "design.features.command_documentation_and_lookup",
       "trace_id": "trace.command_documentation_and_lookup",
       "family": "feature_design",
