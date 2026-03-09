@@ -23,8 +23,8 @@ uv run watchtower-core doctor
 ```
 
 ## Arguments and Options
+- `--format <human|json>`: Select human-readable or structured JSON output. Defaults to `human`.
 - `-h`, `--help`: Show the command help text.
-- No command-specific arguments or options exist yet beyond help.
 
 ## Examples
 ```sh
@@ -32,8 +32,14 @@ cd core/python
 uv run watchtower-core doctor
 ```
 
+```sh
+cd core/python
+uv run watchtower-core doctor --format json
+```
+
 ## Behavior and Outputs
-- The current implementation prints `watchtower_core workspace scaffold is available.` and exits with status code `0`.
+- In `human` mode, the command prints `watchtower_core workspace scaffold is available.` and exits with status code `0`.
+- In `json` mode, the command prints a single JSON object describing the command, workspace, result status, and message, then exits with status code `0`.
 - The command does not mutate repository state.
 - The command currently acts as a minimal operator-visible smoke check and placeholder for future workspace health checks.
 
@@ -47,5 +53,5 @@ uv run watchtower-core doctor
 - `core/python/src/watchtower_core/cli/main.py`
 - `core/python/README.md`
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T04:55:49Z`

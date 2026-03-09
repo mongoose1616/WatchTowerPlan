@@ -140,6 +140,15 @@
           "$ref": "#/$defs/idPattern",
           "description": "Stable parent command identifier for subcommands."
         },
+        "output_formats": {
+          "$ref": "#/$defs/stringList",
+          "description": "Supported output formats such as human or json."
+        },
+        "default_output_format": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Default output format when the command supports multiple modes."
+        },
         "aliases": {
           "$ref": "#/$defs/stringList",
           "description": "Optional alternate lookup terms for the command."
@@ -170,6 +179,18 @@
           "then": {
             "required": [
               "parent_command_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "default_output_format"
+            ]
+          },
+          "then": {
+            "required": [
+              "output_formats"
             ]
           }
         }

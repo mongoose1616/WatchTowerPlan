@@ -33,9 +33,16 @@
 - Read `core/python/AGENTS.md` before making changes under this workspace.
 - Run Python package commands from `core/python/`.
 - Prefer `uv run` for tests, linting, typing, and CLI execution.
+- When a command supports structured output, prefer `--format json` for agent or workflow consumption instead of parsing human-readable text.
 - Keep `pyproject.toml`, `uv.lock`, and command docs aligned when the Python execution contract changes.
 
 ## Command Docs
 - `docs/commands/core_python/README.md`
 - `docs/commands/core_python/watchtower_core.md`
 - `docs/commands/core_python/watchtower_core_doctor.md`
+- `docs/commands/core_python/watchtower_core_query.md`
+- `docs/commands/core_python/watchtower_core_query_paths.md`
+- `docs/commands/core_python/watchtower_core_query_commands.md`
+- `docs/commands/core_python/watchtower_core_query_trace.md`
+- `docs/commands/core_python/watchtower_core_sync.md`
+- `docs/commands/core_python/watchtower_core_sync_repository_paths.md`

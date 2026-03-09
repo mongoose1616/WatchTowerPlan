@@ -14,6 +14,7 @@
 - Treat [core/python](/home/j/WatchTowerPlan/core/python) as the only canonical Python workspace in this repository.
 - Run Python package commands from `core/python/` unless a narrower subpath is explicitly required.
 - Prefer `uv run <command>` for tests, linting, typechecking, CLI execution, and ad hoc package-local Python invocations.
+- When a command supports structured output, prefer `--format json` for agent or workflow use instead of scraping human-readable text.
 - Use the workspace-local environment at `core/python/.venv/`; do not create alternate virtual environments under `core/` or elsewhere in the repo.
 - Keep Python dependency and tool changes aligned across `pyproject.toml`, `uv.lock`, and [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md) in the same change set.
 - When Python command behavior changes, update the relevant command pages under [docs/commands/core_python](/home/j/WatchTowerPlan/docs/commands/core_python/), the command index, and the workspace README in the same change set.

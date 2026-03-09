@@ -38,6 +38,11 @@
       "implementation_path": "core/python/src/watchtower_core/cli/main.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
       "aliases": [
         "workspace doctor",
         "core doctor"
@@ -48,6 +53,164 @@
         "doctor"
       ],
       "notes": "Current behavior is a minimal scaffold-level smoke check with no mutation."
+    },
+    {
+      "command_id": "command.watchtower_core.query",
+      "command": "watchtower-core query",
+      "summary": "Namespace command for governed index lookups over paths, commands, and traces.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query.md",
+      "synopsis": "uv run watchtower-core query <subcommand>",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "aliases": [
+        "index query",
+        "lookup commands"
+      ],
+      "tags": [
+        "python",
+        "cli",
+        "query"
+      ],
+      "notes": "Dispatches to the paths, commands, and trace query subcommands."
+    },
+    {
+      "command_id": "command.watchtower_core.query.paths",
+      "command": "watchtower-core query paths",
+      "summary": "Search the repository path index with structured filters.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_paths.md",
+      "synopsis": "uv run watchtower-core query paths [options]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "aliases": [
+        "path search",
+        "repository path lookup"
+      ],
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "paths"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.commands",
+      "command": "watchtower-core query commands",
+      "summary": "Search the command index with structured filters.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_commands.md",
+      "synopsis": "uv run watchtower-core query commands [options]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "aliases": [
+        "command search",
+        "command lookup"
+      ],
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "commands"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.trace",
+      "command": "watchtower-core query trace",
+      "summary": "Resolve one traceability record by trace identifier.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_trace.md",
+      "synopsis": "uv run watchtower-core query trace --trace-id <trace_id>",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "aliases": [
+        "trace lookup",
+        "traceability query"
+      ],
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "traceability"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync",
+      "command": "watchtower-core sync",
+      "summary": "Namespace command for rebuilding or materializing derived governed artifacts.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync.md",
+      "synopsis": "uv run watchtower-core sync <subcommand>",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "aliases": [
+        "artifact sync",
+        "derived artifact rebuild"
+      ],
+      "tags": [
+        "python",
+        "cli",
+        "sync"
+      ],
+      "notes": "Currently exposes the repository-path index materialization flow."
+    },
+    {
+      "command_id": "command.watchtower_core.sync.repository_paths",
+      "command": "watchtower-core sync repository-paths",
+      "summary": "Rebuild the repository path index from README inventories.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_repository_paths.md",
+      "synopsis": "uv run watchtower-core sync repository-paths [options]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "aliases": [
+        "repository path sync",
+        "repository path index rebuild"
+      ],
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "repository_paths"
+      ]
     }
   ]
 }
