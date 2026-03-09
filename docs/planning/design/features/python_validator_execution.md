@@ -10,17 +10,17 @@ This document defines the feature-level technical design for a Python validation
 ## Scope and Feature Boundary
 - Covers the Python-side execution model for registry-driven validation.
 - Covers how validator definitions in `core/control_plane/registries/validators/validator_registry.v1.json` map to Python runners and structured results.
-- Covers the first wave of schema-backed validation for governed documentation front matter.
+- Covers the first wave of schema-backed validation for governed documentation front matter and JSON control-plane artifacts.
+- Covers the first durable evidence-write path that records governed validation outcomes back into the governed control plane.
 - Does not define the full intake-contract family.
 - Does not define validation policy documents.
-- Does not yet define the Python write path that emits durable validation-evidence ledger artifacts.
 - Does not implement the code in this document.
 
 ## Current-State Context
 - `core/control_plane/registries/validators/validator_registry.v1.json` now defines validator identities, engines, target artifact kinds, and schema dependencies.
 - `core/control_plane/schemas/interfaces/documentation/` already publishes governed front matter validation interfaces for reference, standard, workflow, PRD, and decision-record documents.
-- `core/control_plane/contracts/acceptance/`, `core/control_plane/ledgers/validation_evidence/`, and `core/control_plane/indexes/traceability/` now provide the downstream contract, evidence, and join surfaces this validator layer will eventually support.
-- `core/python/src/watchtower_core/validation/` is the package boundary for validator execution and currently contains scaffold-only code.
+- `core/control_plane/contracts/acceptance/`, `core/control_plane/ledgers/validation_evidence/`, and `core/control_plane/indexes/traceability/` now provide the downstream contract, evidence, and join surfaces the validator layer now writes to in its first durable evidence path.
+- `core/python/src/watchtower_core/validation/` is the package boundary for validator execution and now provides registry-backed front-matter and JSON artifact validation services.
 - The repository has standards for schemas, naming and IDs, lifecycle status, format selection, and front matter, but it does not yet have a Python execution path that turns those artifacts into actual validation behavior.
 
 ## Foundations References Applied
@@ -136,4 +136,4 @@ This document defines the feature-level technical design for a Python validation
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-09T04:55:49Z`
+- `2026-03-09T06:23:18Z`

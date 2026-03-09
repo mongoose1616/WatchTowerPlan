@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T05:43:47Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -64,6 +64,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - `docs/planning/prds/**` documents should include front matter and validate against the PRD profile.
 - `docs/planning/decisions/**` documents should include front matter and validate against the decision-record profile.
 - `docs/standards/**` standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under `docs/standards/**` remain plain Markdown unless a narrower local rule says otherwise.
+- `docs/commands/**` command pages should stay plain Markdown by default because the command index is the machine-readable lookup surface for that document family.
 - Workflow documents may adopt front matter when status, ownership, or indexing needs justify it. If they do, they should validate against their matching profile.
 
 ## Structure or Data Model
@@ -91,6 +92,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | `docs/planning/prds/**` | Required | `prd_front_matter.v1.schema.json` |
 | `docs/planning/decisions/**` | Required | `decision_record_front_matter.v1.schema.json` |
 | `docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.v1.schema.json` |
+| `docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
 | `workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.v1.schema.json` |
 | short directory `README.md` files | Not required by default | none |
 
@@ -117,6 +119,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - A PRD under `docs/planning/prds/**` should use the PRD front matter profile and carry a shared `trace_id`.
 - A decision record under `docs/planning/decisions/**` should use the decision-record front matter profile and carry a shared `trace_id`.
 - A standard under `docs/standards/**` should use the standard front matter profile.
+- A command page under `docs/commands/**` should usually remain plain Markdown and rely on the command index for machine lookup metadata.
 - A front matter document can add `aliases` such as `yaml_header` and `document_metadata` when those terms are likely retrieval entrypoints.
 - A short `README.md` that only explains directory purpose should usually stay plain Markdown with no front matter.
 
@@ -144,6 +147,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - This standard intentionally does not require front matter on every document in `docs/**`.
 - The exact allowed values for identifiers, statuses, owners, and audiences can be tightened later by companion metadata standards without changing the basic front matter structure.
 - Retrieval-oriented keys should stay small and intentional. If they become broad keyword dumps, they will reduce rather than improve retrieval quality.
+- Document families that already have a dedicated machine-readable companion artifact, such as `docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T05:43:47Z`

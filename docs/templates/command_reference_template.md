@@ -3,6 +3,9 @@
 > Use this template for repository-native command pages under `docs/commands/`.
 > Keep one primary command or subcommand per document.
 > Treat the page as the human-readable man page for that command.
+> Keep command pages as plain Markdown by default; command-family lookup metadata lives in the machine-readable command index rather than front matter.
+> Keep examples runnable from the documented workspace.
+> When a command supports structured output, include at least one `--format json` example.
 
 ## Summary
 <One short explanation of what the command does.>

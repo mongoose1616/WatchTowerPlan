@@ -23,7 +23,7 @@ uv run watchtower-core doctor
 ```
 
 ## Arguments and Options
-- `--format <human|json>`: Select human-readable or structured JSON output. Defaults to `human`.
+- `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls. Defaults to `human`.
 - `-h`, `--help`: Show the command help text.
 
 ## Examples
@@ -54,4 +54,4 @@ uv run watchtower-core doctor --format json
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-09T04:55:49Z`
+- `2026-03-09T05:43:47Z`

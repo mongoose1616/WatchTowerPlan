@@ -20,14 +20,37 @@
 | `core/python/tools/` | Holds small workspace-local helper scripts and notes when they are warranted. |
 
 ## Onboarding
+### Quick Start
 1. `cd core/python`
 2. `uv python install`
 3. `uv sync --extra dev`
-4. `source .venv/bin/activate`
-5. `uv run pytest`
-6. `uv run ruff check .`
-7. `uv run mypy src`
-8. `uv run watchtower-core doctor`
+4. `uv run watchtower-core doctor`
+
+### Daily Use
+- Default path: run commands with `uv run ...` from `core/python/`. This uses the workspace environment without requiring manual activation.
+- Interactive shell path: run `./tools/dev_shell.sh` when you want a shell with `.venv` activated for repeated local commands.
+- Manual fallback: run `source .venv/bin/activate` if you specifically want to activate the environment in your current shell.
+
+### Common Commands
+- `uv run pytest`
+- `uv run ruff check .`
+- `uv run mypy src`
+- `uv run watchtower-core --help`
+- `uv run watchtower-core doctor`
+
+### Commands Inside `./tools/dev_shell.sh`
+- `watchtower-core --help`
+- `watchtower-core doctor`
+- `pytest`
+- `ruff check .`
+- `mypy src`
+
+### Notes
+- `uv run ...` is the default workflow for this repository.
+- `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.
+- `./tools/dev_shell.sh` is for interactive use and does not require `uv` once the shell is active.
+- If you used `./tools/dev_shell.sh`, leave the activated shell with `exit`.
+- If you activated the environment manually, leave it with `deactivate`.
 
 ## Agent Use
 - Read `core/python/AGENTS.md` before making changes under this workspace.
@@ -45,4 +68,8 @@
 - `docs/commands/core_python/watchtower_core_query_commands.md`
 - `docs/commands/core_python/watchtower_core_query_trace.md`
 - `docs/commands/core_python/watchtower_core_sync.md`
+- `docs/commands/core_python/watchtower_core_sync_command_index.md`
 - `docs/commands/core_python/watchtower_core_sync_repository_paths.md`
+- `docs/commands/core_python/watchtower_core_validate.md`
+- `docs/commands/core_python/watchtower_core_validate_artifact.md`
+- `docs/commands/core_python/watchtower_core_validate_front_matter.md`

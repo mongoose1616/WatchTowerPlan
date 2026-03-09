@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
-from collections.abc import Sequence
+from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from textwrap import dedent
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.query import (
     CommandQueryService,
     CommandSearchParams,
@@ -16,13 +17,26 @@ from watchtower_core.query import (
     RepositoryPathSearchParams,
     TraceabilityQueryService,
 )
-from watchtower_core.sync import RepositoryPathIndexSyncService
+from watchtower_core.sync import CommandIndexSyncService, RepositoryPathIndexSyncService
+from watchtower_core.validation import (
+    ArtifactValidationService,
+    FrontMatterValidationService,
+    ValidationExecutionError,
+    ValidationResult,
+    ValidationSelectionError,
+)
 
 
 class HelpFormatter(
     argparse.RawDescriptionHelpFormatter, argparse.ArgumentDefaultsHelpFormatter
 ):
     """Formatter that preserves examples and shows defaults."""
+
+
+ValidationServiceFactory = Callable[
+    [ControlPlaneLoader],
+    FrontMatterValidationService | ArtifactValidationService,
+]
 
 
 def _examples(*lines: str) -> str:
@@ -46,7 +60,10 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync repository-paths",
+            "uv run watchtower-core validate artifact --path "
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -167,7 +184,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     query_commands_parser.add_argument(
         "--query",
-        help="Free-text query over indexed command fields such as command name, summary, synopsis, or aliases.",
+        help=(
+            "Free-text query over indexed command fields such as command name, "
+            "summary, synopsis, or aliases."
+        ),
     )
     query_commands_parser.add_argument(
         "--kind",
@@ -201,7 +221,8 @@ def build_parser() -> argparse.ArgumentParser:
         ).strip(),
         epilog=_examples(
             "uv run watchtower-core query trace --trace-id trace.core_python_foundation",
-            "uv run watchtower-core query trace --trace-id trace.core_python_foundation --format json",
+            "uv run watchtower-core query trace --trace-id "
+            "trace.core_python_foundation --format json",
         ),
         formatter_class=HelpFormatter,
     )
@@ -230,6 +251,8 @@ def build_parser() -> argparse.ArgumentParser:
             """
         ).strip(),
         epilog=_examples(
+            "uv run watchtower-core sync command-index",
+            "uv run watchtower-core sync command-index --write",
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core sync repository-paths --write",
         ),
@@ -241,6 +264,29 @@ def build_parser() -> argparse.ArgumentParser:
         metavar="<sync_command>",
     )
     sync_parser.set_defaults(handler=_run_help, help_parser=sync_parser)
+
+    sync_command_index_parser = sync_subparsers.add_parser(
+        "command-index",
+        help="Rebuild the command index from authored command docs.",
+        description=dedent(
+            """
+            Rebuild the command index from the authored command pages under
+            `docs/commands/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync command-index",
+            "uv run watchtower-core sync command-index --write",
+            "uv run watchtower-core sync command-index --output "
+            "/tmp/command_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_command_index_parser)
+    sync_command_index_parser.set_defaults(handler=_run_sync_command_index)
 
     sync_repository_paths_parser = sync_subparsers.add_parser(
         "repository-paths",
@@ -256,33 +302,207 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core sync repository-paths --write",
-            "uv run watchtower-core sync repository-paths --output /tmp/repository_path_index.v1.json --format json",
+            "uv run watchtower-core sync repository-paths --output "
+            "/tmp/repository_path_index.v1.json --format json",
         ),
         formatter_class=HelpFormatter,
     )
-    sync_repository_paths_parser.add_argument(
-        "--write",
-        action="store_true",
-        help="Write the rebuilt artifact to the canonical control-plane path.",
+    _add_common_sync_arguments(sync_repository_paths_parser)
+    sync_repository_paths_parser.set_defaults(handler=_run_sync_repository_paths)
+
+    validate_parser = subparsers.add_parser(
+        "validate",
+        help="Run governed validation commands.",
+        description=dedent(
+            """
+            Run validation commands against governed repository artifacts and
+            document surfaces.
+
+            Use `front-matter` for governed Markdown metadata and `artifact`
+            for schema-backed JSON contracts, indexes, ledgers, and similar
+            machine-readable artifacts.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core validate front-matter --path "
+            "docs/references/front_matter_reference.md",
+            "uv run watchtower-core validate artifact --path "
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "uv run watchtower-core validate artifact --path "
+            "core/control_plane/indexes/traceability/traceability_index.v1.json "
+            "--format json",
+            "uv run watchtower-core validate front-matter --path "
+            "docs/standards/metadata/front_matter_standard.md --format json",
+        ),
+        formatter_class=HelpFormatter,
     )
-    sync_repository_paths_parser.add_argument(
-        "--output",
-        type=Path,
-        help="Optional explicit output path for the rebuilt artifact.",
+    validate_subparsers = validate_parser.add_subparsers(
+        dest="validate_command",
+        title="validate commands",
+        metavar="<validate_command>",
     )
-    sync_repository_paths_parser.add_argument(
-        "--include-document",
-        action="store_true",
-        help="Include the generated document in json output for inspection or downstream tooling.",
+    validate_parser.set_defaults(handler=_run_help, help_parser=validate_parser)
+
+    validate_front_matter_parser = validate_subparsers.add_parser(
+        "front-matter",
+        help="Validate one Markdown document front-matter block.",
+        description=dedent(
+            """
+            Validate one Markdown document front-matter block against the
+            governed front-matter profiles published in the control plane.
+
+            The command auto-selects the validator from the registry when the
+            path is repository-local, or you can provide `--validator-id`
+            explicitly.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core validate front-matter --path "
+            "docs/references/front_matter_reference.md",
+            "uv run watchtower-core validate front-matter --path "
+            "docs/standards/metadata/front_matter_standard.md --format json",
+            "uv run watchtower-core validate front-matter --path /tmp/example.md "
+            "--validator-id validator.documentation.standard_front_matter",
+            "uv run watchtower-core validate front-matter --path "
+            "docs/standards/metadata/front_matter_standard.md --record-evidence "
+            "--trace-id trace.core_python_foundation",
+        ),
+        formatter_class=HelpFormatter,
     )
-    sync_repository_paths_parser.add_argument(
+    validate_front_matter_parser.add_argument(
+        "--path",
+        required=True,
+        help="Repository-relative or absolute path to the Markdown document to validate.",
+    )
+    validate_front_matter_parser.add_argument(
+        "--validator-id",
+        help=(
+            "Optional explicit validator identifier. Required for files outside "
+            "the repository tree."
+        ),
+    )
+    _add_common_validation_arguments(validate_front_matter_parser)
+    validate_front_matter_parser.set_defaults(handler=_run_validate_front_matter)
+
+    validate_artifact_parser = validate_subparsers.add_parser(
+        "artifact",
+        help="Validate one governed JSON artifact against registry-backed schema validators.",
+        description=dedent(
+            """
+            Validate one governed JSON artifact against the active schema-backed
+            validators published in the control plane.
+
+            The command auto-selects the validator from the registry when the
+            path is repository-local, or you can provide `--validator-id`
+            explicitly for external or temporary files.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core validate artifact --path "
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "uv run watchtower-core validate artifact --path "
+            "core/control_plane/indexes/traceability/traceability_index.v1.json "
+            "--format json",
+            "uv run watchtower-core validate artifact --path /tmp/example.json "
+            "--validator-id validator.control_plane.acceptance_contract",
+            "uv run watchtower-core validate artifact --path "
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json "
+            "--record-evidence --trace-id trace.core_python_foundation",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    validate_artifact_parser.add_argument(
+        "--path",
+        required=True,
+        help="Repository-relative or absolute path to the JSON artifact to validate.",
+    )
+    validate_artifact_parser.add_argument(
+        "--validator-id",
+        help=(
+            "Optional explicit validator identifier. Required for files outside "
+            "the repository tree."
+        ),
+    )
+    _add_common_validation_arguments(validate_artifact_parser)
+    validate_artifact_parser.set_defaults(handler=_run_validate_artifact)
+    return parser
+
+
+def _add_common_validation_arguments(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
         "--format",
         choices=("human", "json"),
         default="human",
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
-    sync_repository_paths_parser.set_defaults(handler=_run_sync_repository_paths)
-    return parser
+    parser.add_argument(
+        "--record-evidence",
+        action="store_true",
+        help="Write a durable validation-evidence artifact and synchronized traceability update.",
+    )
+    parser.add_argument(
+        "--trace-id",
+        help="Required with --record-evidence. Shared trace identifier for the recorded evidence.",
+    )
+    parser.add_argument(
+        "--evidence-id",
+        help=(
+            "Optional explicit evidence identifier. Otherwise the command "
+            "derives one deterministically."
+        ),
+    )
+    parser.add_argument(
+        "--subject-id",
+        action="append",
+        default=[],
+        help=(
+            "Optional subject identifier to attach to the evidence check. "
+            "Repeat for multiple values."
+        ),
+    )
+    parser.add_argument(
+        "--acceptance-id",
+        action="append",
+        default=[],
+        help=(
+            "Optional acceptance identifier to attach to the evidence check. "
+            "Repeat for multiple values."
+        ),
+    )
+    parser.add_argument(
+        "--evidence-output",
+        type=Path,
+        help="Optional explicit output path for the evidence artifact.",
+    )
+    parser.add_argument(
+        "--traceability-output",
+        type=Path,
+        help="Optional explicit output path for the updated traceability index.",
+    )
+
+
+def _add_common_sync_arguments(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Write the rebuilt artifact to the canonical control-plane path.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="Optional explicit output path for the rebuilt artifact.",
+    )
+    parser.add_argument(
+        "--include-document",
+        action="store_true",
+        help="Include the generated document in json output for inspection or downstream tooling.",
+    )
+    parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
 
 
 def _run_help(args: argparse.Namespace) -> int:
@@ -308,7 +528,7 @@ def _run_doctor(args: argparse.Namespace) -> int:
     return 0
 
 
-def _print_payload(args: argparse.Namespace, payload: dict[str, object]) -> int:
+def _print_payload(args: argparse.Namespace, payload: Mapping[str, object]) -> int:
     if args.format == "json":
         print(json.dumps(payload, sort_keys=True))
         return 0
@@ -468,20 +688,47 @@ def _run_query_trace(args: argparse.Namespace) -> int:
 
 
 def _run_sync_repository_paths(args: argparse.Namespace) -> int:
-    service = RepositoryPathIndexSyncService.from_repo_root()
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync repository-paths",
+        artifact_label="repository path index",
+        service=RepositoryPathIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_command_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync command-index",
+        artifact_label="command index",
+        service=CommandIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_document_command(
+    args: argparse.Namespace,
+    *,
+    command_name: str,
+    artifact_label: str,
+    service: CommandIndexSyncService | RepositoryPathIndexSyncService,
+) -> int:
     document = service.build_document()
+    entries = document.get("entries")
+    if not isinstance(entries, list):
+        raise RuntimeError(f"{artifact_label.capitalize()} document is missing its entries list.")
+    entry_count = len(entries)
     destination: str | None = None
     wrote = False
 
     if args.write or args.output is not None:
-        target = args.output.resolve() if args.output is not None else None
+        target = _resolve_output_path(args.output)
         destination = str(service.write_document(document, target))
         wrote = True
 
     payload: dict[str, object] = {
-        "command": "watchtower-core sync repository-paths",
+        "command": command_name,
         "status": "ok",
-        "entry_count": len(document["entries"]),
+        "entry_count": entry_count,
         "wrote": wrote,
         "artifact_path": destination,
     }
@@ -491,17 +738,187 @@ def _run_sync_repository_paths(args: argparse.Namespace) -> int:
         return 0
 
     if wrote:
-        print(
-            f"Rebuilt repository path index with {len(document['entries'])} entries and wrote "
-            f"it to {destination}."
-        )
+        print(f"Rebuilt {artifact_label} with {entry_count} entries and wrote it to {destination}.")
         return 0
 
-    print(
-        f"Rebuilt repository path index with {len(document['entries'])} entries in dry-run mode."
-    )
+    print(f"Rebuilt {artifact_label} with {entry_count} entries in dry-run mode.")
     print("Use --write to update the canonical artifact or --output <path> to write elsewhere.")
     return 0
+
+
+def _run_validate_front_matter(args: argparse.Namespace) -> int:
+    return _run_validation_command(
+        args,
+        command_name="watchtower-core validate front-matter",
+        success_message="Front matter validated successfully.",
+        service_factory=FrontMatterValidationService,
+    )
+
+
+def _run_validate_artifact(args: argparse.Namespace) -> int:
+    return _run_validation_command(
+        args,
+        command_name="watchtower-core validate artifact",
+        success_message="Artifact validated successfully.",
+        service_factory=ArtifactValidationService,
+    )
+
+
+def _run_validation_command(
+    args: argparse.Namespace,
+    *,
+    command_name: str,
+    success_message: str,
+    service_factory: ValidationServiceFactory,
+) -> int:
+    message = _validate_evidence_arguments(args)
+    if message is not None:
+        return _emit_command_error(args, command_name, message)
+
+    loader = ControlPlaneLoader()
+    service = service_factory(loader)
+    try:
+        result = service.validate(args.path, validator_id=args.validator_id)
+    except (ValidationExecutionError, ValidationSelectionError) as exc:
+        return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
+
+    evidence_write = None
+    if args.record_evidence:
+        recorder = ValidationEvidenceRecorder(loader)
+        try:
+            evidence_write = recorder.record(
+                result,
+                trace_id=args.trace_id,
+                evidence_id=args.evidence_id,
+                subject_ids=tuple(args.subject_id),
+                acceptance_ids=tuple(args.acceptance_id),
+                evidence_output=_resolve_output_path(args.evidence_output),
+                traceability_output=_resolve_output_path(args.traceability_output),
+            )
+        except ValueError as exc:
+            return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
+
+    result_payload = _build_validation_payload(
+        command_name=command_name,
+        result=result,
+        evidence_write=evidence_write,
+    )
+    if _print_payload(args, result_payload) == 0:
+        return 0 if result.passed else 1
+
+    return _print_validation_summary(
+        result,
+        evidence_write=evidence_write,
+        success_message=success_message,
+    )
+
+
+def _validate_evidence_arguments(args: argparse.Namespace) -> str | None:
+    if not args.record_evidence and (
+        args.trace_id
+        or args.evidence_id
+        or args.subject_id
+        or args.acceptance_id
+        or args.evidence_output is not None
+        or args.traceability_output is not None
+    ):
+        return (
+            "--trace-id, --evidence-id, --subject-id, --acceptance-id, "
+            "--evidence-output, and --traceability-output require --record-evidence."
+        )
+    if args.record_evidence and not args.trace_id:
+        return "--trace-id is required when --record-evidence is used."
+    return None
+
+
+def _emit_command_error(
+    args: argparse.Namespace,
+    command_name: str,
+    message: str,
+    *,
+    prefix: str | None = None,
+) -> int:
+    payload = {
+        "command": command_name,
+        "status": "error",
+        "message": message,
+    }
+    if _print_payload(args, payload) == 0:
+        return 1
+    if prefix is None:
+        print(message)
+    else:
+        print(f"{prefix}: {message}")
+    return 1
+
+
+def _resolve_output_path(path: Path | None) -> Path | None:
+    return path.resolve() if path is not None else None
+
+
+def _build_validation_payload(
+    *,
+    command_name: str,
+    result: ValidationResult,
+    evidence_write: EvidenceWriteResult | None,
+) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "command": command_name,
+        "status": "ok",
+        "passed": result.passed,
+        "validator_id": result.validator_id,
+        "target_path": result.target_path,
+        "engine": result.engine,
+        "schema_ids": list(result.schema_ids),
+        "issue_count": result.issue_count,
+        "issues": [
+            {
+                "code": issue.code,
+                "message": issue.message,
+                "location": issue.location,
+                "schema_id": issue.schema_id,
+            }
+            for issue in result.issues
+        ],
+    }
+    if evidence_write is not None:
+        payload["evidence"] = {
+            "evidence_id": evidence_write.evidence_id,
+            "evidence_relative_path": evidence_write.evidence_relative_path,
+            "trace_id": evidence_write.trace_id,
+            "recorded_at": evidence_write.recorded_at,
+            "overall_result": evidence_write.overall_result,
+            "evidence_output_path": evidence_write.evidence_output_path,
+            "traceability_output_path": evidence_write.traceability_output_path,
+        }
+    return payload
+
+
+def _print_validation_summary(
+    result: ValidationResult,
+    *,
+    evidence_write: EvidenceWriteResult | None,
+    success_message: str,
+) -> int:
+    verdict = "PASS" if result.passed else "FAIL"
+    print(f"{verdict} {result.target_path}")
+    print(f"Validator: {result.validator_id}")
+    if result.schema_ids:
+        print(f"Schemas: {', '.join(result.schema_ids)}")
+    if evidence_write is not None:
+        print(f"Evidence: {evidence_write.evidence_id}")
+        print(f"Evidence Path: {evidence_write.evidence_output_path}")
+        print(f"Traceability Path: {evidence_write.traceability_output_path}")
+    if result.passed:
+        print(success_message)
+        return 0
+
+    print(f"Issues: {result.issue_count}")
+    for issue in result.issues:
+        location = f" ({issue.location})" if issue.location else ""
+        schema = f" [{issue.schema_id}]" if issue.schema_id else ""
+        print(f"- {issue.code}{location}{schema}: {issue.message}")
+    return 1
 
 
 def main(argv: Sequence[str] | None = None) -> int:

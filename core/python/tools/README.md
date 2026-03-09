@@ -10,3 +10,4 @@
 | Path | Description |
 |---|---|
 | `core/python/tools/README.md` | Describes the purpose and limits of the Python workspace tools directory. |
+| `core/python/tools/dev_shell.sh` | Opens an interactive shell rooted at `core/python/` with `.venv` activated when the local environment already exists. |

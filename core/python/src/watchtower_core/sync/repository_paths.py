@@ -10,7 +10,6 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import RepositoryPathEntry
 from watchtower_core.control_plane.paths import discover_repo_root
 
-
 REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
 )
@@ -163,7 +162,7 @@ class RepositoryPathIndexSyncService:
         self._repo_root = loader.repo_root
 
     @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None) -> "RepositoryPathIndexSyncService":
+    def from_repo_root(cls, repo_root: Path | None = None) -> RepositoryPathIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
     def build_document(self) -> dict[str, object]:

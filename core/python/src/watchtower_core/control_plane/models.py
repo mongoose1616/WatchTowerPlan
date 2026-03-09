@@ -24,7 +24,7 @@ class SchemaCatalogRecord:
     notes: str | None = None
 
     @classmethod
-    def from_document(cls, document: dict[str, Any], repo_root: Path) -> "SchemaCatalogRecord":
+    def from_document(cls, document: dict[str, Any], repo_root: Path) -> SchemaCatalogRecord:
         return cls(
             schema_id=document["schema_id"],
             title=document["title"],
@@ -51,7 +51,7 @@ class SchemaCatalog:
     records: tuple[SchemaCatalogRecord, ...]
 
     @classmethod
-    def from_document(cls, document: dict[str, Any], repo_root: Path) -> "SchemaCatalog":
+    def from_document(cls, document: dict[str, Any], repo_root: Path) -> SchemaCatalog:
         records = tuple(
             SchemaCatalogRecord.from_document(record, repo_root) for record in document["schemas"]
         )
@@ -86,7 +86,7 @@ class ValidatorDefinition:
     notes: str | None = None
 
     @classmethod
-    def from_document(cls, document: dict[str, Any]) -> "ValidatorDefinition":
+    def from_document(cls, document: dict[str, Any]) -> ValidatorDefinition:
         return cls(
             validator_id=document["id"],
             title=document["title"],
@@ -111,7 +111,7 @@ class ValidatorRegistry:
     validators: tuple[ValidatorDefinition, ...]
 
     @classmethod
-    def from_document(cls, document: dict[str, Any]) -> "ValidatorRegistry":
+    def from_document(cls, document: dict[str, Any]) -> ValidatorRegistry:
         validators = tuple(
             ValidatorDefinition.from_document(entry) for entry in document["validators"]
         )
@@ -145,7 +145,7 @@ class RepositoryPathEntry:
     related_paths: tuple[str, ...] = ()
 
     @classmethod
-    def from_document(cls, document: dict[str, Any]) -> "RepositoryPathEntry":
+    def from_document(cls, document: dict[str, Any]) -> RepositoryPathEntry:
         return cls(
             path=document["path"],
             kind=document["kind"],
@@ -171,7 +171,7 @@ class RepositoryPathIndex:
     entries: tuple[RepositoryPathEntry, ...]
 
     @classmethod
-    def from_document(cls, document: dict[str, Any]) -> "RepositoryPathIndex":
+    def from_document(cls, document: dict[str, Any]) -> RepositoryPathIndex:
         entries = tuple(RepositoryPathEntry.from_document(entry) for entry in document["entries"])
         return cls(
             schema_id=document["$schema"],
@@ -213,7 +213,7 @@ class CommandIndexEntry:
     notes: str | None = None
 
     @classmethod
-    def from_document(cls, document: dict[str, Any]) -> "CommandIndexEntry":
+    def from_document(cls, document: dict[str, Any]) -> CommandIndexEntry:
         return cls(
             command_id=document["command_id"],
             command=document["command"],
@@ -246,7 +246,7 @@ class CommandIndex:
     entries: tuple[CommandIndexEntry, ...]
 
     @classmethod
-    def from_document(cls, document: dict[str, Any]) -> "CommandIndex":
+    def from_document(cls, document: dict[str, Any]) -> CommandIndex:
         entries = tuple(CommandIndexEntry.from_document(entry) for entry in document["entries"])
         return cls(
             schema_id=document["$schema"],
@@ -288,7 +288,7 @@ class TraceabilityEntry:
     notes: str | None = None
 
     @classmethod
-    def from_document(cls, document: dict[str, Any]) -> "TraceabilityEntry":
+    def from_document(cls, document: dict[str, Any]) -> TraceabilityEntry:
         return cls(
             trace_id=document["trace_id"],
             title=document["title"],
@@ -321,7 +321,7 @@ class TraceabilityIndex:
     entries: tuple[TraceabilityEntry, ...]
 
     @classmethod
-    def from_document(cls, document: dict[str, Any]) -> "TraceabilityIndex":
+    def from_document(cls, document: dict[str, Any]) -> TraceabilityIndex:
         entries = tuple(TraceabilityEntry.from_document(entry) for entry in document["entries"])
         return cls(
             schema_id=document["$schema"],

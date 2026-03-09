@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T05:43:47Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -35,6 +35,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 ## Related Standards and Sources
 - [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md)
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
+- [cli_help_text_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/cli_help_text_standard.md)
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
 - [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
 - [README.md](/home/j/WatchTowerPlan/docs/commands/README.md)
@@ -45,6 +46,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Keep one primary command or subcommand per document.
 - Use the literal command name in the title, wrapped in backticks.
 - Keep command pages human-readable first, but structured enough that a machine index can route to them reliably.
+- Keep command pages as plain Markdown by default. Do not add front matter unless a later command-family rule explicitly requires it.
 - Keep command docs focused on stable behavior: invocation shape, arguments, examples, outputs, and source surface.
 - Link each durable command page from the machine-readable command index and from the relevant command-family README.
 - Use `## Arguments and Options` even when the current command surface is small; state clearly when no command-specific arguments or options exist yet.
@@ -109,6 +111,8 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 ## Notes
 - Command pages are intended to be the human-readable man-page layer for repository commands.
 - The command index exists to route to these pages and support lookup, not to replace the command docs themselves.
+- Command pages do not require front matter by default because the command index already carries the structured machine-lookup fields for this document family.
+- CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T05:43:47Z`

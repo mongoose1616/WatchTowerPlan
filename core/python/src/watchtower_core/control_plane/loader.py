@@ -17,9 +17,10 @@ from watchtower_core.control_plane.models import (
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.control_plane.schemas import SchemaStore
 
-
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validators/validator_registry.v1.json"
-REPOSITORY_PATH_INDEX_PATH = "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+REPOSITORY_PATH_INDEX_PATH = (
+    "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+)
 COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.v1.json"
 
@@ -27,7 +28,11 @@ TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_
 class ControlPlaneLoader:
     """Load and validate current governed control-plane artifacts."""
 
-    def __init__(self, repo_root: Path | None = None, schema_store: SchemaStore | None = None) -> None:
+    def __init__(
+        self,
+        repo_root: Path | None = None,
+        schema_store: SchemaStore | None = None,
+    ) -> None:
         self.repo_root = discover_repo_root(repo_root)
         self.schema_store = schema_store or SchemaStore.from_repo_root(self.repo_root)
 
@@ -58,7 +63,9 @@ class ControlPlaneLoader:
 
     def load_validator_registry(self) -> ValidatorRegistry:
         """Load the current validator registry."""
-        return ValidatorRegistry.from_document(self.load_validated_document(VALIDATOR_REGISTRY_PATH))
+        return ValidatorRegistry.from_document(
+            self.load_validated_document(VALIDATOR_REGISTRY_PATH)
+        )
 
     def load_repository_path_index(self) -> RepositoryPathIndex:
         """Load the current repository path index."""

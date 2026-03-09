@@ -1,12 +1,12 @@
 # `watchtower-core sync repository-paths`
 
 ## Summary
-This command rebuilds the repository path index from README inventory tables and can optionally write the result.
+This command rebuilds the repository path index from README inventory tables and can either report the rebuilt result or write it back to disk.
 
 ## Use When
-- You want to regenerate the curated repository path index after README inventory changes.
-- You want a dry-run count of the derived path entries before writing the artifact.
-- You need machine-readable output for an automated refresh workflow.
+- You changed README inventory tables and need the governed repository path index to match.
+- You want to inspect the rebuilt path-index document before writing it to the canonical control-plane location.
+- You want a controlled way to regenerate one index without rebuilding unrelated artifacts.
 
 ## Command
 | Field | Value |
@@ -19,14 +19,14 @@ This command rebuilds the repository path index from README inventory tables and
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync repository-paths [options]
+uv run watchtower-core sync repository-paths [--write] [--output <path>] [--include-document] [--format <human|json>]
 ```
 
 ## Arguments and Options
 - `--write`: Write the rebuilt artifact to the canonical control-plane path.
-- `--output <path>`: Write the rebuilt artifact to an explicit output path.
-- `--include-document`: Include the generated document in JSON output.
-- `--format <human|json>`: Select human-readable or structured JSON output. Defaults to `human`.
+- `--output <path>`: Write the rebuilt artifact to an explicit alternate path.
+- `--include-document`: Include the full generated document in JSON output for inspection or downstream tooling.
+- `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
 
 ## Examples
@@ -42,21 +42,23 @@ uv run watchtower-core sync repository-paths --write
 
 ```sh
 cd core/python
-uv run watchtower-core sync repository-paths --format json --include-document
+uv run watchtower-core sync repository-paths --output /tmp/repository_path_index.v1.json --format json
 ```
 
 ## Behavior and Outputs
-- In `human` mode, the command reports the rebuilt entry count and whether the artifact was written or kept in dry-run mode.
-- In `json` mode, the command prints a single JSON object with `entry_count`, `wrote`, and `artifact_path`, and optionally the full generated document.
+- The command rebuilds the repository path index from README inventory rows.
 - By default, the command runs in dry-run mode and does not mutate repository state.
-- When `--write` or `--output` is supplied, the command writes the rebuilt artifact to disk.
+- If `--write` is provided, the command writes the rebuilt artifact to the canonical control-plane path.
+- If `--output` is provided, the command writes the rebuilt artifact to the requested destination.
+- In `human` mode, the command prints whether it ran as a dry run or wrote the rebuilt artifact.
+- In `json` mode, the command prints one JSON object with the command name, status, entry count, whether a file was written, and the artifact path when applicable.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core sync` | Parent namespace for sync subcommands. |
-| `watchtower-core query paths` | Reads the repository path index rebuilt by this command. |
-| `watchtower-core query trace` | Can depend on path entries that remain discoverable through the rebuilt index. |
+| `watchtower-core sync` | Parent command group for rebuild operations. |
+| `watchtower-core query paths` | Reads the repository path index that this command rebuilds. |
+| `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` | Canonical governed artifact written by this command when `--write` is used. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
@@ -64,4 +66,4 @@ uv run watchtower-core sync repository-paths --format json --include-document
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json`
 
 ## Updated At
-- `2026-03-09T05:43:10Z`
+- `2026-03-09T05:43:47Z`

@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T05:43:47Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -55,12 +55,14 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Keep the local virtual environment at `core/python/.venv/`.
 - Run Python workspace commands from `core/python/`.
 - Prefer `uv run` for tests, linting, typechecking, CLI execution, and package-local Python invocations.
+- Treat `uv run ...` as the default human and agent execution path. Manual virtual-environment activation is optional and mainly for interactive shell work.
 - Treat `core/python/.venv/` as the canonical local environment. Do not create alternate virtual environments for normal repository work.
 - When a command is intended for both human operators and agent or automation use, prefer one explicit `--format` option with values such as `human` and `json` instead of separate bespoke `--human` and `--json` flags.
 - Keep Python source code under `core/python/src/` with one package root at `core/python/src/watchtower_core/`.
 - Keep tests under `core/python/tests/`.
 - Keep thin entrypoints under `core/python/src/watchtower_core/cli/`; do not create parallel top-level CLI source trees outside the package.
 - Keep small bootstrap or maintenance helpers under `core/python/tools/` only when the behavior cannot be expressed cleanly through `uv` commands or package entrypoints.
+- Small helper shells under `core/python/tools/` may exist to improve human onboarding or interactive use, but they must not replace the documented `uv run` contract.
 - Ignore local caches, wheels, build outputs, virtual environments, and `*.egg-info` directories. Do not treat them as governed repository artifacts.
 - Do not place generated Python artifacts directly under `core/`.
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
@@ -112,6 +114,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - `core/python/.venv/` should be reproducible from `uv sync --extra dev`.
 - Python source should be importable through the canonical package path.
 - `uv run pytest`, `uv run ruff check .`, and `uv run mypy src` should be the default validation entrypoints for normal Python workspace work unless a narrower command is more appropriate.
+- `core/python/README.md` should explain one-time setup, daily `uv run` usage, and when manual activation or helper shells are appropriate.
 - Reviewers should reject parallel Python source roots, committed caches, committed build outputs, or Python tooling surfaces placed outside `core/python/`.
 
 ## Change Control
@@ -132,4 +135,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The workspace may grow additional modules over time, but it should not grow additional package roots unless a later standard explicitly allows that change.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T05:43:47Z`

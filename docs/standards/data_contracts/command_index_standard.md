@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "command_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T06:42:17Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -48,6 +48,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Use JSON for the published command index artifact.
 - Catalog only durable repository commands or subcommands that have stable command pages.
+- Treat the authored command pages under `docs/commands/` as the primary human source for the derived command index.
 - Every command index entry must point to a command page under `docs/commands/`.
 - Every entry should point to the owning implementation surface when one exists.
 - Use a stable `command_id` per command or subcommand.
@@ -89,7 +90,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 
 ## Process or Workflow
 1. Add or update the command page under `docs/commands/`.
-2. Add or update the matching command-index entry in the same change set.
+2. Rebuild the command index from the current command pages and review the derived output in the same change set.
 3. Validate that every entry points to an existing command page and any listed implementation path exists.
 4. Update related command-family READMEs, repository path indexes, and schemas in the same change set when the command surface changes structurally.
 5. Validate the command index artifact against its published schema before treating the change as complete.
@@ -123,4 +124,4 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - The repository path index remains the broader navigation surface. The command index is the targeted command-lookup surface.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T06:42:17Z`

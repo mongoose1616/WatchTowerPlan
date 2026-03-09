@@ -10,9 +10,8 @@ from jsonschema import Draft202012Validator
 from referencing import Registry, Resource
 
 from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
-from watchtower_core.control_plane.models import SchemaCatalog
+from watchtower_core.control_plane.models import SchemaCatalog, SchemaCatalogRecord
 from watchtower_core.control_plane.paths import control_plane_path, discover_repo_root
-
 
 SCHEMA_CATALOG_SCHEMA_PATH = "core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json"
 SCHEMA_CATALOG_ARTIFACT_PATH = "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
@@ -47,7 +46,7 @@ class SchemaStore:
         self._registry = registry
 
     @classmethod
-    def from_repo_root(cls, repo_root: Path | None = None) -> "SchemaStore":
+    def from_repo_root(cls, repo_root: Path | None = None) -> SchemaStore:
         """Bootstrap the schema store from the local schema catalog."""
         resolved_root = discover_repo_root(repo_root)
         catalog_schema_path = control_plane_path(resolved_root, SCHEMA_CATALOG_SCHEMA_PATH)
@@ -77,7 +76,10 @@ class SchemaStore:
 
             Draft202012Validator.check_schema(schema_document)
             schema_documents[record.schema_id] = schema_document
-            registry = registry.with_resource(record.schema_id, Resource.from_contents(schema_document))
+            registry = registry.with_resource(
+                record.schema_id,
+                Resource.from_contents(schema_document),
+            )
 
         return cls(
             repo_root=resolved_root,
@@ -86,7 +88,7 @@ class SchemaStore:
             registry=registry,
         )
 
-    def get_record(self, schema_id: str):
+    def get_record(self, schema_id: str) -> SchemaCatalogRecord:
         """Return the schema-catalog record for a published schema identifier."""
         try:
             return self.catalog.get(schema_id)

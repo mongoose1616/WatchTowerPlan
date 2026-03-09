@@ -1,12 +1,12 @@
 # `watchtower-core query`
 
 ## Summary
-This command is the namespace entrypoint for governed index lookups in the core Python workspace.
+This command group searches the governed lookup indexes for repository paths, documented commands, and traceability records.
 
 ## Use When
-- You want to search the repository path index.
-- You want to search the command index.
-- You want to resolve one traced initiative without reading multiple planning artifacts directly.
+- You need to discover a path, command, or trace record without opening raw control-plane JSON files directly.
+- You want command-family help that explains the difference between the available query modes.
+- You are onboarding to the workspace and need a safe, read-only way to inspect governed data.
 
 ## Command
 | Field | Value |
@@ -19,18 +19,23 @@ This command is the namespace entrypoint for governed index lookups in the core 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query <subcommand>
+uv run watchtower-core query <query_command> [args]
 ```
 
 ## Arguments and Options
-- `<subcommand>`: Dispatch to `paths`, `commands`, or `trace`.
+- `<query_command>`: Choose `paths`, `commands`, or `trace`.
 - `-h`, `--help`: Show the command help text.
-- No namespace-level options exist yet beyond help and subcommand selection.
+- No group-level filters exist; pass filtering arguments to the selected leaf command.
 
 ## Examples
 ```sh
 cd core/python
-uv run watchtower-core query paths --query planning
+uv run watchtower-core query --help
+```
+
+```sh
+cd core/python
+uv run watchtower-core query commands --query doctor
 ```
 
 ```sh
@@ -39,22 +44,22 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 ```
 
 ## Behavior and Outputs
-- With a valid leaf subcommand, this command dispatches to the requested query handler.
-- The leaf query commands support `human` and `json` output modes.
-- With no leaf subcommand, the current implementation falls back to the root CLI help output.
-- This command does not mutate repository state.
+- With no leaf command, the current implementation prints query-specific help and exits successfully.
+- The command group is read-only and does not mutate repository state.
+- Each leaf command supports `--format human` and `--format json`.
+- Use `paths` for repository navigation, `commands` for CLI discovery, and `trace` when you already know the trace ID.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core` | Root command that dispatches to this namespace. |
-| `watchtower-core query paths` | Searches repository path entries. |
-| `watchtower-core query commands` | Searches command-index entries. |
-| `watchtower-core query trace` | Resolves one traceability record. |
+| `watchtower-core query paths` | Searches the repository path index. |
+| `watchtower-core query commands` | Searches the command index. |
+| `watchtower-core query trace` | Resolves one traceability record by trace ID. |
+| `watchtower-core` | Root command that dispatches to this command group. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
 - `core/python/src/watchtower_core/query/`
 
 ## Updated At
-- `2026-03-09T05:43:10Z`
+- `2026-03-09T05:43:47Z`
