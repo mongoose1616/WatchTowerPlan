@@ -1,3 +1,19 @@
+---
+id: "std.governance.reference_distillation"
+title: "Reference Distillation Standard"
+summary: "This standard defines how externally published source material is distilled into durable local reference guidance and, when needed, translated into explicit repository policy."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "governance"
+  - "reference_distillation"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Reference Distillation Standard
 
 ## Summary
@@ -37,13 +53,17 @@ This standard defines how externally published source material is distilled into
   - local interpretation or mapping
   - normative repository policy
 - Keep supporting lookup content in `docs/references/**` when the output is mainly a reusable working reference.
+- Make the distilled reference operationally sufficient for repeated repository use. Future readers should not need to reopen the upstream source for every common question or basic decision.
+- Do not collapse a local reference into a bibliography or link index. A distilled reference should carry concrete working content, not just source attribution.
 - Move normative repository rules into `docs/standards/**` when the repository is adopting, narrowing, or enforcing the distilled guidance as local policy.
 - Use the reference template and reference-document standard when the output is a reference document.
 - When the output becomes a governed reference under `docs/references/**`, apply the front matter standard and the reference front matter profile in the same change set.
 - Preserve the meaning of the source material without copying long passages into the repository.
 - Use repository-native terminology and examples when mapping the source locally, but do not rewrite the source so aggressively that the original meaning becomes unclear.
+- Distill the practical content that repeated readers will actually need: key terms, required or disallowed patterns, defaults, decision boundaries, edge cases, and common failure modes when the topic warrants them.
 - Include a concrete local mapping to real repository surfaces when the distilled guidance affects workflows, standards, templates, architecture, tooling, or implementation patterns.
 - If the upstream source is incomplete, conflicting, ambiguous, or not directly applicable, record the uncertainty explicitly rather than normalizing it into false certainty.
+- For high-stakes or easy-to-misread topics such as security controls, parsing rules, timestamps, identifiers, storage behavior, schema contracts, or tooling configuration, make non-obvious constraints and unsafe assumptions explicit in the distillation.
 - If ambiguity remains material after source review, route to clarification or decision capture instead of burying the unresolved interpretation inside the distillation.
 - When a distillation changes the effective local guidance, update affected standards, workflows, templates, or companion references in the same change set when practical.
 
@@ -73,10 +93,12 @@ This standard defines how externally published source material is distilled into
 - The distilled artifact points to the canonical upstream source when the topic depends on external authority.
 - Version-sensitive or time-sensitive topics include enough baseline information to keep the distillation interpretable later.
 - The distillation preserves the source meaning without copying large source passages into the repository.
+- The distilled reference is dense enough to answer the recurring practical questions rather than only pointing the reader to upstream links.
 - Local interpretation is distinguished clearly from direct source guidance.
 - Normative repository policy is not left only inside a reference artifact when the repository is actually enforcing it.
 - Local mappings point to real repository surfaces rather than abstract placeholders.
 - Unresolved ambiguity, source conflict, or known uncertainty is called out explicitly.
+- Reviewers should reject distillations that are effectively link-only or that omit material ambiguity for a topic where misinterpretation could be risky.
 - The result is concise enough to maintain and useful enough that future contributors do not need to re-derive the same interpretation from scratch.
 
 ## Change Control
@@ -100,5 +122,5 @@ This standard defines how externally published source material is distilled into
 2. Update affected references, standards, workflows, or templates when the upstream change materially affects local guidance.
 3. Re-read the distilled output to confirm that source facts, local interpretation, and normative repository policy are still clearly separated.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

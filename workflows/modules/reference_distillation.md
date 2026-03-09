@@ -28,6 +28,8 @@ Use this workflow to extract durable local guidance from external source materia
    - Separate authoritative statements from interpretation, commentary, and uncertainty.
 2. Extract the durable local guidance.
    - Distill the source material into concise rules, mappings, decision points, or lookup content relevant to this repository.
+   - Answer the recurring practical questions directly in the distillation rather than forcing later readers to reopen the upstream source for every common case.
+   - Capture defaults, required or disallowed patterns, decision boundaries, edge cases, and failure modes when those details materially affect safe or correct local use.
    - Preserve the meaning of the source without copying long passages into the local artifact.
    - Keep the output focused on durable guidance rather than transient research notes.
 3. Map the guidance to repository context.
@@ -41,6 +43,8 @@ Use this workflow to extract durable local guidance from external source materia
    - Split the output if multiple unrelated references would otherwise be forced into one file.
 5. Review for accuracy and maintainability.
    - Check that source attribution is clear, local mappings are accurate, and unsupported interpretation is avoided.
+   - Reject output that mostly acts as a link list instead of a reusable distilled reference.
+   - For ambiguous or high-risk topics, confirm that unresolved ambiguity and local interpretation boundaries are explicit.
    - Confirm the distilled output is concise enough to be maintained and specific enough to be reused.
 
 ## Data Structure

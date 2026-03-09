@@ -1,3 +1,19 @@
+---
+id: "std.documentation.reference_md"
+title: "Reference Document Standard"
+summary: "This standard defines the role, structure, and quality expectations for reference documents, especially external reference documents under `docs/references/**`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "documentation"
+  - "reference_md"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Reference Document Standard
 
 ## Summary
@@ -24,12 +40,16 @@ Keep reference documents focused on durable lookup content by separating reader-
 - Include `Local Mapping in This Repository` when the external topic needs a concrete connection to repository surfaces.
 - Omit generic reader-orientation sections such as `Audience` and `Use When` unless a specific reference truly needs them to avoid ambiguity.
 - `Quick Reference or Distilled Reference` should be useful enough that the reader can answer the common practical questions without immediately leaving the repo for the upstream source.
+- `Quick Reference or Distilled Reference` is the core deliverable of a reference document, not filler between the summary and the link list.
 - Prefer concrete lookup density over abstract summary. Use rules, decision points, field tables, syntax, examples, defaults, and pitfalls where they materially help.
+- A reference that mostly restates scope and then points the reader to upstream links should be treated as incomplete.
 - Avoid leaving the dense reference section as only a short `Core Guidance` summary unless the topic is so small that anything denser would be artificial.
+- For topics with correctness, security, interoperability, parsing, storage, data-loss, or configuration risk, the quick-reference section should surface defaults, unsafe assumptions, disallowed patterns, edge cases, and failure modes explicitly.
+- If the upstream source leaves material ambiguity, the reference should name the ambiguity and the local interpretation boundary instead of hiding it behind vague summary language.
 - Keep process guidance brief and limited to how the reader should apply the reference locally.
 - Keep examples focused on correct local use rather than broad tutorials.
 - Keep lifecycle checks, refresh steps, change-control notes, and authoring checklists in documentation workflows or standards rather than in the reference document body.
-- Use `Last Synced` in the document body when the topic depends on time-sensitive or version-sensitive source material.
+- Use `Updated At` in the document body when the topic depends on time-sensitive or version-sensitive source material, and record it as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`.
 
 ## Structure or Data Model
 - Title
@@ -45,7 +65,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 - `References`
 - `Tooling and Automation` when useful
 - `Notes` when useful
-- `Last Synced`
+- `Updated At`
 
 ## Validation
 - The document should be easy to scan as a lookup artifact.
@@ -54,6 +74,8 @@ Keep reference documents focused on durable lookup content by separating reader-
 - Local mappings should point to real repository surfaces when they are included.
 - The quick-reference section should contain concrete lookup content rather than only high-level summary language.
 - The reader should be able to resolve the common local questions from the reference doc without needing the upstream source for every basic decision.
+- Reviewers should reject references whose quick-reference section could be replaced by a bare link list without meaningful loss of information.
+- For high-stakes or easy-to-misread topics, the reference should expose ambiguity, unsafe defaults, or important edge cases clearly enough that the reader does not need to rediscover them from scratch.
 - The document should not contain embedded lifecycle sections or authoring-only checklist content that belongs in workflows or standards.
 
 ## Change Control
@@ -70,5 +92,5 @@ Keep reference documents focused on durable lookup content by separating reader-
 - A good reference document helps the reader find stable facts quickly.
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:23:35Z`
