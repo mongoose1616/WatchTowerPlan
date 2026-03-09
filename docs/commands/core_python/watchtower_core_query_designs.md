@@ -44,8 +44,8 @@ uv run watchtower-core query designs --trace-id trace.core_python_foundation --f
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- In `human` mode, the command prints matching design-document IDs, titles, and summaries.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, and result records.
+- In `human` mode, the command prints matching design-document IDs, titles, summaries, and whether the design explicitly used internal or external references.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and reference-use indicators captured in the design-document index.
 - If no entries match the requested filters, the command exits successfully and reports that no design-document entries matched.
 
 ## Related Commands
@@ -61,4 +61,4 @@ uv run watchtower-core query designs --trace-id trace.core_python_foundation --f
 - `core/control_plane/indexes/design_documents/design_document_index.v1.json`
 
 ## Updated At
-- `2026-03-09T07:21:07Z`
+- `2026-03-09T18:45:00Z`

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "prd_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T18:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,6 +50,7 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - Carry a shared `trace_id` in every entry so PRDs can join to decisions, designs, and plans.
 - Carry stable `prd_id` values in every entry.
 - Carry durable `requirement_ids` and `acceptance_ids` when the PRD publishes them.
+- Capture whether the PRD explicitly used internal or external references so reference use is queryable without reparsing Markdown.
 - Keep the human-readable PRD tracker and the machine-readable PRD index aligned in the same change set.
 
 ## Structure or Data Model
@@ -72,12 +73,16 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `doc_path` | Required | Repository-relative path to the PRD. |
 | `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the PRD’s `Updated At` value. |
+| `uses_internal_references` | Required | Whether the PRD explicitly cited internal repository references. |
+| `uses_external_references` | Required | Whether the PRD explicitly cited external sources. |
 | `requirement_ids` | Optional | Durable requirement identifiers published by the PRD. |
 | `acceptance_ids` | Optional | Durable acceptance identifiers published by the PRD. |
 | `linked_decision_ids` | Optional | Related decision IDs when they exist. |
 | `linked_design_ids` | Optional | Related feature-design IDs when they exist. |
 | `linked_plan_ids` | Optional | Related implementation-plan IDs when they exist. |
 | `related_paths` | Optional | Related repository paths strongly associated with the PRD. |
+| `internal_reference_paths` | Optional | Internal repository paths explicitly cited in the PRD reference sections. |
+| `external_reference_urls` | Optional | External URLs explicitly cited in the PRD reference sections. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
 
@@ -85,6 +90,7 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - The PRD index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `docs/planning/prds/`.
 - Every entry should have both `trace_id` and `prd_id`.
+- The reference-presence flags should reflect the actual PRD sections that cite internal or external sources.
 - Reviewers should reject entries that point to stale PRDs or omit durable IDs that exist in the PRD itself.
 
 ## Change Control
@@ -98,4 +104,4 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md)
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T18:45:00Z`

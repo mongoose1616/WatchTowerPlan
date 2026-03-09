@@ -33,9 +33,14 @@ def test_root_command_prints_help(capsys) -> None:
     assert "watchtower-core" in captured.out
     assert "uv run watchtower-core doctor" in captured.out
     assert (
+        "uv run watchtower-core query standards --category governance --format json"
+        in captured.out
+    )
+    assert (
         "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation"
         in captured.out
     )
+    assert "uv run watchtower-core sync standard-index" in captured.out
     assert "uv run watchtower-core sync repository-paths" in captured.out
     assert "uv run watchtower-core sync task-index" in captured.out
     assert (
@@ -52,6 +57,8 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
+    assert "query references" in captured.out
+    assert "query standards" in captured.out
     assert "query prds" in captured.out
     assert "query decisions" in captured.out
     assert "query designs" in captured.out
@@ -71,6 +78,8 @@ def test_sync_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Rebuild derived governed artifacts" in captured.out
     assert "command-index" in captured.out
+    assert "reference-index" in captured.out
+    assert "standard-index" in captured.out
     assert "prd-index" in captured.out
     assert "decision-index" in captured.out
     assert "design-document-index" in captured.out
@@ -125,6 +134,62 @@ def test_query_commands_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core query commands"
     assert payload["status"] == "ok"
     assert any(entry["command"] == "watchtower-core doctor" for entry in payload["results"])
+
+
+def test_query_references_supports_json_output(capsys) -> None:
+    result = main(["query", "references", "--query", "uv", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query references"
+    assert payload["status"] == "ok"
+    assert any(entry["reference_id"] == "ref.uv" for entry in payload["results"])
+
+
+def test_query_references_supports_reverse_citation_filters(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "references",
+            "--applied-by-path",
+            "docs/standards/governance/github_collaboration_standard.md",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query references"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["reference_id"] == "ref.github_collaboration" for entry in payload["results"]
+    )
+
+
+def test_query_standards_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "standards",
+            "--reference-path",
+            "docs/references/github_collaboration_reference.md",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query standards"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["standard_id"] == "std.governance.github_collaboration"
+        for entry in payload["results"]
+    )
 
 
 def test_query_prds_supports_json_output(capsys) -> None:
@@ -301,6 +366,32 @@ def test_sync_command_index_supports_json_output(capsys) -> None:
     assert payload["artifact_path"] is None
 
 
+def test_sync_reference_index_supports_json_output(capsys) -> None:
+    result = main(["sync", "reference-index", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync reference-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
+def test_sync_standard_index_supports_json_output(capsys) -> None:
+    result = main(["sync", "standard-index", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync standard-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
 def test_sync_prd_index_supports_json_output(capsys) -> None:
     result = main(["sync", "prd-index", "--format", "json"])
 
@@ -446,6 +537,20 @@ def test_sync_command_index_can_write_to_explicit_output(tmp_path: Path, capsys)
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core sync command-index"
+    assert payload["wrote"] is True
+    assert payload["artifact_path"] == str(output_path.resolve())
+    assert output_path.exists()
+
+
+def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
+    output_path = tmp_path / "standard_index.v1.json"
+
+    result = main(["sync", "standard-index", "--output", str(output_path), "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync standard-index"
     assert payload["wrote"] is True
     assert payload["artifact_path"] == str(output_path.resolve())
     assert output_path.exists()

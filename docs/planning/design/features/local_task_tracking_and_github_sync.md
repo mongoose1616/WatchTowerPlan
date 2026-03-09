@@ -6,7 +6,7 @@ summary: "Defines the feature-level design for local-first task records, a gener
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T14:41:51Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T14:41:51Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This document defines the feature-level design for local-first task records, a generated task tracker, a generated task index, and later GitHub sync support.
@@ -55,11 +55,11 @@ This document defines the feature-level design for local-first task records, a g
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one source of truth per concern and derive secondary lookup surfaces.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md)
+- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): one task per file and local-first authority should shape the tracking model.
+- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): task documents need a stable front matter and section shape so sync and query remain deterministic.
+- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): task metadata needs a derived machine index for lookup and later hosted sync.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): task records must carry stable `trace_id` links back to PRDs, designs, and evidence.
+- [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md): task authoring should stay consistent enough to support automation and shared review.
 
 ## Design Goals and Constraints
 - Keep task authoring human-readable and easy to review in git.
@@ -155,4 +155,4 @@ This document defines the feature-level design for local-first task records, a g
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 
 ## Updated At
-- `2026-03-09T14:41:51Z`
+- `2026-03-09T18:25:06Z`

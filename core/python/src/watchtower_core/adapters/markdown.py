@@ -62,6 +62,21 @@ def extract_markdown_links(text: str) -> tuple[str, ...]:
     return tuple(match.group("target").strip() for match in MARKDOWN_LINK_PATTERN.finditer(text))
 
 
+def extract_external_urls(text: str) -> tuple[str, ...]:
+    """Return unique external URLs referenced in Markdown links or code spans."""
+    candidates = [*extract_markdown_links(text), *extract_code_spans(text)]
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for value in candidates:
+        if not value.startswith(("http://", "https://")):
+            continue
+        if value in seen:
+            continue
+        seen.add(value)
+        ordered.append(value)
+    return tuple(ordered)
+
+
 def extract_metadata_bullets(section: str) -> dict[str, str]:
     """Return a mapping of Record Metadata bullet labels to their raw values."""
     metadata: dict[str, str] = {}
@@ -141,4 +156,44 @@ def extract_path_like_references(text: str) -> tuple[str, ...]:
             continue
         seen.add(value)
         ordered.append(value)
+    return tuple(ordered)
+
+
+def normalize_repo_path_reference(value: str, repo_root: Path) -> str | None:
+    """Normalize an internal path-like reference to a repo-relative path when possible."""
+    stripped = value.strip()
+    if not stripped or stripped.startswith(("http://", "https://", "mailto:")):
+        return None
+
+    without_fragment = stripped.split("#", 1)[0].strip()
+    if not without_fragment:
+        return None
+
+    repo_root = repo_root.resolve()
+    if without_fragment.startswith(str(repo_root)):
+        try:
+            return Path(without_fragment).resolve().relative_to(repo_root).as_posix()
+        except ValueError:
+            return None
+
+    candidate = without_fragment.lstrip("/")
+    if not candidate:
+        return None
+
+    path = repo_root / candidate
+    if path.exists():
+        return candidate
+    return None
+
+
+def extract_repo_path_references(text: str, repo_root: Path) -> tuple[str, ...]:
+    """Return unique repo-relative paths referenced in one Markdown block."""
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for value in extract_path_like_references(text):
+        normalized = normalize_repo_path_reference(value, repo_root)
+        if normalized is None or normalized in seen:
+            continue
+        seen.add(normalized)
+        ordered.append(normalized)
     return tuple(ordered)

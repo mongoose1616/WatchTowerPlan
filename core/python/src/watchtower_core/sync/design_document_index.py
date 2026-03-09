@@ -11,6 +11,7 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.sync.planning_documents import (
     PlanningDocument,
+    collect_reference_indicators,
     iter_markdown_documents,
     load_governed_document,
     ordered_unique,
@@ -39,7 +40,7 @@ class DesignSourceRecord:
 
 
 def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, Any]]:
-    document = loader.load_validated_document(DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH)
+    document = loader.load_json_object(DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH)
     entries = document.get("entries")
     if not isinstance(entries, list):
         raise ValueError(f"{DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH} is missing its entries list.")
@@ -77,6 +78,21 @@ class DesignDocumentIndexSyncService:
         for source in sources:
             document = source.document
             current = existing_entries.get(document.document_id, {})
+            (
+                uses_internal_references,
+                uses_external_references,
+                internal_reference_paths,
+                external_reference_urls,
+            ) = collect_reference_indicators(
+                document,
+                self._repo_root,
+                internal_sections=(
+                    "Foundations References Applied",
+                    "Internal Standards and Canonical References Applied",
+                    "References",
+                ),
+                external_sections=("External Sources Consulted", "References"),
+            )
             related_paths = ordered_unique(
                 _mapped_design_ids(
                     document.metadata_ids(
@@ -103,6 +119,8 @@ class DesignDocumentIndexSyncService:
                 "status": document.status,
                 "doc_path": document.relative_path,
                 "updated_at": document.updated_at,
+                "uses_internal_references": uses_internal_references,
+                "uses_external_references": uses_external_references,
             }
 
             if source.family == "implementation_plan":
@@ -122,6 +140,10 @@ class DesignDocumentIndexSyncService:
 
             if related_paths:
                 entry["related_paths"] = list(related_paths)
+            if internal_reference_paths:
+                entry["internal_reference_paths"] = list(internal_reference_paths)
+            if external_reference_urls:
+                entry["external_reference_urls"] = list(external_reference_urls)
             if tags:
                 entry["tags"] = list(tags)
             if notes is not None:
@@ -162,6 +184,15 @@ class DesignDocumentIndexSyncService:
                         schema_id=FEATURE_DESIGN_FRONT_MATTER_SCHEMA_ID,
                         id_label="Design ID",
                         status_label="Design Status",
+                        required_sections=(
+                            "Foundations References Applied",
+                            "Internal Standards and Canonical References Applied",
+                            "References",
+                        ),
+                        required_explained_sections=(
+                            "Foundations References Applied",
+                            "Internal Standards and Canonical References Applied",
+                        ),
                         require_updated_at_section=True,
                     ),
                 )
@@ -181,6 +212,13 @@ class DesignDocumentIndexSyncService:
                         schema_id=IMPLEMENTATION_PLAN_FRONT_MATTER_SCHEMA_ID,
                         id_label="Plan ID",
                         status_label="Plan Status",
+                        required_sections=(
+                            "Internal Standards and Canonical References Applied",
+                            "References",
+                        ),
+                        required_explained_sections=(
+                            "Internal Standards and Canonical References Applied",
+                        ),
                         require_updated_at_section=True,
                     ),
                 )

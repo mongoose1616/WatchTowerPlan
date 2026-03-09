@@ -6,7 +6,7 @@ summary: "Defines the feature-level technical design for deterministic local sch
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `prd.core_python_foundation`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
-- `Updated At`: `2026-03-09T07:05:24Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This document defines the feature-level technical design for deterministic local schema resolution and index-backed repository search in the future Python helper layer.
@@ -59,14 +59,14 @@ This document defines the feature-level technical design for deterministic local
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one canonical machine-readable authority per concept and avoid parallel truth in code.
 
 ## Internal Standards and Canonical References Applied
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
-- [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
+- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): schema lookup should resolve through cataloged schema IDs rather than repository scans.
+- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): repository search should start from the derived path index instead of generic tree walking.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): loaded schemas should stay governed and validated before use.
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): catalogs and indexes should stay in JSON while human guidance remains in Markdown.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): schema and query services belong in reusable `core/python` modules.
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): schema IDs and related lookup identifiers need stable naming rules.
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md): validator execution should reuse the same deterministic schema-resolution boundary.
+- [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json): the current path index is the read-optimized discovery surface the query layer should consume.
 
 ## Design Goals and Constraints
 - Resolve published schemas deterministically by stable schema `$id`, not by filesystem scanning or text search.
@@ -161,4 +161,4 @@ This document defines the feature-level technical design for deterministic local
 - [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
 
 ## Updated At
-- `2026-03-09T07:05:24Z`
+- `2026-03-09T18:25:06Z`

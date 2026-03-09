@@ -1,0 +1,47 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:standard-index:v1",
+  "id": "index.standards",
+  "title": "Standard Index",
+  "status": "active",
+  "entries": [
+    {
+      "standard_id": "std.governance.github_collaboration",
+      "category": "governance",
+      "title": "GitHub Collaboration Standard",
+      "summary": "Defines how GitHub issue forms, pull requests, labels, and project fields complement the repo-local planning and task model.",
+      "status": "active",
+      "doc_path": "docs/standards/governance/github_collaboration_standard.md",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "related_paths": [
+        ".github/",
+        "docs/planning/tasks/",
+        "core/python/src/watchtower_core/sync/github_tasks.py"
+      ],
+      "reference_doc_paths": [
+        "docs/references/github_collaboration_reference.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        ".github/README.md"
+      ],
+      "external_reference_urls": [
+        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository",
+        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository",
+        "https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields",
+        "https://docs.github.com/en/rest/issues/issues",
+        "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "github"
+      ]
+    }
+  ]
+}

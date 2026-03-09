@@ -15,10 +15,12 @@ from watchtower_core.query.evidence import (
     ValidationEvidenceSearchParams,
 )
 from watchtower_core.query.prds import PrdQueryService, PrdSearchParams
+from watchtower_core.query.references import ReferenceQueryService, ReferenceSearchParams
 from watchtower_core.query.repository import (
     RepositoryPathQueryService,
     RepositoryPathSearchParams,
 )
+from watchtower_core.query.standards import StandardQueryService, StandardSearchParams
 from watchtower_core.query.tasks import TaskQueryService, TaskSearchParams
 from watchtower_core.query.traceability import TraceabilityQueryService
 
@@ -35,8 +37,12 @@ __all__ = [
     "ValidationEvidenceSearchParams",
     "PrdQueryService",
     "PrdSearchParams",
+    "ReferenceQueryService",
+    "ReferenceSearchParams",
     "RepositoryPathQueryService",
     "RepositoryPathSearchParams",
+    "StandardQueryService",
+    "StandardSearchParams",
     "TaskQueryService",
     "TaskSearchParams",
     "TraceabilityQueryService",

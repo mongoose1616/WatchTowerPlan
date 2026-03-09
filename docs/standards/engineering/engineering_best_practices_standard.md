@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,6 +53,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - Keep query helpers read-oriented and side-effect free. Keep derived-artifact rebuild or materialization logic in dedicated `sync/` surfaces.
 - Update human-readable and machine-readable companion surfaces in the same change set when one depends on the other. Examples include docs plus indexes, command pages plus command-index entries, and schemas plus examples and catalog records.
 - Reuse shared schema fragments, typed models, and existing governed IDs instead of duplicating field rules across surfaces.
+- When external guidance materially shapes repository policy or design, distill it into `docs/references/**` and have standards or designs cite the local reference doc in addition to, or instead of, raw vendor URLs.
 - Use UTC timestamps with the canonical repository field names `updated_at`, `recorded_at`, and later `generated_at` when applicable.
 - Prefer deletion over indefinite deprecation when an obsolete artifact no longer needs to remain present.
 - Keep generated outputs, caches, and transient runtime state out of governed control-plane surfaces.
@@ -104,4 +105,4 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T18:25:06Z`

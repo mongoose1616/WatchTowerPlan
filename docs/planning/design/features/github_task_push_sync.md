@@ -6,7 +6,7 @@ summary: "Defines the first push-only sync from local task records to GitHub iss
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T16:20:00Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -27,7 +27,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T16:20:00Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This document defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.
@@ -55,11 +55,12 @@ This document defines the first push-only sync from local task records to GitHub
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one authoritative source per concern and derive companion lookup surfaces from it.
 
 ## Internal Standards and Canonical References Applied
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md)
+- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): local task Markdown records must stay the authoritative task source.
+- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): push-only sync, foreign-key persistence, and hosted status mapping must stay deterministic.
+- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): synced GitHub metadata has to land in the machine-readable task index.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): synced tasks still need stable `trace_id` joins back to planning and evidence surfaces.
+- [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md): local task records need a consistent document shape so sync can render them predictably.
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): use the repo-native GitHub reference as the shared summary of the issue and project API assumptions.
 
 ## Design Goals and Constraints
 - Keep local task files authoritative.
@@ -141,8 +142,8 @@ This document defines the first push-only sync from local task records to GitHub
 - If the first project field mapping is too permissive, board-state meaning will become inconsistent.
 
 ## External Sources Consulted
-- [GitHub Issues REST API](https://docs.github.com/en/rest/issues/issues)
-- [GitHub Projects API](https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects)
+- [GitHub Issues REST API](https://docs.github.com/en/rest/issues/issues): shaped issue create or update behavior, issue-state mapping, and managed-label expectations.
+- [GitHub Projects API](https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects): shaped project-item creation and single-select status-field updates.
 
 ## Open Questions
 - Should a later sync phase publish local task dependencies to GitHub issue dependencies as well?
@@ -152,6 +153,7 @@ This document defines the first push-only sync from local task records to GitHub
 - [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-09T18:25:06Z`

@@ -344,10 +344,24 @@
       "parent_path": "core/control_plane/examples/invalid/indexes/"
     },
     {
+      "path": "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid reference index example missing required canonical upstream URLs.",
+      "parent_path": "core/control_plane/examples/invalid/indexes/"
+    },
+    {
       "path": "core/control_plane/examples/invalid/indexes/repository_path_index_missing_summary.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Invalid repository path index example with a required entry field omitted.",
+      "parent_path": "core/control_plane/examples/invalid/indexes/"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/indexes/standard_index_external_without_urls.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid standard index example with external-reference usage declared but no external URLs published.",
       "parent_path": "core/control_plane/examples/invalid/indexes/"
     },
     {
@@ -561,10 +575,24 @@
       "parent_path": "core/control_plane/examples/valid/indexes/"
     },
     {
+      "path": "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid reference index example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/indexes/"
+    },
+    {
       "path": "core/control_plane/examples/valid/indexes/repository_path_index.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Valid repository path index example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/indexes/"
+    },
+    {
+      "path": "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid standard index example aligned with the published artifact schema.",
       "parent_path": "core/control_plane/examples/valid/indexes/"
     },
     {
@@ -794,6 +822,27 @@
       "parent_path": "core/control_plane/indexes/prds/"
     },
     {
+      "path": "core/control_plane/indexes/references/",
+      "kind": "directory",
+      "surface_kind": "control_plane_indexes",
+      "summary": "Machine-readable indexes for reference docs, their upstream authority, and local touchpoints.",
+      "parent_path": "core/control_plane/indexes/"
+    },
+    {
+      "path": "core/control_plane/indexes/references/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Describes the purpose of the reference-index directory and its current artifact family.",
+      "parent_path": "core/control_plane/indexes/references/"
+    },
+    {
+      "path": "core/control_plane/indexes/references/reference_index.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Machine-readable reference index for governed reference documents and their canonical upstream links.",
+      "parent_path": "core/control_plane/indexes/references/"
+    },
+    {
       "path": "core/control_plane/indexes/registries/",
       "kind": "directory",
       "surface_kind": "control_plane_indexes",
@@ -841,6 +890,27 @@
       "surface_kind": "control_plane_index",
       "summary": "Describes the purpose of the schema index directory and its current boundaries.",
       "parent_path": "core/control_plane/indexes/schemas/"
+    },
+    {
+      "path": "core/control_plane/indexes/standards/",
+      "kind": "directory",
+      "surface_kind": "control_plane_indexes",
+      "summary": "Machine-readable indexes for governed standards and best-practice documents.",
+      "parent_path": "core/control_plane/indexes/"
+    },
+    {
+      "path": "core/control_plane/indexes/standards/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Describes the purpose of the standard-index directory and its current artifact family.",
+      "parent_path": "core/control_plane/indexes/standards/"
+    },
+    {
+      "path": "core/control_plane/indexes/standards/standard_index.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Machine-readable standard index for governed standards and their reference usage.",
+      "parent_path": "core/control_plane/indexes/standards/"
     },
     {
       "path": "core/control_plane/indexes/tasks/",
@@ -1224,6 +1294,13 @@
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {
+      "path": "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable reference-index artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
       "path": "core/control_plane/schemas/artifacts/repository_path_index.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -1235,6 +1312,13 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the authored schema catalog registry artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/standard_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable standard-index artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {
@@ -1633,10 +1717,24 @@
       "parent_path": "core/python/tests/unit/"
     },
     {
+      "path": "core/python/tests/unit/test_reference_index_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for rebuilding the reference index from governed reference docs.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
       "path": "core/python/tests/unit/test_schema_store.py",
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Unit tests for schema-catalog-backed schema resolution and validation.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
+      "path": "core/python/tests/unit/test_standard_index_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for rebuilding the standard index from governed standards docs.",
       "parent_path": "core/python/tests/unit/"
     },
     {
@@ -1839,6 +1937,20 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_references.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query references command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_query_standards.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query standards command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query_tasks.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -1916,10 +2028,24 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_sync_reference_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync reference-index command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_sync_repository_paths.md",
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core sync repository-paths command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_standard_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync standard-index command.",
       "parent_path": "docs/commands/core_python/"
     },
     {
@@ -2464,6 +2590,13 @@
       "parent_path": "docs/references/"
     },
     {
+      "path": "docs/references/github_collaboration_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Provides a working reference for GitHub Collaboration.",
+      "parent_path": "docs/references/"
+    },
+    {
       "path": "docs/references/google_style_docstrings_reference.md",
       "kind": "file",
       "surface_kind": "reference_doc",
@@ -2897,6 +3030,13 @@
       "parent_path": "docs/standards/data_contracts/"
     },
     {
+      "path": "docs/standards/data_contracts/reference_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable reference indexes.",
+      "parent_path": "docs/standards/data_contracts/"
+    },
+    {
       "path": "docs/standards/data_contracts/repository_path_index_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -2915,6 +3055,13 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines schema expectations for governed structured data.",
+      "parent_path": "docs/standards/data_contracts/"
+    },
+    {
+      "path": "docs/standards/data_contracts/standard_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable standard indexes.",
       "parent_path": "docs/standards/data_contracts/"
     },
     {

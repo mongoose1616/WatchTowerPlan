@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:reference-index:v1",
+  "id": "index.references",
+  "title": "Reference Index",
+  "status": "active",
+  "entries": [
+    {
+      "reference_id": "ref.uv",
+      "title": "uv Reference",
+      "summary": "Working reference for uv as a Python packaging and environment tool.",
+      "status": "active",
+      "doc_path": "docs/references/uv_reference.md",
+      "updated_at": "2026-03-09T18:45:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": true
+    }
+  ]
+}

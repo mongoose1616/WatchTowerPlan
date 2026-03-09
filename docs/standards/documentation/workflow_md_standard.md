@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T18:46:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -32,6 +32,12 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Creating a new workflow module.
 - Revising an existing workflow Markdown file.
 - Reviewing whether a workflow file is structurally consistent with the repository model.
+
+## Related Standards and Sources
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
+- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
+- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
 
 ## Guidance
 - Workflow files should live under `workflows/modules/` unless a narrower repository standard defines another workflow surface.
@@ -91,4 +97,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T18:46:06Z`

@@ -13,8 +13,10 @@ from watchtower_core.control_plane.models import (
     DecisionIndex,
     DesignDocumentIndex,
     PrdIndex,
+    ReferenceIndex,
     RepositoryPathIndex,
     SchemaCatalog,
+    StandardIndex,
     TaskIndex,
     TraceabilityIndex,
     ValidationEvidenceArtifact,
@@ -28,6 +30,8 @@ REPOSITORY_PATH_INDEX_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
 )
 COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
+REFERENCE_INDEX_PATH = "core/control_plane/indexes/references/reference_index.v1.json"
+STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
 PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.v1.json"
 DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.v1.json"
 DESIGN_DOCUMENT_INDEX_PATH = (
@@ -90,6 +94,14 @@ class ControlPlaneLoader:
     def load_command_index(self) -> CommandIndex:
         """Load the current command index."""
         return CommandIndex.from_document(self.load_validated_document(COMMAND_INDEX_PATH))
+
+    def load_reference_index(self) -> ReferenceIndex:
+        """Load the current reference index."""
+        return ReferenceIndex.from_document(self.load_validated_document(REFERENCE_INDEX_PATH))
+
+    def load_standard_index(self) -> StandardIndex:
+        """Load the current standard index."""
+        return StandardIndex.from_document(self.load_validated_document(STANDARD_INDEX_PATH))
 
     def load_prd_index(self) -> PrdIndex:
         """Load the current PRD index."""

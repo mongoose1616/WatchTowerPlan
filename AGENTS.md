@@ -14,6 +14,9 @@
 - Read this file first.
 - Use [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md) to select the minimum workflow modules required for the task.
 - Always load `workflows/modules/core.md` plus only the additional modules required by the matched task type.
+- Workflow modules are repository-available building blocks, but they are not active unless routing selects them or the active task explicitly merges them.
+- Route from the full prompt context rather than exact keyword matching alone. If multiple task types apply, load the minimum union of their module sets.
+- If the request explicitly includes commit creation or closeout intent, merge `workflows/modules/commit_closeout.md` into the dominant route or use the Commit Closeout route alone when commit creation is the only requested task.
 - If the request explicitly includes the keyword `no_route`, bypass routing-table lookup and handle the task directly with only the immediately relevant local context.
 - Do not turn this file into a second routing table.
 

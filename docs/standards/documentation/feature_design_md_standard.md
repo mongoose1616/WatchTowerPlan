@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "feature_design_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -47,7 +47,9 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - Feature designs should identify current-state constraints, options considered, the recommended design, and the implementation guardrails that later work must preserve.
 - Do not use feature designs as workflow modules, changelogs, or commit-by-commit execution notes.
 - Do not move normative repository rules into a feature design when they belong in `docs/standards/**`.
+- When an external topic already has a governed local reference under `docs/references/**`, cite that local reference as the repo-native lookup surface instead of scattering raw external URLs through the design body.
 - Include only the external sources that materially shaped the design. Omit that section when none were needed.
+- `Foundations References Applied` and `Internal Standards and Canonical References Applied` must explain the local implication of each cited source. Bare link lists are insufficient.
 - Keep the `Updated At` section aligned with front matter `updated_at` and use RFC 3339 UTC timestamps in the form `YYYY-MM-DDTHH:MM:SSZ`.
 
 ## Structure or Data Model
@@ -65,8 +67,8 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 | `Source Request` | Required | Record the request, issue, or planning input that triggered the design. |
 | `Scope and Feature Boundary` | Required | Define what the design covers and excludes. |
 | `Current-State Context` | Required | Describe current repository surfaces, constraints, or gaps that matter. |
-| `Foundations References Applied` | Required | Map relevant foundations docs to design implications. |
-| `Internal Standards and Canonical References Applied` | Required | Record the internal authorities that shaped the design. |
+| `Foundations References Applied` | Required | Map relevant foundations docs to concrete design implications. Use `source -> implication` bullets, not a bare link list. |
+| `Internal Standards and Canonical References Applied` | Required | Record the internal authorities that shaped the design and the concrete implication each one creates. Use `source -> implication` bullets, not a bare link list. |
 | `Design Goals and Constraints` | Required | State the main goals, non-goals, and invariants. |
 | `Options Considered` | Required | Compare at least two meaningful approaches when tradeoffs exist. |
 | `Recommended Design` | Required | Describe the chosen architecture, flow, and failure behavior. |
@@ -81,7 +83,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 ### Optional sections for feature designs
 | Section | Use When |
 |---|---|
-| `External Sources Consulted` | An external primary source materially shaped the design. |
+| `External Sources Consulted` | An external primary source materially shaped the design. Each bullet should record what the source clarified, constrained, or justified. |
 | `Open Questions` | Real design questions remain unresolved. |
 
 ## Process or Workflow
@@ -103,6 +105,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - Feature-design front matter should validate against `feature_design_front_matter.v1.schema.json`.
 - The recommended design should be specific enough that an implementation plan can break it into concrete work without re-deciding the architecture.
 - The document should cite the internal standards and canonical surfaces that constrain the design.
+- The `Foundations References Applied` and `Internal Standards and Canonical References Applied` sections should explain the implication of each cited source rather than listing links only.
 - `updated_at` in front matter and the `Updated At` body section should match.
 - Reviewers should reject feature designs that are only requirements capture, only task checklists, or missing the reasoning behind the recommendation.
 
@@ -121,4 +124,4 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - A good feature design reduces rework in implementation planning by making tradeoffs and guardrails explicit.
 
 ## Updated At
-- `2026-03-09T07:05:24Z`
+- `2026-03-09T18:25:06Z`

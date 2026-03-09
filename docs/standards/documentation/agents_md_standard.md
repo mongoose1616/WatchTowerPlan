@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "agents_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T14:40:36Z"
+updated_at: "2026-03-09T18:46:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -31,6 +31,12 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - Creating a new root or nested `AGENTS.md`.
 - Updating the structure or local rules of an existing `AGENTS.md`.
 - Reviewing whether instructions belong in `AGENTS.md`, a `README.md`, a routing table, a workflow module, or a standard.
+
+## Related Standards and Sources
+- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md)
+- [routing_table_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/routing_table_md_standard.md)
+- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [agent_template.md](/home/j/WatchTowerPlan/docs/templates/agent_template.md)
 
 ## Guidance
 - `AGENTS.md` must act as a thin instruction layer for the current scope.
@@ -79,4 +85,4 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - The best `AGENTS.md` files are short, scoped, and obviously tied to the directory they govern.
 
 ## Updated At
-- `2026-03-09T14:40:36Z`
+- `2026-03-09T18:46:06Z`

@@ -20,6 +20,7 @@ def test_design_document_index_sync_builds_schema_valid_document() -> None:
     assert isinstance(entries, list)
     assert any(
         entry["document_id"] == "design.features.command_documentation_and_lookup"
+        and entry["uses_internal_references"] is True
         for entry in entries
     )
     assert any(

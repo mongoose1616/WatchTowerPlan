@@ -52,6 +52,8 @@ class DesignDocumentQueryService:
                     entry.summary,
                     *entry.source_paths,
                     *entry.related_paths,
+                    *entry.internal_reference_paths,
+                    *entry.external_reference_urls,
                     *entry.tags,
                 ),
             )

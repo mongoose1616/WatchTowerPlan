@@ -6,7 +6,7 @@ summary: "Defines the hosted GitHub intake, pull request, and project-field scaf
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T16:33:16Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -27,7 +27,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T16:33:16Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This document defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.
@@ -52,10 +52,16 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep human-facing and machine-facing collaboration surfaces aligned in the same change set when they depend on each other.
 
 ## Internal Standards and Canonical References Applied
-- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
+- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md): GitHub should remain a hosted collaboration layer that complements repo-local authority instead of replacing it.
+- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): issue labels, mirrored status, and project fields need to stay aligned with the sync contract.
+- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): hosted intake and PR review still need clear links back to local task records.
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): `.github/`, sync code, and companion docs should be updated together.
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): use the repo-native GitHub reference as the shared local summary of the hosted collaboration surfaces and APIs.
+
+## External Sources Consulted
+- [Configuring issue templates for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository): shaped the issue-form structure and bounded intake expectations.
+- [Creating a pull request template for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository): shaped the hosted pull-request checklist boundary.
+- [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields): shaped the bounded GitHub Project field model.
 
 ## Design Goals and Constraints
 - Keep GitHub useful for humans without letting it silently outrank repo-local task and planning surfaces.
@@ -98,7 +104,11 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 ## References
 - [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 - [README.md](/home/j/WatchTowerPlan/.github/README.md)
+- [Configuring issue templates for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
+- [Creating a pull request template for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
+- [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields)
 
 ## Updated At
-- `2026-03-09T16:33:16Z`
+- `2026-03-09T18:25:06Z`

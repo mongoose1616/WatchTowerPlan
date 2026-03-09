@@ -45,8 +45,8 @@ uv run watchtower-core query prds --requirement-id req.core_python_foundation.00
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- In `human` mode, the command prints matching PRD IDs, titles, and summaries.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, and result records.
+- In `human` mode, the command prints matching PRD IDs, titles, summaries, and whether the PRD explicitly used internal or external references.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and reference-use indicators captured in the PRD index.
 - If no entries match the requested filters, the command exits successfully and reports that no PRD entries matched.
 
 ## Related Commands
@@ -62,4 +62,4 @@ uv run watchtower-core query prds --requirement-id req.core_python_foundation.00
 - `core/control_plane/indexes/prds/prd_index.v1.json`
 
 ## Updated At
-- `2026-03-09T07:21:07Z`
+- `2026-03-09T18:45:00Z`

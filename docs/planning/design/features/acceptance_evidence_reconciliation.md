@@ -6,7 +6,7 @@ summary: "Defines the feature-level design for the acceptance and evidence recon
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T16:54:39Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T16:54:39Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This document defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.
@@ -54,12 +54,12 @@ This document defines the feature-level design for the acceptance and evidence r
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep companion human-readable and machine-readable surfaces aligned in the same change set when they depend on one another.
 
 ## Internal Standards and Canonical References Applied
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
-- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
+- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance IDs and expected outcomes need to stay machine-readable and stable across reconciliation.
+- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): validation results need durable evidence records rather than ad hoc closeout notes.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): acceptance and evidence updates must stay linked through the shared trace chain.
+- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): reconciled acceptance and evidence state must land in the unified machine index.
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): reconciliation should stay as a narrow composable workflow instead of a mixed-purpose catch-all.
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): code, docs, indexes, and evidence surfaces should be refreshed in the same change set.
 
 ## Design Goals and Constraints
 - Make acceptance-to-evidence reconciliation a repeatable concern once repository usage justifies it.
@@ -152,4 +152,4 @@ This document defines the feature-level design for the acceptance and evidence r
 - [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
 
 ## Updated At
-- `2026-03-09T16:54:39Z`
+- `2026-03-09T18:25:06Z`

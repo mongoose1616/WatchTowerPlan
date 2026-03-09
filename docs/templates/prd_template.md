@@ -54,4 +54,4 @@
 - <Relevant foundation document and the implication it creates.>
 
 ## References
-- <Companion document, issue, or other relevant source.>
+- <Relevant internal or external source that materially informed this PRD.>

@@ -65,6 +65,8 @@ class DecisionQueryService:
                     *entry.linked_design_ids,
                     *entry.linked_plan_ids,
                     *entry.related_paths,
+                    *entry.internal_reference_paths,
+                    *entry.external_reference_urls,
                     *entry.tags,
                 ),
             )

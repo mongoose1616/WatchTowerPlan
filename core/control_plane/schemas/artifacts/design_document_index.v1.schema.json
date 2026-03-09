@@ -65,6 +65,15 @@
         "minLength": 1
       }
     },
+    "urlList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^https?://.+$"
+      }
+    },
     "designDocumentEntry": {
       "type": "object",
       "required": [
@@ -75,7 +84,9 @@
         "summary",
         "status",
         "doc_path",
-        "updated_at"
+        "updated_at",
+        "uses_internal_references",
+        "uses_external_references"
       ],
       "properties": {
         "document_id": {
@@ -115,6 +126,14 @@
           "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1",
           "description": "Last meaningful content update timestamp for the design document."
         },
+        "uses_internal_references": {
+          "type": "boolean",
+          "description": "Whether the document explicitly cites internal repository references."
+        },
+        "uses_external_references": {
+          "type": "boolean",
+          "description": "Whether the document explicitly cites external source material."
+        },
         "source_paths": {
           "$ref": "#/$defs/stringList",
           "description": "Driving source surfaces such as feature designs or PRDs."
@@ -122,6 +141,14 @@
         "related_paths": {
           "$ref": "#/$defs/stringList",
           "description": "Optional related repository paths strongly associated with the design document."
+        },
+        "internal_reference_paths": {
+          "$ref": "#/$defs/stringList",
+          "description": "Internal repository paths explicitly cited in the document reference sections."
+        },
+        "external_reference_urls": {
+          "$ref": "#/$defs/urlList",
+          "description": "External URLs explicitly cited in the document reference sections."
         },
         "tags": {
           "$ref": "#/$defs/stringList",

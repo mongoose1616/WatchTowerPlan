@@ -37,11 +37,15 @@
 - `uv run mypy src`
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
+- `uv run watchtower-core query references --query uv`
+- `uv run watchtower-core query standards --category governance --format json`
 - `uv run watchtower-core query tasks --task-status backlog`
 - `uv run watchtower-core query tasks --blocked-only --include-dependency-details`
 - `uv run watchtower-core query acceptance --trace-id trace.core_python_foundation`
 - `uv run watchtower-core query evidence --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core sync prd-index`
+- `uv run watchtower-core sync standard-index`
+- `uv run watchtower-core sync reference-index`
 - `uv run watchtower-core sync prd-tracking`
 - `uv run watchtower-core sync task-index`
 - `uv run watchtower-core sync task-tracking`
@@ -82,6 +86,8 @@
 - `docs/commands/core_python/watchtower_core_query.md`
 - `docs/commands/core_python/watchtower_core_query_paths.md`
 - `docs/commands/core_python/watchtower_core_query_commands.md`
+- `docs/commands/core_python/watchtower_core_query_references.md`
+- `docs/commands/core_python/watchtower_core_query_standards.md`
 - `docs/commands/core_python/watchtower_core_query_prds.md`
 - `docs/commands/core_python/watchtower_core_query_decisions.md`
 - `docs/commands/core_python/watchtower_core_query_designs.md`
@@ -93,6 +99,8 @@
 - `docs/commands/core_python/watchtower_core_closeout_initiative.md`
 - `docs/commands/core_python/watchtower_core_sync.md`
 - `docs/commands/core_python/watchtower_core_sync_command_index.md`
+- `docs/commands/core_python/watchtower_core_sync_reference_index.md`
+- `docs/commands/core_python/watchtower_core_sync_standard_index.md`
 - `docs/commands/core_python/watchtower_core_sync_prd_index.md`
 - `docs/commands/core_python/watchtower_core_sync_prd_tracking.md`
 - `docs/commands/core_python/watchtower_core_sync_decision_index.md`

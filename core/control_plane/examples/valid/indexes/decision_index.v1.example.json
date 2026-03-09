@@ -13,11 +13,16 @@
       "decision_status": "accepted",
       "doc_path": "docs/planning/decisions/example_feature_storage.md",
       "updated_at": "2026-03-09T04:55:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "linked_prd_ids": [
         "prd.example_feature"
       ],
       "linked_design_ids": [
         "design.features.example_feature"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/decision_record_md_standard.md"
       ]
     }
   ]

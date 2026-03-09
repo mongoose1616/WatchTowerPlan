@@ -10,7 +10,9 @@
       "summary": "Invalid PRD entry missing a required trace ID.",
       "status": "active",
       "doc_path": "docs/planning/prds/example_feature.md",
-      "updated_at": "2026-03-09T04:55:49Z"
+      "updated_at": "2026-03-09T04:55:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false
     }
   ]
 }

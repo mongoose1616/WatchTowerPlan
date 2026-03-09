@@ -10,6 +10,7 @@ from watchtower_core.adapters import extract_path_like_references
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.sync.planning_documents import (
+    collect_reference_indicators,
     iter_markdown_documents,
     load_governed_document,
     ordered_unique,
@@ -25,7 +26,7 @@ ALLOWED_DECISION_STATUSES = {"proposed", "accepted", "deferred", "rejected", "su
 
 
 def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, Any]]:
-    document = loader.load_validated_document(DECISION_INDEX_ARTIFACT_PATH)
+    document = loader.load_json_object(DECISION_INDEX_ARTIFACT_PATH)
     entries = document.get("entries")
     if not isinstance(entries, list):
         raise ValueError(f"{DECISION_INDEX_ARTIFACT_PATH} is missing its entries list.")
@@ -66,8 +67,20 @@ class DecisionIndexSyncService:
                 schema_id=DECISION_FRONT_MATTER_SCHEMA_ID,
                 id_label="Decision ID",
                 status_label="Record Status",
+                required_sections=("References",),
             )
             current = existing_entries.get(document.document_id, {})
+            (
+                uses_internal_references,
+                uses_external_references,
+                internal_reference_paths,
+                external_reference_urls,
+            ) = collect_reference_indicators(
+                document,
+                self._repo_root,
+                internal_sections=("References",),
+                external_sections=("References",),
+            )
 
             decision_status = document.metadata_scalar("Decision Status")
             if decision_status not in ALLOWED_DECISION_STATUSES:
@@ -102,6 +115,8 @@ class DecisionIndexSyncService:
                 "decision_status": decision_status,
                 "doc_path": relative_path,
                 "updated_at": document.updated_at,
+                "uses_internal_references": uses_internal_references,
+                "uses_external_references": uses_external_references,
             }
 
             linked_prd_ids = document.metadata_ids(
@@ -125,6 +140,10 @@ class DecisionIndexSyncService:
                 entry["linked_plan_ids"] = list(linked_plan_ids)
             if related_paths:
                 entry["related_paths"] = list(related_paths)
+            if internal_reference_paths:
+                entry["internal_reference_paths"] = list(internal_reference_paths)
+            if external_reference_urls:
+                entry["external_reference_urls"] = list(external_reference_urls)
             if tags:
                 entry["tags"] = list(tags)
             if notes is not None:

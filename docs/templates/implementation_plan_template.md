@@ -52,8 +52,8 @@ aliases:
 - <Current gaps or constraints that make this plan necessary.>
 
 ## Internal Standards and Canonical References Applied
-- <Relevant internal standard, schema, registry, contract, or canonical repository doc.>
-- <Relevant internal standard, schema, registry, contract, or canonical repository doc.>
+- <Relevant internal standard, schema, registry, contract, or canonical repository doc>: <What this authority requires in the implementation plan.>
+- <Relevant internal standard, schema, registry, contract, or canonical repository doc>: <What this authority requires in the implementation plan.>
 
 ## Proposed Technical Approach
 - <High-level implementation structure and module or artifact boundaries.>

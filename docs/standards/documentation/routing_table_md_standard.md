@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "routing_table_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T14:45:48Z"
+updated_at: "2026-03-09T18:46:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -31,6 +31,11 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Creating the repository routing table.
 - Adding a new task type or workflow module.
 - Reviewing whether routing entries are too broad, duplicated, or ambiguous.
+
+## Related Standards and Sources
+- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md)
+- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [routing_table_template.md](/home/j/WatchTowerPlan/docs/templates/routing_table_template.md)
 
 ## Guidance
 - `ROUTING_TABLE.md` must be the canonical routing index for workflow selection.
@@ -75,4 +80,4 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Detailed logic belongs in workflow modules, not in routing rows.
 
 ## Updated At
-- `2026-03-09T14:45:48Z`
+- `2026-03-09T18:46:06Z`

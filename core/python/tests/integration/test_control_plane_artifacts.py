@@ -45,12 +45,16 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     validators = loader.load_validator_registry()
     path_index = loader.load_repository_path_index()
     command_index = loader.load_command_index()
+    reference_index = loader.load_reference_index()
+    standard_index = loader.load_standard_index()
     task_index = loader.load_task_index()
 
     assert catalog.artifact_id == "registry.schema_catalog"
     assert validators.artifact_id == "registry.validators"
     assert path_index.artifact_id == "index.repository_paths"
     assert command_index.artifact_id == "index.commands"
+    assert reference_index.artifact_id == "index.references"
+    assert standard_index.artifact_id == "index.standards"
     assert task_index.artifact_id == "index.tasks"
 
 
@@ -165,3 +169,80 @@ def test_utc_timestamp_fields_reject_offset_timestamps() -> None:
     validation_evidence["recorded_at"] = "2026-03-09T05:06:54+01:00"
     with pytest.raises(ValidationError):
         store.validate_instance(validation_evidence)
+
+
+def test_governed_standards_and_planning_docs_publish_references_sections() -> None:
+    governed_families = [
+        (
+            REPO_ROOT / "docs/standards",
+            {"README.md"},
+        ),
+        (
+            REPO_ROOT / "docs/planning/design/features",
+            {"README.md"},
+        ),
+        (
+            REPO_ROOT / "docs/planning/design/implementation",
+            {"README.md"},
+        ),
+        (
+            REPO_ROOT / "docs/planning/prds",
+            {"README.md", "prd_tracking.md"},
+        ),
+        (
+            REPO_ROOT / "docs/planning/decisions",
+            {"README.md", "decision_tracking.md"},
+        ),
+    ]
+
+    for directory, excluded_names in governed_families:
+        for path in sorted(directory.rglob("*.md")):
+            if path.name in excluded_names:
+                continue
+            body = FRONT_MATTER_PATTERN.sub("", path.read_text(encoding="utf-8"), count=1)
+            assert "## References" in body, f"missing References section: {path}"
+
+
+def test_governed_design_docs_explain_applied_reference_implications() -> None:
+    governed_sections = [
+        (
+            REPO_ROOT / "docs/planning/design/features",
+            {"README.md"},
+            (
+                "## Foundations References Applied",
+                "## Internal Standards and Canonical References Applied",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/planning/design/implementation",
+            {"README.md"},
+            ("## Internal Standards and Canonical References Applied",),
+        ),
+    ]
+
+    for directory, excluded_names, section_headings in governed_sections:
+        for path in sorted(directory.rglob("*.md")):
+            if path.name in excluded_names:
+                continue
+            markdown = FRONT_MATTER_PATTERN.sub("", path.read_text(encoding="utf-8"), count=1)
+            sections = {
+                title.strip(): body
+                for title, body in re.findall(
+                    r"^## (.+?)\n(.*?)(?=^## |\Z)",
+                    markdown,
+                    flags=re.MULTILINE | re.DOTALL,
+                )
+            }
+            for heading in section_headings:
+                title = heading.removeprefix("## ").strip()
+                section = sections.get(title)
+                assert section is not None, f"missing applied-reference section {title}: {path}"
+                bullets = [
+                    line.strip()
+                    for line in section.splitlines()
+                    if line.strip().startswith("- ")
+                ]
+                assert bullets, f"missing applied-reference bullets in {title}: {path}"
+                assert all(": " in bullet for bullet in bullets), (
+                    f"unexplained applied-reference bullet in {title}: {path}"
+                )

@@ -6,7 +6,7 @@ summary: "Defines the feature-level technical design for the consolidated Python
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `prd.core_python_foundation`
 - `Linked Decisions`: `decision.core_python_workspace_root`
 - `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
-- `Updated At`: `2026-03-09T07:05:24Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This document defines the feature-level technical design for the consolidated Python workspace under `core/python/` and the first functional boundaries of the core helper and harness package.
@@ -59,13 +59,13 @@ This document defines the feature-level technical design for the consolidated Py
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): avoid parallel truth by keeping control-plane authority in artifacts and execution logic in Python.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): `core/python/` must remain the single Python workspace root with one onboarding contract.
+- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): schema resolution should come from governed catalog records instead of hardcoded Python paths.
+- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): new Python workspace surfaces need to remain discoverable through the derived path index.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): governed machine artifacts should stay schema-backed and fail closed.
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): human guidance stays in Markdown while machine-readable control-plane artifacts stay in JSON.
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md): validator execution belongs in dedicated modular package surfaces rather than mixed workspace scripts.
+- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md): schema loading and index-backed lookup should be shared package capabilities from the start.
 
 ## Design Goals and Constraints
 - Keep all Python-specific surfaces under one subtree.
@@ -167,4 +167,4 @@ This document defines the feature-level technical design for the consolidated Py
 - [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
 
 ## Updated At
-- `2026-03-09T07:05:24Z`
+- `2026-03-09T18:25:06Z`

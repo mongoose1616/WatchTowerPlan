@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T18:46:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -32,10 +32,18 @@ Keep reference documents focused on durable lookup content by separating reader-
 - Refreshing an existing reference document.
 - Reviewing whether a reference document is properly scoped and structured.
 
+## Related Standards and Sources
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)
+- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md)
+- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md)
+
 ## Guidance
 - A reference document should optimize for fast lookup, stable terminology, and clear local application.
 - A reference document should cover one succinct standard, framework, format, specification, or working model.
 - Use the reference template when creating new reference documents.
+- When external published guidance materially shapes repository standards or design documents, prefer distilling it into `docs/references/**` and citing the local reference doc as the repo-native lookup surface rather than scattering raw vendor URLs across multiple docs.
 - Include `Canonical Upstream` when the topic depends on authoritative external sources.
 - Include `Local Mapping in This Repository` when the external topic needs a concrete connection to repository surfaces.
 - Omit generic reader-orientation sections such as `Audience` and `Use When` unless a specific reference truly needs them to avoid ambiguity.
@@ -50,6 +58,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 - Keep examples focused on correct local use rather than broad tutorials.
 - Keep lifecycle checks, refresh steps, change-control notes, and authoring checklists in documentation workflows or standards rather than in the reference document body.
 - Use `Updated At` in the document body when the topic depends on time-sensitive or version-sensitive source material, and record it as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`.
+- Update the governed reference index in the same change set when a reference document is added, renamed, removed, or materially retargeted.
 
 ## Structure or Data Model
 - Title
@@ -80,11 +89,12 @@ Keep reference documents focused on durable lookup content by separating reader-
 
 ## Change Control
 - Update this standard when the repository’s reference-document model changes materially.
-- Update the reference template and affected reference documents in the same change set when structural expectations change.
+- Update the reference template, the reference-index standard, and affected reference documents in the same change set when structural expectations change.
 - Update documentation workflows in the same change set when reference-quality checks move between document bodies and workflow procedures.
 
 ## References
 - [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)
 - [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md)
 - [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md)
 
@@ -93,4 +103,4 @@ Keep reference documents focused on durable lookup content by separating reader-
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T18:46:06Z`

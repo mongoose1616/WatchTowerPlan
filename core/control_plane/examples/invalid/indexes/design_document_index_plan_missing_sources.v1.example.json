@@ -6,12 +6,15 @@
   "entries": [
     {
       "document_id": "design.implementation.example_feature_plan",
+      "trace_id": "trace.example_feature",
       "family": "implementation_plan",
       "title": "Example Feature Implementation Plan",
       "summary": "Invalid implementation-plan entry missing required source paths.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/example_feature_plan.md",
-      "updated_at": "2026-03-09T04:55:49Z"
+      "updated_at": "2026-03-09T04:55:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false
     }
   ]
 }

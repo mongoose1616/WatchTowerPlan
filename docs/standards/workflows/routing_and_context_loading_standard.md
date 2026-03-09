@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T14:45:48Z"
+updated_at: "2026-03-09T18:46:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -31,6 +31,12 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Defining or reviewing repository routing behavior.
 - Adding new workflow modules that should be loaded by task classification.
 - Deciding whether a rule belongs in `AGENTS.md`, the routing table, or a module.
+
+## Related Standards and Sources
+- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md)
+- [routing_table_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/routing_table_md_standard.md)
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
+- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
 
 ## Guidance
 - Load `AGENTS.md` first as the repository-wide instruction wrapper.
@@ -87,4 +93,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-09T14:45:48Z`
+- `2026-03-09T18:46:06Z`

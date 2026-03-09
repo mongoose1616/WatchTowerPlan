@@ -18,7 +18,12 @@ def test_prd_index_sync_builds_schema_valid_document() -> None:
     loader.schema_store.validate_instance(document)
     entries = document["entries"]
     assert isinstance(entries, list)
-    assert any(entry["prd_id"] == "prd.core_python_foundation" for entry in entries)
+    assert any(
+        entry["prd_id"] == "prd.core_python_foundation"
+        and entry["uses_internal_references"] is True
+        and "internal_reference_paths" in entry
+        for entry in entries
+    )
 
 
 def test_prd_index_sync_writes_temp_output(tmp_path: Path) -> None:

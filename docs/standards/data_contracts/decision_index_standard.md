@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "decision_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T18:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,6 +50,7 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - Carry a shared `trace_id` in every entry so decisions can join to their PRDs, designs, and plans.
 - Carry stable `decision_id` values in every entry.
 - Distinguish lifecycle `record_status` from `decision_status`.
+- Capture whether the decision explicitly used internal or external references so reference use is queryable without reparsing Markdown.
 - Keep the human-readable decision tracker and the machine-readable decision index aligned in the same change set.
 
 ## Structure or Data Model
@@ -73,10 +74,14 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 | `decision_status` | Required | Use the decision outcome vocabulary from the decision-capture standard. |
 | `doc_path` | Required | Repository-relative path to the decision record. |
 | `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the decision document’s `Updated At` value. |
+| `uses_internal_references` | Required | Whether the decision explicitly cited internal repository references. |
+| `uses_external_references` | Required | Whether the decision explicitly cited external sources. |
 | `linked_prd_ids` | Optional | Related PRD IDs when they exist. |
 | `linked_design_ids` | Optional | Related feature-design IDs when they exist. |
 | `linked_plan_ids` | Optional | Related implementation-plan IDs when they exist. |
 | `related_paths` | Optional | Related repository paths strongly associated with the decision. |
+| `internal_reference_paths` | Optional | Internal repository paths explicitly cited in the decision references. |
+| `external_reference_urls` | Optional | External URLs explicitly cited in the decision references. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
 
@@ -84,6 +89,7 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - The decision index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `docs/planning/decisions/`.
 - Every entry should have both `trace_id` and `decision_id`.
+- The reference-presence flags should reflect the actual decision sections that cite internal or external sources.
 - Reviewers should reject entries that point to stale decision records or conflate document lifecycle with decision outcome.
 
 ## Change Control
@@ -97,4 +103,4 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T18:45:00Z`

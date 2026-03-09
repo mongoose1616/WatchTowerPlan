@@ -6,7 +6,7 @@ summary: "Defines the first initiative closeout model, its traceability fields, 
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T16:20:00Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T16:20:00Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This document defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.
@@ -56,10 +56,10 @@ This document defines the first initiative closeout model, its traceability fiel
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one source of truth for initiative outcome and derive secondary mirrors from it.
 
 ## Internal Standards and Canonical References Applied
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): initiative lifecycle closeout has to update the shared trace record rather than only the human trackers.
+- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): closure state and linked planning surfaces must remain queryable through the unified trace index.
+- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): closeout must set initiative outcome, timestamp, and closure reason consistently.
+- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): planning closeout should leave local task tracking aligned with final initiative state.
 
 ## Design Goals and Constraints
 - Keep initiative outcome separate from artifact lifecycle state.
@@ -148,4 +148,4 @@ This document defines the first initiative closeout model, its traceability fiel
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-09T18:25:06Z`

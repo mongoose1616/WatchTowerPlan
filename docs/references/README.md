@@ -5,6 +5,7 @@
 
 ## How To Use This Directory
 - Start with the reference file that matches the external topic, not with a broad repo scan.
+- Use `watchtower-core query references --query <topic>` when you want the governed reference lookup surface instead of browsing the directory manually.
 - Treat these files as supporting lookup artifacts. Enforceable local policy still belongs in `docs/standards/**` and executable procedure still belongs in `workflows/**`.
 - Use the `Current Repository Status` and `Current Touchpoints` sections inside each reference to tell whether the topic is active local support, supporting authority for an existing standard, or only candidate future guidance.
 - Re-check the canonical upstream links before tightening local policy for version-sensitive topics such as toolchains, security frameworks, and data-contract formats.
@@ -29,6 +30,7 @@
 | `docs/references/diataxis_local_reference.md` | Provides a working reference for Diataxis Local. |
 | `docs/references/first_tlp_2_0_reference.md` | Provides a working reference for FIRST TLP 2.0. |
 | `docs/references/git_commit_message_guidance_reference.md` | Provides a working reference for Git Commit Message Guidance. |
+| `docs/references/github_collaboration_reference.md` | Provides a working reference for GitHub Collaboration. |
 | `docs/references/google_style_docstrings_reference.md` | Provides a working reference for Google-Style Docstrings. |
 | `docs/references/in_toto_v1_0_reference.md` | Provides a working reference for in-toto v1.0. |
 | `docs/references/json_schema_2020_12_reference.md` | Provides a working reference for JSON Schema 2020-12. |

@@ -23,8 +23,12 @@ from watchtower_core.query import (
     DesignDocumentSearchParams,
     PrdQueryService,
     PrdSearchParams,
+    ReferenceQueryService,
+    ReferenceSearchParams,
     RepositoryPathQueryService,
     RepositoryPathSearchParams,
+    StandardQueryService,
+    StandardSearchParams,
     TaskQueryService,
     TaskSearchParams,
     TraceabilityQueryService,
@@ -41,7 +45,9 @@ from watchtower_core.sync import (
     GitHubTaskSyncService,
     PrdIndexSyncService,
     PrdTrackingSyncService,
+    ReferenceIndexSyncService,
     RepositoryPathIndexSyncService,
+    StandardIndexSyncService,
     TaskIndexSyncService,
     TaskTrackingSyncService,
     TraceabilityIndexSyncService,
@@ -89,11 +95,15 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query references --query uv",
+            "uv run watchtower-core query standards --category governance --format json",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
             "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core query tasks --task-status backlog",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core sync command-index",
+            "uv run watchtower-core sync reference-index",
+            "uv run watchtower-core sync standard-index",
             "uv run watchtower-core sync prd-index",
             "uv run watchtower-core sync task-index",
             "uv run watchtower-core sync task-tracking",
@@ -145,14 +155,18 @@ def build_parser() -> argparse.ArgumentParser:
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `prds`, `decisions`, `designs`, `acceptance`, `evidence`, and
-            `tasks` for planning and execution lookup, and `trace` when you
-            already know the trace identifier you want.
+            `references` for the reference library, `standards` for governed
+            repository standards, `prds`, `decisions`, `designs`, `acceptance`,
+            `evidence`, and `tasks` for planning and execution lookup, and
+            `trace` when you already know the trace identifier you want.
             """
         ).strip(),
         epilog=_examples(
             "uv run watchtower-core query paths --query control plane",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query references --query github",
+            "uv run watchtower-core query standards --reference-path "
+            "docs/references/github_collaboration_reference.md",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
             "uv run watchtower-core query decisions --decision-status accepted",
             "uv run watchtower-core query designs --family implementation_plan",
@@ -257,6 +271,129 @@ def build_parser() -> argparse.ArgumentParser:
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     query_commands_parser.set_defaults(handler=_run_query_commands)
+
+    query_references_parser = query_subparsers.add_parser(
+        "references",
+        help="Search the reference index.",
+        description=dedent(
+            """
+            Search the governed reference index for curated internal reference
+            documents and their upstream authority links.
+
+            Use this when you know the topic you want, but not yet the exact
+            reference document path.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query references --query uv",
+            "uv run watchtower-core query references --related-path core/python/ --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_references_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over indexed reference fields such as reference ID, "
+            "title, summary, upstream URLs, related paths, aliases, and tags."
+        ),
+    )
+    query_references_parser.add_argument(
+        "--reference-id",
+        help="Exact reference identifier such as ref.uv.",
+    )
+    query_references_parser.add_argument("--tag", help="Exact tag filter.")
+    query_references_parser.add_argument(
+        "--related-path",
+        help="Exact repository-path filter such as core/python/ or docs/standards/engineering/.",
+    )
+    query_references_parser.add_argument(
+        "--upstream-url",
+        help="Exact canonical-upstream URL filter.",
+    )
+    query_references_parser.add_argument(
+        "--cited-by-path",
+        help="Exact doc-path filter for documents that cite the reference.",
+    )
+    query_references_parser.add_argument(
+        "--applied-by-path",
+        help=(
+            "Exact doc-path filter for documents that apply the reference in an "
+            "applied-reference section."
+        ),
+    )
+    query_references_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_references_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_references_parser.set_defaults(handler=_run_query_references)
+
+    query_standards_parser = query_subparsers.add_parser(
+        "standards",
+        help="Search the standard index.",
+        description=dedent(
+            """
+            Search the governed standard index for repository standards and
+            best-practice docs.
+
+            Use this when you need to find standards by category, local
+            reference doc, related path, or free-text summary content.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query standards --category governance",
+            "uv run watchtower-core query standards --reference-path "
+            "docs/references/github_collaboration_reference.md --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_standards_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over indexed standard fields such as ID, title, "
+            "summary, category, references, and related paths."
+        ),
+    )
+    query_standards_parser.add_argument(
+        "--standard-id",
+        help="Exact standard identifier such as std.engineering.best_practices.",
+    )
+    query_standards_parser.add_argument(
+        "--category",
+        help="Exact top-level standards category such as governance or engineering.",
+    )
+    query_standards_parser.add_argument("--tag", help="Exact tag filter.")
+    query_standards_parser.add_argument(
+        "--related-path",
+        help="Exact repository-path filter such as .github/ or core/python/.",
+    )
+    query_standards_parser.add_argument(
+        "--reference-path",
+        help=(
+            "Exact governed reference-doc filter such as "
+            "docs/references/github_collaboration_reference.md."
+        ),
+    )
+    query_standards_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_standards_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_standards_parser.set_defaults(handler=_run_query_standards)
 
     query_prds_parser = query_subparsers.add_parser(
         "prds",
@@ -633,6 +770,10 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync command-index --write",
+            "uv run watchtower-core sync reference-index",
+            "uv run watchtower-core sync reference-index --write",
+            "uv run watchtower-core sync standard-index",
+            "uv run watchtower-core sync standard-index --write",
             "uv run watchtower-core sync prd-index",
             "uv run watchtower-core sync prd-tracking",
             "uv run watchtower-core sync decision-index",
@@ -679,6 +820,52 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_sync_arguments(sync_command_index_parser)
     sync_command_index_parser.set_defaults(handler=_run_sync_command_index)
+
+    sync_reference_index_parser = sync_subparsers.add_parser(
+        "reference-index",
+        help="Rebuild the reference index from governed reference docs.",
+        description=dedent(
+            """
+            Rebuild the reference index from the governed reference documents
+            under `docs/references/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync reference-index",
+            "uv run watchtower-core sync reference-index --write",
+            "uv run watchtower-core sync reference-index --output "
+            "/tmp/reference_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_reference_index_parser)
+    sync_reference_index_parser.set_defaults(handler=_run_sync_reference_index)
+
+    sync_standard_index_parser = sync_subparsers.add_parser(
+        "standard-index",
+        help="Rebuild the standard index from governed standards.",
+        description=dedent(
+            """
+            Rebuild the standard index from the governed standards under
+            `docs/standards/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync standard-index",
+            "uv run watchtower-core sync standard-index --write",
+            "uv run watchtower-core sync standard-index --output "
+            "/tmp/standard_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_standard_index_parser)
+    sync_standard_index_parser.set_defaults(handler=_run_sync_standard_index)
 
     sync_prd_index_parser = sync_subparsers.add_parser(
         "prd-index",
@@ -1446,6 +1633,125 @@ def _run_query_commands(args: argparse.Namespace) -> int:
     return 0
 
 
+def _run_query_references(args: argparse.Namespace) -> int:
+    service = ReferenceQueryService(ControlPlaneLoader())
+    entries = service.search(
+        ReferenceSearchParams(
+            query=args.query,
+            reference_id=args.reference_id,
+            tag=args.tag,
+            related_path=args.related_path,
+            upstream_url=args.upstream_url,
+            cited_by_path=args.cited_by_path,
+            applied_by_path=args.applied_by_path,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query references",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "reference_id": entry.reference_id,
+                "title": entry.title,
+                "summary": entry.summary,
+                "status": entry.status,
+                "doc_path": entry.doc_path,
+                "updated_at": entry.updated_at,
+                "uses_internal_references": entry.uses_internal_references,
+                "uses_external_references": entry.uses_external_references,
+                "canonical_upstream_urls": list(entry.canonical_upstream_urls),
+                "cited_by_paths": list(entry.cited_by_paths),
+                "applied_by_paths": list(entry.applied_by_paths),
+                "related_paths": list(entry.related_paths),
+                "aliases": list(entry.aliases),
+                "tags": list(entry.tags),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No reference entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} reference entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.reference_id} [{entry.status}]")
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+        print(
+            "  Reference use: "
+            f"internal={'yes' if entry.uses_internal_references else 'no'}, "
+            f"external={'yes' if entry.uses_external_references else 'no'}"
+        )
+        if entry.applied_by_paths:
+            print(f"  Applied by {len(entry.applied_by_paths)} doc(s).")
+        elif entry.cited_by_paths:
+            print(f"  Cited by {len(entry.cited_by_paths)} doc(s).")
+    return 0
+
+
+def _run_query_standards(args: argparse.Namespace) -> int:
+    service = StandardQueryService(ControlPlaneLoader())
+    entries = service.search(
+        StandardSearchParams(
+            query=args.query,
+            standard_id=args.standard_id,
+            category=args.category,
+            tag=args.tag,
+            related_path=args.related_path,
+            reference_path=args.reference_path,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query standards",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "standard_id": entry.standard_id,
+                "category": entry.category,
+                "title": entry.title,
+                "summary": entry.summary,
+                "status": entry.status,
+                "doc_path": entry.doc_path,
+                "updated_at": entry.updated_at,
+                "uses_internal_references": entry.uses_internal_references,
+                "uses_external_references": entry.uses_external_references,
+                "related_paths": list(entry.related_paths),
+                "reference_doc_paths": list(entry.reference_doc_paths),
+                "internal_reference_paths": list(entry.internal_reference_paths),
+                "external_reference_urls": list(entry.external_reference_urls),
+                "tags": list(entry.tags),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No standard entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} standard entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.standard_id} [{entry.category}]")
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+        print(
+            "  Reference use: "
+            f"internal={'yes' if entry.uses_internal_references else 'no'}, "
+            f"external={'yes' if entry.uses_external_references else 'no'}"
+        )
+    return 0
+
+
 def _run_query_prds(args: argparse.Namespace) -> int:
     service = PrdQueryService(ControlPlaneLoader())
     entries = service.search(
@@ -1471,12 +1777,16 @@ def _run_query_prds(args: argparse.Namespace) -> int:
                 "status": entry.status,
                 "doc_path": entry.doc_path,
                 "updated_at": entry.updated_at,
+                "uses_internal_references": entry.uses_internal_references,
+                "uses_external_references": entry.uses_external_references,
                 "requirement_ids": list(entry.requirement_ids),
                 "acceptance_ids": list(entry.acceptance_ids),
                 "linked_decision_ids": list(entry.linked_decision_ids),
                 "linked_design_ids": list(entry.linked_design_ids),
                 "linked_plan_ids": list(entry.linked_plan_ids),
                 "related_paths": list(entry.related_paths),
+                "internal_reference_paths": list(entry.internal_reference_paths),
+                "external_reference_urls": list(entry.external_reference_urls),
                 "tags": list(entry.tags),
             }
             for entry in entries
@@ -1494,6 +1804,11 @@ def _run_query_prds(args: argparse.Namespace) -> int:
         print(f"- {entry.prd_id} [{entry.status}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
+        print(
+            "  Reference use: "
+            f"internal={'yes' if entry.uses_internal_references else 'no'}, "
+            f"external={'yes' if entry.uses_external_references else 'no'}"
+        )
     return 0
 
 
@@ -1523,10 +1838,14 @@ def _run_query_decisions(args: argparse.Namespace) -> int:
                 "decision_status": entry.decision_status,
                 "doc_path": entry.doc_path,
                 "updated_at": entry.updated_at,
+                "uses_internal_references": entry.uses_internal_references,
+                "uses_external_references": entry.uses_external_references,
                 "linked_prd_ids": list(entry.linked_prd_ids),
                 "linked_design_ids": list(entry.linked_design_ids),
                 "linked_plan_ids": list(entry.linked_plan_ids),
                 "related_paths": list(entry.related_paths),
+                "internal_reference_paths": list(entry.internal_reference_paths),
+                "external_reference_urls": list(entry.external_reference_urls),
                 "tags": list(entry.tags),
             }
             for entry in entries
@@ -1544,6 +1863,11 @@ def _run_query_decisions(args: argparse.Namespace) -> int:
         print(f"- {entry.decision_id} [{entry.decision_status}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
+        print(
+            "  Reference use: "
+            f"internal={'yes' if entry.uses_internal_references else 'no'}, "
+            f"external={'yes' if entry.uses_external_references else 'no'}"
+        )
     return 0
 
 
@@ -1572,8 +1896,12 @@ def _run_query_designs(args: argparse.Namespace) -> int:
                 "status": entry.status,
                 "doc_path": entry.doc_path,
                 "updated_at": entry.updated_at,
+                "uses_internal_references": entry.uses_internal_references,
+                "uses_external_references": entry.uses_external_references,
                 "source_paths": list(entry.source_paths),
                 "related_paths": list(entry.related_paths),
+                "internal_reference_paths": list(entry.internal_reference_paths),
+                "external_reference_urls": list(entry.external_reference_urls),
                 "tags": list(entry.tags),
             }
             for entry in entries
@@ -1594,6 +1922,11 @@ def _run_query_designs(args: argparse.Namespace) -> int:
         print(f"- {entry.document_id} [{entry.family}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
+        print(
+            "  Reference use: "
+            f"internal={'yes' if entry.uses_internal_references else 'no'}, "
+            f"external={'yes' if entry.uses_external_references else 'no'}"
+        )
     return 0
 
 
@@ -1900,6 +2233,24 @@ def _run_sync_command_index(args: argparse.Namespace) -> int:
     )
 
 
+def _run_sync_reference_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync reference-index",
+        artifact_label="reference index",
+        service=ReferenceIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_standard_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync standard-index",
+        artifact_label="standard index",
+        service=StandardIndexSyncService.from_repo_root(),
+    )
+
+
 def _run_sync_prd_index(args: argparse.Namespace) -> int:
     return _run_sync_document_command(
         args,
@@ -2166,7 +2517,9 @@ def _run_sync_document_command(
         | DecisionIndexSyncService
         | DesignDocumentIndexSyncService
         | PrdIndexSyncService
+        | ReferenceIndexSyncService
         | RepositoryPathIndexSyncService
+        | StandardIndexSyncService
         | TaskIndexSyncService
         | TraceabilityIndexSyncService
     ),

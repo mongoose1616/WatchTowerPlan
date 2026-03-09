@@ -7,7 +7,9 @@ from pathlib import Path
 from typing import Any
 
 from watchtower_core.adapters import (
+    extract_external_urls,
     extract_metadata_bullets,
+    extract_repo_path_references,
     extract_sections,
     extract_title,
     extract_updated_at_from_section,
@@ -119,6 +121,10 @@ class PlanningDocument:
             if "/" in value and value != self.relative_path
         )
 
+    def section(self, title: str) -> str | None:
+        """Return one section body when it exists."""
+        return self.sections.get(title)
+
 
 def required_front_matter_value(front_matter: dict[str, Any], key: str) -> str:
     """Return one required string front-matter value."""
@@ -135,6 +141,8 @@ def load_governed_document(
     schema_id: str,
     id_label: str,
     status_label: str,
+    required_sections: tuple[str, ...] = (),
+    required_explained_sections: tuple[str, ...] = (),
     require_updated_at_section: bool = False,
 ) -> PlanningDocument:
     """Load one governed planning document and validate its metadata alignment."""
@@ -149,6 +157,12 @@ def load_governed_document(
         raise ValueError(f"{relative_path} is missing its required Record Metadata section.")
     if require_updated_at_section and "Updated At" not in sections:
         raise ValueError(f"{relative_path} is missing its required Updated At section.")
+    missing_sections = [title for title in required_sections if title not in sections]
+    if missing_sections:
+        joined = ", ".join(missing_sections)
+        raise ValueError(f"{relative_path} is missing required sections: {joined}")
+    for title in required_explained_sections:
+        _validate_explained_bullet_section(relative_path, title, sections.get(title))
 
     document = PlanningDocument(
         relative_path=relative_path,
@@ -182,6 +196,36 @@ def load_governed_document(
         raise ValueError(f"{relative_path} Updated At section does not match front matter.")
 
     return document
+
+
+def collect_reference_indicators(
+    document: PlanningDocument,
+    repo_root: Path,
+    *,
+    internal_sections: tuple[str, ...],
+    external_sections: tuple[str, ...],
+) -> tuple[bool, bool, tuple[str, ...], tuple[str, ...]]:
+    """Collect reference indicators from the nominated sections of one planning document."""
+    internal_paths = ordered_unique(
+        *(
+            extract_repo_path_references(section, repo_root)
+            for title in internal_sections
+            if (section := document.section(title)) is not None
+        )
+    )
+    external_urls = ordered_unique(
+        *(
+            extract_external_urls(section)
+            for title in external_sections
+            if (section := document.section(title)) is not None
+        )
+    )
+    return (
+        bool(internal_paths),
+        bool(external_urls),
+        internal_paths,
+        external_urls,
+    )
 
 
 def iter_markdown_documents(
@@ -223,3 +267,27 @@ def _parse_metadata_values(raw_value: str, *, path: str, label: str) -> tuple[st
             )
         return ()
     return values
+
+
+def _validate_explained_bullet_section(
+    relative_path: str,
+    title: str,
+    section: str | None,
+) -> None:
+    if section is None:
+        raise ValueError(f"{relative_path} is missing required section: {title}")
+
+    bullets = [
+        line.strip()
+        for line in section.splitlines()
+        if line.strip().startswith("- ")
+    ]
+    if not bullets:
+        raise ValueError(
+            f"{relative_path} section {title!r} must contain one or more bullet entries."
+        )
+    if any(": " not in bullet for bullet in bullets):
+        raise ValueError(
+            f"{relative_path} section {title!r} must explain the implication of each cited "
+            "source using bullet text that includes ': '."
+        )

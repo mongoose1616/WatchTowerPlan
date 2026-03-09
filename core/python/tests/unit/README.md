@@ -17,6 +17,8 @@
 | `core/python/tests/unit/test_front_matter_validation.py` | Unit tests for registry-backed front-matter validation. |
 | `core/python/tests/unit/test_github_task_sync.py` | Unit tests for push-only GitHub task sync planning behavior. |
 | `core/python/tests/unit/test_prd_index_sync.py` | Unit tests for rebuilding the PRD index from governed PRD documents. |
+| `core/python/tests/unit/test_reference_index_sync.py` | Unit tests for rebuilding the reference index from governed reference docs. |
+| `core/python/tests/unit/test_standard_index_sync.py` | Unit tests for rebuilding the standard index from governed standards docs. |
 | `core/python/tests/unit/test_schema_store.py` | Unit tests for schema-catalog-backed schema resolution and validation. |
 | `core/python/tests/unit/test_traceability_index_sync.py` | Unit tests for rebuilding the traceability index from governed source artifacts. |
 | `core/python/tests/unit/test_validation_evidence.py` | Unit tests for durable validation-evidence document building and write flows. |

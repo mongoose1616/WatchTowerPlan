@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "prd_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,6 +53,8 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - A PRD should include acceptance criteria and success metrics when those can be made concrete.
 - A PRD should record important risks, dependencies, assumptions, and open questions rather than burying them in prose.
 - A PRD should reference the applicable foundation documents when those documents materially shape the product direction or scope.
+- When a PRD includes `Foundations References Applied`, each bullet should explain the product implication created by that source rather than listing the path alone.
+- A PRD should include a `References` section that makes internal or external source use explicit when it informed the document.
 - A PRD should include a compact metadata section near the top with a shared `Trace ID`, stable `PRD ID`, lifecycle `Status`, and `Updated At` RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`.
 - When a PRD has durable requirements or acceptance criteria, assign stable IDs to them so downstream planning and validation work can point back explicitly.
 - Update the PRD tracker and the machine-readable PRD index in the same change set when a PRD is added, renamed, removed, or materially retargeted.
@@ -73,6 +75,7 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - Risks and dependencies
 - Open questions
 - Foundations references applied when relevant
+- `References`
 
 ### Placement rules
 | Document Type | Canonical Location | Notes |
@@ -87,6 +90,7 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - The PRD should include enough structure that later design and implementation planning can trace back to it.
 - Requirements and acceptance criteria should be concrete enough to test or review later.
 - Stable `PRD ID` and `Updated At` values should be easy to find.
+- The PRD should include a `References` section, and that section should make relevant internal or external source use explicit rather than leaving it implicit in prose.
 - When requirement or acceptance IDs are used, they should be stable and unique within the PRD.
 - The PRD should not sprawl across multiple unrelated initiatives.
 
@@ -108,4 +112,4 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - If implementation structure becomes the dominant content, the material should move into a feature design or implementation plan.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T18:25:06Z`

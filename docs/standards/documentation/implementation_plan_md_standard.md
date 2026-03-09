@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "implementation_plan_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,7 +46,9 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Use implementation plans to translate an approved feature design into technical approach, work breakdown, validation, and rollout expectations.
 - Anchor each plan to the feature design, PRD, or direct user request that justified the work.
 - Keep implementation plans above commit-by-commit notes; they should guide execution, not replace code review or workflow procedure.
+- When an external topic already has a governed local reference under `docs/references/**`, cite that local reference as the repo-native lookup surface instead of scattering raw external URLs through the plan body.
 - Include the standards and canonical references that constrain implementation details.
+- `Internal Standards and Canonical References Applied` must explain the local implementation implication of each cited authority. Bare link lists are insufficient.
 - Keep the `Updated At` section aligned with front matter `updated_at` and use RFC 3339 UTC timestamps in the form `YYYY-MM-DDTHH:MM:SSZ`.
 
 ## Structure or Data Model
@@ -65,7 +67,7 @@ Keep implementation plans concrete enough to guide engineering work while preser
 | `Scope Summary` | Required | State what the plan covers and excludes. |
 | `Assumptions and Constraints` | Required | Record the assumptions or hard constraints that shape the work. |
 | `Current-State Context` | Required | Describe the current repository surfaces the plan depends on. |
-| `Internal Standards and Canonical References Applied` | Required | Record the internal authorities that constrain the plan. |
+| `Internal Standards and Canonical References Applied` | Required | Record the internal authorities that constrain the plan and the implementation implication each one creates. Use `source -> implication` bullets, not a bare link list. |
 | `Proposed Technical Approach` | Required | Describe the intended implementation structure and module boundaries. |
 | `Work Breakdown` | Required | Break the work into concrete steps or slices. |
 | `Dependencies` | Required | Record meaningful internal or external dependencies. |
@@ -98,6 +100,7 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Implementation-plan front matter should validate against `implementation_plan_front_matter.v1.schema.json`.
 - The work breakdown should be concrete enough to guide coding, testing, and review.
 - The plan should clearly state how success will be validated.
+- The `Internal Standards and Canonical References Applied` section should explain the implication of each cited source rather than listing links only.
 - `updated_at` in front matter and the `Updated At` body section should match.
 - Reviewers should reject plans that restate a feature design without introducing a real technical approach or execution breakdown.
 
@@ -116,4 +119,4 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Plans should stay modular so later capability areas can reuse the same planning shape.
 
 ## Updated At
-- `2026-03-09T07:05:24Z`
+- `2026-03-09T18:25:06Z`

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "github_sync"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T16:54:39Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -50,8 +50,7 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [GitHub Issues REST API](https://docs.github.com/en/rest/issues/issues)
-- [GitHub Projects API](https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects)
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 
 ## Guidance
 - Treat local task records as the authoritative source of truth.
@@ -157,8 +156,7 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 - [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
-- [GitHub Issues REST API](https://docs.github.com/en/rest/issues/issues)
-- [GitHub Projects API](https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects)
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 
 ## Updated At
-- `2026-03-09T16:54:39Z`
+- `2026-03-09T18:25:06Z`

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "design_document_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T18:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -55,6 +55,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - Use a stable `document_id` per design document.
 - Record the document family explicitly as `feature_design` or `implementation_plan`.
 - Require `source_paths` for implementation plans so the plan-to-design relationship is explicit.
+- Capture whether the design explicitly used internal or external references so reference use is queryable without reparsing Markdown.
 - Keep the human-readable design tracker and the machine-readable index aligned in the same change set.
 
 ## Structure or Data Model
@@ -78,8 +79,12 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `doc_path` | Required | Repository-relative path to the Markdown design document. |
 | `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the design document’s `Updated At` value. |
+| `uses_internal_references` | Required | Whether the design document explicitly cited internal repository references. |
+| `uses_external_references` | Required | Whether the design document explicitly cited external sources. |
 | `source_paths` | Required for implementation plans | Paths to the driving feature design, PRD, or other source surfaces. |
 | `related_paths` | Optional | Related repo paths strongly associated with the design document. |
+| `internal_reference_paths` | Optional | Internal repository paths explicitly cited in the design document reference sections. |
+| `external_reference_urls` | Optional | External URLs explicitly cited in the design document reference sections. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
 
@@ -100,6 +105,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The design-document index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `docs/planning/design/`.
 - Every implementation-plan entry should include `source_paths`.
+- The reference-presence flags should reflect the actual design-document sections that cite internal or external sources.
 - Reviewers should reject index entries that point to stale design docs or leave plan-to-design relationships implicit.
 
 ## Change Control
@@ -118,4 +124,4 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The machine index is for lookup, query, and future tooling. Neither surface replaces the design documents themselves.
 
 ## Updated At
-- `2026-03-09T07:05:24Z`
+- `2026-03-09T18:45:00Z`

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "github"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T16:33:16Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -47,9 +47,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
 - [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
-- [Configuring issue templates for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
-- [Creating a pull request template for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
-- [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields)
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 
 ## Guidance
 - Treat GitHub issues as hosted intake or hosted execution mirrors, not as the sole authoritative task record.
@@ -109,7 +107,8 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 ## References
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 - [README.md](/home/j/WatchTowerPlan/.github/README.md)
 
 ## Updated At
-- `2026-03-09T16:33:16Z`
+- `2026-03-09T18:25:06Z`

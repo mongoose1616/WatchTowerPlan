@@ -14,6 +14,8 @@
 | `docs/commands/core_python/watchtower_core_query.md` | Human-readable command page for the watchtower-core query command group. |
 | `docs/commands/core_python/watchtower_core_query_paths.md` | Human-readable command page for the watchtower-core query paths command. |
 | `docs/commands/core_python/watchtower_core_query_commands.md` | Human-readable command page for the watchtower-core query commands command. |
+| `docs/commands/core_python/watchtower_core_query_references.md` | Human-readable command page for the watchtower-core query references command. |
+| `docs/commands/core_python/watchtower_core_query_standards.md` | Human-readable command page for the watchtower-core query standards command. |
 | `docs/commands/core_python/watchtower_core_query_prds.md` | Human-readable command page for the watchtower-core query prds command. |
 | `docs/commands/core_python/watchtower_core_query_decisions.md` | Human-readable command page for the watchtower-core query decisions command. |
 | `docs/commands/core_python/watchtower_core_query_designs.md` | Human-readable command page for the watchtower-core query designs command. |
@@ -23,6 +25,8 @@
 | `docs/commands/core_python/watchtower_core_query_trace.md` | Human-readable command page for the watchtower-core query trace command. |
 | `docs/commands/core_python/watchtower_core_sync.md` | Human-readable command page for the watchtower-core sync command group. |
 | `docs/commands/core_python/watchtower_core_sync_command_index.md` | Human-readable command page for the watchtower-core sync command-index command. |
+| `docs/commands/core_python/watchtower_core_sync_reference_index.md` | Human-readable command page for the watchtower-core sync reference-index command. |
+| `docs/commands/core_python/watchtower_core_sync_standard_index.md` | Human-readable command page for the watchtower-core sync standard-index command. |
 | `docs/commands/core_python/watchtower_core_sync_prd_index.md` | Human-readable command page for the watchtower-core sync prd-index command. |
 | `docs/commands/core_python/watchtower_core_sync_prd_tracking.md` | Human-readable command page for the watchtower-core sync prd-tracking command. |
 | `docs/commands/core_python/watchtower_core_sync_decision_index.md` | Human-readable command page for the watchtower-core sync decision-index command. |

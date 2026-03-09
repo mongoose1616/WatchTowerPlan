@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:standard-index:v1",
+  "title": "Standard Index",
+  "description": "Machine-readable lookup index for governed standards stored under docs/standards/.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:standard-index:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "index.standards"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/standardEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "category": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "docPath": {
+      "type": "string",
+      "pattern": "^docs/standards/.+\\.md$"
+    },
+    "referenceDocPathList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^docs/references/.+\\.md$"
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "urlList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^https?://.+$"
+      }
+    },
+    "standardEntry": {
+      "type": "object",
+      "required": [
+        "standard_id",
+        "category",
+        "title",
+        "summary",
+        "status",
+        "doc_path",
+        "updated_at",
+        "uses_internal_references",
+        "uses_external_references"
+      ],
+      "properties": {
+        "standard_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "category": {
+          "$ref": "#/$defs/category"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "doc_path": {
+          "$ref": "#/$defs/docPath"
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "uses_internal_references": {
+          "type": "boolean"
+        },
+        "uses_external_references": {
+          "type": "boolean"
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "reference_doc_paths": {
+          "$ref": "#/$defs/referenceDocPathList"
+        },
+        "internal_reference_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "external_reference_urls": {
+          "$ref": "#/$defs/urlList"
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "uses_external_references": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "external_reference_urls"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -12,6 +12,8 @@
       "status": "active",
       "doc_path": "docs/planning/prds/core_python_foundation.md",
       "updated_at": "2026-03-09T04:55:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "requirement_ids": [
         "req.core_python_foundation.001",
         "req.core_python_foundation.002",
@@ -41,6 +43,17 @@
         "core/python/",
         "core/control_plane/",
         "docs/planning/design/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/product.md",
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/standards.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "tags": [
         "planning",

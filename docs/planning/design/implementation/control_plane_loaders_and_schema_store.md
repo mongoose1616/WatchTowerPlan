@@ -6,7 +6,7 @@ summary: "Breaks the first executable core/python slice into concrete work for l
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -29,7 +29,7 @@ aliases:
 - `Linked Decisions`: `decision.core_python_workspace_root`
 - `Source Designs`: `design.features.core_python_workspace_and_harness`; `design.features.python_validator_execution`; `design.features.schema_resolution_and_index_search`
 - `Linked Acceptance Contracts`: `contract.acceptance.core_python_foundation`
-- `Updated At`: `2026-03-09T07:05:24Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This plan breaks the first executable `core/python` slice into concrete work for loading governed control-plane artifacts and resolving schemas locally through a reusable `SchemaStore`.
@@ -60,15 +60,15 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - `core/python/src/watchtower_core/control_plane/` is still scaffold-only.
 
 ## Internal Standards and Canonical References Applied
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
-- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): loaders and query services should stay in modular package code under `core/python/`.
+- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): schema resolution must come from the governed catalog rather than hardcoded filenames.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): loaded artifact schemas should be validated and reused consistently.
+- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): query services should consume the generated repository path index instead of raw repository scans.
+- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): command lookup loaders should consume the governed command index.
+- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance loading should resolve the governed contract family directly.
+- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): trace queries must consume the unified traceability joins rather than ad hoc link logic.
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md): the loader slice should support the validator execution path without duplicating resolution logic.
+- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md): implementation should follow the approved split between schema resolution and index-backed search.
 
 ## Proposed Technical Approach
 - Add a small `control_plane` module split into:
@@ -122,4 +122,4 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
 
 ## Updated At
-- `2026-03-09T07:05:24Z`
+- `2026-03-09T18:25:06Z`

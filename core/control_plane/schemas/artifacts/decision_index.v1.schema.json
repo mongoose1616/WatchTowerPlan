@@ -78,6 +78,15 @@
         "minLength": 1
       }
     },
+    "urlList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^https?://.+$"
+      }
+    },
     "decisionEntry": {
       "type": "object",
       "required": [
@@ -88,7 +97,9 @@
         "record_status",
         "decision_status",
         "doc_path",
-        "updated_at"
+        "updated_at",
+        "uses_internal_references",
+        "uses_external_references"
       ],
       "properties": {
         "trace_id": {
@@ -117,6 +128,12 @@
         "updated_at": {
           "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
         },
+        "uses_internal_references": {
+          "type": "boolean"
+        },
+        "uses_external_references": {
+          "type": "boolean"
+        },
         "linked_prd_ids": {
           "$ref": "#/$defs/idList"
         },
@@ -128,6 +145,12 @@
         },
         "related_paths": {
           "$ref": "#/$defs/stringList"
+        },
+        "internal_reference_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "external_reference_urls": {
+          "$ref": "#/$defs/urlList"
         },
         "tags": {
           "$ref": "#/$defs/stringList"

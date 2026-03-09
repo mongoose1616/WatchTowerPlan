@@ -13,8 +13,13 @@
       "status": "active",
       "doc_path": "docs/planning/design/features/example_feature.md",
       "updated_at": "2026-03-09T04:55:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/example_feature_plan.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/feature_design_md_standard.md"
       ],
       "tags": [
         "design",
@@ -30,8 +35,13 @@
       "status": "active",
       "doc_path": "docs/planning/design/implementation/example_feature_plan.md",
       "updated_at": "2026-03-09T04:55:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "source_paths": [
         "docs/planning/design/features/example_feature.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/implementation_plan_md_standard.md"
       ],
       "tags": [
         "design",

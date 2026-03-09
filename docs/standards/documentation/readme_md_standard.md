@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "readme_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T18:46:06Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -31,6 +31,11 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - Creating a new directory README.
 - Refreshing a README after a directory's purpose, boundaries, or key contents change.
 - Reviewing whether a README is carrying content that belongs in `AGENTS.md`, `docs/standards/**`, or `workflows/**` instead.
+
+## Related Standards and Sources
+- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md)
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [readme_template.md](/home/j/WatchTowerPlan/docs/templates/readme_template.md)
 
 ## Guidance
 - A `README.md` should describe the current directory, not the repository in general and not a neighboring directory.
@@ -90,4 +95,4 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - If a README needs long procedural content or repository-wide rules, that content probably belongs in a companion document instead.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T18:46:06Z`

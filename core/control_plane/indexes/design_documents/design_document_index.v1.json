@@ -12,10 +12,26 @@
       "summary": "Defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
       "status": "active",
       "doc_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-      "updated_at": "2026-03-09T16:54:39Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "related_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/standards.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "workflows/modules/traceability_reconciliation.md",
+        "workflows/modules/governed_artifact_reconciliation.md",
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "tags": [
@@ -33,11 +49,26 @@
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
       "status": "active",
       "doc_path": "docs/planning/design/features/command_documentation_and_lookup.md",
-      "updated_at": "2026-03-09T07:05:24Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "related_paths": [
         "docs/commands/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/python/src/watchtower_core/cli/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md",
+        "docs/foundations/standards.md",
+        "core/python/",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/templates/command_reference_template.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md"
       ],
       "tags": [
         "design",
@@ -53,11 +84,28 @@
       "summary": "Defines the feature-level technical design for the consolidated Python workspace under core/python and the first functional boundaries of the core helper and harness package.",
       "status": "active",
       "doc_path": "docs/planning/design/features/core_python_workspace_and_harness.md",
-      "updated_at": "2026-03-09T07:05:24Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/python/",
         "core/control_plane/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md",
+        "docs/foundations/standards.md",
+        "core/python/",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
       ],
       "tags": [
         "design",
@@ -73,11 +121,30 @@
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
       "status": "active",
       "doc_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
-      "updated_at": "2026-03-09T16:33:16Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
       "related_paths": [
         ".github/",
         "docs/planning/tasks/",
         "core/python/src/watchtower_core/sync/github_tasks.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/standards.md",
+        ".github/",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        ".github/README.md"
+      ],
+      "external_reference_urls": [
+        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository",
+        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository",
+        "https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields"
       ]
     },
     {
@@ -88,11 +155,30 @@
       "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
       "status": "active",
       "doc_path": "docs/planning/design/features/github_task_push_sync.md",
-      "updated_at": "2026-03-09T16:20:00Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
       "related_paths": [
         "docs/planning/tasks/",
         "core/control_plane/indexes/tasks/task_index.v1.json",
         "core/python/src/watchtower_core/sync/github_tasks.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md",
+        "docs/foundations/standards.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/templates/task_template.md",
+        "docs/references/github_collaboration_reference.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md"
+      ],
+      "external_reference_urls": [
+        "https://docs.github.com/en/rest/issues/issues",
+        "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
       ]
     },
     {
@@ -103,12 +189,24 @@
       "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
       "status": "active",
       "doc_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-      "updated_at": "2026-03-09T16:20:00Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "related_paths": [
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/decisions/decision_tracking.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md",
+        "docs/foundations/standards.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/task_tracking_standard.md"
       ]
     },
     {
@@ -119,12 +217,26 @@
       "summary": "Defines the feature-level design for local-first task records, a generated task tracker, a generated task index, and later GitHub sync support.",
       "status": "active",
       "doc_path": "docs/planning/design/features/local_task_tracking_and_github_sync.md",
-      "updated_at": "2026-03-09T14:41:51Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "related_paths": [
         "docs/planning/tasks/",
         "core/control_plane/indexes/tasks/task_index.v1.json",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md",
+        "docs/foundations/standards.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/templates/task_template.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md"
       ]
     },
     {
@@ -135,12 +247,32 @@
       "summary": "Defines the feature-level technical design for a Python validation layer that reads the authored validator registry from core/control_plane and executes validators deterministically against governed artifacts.",
       "status": "active",
       "doc_path": "docs/planning/design/features/python_validator_execution.md",
-      "updated_at": "2026-03-09T07:05:24Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/python/src/watchtower_core/validation/",
         "core/control_plane/registries/validators/validator_registry.v1.json",
         "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md",
+        "docs/foundations/standards.md",
+        "core/python",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/metadata/naming_and_ids_standard.md",
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/schemas/artifacts/validator_registry.v1.schema.json",
+        "workflows/modules/feature_design_planning.md"
       ],
       "tags": [
         "design",
@@ -156,12 +288,29 @@
       "summary": "Defines the feature-level technical design for deterministic local schema resolution and index-backed repository search in the Python helper layer.",
       "status": "active",
       "doc_path": "docs/planning/design/features/schema_resolution_and_index_search.md",
-      "updated_at": "2026-03-09T07:05:24Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
         "core/python/src/watchtower_core/query/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md",
+        "docs/foundations/standards.md",
+        "core/python",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/metadata/naming_and_ids_standard.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
       ],
       "tags": [
         "design",
@@ -177,7 +326,9 @@
       "summary": "Breaks the first executable core/python slice into concrete work for loading governed control-plane artifacts and resolving schemas locally through a reusable SchemaStore.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
-      "updated_at": "2026-03-09T07:05:24Z",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
       "source_paths": [
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/python_validator_execution.md",
@@ -187,6 +338,20 @@
         "core/python/src/watchtower_core/control_plane/",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/registries/validators/validator_registry.v1.json"
+      ],
+      "internal_reference_paths": [
+        "core/python/",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md"
       ],
       "tags": [
         "design",

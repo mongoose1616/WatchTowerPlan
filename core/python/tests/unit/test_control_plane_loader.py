@@ -37,9 +37,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     command_index = loader.load_command_index()
     doctor = command_index.get("command.watchtower_core.doctor")
     query_paths = command_index.get("command.watchtower_core.query.paths")
+    query_standards = command_index.get("command.watchtower_core.query.standards")
     query_acceptance = command_index.get("command.watchtower_core.query.acceptance")
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
     query_trace = command_index.get("command.watchtower_core.query.trace")
+    sync_standard_index = command_index.get("command.watchtower_core.sync.standard_index")
     sync_traceability = command_index.get("command.watchtower_core.sync.traceability_index")
     sync_github_tasks = command_index.get("command.watchtower_core.sync.github_tasks")
     validate_acceptance = command_index.get("command.watchtower_core.validate.acceptance")
@@ -50,6 +52,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert doctor.doc_path == "docs/commands/core_python/watchtower_core_doctor.md"
     assert query_paths.default_output_format == "human"
     assert query_paths.doc_path == "docs/commands/core_python/watchtower_core_query_paths.md"
+    assert query_standards.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_standards.doc_path
+        == "docs/commands/core_python/watchtower_core_query_standards.md"
+    )
     assert query_acceptance.parent_command_id == "command.watchtower_core.query"
     assert (
         query_acceptance.doc_path
@@ -60,8 +67,25 @@ def test_control_plane_loader_reads_command_index() -> None:
         query_evidence.doc_path
         == "docs/commands/core_python/watchtower_core_query_evidence.md"
     )
+    query_references = command_index.get("command.watchtower_core.query.references")
     assert query_trace.parent_command_id == "command.watchtower_core.query"
+    assert query_references.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_references.doc_path
+        == "docs/commands/core_python/watchtower_core_query_references.md"
+    )
     assert sync_traceability.parent_command_id == "command.watchtower_core.sync"
+    sync_reference_index = command_index.get("command.watchtower_core.sync.reference_index")
+    assert sync_reference_index.parent_command_id == "command.watchtower_core.sync"
+    assert (
+        sync_reference_index.doc_path
+        == "docs/commands/core_python/watchtower_core_sync_reference_index.md"
+    )
+    assert sync_standard_index.parent_command_id == "command.watchtower_core.sync"
+    assert (
+        sync_standard_index.doc_path
+        == "docs/commands/core_python/watchtower_core_sync_standard_index.md"
+    )
     assert (
         sync_traceability.doc_path
         == "docs/commands/core_python/watchtower_core_sync_traceability_index.md"
@@ -104,10 +128,12 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     prd_index = loader.load_prd_index()
     decision_index = loader.load_decision_index()
     design_index = loader.load_design_document_index()
+    standard_index = loader.load_standard_index()
 
     prd = prd_index.get("prd.core_python_foundation")
     decision = decision_index.get("decision.core_python_workspace_root")
     design = design_index.get("design.features.python_validator_execution")
+    standard = standard_index.get("std.governance.github_collaboration")
 
     assert prd.trace_id == "trace.core_python_foundation"
     assert "req.core_python_foundation.003" in prd.requirement_ids
@@ -115,3 +141,24 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     assert "prd.core_python_foundation" in decision.linked_prd_ids
     assert design.family == "feature_design"
     assert design.trace_id == "trace.core_python_foundation"
+    assert prd.uses_internal_references is True
+    assert decision.uses_internal_references is True
+    assert design.uses_internal_references is True
+    assert standard.category == "governance"
+    assert standard.uses_external_references is True
+    assert "docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
+
+
+def test_control_plane_loader_reads_reference_index() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    reference_index = loader.load_reference_index()
+    entry = reference_index.get("ref.github_collaboration")
+
+    assert entry.doc_path == "docs/references/github_collaboration_reference.md"
+    assert entry.uses_external_references is True
+    assert "https://docs.github.com/en/rest/issues/issues" in entry.canonical_upstream_urls
+    assert (
+        "docs/standards/governance/github_collaboration_standard.md"
+        in entry.applied_by_paths
+    )

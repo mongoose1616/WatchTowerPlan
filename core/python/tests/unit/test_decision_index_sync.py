@@ -18,7 +18,11 @@ def test_decision_index_sync_builds_schema_valid_document() -> None:
     loader.schema_store.validate_instance(document)
     entries = document["entries"]
     assert isinstance(entries, list)
-    assert any(entry["decision_id"] == "decision.core_python_workspace_root" for entry in entries)
+    assert any(
+        entry["decision_id"] == "decision.core_python_workspace_root"
+        and entry["uses_internal_references"] is True
+        for entry in entries
+    )
 
 
 def test_decision_index_sync_writes_temp_output(tmp_path: Path) -> None:

@@ -47,15 +47,15 @@ aliases:
 - <Current gaps or constraints that shape the design.>
 
 ## Foundations References Applied
-- <Relevant docs/foundations document and the design implication it creates.>
-- <Relevant docs/foundations document and the design implication it creates.>
+- <Relevant docs/foundations document>: <Design implication, constraint, or rule adopted from it.>
+- <Relevant docs/foundations document>: <Design implication, constraint, or rule adopted from it.>
 
 ## Internal Standards and Canonical References Applied
-- <Relevant standard, template, schema, registry, contract, or canonical internal doc.>
-- <Relevant standard, template, schema, registry, contract, or canonical internal doc.>
+- <Relevant standard, template, schema, registry, contract, or canonical internal doc>: <What this authority requires or changes in the design.>
+- <Relevant standard, template, schema, registry, contract, or canonical internal doc>: <What this authority requires or changes in the design.>
 
 ## External Sources Consulted
-- <Primary external source if one materially shaped the design. Delete if none were needed.>
+- <Primary external source>: <What it clarified, constrained, or justified in this design. Delete if none were needed.>
 
 ## Design Goals and Constraints
 - <Primary design goal.>

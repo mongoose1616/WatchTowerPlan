@@ -45,8 +45,8 @@ uv run watchtower-core query decisions --linked-prd-id prd.core_python_foundatio
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- In `human` mode, the command prints matching decision IDs, titles, and summaries.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, and result records.
+- In `human` mode, the command prints matching decision IDs, titles, summaries, and whether the decision explicitly used internal or external references.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and reference-use indicators captured in the decision index.
 - If no entries match the requested filters, the command exits successfully and reports that no decision entries matched.
 
 ## Related Commands
@@ -62,4 +62,4 @@ uv run watchtower-core query decisions --linked-prd-id prd.core_python_foundatio
 - `core/control_plane/indexes/decisions/decision_index.v1.json`
 
 ## Updated At
-- `2026-03-09T07:21:07Z`
+- `2026-03-09T18:45:00Z`

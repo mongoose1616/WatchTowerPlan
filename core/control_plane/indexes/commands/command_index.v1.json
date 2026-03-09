@@ -99,7 +99,7 @@
     {
       "command_id": "command.watchtower_core.query",
       "command": "watchtower-core query",
-      "summary": "This command group searches the governed lookup indexes for repository paths, documented commands, planning artifacts, and traceability records.",
+      "summary": "This command group searches the governed lookup indexes for repository paths, documented commands, curated references, governed standards, planning artifacts, and traceability records.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -296,6 +296,54 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.query.references",
+      "command": "watchtower-core query references",
+      "summary": "This command searches the governed reference index so engineers and agents can find curated reference documents by topic, reference ID, local repository touchpoint, canonical upstream URL, or free-text lookup terms.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_references.md",
+      "synopsis": "uv run watchtower-core query references [--query <text>] [--reference-id <reference_id>] [--tag <tag>] [--related-path <path>] [--upstream-url <url>] [--cited-by-path <doc_path>] [--applied-by-path <doc_path>] [--limit <n>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "references"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.standards",
+      "command": "watchtower-core query standards",
+      "summary": "This command searches the governed standard index so engineers and agents can find standards and best-practice docs by category, related repo surface, reference doc, or free-text governance context.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_standards.md",
+      "synopsis": "uv run watchtower-core query standards [--query <text>] [--standard-id <standard_id>] [--category <category>] [--tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--limit <n>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "standards"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.tasks",
       "command": "watchtower-core query tasks",
       "summary": "This command searches the governed task index so engineers and agents can find local task records by task ID, task status, owner, trace, blockers, dependencies, priority, task kind, or free-text execution context.",
@@ -350,7 +398,7 @@
     {
       "command_id": "command.watchtower_core.sync",
       "command": "watchtower-core sync",
-      "summary": "This command group rebuilds derived governed artifacts or hosted-task mirrors from authored repository sources, including command lookup, planning indexes, planning trackers, traceability, repository navigation surfaces, and GitHub task sync.",
+      "summary": "This command group rebuilds derived governed artifacts or hosted-task mirrors from authored repository sources, including command lookup, reference lookup, planning indexes, planning trackers, traceability, repository navigation surfaces, and GitHub task sync.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -572,6 +620,31 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.sync.reference_index",
+      "command": "watchtower-core sync reference-index",
+      "summary": "This command rebuilds the governed reference index from the authored reference documents under `docs/references/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_reference_index.md",
+      "synopsis": "uv run watchtower-core sync reference-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "reference",
+        "index"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.sync.repository_paths",
       "command": "watchtower-core sync repository-paths",
       "summary": "This command rebuilds the repository path index from README inventory tables and can either report the rebuilt result or write it back to disk.",
@@ -599,6 +672,31 @@
         "indexes"
       ],
       "notes": "Runs in dry-run mode by default and only writes when --write or --output is provided."
+    },
+    {
+      "command_id": "command.watchtower_core.sync.standard_index",
+      "command": "watchtower-core sync standard-index",
+      "summary": "This command rebuilds the governed standard index from the governed standards and best-practice documents under `docs/standards/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_standard_index.md",
+      "synopsis": "uv run watchtower-core sync standard-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "standard",
+        "index"
+      ]
     },
     {
       "command_id": "command.watchtower_core.sync.task_index",

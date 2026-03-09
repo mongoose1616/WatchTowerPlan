@@ -6,7 +6,7 @@ summary: "Defines the feature-level design for a human-readable command-page fam
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T18:25:06Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T07:05:24Z`
+- `Updated At`: `2026-03-09T18:25:06Z`
 
 ## Summary
 This document defines the feature-level design for a human-readable command-page family under `docs/commands/` and a machine-readable command index under `core/control_plane/indexes/commands/`.
@@ -56,11 +56,11 @@ This document defines the feature-level design for a human-readable command-page
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one canonical purpose per artifact and avoid parallel truth between docs and machine-readable indexes.
 
 ## Internal Standards and Canonical References Applied
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md)
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
+- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages need a stable human-readable synopsis, options, examples, and behavior shape.
+- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): command lookup needs a governed machine index with stable command identities and doc links.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): command examples and workspace assumptions should stay anchored to `core/python/`.
+- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): command-doc and command-index surfaces need to remain discoverable through the repository path index.
+- [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md): each command page should share the same predictable authoring shape.
 
 ## Design Goals and Constraints
 - Give humans one obvious place to find command docs.
@@ -152,4 +152,4 @@ This document defines the feature-level design for a human-readable command-page
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
 
 ## Updated At
-- `2026-03-09T07:05:24Z`
+- `2026-03-09T18:25:06Z`
