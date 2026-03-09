@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
@@ -44,3 +45,27 @@ def load_front_matter(path: Path) -> dict[str, Any]:
             "Parsed front matter must be a YAML mapping object.",
         )
     return loaded
+
+
+def render_front_matter(front_matter: Mapping[str, Any]) -> str:
+    """Render one YAML front-matter mapping block without surrounding fences."""
+    rendered = yaml.safe_dump(
+        dict(front_matter),
+        allow_unicode=False,
+        sort_keys=False,
+    ).strip()
+    return rendered
+
+
+def replace_front_matter(path: Path, front_matter: Mapping[str, Any]) -> None:
+    """Replace the leading YAML front matter in one Markdown document."""
+    text = path.read_text(encoding="utf-8")
+    match = FRONT_MATTER_PATTERN.search(text)
+    if match is None:
+        raise FrontMatterParseError(
+            "front_matter_missing",
+            "Missing YAML front matter block at the top of the Markdown document.",
+        )
+    body = FRONT_MATTER_PATTERN.sub("", text, count=1).lstrip("\r\n")
+    rendered = render_front_matter(front_matter)
+    path.write_text(f"---\n{rendered}\n---\n\n{body}", encoding="utf-8")

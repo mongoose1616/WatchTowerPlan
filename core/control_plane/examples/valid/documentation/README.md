@@ -13,4 +13,5 @@
 | `core/control_plane/examples/valid/documentation/prd_front_matter.v1.example.json` | Valid parsed front matter example for a governed PRD document. |
 | `core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json` | Valid parsed front matter example for a governed reference document. |
 | `core/control_plane/examples/valid/documentation/standard_front_matter.v1.example.json` | Valid parsed front matter example for a governed standard document. |
+| `core/control_plane/examples/valid/documentation/task_front_matter.v1.example.json` | Valid parsed front matter example for a governed task document. |
 | `core/control_plane/examples/valid/documentation/workflow_front_matter.v1.example.json` | Valid parsed front matter example for a governed workflow document. |

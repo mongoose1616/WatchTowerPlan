@@ -45,11 +45,13 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     validators = loader.load_validator_registry()
     path_index = loader.load_repository_path_index()
     command_index = loader.load_command_index()
+    task_index = loader.load_task_index()
 
     assert catalog.artifact_id == "registry.schema_catalog"
     assert validators.artifact_id == "registry.validators"
     assert path_index.artifact_id == "index.repository_paths"
     assert command_index.artifact_id == "index.commands"
+    assert task_index.artifact_id == "index.tasks"
 
 
 def test_control_plane_loader_validates_current_traceability_artifacts() -> None:
@@ -111,6 +113,20 @@ def test_governed_document_front_matter_profiles_validate() -> None:
                 "README.md",
             },
             "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1",
+        ),
+        (
+            REPO_ROOT / "docs/planning/tasks/open",
+            {
+                "README.md",
+            },
+            "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
+        ),
+        (
+            REPO_ROOT / "docs/planning/tasks/closed",
+            {
+                "README.md",
+            },
+            "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
         ),
         (
             REPO_ROOT / "docs/standards",

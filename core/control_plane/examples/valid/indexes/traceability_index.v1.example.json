@@ -9,6 +9,7 @@
       "title": "Example Trace",
       "summary": "Example trace join record.",
       "status": "active",
+      "initiative_status": "active",
       "updated_at": "2026-03-09T04:55:49Z",
       "prd_ids": [
         "prd.example_trace"

@@ -12,4 +12,5 @@
 | `core/control_plane/examples/invalid/indexes/design_document_index_plan_missing_sources.v1.example.json` | Invalid design-document index example with an implementation plan entry missing required source paths. |
 | `core/control_plane/examples/invalid/indexes/prd_index_missing_trace_id.v1.example.json` | Invalid PRD index example missing a required trace ID. |
 | `core/control_plane/examples/invalid/indexes/repository_path_index_missing_summary.v1.example.json` | Invalid repository path index example with a required entry field omitted. |
+| `core/control_plane/examples/invalid/indexes/task_index_open_task_with_done_status.v1.example.json` | Invalid task index example with an open task document path and a terminal task status. |
 | `core/control_plane/examples/invalid/indexes/traceability_index_missing_updated_at.v1.example.json` | Invalid traceability index example missing the required updated-at timestamp. |

@@ -3,6 +3,7 @@
 > Use this template for root-level or nested `AGENTS.md` files.
 > Keep the file concise.
 > Use it as a thin instruction layer for the current directory, not as a full operating manual.
+> Keep `AGENTS.md` as plain Markdown. Do not add YAML front matter unless a narrower repository rule explicitly requires it.
 > Root files should point to the canonical routing surface.
 > Nested files should add only subtree-local rules and must not weaken parent instructions.
 > When instantiating this template, remove template-authoring language and rewrite the file as active instructions for the current scope.

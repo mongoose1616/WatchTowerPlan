@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "naming_and_ids"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T14:41:51Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -61,6 +61,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 | Governed document front matter | dotted family prefix + concept slug | `ref.front_matter` | Best for references, standards, workflows, and similar long-lived docs. |
 | PRD identifier | dotted family prefix + PRD slug | `prd.traceability_baseline` | Use for durable PRD identity in trackers and indexes. |
 | Decision identifier | dotted family prefix + decision slug | `decision.validation_engine_selection` | Use for durable decision-record identity in trackers and indexes. |
+| Task identifier | dotted family prefix + task slug + sequence token | `task.local_task_tracking_foundation.001` | Use for local task-record identity in trackers and indexes. |
 | Published schema `$id` | `urn:watchtower:schema:` namespace + version token | `urn:watchtower:schema:interfaces:documentation:front-matter-base:v1` | Use for canonical schema identity rather than file paths. |
 | Schema filename | snake case concept name + version + `.schema.json` | `reference_front_matter.v1.schema.json` | Version should be obvious in review. |
 | Example filename | snake case concept name + optional case suffix + version + `.example.json` | `reference_front_matter_missing_tags.v1.example.json` | Use case suffix only when it improves clarity. |
@@ -81,6 +82,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
   - `trace` for shared traceability IDs
   - `prd` for PRD IDs
   - `decision` for decision-record IDs
+  - `task` for task IDs
   - `design.features` for feature-design IDs
   - `design.implementation` for implementation-plan IDs
 
@@ -127,6 +129,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - `wf.documentation_generation` is the stable document ID for the documentation-generation workflow family.
 - `prd.traceability_baseline` is a stable PRD identifier.
 - `decision.validation_engine_selection` is a stable decision-record identifier.
+- `task.local_task_tracking_foundation.001` is a stable local task identifier.
 - `urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1` is the canonical `$id` for the reference front matter schema.
 - `reference_front_matter.v1.schema.json` is the corresponding schema filename.
 - A validation run ID may use a UUID, but the related PRD, decision, design, and plan IDs should remain readable deterministic IDs.
@@ -156,4 +159,4 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Future standards may define narrower rules for specific artifact families, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T14:41:51Z`

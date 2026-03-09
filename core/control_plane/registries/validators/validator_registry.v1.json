@@ -132,6 +132,21 @@
       ]
     },
     {
+      "id": "validator.documentation.task_front_matter",
+      "title": "Task Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed local task records.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "docs/planning/tasks/open/**",
+        "docs/planning/tasks/closed/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1"
+      ]
+    },
+    {
       "id": "validator.documentation.workflow_front_matter",
       "title": "Workflow Front Matter Validator",
       "description": "Validates parsed front matter metadata for workflow documents that adopt governed front matter.",

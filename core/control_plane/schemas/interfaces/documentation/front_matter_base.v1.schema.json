@@ -36,7 +36,8 @@
         "prd",
         "decision_record",
         "feature_design",
-        "implementation_plan"
+        "implementation_plan",
+        "task"
       ],
       "description": "Governed document family."
     },
@@ -107,6 +108,5 @@
         "minLength": 1
       }
     }
-  },
-  "additionalProperties": false
+  }
 }

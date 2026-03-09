@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "traceability_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T06:54:19Z"
+updated_at: "2026-03-09T14:41:51Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the unified machine-readable traceability index stored under `core/control_plane/indexes/traceability/`.
 
 ## Purpose
-- Provide one compact join surface for PRDs, decisions, designs, implementation plans, acceptance contracts, validators, and validation evidence.
+- Provide one compact join surface for PRDs, decisions, designs, implementation plans, task records, acceptance contracts, validators, and validation evidence.
 - Let Python query services and workflows answer trace questions without parsing multiple indexes and documents ad hoc.
 - Complete the baseline machine-readable trace chain established by the repository planning model.
 
@@ -42,6 +42,7 @@ This standard defines the unified machine-readable traceability index stored und
 - [design_document_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/design_document_index_standard.md)
 - [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
 - [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md)
+- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/README.md)
 
@@ -50,10 +51,11 @@ This standard defines the unified machine-readable traceability index stored und
 - Store published traceability indexes under `core/control_plane/indexes/traceability/`.
 - Use JSON for the published traceability index artifact.
 - Keep family-specific indexes as their local lookup surfaces and use the unified traceability index as the cross-family join layer.
-- Treat the governed PRD index, decision index, design-document index, acceptance-contract artifacts, and validation-evidence artifacts as the canonical source surfaces for rebuilding the unified traceability index.
+- Treat the governed PRD index, decision index, design-document index, task index, acceptance-contract artifacts, and validation-evidence artifacts as the canonical source surfaces for rebuilding the unified traceability index.
 - Every traceability entry should publish:
   - `trace_id`
   - a concise title and summary
+  - `initiative_status`
   - upstream planning IDs
   - downstream acceptance, validator, and evidence IDs when they exist
   - key related paths and an `updated_at` RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`
@@ -77,11 +79,16 @@ This standard defines the unified machine-readable traceability index stored und
 | `title` | Required | Human-readable trace title. |
 | `summary` | Required | Concise description of what the traced initiative covers. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
+| `initiative_status` | Required | Initiative outcome state such as `active` or `completed`. |
 | `updated_at` | Required | Last meaningful content update RFC 3339 UTC timestamp for the joined record. |
+| `closed_at` | Optional | Required when the initiative status is terminal. |
+| `closure_reason` | Optional | Required when the initiative status is terminal. |
+| `superseded_by_trace_id` | Optional | Required when `initiative_status` is `superseded`. |
 | `prd_ids` | Optional | Linked PRD identifiers. |
 | `decision_ids` | Optional | Linked decision identifiers. |
 | `design_ids` | Optional | Linked feature-design identifiers. |
 | `plan_ids` | Optional | Linked implementation-plan identifiers. |
+| `task_ids` | Optional | Linked local task identifiers. |
 | `requirement_ids` | Optional | Linked requirement identifiers. |
 | `acceptance_ids` | Optional | Linked acceptance identifiers. |
 | `acceptance_contract_ids` | Optional | Linked acceptance contract identifiers. |
@@ -92,7 +99,7 @@ This standard defines the unified machine-readable traceability index stored und
 | `notes` | Optional | Short join note. |
 
 ## Process or Workflow
-1. Gather the traced artifact IDs from the governed PRD, decision, and design indexes plus the current acceptance-contract and validation-evidence artifacts.
+1. Gather the traced artifact IDs from the governed PRD, decision, design, and task indexes plus the current acceptance-contract and validation-evidence artifacts.
 2. Rebuild the matching traceability entries under the shared `trace_id` values, preferably through the Python sync surface rather than manual hand editing.
 3. Validate the index artifact against its published schema.
 4. Check that linked IDs and related paths still resolve.
@@ -100,6 +107,7 @@ This standard defines the unified machine-readable traceability index stored und
 
 ## Examples
 - A core Python foundation trace should join the PRD, workspace-root decision, feature designs, implementation plan, acceptance contract, and validation evidence under `trace.core_python_foundation`.
+- A local task-tracking trace can join a feature design plus local task records before GitHub sync exists.
 - A future trace with no decision record can omit `decision_ids` while still joining PRD, design, plan, and evidence artifacts.
 - A generic folder README does not belong in the traceability index unless it is a high-signal related path for a traced initiative.
 
@@ -116,10 +124,11 @@ This standard defines the unified machine-readable traceability index stored und
 
 ## References
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
+- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/README.md)
 
 ## Notes
 - This index is the machine-readable join surface, not the sole authoritative source of the linked artifacts themselves.
 
 ## Updated At
-- `2026-03-09T06:54:19Z`
+- `2026-03-09T14:41:51Z`

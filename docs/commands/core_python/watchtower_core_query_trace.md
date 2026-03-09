@@ -1,7 +1,7 @@
 # `watchtower-core query trace`
 
 ## Summary
-This command resolves one governed traceability record by trace ID so engineers can inspect the linked planning, validation, and evidence surfaces for a single initiative.
+This command resolves one governed traceability record by trace ID so engineers can inspect the linked planning, validation, evidence, task, and closeout surfaces for a single initiative.
 
 ## Use When
 - You already know the trace ID you want to inspect.
@@ -40,7 +40,7 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- In `human` mode, the command prints the trace ID, title, summary, and any linked PRD, decision, design, plan, acceptance-contract, or evidence IDs present in the record.
+- In `human` mode, the command prints the trace ID, title, summary, initiative status, closeout metadata when present, and any linked PRD, decision, design, plan, task, acceptance-contract, or evidence IDs present in the record.
 - In `json` mode, the command prints one JSON object with the command name, status, and the resolved trace record.
 - If the trace ID is unknown, the command exits with status code `1` and reports the missing ID.
 
@@ -51,6 +51,7 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 | `watchtower-core query prds` | Searches the PRD index when you do not already know the exact trace ID. |
 | `watchtower-core query decisions` | Searches the decision index when you want decision records rather than a joined trace record. |
 | `watchtower-core query designs` | Searches the design-document index when you want design docs rather than a joined trace record. |
+| `watchtower-core query tasks` | Searches the task index when you want task records rather than a joined trace record. |
 | `watchtower-core sync traceability-index` | Rebuilds the traceability index that this command reads. |
 | `watchtower-core query paths` | Helps find the traceability index artifact path if you need to inspect the source artifact directly. |
 | `watchtower-core query commands` | Helps discover other CLI surfaces once you know which workflow you want. |
@@ -61,4 +62,4 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 - `core/control_plane/indexes/traceability/traceability_index.v1.json`
 
 ## Updated At
-- `2026-03-09T07:21:07Z`
+- `2026-03-09T14:41:51Z`

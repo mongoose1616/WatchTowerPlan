@@ -11,6 +11,7 @@ from watchtower_core.query.repository import (
     RepositoryPathQueryService,
     RepositoryPathSearchParams,
 )
+from watchtower_core.query.tasks import TaskQueryService, TaskSearchParams
 from watchtower_core.query.traceability import TraceabilityQueryService
 
 __all__ = [
@@ -24,5 +25,7 @@ __all__ = [
     "PrdSearchParams",
     "RepositoryPathQueryService",
     "RepositoryPathSearchParams",
+    "TaskQueryService",
+    "TaskSearchParams",
     "TraceabilityQueryService",
 ]

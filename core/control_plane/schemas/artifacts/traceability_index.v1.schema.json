@@ -65,6 +65,16 @@
         "minLength": 1
       }
     },
+    "initiativeStatus": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "superseded",
+        "cancelled",
+        "abandoned"
+      ]
+    },
     "traceEntry": {
       "type": "object",
       "required": [
@@ -72,6 +82,7 @@
         "title",
         "summary",
         "status",
+        "initiative_status",
         "updated_at"
       ],
       "properties": {
@@ -89,8 +100,21 @@
         "status": {
           "$ref": "#/$defs/lifecycleStatus"
         },
+        "initiative_status": {
+          "$ref": "#/$defs/initiativeStatus"
+        },
         "updated_at": {
           "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "closed_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "closure_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "superseded_by_trace_id": {
+          "$ref": "#/$defs/idPattern"
         },
         "prd_ids": {
           "$ref": "#/$defs/idList"
@@ -102,6 +126,9 @@
           "$ref": "#/$defs/idList"
         },
         "plan_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "task_ids": {
           "$ref": "#/$defs/idList"
         },
         "requirement_ids": {
@@ -130,6 +157,81 @@
           "minLength": 1
         }
       },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "const": "active"
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "closed_at"
+                  ]
+                },
+                {
+                  "required": [
+                    "closure_reason"
+                  ]
+                },
+                {
+                  "required": [
+                    "superseded_by_trace_id"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "enum": [
+                  "completed",
+                  "superseded",
+                  "cancelled",
+                  "abandoned"
+                ]
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "closed_at",
+              "closure_reason"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "const": "superseded"
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "superseded_by_trace_id"
+            ]
+          }
+        }
+      ],
       "additionalProperties": false
     }
   }

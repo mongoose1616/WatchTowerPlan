@@ -17,4 +17,5 @@
 | `docs/templates/readme_template.md` | Template for a directory README.md file. |
 | `docs/templates/reference_template.md` | Template for an external reference document. |
 | `docs/templates/routing_table_template.md` | Template for a routing table document. |
+| `docs/templates/task_template.md` | Template for a local-first task record under `docs/planning/tasks/`. |
 | `docs/templates/workflow_template.md` | Template for a workflow document. |

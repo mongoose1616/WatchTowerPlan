@@ -27,6 +27,48 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.closeout",
+      "command": "watchtower-core closeout",
+      "summary": "This command group applies initiative-level closeout state to traced planning surfaces.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_closeout.md",
+      "synopsis": "uv run watchtower-core closeout <closeout_command> [args]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "tags": [
+        "python",
+        "cli",
+        "closeout"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.closeout.initiative",
+      "command": "watchtower-core closeout initiative",
+      "summary": "This command records terminal closeout state for one traced initiative and, in write mode, refreshes the human planning trackers that mirror that state.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "synopsis": "uv run watchtower-core closeout initiative --trace-id <trace_id> --initiative-status <completed|superseded|cancelled|abandoned> --closure-reason <reason> [--superseded-by-trace-id <trace_id>] [--closed-at <timestamp>] [--allow-open-tasks] [--write] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.closeout",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "closeout",
+        "initiative"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.doctor",
       "command": "watchtower-core doctor",
       "summary": "This command runs the current lightweight workspace smoke check for the core Python package and confirms that the scaffolded CLI surface is available.",
@@ -206,9 +248,33 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.query.tasks",
+      "command": "watchtower-core query tasks",
+      "summary": "This command searches the governed task index so engineers and agents can find local task records by task ID, task status, owner, trace, blockers, dependencies, priority, task kind, or free-text execution context.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_tasks.md",
+      "synopsis": "uv run watchtower-core query tasks [--query <text>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--priority <priority>] [--owner <owner>] [--task-kind <task_kind>] [--blocked-only] [--blocked-by <task_id>] [--depends-on <task_id>] [--include-dependency-details] [--limit <n>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "tasks"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.trace",
       "command": "watchtower-core query trace",
-      "summary": "This command resolves one governed traceability record by trace ID so engineers can inspect the linked planning, validation, and evidence surfaces for a single initiative.",
+      "summary": "This command resolves one governed traceability record by trace ID so engineers can inspect the linked planning, validation, evidence, task, and closeout surfaces for a single initiative.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -236,7 +302,7 @@
     {
       "command_id": "command.watchtower_core.sync",
       "command": "watchtower-core sync",
-      "summary": "This command group rebuilds derived governed artifacts from authored repository sources, including command lookup, planning indexes, traceability, and repository navigation surfaces.",
+      "summary": "This command group rebuilds derived governed artifacts or hosted-task mirrors from authored repository sources, including command lookup, planning indexes, planning trackers, traceability, repository navigation surfaces, and GitHub task sync.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -307,6 +373,31 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.sync.decision_tracking",
+      "command": "watchtower-core sync decision-tracking",
+      "summary": "This command rebuilds the human-readable decision tracker from the governed decision index and the initiative-closeout state stored in traceability.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_decision_tracking.md",
+      "synopsis": "uv run watchtower-core sync decision-tracking [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "decision",
+        "tracking"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.sync.design_document_index",
       "command": "watchtower-core sync design-document-index",
       "summary": "This command rebuilds the governed design-document index from the governed feature designs and implementation plans under `docs/planning/design/`.",
@@ -333,6 +424,56 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.sync.design_tracking",
+      "command": "watchtower-core sync design-tracking",
+      "summary": "This command rebuilds the human-readable design tracker from the governed design index and the initiative-closeout state stored in traceability.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_design_tracking.md",
+      "synopsis": "uv run watchtower-core sync design-tracking [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "design",
+        "tracking"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync.github_tasks",
+      "command": "watchtower-core sync github-tasks",
+      "summary": "This command pushes local-first task records to GitHub issues and optional project items while keeping the local task files authoritative.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+      "synopsis": "uv run watchtower-core sync github-tasks [--repo <owner/name>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--owner <owner>] [--task-kind <task_kind>] [--project-owner <login>] [--project-owner-type <user|organization>] [--project-number <n>] [--write] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "github",
+        "tasks"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.sync.prd_index",
       "command": "watchtower-core sync prd-index",
       "summary": "This command rebuilds the governed PRD index from the governed PRD documents under `docs/planning/prds/`.",
@@ -355,6 +496,31 @@
         "sync",
         "prd",
         "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync.prd_tracking",
+      "command": "watchtower-core sync prd-tracking",
+      "summary": "This command rebuilds the human-readable PRD tracker from the governed PRD index and the initiative-closeout state stored in traceability.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_prd_tracking.md",
+      "synopsis": "uv run watchtower-core sync prd-tracking [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "prd",
+        "tracking"
       ]
     },
     {
@@ -385,6 +551,56 @@
         "indexes"
       ],
       "notes": "Runs in dry-run mode by default and only writes when --write or --output is provided."
+    },
+    {
+      "command_id": "command.watchtower_core.sync.task_index",
+      "command": "watchtower-core sync task-index",
+      "summary": "This command rebuilds the governed task index from the governed local task documents under `docs/planning/tasks/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_task_index.md",
+      "synopsis": "uv run watchtower-core sync task-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "task",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync.task_tracking",
+      "command": "watchtower-core sync task-tracking",
+      "summary": "This command rebuilds the human-readable task tracker from the governed local task documents under `docs/planning/tasks/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_task_tracking.md",
+      "synopsis": "uv run watchtower-core sync task-tracking [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "task",
+        "tracking"
+      ]
     },
     {
       "command_id": "command.watchtower_core.sync.traceability_index",

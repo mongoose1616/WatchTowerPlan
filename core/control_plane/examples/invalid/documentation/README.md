@@ -13,3 +13,4 @@
 | `core/control_plane/examples/invalid/documentation/prd_front_matter_missing_authority.v1.example.json` | Invalid PRD front matter example missing a required authority field. |
 | `core/control_plane/examples/invalid/documentation/reference_front_matter_missing_tags.v1.example.json` | Invalid reference front matter example missing required tags. |
 | `core/control_plane/examples/invalid/documentation/standard_front_matter_extra_key.v1.example.json` | Invalid standard front matter example with an unexpected field. |
+| `core/control_plane/examples/invalid/documentation/task_front_matter_missing_task_status.v1.example.json` | Invalid task front matter example missing the required task execution status field. |

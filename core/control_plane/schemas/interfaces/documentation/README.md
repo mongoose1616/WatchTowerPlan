@@ -14,4 +14,5 @@
 | `core/control_plane/schemas/interfaces/documentation/prd_front_matter.v1.schema.json` | Profile for governed product requirements documents. |
 | `core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json` | Profile for governed reference documents. |
 | `core/control_plane/schemas/interfaces/documentation/standard_front_matter.v1.schema.json` | Profile for standards that adopt governed front matter. |
+| `core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json` | Profile for governed local task records. |
 | `core/control_plane/schemas/interfaces/documentation/workflow_front_matter.v1.schema.json` | Profile for workflow documents that adopt governed front matter. |

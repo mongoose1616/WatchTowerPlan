@@ -1,7 +1,7 @@
 # `watchtower-core sync`
 
 ## Summary
-This command group rebuilds derived governed artifacts from authored repository sources, including command lookup, planning indexes, traceability, and repository navigation surfaces.
+This command group rebuilds derived governed artifacts or hosted-task mirrors from authored repository sources, including command lookup, planning indexes, planning trackers, traceability, repository navigation surfaces, and GitHub task sync.
 
 ## Use When
 - You need help for one of the sync operations without opening the implementation code first.
@@ -23,7 +23,7 @@ uv run watchtower-core sync <sync_command> [args]
 ```
 
 ## Arguments and Options
-- `<sync_command>`: Choose the derived artifact you want to rebuild, currently `command-index`, `prd-index`, `decision-index`, `design-document-index`, `traceability-index`, or `repository-paths`.
+- `<sync_command>`: Choose the derived artifact or hosted-task sync you want to run, currently `command-index`, `prd-index`, `prd-tracking`, `decision-index`, `decision-tracking`, `design-document-index`, `design-tracking`, `task-index`, `task-tracking`, `github-tasks`, `traceability-index`, or `repository-paths`.
 - `-h`, `--help`: Show the command help text.
 - No group-level write flags exist; pass mutation or output flags to the selected leaf command.
 
@@ -50,12 +50,42 @@ uv run watchtower-core sync prd-index
 
 ```sh
 cd core/python
+uv run watchtower-core sync prd-tracking
+```
+
+```sh
+cd core/python
 uv run watchtower-core sync decision-index
 ```
 
 ```sh
 cd core/python
+uv run watchtower-core sync decision-tracking
+```
+
+```sh
+cd core/python
 uv run watchtower-core sync design-document-index
+```
+
+```sh
+cd core/python
+uv run watchtower-core sync design-tracking
+```
+
+```sh
+cd core/python
+uv run watchtower-core sync task-index
+```
+
+```sh
+cd core/python
+uv run watchtower-core sync task-tracking
+```
+
+```sh
+cd core/python
+uv run watchtower-core sync github-tasks --repo owner/repo
 ```
 
 ```sh
@@ -76,7 +106,7 @@ uv run watchtower-core sync repository-paths --write
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints sync-specific help and exits successfully.
 - The command group explains the available sync surfaces without requiring engineers to inspect the implementation directly.
-- The current leaf commands are `command-index` for command-doc lookup rebuilds, `prd-index` for PRD tracking rebuilds, `decision-index` for decision tracking rebuilds, `design-document-index` for design tracking rebuilds, `traceability-index` for joined planning and evidence rebuilds, and `repository-paths` for README inventory rebuilds.
+- The current leaf commands are `command-index` for command-doc lookup rebuilds, `prd-index` and `prd-tracking` for PRD machine and human tracking refreshes, `decision-index` and `decision-tracking` for decision machine and human tracking refreshes, `design-document-index` and `design-tracking` for design machine and human tracking refreshes, `task-index` for machine task lookup rebuilds, `task-tracking` for the human-readable task board, `github-tasks` for push-only local task sync to GitHub, `traceability-index` for joined planning and evidence rebuilds, and `repository-paths` for README inventory rebuilds.
 - Individual leaf commands may be dry-run by default and should document their mutation flags explicitly.
 
 ## Related Commands
@@ -84,11 +114,18 @@ uv run watchtower-core sync repository-paths --write
 |---|---|
 | `watchtower-core sync command-index` | Rebuilds the command index from authored command docs. |
 | `watchtower-core sync prd-index` | Rebuilds the PRD index from governed PRD documents. |
+| `watchtower-core sync prd-tracking` | Rebuilds the human-readable PRD tracker from machine indexes and traceability. |
 | `watchtower-core sync decision-index` | Rebuilds the decision index from governed decision records. |
+| `watchtower-core sync decision-tracking` | Rebuilds the human-readable decision tracker from machine indexes and traceability. |
 | `watchtower-core sync design-document-index` | Rebuilds the design-document index from governed design docs. |
+| `watchtower-core sync design-tracking` | Rebuilds the human-readable design tracker from machine indexes and traceability. |
+| `watchtower-core sync task-index` | Rebuilds the task index from governed task records. |
+| `watchtower-core sync task-tracking` | Rebuilds the human-readable task tracker from governed task records. |
+| `watchtower-core sync github-tasks` | Pushes local-first task records to GitHub issues and optional project items. |
 | `watchtower-core sync traceability-index` | Rebuilds the unified traceability index from governed planning and evidence sources. |
 | `watchtower-core sync repository-paths` | Rebuilds the repository path index from README inventories. |
 | `watchtower-core query commands` | Reads the command index that one of the current sync commands rebuilds. |
+| `watchtower-core query tasks` | Reads the task index that one of the current sync commands rebuilds. |
 | `watchtower-core query trace` | Reads the traceability index that one of the current sync commands rebuilds. |
 | `watchtower-core query paths` | Reads the repository path index that the current sync command rebuilds. |
 | `watchtower-core` | Root command that dispatches to this command group. |
@@ -98,4 +135,4 @@ uv run watchtower-core sync repository-paths --write
 - `core/python/src/watchtower_core/sync/`
 
 ## Updated At
-- `2026-03-09T07:21:07Z`
+- `2026-03-09T14:41:51Z`

@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T14:41:51Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,6 +46,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Front matter is YAML metadata for the document, not a substitute for the document body.
 - Use front matter when the metadata materially improves routing, indexing, ownership tracking, or lifecycle visibility.
 - Do not add front matter to short directory `README.md` files or other small orientation docs unless the metadata has a clear operational use.
+- Do not add front matter to `AGENTS.md` instruction files by default. They are thin instruction overlays, not governed metadata-bearing documents, unless a narrower future rule explicitly introduces a matching profile.
 - Keep the key set stable across a document family rather than inventing ad hoc keys per file.
 - Prefer simple scalar values. Use lists only when the metadata is naturally multi-valued, such as `tags`.
 - Quote single-value text fields for consistency.
@@ -65,9 +66,11 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - `docs/planning/decisions/**` documents should include front matter and validate against the decision-record profile.
 - `docs/planning/design/features/**` documents should include front matter and validate against the feature-design profile.
 - `docs/planning/design/implementation/**` documents should include front matter and validate against the implementation-plan profile.
+- `docs/planning/tasks/open/**` and `docs/planning/tasks/closed/**` documents should include front matter and validate against the task profile.
 - `docs/standards/**` standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under `docs/standards/**` remain plain Markdown unless a narrower local rule says otherwise.
 - `docs/commands/**` command pages should stay plain Markdown by default because the command index is the machine-readable lookup surface for that document family.
-- Human tracking surfaces such as `docs/planning/design/design_tracking.md`, `docs/planning/prds/prd_tracking.md`, and `docs/planning/decisions/decision_tracking.md` remain plain Markdown unless a narrower standard later governs them.
+- Human tracking surfaces such as `docs/planning/design/design_tracking.md`, `docs/planning/prds/prd_tracking.md`, `docs/planning/decisions/decision_tracking.md`, and `docs/planning/tasks/task_tracking.md` remain plain Markdown unless a narrower standard later governs them.
+- `AGENTS.md` files remain plain Markdown by default, including nested instruction overlays under `docs/**`.
 - Workflow documents may adopt front matter when status, ownership, or indexing needs justify it. If they do, they should validate against their matching profile.
 
 ## Structure or Data Model
@@ -80,6 +83,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | `summary` | One-line description for listings and indexes | quoted string | Keep it short and specific. |
 | `type` | Document family | quoted string | Examples include `reference`, `standard`, and `workflow`. |
 | `status` | Lifecycle state | quoted string | Keep the value controlled and stable. |
+| `task_status` | Task execution state | quoted string | Task-family-specific field for local work state rather than artifact lifecycle. |
 | `tags` | Search or grouping labels | YAML list | Use reusable labels, not prose. |
 | `owner` | Responsible maintainer or role | quoted string | Prefer stable role-like values. |
 | `updated_at` | Last meaningful content update | quoted UTC timestamp | Use the repository timestamp baseline `YYYY-MM-DDTHH:MM:SSZ`. |
@@ -96,8 +100,10 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | `docs/planning/decisions/**` | Required | `decision_record_front_matter.v1.schema.json` |
 | `docs/planning/design/features/**` | Required for governed feature-design docs other than directory `README.md` files | `feature_design_front_matter.v1.schema.json` |
 | `docs/planning/design/implementation/**` | Required for governed implementation-plan docs other than directory `README.md` files | `implementation_plan_front_matter.v1.schema.json` |
+| `docs/planning/tasks/open/**` and `docs/planning/tasks/closed/**` | Required for governed task docs other than directory `README.md` files and `task_tracking.md` | `task_front_matter.v1.schema.json` |
 | `docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.v1.schema.json` |
 | `docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
+| `AGENTS.md` files | Not required by default; keep plain Markdown instruction overlays | none |
 | `workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.v1.schema.json` |
 | short directory `README.md` files | Not required by default | none |
 
@@ -125,6 +131,8 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - A decision record under `docs/planning/decisions/**` should use the decision-record front matter profile and carry a shared `trace_id`.
 - A feature design under `docs/planning/design/features/**` should use the feature-design front matter profile and carry a shared `trace_id`.
 - An implementation plan under `docs/planning/design/implementation/**` should use the implementation-plan front matter profile and carry a shared `trace_id`.
+- A task under `docs/planning/tasks/**` should use the task front matter profile and carry `task_status`, `task_kind`, `priority`, and optional task dependency metadata.
+- A synced task may also carry optional GitHub foreign-key metadata such as `github_repository`, `github_issue_number`, `github_project_item_id`, and `github_synced_at`.
 - A standard under `docs/standards/**` should use the standard front matter profile.
 - A command page under `docs/commands/**` should usually remain plain Markdown and rely on the command index for machine lookup metadata.
 - A front matter document can add `aliases` such as `yaml_header` and `document_metadata` when those terms are likely retrieval entrypoints.
@@ -152,9 +160,10 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 
 ## Notes
 - This standard intentionally does not require front matter on every document in `docs/**`.
+- Path-based scans should not treat `AGENTS.md` overlays as missing governed front matter.
 - The exact allowed values for identifiers, statuses, owners, and audiences can be tightened later by companion metadata standards without changing the basic front matter structure.
 - Retrieval-oriented keys should stay small and intentional. If they become broad keyword dumps, they will reduce rather than improve retrieval quality.
 - Document families that already have a dedicated machine-readable companion artifact, such as `docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-09T07:05:24Z`
+- `2026-03-09T14:41:51Z`

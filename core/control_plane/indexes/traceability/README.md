@@ -1,7 +1,7 @@
 # `core/control_plane/indexes/traceability`
 
 ## Description
-`This directory holds machine-readable traceability indexes that join planning, contract, validator, and evidence surfaces under shared trace IDs. Keep it as a compact derived join layer rather than a replacement for family-specific indexes.`
+`This directory holds machine-readable traceability indexes that join planning, task, contract, validator, and evidence surfaces under shared trace IDs. Keep it as a compact derived join layer rather than a replacement for family-specific indexes.`
 
 ## Files
 | Path | Description |

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T14:41:51Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -25,7 +25,7 @@ This standard defines the repository's baseline traceability model so product in
 - Establish a minimal shared trace model before Python query and validation tooling begins to depend on it.
 
 ## Scope
-- Applies to durable planning and governance artifacts such as PRDs, decision records, feature designs, implementation plans, and their machine-readable indexes.
+- Applies to durable planning and governance artifacts such as PRDs, decision records, feature designs, implementation plans, task records, and their machine-readable indexes.
 - Applies to acceptance contracts, validation-evidence artifacts, and the unified traceability index when those families participate in a traced initiative.
 - Defines the baseline trace chain, required identifiers, and synchronization expectations across human-readable and machine-readable tracking surfaces.
 
@@ -44,6 +44,7 @@ This standard defines the repository's baseline traceability model so product in
 - [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
 - [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md)
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
+- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
 
 ## Guidance
 - Use one shared `trace_id` to tie the artifacts of a single initiative, feature, or change boundary together.
@@ -56,11 +57,13 @@ This standard defines the repository's baseline traceability model so product in
   - decision record when a durable choice is required
   - feature design
   - implementation plan
+  - task record when work is decomposed into engineer-sized execution items
   - implementation surface, command surface, validator surface, or other executable artifact
   - acceptance contract when acceptance must be machine-loaded explicitly
   - validation evidence
   - closeout artifacts when that family is established
 - Use the unified traceability index as the machine-readable join layer for the full traced chain.
+- Use `initiative_status` on the traceability entry for initiative outcome instead of overloading artifact lifecycle `status`.
 - Keep family-specific indexes as their local lookup surfaces and keep them aligned with the unified traceability index.
 - A PRD should publish:
   - a shared `trace_id`
@@ -75,7 +78,8 @@ This standard defines the repository's baseline traceability model so product in
 - Feature designs and implementation plans should preserve their upstream links rather than forcing later readers to infer them from prose.
 - Acceptance contracts should preserve source `acceptance_id` values from the PRD rather than inventing alternate identifiers.
 - Validation-evidence artifacts should publish the validators, acceptance items, and subject surfaces they cover when those are known.
-- Machine-readable indexes for PRDs, decisions, design documents, and traceability joins should carry `trace_id` explicitly so tooling can join related artifacts without parsing prose.
+- Task records should publish `trace_id` when they belong to a traced initiative and should preserve task-to-task dependencies explicitly.
+- Machine-readable indexes for PRDs, decisions, design documents, task records, and traceability joins should carry `trace_id` explicitly so tooling can join related artifacts without parsing prose.
 - Update trackers and indexes in the same change set when a traced planning artifact is added, renamed, removed, or materially retargeted.
 - Prefer a missing-link follow-up note over silent omission when a downstream artifact cannot yet point back to its upstream planning source.
 
@@ -88,6 +92,7 @@ This standard defines the repository's baseline traceability model so product in
 | Requirement | `req.` | `req.traceability_baseline.001` |
 | Acceptance criterion | `ac.` | `ac.traceability_baseline.001` |
 | Decision | `decision.` | `decision.traceability_storage_model` |
+| Task | `task.` | `task.local_task_tracking_foundation.001` |
 | Feature design | `design.features.` | `design.features.schema_resolution_and_index_search` |
 | Implementation plan | `design.implementation.` | `design.implementation.control_plane_loaders_and_schema_store` |
 | Acceptance contract | `contract.acceptance.` | `contract.acceptance.core_python_foundation` |
@@ -100,6 +105,7 @@ This standard defines the repository's baseline traceability model so product in
 | Decision record | `trace_id` plus linked PRDs, designs, plans, or affected paths when they exist |
 | Feature design | `trace_id`, source request, and linked implementation plans when they exist |
 | Implementation plan | `trace_id` plus source designs, PRDs, or decisions that justify the plan |
+| Task record | optional `trace_id`, explicit task `id`, and linked planning IDs or task dependencies when they exist |
 | Acceptance contract | `trace_id`, source `prd_id`, and preserved `acceptance_id` values |
 | Validation evidence | `trace_id`, covered validators or check methods, and covered acceptance or artifact surfaces |
 | Unified traceability index | `trace_id` plus joined upstream and downstream artifact identifiers |
@@ -131,7 +137,8 @@ This standard defines the repository's baseline traceability model so product in
 
 ## References
 - [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
+- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
 - [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T14:41:51Z`

@@ -49,6 +49,7 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - Use `updated_at` for the last meaningful content update of a durable document or artifact.
 - Use `recorded_at` for evidence or event-style records that capture when a result or observation was recorded.
 - Use `generated_at` only when an artifact needs a distinct generation or build timestamp in addition to `updated_at` or `recorded_at`.
+- Use a scoped `*_at` field such as `github_synced_at` only when a narrower integration-specific timestamp meaning is required and none of the canonical generic fields fit.
 - Prefer one canonical timestamp field per meaning. Do not store duplicate synonymous timestamp fields in the same artifact.
 - Reuse the shared UTC timestamp schema fragment under `core/control_plane/schemas/common/` instead of open-coding separate timestamp regexes in each schema.
 - Reserve date-only fields for true calendar semantics such as an effective date or review date, and standardize those separately when they become governed.
@@ -59,6 +60,7 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 | `updated_at` | Durable document or artifact metadata | Use for the last meaningful content change. |
 | `recorded_at` | Evidence or event-style records | Use when the timestamp captures when a result or observation was recorded. |
 | `generated_at` | Generated artifact build metadata | Use only when generation time is distinct from content update or evidence-record time. |
+| `github_synced_at` | Integration-specific sync metadata | Use only for the last successful GitHub sync of a local task record. |
 
 ## Examples
 - Front matter on a governed reference document should use `updated_at: "2026-03-09T05:23:35Z"`.

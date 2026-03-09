@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "agents_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T14:40:36Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -43,6 +43,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - Use the nearest applicable `README.md` as the quick reference for directory purpose and file inventory.
 - Put detailed task behavior in routed workflow modules rather than in `AGENTS.md`.
 - Put durable reference material, standards catalogs, templates, or long procedural content in the appropriate companion docs rather than in `AGENTS.md`.
+- Keep `AGENTS.md` as plain Markdown by default. Do not add YAML front matter unless a narrower future rule explicitly introduces a governed `AGENTS.md` metadata profile.
 - Delete any section from an instantiated `AGENTS.md` file if it does not help the current scope.
 
 ## Structure or Data Model
@@ -78,4 +79,4 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - The best `AGENTS.md` files are short, scoped, and obviously tied to the directory they govern.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T14:40:36Z`

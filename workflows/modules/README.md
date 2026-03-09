@@ -1,7 +1,7 @@
 # `workflows/modules`
 
 ## Description
-`This directory contains the individual workflow modules that define routed task behavior for the planning repository. Some modules are shared execution phases, while others are narrower task-family modules. Each module should stay focused on one workflow concern and be loaded through the routing table rather than treated as an ad hoc document set.`
+`This directory contains the individual workflow modules that define routed task behavior for the planning repository. Some modules are shared execution phases, while others are narrower task-family modules. Each module should stay focused on one workflow concern and be loaded through the routing table rather than treated as an ad hoc document set. Modules in this directory are available building blocks, but they become active only when a route selects them or an active task explicitly merges them.`
 
 ## Files
 | Path | Description |
@@ -23,6 +23,7 @@
 | `workflows/modules/governed_artifact_reconciliation.md` | Shared workflow module for reconciling schema-backed governed artifacts with their companion schemas, examples, indexes, registries, and implementation-facing lookup surfaces. |
 | `workflows/modules/foundations_context_review.md` | Shared workflow module for loading repository foundation documents during planning and design work. |
 | `workflows/modules/implementation_planning.md` | Workflow module for turning a PRD into an implementation plan. |
+| `workflows/modules/initiative_closeout.md` | Workflow module for applying terminal closeout state to traced initiatives and their mirrored planning trackers. |
 | `workflows/modules/internal_context_review.md` | Shared workflow module for identifying the internal standards, templates, workflows, and canonical docs that govern a task. |
 | `workflows/modules/prd_generation.md` | Workflow module for planning and generating a PRD. |
 | `workflows/modules/reference_distillation.md` | Workflow module for distilling external source material into stable local guidance. |

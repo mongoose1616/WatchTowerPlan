@@ -1,0 +1,51 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:task-index:v1",
+  "id": "index.tasks",
+  "title": "Task Index",
+  "status": "active",
+  "entries": [
+    {
+      "task_id": "task.local_task_tracking.github_sync.001",
+      "title": "Add GitHub task sync support",
+      "summary": "Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/github_task_sync.md",
+      "updated_at": "2026-03-09T16:14:14Z",
+      "trace_id": "trace.local_task_tracking",
+      "related_ids": [
+        "design.features.local_task_tracking_and_github_sync"
+      ],
+      "applies_to": [
+        "docs/planning/tasks/",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/python/src/watchtower_core/sync/"
+      ]
+    },
+    {
+      "task_id": "task.local_task_tracking_foundation.001",
+      "title": "Establish local-first task tracking foundation",
+      "summary": "Establishes governed local task records, a generated human tracker, a generated machine index, and Python query and sync commands for task coordination.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/local_task_tracking_foundation.md",
+      "updated_at": "2026-03-09T14:41:51Z",
+      "trace_id": "trace.local_task_tracking",
+      "related_ids": [
+        "design.features.local_task_tracking_and_github_sync"
+      ],
+      "applies_to": [
+        "docs/planning/tasks/",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/"
+      ]
+    }
+  ]
+}

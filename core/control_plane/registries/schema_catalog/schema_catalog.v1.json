@@ -88,6 +88,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:task-index:v1",
+      "title": "Task Index",
+      "description": "Schema for machine-readable task index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "task_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/task_index.v1.schema.json",
+      "aliases": [
+        "task tracking index schema",
+        "task lookup schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
       "title": "Traceability Index",
       "description": "Schema for unified machine-readable traceability index artifacts.",
@@ -247,6 +261,19 @@
       "canonical_path": "core/control_plane/schemas/interfaces/documentation/standard_front_matter.v1.schema.json",
       "aliases": [
         "standard metadata schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
+      "title": "Task Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed local task records.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+      "aliases": [
+        "task metadata schema"
       ]
     },
     {

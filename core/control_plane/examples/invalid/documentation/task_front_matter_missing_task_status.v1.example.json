@@ -1,0 +1,14 @@
+{
+  "id": "task.local_task_tracking.github_sync.001",
+  "trace_id": "trace.local_task_tracking",
+  "title": "Add GitHub task sync support",
+  "summary": "Adds one-way GitHub sync support for local task records.",
+  "type": "task",
+  "status": "active",
+  "task_kind": "feature",
+  "priority": "medium",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T14:41:51Z",
+  "audience": "shared",
+  "authority": "authoritative"
+}

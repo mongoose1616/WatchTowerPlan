@@ -1,0 +1,25 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:task-index:v1",
+  "id": "index.tasks",
+  "title": "Task Index",
+  "status": "active",
+  "entries": [
+    {
+      "task_id": "task.local_task_tracking.github_sync.001",
+      "trace_id": "trace.local_task_tracking",
+      "title": "Add GitHub task sync support",
+      "summary": "Adds one-way GitHub sync support so local task records can publish to GitHub later.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/github_task_sync.md",
+      "updated_at": "2026-03-09T14:41:51Z",
+      "github_repository": "example/watchtower-plan",
+      "github_issue_number": 17,
+      "github_issue_node_id": "I_kwDOExample17",
+      "github_synced_at": "2026-03-09T16:20:00Z"
+    }
+  ]
+}

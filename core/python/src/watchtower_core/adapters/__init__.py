@@ -1,6 +1,10 @@
 """Adapters for parsing and normalizing governed input surfaces."""
 
-from watchtower_core.adapters.front_matter import FrontMatterParseError, load_front_matter
+from watchtower_core.adapters.front_matter import (
+    FrontMatterParseError,
+    load_front_matter,
+    replace_front_matter,
+)
 from watchtower_core.adapters.markdown import (
     extract_first_paragraph,
     extract_metadata_bullets,
@@ -26,5 +30,6 @@ __all__ = [
     "load_front_matter",
     "load_markdown_body",
     "parse_markdown_table",
+    "replace_front_matter",
     "split_semicolon_list",
 ]

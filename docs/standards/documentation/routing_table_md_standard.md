@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "routing_table_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T14:45:48Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -37,9 +37,12 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - The file should stay compact and table-first rather than turning into a long narrative document.
 - Each row should represent one task type with one clear routing outcome.
 - Trigger keywords should be broad enough to be useful but specific enough to avoid frequent false matches.
+- Trigger keywords are examples, not the only allowed routing surface. Routing may infer the nearest task type from the full prompt context.
 - Required workflows should list only the minimum modules needed for the task type.
 - The routing table should always include the shared core workflow module in routed task sets.
+- Workflow modules that are not selected by routing remain available but inactive.
 - If a task spans multiple task types, routing should union only the minimum relevant module sets.
+- The short instruction block may include compact merge rules for common compound cases such as commit intent, documentation gaps, or reconciliation routes, as long as the file stays table-first.
 - If a task type cannot be routed clearly in one row, it should usually be split into smaller task types.
 
 ## Structure or Data Model
@@ -56,6 +59,7 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - New workflow modules that are intended for routing should be represented in the table.
 - Rows should not route to a larger set of modules than the task actually needs.
 - Task types with overlapping triggers should still produce clear routing behavior.
+- Common compound requests such as `implement and commit` or `refresh docs and commit` should have an unambiguous merge outcome without requiring one custom row per combination.
 
 ## Change Control
 - Update the routing table whenever a routed workflow module is added, renamed, removed, or materially re-scoped.
@@ -71,4 +75,4 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Detailed logic belongs in workflow modules, not in routing rows.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T14:45:48Z`

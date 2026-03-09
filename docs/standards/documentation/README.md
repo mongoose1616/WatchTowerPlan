@@ -16,4 +16,5 @@
 | `docs/standards/documentation/readme_md_standard.md` | Defines the standard for README.md files. |
 | `docs/standards/documentation/reference_md_standard.md` | Defines the standard for reference documents. |
 | `docs/standards/documentation/routing_table_md_standard.md` | Defines the standard for ROUTING_TABLE.md files. |
+| `docs/standards/documentation/task_md_standard.md` | Defines the standard for local task records under `docs/planning/tasks/`. |
 | `docs/standards/documentation/workflow_md_standard.md` | Defines the standard for workflow documents. |

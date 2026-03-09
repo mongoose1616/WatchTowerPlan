@@ -1,0 +1,26 @@
+{
+  "id": "task.local_task_tracking_foundation.001",
+  "trace_id": "trace.local_task_tracking",
+  "title": "Establish local-first task tracking foundation",
+  "summary": "Establishes governed local task records, a generated task tracker, a generated task index, and Python task query and sync commands.",
+  "type": "task",
+  "status": "active",
+  "task_status": "done",
+  "task_kind": "feature",
+  "priority": "high",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T14:41:51Z",
+  "github_repository": "example/watchtower-plan",
+  "github_issue_number": 17,
+  "github_issue_node_id": "I_kwDOExample17",
+  "github_synced_at": "2026-03-09T16:20:00Z",
+  "audience": "shared",
+  "authority": "authoritative",
+  "applies_to": [
+    "docs/planning/tasks/",
+    "core/control_plane/indexes/tasks/task_index.v1.json"
+  ],
+  "related_ids": [
+    "design.features.local_task_tracking_and_github_sync"
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:task-index:v1",
+  "title": "Task Index",
+  "description": "Machine-readable tracking index for local task records stored under docs/planning/tasks/.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:task-index:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "index.tasks"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/taskEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "taskStatus": {
+      "type": "string",
+      "enum": [
+        "backlog",
+        "ready",
+        "in_progress",
+        "blocked",
+        "in_review",
+        "done",
+        "cancelled"
+      ]
+    },
+    "taskKind": {
+      "type": "string",
+      "enum": [
+        "feature",
+        "bug",
+        "chore",
+        "documentation",
+        "governance",
+        "research"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "githubRepository": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+\\/[A-Za-z0-9_.-]+$"
+    },
+    "taskIdPattern": {
+      "type": "string",
+      "pattern": "^task\\.[a-z0-9]+(?:_[a-z0-9]+)*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "docPath": {
+      "type": "string",
+      "pattern": "^docs/planning/tasks/(open|closed)/.+\\.md$"
+    },
+    "taskIdList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/taskIdPattern"
+      }
+    },
+    "idList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "taskEntry": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "title",
+        "summary",
+        "status",
+        "task_status",
+        "task_kind",
+        "priority",
+        "owner",
+        "doc_path",
+        "updated_at"
+      ],
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/taskIdPattern"
+        },
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "task_status": {
+          "$ref": "#/$defs/taskStatus"
+        },
+        "task_kind": {
+          "$ref": "#/$defs/taskKind"
+        },
+        "priority": {
+          "$ref": "#/$defs/priority"
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doc_path": {
+          "$ref": "#/$defs/docPath"
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "blocked_by": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "depends_on": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "related_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "applies_to": {
+          "$ref": "#/$defs/stringList"
+        },
+        "github_repository": {
+          "$ref": "#/$defs/githubRepository"
+        },
+        "github_issue_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "github_issue_node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "github_project_owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "github_project_owner_type": {
+          "type": "string",
+          "enum": [
+            "user",
+            "organization"
+          ]
+        },
+        "github_project_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "github_project_item_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "github_synced_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "doc_path": {
+                "pattern": "^docs/planning/tasks/open/.+\\.md$"
+              }
+            },
+            "required": [
+              "doc_path"
+            ]
+          },
+          "then": {
+            "properties": {
+              "task_status": {
+                "not": {
+                  "enum": [
+                    "done",
+                    "cancelled"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "doc_path": {
+                "pattern": "^docs/planning/tasks/closed/.+\\.md$"
+              }
+            },
+            "required": [
+              "doc_path"
+            ]
+          },
+          "then": {
+            "properties": {
+              "task_status": {
+                "enum": [
+                  "done",
+                  "cancelled"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "github_issue_number"
+            ]
+          },
+          "then": {
+            "required": [
+              "github_repository"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "github_project_item_id"
+            ]
+          },
+          "then": {
+            "required": [
+              "github_project_owner",
+              "github_project_owner_type",
+              "github_project_number"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

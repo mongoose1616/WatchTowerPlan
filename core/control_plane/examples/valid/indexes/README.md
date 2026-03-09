@@ -12,4 +12,5 @@
 | `core/control_plane/examples/valid/indexes/design_document_index.v1.example.json` | Valid design-document index example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/indexes/prd_index.v1.example.json` | Valid PRD index example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/indexes/repository_path_index.v1.example.json` | Valid repository path index example aligned with the published artifact schema. |
+| `core/control_plane/examples/valid/indexes/task_index.v1.example.json` | Valid task index example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/indexes/traceability_index.v1.example.json` | Valid traceability index example aligned with the published artifact schema. |

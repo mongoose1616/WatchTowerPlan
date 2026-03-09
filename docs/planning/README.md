@@ -10,7 +10,9 @@
 | `docs/planning/prds/` | Holds product requirements documents and PRD tracking surfaces. |
 | `docs/planning/design/` | Holds feature designs, implementation plans, and design tracking surfaces. |
 | `docs/planning/decisions/` | Holds durable decision records and decision tracking surfaces. |
+| `docs/planning/tasks/` | Holds local-first task records plus the human task tracker for active and closed work. |
 
 ## Notes
 - Keep upstream product intent in `prds/`, solution design in `design/`, and durable choice history in `decisions/`.
+- Keep engineer-sized execution work in `tasks/` rather than overloading PRD or design trackers as task boards.
 - Keep standards in `docs/standards/`, references in `docs/references/`, and workflows in `workflows/`.

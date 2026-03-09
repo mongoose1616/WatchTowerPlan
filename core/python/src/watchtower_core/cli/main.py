@@ -8,7 +8,9 @@ from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from textwrap import dedent
 
+from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import TaskIndexEntry
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.query import (
     CommandQueryService,
@@ -21,14 +23,23 @@ from watchtower_core.query import (
     PrdSearchParams,
     RepositoryPathQueryService,
     RepositoryPathSearchParams,
+    TaskQueryService,
+    TaskSearchParams,
     TraceabilityQueryService,
 )
 from watchtower_core.sync import (
     CommandIndexSyncService,
     DecisionIndexSyncService,
+    DecisionTrackingSyncService,
     DesignDocumentIndexSyncService,
+    DesignTrackingSyncService,
+    GitHubTaskSyncParams,
+    GitHubTaskSyncService,
     PrdIndexSyncService,
+    PrdTrackingSyncService,
     RepositoryPathIndexSyncService,
+    TaskIndexSyncService,
+    TaskTrackingSyncService,
     TraceabilityIndexSyncService,
 )
 from watchtower_core.validation import (
@@ -74,8 +85,15 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query tasks --task-status backlog",
+            "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync prd-index",
+            "uv run watchtower-core sync task-index",
+            "uv run watchtower-core sync task-tracking",
+            "uv run watchtower-core sync github-tasks --repo owner/repo",
+            "uv run watchtower-core closeout initiative --trace-id trace.example "
+            "--initiative-status completed --closure-reason \"Delivered and validated\"",
             "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core validate artifact --path "
@@ -113,15 +131,16 @@ def build_parser() -> argparse.ArgumentParser:
 
     query_parser = subparsers.add_parser(
         "query",
-        help="Search governed indexes for paths, commands, and traces.",
+        help="Search governed indexes for paths, commands, planning docs, tasks, and traces.",
         description=dedent(
             """
             Search the governed lookup surfaces without opening the raw JSON
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `prds`, `decisions`, and `designs` for planning lookup, and `trace`
-            when you already know the trace identifier you want.
+            `prds`, `decisions`, `designs`, and `tasks` for planning and
+            execution lookup, and `trace` when you already know the trace
+            identifier you want.
             """
         ).strip(),
         epilog=_examples(
@@ -130,6 +149,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
             "uv run watchtower-core query decisions --decision-status accepted",
             "uv run watchtower-core query designs --family implementation_plan",
+            "uv run watchtower-core query tasks --task-status backlog",
+            "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core query trace --trace-id trace.core_python_foundation",
         ),
         formatter_class=HelpFormatter,
@@ -390,6 +411,92 @@ def build_parser() -> argparse.ArgumentParser:
     )
     query_designs_parser.set_defaults(handler=_run_query_designs)
 
+    query_tasks_parser = query_subparsers.add_parser(
+        "tasks",
+        help="Search the task index.",
+        description=dedent(
+            """
+            Search the task index for local-first task records.
+
+            Use this when you need to find work by task status, owner, trace,
+            priority, task kind, or free-text summary content.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query tasks --task-status backlog",
+            (
+                "uv run watchtower-core query tasks "
+                "--blocked-by task.local_task_tracking.github_sync.001"
+            ),
+            "uv run watchtower-core query tasks --trace-id trace.local_task_tracking --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_tasks_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over indexed task fields such as IDs, title, "
+            "summary, owner, related IDs, and applies-to paths."
+        ),
+    )
+    query_tasks_parser.add_argument(
+        "--task-id",
+        action="append",
+        default=[],
+        help="Exact task identifier filter. Repeat for multiple task IDs.",
+    )
+    query_tasks_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.local_task_tracking.",
+    )
+    query_tasks_parser.add_argument(
+        "--task-status",
+        help="Exact task-status filter such as backlog, in_progress, or done.",
+    )
+    query_tasks_parser.add_argument(
+        "--priority",
+        help="Exact priority filter such as critical, high, medium, or low.",
+    )
+    query_tasks_parser.add_argument(
+        "--owner",
+        help="Exact owner filter such as repository_maintainer.",
+    )
+    query_tasks_parser.add_argument(
+        "--task-kind",
+        help="Exact task-kind filter such as feature, bug, or chore.",
+    )
+    query_tasks_parser.add_argument(
+        "--blocked-only",
+        action="store_true",
+        help="Return only tasks that list one or more blocking task IDs.",
+    )
+    query_tasks_parser.add_argument(
+        "--blocked-by",
+        help="Return only tasks blocked by the given task ID.",
+    )
+    query_tasks_parser.add_argument(
+        "--depends-on",
+        help="Return only tasks that depend on the given task ID.",
+    )
+    query_tasks_parser.add_argument(
+        "--include-dependency-details",
+        action="store_true",
+        help="Include forward and reverse dependency detail in the result payload or human output.",
+    )
+    query_tasks_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_tasks_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_tasks_parser.set_defaults(handler=_run_query_tasks)
+
     query_trace_parser = query_subparsers.add_parser(
         "trace",
         help="Resolve one traceability record by trace ID.",
@@ -398,7 +505,7 @@ def build_parser() -> argparse.ArgumentParser:
             Resolve one traceability record by its stable trace identifier.
 
             Use this when you already know the trace you want and need the
-            linked PRD, decision, design, plan, validator, or evidence IDs.
+            linked PRD, decision, design, plan, task, validator, or evidence IDs.
             """
         ).strip(),
         epilog=_examples(
@@ -436,8 +543,15 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync command-index --write",
             "uv run watchtower-core sync prd-index",
+            "uv run watchtower-core sync prd-tracking",
             "uv run watchtower-core sync decision-index",
+            "uv run watchtower-core sync decision-tracking",
             "uv run watchtower-core sync design-document-index",
+            "uv run watchtower-core sync design-tracking",
+            "uv run watchtower-core sync task-index",
+            "uv run watchtower-core sync task-tracking",
+            "uv run watchtower-core sync github-tasks --repo owner/repo --task-id "
+            "task.local_task_tracking.github_sync.001",
             "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync traceability-index --write",
             "uv run watchtower-core sync repository-paths",
@@ -497,6 +611,28 @@ def build_parser() -> argparse.ArgumentParser:
     _add_common_sync_arguments(sync_prd_index_parser)
     sync_prd_index_parser.set_defaults(handler=_run_sync_prd_index)
 
+    sync_prd_tracking_parser = sync_subparsers.add_parser(
+        "prd-tracking",
+        help="Rebuild the human-readable PRD tracker from the PRD index.",
+        description=dedent(
+            """
+            Rebuild the human-readable PRD tracker from the governed PRD index
+            and the initiative-closeout state stored in traceability.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            tracker or `--output` to materialize it elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync prd-tracking",
+            "uv run watchtower-core sync prd-tracking --write",
+            "uv run watchtower-core sync prd-tracking --output /tmp/prd_tracking.md --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_prd_tracking_parser)
+    sync_prd_tracking_parser.set_defaults(handler=_run_sync_prd_tracking)
+
     sync_decision_index_parser = sync_subparsers.add_parser(
         "decision-index",
         help="Rebuild the decision index from governed decision records.",
@@ -520,6 +656,30 @@ def build_parser() -> argparse.ArgumentParser:
     _add_common_sync_arguments(sync_decision_index_parser)
     sync_decision_index_parser.set_defaults(handler=_run_sync_decision_index)
 
+    sync_decision_tracking_parser = sync_subparsers.add_parser(
+        "decision-tracking",
+        help="Rebuild the human-readable decision tracker from the decision index.",
+        description=dedent(
+            """
+            Rebuild the human-readable decision tracker from the governed
+            decision index and the initiative-closeout state stored in
+            traceability.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            tracker or `--output` to materialize it elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync decision-tracking",
+            "uv run watchtower-core sync decision-tracking --write",
+            "uv run watchtower-core sync decision-tracking --output "
+            "/tmp/decision_tracking.md --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_decision_tracking_parser)
+    sync_decision_tracking_parser.set_defaults(handler=_run_sync_decision_tracking)
+
     sync_design_document_index_parser = sync_subparsers.add_parser(
         "design-document-index",
         help="Rebuild the design-document index from governed design docs.",
@@ -542,6 +702,168 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_sync_arguments(sync_design_document_index_parser)
     sync_design_document_index_parser.set_defaults(handler=_run_sync_design_document_index)
+
+    sync_design_tracking_parser = sync_subparsers.add_parser(
+        "design-tracking",
+        help="Rebuild the human-readable design tracker from the design index.",
+        description=dedent(
+            """
+            Rebuild the human-readable design tracker from the governed design
+            index and the initiative-closeout state stored in traceability.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            tracker or `--output` to materialize it elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync design-tracking",
+            "uv run watchtower-core sync design-tracking --write",
+            "uv run watchtower-core sync design-tracking --output "
+            "/tmp/design_tracking.md --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_design_tracking_parser)
+    sync_design_tracking_parser.set_defaults(handler=_run_sync_design_tracking)
+
+    sync_task_index_parser = sync_subparsers.add_parser(
+        "task-index",
+        help="Rebuild the task index from governed task records.",
+        description=dedent(
+            """
+            Rebuild the task index from the governed task documents under
+            `docs/planning/tasks/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync task-index",
+            "uv run watchtower-core sync task-index --write",
+            "uv run watchtower-core sync task-index --output /tmp/task_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_task_index_parser)
+    sync_task_index_parser.set_defaults(handler=_run_sync_task_index)
+
+    sync_task_tracking_parser = sync_subparsers.add_parser(
+        "task-tracking",
+        help="Rebuild the human-readable task tracker from governed task records.",
+        description=dedent(
+            """
+            Rebuild the human-readable task tracker from the governed task
+            documents under `docs/planning/tasks/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            tracker or `--output` to materialize it elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync task-tracking",
+            "uv run watchtower-core sync task-tracking --write",
+            "uv run watchtower-core sync task-tracking --output "
+            "/tmp/task_tracking.md --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_task_tracking_parser)
+    sync_task_tracking_parser.set_defaults(handler=_run_sync_task_tracking)
+
+    sync_github_tasks_parser = sync_subparsers.add_parser(
+        "github-tasks",
+        help="Push local task records to GitHub issues and optional project items.",
+        description=dedent(
+            """
+            Push local-first task records to GitHub in a push-only, local-source
+            model.
+
+            Start with dry-run output first. Add `--write` to call the GitHub
+            APIs, persist the returned foreign keys on the task documents, and
+            rebuild the local task index, task tracker, and traceability index.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync github-tasks --repo owner/repo",
+            "uv run watchtower-core sync github-tasks --repo owner/repo "
+            "--task-id task.local_task_tracking.github_sync.001 --write",
+            "uv run watchtower-core sync github-tasks --repo owner/repo "
+            "--project-owner owner --project-owner-type organization "
+            "--project-number 7 --write --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    sync_github_tasks_parser.add_argument(
+        "--write",
+        action="store_true",
+        help=(
+            "Call the GitHub APIs, persist returned foreign keys locally, and "
+            "rebuild derived task surfaces."
+        ),
+    )
+    sync_github_tasks_parser.add_argument(
+        "--repo",
+        help=(
+            "GitHub repository in owner/name form. Falls back to task metadata "
+            "or GITHUB_REPOSITORY."
+        ),
+    )
+    sync_github_tasks_parser.add_argument(
+        "--task-id",
+        action="append",
+        default=[],
+        help="Exact task identifier filter. Repeat for multiple task IDs.",
+    )
+    sync_github_tasks_parser.add_argument("--trace-id", help="Exact trace filter.")
+    sync_github_tasks_parser.add_argument("--task-status", help="Exact task-status filter.")
+    sync_github_tasks_parser.add_argument("--priority", help="Exact priority filter.")
+    sync_github_tasks_parser.add_argument("--owner", help="Exact owner filter.")
+    sync_github_tasks_parser.add_argument("--task-kind", help="Exact task-kind filter.")
+    sync_github_tasks_parser.add_argument(
+        "--blocked-only",
+        action="store_true",
+        help="Select only tasks that currently declare blocking task IDs.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--blocked-by",
+        help="Select only tasks blocked by the given task ID.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--depends-on",
+        help="Select only tasks that depend on the given task ID.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--project-owner",
+        help="GitHub project owner login when also syncing to a project.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--project-owner-type",
+        choices=("user", "organization"),
+        help="GitHub project owner type when also syncing to a project.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--project-number",
+        type=int,
+        help="GitHub project number when also syncing to a project.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--project-status-field",
+        default="Status",
+        help="GitHub single-select status field name for project status updates.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--token-env",
+        default="GITHUB_TOKEN",
+        help="Environment variable that holds the GitHub token used for write mode.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    sync_github_tasks_parser.set_defaults(handler=_run_sync_github_tasks)
 
     sync_traceability_index_parser = sync_subparsers.add_parser(
         "traceability-index",
@@ -587,6 +909,92 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_sync_arguments(sync_repository_paths_parser)
     sync_repository_paths_parser.set_defaults(handler=_run_sync_repository_paths)
+
+    closeout_parser = subparsers.add_parser(
+        "closeout",
+        help="Apply terminal closeout state to traced initiatives.",
+        description=dedent(
+            """
+            Apply initiative-level closeout state to the governed traceability
+            index and refresh the human-readable planning trackers that mirror
+            that state.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core closeout initiative --trace-id trace.example "
+            "--initiative-status completed --closure-reason \"Delivered and validated\"",
+            "uv run watchtower-core closeout initiative --trace-id trace.example "
+            "--initiative-status superseded --superseded-by-trace-id trace.replacement "
+            "--closure-reason \"Replaced by the new initiative\" --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    closeout_subparsers = closeout_parser.add_subparsers(
+        dest="closeout_command",
+        title="closeout commands",
+        metavar="<closeout_command>",
+    )
+    closeout_parser.set_defaults(handler=_run_help, help_parser=closeout_parser)
+
+    closeout_initiative_parser = closeout_subparsers.add_parser(
+        "initiative",
+        help="Set terminal closeout state for one traced initiative.",
+        description=dedent(
+            """
+            Set terminal closeout state for one traced initiative and, in write
+            mode, persist it to the traceability index plus the derived PRD,
+            decision, and design trackers.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core closeout initiative --trace-id trace.example "
+            "--initiative-status completed --closure-reason \"Delivered and validated\"",
+            "uv run watchtower-core closeout initiative --trace-id trace.example "
+            "--initiative-status cancelled --closure-reason \"No longer in scope\" --write",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    closeout_initiative_parser.add_argument(
+        "--trace-id",
+        required=True,
+        help="Stable trace identifier such as trace.core_python_foundation.",
+    )
+    closeout_initiative_parser.add_argument(
+        "--initiative-status",
+        required=True,
+        choices=("completed", "superseded", "cancelled", "abandoned"),
+        help="Terminal initiative status to record on the trace.",
+    )
+    closeout_initiative_parser.add_argument(
+        "--closure-reason",
+        required=True,
+        help="Short human-readable reason for the closeout decision.",
+    )
+    closeout_initiative_parser.add_argument(
+        "--superseded-by-trace-id",
+        help="Replacement trace identifier. Required when initiative-status is superseded.",
+    )
+    closeout_initiative_parser.add_argument(
+        "--closed-at",
+        help="Explicit RFC 3339 UTC closeout timestamp. Defaults to the current UTC time.",
+    )
+    closeout_initiative_parser.add_argument(
+        "--allow-open-tasks",
+        action="store_true",
+        help="Allow terminal closeout even if linked tasks are still open.",
+    )
+    closeout_initiative_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Write the updated closeout state and regenerated trackers to their canonical paths.",
+    )
+    closeout_initiative_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    closeout_initiative_parser.set_defaults(handler=_run_closeout_initiative)
 
     validate_parser = subparsers.add_parser(
         "validate",
@@ -1053,6 +1461,106 @@ def _run_query_designs(args: argparse.Namespace) -> int:
     return 0
 
 
+def _run_query_tasks(args: argparse.Namespace) -> int:
+    loader = ControlPlaneLoader()
+    service = TaskQueryService(loader)
+    entries = service.search(
+        TaskSearchParams(
+            query=args.query,
+            task_ids=tuple(args.task_id),
+            trace_id=args.trace_id,
+            task_status=args.task_status,
+            priority=args.priority,
+            owner=args.owner,
+            task_kind=args.task_kind,
+            blocked_only=args.blocked_only,
+            blocked_by_task_id=args.blocked_by,
+            depends_on_task_id=args.depends_on,
+            limit=args.limit,
+        )
+    )
+    reverse_dependencies = {
+        entry.task_id: service.reverse_dependencies(entry.task_id)
+        for entry in entries
+    }
+    payload = {
+        "command": "watchtower-core query tasks",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "task_id": entry.task_id,
+                "trace_id": entry.trace_id,
+                "title": entry.title,
+                "summary": entry.summary,
+                "status": entry.status,
+                "task_status": entry.task_status,
+                "task_kind": entry.task_kind,
+                "priority": entry.priority,
+                "owner": entry.owner,
+                "doc_path": entry.doc_path,
+                "updated_at": entry.updated_at,
+                "blocked_by": list(entry.blocked_by),
+                "depends_on": list(entry.depends_on),
+                "related_ids": list(entry.related_ids),
+                "applies_to": list(entry.applies_to),
+                "github_repository": entry.github_repository,
+                "github_issue_number": entry.github_issue_number,
+                "github_issue_node_id": entry.github_issue_node_id,
+                "github_project_owner": entry.github_project_owner,
+                "github_project_owner_type": entry.github_project_owner_type,
+                "github_project_number": entry.github_project_number,
+                "github_project_item_id": entry.github_project_item_id,
+                "github_synced_at": entry.github_synced_at,
+                "tags": list(entry.tags),
+                **(
+                    {
+                        "blocked_by_details": [
+                            _task_dependency_payload(service.get(task_id))
+                            for task_id in entry.blocked_by
+                        ],
+                        "depends_on_details": [
+                            _task_dependency_payload(service.get(task_id))
+                            for task_id in entry.depends_on
+                        ],
+                        "reverse_dependency_details": [
+                            _task_dependency_payload(task)
+                            for task in reverse_dependencies[entry.task_id]
+                        ],
+                    }
+                    if args.include_dependency_details
+                    else {}
+                ),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No task entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} task entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.task_id} [{entry.task_status}, {entry.priority}]")
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+        if args.include_dependency_details:
+            if entry.blocked_by:
+                print(f"  Blocked by: {', '.join(entry.blocked_by)}")
+            if entry.depends_on:
+                print(f"  Depends on: {', '.join(entry.depends_on)}")
+            reverse_links = reverse_dependencies[entry.task_id]
+            if reverse_links:
+                print(
+                    "  Reverse dependencies: "
+                    + ", ".join(task.task_id for task in reverse_links)
+                )
+    return 0
+
+
 def _run_query_trace(args: argparse.Namespace) -> int:
     service = TraceabilityQueryService(ControlPlaneLoader())
     try:
@@ -1081,11 +1589,16 @@ def _run_query_trace(args: argparse.Namespace) -> int:
             "title": entry.title,
             "summary": entry.summary,
             "status": entry.status,
+            "initiative_status": entry.initiative_status,
             "updated_at": entry.updated_at,
+            "closed_at": entry.closed_at,
+            "closure_reason": entry.closure_reason,
+            "superseded_by_trace_id": entry.superseded_by_trace_id,
             "prd_ids": list(entry.prd_ids),
             "decision_ids": list(entry.decision_ids),
             "design_ids": list(entry.design_ids),
             "plan_ids": list(entry.plan_ids),
+            "task_ids": list(entry.task_ids),
             "requirement_ids": list(entry.requirement_ids),
             "acceptance_ids": list(entry.acceptance_ids),
             "acceptance_contract_ids": list(entry.acceptance_contract_ids),
@@ -1101,6 +1614,13 @@ def _run_query_trace(args: argparse.Namespace) -> int:
 
     print(f"{entry.trace_id}: {entry.title}")
     print(entry.summary)
+    print(f"Initiative Status: {entry.initiative_status}")
+    if entry.closed_at is not None:
+        print(f"Closed At: {entry.closed_at}")
+    if entry.closure_reason is not None:
+        print(f"Closure Reason: {entry.closure_reason}")
+    if entry.superseded_by_trace_id is not None:
+        print(f"Superseded By: {entry.superseded_by_trace_id}")
     if entry.prd_ids:
         print(f"PRDs: {', '.join(entry.prd_ids)}")
     if entry.decision_ids:
@@ -1109,6 +1629,8 @@ def _run_query_trace(args: argparse.Namespace) -> int:
         print(f"Designs: {', '.join(entry.design_ids)}")
     if entry.plan_ids:
         print(f"Plans: {', '.join(entry.plan_ids)}")
+    if entry.task_ids:
+        print(f"Tasks: {', '.join(entry.task_ids)}")
     if entry.acceptance_contract_ids:
         print(f"Acceptance Contracts: {', '.join(entry.acceptance_contract_ids)}")
     if entry.evidence_ids:
@@ -1143,6 +1665,40 @@ def _run_sync_prd_index(args: argparse.Namespace) -> int:
     )
 
 
+def _run_sync_prd_tracking(args: argparse.Namespace) -> int:
+    service = PrdTrackingSyncService.from_repo_root()
+    result = service.build_document()
+    destination: str | None = None
+    wrote = False
+
+    if args.write or args.output is not None:
+        target = _resolve_output_path(args.output)
+        destination = str(service.write_document(result, target))
+        wrote = True
+
+    payload: dict[str, object] = {
+        "command": "watchtower-core sync prd-tracking",
+        "status": "ok",
+        "prd_count": result.prd_count,
+        "wrote": wrote,
+        "artifact_path": destination,
+    }
+    if args.include_document:
+        payload["document"] = result.content
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if wrote:
+        print(
+            f"Rebuilt PRD tracking with {result.prd_count} entries and wrote it to {destination}."
+        )
+        return 0
+
+    print(f"Rebuilt PRD tracking with {result.prd_count} entries in dry-run mode.")
+    print("Use --write to update the canonical tracker or --output <path> to write elsewhere.")
+    return 0
+
+
 def _run_sync_decision_index(args: argparse.Namespace) -> int:
     return _run_sync_document_command(
         args,
@@ -1152,6 +1708,41 @@ def _run_sync_decision_index(args: argparse.Namespace) -> int:
     )
 
 
+def _run_sync_decision_tracking(args: argparse.Namespace) -> int:
+    service = DecisionTrackingSyncService.from_repo_root()
+    result = service.build_document()
+    destination: str | None = None
+    wrote = False
+
+    if args.write or args.output is not None:
+        target = _resolve_output_path(args.output)
+        destination = str(service.write_document(result, target))
+        wrote = True
+
+    payload: dict[str, object] = {
+        "command": "watchtower-core sync decision-tracking",
+        "status": "ok",
+        "decision_count": result.decision_count,
+        "wrote": wrote,
+        "artifact_path": destination,
+    }
+    if args.include_document:
+        payload["document"] = result.content
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if wrote:
+        print(
+            "Rebuilt decision tracking with "
+            f"{result.decision_count} entries and wrote it to {destination}."
+        )
+        return 0
+
+    print(f"Rebuilt decision tracking with {result.decision_count} entries in dry-run mode.")
+    print("Use --write to update the canonical tracker or --output <path> to write elsewhere.")
+    return 0
+
+
 def _run_sync_design_document_index(args: argparse.Namespace) -> int:
     return _run_sync_document_command(
         args,
@@ -1159,6 +1750,150 @@ def _run_sync_design_document_index(args: argparse.Namespace) -> int:
         artifact_label="design-document index",
         service=DesignDocumentIndexSyncService.from_repo_root(),
     )
+
+
+def _run_sync_design_tracking(args: argparse.Namespace) -> int:
+    service = DesignTrackingSyncService.from_repo_root()
+    result = service.build_document()
+    destination: str | None = None
+    wrote = False
+
+    if args.write or args.output is not None:
+        target = _resolve_output_path(args.output)
+        destination = str(service.write_document(result, target))
+        wrote = True
+
+    payload: dict[str, object] = {
+        "command": "watchtower-core sync design-tracking",
+        "status": "ok",
+        "feature_design_count": result.feature_design_count,
+        "implementation_plan_count": result.implementation_plan_count,
+        "wrote": wrote,
+        "artifact_path": destination,
+    }
+    if args.include_document:
+        payload["document"] = result.content
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    total = result.feature_design_count + result.implementation_plan_count
+    if wrote:
+        print(f"Rebuilt design tracking with {total} documents and wrote it to {destination}.")
+        return 0
+
+    print(f"Rebuilt design tracking with {total} documents in dry-run mode.")
+    print("Use --write to update the canonical tracker or --output <path> to write elsewhere.")
+    return 0
+
+
+def _run_sync_task_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync task-index",
+        artifact_label="task index",
+        service=TaskIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_task_tracking(args: argparse.Namespace) -> int:
+    service = TaskTrackingSyncService.from_repo_root()
+    result = service.build_document()
+    destination: str | None = None
+    wrote = False
+
+    if args.write or args.output is not None:
+        target = _resolve_output_path(args.output)
+        destination = str(service.write_document(result, target))
+        wrote = True
+
+    payload: dict[str, object] = {
+        "command": "watchtower-core sync task-tracking",
+        "status": "ok",
+        "task_count": result.task_count,
+        "open_count": result.open_count,
+        "closed_count": result.closed_count,
+        "wrote": wrote,
+        "artifact_path": destination,
+    }
+    if args.include_document:
+        payload["document"] = result.content
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if wrote:
+        print(
+            f"Rebuilt task tracking with {result.task_count} tasks and wrote it to {destination}."
+        )
+        return 0
+
+    print(f"Rebuilt task tracking with {result.task_count} tasks in dry-run mode.")
+    print("Use --write to update the canonical tracker or --output <path> to write elsewhere.")
+    return 0
+
+
+def _run_sync_github_tasks(args: argparse.Namespace) -> int:
+    service = GitHubTaskSyncService(ControlPlaneLoader())
+    result = service.sync(
+        GitHubTaskSyncParams(
+            task_ids=tuple(args.task_id),
+            trace_id=args.trace_id,
+            task_status=args.task_status,
+            priority=args.priority,
+            owner=args.owner,
+            task_kind=args.task_kind,
+            blocked_only=args.blocked_only,
+            blocked_by_task_id=args.blocked_by,
+            depends_on_task_id=args.depends_on,
+            repository=args.repo,
+            project_owner=args.project_owner,
+            project_owner_type=args.project_owner_type,
+            project_number=args.project_number,
+            project_status_field_name=args.project_status_field,
+            token_env=args.token_env,
+        ),
+        write=args.write,
+    )
+    payload = {
+        "command": "watchtower-core sync github-tasks",
+        "status": "ok" if all(record.success for record in result.records) else "error",
+        "wrote": result.wrote,
+        "result_count": len(result.records),
+        "synced_task_count": result.synced_task_count,
+        "local_change_count": result.local_change_count,
+        "rebuilt_task_index": result.rebuilt_task_index,
+        "rebuilt_task_tracking": result.rebuilt_task_tracking,
+        "rebuilt_traceability_index": result.rebuilt_traceability_index,
+        "results": [
+            {
+                "task_id": record.task_id,
+                "doc_path": record.doc_path,
+                "repository": record.repository,
+                "task_status": record.task_status,
+                "issue_action": record.issue_action,
+                "project_action": record.project_action,
+                "success": record.success,
+                "message": record.message,
+                "github_issue_number": record.github_issue_number,
+                "github_project_item_id": record.github_project_item_id,
+            }
+            for record in result.records
+        ],
+    }
+    exit_code = 0 if payload["status"] == "ok" else 1
+    if _print_payload(args, payload) == 0:
+        return exit_code
+
+    if not result.records:
+        print("No task entries matched the requested sync filters.")
+        return 0
+    for record in result.records:
+        state = "ok" if record.success else "error"
+        print(f"- {record.task_id} [{state}]")
+        print(f"  Issue action: {record.issue_action}")
+        if record.project_action is not None:
+            print(f"  Project action: {record.project_action}")
+        print(f"  {record.message}")
+    return exit_code
 
 
 def _run_sync_traceability_index(args: argparse.Namespace) -> int:
@@ -1181,6 +1916,7 @@ def _run_sync_document_command(
         | DesignDocumentIndexSyncService
         | PrdIndexSyncService
         | RepositoryPathIndexSyncService
+        | TaskIndexSyncService
         | TraceabilityIndexSyncService
     ),
 ) -> int:
@@ -1215,6 +1951,58 @@ def _run_sync_document_command(
 
     print(f"Rebuilt {artifact_label} with {entry_count} entries in dry-run mode.")
     print("Use --write to update the canonical artifact or --output <path> to write elsewhere.")
+    return 0
+
+
+def _run_closeout_initiative(args: argparse.Namespace) -> int:
+    service = InitiativeCloseoutService(ControlPlaneLoader())
+    try:
+        result = service.close(
+            trace_id=args.trace_id,
+            initiative_status=args.initiative_status,
+            closure_reason=args.closure_reason,
+            superseded_by_trace_id=args.superseded_by_trace_id,
+            closed_at=args.closed_at,
+            write=args.write,
+            allow_open_tasks=args.allow_open_tasks,
+        )
+    except ValueError as exc:
+        return _emit_command_error(
+            args,
+            "watchtower-core closeout initiative",
+            str(exc),
+            prefix="Closeout error",
+        )
+
+    payload = {
+        "command": "watchtower-core closeout initiative",
+        "status": "ok",
+        "trace_id": result.trace_id,
+        "initiative_status": result.initiative_status,
+        "closed_at": result.closed_at,
+        "closure_reason": result.closure_reason,
+        "superseded_by_trace_id": result.superseded_by_trace_id,
+        "open_task_ids": list(result.open_task_ids),
+        "wrote": result.wrote,
+        "traceability_output_path": result.traceability_output_path,
+        "prd_tracking_output_path": result.prd_tracking_output_path,
+        "decision_tracking_output_path": result.decision_tracking_output_path,
+        "design_tracking_output_path": result.design_tracking_output_path,
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    print(f"Closed initiative {result.trace_id} as {result.initiative_status}.")
+    print(f"Closed At: {result.closed_at}")
+    print(f"Reason: {result.closure_reason}")
+    if result.superseded_by_trace_id is not None:
+        print(f"Superseded By: {result.superseded_by_trace_id}")
+    if result.open_task_ids:
+        print(f"Open Tasks Left In Place: {', '.join(result.open_task_ids)}")
+    if result.wrote:
+        print("Canonical traceability and planning trackers were updated.")
+    else:
+        print("Dry-run only. Use --write to persist the closeout state.")
     return 0
 
 
@@ -1322,6 +2110,17 @@ def _emit_command_error(
     else:
         print(f"{prefix}: {message}")
     return 1
+
+
+def _task_dependency_payload(task: TaskIndexEntry) -> dict[str, object]:
+    return {
+        "task_id": task.task_id,
+        "title": task.title,
+        "task_status": task.task_status,
+        "priority": task.priority,
+        "owner": task.owner,
+        "doc_path": task.doc_path,
+    }
 
 
 def _resolve_output_path(path: Path | None) -> Path | None:

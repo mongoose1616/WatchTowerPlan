@@ -37,9 +37,18 @@
 - `uv run mypy src`
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
+- `uv run watchtower-core query tasks --task-status backlog`
+- `uv run watchtower-core query tasks --blocked-only --include-dependency-details`
 - `uv run watchtower-core sync prd-index`
+- `uv run watchtower-core sync prd-tracking`
+- `uv run watchtower-core sync task-index`
+- `uv run watchtower-core sync task-tracking`
+- `uv run watchtower-core sync github-tasks --repo owner/repo`
 - `uv run watchtower-core sync decision-index`
+- `uv run watchtower-core sync decision-tracking`
 - `uv run watchtower-core sync design-document-index`
+- `uv run watchtower-core sync design-tracking`
+- `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"`
 
 ### Commands Inside `./tools/dev_shell.sh`
 - `watchtower-core --help`
@@ -72,12 +81,21 @@
 - `docs/commands/core_python/watchtower_core_query_prds.md`
 - `docs/commands/core_python/watchtower_core_query_decisions.md`
 - `docs/commands/core_python/watchtower_core_query_designs.md`
+- `docs/commands/core_python/watchtower_core_query_tasks.md`
 - `docs/commands/core_python/watchtower_core_query_trace.md`
+- `docs/commands/core_python/watchtower_core_closeout.md`
+- `docs/commands/core_python/watchtower_core_closeout_initiative.md`
 - `docs/commands/core_python/watchtower_core_sync.md`
 - `docs/commands/core_python/watchtower_core_sync_command_index.md`
 - `docs/commands/core_python/watchtower_core_sync_prd_index.md`
+- `docs/commands/core_python/watchtower_core_sync_prd_tracking.md`
 - `docs/commands/core_python/watchtower_core_sync_decision_index.md`
+- `docs/commands/core_python/watchtower_core_sync_decision_tracking.md`
 - `docs/commands/core_python/watchtower_core_sync_design_document_index.md`
+- `docs/commands/core_python/watchtower_core_sync_design_tracking.md`
+- `docs/commands/core_python/watchtower_core_sync_task_index.md`
+- `docs/commands/core_python/watchtower_core_sync_task_tracking.md`
+- `docs/commands/core_python/watchtower_core_sync_github_tasks.md`
 - `docs/commands/core_python/watchtower_core_sync_traceability_index.md`
 - `docs/commands/core_python/watchtower_core_sync_repository_paths.md`
 - `docs/commands/core_python/watchtower_core_validate.md`

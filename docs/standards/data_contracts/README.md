@@ -17,5 +17,6 @@
 | `docs/standards/data_contracts/schema_catalog_standard.md` | Defines the standard for the authored schema catalog registry. |
 | `docs/standards/data_contracts/schema_standard.md` | Defines schema expectations for governed structured data. |
 | `docs/standards/data_contracts/status_tracking_standard.md` | Defines how status values should be represented and maintained. |
+| `docs/standards/data_contracts/task_index_standard.md` | Defines the standard for machine-readable task indexes. |
 | `docs/standards/data_contracts/traceability_index_standard.md` | Defines the standard for the unified machine-readable traceability index. |
 | `docs/standards/data_contracts/validation_evidence_standard.md` | Defines the standard for durable validation-evidence ledger artifacts. |

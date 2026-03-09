@@ -15,6 +15,7 @@ DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.v1.js
 DESIGN_DOCUMENT_INDEX_PATH = (
     "core/control_plane/indexes/design_documents/design_document_index.v1.json"
 )
+TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
 TRACEABILITY_INDEX_ARTIFACT_PATH = (
     "core/control_plane/indexes/traceability/traceability_index.v1.json"
 )
@@ -62,6 +63,27 @@ def _load_entries(document: dict[str, Any], *, label: str) -> list[dict[str, Any
     return [entry for entry in entries if isinstance(entry, dict)]
 
 
+def _load_existing_trace_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, Any]]:
+    path = loader.repo_root / TRACEABILITY_INDEX_ARTIFACT_PATH
+    if not path.exists():
+        return {}
+    loaded = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(loaded, dict):
+        return {}
+    entries = loaded.get("entries")
+    if not isinstance(entries, list):
+        return {}
+
+    existing: dict[str, dict[str, Any]] = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        trace_id = entry.get("trace_id")
+        if isinstance(trace_id, str):
+            existing[trace_id] = entry
+    return existing
+
+
 def _iter_validated_documents(
     loader: ControlPlaneLoader,
     relative_directory: str,
@@ -83,6 +105,10 @@ class TraceAccumulator:
     title: str | None = None
     summary: str | None = None
     note: str | None = None
+    initiative_status: str = "active"
+    closed_at: str | None = None
+    closure_reason: str | None = None
+    superseded_by_trace_id: str | None = None
     _primary_rank: int = 999
     _note_rank: int = 999
     _statuses: set[str] = field(default_factory=set)
@@ -91,6 +117,7 @@ class TraceAccumulator:
     decision_ids: set[str] = field(default_factory=set)
     design_ids: set[str] = field(default_factory=set)
     plan_ids: set[str] = field(default_factory=set)
+    task_ids: set[str] = field(default_factory=set)
     requirement_ids: set[str] = field(default_factory=set)
     acceptance_ids: set[str] = field(default_factory=set)
     acceptance_contract_ids: set[str] = field(default_factory=set)
@@ -140,12 +167,27 @@ class TraceAccumulator:
             "title": self.title,
             "summary": self.summary,
             "status": _resolve_status(self._statuses),
+            "initiative_status": self.initiative_status,
             "updated_at": max(self._timestamps),
         }
+        if self.initiative_status != "active":
+            if self.closed_at is None or self.closure_reason is None:
+                raise ValueError(
+                    f"Closed trace {self.trace_id} is missing closeout metadata."
+                )
+            document["closed_at"] = self.closed_at
+            document["closure_reason"] = self.closure_reason
+            if self.initiative_status == "superseded":
+                if self.superseded_by_trace_id is None:
+                    raise ValueError(
+                        f"Superseded trace {self.trace_id} is missing superseded_by_trace_id."
+                    )
+                document["superseded_by_trace_id"] = self.superseded_by_trace_id
         self._set_list_field(document, "prd_ids", self.prd_ids)
         self._set_list_field(document, "decision_ids", self.decision_ids)
         self._set_list_field(document, "design_ids", self.design_ids)
         self._set_list_field(document, "plan_ids", self.plan_ids)
+        self._set_list_field(document, "task_ids", self.task_ids)
         self._set_list_field(document, "requirement_ids", self.requirement_ids)
         self._set_list_field(document, "acceptance_ids", self.acceptance_ids)
         self._set_list_field(
@@ -160,6 +202,23 @@ class TraceAccumulator:
         if self.note is not None:
             document["notes"] = self.note
         return document
+
+    def preserve_existing_state(self, entry: dict[str, Any]) -> None:
+        initiative_status = entry.get("initiative_status")
+        if isinstance(initiative_status, str) and initiative_status:
+            self.initiative_status = initiative_status
+        closed_at = entry.get("closed_at")
+        if isinstance(closed_at, str) and closed_at:
+            self.closed_at = closed_at
+        closure_reason = entry.get("closure_reason")
+        if isinstance(closure_reason, str) and closure_reason:
+            self.closure_reason = closure_reason
+        superseded_by_trace_id = entry.get("superseded_by_trace_id")
+        if isinstance(superseded_by_trace_id, str) and superseded_by_trace_id:
+            self.superseded_by_trace_id = superseded_by_trace_id
+        note = entry.get("notes")
+        if isinstance(note, str) and note:
+            self.merge_note(rank=900, note=note)
 
     @staticmethod
     def _set_list_field(document: dict[str, object], field_name: str, values: set[str]) -> None:
@@ -180,12 +239,15 @@ class TraceabilityIndexSyncService:
 
     def build_document(self) -> dict[str, object]:
         accumulators: dict[str, TraceAccumulator] = {}
+        existing_entries = _load_existing_trace_entries(self._loader)
 
         self._merge_prd_index(accumulators)
         self._merge_decision_index(accumulators)
         self._merge_design_index(accumulators)
+        self._merge_task_index(accumulators)
         self._merge_acceptance_contracts(accumulators)
         self._merge_validation_evidence(accumulators)
+        self._merge_existing_state(accumulators, existing_entries)
 
         if not accumulators:
             raise ValueError("Traceability index rebuild produced no trace entries.")
@@ -219,6 +281,17 @@ class TraceabilityIndexSyncService:
             accumulator = TraceAccumulator(trace_id=trace_id)
             accumulators[trace_id] = accumulator
         return accumulator
+
+    def _merge_existing_state(
+        self,
+        accumulators: dict[str, TraceAccumulator],
+        existing_entries: dict[str, dict[str, Any]],
+    ) -> None:
+        for trace_id, accumulator in accumulators.items():
+            existing = existing_entries.get(trace_id)
+            if existing is None:
+                continue
+            accumulator.preserve_existing_state(existing)
 
     def _merge_prd_index(self, accumulators: dict[str, TraceAccumulator]) -> None:
         document = self._loader.load_validated_document(PRD_INDEX_PATH)
@@ -294,6 +367,29 @@ class TraceabilityIndexSyncService:
                 self._repo_root,
                 accumulator.related_paths,
                 _tuple_of_strings(entry, "doc_path", "source_paths", "related_paths"),
+            )
+
+    def _merge_task_index(self, accumulators: dict[str, TraceAccumulator]) -> None:
+        document = self._loader.load_validated_document(TASK_INDEX_PATH)
+        for entry in _load_entries(document, label=TASK_INDEX_PATH):
+            trace_id_value = entry.get("trace_id")
+            if not isinstance(trace_id_value, str) or not trace_id_value:
+                continue
+            accumulator = self._accumulator(accumulators, trace_id_value)
+            accumulator.merge_primary(
+                rank=5,
+                title=str(entry["title"]),
+                summary=str(entry["summary"]),
+                status=str(entry["status"]),
+                updated_at=str(entry["updated_at"]),
+                note=_optional_string(entry, "notes"),
+            )
+            _merge_values(accumulator.task_ids, _tuple_of_strings(entry, "task_id"))
+            _merge_values(accumulator.tags, _tuple_of_strings(entry, "tags"))
+            _add_existing_paths(
+                self._repo_root,
+                accumulator.related_paths,
+                _tuple_of_strings(entry, "doc_path", "applies_to"),
             )
 
     def _merge_acceptance_contracts(self, accumulators: dict[str, TraceAccumulator]) -> None:

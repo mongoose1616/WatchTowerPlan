@@ -14,6 +14,7 @@ from watchtower_core.control_plane.models import (
     PrdIndex,
     RepositoryPathIndex,
     SchemaCatalog,
+    TaskIndex,
     TraceabilityIndex,
     ValidatorRegistry,
 )
@@ -30,6 +31,7 @@ DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.v1.js
 DESIGN_DOCUMENT_INDEX_PATH = (
     "core/control_plane/indexes/design_documents/design_document_index.v1.json"
 )
+TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.v1.json"
 
 
@@ -98,6 +100,10 @@ class ControlPlaneLoader:
         return DesignDocumentIndex.from_document(
             self.load_validated_document(DESIGN_DOCUMENT_INDEX_PATH)
         )
+
+    def load_task_index(self) -> TaskIndex:
+        """Load the current task index."""
+        return TaskIndex.from_document(self.load_validated_document(TASK_INDEX_PATH))
 
     def load_traceability_index(self) -> TraceabilityIndex:
         """Load the current traceability index."""

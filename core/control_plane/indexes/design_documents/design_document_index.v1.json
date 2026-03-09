@@ -66,6 +66,53 @@
       ]
     },
     {
+      "document_id": "design.features.github_task_push_sync",
+      "trace_id": "trace.local_task_tracking",
+      "family": "feature_design",
+      "title": "GitHub Task Push Sync",
+      "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/github_task_push_sync.md",
+      "updated_at": "2026-03-09T16:20:00Z",
+      "related_paths": [
+        "docs/planning/tasks/",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/python/src/watchtower_core/sync/github_tasks.py"
+      ]
+    },
+    {
+      "document_id": "design.features.initiative_closeout_and_planning_trackers",
+      "trace_id": "trace.initiative_closeout",
+      "family": "feature_design",
+      "title": "Initiative Closeout and Planning Trackers",
+      "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+      "updated_at": "2026-03-09T16:20:00Z",
+      "related_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md"
+      ]
+    },
+    {
+      "document_id": "design.features.local_task_tracking_and_github_sync",
+      "trace_id": "trace.local_task_tracking",
+      "family": "feature_design",
+      "title": "Local Task Tracking and GitHub Sync Design",
+      "summary": "Defines the feature-level design for local-first task records, a generated task tracker, a generated task index, and later GitHub sync support.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+      "updated_at": "2026-03-09T14:41:51Z",
+      "related_paths": [
+        "docs/planning/tasks/",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/"
+      ]
+    },
+    {
       "document_id": "design.features.python_validator_execution",
       "trace_id": "trace.core_python_foundation",
       "family": "feature_design",

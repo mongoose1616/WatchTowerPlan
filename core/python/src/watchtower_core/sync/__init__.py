@@ -8,14 +8,23 @@ from watchtower_core.sync.decision_index import (
     DECISION_INDEX_ARTIFACT_PATH,
     DecisionIndexSyncService,
 )
+from watchtower_core.sync.decision_tracking import DecisionTrackingSyncService
 from watchtower_core.sync.design_document_index import (
     DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH,
     DesignDocumentIndexSyncService,
 )
+from watchtower_core.sync.design_tracking import DesignTrackingSyncService
+from watchtower_core.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
 from watchtower_core.sync.prd_index import PRD_INDEX_ARTIFACT_PATH, PrdIndexSyncService
+from watchtower_core.sync.prd_tracking import PrdTrackingSyncService
 from watchtower_core.sync.repository_paths import (
     REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
     RepositoryPathIndexSyncService,
+)
+from watchtower_core.sync.task_index import TASK_INDEX_ARTIFACT_PATH, TaskIndexSyncService
+from watchtower_core.sync.task_tracking import (
+    TASK_TRACKING_DOCUMENT_PATH,
+    TaskTrackingSyncService,
 )
 from watchtower_core.sync.traceability import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
@@ -25,14 +34,23 @@ from watchtower_core.sync.traceability import (
 __all__ = [
     "COMMAND_INDEX_ARTIFACT_PATH",
     "CommandIndexSyncService",
+    "DecisionTrackingSyncService",
     "DECISION_INDEX_ARTIFACT_PATH",
     "DecisionIndexSyncService",
+    "DesignTrackingSyncService",
     "DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH",
     "DesignDocumentIndexSyncService",
+    "GitHubTaskSyncParams",
+    "GitHubTaskSyncService",
     "PRD_INDEX_ARTIFACT_PATH",
     "PrdIndexSyncService",
+    "PrdTrackingSyncService",
     "REPOSITORY_PATH_INDEX_ARTIFACT_PATH",
     "RepositoryPathIndexSyncService",
+    "TASK_INDEX_ARTIFACT_PATH",
+    "TASK_TRACKING_DOCUMENT_PATH",
+    "TaskIndexSyncService",
+    "TaskTrackingSyncService",
     "TRACEABILITY_INDEX_ARTIFACT_PATH",
     "TraceabilityIndexSyncService",
 ]
