@@ -1,3 +1,19 @@
+---
+id: "std.documentation.workflow_md"
+title: "Workflow Markdown Standard"
+summary: "This standard defines the document-level structure and boundary rules for workflow Markdown files in this repository."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "documentation"
+  - "workflow_md"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Workflow Markdown Standard
 
 ## Summary
@@ -74,5 +90,5 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow template is an authoring scaffold. This standard is the normative file-shape rule.
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

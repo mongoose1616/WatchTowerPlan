@@ -1,3 +1,19 @@
+---
+id: "std.metadata.front_matter"
+title: "Front Matter Standard"
+summary: "This standard defines when repository documents should use front matter, which keys are canonical, and how parsed front matter is validated as structured metadata."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "metadata"
+  - "front_matter"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Front Matter Standard
 
 ## Summary
@@ -19,6 +35,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 ## Related Standards and Sources
 - [front_matter_reference.md](/home/j/WatchTowerPlan/docs/references/front_matter_reference.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
@@ -32,7 +49,8 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Keep the key set stable across a document family rather than inventing ad hoc keys per file.
 - Prefer simple scalar values. Use lists only when the metadata is naturally multi-valued, such as `tags`.
 - Quote single-value text fields for consistency.
-- Keep `updated` in ISO-style date form such as `2026-03-09`.
+- Keep `updated_at` as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, such as `2026-03-09T05:06:54Z`.
+- Use `updated_at` for mutable document metadata. Do not introduce alternate update-timestamp keys such as `updated`, `last_updated`, or `last_synced`.
 - Keep `id` values aligned with the repository naming and IDs standard.
 - Keep `status` values aligned with the repository status tracking standard.
 - When front matter is validated, validate the parsed metadata object rather than the full Markdown file text.
@@ -43,20 +61,24 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - `applies_to` should list the concrete repository surfaces or concepts the document governs or explains.
 - `aliases` should capture important alternate phrasings, abbreviations, or synonymous terms that users and agents are likely to search for.
 - `docs/references/**` documents that use repository-governed reference structure should include front matter and validate against the reference profile.
-- `docs/standards/**` and workflow documents may adopt front matter when status, ownership, or indexing needs justify it. If they do, they should validate against their matching profile.
+- `docs/planning/prds/**` documents should include front matter and validate against the PRD profile.
+- `docs/planning/decisions/**` documents should include front matter and validate against the decision-record profile.
+- `docs/standards/**` standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under `docs/standards/**` remain plain Markdown unless a narrower local rule says otherwise.
+- Workflow documents may adopt front matter when status, ownership, or indexing needs justify it. If they do, they should validate against their matching profile.
 
 ## Structure or Data Model
 ### Canonical keys
 | Key | Purpose | Typical Shape | Notes |
 |---|---|---|---|
 | `id` | Stable machine-usable document identifier | quoted string | Required for governed document families that need stable identity. |
+| `trace_id` | Shared traceability identifier | quoted string | Required for planning families that participate in end-to-end traceability. |
 | `title` | Stable human-readable document name | quoted string | Usually matches the visible title closely. |
 | `summary` | One-line description for listings and indexes | quoted string | Keep it short and specific. |
 | `type` | Document family | quoted string | Examples include `reference`, `standard`, and `workflow`. |
 | `status` | Lifecycle state | quoted string | Keep the value controlled and stable. |
 | `tags` | Search or grouping labels | YAML list | Use reusable labels, not prose. |
 | `owner` | Responsible maintainer or role | quoted string | Prefer stable role-like values. |
-| `updated` | Last meaningful content update | quoted string date | Use ISO-style dates. |
+| `updated_at` | Last meaningful content update | quoted UTC timestamp | Use the repository timestamp baseline `YYYY-MM-DDTHH:MM:SSZ`. |
 | `audience` | Intended readership | quoted string | Keep values concise and reusable. |
 | `authority` | Retrieval and precedence signal | quoted string | Use controlled values such as `authoritative`, `supporting`, `reference`, or `historical`. |
 | `applies_to` | Concrete repository surfaces or governed concepts | YAML list | Prefer real paths or stable concept identifiers over vague prose. |
@@ -66,7 +88,9 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | Document Family | Front Matter Rule | Validation Profile |
 |---|---|---|
 | `docs/references/**` | Required for governed reference docs | `reference_front_matter.v1.schema.json` |
-| `docs/standards/**` | Optional but approved when metadata is operationally useful | `standard_front_matter.v1.schema.json` |
+| `docs/planning/prds/**` | Required | `prd_front_matter.v1.schema.json` |
+| `docs/planning/decisions/**` | Required | `decision_record_front_matter.v1.schema.json` |
+| `docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.v1.schema.json` |
 | `workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.v1.schema.json` |
 | short directory `README.md` files | Not required by default | none |
 
@@ -90,14 +114,16 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 
 ## Examples
 - A long-lived reference under `docs/references/**` should use the reference front matter profile.
-- A new standard under `docs/standards/**` may remain plain Markdown until metadata becomes operationally useful, but if front matter is added it should use the standard profile.
+- A PRD under `docs/planning/prds/**` should use the PRD front matter profile and carry a shared `trace_id`.
+- A decision record under `docs/planning/decisions/**` should use the decision-record front matter profile and carry a shared `trace_id`.
+- A standard under `docs/standards/**` should use the standard front matter profile.
 - A front matter document can add `aliases` such as `yaml_header` and `document_metadata` when those terms are likely retrieval entrypoints.
 - A short `README.md` that only explains directory purpose should usually stay plain Markdown with no front matter.
 
 ## Validation
 - Front matter should parse cleanly as YAML.
 - Documents that claim a governed front matter profile should validate against the matching schema under `core/control_plane/schemas/interfaces/documentation/`.
-- Reviewers should reject unexpected keys, conflicting title or type signals, and stale `updated` values when the metadata was materially changed.
+- Reviewers should reject unexpected keys, conflicting title or type signals, and stale `updated_at` values when the metadata was materially changed.
 - Front matter rules and schema profiles should be updated together when the permitted key set changes.
 
 ## Change Control
@@ -108,6 +134,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 ## References
 - [front_matter_reference.md](/home/j/WatchTowerPlan/docs/references/front_matter_reference.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
@@ -118,5 +145,5 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - The exact allowed values for identifiers, statuses, owners, and audiences can be tightened later by companion metadata standards without changing the basic front matter structure.
 - Retrieval-oriented keys should stay small and intentional. If they become broad keyword dumps, they will reduce rather than improve retrieval quality.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

@@ -1,7 +1,7 @@
 # <Feature Design Title>
 
 > Use this template for feature-level technical designs that should be specific enough for implementation planning.
-> Store the finished document under `docs/design/features/` and keep it aligned with [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md).
+> Store the finished document under `docs/planning/design/features/` and keep it aligned with [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md).
 > Keep the document focused on one feature or narrowly related capability.
 > Record the recommended design, its tradeoffs, and the implementation guardrails without turning the document into a task checklist.
 
@@ -85,5 +85,5 @@
 ## References
 - <Relevant internal or external document.>
 
-## Last Synced
-- `YYYY-MM-DD`
+## Updated At
+- `YYYY-MM-DDTHH:MM:SSZ`

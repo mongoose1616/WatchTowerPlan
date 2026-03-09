@@ -1,3 +1,19 @@
+---
+id: "std.workflows.routing_and_context_loading"
+title: "Routing and Context Loading Standard"
+summary: "This standard defines how repository instructions, routing surfaces, and workflow modules are loaded so task execution starts with the minimum correct context."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "workflows"
+  - "routing_and_context_loading"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Routing and Context Loading Standard
 
 ## Summary
@@ -58,5 +74,5 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - This concern belongs under `workflows/` because it defines routing behavior and context-loading semantics.
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
-## Last Synced
-- `2026-03-10`
+## Updated At
+- `2026-03-09T05:23:35Z`

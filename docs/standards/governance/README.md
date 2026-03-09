@@ -9,3 +9,4 @@
 | `docs/standards/governance/README.md` | Describes the purpose of the governance standards directory and the standards stored here. |
 | `docs/standards/governance/decision_capture_standard.md` | Defines how durable repository decisions should be recorded, validated, and propagated into canonical artifacts. |
 | `docs/standards/governance/reference_distillation_standard.md` | Defines how external source material should be distilled into local references. |
+| `docs/standards/governance/traceability_standard.md` | Defines the repository baseline traceability model across PRDs, decisions, designs, and implementation plans. |

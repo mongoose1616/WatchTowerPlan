@@ -1,7 +1,7 @@
 # `docs/standards`
 
 ## Description
-`This directory contains normative repository standards. Use it for stable rules that govern documentation, metadata, workflows, data contracts, engineering practice, governance, operations, and validation behavior.`
+`This directory contains normative repository standards. Use it for stable rules that govern documentation, metadata, workflows, data contracts, engineering practice, governance, operations, and validation behavior. Governed standard documents under this tree use standard front matter; short directory README.md files stay plain Markdown unless a narrower local rule says otherwise.`
 
 ## Paths
 | Path | Description |

@@ -1,3 +1,19 @@
+---
+id: "std.data_contracts.status_tracking"
+title: "Status Tracking Standard"
+summary: "This standard defines the lifecycle status vocabulary for governed repository artifacts."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "status_tracking"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Status Tracking Standard
 
 ## Summary
@@ -83,5 +99,5 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - This standard is intentionally narrow. It defines lifecycle status only.
 - If the repository later needs validation-result vocabularies or execution-state vocabularies, those should be separate standards.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

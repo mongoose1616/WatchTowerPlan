@@ -1,13 +1,29 @@
+---
+id: "std.documentation.feature_design_md"
+title: "Feature Design Document Standard"
+summary: "This standard defines the structure, placement, and boundary rules for feature-level technical design documents stored under `docs/planning/design/features/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "documentation"
+  - "feature_design_md"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Feature Design Document Standard
 
 ## Summary
-This standard defines the structure, placement, and boundary rules for feature-level technical design documents stored under `docs/design/features/`.
+This standard defines the structure, placement, and boundary rules for feature-level technical design documents stored under `docs/planning/design/features/`.
 
 ## Purpose
 Keep feature designs consistent enough to review, compare, and hand off into implementation planning without turning them into PRDs, workflow modules, or commit-level plans.
 
 ## Scope
-- Applies to feature design documents stored under `docs/design/features/`.
+- Applies to feature design documents stored under `docs/planning/design/features/`.
 - Covers placement, required sections, optional sections, and the relationship between feature designs and later implementation plans.
 - Does not define PRD shape, workflow procedure, or implementation-plan breakdown format.
 
@@ -20,24 +36,24 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
 - [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
 - [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/design/features/README.md)
+- [README.md](/home/j/WatchTowerPlan/docs/planning/design/features/README.md)
 
 ## Guidance
-- Store feature designs under `docs/design/features/`.
+- Store feature designs under `docs/planning/design/features/`.
 - Keep one primary feature or tightly related capability cluster per design.
 - Use feature designs to explain why a solution should be built a certain way before work is broken into implementation tasks.
 - Feature designs should identify current-state constraints, options considered, the recommended design, and the implementation guardrails that later work must preserve.
 - Do not use feature designs as workflow modules, changelogs, or commit-by-commit execution notes.
 - Do not move normative repository rules into a feature design when they belong in `docs/standards/**`.
 - Include only the external sources that materially shaped the design. Omit that section when none were needed.
-- Use `Last Synced` to record the last meaningful content update date.
+- Use `Updated At` to record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`.
 
 ## Structure or Data Model
 ### Placement rules
 | Document Type | Canonical Location | Notes |
 |---|---|---|
-| Feature design | `docs/design/features/<feature_name>.md` | Use stable snake_case filenames derived from the design topic. |
-| Feature-design directory README | `docs/design/features/README.md` | Directory orientation and inventory only. |
+| Feature design | `docs/planning/design/features/<feature_name>.md` | Use stable snake_case filenames derived from the design topic. |
+| Feature-design directory README | `docs/planning/design/features/README.md` | Directory orientation and inventory only. |
 
 ### Required sections for feature designs
 | Section | Requirement | Notes |
@@ -57,7 +73,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 | `Dependencies` | Required | Record meaningful internal or external dependencies. |
 | `Risks` | Required | Record concrete risks or uncertainties. |
 | `References` | Required | Link companion docs or artifacts. |
-| `Last Synced` | Required | Record the last meaningful content update date. |
+| `Updated At` | Required | Record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`. |
 
 ### Optional sections for feature designs
 | Section | Use When |
@@ -66,15 +82,15 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 | `Open Questions` | Real design questions remain unresolved. |
 
 ## Process or Workflow
-1. Place the design under `docs/design/features/` with a stable snake_case filename.
+1. Place the design under `docs/planning/design/features/` with a stable snake_case filename.
 2. Draft the document using the feature design template and required section order.
 3. Link the design to the standards, control-plane artifacts, or current repository surfaces that constrain the solution.
 4. Record a recommended design and explicit guardrails before creating or updating the implementation plan.
 5. Update companion READMEs or related design docs when the feature family or naming changes.
 
 ## Examples
-- `docs/design/features/core_python_workspace_and_harness.md` is a feature design because it defines package boundaries, tool expectations, and future capability areas.
-- `docs/design/features/schema_resolution_and_index_search.md` is a feature design because it compares options and recommends an architecture before implementation work is broken down.
+- `docs/planning/design/features/core_python_workspace_and_harness.md` is a feature design because it defines package boundaries, tool expectations, and future capability areas.
+- `docs/planning/design/features/schema_resolution_and_index_search.md` is a feature design because it compares options and recommends an architecture before implementation work is broken down.
 - A commit checklist for one change set does not belong here; it belongs in an implementation plan, workflow, or task tracking surface.
 
 ## Validation
@@ -91,11 +107,11 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 ## References
 - [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
 - [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/design/features/README.md)
+- [README.md](/home/j/WatchTowerPlan/docs/planning/design/features/README.md)
 
 ## Notes
 - Feature designs are the design-authority layer for a capability until a later standard or control-plane artifact takes over a narrower concern.
 - A good feature design reduces rework in implementation planning by making tradeoffs and guardrails explicit.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

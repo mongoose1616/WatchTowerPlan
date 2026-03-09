@@ -1,3 +1,19 @@
+---
+id: "std.data_contracts.command_index"
+title: "Command Index Standard"
+summary: "This standard defines the role, structure, and boundary rules for machine-readable command indexes stored under `core/control_plane/indexes/commands/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "command_index"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Command Index Standard
 
 ## Summary
@@ -37,6 +53,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - Use a stable `command_id` per command or subcommand.
 - Represent subcommands as separate entries rather than embedding them only inside parent records.
 - Keep the index modular: add one entry per command surface and let future code load or filter only the relevant command family.
+- When a command supports structured machine output, record the supported output formats and default format in the command index entry.
 - Update the command index in the same change set whenever a command page or command surface changes materially.
 
 ## Structure or Data Model
@@ -64,6 +81,8 @@ Provide a compact lookup surface that maps available commands and subcommands to
 | `implementation_path` | Optional | Repository-relative owning implementation surface. |
 | `package_entrypoint` | Optional | Import-style entrypoint when one exists. |
 | `parent_command_id` | Required for subcommands | Stable parent command identifier. |
+| `output_formats` | Optional | Supported output formats such as `human` and `json`. |
+| `default_output_format` | Optional | Default output format when the command supports multiple modes. |
 | `aliases` | Optional | Alternate lookup terms that materially improve retrieval. |
 | `tags` | Optional | Controlled or semi-controlled query terms when useful. |
 | `notes` | Optional | Short lookup or operator notes. |
@@ -85,6 +104,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - Every `doc_path` should exist and point to a command page under `docs/commands/`.
 - Every listed `implementation_path` should exist.
 - Subcommand entries should name a valid `parent_command_id`.
+- When `default_output_format` is present, it should match one of the listed `output_formats`.
 - Reviewers should reject command-index entries that point to stale docs, stale implementation paths, or commands that do not exist in the current surface.
 
 ## Change Control
@@ -102,5 +122,5 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - The command index is intentionally small and lookup-oriented. It should not duplicate the full content of the command pages.
 - The repository path index remains the broader navigation surface. The command index is the targeted command-lookup surface.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

@@ -1,3 +1,19 @@
+---
+id: "std.data_contracts.schema_catalog"
+title: "Schema Catalog Standard"
+summary: "This standard defines the role, structure, and boundary rules for the authored schema catalog registry stored under `core/control_plane/registries/schema_catalog/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "schema_catalog"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Schema Catalog Standard
 
 ## Summary
@@ -21,6 +37,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validators/validator_registry.v1.json)
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/schema_catalog/README.md)
 
@@ -73,6 +90,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 
 ## Examples
 - The validator registry schema belongs in the catalog as an `artifact` schema with a canonical path under `core/control_plane/schemas/artifacts/`.
+- The shared UTC timestamp fragment belongs in the catalog as a `common` schema with a canonical path under `core/control_plane/schemas/common/`.
 - The reference front matter schema belongs in the catalog as an `interface` schema with a canonical path under `core/control_plane/schemas/interfaces/documentation/`.
 - A generated repository path catalog does not belong in the schema catalog because it is an index, not a stable schema-identity registry.
 
@@ -100,5 +118,5 @@ Provide deterministic local resolution from published schema `$id` values to can
 - The schema catalog exists because published schema identities are stable governed artifacts, not just filesystem paths.
 - The repository path index remains the right place for broad repository navigation and retrieval. The schema catalog is narrower and authoritative for schema resolution only.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

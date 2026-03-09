@@ -1,3 +1,19 @@
+---
+id: "std.workflows.workflow_design"
+title: "Workflow Design Standard"
+summary: "This standard defines how workflow modules in this repository should be designed, structured, and bounded."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "workflows"
+  - "workflow_design"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Workflow Design Standard
 
 ## Summary
@@ -104,5 +120,5 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - File-level Markdown shape belongs in [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md).
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
-## Last Synced
-- `2026-03-10`
+## Updated At
+- `2026-03-09T05:23:35Z`

@@ -21,15 +21,24 @@
 - If work is happening under [docs](/home/j/WatchTowerPlan/docs), also apply [docs/AGENTS.md](/home/j/WatchTowerPlan/docs/AGENTS.md).
 - If work is happening under [core/python](/home/j/WatchTowerPlan/core/python), also apply [core/python/AGENTS.md](/home/j/WatchTowerPlan/core/python/AGENTS.md).
 - Use the nearest applicable [README.md](/home/j/WatchTowerPlan/README.md) as the quick reference for directory purpose and file inventory before doing broader scans.
-- Keep durable documentation in `docs/`, workflow routing and task procedures in `workflows/`, and future shared implementation assets in `core/`.
+- Keep durable documentation in `docs/`, workflow routing and task procedures in `workflows/`, and shared implementation assets in `core/`.
+- Treat [docs/planning](/home/j/WatchTowerPlan/docs/planning/README.md) as the human planning corpus. Keep PRDs, designs, implementation plans, and durable decisions linked there rather than scattering planning state across unrelated docs.
+- Treat [core/control_plane](/home/j/WatchTowerPlan/core/control_plane/README.md) as the canonical, versioned, machine-readable authority. Keep authored schemas, registries, contracts, policies, indexes, examples, and ledgers there rather than in ad hoc JSON or Python constants.
 - Treat `core/python/` as the canonical Python workspace for package code, tests, tooling, and local virtual-environment usage.
+- Keep human-readable and machine-readable companion surfaces aligned in the same change set when one depends on the other. Examples include planning docs plus tracking indexes, command docs plus command indexes, and schema changes plus examples, schema catalog, validator registry entries, and tests.
+- Prefer machine-readable control-plane surfaces for deterministic lookup when they exist, and use prose docs for narrative context, rationale, and operator guidance.
 - During any non-documentation workflow, if a documentation gap is discovered, update adjacent docs in the same change when needed for coherence, otherwise load the minimum documentation workflow needed to close the gap or record explicit follow-up work if it is deferred.
 
 ## Do
 - Follow the routed workflow modules for task execution.
 - Use the nearest applicable [README.md](/home/j/WatchTowerPlan/README.md) as the quick reference before broader scans.
 - Apply [docs/AGENTS.md](/home/j/WatchTowerPlan/docs/AGENTS.md) when work falls under `docs/**`.
+- Prefer structured command output such as `--format json` for agent or workflow use when a command supports it.
+- Update adjacent indexes, trackers, examples, and validation surfaces when a governed document or control-plane artifact changes materially.
 
 ## Do Not
 - Do not bypass [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md) when selecting workflow modules.
 - Do not place durable documentation outside `docs/` or workflow procedures outside `workflows/`.
+- Do not store mutable runtime state, caches, or transient event streams under `core/control_plane/`.
+- Do not add parallel Python package roots or alternate virtual-environment conventions outside `core/python/`.
+- Do not leave companion machine-readable lookup or validation surfaces stale when their governing human or machine authority changed in the same task.

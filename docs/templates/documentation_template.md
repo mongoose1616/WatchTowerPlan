@@ -7,7 +7,7 @@ status: "<document_status>"
 tags:
   - "<tag>"
 owner: "<document_owner>"
-updated: "YYYY-MM-DD"
+updated_at: "YYYY-MM-DDTHH:MM:SSZ"
 audience: "<document_audience>"
 authority: "<document_authority>"
 applies_to:
@@ -102,8 +102,8 @@ aliases:
 2. <Describe how to update this document.>
 3. <Describe what validation, indexing, changelog, or related-doc updates should happen after changes.>
 
-## Last Synced
-- `YYYY-MM-DD`
+## Updated At
+- `YYYY-MM-DDTHH:MM:SSZ`
 
 ## Optional Scoped Application
 

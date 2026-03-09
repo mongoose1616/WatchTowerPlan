@@ -1,3 +1,19 @@
+---
+id: "std.documentation.readme_md"
+title: "README.md Standard"
+summary: "This standard defines the role, structure, and boundary rules for `README.md` files used as directory-level orientation documents in this repository."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "documentation"
+  - "readme_md"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # README.md Standard
 
 ## Summary
@@ -73,5 +89,5 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - A good README helps a contributor understand a directory before opening many files.
 - If a README needs long procedural content or repository-wide rules, that content probably belongs in a companion document instead.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

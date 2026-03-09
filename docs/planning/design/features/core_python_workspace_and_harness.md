@@ -5,6 +5,8 @@ This document defines the feature-level technical design for the consolidated Py
 
 ## Source Request
 - User request to plan the core layout, consolidate all Python-related surfaces in one Python folder, and define the onboarding surfaces needed for a standard local Python environment.
+- Planning authority captured in [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md).
+- Durable workspace-root choice captured in [core_python_workspace_root.md](/home/j/WatchTowerPlan/docs/planning/decisions/core_python_workspace_root.md).
 
 ## Scope and Feature Boundary
 - Covers the workspace split between `core/control_plane/` and `core/python/`.
@@ -32,8 +34,8 @@ This document defines the feature-level technical design for the consolidated Py
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/design/features/python_validator_execution.md)
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/design/features/schema_resolution_and_index_search.md)
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
+- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md)
 
 ## Design Goals and Constraints
 - Keep all Python-specific surfaces under one subtree.
@@ -69,6 +71,7 @@ This document defines the feature-level technical design for the consolidated Py
   - `query/` for index-backed lookup
   - `adapters/` for front matter and artifact parsing
   - `evidence/` for structured outputs and issues
+  - `sync/` for deterministic refresh and materialization of derived indexes and contracts
   - `cli/` for thin operator-facing commands
   - `utils/` for narrow shared helpers
 
@@ -77,6 +80,7 @@ This document defines the feature-level technical design for the consolidated Py
 - Existing feature designs that referenced `core/src/` and `core/tests/` should point to `core/python/src/` and `core/python/tests/` instead.
 - The repository path index should advertise `core/python/` as the Python entrypoint rather than the old flat layout.
 - The initial CLI should stay thin and package-local rather than growing a second source tree.
+- Future workflow-assisted data entry should validate structured payloads and materialize derived JSON artifacts through package code rather than hand-editing indexes ad hoc.
 
 ### Execution Flow
 1. An engineer enters `core/python/`.
@@ -93,9 +97,9 @@ This document defines the feature-level technical design for the consolidated Py
 
 ## Affected Surfaces
 - `docs/standards/engineering/python_workspace_standard.md`
-- `docs/design/features/core_python_workspace_and_harness.md`
-- `docs/design/features/python_validator_execution.md`
-- `docs/design/features/schema_resolution_and_index_search.md`
+- `docs/planning/design/features/core_python_workspace_and_harness.md`
+- `docs/planning/design/features/python_validator_execution.md`
+- `docs/planning/design/features/schema_resolution_and_index_search.md`
 - `core/README.md`
 - `core/python/`
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json`
@@ -105,6 +109,7 @@ This document defines the feature-level technical design for the consolidated Py
 - Prefer one package root and one CLI tree.
 - Keep onboarding documented in the workspace README and reproducible from the lockfile.
 - Keep the first functional scope centered on control-plane loading, validation, query, adapters, evidence, and operator-facing commands.
+- Use the future `sync/` surface for deterministic index refresh and contract materialization rather than mixing that behavior into query or validation modules.
 
 ## Implementation-Planning Handoff Notes
 - First implementation planning should break the work into workspace bootstrap, control-plane loaders, validation service, query service, adapters, and evidence models.
@@ -127,9 +132,9 @@ This document defines the feature-level technical design for the consolidated Py
 
 ## References
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/design/features/python_validator_execution.md)
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/design/features/schema_resolution_and_index_search.md)
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
+- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md)
 - [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T04:55:49Z`

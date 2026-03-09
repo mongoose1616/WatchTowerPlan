@@ -1,3 +1,19 @@
+---
+id: "std.engineering.python_workspace"
+title: "Python Workspace Standard"
+summary: "This standard defines how Python code, tooling, environments, and tests are organized for the core helper and harness layer under `core/python/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "engineering"
+  - "python_workspace"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Python Workspace Standard
 
 ## Summary
@@ -40,6 +56,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Run Python workspace commands from `core/python/`.
 - Prefer `uv run` for tests, linting, typechecking, CLI execution, and package-local Python invocations.
 - Treat `core/python/.venv/` as the canonical local environment. Do not create alternate virtual environments for normal repository work.
+- When a command is intended for both human operators and agent or automation use, prefer one explicit `--format` option with values such as `human` and `json` instead of separate bespoke `--human` and `--json` flags.
 - Keep Python source code under `core/python/src/` with one package root at `core/python/src/watchtower_core/`.
 - Keep tests under `core/python/tests/`.
 - Keep thin entrypoints under `core/python/src/watchtower_core/cli/`; do not create parallel top-level CLI source trees outside the package.
@@ -48,6 +65,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Do not place generated Python artifacts directly under `core/`.
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
 - Keep the first core package surfaces focused on control-plane loading, validation, query, adapters, evidence, and operator-facing CLI or doctor commands.
+- Keep deterministic derived-artifact refresh and materialization logic in a dedicated `sync/` package surface instead of scattering it across ad hoc scripts.
 
 ## Structure or Data Model
 ### Required workspace surfaces
@@ -70,6 +88,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 | `core/python/src/watchtower_core/query/` | Index-backed retrieval and structured query helpers. |
 | `core/python/src/watchtower_core/adapters/` | Parsers and adapters for Markdown front matter, JSON artifacts, and similar inputs. |
 | `core/python/src/watchtower_core/evidence/` | Structured result, issue, and evidence helpers. |
+| `core/python/src/watchtower_core/sync/` | Deterministic refresh and materialization helpers for derived indexes, contracts, and similar governed artifacts. |
 | `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |
 
@@ -112,5 +131,5 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - This standard intentionally keeps the Python workspace as a sibling of `core/control_plane/` rather than nesting the control plane inside Python-specific tooling.
 - The workspace may grow additional modules over time, but it should not grow additional package roots unless a later standard explicitly allows that change.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

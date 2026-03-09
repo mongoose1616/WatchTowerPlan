@@ -1,3 +1,19 @@
+---
+id: "std.data_contracts.format_selection"
+title: "Format Selection Standard"
+summary: "This standard defines how the repository chooses data and document formats for governed artifacts."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "format_selection"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Format Selection Standard
 
 ## Summary
@@ -109,5 +125,5 @@ Keep format choices small, predictable, and aligned with the repository's author
 - This standard deliberately keeps format choice separate from schema design, identifier policy, and runtime validation logic.
 - The goal is not to ban every alternative format. The goal is to make deviations from the defaults explicit and justified.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

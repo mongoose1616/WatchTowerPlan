@@ -1,7 +1,7 @@
 # <Implementation Plan Title>
 
 > Use this template for implementation plans that translate an approved feature design or user request into concrete engineering work.
-> Store the finished document under `docs/design/implementation/` and keep it aligned with [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md).
+> Store the finished document under `docs/planning/design/implementation/` and keep it aligned with [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md).
 > Keep the plan focused on one implementation slice or tightly related execution package.
 > Record the technical approach, work breakdown, validation plan, and rollout expectations without turning the document into commit-by-commit notes.
 
@@ -55,5 +55,5 @@
 ## References
 - <Relevant feature design, standard, or artifact.>
 
-## Last Synced
-- `YYYY-MM-DD`
+## Updated At
+- `YYYY-MM-DDTHH:MM:SSZ`

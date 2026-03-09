@@ -1,3 +1,19 @@
+---
+id: "std.metadata.terminology"
+title: "Terminology Standard"
+summary: "This standard defines how repository terminology is chosen, stabilized, and used so durable docs and governed artifacts do not drift into competing names for the same concept."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "metadata"
+  - "terminology"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Terminology Standard
 
 ## Summary
@@ -21,6 +37,7 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
 
 ## Guidance
@@ -47,6 +64,9 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 | `README` | A directory-orientation document | Quick reference, not a standards or workflow document. |
 | `foundation document` | A durable product, philosophy, standards-context, technology, or narrative document under `docs/foundations/` | Shapes later planning and standards work. |
 | `domain pack` | An external operator-facing pack that uses the shared core substrate | Not content owned inside the core control plane. |
+| `updated_at` | The last meaningful content update timestamp for a durable document or artifact | Use RFC 3339 UTC in the form `YYYY-MM-DDTHH:MM:SSZ`. |
+| `recorded_at` | The timestamp for when an evidence or event-style record was captured | Use RFC 3339 UTC in the form `YYYY-MM-DDTHH:MM:SSZ`. |
+| `generated_at` | A distinct generation or build timestamp for a derived artifact | Use only when it differs materially from `updated_at` or `recorded_at`. |
 
 ## Validation
 - Durable docs and governed artifacts should not use competing terms as if they were equal canonical names.
@@ -64,10 +84,11 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 
 ## Notes
 - Canonical terms exist to reduce ambiguity, not to force unnatural prose.
 - When a term is unstable or contested, resolve it in a standard or decision artifact before letting it spread through many documents.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

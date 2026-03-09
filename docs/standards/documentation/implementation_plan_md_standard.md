@@ -1,13 +1,29 @@
+---
+id: "std.documentation.implementation_plan_md"
+title: "Implementation Plan Document Standard"
+summary: "This standard defines the structure, placement, and boundary rules for implementation-plan documents stored under `docs/planning/design/implementation/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "documentation"
+  - "implementation_plan_md"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Implementation Plan Document Standard
 
 ## Summary
-This standard defines the structure, placement, and boundary rules for implementation-plan documents stored under `docs/design/implementation/`.
+This standard defines the structure, placement, and boundary rules for implementation-plan documents stored under `docs/planning/design/implementation/`.
 
 ## Purpose
 Keep implementation plans concrete enough to guide engineering work while preserving a clean boundary between approved design direction, workflow execution procedure, and direct code changes.
 
 ## Scope
-- Applies to implementation-plan documents stored under `docs/design/implementation/`.
+- Applies to implementation-plan documents stored under `docs/planning/design/implementation/`.
 - Covers placement, required sections, and the handoff relationship between feature designs and executable implementation work.
 - Does not define workflow procedure, commit-message rules, or PRD structure.
 
@@ -20,23 +36,23 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
 - [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/design/implementation/README.md)
+- [README.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/README.md)
 
 ## Guidance
-- Store implementation plans under `docs/design/implementation/`.
+- Store implementation plans under `docs/planning/design/implementation/`.
 - Keep one primary execution slice or tightly related engineering plan per document.
 - Use implementation plans to translate an approved feature design into technical approach, work breakdown, validation, and rollout expectations.
 - Anchor each plan to the feature design, PRD, or direct user request that justified the work.
 - Keep implementation plans above commit-by-commit notes; they should guide execution, not replace code review or workflow procedure.
 - Include the standards and canonical references that constrain implementation details.
-- Use `Last Synced` to record the last meaningful content update date.
+- Use `Updated At` to record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`.
 
 ## Structure or Data Model
 ### Placement rules
 | Document Type | Canonical Location | Notes |
 |---|---|---|
-| Implementation plan | `docs/design/implementation/<plan_name>.md` | Use stable snake_case filenames derived from the implementation slice. |
-| Implementation-plan directory README | `docs/design/implementation/README.md` | Directory orientation and inventory only. |
+| Implementation plan | `docs/planning/design/implementation/<plan_name>.md` | Use stable snake_case filenames derived from the implementation slice. |
+| Implementation-plan directory README | `docs/planning/design/implementation/README.md` | Directory orientation and inventory only. |
 
 ### Required sections for implementation plans
 | Section | Requirement | Notes |
@@ -54,7 +70,7 @@ Keep implementation plans concrete enough to guide engineering work while preser
 | `Validation Plan` | Required | State how the implementation will be verified. |
 | `Rollout or Migration Plan` | Required | State rollout expectations, even when the answer is no migration needed. |
 | `References` | Required | Link the design, standards, and companion artifacts that matter. |
-| `Last Synced` | Required | Record the last meaningful content update date. |
+| `Updated At` | Required | Record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`. |
 
 ### Optional sections for implementation plans
 | Section | Use When |
@@ -62,14 +78,14 @@ Keep implementation plans concrete enough to guide engineering work while preser
 | `Open Questions` | Real planning questions remain unresolved. |
 
 ## Process or Workflow
-1. Place the plan under `docs/design/implementation/` with a stable snake_case filename.
+1. Place the plan under `docs/planning/design/implementation/` with a stable snake_case filename.
 2. Start from the implementation-plan template and keep the required sections in order.
 3. Tie the plan back to the approved design, request, or PRD that justifies it.
 4. Break the work into concrete technical slices and explicit validation steps before implementation begins.
 5. Refresh the plan when related standards, designs, or control-plane artifacts change enough to invalidate the work breakdown.
 
 ## Examples
-- `docs/design/implementation/control_plane_loaders_and_schema_store.md` is an implementation plan because it turns approved design direction into concrete module boundaries, work breakdown, and validation steps.
+- `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` is an implementation plan because it turns approved design direction into concrete module boundaries, work breakdown, and validation steps.
 - A long-running operational runbook does not belong here; it belongs in a workflow or other operational documentation surface.
 
 ## Validation
@@ -86,11 +102,11 @@ Keep implementation plans concrete enough to guide engineering work while preser
 ## References
 - [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
 - [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/design/implementation/README.md)
+- [README.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/README.md)
 
 ## Notes
 - A good implementation plan narrows ambiguity before coding starts without duplicating workflow execution steps.
 - Plans should stay modular so later capability areas can reuse the same planning shape.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

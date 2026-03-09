@@ -4,7 +4,8 @@
 This plan breaks the first executable `core/python` slice into concrete work for loading governed control-plane artifacts and resolving schemas locally through a reusable `SchemaStore`.
 
 ## Source Request or Design
-- No PRD drives this slice directly.
+- PRD: [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
+- Decision: [core_python_workspace_root.md](/home/j/WatchTowerPlan/docs/planning/decisions/core_python_workspace_root.md)
 - This plan is driven by the approved feature designs for the core Python workspace, schema resolution and index search, and validator execution.
 
 ## Scope Summary
@@ -24,6 +25,7 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - `core/control_plane/registries/schema_catalog/schema_catalog.v1.json` now catalogs published schema IDs and canonical local schema paths.
 - `core/control_plane/registries/validators/validator_registry.v1.json` declares validation capabilities that later code will need to load.
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` and `core/control_plane/indexes/commands/command_index.v1.json` now provide governed lookup surfaces.
+- `core/control_plane/contracts/acceptance/`, `core/control_plane/indexes/traceability/`, and `core/control_plane/ledgers/validation_evidence/` now publish the first downstream traceability surfaces the loader layer will eventually need to expose.
 - `core/python/src/watchtower_core/control_plane/` is still scaffold-only.
 
 ## Internal Standards and Canonical References Applied
@@ -32,8 +34,10 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/design/features/python_validator_execution.md)
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/design/features/schema_resolution_and_index_search.md)
+- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md)
+- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
+- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md)
 
 ## Proposed Technical Approach
 - Add a small `control_plane` module split into:
@@ -81,10 +85,10 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - Whether future artifact models should remain dataclass-based or move to a stricter runtime model layer once more executable surfaces exist.
 
 ## References
-- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/design/features/core_python_workspace_and_harness.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/design/features/python_validator_execution.md)
-- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/design/features/schema_resolution_and_index_search.md)
+- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
+- [schema_resolution_and_index_search.md](/home/j/WatchTowerPlan/docs/planning/design/features/schema_resolution_and_index_search.md)
 - [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T04:55:49Z`

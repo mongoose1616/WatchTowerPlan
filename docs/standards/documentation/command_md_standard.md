@@ -1,3 +1,19 @@
+---
+id: "std.documentation.command_md"
+title: "Command Document Standard"
+summary: "This standard defines how repository-native command reference documents are written under `docs/commands/` so humans can discover available commands, scan usage quickly, and route from a command index to durable command pages."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "documentation"
+  - "command_md"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Command Document Standard
 
 ## Summary
@@ -32,6 +48,8 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Keep command docs focused on stable behavior: invocation shape, arguments, examples, outputs, and source surface.
 - Link each durable command page from the machine-readable command index and from the relevant command-family README.
 - Use `## Arguments and Options` even when the current command surface is small; state clearly when no command-specific arguments or options exist yet.
+- When a command supports both human-readable and structured machine output, document the canonical output-mode flag and supported values explicitly.
+- Prefer one `--format` option such as `--format human` or `--format json` over separate bespoke `--human` and `--json` switches.
 - Prefer concise examples that match the actual workspace and onboarding contract.
 - Record the implementation or source surface so engineers can move from the doc to the responsible code path quickly.
 - Keep command families modular: one directory per command family and one page per command or subcommand.
@@ -56,7 +74,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 | `Behavior and Outputs` | Required | Describe the current output shape, side effects, and exit behavior. |
 | `Related Commands` | Required | Point to nearby commands or command-family docs. |
 | `Source Surface` | Required | Point to the implementation surface that owns the command. |
-| `Last Synced` | Required | Record the last meaningful content update date. |
+| `Updated At` | Required | Record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`. |
 
 ## Process or Workflow
 1. Place the command doc under the correct command-family directory in `docs/commands/`.
@@ -74,6 +92,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Command pages should contain the required sections in the documented order.
 - The documented command should exist in the repository’s current command surface.
 - Example invocations should be runnable or clearly marked as illustrative if the command is not yet implemented.
+- If a command advertises structured output, the documented output mode should match the actual implementation surface.
 - Reviewers should reject command pages that mix multiple unrelated commands into one document or omit the source surface.
 
 ## Change Control
@@ -91,5 +110,5 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Command pages are intended to be the human-readable man-page layer for repository commands.
 - The command index exists to route to these pages and support lookup, not to replace the command docs themselves.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

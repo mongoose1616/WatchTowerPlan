@@ -5,6 +5,7 @@ This document defines the feature-level technical design for deterministic local
 
 ## Source Request
 - User request to define the best method for loading schemas and searching indexes as the repository file count grows.
+- Downstream planning authority is captured in [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md).
 
 ## Scope and Feature Boundary
 - Covers a schema catalog-driven resolution path for published schema `$id` values.
@@ -34,7 +35,7 @@ This document defines the feature-level technical design for deterministic local
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/design/features/python_validator_execution.md)
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
 - [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
 
 ## Design Goals and Constraints
@@ -91,7 +92,7 @@ This document defines the feature-level technical design for deterministic local
 
 ## Affected Surfaces
 - `docs/standards/data_contracts/schema_catalog_standard.md`
-- `docs/design/features/schema_resolution_and_index_search.md`
+- `docs/planning/design/features/schema_resolution_and_index_search.md`
 - `core/control_plane/schemas/artifacts/` for the schema catalog artifact schema
 - `core/control_plane/registries/schema_catalog/` for the live schema catalog artifact
 - `core/control_plane/examples/valid/registries/` and `core/control_plane/examples/invalid/registries/`
@@ -124,10 +125,10 @@ This document defines the feature-level technical design for deterministic local
 - Should alias matching be exact-only in the first version, or should it allow normalized token matching across aliases and summaries?
 
 ## References
-- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/design/features/python_validator_execution.md)
+- [python_validator_execution.md](/home/j/WatchTowerPlan/docs/planning/design/features/python_validator_execution.md)
 - [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md)
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 - [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T04:55:49Z`

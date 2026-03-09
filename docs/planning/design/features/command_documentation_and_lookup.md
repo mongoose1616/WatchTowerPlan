@@ -116,10 +116,10 @@ This document defines the feature-level design for a human-readable command-page
 - Should a later CLI feature generate the command index automatically from code and docs, or remain reviewed and maintained manually?
 
 ## References
-- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/design/features/core_python_workspace_and_harness.md)
+- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
 - [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md)
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T04:55:49Z`

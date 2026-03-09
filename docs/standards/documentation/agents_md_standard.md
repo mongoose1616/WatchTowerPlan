@@ -1,3 +1,19 @@
+---
+id: "std.documentation.agents_md"
+title: "AGENTS.md Standard"
+summary: "This standard defines the role, scope, structure, and authoring rules for `AGENTS.md` files used at the repository root and within nested directory subtrees."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "documentation"
+  - "agents_md"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # AGENTS.md Standard
 
 ## Summary
@@ -61,5 +77,5 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - `AGENTS.md` is an instruction surface, not a documentation dump.
 - The best `AGENTS.md` files are short, scoped, and obviously tied to the directory they govern.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:23:35Z`

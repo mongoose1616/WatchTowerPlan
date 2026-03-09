@@ -1,3 +1,19 @@
+---
+id: "std.metadata.naming_and_ids"
+title: "Naming and IDs Standard"
+summary: "This standard defines how governed repository artifacts are named and how stable machine-usable identifiers are assigned."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "metadata"
+  - "naming_and_ids"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Naming and IDs Standard
 
 ## Summary
@@ -8,7 +24,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 
 ## Scope
 - Applies to stable machine-usable identifiers for governed documents and governed machine-readable artifacts.
-- Covers document front matter `id` values, schema `$id` values, and filename conventions for published schemas and example artifacts.
+- Covers traceability IDs, document front matter `id` values, schema `$id` values, and filename conventions for published schemas and example artifacts.
 - Does not define every visible title, heading, or free-form label used in the repository.
 
 ## Use When
@@ -18,6 +34,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 
 ## Related Standards and Sources
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md)
 - [rfc_9562_uuid_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9562_uuid_reference.md)
@@ -27,20 +44,27 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Treat the stable machine identifier as distinct from the path, visible title, and current lifecycle status.
 - Assign one canonical machine identifier per governed artifact.
 - Keep identifiers stable across edits that change wording, file placement, or explanatory content without changing artifact identity.
-- Do not encode mutable metadata such as `status`, `owner`, `updated`, or `audience` into the identifier.
+- Do not encode mutable metadata such as `status`, `owner`, `updated_at`, `recorded_at`, `generated_at`, or `audience` into the identifier.
+- Use canonical timestamp field names from the timestamp standard. Do not create identifier patterns that depend on alternate timestamp-key spelling.
 - Prefer readable deterministic identifiers for authored repository artifacts.
 - Use lowercase ASCII for governed identifiers and filenames unless an external standard requires another form.
+- Use one shared `trace_id` when multiple planning artifacts belong to the same initiative, feature boundary, or governed change stream.
 - Use UUIDs only when the identifier is generated, cross-system uniqueness matters, or a human-readable deterministic identifier is not sufficient.
-- Do not use UUIDs for normal documentation IDs or published schema IDs.
+- Do not use UUIDs for normal documentation IDs, traceability IDs, or published schema IDs.
+- Prefer UUIDs only for generated instance records such as runtime sessions, validation runs, or later evidence artifacts when deterministic authored IDs are not practical.
 
 ## Structure or Data Model
 ### Identifier families
 | Artifact Family | Identifier Form | Example | Notes |
 |---|---|---|---|
+| Shared traceability identifier | dotted family prefix + initiative slug | `trace.core_python_foundation` | Use to join PRDs, decisions, designs, plans, and later evidence or closeout artifacts. |
 | Governed document front matter | dotted family prefix + concept slug | `ref.front_matter` | Best for references, standards, workflows, and similar long-lived docs. |
+| PRD identifier | dotted family prefix + PRD slug | `prd.traceability_baseline` | Use for durable PRD identity in trackers and indexes. |
+| Decision identifier | dotted family prefix + decision slug | `decision.validation_engine_selection` | Use for durable decision-record identity in trackers and indexes. |
 | Published schema `$id` | `urn:watchtower:schema:` namespace + version token | `urn:watchtower:schema:interfaces:documentation:front-matter-base:v1` | Use for canonical schema identity rather than file paths. |
 | Schema filename | snake case concept name + version + `.schema.json` | `reference_front_matter.v1.schema.json` | Version should be obvious in review. |
 | Example filename | snake case concept name + optional case suffix + version + `.example.json` | `reference_front_matter_missing_tags.v1.example.json` | Use case suffix only when it improves clarity. |
+| Generated runtime or evidence instance | UUID when needed | `550e8400-e29b-41d4-a716-446655440000` | Use only for generated non-authored instances where deterministic readable IDs are not practical. |
 
 ### Document `id` rules
 - Use the form `<family>.<concept_slug>`.
@@ -53,6 +77,12 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
   - `wf` for workflows
 - Do not invent a new family prefix in ad hoc front matter. Standardize it first in this repository or in a narrower governing standard.
 - Use the concept slug to describe the document topic, not the document state or file suffix.
+- Approved traceability and planning prefixes currently include:
+  - `trace` for shared traceability IDs
+  - `prd` for PRD IDs
+  - `decision` for decision-record IDs
+  - `design.features` for feature-design IDs
+  - `design.implementation` for implementation-plan IDs
 
 ### Schema `$id` rules
 - Use URNs for published schema identifiers.
@@ -74,6 +104,15 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - For versioned published schemas and similarly versioned machine contracts, place the major compatibility boundary in the identifier and filename as `v<major>`.
 - If an artifact needs richer semantic versioning, keep that in explicit metadata fields or release surfaces rather than overloading the base identifier.
 
+### UUID usage rules
+- Do not default to UUIDs for durable authored repository artifacts.
+- Use a readable deterministic ID first when the artifact is reviewed, linked, tracked, or edited by humans.
+- Consider UUIDs only for generated instance records such as:
+  - runtime sessions
+  - validation runs
+  - future evidence-instance artifacts
+- If a generated artifact needs both human readability and uniqueness, keep the UUID in a dedicated field and preserve a separate readable parent or trace identifier.
+
 ## Process or Workflow
 1. Decide whether the artifact needs a stable machine identifier or only a human-visible name.
 2. Choose the correct identifier family for the artifact type.
@@ -82,11 +121,15 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 5. Validate any machine-enforced profiles that constrain the identifier shape before treating the change as complete.
 
 ## Examples
+- `trace.core_python_foundation` is a shared traceability ID used to join related design and implementation artifacts.
 - `ref.front_matter` is the stable document ID for the front matter reference.
 - `std.front_matter` is the stable document ID for the front matter standard.
 - `wf.documentation_generation` is the stable document ID for the documentation-generation workflow family.
+- `prd.traceability_baseline` is a stable PRD identifier.
+- `decision.validation_engine_selection` is a stable decision-record identifier.
 - `urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1` is the canonical `$id` for the reference front matter schema.
 - `reference_front_matter.v1.schema.json` is the corresponding schema filename.
+- A validation run ID may use a UUID, but the related PRD, decision, design, and plan IDs should remain readable deterministic IDs.
 
 ## Validation
 - Reviewers should reject identifier changes that do not reflect a real identity or compatibility change.
@@ -102,13 +145,15 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 
 ## References
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 - [rfc_9562_uuid_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9562_uuid_reference.md)
 - [semantic_versioning_reference.md](/home/j/WatchTowerPlan/docs/references/semantic_versioning_reference.md)
 
 ## Notes
 - This standard prefers stable readable identifiers for authored repository artifacts because they work better for review, retrieval, and traceability than opaque generated IDs.
+- UUIDs are still available for generated instance records, but they are the exception rather than the default in this repository.
 - Future standards may define narrower rules for specific artifact families, but they should refine rather than weaken this baseline.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

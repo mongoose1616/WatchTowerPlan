@@ -1,3 +1,19 @@
+---
+id: "std.documentation.routing_table_md"
+title: "ROUTING_TABLE.md Standard"
+summary: "This standard defines the structure and expected content of `ROUTING_TABLE.md` as the canonical task-to-workflow routing surface for the repository."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "documentation"
+  - "routing_table_md"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # ROUTING_TABLE.md Standard
 
 ## Summary
@@ -54,5 +70,5 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - The routing table should answer "what should be loaded?" and not "how should the task be executed?"
 - Detailed logic belongs in workflow modules, not in routing rows.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:23:35Z`

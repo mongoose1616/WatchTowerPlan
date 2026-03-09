@@ -1,3 +1,19 @@
+---
+id: "std.data_contracts.repository_path_index"
+title: "Repository Path Index Standard"
+summary: "This standard defines the role, structure, and boundary rules for generated repository path indexes stored under `core/control_plane/indexes/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "repository_path_index"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Repository Path Index Standard
 
 ## Summary
@@ -101,5 +117,5 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - README files remain the human orientation layer for directories.
 - The repository path index exists to improve machine retrieval and path lookup, not to become a second prose documentation system.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

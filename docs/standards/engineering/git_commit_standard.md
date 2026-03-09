@@ -1,3 +1,19 @@
+---
+id: "std.engineering.git_commit"
+title: "Git Commit Standard"
+summary: "This standard defines the repository commit-message policy for human maintainers and assistant contributors. It combines Conventional Commits v1.0.0 with local commit-writing guidance so history remains human-auditable and machine-parseable."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "engineering"
+  - "git_commit"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Git Commit Standard
 
 ## Summary
@@ -224,5 +240,5 @@ fi
 - This is the normative repository policy for Git commit messages.
 - The reference documents remain supporting context and should not override this standard.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`

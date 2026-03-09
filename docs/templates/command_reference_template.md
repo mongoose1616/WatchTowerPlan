@@ -26,6 +26,7 @@
 
 ## Arguments and Options
 - `<argument_or_option>`: <what it does.>
+- `--format <human|json>`: <include when the command supports both human-readable and structured machine output.>
 - `-h`, `--help`: Show the command help text.
 
 ## Examples
@@ -36,6 +37,7 @@
 ## Behavior and Outputs
 - <What the command does when it succeeds.>
 - <What output or side effects it currently produces.>
+- <Describe human-readable and structured output modes separately when both exist.>
 - <What exit behavior matters.>
 
 ## Related Commands
@@ -47,5 +49,5 @@
 - `<repo-relative implementation path>`
 - `<related doc or workspace path>`
 
-## Last Synced
-- `YYYY-MM-DD`
+## Updated At
+- `YYYY-MM-DDTHH:MM:SSZ`

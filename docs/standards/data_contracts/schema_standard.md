@@ -1,3 +1,19 @@
+---
+id: "std.data_contracts.schema"
+title: "Schema Standard"
+summary: "This standard defines how governed structured data is modeled with JSON Schema in this repository and how those schemas are organized under `core/control_plane/schemas/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "schema"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T05:23:35Z"
+audience: "shared"
+authority: "authoritative"
+---
+
 # Schema Standard
 
 ## Summary
@@ -21,6 +37,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [json_schema_2020_12_reference.md](/home/j/WatchTowerPlan/docs/references/json_schema_2020_12_reference.md)
 - [check_jsonschema_reference.md](/home/j/WatchTowerPlan/docs/references/check_jsonschema_reference.md)
 - [pydantic_strict_mode_reference.md](/home/j/WatchTowerPlan/docs/references/pydantic_strict_mode_reference.md)
@@ -42,6 +59,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Default to fail-closed object contracts. Set `additionalProperties: false` unless the artifact intentionally supports open-ended maps.
 - Reuse definitions through `$defs` and `$ref` instead of copying shared field definitions across multiple schemas.
 - Keep enums and other shared constrained values in shared reusable schema fragments when reuse materially reduces drift.
+- Reuse the shared UTC timestamp fragment for governed `updated_at`, `recorded_at`, and `generated_at` fields instead of open-coding separate timestamp rules.
 - Keep interface schemas separate from core-authored artifact schemas even when the fields overlap. Accepted external input is a different contract boundary from core-owned canonical state.
 - Pair published schemas with canonical valid and invalid examples under `core/control_plane/examples/` when the schema describes a reusable artifact family or external interface.
 - Update related contracts, registries, policies, examples, and validation logic in the same change set when a schema change alters behavior or acceptance boundaries.
@@ -84,6 +102,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - A schema for a core validator-registry record belongs in `core/control_plane/schemas/artifacts/`.
 - A schema for an external artifact bundle accepted by core belongs in `core/control_plane/schemas/interfaces/`.
 - A shared timestamp, identifier, or status fragment belongs in `core/control_plane/schemas/common/`.
+- The shared UTC timestamp fragment belongs in `core/control_plane/schemas/common/` and should be reused by artifact and interface schemas that carry governed mutable timestamps.
 
 ## Validation
 - New or changed schemas should be validated locally with a JSON Schema validator before merge.
@@ -101,6 +120,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md)
 - [json_schema_2020_12_reference.md](/home/j/WatchTowerPlan/docs/references/json_schema_2020_12_reference.md)
 - [check_jsonschema_reference.md](/home/j/WatchTowerPlan/docs/references/check_jsonschema_reference.md)
@@ -110,5 +130,5 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - This standard deliberately keeps schema structure separate from identifier naming policy. Schema IDs must be stable now, while exact repository-wide naming patterns can be tightened later under `docs/standards/metadata/`.
 - If a future format standard introduces more specific serialization or naming rules for schema files, it should refine rather than weaken this standard.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:23:35Z`
