@@ -1,0 +1,96 @@
+# Implementation Plan Document Standard
+
+## Summary
+This standard defines the structure, placement, and boundary rules for implementation-plan documents stored under `docs/design/implementation/`.
+
+## Purpose
+Keep implementation plans concrete enough to guide engineering work while preserving a clean boundary between approved design direction, workflow execution procedure, and direct code changes.
+
+## Scope
+- Applies to implementation-plan documents stored under `docs/design/implementation/`.
+- Covers placement, required sections, and the handoff relationship between feature designs and executable implementation work.
+- Does not define workflow procedure, commit-message rules, or PRD structure.
+
+## Use When
+- Breaking an approved feature design into concrete engineering work.
+- Planning a multi-step implementation slice before code changes begin.
+- Refreshing a plan after the design, standards, or control-plane artifacts it depends on have changed materially.
+
+## Related Standards and Sources
+- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/design/implementation/README.md)
+
+## Guidance
+- Store implementation plans under `docs/design/implementation/`.
+- Keep one primary execution slice or tightly related engineering plan per document.
+- Use implementation plans to translate an approved feature design into technical approach, work breakdown, validation, and rollout expectations.
+- Anchor each plan to the feature design, PRD, or direct user request that justified the work.
+- Keep implementation plans above commit-by-commit notes; they should guide execution, not replace code review or workflow procedure.
+- Include the standards and canonical references that constrain implementation details.
+- Use `Last Synced` to record the last meaningful content update date.
+
+## Structure or Data Model
+### Placement rules
+| Document Type | Canonical Location | Notes |
+|---|---|---|
+| Implementation plan | `docs/design/implementation/<plan_name>.md` | Use stable snake_case filenames derived from the implementation slice. |
+| Implementation-plan directory README | `docs/design/implementation/README.md` | Directory orientation and inventory only. |
+
+### Required sections for implementation plans
+| Section | Requirement | Notes |
+|---|---|---|
+| `Summary` | Required | One short explanation of the plan and intended execution slice. |
+| `Source Request or Design` | Required | Record the driving feature design, PRD, or user request. |
+| `Scope Summary` | Required | State what the plan covers and excludes. |
+| `Assumptions and Constraints` | Required | Record the assumptions or hard constraints that shape the work. |
+| `Current-State Context` | Required | Describe the current repository surfaces the plan depends on. |
+| `Internal Standards and Canonical References Applied` | Required | Record the internal authorities that constrain the plan. |
+| `Proposed Technical Approach` | Required | Describe the intended implementation structure and module boundaries. |
+| `Work Breakdown` | Required | Break the work into concrete steps or slices. |
+| `Dependencies` | Required | Record meaningful internal or external dependencies. |
+| `Risks` | Required | Record concrete risks or uncertainties. |
+| `Validation Plan` | Required | State how the implementation will be verified. |
+| `Rollout or Migration Plan` | Required | State rollout expectations, even when the answer is no migration needed. |
+| `References` | Required | Link the design, standards, and companion artifacts that matter. |
+| `Last Synced` | Required | Record the last meaningful content update date. |
+
+### Optional sections for implementation plans
+| Section | Use When |
+|---|---|
+| `Open Questions` | Real planning questions remain unresolved. |
+
+## Process or Workflow
+1. Place the plan under `docs/design/implementation/` with a stable snake_case filename.
+2. Start from the implementation-plan template and keep the required sections in order.
+3. Tie the plan back to the approved design, request, or PRD that justifies it.
+4. Break the work into concrete technical slices and explicit validation steps before implementation begins.
+5. Refresh the plan when related standards, designs, or control-plane artifacts change enough to invalidate the work breakdown.
+
+## Examples
+- `docs/design/implementation/control_plane_loaders_and_schema_store.md` is an implementation plan because it turns approved design direction into concrete module boundaries, work breakdown, and validation steps.
+- A long-running operational runbook does not belong here; it belongs in a workflow or other operational documentation surface.
+
+## Validation
+- Implementation plans should contain the required sections in the documented order.
+- The work breakdown should be concrete enough to guide coding, testing, and review.
+- The plan should clearly state how success will be validated.
+- Reviewers should reject plans that restate a feature design without introducing a real technical approach or execution breakdown.
+
+## Change Control
+- Update this standard and the implementation-plan template in the same change set when the expected implementation-plan structure changes.
+- Update the implementation-plan directory README when placement or family boundaries change.
+- Refresh affected implementation plans when an upstream feature design or standard changes their assumptions materially.
+
+## References
+- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
+- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/design/implementation/README.md)
+
+## Notes
+- A good implementation plan narrows ambiguity before coding starts without duplicating workflow execution steps.
+- Plans should stay modular so later capability areas can reuse the same planning shape.
+
+## Last Synced
+- `2026-03-09`
