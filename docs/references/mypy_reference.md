@@ -8,8 +8,9 @@ tags:
   - "reference"
   - "mypy"
 owner: "repository_maintainer"
-updated: "2026-03-08"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
+authority: "reference"
 ---
 
 # mypy Reference
@@ -25,16 +26,16 @@ Provide a practical baseline for using type checks to catch interface drift, unc
 - Does not require full strict typing everywhere by default.
 
 ## Canonical Upstream
-- `https://www.mypy-lang.org/`
-- `https://mypy.readthedocs.io/en/stable/`
-- `https://mypy.readthedocs.io/en/stable/common_issues.html`
-- `https://mypy.readthedocs.io/en/stable/config_file.html`
+- `https://www.mypy-lang.org/` - verified 2026-03-09; mypy.
+- `https://mypy.readthedocs.io/en/stable/` - verified 2026-03-09; mypy 1.19.1 documentation.
+- `https://mypy.readthedocs.io/en/stable/common_issues.html` - verified 2026-03-09; Common issues and solutions.
+- `https://mypy.readthedocs.io/en/stable/config_file.html` - verified 2026-03-09; The mypy configuration file.
 
 ## Related Standards and Sources
-- `mypy`
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
 - [pep8_reference.md](/home/j/WatchTowerPlan/docs/references/pep8_reference.md)
 - [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -57,22 +58,33 @@ Provide a practical baseline for using type checks to catch interface drift, unc
 - Trying to jump to maximum strictness before the codebase is ready.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+
+### Why It Matters Here
 - Use this reference when repository automation grows large enough that typed interfaces reduce review and maintenance risk.
 - Pair it with `pyproject.toml` guidance if local type-check configuration is introduced.
 - Use it alongside Python style and docstring references when a fuller engineering baseline is needed.
 
-## Process or Workflow
-1. Decide whether the repository has enough reusable Python code to justify static type checking.
-2. Type the highest-risk interfaces, shared data shapes, and cross-module boundaries first.
-3. If `mypy` becomes the repository standard, move the normative rule into `docs/standards/engineering/**` and keep this file as supporting reference context.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- `mypy`
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [pep8_reference.md](/home/j/WatchTowerPlan/docs/references/pep8_reference.md)
+- [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
 
 ## Notes
 - This reference is most useful once the repo has reusable Python modules rather than only one-off scripts.
 - If a formal engineering standard is added later, it should define the target strictness and rollout strategy.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "semantic_versioning"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # Semantic Versioning Reference
-
 ## Summary
 This document provides a working reference for Semantic Versioning as a release-versioning convention.
 
@@ -26,36 +25,53 @@ Provide a consistent way to reason about compatibility and release impact when t
 - Does not require versioning for artifacts that do not need release semantics.
 
 ## Canonical Upstream
-- `https://semver.org/`
+- `https://semver.org/` - verified 2026-03-09; Semantic Versioning 2.0.0.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use major versions for breaking changes, minor versions for backward-compatible feature additions, and patch versions for backward-compatible fixes.
-- Apply version bumps consistently to the specific contract or artifact being versioned.
-- Do not imply semantic compatibility unless the repository is actually honoring it.
+### Version Components
+| Part | Meaning | Notes |
+|---|---|---|
+| major | breaking compatibility change | increment when older consumers may break |
+| minor | backward-compatible feature addition | adds behavior without breaking existing consumers |
+| patch | backward-compatible fix | no intended API or contract break |
+| prerelease and build metadata | extra release context | not the same as core compatibility signals |
+
+### Core Rules
+- Apply version bumps consistently to the specific artifact or contract being versioned.
+- Keep compatibility promises explicit before claiming semantic versioning.
+- Use prerelease tags deliberately when stability is not yet promised.
+
+### Common Pitfalls
+- Treating every visible change as major without a compatibility definition.
+- Publishing semantic-looking versions without honoring backward-compatibility meaning.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+
+### Why It Matters Here
 - Use this reference when version fields or release workflows are added under `docs/standards/**` or `workflows/**`.
 - Pair it with commit and change-control standards when release automation is introduced.
 
-## Process or Workflow
-1. Read this reference before codifying Semantic Versioning Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how versioning policy and release signaling should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
+- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

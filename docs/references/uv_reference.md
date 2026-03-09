@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "uv"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # uv Reference
-
 ## Summary
 This document provides a working reference for `uv` as a Python packaging, environment, and dependency-management tool.
 
@@ -26,38 +25,61 @@ Provide a baseline for deciding whether `uv` should be part of this repository's
 - Does not require this repository to adopt `uv`.
 
 ## Canonical Upstream
-- `https://docs.astral.sh/uv/`
-- `https://docs.astral.sh/uv/concepts/projects/layout/`
-- `https://docs.astral.sh/uv/reference/settings/#cache-dir`
+- `https://docs.astral.sh/uv/` - verified 2026-03-09; uv.
+- `https://docs.astral.sh/uv/concepts/projects/layout/` - verified 2026-03-09; Structure and files.
+- `https://docs.astral.sh/uv/reference/settings/#cache-dir` - verified 2026-03-09; Settings.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [uv.lock](/home/j/WatchTowerPlan/core/python/uv.lock)
+- [watchtower_core_doctor.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_doctor.md)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use `uv` when fast dependency resolution, environment management, and clear project layout are valuable.
-- Keep cache placement explicit when repository cleanliness matters.
-- Align `uv` usage with the repository's chosen Python packaging layout rather than treating it as a standalone decision.
+### Common `uv` Operations
+| Command | Use For | Notes |
+|---|---|---|
+| `uv sync` | create or update the environment from declared dependencies | good default workspace entrypoint |
+| `uv run <cmd>` | run tooling inside the managed environment | keeps execution tied to the workspace |
+| `uv lock` | refresh lock state when dependencies change | review diffs deliberately |
+| tool or cache settings | control auxiliary behavior | keep locations explicit when repo hygiene matters |
+
+### Core Rules
+- Use `uv` when fast dependency resolution, lock management, and environment tooling are part of the Python workflow.
+- Keep cache placement, lockfile ownership, and project layout explicit.
+- Decide whether the repo is using `uv` only as a runner or as the primary package and environment manager.
+
+### Common Pitfalls
+- Mixing `uv` with other environment managers without a clear ownership boundary.
+- Treating the lockfile as disposable when the repo expects reproducible environments.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [uv.lock](/home/j/WatchTowerPlan/core/python/uv.lock)
+- [watchtower_core_doctor.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_doctor.md)
+
+### Why It Matters Here
 - Use this reference if `docs/standards/engineering/**` starts defining Python environment tooling.
 - Pair it with `pyproject.toml`, `src/` layout, and test/lint/type-check references when shaping a Python toolchain.
 
-## Process or Workflow
-1. Read this reference before codifying uv Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how Python environment and dependency tooling should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [uv.lock](/home/j/WatchTowerPlan/core/python/uv.lock)
+- [watchtower_core_doctor.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_doctor.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

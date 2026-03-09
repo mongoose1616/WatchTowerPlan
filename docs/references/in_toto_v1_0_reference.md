@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "in_toto_v1_0"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # in-toto v1.0 Reference
-
 ## Summary
 This document provides a working reference for in-toto v1.0 as an attestation and supply-chain metadata framework.
 
@@ -26,37 +25,47 @@ Provide an attestation framework baseline when the repository needs verifiable b
 - Does not define the repository's complete attestation model by itself.
 
 ## Canonical Upstream
-- `https://in-toto.io/`
-- `https://in-toto.io/docs/specs/`
+- `https://in-toto.io/` - verified 2026-03-09; in-toto.
+- `https://in-toto.io/docs/specs/` - verified 2026-03-09; Specifications.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use in-toto when the order, actor, and integrity of build or release steps need verifiable expression.
-- Keep attestation scope explicit.
-- Pair attestation design with release, signing, and evidence rules rather than isolating it.
+### What in-toto Gives You
+- Use in-toto when you need verifiable statements about who performed which supply-chain step and what inputs and outputs were involved.
+- Keep step boundaries, functionary identity, and expected materials and products explicit.
+- Pair attestation design with signing and provenance strategy rather than adopting it in isolation.
+
+### Core Concepts
+| Concept | Why it matters | Notes |
+|---|---|---|
+| layout or policy | defines the expected supply-chain steps | establishes the trust model |
+| link or attestation | records what a step did | should be signed by the functionary |
+| materials and products | tie inputs to outputs | needed for traceability and tamper evidence |
+
+### Common Pitfalls
+- Recording attestations without a clear policy about which steps are trusted.
+- Treating attestation presence as equivalent to safe release policy.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if the repository later adopts attestation-based release evidence.
 - Pair it with SLSA and Sigstore rather than treating it as an isolated control.
 
-## Process or Workflow
-1. Read this reference before codifying in-toto v1.0 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how supply-chain attestations and provenance metadata should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "commonmark"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # CommonMark Reference
-
 ## Summary
 This document provides a working reference for CommonMark as the Markdown compatibility baseline for repository documents.
 
@@ -26,36 +25,53 @@ Provide a stable Markdown baseline so docs render predictably across tools and d
 - Does not define every local writing preference or documentation structure rule.
 
 ## Canonical Upstream
-- `https://spec.commonmark.org/0.31.2/`
+- `https://spec.commonmark.org/0.31.2/` - verified 2026-03-09; CommonMark Spec.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [templates](/home/j/WatchTowerPlan/docs/templates/)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Prefer standard headings, fenced code blocks, lists, blockquotes, and tables that are widely supported.
-- Avoid depending on renderer-specific extensions when a portable CommonMark form exists.
-- Treat CommonMark compatibility as a portability guardrail rather than as a visual-design system.
+### Portable Markdown Rules
+- Prefer headings, lists, blockquotes, links, emphasis, and fenced code blocks that render consistently across tools.
+- Treat raw HTML and renderer-specific extensions as compatibility risks unless the repository explicitly accepts them.
+- Remember that tables are not part of core CommonMark; if the repo relies on GitHub-style tables, that is an additional renderer assumption.
+
+### Safe Syntax Choices
+| Need | Prefer | Be Careful With |
+|---|---|---|
+| code samples | fenced code blocks | indentation-sensitive blocks for long snippets |
+| links and emphasis | standard CommonMark forms | renderer-specific shortcut syntax |
+| layout | plain Markdown structure | embedded HTML for presentational control |
+| tables | only when the renderer contract allows them | assuming tables are portable CommonMark |
+
+### Common Pitfalls
+- Depending on one renderer's HTML or CSS behavior.
+- Calling a document "CommonMark compatible" while it actually depends on non-CommonMark extensions.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [templates](/home/j/WatchTowerPlan/docs/templates/)
+
+### Why It Matters Here
 - Use this reference when shaping Markdown-heavy templates in `docs/templates/**`.
 - Use it when documentation standards need a format baseline without tying the repo to one renderer.
 
-## Process or Workflow
-1. Read this reference before codifying CommonMark Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how Markdown structure and syntax should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [templates](/home/j/WatchTowerPlan/docs/templates/)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

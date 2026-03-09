@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "slsa_1_1"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # SLSA 1.1 Reference
-
 ## Summary
 This document provides a working reference for SLSA 1.1 as a supply-chain security baseline.
 
@@ -26,37 +25,48 @@ Provide a provenance and build-integrity framework when repository release or ar
 - Does not by itself define the repository's full provenance or attestation process.
 
 ## Canonical Upstream
-- `https://slsa.dev/`
-- `https://slsa.dev/blog/2025/04/slsa-v1.1`
+- `https://slsa.dev/spec/` - verified 2026-03-09; SLSA specification entrypoint.
+- `https://slsa.dev/blog/2025/04/slsa-v1.1` - verified 2026-03-09; SLSA v1.1 approval announcement and release context.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use SLSA when supply-chain guarantees need a staged model.
-- Translate SLSA goals into concrete repository release and evidence requirements.
-- Keep the chosen version explicit because SLSA evolves.
+### What SLSA Organizes
+| Question | Why it matters |
+|---|---|
+| who built the artifact | establishes trust and accountability |
+| from what source | ties artifacts back to versioned inputs |
+| under what build controls | shows tamper-resistance and isolation expectations |
+| what provenance is available | supports downstream verification |
+
+### Core Rules
+- Use SLSA as a staged supply-chain assurance model, not as a vague marketing label.
+- Pick the target requirements explicitly and version-lock the SLSA baseline you mean.
+- Translate that target into concrete repository release, build, and evidence controls.
+
+### Common Pitfalls
+- Claiming a SLSA level or alignment without naming the implemented controls.
+- Treating provenance generation as sufficient without downstream verification.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if future release-hardening or provenance standards are added.
 - Pair it with Sigstore, in-toto, and CycloneDX when building a fuller supply-chain model.
 
-## Process or Workflow
-1. Read this reference before codifying SLSA 1.1 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how supply-chain integrity and provenance planning should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

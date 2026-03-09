@@ -8,8 +8,9 @@ tags:
   - "reference"
   - "pep8"
 owner: "repository_maintainer"
-updated: "2026-03-08"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
+authority: "reference"
 ---
 
 # PEP 8 Reference
@@ -25,11 +26,10 @@ Provide a practical readability baseline for Python code so naming, layout, impo
 - Does not replace a formal engineering standard if one is later written under `docs/standards/engineering/`.
 
 ## Canonical Upstream
-- `https://peps.python.org/pep-0008/`
+- `https://peps.python.org/pep-0008/` - verified 2026-03-09; PEP 8 – Style Guide for Python Code.
 
 ## Related Standards and Sources
-- `PEP 8`
-- `docs/standards/engineering/` once formal engineering standards are written.
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -53,16 +53,26 @@ Provide a practical readability baseline for Python code so naming, layout, impo
 - Letting imports or comments grow inconsistent from file to file.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference as the baseline readability guide for any Python automation or helper code added to the repo.
 - Pair it with `Ruff`, `mypy`, and `pyproject.toml` references when shaping a fuller local engineering toolchain.
 - If the repo adopts explicit local deviations from PEP 8, define them under `docs/standards/engineering/**` rather than hiding them in ad hoc code review comments.
 
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
+
 ## References
-- `PEP 8`
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
 - This reference supports future Python automation work but does not by itself make PEP 8 mandatory everywhere.
 - If a repository engineering standard is written later, it should define any local deviations explicitly.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "owasp_genai_security_project"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # OWASP GenAI Security Project Reference
-
 ## Summary
 This document provides a working reference for the OWASP GenAI Security Project.
 
@@ -26,36 +25,49 @@ Provide an external security baseline for AI- and LLM-related system risks, cont
 - Does not by itself define the repository's AI governance policy.
 
 ## Canonical Upstream
-- `https://genai.owasp.org/home/`
+- `https://genai.owasp.org/` - verified 2026-03-09 via official project search results; OWASP GenAI Security Project home.
+- `https://genai.owasp.org/introduction/` - verified 2026-03-09 via official project search results; project introduction and scope.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use it as a risk and control reference for GenAI-specific concerns.
-- Translate the guidance into repository-specific safety, oversight, and misuse controls.
-- Do not assume generic AI security guidance automatically fits this repository without interpretation.
+### Common GenAI Security Concern Areas
+| Area | Why it matters | Local implication |
+|---|---|---|
+| prompt injection | model instructions can be redirected | inputs and tool use need boundaries |
+| data leakage | prompts, memory, or outputs can expose sensitive data | handling and retention rules matter |
+| output misuse | model output can trigger unsafe downstream actions | human review and execution guards may be needed |
+| supply chain and model provenance | model or plugin trust affects risk | source and update policy matter |
+
+### Core Rules
+- Use the project as a structured GenAI security reference, not as self-executing local policy.
+- Translate the guidance into repository-specific safeguards, oversight, and misuse controls.
+- Keep the model, prompt, tool, and output boundaries explicit.
+
+### Common Pitfalls
+- Treating generic AI security advice as automatically sufficient for this repository.
+- Ignoring downstream actions and connectors while focusing only on the model itself.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if the repository later formalizes AI governance or bounded-agency standards.
 - Pair it with NIST AI RMF and AI 600-1 when building governance-oriented policy.
 
-## Process or Workflow
-1. Read this reference before codifying OWASP GenAI Security Project Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how GenAI and agent security governance should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- The OWASP GenAI project site rate-limited automated fetches during the refresh, so the canonical URLs were rechecked via official project search results before updating this file.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,7 +8,7 @@ tags:
   - "reference"
   - "front_matter"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:06:54Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -32,14 +32,16 @@ Provide a practical guide for deciding when to use front matter, which fields ar
 - Does not by itself create a mandatory repository-wide metadata schema.
 
 ## Canonical Upstream
-- `https://spec.yaml.io/main/spec/1.2.2/`
-- `https://jekyllrb.com/docs/front-matter/`
-- `https://gohugo.io/content-management/front-matter/`
+- `https://spec.yaml.io/main/spec/1.2.2/` - verified 2026-03-09; YAML Ain’t Markup Language (YAML™) revision 1.2.2.
+- `https://jekyllrb.com/docs/front-matter/` - verified 2026-03-09; Front Matter.
+- `https://gohugo.io/content-management/front-matter/` - verified 2026-03-09; Front matter.
 
 ## Related Standards and Sources
 - [documentation_template.md](/home/j/WatchTowerPlan/docs/templates/documentation_template.md)
 - [yaml_1_2_2_reference.md](/home/j/WatchTowerPlan/docs/references/yaml_1_2_2_reference.md)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
+- [reference_front_matter.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json)
 
 ## Quick Reference or Distilled Reference
 ### Use Front Matter When
@@ -61,7 +63,7 @@ Provide a practical guide for deciding when to use front matter, which fields ar
 | `status` | Lifecycle state | quoted string | Examples: `active`, `draft`, `deprecated`. |
 | `tags` | Search or grouping labels | YAML list | Keep tags controlled and reusable. |
 | `owner` | Responsible maintainer or role | quoted string | Prefer stable role-like values over personal notes. |
-| `updated` | Last meaningful content update | quoted string date | Use ISO-style dates for consistency. |
+| `updated_at` | Last meaningful content update | quoted UTC timestamp | Use the repository baseline `YYYY-MM-DDTHH:MM:SSZ`. |
 | `audience` | Intended readership | quoted string | Examples: `shared`, `maintainers`, `contributors`. |
 | `authority` | Retrieval precedence signal | quoted string | Examples: `authoritative`, `supporting`, `reference`, `historical`. |
 | `applies_to` | Concrete repository surfaces or concepts | YAML list | Prefer real paths or stable concept identifiers. |
@@ -71,7 +73,7 @@ Provide a practical guide for deciding when to use front matter, which fields ar
 - Keep keys stable across similar document types instead of inventing near-duplicates.
 - Prefer simple scalar values unless the field is naturally multi-valued, such as `tags`.
 - Quote single-value text fields for consistency.
-- Keep dates in a consistent ISO-style format such as `2026-03-08`.
+- Keep timestamps in RFC 3339 UTC format such as `2026-03-09T05:06:54Z`.
 - Treat front matter as support metadata; the document body is still the primary reader-facing content.
 
 ### Minimal Example
@@ -85,7 +87,7 @@ status: "active"
 tags:
   - "docs"
 owner: "repository_maintainer"
-updated: "2026-03-08"
+updated_at: "2026-03-09T05:06:54Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -102,22 +104,34 @@ aliases:
 - Treating front matter as a substitute for a clear title, summary, or body structure.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [reference_front_matter.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json)
+
+### Why It Matters Here
 - Use front matter mainly on longer-lived references, standards, workflows, and other documents where indexing, ownership, or status need to be explicit.
 - Small orientation docs such as many `README.md` files can usually stay plain Markdown unless metadata becomes operationally useful.
 - Repository-front-matter policy now lives in [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md), while this reference remains the supporting working reference.
 
-## Examples
-- A long-lived reference doc under `docs/references/**` is a good candidate for front matter because summary, status, audience, and tags help indexing and maintenance.
-- A short directory README that only explains folder purpose usually does not need front matter.
-- A workflow or standard doc may justify front matter when status, owner, or audience materially affect how the file is used.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
 - [documentation_template.md](/home/j/WatchTowerPlan/docs/templates/documentation_template.md)
+- [yaml_1_2_2_reference.md](/home/j/WatchTowerPlan/docs/references/yaml_1_2_2_reference.md)
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [reference_front_matter.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json)
 
 ## Notes
 - This document is a working reference, not a mandatory metadata policy by itself.
 - Front matter is a convention rather than one single universal standard, so this reference uses the YAML specification plus widely adopted documentation-system implementations as its upstream basis.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md) is now the authority for repository front matter policy.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:06:54Z`

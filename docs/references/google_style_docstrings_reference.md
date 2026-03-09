@@ -8,8 +8,9 @@ tags:
   - "reference"
   - "google_style_docstrings"
 owner: "repository_maintainer"
-updated: "2026-03-08"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
+authority: "reference"
 ---
 
 # Google-Style Docstrings Reference
@@ -25,10 +26,9 @@ Provide a practical format for docstrings that need predictable sections such as
 - Does not by itself require every Python surface in the repo to use this format.
 
 ## Canonical Upstream
-- `https://google.github.io/styleguide/pyguide.html`
+- `https://google.github.io/styleguide/pyguide.html` - verified 2026-03-09; styleguide.
 
 ## Related Standards and Sources
-- `Google Python Style Guide`
 - [pep257_reference.md](/home/j/WatchTowerPlan/docs/references/pep257_reference.md)
 
 ## Quick Reference or Distilled Reference
@@ -55,9 +55,17 @@ Provide a practical format for docstrings that need predictable sections such as
 - Using sections to restate type hints instead of explaining behavior or meaning.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference when repository Python automation needs docstrings richer than a one-line summary but still wants a consistent sectioned format.
 - Pair it with [pep257_reference.md](/home/j/WatchTowerPlan/docs/references/pep257_reference.md) for the baseline docstring expectations that apply before section style choices.
 - If Google-style docstrings become the required local format, codify that rule under `docs/standards/engineering/**` rather than leaving it only here.
+
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
 - [pep257_reference.md](/home/j/WatchTowerPlan/docs/references/pep257_reference.md)
@@ -65,6 +73,8 @@ Provide a practical format for docstrings that need predictable sections such as
 ## Notes
 - This reference is most useful when the repo starts to accumulate reusable Python surfaces.
 - If an engineering standard is written later, it should define when Google-style docstrings are required and when simpler docstrings are enough.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "nist_sp_800_61_rev_3"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # NIST SP 800-61 Rev. 3 Reference
-
 ## Summary
 This document provides a working reference for NIST SP 800-61 Rev. 3 as an incident-response baseline.
 
@@ -26,37 +25,48 @@ Provide a recognized baseline for incident response planning, handling, recovery
 - Does not define the repository's full incident-response runbook by itself.
 
 ## Canonical Upstream
-- `https://csrc.nist.gov/pubs/sp/800/61/r3/final`
-- `https://doi.org/10.6028/NIST.SP.800-61r3`
+- `https://csrc.nist.gov/pubs/sp/800/61/r3/final` - verified 2026-03-09; SP 800-61 Rev. 3, Incident Response Recommendations and Considerations for Cybersecurity Risk Management: A CSF 2.0 Community Profile.
+- `https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf` - verified 2026-03-09; official publication PDF.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use it as a baseline for incident response lifecycle thinking.
-- Translate it into explicit roles, evidence handling, and response procedures.
-- Keep local operational realities visible instead of copying the publication structurally.
+### Incident Lifecycle
+| Phase | Focus | Notes |
+|---|---|---|
+| preparation | readiness before incidents | roles, tooling, evidence handling, communications |
+| detection and analysis | confirm and understand the event | triage, scope, severity, evidence |
+| containment, eradication, and recovery | stop impact and restore operations | often iterative rather than strictly linear |
+| post-incident activity | learn and improve | updates to controls, playbooks, and tracking |
+
+### Core Rules
+- Use the lifecycle to shape local incident-response expectations.
+- Define evidence handling, ownership, and escalation paths explicitly.
+- Keep response recommendations grounded in the repository's actual operational context.
+
+### Common Pitfalls
+- Treating the lifecycle as rigidly sequential.
+- Leaving lessons learned outside the controlled remediation surfaces.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if the repository later formalizes incident or operational recovery standards.
 - Pair it with FIRST TLP and logging guidance when incident evidence and sharing rules matter.
 
-## Process or Workflow
-1. Read this reference before codifying NIST SP 800-61 Rev. 3 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how incident response governance should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "python_json"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # Python json Library Reference
-
 ## Summary
 This document provides a working reference for Python's standard `json` library documentation.
 
@@ -26,36 +25,46 @@ Provide a baseline for JSON handling in repository Python code when the standard
 - Does not replace broader JSON standards or canonicalization rules.
 
 ## Canonical Upstream
-- `https://docs.python.org/3/library/json.html`
+- `https://docs.python.org/3/library/json.html` - verified 2026-03-09; json.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
+### Common Stdlib Operations
+| Function | Use For | Notes |
+|---|---|---|
+| `load` / `loads` | parse JSON text into Python objects | use text or bytes input deliberately |
+| `dump` / `dumps` | serialize Python objects to JSON | choose formatting and ordering explicitly |
+| encoder hooks | custom serialization | use only when the contract really needs it |
+
+### Core Rules
 - Use the stdlib when simple JSON parsing or emission is enough.
-- Do not treat stdlib behavior as a substitute for explicit schema or canonicalization policy.
-- Make serialization choices such as indentation, key sorting, and encoder behavior deliberate when outputs are durable artifacts.
+- Treat formatting choices such as indentation, separators, and key sorting as deliberate artifact decisions.
+- Remember that Python defaults can be more permissive than strict interoperability expectations.
+
+### Common Pitfalls
+- Assuming stdlib output is canonical or reproducible without explicit settings.
+- Forgetting that non-standard numeric values or custom types need policy, not just code.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference for future Python automation that reads or writes repository JSON artifacts.
 - Pair it with JSON, schema, and canonicalization references when building durable machine-readable outputs.
 
-## Process or Workflow
-1. Read this reference before codifying Python json Library Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how Python JSON implementation choices should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

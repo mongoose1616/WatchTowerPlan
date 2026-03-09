@@ -8,8 +8,9 @@ tags:
   - "reference"
   - "src_layout"
 owner: "repository_maintainer"
-updated: "2026-03-08"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
+authority: "reference"
 ---
 
 # src/ Layout Reference
@@ -25,12 +26,13 @@ Provide a simple layout baseline that keeps import behavior closer to installed 
 - Does not require the repository to become a Python package if that is unnecessary.
 
 ## Canonical Upstream
-- `https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/`
+- `https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/` - verified 2026-03-09; src layout vs flat layout.
 
 ## Related Standards and Sources
-- `src/` Python project layout guidance
 - [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
 - [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [src](/home/j/WatchTowerPlan/core/python/src/)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -62,23 +64,33 @@ pyproject.toml
 - Treating the layout as mandatory style rather than as a tool for specific packaging and import problems.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [src](/home/j/WatchTowerPlan/core/python/src/)
+
+### Why It Matters Here
 - Use this reference if repository automation grows from one-off scripts into reusable Python packages or shared modules.
 - Pair it with `pyproject.toml` when packaging metadata and tool configuration are introduced.
 - Pair it with `pytest` when test imports should reflect installed-package behavior instead of accidental local-path success.
 
-## Process or Workflow
-1. Decide whether the repository has reusable Python code that benefits from installed-package import parity.
-2. Keep package code under `src/` and tests outside the package tree if that layout is adopted.
-3. If `src/` layout becomes the repository standard, move the normative rule into `docs/standards/engineering/**` and keep this file as supporting reference context.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
 - [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
 - [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [src](/home/j/WatchTowerPlan/core/python/src/)
 
 ## Notes
 - This reference matters only if the repo starts to contain reusable Python modules or packages.
 - A flat layout can still be acceptable for very small scripts or one-off utilities.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "opentelemetry"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # OpenTelemetry Reference
-
 ## Summary
 This document provides a working reference for OpenTelemetry as an observability baseline.
 
@@ -26,41 +25,51 @@ Provide a coherent observability baseline for traces, metrics, logs, and semanti
 - Does not define this repository's full telemetry policy by itself.
 
 ## Canonical Upstream
-- `https://opentelemetry.io/docs/specs/otel/`
-- `https://opentelemetry.io/docs/specs/semconv/`
-- `https://opentelemetry.io/docs/specs/otel/logs/data-model/`
-- `https://opentelemetry.io/docs/specs/otel/metrics/data-model/`
-- `https://opentelemetry.io/docs/specs/otel/logs/sdk/`
-- `https://opentelemetry.io/docs/specs/status/`
+- `https://opentelemetry.io/docs/specs/otel/` - verified 2026-03-09; OpenTelemetry Specification 1.55.0.
+- `https://opentelemetry.io/docs/specs/semconv/` - verified 2026-03-09; OpenTelemetry semantic conventions 1.40.0.
+- `https://opentelemetry.io/docs/specs/otel/logs/data-model/` - verified 2026-03-09; Logs Data Model.
+- `https://opentelemetry.io/docs/specs/otel/metrics/data-model/` - verified 2026-03-09; Metrics Data Model.
+- `https://opentelemetry.io/docs/specs/otel/logs/sdk/` - verified 2026-03-09; Logs SDK.
+- `https://opentelemetry.io/docs/specs/status/` - verified 2026-03-09; Specification Status Summary.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use OpenTelemetry as a conceptual baseline when portable observability semantics matter.
-- Separate telemetry schema design from transport or vendor choices.
-- Keep semantic attribute names and status meanings deliberate rather than ad hoc.
+### Core Signals
+| Signal | What it captures | Notes |
+|---|---|---|
+| traces | causal request or operation flow | good for end-to-end correlation |
+| metrics | numeric measurements over time | good for rates, counts, and latency |
+| logs | event records | still need local structure and handling rules |
+
+### Core Rules
+- Separate telemetry schema design from transport or vendor selection.
+- Keep semantic attribute names and span or status meanings deliberate and consistent.
+- Decide whether you actually need all three signals or only a subset.
+
+### Common Pitfalls
+- Adopting the vocabulary without deciding what events or attributes matter locally.
+- Mixing trace correlation, business events, and arbitrary log fields without a model.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if future repository telemetry, audit events, or traceable automation surfaces are introduced.
 - Pair it with W3C Trace Context when cross-process correlation matters.
 
-## Process or Workflow
-1. Read this reference before codifying OpenTelemetry Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how telemetry and observability contracts should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

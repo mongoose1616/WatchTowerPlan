@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "owasp_wstg"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # OWASP WSTG Reference
-
 ## Summary
 This document provides a working reference for the OWASP Web Security Testing Guide.
 
@@ -26,36 +25,49 @@ Provide a stable web-application testing baseline for security assessment workfl
 - Does not replace repository-specific scope, evidence, or report requirements.
 
 ## Canonical Upstream
-- `https://owasp.org/www-project-web-security-testing-guide/`
+- `https://owasp.org/www-project-web-security-testing-guide/` - verified 2026-03-09; OWASP Web Security Testing Guide.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use WSTG as structured web-testing guidance rather than as a direct repository workflow.
-- Translate relevant tests into scoped checklists or procedures.
-- Keep report structure and evidence rules explicit even when WSTG is the methodology baseline.
+### WSTG Coverage Areas
+| Area | Typical focus |
+|---|---|
+| information gathering | discover attack surface and context |
+| configuration and deployment | insecure defaults and exposed surfaces |
+| identity, auth, and session management | account and session weaknesses |
+| input validation and error handling | injection and unsafe processing |
+| cryptography and business logic | misuse of trust and control flow |
+| client-side testing | browser and front-end behaviors |
+
+### Core Rules
+- Use WSTG as structured web-testing guidance, not as the repository's exact workflow by default.
+- Select the relevant testing areas explicitly for the target system.
+- Keep evidence expectations and report structure explicit even when WSTG provides the methodology.
+
+### Common Pitfalls
+- Treating WSTG chapter coverage as proof of real risk prioritization.
+- Running a broad checklist without scoping which areas matter.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if security-focused domain packs or reporting standards need a web-testing baseline.
 - Pair it with CVSS and pentest-reporting standards where findings need severity and evidence structure.
 
-## Process or Workflow
-1. Read this reference before codifying OWASP WSTG Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how web security testing methodology should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

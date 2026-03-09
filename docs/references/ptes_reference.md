@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "ptes"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # PTES Reference
-
 ## Summary
 This document provides a working reference for PTES as a penetration-testing lifecycle baseline.
 
@@ -26,37 +25,52 @@ Provide a lifecycle model for penetration-testing planning, execution, and repor
 - Does not force the repository into a pentest-only operating model.
 
 ## Canonical Upstream
-- `https://www.pentest-standard.org/index.php/Main_Page`
-- `https://www.pentest-standard.org/index.php/PTES_Technical_Guidelines`
+- `https://www.pentest-standard.org/index.php/Main_Page` - canonical PTES home preserved; the official site was unreachable from this environment during the 2026-03-09 refresh.
+- `https://www.pentest-standard.org/index.php/PTES_Technical_Guidelines` - canonical PTES technical-guidelines URL preserved; the official site was unreachable from this environment during the 2026-03-09 refresh.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use PTES to frame phases and coverage expectations.
-- Translate methodology guidance into concrete workflow and reporting rules instead of citing PTES abstractly.
-- Do not let methodology references override repository-specific safety or governance constraints.
+### PTES Phases
+| Phase | Main goal |
+|---|---|
+| pre-engagement interactions | scope, authorization, constraints |
+| intelligence gathering | collect context and target information |
+| threat modeling | prioritize realistic attack paths |
+| vulnerability analysis | identify weaknesses worth validating |
+| exploitation | prove impact where authorized |
+| post-exploitation | understand depth and consequences |
+| reporting | deliver actionable evidence and findings |
+
+### Core Rules
+- Use PTES to structure lifecycle coverage, not to replace local safety or authorization rules.
+- Keep reporting and evidence expectations explicit.
+- Decide up front whether exploitation and post-exploitation are actually in scope.
+
+### Common Pitfalls
+- Treating PTES as permission to test beyond the agreed scope.
+- Using phase names without defining the concrete deliverables for each one.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if offensive-security planning or domain-pack standards need a pentest lifecycle baseline.
 - Pair it with OWASP WSTG, CVSS, and reporting standards when formalizing pentest deliverables.
 
-## Process or Workflow
-1. Read this reference before codifying PTES Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how pentest lifecycle design should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- The official PTES site was unreachable from this environment during the refresh, so the canonical URLs were preserved with an availability note rather than replaced with a secondary mirror.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

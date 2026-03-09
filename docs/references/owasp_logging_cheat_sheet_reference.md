@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "owasp_logging_cheat_sheet"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # OWASP Logging Cheat Sheet Reference
-
 ## Summary
 This document provides a working reference for the OWASP Logging Cheat Sheet as a security logging baseline.
 
@@ -26,36 +25,47 @@ Provide a practical security logging baseline when repository tooling or product
 - Does not define a complete repository logging policy by itself.
 
 ## Canonical Upstream
-- `https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html`
+- `https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html` - verified 2026-03-09; Logging.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use it to think about log content, sensitivity, and event usefulness.
-- Treat logging as an operational control with privacy and evidence tradeoffs.
-- Translate cheat-sheet guidance into repository-specific policy before enforcing it.
+### What To Log Deliberately
+| Category | Why log it | Caution |
+|---|---|---|
+| security-relevant events | supports detection and investigation | avoid collecting secrets |
+| authentication and authorization events | shows access behavior | include enough context for review |
+| configuration or admin changes | supports auditability | tie to actor and time |
+| application failures | helps troubleshooting and abuse detection | avoid dumping sensitive internals |
+
+### Core Rules
+- Decide which events are operationally useful before logging them.
+- Keep sensitive data and secret material out of routine logs.
+- Treat structure, retention, and access to logs as part of the security design.
+
+### Common Pitfalls
+- Logging too much raw data and creating a privacy problem.
+- Logging too little context for incidents, making the data unusable.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if future logging or evidence-retention standards are added.
 - Pair it with observability and incident-response references when handling security events.
 
-## Process or Workflow
-1. Read this reference before codifying OWASP Logging Cheat Sheet Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how security logging policy should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

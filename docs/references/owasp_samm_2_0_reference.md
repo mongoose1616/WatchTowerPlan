@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "owasp_samm_2_0"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # OWASP SAMM 2.0 Reference
-
 ## Summary
 This document provides a working reference for OWASP SAMM 2.0 as a software-security maturity model.
 
@@ -26,36 +25,48 @@ Provide a maturity and improvement-model baseline when the repository needs phas
 - Does not by itself define a repository maturity roadmap.
 
 ## Canonical Upstream
-- `https://owasp.org/www-project-samm/`
+- `https://owasp.org/www-project-samm/` - verified 2026-03-09; OWASP SAMM.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use SAMM when a maturity model helps prioritize improvement work.
-- Treat it as a planning lens, not as a substitute for concrete controls.
-- Translate maturity goals into measurable local actions.
+### SAMM Structure
+| Business function | Focus | Local use |
+|---|---|---|
+| Governance | strategy and management | ownership, policy, measurement |
+| Design | secure architecture and requirements | design-time controls |
+| Implementation | build-time practices | coding, dependencies, pipelines |
+| Verification | assurance activities | testing, review, evidence |
+| Operations | running and maintaining securely | deployment and incident readiness |
+
+### Core Rules
+- Use SAMM as a maturity and improvement-planning lens.
+- Convert target maturity outcomes into measurable local actions.
+- Keep the chosen scope explicit: repo, team, product, or program.
+
+### Common Pitfalls
+- Using maturity labels without defining the concrete practices underneath.
+- Treating SAMM as a replacement for immediate control decisions.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if the repository later formalizes phased capability improvement standards.
 - Pair it with SSDF or ASVS when maturity needs to connect to specific controls.
 
-## Process or Workflow
-1. Read this reference before codifying OWASP SAMM 2.0 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how security maturity planning should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

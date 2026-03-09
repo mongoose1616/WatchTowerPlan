@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "ndjson_spec"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # NDJSON Reference
-
 ## Summary
 This document provides a working reference for NDJSON as a practical newline-delimited JSON stream format.
 
@@ -26,36 +25,49 @@ Provide a simple operational stream format baseline for append-only records, log
 - Does not define every repository stream schema or event model.
 
 ## Canonical Upstream
-- `https://github.com/ndjson/ndjson-spec`
+- `https://github.com/ndjson/ndjson-spec` - verified 2026-03-09; GitHub.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use NDJSON when append-only, line-oriented processing matters more than nested document structure.
-- Keep one valid JSON object per line.
-- Treat schema and event semantics as separate concerns from the NDJSON container format.
+### Container Rules
+- Write one complete JSON text per line and use newline separation.
+- Keep UTF-8 encoding and line-oriented processing explicit.
+- Treat NDJSON as a streaming container format, not as the schema for the records themselves.
+
+### Common Decisions
+| Question | Preferred answer | Why |
+|---|---|---|
+| one record or many per line | one per line | preserves stream and append behavior |
+| empty lines | decide explicitly whether to allow or ignore them | consumers differ |
+| schema enforcement | separate layer | NDJSON does not define record semantics |
+
+### Common Pitfalls
+- Mixing pretty-printed multi-line JSON with NDJSON.
+- Assuming the line format by itself defines event meaning or validation.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+
+### Why It Matters Here
 - Use this reference for any future operational streams or task/event logs in the repository.
 - Pair it with schema and timestamp standards when designing durable event records.
 
-## Process or Workflow
-1. Read this reference before codifying NDJSON Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how line-oriented JSON streams should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

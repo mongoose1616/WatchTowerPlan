@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "rfc_7464_json_text_sequences"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # RFC 7464 JSON Text Sequences Reference
-
 ## Summary
 This document provides a working reference for RFC 7464 as the standard for JSON text sequences.
 
@@ -26,36 +25,46 @@ Provide a baseline when newline-delimited or stream-oriented JSON needs a formal
 - Does not replace NDJSON guidance where the repository prefers that simpler convention.
 
 ## Canonical Upstream
-- `https://www.rfc-editor.org/info/rfc7464`
+- `https://www.rfc-editor.org/info/rfc7464` - verified 2026-03-09; Information on RFC 7464 » RFC Editor.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use JSON text sequences when a standards-based streaming representation matters.
-- Document delimiters and consumer expectations clearly.
-- Do not conflate RFC 7464 with NDJSON even when the use cases overlap.
+### Sequence Format
+| Element | Role | Notes |
+|---|---|---|
+| record separator (`RS`, `0x1E`) | marks the start of each JSON text | key difference from NDJSON |
+| JSON text | the actual payload | can be parsed as normal JSON |
+| line feed (`LF`) | terminator after each text | helps stream framing |
+
+### Core Rules
+- Use RFC 7464 when framed JSON streaming matters more than newline-only conventions.
+- Prefer it over ad hoc delimiters when consumers need an explicit standard.
+- Keep producer and consumer agreement explicit because many tools assume NDJSON instead.
+
+### Common Pitfalls
+- Confusing JSON text sequences with NDJSON.
+- Assuming plain line-based readers will understand `RS` framing.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if future event streams or append-only logs need a formal streamed-JSON standard.
 - Compare it against NDJSON before choosing a stream format standard.
 
-## Process or Workflow
-1. Read this reference before codifying RFC 7464 JSON Text Sequences Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how streamed JSON format selection should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,8 +8,9 @@ tags:
   - "reference"
   - "pytest"
 owner: "repository_maintainer"
-updated: "2026-03-08"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
+authority: "reference"
 ---
 
 # pytest Reference
@@ -25,16 +26,17 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - Does not define a full testing policy or CI policy by itself.
 
 ## Canonical Upstream
-- `https://docs.pytest.org/en/stable/`
-- `https://docs.pytest.org/en/stable/explanation/goodpractices.html`
-- `https://docs.pytest.org/en/stable/example/markers.html`
-- `https://docs.pytest.org/en/stable/how-to/cache.html`
+- `https://docs.pytest.org/en/stable/` - verified 2026-03-09; pytest documentation.
+- `https://docs.pytest.org/en/stable/explanation/goodpractices.html` - verified 2026-03-09; Good Integration Practices.
+- `https://docs.pytest.org/en/stable/example/markers.html` - verified 2026-03-09; Working with custom markers.
+- `https://docs.pytest.org/en/stable/how-to/cache.html` - verified 2026-03-09; How to re-run failed tests and maintain state between test runs.
 
 ## Related Standards and Sources
-- `pytest`
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
 - [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
 - [src_layout_reference.md](/home/j/WatchTowerPlan/docs/references/src_layout_reference.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [tests](/home/j/WatchTowerPlan/core/python/tests/)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -59,23 +61,35 @@ Provide a simple testing baseline so Python behavior can be validated with consi
 - Letting special test categories exist implicitly instead of through explicit markers.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [tests](/home/j/WatchTowerPlan/core/python/tests/)
+
+### Why It Matters Here
 - Use this reference when future repository automation needs a default Python test framework.
 - Pair it with `pyproject.toml` guidance when test configuration needs one canonical home.
 - Pair it with `src/` layout guidance when import behavior and package layout affect test execution.
 
-## Process or Workflow
-1. Decide whether the repository has enough Python logic to justify a shared `pytest` baseline.
-2. Keep test layout, markers, and configuration explicit in documentation and configuration files.
-3. If `pytest` becomes the repository standard, move the normative rule into `docs/standards/engineering/**` and keep this file as supporting reference context.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- `pytest`
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
 - [pyproject_toml_reference.md](/home/j/WatchTowerPlan/docs/references/pyproject_toml_reference.md)
+- [src_layout_reference.md](/home/j/WatchTowerPlan/docs/references/src_layout_reference.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+- [tests](/home/j/WatchTowerPlan/core/python/tests/)
 
 ## Notes
 - This reference supports future Python automation work and does not imply the repo already has a Python test suite.
 - If test policy becomes more formal, it should move into `docs/standards/engineering/`.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:03:16Z`

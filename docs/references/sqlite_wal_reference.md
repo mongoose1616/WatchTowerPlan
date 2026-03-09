@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "sqlite_wal"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # SQLite WAL Reference
-
 ## Summary
 This document provides a working reference for SQLite write-ahead logging (WAL) mode.
 
@@ -26,36 +25,50 @@ Provide a storage-behavior baseline when SQLite durability, concurrency, or reco
 - Does not define an entire repository storage strategy by itself.
 
 ## Canonical Upstream
-- `https://www.sqlite.org/wal.html`
+- `https://www.sqlite.org/wal.html` - verified 2026-03-09; Write-Ahead Logging.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use WAL mode when concurrent reads and durable writes are desirable.
-- Understand checkpointing and operational file layout before adopting it.
-- Treat WAL as part of a storage design, not as a drop-in magic performance switch.
+### What WAL Changes
+| Concern | WAL behavior | Notes |
+|---|---|---|
+| reads versus writes | readers can proceed while writes append to WAL | good for many local concurrency patterns |
+| file layout | extra `-wal` and `-shm` files appear | operational tooling must account for them |
+| checkpointing | WAL contents must eventually merge back | explicit policy matters |
+| deployment environment | shared-memory assumptions apply | network filesystems can be problematic |
+
+### Core Rules
+- Use WAL when concurrent reads plus durable writes are genuinely desirable.
+- Keep checkpointing and backup strategy explicit.
+- Treat WAL as part of a storage design, not as a magic performance toggle.
+
+### Common Pitfalls
+- Forgetting the operational impact of extra WAL-related files.
+- Enabling WAL without deciding how checkpoints and backups work.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+
+### Why It Matters Here
 - Use this reference only if the repository adopts SQLite-backed state or indexes.
 - Pair it with backup and pragma guidance when documenting SQLite operational behavior.
 
-## Process or Workflow
-1. Read this reference before codifying SQLite WAL Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how SQLite durability and concurrency choices should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

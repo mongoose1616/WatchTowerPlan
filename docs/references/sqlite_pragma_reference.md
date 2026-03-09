@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "sqlite_pragma"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # SQLite PRAGMA Reference
-
 ## Summary
 This document provides a working reference for SQLite PRAGMA settings and behavior.
 
@@ -26,36 +25,47 @@ Provide a baseline for understanding and documenting SQLite configuration switch
 - Does not prescribe a local PRAGMA profile by itself.
 
 ## Canonical Upstream
-- `https://www.sqlite.org/pragma.html`
+- `https://www.sqlite.org/pragma.html` - verified 2026-03-09; Pragma statements supported by SQLite.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Treat PRAGMAs as configuration that should be documented and justified, not hidden defaults.
-- Understand which PRAGMAs are persistent and which are connection-scoped.
-- Keep performance, integrity, and recovery tradeoffs visible when choosing PRAGMAs.
+### High-Impact PRAGMAs
+| PRAGMA area | Why it matters | Common concern |
+|---|---|---|
+| journal or WAL mode | durability and concurrency behavior | affects file layout and recovery |
+| synchronous | write safety versus performance | should be deliberate |
+| foreign_keys | relational integrity enforcement | often needs explicit enabling |
+| busy timeout or locking | contention behavior | affects operational correctness |
+
+### Core Rules
+- Treat PRAGMAs as deliberate configuration, not hidden defaults.
+- Distinguish persistent database settings from connection-scoped settings.
+- Document performance, integrity, and recovery tradeoffs for any high-impact PRAGMA.
+
+### Common Pitfalls
+- Assuming a PRAGMA change persists when it is actually connection-scoped.
+- Tuning performance PRAGMAs without explaining the safety tradeoff.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if future SQLite adoption requires documented configuration choices.
 - Pair it with WAL and backup references when defining operational storage behavior.
 
-## Process or Workflow
-1. Read this reference before codifying SQLite PRAGMA Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how SQLite configuration policy should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

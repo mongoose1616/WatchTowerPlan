@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "conventional_commits"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # Conventional Commits Reference
-
 ## Summary
 This document provides a working reference for Conventional Commits as a parseable commit-message convention.
 
@@ -26,37 +25,50 @@ Provide a consistent commit-message baseline that supports readable history and 
 - Does not by itself define this repository's full commit policy.
 
 ## Canonical Upstream
-- `https://www.conventionalcommits.org/en/v1.0.0/`
+- `https://www.conventionalcommits.org/en/v1.0.0/` - verified 2026-03-09; Conventional Commits.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
 - [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use a type prefix such as `feat`, `fix`, `docs`, or `refactor` to signal intent.
-- Use the optional scope when it materially improves clarity.
-- Use breaking-change markers intentionally rather than casually.
+### Core Rules
+- Start the subject with a type such as `feat`, `fix`, `docs`, or another governed type.
+- Add a scope only when it materially improves clarity.
+- Mark breaking changes explicitly instead of burying them in body text.
+
+### Common Shapes
+| Pattern | Use When | Notes |
+|---|---|---|
+| `type: subject` | most commits | simplest readable form |
+| `type(scope): subject` | subsystem context matters | keep scope short and stable |
+| breaking marker or footer | compatibility changes | use intentionally and consistently |
+
+### Common Pitfalls
+- Inventing many custom types without governance.
+- Using scope as a dumping ground for context that belongs in the body.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+
+### Why It Matters Here
 - Use this reference as supporting context for [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md).
 - Pair it with semantic versioning guidance when release semantics matter.
 
-## Process or Workflow
-1. Read this reference before changing [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md) or related commit automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. Keep this file as supporting context and place normative repository policy in `docs/standards/**`.
-
-## Examples
-- Use this reference when deciding how commit-message policy should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
 - Repository-specific rules now live in [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md).
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

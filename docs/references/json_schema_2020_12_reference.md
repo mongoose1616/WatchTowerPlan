@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "json_schema_2020_12"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # JSON Schema 2020-12 Reference
-
 ## Summary
 This document provides a working reference for JSON Schema Draft 2020-12 as a fail-closed schema validation baseline.
 
@@ -26,36 +25,54 @@ Provide a schema-validation baseline for structured data contracts that need mac
 - Does not define every repository schema by itself.
 
 ## Canonical Upstream
-- `https://json-schema.org/draft/2020-12`
+- `https://json-schema.org/draft/2020-12` - verified 2026-03-09; JSON Schema.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schemas](/home/j/WatchTowerPlan/core/control_plane/schemas/)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use schemas for data contracts that benefit from explicit machine validation.
-- Keep schema versions and evolution rules deliberate.
-- Treat unknown required fields, missing required fields, and malformed payloads as contract issues rather than as informal warnings.
+### Core Validation Rules
+- Use JSON Schema when a machine-readable contract should reject malformed or incomplete data explicitly.
+- Make object openness deliberate: properties are permissive by default unless the schema narrows them.
+- Separate structural validation from business policy that the schema cannot express cleanly.
+
+### Common Keywords
+| Keyword | Use For | Notes |
+|---|---|---|
+| `type` | base kind constraints | objects, arrays, strings, numbers, booleans, null |
+| `required` | mandatory object properties | applies only to object members |
+| `properties` / `items` | nested structure | combine with required fields and length/count rules |
+| `enum` / `const` | fixed vocabularies | useful for governed status or mode fields |
+| `additionalProperties` / `unevaluatedProperties` | object openness control | critical when fail-closed behavior matters |
+
+### Common Pitfalls
+- Assuming unknown fields are rejected unless the schema says so.
+- Treating schema validation as a substitute for versioning and migration rules.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schemas](/home/j/WatchTowerPlan/core/control_plane/schemas/)
+
+### Why It Matters Here
 - Use this reference for schema-heavy content under `docs/standards/data_contracts/**`.
 - Use it when future registries or JSON documents need an explicit validation contract.
 
-## Process or Workflow
-1. Read this reference before codifying JSON Schema 2020-12 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how data contracts and schema validation should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+- [schemas](/home/j/WatchTowerPlan/core/control_plane/schemas/)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

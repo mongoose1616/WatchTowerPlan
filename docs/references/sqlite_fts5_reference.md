@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "sqlite_fts5"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # SQLite FTS5 Reference
-
 ## Summary
 This document provides a working reference for SQLite FTS5 full-text search.
 
@@ -26,36 +25,47 @@ Provide a search-indexing baseline if the repository later needs local full-text
 - Does not imply that full-text search is required in the repository.
 
 ## Canonical Upstream
-- `https://www.sqlite.org/fts5.html`
+- `https://www.sqlite.org/fts5.html` - verified 2026-03-09; SQLite FTS5 Extension.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use FTS5 when SQLite-backed full-text search is a real requirement.
-- Understand tokenizer, ranking, and storage tradeoffs before adopting it.
-- Keep retrieval behavior explicit instead of burying search semantics in implementation detail.
+### FTS5 Building Blocks
+| Item | Role | Notes |
+|---|---|---|
+| virtual table | stores searchable index data | central FTS5 abstraction |
+| tokenizer | splits text into searchable terms | affects search behavior and language handling |
+| `MATCH` queries | full-text search expression | different from ordinary `LIKE` |
+| content strategy | inline, external-content, or contentless | storage and sync tradeoffs matter |
+
+### Core Rules
+- Use FTS5 only when SQLite-backed full-text search is a real requirement.
+- Choose tokenizer and content strategy deliberately.
+- Keep ranking and query semantics explicit in the local contract.
+
+### Common Pitfalls
+- Treating FTS5 as a drop-in replacement for ordinary indexed lookup.
+- Ignoring index-maintenance cost or tokenizer behavior.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference only if the repo adopts SQLite-backed retrieval or indexing.
 - Pair it with schema and storage standards when documenting search behavior.
 
-## Process or Workflow
-1. Read this reference before codifying SQLite FTS5 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how local full-text search design should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

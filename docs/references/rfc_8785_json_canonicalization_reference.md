@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "rfc_8785_json_canonicalization"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # RFC 8785 JSON Canonicalization Reference
-
 ## Summary
 This document provides a working reference for RFC 8785 and the JSON Canonicalization Scheme (JCS).
 
@@ -26,36 +25,46 @@ Provide a canonicalization baseline when hashing, signing, or deterministic JSON
 - Does not require canonicalization for every JSON file in the repository.
 
 ## Canonical Upstream
-- `https://www.rfc-editor.org/info/rfc8785`
+- `https://www.rfc-editor.org/info/rfc8785` - verified 2026-03-09; Information on RFC 8785 » RFC Editor.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use canonicalization only when reproducible bytes materially matter.
-- Keep baseline JSON validity separate from canonicalized serialization rules.
-- Document where canonicalized JSON is required instead of assuming it implicitly.
+### What Canonicalization Changes
+| Concern | Canonicalization does | Why |
+|---|---|---|
+| whitespace | removes layout freedom | bytes become reproducible |
+| object member ordering | imposes deterministic order | signatures and hashes stay stable |
+| numeric serialization | normalizes representation | semantically equal values stop producing different bytes |
+
+### Core Rules
+- Use JCS only when reproducible byte output materially matters.
+- Start from valid JSON first; canonicalization is not a substitute for basic correctness.
+- Apply the same canonicalization policy on every producer and verifier path.
+
+### Common Pitfalls
+- Mixing canonicalized and ordinary JSON without saying which is required.
+- Hashing or signing non-canonical output and expecting stable results.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if future manifests, attestations, or integrity checks rely on deterministic JSON output.
 - Pair it with checksum or signing standards rather than applying it everywhere by default.
 
-## Process or Workflow
-1. Read this reference before codifying RFC 8785 JSON Canonicalization Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how deterministic JSON hashing and signing should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "nist_ai_600_1"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # NIST AI 600-1 Reference
-
 ## Summary
 This document provides a working reference for NIST AI 600-1, the Generative AI Profile for the AI RMF.
 
@@ -26,37 +25,48 @@ Provide a GenAI-specific governance overlay when AI policy needs more specific c
 - Does not by itself define repository-local AI guardrails or workflows.
 
 ## Canonical Upstream
-- `https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence`
-- `https://doi.org/10.6028/NIST.AI.600-1`
+- `https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence` - verified 2026-03-09; official upstream source.
+- `https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf` - verified 2026-03-09; official publication PDF.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use AI 600-1 when GenAI-specific risk patterns need more concrete treatment than a general AI framework provides.
-- Treat it as a profile layered on the AI RMF, not a replacement for core governance.
-- Translate profile guidance into repository-specific controls and review criteria.
+### What This Adds Beyond AI RMF
+- Use AI 600-1 when generative-AI-specific risks need more concrete treatment than a general AI governance framework.
+- Treat it as a profile and companion, not as a replacement for AI RMF governance.
+- Translate the profile into concrete review questions around misuse, output reliability, data handling, and oversight.
+
+### Common GenAI Risk Areas
+| Area | Why it matters | Local implication |
+|---|---|---|
+| content reliability | models can confabulate or overstate confidence | outputs need review and boundary controls |
+| data exposure | prompts and outputs can carry sensitive data | handling rules must be explicit |
+| misuse or abuse | capabilities can be redirected | safety and access controls matter |
+| human oversight | fully automated trust is risky | review and escalation paths may be needed |
+
+### Common Pitfalls
+- Claiming "AI RMF aligned" behavior without naming the GenAI-specific controls.
+- Treating a profile document as if it directly prescribed implementation details.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if the repository later formalizes GenAI-specific governance or misuse controls.
 - Pair it with AI RMF and OWASP GenAI guidance when building policy.
 
-## Process or Workflow
-1. Read this reference before codifying NIST AI 600-1 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how GenAI-specific governance design should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

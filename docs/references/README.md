@@ -1,7 +1,18 @@
 # `docs/references`
 
 ## Description
-`This directory contains working references for external standards, frameworks, specifications, and published guidance that inform this repository. Each reference should include canonical upstream links and stay focused on one succinct external topic. Do not place repo-native standards or purely local reference notes in this directory.`
+`This directory contains working references for external standards, frameworks, specifications, and published guidance that inform this repository. Each reference should include verified canonical upstream links, a dense quick-reference section, and an explicit local mapping to current repository surfaces or clearly marked future-adoption areas. Do not place repo-native standards or purely local reference notes in this directory.`
+
+## How To Use This Directory
+- Start with the reference file that matches the external topic, not with a broad repo scan.
+- Treat these files as supporting lookup artifacts. Enforceable local policy still belongs in `docs/standards/**` and executable procedure still belongs in `workflows/**`.
+- Use the `Current Repository Status` and `Current Touchpoints` sections inside each reference to tell whether the topic is active local support, supporting authority for an existing standard, or only candidate future guidance.
+- Re-check the canonical upstream links before tightening local policy for version-sensitive topics such as toolchains, security frameworks, and data-contract formats.
+
+## Current High-Signal Areas
+- Active local support: front matter, JSON Schema, commit-message guidance, semantic versioning, Python workspace tooling, and Python test/lint/typecheck references.
+- Supporting current standards: naming and IDs, data-contract formats, schema governance, documentation templates, and decision-capture guidance.
+- Candidate future guidance: supply-chain attestations, telemetry, SQLite-backed state, AI governance, and security assessment frameworks.
 
 ## Files
 | Path | Description |

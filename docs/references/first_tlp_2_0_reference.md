@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "first_tlp_2_0"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # FIRST TLP 2.0 Reference
-
 ## Summary
 This document provides a working reference for FIRST TLP 2.0 as an information-sharing sensitivity taxonomy.
 
@@ -26,36 +25,47 @@ Provide a clear baseline for labeling and handling information with different sh
 - Does not define a complete repository incident or disclosure policy by itself.
 
 ## Canonical Upstream
-- `https://www.first.org/tlp/`
+- `https://www.first.org/tlp/` - verified 2026-03-09; Traffic Light Protocol (TLP).
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use TLP labels when sharing constraints need to be made explicit.
-- Keep operational handling rules aligned with the chosen TLP level.
-- Do not apply TLP labels casually without defining who the intended audience actually is.
+### TLP Meanings
+| Label | Sharing expectation | Typical use |
+|---|---|---|
+| `TLP:CLEAR` | no sharing restrictions | public guidance |
+| `TLP:GREEN` | limited community sharing | peer or community coordination |
+| `TLP:AMBER` | restricted sharing on a need-to-know basis | sensitive operational details |
+| `TLP:RED` | named recipients only | highly sensitive coordination |
+
+### Core Rules
+- Pick a TLP label only when you also know the audience and the intended sharing boundary.
+- Pair the label with handling expectations in procedures or reports.
+- Review whether a document really needs a restriction before applying one.
+
+### Common Pitfalls
+- Using TLP as a vague "sensitive" sticker.
+- Assuming all readers interpret the label the same way without local handling rules.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if future incident, evidence-handling, or disclosure standards need a sharing taxonomy.
 - Pair it with incident-response and logging guidance when handling sensitive operational information.
 
-## Process or Workflow
-1. Read this reference before codifying FIRST TLP 2.0 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how information-sharing labels and handling rules should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "rfc_8259_json"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # RFC 8259 JSON Reference
-
 ## Summary
 This document provides a working reference for RFC 8259 as the baseline JSON specification.
 
@@ -26,36 +25,54 @@ Provide a standards-track JSON baseline when machine-readable payload semantics 
 - Does not define local canonicalization or pretty-printing rules by itself.
 
 ## Canonical Upstream
-- `https://www.rfc-editor.org/rfc/rfc8259`
+- `https://www.rfc-editor.org/rfc/rfc8259` - verified 2026-03-09; RFC 8259: The JavaScript Object Notation (JSON) Data Interchange Format.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [control_plane](/home/j/WatchTowerPlan/core/control_plane/)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use RFC 8259 as the baseline meaning of valid JSON.
-- Layer deterministic serialization rules separately when reproducibility matters.
-- Do not rely on implementation quirks when the contract is meant to be portable.
+### JSON Baseline
+| Type | Notes |
+|---|---|
+| object | member names are strings |
+| array | ordered sequence of values |
+| string | Unicode text with escaping rules |
+| number | no `NaN` or `Infinity` in portable JSON |
+| literals | `true`, `false`, and `null` |
+
+### Core Rules
+- Use RFC 8259 as the baseline definition of valid JSON.
+- Keep deterministic serialization rules separate from baseline JSON validity.
+- Expect portable consumers to reject implementation-specific extensions.
+
+### Common Pitfalls
+- Treating comments, trailing commas, or non-finite numbers as normal JSON.
+- Assuming a parser's permissive mode defines the contract.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [control_plane](/home/j/WatchTowerPlan/core/control_plane/)
+
+### Why It Matters Here
 - Use this reference when data-contract standards under `docs/standards/data_contracts/**` need a JSON baseline.
 - Pair it with canonicalization or stream-format references when reproducibility matters.
 
-## Process or Workflow
-1. Read this reference before codifying RFC 8259 JSON Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how JSON payload semantics should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [control_plane](/home/j/WatchTowerPlan/core/control_plane/)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

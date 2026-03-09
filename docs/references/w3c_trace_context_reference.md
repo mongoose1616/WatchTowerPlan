@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "w3c_trace_context"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # W3C Trace Context Reference
-
 ## Summary
 This document provides a working reference for W3C Trace Context as a cross-system trace-correlation standard.
 
@@ -26,36 +25,45 @@ Provide a trace-correlation baseline when operations span multiple processes, to
 - Does not define the full telemetry data model by itself.
 
 ## Canonical Upstream
-- `https://www.w3.org/TR/trace-context/`
+- `https://www.w3.org/TR/trace-context/` - verified 2026-03-09; Trace Context.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use it when cross-process trace propagation matters.
-- Keep trace context handling consistent instead of inventing incompatible local headers or fields.
-- Treat correlation identifiers as contract data when auditability matters.
+### Core Headers
+| Header | Role | Notes |
+|---|---|---|
+| `traceparent` | carries the core trace and parent identifiers | main cross-process correlation field |
+| `tracestate` | carries vendor-specific supplemental state | should stay interoperable and bounded |
+
+### Core Rules
+- Use Trace Context when cross-process trace propagation matters.
+- Keep propagation consistent instead of inventing incompatible local headers.
+- Decide what local systems are allowed to read, rewrite, or extend `tracestate`.
+
+### Common Pitfalls
+- Reusing correlation IDs without respecting the header format.
+- Treating vendor-specific state as portable across all participants.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if future repository workflows, scripts, or services need portable trace propagation.
 - Pair it with OpenTelemetry guidance when defining richer telemetry semantics.
 
-## Process or Workflow
-1. Read this reference before codifying W3C Trace Context Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how trace propagation and correlation should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

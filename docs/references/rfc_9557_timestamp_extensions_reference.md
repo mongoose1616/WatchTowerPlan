@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "rfc_9557_timestamp_extensions"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # RFC 9557 Timestamp Extensions Reference
-
 ## Summary
 This document provides a working reference for RFC 9557 and its extension of RFC 3339 timestamps with additional information.
 
@@ -26,36 +25,46 @@ Provide a baseline for cases where timestamps need attached time zone or calenda
 - Does not imply that all repository timestamps need this richer format.
 
 ## Canonical Upstream
-- `https://www.rfc-editor.org/info/rfc9557`
+- `https://www.rfc-editor.org/info/rfc9557` - verified 2026-03-09; Information on RFC 9557 » RFC Editor.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use RFC 9557 only when a contract truly needs timestamp-attached additional information.
-- Do not adopt the richer format when plain RFC 3339 is sufficient.
-- Be explicit about which consumers are expected to understand the extended form.
+### When To Use The Extension
+| Need | Use RFC 9557? | Why |
+|---|---|---|
+| named-zone or attached timestamp metadata must travel with the timestamp | yes | plain RFC 3339 may be too lossy |
+| plain interoperable timestamp only | usually no | RFC 3339 is simpler and more portable |
+| mixed consumer ecosystem with uncertain parser support | be cautious | some parsers may only support plain RFC 3339 |
+
+### Core Rules
+- Use RFC 9557 only when the contract truly needs richer timestamp notation than plain RFC 3339.
+- Make the accepted extension profile explicit for producers and consumers.
+- Keep a downgrade or compatibility strategy in mind if plain RFC 3339 readers still exist.
+
+### Common Pitfalls
+- Assuming every RFC 3339 parser will accept the extended form.
+- Adopting the richer syntax when named-zone data or attached metadata is not actually needed.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference for advanced timestamp contracts only if the repository starts needing timezone-aware serialized timestamps.
 - Keep ordinary metadata timestamps on the simpler RFC 3339 baseline unless a stronger requirement appears.
 
-## Process or Workflow
-1. Read this reference before codifying RFC 9557 Timestamp Extensions Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how advanced timestamp contracts should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

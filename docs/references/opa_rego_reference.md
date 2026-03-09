@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "opa_rego"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # OPA and Rego Reference
-
 ## Summary
 This document provides a working reference for Open Policy Agent and the Rego policy language.
 
@@ -26,37 +25,49 @@ Provide a policy-as-code baseline when repository controls need declarative, tes
 - Does not define the repository's policy model by itself.
 
 ## Canonical Upstream
-- `https://www.openpolicyagent.org/docs/latest`
-- `https://www.openpolicyagent.org/docs/policy-language`
+- `https://www.openpolicyagent.org/docs` - verified 2026-03-09; Open Policy Agent (OPA).
+- `https://www.openpolicyagent.org/docs/policy-language` - verified 2026-03-09; Policy Language.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use OPA/Rego when policy logic should be explicit, testable, and separable from general application code.
-- Keep policy scope and data inputs explicit.
-- Treat policy-as-code as a governed surface that still needs standards and review.
+### Core Rego Concepts
+| Concept | Role | Notes |
+|---|---|---|
+| package | policy namespace | keeps modules organized |
+| input | data supplied for evaluation | contract should be explicit |
+| data | external or contextual data | separate from request-time input |
+| rules | derived decisions or facts | often used for allow or deny outcomes |
+| default | fallback behavior | useful for fail-closed patterns |
+
+### Core Rules
+- Use OPA and Rego when policy logic should be explicit, reviewable, and testable.
+- Make input shape and decision outputs explicit before writing many rules.
+- Prefer fail-closed defaults when policy governs sensitive behavior.
+
+### Common Pitfalls
+- Hiding policy meaning in implicit inputs or external data.
+- Letting rule names or outputs drift away from the decision they control.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if the repository later adds policy-as-code controls under `docs/standards/governance/**` or validation workflows.
 - Pair it with Regal when linting or style enforcement for Rego matters.
 
-## Process or Workflow
-1. Read this reference before codifying OPA and Rego Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how policy-as-code design should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

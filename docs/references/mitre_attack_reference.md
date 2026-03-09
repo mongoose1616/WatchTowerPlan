@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "mitre_attack"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # MITRE ATT&CK Reference
-
 ## Summary
 This document provides a working reference for MITRE ATT&CK as a tactic-and-technique taxonomy for offensive-security knowledge.
 
@@ -26,37 +25,48 @@ Provide a shared vocabulary for structuring offensive-security techniques, mappi
 - Does not replace repository-specific workflows or reporting requirements.
 
 ## Canonical Upstream
-- `https://attack.mitre.org/`
-- `https://attack.mitre.org/resources/versions/`
+- `https://attack.mitre.org/` - verified 2026-03-09; MITRE ATT&CK®.
+- `https://attack.mitre.org/resources/versions/` - verified 2026-03-09; Version History.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use ATT&CK as a shared taxonomy, not as a substitute for task-specific procedures.
-- Keep mappings explicit rather than implied.
-- Version-lock the ATT&CK release when reproducibility matters.
+### What ATT&CK Is Good For
+- Use ATT&CK as a shared taxonomy for adversary behavior, detection mapping, and control coverage.
+- Pin the ATT&CK version when reproducibility or stable IDs matter.
+- Keep the local purpose explicit: planning, mapping, reporting, or gap analysis.
+
+### Core ATT&CK Terms
+| Term | Meaning | Notes |
+|---|---|---|
+| tactic | attacker goal or objective | higher-level behavior category |
+| technique | how the goal is achieved | stable IDs matter here |
+| sub-technique | narrower technique variant | useful for precise mapping |
+| mitigation / detection | defensive context | not the same as workflow procedure |
+
+### Common Pitfalls
+- Treating ATT&CK as a complete testing methodology or incident workflow.
+- Citing tactics or techniques without IDs or version context.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if domain packs or future security knowledge surfaces need tactic mapping.
 - Pair it with domain-specific workflows or tagging standards rather than using it as free-form decoration.
 
-## Process or Workflow
-1. Read this reference before codifying MITRE ATT&CK Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how offensive-security taxonomy and tagging should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

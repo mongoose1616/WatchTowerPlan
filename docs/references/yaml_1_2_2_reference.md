@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "yaml_1_2_2"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # YAML 1.2.2 Reference
-
 ## Summary
 This document provides a working reference for YAML 1.2.2 when repository metadata or configuration relies on YAML.
 
@@ -26,36 +25,53 @@ Provide a format baseline for YAML-backed metadata or configuration so parsers a
 - Does not define the repository's allowed YAML subset by itself.
 
 ## Canonical Upstream
-- `https://yaml.org/spec/1.2.2/`
+- `https://yaml.org/spec/1.2.2/` - verified 2026-03-09; YAML Ain’t Markup Language (YAML™) revision 1.2.2.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
+### Practical YAML Rules
+| Concern | Preferred approach | Why |
+|---|---|---|
+| explicit keys and simple scalars | yes | easier cross-parser behavior |
+| tabs for indentation | no | indentation should stay space-based |
+| advanced YAML features | use sparingly | portability and readability suffer quickly |
+| local subset definition | explicit when needed | many parsers behave differently at the edges |
+
+### Core Rules
 - Keep YAML usage simple and predictable when interoperability matters.
-- Document any local subset restrictions explicitly.
-- Prefer explicit keys and straightforward scalar values over clever YAML features.
+- Prefer a well-documented local subset over full-YAML assumptions.
+- Treat YAML parsing behavior as a contract issue when metadata or configuration is governed.
+
+### Common Pitfalls
+- Depending on parser-specific implicit typing or edge behavior.
+- Using complex YAML features where JSON-like structure would be clearer.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+
+### Why It Matters Here
 - Use this reference for any future YAML metadata standards under `docs/standards/metadata/**`.
 - Use it when documenting front matter or configuration parsing behavior.
 
-## Process or Workflow
-1. Read this reference before codifying YAML 1.2.2 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how YAML metadata and configuration rules should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

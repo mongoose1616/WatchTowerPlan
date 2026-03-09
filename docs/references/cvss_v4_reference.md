@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "cvss_v4"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # CVSS v4.0 Reference
-
 ## Summary
 This document provides a working reference for CVSS v4.0 as a vulnerability-severity scoring baseline.
 
@@ -26,37 +25,47 @@ Provide a standardized scoring baseline when findings or vulnerabilities need no
 - Does not require every finding to be scoreable if the repository defines valid exceptions.
 
 ## Canonical Upstream
-- `https://www.first.org/cvss/v4-0/`
-- `https://www.first.org/cvss/specification-document%E3%80%82`
+- `https://www.first.org/cvss/v4.0/` - verified 2026-03-09; FIRST CVSS v4.0 landing page.
+- `https://www.first.org/cvss/v4.0/specification-document` - verified 2026-03-09; CVSS v4.0 specification document.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use CVSS when a shared scoring vocabulary helps prioritization and communication.
-- Keep vector strings and scoring rationale explicit when scores are recorded.
-- Do not use CVSS as a substitute for contextual business or operational judgment.
+### What CVSS Answers
+- Use CVSS to normalize technical severity across findings when a shared scoring vocabulary helps prioritization.
+- Record the vector string with the score so the reasoning is reviewable.
+- Keep business impact and local exploit context separate from the base score.
+
+### Common Score Components
+| Component family | What it captures | Why it matters |
+|---|---|---|
+| base | intrinsic technical severity | gives the shared baseline |
+| threat / environmental | context that changes by deployment or threat landscape | explains why local priority may differ |
+| supplemental | extra context | useful for communication but not a substitute for rationale |
+
+### Common Pitfalls
+- Comparing raw scores without the underlying vector or local context.
+- Treating CVSS as the whole prioritization model rather than one input.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if repository outputs later include scored security findings.
 - Pair it with methodology and reporting standards rather than applying it in isolation.
 
-## Process or Workflow
-1. Read this reference before codifying CVSS v4.0 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how vulnerability severity scoring should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

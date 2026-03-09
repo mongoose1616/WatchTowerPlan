@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "pydantic_strict_mode"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # Pydantic Strict Mode Reference
-
 ## Summary
 This document provides a working reference for Pydantic strict mode as a typed validation strategy.
 
@@ -26,37 +25,50 @@ Provide a baseline for deciding when typed model validation should reject coerci
 - Does not require the repository to adopt Pydantic.
 
 ## Canonical Upstream
-- `https://docs.pydantic.dev/latest/concepts/strict_mode/`
-- `https://docs.pydantic.dev/latest/`
+- `https://docs.pydantic.dev/latest/concepts/strict_mode/` - verified 2026-03-09; Strict Mode.
+- `https://docs.pydantic.dev/latest/` - verified 2026-03-09; Welcome to Pydantic.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use strict mode when silent coercion would hide contract errors.
-- Treat model validation as part of the contract, not as optional convenience parsing.
-- Adopt it selectively where typed validation is worth the dependency and complexity.
+### What Strict Mode Changes
+| Choice | Effect | Notes |
+|---|---|---|
+| strict field or model validation | rejects coercions that would otherwise pass | good for contract boundaries |
+| non-strict validation | accepts many convenient coercions | useful for permissive intake layers |
+| selective strictness | only strict at high-risk boundaries | often the practical rollout path |
+
+### Core Rules
+- Use strict mode where silent coercion would hide contract errors.
+- Be explicit about which inputs are strict and which remain permissive.
+- Treat validation behavior as part of the data contract, not an incidental parser detail.
+
+### Common Pitfalls
+- Turning strict mode on everywhere without considering integration surfaces.
+- Assuming callers know which coercions are still accepted.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
+
+### Why It Matters Here
 - Use this reference when future Python automation needs typed input validation.
 - Pair it with JSON Schema and data-contract standards if the repo adopts typed runtime validation.
 
-## Process or Workflow
-1. Read this reference before codifying Pydantic Strict Mode Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how typed validation and strict parsing should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

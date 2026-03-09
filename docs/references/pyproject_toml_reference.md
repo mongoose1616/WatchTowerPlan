@@ -8,8 +8,9 @@ tags:
   - "reference"
   - "pyproject_toml"
 owner: "repository_maintainer"
-updated: "2026-03-08"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
+authority: "reference"
 ---
 
 # pyproject.toml Reference
@@ -25,14 +26,14 @@ Provide a single configuration baseline so packaging metadata and tool settings 
 - Does not require Python tooling unless the repo actually starts using it.
 
 ## Canonical Upstream
-- `https://packaging.python.org/specifications/declaring-project-metadata/`
-- `https://packaging.python.org/guides/writing-pyproject-toml/`
-- `https://peps.python.org/pep-0518/`
-- `https://peps.python.org/pep-0621/`
+- `https://packaging.python.org/en/latest/specifications/pyproject-toml/` - verified 2026-03-09; pyproject.toml specification.
+- `https://packaging.python.org/en/latest/guides/writing-pyproject-toml/` - verified 2026-03-09; Writing your pyproject.toml.
+- `https://peps.python.org/pep-0518/` - verified 2026-03-09; PEP 518 – Specifying Minimum Build System Requirements for Python Projects.
+- `https://peps.python.org/pep-0621/` - verified 2026-03-09; PEP 621 – Storing project metadata in pyproject.toml.
 
 ## Related Standards and Sources
-- `pyproject.toml` Python packaging specification
-- `docs/standards/engineering/` once formal engineering standards are written.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
 
 ## Quick Reference or Distilled Reference
 ### Rules or Decision Points
@@ -57,22 +58,31 @@ Provide a single configuration baseline so packaging metadata and tool settings 
 - Forgetting to keep tool choices and config layout aligned.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+
+### Current Touchpoints
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
+
+### Why It Matters Here
 - Use this reference if repository automation adopts shared Python tooling and needs one canonical configuration file.
 - Pair it with `pytest`, `Ruff`, and `mypy` references when deciding where their local settings should live.
 - Use it with packaging and `src/` layout guidance if the repository becomes an installable Python project.
 
-## Process or Workflow
-1. Decide whether the repository needs shared Python tooling or packaging metadata.
-2. Centralize Python tool configuration in `pyproject.toml` unless a tool has a strong reason to live elsewhere.
-3. If `pyproject.toml` structure becomes a repository standard, move the normative rule into `docs/standards/engineering/**` and keep this file as supporting reference context.
+### If Local Policy Tightens
+- Update the companion repository surfaces above in the same change set when this topic becomes more prescriptive locally.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- `pyproject.toml` Python packaging specification
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
+- [pyproject.toml](/home/j/WatchTowerPlan/core/python/pyproject.toml)
 
 ## Notes
 - This reference is intentionally practical rather than exhaustive.
 - If the repo never adopts Python tooling, this reference remains optional background material.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
-## Last Synced
-- `2026-03-08`
+## Updated At
+- `2026-03-09T05:03:16Z`

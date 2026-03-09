@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "regal"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # Regal Reference
-
 ## Summary
 This document provides a working reference for Regal as a linter and language server for Rego.
 
@@ -26,36 +25,46 @@ Provide a quality and tooling baseline for Rego policy authoring when policy-as-
 - Does not require Rego linting unless the repository adopts Rego.
 
 ## Canonical Upstream
-- `https://www.openpolicyagent.org/projects/regal`
+- `https://www.openpolicyagent.org/projects/regal` - verified 2026-03-09; Introduction.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use Regal when Rego policy quality, idioms, and tooling feedback need to be enforced consistently.
-- Keep lint policy explicit instead of relying on tool defaults alone.
-- Treat Regal as a companion to Rego, not as the policy definition itself.
+### What Regal Adds
+- Lints Rego policy for style, correctness signals, and maintainability issues before they become policy-review noise.
+- Helps standardize Rego code quality separately from the policy decisions themselves.
+- Works best when the enabled rule set is explicit and reviewed.
+
+### Common Decisions
+| Question | Preferred answer | Why |
+|---|---|---|
+| lint all Rego or only selected dirs | choose explicit scope | keeps adoption predictable |
+| rule exceptions | narrow, documented suppressions | avoids silent drift |
+| config location | one canonical config file | keeps rule intent visible |
+
+### Common Pitfalls
+- Treating Regal findings as policy semantics rather than code-quality guidance.
+- Using broad suppressions until the lint signal loses value.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference only if the repository later adopts OPA/Rego.
 - Pair it with OPA/Rego policy standards or validation workflows.
 
-## Process or Workflow
-1. Read this reference before codifying Regal Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how Rego linting and policy developer tooling should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "sqlite_json1"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # SQLite JSON1 Reference
-
 ## Summary
 This document provides a working reference for SQLite JSON1 support.
 
@@ -26,36 +25,47 @@ Provide a baseline for using JSON functions inside SQLite when structured JSON d
 - Does not make SQLite the default JSON storage strategy.
 
 ## Canonical Upstream
-- `https://www.sqlite.org/json1.html`
+- `https://www.sqlite.org/json1.html` - verified 2026-03-09; JSON Functions And Operators.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
-- Use JSON1 when SQLite-backed data really benefits from JSON-aware queries.
-- Keep JSON storage rules explicit so structure and validation are still understandable.
-- Do not let JSON1 become an excuse to avoid a clear schema design.
+### Common JSON1 Operations
+| Function family | Use For | Notes |
+|---|---|---|
+| `json()` and validation helpers | normalize or validate JSON values | good at input boundaries |
+| `json_extract` | read nested JSON content | be explicit about paths |
+| update helpers like `json_set` | modify JSON fragments | still need contract discipline |
+| query predicates | filter on JSON content | can blur schema boundaries if overused |
+
+### Core Rules
+- Use JSON1 only when SQLite-backed data really benefits from JSON-aware queries or updates.
+- Keep the JSON shape and validation rules explicit outside the SQL itself.
+- Decide whether JSON lives at the edge or becomes core storage structure.
+
+### Common Pitfalls
+- Letting JSON blobs replace a clear data model just because JSON1 exists.
+- Writing path-heavy queries without documenting the expected JSON shape.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference only if repository-local SQLite state starts using JSON columns or JSON functions.
 - Pair it with schema and serialization references when defining a durable contract.
 
-## Process or Workflow
-1. Read this reference before codifying SQLite JSON1 Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how SQLite JSON handling should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`

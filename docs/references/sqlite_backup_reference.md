@@ -8,13 +8,12 @@ tags:
   - "reference"
   - "sqlite_backup"
 owner: "repository_maintainer"
-updated: "2026-03-09"
+updated_at: "2026-03-09T05:03:16Z"
 audience: "shared"
 authority: "reference"
 ---
 
 # SQLite Backup Reference
-
 ## Summary
 This document provides a working reference for SQLite backup guidance.
 
@@ -26,36 +25,46 @@ Provide a backup and copy baseline when SQLite data stores need explicit durabil
 - Does not define a full repository backup policy.
 
 ## Canonical Upstream
-- `https://www.sqlite.org/backup.html`
+- `https://www.sqlite.org/backup.html` - verified 2026-03-09; SQLite Backup API.
 
 ## Related Standards and Sources
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- No narrower repository standard or workflow cites this reference directly yet.
 
 ## Quick Reference or Distilled Reference
-### Rules or Decision Points
+### Backup Choices
+| Approach | Good use | Notes |
+|---|---|---|
+| SQLite backup API | online safe copying of a live database | preferred when concurrent access exists |
+| restore drills | verify backups are usable | backup without restore testing is weak evidence |
+| file-copy shortcuts | only with clear operational guarantees | can be unsafe depending on journal mode and activity |
+
+### Core Rules
 - Use SQLite's documented backup approach when live-copy safety matters.
-- Treat backup, restore, and checkpoint decisions as part of one operational story.
-- Do not assume file copying is always equivalent to a safe backup procedure.
+- Treat backup, restore, and checkpoint decisions as one operational design.
+- Keep WAL and journal behavior in mind when defining backup procedures.
+
+### Common Pitfalls
+- Assuming file copying is always equivalent to a safe backup.
+- Treating a created backup file as proof of recoverability without restore testing.
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+
+### Why It Matters Here
 - Use this reference if the repo later stores durable state in SQLite.
 - Pair it with WAL and pragma references when documenting recovery behavior.
 
-## Process or Workflow
-1. Read this reference before codifying SQLite Backup Reference into repository standards, workflows, templates, or automation.
-2. Map only the parts that materially improve clarity, correctness, or consistency in this repository.
-3. If the repository adopts the reference as policy, move the normative rule into `docs/standards/**` and keep this file as supporting context.
-
-## Examples
-- Use this reference when deciding how SQLite backup and restore design should be expressed in repository docs, standards, or automation.
-- Use this reference as a supporting source when drafting a focused standards document under `docs/standards/**`.
+### If Local Policy Tightens
+- Promote any adopted repository rule into a narrower standard or workflow instead of leaving the rule only in this reference.
+- Keep this file focused on upstream context and quick lookup rather than turning it into the only source of local policy.
 
 ## References
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
 
 ## Notes
-- This file is a working external reference, not a mandatory policy by itself.
-- Repository-specific rules should live in `docs/standards/**` when they become normative.
+- Canonical upstream sources were rechecked on `2026-03-09` during the repository reference refresh.
+- If this topic becomes active repository policy later, move the enforceable rule into `docs/standards/**` or the relevant workflow module.
 
-## Last Synced
-- `2026-03-09`
+## Updated At
+- `2026-03-09T05:03:16Z`
