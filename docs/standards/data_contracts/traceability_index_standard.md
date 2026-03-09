@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "traceability_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T06:54:19Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,6 +50,7 @@ This standard defines the unified machine-readable traceability index stored und
 - Store published traceability indexes under `core/control_plane/indexes/traceability/`.
 - Use JSON for the published traceability index artifact.
 - Keep family-specific indexes as their local lookup surfaces and use the unified traceability index as the cross-family join layer.
+- Treat the governed PRD index, decision index, design-document index, acceptance-contract artifacts, and validation-evidence artifacts as the canonical source surfaces for rebuilding the unified traceability index.
 - Every traceability entry should publish:
   - `trace_id`
   - a concise title and summary
@@ -91,8 +92,8 @@ This standard defines the unified machine-readable traceability index stored und
 | `notes` | Optional | Short join note. |
 
 ## Process or Workflow
-1. Gather the traced artifact IDs from PRD, decision, design, implementation-plan, acceptance, and evidence surfaces.
-2. Publish or refresh the matching traceability entry under the shared `trace_id`.
+1. Gather the traced artifact IDs from the governed PRD, decision, and design indexes plus the current acceptance-contract and validation-evidence artifacts.
+2. Rebuild the matching traceability entries under the shared `trace_id` values, preferably through the Python sync surface rather than manual hand editing.
 3. Validate the index artifact against its published schema.
 4. Check that linked IDs and related paths still resolve.
 5. Update the family-specific indexes in the same change set if the traceability refresh reveals drift there.
@@ -121,4 +122,4 @@ This standard defines the unified machine-readable traceability index stored und
 - This index is the machine-readable join surface, not the sole authoritative source of the linked artifacts themselves.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T06:54:19Z`

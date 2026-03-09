@@ -62,6 +62,34 @@
       "notes": "Validate the parsed front matter object rather than the raw Markdown file."
     },
     {
+      "id": "validator.documentation.feature_design_front_matter",
+      "title": "Feature Design Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed feature-design documents.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "docs/planning/design/features/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1"
+      ]
+    },
+    {
+      "id": "validator.documentation.implementation_plan_front_matter",
+      "title": "Implementation Plan Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed implementation-plan documents.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "docs/planning/design/implementation/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1"
+      ]
+    },
+    {
       "id": "validator.documentation.standard_front_matter",
       "title": "Standard Front Matter Validator",
       "description": "Validates parsed front matter metadata for standards that adopt governed front matter.",

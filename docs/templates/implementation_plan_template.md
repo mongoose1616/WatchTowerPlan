@@ -1,9 +1,37 @@
+---
+trace_id: "trace.example_feature"
+id: "design.implementation.example_slice"
+title: "<Implementation Plan Title>"
+summary: "<One-line description of the implementation slice and intended outcome.>"
+type: "implementation_plan"
+status: "draft"
+owner: "repository_maintainer"
+updated_at: "YYYY-MM-DDTHH:MM:SSZ"
+audience: "shared"
+authority: "supporting"
+applies_to:
+  - "<repo/path/or/concept>"
+aliases:
+  - "<helpful search alias>"
+---
+
 # <Implementation Plan Title>
 
 > Use this template for implementation plans that translate an approved feature design or user request into concrete engineering work.
 > Store the finished document under `docs/planning/design/implementation/` and keep it aligned with [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md).
+> Keep front matter valid against the governed implementation-plan front matter profile and keep `updated_at` aligned with the `Updated At` section below.
 > Keep the plan focused on one implementation slice or tightly related execution package.
 > Record the technical approach, work breakdown, validation plan, and rollout expectations without turning the document into commit-by-commit notes.
+
+## Record Metadata
+- `Trace ID`: `trace.example_feature`
+- `Plan ID`: `design.implementation.example_slice`
+- `Plan Status`: `draft`
+- `Linked PRDs`: `None`
+- `Linked Decisions`: `None`
+- `Source Designs`: `None`
+- `Linked Acceptance Contracts`: `None`
+- `Updated At`: `YYYY-MM-DDTHH:MM:SSZ`
 
 ## Summary
 <Short explanation of the implementation slice and intended outcome.>

@@ -32,23 +32,32 @@ def test_schema_store_resolves_cataloged_schema_paths() -> None:
 
 def test_schema_store_validates_documentation_front_matter_examples() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-    valid_example = load_json(
-        "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json"
-    )
-    invalid_example = load_json(
-        "core/control_plane/examples/invalid/documentation/reference_front_matter_missing_tags.v1.example.json"
-    )
+    example_pairs = [
+        (
+            "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json",
+            "core/control_plane/examples/invalid/documentation/reference_front_matter_missing_tags.v1.example.json",
+            "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
+        ),
+        (
+            "core/control_plane/examples/valid/documentation/feature_design_front_matter.v1.example.json",
+            "core/control_plane/examples/invalid/documentation/feature_design_front_matter_missing_trace_id.v1.example.json",
+            "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1",
+        ),
+        (
+            "core/control_plane/examples/valid/documentation/implementation_plan_front_matter.v1.example.json",
+            "core/control_plane/examples/invalid/documentation/implementation_plan_front_matter_wrong_type.v1.example.json",
+            "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1",
+        ),
+    ]
 
-    store.validate_instance(
-        valid_example,
-        schema_id="urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
-    )
+    for valid_path, invalid_path, schema_id in example_pairs:
+        valid_example = load_json(valid_path)
+        invalid_example = load_json(invalid_path)
 
-    with pytest.raises(ValidationError):
-        store.validate_instance(
-            invalid_example,
-            schema_id="urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
-        )
+        store.validate_instance(valid_example, schema_id=schema_id)
+
+        with pytest.raises(ValidationError):
+            store.validate_instance(invalid_example, schema_id=schema_id)
 
 
 def test_schema_store_rejects_unknown_schema_id() -> None:

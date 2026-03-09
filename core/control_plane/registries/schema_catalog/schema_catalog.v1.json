@@ -172,6 +172,32 @@
       "notes": "Used as the shared base for documentation front matter profiles."
     },
     {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1",
+      "title": "Feature Design Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed feature-design documents.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/feature_design_front_matter.v1.schema.json",
+      "aliases": [
+        "feature design metadata schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1",
+      "title": "Implementation Plan Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed implementation-plan documents.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/implementation_plan_front_matter.v1.schema.json",
+      "aliases": [
+        "implementation plan metadata schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
       "title": "Reference Front Matter",
       "description": "Schema for parsed front matter metadata used by governed reference documents.",

@@ -1,4 +1,35 @@
+---
+trace_id: "trace.core_python_foundation"
+id: "design.implementation.control_plane_loaders_and_schema_store"
+title: "Control-Plane Loaders and SchemaStore Implementation Plan"
+summary: "Breaks the first executable core/python slice into concrete work for loading governed control-plane artifacts and resolving schemas locally through a reusable SchemaStore."
+type: "implementation_plan"
+status: "active"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T07:05:24Z"
+audience: "shared"
+authority: "supporting"
+applies_to:
+  - "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md"
+  - "core/python/src/watchtower_core/control_plane/"
+  - "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
+  - "core/control_plane/registries/validators/validator_registry.v1.json"
+aliases:
+  - "control plane loader plan"
+  - "schemastore plan"
+---
+
 # Control-Plane Loaders and SchemaStore Implementation Plan
+
+## Record Metadata
+- `Trace ID`: `trace.core_python_foundation`
+- `Plan ID`: `design.implementation.control_plane_loaders_and_schema_store`
+- `Plan Status`: `active`
+- `Linked PRDs`: `prd.core_python_foundation`
+- `Linked Decisions`: `decision.core_python_workspace_root`
+- `Source Designs`: `design.features.core_python_workspace_and_harness`; `design.features.python_validator_execution`; `design.features.schema_resolution_and_index_search`
+- `Linked Acceptance Contracts`: `contract.acceptance.core_python_foundation`
+- `Updated At`: `2026-03-09T07:05:24Z`
 
 ## Summary
 This plan breaks the first executable `core/python` slice into concrete work for loading governed control-plane artifacts and resolving schemas locally through a reusable `SchemaStore`.
@@ -91,4 +122,4 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
 
 ## Updated At
-- `2026-03-09T04:55:49Z`
+- `2026-03-09T07:05:24Z`

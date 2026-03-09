@@ -15,6 +15,10 @@
 | `docs/commands/core_python/watchtower_core_query_trace.md` | Human-readable command page for the watchtower-core query trace command. |
 | `docs/commands/core_python/watchtower_core_sync.md` | Human-readable command page for the watchtower-core sync command group. |
 | `docs/commands/core_python/watchtower_core_sync_command_index.md` | Human-readable command page for the watchtower-core sync command-index command. |
+| `docs/commands/core_python/watchtower_core_sync_prd_index.md` | Human-readable command page for the watchtower-core sync prd-index command. |
+| `docs/commands/core_python/watchtower_core_sync_decision_index.md` | Human-readable command page for the watchtower-core sync decision-index command. |
+| `docs/commands/core_python/watchtower_core_sync_design_document_index.md` | Human-readable command page for the watchtower-core sync design-document-index command. |
+| `docs/commands/core_python/watchtower_core_sync_traceability_index.md` | Human-readable command page for the watchtower-core sync traceability-index command. |
 | `docs/commands/core_python/watchtower_core_sync_repository_paths.md` | Human-readable command page for the watchtower-core sync repository-paths command. |
 | `docs/commands/core_python/watchtower_core_validate.md` | Human-readable command page for the watchtower-core validate command group. |
 | `docs/commands/core_python/watchtower_core_validate_artifact.md` | Human-readable command page for the watchtower-core validate artifact command. |

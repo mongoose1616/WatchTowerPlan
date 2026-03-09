@@ -56,6 +56,10 @@ def test_sync_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Rebuild derived governed artifacts" in captured.out
     assert "command-index" in captured.out
+    assert "prd-index" in captured.out
+    assert "decision-index" in captured.out
+    assert "design-document-index" in captured.out
+    assert "traceability-index" in captured.out
     assert "repository-paths" in captured.out
     assert "uv run watchtower-core sync command-index --write" in captured.out
 
@@ -144,6 +148,58 @@ def test_sync_command_index_supports_json_output(capsys) -> None:
     assert payload["artifact_path"] is None
 
 
+def test_sync_prd_index_supports_json_output(capsys) -> None:
+    result = main(["sync", "prd-index", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync prd-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
+def test_sync_decision_index_supports_json_output(capsys) -> None:
+    result = main(["sync", "decision-index", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync decision-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
+def test_sync_design_document_index_supports_json_output(capsys) -> None:
+    result = main(["sync", "design-document-index", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync design-document-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
+def test_sync_traceability_index_supports_json_output(capsys) -> None:
+    result = main(["sync", "traceability-index", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync traceability-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
 def test_sync_repository_paths_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
     output_path = tmp_path / "repository_path_index.v1.json"
 
@@ -169,6 +225,70 @@ def test_sync_command_index_can_write_to_explicit_output(tmp_path: Path, capsys)
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core sync command-index"
+    assert payload["wrote"] is True
+    assert payload["artifact_path"] == str(output_path.resolve())
+    assert output_path.exists()
+
+
+def test_sync_prd_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
+    output_path = tmp_path / "prd_index.v1.json"
+
+    result = main(["sync", "prd-index", "--output", str(output_path), "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync prd-index"
+    assert payload["wrote"] is True
+    assert payload["artifact_path"] == str(output_path.resolve())
+    assert output_path.exists()
+
+
+def test_sync_decision_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
+    output_path = tmp_path / "decision_index.v1.json"
+
+    result = main(["sync", "decision-index", "--output", str(output_path), "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync decision-index"
+    assert payload["wrote"] is True
+    assert payload["artifact_path"] == str(output_path.resolve())
+    assert output_path.exists()
+
+
+def test_sync_design_document_index_can_write_to_explicit_output(
+    tmp_path: Path, capsys
+) -> None:
+    output_path = tmp_path / "design_document_index.v1.json"
+
+    result = main(
+        ["sync", "design-document-index", "--output", str(output_path), "--format", "json"]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync design-document-index"
+    assert payload["wrote"] is True
+    assert payload["artifact_path"] == str(output_path.resolve())
+    assert output_path.exists()
+
+
+def test_sync_traceability_index_can_write_to_explicit_output(
+    tmp_path: Path, capsys
+) -> None:
+    output_path = tmp_path / "traceability_index.v1.json"
+
+    result = main(
+        ["sync", "traceability-index", "--output", str(output_path), "--format", "json"]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync traceability-index"
     assert payload["wrote"] is True
     assert payload["artifact_path"] == str(output_path.resolve())
     assert output_path.exists()

@@ -1,4 +1,34 @@
+---
+trace_id: "trace.command_documentation_and_lookup"
+id: "design.features.command_documentation_and_lookup"
+title: "Command Documentation and Lookup Design"
+summary: "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands."
+type: "feature_design"
+status: "active"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T07:05:24Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "docs/planning/design/features/command_documentation_and_lookup.md"
+  - "docs/commands/"
+  - "core/control_plane/indexes/commands/command_index.v1.json"
+  - "core/python/src/watchtower_core/cli/"
+aliases:
+  - "command docs design"
+  - "command lookup design"
+---
+
 # Command Documentation and Lookup Design
+
+## Record Metadata
+- `Trace ID`: `trace.command_documentation_and_lookup`
+- `Design ID`: `design.features.command_documentation_and_lookup`
+- `Design Status`: `active`
+- `Linked PRDs`: `None`
+- `Linked Decisions`: `None`
+- `Linked Implementation Plans`: `None`
+- `Updated At`: `2026-03-09T07:05:24Z`
 
 ## Summary
 This document defines the feature-level design for a human-readable command-page family under `docs/commands/` and a machine-readable command index under `core/control_plane/indexes/commands/`.
@@ -122,4 +152,4 @@ This document defines the feature-level design for a human-readable command-page
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
 
 ## Updated At
-- `2026-03-09T04:55:49Z`
+- `2026-03-09T07:05:24Z`

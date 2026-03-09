@@ -50,6 +50,16 @@ uv run watchtower-core sync command-index
 
 ```sh
 cd core/python
+uv run watchtower-core sync prd-index
+```
+
+```sh
+cd core/python
+uv run watchtower-core sync traceability-index
+```
+
+```sh
+cd core/python
 uv run watchtower-core sync repository-paths
 ```
 
@@ -62,6 +72,7 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - With no subcommand, the current implementation prints the root CLI help text, including onboarding-friendly examples, and exits successfully.
 - With a valid subcommand, the root command dispatches to that subcommand handler.
 - The current top-level command families are `doctor`, `query`, `sync`, and `validate`.
+- The `sync` family now covers command lookup, PRD tracking, decision tracking, design tracking, traceability, and repository-path rebuilds.
 - Unknown subcommands are rejected by the underlying CLI parser.
 - The current command surface is intentionally small and acts as the operator entrypoint for the growing core workspace.
 
@@ -79,4 +90,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-09T06:42:17Z`
+- `2026-03-09T07:21:07Z`

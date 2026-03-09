@@ -37,6 +37,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     command_index = loader.load_command_index()
     doctor = command_index.get("command.watchtower_core.doctor")
     query_paths = command_index.get("command.watchtower_core.query.paths")
+    sync_traceability = command_index.get("command.watchtower_core.sync.traceability_index")
     validate_front_matter = command_index.get("command.watchtower_core.validate.front_matter")
     validate_artifact = command_index.get("command.watchtower_core.validate.artifact")
 
@@ -44,6 +45,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert doctor.doc_path == "docs/commands/core_python/watchtower_core_doctor.md"
     assert query_paths.default_output_format == "human"
     assert query_paths.doc_path == "docs/commands/core_python/watchtower_core_query_paths.md"
+    assert sync_traceability.parent_command_id == "command.watchtower_core.sync"
+    assert (
+        sync_traceability.doc_path
+        == "docs/commands/core_python/watchtower_core_sync_traceability_index.md"
+    )
     assert validate_front_matter.parent_command_id == "command.watchtower_core.validate"
     assert (
         validate_front_matter.doc_path

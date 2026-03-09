@@ -8,7 +8,7 @@
       "trace_id": "trace.core_python_foundation",
       "prd_id": "prd.core_python_foundation",
       "title": "Core Python Foundation PRD",
-      "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, query, and traceability foundation.",
+      "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations.",
       "status": "active",
       "doc_path": "docs/planning/prds/core_python_foundation.md",
       "updated_at": "2026-03-09T04:55:49Z",
@@ -39,7 +39,8 @@
       ],
       "related_paths": [
         "core/python/",
-        "core/control_plane/"
+        "core/control_plane/",
+        "docs/planning/design/"
       ],
       "tags": [
         "planning",

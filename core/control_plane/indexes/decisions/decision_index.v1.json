@@ -12,7 +12,7 @@
       "record_status": "active",
       "decision_status": "accepted",
       "doc_path": "docs/planning/decisions/core_python_workspace_root.md",
-      "updated_at": "2026-03-09T04:55:49Z",
+      "updated_at": "2026-03-09T07:05:24Z",
       "linked_prd_ids": [
         "prd.core_python_foundation"
       ],
@@ -24,7 +24,10 @@
       ],
       "related_paths": [
         "core/python/",
-        "core/control_plane/"
+        "core/control_plane/",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md"
       ],
       "tags": [
         "decision",

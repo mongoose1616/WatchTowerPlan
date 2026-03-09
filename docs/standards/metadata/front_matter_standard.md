@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:43:47Z"
+updated_at: "2026-03-09T07:05:24Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -63,8 +63,11 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - `docs/references/**` documents that use repository-governed reference structure should include front matter and validate against the reference profile.
 - `docs/planning/prds/**` documents should include front matter and validate against the PRD profile.
 - `docs/planning/decisions/**` documents should include front matter and validate against the decision-record profile.
+- `docs/planning/design/features/**` documents should include front matter and validate against the feature-design profile.
+- `docs/planning/design/implementation/**` documents should include front matter and validate against the implementation-plan profile.
 - `docs/standards/**` standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under `docs/standards/**` remain plain Markdown unless a narrower local rule says otherwise.
 - `docs/commands/**` command pages should stay plain Markdown by default because the command index is the machine-readable lookup surface for that document family.
+- Human tracking surfaces such as `docs/planning/design/design_tracking.md`, `docs/planning/prds/prd_tracking.md`, and `docs/planning/decisions/decision_tracking.md` remain plain Markdown unless a narrower standard later governs them.
 - Workflow documents may adopt front matter when status, ownership, or indexing needs justify it. If they do, they should validate against their matching profile.
 
 ## Structure or Data Model
@@ -91,6 +94,8 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | `docs/references/**` | Required for governed reference docs | `reference_front_matter.v1.schema.json` |
 | `docs/planning/prds/**` | Required | `prd_front_matter.v1.schema.json` |
 | `docs/planning/decisions/**` | Required | `decision_record_front_matter.v1.schema.json` |
+| `docs/planning/design/features/**` | Required for governed feature-design docs other than directory `README.md` files | `feature_design_front_matter.v1.schema.json` |
+| `docs/planning/design/implementation/**` | Required for governed implementation-plan docs other than directory `README.md` files | `implementation_plan_front_matter.v1.schema.json` |
 | `docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.v1.schema.json` |
 | `docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
 | `workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.v1.schema.json` |
@@ -118,6 +123,8 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - A long-lived reference under `docs/references/**` should use the reference front matter profile.
 - A PRD under `docs/planning/prds/**` should use the PRD front matter profile and carry a shared `trace_id`.
 - A decision record under `docs/planning/decisions/**` should use the decision-record front matter profile and carry a shared `trace_id`.
+- A feature design under `docs/planning/design/features/**` should use the feature-design front matter profile and carry a shared `trace_id`.
+- An implementation plan under `docs/planning/design/implementation/**` should use the implementation-plan front matter profile and carry a shared `trace_id`.
 - A standard under `docs/standards/**` should use the standard front matter profile.
 - A command page under `docs/commands/**` should usually remain plain Markdown and rely on the command index for machine lookup metadata.
 - A front matter document can add `aliases` such as `yaml_header` and `document_metadata` when those terms are likely retrieval entrypoints.
@@ -150,4 +157,4 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Document families that already have a dedicated machine-readable companion artifact, such as `docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-09T05:43:47Z`
+- `2026-03-09T07:05:24Z`

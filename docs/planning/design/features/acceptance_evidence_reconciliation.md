@@ -1,4 +1,34 @@
+---
+trace_id: "trace.acceptance_evidence_reconciliation"
+id: "design.features.acceptance_evidence_reconciliation"
+title: "Acceptance and Evidence Reconciliation Design"
+summary: "Defines the feature-level design for a future reusable reconciliation phase that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned."
+type: "feature_design"
+status: "active"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T07:05:24Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "docs/planning/design/features/acceptance_evidence_reconciliation.md"
+  - "core/control_plane/contracts/acceptance/"
+  - "core/control_plane/ledgers/validation_evidence/"
+  - "core/control_plane/indexes/traceability/traceability_index.v1.json"
+aliases:
+  - "acceptance evidence reconciliation"
+  - "acceptance coverage reconciliation"
+---
+
 # Acceptance and Evidence Reconciliation Design
+
+## Record Metadata
+- `Trace ID`: `trace.acceptance_evidence_reconciliation`
+- `Design ID`: `design.features.acceptance_evidence_reconciliation`
+- `Design Status`: `active`
+- `Linked PRDs`: `None`
+- `Linked Decisions`: `None`
+- `Linked Implementation Plans`: `None`
+- `Updated At`: `2026-03-09T07:05:24Z`
 
 ## Summary
 This document defines the feature-level design for a future reusable reconciliation phase that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.
@@ -120,4 +150,4 @@ This document defines the feature-level design for a future reusable reconciliat
 - [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
 
 ## Updated At
-- `2026-03-09T06:29:13Z`
+- `2026-03-09T07:05:24Z`

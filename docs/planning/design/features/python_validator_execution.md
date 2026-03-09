@@ -1,4 +1,34 @@
+---
+trace_id: "trace.core_python_foundation"
+id: "design.features.python_validator_execution"
+title: "Python Validator Execution Design"
+summary: "Defines the feature-level technical design for a Python validation layer that reads the authored validator registry from core/control_plane and executes validators deterministically against governed artifacts."
+type: "feature_design"
+status: "active"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T07:05:24Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "docs/planning/design/features/python_validator_execution.md"
+  - "core/python/src/watchtower_core/validation/"
+  - "core/control_plane/registries/validators/validator_registry.v1.json"
+  - "core/control_plane/ledgers/validation_evidence/"
+aliases:
+  - "validator execution design"
+  - "python validation design"
+---
+
 # Python Validator Execution Design
+
+## Record Metadata
+- `Trace ID`: `trace.core_python_foundation`
+- `Design ID`: `design.features.python_validator_execution`
+- `Design Status`: `active`
+- `Linked PRDs`: `prd.core_python_foundation`
+- `Linked Decisions`: `None`
+- `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
+- `Updated At`: `2026-03-09T07:05:24Z`
 
 ## Summary
 This document defines the feature-level technical design for a Python validation layer that reads the authored validator registry from `core/control_plane/` and executes validators deterministically against governed artifacts.
@@ -136,4 +166,4 @@ This document defines the feature-level technical design for a Python validation
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-09T06:23:18Z`
+- `2026-03-09T07:05:24Z`

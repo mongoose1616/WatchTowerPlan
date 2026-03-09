@@ -14,5 +14,6 @@
 ## Notes
 - Documents under `docs/planning/design/features/**` should follow [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md) and start from [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md).
 - Documents under `docs/planning/design/implementation/**` should follow [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md) and start from [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md).
+- Governed feature designs and implementation plans should use front matter that validates against their published design-family profiles.
 - Keep the human tracking view in [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md) aligned with the machine-readable index under `core/control_plane/indexes/design_documents/`.
 - Keep workflow execution procedure in `workflows/**` and normative repository rules in `docs/standards/**`; `docs/planning/design/**` is for recommended designs and executable planning, not for authority surfaces that replace those families.

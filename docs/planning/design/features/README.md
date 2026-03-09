@@ -16,5 +16,6 @@
 ## Notes
 - Documents in this directory should follow [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md).
 - Start new documents from [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md).
+- Governed feature designs in this directory should use the feature-design front matter profile.
 - Human-readable tracking for this family lives in [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md).
 - Use this directory when the main deliverable is a recommended design. If the main deliverable is concrete execution breakdown, use `docs/planning/design/implementation/` instead.

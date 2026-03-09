@@ -99,6 +99,20 @@ def test_governed_document_front_matter_profiles_validate() -> None:
             "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1",
         ),
         (
+            REPO_ROOT / "docs/planning/design/features",
+            {
+                "README.md",
+            },
+            "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1",
+        ),
+        (
+            REPO_ROOT / "docs/planning/design/implementation",
+            {
+                "README.md",
+            },
+            "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1",
+        ),
+        (
             REPO_ROOT / "docs/standards",
             {
                 "README.md",

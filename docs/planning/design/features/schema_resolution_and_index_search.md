@@ -1,4 +1,34 @@
+---
+trace_id: "trace.core_python_foundation"
+id: "design.features.schema_resolution_and_index_search"
+title: "Schema Resolution and Index Search Design"
+summary: "Defines the feature-level technical design for deterministic local schema resolution and index-backed repository search in the Python helper layer."
+type: "feature_design"
+status: "active"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T07:05:24Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "docs/planning/design/features/schema_resolution_and_index_search.md"
+  - "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
+  - "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+  - "core/python/src/watchtower_core/query/"
+aliases:
+  - "schema resolution design"
+  - "index search design"
+---
+
 # Schema Resolution and Index Search Design
+
+## Record Metadata
+- `Trace ID`: `trace.core_python_foundation`
+- `Design ID`: `design.features.schema_resolution_and_index_search`
+- `Design Status`: `active`
+- `Linked PRDs`: `prd.core_python_foundation`
+- `Linked Decisions`: `None`
+- `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
+- `Updated At`: `2026-03-09T07:05:24Z`
 
 ## Summary
 This document defines the feature-level technical design for deterministic local schema resolution and index-backed repository search in the future Python helper layer.
@@ -131,4 +161,4 @@ This document defines the feature-level technical design for deterministic local
 - [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
 
 ## Updated At
-- `2026-03-09T04:55:49Z`
+- `2026-03-09T07:05:24Z`

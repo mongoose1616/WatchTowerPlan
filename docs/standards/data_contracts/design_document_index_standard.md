@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "design_document_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T07:05:24Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -49,6 +49,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Use JSON for the published design-document index artifact.
 - Catalog only durable feature designs and implementation plans that live under `docs/planning/design/features/` or `docs/planning/design/implementation/`.
+- Source stable identity and summary fields from the governed design-document front matter rather than reconstructing them from body prose.
 - Every index entry must point to an existing design document under `docs/planning/design/`.
 - Carry a shared `trace_id` in every entry so designs and plans can join to PRDs and decisions cleanly.
 - Use a stable `document_id` per design document.
@@ -85,9 +86,10 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 ## Process or Workflow
 1. Add or update the design document under `docs/planning/design/`.
 2. Update the human-readable design tracker in `docs/planning/design/design_tracking.md` in the same change set.
-3. Add or update the corresponding entry in the machine-readable design-document index.
-4. Validate that every indexed `doc_path` and any listed related paths exist.
-5. Validate the design-document index artifact against its published schema before treating the change as complete.
+3. Add or update the design document front matter before generating or editing the machine-readable index entry.
+4. Add or update the corresponding entry in the machine-readable design-document index.
+5. Validate that every indexed `doc_path` and any listed related paths exist.
+6. Validate the design-document index artifact against its published schema before treating the change as complete.
 
 ## Examples
 - A feature design like `docs/planning/design/features/schema_resolution_and_index_search.md` should appear as a `feature_design` entry with its design title and summary.
@@ -116,4 +118,4 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The machine index is for lookup, query, and future tooling. Neither surface replaces the design documents themselves.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T07:05:24Z`

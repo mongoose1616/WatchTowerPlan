@@ -37,6 +37,9 @@
 - `uv run mypy src`
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
+- `uv run watchtower-core sync prd-index`
+- `uv run watchtower-core sync decision-index`
+- `uv run watchtower-core sync design-document-index`
 
 ### Commands Inside `./tools/dev_shell.sh`
 - `watchtower-core --help`
@@ -69,6 +72,10 @@
 - `docs/commands/core_python/watchtower_core_query_trace.md`
 - `docs/commands/core_python/watchtower_core_sync.md`
 - `docs/commands/core_python/watchtower_core_sync_command_index.md`
+- `docs/commands/core_python/watchtower_core_sync_prd_index.md`
+- `docs/commands/core_python/watchtower_core_sync_decision_index.md`
+- `docs/commands/core_python/watchtower_core_sync_design_document_index.md`
+- `docs/commands/core_python/watchtower_core_sync_traceability_index.md`
 - `docs/commands/core_python/watchtower_core_sync_repository_paths.md`
 - `docs/commands/core_python/watchtower_core_validate.md`
 - `docs/commands/core_python/watchtower_core_validate_artifact.md`

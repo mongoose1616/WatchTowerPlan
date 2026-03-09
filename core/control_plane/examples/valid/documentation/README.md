@@ -8,6 +8,8 @@
 |---|---|
 | `core/control_plane/examples/valid/documentation/README.md` | Describes the purpose of the valid documentation examples directory. |
 | `core/control_plane/examples/valid/documentation/decision_record_front_matter.v1.example.json` | Valid parsed front matter example for a governed decision-record document. |
+| `core/control_plane/examples/valid/documentation/feature_design_front_matter.v1.example.json` | Valid parsed front matter example for a governed feature-design document. |
+| `core/control_plane/examples/valid/documentation/implementation_plan_front_matter.v1.example.json` | Valid parsed front matter example for a governed implementation-plan document. |
 | `core/control_plane/examples/valid/documentation/prd_front_matter.v1.example.json` | Valid parsed front matter example for a governed PRD document. |
 | `core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json` | Valid parsed front matter example for a governed reference document. |
 | `core/control_plane/examples/valid/documentation/standard_front_matter.v1.example.json` | Valid parsed front matter example for a governed standard document. |

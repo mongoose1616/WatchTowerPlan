@@ -12,5 +12,6 @@
 ## Notes
 - Documents in this directory should follow [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md).
 - Start new documents from [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md).
+- Governed implementation plans in this directory should use the implementation-plan front matter profile.
 - Human-readable tracking for this family lives in [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md).
 - Use this directory when the main deliverable is engineering execution breakdown. If the main deliverable is architectural recommendation and tradeoff analysis, use `docs/planning/design/features/` instead.

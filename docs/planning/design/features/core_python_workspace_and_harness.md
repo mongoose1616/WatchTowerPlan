@@ -1,4 +1,34 @@
+---
+trace_id: "trace.core_python_foundation"
+id: "design.features.core_python_workspace_and_harness"
+title: "Core Python Workspace and Harness Design"
+summary: "Defines the feature-level technical design for the consolidated Python workspace under core/python and the first functional boundaries of the core helper and harness package."
+type: "feature_design"
+status: "active"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T07:05:24Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "docs/planning/design/features/core_python_workspace_and_harness.md"
+  - "core/python/"
+  - "core/control_plane/"
+  - "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md"
+aliases:
+  - "core python workspace design"
+  - "harness workspace design"
+---
+
 # Core Python Workspace and Harness Design
+
+## Record Metadata
+- `Trace ID`: `trace.core_python_foundation`
+- `Design ID`: `design.features.core_python_workspace_and_harness`
+- `Design Status`: `active`
+- `Linked PRDs`: `prd.core_python_foundation`
+- `Linked Decisions`: `decision.core_python_workspace_root`
+- `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
+- `Updated At`: `2026-03-09T07:05:24Z`
 
 ## Summary
 This document defines the feature-level technical design for the consolidated Python workspace under `core/python/` and the first functional boundaries of the core helper and harness package.
@@ -137,4 +167,4 @@ This document defines the feature-level technical design for the consolidated Py
 - [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
 
 ## Updated At
-- `2026-03-09T04:55:49Z`
+- `2026-03-09T07:05:24Z`

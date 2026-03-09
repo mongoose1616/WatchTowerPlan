@@ -164,7 +164,7 @@
     {
       "command_id": "command.watchtower_core.sync",
       "command": "watchtower-core sync",
-      "summary": "This command group rebuilds derived governed artifacts from authored repository sources.",
+      "summary": "This command group rebuilds derived governed artifacts from authored repository sources, including command lookup, planning indexes, traceability, and repository navigation surfaces.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -210,6 +210,82 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.sync.decision_index",
+      "command": "watchtower-core sync decision-index",
+      "summary": "This command rebuilds the governed decision index from the governed decision records under `docs/planning/decisions/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_decision_index.md",
+      "synopsis": "uv run watchtower-core sync decision-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "decision",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync.design_document_index",
+      "command": "watchtower-core sync design-document-index",
+      "summary": "This command rebuilds the governed design-document index from the governed feature designs and implementation plans under `docs/planning/design/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_design_document_index.md",
+      "synopsis": "uv run watchtower-core sync design-document-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "design",
+        "document",
+        "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync.prd_index",
+      "command": "watchtower-core sync prd-index",
+      "summary": "This command rebuilds the governed PRD index from the governed PRD documents under `docs/planning/prds/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_prd_index.md",
+      "synopsis": "uv run watchtower-core sync prd-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "prd",
+        "index"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.sync.repository_paths",
       "command": "watchtower-core sync repository-paths",
       "summary": "This command rebuilds the repository path index from README inventory tables and can either report the rebuilt result or write it back to disk.",
@@ -237,6 +313,31 @@
         "indexes"
       ],
       "notes": "Runs in dry-run mode by default and only writes when --write or --output is provided."
+    },
+    {
+      "command_id": "command.watchtower_core.sync.traceability_index",
+      "command": "watchtower-core sync traceability-index",
+      "summary": "This command rebuilds the governed traceability index from the published planning indexes, acceptance contracts, and validation-evidence artifacts.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_traceability_index.md",
+      "synopsis": "uv run watchtower-core sync traceability-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "traceability",
+        "index"
+      ]
     },
     {
       "command_id": "command.watchtower_core.validate",

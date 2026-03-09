@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "feature_design_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T07:05:24Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -34,6 +34,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 
 ## Related Standards and Sources
 - [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
 - [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
 - [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md)
 - [README.md](/home/j/WatchTowerPlan/docs/planning/design/features/README.md)
@@ -41,12 +42,13 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 ## Guidance
 - Store feature designs under `docs/planning/design/features/`.
 - Keep one primary feature or tightly related capability cluster per design.
+- Use governed front matter on feature-design documents and validate it against the published feature-design front matter profile.
 - Use feature designs to explain why a solution should be built a certain way before work is broken into implementation tasks.
 - Feature designs should identify current-state constraints, options considered, the recommended design, and the implementation guardrails that later work must preserve.
 - Do not use feature designs as workflow modules, changelogs, or commit-by-commit execution notes.
 - Do not move normative repository rules into a feature design when they belong in `docs/standards/**`.
 - Include only the external sources that materially shaped the design. Omit that section when none were needed.
-- Use `Updated At` to record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`.
+- Keep the `Updated At` section aligned with front matter `updated_at` and use RFC 3339 UTC timestamps in the form `YYYY-MM-DDTHH:MM:SSZ`.
 
 ## Structure or Data Model
 ### Placement rules
@@ -58,6 +60,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 ### Required sections for feature designs
 | Section | Requirement | Notes |
 |---|---|---|
+| `Record Metadata` | Required | Record the `trace_id`, design `id`, lifecycle status, linked planning surfaces, and the same `updated_at` value carried in front matter. |
 | `Summary` | Required | One short explanation of the design and intended outcome. |
 | `Source Request` | Required | Record the request, issue, or planning input that triggered the design. |
 | `Scope and Feature Boundary` | Required | Define what the design covers and excludes. |
@@ -83,10 +86,12 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 
 ## Process or Workflow
 1. Place the design under `docs/planning/design/features/` with a stable snake_case filename.
-2. Draft the document using the feature design template and required section order.
-3. Link the design to the standards, control-plane artifacts, or current repository surfaces that constrain the solution.
-4. Record a recommended design and explicit guardrails before creating or updating the implementation plan.
-5. Update companion READMEs or related design docs when the feature family or naming changes.
+2. Add governed front matter using the feature-design profile before the Markdown body.
+3. Draft the document using the feature design template and required section order.
+4. Link the design to the standards, control-plane artifacts, or current repository surfaces that constrain the solution.
+5. Record a recommended design and explicit guardrails before creating or updating the implementation plan.
+6. Keep front matter, `Record Metadata`, and the `Updated At` section aligned in the same change set.
+7. Update companion READMEs or related design docs when the feature family or naming changes.
 
 ## Examples
 - `docs/planning/design/features/core_python_workspace_and_harness.md` is a feature design because it defines package boundaries, tool expectations, and future capability areas.
@@ -95,8 +100,10 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 
 ## Validation
 - Feature designs should contain the required sections in the documented order.
+- Feature-design front matter should validate against `feature_design_front_matter.v1.schema.json`.
 - The recommended design should be specific enough that an implementation plan can break it into concrete work without re-deciding the architecture.
 - The document should cite the internal standards and canonical surfaces that constrain the design.
+- `updated_at` in front matter and the `Updated At` body section should match.
 - Reviewers should reject feature designs that are only requirements capture, only task checklists, or missing the reasoning behind the recommendation.
 
 ## Change Control
@@ -114,4 +121,4 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - A good feature design reduces rework in implementation planning by making tradeoffs and guardrails explicit.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T07:05:24Z`

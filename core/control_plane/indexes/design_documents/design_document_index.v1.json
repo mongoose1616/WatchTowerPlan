@@ -9,10 +9,10 @@
       "trace_id": "trace.acceptance_evidence_reconciliation",
       "family": "feature_design",
       "title": "Acceptance and Evidence Reconciliation Design",
-      "summary": "Feature design for a future reusable reconciliation phase across acceptance contracts, validators, validation evidence, and traceability surfaces.",
+      "summary": "Defines the feature-level design for a future reusable reconciliation phase that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
       "status": "active",
       "doc_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-      "updated_at": "2026-03-09T06:29:13Z",
+      "updated_at": "2026-03-09T07:05:24Z",
       "related_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
@@ -30,13 +30,14 @@
       "trace_id": "trace.command_documentation_and_lookup",
       "family": "feature_design",
       "title": "Command Documentation and Lookup Design",
-      "summary": "Feature design for human-readable command pages and the machine-readable command index.",
+      "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
       "status": "active",
       "doc_path": "docs/planning/design/features/command_documentation_and_lookup.md",
-      "updated_at": "2026-03-09T04:55:49Z",
+      "updated_at": "2026-03-09T07:05:24Z",
       "related_paths": [
         "docs/commands/",
-        "core/control_plane/indexes/commands/command_index.v1.json"
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/src/watchtower_core/cli/"
       ],
       "tags": [
         "design",
@@ -49,13 +50,14 @@
       "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
       "title": "Core Python Workspace and Harness Design",
-      "summary": "Feature design for the consolidated core Python workspace and the first helper-harness package boundaries.",
+      "summary": "Defines the feature-level technical design for the consolidated Python workspace under core/python and the first functional boundaries of the core helper and harness package.",
       "status": "active",
       "doc_path": "docs/planning/design/features/core_python_workspace_and_harness.md",
-      "updated_at": "2026-03-09T04:55:49Z",
+      "updated_at": "2026-03-09T07:05:24Z",
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
-        "core/python/"
+        "core/python/",
+        "core/control_plane/"
       ],
       "tags": [
         "design",
@@ -68,13 +70,15 @@
       "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
       "title": "Python Validator Execution Design",
-      "summary": "Feature design for registry-driven validator execution in the core Python layer.",
+      "summary": "Defines the feature-level technical design for a Python validation layer that reads the authored validator registry from core/control_plane and executes validators deterministically against governed artifacts.",
       "status": "active",
       "doc_path": "docs/planning/design/features/python_validator_execution.md",
-      "updated_at": "2026-03-09T04:55:49Z",
+      "updated_at": "2026-03-09T07:05:24Z",
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
-        "core/control_plane/registries/validators/validator_registry.v1.json"
+        "core/python/src/watchtower_core/validation/",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/ledgers/validation_evidence/"
       ],
       "tags": [
         "design",
@@ -87,14 +91,15 @@
       "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
       "title": "Schema Resolution and Index Search Design",
-      "summary": "Feature design for deterministic schema resolution and index-backed repository search.",
+      "summary": "Defines the feature-level technical design for deterministic local schema resolution and index-backed repository search in the Python helper layer.",
       "status": "active",
       "doc_path": "docs/planning/design/features/schema_resolution_and_index_search.md",
-      "updated_at": "2026-03-09T04:55:49Z",
+      "updated_at": "2026-03-09T07:05:24Z",
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/python/src/watchtower_core/query/"
       ],
       "tags": [
         "design",
@@ -107,10 +112,10 @@
       "trace_id": "trace.core_python_foundation",
       "family": "implementation_plan",
       "title": "Control-Plane Loaders and SchemaStore Implementation Plan",
-      "summary": "Implementation plan for the first core Python slice covering control-plane loaders and SchemaStore.",
+      "summary": "Breaks the first executable core/python slice into concrete work for loading governed control-plane artifacts and resolving schemas locally through a reusable SchemaStore.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
-      "updated_at": "2026-03-09T04:55:49Z",
+      "updated_at": "2026-03-09T07:05:24Z",
       "source_paths": [
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/python_validator_execution.md",

@@ -1,9 +1,36 @@
+---
+trace_id: "trace.example_feature"
+id: "design.features.example_feature"
+title: "<Feature Design Title>"
+summary: "<One-line description of the design and intended outcome.>"
+type: "feature_design"
+status: "draft"
+owner: "repository_maintainer"
+updated_at: "YYYY-MM-DDTHH:MM:SSZ"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "<repo/path/or/concept>"
+aliases:
+  - "<helpful search alias>"
+---
+
 # <Feature Design Title>
 
 > Use this template for feature-level technical designs that should be specific enough for implementation planning.
 > Store the finished document under `docs/planning/design/features/` and keep it aligned with [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md).
+> Keep front matter valid against the governed feature-design front matter profile and keep `updated_at` aligned with the `Updated At` section below.
 > Keep the document focused on one feature or narrowly related capability.
 > Record the recommended design, its tradeoffs, and the implementation guardrails without turning the document into a task checklist.
+
+## Record Metadata
+- `Trace ID`: `trace.example_feature`
+- `Design ID`: `design.features.example_feature`
+- `Design Status`: `draft`
+- `Linked PRDs`: `None`
+- `Linked Decisions`: `None`
+- `Linked Implementation Plans`: `None`
+- `Updated At`: `YYYY-MM-DDTHH:MM:SSZ`
 
 ## Summary
 <Short explanation of the feature and the intended design outcome.>

@@ -1,0 +1,12 @@
+{
+  "trace_id": "trace.core_python_foundation",
+  "id": "design.implementation.control_plane_loaders_and_schema_store",
+  "title": "Control-Plane Loaders and SchemaStore Implementation Plan",
+  "summary": "Breaks the first core Python slice into concrete work for control-plane loaders and SchemaStore.",
+  "type": "feature_design",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T07:05:24Z",
+  "audience": "shared",
+  "authority": "supporting"
+}

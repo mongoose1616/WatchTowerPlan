@@ -17,7 +17,14 @@ from watchtower_core.query import (
     RepositoryPathSearchParams,
     TraceabilityQueryService,
 )
-from watchtower_core.sync import CommandIndexSyncService, RepositoryPathIndexSyncService
+from watchtower_core.sync import (
+    CommandIndexSyncService,
+    DecisionIndexSyncService,
+    DesignDocumentIndexSyncService,
+    PrdIndexSyncService,
+    RepositoryPathIndexSyncService,
+    TraceabilityIndexSyncService,
+)
 from watchtower_core.validation import (
     ArtifactValidationService,
     FrontMatterValidationService,
@@ -61,6 +68,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core sync command-index",
+            "uv run watchtower-core sync prd-index",
+            "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
@@ -253,6 +262,11 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync command-index --write",
+            "uv run watchtower-core sync prd-index",
+            "uv run watchtower-core sync decision-index",
+            "uv run watchtower-core sync design-document-index",
+            "uv run watchtower-core sync traceability-index",
+            "uv run watchtower-core sync traceability-index --write",
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core sync repository-paths --write",
         ),
@@ -287,6 +301,97 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_sync_arguments(sync_command_index_parser)
     sync_command_index_parser.set_defaults(handler=_run_sync_command_index)
+
+    sync_prd_index_parser = sync_subparsers.add_parser(
+        "prd-index",
+        help="Rebuild the PRD index from governed PRD documents.",
+        description=dedent(
+            """
+            Rebuild the PRD index from the governed PRD documents under
+            `docs/planning/prds/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync prd-index",
+            "uv run watchtower-core sync prd-index --write",
+            "uv run watchtower-core sync prd-index --output /tmp/prd_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_prd_index_parser)
+    sync_prd_index_parser.set_defaults(handler=_run_sync_prd_index)
+
+    sync_decision_index_parser = sync_subparsers.add_parser(
+        "decision-index",
+        help="Rebuild the decision index from governed decision records.",
+        description=dedent(
+            """
+            Rebuild the decision index from the governed decision records under
+            `docs/planning/decisions/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync decision-index",
+            "uv run watchtower-core sync decision-index --write",
+            "uv run watchtower-core sync decision-index --output "
+            "/tmp/decision_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_decision_index_parser)
+    sync_decision_index_parser.set_defaults(handler=_run_sync_decision_index)
+
+    sync_design_document_index_parser = sync_subparsers.add_parser(
+        "design-document-index",
+        help="Rebuild the design-document index from governed design docs.",
+        description=dedent(
+            """
+            Rebuild the design-document index from the governed design documents
+            under `docs/planning/design/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync design-document-index",
+            "uv run watchtower-core sync design-document-index --write",
+            "uv run watchtower-core sync design-document-index --output "
+            "/tmp/design_document_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_design_document_index_parser)
+    sync_design_document_index_parser.set_defaults(handler=_run_sync_design_document_index)
+
+    sync_traceability_index_parser = sync_subparsers.add_parser(
+        "traceability-index",
+        help="Rebuild the traceability index from governed planning and evidence sources.",
+        description=dedent(
+            """
+            Rebuild the traceability index from the governed planning indexes,
+            acceptance contracts, and validation evidence artifacts.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync traceability-index",
+            "uv run watchtower-core sync traceability-index --write",
+            "uv run watchtower-core sync traceability-index --output "
+            "/tmp/traceability_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_traceability_index_parser)
+    sync_traceability_index_parser.set_defaults(handler=_run_sync_traceability_index)
 
     sync_repository_paths_parser = sync_subparsers.add_parser(
         "repository-paths",
@@ -705,12 +810,55 @@ def _run_sync_command_index(args: argparse.Namespace) -> int:
     )
 
 
+def _run_sync_prd_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync prd-index",
+        artifact_label="PRD index",
+        service=PrdIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_decision_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync decision-index",
+        artifact_label="decision index",
+        service=DecisionIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_design_document_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync design-document-index",
+        artifact_label="design-document index",
+        service=DesignDocumentIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_traceability_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync traceability-index",
+        artifact_label="traceability index",
+        service=TraceabilityIndexSyncService.from_repo_root(),
+    )
+
+
 def _run_sync_document_command(
     args: argparse.Namespace,
     *,
     command_name: str,
     artifact_label: str,
-    service: CommandIndexSyncService | RepositoryPathIndexSyncService,
+    service: (
+        CommandIndexSyncService
+        | DecisionIndexSyncService
+        | DesignDocumentIndexSyncService
+        | PrdIndexSyncService
+        | RepositoryPathIndexSyncService
+        | TraceabilityIndexSyncService
+    ),
 ) -> int:
     document = service.build_document()
     entries = document.get("entries")

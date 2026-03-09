@@ -1,0 +1,18 @@
+{
+  "trace_id": "trace.core_python_foundation",
+  "id": "design.features.schema_resolution_and_index_search",
+  "title": "Schema Resolution and Index Search Design",
+  "summary": "Defines the feature design for deterministic schema resolution and index-backed repository search.",
+  "type": "feature_design",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T07:05:24Z",
+  "audience": "shared",
+  "authority": "authoritative",
+  "applies_to": [
+    "docs/planning/design/features/schema_resolution_and_index_search.md"
+  ],
+  "aliases": [
+    "schema resolution design"
+  ]
+}

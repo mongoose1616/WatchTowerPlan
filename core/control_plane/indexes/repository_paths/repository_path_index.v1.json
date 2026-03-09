@@ -253,6 +253,20 @@
       "parent_path": "core/control_plane/examples/invalid/documentation/"
     },
     {
+      "path": "core/control_plane/examples/invalid/documentation/feature_design_front_matter_missing_trace_id.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid feature-design front matter example missing a required trace ID.",
+      "parent_path": "core/control_plane/examples/invalid/documentation/"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/documentation/implementation_plan_front_matter_wrong_type.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid implementation-plan front matter example with the wrong document type.",
+      "parent_path": "core/control_plane/examples/invalid/documentation/"
+    },
+    {
       "path": "core/control_plane/examples/invalid/documentation/prd_front_matter_missing_authority.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -432,6 +446,20 @@
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Valid parsed front matter example for a governed decision-record document.",
+      "parent_path": "core/control_plane/examples/valid/documentation/"
+    },
+    {
+      "path": "core/control_plane/examples/valid/documentation/feature_design_front_matter.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid parsed front matter example for a governed feature-design document.",
+      "parent_path": "core/control_plane/examples/valid/documentation/"
+    },
+    {
+      "path": "core/control_plane/examples/valid/documentation/implementation_plan_front_matter.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid parsed front matter example for a governed implementation-plan document.",
       "parent_path": "core/control_plane/examples/valid/documentation/"
     },
     {
@@ -1231,10 +1259,24 @@
       "parent_path": "core/control_plane/schemas/interfaces/documentation/"
     },
     {
+      "path": "core/control_plane/schemas/interfaces/documentation/feature_design_front_matter.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Profile for governed feature-design documents.",
+      "parent_path": "core/control_plane/schemas/interfaces/documentation/"
+    },
+    {
       "path": "core/control_plane/schemas/interfaces/documentation/front_matter_base.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Shared field definitions for governed documentation front matter.",
+      "parent_path": "core/control_plane/schemas/interfaces/documentation/"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/documentation/implementation_plan_front_matter.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Profile for governed implementation-plan documents.",
       "parent_path": "core/control_plane/schemas/interfaces/documentation/"
     },
     {
@@ -1479,6 +1521,20 @@
       "parent_path": "core/python/tests/unit/"
     },
     {
+      "path": "core/python/tests/unit/test_decision_index_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for rebuilding the decision index from governed decision records.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
+      "path": "core/python/tests/unit/test_design_document_index_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for rebuilding the design-document index from governed design docs.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
       "path": "core/python/tests/unit/test_front_matter_validation.py",
       "kind": "file",
       "surface_kind": "python_test_file",
@@ -1486,10 +1542,24 @@
       "parent_path": "core/python/tests/unit/"
     },
     {
+      "path": "core/python/tests/unit/test_prd_index_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for rebuilding the PRD index from governed PRD documents.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
       "path": "core/python/tests/unit/test_schema_store.py",
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Unit tests for schema-catalog-backed schema resolution and validation.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
+      "path": "core/python/tests/unit/test_traceability_index_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for rebuilding the traceability index from governed source artifacts.",
       "parent_path": "core/python/tests/unit/"
     },
     {
@@ -1657,10 +1727,38 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_sync_decision_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync decision-index command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_design_document_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync design-document-index command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_prd_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync prd-index command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_sync_repository_paths.md",
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core sync repository-paths command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_traceability_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync traceability-index command.",
       "parent_path": "docs/commands/core_python/"
     },
     {

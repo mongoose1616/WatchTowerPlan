@@ -6,7 +6,7 @@ summary: "Records the decision to use core/python as the single Python workspace
 type: "decision_record"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T04:55:49Z"
+updated_at: "2026-03-09T07:05:24Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -26,9 +26,9 @@ aliases:
 - `Record Status`: `active`
 - `Decision Status`: `accepted`
 - `Linked PRDs`: `prd.core_python_foundation`
-- `Linked Designs`: `design.features.core_python_workspace_and_harness`; `design.implementation.control_plane_loaders_and_schema_store`
+- `Linked Designs`: `design.features.core_python_workspace_and_harness`
 - `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
-- `Updated At`: `2026-03-09T04:55:49Z`
+- `Updated At`: `2026-03-09T07:05:24Z`
 
 ## Summary
 This decision records the choice to make `core/python/` the single Python workspace root and keep `core/control_plane/` as its versioned authored sibling.
