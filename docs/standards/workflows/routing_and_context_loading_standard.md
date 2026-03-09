@@ -41,6 +41,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Prefer loading narrow task-family modules plus any required shared phase modules over reintroducing copied cross-cutting steps into every route.
 - If multiple task types match, merge the smallest necessary set rather than loading the whole workflow library.
 - If a non-documentation workflow uncovers a documentation gap, merge the smallest necessary documentation route into the active task set, including any required shared phase modules not already loaded, rather than handling the gap ad hoc without a documentation workflow.
+- If a task's main risk is drift between implementation behavior and companion docs or lookup surfaces, load `modules/documentation_implementation_reconciliation.md` or use the dedicated reconciliation route rather than relying only on broad review or handoff steps.
 - If the routing result is ambiguous, prefer clarification or the nearest minimal route rather than speculative broad loading.
 - Task-specific logic belongs in workflow modules, not in `AGENTS.md`.
 - Classification logic belongs in the routing table, not in the workflow modules themselves.
@@ -53,7 +54,8 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 5. Load `modules/core.md` plus the minimum additional workflow modules required by the routing result.
 6. Execute the task using the loaded modules and any directly relevant repository context.
 7. If execution reveals a material documentation gap, add the smallest documentation route needed: load `modules/documentation_generation.md` for new docs or `modules/documentation_refresh.md` for stale docs, plus any required shared phase modules not already loaded, unless the gap is minor enough to fix as an adjacent same-change update.
-8. If routing is unclear or incomplete, request clarification or improve the routing surfaces rather than silently broadening context.
+8. If execution reveals a material implementation-versus-documentation drift risk, add `modules/documentation_implementation_reconciliation.md` or switch to the dedicated reconciliation route unless the drift has already been checked explicitly inside the active route.
+9. If routing is unclear or incomplete, request clarification or improve the routing surfaces rather than silently broadening context.
 
 ## Validation
 - A routed task should start with enough context to act correctly but not so much context that unrelated instructions compete.

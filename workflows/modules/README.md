@@ -15,6 +15,7 @@
 | `workflows/modules/core.md` | Core workflow module that applies across routed tasks. |
 | `workflows/modules/current_state_inspection.md` | Shared workflow module for inspecting the relevant current repository state before deeper task execution. |
 | `workflows/modules/decision_capture.md` | Workflow module for recording durable decisions and their rationale. |
+| `workflows/modules/documentation_implementation_reconciliation.md` | Shared workflow module for reconciling companion documentation and machine-readable lookup surfaces with the actual implementation. |
 | `workflows/modules/documentation_generation.md` | Workflow module for generating new documentation. |
 | `workflows/modules/documentation_refresh.md` | Workflow module for refreshing and updating existing documentation. |
 | `workflows/modules/external_guidance_research.md` | Shared workflow module for consulting authoritative external guidance only when needed. |
