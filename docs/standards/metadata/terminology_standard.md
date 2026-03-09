@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "terminology"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,12 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - Mapping external terminology into repository-native language.
 
 ## Related Standards and Sources
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
-
+- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): foundation intent this standard must remain aligned with.
+- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): foundation intent this standard must remain aligned with.
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 ## Guidance
 - Prefer one canonical repository term for each recurring concept.
 - Keep canonical terms stable across standards, workflows, templates, and machine-readable artifacts.
@@ -91,4 +90,4 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - When a term is unstable or contested, resolve it in a standard or decision artifact before letting it spread through many documents.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

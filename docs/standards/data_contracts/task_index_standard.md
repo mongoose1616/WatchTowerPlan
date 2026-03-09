@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "task_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T14:41:51Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -38,13 +38,12 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - Reviewing whether task metadata belongs in the task index or only in task prose.
 
 ## Related Standards and Sources
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md)
-
+- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Model task lookup as an index, not as a registry.
 - Keep the authoritative task content in the task Markdown records under `docs/planning/tasks/`.
@@ -124,4 +123,4 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md)
 
 ## Updated At
-- `2026-03-09T14:41:51Z`
+- `2026-03-09T23:02:08Z`

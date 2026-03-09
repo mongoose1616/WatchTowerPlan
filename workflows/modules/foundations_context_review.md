@@ -13,6 +13,14 @@ Use this workflow to load the repository foundation documents that materially sh
 - Relevant documents under `docs/foundations/`
 - Known product, standards, or technology questions already surfaced by the task
 
+## Related Standards and Sources
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
+- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
+- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
+- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): identifies the design-philosophy constraints this workflow should surface for planning tasks.
+- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): identifies the product-shape constraints this workflow should surface when planning depends on foundation context.
+
 ## Workflow
 1. Select the relevant foundation documents.
    - Choose only the foundation docs that materially affect the active planning or design task.

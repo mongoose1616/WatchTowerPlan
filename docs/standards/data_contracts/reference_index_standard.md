@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "reference_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,12 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Building lookup or routing tooling that needs a compact machine-readable view over the reference corpus.
 
 ## Related Standards and Sources
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [README.md](/home/j/WatchTowerPlan/docs/references/README.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/references/README.md)
-
+- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/home/j/WatchTowerPlan/docs/references/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/references/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Model reference lookup as an index, not as a registry.
 - Treat the reference index as a machine-readable lookup surface rather than the authority for reference content.
@@ -50,7 +49,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Carry stable `reference_id` values from the governed reference front matter.
 - Capture whether the reference document publishes internal repository touchpoints and external canonical upstream sources.
 - Capture the canonical upstream URLs explicitly so tooling can trace the local reference corpus back to its source authority.
-- Capture reverse citation paths so tooling can answer where a governed reference is cited or applied across standards and planning docs.
+- Capture reverse citation paths so tooling can answer where a governed reference is cited or applied across foundations, standards, workflows, and planning docs.
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -74,8 +73,8 @@ Provide a compact lookup and discovery surface for governed reference documents,
 | `uses_internal_references` | Required | Whether the reference document explicitly maps to local repository surfaces. |
 | `uses_external_references` | Required | Whether the reference document explicitly publishes external canonical upstream URLs. |
 | `canonical_upstream_urls` | Required | External authority URLs from the `Canonical Upstream` section. |
-| `cited_by_paths` | Optional | Governed doc paths that cite the reference doc or its canonical upstream URLs. |
-| `applied_by_paths` | Optional | Governed doc paths that apply the reference in an applied-reference or related-authority section. |
+| `cited_by_paths` | Optional | Governed Markdown paths under `docs/**` or `workflows/**` that cite the reference doc or its canonical upstream URLs. |
+| `applied_by_paths` | Optional | Governed Markdown paths under `docs/**` or `workflows/**` that apply the reference in an applied-reference or related-authority section. |
 | `related_paths` | Optional | Internal repository paths explicitly mapped from the reference document. |
 | `aliases` | Optional | Retrieval-oriented aliases from front matter or curated index data. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
@@ -87,7 +86,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Every entry should have a stable `reference_id`.
 - Every entry should publish at least one canonical upstream URL.
 - The internal and external reference flags should reflect the actual reference document sections rather than inferred prose.
-- Reverse citation paths should point only to real governed documents that cite or apply the reference.
+- Reverse citation paths should point only to real governed documents or workflow modules that cite or apply the reference.
 
 ## Change Control
 - Update this standard when the repository changes how references are indexed or queried.
@@ -100,4 +99,4 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-09T23:02:08Z`

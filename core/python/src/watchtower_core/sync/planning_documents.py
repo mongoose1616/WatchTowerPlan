@@ -162,7 +162,7 @@ def load_governed_document(
         joined = ", ".join(missing_sections)
         raise ValueError(f"{relative_path} is missing required sections: {joined}")
     for title in required_explained_sections:
-        _validate_explained_bullet_section(relative_path, title, sections.get(title))
+        validate_explained_bullet_section(relative_path, title, sections.get(title))
 
     document = PlanningDocument(
         relative_path=relative_path,
@@ -269,7 +269,7 @@ def _parse_metadata_values(raw_value: str, *, path: str, label: str) -> tuple[st
     return values
 
 
-def _validate_explained_bullet_section(
+def validate_explained_bullet_section(
     relative_path: str,
     title: str,
     section: str | None,

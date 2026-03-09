@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "standard_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,12 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Auditing whether standards use internal references, external references, and repo-local distilled references consistently.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/standards/README.md)
-
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/standards/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Model standard lookup as an index, not as a registry.
 - Treat the standard index as a machine-readable lookup and governance-audit surface rather than the authority for standard content.
@@ -50,6 +49,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Carry stable `standard_id` values from governed front matter.
 - Record the top-level standards category from the document path, such as `data_contracts`, `documentation`, `engineering`, `governance`, `metadata`, or `workflows`.
 - Capture whether the standard explicitly uses internal references or external authority.
+- Capture the subset of references that materially shape the standard so applied source use is auditable instead of only cited.
 - Capture local reference-doc paths so repo tooling can distinguish raw internal citations from links into `docs/references/**`.
 - When a standard materially depends on external authority, prefer citing a local governed reference doc in `docs/references/**` rather than only raw external URLs.
 - Keep the index aligned with the standards corpus in the same change set.
@@ -79,7 +79,9 @@ Provide a compact lookup and governance surface for repository standards and bes
 | `related_paths` | Optional | Repository paths from front matter `applies_to` or other strongly related paths. |
 | `reference_doc_paths` | Optional | Paths to governed local reference docs cited by the standard. |
 | `internal_reference_paths` | Optional | Internal repository paths explicitly cited in the standard’s source sections. |
+| `applied_reference_paths` | Optional | Internal repository paths explicitly used in `Related Standards and Sources`. |
 | `external_reference_urls` | Optional | External URLs explicitly cited by the standard or transitively inherited from cited local reference docs. |
+| `applied_external_reference_urls` | Optional | External URLs explicitly used in `Related Standards and Sources`, directly or through cited local reference docs. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
 
@@ -89,6 +91,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Every entry should have a stable `standard_id`.
 - `reference_doc_paths` should point only to governed reference docs under `docs/references/`.
 - Standards that rely on external authority should cite a governed local reference doc rather than only raw external URLs.
+- Applied reference fields should reflect the actual `Related Standards and Sources` section rather than inferred prose.
 - Reviewers should reject entries that point to stale standard docs or omit material reference usage already present in the source doc.
 
 ## Change Control
@@ -101,4 +104,4 @@ Provide a compact lookup and governance surface for repository standards and bes
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-09T23:02:08Z`

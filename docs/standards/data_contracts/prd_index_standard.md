@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "prd_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:45:00Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,12 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - Building lookup or traceability tooling that needs a compact machine-readable view over the PRD corpus.
 
 ## Related Standards and Sources
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/prds/README.md)
-
+- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md): companion planning or design surface this standard should remain consistent with.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Model PRD tracking as an index, not as a registry.
 - Treat the PRD index as a machine-readable lookup and trace surface rather than the authority for PRD content.
@@ -104,4 +103,4 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md)
 
 ## Updated At
-- `2026-03-09T18:45:00Z`
+- `2026-03-09T23:02:08Z`

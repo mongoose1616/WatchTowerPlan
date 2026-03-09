@@ -1,0 +1,45 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:foundation-index:v1",
+  "id": "index.foundations",
+  "title": "Foundation Index",
+  "status": "active",
+  "entries": [
+    {
+      "foundation_id": "foundation.design_philosophy",
+      "title": "Design Philosophy",
+      "summary": "Defines the governing design philosophy for the repository and its operating model.",
+      "status": "active",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/design_philosophy.md",
+      "updated_at": "2026-03-09T23:22:09Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "workflows/modules/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/product.md",
+        "docs/foundations/standards.md",
+        "docs/foundations/technology_stack.md"
+      ],
+      "cited_by_paths": [
+        "docs/planning/prds/core_python_foundation.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "applied_by_paths": [
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md"
+      ],
+      "aliases": [
+        "repository design philosophy"
+      ],
+      "tags": [
+        "foundation",
+        "design_philosophy"
+      ]
+    }
+  ]
+}

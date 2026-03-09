@@ -40,9 +40,12 @@ def test_root_command_prints_help(capsys) -> None:
         "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation"
         in captured.out
     )
+    assert "uv run watchtower-core query foundations --query philosophy" in captured.out
     assert "uv run watchtower-core sync standard-index" in captured.out
+    assert "uv run watchtower-core sync foundation-index" in captured.out
     assert "uv run watchtower-core sync repository-paths" in captured.out
     assert "uv run watchtower-core sync task-index" in captured.out
+    assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert (
         "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation"
         in captured.out
@@ -57,6 +60,7 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
+    assert "query foundations" in captured.out
     assert "query references" in captured.out
     assert "query standards" in captured.out
     assert "query prds" in captured.out
@@ -78,6 +82,8 @@ def test_sync_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Rebuild derived governed artifacts" in captured.out
     assert "command-index" in captured.out
+    assert "all" in captured.out
+    assert "foundation-index" in captured.out
     assert "reference-index" in captured.out
     assert "standard-index" in captured.out
     assert "prd-index" in captured.out
@@ -96,9 +102,11 @@ def test_validate_group_prints_group_specific_help(capsys) -> None:
     captured = capsys.readouterr()
     assert result == 0
     assert "Run validation commands against governed repository artifacts" in captured.out
+    assert "all" in captured.out
     assert "acceptance" in captured.out
     assert "artifact" in captured.out
     assert "front-matter" in captured.out
+    assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert "uv run watchtower-core validate artifact" in captured.out
 
 
@@ -145,6 +153,20 @@ def test_query_references_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core query references"
     assert payload["status"] == "ok"
     assert any(entry["reference_id"] == "ref.uv" for entry in payload["results"])
+
+
+def test_query_foundations_supports_json_output(capsys) -> None:
+    result = main(["query", "foundations", "--query", "philosophy", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query foundations"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["foundation_id"] == "foundation.design_philosophy"
+        for entry in payload["results"]
+    )
 
 
 def test_query_references_supports_reverse_citation_filters(capsys) -> None:
@@ -366,6 +388,21 @@ def test_sync_command_index_supports_json_output(capsys) -> None:
     assert payload["artifact_path"] is None
 
 
+def test_sync_all_supports_json_output(capsys) -> None:
+    result = main(["sync", "all", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync all"
+    assert payload["status"] == "ok"
+    assert payload["result_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["output_dir"] is None
+    assert any(entry["target"] == "command-index" for entry in payload["results"])
+    assert any(entry["target"] == "repository-paths" for entry in payload["results"])
+
+
 def test_sync_reference_index_supports_json_output(capsys) -> None:
     result = main(["sync", "reference-index", "--format", "json"])
 
@@ -373,6 +410,19 @@ def test_sync_reference_index_supports_json_output(capsys) -> None:
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core sync reference-index"
+    assert payload["status"] == "ok"
+    assert payload["entry_count"] >= 1
+    assert payload["wrote"] is False
+    assert payload["artifact_path"] is None
+
+
+def test_sync_foundation_index_supports_json_output(capsys) -> None:
+    result = main(["sync", "foundation-index", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync foundation-index"
     assert payload["status"] == "ok"
     assert payload["entry_count"] >= 1
     assert payload["wrote"] is False
@@ -542,6 +592,23 @@ def test_sync_command_index_can_write_to_explicit_output(tmp_path: Path, capsys)
     assert output_path.exists()
 
 
+def test_sync_all_can_write_to_explicit_output_dir(tmp_path: Path, capsys) -> None:
+    output_dir = tmp_path / "sync_all"
+
+    result = main(["sync", "all", "--output-dir", str(output_dir), "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync all"
+    assert payload["wrote"] is True
+    assert payload["output_dir"] == str(output_dir.resolve())
+    assert (
+        output_dir / "core/control_plane/indexes/commands/command_index.v1.json"
+    ).exists()
+    assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
+
+
 def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
     output_path = tmp_path / "standard_index.v1.json"
 
@@ -551,6 +618,22 @@ def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core sync standard-index"
+    assert payload["wrote"] is True
+    assert payload["artifact_path"] == str(output_path.resolve())
+    assert output_path.exists()
+
+
+def test_sync_foundation_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:
+    output_path = tmp_path / "foundation_index.v1.json"
+
+    result = main(
+        ["sync", "foundation-index", "--output", str(output_path), "--format", "json"]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync foundation-index"
     assert payload["wrote"] is True
     assert payload["artifact_path"] == str(output_path.resolve())
     assert output_path.exists()
@@ -833,3 +916,39 @@ def test_validate_acceptance_supports_json_output(capsys) -> None:
     assert payload["status"] == "ok"
     assert payload["passed"] is True
     assert payload["validator_id"] == "validator.trace.acceptance_reconciliation"
+
+
+def test_validate_all_supports_json_output_when_acceptance_is_skipped(capsys) -> None:
+    result = main(["validate", "all", "--skip-acceptance", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core validate all"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is True
+    assert payload["failed_count"] == 0
+    assert payload["included_families"] == ["front_matter", "artifacts"]
+    assert any(summary["family"] == "front_matter" for summary in payload["family_summaries"])
+    assert any(summary["family"] == "artifacts" for summary in payload["family_summaries"])
+
+
+def test_validate_all_reports_acceptance_failures_in_json_output(capsys) -> None:
+    result = main(["validate", "all", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate all"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is False
+    assert payload["failed_count"] >= 1
+    acceptance_summary = next(
+        summary for summary in payload["family_summaries"] if summary["family"] == "acceptance"
+    )
+    assert acceptance_summary["failed_count"] >= 1
+    assert any(
+        result_entry["family"] == "acceptance"
+        and result_entry["target"] == "trace.command_documentation_and_lookup"
+        for result_entry in payload["results"]
+    )

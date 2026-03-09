@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "status_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -34,10 +34,9 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - Deciding whether an artifact should be deprecated or deleted.
 
 ## Related Standards and Sources
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-
+- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 ## Guidance
 - Use `status` only for lifecycle state of governed artifacts.
 - Do not reuse this field for validation outcomes such as passed or failed checks.
@@ -100,4 +99,4 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - If the repository later needs validation-result vocabularies or execution-state vocabularies, those should be separate standards.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

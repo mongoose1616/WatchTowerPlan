@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,12 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Splitting a large workflow into smaller routed modules.
 
 ## Related Standards and Sources
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md)
-
+- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
+- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
+- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
+- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): companion repository surface this standard should stay aligned with.
 ## Inputs
 - The task type or execution concern the workflow is meant to govern.
 - The adjacent routing behavior and companion workflows that interact with it.
@@ -59,6 +58,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Put classification rules in `ROUTING_TABLE.md`, not inside workflow modules.
 - Put normative repository policy in `docs/standards/**`, not inside workflow modules.
 - Workflows may reference standards, templates, or canonical docs, but they should not silently replace them.
+- Workflow modules should publish a `Related Standards and Sources` section when repository standards, foundations, templates, or canonical docs materially govern execution.
 - Steps should be ordered and concrete enough that the workflow can be followed without hidden verbal context.
 - Workflows should prefer clarify-before-execute behavior when ambiguity materially affects correctness.
 - Workflow steps should call out adjacent-document updates or companion workflow loading when coherence requires it.
@@ -71,6 +71,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 | `Purpose` | Defines the workflow's primary objective | Keep it singular and specific. |
 | `Use When` | Defines the trigger conditions | Make routing or invocation intent clear. |
 | `Inputs` | Defines the information the workflow expects | Include standards or canonical docs when they materially govern execution. |
+| `Related Standards and Sources` | Defines the local authorities that materially govern execution | Use `source: implication` bullets rather than a loose reading list. |
 | `Workflow` | Defines the ordered execution behavior | Steps should be concrete and bounded. |
 | `Data Structure` | Defines the working structure the workflow expects or produces | Use when the workflow needs a stable internal shape. |
 | `Outputs` | Defines the intended deliverables | Keep outputs tied to actual task outcomes. |
@@ -101,6 +102,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - The module should be executable as written without broad unstated assumptions.
 - The workflow should not duplicate the role of `AGENTS.md`, `ROUTING_TABLE.md`, or a standards document.
 - The required sections should be present and materially useful rather than empty headings.
+- Governing standards, templates, or canonical docs should be explicit when they materially shape execution.
 - The module should compose cleanly with the other routed workflows that are likely to be loaded with it.
 
 ## Change Control
@@ -121,4 +123,4 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

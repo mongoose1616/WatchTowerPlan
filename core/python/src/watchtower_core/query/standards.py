@@ -66,7 +66,9 @@ class StandardQueryService:
                     *entry.related_paths,
                     *entry.reference_doc_paths,
                     *entry.internal_reference_paths,
+                    *entry.applied_reference_paths,
                     *entry.external_reference_urls,
+                    *entry.applied_external_reference_urls,
                     *entry.tags,
                 ),
             )

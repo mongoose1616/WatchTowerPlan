@@ -11,6 +11,7 @@
 | `docs/standards/data_contracts/command_index_standard.md` | Defines the standard for machine-readable command indexes. |
 | `docs/standards/data_contracts/decision_index_standard.md` | Defines the standard for machine-readable decision indexes. |
 | `docs/standards/data_contracts/design_document_index_standard.md` | Defines the standard for machine-readable design-document indexes. |
+| `docs/standards/data_contracts/foundation_index_standard.md` | Defines the standard for machine-readable foundation indexes. |
 | `docs/standards/data_contracts/format_selection_standard.md` | Defines how to choose the right data format for a planning-repo artifact. |
 | `docs/standards/data_contracts/prd_index_standard.md` | Defines the standard for machine-readable PRD indexes. |
 | `docs/standards/data_contracts/reference_index_standard.md` | Defines the standard for machine-readable reference indexes. |

@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "routing_table_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:46:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,10 +33,9 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Reviewing whether routing entries are too broad, duplicated, or ambiguous.
 
 ## Related Standards and Sources
-- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md)
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [routing_table_template.md](/home/j/WatchTowerPlan/docs/templates/routing_table_template.md)
-
+- [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_table_template.md](/home/j/WatchTowerPlan/docs/templates/routing_table_template.md): authoring scaffold that should stay aligned with this standard.
 ## Guidance
 - `ROUTING_TABLE.md` must be the canonical routing index for workflow selection.
 - The file should stay compact and table-first rather than turning into a long narrative document.
@@ -80,4 +79,4 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Detailed logic belongs in workflow modules, not in routing rows.
 
 ## Updated At
-- `2026-03-09T18:46:06Z`
+- `2026-03-09T23:02:08Z`

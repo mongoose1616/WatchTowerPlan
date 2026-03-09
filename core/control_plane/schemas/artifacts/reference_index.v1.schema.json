@@ -118,7 +118,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^docs/.+\\.md$"
+            "pattern": "^(docs|workflows)/.+\\.md$"
           }
         },
         "applied_by_paths": {
@@ -127,7 +127,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^docs/.+\\.md$"
+            "pattern": "^(docs|workflows)/.+\\.md$"
           }
         },
         "related_paths": {

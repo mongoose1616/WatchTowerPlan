@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "acceptance_contract"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,13 +36,12 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - Reviewing whether acceptance expectations are still only implicit in prose.
 
 ## Related Standards and Sources
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/README.md)
-
+- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Keep the human source of acceptance intent in the PRD.
 - Use acceptance contracts as the machine-readable projection of durable acceptance criteria.
@@ -115,4 +114,4 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - It should stay smaller and more structured than the source PRD.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

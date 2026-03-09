@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "naming_and_ids"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T14:41:51Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,12 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Defining filenames for new schemas or example artifacts.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md)
-- [rfc_9562_uuid_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9562_uuid_reference.md)
-- [semantic_versioning_reference.md](/home/j/WatchTowerPlan/docs/references/semantic_versioning_reference.md)
-
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [rfc_9562_uuid_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9562_uuid_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [semantic_versioning_reference.md](/home/j/WatchTowerPlan/docs/references/semantic_versioning_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 ## Guidance
 - Treat the stable machine identifier as distinct from the path, visible title, and current lifecycle status.
 - Assign one canonical machine identifier per governed artifact.
@@ -159,4 +158,4 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Future standards may define narrower rules for specific artifact families, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-09T14:41:51Z`
+- `2026-03-09T23:02:08Z`

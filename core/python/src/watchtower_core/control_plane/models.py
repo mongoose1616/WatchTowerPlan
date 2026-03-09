@@ -362,7 +362,9 @@ class DecisionIndexEntry:
     linked_plan_ids: tuple[str, ...] = ()
     related_paths: tuple[str, ...] = ()
     internal_reference_paths: tuple[str, ...] = ()
+    applied_reference_paths: tuple[str, ...] = ()
     external_reference_urls: tuple[str, ...] = ()
+    applied_external_reference_urls: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
     notes: str | None = None
 
@@ -384,7 +386,11 @@ class DecisionIndexEntry:
             linked_plan_ids=tuple(document.get("linked_plan_ids", ())),
             related_paths=tuple(document.get("related_paths", ())),
             internal_reference_paths=tuple(document.get("internal_reference_paths", ())),
+            applied_reference_paths=tuple(document.get("applied_reference_paths", ())),
             external_reference_urls=tuple(document.get("external_reference_urls", ())),
+            applied_external_reference_urls=tuple(
+                document.get("applied_external_reference_urls", ())
+            ),
             tags=tuple(document.get("tags", ())),
             notes=document.get("notes"),
         )
@@ -564,6 +570,82 @@ class ReferenceIndex:
 
 
 @dataclass(frozen=True, slots=True)
+class FoundationIndexEntry:
+    """Foundation-index entry."""
+
+    foundation_id: str
+    title: str
+    summary: str
+    status: str
+    authority: str
+    doc_path: str
+    updated_at: str
+    uses_internal_references: bool
+    uses_external_references: bool
+    related_paths: tuple[str, ...] = ()
+    reference_doc_paths: tuple[str, ...] = ()
+    internal_reference_paths: tuple[str, ...] = ()
+    external_reference_urls: tuple[str, ...] = ()
+    cited_by_paths: tuple[str, ...] = ()
+    applied_by_paths: tuple[str, ...] = ()
+    aliases: tuple[str, ...] = ()
+    tags: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> FoundationIndexEntry:
+        return cls(
+            foundation_id=document["foundation_id"],
+            title=document["title"],
+            summary=document["summary"],
+            status=document["status"],
+            authority=document["authority"],
+            doc_path=document["doc_path"],
+            updated_at=document["updated_at"],
+            uses_internal_references=document["uses_internal_references"],
+            uses_external_references=document["uses_external_references"],
+            related_paths=tuple(document.get("related_paths", ())),
+            reference_doc_paths=tuple(document.get("reference_doc_paths", ())),
+            internal_reference_paths=tuple(document.get("internal_reference_paths", ())),
+            external_reference_urls=tuple(document.get("external_reference_urls", ())),
+            cited_by_paths=tuple(document.get("cited_by_paths", ())),
+            applied_by_paths=tuple(document.get("applied_by_paths", ())),
+            aliases=tuple(document.get("aliases", ())),
+            tags=tuple(document.get("tags", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class FoundationIndex:
+    """Typed foundation-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[FoundationIndexEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> FoundationIndex:
+        entries = tuple(FoundationIndexEntry.from_document(entry) for entry in document["entries"])
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, foundation_id: str) -> FoundationIndexEntry:
+        """Return a foundation-index entry by identifier."""
+        for entry in self.entries:
+            if entry.foundation_id == foundation_id:
+                return entry
+        raise KeyError(foundation_id)
+
+
+@dataclass(frozen=True, slots=True)
 class StandardIndexEntry:
     """Standard-index entry."""
 
@@ -579,7 +661,9 @@ class StandardIndexEntry:
     related_paths: tuple[str, ...] = ()
     reference_doc_paths: tuple[str, ...] = ()
     internal_reference_paths: tuple[str, ...] = ()
+    applied_reference_paths: tuple[str, ...] = ()
     external_reference_urls: tuple[str, ...] = ()
+    applied_external_reference_urls: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
     notes: str | None = None
 
@@ -598,7 +682,11 @@ class StandardIndexEntry:
             related_paths=tuple(document.get("related_paths", ())),
             reference_doc_paths=tuple(document.get("reference_doc_paths", ())),
             internal_reference_paths=tuple(document.get("internal_reference_paths", ())),
+            applied_reference_paths=tuple(document.get("applied_reference_paths", ())),
             external_reference_urls=tuple(document.get("external_reference_urls", ())),
+            applied_external_reference_urls=tuple(
+                document.get("applied_external_reference_urls", ())
+            ),
             tags=tuple(document.get("tags", ())),
             notes=document.get("notes"),
         )

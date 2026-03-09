@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:46:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -34,11 +34,10 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Reviewing whether a workflow file is structurally consistent with the repository model.
 
 ## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
-
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
+- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
 ## Guidance
 - Workflow files should live under `workflows/modules/` unless a narrower repository standard defines another workflow surface.
 - Each file should define one workflow with one primary execution concern.
@@ -47,6 +46,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
   - `Purpose`
   - `Use When`
   - `Inputs`
+  - `Related Standards and Sources`
   - `Workflow`
   - `Data Structure`
   - `Outputs`
@@ -54,6 +54,8 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Keep the required section names stable so routed use and review stay predictable.
 - `Workflow` should be written as an ordered sequence when step order matters.
 - `Inputs`, `Data Structure`, `Outputs`, and `Done When` should stay compact and task-oriented rather than turning into long narrative sections.
+- `Related Standards and Sources` should list only the standards, templates, or canonical files that materially govern execution of the workflow.
+- `Related Standards and Sources` bullets should use `source: implication` form so the local effect of each authority is explicit.
 - `Data Structure` and `Outputs` may remain brief when the workflow does not define a stable working structure or durable deliverable, but the headings should still be present.
 - Use repository-native Markdown links when companion standards, templates, or canonical files materially govern the workflow.
 - Do not add front matter to workflow modules unless a narrower standard or validator explicitly requires it.
@@ -67,6 +69,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
   - `Purpose`
   - `Use When`
   - `Inputs`
+  - `Related Standards and Sources`
   - `Workflow`
   - `Data Structure`
   - `Outputs`
@@ -78,6 +81,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The required sections should appear in the standard order with the standard names.
 - The file should stay focused on one execution concern rather than mixing multiple unrelated procedures.
 - The workflow body should be actionable and sequence-aware rather than only descriptive.
+- The `Related Standards and Sources` section should make the governing internal documents explicit when they materially constrain execution.
 - Content that belongs in `AGENTS.md`, `ROUTING_TABLE.md`, or `docs/standards/**` should not be embedded as if it were workflow procedure.
 
 ## Change Control
@@ -97,4 +101,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-09T18:46:06Z`
+- `2026-03-09T23:02:08Z`

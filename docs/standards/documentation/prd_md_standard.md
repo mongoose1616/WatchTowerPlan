@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "prd_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,15 +33,14 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - Reviewing whether a planning document is actually structured as a PRD rather than as a design doc or implementation plan.
 
 ## Related Standards and Sources
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [prd_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/prd_index_standard.md)
-- [prd_generation.md](/home/j/WatchTowerPlan/workflows/modules/prd_generation.md)
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
-- [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/prds/README.md)
-
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [prd_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [prd_generation.md](/home/j/WatchTowerPlan/workflows/modules/prd_generation.md): workflow surface that operationalizes or depends on this standard.
+- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): foundation intent this standard must remain aligned with.
+- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): foundation intent this standard must remain aligned with.
+- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
+- [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/home/j/WatchTowerPlan/docs/planning/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Store PRDs under `docs/planning/prds/`.
 - A PRD should define product intent, scope, and validation expectations before implementation details dominate the conversation.
@@ -112,4 +111,4 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - If implementation structure becomes the dominant content, the material should move into a feature design or implementation plan.
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-09T23:02:08Z`

@@ -1,0 +1,22 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:foundation-index:v1",
+  "id": "index.foundations",
+  "title": "Foundation Index",
+  "status": "active",
+  "entries": [
+    {
+      "foundation_id": "foundation.product",
+      "title": "Product",
+      "summary": "Defines the product shape and intended operating model for the repository.",
+      "status": "active",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/product.md",
+      "updated_at": "2026-03-09T23:22:09Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "reference_doc_paths": [
+        "docs/references/github_collaboration_reference.md"
+      ]
+    }
+  ]
+}

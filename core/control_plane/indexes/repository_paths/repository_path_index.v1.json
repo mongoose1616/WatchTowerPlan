@@ -337,6 +337,13 @@
       "parent_path": "core/control_plane/examples/invalid/indexes/"
     },
     {
+      "path": "core/control_plane/examples/invalid/indexes/foundation_index_external_without_urls.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid foundation index example with external-reference usage declared but no external URLs published.",
+      "parent_path": "core/control_plane/examples/invalid/indexes/"
+    },
+    {
       "path": "core/control_plane/examples/invalid/indexes/prd_index_missing_trace_id.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -568,6 +575,13 @@
       "parent_path": "core/control_plane/examples/valid/indexes/"
     },
     {
+      "path": "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid foundation index example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/indexes/"
+    },
+    {
       "path": "core/control_plane/examples/valid/indexes/prd_index.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -787,6 +801,27 @@
       "surface_kind": "control_plane_index",
       "summary": "Machine-readable index of current feature designs and implementation plans.",
       "parent_path": "core/control_plane/indexes/design_documents/"
+    },
+    {
+      "path": "core/control_plane/indexes/foundations/",
+      "kind": "directory",
+      "surface_kind": "control_plane_indexes",
+      "summary": "Machine-readable indexes for governed foundation documents and their downstream citation or application use.",
+      "parent_path": "core/control_plane/indexes/"
+    },
+    {
+      "path": "core/control_plane/indexes/foundations/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Describes the purpose of the foundation-index directory and its current artifact family.",
+      "parent_path": "core/control_plane/indexes/foundations/"
+    },
+    {
+      "path": "core/control_plane/indexes/foundations/foundation_index.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Machine-readable foundation index for governed foundation documents and their downstream citation or application use.",
+      "parent_path": "core/control_plane/indexes/foundations/"
     },
     {
       "path": "core/control_plane/indexes/prds/",
@@ -1287,6 +1322,13 @@
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {
+      "path": "core/control_plane/schemas/artifacts/foundation_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable foundation-index artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
       "path": "core/control_plane/schemas/artifacts/prd_index.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -1388,7 +1430,7 @@
       "path": "core/control_plane/schemas/interfaces/documentation/",
       "kind": "directory",
       "surface_kind": "control_plane_schemas",
-      "summary": "Schemas for parsed front matter objects used by governed documentation families.",
+      "summary": "Schemas for parsed front matter objects used by governed documentation families, including references, foundations, standards, planning docs, and tasks.",
       "parent_path": "core/control_plane/schemas/interfaces/"
     },
     {
@@ -1410,6 +1452,13 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Profile for governed feature-design documents.",
+      "parent_path": "core/control_plane/schemas/interfaces/documentation/"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/documentation/foundation_front_matter.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Profile for governed foundation documents under `docs/foundations/`.",
       "parent_path": "core/control_plane/schemas/interfaces/documentation/"
     },
     {
@@ -1651,6 +1700,20 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Unit tests for acceptance-contract lookup, evidence lookup, and semantic acceptance reconciliation.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
+      "path": "core/python/tests/unit/test_all_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for the coordinated all-sync orchestration service.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
+      "path": "core/python/tests/unit/test_all_validation.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for the coordinated validate-all orchestration service.",
       "parent_path": "core/python/tests/unit/"
     },
     {
@@ -1923,6 +1986,13 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_foundations.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query foundations command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query_paths.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -1972,6 +2042,13 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_sync_all.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync all command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_sync_command_index.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -2004,6 +2081,13 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core sync design-tracking command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync foundation-index command.",
       "parent_path": "docs/commands/core_python/"
     },
     {
@@ -2081,6 +2165,13 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core validate acceptance command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_validate_all.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core validate all command.",
       "parent_path": "docs/commands/core_python/"
     },
     {
@@ -3023,6 +3114,13 @@
       "parent_path": "docs/standards/data_contracts/"
     },
     {
+      "path": "docs/standards/data_contracts/foundation_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable foundation indexes.",
+      "parent_path": "docs/standards/data_contracts/"
+    },
+    {
       "path": "docs/standards/data_contracts/prd_index_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -3135,6 +3233,13 @@
       "parent_path": "docs/standards/documentation/"
     },
     {
+      "path": "docs/standards/documentation/foundation_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for governed foundation documents under `docs/foundations/`.",
+      "parent_path": "docs/standards/documentation/"
+    },
+    {
       "path": "docs/standards/documentation/implementation_plan_md_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -3167,6 +3272,13 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the standard for ROUTING_TABLE.md files.",
+      "parent_path": "docs/standards/documentation/"
+    },
+    {
+      "path": "docs/standards/documentation/standard_md_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for governed standard and best-practice documents under `docs/standards/`.",
       "parent_path": "docs/standards/documentation/"
     },
     {
@@ -3449,6 +3561,13 @@
       "parent_path": "docs/templates/"
     },
     {
+      "path": "docs/templates/foundation_document_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a governed foundation document under `docs/foundations/`.",
+      "parent_path": "docs/templates/"
+    },
+    {
       "path": "docs/templates/implementation_plan_template.md",
       "kind": "file",
       "surface_kind": "template_doc",
@@ -3481,6 +3600,13 @@
       "kind": "file",
       "surface_kind": "template_doc",
       "summary": "Template for a routing table document.",
+      "parent_path": "docs/templates/"
+    },
+    {
+      "path": "docs/templates/standard_document_template.md",
+      "kind": "file",
+      "surface_kind": "template_doc",
+      "summary": "Template for a governed standard or best-practice document under `docs/standards/`.",
       "parent_path": "docs/templates/"
     },
     {
@@ -3667,6 +3793,13 @@
       "parent_path": "workflows/modules/"
     },
     {
+      "path": "workflows/modules/github_task_sync.md",
+      "kind": "file",
+      "surface_kind": "workflow_module",
+      "summary": "Workflow module for pushing local-first task records to GitHub issues and optional project items while preserving local task authority.",
+      "parent_path": "workflows/modules/"
+    },
+    {
       "path": "workflows/modules/governed_artifact_reconciliation.md",
       "kind": "file",
       "surface_kind": "workflow_module",
@@ -3734,6 +3867,20 @@
       "kind": "file",
       "surface_kind": "workflow_module",
       "summary": "Shared workflow module for handoff readiness, related-surface impacts, and follow-up recording.",
+      "parent_path": "workflows/modules/"
+    },
+    {
+      "path": "workflows/modules/task_lifecycle_management.md",
+      "kind": "file",
+      "surface_kind": "workflow_module",
+      "summary": "Workflow module for creating, updating, splitting, and closing local task records plus their derived tracking surfaces.",
+      "parent_path": "workflows/modules/"
+    },
+    {
+      "path": "workflows/modules/task_phase_transition.md",
+      "kind": "file",
+      "surface_kind": "workflow_module",
+      "summary": "Workflow module for handing tasks across owners or phases while preserving explicit successor, dependency, and trace state.",
       "parent_path": "workflows/modules/"
     },
     {

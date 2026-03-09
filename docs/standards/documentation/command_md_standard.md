@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:43:47Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,12 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - Updating command docs after a command surface changes.
 
 ## Related Standards and Sources
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md)
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
-- [cli_help_text_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/cli_help_text_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/commands/README.md)
-
+- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [cli_help_text_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/cli_help_text_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/home/j/WatchTowerPlan/docs/commands/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Store repository-native command docs under `docs/commands/`.
 - Do not place command docs under `docs/references/`; they are local command pages, not external references.
@@ -115,4 +114,4 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-03-09T05:43:47Z`
+- `2026-03-09T23:02:08Z`

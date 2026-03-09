@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "format_selection"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,16 +33,15 @@ Keep format choices small, predictable, and aligned with the repository's author
 - Reviewing whether an existing format choice is introducing avoidable complexity.
 
 ## Related Standards and Sources
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [rfc_8259_json_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_8259_json_reference.md)
-- [yaml_1_2_2_reference.md](/home/j/WatchTowerPlan/docs/references/yaml_1_2_2_reference.md)
-- [ndjson_spec_reference.md](/home/j/WatchTowerPlan/docs/references/ndjson_spec_reference.md)
-- [sqlite_wal_reference.md](/home/j/WatchTowerPlan/docs/references/sqlite_wal_reference.md)
-- [commonmark_reference.md](/home/j/WatchTowerPlan/docs/references/commonmark_reference.md)
-
+- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): foundation intent this standard must remain aligned with.
+- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [rfc_8259_json_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_8259_json_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [yaml_1_2_2_reference.md](/home/j/WatchTowerPlan/docs/references/yaml_1_2_2_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [ndjson_spec_reference.md](/home/j/WatchTowerPlan/docs/references/ndjson_spec_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [sqlite_wal_reference.md](/home/j/WatchTowerPlan/docs/references/sqlite_wal_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [commonmark_reference.md](/home/j/WatchTowerPlan/docs/references/commonmark_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 ## Guidance
 - Prefer the simplest format that preserves determinism, reviewability, and clear source-of-truth boundaries.
 - Keep human-facing guidance in Markdown.
@@ -126,4 +125,4 @@ Keep format choices small, predictable, and aligned with the repository's author
 - The goal is not to ban every alternative format. The goal is to make deviations from the defaults explicit and justified.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

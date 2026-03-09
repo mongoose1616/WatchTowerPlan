@@ -6,7 +6,7 @@ summary: "Records the decision to use core/python as the single Python workspace
 type: "decision_record"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T07:05:24Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `prd.core_python_foundation`
 - `Linked Designs`: `design.features.core_python_workspace_and_harness`
 - `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
-- `Updated At`: `2026-03-09T07:05:24Z`
+- `Updated At`: `2026-03-09T23:02:08Z`
 
 ## Summary
 This decision records the choice to make `core/python/` the single Python workspace root and keep `core/control_plane/` as its versioned authored sibling.
@@ -43,6 +43,11 @@ The repository needed one clear home for all Python-specific surfaces and a stab
 - `core/control_plane/` already existed as the versioned control-plane authority.
 - The previous flat Python scaffold under `core/` did not fully satisfy the requirement to consolidate Python-specific surfaces.
 - Future schema loading, validation, query, and evidence services should compose over the same workspace root.
+
+## Applied References and Implications
+- [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md): the workspace-root decision had to preserve the PRD boundary between versioned control-plane authority and Python execution surfaces.
+- [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md): the accepted layout had to match the approved feature-design direction for a single Python root under `core/python/`.
+- [control_plane_loaders_and_schema_store.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md): the chosen workspace root had to keep future loader and query code as consumers of `core/control_plane/` rather than collapsing the authored/runtime boundary.
 
 ## Affected Surfaces
 - `core/python/`
@@ -89,3 +94,6 @@ Adopt `core/python/` as the single Python workspace root and keep authored contr
 - [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
 - [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)
 - [control_plane_loaders_and_schema_store.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
+
+## Updated At
+- `2026-03-09T23:02:08Z`

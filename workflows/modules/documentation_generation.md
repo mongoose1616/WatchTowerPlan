@@ -18,6 +18,12 @@ Use this workflow to author a new repository document that is accurate, well-str
 - External guidance notes when needed
 - Known constraints, open questions, or target audience
 
+## Related Standards and Sources
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
+- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
+- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
+- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+
 ## Workflow
 1. Gather source context.
    - Read the relevant source files, references, workflows, or repository surfaces.

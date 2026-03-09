@@ -10,6 +10,7 @@
 | `core/control_plane/indexes/commands/` | Machine-readable command indexes for command lookup and routing to command pages. |
 | `core/control_plane/indexes/decisions/` | Machine-readable indexes for durable decision records and their trace links. |
 | `core/control_plane/indexes/design_documents/` | Machine-readable indexes for tracking feature designs and implementation plans. |
+| `core/control_plane/indexes/foundations/` | Machine-readable indexes for governed foundation documents and their downstream citation or application use. |
 | `core/control_plane/indexes/prds/` | Machine-readable indexes for PRDs and their traceability anchors. |
 | `core/control_plane/indexes/references/` | Machine-readable indexes for reference docs, their upstream authority, and local touchpoints. |
 | `core/control_plane/indexes/repository_paths/` | Generated repository path indexes for retrieval and navigation. |

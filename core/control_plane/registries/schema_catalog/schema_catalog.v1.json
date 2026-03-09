@@ -60,6 +60,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:foundation-index:v1",
+      "title": "Foundation Index",
+      "description": "Schema for machine-readable foundation index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "foundation_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/foundation_index.v1.schema.json",
+      "aliases": [
+        "foundation intent index schema",
+        "foundation lookup schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
       "title": "PRD Index",
       "description": "Schema for machine-readable PRD index artifacts.",
@@ -224,6 +238,19 @@
       "canonical_path": "core/control_plane/schemas/interfaces/documentation/feature_design_front_matter.v1.schema.json",
       "aliases": [
         "feature design metadata schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
+      "title": "Foundation Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed foundation documents.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/foundation_front_matter.v1.schema.json",
+      "aliases": [
+        "foundation metadata schema"
       ]
     },
     {

@@ -1,0 +1,10 @@
+{
+  "id": "foundation.design_philosophy",
+  "title": "Design Philosophy",
+  "summary": "Defines the governing design philosophy for the repository and its operating model.",
+  "type": "foundation",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T23:02:08Z",
+  "audience": "shared"
+}

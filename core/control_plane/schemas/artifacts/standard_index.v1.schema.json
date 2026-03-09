@@ -134,7 +134,13 @@
         "internal_reference_paths": {
           "$ref": "#/$defs/stringList"
         },
+        "applied_reference_paths": {
+          "$ref": "#/$defs/stringList"
+        },
         "external_reference_urls": {
+          "$ref": "#/$defs/urlList"
+        },
+        "applied_external_reference_urls": {
           "$ref": "#/$defs/urlList"
         },
         "tags": {

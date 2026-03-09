@@ -15,6 +15,12 @@ Use this workflow to reduce the specific ambiguity, conflict, or missing input t
 - External guidance notes when needed
 - Known assumptions, conflicts, constraints, and affected downstream workflows
 
+## Related Standards and Sources
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
+- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
+- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
+- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+
 ## Workflow
 1. Reduce the ambiguity.
    - Resolve the question directly from gathered context when the answer is already available.

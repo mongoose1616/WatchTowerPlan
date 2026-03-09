@@ -1,3 +1,24 @@
+---
+id: "foundation.product_narrative_brochure"
+title: "Product Narrative Brochure"
+summary: "Provides a customer-facing narrative summary of the product story, value, and intended operator experience."
+type: "foundation"
+status: "active"
+tags:
+  - "foundation"
+  - "product_narrative"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T23:02:08Z"
+audience: "shared"
+authority: "supporting"
+applies_to:
+  - "docs/foundations/"
+  - "docs/planning/"
+aliases:
+  - "product narrative"
+  - "product brochure"
+---
+
 # Product Narrative Brochure
 
 ## Purpose and Audience
@@ -116,3 +137,10 @@ WatchTower is not intended to be:
 3. Handoffs preserve intent, evidence, and current state more reliably.
 4. Customer-facing outputs are cleaner and more reproducible.
 5. The product becomes more useful over time because validated knowledge compounds.
+
+## References
+- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
+- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
+
+## Updated At
+- `2026-03-09T23:02:08Z`

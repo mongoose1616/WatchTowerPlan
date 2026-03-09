@@ -1,3 +1,25 @@
+---
+id: "foundation.design_philosophy"
+title: "Design Philosophy"
+summary: "Defines the governing design philosophy for the repository and its operating model."
+type: "foundation"
+status: "active"
+tags:
+  - "foundation"
+  - "design_philosophy"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T23:02:08Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "core/control_plane/"
+  - "core/python/"
+  - "workflows/modules/"
+  - "docs/standards/"
+aliases:
+  - "repository design philosophy"
+---
+
 # Design Philosophy
 
 This repository is meant to feel like a governed operating environment for LLM/agent-driven work, not a pile of notes, prompts, and helper scripts. The design philosophy is simple: let the agent handle the structured execution, keep the shared substrate trustworthy, keep the operator-facing experience guided and readable, and keep the boundary between human outputs and canonical machine state explicit.
@@ -41,3 +63,11 @@ Domain packs are where the system becomes useful to an operator. They should fee
 - Isolate pack-specific workflows, templates, tool guidance, and knowledge from shared host concerns.
 - Do not let pack-local hidden state become operator-authored truth.
 - Optimize for smooth movement from intake to execution, evidence capture, and closeout.
+
+## References
+- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
+- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
+- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
+
+## Updated At
+- `2026-03-09T23:02:08Z`

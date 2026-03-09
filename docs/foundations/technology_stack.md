@@ -1,3 +1,24 @@
+---
+id: "foundation.technology_stack"
+title: "Technology Stack"
+summary: "Defines the current technology-direction baseline and selection rules for the repository."
+type: "foundation"
+status: "active"
+tags:
+  - "foundation"
+  - "technology_stack"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T23:02:08Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "core/control_plane/"
+  - "core/python/"
+  - "docs/standards/"
+aliases:
+  - "stack direction"
+---
+
 # Technology Stack
 
 This repository is still defining the product more than implementing it, so the stack should be read as a working direction rather than a frozen inventory. The selection rule is straightforward: prefer local-first, inspectable, deterministic tools that improve LLM/agent effectiveness, support strong validation, and preserve clear source-of-truth boundaries.
@@ -53,3 +74,11 @@ Any new technology should earn its way in. The stack is there to support the pro
 - Treat Python and other code as enabling infrastructure for LLM/agent workflows, not as the primary value by themselves.
 - Do not add domain-specific assumptions to shared core choices unless they are truly cross-domain.
 - Reject tools that blur authority boundaries or make failure modes harder to inspect.
+
+## References
+- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
+- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+
+## Updated At
+- `2026-03-09T23:02:08Z`

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "decision_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:45:00Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,12 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - Building lookup or traceability tooling that needs a compact machine-readable view over the decision corpus.
 
 ## Related Standards and Sources
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md)
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [decision_tracking.md](/home/j/WatchTowerPlan/docs/planning/decisions/decision_tracking.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/decisions/README.md)
-
+- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [decision_tracking.md](/home/j/WatchTowerPlan/docs/planning/decisions/decision_tracking.md): companion planning or design surface this standard should remain consistent with.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/decisions/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Model decision tracking as an index, not as a registry.
 - Treat the decision index as a machine-readable lookup and trace surface rather than the authority for decision content.
@@ -51,6 +50,7 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - Carry stable `decision_id` values in every entry.
 - Distinguish lifecycle `record_status` from `decision_status`.
 - Capture whether the decision explicitly used internal or external references so reference use is queryable without reparsing Markdown.
+- Capture the subset of references that materially shaped the outcome so “applied” source use stays auditable instead of only cited.
 - Keep the human-readable decision tracker and the machine-readable decision index aligned in the same change set.
 
 ## Structure or Data Model
@@ -81,7 +81,9 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 | `linked_plan_ids` | Optional | Related implementation-plan IDs when they exist. |
 | `related_paths` | Optional | Related repository paths strongly associated with the decision. |
 | `internal_reference_paths` | Optional | Internal repository paths explicitly cited in the decision references. |
+| `applied_reference_paths` | Optional | Internal repository paths explicitly used in `Applied References and Implications`. |
 | `external_reference_urls` | Optional | External URLs explicitly cited in the decision references. |
+| `applied_external_reference_urls` | Optional | External URLs explicitly used in `Applied References and Implications`. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
 
@@ -90,6 +92,7 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - Every `doc_path` should exist and point to a file under `docs/planning/decisions/`.
 - Every entry should have both `trace_id` and `decision_id`.
 - The reference-presence flags should reflect the actual decision sections that cite internal or external sources.
+- Applied reference fields should reflect the actual `Applied References and Implications` section rather than inferred prose.
 - Reviewers should reject entries that point to stale decision records or conflate document lifecycle with decision outcome.
 
 ## Change Control
@@ -103,4 +106,4 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
 
 ## Updated At
-- `2026-03-09T18:45:00Z`
+- `2026-03-09T23:02:08Z`

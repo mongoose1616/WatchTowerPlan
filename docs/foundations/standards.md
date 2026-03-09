@@ -1,3 +1,24 @@
+---
+id: "foundation.standards"
+title: "Standards"
+summary: "Explains the repository-wide standards posture and why governed standards matter."
+type: "foundation"
+status: "active"
+tags:
+  - "foundation"
+  - "standards"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T23:02:08Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "docs/standards/"
+  - "core/control_plane/"
+  - "workflows/modules/"
+aliases:
+  - "standards posture"
+---
+
 # Standards
 
 Standards in this repository exist to protect coherence in an LLM/agent-driven system. They are not decoration and they are not optional cleanup work. The point is to keep product intent, machine state, workflows, human-readable outputs, and evidence aligned so the system remains trustworthy as it grows.
@@ -43,3 +64,11 @@ Domain pack standards should keep packs expressive for their domain without lett
 - Fail closed when manifests, registries, schemas, or compatibility contracts are invalid.
 - Keep outputs as governed projections from managed state rather than ad hoc standalone documents.
 - Allow domain-specific expression without bypassing shared core contracts.
+
+## References
+- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
+- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
+- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
+
+## Updated At
+- `2026-03-09T23:02:08Z`

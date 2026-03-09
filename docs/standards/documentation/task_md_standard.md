@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "task_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T14:41:51Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -39,13 +39,12 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - Reviewing whether a document under `docs/planning/tasks/` is shaped like a governed task record.
 
 ## Related Standards and Sources
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
-
+- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Store one task per file.
 - Use a stable `task_id` in front matter instead of relying on the filename for identity.
@@ -95,4 +94,4 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-09T14:41:51Z`
+- `2026-03-09T23:02:08Z`

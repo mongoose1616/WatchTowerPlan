@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,16 +33,15 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Reviewing whether a schema change is breaking, incomplete, or improperly placed.
 
 ## Related Standards and Sources
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [json_schema_2020_12_reference.md](/home/j/WatchTowerPlan/docs/references/json_schema_2020_12_reference.md)
-- [check_jsonschema_reference.md](/home/j/WatchTowerPlan/docs/references/check_jsonschema_reference.md)
-- [pydantic_strict_mode_reference.md](/home/j/WatchTowerPlan/docs/references/pydantic_strict_mode_reference.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md)
-
+- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
+- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): foundation intent this standard must remain aligned with.
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [json_schema_2020_12_reference.md](/home/j/WatchTowerPlan/docs/references/json_schema_2020_12_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [check_jsonschema_reference.md](/home/j/WatchTowerPlan/docs/references/check_jsonschema_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [pydantic_strict_mode_reference.md](/home/j/WatchTowerPlan/docs/references/pydantic_strict_mode_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Treat the schema as the canonical contract for any governed machine-readable artifact that core owns or formally accepts.
 - Use JSON Schema Draft 2020-12 as the repository baseline for schema-authored validation.
@@ -131,4 +130,4 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - If a future format standard introduces more specific serialization or naming rules for schema files, it should refine rather than weaken this standard.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

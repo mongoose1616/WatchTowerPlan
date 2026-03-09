@@ -16,6 +16,10 @@ Use this workflow to <state the single execution objective clearly and concretel
 - <List the request, artifacts, standards, or canonical docs this workflow expects.>
 - <Include companion standards or repository surfaces only when they materially govern execution.>
 
+## Related Standards and Sources
+- <Relevant standard, template, workflow, or canonical doc>: <What this authority changes or constrains in execution.>
+- <Relevant standard, template, workflow, or canonical doc>: <What this authority changes or constrains in execution.>
+
 ## Workflow
 1. <Write the first concrete step.>
    - <Add a short clarifying detail when the step needs interpretation constraints.>

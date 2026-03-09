@@ -1,5 +1,6 @@
 """Derived-artifact refresh and materialization helpers for governed control-plane surfaces."""
 
+from watchtower_core.sync.all import AllSyncResult, AllSyncService
 from watchtower_core.sync.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
@@ -14,6 +15,10 @@ from watchtower_core.sync.design_document_index import (
     DesignDocumentIndexSyncService,
 )
 from watchtower_core.sync.design_tracking import DesignTrackingSyncService
+from watchtower_core.sync.foundation_index import (
+    FOUNDATION_INDEX_ARTIFACT_PATH,
+    FoundationIndexSyncService,
+)
 from watchtower_core.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
 from watchtower_core.sync.prd_index import PRD_INDEX_ARTIFACT_PATH, PrdIndexSyncService
 from watchtower_core.sync.prd_tracking import PrdTrackingSyncService
@@ -40,6 +45,8 @@ from watchtower_core.sync.traceability import (
 )
 
 __all__ = [
+    "AllSyncResult",
+    "AllSyncService",
     "COMMAND_INDEX_ARTIFACT_PATH",
     "CommandIndexSyncService",
     "DecisionTrackingSyncService",
@@ -48,6 +55,8 @@ __all__ = [
     "DesignTrackingSyncService",
     "DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH",
     "DesignDocumentIndexSyncService",
+    "FOUNDATION_INDEX_ARTIFACT_PATH",
+    "FoundationIndexSyncService",
     "GitHubTaskSyncParams",
     "GitHubTaskSyncService",
     "PRD_INDEX_ARTIFACT_PATH",

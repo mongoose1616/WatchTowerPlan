@@ -14,6 +14,7 @@ from watchtower_core.query.evidence import (
     ValidationEvidenceQueryService,
     ValidationEvidenceSearchParams,
 )
+from watchtower_core.query.foundations import FoundationQueryService, FoundationSearchParams
 from watchtower_core.query.prds import PrdQueryService, PrdSearchParams
 from watchtower_core.query.references import ReferenceQueryService, ReferenceSearchParams
 from watchtower_core.query.repository import (
@@ -35,6 +36,8 @@ __all__ = [
     "DesignDocumentSearchParams",
     "ValidationEvidenceQueryService",
     "ValidationEvidenceSearchParams",
+    "FoundationQueryService",
+    "FoundationSearchParams",
     "PrdQueryService",
     "PrdSearchParams",
     "ReferenceQueryService",

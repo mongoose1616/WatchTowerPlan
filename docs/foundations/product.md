@@ -1,3 +1,24 @@
+---
+id: "foundation.product"
+title: "Product"
+summary: "Defines the product shape and shared product-layer boundaries for the repository."
+type: "foundation"
+status: "active"
+tags:
+  - "foundation"
+  - "product"
+owner: "repository_maintainer"
+updated_at: "2026-03-09T23:02:08Z"
+audience: "shared"
+authority: "authoritative"
+applies_to:
+  - "docs/planning/"
+  - "core/control_plane/"
+  - "workflows/modules/"
+aliases:
+  - "product shape"
+---
+
 # Product
 
 The product is a two-layer, LLM/agent-driven system. Core provides the shared runtime and governance substrate, while domain packs turn that substrate into guided operator workflows. Neither layer is enough on its own: core without packs is infrastructure, and packs without core are fragile process documents. The intended operating model is that the agent drives routine execution while the human provides oversight, direction, review, and decisions when judgment is needed.
@@ -35,3 +56,11 @@ Domain packs are the customer-facing part of the product. They are where operato
 - Feel like guided workbenches rather than passive archives.
 - Support future expansion through the same pack model instead of letting the first domain become the accidental default for all later work.
 - Treat offensive security as the first pack, with CTF first and pentest next as the initial delivery path.
+
+## References
+- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
+- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
+- [product_narrative_brochure.md](/home/j/WatchTowerPlan/docs/foundations/product_narrative_brochure.md)
+
+## Updated At
+- `2026-03-09T23:02:08Z`

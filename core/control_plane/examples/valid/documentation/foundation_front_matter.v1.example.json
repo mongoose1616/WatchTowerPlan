@@ -1,0 +1,24 @@
+{
+  "id": "foundation.design_philosophy",
+  "title": "Design Philosophy",
+  "summary": "Defines the governing design philosophy for the repository and its operating model.",
+  "type": "foundation",
+  "status": "active",
+  "tags": [
+    "foundation",
+    "design_philosophy"
+  ],
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T23:02:08Z",
+  "audience": "shared",
+  "authority": "authoritative",
+  "applies_to": [
+    "docs/foundations/design_philosophy.md",
+    "core/control_plane/",
+    "core/python/",
+    "workflows/modules/"
+  ],
+  "aliases": [
+    "repository design philosophy"
+  ]
+}

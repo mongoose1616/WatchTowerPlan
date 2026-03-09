@@ -67,7 +67,8 @@ class DecisionIndexSyncService:
                 schema_id=DECISION_FRONT_MATTER_SCHEMA_ID,
                 id_label="Decision ID",
                 status_label="Record Status",
-                required_sections=("References",),
+                required_sections=("Applied References and Implications", "References"),
+                required_explained_sections=("Applied References and Implications",),
             )
             current = existing_entries.get(document.document_id, {})
             (
@@ -78,8 +79,19 @@ class DecisionIndexSyncService:
             ) = collect_reference_indicators(
                 document,
                 self._repo_root,
-                internal_sections=("References",),
-                external_sections=("References",),
+                internal_sections=("Applied References and Implications", "References"),
+                external_sections=("Applied References and Implications", "References"),
+            )
+            (
+                _,
+                _,
+                applied_reference_paths,
+                applied_external_reference_urls,
+            ) = collect_reference_indicators(
+                document,
+                self._repo_root,
+                internal_sections=("Applied References and Implications",),
+                external_sections=("Applied References and Implications",),
             )
 
             decision_status = document.metadata_scalar("Decision Status")
@@ -142,8 +154,12 @@ class DecisionIndexSyncService:
                 entry["related_paths"] = list(related_paths)
             if internal_reference_paths:
                 entry["internal_reference_paths"] = list(internal_reference_paths)
+            if applied_reference_paths:
+                entry["applied_reference_paths"] = list(applied_reference_paths)
             if external_reference_urls:
                 entry["external_reference_urls"] = list(external_reference_urls)
+            if applied_external_reference_urls:
+                entry["applied_external_reference_urls"] = list(applied_external_reference_urls)
             if tags:
                 entry["tags"] = list(tags)
             if notes is not None:

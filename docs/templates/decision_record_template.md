@@ -27,6 +27,9 @@
 - <Constraint or current-state fact>
 - <Constraint or current-state fact>
 
+## Applied References and Implications
+- <Relevant internal standard, foundation doc, or local reference>: <What this source changed or constrained in the decision.>
+
 ## Affected Surfaces
 - <PRD, design, plan, standard, workflow, or implementation path affected>
 

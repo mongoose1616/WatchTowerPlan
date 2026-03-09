@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:46:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -30,10 +30,9 @@ This standard defines the repository commit-message policy for human maintainers
 - Does not define branch naming, pull-request title policy, or broader release-management process.
 
 ## Related Standards and Sources
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
-- [git_commit_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_reference.md)
-- [commit_closeout.md](/home/j/WatchTowerPlan/workflows/modules/commit_closeout.md)
-
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [git_commit_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [commit_closeout.md](/home/j/WatchTowerPlan/workflows/modules/commit_closeout.md): workflow surface that operationalizes or depends on this standard.
 ## Guidance
 ### Canonical Format and Quick Reference
 ```text
@@ -246,4 +245,4 @@ fi
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-09T18:46:06Z`
+- `2026-03-09T23:02:08Z`

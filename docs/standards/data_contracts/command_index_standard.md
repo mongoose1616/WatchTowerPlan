@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "command_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T06:42:17Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,12 +33,11 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - Reviewing whether command lookup metadata belongs in an index or a registry.
 
 ## Related Standards and Sources
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/commands/README.md)
-
+- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/commands/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Model command lookup as an index, not as a registry.
 - Treat the command index as a machine-readable routing aid rather than the authoritative definition of command behavior.
@@ -124,4 +123,4 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - The repository path index remains the broader navigation surface. The command index is the targeted command-lookup surface.
 
 ## Updated At
-- `2026-03-09T06:42:17Z`
+- `2026-03-09T23:02:08Z`

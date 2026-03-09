@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_closeout"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T16:20:00Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -44,12 +44,11 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - Updating the planning trackers or traceability index to show initiative outcome clearly.
 
 ## Related Standards and Sources
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md)
-
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md): workflow surface that operationalizes or depends on this standard.
 ## Guidance
 - Do not overload artifact lifecycle `status` with initiative outcome.
 - Store initiative closeout state on the traceability entry for the shared `trace_id`.
@@ -102,4 +101,4 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md)
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-09T23:02:08Z`

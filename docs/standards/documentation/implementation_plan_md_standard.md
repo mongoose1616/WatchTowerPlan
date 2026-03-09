@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "implementation_plan_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,12 +33,11 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Refreshing a plan after the design, standards, or control-plane artifacts it depends on have changed materially.
 
 ## Related Standards and Sources
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/README.md)
-
+- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Store implementation plans under `docs/planning/design/implementation/`.
 - Keep one primary execution slice or tightly related engineering plan per document.
@@ -119,4 +118,4 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Plans should stay modular so later capability areas can reuse the same planning shape.
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-09T23:02:08Z`

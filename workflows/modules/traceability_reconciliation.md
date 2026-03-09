@@ -17,6 +17,12 @@ Use this workflow to reconcile traced planning and governance artifacts with the
 - Known authority rules for identifiers, links, and tracker or index ownership
 - Known missing links, deferred follow-up work, or open questions
 
+## Related Standards and Sources
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
+- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
+- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
+- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+
 ## Workflow
 1. Define the traceability boundary.
    - List the traces, artifact families, and repository paths in scope.

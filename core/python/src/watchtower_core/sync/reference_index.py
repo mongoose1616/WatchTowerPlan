@@ -183,7 +183,7 @@ class ReferenceIndexSyncService:
             cited_urls,
             applied_paths,
             applied_urls,
-        ) in _iter_reference_audit_documents(self._repo_root):
+        ) in iter_citation_audit_documents(self._repo_root):
             for reference_path, canonical_urls in reference_targets.items():
                 canonical_url_set = set(canonical_urls)
                 if reference_path in cited_paths or canonical_url_set.intersection(cited_urls):
@@ -250,7 +250,13 @@ def _optional_string(value: Any) -> str | None:
     return value if isinstance(value, str) and value else None
 
 
-REFERENCE_AUDIT_FAMILIES: tuple[tuple[str, set[str], tuple[str, ...], tuple[str, ...]], ...] = (
+CITATION_AUDIT_FAMILIES: tuple[tuple[str, set[str], tuple[str, ...], tuple[str, ...]], ...] = (
+    (
+        "docs/foundations",
+        {"README.md"},
+        ("References",),
+        (),
+    ),
     (
         "docs/standards",
         {"README.md"},
@@ -287,13 +293,19 @@ REFERENCE_AUDIT_FAMILIES: tuple[tuple[str, set[str], tuple[str, ...], tuple[str,
     (
         "docs/planning/decisions",
         {"README.md", "decision_tracking.md"},
-        ("References",),
-        (),
+        ("Applied References and Implications", "References"),
+        ("Applied References and Implications",),
+    ),
+    (
+        "workflows/modules",
+        {"README.md"},
+        ("Related Standards and Sources",),
+        ("Related Standards and Sources",),
     ),
 )
 
 
-def _iter_reference_audit_documents(
+def iter_citation_audit_documents(
     repo_root: Path,
 ) -> tuple[tuple[str, set[str], set[str], set[str], set[str]], ...]:
     documents: list[tuple[str, set[str], set[str], set[str], set[str]]] = []
@@ -302,7 +314,7 @@ def _iter_reference_audit_documents(
         excluded_names,
         cited_sections,
         applied_sections,
-    ) in REFERENCE_AUDIT_FAMILIES:
+    ) in CITATION_AUDIT_FAMILIES:
         directory = repo_root / relative_directory
         for path in sorted(directory.rglob("*.md")):
             if path.name in excluded_names:

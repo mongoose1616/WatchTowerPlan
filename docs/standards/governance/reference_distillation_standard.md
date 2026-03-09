@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "reference_distillation"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,13 +36,12 @@ This standard defines how externally published source material is distilled into
 - Turning repeated research on an external topic into a durable repository artifact.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
-- [reference_distillation.md](/home/j/WatchTowerPlan/workflows/modules/reference_distillation.md)
-- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md)
-- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md)
-
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md): authoring scaffold that should stay aligned with this standard.
+- [reference_distillation.md](/home/j/WatchTowerPlan/workflows/modules/reference_distillation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
 ## Guidance
 - Prefer authoritative primary sources over secondhand summaries when the topic is standards-driven, version-sensitive, or materially affects repository behavior.
 - Always capture the canonical upstream source for externally governed topics.
@@ -123,4 +122,4 @@ This standard defines how externally published source material is distilled into
 3. Re-read the distilled output to confirm that source facts, local interpretation, and normative repository policy are still clearly separated.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

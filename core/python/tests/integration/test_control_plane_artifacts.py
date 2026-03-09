@@ -45,6 +45,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     validators = loader.load_validator_registry()
     path_index = loader.load_repository_path_index()
     command_index = loader.load_command_index()
+    foundation_index = loader.load_foundation_index()
     reference_index = loader.load_reference_index()
     standard_index = loader.load_standard_index()
     task_index = loader.load_task_index()
@@ -53,6 +54,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     assert validators.artifact_id == "registry.validators"
     assert path_index.artifact_id == "index.repository_paths"
     assert command_index.artifact_id == "index.commands"
+    assert foundation_index.artifact_id == "index.foundations"
     assert reference_index.artifact_id == "index.references"
     assert standard_index.artifact_id == "index.standards"
     assert task_index.artifact_id == "index.tasks"
@@ -139,6 +141,13 @@ def test_governed_document_front_matter_profiles_validate() -> None:
             },
             "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1",
         ),
+        (
+            REPO_ROOT / "docs/foundations",
+            {
+                "README.md",
+            },
+            "urn:watchtower:schema:interfaces:documentation:foundation-front-matter:v1",
+        ),
     ]
 
     for directory, excluded_names, schema_id in governed_families:
@@ -193,6 +202,10 @@ def test_governed_standards_and_planning_docs_publish_references_sections() -> N
             REPO_ROOT / "docs/planning/decisions",
             {"README.md", "decision_tracking.md"},
         ),
+        (
+            REPO_ROOT / "docs/foundations",
+            {"README.md"},
+        ),
     ]
 
     for directory, excluded_names in governed_families:
@@ -246,3 +259,69 @@ def test_governed_design_docs_explain_applied_reference_implications() -> None:
                 assert all(": " in bullet for bullet in bullets), (
                     f"unexplained applied-reference bullet in {title}: {path}"
                 )
+
+
+def test_governed_standards_explain_related_sources() -> None:
+    for path in sorted((REPO_ROOT / "docs/standards").rglob("*.md")):
+        if path.name == "README.md":
+            continue
+        markdown = FRONT_MATTER_PATTERN.sub("", path.read_text(encoding="utf-8"), count=1)
+        sections = {
+            title.strip(): body
+            for title, body in re.findall(
+                r"^## (.+?)\n(.*?)(?=^## |\Z)",
+                markdown,
+                flags=re.MULTILINE | re.DOTALL,
+            )
+        }
+        section = sections.get("Related Standards and Sources")
+        assert section is not None, f"missing Related Standards and Sources section: {path}"
+        bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
+        assert bullets, f"missing related-source bullets: {path}"
+        assert all(": " in bullet for bullet in bullets), (
+            f"unexplained related-source bullet: {path}"
+        )
+
+
+def test_governed_decision_docs_explain_applied_references() -> None:
+    for path in sorted((REPO_ROOT / "docs/planning/decisions").rglob("*.md")):
+        if path.name in {"README.md", "decision_tracking.md"}:
+            continue
+        markdown = FRONT_MATTER_PATTERN.sub("", path.read_text(encoding="utf-8"), count=1)
+        sections = {
+            title.strip(): body
+            for title, body in re.findall(
+                r"^## (.+?)\n(.*?)(?=^## |\Z)",
+                markdown,
+                flags=re.MULTILINE | re.DOTALL,
+            )
+        }
+        section = sections.get("Applied References and Implications")
+        assert section is not None, f"missing Applied References and Implications section: {path}"
+        bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
+        assert bullets, f"missing applied-reference bullets: {path}"
+        assert all(": " in bullet for bullet in bullets), (
+            f"unexplained applied-reference bullet: {path}"
+        )
+
+
+def test_workflow_modules_publish_explained_related_sources() -> None:
+    for path in sorted((REPO_ROOT / "workflows/modules").glob("*.md")):
+        if path.name == "README.md":
+            continue
+        markdown = path.read_text(encoding="utf-8")
+        sections = {
+            title.strip(): body
+            for title, body in re.findall(
+                r"^## (.+?)\n(.*?)(?=^## |\Z)",
+                markdown,
+                flags=re.MULTILINE | re.DOTALL,
+            )
+        }
+        section = sections.get("Related Standards and Sources")
+        assert section is not None, f"missing Related Standards and Sources section: {path}"
+        bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
+        assert bullets, f"missing workflow related-source bullets: {path}"
+        assert all(": " in bullet for bullet in bullets), (
+            f"unexplained workflow related-source bullet: {path}"
+        )

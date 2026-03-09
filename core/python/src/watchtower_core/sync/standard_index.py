@@ -18,7 +18,10 @@ from watchtower_core.adapters import (
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.sync.planning_documents import ordered_unique
+from watchtower_core.sync.planning_documents import (
+    ordered_unique,
+    validate_explained_bullet_section,
+)
 from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 
 STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
@@ -98,6 +101,11 @@ class StandardIndexSyncService:
             if missing_sections:
                 joined = ", ".join(missing_sections)
                 raise ValueError(f"{relative_path} is missing required sections: {joined}")
+            validate_explained_bullet_section(
+                relative_path,
+                "Related Standards and Sources",
+                sections["Related Standards and Sources"],
+            )
 
             updated_at = front_matter["updated_at"]
             if extract_updated_at_from_section(sections["Updated At"]) != updated_at:
@@ -113,6 +121,12 @@ class StandardIndexSyncService:
                 ),
                 extract_repo_path_references(sections["References"], self._repo_root),
             )
+            applied_reference_paths = ordered_unique(
+                extract_repo_path_references(
+                    sections["Related Standards and Sources"],
+                    self._repo_root,
+                )
+            )
             reference_doc_paths = tuple(
                 value for value in internal_reference_paths if value.startswith("docs/references/")
             )
@@ -120,15 +134,31 @@ class StandardIndexSyncService:
                 extract_external_urls(sections["Related Standards and Sources"]),
                 extract_external_urls(sections["References"]),
             )
+            applied_direct_external_urls = ordered_unique(
+                extract_external_urls(sections["Related Standards and Sources"])
+            )
+            applied_reference_doc_paths = tuple(
+                value for value in applied_reference_paths if value.startswith("docs/references/")
+            )
             transitive_external_urls = ordered_unique(
                 *(
                     reference_urls_by_path.get(reference_path, ())
                     for reference_path in reference_doc_paths
                 )
             )
+            applied_transitive_external_urls = ordered_unique(
+                *(
+                    reference_urls_by_path.get(reference_path, ())
+                    for reference_path in applied_reference_doc_paths
+                )
+            )
             external_reference_urls = ordered_unique(
                 direct_external_urls,
                 transitive_external_urls,
+            )
+            applied_external_reference_urls = ordered_unique(
+                applied_direct_external_urls,
+                applied_transitive_external_urls,
             )
             if direct_external_urls and not reference_doc_paths:
                 raise ValueError(
@@ -164,8 +194,12 @@ class StandardIndexSyncService:
                 entry["reference_doc_paths"] = list(reference_doc_paths)
             if internal_reference_paths:
                 entry["internal_reference_paths"] = list(internal_reference_paths)
+            if applied_reference_paths:
+                entry["applied_reference_paths"] = list(applied_reference_paths)
             if external_reference_urls:
                 entry["external_reference_urls"] = list(external_reference_urls)
+            if applied_external_reference_urls:
+                entry["applied_external_reference_urls"] = list(applied_external_reference_urls)
             if tags:
                 entry["tags"] = list(tags)
             if notes is not None:

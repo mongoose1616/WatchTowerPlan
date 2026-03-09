@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T14:41:51Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,14 +33,13 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Building validation logic for parsed document metadata.
 
 ## Related Standards and Sources
-- [front_matter_reference.md](/home/j/WatchTowerPlan/docs/references/front_matter_reference.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/README.md)
-
+- [front_matter_reference.md](/home/j/WatchTowerPlan/docs/references/front_matter_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [status_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/status_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/schemas/interfaces/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Front matter must appear at the top of the Markdown file and must be delimited by opening and closing `---` lines.
 - Front matter is YAML metadata for the document, not a substitute for the document body.
@@ -68,6 +67,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - `docs/planning/design/implementation/**` documents should include front matter and validate against the implementation-plan profile.
 - `docs/planning/tasks/open/**` and `docs/planning/tasks/closed/**` documents should include front matter and validate against the task profile.
 - `docs/standards/**` standard documents should include front matter and validate against the standard profile. Short directory `README.md` files under `docs/standards/**` remain plain Markdown unless a narrower local rule says otherwise.
+- `docs/foundations/**` foundation documents should include front matter and validate against the foundation profile. Short directory `README.md` files under `docs/foundations/**` remain plain Markdown unless a narrower local rule says otherwise.
 - `docs/commands/**` command pages should stay plain Markdown by default because the command index is the machine-readable lookup surface for that document family.
 - Human tracking surfaces such as `docs/planning/design/design_tracking.md`, `docs/planning/prds/prd_tracking.md`, `docs/planning/decisions/decision_tracking.md`, and `docs/planning/tasks/task_tracking.md` remain plain Markdown unless a narrower standard later governs them.
 - `AGENTS.md` files remain plain Markdown by default, including nested instruction overlays under `docs/**`.
@@ -102,6 +102,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | `docs/planning/design/implementation/**` | Required for governed implementation-plan docs other than directory `README.md` files | `implementation_plan_front_matter.v1.schema.json` |
 | `docs/planning/tasks/open/**` and `docs/planning/tasks/closed/**` | Required for governed task docs other than directory `README.md` files and `task_tracking.md` | `task_front_matter.v1.schema.json` |
 | `docs/standards/**` | Required for governed standard docs other than short directory `README.md` files | `standard_front_matter.v1.schema.json` |
+| `docs/foundations/**` | Required for governed foundation docs other than short directory `README.md` files | `foundation_front_matter.v1.schema.json` |
 | `docs/commands/**` | Not required by default; rely on the command index for machine lookup | none |
 | `AGENTS.md` files | Not required by default; keep plain Markdown instruction overlays | none |
 | `workflows/**` | Optional but approved when metadata is operationally useful | `workflow_front_matter.v1.schema.json` |
@@ -166,4 +167,4 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Document families that already have a dedicated machine-readable companion artifact, such as `docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-09T14:41:51Z`
+- `2026-03-09T23:02:08Z`

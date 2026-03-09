@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:46:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,12 +33,11 @@ Keep reference documents focused on durable lookup content by separating reader-
 - Reviewing whether a reference document is properly scoped and structured.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md)
-- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md)
-- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md)
-
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md): authoring scaffold that should stay aligned with this standard.
+- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
 ## Guidance
 - A reference document should optimize for fast lookup, stable terminology, and clear local application.
 - A reference document should cover one succinct standard, framework, format, specification, or working model.
@@ -103,4 +102,4 @@ Keep reference documents focused on durable lookup content by separating reader-
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-09T18:46:06Z`
+- `2026-03-09T23:02:08Z`

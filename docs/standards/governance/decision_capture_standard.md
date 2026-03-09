@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "decision_capture"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -39,15 +39,14 @@ This standard defines how durable repository decisions should be recorded so rat
 - Future contributors would likely need the rationale or consequences to avoid re-litigating the same decision.
 
 ## Related Standards and Sources
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md)
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
-- [decision_capture.md](/home/j/WatchTowerPlan/workflows/modules/decision_capture.md)
-- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md)
-- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md)
-- [adr_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/adr_guidance_reference.md)
-
+- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [decision_capture.md](/home/j/WatchTowerPlan/workflows/modules/decision_capture.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
+- [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
+- [adr_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/adr_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 ## Guidance
 - Store durable decision records under `docs/planning/decisions/`.
 - Capture one durable decision per record. Do not blend unrelated decisions into one artifact just because they were discussed together.
@@ -125,4 +124,4 @@ This standard defines how durable repository decisions should be recorded so rat
 - Not every local implementation choice needs durable decision capture. Use it when the rationale, alternatives, or downstream consequences are important enough to matter later.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

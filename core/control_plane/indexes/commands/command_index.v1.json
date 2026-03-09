@@ -99,7 +99,7 @@
     {
       "command_id": "command.watchtower_core.query",
       "command": "watchtower-core query",
-      "summary": "This command group searches the governed lookup indexes for repository paths, documented commands, curated references, governed standards, planning artifacts, and traceability records.",
+      "summary": "This command group searches the governed lookup indexes for repository paths, documented commands, foundation docs, curated references, governed standards, planning artifacts, and traceability records.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -241,6 +241,30 @@
         "cli",
         "query",
         "evidence"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.foundations",
+      "command": "watchtower-core query foundations",
+      "summary": "This command searches the governed foundation index so engineers and agents can find repository intent documents by topic, authority, related surface, or downstream citation or application use.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_foundations.md",
+      "synopsis": "uv run watchtower-core query foundations [--query <text>] [--foundation-id <foundation_id>] [--authority <authority>] [--tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--cited-by-path <doc_path>] [--applied-by-path <doc_path>] [--limit <n>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "foundations"
       ]
     },
     {
@@ -419,6 +443,30 @@
       "notes": "With no leaf command, this surface prints sync-specific help and exits successfully."
     },
     {
+      "command_id": "command.watchtower_core.sync.all",
+      "command": "watchtower-core sync all",
+      "summary": "This command rebuilds all local deterministic indexes and human-readable trackers in one run, using the existing sync services in dependency order.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_all.md",
+      "synopsis": "uv run watchtower-core sync all [--write] [--output-dir <dir>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "all"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.sync.command_index",
       "command": "watchtower-core sync command-index",
       "summary": "This command rebuilds the governed command index from the authored command pages under `docs/commands/`.",
@@ -542,6 +590,31 @@
         "sync",
         "design",
         "tracking"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync.foundation_index",
+      "command": "watchtower-core sync foundation-index",
+      "summary": "This command rebuilds the governed foundation index from the governed foundation documents under `docs/foundations/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+      "synopsis": "uv run watchtower-core sync foundation-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "foundation",
+        "index"
       ]
     },
     {
@@ -818,6 +891,30 @@
         "cli",
         "validate",
         "acceptance"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.validate.all",
+      "command": "watchtower-core validate all",
+      "summary": "This command runs the current explicit validation families across the governed repository surfaces and returns one aggregate summary.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_validate_all.md",
+      "synopsis": "uv run watchtower-core validate all [--skip-front-matter] [--skip-artifacts] [--skip-acceptance] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.validate",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "validate",
+        "all"
       ]
     },
     {

@@ -1,0 +1,283 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:foundation-index:v1",
+  "id": "index.foundations",
+  "title": "Foundation Index",
+  "status": "active",
+  "entries": [
+    {
+      "foundation_id": "foundation.design_philosophy",
+      "title": "Design Philosophy",
+      "summary": "Defines the governing design philosophy for the repository and its operating model.",
+      "status": "active",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/design_philosophy.md",
+      "updated_at": "2026-03-09T23:02:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "workflows/modules/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/product.md",
+        "docs/foundations/standards.md",
+        "docs/foundations/technology_stack.md"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/product.md",
+        "docs/foundations/product_narrative_brochure.md",
+        "docs/foundations/standards.md",
+        "docs/foundations/technology_stack.md",
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/metadata/terminology_standard.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "applied_by_paths": [
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/metadata/terminology_standard.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "aliases": [
+        "repository design philosophy"
+      ],
+      "tags": [
+        "foundation",
+        "design_philosophy"
+      ]
+    },
+    {
+      "foundation_id": "foundation.product",
+      "title": "Product",
+      "summary": "Defines the product shape and shared product-layer boundaries for the repository.",
+      "status": "active",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/product.md",
+      "updated_at": "2026-03-09T23:02:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/",
+        "workflows/modules/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/standards.md",
+        "docs/foundations/product_narrative_brochure.md"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product_narrative_brochure.md",
+        "docs/foundations/standards.md",
+        "docs/foundations/technology_stack.md",
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/metadata/terminology_standard.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "applied_by_paths": [
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/metadata/terminology_standard.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "aliases": [
+        "product shape"
+      ],
+      "tags": [
+        "foundation",
+        "product"
+      ]
+    },
+    {
+      "foundation_id": "foundation.product_narrative_brochure",
+      "title": "Product Narrative Brochure",
+      "summary": "Provides a customer-facing narrative summary of the product story, value, and intended operator experience.",
+      "status": "active",
+      "authority": "supporting",
+      "doc_path": "docs/foundations/product_narrative_brochure.md",
+      "updated_at": "2026-03-09T23:02:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/foundations/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/product.md",
+        "docs/foundations/design_philosophy.md"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/product.md"
+      ],
+      "aliases": [
+        "product narrative",
+        "product brochure"
+      ],
+      "tags": [
+        "foundation",
+        "product_narrative"
+      ]
+    },
+    {
+      "foundation_id": "foundation.standards",
+      "title": "Standards",
+      "summary": "Explains the repository-wide standards posture and why governed standards matter.",
+      "status": "active",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/standards.md",
+      "updated_at": "2026-03-09T23:02:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/",
+        "core/control_plane/",
+        "workflows/modules/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md"
+      ],
+      "applied_by_paths": [
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md"
+      ],
+      "aliases": [
+        "standards posture"
+      ],
+      "tags": [
+        "foundation",
+        "standards"
+      ]
+    },
+    {
+      "foundation_id": "foundation.technology_stack",
+      "title": "Technology Stack",
+      "summary": "Defines the current technology-direction baseline and selection rules for the repository.",
+      "status": "active",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/technology_stack.md",
+      "updated_at": "2026-03-09T23:02:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/standards/data_contracts/format_selection_standard.md"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/standards.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/data_contracts/schema_standard.md"
+      ],
+      "applied_by_paths": [
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/data_contracts/schema_standard.md"
+      ],
+      "aliases": [
+        "stack direction"
+      ],
+      "tags": [
+        "foundation",
+        "technology_stack"
+      ]
+    }
+  ]
+}

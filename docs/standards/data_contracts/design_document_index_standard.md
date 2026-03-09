@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "design_document_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:45:00Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,14 +33,13 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - Building query or routing tools that need a compact machine-readable view over the design corpus.
 
 ## Related Standards and Sources
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md)
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
-- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/design_documents/README.md)
-
+- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md): companion planning or design surface this standard should remain consistent with.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/design_documents/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Model design-document tracking as an index, not as a registry.
 - Treat the design-document index as a machine-readable lookup and relationship surface rather than the authority for design content.
@@ -124,4 +123,4 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The machine index is for lookup, query, and future tooling. Neither surface replaces the design documents themselves.
 
 ## Updated At
-- `2026-03-09T18:45:00Z`
+- `2026-03-09T23:02:08Z`

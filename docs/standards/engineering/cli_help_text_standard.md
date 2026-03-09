@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "cli_help"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:43:47Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 aliases:
@@ -41,11 +41,10 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - Reviewing whether CLI help is readable enough for new engineers or occasional users.
 
 ## Related Standards and Sources
-- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
-- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
-- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md)
-- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
-
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 ## Guidance
 - Write CLI help for a new engineer first, then for a frequent operator, and only then for an already-context-loaded maintainer.
 - Use plain task-oriented language such as `Search documented commands` or `Rebuild the repository path index`; avoid short internal shorthand that assumes prior knowledge.
@@ -105,4 +104,4 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - [docs/templates/command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
 
 ## Updated At
-- `2026-03-09T05:43:47Z`
+- `2026-03-09T23:02:08Z`

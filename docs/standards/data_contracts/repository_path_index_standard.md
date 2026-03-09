@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "repository_path_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,12 +33,11 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - Reviewing whether a proposed machine-readable path catalog is correctly modeled as a derived index.
 
 ## Related Standards and Sources
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/README.md)
-
+- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Model repository path lookup as an index, not as a registry.
 - Treat the path index as derived support data rather than as canonical authority.
@@ -118,4 +117,4 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - The repository path index exists to improve machine retrieval and path lookup, not to become a second prose documentation system.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T23:02:08Z`

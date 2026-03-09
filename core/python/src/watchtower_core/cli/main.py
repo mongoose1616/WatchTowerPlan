@@ -21,6 +21,8 @@ from watchtower_core.query import (
     DecisionSearchParams,
     DesignDocumentQueryService,
     DesignDocumentSearchParams,
+    FoundationQueryService,
+    FoundationSearchParams,
     PrdQueryService,
     PrdSearchParams,
     ReferenceQueryService,
@@ -36,11 +38,13 @@ from watchtower_core.query import (
     ValidationEvidenceSearchParams,
 )
 from watchtower_core.sync import (
+    AllSyncService,
     CommandIndexSyncService,
     DecisionIndexSyncService,
     DecisionTrackingSyncService,
     DesignDocumentIndexSyncService,
     DesignTrackingSyncService,
+    FoundationIndexSyncService,
     GitHubTaskSyncParams,
     GitHubTaskSyncService,
     PrdIndexSyncService,
@@ -56,6 +60,7 @@ from watchtower_core.validation import (
     AcceptanceReconciliationService,
     ArtifactValidationService,
     FrontMatterValidationService,
+    ValidationAllService,
     ValidationExecutionError,
     ValidationResult,
     ValidationSelectionError,
@@ -95,6 +100,7 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query references --query uv",
             "uv run watchtower-core query standards --category governance --format json",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
@@ -102,6 +108,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query tasks --task-status backlog",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core sync command-index",
+            "uv run watchtower-core sync all",
+            "uv run watchtower-core sync foundation-index",
             "uv run watchtower-core sync reference-index",
             "uv run watchtower-core sync standard-index",
             "uv run watchtower-core sync prd-index",
@@ -112,6 +120,7 @@ def build_parser() -> argparse.ArgumentParser:
             "--initiative-status completed --closure-reason \"Delivered and validated\"",
             "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync repository-paths",
+            "uv run watchtower-core validate all --skip-acceptance",
             "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
@@ -155,8 +164,9 @@ def build_parser() -> argparse.ArgumentParser:
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `references` for the reference library, `standards` for governed
-            repository standards, `prds`, `decisions`, `designs`, `acceptance`,
+            `foundations` for the intent-layer foundation corpus, `references`
+            for the reference library, `standards` for governed repository
+            standards, `prds`, `decisions`, `designs`, `acceptance`,
             `evidence`, and `tasks` for planning and execution lookup, and
             `trace` when you already know the trace identifier you want.
             """
@@ -164,6 +174,7 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core query paths --query control plane",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query references --query github",
             "uv run watchtower-core query standards --reference-path "
             "docs/references/github_collaboration_reference.md",
@@ -271,6 +282,75 @@ def build_parser() -> argparse.ArgumentParser:
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     query_commands_parser.set_defaults(handler=_run_query_commands)
+
+    query_foundations_parser = query_subparsers.add_parser(
+        "foundations",
+        help="Search the foundation index.",
+        description=dedent(
+            """
+            Search the governed foundation index for repository intent-layer
+            documents such as design philosophy, product shape, and technology
+            direction.
+
+            Use this when you need to confirm which foundation doc governs an
+            area or where a foundation doc is currently cited or applied.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query foundations --query philosophy",
+            "uv run watchtower-core query foundations --applied-by-path "
+            "docs/standards/engineering/engineering_best_practices_standard.md --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_foundations_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over indexed foundation fields such as ID, title, "
+            "summary, aliases, and related paths."
+        ),
+    )
+    query_foundations_parser.add_argument(
+        "--foundation-id",
+        help="Exact foundation identifier such as foundation.design_philosophy.",
+    )
+    query_foundations_parser.add_argument(
+        "--authority",
+        help="Exact authority filter such as authoritative or supporting.",
+    )
+    query_foundations_parser.add_argument("--tag", help="Exact tag filter.")
+    query_foundations_parser.add_argument(
+        "--related-path",
+        help="Exact repository-path filter such as core/python/ or workflows/modules/.",
+    )
+    query_foundations_parser.add_argument(
+        "--reference-path",
+        help="Exact governed reference-doc filter such as docs/references/uv_reference.md.",
+    )
+    query_foundations_parser.add_argument(
+        "--cited-by-path",
+        help="Exact doc-path filter for documents that cite the foundation doc.",
+    )
+    query_foundations_parser.add_argument(
+        "--applied-by-path",
+        help=(
+            "Exact doc-path filter for documents that apply the foundation doc "
+            "in an applied-reference section."
+        ),
+    )
+    query_foundations_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_foundations_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_foundations_parser.set_defaults(handler=_run_query_foundations)
 
     query_references_parser = query_subparsers.add_parser(
         "references",
@@ -770,6 +850,8 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync command-index --write",
+            "uv run watchtower-core sync all",
+            "uv run watchtower-core sync all --write",
             "uv run watchtower-core sync reference-index",
             "uv run watchtower-core sync reference-index --write",
             "uv run watchtower-core sync standard-index",
@@ -820,6 +902,68 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_sync_arguments(sync_command_index_parser)
     sync_command_index_parser.set_defaults(handler=_run_sync_command_index)
+
+    sync_foundation_index_parser = sync_subparsers.add_parser(
+        "foundation-index",
+        help="Rebuild the foundation index from governed foundation docs.",
+        description=dedent(
+            """
+            Rebuild the foundation index from the governed foundation documents
+            under `docs/foundations/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync foundation-index",
+            "uv run watchtower-core sync foundation-index --write",
+            "uv run watchtower-core sync foundation-index --output "
+            "/tmp/foundation_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_foundation_index_parser)
+    sync_foundation_index_parser.set_defaults(handler=_run_sync_foundation_index)
+
+    sync_all_parser = sync_subparsers.add_parser(
+        "all",
+        help="Rebuild all local derived indexes and trackers in dependency order.",
+        description=dedent(
+            """
+            Rebuild all local deterministic sync surfaces in one run.
+
+            This includes local index and tracker surfaces only. It does not call
+            hosted integrations such as GitHub task sync.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync all",
+            "uv run watchtower-core sync all --write",
+            "uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    sync_all_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Write rebuilt artifacts and trackers to their canonical repository paths.",
+    )
+    sync_all_parser.add_argument(
+        "--output-dir",
+        type=Path,
+        help=(
+            "Optional explicit directory for materializing all rebuilt surfaces while "
+            "preserving their repo-relative paths."
+        ),
+    )
+    sync_all_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    sync_all_parser.set_defaults(handler=_run_sync_all)
 
     sync_reference_index_parser = sync_subparsers.add_parser(
         "reference-index",
@@ -1289,14 +1433,16 @@ def build_parser() -> argparse.ArgumentParser:
             Run validation commands against governed repository artifacts and
             document surfaces.
 
-            Use `front-matter` for governed Markdown metadata, `artifact` for
-            schema-backed JSON contracts, indexes, ledgers, and similar
-            machine-readable artifacts, and `acceptance` for semantic
-            reconciliation across PRDs, acceptance contracts, validation
-            evidence, and traceability.
+            Use `all` for one bounded repo-wide validation pass, `front-matter`
+            for governed Markdown metadata, `artifact` for schema-backed JSON
+            contracts, indexes, ledgers, and similar machine-readable artifacts,
+            and `acceptance` for semantic reconciliation across PRDs,
+            acceptance contracts, validation evidence, and traceability.
             """
         ).strip(),
         epilog=_examples(
+            "uv run watchtower-core validate all --skip-acceptance",
+            "uv run watchtower-core validate all --format json",
             "uv run watchtower-core validate front-matter --path "
             "docs/references/front_matter_reference.md",
             "uv run watchtower-core validate artifact --path "
@@ -1317,6 +1463,50 @@ def build_parser() -> argparse.ArgumentParser:
         metavar="<validate_command>",
     )
     validate_parser.set_defaults(handler=_run_help, help_parser=validate_parser)
+
+    validate_all_parser = validate_subparsers.add_parser(
+        "all",
+        help="Run the current explicit validation families across governed repository surfaces.",
+        description=dedent(
+            """
+            Run the current explicit validation families across the governed
+            repository surfaces in deterministic order.
+
+            This command is read-only. It aggregates front-matter validation,
+            schema-backed artifact validation, and acceptance reconciliation so
+            you can get one bounded validation summary without invoking each
+            family manually.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core validate all --skip-acceptance",
+            "uv run watchtower-core validate all --format json",
+            "uv run watchtower-core validate all --skip-front-matter --skip-artifacts",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    validate_all_parser.add_argument(
+        "--skip-front-matter",
+        action="store_true",
+        help="Skip governed Markdown front-matter validation targets.",
+    )
+    validate_all_parser.add_argument(
+        "--skip-artifacts",
+        action="store_true",
+        help="Skip schema-backed governed JSON artifact validation targets.",
+    )
+    validate_all_parser.add_argument(
+        "--skip-acceptance",
+        action="store_true",
+        help="Skip trace-level acceptance reconciliation checks.",
+    )
+    validate_all_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    validate_all_parser.set_defaults(handler=_run_validate_all)
 
     validate_front_matter_parser = validate_subparsers.add_parser(
         "front-matter",
@@ -1633,6 +1823,67 @@ def _run_query_commands(args: argparse.Namespace) -> int:
     return 0
 
 
+def _run_query_foundations(args: argparse.Namespace) -> int:
+    service = FoundationQueryService(ControlPlaneLoader())
+    entries = service.search(
+        FoundationSearchParams(
+            query=args.query,
+            foundation_id=args.foundation_id,
+            authority=args.authority,
+            tag=args.tag,
+            related_path=args.related_path,
+            reference_path=args.reference_path,
+            cited_by_path=args.cited_by_path,
+            applied_by_path=args.applied_by_path,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query foundations",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "foundation_id": entry.foundation_id,
+                "title": entry.title,
+                "summary": entry.summary,
+                "status": entry.status,
+                "authority": entry.authority,
+                "doc_path": entry.doc_path,
+                "updated_at": entry.updated_at,
+                "uses_internal_references": entry.uses_internal_references,
+                "uses_external_references": entry.uses_external_references,
+                "related_paths": list(entry.related_paths),
+                "reference_doc_paths": list(entry.reference_doc_paths),
+                "internal_reference_paths": list(entry.internal_reference_paths),
+                "external_reference_urls": list(entry.external_reference_urls),
+                "cited_by_paths": list(entry.cited_by_paths),
+                "applied_by_paths": list(entry.applied_by_paths),
+                "aliases": list(entry.aliases),
+                "tags": list(entry.tags),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No foundation entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} foundation entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.foundation_id} [{entry.authority}]")
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+        print(
+            "  Usage: "
+            f"cited_by={len(entry.cited_by_paths)}, applied_by={len(entry.applied_by_paths)}"
+        )
+    return 0
+
+
 def _run_query_references(args: argparse.Namespace) -> int:
     service = ReferenceQueryService(ControlPlaneLoader())
     entries = service.search(
@@ -1726,7 +1977,11 @@ def _run_query_standards(args: argparse.Namespace) -> int:
                 "related_paths": list(entry.related_paths),
                 "reference_doc_paths": list(entry.reference_doc_paths),
                 "internal_reference_paths": list(entry.internal_reference_paths),
+                "applied_reference_paths": list(entry.applied_reference_paths),
                 "external_reference_urls": list(entry.external_reference_urls),
+                "applied_external_reference_urls": list(
+                    entry.applied_external_reference_urls
+                ),
                 "tags": list(entry.tags),
             }
             for entry in entries
@@ -2233,12 +2488,62 @@ def _run_sync_command_index(args: argparse.Namespace) -> int:
     )
 
 
+def _run_sync_all(args: argparse.Namespace) -> int:
+    service = AllSyncService.from_repo_root()
+    result = service.run(write=args.write, output_dir=args.output_dir)
+    payload = {
+        "command": "watchtower-core sync all",
+        "status": "ok",
+        "result_count": len(result.records),
+        "wrote": result.wrote,
+        "output_dir": result.output_dir,
+        "results": [
+            {
+                "target": record.target,
+                "artifact_kind": record.artifact_kind,
+                "relative_output_path": record.relative_output_path,
+                "output_path": record.output_path,
+                "wrote": record.wrote,
+                "record_count": record.record_count,
+                "details": record.details,
+            }
+            for record in result.records
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    mode = (
+        f"output-dir mode at {result.output_dir}"
+        if result.output_dir is not None
+        else ("write mode" if result.wrote else "dry-run mode")
+    )
+    print(f"Ran sync all across {len(result.records)} targets in {mode}.")
+    for record in result.records:
+        print(
+            f"- {record.target} [{record.artifact_kind}] "
+            f"record_count={record.record_count}"
+        )
+        if record.output_path is not None:
+            print(f"  Wrote to {record.output_path}")
+    return 0
+
+
 def _run_sync_reference_index(args: argparse.Namespace) -> int:
     return _run_sync_document_command(
         args,
         command_name="watchtower-core sync reference-index",
         artifact_label="reference index",
         service=ReferenceIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_foundation_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync foundation-index",
+        artifact_label="foundation index",
+        service=FoundationIndexSyncService.from_repo_root(),
     )
 
 
@@ -2516,6 +2821,7 @@ def _run_sync_document_command(
         CommandIndexSyncService
         | DecisionIndexSyncService
         | DesignDocumentIndexSyncService
+        | FoundationIndexSyncService
         | PrdIndexSyncService
         | ReferenceIndexSyncService
         | RepositoryPathIndexSyncService
@@ -2626,6 +2932,87 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
         success_message="Artifact validated successfully.",
         service_factory=ArtifactValidationService,
     )
+
+
+def _run_validate_all(args: argparse.Namespace) -> int:
+    service = ValidationAllService(ControlPlaneLoader())
+    try:
+        result = service.run(
+            include_front_matter=not args.skip_front_matter,
+            include_artifacts=not args.skip_artifacts,
+            include_acceptance=not args.skip_acceptance,
+        )
+    except ValueError as exc:
+        return _emit_command_error(
+            args,
+            "watchtower-core validate all",
+            str(exc),
+            prefix="Validation error",
+        )
+
+    payload = {
+        "command": "watchtower-core validate all",
+        "status": "ok",
+        "passed": result.passed,
+        "total_count": result.total_count,
+        "passed_count": result.passed_count,
+        "failed_count": result.failed_count,
+        "included_families": list(result.included_families),
+        "family_summaries": [
+            {
+                "family": summary.family,
+                "total_count": summary.total_count,
+                "passed_count": summary.passed_count,
+                "failed_count": summary.failed_count,
+            }
+            for summary in result.family_summaries
+        ],
+        "results": [
+            {
+                "family": record.family,
+                "target": record.target,
+                "validator_id": record.result.validator_id,
+                "target_path": record.result.target_path,
+                "engine": record.result.engine,
+                "schema_ids": list(record.result.schema_ids),
+                "passed": record.result.passed,
+                "issue_count": record.issue_count,
+                "issues": [
+                    {
+                        "code": issue.code,
+                        "message": issue.message,
+                        "location": issue.location,
+                        "schema_id": issue.schema_id,
+                    }
+                    for issue in record.result.issues
+                ],
+            }
+            for record in result.records
+        ],
+    }
+    exit_code = 0 if result.passed else 1
+    if _print_payload(args, payload) == 0:
+        return exit_code
+
+    print(
+        "Ran validate all across "
+        f"{result.total_count} targets: {result.passed_count} passed, "
+        f"{result.failed_count} failed."
+    )
+    for summary in result.family_summaries:
+        print(
+            f"- {summary.family}: total={summary.total_count}, "
+            f"passed={summary.passed_count}, failed={summary.failed_count}"
+        )
+    if result.failed_count:
+        print("Failed targets:")
+        for record in result.records:
+            if record.result.passed:
+                continue
+            print(f"- {record.family}: {record.target}")
+            if record.result.issues:
+                print(f"  {record.result.issues[0].message}")
+    return exit_code
 
 
 def _run_validate_acceptance(args: argparse.Namespace) -> int:

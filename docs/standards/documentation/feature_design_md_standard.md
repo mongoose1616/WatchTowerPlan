@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "feature_design_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-09T23:02:08Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,12 +33,11 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - Refreshing a feature design after standards, control-plane artifacts, or architecture decisions change materially.
 
 ## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
-- [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md)
-- [README.md](/home/j/WatchTowerPlan/docs/planning/design/features/README.md)
-
+- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md): authoring scaffold that should stay aligned with this standard.
+- [README.md](/home/j/WatchTowerPlan/docs/planning/design/features/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Store feature designs under `docs/planning/design/features/`.
 - Keep one primary feature or tightly related capability cluster per design.
@@ -124,4 +123,4 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - A good feature design reduces rework in implementation planning by making tradeoffs and guardrails explicit.
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-09T23:02:08Z`

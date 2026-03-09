@@ -7,8 +7,10 @@
 | Path | Description |
 |---|---|
 | `core/python/tests/unit/README.md` | Describes the purpose of the unit-test directory. |
+| `core/python/tests/unit/test_all_validation.py` | Unit tests for the coordinated validate-all orchestration service. |
 | `core/python/tests/unit/test_artifact_validation.py` | Unit tests for registry-backed JSON artifact validation. |
 | `core/python/tests/unit/test_acceptance_reconciliation.py` | Unit tests for acceptance-contract lookup, evidence lookup, and semantic acceptance reconciliation. |
+| `core/python/tests/unit/test_all_sync.py` | Unit tests for the coordinated all-sync orchestration service. |
 | `core/python/tests/unit/test_cli.py` | Unit tests for the watchtower-core CLI command surfaces. |
 | `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from command docs. |
 | `core/python/tests/unit/test_control_plane_loader.py` | Unit tests for the high-level governed artifact loaders. |
