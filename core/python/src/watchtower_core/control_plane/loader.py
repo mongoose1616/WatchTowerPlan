@@ -11,6 +11,7 @@ from watchtower_core.control_plane.models import (
     CommandIndex,
     RepositoryPathIndex,
     SchemaCatalog,
+    TraceabilityIndex,
     ValidatorRegistry,
 )
 from watchtower_core.control_plane.paths import discover_repo_root
@@ -20,6 +21,7 @@ from watchtower_core.control_plane.schemas import SchemaStore
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validators/validator_registry.v1.json"
 REPOSITORY_PATH_INDEX_PATH = "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
 COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
+TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.v1.json"
 
 
 class ControlPlaneLoader:
@@ -67,3 +69,9 @@ class ControlPlaneLoader:
     def load_command_index(self) -> CommandIndex:
         """Load the current command index."""
         return CommandIndex.from_document(self.load_validated_document(COMMAND_INDEX_PATH))
+
+    def load_traceability_index(self) -> TraceabilityIndex:
+        """Load the current traceability index."""
+        return TraceabilityIndex.from_document(
+            self.load_validated_document(TRACEABILITY_INDEX_PATH)
+        )

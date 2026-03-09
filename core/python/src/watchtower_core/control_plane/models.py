@@ -206,6 +206,8 @@ class CommandIndexEntry:
     implementation_path: str | None = None
     package_entrypoint: str | None = None
     parent_command_id: str | None = None
+    output_formats: tuple[str, ...] = ()
+    default_output_format: str | None = None
     aliases: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
     notes: str | None = None
@@ -224,6 +226,8 @@ class CommandIndexEntry:
             implementation_path=document.get("implementation_path"),
             package_entrypoint=document.get("package_entrypoint"),
             parent_command_id=document.get("parent_command_id"),
+            output_formats=tuple(document.get("output_formats", ())),
+            default_output_format=document.get("default_output_format"),
             aliases=tuple(document.get("aliases", ())),
             tags=tuple(document.get("tags", ())),
             notes=document.get("notes"),
@@ -259,3 +263,77 @@ class CommandIndex:
             if entry.command_id == command_id:
                 return entry
         raise KeyError(command_id)
+
+
+@dataclass(frozen=True, slots=True)
+class TraceabilityEntry:
+    """Traceability-index entry."""
+
+    trace_id: str
+    title: str
+    summary: str
+    status: str
+    updated_at: str
+    prd_ids: tuple[str, ...] = ()
+    decision_ids: tuple[str, ...] = ()
+    design_ids: tuple[str, ...] = ()
+    plan_ids: tuple[str, ...] = ()
+    requirement_ids: tuple[str, ...] = ()
+    acceptance_ids: tuple[str, ...] = ()
+    acceptance_contract_ids: tuple[str, ...] = ()
+    validator_ids: tuple[str, ...] = ()
+    evidence_ids: tuple[str, ...] = ()
+    related_paths: tuple[str, ...] = ()
+    tags: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> "TraceabilityEntry":
+        return cls(
+            trace_id=document["trace_id"],
+            title=document["title"],
+            summary=document["summary"],
+            status=document["status"],
+            updated_at=document["updated_at"],
+            prd_ids=tuple(document.get("prd_ids", ())),
+            decision_ids=tuple(document.get("decision_ids", ())),
+            design_ids=tuple(document.get("design_ids", ())),
+            plan_ids=tuple(document.get("plan_ids", ())),
+            requirement_ids=tuple(document.get("requirement_ids", ())),
+            acceptance_ids=tuple(document.get("acceptance_ids", ())),
+            acceptance_contract_ids=tuple(document.get("acceptance_contract_ids", ())),
+            validator_ids=tuple(document.get("validator_ids", ())),
+            evidence_ids=tuple(document.get("evidence_ids", ())),
+            related_paths=tuple(document.get("related_paths", ())),
+            tags=tuple(document.get("tags", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class TraceabilityIndex:
+    """Typed traceability-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[TraceabilityEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> "TraceabilityIndex":
+        entries = tuple(TraceabilityEntry.from_document(entry) for entry in document["entries"])
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, trace_id: str) -> TraceabilityEntry:
+        """Return a traceability entry by trace identifier."""
+        for entry in self.entries:
+            if entry.trace_id == trace_id:
+                return entry
+        raise KeyError(trace_id)
