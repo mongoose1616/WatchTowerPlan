@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1",
+  "title": "UTC Timestamp",
+  "description": "Repository-standard RFC 3339 UTC timestamp with trailing Z and whole-second precision.",
+  "type": "string",
+  "format": "date-time",
+  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+}

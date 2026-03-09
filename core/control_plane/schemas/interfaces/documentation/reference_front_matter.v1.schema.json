@@ -17,7 +17,7 @@
         "status",
         "tags",
         "owner",
-        "updated",
+        "updated_at",
         "audience"
       ],
       "properties": {

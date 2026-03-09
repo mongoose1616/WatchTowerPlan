@@ -10,5 +10,5 @@
 | `core/control_plane/indexes/design_documents/design_document_index.v1.json` | Machine-readable index of current feature designs and implementation plans. |
 
 ## Notes
-- The human-readable companion tracker lives at [design_tracking.md](/home/j/WatchTowerPlan/docs/design/design_tracking.md).
+- The human-readable companion tracker lives at [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md).
 - The artifact family is governed by [design_document_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/design_document_index_standard.md) and [design_document_index.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/artifacts/design_document_index.v1.schema.json).

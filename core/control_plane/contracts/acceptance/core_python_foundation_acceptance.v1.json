@@ -1,0 +1,86 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.core_python_foundation",
+  "title": "Core Python Foundation Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.core_python_foundation",
+  "source_prd_id": "prd.core_python_foundation",
+  "entries": [
+    {
+      "acceptance_id": "ac.core_python_foundation.001",
+      "summary": "The repository keeps one canonical Python workspace under core/python and one authored control-plane root under core/control_plane.",
+      "source_requirement_ids": [
+        "req.core_python_foundation.001",
+        "req.core_python_foundation.002"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/"
+      ],
+      "related_paths": [
+        "core/README.md",
+        "core/python/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_python_foundation.002",
+      "summary": "Published schema, validator, command, PRD, decision, design, acceptance, and traceability artifacts exist and validate against their governed schemas.",
+      "source_requirement_ids": [
+        "req.core_python_foundation.003",
+        "req.core_python_foundation.004",
+        "req.core_python_foundation.005",
+        "req.core_python_foundation.006"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.traceability_index",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_python_foundation.003",
+      "summary": "At least one real PRD to decision to design to implementation plan to validation evidence chain exists for the core Python foundation trace.",
+      "source_requirement_ids": [
+        "req.core_python_foundation.006"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/planning/decisions/core_python_workspace_root.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_python_foundation.004",
+      "summary": "The first Python implementation slice can load the current governed schema, validator, command, path, PRD, decision, and traceability surfaces through control-plane artifacts.",
+      "source_requirement_ids": [
+        "req.core_python_foundation.003",
+        "req.core_python_foundation.004",
+        "req.core_python_foundation.005"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.traceability_index"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/prds/prd_index.v1.json",
+        "core/control_plane/indexes/decisions/decision_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
+  "id": "index.traceability",
+  "title": "Traceability Index",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.example_trace",
+      "title": "Example Trace",
+      "summary": "Example trace join record.",
+      "status": "active",
+      "updated_at": "2026-03-09T04:55:49Z",
+      "prd_ids": [
+        "prd.example_trace"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.example_trace"
+      ],
+      "evidence_ids": [
+        "evidence.example_trace.acceptance_validation"
+      ]
+    }
+  ]
+}

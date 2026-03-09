@@ -16,7 +16,7 @@
         "type",
         "status",
         "owner",
-        "updated",
+        "updated_at",
         "audience"
       ],
       "properties": {

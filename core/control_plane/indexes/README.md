@@ -8,7 +8,10 @@
 |---|---|
 | `core/control_plane/indexes/README.md` | Describes the purpose of the indexes directory and its main index families. |
 | `core/control_plane/indexes/commands/` | Machine-readable command indexes for command lookup and routing to command pages. |
+| `core/control_plane/indexes/decisions/` | Machine-readable indexes for durable decision records and their trace links. |
 | `core/control_plane/indexes/design_documents/` | Machine-readable indexes for tracking feature designs and implementation plans. |
+| `core/control_plane/indexes/prds/` | Machine-readable indexes for PRDs and their traceability anchors. |
 | `core/control_plane/indexes/repository_paths/` | Generated repository path indexes for retrieval and navigation. |
 | `core/control_plane/indexes/schemas/` | Lookup indexes over published schemas. |
 | `core/control_plane/indexes/registries/` | Lookup indexes over governed registries. |
+| `core/control_plane/indexes/traceability/` | Unified traceability indexes that join planning, contract, validator, and evidence surfaces. |

@@ -6,14 +6,15 @@
   "entries": [
     {
       "document_id": "design.features.example_feature",
+      "trace_id": "trace.example_feature",
       "family": "feature_design",
       "title": "Example Feature Design",
       "summary": "Example feature design entry for the design-document index schema.",
       "status": "active",
-      "doc_path": "docs/design/features/example_feature.md",
-      "last_synced": "2026-03-09",
+      "doc_path": "docs/planning/design/features/example_feature.md",
+      "updated_at": "2026-03-09T04:55:49Z",
       "related_paths": [
-        "docs/design/implementation/example_feature_plan.md"
+        "docs/planning/design/implementation/example_feature_plan.md"
       ],
       "tags": [
         "design",
@@ -22,14 +23,15 @@
     },
     {
       "document_id": "design.implementation.example_feature_plan",
+      "trace_id": "trace.example_feature",
       "family": "implementation_plan",
       "title": "Example Feature Implementation Plan",
       "summary": "Example implementation-plan entry for the design-document index schema.",
       "status": "active",
-      "doc_path": "docs/design/implementation/example_feature_plan.md",
-      "last_synced": "2026-03-09",
+      "doc_path": "docs/planning/design/implementation/example_feature_plan.md",
+      "updated_at": "2026-03-09T04:55:49Z",
       "source_paths": [
-        "docs/design/features/example_feature.md"
+        "docs/planning/design/features/example_feature.md"
       ],
       "tags": [
         "design",

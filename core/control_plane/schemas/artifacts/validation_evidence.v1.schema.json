@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "title": "Validation Evidence",
+  "description": "Durable machine-readable validation evidence linked to traces, validators, and acceptance items.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "trace_id",
+    "overall_result",
+    "recorded_at",
+    "checks"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^evidence\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "trace_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "overall_result": {
+      "$ref": "#/$defs/resultStatus"
+    },
+    "recorded_at": {
+      "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+    },
+    "source_prd_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "source_decision_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "source_design_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "source_plan_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "source_acceptance_contract_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/checkEntry"
+      }
+    },
+    "related_paths": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "resultStatus": {
+      "type": "string",
+      "enum": [
+        "passed",
+        "failed",
+        "warning",
+        "not_applicable"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "idList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "checkEntry": {
+      "type": "object",
+      "required": [
+        "check_id",
+        "title",
+        "result"
+      ],
+      "properties": {
+        "check_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result": {
+          "$ref": "#/$defs/resultStatus"
+        },
+        "subject_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "subject_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "validator_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "subject_paths"
+          ]
+        },
+        {
+          "required": [
+            "subject_ids"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:decision-index:v1",
+  "id": "index.decisions",
+  "title": "Decision Index",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.core_python_foundation",
+      "decision_id": "decision.core_python_workspace_root",
+      "title": "Core Python Workspace Root Decision",
+      "summary": "Records the decision to use core/python as the single Python workspace root alongside the versioned control plane.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/core_python_workspace_root.md",
+      "updated_at": "2026-03-09T04:55:49Z",
+      "linked_prd_ids": [
+        "prd.core_python_foundation"
+      ],
+      "linked_design_ids": [
+        "design.features.core_python_workspace_and_harness"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.control_plane_loaders_and_schema_store"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/"
+      ],
+      "tags": [
+        "decision",
+        "python",
+        "workspace"
+      ]
+    }
+  ]
+}

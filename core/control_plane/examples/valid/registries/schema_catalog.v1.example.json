@@ -18,6 +18,16 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1",
+      "title": "UTC Timestamp",
+      "description": "Shared RFC 3339 UTC timestamp fragment.",
+      "status": "active",
+      "schema_family": "common",
+      "subject_kind": "utc_timestamp",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/common/utc_timestamp.v1.schema.json"
+    },
+    {
       "schema_id": "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
       "title": "Reference Front Matter",
       "description": "Schema for parsed front matter metadata for governed reference documents.",

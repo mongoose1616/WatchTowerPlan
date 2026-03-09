@@ -59,10 +59,30 @@
       "related_paths": [
         "docs/commands/",
         "docs/foundations/",
-        "docs/design/",
+        "docs/planning/",
         "docs/references/",
         "docs/standards/",
         "docs/templates/"
+      ]
+    },
+    {
+      "path": "docs/planning/",
+      "kind": "directory",
+      "surface_kind": "planning_root",
+      "summary": "Planning corpus root for PRDs, technical designs, implementation plans, and durable decision records.",
+      "parent_path": "docs/",
+      "aliases": [
+        "planning docs",
+        "planning corpus"
+      ],
+      "tags": [
+        "planning",
+        "documentation"
+      ],
+      "related_paths": [
+        "docs/planning/prds/",
+        "docs/planning/design/",
+        "docs/planning/decisions/"
       ]
     },
     {
@@ -85,6 +105,43 @@
       ]
     },
     {
+      "path": "docs/planning/decisions/",
+      "kind": "directory",
+      "surface_kind": "decision_docs",
+      "summary": "Durable decision-record directory for planning, governance, and architecture choices with explicit rationale and status.",
+      "parent_path": "docs/planning/",
+      "aliases": [
+        "decision records",
+        "adrs"
+      ],
+      "tags": [
+        "decisions",
+        "governance"
+      ],
+      "related_paths": [
+        "docs/planning/decisions/decision_tracking.md",
+        "core/control_plane/indexes/decisions/"
+      ]
+    },
+    {
+      "path": "docs/planning/decisions/decision_tracking.md",
+      "kind": "file",
+      "surface_kind": "decision_tracker",
+      "summary": "Human-readable tracker for the current durable decision-record corpus.",
+      "parent_path": "docs/planning/decisions/",
+      "aliases": [
+        "decision tracker"
+      ],
+      "tags": [
+        "decisions",
+        "tracking"
+      ],
+      "related_paths": [
+        "docs/planning/decisions/",
+        "core/control_plane/indexes/decisions/decision_index.v1.json"
+      ]
+    },
+    {
       "path": "docs/foundations/",
       "kind": "directory",
       "surface_kind": "documentation_family",
@@ -99,26 +156,26 @@
       ]
     },
     {
-      "path": "docs/design/",
+      "path": "docs/planning/design/",
       "kind": "directory",
       "surface_kind": "design",
       "summary": "Technical design document area for feature designs, implementation plans, and design tracking.",
-      "parent_path": "docs/",
+      "parent_path": "docs/planning/",
       "tags": [
         "design"
       ],
       "related_paths": [
-        "docs/design/design_tracking.md",
-        "docs/design/features/",
-        "docs/design/implementation/"
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/",
+        "docs/planning/design/implementation/"
       ]
     },
     {
-      "path": "docs/design/design_tracking.md",
+      "path": "docs/planning/design/design_tracking.md",
       "kind": "file",
       "surface_kind": "design_tracker",
       "summary": "Human-readable tracker for current feature designs, implementation plans, and their main relationships.",
-      "parent_path": "docs/design/",
+      "parent_path": "docs/planning/design/",
       "aliases": [
         "design tracker",
         "design tracking"
@@ -128,17 +185,17 @@
         "tracking"
       ],
       "related_paths": [
-        "docs/design/features/",
-        "docs/design/implementation/",
+        "docs/planning/design/features/",
+        "docs/planning/design/implementation/",
         "core/control_plane/indexes/design_documents/design_document_index.v1.json"
       ]
     },
     {
-      "path": "docs/design/implementation/",
+      "path": "docs/planning/design/implementation/",
       "kind": "directory",
       "surface_kind": "implementation_plan",
       "summary": "Implementation-plan directory that turns approved feature designs into concrete engineering work breakdown.",
-      "parent_path": "docs/design/",
+      "parent_path": "docs/planning/design/",
       "aliases": [
         "implementation plans"
       ],
@@ -147,8 +204,8 @@
         "implementation"
       ],
       "related_paths": [
-        "docs/design/features/",
-        "docs/design/design_tracking.md"
+        "docs/planning/design/features/",
+        "docs/planning/design/design_tracking.md"
       ]
     },
     {
@@ -165,6 +222,43 @@
       ],
       "related_paths": [
         "docs/standards/"
+      ]
+    },
+    {
+      "path": "docs/planning/prds/",
+      "kind": "directory",
+      "surface_kind": "prd_docs",
+      "summary": "Product requirements document directory for durable scope, goals, requirements, and acceptance criteria.",
+      "parent_path": "docs/planning/",
+      "aliases": [
+        "prds",
+        "requirements docs"
+      ],
+      "tags": [
+        "planning",
+        "requirements"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "core/control_plane/indexes/prds/"
+      ]
+    },
+    {
+      "path": "docs/planning/prds/prd_tracking.md",
+      "kind": "file",
+      "surface_kind": "prd_tracker",
+      "summary": "Human-readable tracker for the current PRD corpus.",
+      "parent_path": "docs/planning/prds/",
+      "aliases": [
+        "prd tracker"
+      ],
+      "tags": [
+        "planning",
+        "tracking"
+      ],
+      "related_paths": [
+        "docs/planning/prds/",
+        "core/control_plane/indexes/prds/prd_index.v1.json"
       ]
     },
     {
@@ -282,6 +376,7 @@
         "core/control_plane/schemas/",
         "core/control_plane/registries/",
         "core/control_plane/contracts/",
+        "core/control_plane/ledgers/",
         "core/control_plane/policies/",
         "core/control_plane/indexes/"
       ]
@@ -319,15 +414,36 @@
       "path": "core/control_plane/contracts/",
       "kind": "directory",
       "surface_kind": "contract_root",
-      "summary": "Versioned intake and compatibility boundaries for governed artifacts.",
+      "summary": "Versioned acceptance, intake, and compatibility boundaries for governed artifacts.",
       "parent_path": "core/control_plane/",
       "tags": [
         "contracts",
-        "compatibility"
+        "compatibility",
+        "acceptance"
       ],
       "related_paths": [
+        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/intake/",
         "core/control_plane/contracts/compatibility/"
+      ]
+    },
+    {
+      "path": "core/control_plane/contracts/acceptance/",
+      "kind": "directory",
+      "surface_kind": "acceptance_contract_root",
+      "summary": "Machine-readable acceptance contracts derived from durable PRD acceptance criteria.",
+      "parent_path": "core/control_plane/contracts/",
+      "aliases": [
+        "acceptance contracts"
+      ],
+      "tags": [
+        "contracts",
+        "acceptance",
+        "traceability"
+      ],
+      "related_paths": [
+        "docs/planning/prds/",
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
       ]
     },
     {
@@ -361,7 +477,10 @@
       ],
       "related_paths": [
         "core/control_plane/indexes/commands/",
+        "core/control_plane/indexes/decisions/",
         "core/control_plane/indexes/design_documents/",
+        "core/control_plane/indexes/prds/",
+        "core/control_plane/indexes/traceability/",
         "core/control_plane/indexes/repository_paths/",
         "core/control_plane/indexes/schemas/",
         "core/control_plane/indexes/registries/"
@@ -386,6 +505,25 @@
       ]
     },
     {
+      "path": "core/control_plane/indexes/decisions/",
+      "kind": "directory",
+      "surface_kind": "decision_index_root",
+      "summary": "Machine-readable decision indexes for durable decision records and their traceability links.",
+      "parent_path": "core/control_plane/indexes/",
+      "aliases": [
+        "decision index"
+      ],
+      "tags": [
+        "decisions",
+        "lookup",
+        "tracking"
+      ],
+      "related_paths": [
+        "docs/planning/decisions/",
+        "core/control_plane/indexes/decisions/decision_index.v1.json"
+      ]
+    },
+    {
       "path": "core/control_plane/indexes/design_documents/",
       "kind": "directory",
       "surface_kind": "design_document_index_root",
@@ -401,8 +539,83 @@
         "tracking"
       ],
       "related_paths": [
-        "docs/design/design_tracking.md",
+        "docs/planning/design/design_tracking.md",
         "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+      ]
+    },
+    {
+      "path": "core/control_plane/indexes/prds/",
+      "kind": "directory",
+      "surface_kind": "prd_index_root",
+      "summary": "Machine-readable PRD indexes for product requirements and their traceability anchors.",
+      "parent_path": "core/control_plane/indexes/",
+      "aliases": [
+        "prd index"
+      ],
+      "tags": [
+        "planning",
+        "requirements",
+        "lookup"
+      ],
+      "related_paths": [
+        "docs/planning/prds/",
+        "core/control_plane/indexes/prds/prd_index.v1.json"
+      ]
+    },
+    {
+      "path": "core/control_plane/indexes/traceability/",
+      "kind": "directory",
+      "surface_kind": "traceability_index_root",
+      "summary": "Unified machine-readable traceability indexes joining planning, contract, validator, and evidence surfaces.",
+      "parent_path": "core/control_plane/indexes/",
+      "aliases": [
+        "traceability index",
+        "trace index"
+      ],
+      "tags": [
+        "traceability",
+        "lookup",
+        "tracking"
+      ],
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    },
+    {
+      "path": "core/control_plane/ledgers/",
+      "kind": "directory",
+      "surface_kind": "ledger_root",
+      "summary": "Committed append-only history for governed releases, migrations, and durable validation evidence.",
+      "parent_path": "core/control_plane/",
+      "tags": [
+        "history",
+        "ledgers"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/migrations/",
+        "core/control_plane/ledgers/releases/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/",
+      "kind": "directory",
+      "surface_kind": "validation_evidence_root",
+      "summary": "Committed durable validation-evidence artifacts linked to trace IDs, validators, and acceptance items.",
+      "parent_path": "core/control_plane/ledgers/",
+      "aliases": [
+        "validation evidence",
+        "evidence ledger"
+      ],
+      "tags": [
+        "validation",
+        "evidence",
+        "traceability"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json"
       ]
     },
     {

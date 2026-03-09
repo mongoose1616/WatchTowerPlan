@@ -1,0 +1,51 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
+  "id": "index.prds",
+  "title": "PRD Index",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.core_python_foundation",
+      "prd_id": "prd.core_python_foundation",
+      "title": "Core Python Foundation PRD",
+      "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, query, and traceability foundation.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/core_python_foundation.md",
+      "updated_at": "2026-03-09T04:55:49Z",
+      "requirement_ids": [
+        "req.core_python_foundation.001",
+        "req.core_python_foundation.002",
+        "req.core_python_foundation.003",
+        "req.core_python_foundation.004",
+        "req.core_python_foundation.005",
+        "req.core_python_foundation.006"
+      ],
+      "acceptance_ids": [
+        "ac.core_python_foundation.001",
+        "ac.core_python_foundation.002",
+        "ac.core_python_foundation.003",
+        "ac.core_python_foundation.004"
+      ],
+      "linked_decision_ids": [
+        "decision.core_python_workspace_root"
+      ],
+      "linked_design_ids": [
+        "design.features.core_python_workspace_and_harness",
+        "design.features.python_validator_execution",
+        "design.features.schema_resolution_and_index_search"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.control_plane_loaders_and_schema_store"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/"
+      ],
+      "tags": [
+        "planning",
+        "python",
+        "traceability"
+      ]
+    }
+  ]
+}

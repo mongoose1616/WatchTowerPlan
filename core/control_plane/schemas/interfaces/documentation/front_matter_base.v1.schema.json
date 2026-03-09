@@ -5,6 +5,12 @@
   "description": "Shared field definitions for parsed front matter objects used by governed documentation families.",
   "type": "object",
   "properties": {
+    "trace_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$",
+      "minLength": 1,
+      "description": "Shared traceability identifier used to join related planning artifacts."
+    },
     "id": {
       "type": "string",
       "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$",
@@ -26,7 +32,11 @@
       "enum": [
         "reference",
         "standard",
-        "workflow"
+        "workflow",
+        "prd",
+        "decision_record",
+        "feature_design",
+        "implementation_plan"
       ],
       "description": "Governed document family."
     },
@@ -54,10 +64,9 @@
       "minLength": 1,
       "description": "Responsible maintainer or role."
     },
-    "updated": {
-      "type": "string",
-      "format": "date",
-      "description": "Last meaningful content update date."
+    "updated_at": {
+      "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1",
+      "description": "Last meaningful content update timestamp in RFC 3339 UTC form."
     },
     "audience": {
       "type": "string",

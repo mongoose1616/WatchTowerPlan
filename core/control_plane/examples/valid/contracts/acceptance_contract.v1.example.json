@@ -1,0 +1,23 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.example_trace",
+  "title": "Example Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.example_trace",
+  "source_prd_id": "prd.example_trace",
+  "entries": [
+    {
+      "acceptance_id": "ac.example_trace.001",
+      "summary": "Example acceptance item.",
+      "source_requirement_ids": [
+        "req.example_trace.001"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract"
+      ],
+      "validation_targets": [
+        "core/example/"
+      ]
+    }
+  ]
+}

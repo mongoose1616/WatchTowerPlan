@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
+  "id": "index.prds",
+  "title": "PRD Index",
+  "status": "active",
+  "entries": [
+    {
+      "prd_id": "prd.example_feature",
+      "title": "Example Feature PRD",
+      "summary": "Invalid PRD entry missing a required trace ID.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/example_feature.md",
+      "updated_at": "2026-03-09T04:55:49Z"
+    }
+  ]
+}

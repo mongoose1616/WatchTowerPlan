@@ -1,0 +1,14 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
+  "id": "index.traceability",
+  "title": "Traceability Index",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.example_trace",
+      "title": "Example Trace",
+      "summary": "Example trace join record.",
+      "status": "active"
+    }
+  ]
+}

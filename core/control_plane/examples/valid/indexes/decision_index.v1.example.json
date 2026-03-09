@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:decision-index:v1",
+  "id": "index.decisions",
+  "title": "Decision Index",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.example_feature",
+      "decision_id": "decision.example_feature_storage",
+      "title": "Example Feature Storage Decision",
+      "summary": "Example decision entry for the decision-index schema.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/example_feature_storage.md",
+      "updated_at": "2026-03-09T04:55:49Z",
+      "linked_prd_ids": [
+        "prd.example_feature"
+      ],
+      "linked_design_ids": [
+        "design.features.example_feature"
+      ]
+    }
+  ]
+}

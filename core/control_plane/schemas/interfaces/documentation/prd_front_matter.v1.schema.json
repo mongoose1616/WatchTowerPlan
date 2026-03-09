@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1",
+  "title": "PRD Front Matter",
+  "description": "Parsed front matter profile for governed product requirements documents.",
+  "allOf": [
+    {
+      "$ref": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1"
+    },
+    {
+      "type": "object",
+      "required": [
+        "trace_id",
+        "id",
+        "title",
+        "summary",
+        "type",
+        "status",
+        "owner",
+        "updated_at",
+        "audience",
+        "authority"
+      ],
+      "properties": {
+        "type": {
+          "const": "prd"
+        }
+      }
+    }
+  ]
+}

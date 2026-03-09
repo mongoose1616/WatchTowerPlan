@@ -1,0 +1,11 @@
+{
+  "trace_id": "trace.core_python_foundation",
+  "id": "prd.core_python_foundation",
+  "title": "Core Python Foundation PRD",
+  "summary": "Invalid PRD front matter example missing required authority metadata.",
+  "type": "prd",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T04:55:49Z",
+  "audience": "shared"
+}

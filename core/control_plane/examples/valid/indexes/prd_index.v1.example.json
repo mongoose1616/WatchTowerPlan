@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
+  "id": "index.prds",
+  "title": "PRD Index",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.example_feature",
+      "prd_id": "prd.example_feature",
+      "title": "Example Feature PRD",
+      "summary": "Example PRD entry for the PRD-index schema.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/example_feature.md",
+      "updated_at": "2026-03-09T04:55:49Z",
+      "requirement_ids": [
+        "req.example_feature.001"
+      ],
+      "acceptance_ids": [
+        "ac.example_feature.001"
+      ],
+      "linked_design_ids": [
+        "design.features.example_feature"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.example_feature"
+      ]
+    }
+  ]
+}

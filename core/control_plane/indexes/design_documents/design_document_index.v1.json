@@ -6,12 +6,13 @@
   "entries": [
     {
       "document_id": "design.features.command_documentation_and_lookup",
+      "trace_id": "trace.command_documentation_and_lookup",
       "family": "feature_design",
       "title": "Command Documentation and Lookup Design",
       "summary": "Feature design for human-readable command pages and the machine-readable command index.",
       "status": "active",
-      "doc_path": "docs/design/features/command_documentation_and_lookup.md",
-      "last_synced": "2026-03-09",
+      "doc_path": "docs/planning/design/features/command_documentation_and_lookup.md",
+      "updated_at": "2026-03-09T04:55:49Z",
       "related_paths": [
         "docs/commands/",
         "core/control_plane/indexes/commands/command_index.v1.json"
@@ -24,14 +25,15 @@
     },
     {
       "document_id": "design.features.core_python_workspace_and_harness",
+      "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
       "title": "Core Python Workspace and Harness Design",
       "summary": "Feature design for the consolidated core Python workspace and the first helper-harness package boundaries.",
       "status": "active",
-      "doc_path": "docs/design/features/core_python_workspace_and_harness.md",
-      "last_synced": "2026-03-09",
+      "doc_path": "docs/planning/design/features/core_python_workspace_and_harness.md",
+      "updated_at": "2026-03-09T04:55:49Z",
       "related_paths": [
-        "docs/design/implementation/control_plane_loaders_and_schema_store.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/python/"
       ],
       "tags": [
@@ -42,14 +44,15 @@
     },
     {
       "document_id": "design.features.python_validator_execution",
+      "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
       "title": "Python Validator Execution Design",
       "summary": "Feature design for registry-driven validator execution in the core Python layer.",
       "status": "active",
-      "doc_path": "docs/design/features/python_validator_execution.md",
-      "last_synced": "2026-03-09",
+      "doc_path": "docs/planning/design/features/python_validator_execution.md",
+      "updated_at": "2026-03-09T04:55:49Z",
       "related_paths": [
-        "docs/design/implementation/control_plane_loaders_and_schema_store.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/registries/validators/validator_registry.v1.json"
       ],
       "tags": [
@@ -60,14 +63,15 @@
     },
     {
       "document_id": "design.features.schema_resolution_and_index_search",
+      "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
       "title": "Schema Resolution and Index Search Design",
       "summary": "Feature design for deterministic schema resolution and index-backed repository search.",
       "status": "active",
-      "doc_path": "docs/design/features/schema_resolution_and_index_search.md",
-      "last_synced": "2026-03-09",
+      "doc_path": "docs/planning/design/features/schema_resolution_and_index_search.md",
+      "updated_at": "2026-03-09T04:55:49Z",
       "related_paths": [
-        "docs/design/implementation/control_plane_loaders_and_schema_store.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
       ],
@@ -79,16 +83,17 @@
     },
     {
       "document_id": "design.implementation.control_plane_loaders_and_schema_store",
+      "trace_id": "trace.core_python_foundation",
       "family": "implementation_plan",
       "title": "Control-Plane Loaders and SchemaStore Implementation Plan",
       "summary": "Implementation plan for the first core Python slice covering control-plane loaders and SchemaStore.",
       "status": "active",
-      "doc_path": "docs/design/implementation/control_plane_loaders_and_schema_store.md",
-      "last_synced": "2026-03-09",
+      "doc_path": "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+      "updated_at": "2026-03-09T04:55:49Z",
       "source_paths": [
-        "docs/design/features/core_python_workspace_and_harness.md",
-        "docs/design/features/python_validator_execution.md",
-        "docs/design/features/schema_resolution_and_index_search.md"
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/control_plane/",

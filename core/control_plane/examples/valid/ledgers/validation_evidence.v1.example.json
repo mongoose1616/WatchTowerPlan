@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.example_trace.acceptance_validation",
+  "title": "Example Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.example_trace",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-09T04:55:49Z",
+  "checks": [
+    {
+      "check_id": "check.example_trace.acceptance_contract",
+      "title": "Acceptance contract schema validation",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/example_acceptance.v1.json"
+      ],
+      "validator_id": "validator.control_plane.acceptance_contract"
+    }
+  ]
+}

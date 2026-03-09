@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
+  "title": "PRD Index",
+  "description": "Machine-readable tracking index for product requirements documents stored under docs/planning/prds/.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:prd-index:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "index.prds"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/prdEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "docPath": {
+      "type": "string",
+      "pattern": "^docs/planning/prds/.+\\.md$"
+    },
+    "idList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "prdEntry": {
+      "type": "object",
+      "required": [
+        "trace_id",
+        "prd_id",
+        "title",
+        "summary",
+        "status",
+        "doc_path",
+        "updated_at"
+      ],
+      "properties": {
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "prd_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "doc_path": {
+          "$ref": "#/$defs/docPath"
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "requirement_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "linked_decision_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "linked_design_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "linked_plan_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -16,12 +16,16 @@
         "type",
         "status",
         "owner",
-        "updated",
-        "audience"
+        "updated_at",
+        "audience",
+        "authority"
       ],
       "properties": {
         "type": {
           "const": "standard"
+        },
+        "authority": {
+          "const": "authoritative"
         }
       }
     }

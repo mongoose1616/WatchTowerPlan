@@ -1,0 +1,98 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.core_python_foundation.traceability_baseline",
+  "title": "Core Python Foundation Traceability Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.core_python_foundation",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-09T04:55:49Z",
+  "source_prd_ids": [
+    "prd.core_python_foundation"
+  ],
+  "source_decision_ids": [
+    "decision.core_python_workspace_root"
+  ],
+  "source_design_ids": [
+    "design.features.core_python_workspace_and_harness",
+    "design.features.python_validator_execution",
+    "design.features.schema_resolution_and_index_search"
+  ],
+  "source_plan_ids": [
+    "design.implementation.control_plane_loaders_and_schema_store"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.core_python_foundation"
+  ],
+  "checks": [
+    {
+      "check_id": "check.core_python_foundation.prd_front_matter",
+      "title": "PRD front matter profile validation",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/core_python_foundation.md"
+      ],
+      "subject_ids": [
+        "prd.core_python_foundation"
+      ],
+      "validator_id": "validator.documentation.prd_front_matter",
+      "acceptance_ids": [
+        "ac.core_python_foundation.003"
+      ]
+    },
+    {
+      "check_id": "check.core_python_foundation.decision_front_matter",
+      "title": "Decision-record front matter profile validation",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/decisions/core_python_workspace_root.md"
+      ],
+      "subject_ids": [
+        "decision.core_python_workspace_root"
+      ],
+      "validator_id": "validator.documentation.decision_record_front_matter",
+      "acceptance_ids": [
+        "ac.core_python_foundation.003"
+      ]
+    },
+    {
+      "check_id": "check.core_python_foundation.acceptance_contract",
+      "title": "Acceptance contract schema validation",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+      ],
+      "subject_ids": [
+        "contract.acceptance.core_python_foundation"
+      ],
+      "validator_id": "validator.control_plane.acceptance_contract",
+      "acceptance_ids": [
+        "ac.core_python_foundation.002",
+        "ac.core_python_foundation.003"
+      ]
+    },
+    {
+      "check_id": "check.core_python_foundation.traceability_index",
+      "title": "Unified traceability index validation",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "subject_ids": [
+        "index.traceability"
+      ],
+      "validator_id": "validator.control_plane.traceability_index",
+      "acceptance_ids": [
+        "ac.core_python_foundation.002",
+        "ac.core_python_foundation.003"
+      ]
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+    "core/control_plane/registries/validators/validator_registry.v1.json",
+    "core/control_plane/indexes/prds/prd_index.v1.json",
+    "core/control_plane/indexes/decisions/decision_index.v1.json",
+    "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+  ],
+  "notes": "Initial durable evidence record for the first end-to-end traceability slice. It covers the current traceability baseline, not the full future Python loader acceptance scope."
+}

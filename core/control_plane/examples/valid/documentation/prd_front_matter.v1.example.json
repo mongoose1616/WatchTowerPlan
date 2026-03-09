@@ -1,0 +1,18 @@
+{
+  "trace_id": "trace.core_python_foundation",
+  "id": "prd.core_python_foundation",
+  "title": "Core Python Foundation PRD",
+  "summary": "Defines the product and planning intent for the core Python helper and control-plane loading foundation.",
+  "type": "prd",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T04:55:49Z",
+  "audience": "shared",
+  "authority": "authoritative",
+  "applies_to": [
+    "docs/planning/prds/core_python_foundation.md"
+  ],
+  "aliases": [
+    "core python prd"
+  ]
+}

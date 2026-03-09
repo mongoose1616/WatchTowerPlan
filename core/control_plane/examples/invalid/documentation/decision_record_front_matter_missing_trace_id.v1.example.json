@@ -1,0 +1,11 @@
+{
+  "id": "decision.core_python_workspace_root",
+  "title": "Core Python Workspace Root Decision",
+  "summary": "Invalid decision-record front matter example missing a required trace ID.",
+  "type": "decision_record",
+  "status": "active",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-09T04:55:49Z",
+  "audience": "shared",
+  "authority": "supporting"
+}

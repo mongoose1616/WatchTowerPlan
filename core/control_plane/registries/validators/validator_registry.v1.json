@@ -5,6 +5,48 @@
   "status": "active",
   "validators": [
     {
+      "id": "validator.control_plane.acceptance_contract",
+      "title": "Acceptance Contract Validator",
+      "description": "Validates machine-readable acceptance contract artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "acceptance_contract",
+      "applies_to": [
+        "core/control_plane/contracts/acceptance/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.traceability_index",
+      "title": "Traceability Index Validator",
+      "description": "Validates unified machine-readable traceability index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "traceability_index",
+      "applies_to": [
+        "core/control_plane/indexes/traceability/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:traceability-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.validation_evidence",
+      "title": "Validation Evidence Validator",
+      "description": "Validates durable validation-evidence ledger artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validation_evidence",
+      "applies_to": [
+        "core/control_plane/ledgers/validation_evidence/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1"
+      ]
+    },
+    {
       "id": "validator.documentation.reference_front_matter",
       "title": "Reference Front Matter Validator",
       "description": "Validates parsed front matter metadata for governed reference documents.",
@@ -31,6 +73,34 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:standard-front-matter:v1"
+      ]
+    },
+    {
+      "id": "validator.documentation.prd_front_matter",
+      "title": "PRD Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed product requirements documents.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "docs/planning/prds/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1"
+      ]
+    },
+    {
+      "id": "validator.documentation.decision_record_front_matter",
+      "title": "Decision Record Front Matter Validator",
+      "description": "Validates parsed front matter metadata for governed durable decision records.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "documentation_front_matter",
+      "applies_to": [
+        "docs/planning/decisions/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1"
       ]
     },
     {

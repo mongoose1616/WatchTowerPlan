@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:design-document-index:v1",
   "title": "Design Document Index",
-  "description": "Machine-readable tracking index for feature designs and implementation plans stored under docs/design/.",
+  "description": "Machine-readable tracking index for feature designs and implementation plans stored under docs/planning/design/.",
   "type": "object",
   "required": [
     "$schema",
@@ -54,11 +54,7 @@
     },
     "docPath": {
       "type": "string",
-      "pattern": "^docs/design/(features|implementation)/.+\\.md$"
-    },
-    "dateString": {
-      "type": "string",
-      "format": "date"
+      "pattern": "^docs/planning/design/(features|implementation)/.+\\.md$"
     },
     "stringList": {
       "type": "array",
@@ -73,17 +69,22 @@
       "type": "object",
       "required": [
         "document_id",
+        "trace_id",
         "family",
         "title",
         "summary",
         "status",
         "doc_path",
-        "last_synced"
+        "updated_at"
       ],
       "properties": {
         "document_id": {
           "$ref": "#/$defs/idPattern",
           "description": "Stable machine-usable identifier for the design document entry."
+        },
+        "trace_id": {
+          "$ref": "#/$defs/idPattern",
+          "description": "Shared umbrella identifier for the traced initiative."
         },
         "family": {
           "type": "string",
@@ -110,9 +111,9 @@
           "$ref": "#/$defs/docPath",
           "description": "Repository-relative path to the design document."
         },
-        "last_synced": {
-          "$ref": "#/$defs/dateString",
-          "description": "Last meaningful content update date for the design document."
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1",
+          "description": "Last meaningful content update timestamp for the design document."
         },
         "source_paths": {
           "$ref": "#/$defs/stringList",

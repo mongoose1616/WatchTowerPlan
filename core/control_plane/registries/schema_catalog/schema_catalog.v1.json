@@ -5,6 +5,19 @@
   "status": "active",
   "schemas": [
     {
+      "schema_id": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+      "title": "Acceptance Contract",
+      "description": "Schema for machine-readable acceptance contract artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "acceptance_contract",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/acceptance_contract.v1.schema.json",
+      "aliases": [
+        "acceptance contract schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:command-index:v1",
       "title": "Command Index",
       "description": "Schema for machine-readable command index artifacts.",
@@ -16,6 +29,20 @@
       "aliases": [
         "command lookup schema",
         "command man page index schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:decision-index:v1",
+      "title": "Decision Index",
+      "description": "Schema for machine-readable decision index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "decision_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+      "aliases": [
+        "decision tracking index schema",
+        "decision lookup schema"
       ]
     },
     {
@@ -33,6 +60,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
+      "title": "PRD Index",
+      "description": "Schema for machine-readable PRD index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "prd_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/prd_index.v1.schema.json",
+      "aliases": [
+        "prd tracking index schema",
+        "requirements document lookup schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1",
       "title": "Repository Path Index",
       "description": "Schema for generated repository path index artifacts.",
@@ -44,6 +85,34 @@
       "aliases": [
         "path index schema",
         "repository search index schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
+      "title": "Traceability Index",
+      "description": "Schema for unified machine-readable traceability index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "traceability_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/traceability_index.v1.schema.json",
+      "aliases": [
+        "trace join schema",
+        "traceability lookup schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+      "title": "Validation Evidence",
+      "description": "Schema for durable validation-evidence ledger artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "validation_evidence",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/validation_evidence.v1.schema.json",
+      "aliases": [
+        "validation evidence schema",
+        "evidence ledger schema"
       ]
     },
     {
@@ -74,6 +143,21 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1",
+      "title": "UTC Timestamp",
+      "description": "Shared RFC 3339 UTC timestamp fragment for governed repository timestamp fields.",
+      "status": "active",
+      "schema_family": "common",
+      "subject_kind": "utc_timestamp",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/common/utc_timestamp.v1.schema.json",
+      "aliases": [
+        "utc timestamp schema",
+        "rfc3339 utc timestamp schema"
+      ],
+      "notes": "Reuse for updated_at, recorded_at, and generated_at fields."
+    },
+    {
       "schema_id": "urn:watchtower:schema:interfaces:documentation:front-matter-base:v1",
       "title": "Documentation Front Matter Base",
       "description": "Shared field-definition schema for governed documentation front matter profiles.",
@@ -98,6 +182,32 @@
       "canonical_path": "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json",
       "aliases": [
         "reference metadata schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1",
+      "title": "PRD Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed product requirements documents.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/prd_front_matter.v1.schema.json",
+      "aliases": [
+        "prd metadata schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:documentation:decision-record-front-matter:v1",
+      "title": "Decision Record Front Matter",
+      "description": "Schema for parsed front matter metadata used by governed durable decision records.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "documentation_front_matter",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/documentation/decision_record_front_matter.v1.schema.json",
+      "aliases": [
+        "decision record metadata schema"
       ]
     },
     {

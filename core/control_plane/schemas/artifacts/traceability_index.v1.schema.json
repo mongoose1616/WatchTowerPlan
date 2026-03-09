@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1",
+  "title": "Traceability Index",
+  "description": "Unified machine-readable traceability index joining planning, contract, validator, and evidence surfaces.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:traceability-index:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "index.traceability"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/traceEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "idList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "traceEntry": {
+      "type": "object",
+      "required": [
+        "trace_id",
+        "title",
+        "summary",
+        "status",
+        "updated_at"
+      ],
+      "properties": {
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "prd_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "decision_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "design_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "plan_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "requirement_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "acceptance_contract_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "validator_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
