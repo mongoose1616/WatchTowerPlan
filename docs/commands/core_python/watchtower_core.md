@@ -50,6 +50,11 @@ uv run watchtower-core query prds --trace-id trace.core_python_foundation
 
 ```sh
 cd core/python
+uv run watchtower-core query acceptance --trace-id trace.core_python_foundation
+```
+
+```sh
+cd core/python
 uv run watchtower-core query tasks --task-status backlog
 ```
 
@@ -80,6 +85,11 @@ uv run watchtower-core sync github-tasks --repo owner/repo
 
 ```sh
 cd core/python
+uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync
+```
+
+```sh
+cd core/python
 uv run watchtower-core sync traceability-index
 ```
 
@@ -95,6 +105,11 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 
 ```sh
 cd core/python
+uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json --format json
 ```
 
@@ -102,7 +117,9 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - With no subcommand, the current implementation prints the root CLI help text, including onboarding-friendly examples, and exits successfully.
 - With a valid subcommand, the root command dispatches to that subcommand handler.
 - The current top-level command families are `doctor`, `query`, `sync`, `closeout`, and `validate`.
-- The `sync` family now covers command lookup, PRD tracking, decision tracking, design tracking, task tracking, GitHub task sync, traceability, and repository-path rebuilds.
+- `query` now covers repository navigation, command discovery, planning lookup, acceptance contracts, validation evidence, task lookup, and trace lookup.
+- The `sync` family now covers command lookup, PRD tracking, decision tracking, design tracking, task tracking, GitHub task sync with managed labels, traceability, and repository-path rebuilds.
+- `validate` now covers document front matter, schema-backed governed artifacts, and semantic acceptance reconciliation.
 - Unknown subcommands are rejected by the underlying CLI parser.
 - The current command surface is intentionally small and acts as the operator entrypoint for the growing core workspace.
 
@@ -110,10 +127,10 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 | Command | Relationship |
 |---|---|
 | `watchtower-core doctor` | Lightweight workspace smoke check exposed through the root CLI. |
-| `watchtower-core query` | Namespace command for governed index lookups over paths, commands, planning docs, tasks, and traces. |
-| `watchtower-core sync` | Namespace command for rebuilding derived governed artifacts. |
+| `watchtower-core query` | Namespace command for governed index lookups over paths, commands, planning docs, acceptance contracts, evidence, tasks, and traces. |
+| `watchtower-core sync` | Namespace command for rebuilding derived governed artifacts and hosted task mirrors. |
 | `watchtower-core closeout` | Namespace command for initiative-level closeout operations over traced planning surfaces. |
-| `watchtower-core validate` | Namespace command for governed validation operations such as document front matter checks. |
+| `watchtower-core validate` | Namespace command for governed validation operations such as document, artifact, and acceptance checks. |
 | `docs/commands/core_python/README.md` | Local command-family inventory for the core Python workspace. |
 
 ## Source Surface
@@ -121,4 +138,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-09T14:41:51Z`
+- `2026-03-09T16:54:39Z`

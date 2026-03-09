@@ -9,10 +9,10 @@
       "trace_id": "trace.acceptance_evidence_reconciliation",
       "family": "feature_design",
       "title": "Acceptance and Evidence Reconciliation Design",
-      "summary": "Defines the feature-level design for a future reusable reconciliation phase that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
+      "summary": "Defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
       "status": "active",
       "doc_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-      "updated_at": "2026-03-09T07:05:24Z",
+      "updated_at": "2026-03-09T16:54:39Z",
       "related_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
@@ -63,6 +63,21 @@
         "design",
         "python",
         "workspace"
+      ]
+    },
+    {
+      "document_id": "design.features.github_collaboration_scaffolding",
+      "trace_id": "trace.github_collaboration",
+      "family": "feature_design",
+      "title": "GitHub Collaboration Scaffolding",
+      "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
+      "updated_at": "2026-03-09T16:33:16Z",
+      "related_paths": [
+        ".github/",
+        "docs/planning/tasks/",
+        "core/python/src/watchtower_core/sync/github_tasks.py"
       ]
     },
     {

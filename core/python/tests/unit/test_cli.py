@@ -32,8 +32,16 @@ def test_root_command_prints_help(capsys) -> None:
     assert result == 0
     assert "watchtower-core" in captured.out
     assert "uv run watchtower-core doctor" in captured.out
+    assert (
+        "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation"
+        in captured.out
+    )
     assert "uv run watchtower-core sync repository-paths" in captured.out
     assert "uv run watchtower-core sync task-index" in captured.out
+    assert (
+        "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation"
+        in captured.out
+    )
     assert "watchtower-core validate artifact" in captured.out
 
 
@@ -47,6 +55,8 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert "query prds" in captured.out
     assert "query decisions" in captured.out
     assert "query designs" in captured.out
+    assert "query acceptance" in captured.out
+    assert "query evidence" in captured.out
     assert "query tasks" in captured.out
     assert (
         "uv run watchtower-core query trace --trace-id trace.core_python_foundation"
@@ -77,6 +87,7 @@ def test_validate_group_prints_group_specific_help(capsys) -> None:
     captured = capsys.readouterr()
     assert result == 0
     assert "Run validation commands against governed repository artifacts" in captured.out
+    assert "acceptance" in captured.out
     assert "artifact" in captured.out
     assert "front-matter" in captured.out
     assert "uv run watchtower-core validate artifact" in captured.out
@@ -178,6 +189,52 @@ def test_query_designs_supports_json_output(capsys) -> None:
     assert payload["status"] == "ok"
     assert any(
         entry["document_id"] == "design.features.python_validator_execution"
+        for entry in payload["results"]
+    )
+
+
+def test_query_acceptance_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "acceptance",
+            "--trace-id",
+            "trace.core_python_foundation",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query acceptance"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["contract_id"] == "contract.acceptance.core_python_foundation"
+        for entry in payload["results"]
+    )
+
+
+def test_query_evidence_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "evidence",
+            "--trace-id",
+            "trace.core_python_foundation",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query evidence"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["evidence_id"] == "evidence.core_python_foundation.traceability_baseline"
         for entry in payload["results"]
     )
 
@@ -307,6 +364,48 @@ def test_sync_task_tracking_supports_json_output(capsys) -> None:
     assert payload["task_count"] >= 1
     assert payload["wrote"] is False
     assert payload["artifact_path"] is None
+
+
+def test_sync_github_tasks_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "sync",
+            "github-tasks",
+            "--repo",
+            "owner/repo",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync github-tasks"
+    assert payload["status"] == "ok"
+    assert payload["wrote"] is False
+    assert payload["result_count"] >= 1
+    assert "labels" in payload["results"][0]
+
+
+def test_sync_github_tasks_supports_disabling_label_sync(capsys) -> None:
+    result = main(
+        [
+            "sync",
+            "github-tasks",
+            "--repo",
+            "owner/repo",
+            "--no-label-sync",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core sync github-tasks"
+    assert all(entry["labels"] == [] for entry in payload["results"])
 
 
 def test_sync_traceability_index_supports_json_output(capsys) -> None:
@@ -608,3 +707,24 @@ def test_validate_artifact_can_record_evidence_to_temp_outputs(
     assert payload["evidence"]["trace_id"] == "trace.core_python_foundation"
     assert evidence_output.exists()
     assert traceability_output.exists()
+
+
+def test_validate_acceptance_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "validate",
+            "acceptance",
+            "--trace-id",
+            "trace.core_python_foundation",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core validate acceptance"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is True
+    assert payload["validator_id"] == "validator.trace.acceptance_reconciliation"

@@ -13,6 +13,8 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import TaskIndexEntry
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.query import (
+    AcceptanceContractQueryService,
+    AcceptanceContractSearchParams,
     CommandQueryService,
     CommandSearchParams,
     DecisionQueryService,
@@ -26,6 +28,8 @@ from watchtower_core.query import (
     TaskQueryService,
     TaskSearchParams,
     TraceabilityQueryService,
+    ValidationEvidenceQueryService,
+    ValidationEvidenceSearchParams,
 )
 from watchtower_core.sync import (
     CommandIndexSyncService,
@@ -43,6 +47,7 @@ from watchtower_core.sync import (
     TraceabilityIndexSyncService,
 )
 from watchtower_core.validation import (
+    AcceptanceReconciliationService,
     ArtifactValidationService,
     FrontMatterValidationService,
     ValidationExecutionError,
@@ -85,6 +90,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core query tasks --task-status backlog",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core sync command-index",
@@ -96,6 +102,7 @@ def build_parser() -> argparse.ArgumentParser:
             "--initiative-status completed --closure-reason \"Delivered and validated\"",
             "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync repository-paths",
+            "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
         ),
@@ -138,9 +145,9 @@ def build_parser() -> argparse.ArgumentParser:
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `prds`, `decisions`, `designs`, and `tasks` for planning and
-            execution lookup, and `trace` when you already know the trace
-            identifier you want.
+            `prds`, `decisions`, `designs`, `acceptance`, `evidence`, and
+            `tasks` for planning and execution lookup, and `trace` when you
+            already know the trace identifier you want.
             """
         ).strip(),
         epilog=_examples(
@@ -149,6 +156,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
             "uv run watchtower-core query decisions --decision-status accepted",
             "uv run watchtower-core query designs --family implementation_plan",
+            "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query evidence --trace-id trace.core_python_foundation",
             "uv run watchtower-core query tasks --task-status backlog",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core query trace --trace-id trace.core_python_foundation",
@@ -410,6 +419,88 @@ def build_parser() -> argparse.ArgumentParser:
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     query_designs_parser.set_defaults(handler=_run_query_designs)
+
+    query_acceptance_parser = query_subparsers.add_parser(
+        "acceptance",
+        help="Search governed acceptance contracts.",
+        description=dedent(
+            """
+            Search governed acceptance contracts by trace, source PRD, or
+            acceptance ID.
+
+            Use this when you need the machine-readable acceptance boundary for
+            a traced initiative without opening the raw contract JSON by hand.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query acceptance --acceptance-id "
+            "ac.core_python_foundation.002 --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_acceptance_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.core_python_foundation.",
+    )
+    query_acceptance_parser.add_argument(
+        "--source-prd-id",
+        help="Exact source PRD filter such as prd.core_python_foundation.",
+    )
+    query_acceptance_parser.add_argument(
+        "--acceptance-id",
+        help="Exact acceptance-ID filter such as ac.core_python_foundation.002.",
+    )
+    query_acceptance_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_acceptance_parser.set_defaults(handler=_run_query_acceptance)
+
+    query_evidence_parser = query_subparsers.add_parser(
+        "evidence",
+        help="Search governed validation evidence.",
+        description=dedent(
+            """
+            Search governed validation-evidence artifacts by trace, overall
+            result, acceptance ID, or validator ID.
+
+            Use this when you need to inspect durable validation proof without
+            opening the raw ledger JSON directly.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query evidence --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query evidence --acceptance-id "
+            "ac.core_python_foundation.003 --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_evidence_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.core_python_foundation.",
+    )
+    query_evidence_parser.add_argument(
+        "--result",
+        help="Exact overall-result filter such as passed or failed.",
+    )
+    query_evidence_parser.add_argument(
+        "--acceptance-id",
+        help="Exact acceptance-ID filter such as ac.core_python_foundation.003.",
+    )
+    query_evidence_parser.add_argument(
+        "--validator-id",
+        help="Exact validator-ID filter such as validator.control_plane.traceability_index.",
+    )
+    query_evidence_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_evidence_parser.set_defaults(handler=_run_query_evidence)
 
     query_tasks_parser = query_subparsers.add_parser(
         "tasks",
@@ -791,6 +882,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync github-tasks --repo owner/repo "
             "--project-owner owner --project-owner-type organization "
             "--project-number 7 --write --format json",
+            "uv run watchtower-core sync github-tasks --repo owner/repo "
+            "--no-label-sync --write",
         ),
         formatter_class=HelpFormatter,
     )
@@ -851,6 +944,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--project-status-field",
         default="Status",
         help="GitHub single-select status field name for project status updates.",
+    )
+    sync_github_tasks_parser.add_argument(
+        "--no-label-sync",
+        action="store_true",
+        help="Skip the managed GitHub label upsert and label mirroring step.",
     )
     sync_github_tasks_parser.add_argument(
         "--token-env",
@@ -1004,9 +1102,11 @@ def build_parser() -> argparse.ArgumentParser:
             Run validation commands against governed repository artifacts and
             document surfaces.
 
-            Use `front-matter` for governed Markdown metadata and `artifact`
-            for schema-backed JSON contracts, indexes, ledgers, and similar
-            machine-readable artifacts.
+            Use `front-matter` for governed Markdown metadata, `artifact` for
+            schema-backed JSON contracts, indexes, ledgers, and similar
+            machine-readable artifacts, and `acceptance` for semantic
+            reconciliation across PRDs, acceptance contracts, validation
+            evidence, and traceability.
             """
         ).strip(),
         epilog=_examples(
@@ -1017,6 +1117,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/indexes/traceability/traceability_index.v1.json "
             "--format json",
+            "uv run watchtower-core validate acceptance --trace-id "
+            "trace.core_python_foundation --format json",
             "uv run watchtower-core validate front-matter --path "
             "docs/standards/metadata/front_matter_standard.md --format json",
         ),
@@ -1111,6 +1213,40 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_validation_arguments(validate_artifact_parser)
     validate_artifact_parser.set_defaults(handler=_run_validate_artifact)
+
+    validate_acceptance_parser = validate_subparsers.add_parser(
+        "acceptance",
+        help="Validate one trace across PRD acceptance, contracts, evidence, and traceability.",
+        description=dedent(
+            """
+            Validate one traced initiative across PRD acceptance IDs,
+            acceptance contracts, validation evidence, validator references,
+            and the traceability index.
+
+            Use this when you need semantic acceptance reconciliation rather
+            than only schema validation.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core validate acceptance --trace-id "
+            "trace.core_python_foundation",
+            "uv run watchtower-core validate acceptance --trace-id "
+            "trace.core_python_foundation --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    validate_acceptance_parser.add_argument(
+        "--trace-id",
+        required=True,
+        help="Stable trace identifier such as trace.core_python_foundation.",
+    )
+    validate_acceptance_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    validate_acceptance_parser.set_defaults(handler=_run_validate_acceptance)
     return parser
 
 
@@ -1458,6 +1594,114 @@ def _run_query_designs(args: argparse.Namespace) -> int:
         print(f"- {entry.document_id} [{entry.family}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
+    return 0
+
+
+def _run_query_acceptance(args: argparse.Namespace) -> int:
+    service = AcceptanceContractQueryService(ControlPlaneLoader())
+    entries = service.search(
+        AcceptanceContractSearchParams(
+            trace_id=args.trace_id,
+            source_prd_id=args.source_prd_id,
+            acceptance_id=args.acceptance_id,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query acceptance",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "contract_id": entry.contract_id,
+                "title": entry.title,
+                "status": entry.status,
+                "trace_id": entry.trace_id,
+                "source_prd_id": entry.source_prd_id,
+                "doc_path": entry.doc_path,
+                "acceptance_ids": [item.acceptance_id for item in entry.entries],
+                "required_validator_ids": sorted(
+                    {
+                        validator_id
+                        for item in entry.entries
+                        for validator_id in item.required_validator_ids
+                    }
+                ),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No acceptance contracts matched the requested filters.")
+        return 0
+
+    print(
+        f"Found {len(entries)} acceptance contract entr"
+        f"{'y' if len(entries) == 1 else 'ies'}:"
+    )
+    for entry in entries:
+        print(f"- {entry.contract_id} [{entry.status}]")
+        print(f"  Trace: {entry.trace_id}")
+        print(f"  Source PRD: {entry.source_prd_id}")
+        print(f"  Acceptance IDs: {', '.join(item.acceptance_id for item in entry.entries)}")
+    return 0
+
+
+def _run_query_evidence(args: argparse.Namespace) -> int:
+    service = ValidationEvidenceQueryService(ControlPlaneLoader())
+    entries = service.search(
+        ValidationEvidenceSearchParams(
+            trace_id=args.trace_id,
+            overall_result=args.result,
+            acceptance_id=args.acceptance_id,
+            validator_id=args.validator_id,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query evidence",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "evidence_id": entry.evidence_id,
+                "title": entry.title,
+                "status": entry.status,
+                "trace_id": entry.trace_id,
+                "overall_result": entry.overall_result,
+                "recorded_at": entry.recorded_at,
+                "doc_path": entry.doc_path,
+                "source_prd_ids": list(entry.source_prd_ids),
+                "source_acceptance_contract_ids": list(entry.source_acceptance_contract_ids),
+                "check_count": len(entry.checks),
+                "acceptance_ids": sorted(
+                    {
+                        acceptance_id
+                        for check in entry.checks
+                        for acceptance_id in check.acceptance_ids
+                    }
+                ),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No validation-evidence artifacts matched the requested filters.")
+        return 0
+
+    print(
+        f"Found {len(entries)} validation-evidence artifact entr"
+        f"{'y' if len(entries) == 1 else 'ies'}:"
+    )
+    for entry in entries:
+        print(f"- {entry.evidence_id} [{entry.overall_result}]")
+        print(f"  Trace: {entry.trace_id}")
+        print(f"  Recorded At: {entry.recorded_at}")
+        print(f"  Checks: {len(entry.checks)}")
     return 0
 
 
@@ -1850,6 +2094,7 @@ def _run_sync_github_tasks(args: argparse.Namespace) -> int:
             project_number=args.project_number,
             project_status_field_name=args.project_status_field,
             token_env=args.token_env,
+            sync_labels=not args.no_label_sync,
         ),
         write=args.write,
     )
@@ -1874,7 +2119,9 @@ def _run_sync_github_tasks(args: argparse.Namespace) -> int:
                 "success": record.success,
                 "message": record.message,
                 "github_issue_number": record.github_issue_number,
+                "github_issue_url": record.github_issue_url,
                 "github_project_item_id": record.github_project_item_id,
+                "labels": list(record.labels),
             }
             for record in result.records
         ],
@@ -1892,6 +2139,10 @@ def _run_sync_github_tasks(args: argparse.Namespace) -> int:
         print(f"  Issue action: {record.issue_action}")
         if record.project_action is not None:
             print(f"  Project action: {record.project_action}")
+        if record.labels:
+            print(f"  Labels: {', '.join(record.labels)}")
+        if record.github_issue_url is not None:
+            print(f"  GitHub Issue: {record.github_issue_url}")
         print(f"  {record.message}")
     return exit_code
 
@@ -2021,6 +2272,24 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
         command_name="watchtower-core validate artifact",
         success_message="Artifact validated successfully.",
         service_factory=ArtifactValidationService,
+    )
+
+
+def _run_validate_acceptance(args: argparse.Namespace) -> int:
+    result = AcceptanceReconciliationService(ControlPlaneLoader()).validate(args.trace_id)
+    payload = _build_validation_payload(
+        command_name="watchtower-core validate acceptance",
+        result=result,
+        evidence_write=None,
+    )
+    exit_code = 0 if result.passed else 1
+    if _print_payload(args, payload) == 0:
+        return exit_code
+
+    return _print_validation_summary(
+        result,
+        evidence_write=None,
+        success_message="Acceptance reconciliation passed.",
     )
 
 

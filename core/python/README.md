@@ -39,16 +39,20 @@
 - `uv run watchtower-core doctor`
 - `uv run watchtower-core query tasks --task-status backlog`
 - `uv run watchtower-core query tasks --blocked-only --include-dependency-details`
+- `uv run watchtower-core query acceptance --trace-id trace.core_python_foundation`
+- `uv run watchtower-core query evidence --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core sync prd-index`
 - `uv run watchtower-core sync prd-tracking`
 - `uv run watchtower-core sync task-index`
 - `uv run watchtower-core sync task-tracking`
 - `uv run watchtower-core sync github-tasks --repo owner/repo`
+- `uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync`
 - `uv run watchtower-core sync decision-index`
 - `uv run watchtower-core sync decision-tracking`
 - `uv run watchtower-core sync design-document-index`
 - `uv run watchtower-core sync design-tracking`
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"`
+- `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
 
 ### Commands Inside `./tools/dev_shell.sh`
 - `watchtower-core --help`
@@ -81,6 +85,8 @@
 - `docs/commands/core_python/watchtower_core_query_prds.md`
 - `docs/commands/core_python/watchtower_core_query_decisions.md`
 - `docs/commands/core_python/watchtower_core_query_designs.md`
+- `docs/commands/core_python/watchtower_core_query_acceptance.md`
+- `docs/commands/core_python/watchtower_core_query_evidence.md`
 - `docs/commands/core_python/watchtower_core_query_tasks.md`
 - `docs/commands/core_python/watchtower_core_query_trace.md`
 - `docs/commands/core_python/watchtower_core_closeout.md`
@@ -99,5 +105,6 @@
 - `docs/commands/core_python/watchtower_core_sync_traceability_index.md`
 - `docs/commands/core_python/watchtower_core_sync_repository_paths.md`
 - `docs/commands/core_python/watchtower_core_validate.md`
+- `docs/commands/core_python/watchtower_core_validate_acceptance.md`
 - `docs/commands/core_python/watchtower_core_validate_artifact.md`
 - `docs/commands/core_python/watchtower_core_validate_front_matter.md`

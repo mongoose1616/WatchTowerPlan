@@ -6,9 +6,10 @@ This document provides the human-readable tracking view for the current design d
 ## Feature Designs
 | Trace ID | Initiative Status | Path | Summary | Linked Plans | Notes |
 |---|---|---|---|---|---|
-| `trace.acceptance_evidence_reconciliation` | `active` | `docs/planning/design/features/acceptance_evidence_reconciliation.md` | Defines the feature-level design for a future reusable reconciliation phase that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned. | `None` | None |
+| `trace.acceptance_evidence_reconciliation` | `active` | `docs/planning/design/features/acceptance_evidence_reconciliation.md` | Defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned. | `None` | None |
 | `trace.command_documentation_and_lookup` | `active` | `docs/planning/design/features/command_documentation_and_lookup.md` | Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands. | `None` | None |
 | `trace.core_python_foundation` | `active` | `docs/planning/design/features/core_python_workspace_and_harness.md` | Defines the feature-level technical design for the consolidated Python workspace under core/python and the first functional boundaries of the core helper and harness package. | `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` | None |
+| `trace.github_collaboration` | `active` | `docs/planning/design/features/github_collaboration_scaffolding.md` | Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model. | `None` | None |
 | `trace.local_task_tracking` | `completed` | `docs/planning/design/features/github_task_push_sync.md` | Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority. | `None` | None |
 | `trace.initiative_closeout` | `active` | `docs/planning/design/features/initiative_closeout_and_planning_trackers.md` | Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans. | `None` | None |
 | `trace.local_task_tracking` | `completed` | `docs/planning/design/features/local_task_tracking_and_github_sync.md` | Defines the feature-level design for local-first task records, a generated task tracker, a generated task index, and later GitHub sync support. | `None` | None |
@@ -32,4 +33,4 @@ This document provides the human-readable tracking view for the current design d
 - [design_document_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/design_document_index_standard.md)
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-09T16:54:39Z`

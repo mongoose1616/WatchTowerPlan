@@ -19,7 +19,7 @@ This command pushes local-first task records to GitHub issues and optional proje
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core sync github-tasks [--repo <owner/name>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--owner <owner>] [--task-kind <task_kind>] [--project-owner <login>] [--project-owner-type <user|organization>] [--project-number <n>] [--write] [--format <human|json>]
+uv run watchtower-core sync github-tasks [--repo <owner/name>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--owner <owner>] [--task-kind <task_kind>] [--project-owner <login>] [--project-owner-type <user|organization>] [--project-number <n>] [--no-label-sync] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -38,6 +38,7 @@ uv run watchtower-core sync github-tasks [--repo <owner/name>] [--task-id <task_
 - `--project-owner-type <user|organization>`: GitHub project owner type when also syncing to a project.
 - `--project-number <n>`: GitHub project number when also syncing to a project.
 - `--project-status-field <name>`: GitHub single-select status field name. Defaults to `Status`.
+- `--no-label-sync`: Skip the managed GitHub label upsert and label mirroring step.
 - `--token-env <env_var>`: Environment variable that holds the GitHub token in write mode. Defaults to `GITHUB_TOKEN`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -58,12 +59,18 @@ cd core/python
 uv run watchtower-core sync github-tasks --repo owner/repo --project-owner owner --project-owner-type organization --project-number 7 --write --format json
 ```
 
+```sh
+cd core/python
+uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --write
+```
+
 ## Behavior and Outputs
 - The command is push-only in its first phase: local task records remain the source of truth.
 - In dry-run mode, the command reports which tasks would create or update issues and project items without mutating GitHub or local files.
-- In write mode, the command creates or updates GitHub issues, optionally updates project placement and status, persists GitHub foreign keys back onto the local task records, and rebuilds the task index, task tracker, and traceability index.
+- In write mode, the command creates or updates GitHub issues, keeps a bounded managed label set aligned unless `--no-label-sync` is used, optionally updates project placement and status, persists GitHub foreign keys back onto the local task records, and rebuilds the task index, task tracker, and traceability index.
+- The synced issue body mirrors the local task metadata, summary, context, scope, done-when criteria, links, and a short local-authority note.
 - In `human` mode, the command prints one result block per selected task.
-- In `json` mode, the command prints one JSON object with aggregate counts and per-task sync records.
+- In `json` mode, the command prints one JSON object with aggregate counts, per-task sync records, managed labels, and any returned GitHub issue URL.
 
 ## Related Commands
 | Command | Relationship |
@@ -77,6 +84,7 @@ uv run watchtower-core sync github-tasks --repo owner/repo --project-owner owner
 - `core/python/src/watchtower_core/cli/main.py`
 - `core/python/src/watchtower_core/sync/github_tasks.py`
 - `core/python/src/watchtower_core/integrations/github/client.py`
+- `.github/`
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-09T16:33:16Z`

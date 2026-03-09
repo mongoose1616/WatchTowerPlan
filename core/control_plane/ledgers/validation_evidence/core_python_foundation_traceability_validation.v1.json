@@ -25,6 +25,19 @@
   ],
   "checks": [
     {
+      "check_id": "check.core_python_foundation.workspace_boundary",
+      "title": "Core workspace boundary validation",
+      "result": "passed",
+      "subject_paths": [
+        "core/README.md",
+        "core/python/README.md"
+      ],
+      "acceptance_ids": [
+        "ac.core_python_foundation.001"
+      ],
+      "notes": "The governed repo layout keeps one canonical Python workspace under core/python and one authored control-plane root under core/control_plane."
+    },
+    {
       "check_id": "check.core_python_foundation.prd_front_matter",
       "title": "PRD front matter profile validation",
       "result": "passed",
@@ -71,6 +84,22 @@
       ]
     },
     {
+      "check_id": "check.core_python_foundation.loader_surface",
+      "title": "Control-plane loader integration validation",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "prd.core_python_foundation"
+      ],
+      "acceptance_ids": [
+        "ac.core_python_foundation.004"
+      ],
+      "notes": "The first loader slice and its integration tests cover the current governed schema, validator, command, path, PRD, decision, and traceability surfaces."
+    },
+    {
       "check_id": "check.core_python_foundation.traceability_index",
       "title": "Unified traceability index validation",
       "result": "passed",
@@ -92,7 +121,9 @@
     "core/control_plane/registries/validators/validator_registry.v1.json",
     "core/control_plane/indexes/prds/prd_index.v1.json",
     "core/control_plane/indexes/decisions/decision_index.v1.json",
-    "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+    "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+    "core/python/src/watchtower_core/control_plane/loader.py",
+    "core/python/tests/integration/test_control_plane_artifacts.py"
   ],
   "notes": "Initial durable evidence record for the first end-to-end traceability slice. It covers the current traceability baseline, not the full future Python loader acceptance scope."
 }

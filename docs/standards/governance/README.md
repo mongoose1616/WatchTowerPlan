@@ -7,7 +7,9 @@
 | Path | Description |
 |---|---|
 | `docs/standards/governance/README.md` | Describes the purpose of the governance standards directory and the standards stored here. |
+| `docs/standards/governance/acceptance_evidence_reconciliation_standard.md` | Defines semantic reconciliation across acceptance intent, machine contracts, evidence, and traceability. |
 | `docs/standards/governance/decision_capture_standard.md` | Defines how durable repository decisions should be recorded, validated, and propagated into canonical artifacts. |
+| `docs/standards/governance/github_collaboration_standard.md` | Defines the hosted GitHub issue, pull request, label, and project-field collaboration layer. |
 | `docs/standards/governance/github_task_sync_standard.md` | Defines the first push-only GitHub sync contract for local-first task records. |
 | `docs/standards/governance/initiative_closeout_standard.md` | Defines initiative-level closeout state and its human and machine mirror surfaces. |
 | `docs/standards/governance/reference_distillation_standard.md` | Defines how external source material should be distilled into local references. |

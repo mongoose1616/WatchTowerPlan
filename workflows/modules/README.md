@@ -7,6 +7,7 @@
 | Path | Description |
 |---|---|
 | `workflows/modules/README.md` | Describes the purpose of the workflow modules directory and the modules stored here. |
+| `workflows/modules/acceptance_evidence_reconciliation.md` | Workflow module for semantic reconciliation across acceptance contracts, evidence, validator references, and traceability. |
 | `workflows/modules/code_implementation.md` | Workflow module for implementing code changes. |
 | `workflows/modules/code_review.md` | Workflow module for reviewing code changes. |
 | `workflows/modules/code_validation.md` | Workflow module for validating code changes. |

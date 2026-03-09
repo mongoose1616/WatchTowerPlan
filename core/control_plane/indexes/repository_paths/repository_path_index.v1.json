@@ -7,6 +7,13 @@
   "root_path": ".",
   "entries": [
     {
+      "path": ".github/",
+      "kind": "directory",
+      "surface_kind": "repository_surface",
+      "summary": "Holds GitHub-hosted collaboration scaffolding such as issue forms and the pull request template.",
+      "parent_path": "."
+    },
+    {
       "path": "AGENTS.md",
       "kind": "file",
       "surface_kind": "instruction",
@@ -1556,6 +1563,13 @@
       "parent_path": "core/python/tests/unit/"
     },
     {
+      "path": "core/python/tests/unit/test_acceptance_reconciliation.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for acceptance-contract lookup, evidence lookup, and semantic acceptance reconciliation.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
       "path": "core/python/tests/unit/test_artifact_validation.py",
       "kind": "file",
       "surface_kind": "python_test_file",
@@ -1602,6 +1616,13 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Unit tests for registry-backed front-matter validation.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
+      "path": "core/python/tests/unit/test_github_task_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for push-only GitHub task sync planning behavior.",
       "parent_path": "core/python/tests/unit/"
     },
     {
@@ -1769,6 +1790,13 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_acceptance.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query acceptance command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query_commands.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -1787,6 +1815,13 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core query designs command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_query_evidence.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query evidence command.",
       "parent_path": "docs/commands/core_python/"
     },
     {
@@ -1913,6 +1948,13 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core validate command group.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_validate_acceptance.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core validate acceptance command.",
       "parent_path": "docs/commands/core_python/"
     },
     {
@@ -2138,6 +2180,13 @@
       "kind": "file",
       "surface_kind": "feature_design",
       "summary": "Feature design for the consolidated core Python workspace and the first helper-harness package boundaries.",
+      "parent_path": "docs/planning/design/features/"
+    },
+    {
+      "path": "docs/planning/design/features/github_collaboration_scaffolding.md",
+      "kind": "file",
+      "surface_kind": "feature_design",
+      "summary": "Feature design for GitHub issue forms, pull request expectations, and the hosted project field model.",
       "parent_path": "docs/planning/design/features/"
     },
     {
@@ -3044,10 +3093,24 @@
       "parent_path": "docs/standards/governance/"
     },
     {
+      "path": "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines semantic reconciliation across acceptance intent, machine contracts, evidence, and traceability.",
+      "parent_path": "docs/standards/governance/"
+    },
+    {
       "path": "docs/standards/governance/decision_capture_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines how durable repository decisions should be recorded, validated, and propagated into canonical artifacts.",
+      "parent_path": "docs/standards/governance/"
+    },
+    {
+      "path": "docs/standards/governance/github_collaboration_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the hosted GitHub issue, pull request, label, and project-field collaboration layer.",
       "parent_path": "docs/standards/governance/"
     },
     {
@@ -3349,6 +3412,13 @@
       "kind": "file",
       "surface_kind": "workflow_module",
       "summary": "Describes the purpose of the workflow modules directory and the modules stored here.",
+      "parent_path": "workflows/modules/"
+    },
+    {
+      "path": "workflows/modules/acceptance_evidence_reconciliation.md",
+      "kind": "file",
+      "surface_kind": "workflow_module",
+      "summary": "Workflow module for semantic reconciliation across acceptance contracts, evidence, validator references, and traceability.",
       "parent_path": "workflows/modules/"
     },
     {

@@ -90,6 +90,11 @@ uv run watchtower-core sync github-tasks --repo owner/repo
 
 ```sh
 cd core/python
+uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync
+```
+
+```sh
+cd core/python
 uv run watchtower-core sync traceability-index
 ```
 
@@ -106,7 +111,7 @@ uv run watchtower-core sync repository-paths --write
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints sync-specific help and exits successfully.
 - The command group explains the available sync surfaces without requiring engineers to inspect the implementation directly.
-- The current leaf commands are `command-index` for command-doc lookup rebuilds, `prd-index` and `prd-tracking` for PRD machine and human tracking refreshes, `decision-index` and `decision-tracking` for decision machine and human tracking refreshes, `design-document-index` and `design-tracking` for design machine and human tracking refreshes, `task-index` for machine task lookup rebuilds, `task-tracking` for the human-readable task board, `github-tasks` for push-only local task sync to GitHub, `traceability-index` for joined planning and evidence rebuilds, and `repository-paths` for README inventory rebuilds.
+- The current leaf commands are `command-index` for command-doc lookup rebuilds, `prd-index` and `prd-tracking` for PRD machine and human tracking refreshes, `decision-index` and `decision-tracking` for decision machine and human tracking refreshes, `design-document-index` and `design-tracking` for design machine and human tracking refreshes, `task-index` for machine task lookup rebuilds, `task-tracking` for the human-readable task board, `github-tasks` for push-only local task sync to GitHub including bounded managed labels, `traceability-index` for joined planning and evidence rebuilds, and `repository-paths` for README inventory rebuilds.
 - Individual leaf commands may be dry-run by default and should document their mutation flags explicitly.
 
 ## Related Commands
@@ -135,4 +140,4 @@ uv run watchtower-core sync repository-paths --write
 - `core/python/src/watchtower_core/sync/`
 
 ## Updated At
-- `2026-03-09T14:41:51Z`
+- `2026-03-09T16:54:39Z`

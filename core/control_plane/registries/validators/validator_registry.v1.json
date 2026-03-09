@@ -47,6 +47,21 @@
       ]
     },
     {
+      "id": "validator.trace.acceptance_reconciliation",
+      "title": "Acceptance Reconciliation Validator",
+      "description": "Validates alignment across PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability for one traced initiative.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "acceptance_reconciliation",
+      "applies_to": [
+        "docs/planning/prds/**",
+        "core/control_plane/contracts/acceptance/**",
+        "core/control_plane/ledgers/validation_evidence/**",
+        "core/control_plane/indexes/traceability/**"
+      ],
+      "notes": "Used by the watchtower-core validate acceptance command."
+    },
+    {
       "id": "validator.documentation.reference_front_matter",
       "title": "Reference Front Matter Validator",
       "description": "Validates parsed front matter metadata for governed reference documents.",

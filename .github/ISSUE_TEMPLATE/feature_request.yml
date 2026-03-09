@@ -1,0 +1,89 @@
+name: Feature Intake
+description: Capture a proposed feature or workstream that should link back to the repo-local planning model.
+title: "[Feature]: "
+labels:
+  - intake
+  - feature-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for hosted intake. Before implementation merges, link or create the corresponding repo-local PRD, design, or task record.
+  - type: input
+    id: trace_id
+    attributes:
+      label: Trace ID
+      description: Stable trace identifier if the work already belongs to an existing initiative, for example `trace.core_python_foundation`.
+      placeholder: trace.example
+    validations:
+      required: false
+  - type: input
+    id: related_task
+    attributes:
+      label: Related Local Task ID
+      description: Repo-local task ID if one already exists, for example `task.core_python.example.001`.
+      placeholder: task.example.001
+    validations:
+      required: false
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Short description of the requested feature or workstream.
+      placeholder: Add a governed acceptance reconciliation command for traced initiatives.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Desired Scope
+      description: Bound the requested feature. Include what is explicitly out of scope when helpful.
+    validations:
+      required: true
+  - type: textarea
+    id: done_when
+    attributes:
+      label: Done When
+      description: List the outcomes that would make this request complete.
+      placeholder: |
+        - Command exists and is documented
+        - Machine and human surfaces stay aligned
+        - Validation coverage exists
+    validations:
+      required: true
+  - type: input
+    id: area
+    attributes:
+      label: Area
+      description: Primary repo area or surface affected.
+      placeholder: core/python, docs/planning, core/control_plane
+    validations:
+      required: false
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: Requested urgency for triage.
+      options:
+        - critical
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I understand GitHub intake is not the repo-local source of truth for implementation state.
+          required: true
+        - label: I will link or create the relevant repo-local planning or task artifact before merge if this work is accepted.
+          required: true

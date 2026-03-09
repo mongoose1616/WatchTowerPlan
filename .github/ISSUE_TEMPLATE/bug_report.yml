@@ -1,0 +1,80 @@
+name: Bug Report
+description: Capture a defect, regression, or broken governed behavior that needs triage.
+title: "[Bug]: "
+labels:
+  - intake
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for hosted intake. If the bug becomes active implementation work, link or create the corresponding repo-local task record.
+  - type: input
+    id: trace_id
+    attributes:
+      label: Trace ID
+      description: Trace identifier if the bug belongs to a known initiative.
+      placeholder: trace.example
+    validations:
+      required: false
+  - type: input
+    id: command_or_surface
+    attributes:
+      label: Affected Surface
+      description: Command, document, schema, workflow, or path where the bug appears.
+      placeholder: watchtower-core sync github-tasks
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Short description of the bug or regression.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Commands, inputs, or navigation steps needed to reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Paste error output, failing validation, or other concrete evidence.
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - critical
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I captured enough detail for deterministic reproduction.
+          required: true
+        - label: I understand repo-local task records should own active execution state if this bug is accepted for work.
+          required: true

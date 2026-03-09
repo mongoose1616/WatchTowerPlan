@@ -7,6 +7,7 @@ import os
 from dataclasses import dataclass
 from typing import Any
 from urllib.error import HTTPError, URLError
+from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 
@@ -32,6 +33,15 @@ class GitHubProjectContext:
     status_field_name: str
     status_field_id: str
     status_options: dict[str, str]
+
+
+@dataclass(frozen=True, slots=True)
+class GitHubLabelSpec:
+    """Managed GitHub label definition used by repo-local sync flows."""
+
+    name: str
+    color: str
+    description: str | None = None
 
 
 class GitHubApiError(RuntimeError):
@@ -67,13 +77,18 @@ class GitHubClient:
         *,
         title: str,
         body: str,
+        labels: tuple[str, ...] = (),
         state: str = "open",
         state_reason: str | None = None,
     ) -> GitHubIssueRef:
         response = self._rest_json(
             "POST",
             f"/repos/{repository}/issues",
-            payload={"title": title, "body": body},
+            payload={
+                "title": title,
+                "body": body,
+                **({"labels": list(labels)} if labels else {}),
+            },
         )
         issue = self._issue_from_document(repository, response)
         if state == "closed":
@@ -94,6 +109,7 @@ class GitHubClient:
         *,
         title: str,
         body: str,
+        labels: tuple[str, ...] = (),
         state: str,
         state_reason: str | None = None,
     ) -> GitHubIssueRef:
@@ -102,6 +118,8 @@ class GitHubClient:
             "body": body,
             "state": state,
         }
+        if labels:
+            payload["labels"] = list(labels)
         if state == "closed" and state_reason is not None:
             payload["state_reason"] = state_reason
         response = self._rest_json(
@@ -110,6 +128,31 @@ class GitHubClient:
             payload=payload,
         )
         return self._issue_from_document(repository, response)
+
+    def ensure_labels(
+        self,
+        repository: str,
+        labels: tuple[GitHubLabelSpec, ...],
+    ) -> None:
+        """Ensure the managed label set exists on the target repository."""
+        for label in labels:
+            existing = self._rest_json_or_none(
+                "GET",
+                f"/repos/{repository}/labels/{quote(label.name, safe='')}",
+            )
+            if existing is not None:
+                continue
+            payload: dict[str, object] = {
+                "name": label.name,
+                "color": label.color,
+            }
+            if label.description is not None:
+                payload["description"] = label.description
+            self._rest_json(
+                "POST",
+                f"/repos/{repository}/labels",
+                payload=payload,
+            )
 
     def load_project_context(
         self,
@@ -376,6 +419,20 @@ class GitHubClient:
         if not isinstance(data, dict):
             raise GitHubApiError("GitHub GraphQL response is missing its data payload.")
         return data
+
+    def _rest_json_or_none(
+        self,
+        method: str,
+        path: str,
+        *,
+        payload: dict[str, object] | None = None,
+    ) -> dict[str, Any] | None:
+        try:
+            return self._rest_json(method, path, payload=payload)
+        except GitHubApiError as exc:
+            if "with 404:" in str(exc):
+                return None
+            raise
 
     def _load_json_response(self, request: Request) -> dict[str, Any]:
         try:

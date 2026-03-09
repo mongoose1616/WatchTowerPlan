@@ -1,0 +1,68 @@
+name: Governance or Chore Intake
+description: Capture docs, standards, control-plane, workflow, or repo-maintenance work.
+title: "[Chore]: "
+labels:
+  - intake
+  - governance
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for hosted intake of repository maintenance, governance, and cleanup work. Link or create a repo-local task record before merge if the work becomes active.
+  - type: input
+    id: trace_id
+    attributes:
+      label: Trace ID
+      description: Trace identifier if this chore belongs to an existing initiative.
+      placeholder: trace.example
+    validations:
+      required: false
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Short description of the maintenance or governance work.
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: Why does this work matter now?
+    validations:
+      required: true
+  - type: textarea
+    id: surfaces
+    attributes:
+      label: Affected Surfaces
+      description: Paths, commands, standards, or indexes likely to change.
+      placeholder: |
+        docs/standards/governance/
+        workflows/ROUTING_TABLE.md
+        core/control_plane/indexes/
+    validations:
+      required: true
+  - type: textarea
+    id: done_when
+    attributes:
+      label: Done When
+      description: Outcomes that define completion.
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I understand this intake issue should link back to repo-local planning or task artifacts before merge.
+          required: true

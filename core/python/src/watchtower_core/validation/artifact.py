@@ -78,6 +78,7 @@ class ArtifactValidationService:
             validator
             for validator in registry.validators
             if validator.artifact_kind != "documentation_front_matter"
+            and validator.engine == "json_schema"
             and validator.status == "active"
             and any(
                 matches_applies_to(relative_target_path, pattern)

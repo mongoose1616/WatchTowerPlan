@@ -8,6 +8,7 @@ from typing import Any
 
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
+    AcceptanceContract,
     CommandIndex,
     DecisionIndex,
     DesignDocumentIndex,
@@ -16,6 +17,7 @@ from watchtower_core.control_plane.models import (
     SchemaCatalog,
     TaskIndex,
     TraceabilityIndex,
+    ValidationEvidenceArtifact,
     ValidatorRegistry,
 )
 from watchtower_core.control_plane.paths import discover_repo_root
@@ -33,6 +35,8 @@ DESIGN_DOCUMENT_INDEX_PATH = (
 )
 TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.v1.json"
+ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
+VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
 
 
 class ControlPlaneLoader:
@@ -109,4 +113,43 @@ class ControlPlaneLoader:
         """Load the current traceability index."""
         return TraceabilityIndex.from_document(
             self.load_validated_document(TRACEABILITY_INDEX_PATH)
+        )
+
+    def iter_validated_documents_under(self, relative_directory: str) -> tuple[dict[str, Any], ...]:
+        """Load and validate every JSON document directly under one governed directory."""
+        return tuple(
+            document
+            for _, document in self.iter_validated_documents_with_paths_under(
+                relative_directory
+            )
+        )
+
+    def iter_validated_documents_with_paths_under(
+        self,
+        relative_directory: str,
+    ) -> tuple[tuple[str, dict[str, Any]], ...]:
+        """Load and validate every JSON document directly under one governed directory."""
+        directory = self.repo_root / relative_directory
+        documents: list[tuple[str, dict[str, Any]]] = []
+        for path in sorted(directory.glob("*.json")):
+            relative_path = path.relative_to(self.repo_root).as_posix()
+            documents.append((relative_path, self.load_validated_document(relative_path)))
+        return tuple(documents)
+
+    def load_acceptance_contracts(self) -> tuple[AcceptanceContract, ...]:
+        """Load all governed acceptance-contract artifacts."""
+        return tuple(
+            AcceptanceContract.from_document(document, doc_path=relative_path)
+            for relative_path, document in self.iter_validated_documents_with_paths_under(
+                ACCEPTANCE_CONTRACTS_DIRECTORY
+            )
+        )
+
+    def load_validation_evidence_artifacts(self) -> tuple[ValidationEvidenceArtifact, ...]:
+        """Load all governed validation-evidence artifacts."""
+        return tuple(
+            ValidationEvidenceArtifact.from_document(document, doc_path=relative_path)
+            for relative_path, document in self.iter_validated_documents_with_paths_under(
+                VALIDATION_EVIDENCE_DIRECTORY
+            )
         )

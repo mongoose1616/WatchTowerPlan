@@ -10,6 +10,7 @@ from watchtower_core.integrations.github import (
     GitHubApiError,
     GitHubClient,
     GitHubIssueRef,
+    GitHubLabelSpec,
     GitHubProjectContext,
 )
 from watchtower_core.query.tasks import TaskQueryService, TaskSearchParams
@@ -33,6 +34,14 @@ PROJECT_STATUS_BY_TASK_STATUS = {
     "cancelled": "Cancelled",
 }
 
+LABEL_COLOR_BY_PREFIX = {
+    "source": "0E8A16",
+    "kind": "1D76DB",
+    "status": "5319E7",
+    "priority": "D93F0B",
+    "blocked": "B60205",
+}
+
 
 @dataclass(frozen=True, slots=True)
 class GitHubTaskSyncParams:
@@ -53,6 +62,7 @@ class GitHubTaskSyncParams:
     project_number: int | None = None
     project_status_field_name: str = "Status"
     token_env: str = "GITHUB_TOKEN"
+    sync_labels: bool = True
 
 
 @dataclass(frozen=True, slots=True)
@@ -68,7 +78,9 @@ class GitHubTaskSyncRecord:
     success: bool
     message: str
     github_issue_number: int | None = None
+    github_issue_url: str | None = None
     github_project_item_id: str | None = None
+    labels: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -122,6 +134,8 @@ class GitHubTaskSyncService:
             repository = self._resolve_repository(task, params)
             issue_action = "create_issue" if task.github_issue_number is None else "update_issue"
             project_action = self._project_action(task, params)
+            label_specs = self._issue_labels(task) if params.sync_labels else ()
+            label_names = tuple(label.name for label in label_specs)
 
             if repository is None:
                 records.append(
@@ -137,6 +151,7 @@ class GitHubTaskSyncService:
                             "No GitHub repository was resolved. Pass --repo, set "
                             "GITHUB_REPOSITORY, or persist github_repository on the task."
                         ),
+                        labels=label_names,
                     )
                 )
                 continue
@@ -156,6 +171,7 @@ class GitHubTaskSyncService:
                         message=str(exc),
                         github_issue_number=task.github_issue_number,
                         github_project_item_id=task.github_project_item_id,
+                        labels=label_names,
                     )
                 )
                 continue
@@ -173,13 +189,19 @@ class GitHubTaskSyncService:
                         message="Planned sync only. Use --write to apply the GitHub updates.",
                         github_issue_number=task.github_issue_number,
                         github_project_item_id=task.github_project_item_id,
+                        labels=label_names,
                     )
                 )
                 continue
 
             assert client is not None
             try:
-                issue_ref = self._sync_issue(client, task, repository=repository)
+                issue_ref = self._sync_issue(
+                    client,
+                    task,
+                    repository=repository,
+                    labels=label_specs,
+                )
                 project_item_id = self._sync_project(
                     client,
                     task,
@@ -212,7 +234,9 @@ class GitHubTaskSyncService:
                         success=True,
                         message="GitHub task sync completed successfully.",
                         github_issue_number=issue_ref.number,
+                        github_issue_url=issue_ref.html_url,
                         github_project_item_id=project_item_id,
+                        labels=label_names,
                     )
                 )
             except GitHubApiError as exc:
@@ -228,6 +252,7 @@ class GitHubTaskSyncService:
                         message=str(exc),
                         github_issue_number=task.github_issue_number,
                         github_project_item_id=task.github_project_item_id,
+                        labels=label_names,
                     )
                 )
 
@@ -332,15 +357,20 @@ class GitHubTaskSyncService:
         task: TaskDocument,
         *,
         repository: str,
+        labels: tuple[GitHubLabelSpec, ...],
     ) -> GitHubIssueRef:
         title = task.title
         body = self._issue_body(task, repository=repository)
         state, state_reason = self._issue_state(task.task_status)
+        if labels:
+            client.ensure_labels(repository, labels)
+        label_names = tuple(label.name for label in labels)
         if task.github_issue_number is None:
             return client.create_issue(
                 repository,
                 title=title,
                 body=body,
+                labels=label_names,
                 state=state,
                 state_reason=state_reason,
             )
@@ -349,6 +379,7 @@ class GitHubTaskSyncService:
             task.github_issue_number,
             title=title,
             body=body,
+            labels=label_names,
             state=state,
             state_reason=state_reason,
         )
@@ -422,11 +453,56 @@ class GitHubTaskSyncService:
         return "update_project_status"
 
     @staticmethod
+    def _issue_labels(task: TaskDocument) -> tuple[GitHubLabelSpec, ...]:
+        names: list[str] = [
+            "source:watchtower",
+            f"kind:{task.task_kind}",
+            f"status:{task.task_status}",
+            f"priority:{task.priority}",
+        ]
+        if task.list_values("blocked_by"):
+            names.append("blocked")
+
+        labels: list[GitHubLabelSpec] = []
+        seen: set[str] = set()
+        for name in names:
+            if name in seen:
+                continue
+            seen.add(name)
+            prefix = name.split(":", 1)[0]
+            description = GitHubTaskSyncService._label_description(name)
+            labels.append(
+                GitHubLabelSpec(
+                    name=name,
+                    color=LABEL_COLOR_BY_PREFIX.get(prefix, "5319E7"),
+                    description=description,
+                )
+            )
+        return tuple(labels)
+
+    @staticmethod
+    def _label_description(name: str) -> str:
+        if name == "source:watchtower":
+            return "Managed by the local WatchTower task sync flow."
+        if name == "blocked":
+            return "Task is currently blocked by another local task."
+        if name.startswith("kind:"):
+            kind = name.split(":", 1)[1]
+            return f"Mirrored from local task kind: {kind}."
+        if name.startswith("status:"):
+            status = name.split(":", 1)[1]
+            return f"Mirrored from local task status: {status}."
+        if name.startswith("priority:"):
+            priority = name.split(":", 1)[1]
+            return f"Mirrored from local task priority: {priority}."
+        return "Managed label from the local WatchTower task sync flow."
+
+    @staticmethod
     def _issue_body(task: TaskDocument, *, repository: str) -> str:
         lines = [
-            "This issue is managed from the local WatchTower task record. Treat the local task",
-            "document as the source of truth and use GitHub comments for discussion rather than",
-            "editing the issue body directly.",
+            "> This issue is managed from the local WatchTower task record.",
+            "> Treat the local task document as the source of truth and use",
+            "> GitHub comments for discussion rather than editing this body directly.",
             "",
             "## Task Metadata",
             f"- Task ID: `{task.task_id}`",
@@ -462,6 +538,18 @@ class GitHubTaskSyncService:
                 "",
                 "## Links",
                 task.sections["Links"],
+            ]
+        )
+        lines.extend(
+            [
+                "",
+                "## Sync Notes",
+                "- Managed fields are mirrored from the repository-local task document.",
+                "- Close or reprioritize the task from the local task record first when possible.",
+                (
+                    "- If this issue becomes materially different from the local task, "
+                    "reconcile it in git."
+                ),
             ]
         )
         if "Notes" in task.sections and task.sections["Notes"]:

@@ -17,6 +17,8 @@
 | `docs/commands/core_python/watchtower_core_query_prds.md` | Human-readable command page for the watchtower-core query prds command. |
 | `docs/commands/core_python/watchtower_core_query_decisions.md` | Human-readable command page for the watchtower-core query decisions command. |
 | `docs/commands/core_python/watchtower_core_query_designs.md` | Human-readable command page for the watchtower-core query designs command. |
+| `docs/commands/core_python/watchtower_core_query_acceptance.md` | Human-readable command page for the watchtower-core query acceptance command. |
+| `docs/commands/core_python/watchtower_core_query_evidence.md` | Human-readable command page for the watchtower-core query evidence command. |
 | `docs/commands/core_python/watchtower_core_query_tasks.md` | Human-readable command page for the watchtower-core query tasks command. |
 | `docs/commands/core_python/watchtower_core_query_trace.md` | Human-readable command page for the watchtower-core query trace command. |
 | `docs/commands/core_python/watchtower_core_sync.md` | Human-readable command page for the watchtower-core sync command group. |
@@ -33,5 +35,6 @@
 | `docs/commands/core_python/watchtower_core_sync_traceability_index.md` | Human-readable command page for the watchtower-core sync traceability-index command. |
 | `docs/commands/core_python/watchtower_core_sync_repository_paths.md` | Human-readable command page for the watchtower-core sync repository-paths command. |
 | `docs/commands/core_python/watchtower_core_validate.md` | Human-readable command page for the watchtower-core validate command group. |
+| `docs/commands/core_python/watchtower_core_validate_acceptance.md` | Human-readable command page for the watchtower-core validate acceptance command. |
 | `docs/commands/core_python/watchtower_core_validate_artifact.md` | Human-readable command page for the watchtower-core validate artifact command. |
 | `docs/commands/core_python/watchtower_core_validate_front_matter.md` | Human-readable command page for the watchtower-core validate front-matter command. |

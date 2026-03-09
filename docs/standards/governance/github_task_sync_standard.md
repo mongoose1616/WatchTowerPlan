@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "github_sync"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T16:20:00Z"
+updated_at: "2026-03-09T16:54:39Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -44,6 +44,7 @@ This standard defines the repository's first GitHub task sync contract for pushi
 
 ## Related Standards and Sources
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
+- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
@@ -72,6 +73,12 @@ This standard defines the repository's first GitHub task sync contract for pushi
   - `github_synced_at`
 - Do not require GitHub metadata for unsynced local tasks.
 - Keep `updated_at` for task-content updates and use `github_synced_at` for the last successful remote sync timestamp.
+- Manage a small bounded GitHub label set for synced issues:
+  - `source:watchtower`
+  - `kind:<task_kind>`
+  - `status:<task_status>`
+  - `priority:<priority>`
+  - `blocked` when the local task currently declares blockers
 - Map local task execution state to GitHub issue state like this:
   - `backlog`, `ready`, `in_progress`, `blocked`, `in_review` -> open issue
   - `done` -> closed issue with state reason `completed`
@@ -85,6 +92,14 @@ This standard defines the repository's first GitHub task sync contract for pushi
   - `Done`
   - `Cancelled`
 - Do not silently rebind an already-synced task to a different GitHub repository or project without an explicit operator action.
+- Use a stable issue body structure that mirrors:
+  - task metadata
+  - summary
+  - context
+  - scope
+  - done-when criteria
+  - links
+  - sync notes about local authority
 
 ## Structure or Data Model
 ### Local-to-GitHub authority boundary
@@ -107,13 +122,23 @@ This standard defines the repository's first GitHub task sync contract for pushi
 | `github_project_item_id` | GraphQL item ID for the project card |
 | `github_synced_at` | Last successful GitHub sync timestamp in UTC |
 
+### Managed GitHub labels
+| Label pattern | Meaning |
+|---|---|
+| `source:watchtower` | Issue is managed by the repo-local sync flow |
+| `kind:<task_kind>` | Mirrors the local task kind |
+| `status:<task_status>` | Mirrors the local task-status value |
+| `priority:<priority>` | Mirrors the local task priority |
+| `blocked` | Mirrors the presence of blocker IDs on the local task |
+
 ## Process or Workflow
 1. Select the local task records that should be published to GitHub.
 2. Resolve the target repository and optional project boundary explicitly.
 3. Create or update the GitHub issue from the local task record.
 4. Optionally add or update the GitHub Project item and mapped status field.
-5. Persist returned GitHub foreign keys back onto the local task record.
-6. Rebuild the task index, task tracker, and traceability index in the same change set when local task metadata changed.
+5. Upsert the managed GitHub labels when label sync is enabled.
+6. Persist returned GitHub foreign keys back onto the local task record.
+7. Rebuild the task index, task tracker, and traceability index in the same change set when local task metadata changed.
 
 ## Validation
 - Task records with `github_issue_number` should also carry `github_repository`.
@@ -121,6 +146,7 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - The task index should preserve the same GitHub foreign keys published in the task documents.
 - Reviewers should reject any sync flow that lets GitHub replace the local `task_id` or local task-status source of truth.
 - All GitHub sync timestamps should use UTC RFC 3339 timestamps with a trailing `Z`.
+- The managed GitHub labels should remain bounded and deterministic rather than becoming free-form tags.
 
 ## Change Control
 - Update this standard when the repository changes the GitHub sync authority boundary, foreign-key set, or status mapping.
@@ -128,10 +154,11 @@ This standard defines the repository's first GitHub task sync contract for pushi
 
 ## References
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
+- [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 - [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md)
 - [GitHub Issues REST API](https://docs.github.com/en/rest/issues/issues)
 - [GitHub Projects API](https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects)
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-09T16:54:39Z`

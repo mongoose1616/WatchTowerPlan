@@ -120,6 +120,30 @@
       "notes": "With no leaf command, this surface prints query-specific help and exits successfully."
     },
     {
+      "command_id": "command.watchtower_core.query.acceptance",
+      "command": "watchtower-core query acceptance",
+      "summary": "This command searches the governed acceptance-contract artifacts for a trace, PRD, or acceptance ID.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_acceptance.md",
+      "synopsis": "uv run watchtower-core query acceptance [--trace-id <trace_id>] [--source-prd-id <prd_id>] [--acceptance-id <acceptance_id>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "acceptance"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.commands",
       "command": "watchtower-core query commands",
       "summary": "This command searches the governed command index so engineers can discover available CLI commands, their command pages, and their implementation surfaces.",
@@ -193,6 +217,30 @@
         "cli",
         "query",
         "designs"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.evidence",
+      "command": "watchtower-core query evidence",
+      "summary": "This command searches the governed validation-evidence ledger for one trace, acceptance ID, validator ID, or overall result.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_evidence.md",
+      "synopsis": "uv run watchtower-core query evidence [--trace-id <trace_id>] [--result <passed|failed|warning|not_applicable>] [--acceptance-id <acceptance_id>] [--validator-id <validator_id>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "evidence"
       ]
     },
     {
@@ -456,7 +504,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
-      "synopsis": "uv run watchtower-core sync github-tasks [--repo <owner/name>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--owner <owner>] [--task-kind <task_kind>] [--project-owner <login>] [--project-owner-type <user|organization>] [--project-number <n>] [--write] [--format <human|json>]",
+      "synopsis": "uv run watchtower-core sync github-tasks [--repo <owner/name>] [--task-id <task_id>] [--trace-id <trace_id>] [--task-status <task_status>] [--owner <owner>] [--task-kind <task_kind>] [--project-owner <login>] [--project-owner-type <user|organization>] [--project-number <n>] [--no-label-sync] [--write] [--format <human|json>]",
       "implementation_path": "core/python/src/watchtower_core/cli/main.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.sync",
@@ -649,6 +697,30 @@
         "validate"
       ],
       "notes": "With no leaf command, this surface prints validate-specific help and exits successfully."
+    },
+    {
+      "command_id": "command.watchtower_core.validate.acceptance",
+      "command": "watchtower-core validate acceptance",
+      "summary": "This command validates one trace across PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_validate_acceptance.md",
+      "synopsis": "uv run watchtower-core validate acceptance --trace-id <trace_id> [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.validate",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "validate",
+        "acceptance"
+      ]
     },
     {
       "command_id": "command.watchtower_core.validate.artifact",
