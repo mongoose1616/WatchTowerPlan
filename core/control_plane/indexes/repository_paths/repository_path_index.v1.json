@@ -1699,10 +1699,31 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_decisions.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query decisions command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_query_designs.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query designs command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query_paths.md",
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core query paths command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_query_prds.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query prds command.",
       "parent_path": "docs/commands/core_python/"
     },
     {

@@ -9,6 +9,9 @@ from typing import Any
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     CommandIndex,
+    DecisionIndex,
+    DesignDocumentIndex,
+    PrdIndex,
     RepositoryPathIndex,
     SchemaCatalog,
     TraceabilityIndex,
@@ -22,6 +25,11 @@ REPOSITORY_PATH_INDEX_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
 )
 COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
+PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.v1.json"
+DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.v1.json"
+DESIGN_DOCUMENT_INDEX_PATH = (
+    "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+)
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.v1.json"
 
 
@@ -76,6 +84,20 @@ class ControlPlaneLoader:
     def load_command_index(self) -> CommandIndex:
         """Load the current command index."""
         return CommandIndex.from_document(self.load_validated_document(COMMAND_INDEX_PATH))
+
+    def load_prd_index(self) -> PrdIndex:
+        """Load the current PRD index."""
+        return PrdIndex.from_document(self.load_validated_document(PRD_INDEX_PATH))
+
+    def load_decision_index(self) -> DecisionIndex:
+        """Load the current decision index."""
+        return DecisionIndex.from_document(self.load_validated_document(DECISION_INDEX_PATH))
+
+    def load_design_document_index(self) -> DesignDocumentIndex:
+        """Load the current design-document index."""
+        return DesignDocumentIndex.from_document(
+            self.load_validated_document(DESIGN_DOCUMENT_INDEX_PATH)
+        )
 
     def load_traceability_index(self) -> TraceabilityIndex:
         """Load the current traceability index."""

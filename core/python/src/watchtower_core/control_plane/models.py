@@ -266,6 +266,210 @@ class CommandIndex:
 
 
 @dataclass(frozen=True, slots=True)
+class PrdIndexEntry:
+    """PRD-index entry."""
+
+    trace_id: str
+    prd_id: str
+    title: str
+    summary: str
+    status: str
+    doc_path: str
+    updated_at: str
+    requirement_ids: tuple[str, ...] = ()
+    acceptance_ids: tuple[str, ...] = ()
+    linked_decision_ids: tuple[str, ...] = ()
+    linked_design_ids: tuple[str, ...] = ()
+    linked_plan_ids: tuple[str, ...] = ()
+    related_paths: tuple[str, ...] = ()
+    tags: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PrdIndexEntry:
+        return cls(
+            trace_id=document["trace_id"],
+            prd_id=document["prd_id"],
+            title=document["title"],
+            summary=document["summary"],
+            status=document["status"],
+            doc_path=document["doc_path"],
+            updated_at=document["updated_at"],
+            requirement_ids=tuple(document.get("requirement_ids", ())),
+            acceptance_ids=tuple(document.get("acceptance_ids", ())),
+            linked_decision_ids=tuple(document.get("linked_decision_ids", ())),
+            linked_design_ids=tuple(document.get("linked_design_ids", ())),
+            linked_plan_ids=tuple(document.get("linked_plan_ids", ())),
+            related_paths=tuple(document.get("related_paths", ())),
+            tags=tuple(document.get("tags", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PrdIndex:
+    """Typed PRD-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[PrdIndexEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PrdIndex:
+        entries = tuple(PrdIndexEntry.from_document(entry) for entry in document["entries"])
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, prd_id: str) -> PrdIndexEntry:
+        """Return a PRD-index entry by identifier."""
+        for entry in self.entries:
+            if entry.prd_id == prd_id:
+                return entry
+        raise KeyError(prd_id)
+
+
+@dataclass(frozen=True, slots=True)
+class DecisionIndexEntry:
+    """Decision-index entry."""
+
+    trace_id: str
+    decision_id: str
+    title: str
+    summary: str
+    record_status: str
+    decision_status: str
+    doc_path: str
+    updated_at: str
+    linked_prd_ids: tuple[str, ...] = ()
+    linked_design_ids: tuple[str, ...] = ()
+    linked_plan_ids: tuple[str, ...] = ()
+    related_paths: tuple[str, ...] = ()
+    tags: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> DecisionIndexEntry:
+        return cls(
+            trace_id=document["trace_id"],
+            decision_id=document["decision_id"],
+            title=document["title"],
+            summary=document["summary"],
+            record_status=document["record_status"],
+            decision_status=document["decision_status"],
+            doc_path=document["doc_path"],
+            updated_at=document["updated_at"],
+            linked_prd_ids=tuple(document.get("linked_prd_ids", ())),
+            linked_design_ids=tuple(document.get("linked_design_ids", ())),
+            linked_plan_ids=tuple(document.get("linked_plan_ids", ())),
+            related_paths=tuple(document.get("related_paths", ())),
+            tags=tuple(document.get("tags", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class DecisionIndex:
+    """Typed decision-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[DecisionIndexEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> DecisionIndex:
+        entries = tuple(DecisionIndexEntry.from_document(entry) for entry in document["entries"])
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, decision_id: str) -> DecisionIndexEntry:
+        """Return a decision-index entry by identifier."""
+        for entry in self.entries:
+            if entry.decision_id == decision_id:
+                return entry
+        raise KeyError(decision_id)
+
+
+@dataclass(frozen=True, slots=True)
+class DesignDocumentIndexEntry:
+    """Design-document-index entry."""
+
+    document_id: str
+    trace_id: str
+    family: str
+    title: str
+    summary: str
+    status: str
+    doc_path: str
+    updated_at: str
+    source_paths: tuple[str, ...] = ()
+    related_paths: tuple[str, ...] = ()
+    tags: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> DesignDocumentIndexEntry:
+        return cls(
+            document_id=document["document_id"],
+            trace_id=document["trace_id"],
+            family=document["family"],
+            title=document["title"],
+            summary=document["summary"],
+            status=document["status"],
+            doc_path=document["doc_path"],
+            updated_at=document["updated_at"],
+            source_paths=tuple(document.get("source_paths", ())),
+            related_paths=tuple(document.get("related_paths", ())),
+            tags=tuple(document.get("tags", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class DesignDocumentIndex:
+    """Typed design-document-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[DesignDocumentIndexEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> DesignDocumentIndex:
+        entries = tuple(
+            DesignDocumentIndexEntry.from_document(entry) for entry in document["entries"]
+        )
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, document_id: str) -> DesignDocumentIndexEntry:
+        """Return a design-document-index entry by identifier."""
+        for entry in self.entries:
+            if entry.document_id == document_id:
+                return entry
+        raise KeyError(document_id)
+
+
+@dataclass(frozen=True, slots=True)
 class TraceabilityEntry:
     """Traceability-index entry."""
 

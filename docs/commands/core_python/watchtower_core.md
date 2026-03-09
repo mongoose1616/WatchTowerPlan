@@ -45,6 +45,11 @@ uv run watchtower-core query commands --query doctor --format json
 
 ```sh
 cd core/python
+uv run watchtower-core query prds --trace-id trace.core_python_foundation
+```
+
+```sh
+cd core/python
 uv run watchtower-core sync command-index
 ```
 

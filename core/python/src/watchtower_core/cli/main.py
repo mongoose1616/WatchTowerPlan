@@ -13,6 +13,12 @@ from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceReco
 from watchtower_core.query import (
     CommandQueryService,
     CommandSearchParams,
+    DecisionQueryService,
+    DecisionSearchParams,
+    DesignDocumentQueryService,
+    DesignDocumentSearchParams,
+    PrdQueryService,
+    PrdSearchParams,
     RepositoryPathQueryService,
     RepositoryPathSearchParams,
     TraceabilityQueryService,
@@ -67,6 +73,7 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=_examples(
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync prd-index",
             "uv run watchtower-core sync traceability-index",
@@ -113,12 +120,16 @@ def build_parser() -> argparse.ArgumentParser:
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            and `trace` when you already know the trace identifier you want.
+            `prds`, `decisions`, and `designs` for planning lookup, and `trace`
+            when you already know the trace identifier you want.
             """
         ).strip(),
         epilog=_examples(
             "uv run watchtower-core query paths --query control plane",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query decisions --decision-status accepted",
+            "uv run watchtower-core query designs --family implementation_plan",
             "uv run watchtower-core query trace --trace-id trace.core_python_foundation",
         ),
         formatter_class=HelpFormatter,
@@ -216,6 +227,168 @@ def build_parser() -> argparse.ArgumentParser:
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     query_commands_parser.set_defaults(handler=_run_query_commands)
+
+    query_prds_parser = query_subparsers.add_parser(
+        "prds",
+        help="Search the PRD index.",
+        description=dedent(
+            """
+            Search the PRD index for governed product requirements documents.
+
+            Use this when you need to find a PRD by trace, requirement ID,
+            acceptance ID, or free-text summary content.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query prds --requirement-id req.core_python_foundation.003 "
+            "--format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_prds_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over indexed PRD fields such as IDs, title, "
+            "summary, tags, and linked surfaces."
+        ),
+    )
+    query_prds_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.core_python_foundation.",
+    )
+    query_prds_parser.add_argument(
+        "--tag",
+        help="Exact tag filter.",
+    )
+    query_prds_parser.add_argument(
+        "--requirement-id",
+        help="Exact requirement-ID filter such as req.core_python_foundation.003.",
+    )
+    query_prds_parser.add_argument(
+        "--acceptance-id",
+        help="Exact acceptance-ID filter such as ac.core_python_foundation.002.",
+    )
+    query_prds_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_prds_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_prds_parser.set_defaults(handler=_run_query_prds)
+
+    query_decisions_parser = query_subparsers.add_parser(
+        "decisions",
+        help="Search the decision index.",
+        description=dedent(
+            """
+            Search the decision index for governed durable decision records.
+
+            Use this when you need to find a decision by trace, decision status,
+            linked PRD, or free-text summary content.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query decisions --decision-status accepted",
+            "uv run watchtower-core query decisions --linked-prd-id prd.core_python_foundation "
+            "--format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_decisions_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over indexed decision fields such as IDs, title, "
+            "summary, tags, and linked surfaces."
+        ),
+    )
+    query_decisions_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.core_python_foundation.",
+    )
+    query_decisions_parser.add_argument(
+        "--decision-status",
+        help="Exact decision-status filter such as accepted or proposed.",
+    )
+    query_decisions_parser.add_argument(
+        "--tag",
+        help="Exact tag filter.",
+    )
+    query_decisions_parser.add_argument(
+        "--linked-prd-id",
+        help="Exact linked PRD filter such as prd.core_python_foundation.",
+    )
+    query_decisions_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_decisions_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_decisions_parser.set_defaults(handler=_run_query_decisions)
+
+    query_designs_parser = query_subparsers.add_parser(
+        "designs",
+        help="Search the design-document index.",
+        description=dedent(
+            """
+            Search the design-document index for governed feature designs and
+            implementation plans.
+
+            Use this when you need to find designs by trace, family, tag, or
+            free-text summary content.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query designs --family feature_design",
+            "uv run watchtower-core query designs --trace-id trace.core_python_foundation "
+            "--format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_designs_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over indexed design fields such as IDs, title, "
+            "summary, tags, and linked paths."
+        ),
+    )
+    query_designs_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.core_python_foundation.",
+    )
+    query_designs_parser.add_argument(
+        "--family",
+        help="Exact design-family filter such as feature_design or implementation_plan.",
+    )
+    query_designs_parser.add_argument(
+        "--tag",
+        help="Exact tag filter.",
+    )
+    query_designs_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_designs_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_designs_parser.set_defaults(handler=_run_query_designs)
 
     query_trace_parser = query_subparsers.add_parser(
         "trace",
@@ -725,6 +898,157 @@ def _run_query_commands(args: argparse.Namespace) -> int:
     print(f"Found {len(entries)} command entr{'y' if len(entries) == 1 else 'ies'}:")
     for entry in entries:
         print(f"- {entry.command} [{entry.kind}]")
+        print(f"  {entry.summary}")
+    return 0
+
+
+def _run_query_prds(args: argparse.Namespace) -> int:
+    service = PrdQueryService(ControlPlaneLoader())
+    entries = service.search(
+        PrdSearchParams(
+            query=args.query,
+            trace_id=args.trace_id,
+            tag=args.tag,
+            requirement_id=args.requirement_id,
+            acceptance_id=args.acceptance_id,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query prds",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "trace_id": entry.trace_id,
+                "prd_id": entry.prd_id,
+                "title": entry.title,
+                "summary": entry.summary,
+                "status": entry.status,
+                "doc_path": entry.doc_path,
+                "updated_at": entry.updated_at,
+                "requirement_ids": list(entry.requirement_ids),
+                "acceptance_ids": list(entry.acceptance_ids),
+                "linked_decision_ids": list(entry.linked_decision_ids),
+                "linked_design_ids": list(entry.linked_design_ids),
+                "linked_plan_ids": list(entry.linked_plan_ids),
+                "related_paths": list(entry.related_paths),
+                "tags": list(entry.tags),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No PRD entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} PRD entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.prd_id} [{entry.status}]")
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+    return 0
+
+
+def _run_query_decisions(args: argparse.Namespace) -> int:
+    service = DecisionQueryService(ControlPlaneLoader())
+    entries = service.search(
+        DecisionSearchParams(
+            query=args.query,
+            trace_id=args.trace_id,
+            decision_status=args.decision_status,
+            tag=args.tag,
+            linked_prd_id=args.linked_prd_id,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query decisions",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "trace_id": entry.trace_id,
+                "decision_id": entry.decision_id,
+                "title": entry.title,
+                "summary": entry.summary,
+                "record_status": entry.record_status,
+                "decision_status": entry.decision_status,
+                "doc_path": entry.doc_path,
+                "updated_at": entry.updated_at,
+                "linked_prd_ids": list(entry.linked_prd_ids),
+                "linked_design_ids": list(entry.linked_design_ids),
+                "linked_plan_ids": list(entry.linked_plan_ids),
+                "related_paths": list(entry.related_paths),
+                "tags": list(entry.tags),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No decision entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} decision entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.decision_id} [{entry.decision_status}]")
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+    return 0
+
+
+def _run_query_designs(args: argparse.Namespace) -> int:
+    service = DesignDocumentQueryService(ControlPlaneLoader())
+    entries = service.search(
+        DesignDocumentSearchParams(
+            query=args.query,
+            trace_id=args.trace_id,
+            family=args.family,
+            tag=args.tag,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query designs",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "document_id": entry.document_id,
+                "trace_id": entry.trace_id,
+                "family": entry.family,
+                "title": entry.title,
+                "summary": entry.summary,
+                "status": entry.status,
+                "doc_path": entry.doc_path,
+                "updated_at": entry.updated_at,
+                "source_paths": list(entry.source_paths),
+                "related_paths": list(entry.related_paths),
+                "tags": list(entry.tags),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No design-document entries matched the requested filters.")
+        return 0
+
+    print(
+        f"Found {len(entries)} design-document entr"
+        f"{'y' if len(entries) == 1 else 'ies'}:"
+    )
+    for entry in entries:
+        print(f"- {entry.document_id} [{entry.family}]")
+        print(f"  {entry.title}")
         print(f"  {entry.summary}")
     return 0
 

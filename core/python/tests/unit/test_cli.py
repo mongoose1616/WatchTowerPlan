@@ -43,6 +43,9 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
+    assert "query prds" in captured.out
+    assert "query decisions" in captured.out
+    assert "query designs" in captured.out
     assert (
         "uv run watchtower-core query trace --trace-id trace.core_python_foundation"
         in captured.out
@@ -107,6 +110,72 @@ def test_query_commands_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core query commands"
     assert payload["status"] == "ok"
     assert any(entry["command"] == "watchtower-core doctor" for entry in payload["results"])
+
+
+def test_query_prds_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "prds",
+            "--trace-id",
+            "trace.core_python_foundation",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query prds"
+    assert payload["status"] == "ok"
+    assert any(entry["prd_id"] == "prd.core_python_foundation" for entry in payload["results"])
+
+
+def test_query_decisions_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "decisions",
+            "--decision-status",
+            "accepted",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query decisions"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["decision_id"] == "decision.core_python_workspace_root"
+        for entry in payload["results"]
+    )
+
+
+def test_query_designs_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "designs",
+            "--family",
+            "feature_design",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query designs"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["document_id"] == "design.features.python_validator_execution"
+        for entry in payload["results"]
+    )
 
 
 def test_query_trace_supports_json_output(capsys) -> None:

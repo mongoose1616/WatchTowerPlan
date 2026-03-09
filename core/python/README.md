@@ -69,6 +69,9 @@
 - `docs/commands/core_python/watchtower_core_query.md`
 - `docs/commands/core_python/watchtower_core_query_paths.md`
 - `docs/commands/core_python/watchtower_core_query_commands.md`
+- `docs/commands/core_python/watchtower_core_query_prds.md`
+- `docs/commands/core_python/watchtower_core_query_decisions.md`
+- `docs/commands/core_python/watchtower_core_query_designs.md`
 - `docs/commands/core_python/watchtower_core_query_trace.md`
 - `docs/commands/core_python/watchtower_core_sync.md`
 - `docs/commands/core_python/watchtower_core_sync_command_index.md`

@@ -48,6 +48,9 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
+| `watchtower-core query prds` | Searches the PRD index when you do not already know the exact trace ID. |
+| `watchtower-core query decisions` | Searches the decision index when you want decision records rather than a joined trace record. |
+| `watchtower-core query designs` | Searches the design-document index when you want design docs rather than a joined trace record. |
 | `watchtower-core sync traceability-index` | Rebuilds the traceability index that this command reads. |
 | `watchtower-core query paths` | Helps find the traceability index artifact path if you need to inspect the source artifact directly. |
 | `watchtower-core query commands` | Helps discover other CLI surfaces once you know which workflow you want. |
@@ -58,4 +61,4 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 - `core/control_plane/indexes/traceability/traceability_index.v1.json`
 
 ## Updated At
-- `2026-03-09T06:54:19Z`
+- `2026-03-09T07:21:07Z`

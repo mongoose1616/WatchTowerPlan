@@ -57,7 +57,7 @@
     {
       "command_id": "command.watchtower_core.query",
       "command": "watchtower-core query",
-      "summary": "This command group searches the governed lookup indexes for repository paths, documented commands, and traceability records.",
+      "summary": "This command group searches the governed lookup indexes for repository paths, documented commands, planning artifacts, and traceability records.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -106,6 +106,54 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.query.decisions",
+      "command": "watchtower-core query decisions",
+      "summary": "This command searches the governed decision index so engineers and agents can find durable decision records by trace, decision status, linked PRD, or free-text planning context.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_decisions.md",
+      "synopsis": "uv run watchtower-core query decisions [--query <text>] [--trace-id <trace_id>] [--decision-status <status>] [--tag <tag>] [--linked-prd-id <prd_id>] [--limit <n>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "decisions"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.designs",
+      "command": "watchtower-core query designs",
+      "summary": "This command searches the governed design-document index so engineers and agents can find feature designs and implementation plans by trace, family, tag, or free-text planning context.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_designs.md",
+      "synopsis": "uv run watchtower-core query designs [--query <text>] [--trace-id <trace_id>] [--family <family>] [--tag <tag>] [--limit <n>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "designs"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.paths",
       "command": "watchtower-core query paths",
       "summary": "This command searches the repository path index by free text and exact filters so engineers can find high-signal repository surfaces quickly.",
@@ -131,6 +179,30 @@
         "cli",
         "query",
         "paths"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.prds",
+      "command": "watchtower-core query prds",
+      "summary": "This command searches the governed PRD index so engineers and agents can find PRDs by trace, requirement ID, acceptance ID, or free-text planning context.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_prds.md",
+      "synopsis": "uv run watchtower-core query prds [--query <text>] [--trace-id <trace_id>] [--tag <tag>] [--requirement-id <requirement_id>] [--acceptance-id <acceptance_id>] [--limit <n>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "prds"
       ]
     },
     {

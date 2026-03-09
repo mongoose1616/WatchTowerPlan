@@ -37,6 +37,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     command_index = loader.load_command_index()
     doctor = command_index.get("command.watchtower_core.doctor")
     query_paths = command_index.get("command.watchtower_core.query.paths")
+    query_trace = command_index.get("command.watchtower_core.query.trace")
     sync_traceability = command_index.get("command.watchtower_core.sync.traceability_index")
     validate_front_matter = command_index.get("command.watchtower_core.validate.front_matter")
     validate_artifact = command_index.get("command.watchtower_core.validate.artifact")
@@ -45,6 +46,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert doctor.doc_path == "docs/commands/core_python/watchtower_core_doctor.md"
     assert query_paths.default_output_format == "human"
     assert query_paths.doc_path == "docs/commands/core_python/watchtower_core_query_paths.md"
+    assert query_trace.parent_command_id == "command.watchtower_core.query"
     assert sync_traceability.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_traceability.doc_path
@@ -70,3 +72,22 @@ def test_control_plane_loader_reads_traceability_index() -> None:
 
     assert trace.trace_id == "trace.core_python_foundation"
     assert "design.features.schema_resolution_and_index_search" in trace.design_ids
+
+
+def test_control_plane_loader_reads_planning_indexes() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    prd_index = loader.load_prd_index()
+    decision_index = loader.load_decision_index()
+    design_index = loader.load_design_document_index()
+
+    prd = prd_index.get("prd.core_python_foundation")
+    decision = decision_index.get("decision.core_python_workspace_root")
+    design = design_index.get("design.features.python_validator_execution")
+
+    assert prd.trace_id == "trace.core_python_foundation"
+    assert "req.core_python_foundation.003" in prd.requirement_ids
+    assert decision.decision_status == "accepted"
+    assert "prd.core_python_foundation" in decision.linked_prd_ids
+    assert design.family == "feature_design"
+    assert design.trace_id == "trace.core_python_foundation"
