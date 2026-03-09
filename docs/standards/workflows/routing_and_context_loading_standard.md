@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:23:35Z"
+updated_at: "2026-03-09T06:29:13Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -42,6 +42,8 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - If multiple task types match, merge the smallest necessary set rather than loading the whole workflow library.
 - If a non-documentation workflow uncovers a documentation gap, merge the smallest necessary documentation route into the active task set, including any required shared phase modules not already loaded, rather than handling the gap ad hoc without a documentation workflow.
 - If a task's main risk is drift between implementation behavior and companion docs or lookup surfaces, load `modules/documentation_implementation_reconciliation.md` or use the dedicated reconciliation route rather than relying only on broad review or handoff steps.
+- If a task's main risk is drift between traced planning or governance artifacts and their companion trackers, family indexes, or unified traceability joins, load `modules/traceability_reconciliation.md` or use the dedicated reconciliation route rather than relying only on planning leaf modules or handoff review.
+- If a task's main risk is drift between schema-backed governed artifacts and their companion schemas, examples, indexes, registries, or loader and validator assumptions, load `modules/governed_artifact_reconciliation.md` or use the dedicated reconciliation route rather than relying only on generic validation.
 - If the routing result is ambiguous, prefer clarification or the nearest minimal route rather than speculative broad loading.
 - Task-specific logic belongs in workflow modules, not in `AGENTS.md`.
 - Classification logic belongs in the routing table, not in the workflow modules themselves.
@@ -55,7 +57,9 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 6. Execute the task using the loaded modules and any directly relevant repository context.
 7. If execution reveals a material documentation gap, add the smallest documentation route needed: load `modules/documentation_generation.md` for new docs or `modules/documentation_refresh.md` for stale docs, plus any required shared phase modules not already loaded, unless the gap is minor enough to fix as an adjacent same-change update.
 8. If execution reveals a material implementation-versus-documentation drift risk, add `modules/documentation_implementation_reconciliation.md` or switch to the dedicated reconciliation route unless the drift has already been checked explicitly inside the active route.
-9. If routing is unclear or incomplete, request clarification or improve the routing surfaces rather than silently broadening context.
+9. If execution reveals a material traceability-drift risk, add `modules/traceability_reconciliation.md` or switch to the dedicated reconciliation route unless the trace agreement has already been checked explicitly inside the active route.
+10. If execution reveals a material governed-artifact coherence risk, add `modules/governed_artifact_reconciliation.md` or switch to the dedicated reconciliation route unless the artifact-family agreement has already been checked explicitly inside the active route.
+11. If routing is unclear or incomplete, request clarification or improve the routing surfaces rather than silently broadening context.
 
 ## Validation
 - A routed task should start with enough context to act correctly but not so much context that unrelated instructions compete.
@@ -77,4 +81,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-09T05:23:35Z`
+- `2026-03-09T06:29:13Z`

@@ -20,6 +20,7 @@
 | `workflows/modules/documentation_refresh.md` | Workflow module for refreshing and updating existing documentation. |
 | `workflows/modules/external_guidance_research.md` | Shared workflow module for consulting authoritative external guidance only when needed. |
 | `workflows/modules/feature_design_planning.md` | Workflow module for turning a feature request or PRD into a review-ready technical design for implementation planning. |
+| `workflows/modules/governed_artifact_reconciliation.md` | Shared workflow module for reconciling schema-backed governed artifacts with their companion schemas, examples, indexes, registries, and implementation-facing lookup surfaces. |
 | `workflows/modules/foundations_context_review.md` | Shared workflow module for loading repository foundation documents during planning and design work. |
 | `workflows/modules/implementation_planning.md` | Workflow module for turning a PRD into an implementation plan. |
 | `workflows/modules/internal_context_review.md` | Shared workflow module for identifying the internal standards, templates, workflows, and canonical docs that govern a task. |
@@ -30,3 +31,4 @@
 | `workflows/modules/repository_review.md` | Workflow module for synthesizing repository review findings and remediation guidance. |
 | `workflows/modules/task_handoff_review.md` | Shared workflow module for handoff readiness, related-surface impacts, and follow-up recording. |
 | `workflows/modules/task_scope_definition.md` | Shared workflow module for defining the objective, boundary, and success conditions of a routed task. |
+| `workflows/modules/traceability_reconciliation.md` | Shared workflow module for reconciling traced planning artifacts with their companion trackers, family indexes, and unified traceability joins. |

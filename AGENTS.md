@@ -29,6 +29,8 @@
 - Prefer machine-readable control-plane surfaces for deterministic lookup when they exist, and use prose docs for narrative context, rationale, and operator guidance.
 - During any non-documentation workflow, if a documentation gap is discovered, update adjacent docs in the same change when needed for coherence, otherwise load the minimum documentation workflow needed to close the gap or record explicit follow-up work if it is deferred.
 - When code, commands, schemas, or governed artifacts may have drifted from companion docs or machine-readable lookup surfaces, use the documentation-implementation reconciliation workflow or record why no explicit reconciliation pass was needed.
+- When traced planning or governance artifacts may have drifted from their companion trackers, family-specific indexes, or unified traceability joins, use the traceability reconciliation workflow or record why no explicit reconciliation pass was needed.
+- When schema-backed governed artifacts may have drifted from companion schemas, examples, indexes, registries, or loader and validator assumptions, use the governed artifact reconciliation workflow or record why no explicit reconciliation pass was needed.
 
 ## Do
 - Follow the routed workflow modules for task execution.
