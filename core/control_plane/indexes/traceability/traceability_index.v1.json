@@ -445,8 +445,10 @@
       "title": "Template and Output Efficiency PRD",
       "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",
       "status": "active",
-      "initiative_status": "active",
+      "initiative_status": "completed",
       "updated_at": "2026-03-10T16:34:28Z",
+      "closed_at": "2026-03-10T16:35:23Z",
+      "closure_reason": "Implemented and validated template and output efficiency improvements.",
       "prd_ids": [
         "prd.template_and_output_efficiency"
       ],

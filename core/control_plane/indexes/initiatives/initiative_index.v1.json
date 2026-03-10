@@ -463,14 +463,14 @@
       "title": "Template and Output Efficiency PRD",
       "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "closeout",
+      "initiative_status": "completed",
+      "current_phase": "closed",
       "updated_at": "2026-03-10T16:34:28Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/template_and_output_efficiency.md",
-      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/template_and_output_efficiency.md",
       "prd_ids": [
         "prd.template_and_output_efficiency"
       ],
@@ -499,6 +499,8 @@
       "evidence_ids": [
         "evidence.template_and_output_efficiency.planning_baseline"
       ],
+      "closed_at": "2026-03-10T16:35:23Z",
+      "closure_reason": "Implemented and validated template and output efficiency improvements.",
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/template_and_output_efficiency_acceptance.v1.json",

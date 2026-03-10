@@ -1,14 +1,13 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.template_and_output_efficiency` | `closeout` | unassigned | `0` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) | [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
 | `trace.core_export_hardening_followup` | `completed` | [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md) | `2026-03-10T17:12:30Z` | Implemented and validated export hardening follow-up. |
+| `trace.template_and_output_efficiency` | `completed` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) | `2026-03-10T16:35:23Z` | Implemented and validated template and output efficiency improvements. |
 | `trace.core_export_readiness_and_optimization` | `completed` | [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md) | `2026-03-10T06:46:17Z` | Delivered and validated; future WatchTower pack implementation belongs to a new bounded initiative |
 | `trace.initiative_closeout` | `completed` | [initiative_closeout_and_planning_trackers.md](/home/j/WatchTowerPlan/docs/planning/design/features/initiative_closeout_and_planning_trackers.md) | `2026-03-10T03:59:28Z` | Delivered and validated; future planning-closeout expansion belongs to a new bounded initiative |
 | `trace.github_collaboration` | `completed` | [github_collaboration_scaffolding.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_collaboration_scaffolding.md) | `2026-03-10T03:59:28Z` | Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative |
