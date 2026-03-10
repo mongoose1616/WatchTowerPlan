@@ -17,3 +17,4 @@
 | `core/control_plane/examples/invalid/indexes/standard_index_external_without_urls.v1.example.json` | Invalid standard index example with external-reference usage declared but no external URLs published. |
 | `core/control_plane/examples/invalid/indexes/task_index_open_task_with_done_status.v1.example.json` | Invalid task index example with an open task document path and a terminal task status. |
 | `core/control_plane/examples/invalid/indexes/traceability_index_missing_updated_at.v1.example.json` | Invalid traceability index example missing the required updated-at timestamp. |
+| `core/control_plane/examples/invalid/indexes/workflow_index_missing_summary.v1.example.json` | Invalid workflow index example missing a required entry summary. |

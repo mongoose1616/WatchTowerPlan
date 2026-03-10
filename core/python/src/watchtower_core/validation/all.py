@@ -23,8 +23,10 @@ from watchtower_core.sync.task_documents import (
     TASK_EXCLUDED_NAMES,
     TASK_OPEN_ROOT,
 )
+from watchtower_core.sync.workflow_index import WORKFLOW_DOC_ROOT, WORKFLOW_EXCLUDED_NAMES
 from watchtower_core.validation.acceptance import AcceptanceReconciliationService
 from watchtower_core.validation.artifact import ArtifactValidationService
+from watchtower_core.validation.document_semantics import DocumentSemanticsValidationService
 from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
@@ -105,6 +107,7 @@ class ValidationAllService:
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._front_matter = FrontMatterValidationService(loader)
+        self._document_semantics = DocumentSemanticsValidationService(loader)
         self._artifact = ArtifactValidationService(loader)
         self._acceptance = AcceptanceReconciliationService(loader)
 
@@ -112,6 +115,7 @@ class ValidationAllService:
         self,
         *,
         include_front_matter: bool = True,
+        include_document_semantics: bool = True,
         include_artifacts: bool = True,
         include_acceptance: bool = True,
     ) -> ValidationAllResult:
@@ -122,6 +126,9 @@ class ValidationAllService:
         if include_front_matter:
             included_families.append("front_matter")
             records.extend(self._validate_front_matter())
+        if include_document_semantics:
+            included_families.append("document_semantics")
+            records.extend(self._validate_document_semantics())
         if include_artifacts:
             included_families.append("artifacts")
             records.extend(self._validate_artifacts())
@@ -165,6 +172,23 @@ class ValidationAllService:
             records.append(
                 ValidationAllRecord(
                     family="artifacts",
+                    target=relative_path,
+                    result=result,
+                )
+            )
+        return tuple(records)
+
+    def _validate_document_semantics(self) -> tuple[ValidationAllRecord, ...]:
+        records: list[ValidationAllRecord] = []
+        for relative_path in self._document_semantics_targets():
+            result = self._safe_validate_path(
+                family="document_semantics",
+                target=relative_path,
+                runner=self._document_semantics.validate,
+            )
+            records.append(
+                ValidationAllRecord(
+                    family="document_semantics",
                     target=relative_path,
                     result=result,
                 )
@@ -256,6 +280,55 @@ class ValidationAllService:
                     ordered_paths.append(relative_path)
         return tuple(ordered_paths)
 
+    def _document_semantics_targets(self) -> tuple[str, ...]:
+        repo_root = self._loader.repo_root
+        standards_root = repo_root / STANDARD_DOC_ROOT
+        standards = tuple(
+            path.relative_to(repo_root).as_posix()
+            for path in sorted(standards_root.rglob("*.md"))
+            if path.name not in STANDARD_EXCLUDED_NAMES
+        )
+        workflows_root = repo_root / WORKFLOW_DOC_ROOT
+        workflows = tuple(
+            path.relative_to(repo_root).as_posix()
+            for path in sorted(workflows_root.glob("*.md"))
+            if path.name not in WORKFLOW_EXCLUDED_NAMES
+        )
+        return (
+            *iter_markdown_documents(
+                repo_root,
+                REFERENCE_DOC_ROOT,
+                excluded_names=REFERENCE_EXCLUDED_NAMES,
+            ),
+            *iter_markdown_documents(
+                repo_root,
+                FOUNDATION_DOC_ROOT,
+                excluded_names=FOUNDATION_EXCLUDED_NAMES,
+            ),
+            *standards,
+            *iter_markdown_documents(
+                repo_root,
+                PRD_DOC_ROOT,
+                excluded_names=PRD_EXCLUDED_NAMES,
+            ),
+            *iter_markdown_documents(
+                repo_root,
+                DECISION_DOC_ROOT,
+                excluded_names=DECISION_EXCLUDED_NAMES,
+            ),
+            *iter_markdown_documents(
+                repo_root,
+                FEATURE_DESIGN_ROOT,
+                excluded_names=DESIGN_EXCLUDED_NAMES,
+            ),
+            *iter_markdown_documents(
+                repo_root,
+                IMPLEMENTATION_PLAN_ROOT,
+                excluded_names=DESIGN_EXCLUDED_NAMES,
+            ),
+            *workflows,
+        )
+
     def _artifact_paths_for_pattern(
         self,
         repo_root: Path,
@@ -275,7 +348,30 @@ class ValidationAllService:
         return ()
 
     def _acceptance_targets(self) -> tuple[str, ...]:
-        return tuple(entry.trace_id for entry in self._loader.load_traceability_index().entries)
+        targets: list[str] = []
+        seen: set[str] = set()
+
+        def add(trace_id: str) -> None:
+            if trace_id in seen:
+                return
+            seen.add(trace_id)
+            targets.append(trace_id)
+
+        for trace_entry in self._loader.load_traceability_index().entries:
+            if (
+                trace_entry.acceptance_ids
+                or trace_entry.acceptance_contract_ids
+                or trace_entry.evidence_ids
+            ):
+                add(trace_entry.trace_id)
+        for prd_entry in self._loader.load_prd_index().entries:
+            if prd_entry.acceptance_ids:
+                add(prd_entry.trace_id)
+        for contract in self._loader.load_acceptance_contracts():
+            add(contract.trace_id)
+        for evidence in self._loader.load_validation_evidence_artifacts():
+            add(evidence.trace_id)
+        return tuple(targets)
 
     def _safe_validate_path(
         self,

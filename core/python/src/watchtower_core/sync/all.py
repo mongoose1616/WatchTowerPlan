@@ -52,6 +52,10 @@ from watchtower_core.sync.traceability import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceabilityIndexSyncService,
 )
+from watchtower_core.sync.workflow_index import (
+    WORKFLOW_INDEX_ARTIFACT_PATH,
+    WorkflowIndexSyncService,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -154,6 +158,14 @@ class AllSyncService:
                 artifact_kind="index",
                 relative_output_path=STANDARD_INDEX_ARTIFACT_PATH,
                 service=StandardIndexSyncService(self._loader),
+                write=write,
+                output_dir=output_dir,
+            ),
+            self._run_document_sync(
+                target="workflow-index",
+                artifact_kind="index",
+                relative_output_path=WORKFLOW_INDEX_ARTIFACT_PATH,
+                service=WorkflowIndexSyncService(self._loader),
                 write=write,
                 output_dir=output_dir,
             ),

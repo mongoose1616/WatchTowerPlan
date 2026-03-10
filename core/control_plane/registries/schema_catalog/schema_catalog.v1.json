@@ -130,6 +130,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:workflow-index:v1",
+      "title": "Workflow Index",
+      "description": "Schema for machine-readable workflow index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "workflow_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/workflow_index.v1.schema.json",
+      "aliases": [
+        "workflow lookup schema",
+        "workflow module index schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:task-index:v1",
       "title": "Task Index",
       "description": "Schema for machine-readable task index artifacts.",

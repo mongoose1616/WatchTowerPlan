@@ -1,31 +1,33 @@
 ---
-id: "foundation.product"
-title: "Product"
-summary: "Defines the product shape and shared product-layer boundaries for the repository."
+id: "foundation.product_direction_v1"
+title: "Product Direction v1"
+summary: "Comparison draft that reframes the product foundation as a product-direction document for planning and scope decisions."
 type: "foundation"
-status: "active"
+status: "draft"
 tags:
   - "foundation"
   - "product"
+  - "comparison_draft"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:10:09Z"
+updated_at: "2026-03-10T00:04:20Z"
 audience: "shared"
-authority: "authoritative"
+authority: "supporting"
 applies_to:
   - "docs/planning/"
   - "core/control_plane/"
   - "workflows/modules/"
 aliases:
   - "product shape"
-  - "product direction"
+  - "product audience draft"
 ---
 
-# Product
+# Product Direction v1
 
 The product is a two-layer, LLM/agent-driven system. Core is the shared system layer that makes governed execution possible across domains. Domain packs are the domain-specific product layer that use core to turn that shared system into guided operator workflows. Neither layer is enough on its own: core without packs is infrastructure, and packs without core are fragile process documents. The intended operating model is that the agent drives routine execution while the human provides oversight, direction, review, and decisions when judgment is needed.
 
-## Audience
+This comparison draft keeps the original product model but makes the expected reader clearer so the document can function more cleanly as a product-direction surface instead of trying to serve every audience equally.
 
+## Audience
 - Primary audience: Product owners and engineering leads defining the product shape, boundary, and first-wave delivery model.
 - Secondary audience: Designers and maintainers who need the governing product frame behind workflows, packs, and implementation planning.
 - Not written for: End customers looking for narrative value framing rather than product structure.
@@ -69,9 +71,10 @@ Domain packs are the domain-specific operator layer of the product. They are spe
 - Treat offensive security as the first pack, with CTF first and pentest next as the initial delivery path.
 
 ## References
+- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
 - [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
 - [product_narrative_brochure.md](/home/j/WatchTowerPlan/docs/foundations/product_narrative_brochure.md)
 
 ## Updated At
-- `2026-03-10T00:10:09Z`
+- `2026-03-10T00:04:20Z`

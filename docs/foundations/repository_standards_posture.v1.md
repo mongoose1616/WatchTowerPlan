@@ -1,31 +1,33 @@
 ---
-id: "foundation.standards"
-title: "Standards"
-summary: "Explains the repository-wide standards posture and why governed standards matter."
+id: "foundation.repository_standards_posture_v1"
+title: "Repository Standards Posture v1"
+summary: "Comparison draft that reframes the standards foundation as an internal standards-posture document."
 type: "foundation"
-status: "active"
+status: "draft"
 tags:
   - "foundation"
   - "standards"
+  - "comparison_draft"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:10:09Z"
+updated_at: "2026-03-09T23:41:18Z"
 audience: "shared"
-authority: "authoritative"
+authority: "supporting"
 applies_to:
   - "docs/standards/"
   - "core/control_plane/"
   - "workflows/modules/"
 aliases:
   - "standards posture"
-  - "repository standards posture"
+  - "standards audience draft"
 ---
 
-# Standards
+# Repository Standards Posture v1
 
 Standards in this repository exist to protect coherence in an LLM/agent-driven system. They are not decoration and they are not optional cleanup work. The point is to keep product intent, machine state, workflows, human-readable outputs, and evidence aligned so the system remains trustworthy as it grows.
 
-## Audience
+This comparison draft keeps the original standards posture intact and adds explicit audience framing so the document reads more clearly as an internal governance surface.
 
+## Audience
 - Primary audience: Maintainers and contributors who author or review standards, workflows, schemas, indexes, and governed artifacts.
 - Secondary audience: Engineers and product stakeholders who need to understand the constraints the system is expected to obey.
 - Not written for: End customers looking for product benefits rather than repository governance posture.
@@ -73,9 +75,10 @@ Domain pack standards should keep packs expressive for their domain without lett
 - Allow domain-specific expression without bypassing shared core contracts.
 
 ## References
+- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
 - [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
 - [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
 - [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
 
 ## Updated At
-- `2026-03-10T00:10:09Z`
+- `2026-03-09T23:41:18Z`

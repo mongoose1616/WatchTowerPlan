@@ -573,6 +573,34 @@
       ]
     },
     {
+      "standard_id": "std.data_contracts.workflow_index",
+      "category": "data_contracts",
+      "title": "Workflow Index Standard",
+      "summary": "This standard defines the role, structure, and boundary rules for machine-readable workflow indexes stored under `core/control_plane/indexes/workflows/`.",
+      "status": "active",
+      "doc_path": "docs/standards/data_contracts/workflow_index_standard.md",
+      "updated_at": "2026-03-09T23:59:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "internal_reference_paths": [
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/format_selection_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/format_selection_standard.md"
+      ],
+      "tags": [
+        "standard",
+        "data_contracts",
+        "workflow_index"
+      ]
+    },
+    {
       "standard_id": "std.documentation.agents_md",
       "category": "documentation",
       "title": "AGENTS.md Standard",
@@ -941,12 +969,13 @@
       "summary": "This standard defines the document-level structure and boundary rules for workflow Markdown files in this repository.",
       "status": "active",
       "doc_path": "docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-09T23:59:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
         "docs/templates/workflow_template.md",
         "workflows/ROUTING_TABLE.md",
         "AGENTS.md"
@@ -954,6 +983,7 @@
       "applied_reference_paths": [
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
         "docs/templates/workflow_template.md",
         "workflows/ROUTING_TABLE.md"
       ],
@@ -1039,7 +1069,7 @@
       "summary": "This standard defines the repository commit-message policy for human maintainers and assistant contributors. It combines Conventional Commits v1.0.0 with local commit-writing guidance so history remains human-auditable and machine-parseable.",
       "status": "active",
       "doc_path": "docs/standards/engineering/git_commit_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:13:52Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [

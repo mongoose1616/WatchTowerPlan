@@ -1,0 +1,29 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:workflow-index:v1",
+  "id": "index.workflows",
+  "title": "Workflow Index",
+  "status": "active",
+  "entries": [
+    {
+      "workflow_id": "workflow.code_validation",
+      "title": "Code Validation Workflow",
+      "summary": "Use this workflow to validate changed code and governed artifacts before closeout.",
+      "status": "active",
+      "doc_path": "workflows/modules/code_validation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/modules/core.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/modules/core.md"
+      ],
+      "tags": [
+        "validation",
+        "workflow"
+      ]
+    }
+  ]
+}

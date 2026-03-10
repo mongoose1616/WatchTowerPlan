@@ -48,6 +48,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     foundation_index = loader.load_foundation_index()
     reference_index = loader.load_reference_index()
     standard_index = loader.load_standard_index()
+    workflow_index = loader.load_workflow_index()
     task_index = loader.load_task_index()
 
     assert catalog.artifact_id == "registry.schema_catalog"
@@ -57,6 +58,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     assert foundation_index.artifact_id == "index.foundations"
     assert reference_index.artifact_id == "index.references"
     assert standard_index.artifact_id == "index.standards"
+    assert workflow_index.artifact_id == "index.workflows"
     assert task_index.artifact_id == "index.tasks"
 
 

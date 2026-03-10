@@ -1,31 +1,33 @@
 ---
-id: "foundation.technology_stack"
-title: "Technology Stack"
-summary: "Defines the current technology-direction baseline and selection rules for the repository."
+id: "foundation.engineering_stack_direction_v1"
+title: "Engineering Stack Direction v1"
+summary: "Comparison draft that reframes the technology stack foundation as an engineering-facing stack-direction document."
 type: "foundation"
-status: "active"
+status: "draft"
 tags:
   - "foundation"
   - "technology_stack"
+  - "comparison_draft"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:10:09Z"
+updated_at: "2026-03-09T23:41:18Z"
 audience: "shared"
-authority: "authoritative"
+authority: "supporting"
 applies_to:
   - "core/control_plane/"
   - "core/python/"
   - "docs/standards/"
 aliases:
   - "stack direction"
-  - "engineering stack direction"
+  - "technology stack audience draft"
 ---
 
-# Technology Stack
+# Engineering Stack Direction v1
 
 This repository is still defining the product more than implementing it, so the stack should be read as a working direction rather than a frozen inventory. The selection rule is straightforward: prefer local-first, inspectable, deterministic tools that improve LLM/agent effectiveness, support strong validation, and preserve clear source-of-truth boundaries.
 
-## Audience
+This comparison draft keeps the technical direction unchanged and adds explicit audience framing so readers can tell whether this stack document is meant to guide their work directly.
 
+## Audience
 - Primary audience: Engineers making implementation, tooling, validation, and storage decisions in the repository.
 - Secondary audience: Product and design stakeholders who need to understand the practical constraints behind implementation choices.
 - Not written for: End customers or buyers who need product value framing rather than internal stack direction.
@@ -83,9 +85,10 @@ Any new technology should earn its way in. The stack is there to support the pro
 - Reject tools that blur authority boundaries or make failure modes harder to inspect.
 
 ## References
+- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
 - [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
 - [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 
 ## Updated At
-- `2026-03-10T00:10:09Z`
+- `2026-03-09T23:41:18Z`

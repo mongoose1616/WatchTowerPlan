@@ -21,3 +21,4 @@
 | `core/control_plane/schemas/artifacts/traceability_index.v1.schema.json` | Schema for the unified machine-readable traceability-index artifact family. |
 | `core/control_plane/schemas/artifacts/validation_evidence.v1.schema.json` | Schema for the durable validation-evidence artifact family. |
 | `core/control_plane/schemas/artifacts/validator_registry.v1.schema.json` | Schema for the authored validator registry artifact family. |
+| `core/control_plane/schemas/artifacts/workflow_index.v1.schema.json` | Schema for the machine-readable workflow-index artifact family. |

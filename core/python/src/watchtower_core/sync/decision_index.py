@@ -67,7 +67,20 @@ class DecisionIndexSyncService:
                 schema_id=DECISION_FRONT_MATTER_SCHEMA_ID,
                 id_label="Decision ID",
                 status_label="Record Status",
-                required_sections=("Applied References and Implications", "References"),
+                required_sections=(
+                    "Summary",
+                    "Decision Statement",
+                    "Trigger or Source Request",
+                    "Current Context and Constraints",
+                    "Applied References and Implications",
+                    "Affected Surfaces",
+                    "Options Considered",
+                    "Chosen Outcome",
+                    "Rationale and Tradeoffs",
+                    "Consequences and Follow-Up Impacts",
+                    "Risks, Dependencies, and Assumptions",
+                    "References",
+                ),
                 required_explained_sections=("Applied References and Implications",),
             )
             current = existing_entries.get(document.document_id, {})

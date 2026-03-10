@@ -722,6 +722,74 @@ class StandardIndex:
 
 
 @dataclass(frozen=True, slots=True)
+class WorkflowIndexEntry:
+    """Workflow-index entry."""
+
+    workflow_id: str
+    title: str
+    summary: str
+    status: str
+    doc_path: str
+    uses_internal_references: bool
+    uses_external_references: bool
+    related_paths: tuple[str, ...] = ()
+    reference_doc_paths: tuple[str, ...] = ()
+    internal_reference_paths: tuple[str, ...] = ()
+    external_reference_urls: tuple[str, ...] = ()
+    aliases: tuple[str, ...] = ()
+    tags: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> WorkflowIndexEntry:
+        return cls(
+            workflow_id=document["workflow_id"],
+            title=document["title"],
+            summary=document["summary"],
+            status=document["status"],
+            doc_path=document["doc_path"],
+            uses_internal_references=document["uses_internal_references"],
+            uses_external_references=document["uses_external_references"],
+            related_paths=tuple(document.get("related_paths", ())),
+            reference_doc_paths=tuple(document.get("reference_doc_paths", ())),
+            internal_reference_paths=tuple(document.get("internal_reference_paths", ())),
+            external_reference_urls=tuple(document.get("external_reference_urls", ())),
+            aliases=tuple(document.get("aliases", ())),
+            tags=tuple(document.get("tags", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class WorkflowIndex:
+    """Typed workflow-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[WorkflowIndexEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> WorkflowIndex:
+        entries = tuple(WorkflowIndexEntry.from_document(entry) for entry in document["entries"])
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, workflow_id: str) -> WorkflowIndexEntry:
+        """Return a workflow-index entry by identifier."""
+        for entry in self.entries:
+            if entry.workflow_id == workflow_id:
+                return entry
+        raise KeyError(workflow_id)
+
+
+@dataclass(frozen=True, slots=True)
 class TaskIndexEntry:
     """Task-index entry."""
 

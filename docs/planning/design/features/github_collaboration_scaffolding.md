@@ -6,7 +6,7 @@ summary: "Defines the hosted GitHub intake, pull request, and project-field scaf
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-10T00:13:52Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -27,7 +27,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-10T00:13:52Z`
 
 ## Summary
 This document defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.
@@ -68,6 +68,17 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - Make intake and PR review consistent enough that engineers do not invent their own ad hoc issue or PR formats.
 - Keep GitHub Project configuration bounded and aligned with the repo-local status vocabulary.
 
+## Options Considered
+### Option 1: Minimal hosted scaffolding plus repo-local authority
+- Add issue forms, a PR template, and a bounded Project field model while keeping PRDs, designs, tasks, and traceability authoritative in the repo.
+- Preserves the repo's deterministic planning and control-plane model.
+- Requires engineers to learn the boundary between intake and authoritative planning surfaces.
+
+### Option 2: Treat GitHub Issues and Projects as the primary planning system
+- Would centralize more human workflow in the hosted tool and reduce repo-local planning friction for casual contributors.
+- Simplifies hosted visibility for teams already operating in GitHub every day.
+- Was not chosen because it would hide authoritative planning state outside git and weaken the repo's local-first traceability model.
+
 ## Recommended Design
 ### Architecture
 - Add `.github/ISSUE_TEMPLATE/` for structured intake.
@@ -101,6 +112,18 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - Do not let GitHub Project status invent a second incompatible task status vocabulary.
 - Keep the GitHub label set small, deterministic, and managed.
 
+## Implementation-Planning Handoff Notes
+- Add the `.github/` scaffolding in the same change set as the sync command, standards, and command-doc updates that describe how engineers should use it.
+- Keep GitHub status, labels, and trace/task links aligned with the local task and sync contracts instead of introducing GitHub-only semantics.
+
+## Dependencies
+- GitHub repository permissions must allow issue templates, pull-request templates, labels, and Projects configuration.
+- The local task model and `watchtower-core sync github-tasks` contract must remain stable enough to mirror outward without manual translation.
+
+## Risks
+- Engineers may over-trust hosted issue or Project state unless the local-first boundary is made explicit in docs and command help.
+- GitHub field or label drift can create confusing mismatches between hosted visibility and repo-local task state if sync assumptions change without companion updates.
+
 ## References
 - [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md)
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
@@ -111,4 +134,4 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-10T00:13:52Z`

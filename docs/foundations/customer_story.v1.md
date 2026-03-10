@@ -1,12 +1,13 @@
 ---
-id: "foundation.product_narrative_brochure"
-title: "Product Narrative Brochure"
-summary: "Provides a customer-facing narrative summary of the product story, user problem, and intended operator experience."
+id: "foundation.customer_story_v1"
+title: "Customer Story v1"
+summary: "Comparison draft that reframes the product narrative as an explicit customer-facing story and value document."
 type: "foundation"
-status: "active"
+status: "draft"
 tags:
   - "foundation"
   - "product_narrative"
+  - "comparison_draft"
 owner: "repository_maintainer"
 updated_at: "2026-03-10T00:10:09Z"
 audience: "shared"
@@ -15,15 +16,14 @@ applies_to:
   - "docs/foundations/"
   - "docs/planning/"
 aliases:
-  - "customer story"
   - "product narrative"
   - "product brochure"
+  - "product narrative audience draft"
 ---
 
-# Product Narrative Brochure
+# Customer Story v1
 
 ## Audience
-
 - Primary audience: End customers, operators, and buyers who need the product story, value, and intended experience.
 - Secondary audience: Product and design stakeholders aligning customer-facing language with the governed product model.
 - Not written for: Engineers looking for architecture, workflow, or control-plane detail.
@@ -32,7 +32,7 @@ aliases:
 
 This document provides a customer-facing narrative summary of the product for operators, buyers, reviewers, and implementation stakeholders. It consolidates the product story, value, and intended experience in one place for presentation and alignment use.
 
-This document summarizes the governed product model. It does not override authoritative policy, architecture, standards, workflow, or data-contract surfaces.
+This comparison draft separates audience from purpose so the brochure reads more clearly as the customer-facing companion to the authoritative product and philosophy documents. It does not override authoritative policy, architecture, standards, workflow, or data-contract surfaces.
 
 ## The Problem
 
@@ -133,6 +133,7 @@ WatchTower is not intended to be:
 5. The product becomes more useful over time because validated knowledge compounds.
 
 ## References
+- [product_narrative_brochure.md](/home/j/WatchTowerPlan/docs/foundations/product_narrative_brochure.md)
 - [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
 - [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
 

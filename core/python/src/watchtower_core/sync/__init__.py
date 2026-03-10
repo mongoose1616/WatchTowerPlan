@@ -43,6 +43,10 @@ from watchtower_core.sync.traceability import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceabilityIndexSyncService,
 )
+from watchtower_core.sync.workflow_index import (
+    WORKFLOW_INDEX_ARTIFACT_PATH,
+    WorkflowIndexSyncService,
+)
 
 __all__ = [
     "AllSyncResult",
@@ -74,4 +78,6 @@ __all__ = [
     "TaskTrackingSyncService",
     "TRACEABILITY_INDEX_ARTIFACT_PATH",
     "TraceabilityIndexSyncService",
+    "WORKFLOW_INDEX_ARTIFACT_PATH",
+    "WorkflowIndexSyncService",
 ]

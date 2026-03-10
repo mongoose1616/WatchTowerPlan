@@ -36,6 +36,8 @@ from watchtower_core.query import (
     TraceabilityQueryService,
     ValidationEvidenceQueryService,
     ValidationEvidenceSearchParams,
+    WorkflowQueryService,
+    WorkflowSearchParams,
 )
 from watchtower_core.sync import (
     AllSyncService,
@@ -55,10 +57,12 @@ from watchtower_core.sync import (
     TaskIndexSyncService,
     TaskTrackingSyncService,
     TraceabilityIndexSyncService,
+    WorkflowIndexSyncService,
 )
 from watchtower_core.validation import (
     AcceptanceReconciliationService,
     ArtifactValidationService,
+    DocumentSemanticsValidationService,
     FrontMatterValidationService,
     ValidationAllService,
     ValidationExecutionError,
@@ -75,7 +79,7 @@ class HelpFormatter(
 
 ValidationServiceFactory = Callable[
     [ControlPlaneLoader],
-    FrontMatterValidationService | ArtifactValidationService,
+    FrontMatterValidationService | DocumentSemanticsValidationService | ArtifactValidationService,
 ]
 
 
@@ -101,6 +105,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query foundations --query philosophy",
+            "uv run watchtower-core query workflows --query validation",
             "uv run watchtower-core query references --query uv",
             "uv run watchtower-core query standards --category governance --format json",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
@@ -112,6 +117,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync foundation-index",
             "uv run watchtower-core sync reference-index",
             "uv run watchtower-core sync standard-index",
+            "uv run watchtower-core sync workflow-index",
             "uv run watchtower-core sync prd-index",
             "uv run watchtower-core sync task-index",
             "uv run watchtower-core sync task-tracking",
@@ -121,6 +127,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync traceability-index",
             "uv run watchtower-core sync repository-paths",
             "uv run watchtower-core validate all --skip-acceptance",
+            "uv run watchtower-core validate document-semantics --path "
+            "docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
@@ -164,10 +172,11 @@ def build_parser() -> argparse.ArgumentParser:
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `foundations` for the intent-layer foundation corpus, `references`
-            for the reference library, `standards` for governed repository
-            standards, `prds`, `decisions`, `designs`, `acceptance`,
-            `evidence`, and `tasks` for planning and execution lookup, and
+            `foundations` for the intent-layer foundation corpus, `workflows`
+            for workflow-module lookup, `references` for the reference library,
+            `standards` for governed repository standards, `prds`,
+            `decisions`, `designs`, `acceptance`, `evidence`, and `tasks`
+            for planning and execution lookup, and
             `trace` when you already know the trace identifier you want.
             """
         ).strip(),
@@ -175,6 +184,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query paths --query control plane",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query foundations --query philosophy",
+            "uv run watchtower-core query workflows --related-path "
+            "docs/standards/documentation/workflow_md_standard.md",
             "uv run watchtower-core query references --query github",
             "uv run watchtower-core query standards --reference-path "
             "docs/references/github_collaboration_reference.md",
@@ -351,6 +362,64 @@ def build_parser() -> argparse.ArgumentParser:
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     query_foundations_parser.set_defaults(handler=_run_query_foundations)
+
+    query_workflows_parser = query_subparsers.add_parser(
+        "workflows",
+        help="Search the workflow index.",
+        description=dedent(
+            """
+            Search the governed workflow index for workflow modules and the
+            standards, references, or canonical files that govern them.
+
+            Use this when you know the behavior or governing surface you need,
+            but not yet the exact workflow module name.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query workflows --query validation",
+            "uv run watchtower-core query workflows --reference-path "
+            "docs/references/github_collaboration_reference.md --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_workflows_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over indexed workflow fields such as workflow ID, "
+            "title, summary, related paths, and references."
+        ),
+    )
+    query_workflows_parser.add_argument(
+        "--workflow-id",
+        help="Exact workflow identifier such as workflow.code_validation.",
+    )
+    query_workflows_parser.add_argument(
+        "--related-path",
+        help=(
+            "Exact repository-path filter such as "
+            "docs/standards/documentation/workflow_md_standard.md."
+        ),
+    )
+    query_workflows_parser.add_argument(
+        "--reference-path",
+        help=(
+            "Exact governed reference-doc filter such as "
+            "docs/references/github_collaboration_reference.md."
+        ),
+    )
+    query_workflows_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_workflows_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_workflows_parser.set_defaults(handler=_run_query_workflows)
 
     query_references_parser = query_subparsers.add_parser(
         "references",
@@ -856,6 +925,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync reference-index --write",
             "uv run watchtower-core sync standard-index",
             "uv run watchtower-core sync standard-index --write",
+            "uv run watchtower-core sync workflow-index",
+            "uv run watchtower-core sync workflow-index --write",
             "uv run watchtower-core sync prd-index",
             "uv run watchtower-core sync prd-tracking",
             "uv run watchtower-core sync decision-index",
@@ -1010,6 +1081,29 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_sync_arguments(sync_standard_index_parser)
     sync_standard_index_parser.set_defaults(handler=_run_sync_standard_index)
+
+    sync_workflow_index_parser = sync_subparsers.add_parser(
+        "workflow-index",
+        help="Rebuild the workflow index from governed workflow modules.",
+        description=dedent(
+            """
+            Rebuild the workflow index from the workflow modules under
+            `workflows/modules/`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync workflow-index",
+            "uv run watchtower-core sync workflow-index --write",
+            "uv run watchtower-core sync workflow-index --output "
+            "/tmp/workflow_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_workflow_index_parser)
+    sync_workflow_index_parser.set_defaults(handler=_run_sync_workflow_index)
 
     sync_prd_index_parser = sync_subparsers.add_parser(
         "prd-index",
@@ -1434,9 +1528,10 @@ def build_parser() -> argparse.ArgumentParser:
             document surfaces.
 
             Use `all` for one bounded repo-wide validation pass, `front-matter`
-            for governed Markdown metadata, `artifact` for schema-backed JSON
-            contracts, indexes, ledgers, and similar machine-readable artifacts,
-            and `acceptance` for semantic reconciliation across PRDs,
+            for governed Markdown metadata, `document-semantics` for governed
+            document-shape and applied-reference rules, `artifact` for
+            schema-backed JSON contracts, indexes, ledgers, and similar
+            machine-readable artifacts, and `acceptance` for semantic reconciliation across PRDs,
             acceptance contracts, validation evidence, and traceability.
             """
         ).strip(),
@@ -1445,6 +1540,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core validate all --format json",
             "uv run watchtower-core validate front-matter --path "
             "docs/references/front_matter_reference.md",
+            "uv run watchtower-core validate document-semantics --path "
+            "workflows/modules/code_validation.md",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
             "uv run watchtower-core validate artifact --path "
@@ -1473,15 +1570,16 @@ def build_parser() -> argparse.ArgumentParser:
             repository surfaces in deterministic order.
 
             This command is read-only. It aggregates front-matter validation,
-            schema-backed artifact validation, and acceptance reconciliation so
-            you can get one bounded validation summary without invoking each
-            family manually.
+            document-semantic validation, schema-backed artifact validation,
+            and acceptance reconciliation so you can get one bounded validation
+            summary without invoking each family manually.
             """
         ).strip(),
         epilog=_examples(
             "uv run watchtower-core validate all --skip-acceptance",
             "uv run watchtower-core validate all --format json",
-            "uv run watchtower-core validate all --skip-front-matter --skip-artifacts",
+            "uv run watchtower-core validate all --skip-front-matter "
+            "--skip-document-semantics --skip-artifacts",
         ),
         formatter_class=HelpFormatter,
     )
@@ -1489,6 +1587,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--skip-front-matter",
         action="store_true",
         help="Skip governed Markdown front-matter validation targets.",
+    )
+    validate_all_parser.add_argument(
+        "--skip-document-semantics",
+        action="store_true",
+        help="Skip governed document semantic validation targets.",
     )
     validate_all_parser.add_argument(
         "--skip-artifacts",
@@ -1548,6 +1651,45 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_validation_arguments(validate_front_matter_parser)
     validate_front_matter_parser.set_defaults(handler=_run_validate_front_matter)
+
+    validate_document_semantics_parser = validate_subparsers.add_parser(
+        "document-semantics",
+        help="Validate one governed Markdown document against repo-native semantic rules.",
+        description=dedent(
+            """
+            Validate one governed Markdown document against the repository's
+            semantic document rules, such as required sections, section order,
+            applied-reference explanation rules, and family-specific guardrails.
+
+            The command auto-selects the validator from the registry when the
+            path is repository-local, or you can provide `--validator-id`
+            explicitly.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core validate document-semantics --path "
+            "docs/standards/documentation/workflow_md_standard.md",
+            "uv run watchtower-core validate document-semantics --path "
+            "workflows/modules/code_validation.md --format json",
+            "uv run watchtower-core validate document-semantics --path "
+            "/tmp/example.md --validator-id validator.documentation.standard_semantics",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    validate_document_semantics_parser.add_argument(
+        "--path",
+        required=True,
+        help="Repository-relative or absolute path to the Markdown document to validate.",
+    )
+    validate_document_semantics_parser.add_argument(
+        "--validator-id",
+        help=(
+            "Optional explicit validator identifier. Required for files outside "
+            "the repository tree."
+        ),
+    )
+    _add_common_validation_arguments(validate_document_semantics_parser)
+    validate_document_semantics_parser.set_defaults(handler=_run_validate_document_semantics)
 
     validate_artifact_parser = validate_subparsers.add_parser(
         "artifact",
@@ -1880,6 +2022,60 @@ def _run_query_foundations(args: argparse.Namespace) -> int:
         print(
             "  Usage: "
             f"cited_by={len(entry.cited_by_paths)}, applied_by={len(entry.applied_by_paths)}"
+        )
+    return 0
+
+
+def _run_query_workflows(args: argparse.Namespace) -> int:
+    service = WorkflowQueryService(ControlPlaneLoader())
+    entries = service.search(
+        WorkflowSearchParams(
+            query=args.query,
+            workflow_id=args.workflow_id,
+            related_path=args.related_path,
+            reference_path=args.reference_path,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query workflows",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "workflow_id": entry.workflow_id,
+                "title": entry.title,
+                "summary": entry.summary,
+                "status": entry.status,
+                "doc_path": entry.doc_path,
+                "uses_internal_references": entry.uses_internal_references,
+                "uses_external_references": entry.uses_external_references,
+                "related_paths": list(entry.related_paths),
+                "reference_doc_paths": list(entry.reference_doc_paths),
+                "internal_reference_paths": list(entry.internal_reference_paths),
+                "external_reference_urls": list(entry.external_reference_urls),
+                "aliases": list(entry.aliases),
+                "tags": list(entry.tags),
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No workflow entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} workflow entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.workflow_id} [{entry.status}]")
+        print(f"  {entry.title}")
+        print(f"  {entry.summary}")
+        print(
+            "  Reference use: "
+            f"internal={'yes' if entry.uses_internal_references else 'no'}, "
+            f"external={'yes' if entry.uses_external_references else 'no'}"
         )
     return 0
 
@@ -2812,6 +3008,15 @@ def _run_sync_traceability_index(args: argparse.Namespace) -> int:
     )
 
 
+def _run_sync_workflow_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync workflow-index",
+        artifact_label="workflow index",
+        service=WorkflowIndexSyncService.from_repo_root(),
+    )
+
+
 def _run_sync_document_command(
     args: argparse.Namespace,
     *,
@@ -2828,6 +3033,7 @@ def _run_sync_document_command(
         | StandardIndexSyncService
         | TaskIndexSyncService
         | TraceabilityIndexSyncService
+        | WorkflowIndexSyncService
     ),
 ) -> int:
     document = service.build_document()
@@ -2925,6 +3131,15 @@ def _run_validate_front_matter(args: argparse.Namespace) -> int:
     )
 
 
+def _run_validate_document_semantics(args: argparse.Namespace) -> int:
+    return _run_validation_command(
+        args,
+        command_name="watchtower-core validate document-semantics",
+        success_message="Document semantics validated successfully.",
+        service_factory=DocumentSemanticsValidationService,
+    )
+
+
 def _run_validate_artifact(args: argparse.Namespace) -> int:
     return _run_validation_command(
         args,
@@ -2939,6 +3154,7 @@ def _run_validate_all(args: argparse.Namespace) -> int:
     try:
         result = service.run(
             include_front_matter=not args.skip_front_matter,
+            include_document_semantics=not args.skip_document_semantics,
             include_artifacts=not args.skip_artifacts,
             include_acceptance=not args.skip_acceptance,
         )

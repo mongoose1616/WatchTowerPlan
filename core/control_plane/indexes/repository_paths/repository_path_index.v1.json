@@ -386,6 +386,13 @@
       "parent_path": "core/control_plane/examples/invalid/indexes/"
     },
     {
+      "path": "core/control_plane/examples/invalid/indexes/workflow_index_missing_summary.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid workflow index example missing a required entry summary.",
+      "parent_path": "core/control_plane/examples/invalid/indexes/"
+    },
+    {
       "path": "core/control_plane/examples/invalid/ledgers/",
       "kind": "directory",
       "surface_kind": "control_plane_examples",
@@ -621,6 +628,13 @@
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Valid traceability index example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/indexes/"
+    },
+    {
+      "path": "core/control_plane/examples/valid/indexes/workflow_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid workflow index example aligned with the published artifact schema.",
       "parent_path": "core/control_plane/examples/valid/indexes/"
     },
     {
@@ -1001,6 +1015,27 @@
       "surface_kind": "control_plane_index",
       "summary": "Unified machine-readable traceability index for current traced initiatives.",
       "parent_path": "core/control_plane/indexes/traceability/"
+    },
+    {
+      "path": "core/control_plane/indexes/workflows/",
+      "kind": "directory",
+      "surface_kind": "control_plane_indexes",
+      "summary": "Machine-readable indexes for workflow modules and their governing sources.",
+      "parent_path": "core/control_plane/indexes/"
+    },
+    {
+      "path": "core/control_plane/indexes/workflows/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Describes the purpose of the workflow-index directory and its current artifact.",
+      "parent_path": "core/control_plane/indexes/workflows/"
+    },
+    {
+      "path": "core/control_plane/indexes/workflows/workflow_index.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Canonical machine-readable workflow index rebuilt from `workflows/modules/**`.",
+      "parent_path": "core/control_plane/indexes/workflows/"
     },
     {
       "path": "core/control_plane/ledgers/",
@@ -1389,6 +1424,13 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the authored validator registry artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/workflow_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable workflow-index artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {
@@ -2035,6 +2077,13 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_workflows.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query workflows command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_sync.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -2154,6 +2203,13 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_sync_workflow_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync workflow-index command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_validate.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -2179,6 +2235,13 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core validate artifact command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_validate_document_semantics.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core validate document-semantics command.",
       "parent_path": "docs/commands/core_python/"
     },
     {
@@ -2210,10 +2273,31 @@
       "parent_path": "docs/foundations/"
     },
     {
+      "path": "docs/foundations/customer_story.v1.md",
+      "kind": "file",
+      "surface_kind": "foundation_doc",
+      "summary": "Audience-shaped companion draft of the narrative brochure for customers, operators, and designers.",
+      "parent_path": "docs/foundations/"
+    },
+    {
       "path": "docs/foundations/design_philosophy.md",
       "kind": "file",
       "surface_kind": "foundation_doc",
       "summary": "Defines the governing design philosophy for the repository and its operating model.",
+      "parent_path": "docs/foundations/"
+    },
+    {
+      "path": "docs/foundations/engineering_design_principles.v1.md",
+      "kind": "file",
+      "surface_kind": "foundation_doc",
+      "summary": "Audience-shaped companion draft of the design philosophy for engineers and maintainers.",
+      "parent_path": "docs/foundations/"
+    },
+    {
+      "path": "docs/foundations/engineering_stack_direction.v1.md",
+      "kind": "file",
+      "surface_kind": "foundation_doc",
+      "summary": "Audience-shaped companion draft of the technology stack foundation for engineers.",
       "parent_path": "docs/foundations/"
     },
     {
@@ -2224,10 +2308,24 @@
       "parent_path": "docs/foundations/"
     },
     {
+      "path": "docs/foundations/product_direction.v1.md",
+      "kind": "file",
+      "surface_kind": "foundation_doc",
+      "summary": "Audience-shaped companion draft of the product foundation for product owners and engineering leads.",
+      "parent_path": "docs/foundations/"
+    },
+    {
       "path": "docs/foundations/product_narrative_brochure.md",
       "kind": "file",
       "surface_kind": "foundation_doc",
       "summary": "Provides the customer-facing product narrative and value framing.",
+      "parent_path": "docs/foundations/"
+    },
+    {
+      "path": "docs/foundations/repository_standards_posture.v1.md",
+      "kind": "file",
+      "surface_kind": "foundation_doc",
+      "summary": "Audience-shaped companion draft of the standards foundation for maintainers and contributors.",
       "parent_path": "docs/foundations/"
     },
     {
@@ -3188,6 +3286,13 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the standard for durable validation-evidence ledger artifacts.",
+      "parent_path": "docs/standards/data_contracts/"
+    },
+    {
+      "path": "docs/standards/data_contracts/workflow_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable workflow indexes.",
       "parent_path": "docs/standards/data_contracts/"
     },
     {

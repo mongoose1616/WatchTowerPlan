@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-09T23:59:23Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 ## Related Standards and Sources
 - [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow modules publish machine-readable lookup records through the derived workflow index.
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
 ## Guidance
@@ -56,6 +57,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - `Inputs`, `Data Structure`, `Outputs`, and `Done When` should stay compact and task-oriented rather than turning into long narrative sections.
 - `Related Standards and Sources` should list only the standards, templates, or canonical files that materially govern execution of the workflow.
 - `Related Standards and Sources` bullets should use `source: implication` form so the local effect of each authority is explicit.
+- Workflow modules should stay structured enough that the derived workflow index can capture their title, purpose summary, and governing sources without manual curation.
 - `Data Structure` and `Outputs` may remain brief when the workflow does not define a stable working structure or durable deliverable, but the headings should still be present.
 - Use repository-native Markdown links when companion standards, templates, or canonical files materially govern the workflow.
 - Do not add front matter to workflow modules unless a narrower standard or validator explicitly requires it.
@@ -86,12 +88,13 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 
 ## Change Control
 - Update this standard when the repository changes the expected file shape for workflow Markdown documents.
-- Update the workflow template in the same change set when the required heading set or order changes.
+- Update the workflow template and workflow index surfaces in the same change set when the required heading set or order changes.
 - Update affected workflow modules in the same change set when structural expectations change.
 
 ## References
 - [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
 - [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md)
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
 - [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md)
@@ -101,4 +104,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-09T23:59:23Z`

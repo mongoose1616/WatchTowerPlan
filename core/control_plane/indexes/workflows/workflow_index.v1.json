@@ -1,0 +1,658 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:workflow-index:v1",
+  "id": "index.workflows",
+  "title": "Workflow Index",
+  "status": "active",
+  "entries": [
+    {
+      "workflow_id": "workflow.acceptance_evidence_reconciliation",
+      "title": "Acceptance and Evidence Reconciliation Workflow",
+      "summary": "Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and the traceability layer for one traced initiative.",
+      "status": "active",
+      "doc_path": "workflows/modules/acceptance_evidence_reconciliation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.clarification",
+      "title": "Clarification Workflow",
+      "summary": "Use this workflow to reduce the specific ambiguity, conflict, or missing input that is materially blocking the active task.",
+      "status": "active",
+      "doc_path": "workflows/modules/clarification.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.code_implementation",
+      "title": "Code Implementation Workflow",
+      "summary": "Use this workflow to define the implementation approach and apply the requested code change while keeping the affected repository surfaces coherent.",
+      "status": "active",
+      "doc_path": "workflows/modules/code_implementation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.code_review",
+      "title": "Code Review Workflow",
+      "summary": "Use this workflow to evaluate a code change for correctness, risk, maintainability, and standards alignment, then summarize the resulting findings clearly.",
+      "status": "active",
+      "doc_path": "workflows/modules/code_review.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.code_validation",
+      "title": "Code Validation Workflow",
+      "summary": "Use this workflow to define, execute, and assess the validation needed for a code change or target surface.",
+      "status": "active",
+      "doc_path": "workflows/modules/code_validation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.commit_closeout",
+      "title": "Commit Closeout Workflow",
+      "summary": "Use this workflow to evaluate commit readiness, prepare a repository-compliant commit message, and create the Git commit when requested.",
+      "status": "active",
+      "doc_path": "workflows/modules/commit_closeout.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.core",
+      "title": "Core Workflow",
+      "summary": "Use this workflow to load the minimum shared standards and instructions that apply across all routed workflow modules.",
+      "status": "active",
+      "doc_path": "workflows/modules/core.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.current_state_inspection",
+      "title": "Current-State Inspection Workflow",
+      "summary": "Use this workflow to inspect the current repository, codebase, document set, or architecture surfaces relevant to the active task before recommendations, edits, or judgments are made.",
+      "status": "active",
+      "doc_path": "workflows/modules/current_state_inspection.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.decision_capture",
+      "title": "Decision Capture Workflow",
+      "summary": "Use this workflow to analyze viable options and record a durable repository decision with rationale, status, and downstream impacts.",
+      "status": "active",
+      "doc_path": "workflows/modules/decision_capture.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.documentation_generation",
+      "title": "Documentation Generation Workflow",
+      "summary": "Use this workflow to author a new repository document that is accurate, well-structured, correctly classified, and scoped to one succinct standard, topic, or area.",
+      "status": "active",
+      "doc_path": "workflows/modules/documentation_generation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.documentation_implementation_reconciliation",
+      "title": "Documentation-Implementation Reconciliation Workflow",
+      "summary": "Use this workflow to compare implementation behavior against companion documentation and machine-readable lookup surfaces so drift is found, classified, and resolved explicitly.",
+      "status": "active",
+      "doc_path": "workflows/modules/documentation_implementation_reconciliation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.documentation_refresh",
+      "title": "Documentation Refresh Workflow",
+      "summary": "Use this workflow to review, update, and reconcile existing repository documentation so it stays accurate, current, structurally consistent, and correctly classified.",
+      "status": "active",
+      "doc_path": "workflows/modules/documentation_refresh.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.external_guidance_research",
+      "title": "External Guidance Research Workflow",
+      "summary": "Use this workflow to consult authoritative external guidance only when internal repository guidance is incomplete or the active task depends on version-sensitive, domain-specific, regulatory, standards-driven, or vendor-controlled behavior.",
+      "status": "active",
+      "doc_path": "workflows/modules/external_guidance_research.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md",
+        "docs/standards/governance/reference_distillation_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md",
+        "docs/standards/governance/reference_distillation_standard.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.feature_design_planning",
+      "title": "Feature Design Planning Workflow",
+      "summary": "Use this workflow to define design options, recommend a technical design, and capture the guardrails that implementation planning must inherit.",
+      "status": "active",
+      "doc_path": "workflows/modules/feature_design_planning.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.foundations_context_review",
+      "title": "Foundations Context Review Workflow",
+      "summary": "Use this workflow to load the repository foundation documents that materially shape planning and design work so the resulting artifact stays aligned with the repository's product model, design philosophy, standards posture, and technology direction.",
+      "status": "active",
+      "doc_path": "workflows/modules/foundations_context_review.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md",
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md",
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.github_task_sync",
+      "title": "GitHub Task Sync Workflow",
+      "summary": "Use this workflow to publish local-first task records to GitHub issues and optional project items while preserving local task files as the authoritative source of truth.",
+      "status": "active",
+      "doc_path": "workflows/modules/github_task_sync.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "workflows/modules/task_lifecycle_management.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "workflows/modules/task_lifecycle_management.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.governed_artifact_reconciliation",
+      "title": "Governed Artifact Reconciliation Workflow",
+      "summary": "Use this workflow to reconcile schema-backed governed artifacts with their companion schemas, examples, registries, indexes, loaders, validators, and lookup surfaces so artifact families stay internally coherent.",
+      "status": "active",
+      "doc_path": "workflows/modules/governed_artifact_reconciliation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.implementation_planning",
+      "title": "Implementation Planning Workflow",
+      "summary": "Use this workflow to turn approved planning inputs into an actionable implementation plan with a work breakdown, validation strategy, and delivery sequence.",
+      "status": "active",
+      "doc_path": "workflows/modules/implementation_planning.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.initiative_closeout",
+      "title": "Initiative Closeout Workflow",
+      "summary": "Use this workflow to mark one traced initiative as completed, superseded, cancelled, or abandoned while keeping the traceability index and human planning trackers aligned.",
+      "status": "active",
+      "doc_path": "workflows/modules/initiative_closeout.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.internal_context_review",
+      "title": "Internal Context Review Workflow",
+      "summary": "Use this workflow to identify the repository-specific standards, templates, workflows, ADRs, and canonical documents that should govern the active task before new local behavior is inferred.",
+      "status": "active",
+      "doc_path": "workflows/modules/internal_context_review.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md",
+        "docs/standards/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md",
+        "docs/standards/README.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.prd_generation",
+      "title": "PRD Generation Workflow",
+      "summary": "Use this workflow to turn a scoped planning request into a review-ready product requirements document (PRD).",
+      "status": "active",
+      "doc_path": "workflows/modules/prd_generation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.reference_distillation",
+      "title": "Reference Distillation Workflow",
+      "summary": "Use this workflow to extract durable local guidance from external source material and map it cleanly to repository needs.",
+      "status": "active",
+      "doc_path": "workflows/modules/reference_distillation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_assessment",
+      "title": "Repository Assessment Workflow",
+      "summary": "Use this workflow to assess an inventoried repository for coherence, freshness, maintainability, validation coverage, security posture, operational readiness, and developer experience.",
+      "status": "active",
+      "doc_path": "workflows/modules/repository_assessment.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_inventory_review",
+      "title": "Repository Inventory Review Workflow",
+      "summary": "Use this workflow to inventory the repository's major surfaces, implementation areas, tooling, and ownership boundaries before deeper repository assessment begins.",
+      "status": "active",
+      "doc_path": "workflows/modules/repository_inventory_review.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_review",
+      "title": "Repository Review Workflow",
+      "summary": "Use this workflow to synthesize an existing repository review into prioritized findings, risks, and remediation guidance.",
+      "status": "active",
+      "doc_path": "workflows/modules/repository_review.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_handoff_review",
+      "title": "Task Handoff Review Workflow",
+      "summary": "Use this workflow to confirm that the active task output is coherent, handoff-ready, and accompanied by any needed related-surface updates, follow-up notes, or commit-closeout escalation.",
+      "status": "active",
+      "doc_path": "workflows/modules/task_handoff_review.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_lifecycle_management",
+      "title": "Task Lifecycle Management Workflow",
+      "summary": "Use this workflow to create, update, split, unblock, or close local task records while keeping the derived task tracker, task index, and traced planning joins aligned.",
+      "status": "active",
+      "doc_path": "workflows/modules/task_lifecycle_management.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_phase_transition",
+      "title": "Task Phase Transition Workflow",
+      "summary": "Use this workflow to hand a task from one owner, phase, or execution stage to the next without losing context, dependencies, or trace links.",
+      "status": "active",
+      "doc_path": "workflows/modules/task_phase_transition.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "workflows/modules/task_lifecycle_management.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "workflows/modules/task_lifecycle_management.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_scope_definition",
+      "title": "Task Scope Definition Workflow",
+      "summary": "Use this workflow to define the task objective, scope boundary, and success conditions clearly enough that downstream workflow modules can execute without guessing.",
+      "status": "active",
+      "doc_path": "workflows/modules/task_scope_definition.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "workflow_id": "workflow.traceability_reconciliation",
+      "title": "Traceability Reconciliation Workflow",
+      "summary": "Use this workflow to reconcile traced planning and governance artifacts with their companion human trackers, family-specific indexes, and unified traceability joins so durable links do not drift silently.",
+      "status": "active",
+      "doc_path": "workflows/modules/traceability_reconciliation.md",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "AGENTS.md"
+      ]
+    }
+  ]
+}

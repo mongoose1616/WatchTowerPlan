@@ -121,7 +121,7 @@
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
       "status": "active",
       "doc_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
-      "updated_at": "2026-03-09T18:25:06Z",
+      "updated_at": "2026-03-10T00:13:52Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [

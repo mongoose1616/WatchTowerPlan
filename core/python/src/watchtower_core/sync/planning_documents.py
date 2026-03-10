@@ -161,6 +161,7 @@ def load_governed_document(
     if missing_sections:
         joined = ", ".join(missing_sections)
         raise ValueError(f"{relative_path} is missing required sections: {joined}")
+    validate_required_section_order(relative_path, sections, required_sections)
     for title in required_explained_sections:
         validate_explained_bullet_section(relative_path, title, sections.get(title))
 
@@ -291,3 +292,34 @@ def validate_explained_bullet_section(
             f"{relative_path} section {title!r} must explain the implication of each cited "
             "source using bullet text that includes ': '."
         )
+
+
+def validate_explained_bullet_section_if_present(
+    relative_path: str,
+    title: str,
+    section: str | None,
+) -> None:
+    """Validate an explained-bullet section only when the section exists."""
+    if section is None:
+        return
+    validate_explained_bullet_section(relative_path, title, section)
+
+
+def validate_required_section_order(
+    relative_path: str,
+    sections: dict[str, str],
+    required_sections: tuple[str, ...],
+) -> None:
+    """Ensure the required sections appear in the documented order."""
+    section_order = list(sections.keys())
+    previous_index = -1
+    for title in required_sections:
+        try:
+            current_index = section_order.index(title)
+        except ValueError as exc:
+            raise ValueError(f"{relative_path} is missing required section: {title}") from exc
+        if current_index < previous_index:
+            raise ValueError(
+                f"{relative_path} places required section {title!r} out of order."
+            )
+        previous_index = current_index

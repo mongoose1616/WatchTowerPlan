@@ -24,6 +24,7 @@ from watchtower_core.query.repository import (
 from watchtower_core.query.standards import StandardQueryService, StandardSearchParams
 from watchtower_core.query.tasks import TaskQueryService, TaskSearchParams
 from watchtower_core.query.traceability import TraceabilityQueryService
+from watchtower_core.query.workflows import WorkflowQueryService, WorkflowSearchParams
 
 __all__ = [
     "AcceptanceContractQueryService",
@@ -49,4 +50,6 @@ __all__ = [
     "TaskQueryService",
     "TaskSearchParams",
     "TraceabilityQueryService",
+    "WorkflowQueryService",
+    "WorkflowSearchParams",
 ]

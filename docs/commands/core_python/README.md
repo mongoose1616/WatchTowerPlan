@@ -15,6 +15,7 @@
 | `docs/commands/core_python/watchtower_core_query_paths.md` | Human-readable command page for the watchtower-core query paths command. |
 | `docs/commands/core_python/watchtower_core_query_commands.md` | Human-readable command page for the watchtower-core query commands command. |
 | `docs/commands/core_python/watchtower_core_query_foundations.md` | Human-readable command page for the watchtower-core query foundations command. |
+| `docs/commands/core_python/watchtower_core_query_workflows.md` | Human-readable command page for the watchtower-core query workflows command. |
 | `docs/commands/core_python/watchtower_core_query_references.md` | Human-readable command page for the watchtower-core query references command. |
 | `docs/commands/core_python/watchtower_core_query_standards.md` | Human-readable command page for the watchtower-core query standards command. |
 | `docs/commands/core_python/watchtower_core_query_prds.md` | Human-readable command page for the watchtower-core query prds command. |
@@ -30,6 +31,7 @@
 | `docs/commands/core_python/watchtower_core_sync_foundation_index.md` | Human-readable command page for the watchtower-core sync foundation-index command. |
 | `docs/commands/core_python/watchtower_core_sync_reference_index.md` | Human-readable command page for the watchtower-core sync reference-index command. |
 | `docs/commands/core_python/watchtower_core_sync_standard_index.md` | Human-readable command page for the watchtower-core sync standard-index command. |
+| `docs/commands/core_python/watchtower_core_sync_workflow_index.md` | Human-readable command page for the watchtower-core sync workflow-index command. |
 | `docs/commands/core_python/watchtower_core_sync_prd_index.md` | Human-readable command page for the watchtower-core sync prd-index command. |
 | `docs/commands/core_python/watchtower_core_sync_prd_tracking.md` | Human-readable command page for the watchtower-core sync prd-tracking command. |
 | `docs/commands/core_python/watchtower_core_sync_decision_index.md` | Human-readable command page for the watchtower-core sync decision-index command. |
@@ -45,4 +47,5 @@
 | `docs/commands/core_python/watchtower_core_validate_all.md` | Human-readable command page for the watchtower-core validate all command. |
 | `docs/commands/core_python/watchtower_core_validate_acceptance.md` | Human-readable command page for the watchtower-core validate acceptance command. |
 | `docs/commands/core_python/watchtower_core_validate_artifact.md` | Human-readable command page for the watchtower-core validate artifact command. |
+| `docs/commands/core_python/watchtower_core_validate_document_semantics.md` | Human-readable command page for the watchtower-core validate document-semantics command. |
 | `docs/commands/core_python/watchtower_core_validate_front_matter.md` | Human-readable command page for the watchtower-core validate front-matter command. |

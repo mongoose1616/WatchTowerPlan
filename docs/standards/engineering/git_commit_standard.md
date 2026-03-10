@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T00:13:52Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -28,6 +28,11 @@ This standard defines the repository commit-message policy for human maintainers
 - Covers commit message format, allowed types, scope usage, breaking-change notation, body and footer expectations, and local automation guidance.
 - Applies to commits created for this repository by human maintainers and assistant contributors.
 - Does not define branch naming, pull-request title policy, or broader release-management process.
+
+## Use When
+- Creating or reviewing a commit message for repository work.
+- Defining or updating local tooling that validates commit-message structure.
+- Checking whether human or agent-generated commit text meets the repository contract.
 
 ## Related Standards and Sources
 - [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -245,4 +250,4 @@ fi
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T00:13:52Z`

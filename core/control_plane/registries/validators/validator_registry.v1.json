@@ -61,6 +61,20 @@
       ]
     },
     {
+      "id": "validator.control_plane.workflow_index",
+      "title": "Workflow Index Validator",
+      "description": "Validates machine-readable workflow index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "workflow_index",
+      "applies_to": [
+        "core/control_plane/indexes/workflows/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:workflow-index:v1"
+      ]
+    },
+    {
       "id": "validator.trace.acceptance_reconciliation",
       "title": "Acceptance Reconciliation Validator",
       "description": "Validates alignment across PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability for one traced initiative.",
@@ -74,6 +88,102 @@
         "core/control_plane/indexes/traceability/**"
       ],
       "notes": "Used by the watchtower-core validate acceptance command."
+    },
+    {
+      "id": "validator.documentation.reference_semantics",
+      "title": "Reference Document Semantics Validator",
+      "description": "Validates governed reference-document structure, section order, and local reference rules.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "docs/references/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.foundation_semantics",
+      "title": "Foundation Document Semantics Validator",
+      "description": "Validates governed foundation-document structure and timestamp alignment.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "docs/foundations/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.standard_semantics",
+      "title": "Standard Document Semantics Validator",
+      "description": "Validates governed standard-document structure, explained applied-reference sections, and local-reference usage.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "docs/standards/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.prd_semantics",
+      "title": "PRD Semantics Validator",
+      "description": "Validates governed PRD structure, required sections, and explained foundation-reference usage.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "docs/planning/prds/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.decision_record_semantics",
+      "title": "Decision Record Semantics Validator",
+      "description": "Validates governed decision-record structure, required sections, and applied-reference implications.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "docs/planning/decisions/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.feature_design_semantics",
+      "title": "Feature Design Semantics Validator",
+      "description": "Validates governed feature-design structure, required sections, and applied-reference implications.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "docs/planning/design/features/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.implementation_plan_semantics",
+      "title": "Implementation Plan Semantics Validator",
+      "description": "Validates governed implementation-plan structure, required sections, and applied-reference implications.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "docs/planning/design/implementation/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
+    },
+    {
+      "id": "validator.documentation.workflow_semantics",
+      "title": "Workflow Semantics Validator",
+      "description": "Validates workflow-module structure, section order, and explained governing-source bullets.",
+      "status": "active",
+      "engine": "python",
+      "artifact_kind": "documentation_semantics",
+      "applies_to": [
+        "workflows/modules/**"
+      ],
+      "notes": "Used by watchtower-core validate document-semantics and validate all."
     },
     {
       "id": "validator.documentation.reference_front_matter",

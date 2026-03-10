@@ -38,16 +38,21 @@ def test_control_plane_loader_reads_command_index() -> None:
     doctor = command_index.get("command.watchtower_core.doctor")
     query_paths = command_index.get("command.watchtower_core.query.paths")
     query_foundations = command_index.get("command.watchtower_core.query.foundations")
+    query_workflows = command_index.get("command.watchtower_core.query.workflows")
     query_standards = command_index.get("command.watchtower_core.query.standards")
     query_acceptance = command_index.get("command.watchtower_core.query.acceptance")
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
     query_trace = command_index.get("command.watchtower_core.query.trace")
     sync_standard_index = command_index.get("command.watchtower_core.sync.standard_index")
+    sync_workflow_index = command_index.get("command.watchtower_core.sync.workflow_index")
     sync_traceability = command_index.get("command.watchtower_core.sync.traceability_index")
     sync_github_tasks = command_index.get("command.watchtower_core.sync.github_tasks")
     validate_all = command_index.get("command.watchtower_core.validate.all")
     validate_acceptance = command_index.get("command.watchtower_core.validate.acceptance")
     validate_front_matter = command_index.get("command.watchtower_core.validate.front_matter")
+    validate_document_semantics = command_index.get(
+        "command.watchtower_core.validate.document_semantics"
+    )
     validate_artifact = command_index.get("command.watchtower_core.validate.artifact")
 
     assert doctor.parent_command_id == "command.watchtower_core"
@@ -58,6 +63,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert (
         query_foundations.doc_path
         == "docs/commands/core_python/watchtower_core_query_foundations.md"
+    )
+    assert query_workflows.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_workflows.doc_path
+        == "docs/commands/core_python/watchtower_core_query_workflows.md"
     )
     assert query_standards.parent_command_id == "command.watchtower_core.query"
     assert (
@@ -102,6 +112,11 @@ def test_control_plane_loader_reads_command_index() -> None:
         sync_standard_index.doc_path
         == "docs/commands/core_python/watchtower_core_sync_standard_index.md"
     )
+    assert sync_workflow_index.parent_command_id == "command.watchtower_core.sync"
+    assert (
+        sync_workflow_index.doc_path
+        == "docs/commands/core_python/watchtower_core_sync_workflow_index.md"
+    )
     assert (
         sync_traceability.doc_path
         == "docs/commands/core_python/watchtower_core_sync_traceability_index.md"
@@ -122,6 +137,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert (
         validate_front_matter.doc_path
         == "docs/commands/core_python/watchtower_core_validate_front_matter.md"
+    )
+    assert validate_document_semantics.parent_command_id == "command.watchtower_core.validate"
+    assert (
+        validate_document_semantics.doc_path
+        == "docs/commands/core_python/watchtower_core_validate_document_semantics.md"
     )
     assert validate_artifact.parent_command_id == "command.watchtower_core.validate"
     assert (
@@ -148,12 +168,14 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     design_index = loader.load_design_document_index()
     foundation_index = loader.load_foundation_index()
     standard_index = loader.load_standard_index()
+    workflow_index = loader.load_workflow_index()
 
     prd = prd_index.get("prd.core_python_foundation")
     decision = decision_index.get("decision.core_python_workspace_root")
     design = design_index.get("design.features.python_validator_execution")
     foundation = foundation_index.get("foundation.design_philosophy")
     standard = standard_index.get("std.governance.github_collaboration")
+    workflow = workflow_index.get("workflow.code_validation")
 
     assert prd.trace_id == "trace.core_python_foundation"
     assert "req.core_python_foundation.003" in prd.requirement_ids
@@ -169,6 +191,8 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     assert standard.category == "governance"
     assert standard.uses_external_references is True
     assert "docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
+    assert workflow.doc_path == "workflows/modules/code_validation.md"
+    assert workflow.uses_internal_references is True
 
 
 def test_control_plane_loader_reads_reference_index() -> None:

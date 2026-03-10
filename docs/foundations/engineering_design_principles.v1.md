@@ -1,16 +1,17 @@
 ---
-id: "foundation.design_philosophy"
-title: "Design Philosophy"
-summary: "Defines the governing design philosophy for the repository and its operating model."
+id: "foundation.engineering_design_principles_v1"
+title: "Engineering Design Principles v1"
+summary: "Comparison draft that reframes the design philosophy as an engineer-facing operating-principles document."
 type: "foundation"
-status: "active"
+status: "draft"
 tags:
   - "foundation"
   - "design_philosophy"
+  - "comparison_draft"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:10:09Z"
+updated_at: "2026-03-10T00:02:35Z"
 audience: "shared"
-authority: "authoritative"
+authority: "supporting"
 applies_to:
   - "core/control_plane/"
   - "core/python/"
@@ -18,18 +19,19 @@ applies_to:
   - "docs/standards/"
 aliases:
   - "repository design philosophy"
-  - "engineering design principles"
+  - "design philosophy audience draft"
 ---
 
-# Design Philosophy
+# Engineering Design Principles v1
 
 This repository is meant to feel like a governed operating environment for LLM/agent-driven work, not a pile of notes, prompts, and helper scripts. The design philosophy is simple: let the agent handle the structured execution, keep the shared substrate trustworthy, keep the operator-facing experience guided and readable, and keep the boundary between human outputs and canonical machine state explicit.
 
-## Audience
+This comparison draft keeps the original philosophy intact and adds explicit audience framing so a reader can tell whether this is the right entrypoint before reading the rest of the document.
 
+## Audience
 - Primary audience: Engineers and maintainers shaping the core platform, workflow system, and governed control plane.
 - Secondary audience: Product and design stakeholders who need to understand the non-negotiable operating principles behind the product.
-- Not written for: End customers looking for narrative value framing or buying language.
+- Not written for: End customers looking for value framing or buying language.
 
 ## Core
 
@@ -75,9 +77,10 @@ Domain packs are where the system becomes useful to an operator. They should fee
 - Optimize for smooth movement from intake to execution, evidence capture, and closeout.
 
 ## References
+- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
 - [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
 - [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
 - [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
 
 ## Updated At
-- `2026-03-10T00:10:09Z`
+- `2026-03-10T00:02:35Z`

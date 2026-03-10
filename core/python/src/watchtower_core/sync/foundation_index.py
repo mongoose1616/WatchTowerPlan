@@ -18,7 +18,10 @@ from watchtower_core.adapters import (
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.sync.planning_documents import ordered_unique
+from watchtower_core.sync.planning_documents import (
+    ordered_unique,
+    validate_required_section_order,
+)
 from watchtower_core.sync.reference_index import (
     ReferenceIndexSyncService,
     iter_citation_audit_documents,
@@ -105,6 +108,7 @@ class FoundationIndexSyncService:
             if missing_sections:
                 joined = ", ".join(missing_sections)
                 raise ValueError(f"{relative_path} is missing required sections: {joined}")
+            validate_required_section_order(relative_path, sections, required_sections)
 
             updated_at = front_matter["updated_at"]
             if extract_updated_at_from_section(sections["Updated At"]) != updated_at:

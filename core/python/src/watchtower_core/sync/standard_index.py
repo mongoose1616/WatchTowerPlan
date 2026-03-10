@@ -21,6 +21,7 @@ from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.sync.planning_documents import (
     ordered_unique,
     validate_explained_bullet_section,
+    validate_required_section_order,
 )
 from watchtower_core.sync.reference_index import ReferenceIndexSyncService
 
@@ -101,6 +102,7 @@ class StandardIndexSyncService:
             if missing_sections:
                 joined = ", ".join(missing_sections)
                 raise ValueError(f"{relative_path} is missing required sections: {joined}")
+            validate_required_section_order(relative_path, sections, required_sections)
             validate_explained_bullet_section(
                 relative_path,
                 "Related Standards and Sources",

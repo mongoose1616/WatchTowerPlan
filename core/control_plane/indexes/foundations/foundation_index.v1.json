@@ -5,13 +5,43 @@
   "status": "active",
   "entries": [
     {
+      "foundation_id": "foundation.customer_story_v1",
+      "title": "Customer Story v1",
+      "summary": "Comparison draft that reframes the product narrative as an explicit customer-facing story and value document.",
+      "status": "draft",
+      "authority": "supporting",
+      "doc_path": "docs/foundations/customer_story.v1.md",
+      "updated_at": "2026-03-10T00:10:09Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/foundations/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/product_narrative_brochure.md",
+        "docs/foundations/product.md",
+        "docs/foundations/design_philosophy.md"
+      ],
+      "aliases": [
+        "product narrative",
+        "product brochure",
+        "product narrative audience draft"
+      ],
+      "tags": [
+        "foundation",
+        "product_narrative",
+        "comparison_draft"
+      ]
+    },
+    {
       "foundation_id": "foundation.design_philosophy",
       "title": "Design Philosophy",
       "summary": "Defines the governing design philosophy for the repository and its operating model.",
       "status": "active",
       "authority": "authoritative",
       "doc_path": "docs/foundations/design_philosophy.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:10:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -26,8 +56,13 @@
         "docs/foundations/technology_stack.md"
       ],
       "cited_by_paths": [
+        "docs/foundations/customer_story.v1.md",
+        "docs/foundations/engineering_design_principles.v1.md",
+        "docs/foundations/engineering_stack_direction.v1.md",
         "docs/foundations/product.md",
+        "docs/foundations/product_direction.v1.md",
         "docs/foundations/product_narrative_brochure.md",
+        "docs/foundations/repository_standards_posture.v1.md",
         "docs/foundations/standards.md",
         "docs/foundations/technology_stack.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
@@ -64,11 +99,75 @@
         "workflows/modules/foundations_context_review.md"
       ],
       "aliases": [
-        "repository design philosophy"
+        "repository design philosophy",
+        "engineering design principles"
       ],
       "tags": [
         "foundation",
         "design_philosophy"
+      ]
+    },
+    {
+      "foundation_id": "foundation.engineering_design_principles_v1",
+      "title": "Engineering Design Principles v1",
+      "summary": "Comparison draft that reframes the design philosophy as an engineer-facing operating-principles document.",
+      "status": "draft",
+      "authority": "supporting",
+      "doc_path": "docs/foundations/engineering_design_principles.v1.md",
+      "updated_at": "2026-03-10T00:02:35Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "workflows/modules/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/standards.md",
+        "docs/foundations/technology_stack.md"
+      ],
+      "aliases": [
+        "repository design philosophy",
+        "design philosophy audience draft"
+      ],
+      "tags": [
+        "foundation",
+        "design_philosophy",
+        "comparison_draft"
+      ]
+    },
+    {
+      "foundation_id": "foundation.engineering_stack_direction_v1",
+      "title": "Engineering Stack Direction v1",
+      "summary": "Comparison draft that reframes the technology stack foundation as an engineering-facing stack-direction document.",
+      "status": "draft",
+      "authority": "supporting",
+      "doc_path": "docs/foundations/engineering_stack_direction.v1.md",
+      "updated_at": "2026-03-09T23:41:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/technology_stack.md",
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/standards/data_contracts/format_selection_standard.md"
+      ],
+      "aliases": [
+        "stack direction",
+        "technology stack audience draft"
+      ],
+      "tags": [
+        "foundation",
+        "technology_stack",
+        "comparison_draft"
       ]
     },
     {
@@ -78,7 +177,7 @@
       "status": "active",
       "authority": "authoritative",
       "doc_path": "docs/foundations/product.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:10:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -92,8 +191,13 @@
         "docs/foundations/product_narrative_brochure.md"
       ],
       "cited_by_paths": [
+        "docs/foundations/customer_story.v1.md",
         "docs/foundations/design_philosophy.md",
+        "docs/foundations/engineering_design_principles.v1.md",
+        "docs/foundations/engineering_stack_direction.v1.md",
+        "docs/foundations/product_direction.v1.md",
         "docs/foundations/product_narrative_brochure.md",
+        "docs/foundations/repository_standards_posture.v1.md",
         "docs/foundations/standards.md",
         "docs/foundations/technology_stack.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
@@ -126,7 +230,8 @@
         "workflows/modules/foundations_context_review.md"
       ],
       "aliases": [
-        "product shape"
+        "product shape",
+        "product direction"
       ],
       "tags": [
         "foundation",
@@ -134,13 +239,44 @@
       ]
     },
     {
+      "foundation_id": "foundation.product_direction_v1",
+      "title": "Product Direction v1",
+      "summary": "Comparison draft that reframes the product foundation as a product-direction document for planning and scope decisions.",
+      "status": "draft",
+      "authority": "supporting",
+      "doc_path": "docs/foundations/product_direction.v1.md",
+      "updated_at": "2026-03-10T00:04:20Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/",
+        "workflows/modules/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/product.md",
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/standards.md",
+        "docs/foundations/product_narrative_brochure.md"
+      ],
+      "aliases": [
+        "product shape",
+        "product audience draft"
+      ],
+      "tags": [
+        "foundation",
+        "product",
+        "comparison_draft"
+      ]
+    },
+    {
       "foundation_id": "foundation.product_narrative_brochure",
       "title": "Product Narrative Brochure",
-      "summary": "Provides a customer-facing narrative summary of the product story, value, and intended operator experience.",
+      "summary": "Provides a customer-facing narrative summary of the product story, user problem, and intended operator experience.",
       "status": "active",
       "authority": "supporting",
       "doc_path": "docs/foundations/product_narrative_brochure.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:10:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -152,9 +288,12 @@
         "docs/foundations/design_philosophy.md"
       ],
       "cited_by_paths": [
-        "docs/foundations/product.md"
+        "docs/foundations/customer_story.v1.md",
+        "docs/foundations/product.md",
+        "docs/foundations/product_direction.v1.md"
       ],
       "aliases": [
+        "customer story",
         "product narrative",
         "product brochure"
       ],
@@ -164,13 +303,44 @@
       ]
     },
     {
+      "foundation_id": "foundation.repository_standards_posture_v1",
+      "title": "Repository Standards Posture v1",
+      "summary": "Comparison draft that reframes the standards foundation as an internal standards-posture document.",
+      "status": "draft",
+      "authority": "supporting",
+      "doc_path": "docs/foundations/repository_standards_posture.v1.md",
+      "updated_at": "2026-03-09T23:41:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/",
+        "core/control_plane/",
+        "workflows/modules/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/standards.md",
+        "docs/foundations/design_philosophy.md",
+        "docs/foundations/product.md",
+        "docs/foundations/technology_stack.md"
+      ],
+      "aliases": [
+        "standards posture",
+        "standards audience draft"
+      ],
+      "tags": [
+        "foundation",
+        "standards",
+        "comparison_draft"
+      ]
+    },
+    {
       "foundation_id": "foundation.standards",
       "title": "Standards",
       "summary": "Explains the repository-wide standards posture and why governed standards matter.",
       "status": "active",
       "authority": "authoritative",
       "doc_path": "docs/foundations/standards.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:10:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -185,7 +355,10 @@
       ],
       "cited_by_paths": [
         "docs/foundations/design_philosophy.md",
+        "docs/foundations/engineering_design_principles.v1.md",
         "docs/foundations/product.md",
+        "docs/foundations/product_direction.v1.md",
+        "docs/foundations/repository_standards_posture.v1.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
@@ -220,7 +393,8 @@
         "docs/standards/workflows/workflow_design_standard.md"
       ],
       "aliases": [
-        "standards posture"
+        "standards posture",
+        "repository standards posture"
       ],
       "tags": [
         "foundation",
@@ -234,7 +408,7 @@
       "status": "active",
       "authority": "authoritative",
       "doc_path": "docs/foundations/technology_stack.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:10:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -249,6 +423,9 @@
       ],
       "cited_by_paths": [
         "docs/foundations/design_philosophy.md",
+        "docs/foundations/engineering_design_principles.v1.md",
+        "docs/foundations/engineering_stack_direction.v1.md",
+        "docs/foundations/repository_standards_posture.v1.md",
         "docs/foundations/standards.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
@@ -272,7 +449,8 @@
         "docs/standards/data_contracts/schema_standard.md"
       ],
       "aliases": [
-        "stack direction"
+        "stack direction",
+        "engineering stack direction"
       ],
       "tags": [
         "foundation",

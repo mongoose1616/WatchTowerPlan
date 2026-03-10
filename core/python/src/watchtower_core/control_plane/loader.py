@@ -22,6 +22,7 @@ from watchtower_core.control_plane.models import (
     TraceabilityIndex,
     ValidationEvidenceArtifact,
     ValidatorRegistry,
+    WorkflowIndex,
 )
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.control_plane.schemas import SchemaStore
@@ -34,6 +35,7 @@ COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
 REFERENCE_INDEX_PATH = "core/control_plane/indexes/references/reference_index.v1.json"
 FOUNDATION_INDEX_PATH = "core/control_plane/indexes/foundations/foundation_index.v1.json"
 STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
+WORKFLOW_INDEX_PATH = "core/control_plane/indexes/workflows/workflow_index.v1.json"
 PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.v1.json"
 DECISION_INDEX_PATH = "core/control_plane/indexes/decisions/decision_index.v1.json"
 DESIGN_DOCUMENT_INDEX_PATH = (
@@ -108,6 +110,10 @@ class ControlPlaneLoader:
     def load_standard_index(self) -> StandardIndex:
         """Load the current standard index."""
         return StandardIndex.from_document(self.load_validated_document(STANDARD_INDEX_PATH))
+
+    def load_workflow_index(self) -> WorkflowIndex:
+        """Load the current workflow index."""
+        return WorkflowIndex.from_document(self.load_validated_document(WORKFLOW_INDEX_PATH))
 
     def load_prd_index(self) -> PrdIndex:
         """Load the current PRD index."""

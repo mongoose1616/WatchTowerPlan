@@ -99,7 +99,7 @@
     {
       "command_id": "command.watchtower_core.query",
       "command": "watchtower-core query",
-      "summary": "This command group searches the governed lookup indexes for repository paths, documented commands, foundation docs, curated references, governed standards, planning artifacts, and traceability records.",
+      "summary": "This command group searches the governed lookup indexes for repository paths, documented commands, foundation docs, workflow modules, curated references, governed standards, planning artifacts, and traceability records.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -417,6 +417,30 @@
         "cli",
         "query",
         "traceability"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.query.workflows",
+      "command": "watchtower-core query workflows",
+      "summary": "This command searches the governed workflow index so engineers and agents can find workflow modules by behavior, governing source, or related repository path.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_workflows.md",
+      "synopsis": "uv run watchtower-core query workflows [--query <text>] [--workflow-id <workflow_id>] [--related-path <path>] [--reference-path <doc_path>] [--limit <n>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "workflows"
       ]
     },
     {
@@ -847,6 +871,31 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.sync.workflow_index",
+      "command": "watchtower-core sync workflow-index",
+      "summary": "This command rebuilds the governed workflow index from the workflow modules under `workflows/modules/`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_workflow_index.md",
+      "synopsis": "uv run watchtower-core sync workflow-index [--write] [--output <path>] [--include-document] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "workflow",
+        "index"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.validate",
       "command": "watchtower-core validate",
       "summary": "This command group runs governed validation commands against repository artifacts and document surfaces.",
@@ -901,7 +950,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_validate_all.md",
-      "synopsis": "uv run watchtower-core validate all [--skip-front-matter] [--skip-artifacts] [--skip-acceptance] [--format <human|json>]",
+      "synopsis": "uv run watchtower-core validate all [--skip-front-matter] [--skip-document-semantics] [--skip-artifacts] [--skip-acceptance] [--format <human|json>]",
       "implementation_path": "core/python/src/watchtower_core/cli/main.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",
@@ -945,6 +994,31 @@
         "artifacts"
       ],
       "notes": "Can optionally write durable validation evidence and a synchronized traceability update when --record-evidence is used."
+    },
+    {
+      "command_id": "command.watchtower_core.validate.document_semantics",
+      "command": "watchtower-core validate document-semantics",
+      "summary": "This command validates one governed Markdown document against repo-native semantic rules such as required sections, section order, applied-reference explanation, and family-specific guardrails.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_validate_document_semantics.md",
+      "synopsis": "uv run watchtower-core validate document-semantics --path <path> [--validator-id <validator_id>] [--format <human|json>]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.validate",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "validate",
+        "document",
+        "semantics"
+      ]
     },
     {
       "command_id": "command.watchtower_core.validate.front_matter",

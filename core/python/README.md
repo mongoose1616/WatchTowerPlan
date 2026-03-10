@@ -38,6 +38,7 @@
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
 - `uv run watchtower-core query foundations --query philosophy`
+- `uv run watchtower-core query workflows --query validation`
 - `uv run watchtower-core query references --query uv`
 - `uv run watchtower-core query standards --category governance --format json`
 - `uv run watchtower-core query tasks --task-status backlog`
@@ -48,6 +49,7 @@
 - `uv run watchtower-core sync all`
 - `uv run watchtower-core sync foundation-index`
 - `uv run watchtower-core sync standard-index`
+- `uv run watchtower-core sync workflow-index`
 - `uv run watchtower-core sync reference-index`
 - `uv run watchtower-core sync prd-tracking`
 - `uv run watchtower-core sync task-index`
@@ -60,6 +62,7 @@
 - `uv run watchtower-core sync design-tracking`
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"`
 - `uv run watchtower-core validate all --skip-acceptance`
+- `uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md`
 - `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
 
 ### Commands Inside `./tools/dev_shell.sh`
@@ -91,6 +94,7 @@
 - `docs/commands/core_python/watchtower_core_query_paths.md`
 - `docs/commands/core_python/watchtower_core_query_commands.md`
 - `docs/commands/core_python/watchtower_core_query_foundations.md`
+- `docs/commands/core_python/watchtower_core_query_workflows.md`
 - `docs/commands/core_python/watchtower_core_query_references.md`
 - `docs/commands/core_python/watchtower_core_query_standards.md`
 - `docs/commands/core_python/watchtower_core_query_prds.md`
@@ -108,6 +112,7 @@
 - `docs/commands/core_python/watchtower_core_sync_foundation_index.md`
 - `docs/commands/core_python/watchtower_core_sync_reference_index.md`
 - `docs/commands/core_python/watchtower_core_sync_standard_index.md`
+- `docs/commands/core_python/watchtower_core_sync_workflow_index.md`
 - `docs/commands/core_python/watchtower_core_sync_prd_index.md`
 - `docs/commands/core_python/watchtower_core_sync_prd_tracking.md`
 - `docs/commands/core_python/watchtower_core_sync_decision_index.md`
@@ -123,4 +128,5 @@
 - `docs/commands/core_python/watchtower_core_validate_all.md`
 - `docs/commands/core_python/watchtower_core_validate_acceptance.md`
 - `docs/commands/core_python/watchtower_core_validate_artifact.md`
+- `docs/commands/core_python/watchtower_core_validate_document_semantics.md`
 - `docs/commands/core_python/watchtower_core_validate_front_matter.md`

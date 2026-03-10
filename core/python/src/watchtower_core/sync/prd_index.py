@@ -64,7 +64,21 @@ class PrdIndexSyncService:
                 schema_id=PRD_FRONT_MATTER_SCHEMA_ID,
                 id_label="PRD ID",
                 status_label="Status",
-                required_sections=("References",),
+                required_sections=(
+                    "Summary",
+                    "Problem Statement",
+                    "Goals",
+                    "Non-Goals",
+                    "Target Users or Actors",
+                    "Key Scenarios",
+                    "Requirements",
+                    "Acceptance Criteria",
+                    "Success Metrics",
+                    "Risks and Dependencies",
+                    "Foundations References Applied",
+                    "References",
+                ),
+                required_explained_sections=("Foundations References Applied",),
             )
             current = existing_entries.get(document.document_id, {})
             (

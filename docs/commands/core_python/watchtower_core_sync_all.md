@@ -46,7 +46,7 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 
 ## Behavior and Outputs
 - The command runs local deterministic sync targets in dependency order so later rebuilds can read the earlier generated surfaces from disk when needed.
-- The current target set includes command, foundation, reference, standard, PRD, decision, design, task, traceability, and repository-path indexes, plus the PRD, decision, design, and task trackers.
+- The current target set includes command, foundation, reference, standard, workflow, PRD, decision, design, task, traceability, and repository-path indexes, plus the PRD, decision, design, and task trackers.
 - The command does not call hosted integrations. It intentionally excludes `sync github-tasks`.
 - With no mutation flags, the command runs in dry-run mode and only reports what would be rebuilt.
 - With `--write`, the command writes each rebuilt surface back to its canonical repository path.
@@ -61,6 +61,7 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 | `watchtower-core sync foundation-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core sync reference-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core sync standard-index` | Rebuilds one of the surfaces included in `sync all`. |
+| `watchtower-core sync workflow-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core sync traceability-index` | Rebuilds one of the surfaces included in `sync all`. |
 
 ## Source Surface
@@ -68,4 +69,4 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 - `core/python/src/watchtower_core/sync/all.py`
 
 ## Updated At
-- `2026-03-09T23:22:09Z`
+- `2026-03-09T23:59:23Z`
