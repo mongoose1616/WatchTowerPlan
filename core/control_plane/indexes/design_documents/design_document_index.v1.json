@@ -49,7 +49,7 @@
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
       "status": "active",
       "doc_path": "docs/planning/design/features/command_documentation_and_lookup.md",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "updated_at": "2026-03-10T05:14:33Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [

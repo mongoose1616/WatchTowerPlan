@@ -6,7 +6,7 @@ summary: "Defines the feature-level design for a human-readable command-page fam
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T02:30:31Z"
+updated_at: "2026-03-10T05:14:33Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-10T02:30:31Z`
+- `Updated At`: `2026-03-10T05:14:33Z`
 
 ## Summary
 This document defines the feature-level design for a human-readable command-page family under `docs/commands/` and a machine-readable command index under `core/control_plane/indexes/commands/`.
@@ -65,6 +65,7 @@ This document defines the feature-level design for a human-readable command-page
 ## Design Goals and Constraints
 - Give humans one obvious place to find command docs.
 - Give automation one obvious place to look up available commands and route to their docs.
+- Keep machine authority for the command surface in the registry-backed CLI parser tree while preserving command pages as the human-readable companion layer.
 - Keep command docs and machine lookup synchronized in the same change set.
 - Keep the first design modular enough that future commands can be added one page and one index entry at a time.
 - Avoid duplicating full man-page content inside the machine-readable index.
@@ -92,6 +93,8 @@ This document defines the feature-level design for a human-readable command-page
 - Add a machine-readable command index under `core/control_plane/indexes/commands/`.
 - Keep command pages as the human man-page layer.
 - Keep the command index as the routing and lookup layer that points to command pages and code surfaces.
+- Use the registry-backed CLI parser tree as the machine source for command presence, hierarchy, synopsis, and output-format metadata.
+- Keep command pages as required human-readable companion docs rather than the machine-authoritative source.
 
 ### Data and Interface Impacts
 - Add command-document and command-index standards.
@@ -102,13 +105,14 @@ This document defines the feature-level design for a human-readable command-page
 ### Execution Flow
 1. An engineer wants to discover or remember a command.
 2. Human navigation starts at `docs/commands/` and the command-family README.
-3. Machine lookup starts at the command index and resolves to the command page and source surface.
+3. Machine lookup starts at the command index, which is rebuilt from the registry-backed CLI parser tree and resolves to the command page plus source surface.
 4. The engineer or agent reads the command page for synopsis, arguments, examples, and current behavior.
 5. The command doc and index stay aligned in the same change set whenever the command surface changes.
 
 ### Invariants and Failure Cases
 - Command pages remain the human-readable semantic surface.
 - The command index remains lookup-oriented and must not replace the command docs.
+- Registry-backed CLI metadata is the machine authority for command existence and structure, while command pages remain the human-readable semantic companion surface.
 - Every indexed command must have a command page.
 - Subcommand entries must be tied to a stable parent command.
 - Stale command docs or stale index entries are treated as documentation drift, not acceptable backlog.
@@ -129,11 +133,11 @@ This document defines the feature-level design for a human-readable command-page
 
 ## Implementation-Planning Handoff Notes
 - The first command-doc rollout should document `watchtower-core` and `watchtower-core doctor`.
-- Future implementation planning can add command-generation helpers later, but only after the baseline doc and index shape stabilizes.
+- Future implementation planning can add richer command-generation helpers later, but they should preserve the registry-backed authority split and companion command docs.
 - Future command growth should add new docs and index entries rather than widening the first pages into catch-all command catalogs.
 
 ## Dependencies
-- The `watchtower-core` CLI scaffold in `core/python/src/watchtower_core/cli/main.py`.
+- The `watchtower-core` CLI parser and registry surfaces under `core/python/src/watchtower_core/cli/`.
 - The repository path index and schema catalog for adjacent machine-readable lookup.
 
 ## Risks
@@ -143,7 +147,6 @@ This document defines the feature-level design for a human-readable command-page
 
 ## Open Questions
 - When the CLI grows options and additional subcommands, should the command index grow lightweight option summaries, or should it remain command-level only?
-- Should a later CLI feature generate the command index automatically from code and docs, or remain reviewed and maintained manually?
 
 ## References
 - [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)
@@ -152,4 +155,4 @@ This document defines the feature-level design for a human-readable command-page
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
 
 ## Updated At
-- `2026-03-10T02:30:31Z`
+- `2026-03-10T05:14:33Z`

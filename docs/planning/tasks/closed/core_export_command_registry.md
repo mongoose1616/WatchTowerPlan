@@ -5,11 +5,11 @@ title: "Establish registry-backed CLI authority"
 summary: "Introduce registry-backed CLI command authority so parser wiring, command lookup, and command-surface maintenance no longer depend on one monolithic CLI file and doc-derived machine metadata."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "feature"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T04:28:34Z"
+updated_at: "2026-03-10T05:14:33Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -47,4 +47,4 @@ Introduce registry-backed CLI command authority so parser wiring, command lookup
 - [command_documentation_and_lookup.md](/home/j/WatchTowerPlan/docs/planning/design/features/command_documentation_and_lookup.md)
 
 ## Updated At
-- `2026-03-10T04:28:34Z`
+- `2026-03-10T05:14:33Z`

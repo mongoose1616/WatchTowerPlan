@@ -44,7 +44,7 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable command indexes stored under `core/control_plane/indexes/commands/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/command_index_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T05:14:33Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [

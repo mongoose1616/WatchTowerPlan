@@ -1944,7 +1944,7 @@
       "path": "core/python/tests/unit/test_command_index_sync.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the command index from command docs.",
+      "summary": "Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs.",
       "parent_path": "core/python/tests/unit/"
     },
     {

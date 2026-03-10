@@ -1,10 +1,10 @@
 # `watchtower-core sync command-index`
 
 ## Summary
-This command rebuilds the governed command index from the authored command pages under `docs/commands/`.
+This command rebuilds the governed command index from the registry-backed CLI parser metadata while requiring companion command pages under `docs/commands/`.
 
 ## Use When
-- You changed a command page and need to refresh the machine-readable command lookup surface.
+- You changed a command page or the registry-backed CLI parser surface and need to refresh the machine-readable command lookup surface.
 - You added or removed a durable CLI command page and want the governed command index to match.
 - You want to inspect the rebuilt command index in dry-run mode before writing it to the canonical control-plane path.
 
@@ -46,12 +46,13 @@ uv run watchtower-core sync command-index --output /tmp/command_index.v1.json --
 ```
 
 ## Behavior and Outputs
-- The command reads the authored command pages under `docs/commands/` and rebuilds the machine-readable command index deterministically.
+- The command reads the registry-backed CLI parser metadata and rebuilds the machine-readable command index deterministically.
+- The command fails closed when a registry-backed command is missing its companion command page under `docs/commands/`.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many command entries were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.
 - If `--include-document` is used, the JSON payload includes the rebuilt command-index document.
-- The command exits with status code `0` when the rebuild succeeds and non-zero if the command docs or derived document are invalid.
+- The command exits with status code `0` when the rebuild succeeds and non-zero if the parser metadata, companion command docs, or derived document are invalid.
 
 ## Related Commands
 | Command | Relationship |
@@ -62,8 +63,10 @@ uv run watchtower-core sync command-index --output /tmp/command_index.v1.json --
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/parser.py`
+- `core/python/src/watchtower_core/cli/introspection.py`
 - `core/python/src/watchtower_core/sync/command_index.py`
 - `core/control_plane/indexes/commands/command_index.v1.json`
 
 ## Updated At
-- `2026-03-09T06:42:17Z`
+- `2026-03-10T05:14:33Z`

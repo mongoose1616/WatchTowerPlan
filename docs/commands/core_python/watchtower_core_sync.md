@@ -152,7 +152,7 @@ uv run watchtower-core sync repository-paths --write
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core sync command-index` | Rebuilds the command index from authored command docs. |
+| `watchtower-core sync command-index` | Rebuilds the command index from registry-backed CLI metadata while requiring companion command docs. |
 | `watchtower-core sync all` | Rebuilds all local deterministic indexes and trackers in dependency order. |
 | `watchtower-core sync foundation-index` | Rebuilds the foundation index from governed foundation docs. |
 | `watchtower-core sync reference-index` | Rebuilds the reference index from governed reference docs. |
@@ -180,7 +180,8 @@ uv run watchtower-core sync repository-paths --write
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/parser.py`
 - `core/python/src/watchtower_core/sync/`
 
 ## Updated At
-- `2026-03-10T01:48:35Z`
+- `2026-03-10T05:14:33Z`

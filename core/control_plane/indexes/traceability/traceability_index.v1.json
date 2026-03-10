@@ -40,7 +40,7 @@
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T03:53:14Z",
+      "updated_at": "2026-03-10T05:14:33Z",
       "closed_at": "2026-03-10T03:59:28Z",
       "closure_reason": "Delivered and validated; future command-surface expansion belongs to a new bounded initiative",
       "design_ids": [
@@ -69,7 +69,7 @@
       "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-10T04:44:27Z",
+      "updated_at": "2026-03-10T05:14:33Z",
       "prd_ids": [
         "prd.core_export_readiness_and_optimization"
       ],
@@ -144,9 +144,9 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/core_export_readiness_and_optimization.md",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/core_export_command_registry.md",
         "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/core_export_command_registry.md",
         "docs/planning/tasks/open/core_export_pack_interfaces.md",
         "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
         "docs/planning/tasks/open/core_export_retrieval_and_coordination.md",

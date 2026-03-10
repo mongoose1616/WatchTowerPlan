@@ -12,7 +12,7 @@
 | `core/python/tests/unit/test_acceptance_reconciliation.py` | Unit tests for acceptance-contract lookup, evidence lookup, and semantic acceptance reconciliation. |
 | `core/python/tests/unit/test_all_sync.py` | Unit tests for the coordinated all-sync orchestration service. |
 | `core/python/tests/unit/test_cli.py` | Unit tests for the watchtower-core CLI command surfaces. |
-| `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from command docs. |
+| `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs. |
 | `core/python/tests/unit/test_control_plane_loader.py` | Unit tests for the high-level governed artifact loaders. |
 | `core/python/tests/unit/test_decision_index_sync.py` | Unit tests for rebuilding the decision index from governed decision records. |
 | `core/python/tests/unit/test_design_document_index_sync.py` | Unit tests for rebuilding the design-document index from governed design docs. |
