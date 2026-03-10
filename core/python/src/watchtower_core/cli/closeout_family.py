@@ -12,7 +12,8 @@ def register_closeout_family(
     subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register the closeout command family."""
-    from watchtower_core.cli.handlers import _run_closeout_initiative, _run_help
+    from watchtower_core.cli.closeout_handlers import _run_closeout_initiative
+    from watchtower_core.cli.handler_common import _run_help
 
     closeout_parser = subparsers.add_parser(
         "closeout",

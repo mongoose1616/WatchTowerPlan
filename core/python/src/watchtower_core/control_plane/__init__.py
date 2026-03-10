@@ -1,7 +1,7 @@
 """Control-plane loaders and resolvers for authored core artifacts."""
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.schemas import SchemaStore
+from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 from watchtower_core.control_plane.workspace import (
     ArtifactSource,
     ArtifactStore,
@@ -15,5 +15,6 @@ __all__ = [
     "ControlPlaneLoader",
     "FileSystemArtifactIO",
     "SchemaStore",
+    "SupplementalSchemaDocument",
     "WorkspaceConfig",
 ]

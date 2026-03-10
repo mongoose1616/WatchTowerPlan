@@ -91,3 +91,7 @@
 - Prefer `uv run` for tests, linting, typing, and CLI execution.
 - When a command supports structured output, prefer `--format json` for agent or workflow consumption instead of parsing human-readable text.
 - Keep `pyproject.toml`, `uv.lock`, and command docs aligned when the Python execution contract changes.
+
+## Programmatic Use
+- `watchtower_core.control_plane.WorkspaceConfig` and `ControlPlaneLoader` support alternate workspace layouts instead of hard-wiring callers to this repo shape.
+- `watchtower_core.control_plane.SupplementalSchemaDocument` lets external consumers register additional schemas in-memory for validation without modifying this repository's canonical schema catalog.

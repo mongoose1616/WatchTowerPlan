@@ -16,8 +16,8 @@ def register_validate_family(
     subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register the validate command family and its subcommands."""
-    from watchtower_core.cli.handlers import (
-        _run_help,
+    from watchtower_core.cli.handler_common import _run_help
+    from watchtower_core.cli.validation_handlers import (
         _run_validate_acceptance,
         _run_validate_all,
         _run_validate_artifact,

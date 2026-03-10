@@ -13,8 +13,8 @@ def register_sync_family(
     subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register the sync command family and its subcommands."""
-    from watchtower_core.cli.handlers import (
-        _run_help,
+    from watchtower_core.cli.handler_common import _run_help
+    from watchtower_core.cli.sync_handlers import (
         _run_sync_all,
         _run_sync_command_index,
         _run_sync_coordination,

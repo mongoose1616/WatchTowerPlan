@@ -12,8 +12,8 @@ def register_query_family(
     subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register the query command family and its subcommands."""
-    from watchtower_core.cli.handlers import (
-        _run_help,
+    from watchtower_core.cli.handler_common import _run_help
+    from watchtower_core.cli.query_handlers import (
         _run_query_acceptance,
         _run_query_commands,
         _run_query_coordination,

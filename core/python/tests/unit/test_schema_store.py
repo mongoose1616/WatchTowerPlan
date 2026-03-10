@@ -7,7 +7,7 @@ import pytest
 from jsonschema import ValidationError
 
 from watchtower_core.control_plane.errors import SchemaResolutionError
-from watchtower_core.control_plane.schemas import SchemaStore
+from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -106,3 +106,53 @@ def test_schema_store_rejects_unknown_schema_id() -> None:
 
     with pytest.raises(SchemaResolutionError):
         store.load_schema("urn:watchtower:schema:missing:example:v1")
+
+
+def test_schema_store_accepts_supplemental_schema_documents() -> None:
+    schema_id = "urn:watchtower:schema:external:test-note:v1"
+    store = SchemaStore.from_repo_root(
+        REPO_ROOT,
+        supplemental_schema_documents=(
+            SupplementalSchemaDocument.from_document(
+                {
+                    "$id": schema_id,
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "type": "object",
+                    "properties": {
+                        "$schema": {"type": "string"},
+                        "kind": {"const": "external_note"},
+                    },
+                    "required": ["kind"],
+                    "additionalProperties": False,
+                },
+                source_label="external:test-note",
+            ),
+        ),
+    )
+
+    store.validate_instance({"kind": "external_note"}, schema_id=schema_id)
+
+    with pytest.raises(ValidationError):
+        store.validate_instance({"kind": "wrong"}, schema_id=schema_id)
+
+    assert store.supplemental_schema_ids == (schema_id,)
+
+
+def test_schema_store_rejects_duplicate_supplemental_schema_ids() -> None:
+    with pytest.raises(SchemaResolutionError, match="duplicates an existing schema"):
+        SchemaStore.from_repo_root(
+            REPO_ROOT,
+            supplemental_schema_documents=(
+                SupplementalSchemaDocument.from_document(
+                    {
+                        "$id": (
+                            "urn:watchtower:schema:interfaces:documentation:"
+                            "reference-front-matter:v1"
+                        ),
+                        "$schema": "https://json-schema.org/draft/2020-12/schema",
+                        "type": "object",
+                    },
+                    source_label="external:duplicate",
+                ),
+            ),
+        )

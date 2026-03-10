@@ -12,7 +12,7 @@ def register_doctor_family(
     subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register the top-level doctor command."""
-    from watchtower_core.cli.handlers import _run_doctor
+    from watchtower_core.cli.doctor_handlers import _run_doctor
 
     doctor_parser = subparsers.add_parser(
         "doctor",

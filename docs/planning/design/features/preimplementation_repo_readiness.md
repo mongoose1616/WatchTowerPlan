@@ -51,7 +51,7 @@ Defines the review-backed design for compact documentation entrypoints, a clear 
   - [docs/commands/core_python/README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md)
   - [core/python/README.md](/home/j/WatchTowerPlan/core/python/README.md)
 - The repository already has a derived machine coordination artifact in the initiative index, but agent navigation is still ambiguous because that surface is not clearly elevated above the other family indexes for traced coordination.
-- The core package still has large monolithic files at [handlers.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli/handlers.py) and [models.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/models.py).
+- At review start, the core package concentrated too much behavior in [handlers.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli/handlers.py) and the old single-file model surface now exported from [models](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/models).
 - Workspace injection exists, but [schemas.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/schemas.py) still assumes one local schema catalog and does not provide a first-class extension seam for future external schema sets.
 
 ## Foundations References Applied
@@ -101,8 +101,8 @@ Defines the review-backed design for compact documentation entrypoints, a clear 
 - Expose that surface directly through a `watchtower-core query coordination` command while preserving the existing `query initiatives` surface for backward-compatible family lookup.
 
 ### Core Modularity and Configurability
-- Split [handlers.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli/handlers.py) into family-focused handler modules.
-- Split [models.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/models.py) into smaller model modules grouped by artifact family.
+- Split CLI runtime behavior into family-focused handler modules under [cli](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli).
+- Split the control-plane typed artifact layer into smaller model modules under [models](/home/j/WatchTowerPlan/core/python/src/watchtower_core/control_plane/models).
 - Preserve compatibility re-exports through package `__init__` files so internal callers can migrate cleanly in one change set.
 - Extend the schema store with supplemental schema sets that can be merged into validation for future external pack-owned artifacts without editing the local schema catalog.
 

@@ -74,7 +74,7 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - Add a small `control_plane` module split into:
   - `paths.py` for repo-root and control-plane path discovery
   - `errors.py` for fail-closed loader and schema-resolution exceptions
-  - `models.py` for typed artifact records and indexes
+  - `models/` for typed artifact records and indexes
   - `schemas.py` for `SchemaStore`
   - `loader.py` for higher-level artifact loading helpers
 - Bootstrap `SchemaStore` from the schema catalog schema and schema catalog artifact directly, then build a local schema registry from all cataloged schemas.

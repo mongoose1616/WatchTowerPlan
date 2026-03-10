@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from watchtower_core.cli import handlers
 from watchtower_core.cli.main import main
+from watchtower_core.cli.query_handlers import _run_query_coordination
 
 
 def test_doctor_command_returns_zero(capsys) -> None:
@@ -23,6 +25,10 @@ def test_doctor_command_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core doctor"
     assert payload["workspace"] == "core_python"
     assert payload["status"] == "ok"
+
+
+def test_legacy_handler_facade_reexports_split_handler_modules() -> None:
+    assert handlers._run_query_coordination is _run_query_coordination
 
 
 def test_root_command_prints_help(capsys) -> None:

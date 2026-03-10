@@ -499,7 +499,6 @@
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/handlers.py",
         "core/python/src/watchtower_core/control_plane/",
-        "core/python/src/watchtower_core/control_plane/models.py",
         "core/python/src/watchtower_core/control_plane/schemas.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",

@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -272,6 +275,49 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
         "docs/standards/governance/github_task_sync_standard.md"
         in workflow.internal_reference_paths
     )
+
+
+def test_control_plane_loader_accepts_supplemental_schema_documents() -> None:
+    schema_id = "urn:watchtower:schema:external:loader-check:v1"
+    loader = ControlPlaneLoader(
+        REPO_ROOT,
+        supplemental_schema_documents=(
+            SupplementalSchemaDocument.from_document(
+                {
+                    "$id": schema_id,
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "type": "object",
+                    "properties": {"kind": {"const": "loader_check"}},
+                    "required": ["kind"],
+                    "additionalProperties": False,
+                },
+                source_label="external:loader-check",
+            ),
+        ),
+    )
+
+    loader.schema_store.validate_instance({"kind": "loader_check"}, schema_id=schema_id)
+    assert loader.supplemental_schema_ids == (schema_id,)
+
+
+def test_control_plane_loader_rejects_supplemental_docs_with_explicit_schema_store() -> None:
+    schema_store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    with pytest.raises(ValueError, match="supplemental_schema_documents"):
+        ControlPlaneLoader(
+            REPO_ROOT,
+            schema_store=schema_store,
+            supplemental_schema_documents=(
+                SupplementalSchemaDocument.from_document(
+                    {
+                        "$id": "urn:watchtower:schema:external:conflict:v1",
+                        "$schema": "https://json-schema.org/draft/2020-12/schema",
+                        "type": "object",
+                    },
+                    source_label="external:conflict",
+                ),
+            ),
+        )
 
 
 def test_control_plane_loader_reads_reference_index() -> None:

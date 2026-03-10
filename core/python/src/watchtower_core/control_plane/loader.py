@@ -24,7 +24,7 @@ from watchtower_core.control_plane.models import (
     ValidatorRegistry,
     WorkflowIndex,
 )
-from watchtower_core.control_plane.schemas import SchemaStore
+from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 from watchtower_core.control_plane.workspace import (
     ArtifactSource,
     ArtifactStore,
@@ -64,6 +64,7 @@ class ControlPlaneLoader:
         workspace_config: WorkspaceConfig | None = None,
         artifact_source: ArtifactSource | None = None,
         artifact_store: ArtifactStore | None = None,
+        supplemental_schema_documents: tuple[SupplementalSchemaDocument, ...] = (),
     ) -> None:
         effective_workspace = workspace_config or (
             schema_store.workspace_config
@@ -78,6 +79,11 @@ class ControlPlaneLoader:
             raise ValueError(
                 "ControlPlaneLoader received mismatched workspace_config and schema_store."
             )
+        if schema_store is not None and supplemental_schema_documents:
+            raise ValueError(
+                "ControlPlaneLoader cannot accept supplemental_schema_documents when "
+                "schema_store is provided explicitly."
+            )
 
         default_io = FileSystemArtifactIO(effective_workspace)
         self.workspace_config = effective_workspace
@@ -89,7 +95,9 @@ class ControlPlaneLoader:
         self.schema_store = schema_store or SchemaStore.from_workspace(
             effective_workspace,
             artifact_source=self.artifact_source,
+            supplemental_schema_documents=supplemental_schema_documents,
         )
+        self.supplemental_schema_ids = self.schema_store.supplemental_schema_ids
 
     def load_json_object(self, relative_path: str) -> dict[str, Any]:
         """Load a repository-relative JSON object."""
