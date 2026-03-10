@@ -81,20 +81,13 @@
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
       "status": "active",
       "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-10T16:18:44Z",
-      "open_task_count": 1,
+      "current_phase": "closeout",
+      "updated_at": "2026-03-10T17:04:57Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
-      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/core_export_public_api_boundary.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.core_export_hardening_followup.public_api_boundary.001"
-      ],
+      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
       "prd_ids": [
         "prd.core_export_hardening_followup"
       ],
@@ -155,15 +148,15 @@
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/core_export_command_source_metadata.md",
         "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/core_export_public_api_boundary.md",
         "docs/planning/tasks/closed/core_export_sync_output_snapshots.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/core_export_public_api_boundary.md",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [
         "traceability"
       ],
-      "notes": "Planning-baseline evidence for the post-review export hardening initiative. Two bounded implementation slices are complete, but the evidence remains warning until the remaining public-boundary cleanup lands and validates."
+      "notes": "Planning-baseline evidence for the post-review export hardening initiative. All three bounded implementation slices are complete and validated."
     },
     {
       "trace_id": "trace.core_export_readiness_and_optimization",

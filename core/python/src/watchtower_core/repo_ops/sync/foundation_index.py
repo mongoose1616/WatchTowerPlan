@@ -22,7 +22,7 @@ from watchtower_core.repo_ops.planning_documents import (
     ordered_unique,
     validate_required_section_order,
 )
-from watchtower_core.sync.reference_index import (
+from watchtower_core.repo_ops.sync.reference_index import (
     ReferenceIndexSyncService,
     iter_citation_audit_documents,
 )

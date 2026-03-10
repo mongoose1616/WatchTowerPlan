@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.sync import GitHubTaskSyncParams, GitHubTaskSyncService
+from watchtower_core.repo_ops.sync import GitHubTaskSyncParams, GitHubTaskSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

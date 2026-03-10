@@ -13,7 +13,7 @@ from watchtower_core.control_plane.workspace import (
     OverlayArtifactSource,
     WorkspaceConfig,
 )
-from watchtower_core.sync.registry import SYNC_TARGET_SPECS, SyncTargetSpec
+from watchtower_core.repo_ops.sync.registry import SYNC_TARGET_SPECS, SyncTargetSpec
 
 
 @dataclass(frozen=True, slots=True)

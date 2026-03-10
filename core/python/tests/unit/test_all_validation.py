@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.validation import ValidationAllService
-from watchtower_core.validation.registry import VALIDATION_FAMILY_SPECS
+from watchtower_core.repo_ops.validation import (
+    VALIDATION_FAMILY_SPECS,
+    ValidationAllService,
+)
 
 
 def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:

@@ -4,8 +4,8 @@
   "title": "Core Export Hardening Follow-Up Planning Baseline Validation Evidence",
   "status": "active",
   "trace_id": "trace.core_export_hardening_followup",
-  "overall_result": "warning",
-  "recorded_at": "2026-03-10T16:18:44Z",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-10T17:04:57Z",
   "source_prd_ids": [
     "prd.core_export_hardening_followup"
   ],
@@ -30,7 +30,7 @@
         "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
         "docs/planning/tasks/closed/core_export_sync_output_snapshots.md",
         "docs/planning/tasks/closed/core_export_command_source_metadata.md",
-        "docs/planning/tasks/open/core_export_public_api_boundary.md"
+        "docs/planning/tasks/closed/core_export_public_api_boundary.md"
       ],
       "subject_ids": [
         "prd.core_export_hardening_followup",
@@ -41,7 +41,7 @@
       "acceptance_ids": [
         "ac.core_export_hardening_followup.001"
       ],
-      "notes": "The follow-up hardening initiative now has its traced planning chain, a closed bootstrap task, two completed implementation slices, and one remaining open follow-up task."
+      "notes": "The follow-up hardening initiative now has its traced planning chain, a closed bootstrap task, and all three bounded implementation slices complete."
     },
     {
       "check_id": "check.core_export_hardening_followup.output_dir_sync_plan",
@@ -80,10 +80,10 @@
     {
       "check_id": "check.core_export_hardening_followup.public_boundary_plan",
       "title": "Public boundary cleanup scoped",
-      "result": "warning",
+      "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/core_export_hardening.md",
-        "docs/planning/tasks/open/core_export_public_api_boundary.md"
+        "docs/planning/tasks/closed/core_export_public_api_boundary.md"
       ],
       "subject_ids": [
         "design.features.core_export_hardening",
@@ -92,7 +92,7 @@
       "acceptance_ids": [
         "ac.core_export_hardening_followup.004"
       ],
-      "notes": "The repo-specific import cleanup and top-level export hardening are planned but not implemented yet."
+      "notes": "Repo-specific consumers now import watchtower_core.repo_ops surfaces directly, package-level query and sync exports no longer advertise repo-specific services, and aggregate repo-wide validation lives under watchtower_core.repo_ops.validation."
     },
     {
       "check_id": "check.core_export_hardening_followup.validation_baseline",
@@ -117,5 +117,5 @@
     "docs/planning/design/design_tracking.md",
     "docs/planning/tasks/task_tracking.md"
   ],
-  "notes": "Planning-baseline evidence for the post-review export hardening initiative. Two bounded implementation slices are complete, but the evidence remains warning until the remaining public-boundary cleanup lands and validates."
+  "notes": "Planning-baseline evidence for the post-review export hardening initiative. All three bounded implementation slices are complete and validated."
 }

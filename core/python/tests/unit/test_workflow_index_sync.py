@@ -6,8 +6,8 @@ from pathlib import Path
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.sync import WorkflowIndexSyncService
-from watchtower_core.sync.workflow_index import validate_workflow_additional_load_section
+from watchtower_core.repo_ops.sync import WorkflowIndexSyncService
+from watchtower_core.repo_ops.sync.workflow_index import validate_workflow_additional_load_section
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

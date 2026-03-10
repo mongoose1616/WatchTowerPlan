@@ -7,7 +7,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.sync.tracking_common import initiative_status_map, latest_timestamp
+from watchtower_core.repo_ops.sync.tracking_common import initiative_status_map, latest_timestamp
 
 DECISION_TRACKING_DOCUMENT_PATH = "docs/planning/decisions/decision_tracking.md"
 

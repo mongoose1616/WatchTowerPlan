@@ -72,7 +72,7 @@
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/validation/",
-        "docs/planning/tasks/open/core_export_public_api_boundary.md"
+        "docs/planning/tasks/closed/core_export_public_api_boundary.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/repo_ops/",

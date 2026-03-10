@@ -20,16 +20,16 @@ from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
-from watchtower_core.sync.decision_index import DECISION_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.sync.design_document_index import (
+from watchtower_core.repo_ops.sync.decision_index import DECISION_FRONT_MATTER_SCHEMA_ID
+from watchtower_core.repo_ops.sync.design_document_index import (
     FEATURE_DESIGN_FRONT_MATTER_SCHEMA_ID,
     IMPLEMENTATION_PLAN_FRONT_MATTER_SCHEMA_ID,
 )
-from watchtower_core.sync.foundation_index import FOUNDATION_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.sync.prd_index import PRD_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.sync.reference_index import REFERENCE_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.sync.standard_index import STANDARD_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.sync.workflow_index import load_workflow_document
+from watchtower_core.repo_ops.sync.foundation_index import FOUNDATION_FRONT_MATTER_SCHEMA_ID
+from watchtower_core.repo_ops.sync.prd_index import PRD_FRONT_MATTER_SCHEMA_ID
+from watchtower_core.repo_ops.sync.reference_index import REFERENCE_FRONT_MATTER_SCHEMA_ID
+from watchtower_core.repo_ops.sync.standard_index import STANDARD_FRONT_MATTER_SCHEMA_ID
+from watchtower_core.repo_ops.sync.workflow_index import load_workflow_document
 from watchtower_core.validation.common import matches_applies_to, resolve_target_path
 from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
 from watchtower_core.validation.models import ValidationIssue, ValidationResult

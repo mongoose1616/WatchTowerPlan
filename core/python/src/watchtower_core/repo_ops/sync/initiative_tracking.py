@@ -7,8 +7,8 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.sync.initiative_index import PHASE_ORDER
-from watchtower_core.sync.tracking_common import latest_timestamp
+from watchtower_core.repo_ops.sync.initiative_index import PHASE_ORDER
+from watchtower_core.repo_ops.sync.tracking_common import latest_timestamp
 
 INITIATIVE_TRACKING_DOCUMENT_PATH = "docs/planning/initiatives/initiative_tracking.md"
 

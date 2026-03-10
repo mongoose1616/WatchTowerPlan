@@ -9,11 +9,11 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import TaskIndexEntry
-from watchtower_core.sync.decision_tracking import DecisionTrackingSyncService
-from watchtower_core.sync.design_tracking import DesignTrackingSyncService
-from watchtower_core.sync.initiative_index import InitiativeIndexSyncService
-from watchtower_core.sync.initiative_tracking import InitiativeTrackingSyncService
-from watchtower_core.sync.prd_tracking import PrdTrackingSyncService
+from watchtower_core.repo_ops.sync.decision_tracking import DecisionTrackingSyncService
+from watchtower_core.repo_ops.sync.design_tracking import DesignTrackingSyncService
+from watchtower_core.repo_ops.sync.initiative_index import InitiativeIndexSyncService
+from watchtower_core.repo_ops.sync.initiative_tracking import InitiativeTrackingSyncService
+from watchtower_core.repo_ops.sync.prd_tracking import PrdTrackingSyncService
 from watchtower_core.utils import utc_timestamp_now
 
 TERMINAL_INITIATIVE_STATUSES = {"completed", "superseded", "cancelled", "abandoned"}

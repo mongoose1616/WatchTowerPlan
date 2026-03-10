@@ -24,7 +24,7 @@ from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
-from watchtower_core.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 
 WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.v1.json"
 WORKFLOW_DOC_ROOT = "workflows/modules"

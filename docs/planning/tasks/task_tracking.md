@@ -6,12 +6,13 @@ This document provides the human-readable tracking view for local task records u
 ## Open Tasks
 | Task ID | Task Status | Priority | Owner | Trace ID | Path | Summary | Blocked By |
 |---|---|---|---|---|---|---|---|
-| `task.core_export_hardening_followup.public_api_boundary.001` | `ready` | `high` | `repository_maintainer` | `trace.core_export_hardening_followup` | `docs/planning/tasks/open/core_export_public_api_boundary.md` | Move repo-specific consumers onto repo_ops surfaces and stop advertising repo-specific query, sync, and aggregate validation APIs from top-level export-safe namespaces. | `None` |
+| `None` | `None` | `None` | `None` | `None` | `None` | No tasks in this class. | `None` |
 
 ## Closed Tasks
 | Task ID | Task Status | Priority | Owner | Trace ID | Path | Summary | Blocked By |
 |---|---|---|---|---|---|---|---|
 | `task.core_export_hardening_followup.bootstrap.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_hardening_followup` | `docs/planning/tasks/closed/core_export_hardening_bootstrap.md` | Create the traced planning chain, acceptance baseline, and bounded implementation task set for the export-hardening follow-up work. | `None` |
+| `task.core_export_hardening_followup.public_api_boundary.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_hardening_followup` | `docs/planning/tasks/closed/core_export_public_api_boundary.md` | Move repo-specific consumers onto repo_ops surfaces and stop advertising repo-specific query, sync, and aggregate validation APIs from top-level export-safe namespaces. | `None` |
 | `task.core_export_hardening_followup.sync_output_dir.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_hardening_followup` | `docs/planning/tasks/closed/core_export_sync_output_snapshots.md` | Ensure sync output directories feed later dependent targets from the materialized snapshot instead of stale canonical derived artifacts. | `None` |
 | `task.core_export_readiness_and_optimization.bootstrap.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_initiative_bootstrap.md` | Creates the initiative's PRD, feature design, implementation plan, acceptance baseline artifacts, open execution tasks, and git workflow standard so export-readiness work can proceed from governed local surfaces. | `None` |
 | `task.core_export_readiness_and_optimization.command_registry.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_command_registry.md` | Introduce registry-backed CLI command authority so parser wiring, command lookup, and command-surface maintenance no longer depend on one monolithic CLI file and doc-derived machine metadata. | `None` |
@@ -41,4 +42,4 @@ This document provides the human-readable tracking view for local task records u
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 
 ## Updated At
-- `2026-03-10T16:18:44Z`
+- `2026-03-10T17:04:57Z`

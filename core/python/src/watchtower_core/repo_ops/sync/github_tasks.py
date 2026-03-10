@@ -14,14 +14,14 @@ from watchtower_core.integrations.github import (
     GitHubProjectContext,
 )
 from watchtower_core.repo_ops.query.tasks import TaskQueryService, TaskSearchParams
+from watchtower_core.repo_ops.sync.task_index import TaskIndexSyncService
+from watchtower_core.repo_ops.sync.task_tracking import TaskTrackingSyncService
+from watchtower_core.repo_ops.sync.traceability import TraceabilityIndexSyncService
 from watchtower_core.repo_ops.task_documents import (
     TaskDocument,
     load_task_document,
     update_task_document_front_matter,
 )
-from watchtower_core.sync.task_index import TaskIndexSyncService
-from watchtower_core.sync.task_tracking import TaskTrackingSyncService
-from watchtower_core.sync.traceability import TraceabilityIndexSyncService
 from watchtower_core.utils import utc_timestamp_now
 
 PROJECT_STATUS_BY_TASK_STATUS = {

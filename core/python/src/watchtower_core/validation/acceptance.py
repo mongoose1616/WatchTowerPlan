@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import TraceabilityEntry
-from watchtower_core.query import (
+from watchtower_core.repo_ops.query import (
     AcceptanceContractQueryService,
     AcceptanceContractSearchParams,
     PrdQueryService,

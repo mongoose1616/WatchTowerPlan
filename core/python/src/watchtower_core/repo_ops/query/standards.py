@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import StandardIndexEntry
-from watchtower_core.query.common import query_score
+from watchtower_core.repo_ops.query.common import query_score
 
 
 @dataclass(frozen=True, slots=True)

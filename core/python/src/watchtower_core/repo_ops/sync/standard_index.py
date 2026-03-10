@@ -23,7 +23,7 @@ from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
-from watchtower_core.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 
 STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
 STANDARD_FRONT_MATTER_SCHEMA_ID = (

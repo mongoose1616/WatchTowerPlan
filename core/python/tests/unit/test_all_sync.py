@@ -5,8 +5,8 @@ from pathlib import Path
 from shutil import copytree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.sync import AllSyncService, CoordinationSyncService
-from watchtower_core.sync.registry import (
+from watchtower_core.repo_ops.sync import AllSyncService, CoordinationSyncService
+from watchtower_core.repo_ops.sync.registry import (
     COORDINATION_SYNC_GROUP,
     SYNC_TARGET_SPECS,
     sync_target_specs_for_group,

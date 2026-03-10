@@ -6,7 +6,7 @@ from pathlib import Path
 from watchtower_core.cli.introspection import iter_command_parser_specs
 from watchtower_core.cli.parser import build_parser
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.sync import CommandIndexSyncService
+from watchtower_core.repo_ops.sync import CommandIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

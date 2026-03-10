@@ -8,13 +8,17 @@ import pytest
 
 from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.query import InitiativeQueryService, TaskQueryService, TaskSearchParams
-from watchtower_core.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
-from watchtower_core.sync.initiative_index import InitiativeIndexSyncService
-from watchtower_core.sync.initiative_tracking import InitiativeTrackingSyncService
-from watchtower_core.sync.task_index import TaskIndexSyncService
-from watchtower_core.sync.task_tracking import TaskTrackingSyncService
-from watchtower_core.sync.traceability import TraceabilityIndexSyncService
+from watchtower_core.repo_ops.query import (
+    InitiativeQueryService,
+    TaskQueryService,
+    TaskSearchParams,
+)
+from watchtower_core.repo_ops.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
+from watchtower_core.repo_ops.sync.initiative_index import InitiativeIndexSyncService
+from watchtower_core.repo_ops.sync.initiative_tracking import InitiativeTrackingSyncService
+from watchtower_core.repo_ops.sync.task_index import TaskIndexSyncService
+from watchtower_core.repo_ops.sync.task_tracking import TaskTrackingSyncService
+from watchtower_core.repo_ops.sync.traceability import TraceabilityIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

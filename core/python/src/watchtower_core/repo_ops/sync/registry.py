@@ -7,59 +7,65 @@ from dataclasses import dataclass
 from typing import Literal
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.sync.command_index import (
+from watchtower_core.repo_ops.sync.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
 )
-from watchtower_core.sync.decision_index import (
+from watchtower_core.repo_ops.sync.decision_index import (
     DECISION_INDEX_ARTIFACT_PATH,
     DecisionIndexSyncService,
 )
-from watchtower_core.sync.decision_tracking import (
+from watchtower_core.repo_ops.sync.decision_tracking import (
     DECISION_TRACKING_DOCUMENT_PATH,
     DecisionTrackingSyncService,
 )
-from watchtower_core.sync.design_document_index import (
+from watchtower_core.repo_ops.sync.design_document_index import (
     DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH,
     DesignDocumentIndexSyncService,
 )
-from watchtower_core.sync.design_tracking import (
+from watchtower_core.repo_ops.sync.design_tracking import (
     DESIGN_TRACKING_DOCUMENT_PATH,
     DesignTrackingSyncService,
 )
-from watchtower_core.sync.foundation_index import (
+from watchtower_core.repo_ops.sync.foundation_index import (
     FOUNDATION_INDEX_ARTIFACT_PATH,
     FoundationIndexSyncService,
 )
-from watchtower_core.sync.initiative_index import (
+from watchtower_core.repo_ops.sync.initiative_index import (
     INITIATIVE_INDEX_ARTIFACT_PATH,
     InitiativeIndexSyncService,
 )
-from watchtower_core.sync.initiative_tracking import (
+from watchtower_core.repo_ops.sync.initiative_tracking import (
     INITIATIVE_TRACKING_DOCUMENT_PATH,
     InitiativeTrackingSyncService,
 )
-from watchtower_core.sync.prd_index import PRD_INDEX_ARTIFACT_PATH, PrdIndexSyncService
-from watchtower_core.sync.prd_tracking import PRD_TRACKING_DOCUMENT_PATH, PrdTrackingSyncService
-from watchtower_core.sync.reference_index import (
+from watchtower_core.repo_ops.sync.prd_index import PRD_INDEX_ARTIFACT_PATH, PrdIndexSyncService
+from watchtower_core.repo_ops.sync.prd_tracking import (
+    PRD_TRACKING_DOCUMENT_PATH,
+    PrdTrackingSyncService,
+)
+from watchtower_core.repo_ops.sync.reference_index import (
     REFERENCE_INDEX_ARTIFACT_PATH,
     ReferenceIndexSyncService,
 )
-from watchtower_core.sync.repository_paths import (
+from watchtower_core.repo_ops.sync.repository_paths import (
     REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
     RepositoryPathIndexSyncService,
 )
-from watchtower_core.sync.standard_index import (
+from watchtower_core.repo_ops.sync.standard_index import (
     STANDARD_INDEX_ARTIFACT_PATH,
     StandardIndexSyncService,
 )
-from watchtower_core.sync.task_index import TASK_INDEX_ARTIFACT_PATH, TaskIndexSyncService
-from watchtower_core.sync.task_tracking import TASK_TRACKING_DOCUMENT_PATH, TaskTrackingSyncService
-from watchtower_core.sync.traceability import (
+from watchtower_core.repo_ops.sync.task_index import TASK_INDEX_ARTIFACT_PATH, TaskIndexSyncService
+from watchtower_core.repo_ops.sync.task_tracking import (
+    TASK_TRACKING_DOCUMENT_PATH,
+    TaskTrackingSyncService,
+)
+from watchtower_core.repo_ops.sync.traceability import (
     TRACEABILITY_INDEX_ARTIFACT_PATH,
     TraceabilityIndexSyncService,
 )
-from watchtower_core.sync.workflow_index import (
+from watchtower_core.repo_ops.sync.workflow_index import (
     WORKFLOW_INDEX_ARTIFACT_PATH,
     WorkflowIndexSyncService,
 )

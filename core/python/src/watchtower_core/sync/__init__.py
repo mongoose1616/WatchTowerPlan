@@ -1,101 +1,13 @@
-"""Derived-artifact refresh and materialization helpers for governed control-plane surfaces."""
+"""Public sync namespace for export-safe surfaces."""
 
 from __future__ import annotations
 
-from importlib import import_module
-from typing import Any
-
-__all__ = [
-    "AllSyncResult",
-    "AllSyncService",
-    "COMMAND_INDEX_ARTIFACT_PATH",
-    "CommandIndexSyncService",
-    "COORDINATION_SYNC_GROUP",
-    "CoordinationSyncService",
-    "DecisionTrackingSyncService",
-    "DECISION_INDEX_ARTIFACT_PATH",
-    "DecisionIndexSyncService",
-    "DesignTrackingSyncService",
-    "DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH",
-    "DesignDocumentIndexSyncService",
-    "FOUNDATION_INDEX_ARTIFACT_PATH",
-    "FoundationIndexSyncService",
-    "GitHubTaskSyncParams",
-    "GitHubTaskSyncService",
-    "INITIATIVE_INDEX_ARTIFACT_PATH",
-    "INITIATIVE_TRACKING_DOCUMENT_PATH",
-    "InitiativeIndexSyncService",
-    "InitiativeTrackingSyncService",
-    "PRD_INDEX_ARTIFACT_PATH",
-    "PrdIndexSyncService",
-    "PrdTrackingSyncService",
-    "REFERENCE_INDEX_ARTIFACT_PATH",
-    "ReferenceIndexSyncService",
-    "REPOSITORY_PATH_INDEX_ARTIFACT_PATH",
-    "RepositoryPathIndexSyncService",
-    "SYNC_TARGET_SPECS",
-    "sync_target_specs_for_group",
-    "STANDARD_INDEX_ARTIFACT_PATH",
-    "StandardIndexSyncService",
-    "SyncTargetGroup",
-    "SyncTargetSpec",
-    "TASK_INDEX_ARTIFACT_PATH",
-    "TASK_TRACKING_DOCUMENT_PATH",
-    "TaskIndexSyncService",
-    "TaskTrackingSyncService",
-    "TRACEABILITY_INDEX_ARTIFACT_PATH",
-    "TraceabilityIndexSyncService",
-    "WORKFLOW_INDEX_ARTIFACT_PATH",
-    "WorkflowIndexSyncService",
-]
-
-_EXPORT_MODULES = {
-    "AllSyncResult": "watchtower_core.repo_ops.sync.all",
-    "AllSyncService": "watchtower_core.repo_ops.sync.all",
-    "COMMAND_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.command_index",
-    "CommandIndexSyncService": "watchtower_core.repo_ops.sync.command_index",
-    "COORDINATION_SYNC_GROUP": "watchtower_core.repo_ops.sync.registry",
-    "CoordinationSyncService": "watchtower_core.repo_ops.sync.coordination",
-    "DecisionTrackingSyncService": "watchtower_core.repo_ops.sync.decision_tracking",
-    "DECISION_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.decision_index",
-    "DecisionIndexSyncService": "watchtower_core.repo_ops.sync.decision_index",
-    "DesignTrackingSyncService": "watchtower_core.repo_ops.sync.design_tracking",
-    "DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.design_document_index",
-    "DesignDocumentIndexSyncService": "watchtower_core.repo_ops.sync.design_document_index",
-    "FOUNDATION_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.foundation_index",
-    "FoundationIndexSyncService": "watchtower_core.repo_ops.sync.foundation_index",
-    "GitHubTaskSyncParams": "watchtower_core.repo_ops.sync.github_tasks",
-    "GitHubTaskSyncService": "watchtower_core.repo_ops.sync.github_tasks",
-    "INITIATIVE_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.initiative_index",
-    "INITIATIVE_TRACKING_DOCUMENT_PATH": "watchtower_core.repo_ops.sync.initiative_tracking",
-    "InitiativeIndexSyncService": "watchtower_core.repo_ops.sync.initiative_index",
-    "InitiativeTrackingSyncService": "watchtower_core.repo_ops.sync.initiative_tracking",
-    "PRD_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.prd_index",
-    "PrdIndexSyncService": "watchtower_core.repo_ops.sync.prd_index",
-    "PrdTrackingSyncService": "watchtower_core.repo_ops.sync.prd_tracking",
-    "REFERENCE_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.reference_index",
-    "ReferenceIndexSyncService": "watchtower_core.repo_ops.sync.reference_index",
-    "REPOSITORY_PATH_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.repository_paths",
-    "RepositoryPathIndexSyncService": "watchtower_core.repo_ops.sync.repository_paths",
-    "SYNC_TARGET_SPECS": "watchtower_core.repo_ops.sync.registry",
-    "sync_target_specs_for_group": "watchtower_core.repo_ops.sync.registry",
-    "STANDARD_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.standard_index",
-    "StandardIndexSyncService": "watchtower_core.repo_ops.sync.standard_index",
-    "SyncTargetGroup": "watchtower_core.repo_ops.sync.registry",
-    "SyncTargetSpec": "watchtower_core.repo_ops.sync.registry",
-    "TASK_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.task_index",
-    "TASK_TRACKING_DOCUMENT_PATH": "watchtower_core.repo_ops.sync.task_tracking",
-    "TaskIndexSyncService": "watchtower_core.repo_ops.sync.task_index",
-    "TaskTrackingSyncService": "watchtower_core.repo_ops.sync.task_tracking",
-    "TRACEABILITY_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.traceability",
-    "TraceabilityIndexSyncService": "watchtower_core.repo_ops.sync.traceability",
-    "WORKFLOW_INDEX_ARTIFACT_PATH": "watchtower_core.repo_ops.sync.workflow_index",
-    "WorkflowIndexSyncService": "watchtower_core.repo_ops.sync.workflow_index",
-}
+__all__: list[str] = []
 
 
-def __getattr__(name: str) -> Any:
-    module_name = _EXPORT_MODULES.get(name)
-    if module_name is None:
-        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
-    return getattr(import_module(module_name), name)
+def __getattr__(name: str) -> object:
+    raise AttributeError(
+        "watchtower_core.sync does not export repo-specific sync services. "
+        "Import from watchtower_core.repo_ops.sync or from an explicit "
+        "watchtower_core.sync.<module> compatibility wrapper instead."
+    )

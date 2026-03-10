@@ -12,7 +12,7 @@ from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import TaskIndexEntry
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
-from watchtower_core.query import (
+from watchtower_core.repo_ops.query import (
     AcceptanceContractQueryService,
     AcceptanceContractSearchParams,
     CommandQueryService,
@@ -41,7 +41,7 @@ from watchtower_core.query import (
     WorkflowQueryService,
     WorkflowSearchParams,
 )
-from watchtower_core.sync import (
+from watchtower_core.repo_ops.sync import (
     AllSyncService,
     CommandIndexSyncService,
     CoordinationSyncService,
@@ -64,13 +64,15 @@ from watchtower_core.sync import (
     TraceabilityIndexSyncService,
     WorkflowIndexSyncService,
 )
-from watchtower_core.validation import (
+from watchtower_core.repo_ops.validation import (
     VALIDATION_FAMILY_SPECS,
+    ValidationAllService,
+)
+from watchtower_core.validation import (
     AcceptanceReconciliationService,
     ArtifactValidationService,
     DocumentSemanticsValidationService,
     FrontMatterValidationService,
-    ValidationAllService,
     ValidationExecutionError,
     ValidationResult,
     ValidationSelectionError,

@@ -5,11 +5,11 @@ title: "Harden the public export-safe API boundary"
 summary: "Move repo-specific consumers onto repo_ops surfaces and stop advertising repo-specific query, sync, and aggregate validation APIs from top-level export-safe namespaces."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "feature"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T15:24:07Z"
+updated_at: "2026-03-10T17:04:57Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -47,4 +47,4 @@ Move repo-specific consumers onto repo_ops surfaces and stop advertising repo-sp
 - [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
 
 ## Updated At
-- `2026-03-10T15:24:07Z`
+- `2026-03-10T17:04:57Z`
