@@ -1997,6 +1997,13 @@
       "parent_path": "core/python/tests/unit/"
     },
     {
+      "path": "core/python/tests/unit/test_repo_ops_compatibility.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for the explicit repo-ops boundary and its compatibility shims.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
       "path": "core/python/tests/unit/test_schema_store.py",
       "kind": "file",
       "surface_kind": "python_test_file",
