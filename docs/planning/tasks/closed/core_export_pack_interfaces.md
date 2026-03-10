@@ -5,11 +5,11 @@ title: "Publish generic pack-facing interfaces"
 summary: "Add generic pack-facing schemas, examples, and validation hooks for work-item notes, extraction outputs, promoted knowledge, promotion records, and pack indexes without starting domain-pack implementation."
 type: "task"
 status: "active"
-task_status: "backlog"
+task_status: "done"
 task_kind: "feature"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T04:28:34Z"
+updated_at: "2026-03-10T06:42:17Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -50,4 +50,4 @@ Add generic pack-facing schemas, examples, and validation hooks for work-item no
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
 
 ## Updated At
-- `2026-03-10T04:28:34Z`
+- `2026-03-10T06:42:17Z`

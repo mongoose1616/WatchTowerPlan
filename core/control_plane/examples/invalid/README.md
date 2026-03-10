@@ -9,6 +9,7 @@
 | `core/control_plane/examples/invalid/README.md` | Describes the purpose of the invalid examples directory and its main example families. |
 | `core/control_plane/examples/invalid/contracts/` | Invalid examples for contract artifact validation. |
 | `core/control_plane/examples/invalid/documentation/` | Invalid examples for documentation-related interface validation. |
+| `core/control_plane/examples/invalid/interfaces/` | Invalid examples for generic pack-facing interface validation. |
 | `core/control_plane/examples/invalid/indexes/` | Invalid examples for derived index artifact validation. |
 | `core/control_plane/examples/invalid/ledgers/` | Invalid examples for ledger artifact validation. |
 | `core/control_plane/examples/invalid/registries/` | Invalid examples for registry artifact validation. |

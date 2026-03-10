@@ -8,7 +8,7 @@
   "entries": [
     {
       "acceptance_id": "ac.core_export_readiness_and_optimization.001",
-      "summary": "The planning corpus publishes an active PRD, feature design, implementation plan, bootstrap closeout, and durable open task set for the initiative.",
+      "summary": "The planning corpus publishes an active PRD, feature design, implementation plan, bootstrap closeout, and a durable task set for the initiative.",
       "source_requirement_ids": [
         "req.core_export_readiness_and_optimization.007"
       ],
@@ -17,7 +17,7 @@
         "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/implementation/core_export_readiness_execution.md",
         "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
-        "docs/planning/tasks/open/"
+        "docs/planning/tasks/"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -92,7 +92,7 @@
       "validation_targets": [
         "core/control_plane/schemas/interfaces/",
         "core/control_plane/examples/",
-        "docs/planning/tasks/open/core_export_pack_interfaces.md"
+        "docs/planning/tasks/closed/core_export_pack_interfaces.md"
       ],
       "related_paths": [
         "docs/planning/design/features/core_export_ready_architecture.md",
@@ -129,7 +129,7 @@
       ],
       "related_paths": [
         "docs/standards/engineering/git_workflow_standard.md",
-        "docs/planning/tasks/open/"
+        "docs/planning/tasks/"
       ]
     }
   ]

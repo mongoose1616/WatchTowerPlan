@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:promotion-record:v1",
+  "id": "promotion.record.offensive_security.ctf.tryhackme_blue.smb_enum",
+  "title": "Promote SMB Enumeration Tactic from TryHackMe Blue",
+  "summary": "Review approved one generalized SMB enumeration tactic for shared reuse.",
+  "status": "active",
+  "pack_id": "pack.offensive_security.ctf",
+  "work_item_id": "work.item.tryhackme.blue",
+  "trace_id": "trace.offensive_security.ctf.tryhackme_blue",
+  "extraction_output_id": "extraction.output.offensive_security.ctf.tryhackme_blue.initial",
+  "decision": "approved",
+  "reviewed_at": "2026-03-10T06:47:00Z",
+  "reviewer": "repository_maintainer",
+  "candidate_knowledge_ids": [
+    "candidate.knowledge.tryhackme_blue.smb_enum"
+  ],
+  "promoted_knowledge_ids": [
+    "knowledge.promoted.offensive_security.ctf.smb_enumeration"
+  ],
+  "decision_notes": "The final knowledge item keeps the tactic generic and strips challenge-local incidental detail."
+}

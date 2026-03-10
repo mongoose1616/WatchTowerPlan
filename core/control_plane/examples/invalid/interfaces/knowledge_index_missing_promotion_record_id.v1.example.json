@@ -1,0 +1,22 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:knowledge-index:v1",
+  "id": "index.knowledge.offensive_security.ctf",
+  "title": "Offensive Security CTF Knowledge Index",
+  "status": "active",
+  "pack_id": "pack.offensive_security.ctf",
+  "entries": [
+    {
+      "knowledge_id": "knowledge.promoted.offensive_security.ctf.smb_enumeration",
+      "title": "Prioritize anonymous SMB enumeration before password guessing",
+      "summary": "Invalid example missing the promotion record link.",
+      "status": "active",
+      "knowledge_family": "tactic",
+      "canonical_path": "domain_packs/offensive_security/shared/knowledge/tactics/smb_enumeration.md",
+      "extraction_output_id": "extraction.output.offensive_security.ctf.tryhackme_blue.initial",
+      "promoted_at": "2026-03-10T06:47:00Z",
+      "source_work_item_ids": [
+        "work.item.tryhackme.blue"
+      ]
+    }
+  ]
+}

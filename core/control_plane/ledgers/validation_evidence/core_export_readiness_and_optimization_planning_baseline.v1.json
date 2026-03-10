@@ -4,8 +4,8 @@
   "title": "Core Export Readiness and Optimization Planning Baseline Validation Evidence",
   "status": "active",
   "trace_id": "trace.core_export_readiness_and_optimization",
-  "overall_result": "warning",
-  "recorded_at": "2026-03-10T06:26:48Z",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-10T06:42:17Z",
   "source_prd_ids": [
     "prd.core_export_readiness_and_optimization"
   ],
@@ -29,7 +29,7 @@
         "docs/planning/design/implementation/core_export_readiness_execution.md",
         "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
         "docs/planning/tasks/closed/core_export_command_registry.md",
-        "docs/planning/tasks/open/core_export_pack_interfaces.md",
+        "docs/planning/tasks/closed/core_export_pack_interfaces.md",
         "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
         "docs/planning/tasks/closed/core_export_retrieval_and_coordination.md",
         "docs/planning/tasks/closed/core_export_sync_validation_registries.md",
@@ -105,10 +105,10 @@
     {
       "check_id": "check.core_export_readiness_and_optimization.pack_contract_plan",
       "title": "Pack-facing interface work scoped",
-      "result": "warning",
+      "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/core_export_ready_architecture.md",
-        "docs/planning/tasks/open/core_export_pack_interfaces.md"
+        "docs/planning/tasks/closed/core_export_pack_interfaces.md"
       ],
       "subject_ids": [
         "design.features.core_export_ready_architecture",
@@ -117,7 +117,7 @@
       "acceptance_ids": [
         "ac.core_export_readiness_and_optimization.005"
       ],
-      "notes": "The generic pack-facing interface set is defined and task-scoped, but the governed schemas and examples have not landed yet."
+      "notes": "The generic pack-facing interface set now exists as governed schemas, examples, schema-catalog records, validator entries, and repository validation coverage without introducing domain-pack runtime content."
     },
     {
       "check_id": "check.core_export_readiness_and_optimization.validation_baseline",
@@ -163,5 +163,5 @@
     "docs/planning/tasks/task_tracking.md",
     "docs/standards/engineering/git_workflow_standard.md"
   ],
-  "notes": "Planning-baseline evidence updated after the boundary, registry, workspace-injection, and retrieval slices landed. The remaining warning check tracks the still-open generic pack-facing interface work."
+  "notes": "Planning-baseline evidence updated after all planned export-readiness slices landed. The initiative now has the reusable boundary refactor, registry-driven orchestration, retrieval metadata, and generic pack-facing interfaces in place and validated."
 }

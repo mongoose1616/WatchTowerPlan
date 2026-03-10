@@ -1,0 +1,11 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+  "id": "pack.note.offensive_security.ctf.tryhackme_blue",
+  "title": "TryHackMe Blue Work Item Note",
+  "summary": "Invalid example missing the required work item identifier.",
+  "status": "active",
+  "pack_id": "pack.offensive_security.ctf",
+  "work_item_type": "challenge",
+  "lifecycle_stage": "active",
+  "updated_at": "2026-03-10T06:45:00Z"
+}

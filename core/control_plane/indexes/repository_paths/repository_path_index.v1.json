@@ -568,6 +568,96 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/examples/invalid/interfaces/",
+      "kind": "directory",
+      "surface_kind": "control_plane_examples",
+      "summary": "Invalid examples for generic pack-facing interface validation.",
+      "parent_path": "core/control_plane/examples/invalid/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/interfaces/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Describes the purpose of the invalid generic interface examples directory.",
+      "parent_path": "core/control_plane/examples/invalid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/interfaces/extraction_output_envelope_missing_trace_id.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid extraction output example missing the required trace identifier.",
+      "parent_path": "core/control_plane/examples/invalid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/interfaces/knowledge_index_missing_promotion_record_id.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid knowledge index example missing the promotion record link for an indexed knowledge item.",
+      "parent_path": "core/control_plane/examples/invalid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/interfaces/pack_work_index_missing_note_path.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid pack work index example missing the primary note path for an indexed work item.",
+      "parent_path": "core/control_plane/examples/invalid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/interfaces/pack_work_item_note_missing_work_item_id.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid work-item note example missing required work-item provenance.",
+      "parent_path": "core/control_plane/examples/invalid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/interfaces/promoted_knowledge_missing_promotion_record_id.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid promoted knowledge example missing the promotion record link.",
+      "parent_path": "core/control_plane/examples/invalid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/interfaces/promotion_record_approved_missing_promoted_ids.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid promotion record example that approves promotion without naming promoted knowledge.",
+      "parent_path": "core/control_plane/examples/invalid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/interfaces/workspace_artifact_manifest_missing_role.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid workspace artifact manifest example missing an artifact role.",
+      "parent_path": "core/control_plane/examples/invalid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/examples/invalid/ledgers/",
       "kind": "directory",
       "surface_kind": "control_plane_examples",
@@ -923,6 +1013,96 @@
       "surface_kind": "control_plane_example",
       "summary": "Valid workflow index example aligned with the published artifact schema.",
       "parent_path": "core/control_plane/examples/valid/indexes/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/",
+      "kind": "directory",
+      "surface_kind": "control_plane_examples",
+      "summary": "Valid examples for generic pack-facing interface validation.",
+      "parent_path": "core/control_plane/examples/valid/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Describes the purpose of the valid generic interface examples directory.",
+      "parent_path": "core/control_plane/examples/valid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/extraction_output_envelope.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid structured extraction output example aligned with the generic pack-facing extraction schema.",
+      "parent_path": "core/control_plane/examples/valid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/knowledge_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid knowledge index example aligned with the generic promoted knowledge index schema.",
+      "parent_path": "core/control_plane/examples/valid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/pack_work_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid pack work index example aligned with the generic pack work index schema.",
+      "parent_path": "core/control_plane/examples/valid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/pack_work_item_note.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid work-item note example aligned with the generic pack-facing note schema.",
+      "parent_path": "core/control_plane/examples/valid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/promoted_knowledge.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid promoted knowledge example aligned with the generic reusable knowledge schema.",
+      "parent_path": "core/control_plane/examples/valid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/promotion_record.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid promotion record example aligned with the generic promotion decision schema.",
+      "parent_path": "core/control_plane/examples/valid/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/interfaces/workspace_artifact_manifest.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid workspace artifact manifest example aligned with the generic pack-facing manifest schema.",
+      "parent_path": "core/control_plane/examples/valid/interfaces/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "maintainer"
@@ -2367,6 +2547,96 @@
       "surface_kind": "control_plane_schema",
       "summary": "Profile for workflow documents that adopt governed front matter.",
       "parent_path": "core/control_plane/schemas/interfaces/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/",
+      "kind": "directory",
+      "surface_kind": "control_plane_schemas",
+      "summary": "Generic pack-facing schemas for work-item notes, manifests, extraction outputs, promoted knowledge, promotion records, and pack indexes.",
+      "parent_path": "core/control_plane/schemas/interfaces/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Describes the purpose of the generic pack-facing interface schema directory.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/extraction_output_envelope.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one structured extraction workflow output envelope.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/knowledge_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one pack-local knowledge index over promoted reusable knowledge items.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/pack_work_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one pack-local work index over work items and their primary note surfaces.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/pack_work_item_note.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one pack-owned work-item note.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/promoted_knowledge.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one reviewed and promoted reusable knowledge item.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/promotion_record.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one reviewable promotion decision that links extraction output to promoted knowledge.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/workspace_artifact_manifest.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one metadata-only manifest of pack-local workspace artifacts.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"

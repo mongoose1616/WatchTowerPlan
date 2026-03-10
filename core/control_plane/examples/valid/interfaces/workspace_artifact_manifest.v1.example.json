@@ -1,0 +1,27 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:workspace-artifact-manifest:v1",
+  "id": "workspace.artifact_manifest.offensive_security.ctf.tryhackme_blue",
+  "title": "TryHackMe Blue Workspace Artifact Manifest",
+  "status": "active",
+  "pack_id": "pack.offensive_security.ctf",
+  "work_item_id": "work.item.tryhackme.blue",
+  "root_path": "domain_packs/offensive_security/ctfs/tryhackme/blue/",
+  "updated_at": "2026-03-10T06:45:00Z",
+  "artifacts": [
+    {
+      "artifact_id": "artifact.tryhackme_blue.notes",
+      "relative_path": "notes.md",
+      "media_type": "text/markdown",
+      "role": "note",
+      "captured_at": "2026-03-10T06:45:00Z"
+    },
+    {
+      "artifact_id": "artifact.tryhackme_blue.nmap_scan",
+      "relative_path": "scans/nmap.txt",
+      "media_type": "text/plain",
+      "role": "evidence",
+      "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "size_bytes": 2048
+    }
+  ]
+}

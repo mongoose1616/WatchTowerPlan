@@ -22,6 +22,18 @@ def test_artifact_validation_auto_selects_acceptance_contract_validator() -> Non
     assert result.issue_count == 0
 
 
+def test_artifact_validation_auto_selects_pack_work_item_note_validator() -> None:
+    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate(
+        "core/control_plane/examples/valid/interfaces/pack_work_item_note.v1.example.json"
+    )
+
+    assert result.passed is True
+    assert result.validator_id == "validator.interface.pack_work_item_note"
+    assert result.issue_count == 0
+
+
 def test_artifact_validation_rejects_unsupported_path_without_validator() -> None:
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
 
@@ -42,3 +54,17 @@ def test_artifact_validation_reports_invalid_json(tmp_path: Path) -> None:
     assert result.passed is False
     assert result.issue_count == 1
     assert result.issues[0].code == "json_parse_invalid"
+
+
+def test_artifact_validation_reports_invalid_pack_interface_example() -> None:
+    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate(
+        "core/control_plane/examples/invalid/interfaces/pack_work_item_note_missing_work_item_id.v1.example.json",
+        validator_id="validator.interface.pack_work_item_note",
+    )
+
+    assert result.passed is False
+    assert result.validator_id == "validator.interface.pack_work_item_note"
+    assert result.issue_count >= 1
+    assert any("work_item_id" in issue.message for issue in result.issues)

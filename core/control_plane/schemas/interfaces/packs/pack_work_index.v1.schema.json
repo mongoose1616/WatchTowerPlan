@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:packs:pack-work-index:v1",
+  "title": "Pack Work Index",
+  "description": "Pack-local index over work items, their note surfaces, and their primary retrieval metadata.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "pack_id",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:packs:pack-work-index:v1"
+    },
+    "id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "pack_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/workEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ]
+    },
+    "entryStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "archived"
+      ]
+    },
+    "lifecycleStage": {
+      "type": "string",
+      "enum": [
+        "inbox",
+        "triaged",
+        "active",
+        "completed",
+        "archived"
+      ]
+    },
+    "repoPath": {
+      "type": "string",
+      "pattern": "^(?!/).+"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "workEntry": {
+      "type": "object",
+      "required": [
+        "work_item_id",
+        "title",
+        "summary",
+        "status",
+        "work_item_type",
+        "lifecycle_stage",
+        "note_path",
+        "root_path",
+        "updated_at"
+      ],
+      "properties": {
+        "work_item_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/entryStatus"
+        },
+        "work_item_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lifecycle_stage": {
+          "$ref": "#/$defs/lifecycleStage"
+        },
+        "note_path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "root_path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "artifact_manifest_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

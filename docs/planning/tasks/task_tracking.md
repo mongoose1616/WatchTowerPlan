@@ -6,13 +6,14 @@ This document provides the human-readable tracking view for local task records u
 ## Open Tasks
 | Task ID | Task Status | Priority | Owner | Trace ID | Path | Summary | Blocked By |
 |---|---|---|---|---|---|---|---|
-| `task.core_export_readiness_and_optimization.pack_interfaces.001` | `backlog` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/open/core_export_pack_interfaces.md` | Add generic pack-facing schemas, examples, and validation hooks for work-item notes, extraction outputs, promoted knowledge, promotion records, and pack indexes without starting domain-pack implementation. | `None` |
+| `None` | `None` | `None` | `None` | `None` | `None` | No tasks in this class. | `None` |
 
 ## Closed Tasks
 | Task ID | Task Status | Priority | Owner | Trace ID | Path | Summary | Blocked By |
 |---|---|---|---|---|---|---|---|
 | `task.core_export_readiness_and_optimization.bootstrap.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_initiative_bootstrap.md` | Creates the initiative's PRD, feature design, implementation plan, acceptance baseline artifacts, open execution tasks, and git workflow standard so export-readiness work can proceed from governed local surfaces. | `None` |
 | `task.core_export_readiness_and_optimization.command_registry.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_command_registry.md` | Introduce registry-backed CLI command authority so parser wiring, command lookup, and command-surface maintenance no longer depend on one monolithic CLI file and doc-derived machine metadata. | `None` |
+| `task.core_export_readiness_and_optimization.pack_interfaces.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_pack_interfaces.md` | Add generic pack-facing schemas, examples, and validation hooks for work-item notes, extraction outputs, promoted knowledge, promotion records, and pack indexes without starting domain-pack implementation. | `None` |
 | `task.core_export_readiness_and_optimization.repo_ops_boundary.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_repo_ops_boundary.md` | Move repository-specific query, sync, validation, and planning-document semantics into explicit repo-ops surfaces so reusable layers stop depending on WatchTowerPlan-only behavior. | `None` |
 | `task.core_export_readiness_and_optimization.workspace_injection.001` | `done` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_workspace_injection.md` | Replace implicit repo-root discovery with injected workspace configuration, artifact sources, and artifact stores so reusable services can run against non-WatchTowerPlan layouts. | `None` |
 | `task.core_python_foundation.closeout.001` | `done` | `high` | `repository_maintainer` | `trace.core_python_foundation` | `docs/planning/tasks/closed/core_python_foundation_closeout.md` | Tracks the remaining initiative-level closeout for the core Python foundation slice. | `None` |
@@ -37,4 +38,4 @@ This document provides the human-readable tracking view for local task records u
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 
 ## Updated At
-- `2026-03-10T06:26:48Z`
+- `2026-03-10T06:42:17Z`

@@ -475,6 +475,98 @@
       "aliases": [
         "workflow metadata schema"
       ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+      "title": "Pack Work Item Note",
+      "description": "Schema for one generic pack-owned work-item note.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "pack_work_item_note",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/pack_work_item_note.v1.schema.json",
+      "aliases": [
+        "pack note schema",
+        "work item note schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:workspace-artifact-manifest:v1",
+      "title": "Workspace Artifact Manifest",
+      "description": "Schema for one metadata-only manifest of pack-local workspace artifacts.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "workspace_artifact_manifest",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/workspace_artifact_manifest.v1.schema.json",
+      "aliases": [
+        "pack artifact manifest schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1",
+      "title": "Extraction Output Envelope",
+      "description": "Schema for one structured extraction workflow output envelope.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "extraction_output_envelope",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/extraction_output_envelope.v1.schema.json",
+      "aliases": [
+        "workflow extraction output schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:promoted-knowledge:v1",
+      "title": "Promoted Knowledge",
+      "description": "Schema for one reviewed reusable knowledge item promoted from pack extraction output.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "promoted_knowledge",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/promoted_knowledge.v1.schema.json",
+      "aliases": [
+        "reusable knowledge schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:promotion-record:v1",
+      "title": "Promotion Record",
+      "description": "Schema for one reviewable promotion decision that links extraction output to promoted knowledge.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "promotion_record",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/promotion_record.v1.schema.json",
+      "aliases": [
+        "knowledge promotion schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:pack-work-index:v1",
+      "title": "Pack Work Index",
+      "description": "Schema for one pack-local work index over work items and their primary note surfaces.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "pack_work_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/pack_work_index.v1.schema.json",
+      "aliases": [
+        "pack work lookup schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:knowledge-index:v1",
+      "title": "Knowledge Index",
+      "description": "Schema for one pack-local knowledge index over promoted reusable knowledge items.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "knowledge_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/knowledge_index.v1.schema.json",
+      "aliases": [
+        "promoted knowledge index schema"
+      ]
     }
   ]
 }

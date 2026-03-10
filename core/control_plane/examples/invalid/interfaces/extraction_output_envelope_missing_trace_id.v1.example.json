@@ -1,0 +1,27 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1",
+  "id": "extraction.output.offensive_security.ctf.tryhackme_blue.initial",
+  "title": "TryHackMe Blue Initial Extraction Output",
+  "summary": "Invalid example missing the required trace identifier.",
+  "status": "active",
+  "pack_id": "pack.offensive_security.ctf",
+  "work_item_id": "work.item.tryhackme.blue",
+  "source_note_id": "pack.note.offensive_security.ctf.tryhackme_blue",
+  "workflow_run_id": "workflow.run.offensive_security.ctf.tryhackme_blue.initial_extract",
+  "extraction_method": "llm_structured_review",
+  "created_at": "2026-03-10T06:46:00Z",
+  "observations": [
+    {
+      "observation_id": "observation.tryhackme_blue.smb",
+      "summary": "Anonymous SMB enumeration surfaced the most promising early path."
+    }
+  ],
+  "candidate_knowledge": [
+    {
+      "candidate_id": "candidate.knowledge.tryhackme_blue.smb_enum",
+      "title": "Prioritize anonymous SMB enumeration before password guessing",
+      "summary": "Start with anonymous SMB enumeration before broader credential attacks.",
+      "knowledge_family": "tactic"
+    }
+  ]
+}

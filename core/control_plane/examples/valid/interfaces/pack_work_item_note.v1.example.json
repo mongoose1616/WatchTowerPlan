@@ -1,0 +1,22 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+  "id": "pack.note.offensive_security.ctf.tryhackme_blue",
+  "title": "TryHackMe Blue Work Item Note",
+  "summary": "Active work-item note for a Windows SMB challenge under the offensive-security CTF pack.",
+  "status": "active",
+  "pack_id": "pack.offensive_security.ctf",
+  "work_item_id": "work.item.tryhackme.blue",
+  "work_item_type": "challenge",
+  "lifecycle_stage": "active",
+  "trace_id": "trace.offensive_security.ctf.tryhackme_blue",
+  "artifact_manifest_id": "workspace.artifact_manifest.offensive_security.ctf.tryhackme_blue",
+  "updated_at": "2026-03-10T06:45:00Z",
+  "tags": [
+    "ctf",
+    "windows",
+    "smb"
+  ],
+  "source_paths": [
+    "domain_packs/offensive_security/ctfs/tryhackme/blue/notes.md"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:promoted-knowledge:v1",
+  "id": "knowledge.promoted.offensive_security.ctf.smb_enumeration",
+  "title": "Prioritize anonymous SMB enumeration before password guessing",
+  "summary": "Invalid example missing the promotion record link.",
+  "status": "active",
+  "pack_id": "pack.offensive_security.ctf",
+  "trace_id": "trace.offensive_security.ctf.tryhackme_blue",
+  "knowledge_family": "tactic",
+  "content_markdown": "Start with anonymous SMB enumeration to discover shares and users.",
+  "promoted_at": "2026-03-10T06:47:00Z",
+  "extraction_output_id": "extraction.output.offensive_security.ctf.tryhackme_blue.initial",
+  "source_work_item_ids": [
+    "work.item.tryhackme.blue"
+  ]
+}

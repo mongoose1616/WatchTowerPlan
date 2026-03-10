@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-work-index:v1",
+  "id": "index.pack_work.offensive_security.ctf",
+  "title": "Offensive Security CTF Work Index",
+  "status": "active",
+  "pack_id": "pack.offensive_security.ctf",
+  "entries": [
+    {
+      "work_item_id": "work.item.tryhackme.blue",
+      "title": "TryHackMe Blue",
+      "summary": "Invalid example missing the primary note path for the work item.",
+      "status": "active",
+      "work_item_type": "challenge",
+      "lifecycle_stage": "active",
+      "root_path": "domain_packs/offensive_security/ctfs/tryhackme/blue/",
+      "updated_at": "2026-03-10T06:45:00Z"
+    }
+  ]
+}

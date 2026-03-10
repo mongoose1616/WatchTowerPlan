@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:packs:promotion-record:v1",
+  "title": "Promotion Record",
+  "description": "Reviewable promotion decision that links structured extraction output to promoted reusable knowledge.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "summary",
+    "status",
+    "pack_id",
+    "work_item_id",
+    "trace_id",
+    "extraction_output_id",
+    "decision",
+    "reviewed_at",
+    "reviewer"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:packs:promotion-record:v1"
+    },
+    "id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "pack_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "work_item_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "trace_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "extraction_output_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "rejected",
+        "superseded"
+      ]
+    },
+    "reviewed_at": {
+      "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidate_knowledge_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "promoted_knowledge_ids": {
+      "$ref": "#/$defs/idList"
+    },
+    "decision_notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "enum": [
+              "approved",
+              "superseded"
+            ]
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "required": [
+          "promoted_knowledge_ids"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ]
+    },
+    "idList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    }
+  }
+}

@@ -578,6 +578,111 @@
       "schema_ids": [
         "urn:watchtower:schema:interfaces:documentation:workflow-front-matter:v1"
       ]
+    },
+    {
+      "id": "validator.interface.pack_work_item_note",
+      "title": "Pack Work Item Note Validator",
+      "description": "Validates generic pack-facing work-item note artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_work_item_note",
+      "applies_to": [
+        "core/control_plane/examples/valid/interfaces/pack_work_item_note.v1.example.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1"
+      ],
+      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
+    },
+    {
+      "id": "validator.interface.workspace_artifact_manifest",
+      "title": "Workspace Artifact Manifest Validator",
+      "description": "Validates generic pack-facing workspace artifact manifests.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "workspace_artifact_manifest",
+      "applies_to": [
+        "core/control_plane/examples/valid/interfaces/workspace_artifact_manifest.v1.example.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:workspace-artifact-manifest:v1"
+      ],
+      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
+    },
+    {
+      "id": "validator.interface.extraction_output_envelope",
+      "title": "Extraction Output Envelope Validator",
+      "description": "Validates generic structured extraction workflow output envelopes.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "extraction_output_envelope",
+      "applies_to": [
+        "core/control_plane/examples/valid/interfaces/extraction_output_envelope.v1.example.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1"
+      ],
+      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
+    },
+    {
+      "id": "validator.interface.promoted_knowledge",
+      "title": "Promoted Knowledge Validator",
+      "description": "Validates generic promoted reusable knowledge artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "promoted_knowledge",
+      "applies_to": [
+        "core/control_plane/examples/valid/interfaces/promoted_knowledge.v1.example.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:promoted-knowledge:v1"
+      ],
+      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
+    },
+    {
+      "id": "validator.interface.promotion_record",
+      "title": "Promotion Record Validator",
+      "description": "Validates generic promotion record artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "promotion_record",
+      "applies_to": [
+        "core/control_plane/examples/valid/interfaces/promotion_record.v1.example.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:promotion-record:v1"
+      ],
+      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
+    },
+    {
+      "id": "validator.interface.pack_work_index",
+      "title": "Pack Work Index Validator",
+      "description": "Validates generic pack-local work index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_work_index",
+      "applies_to": [
+        "core/control_plane/examples/valid/interfaces/pack_work_index.v1.example.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:pack-work-index:v1"
+      ],
+      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
+    },
+    {
+      "id": "validator.interface.knowledge_index",
+      "title": "Knowledge Index Validator",
+      "description": "Validates generic pack-local promoted knowledge index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "knowledge_index",
+      "applies_to": [
+        "core/control_plane/examples/valid/interfaces/knowledge_index.v1.example.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:knowledge-index:v1"
+      ],
+      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
     }
   ]
 }
