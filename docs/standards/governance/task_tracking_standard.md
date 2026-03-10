@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T02:30:31Z"
+updated_at: "2026-03-10T16:19:08Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -81,6 +81,7 @@ This standard defines the repository's local-first task tracking model so multip
 - Prefer linking tasks to durable planning artifacts with `trace_id` and `related_ids` when those sources exist.
 - Use `blocked_by` and `depends_on` to express task-to-task coordination explicitly instead of burying blockers in prose.
 - Treat `docs/planning/tasks/task_tracking.md` as a derived human summary, not as the task source of truth.
+- Keep `task_tracking.md` scan-first and compact. Prefer short zero-state text and high-signal columns over placeholder rows or repeated footer prose.
 - Treat `core/control_plane/indexes/tasks/task_index.v1.json` as the machine-readable lookup surface derived from task records.
 - Keep optional GitHub foreign keys in task front matter when a later sync surface needs them:
   - `github_repository`
@@ -143,4 +144,4 @@ This standard defines the repository's local-first task tracking model so multip
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-10T02:30:31Z`
+- `2026-03-10T16:19:08Z`

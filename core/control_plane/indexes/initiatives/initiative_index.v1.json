@@ -465,18 +465,17 @@
       "status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-10T16:19:08Z",
-      "open_task_count": 2,
+      "updated_at": "2026-03-10T16:27:59Z",
+      "open_task_count": 1,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/template_and_output_efficiency.md",
       "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md",
+      "next_surface_path": "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.template_and_output_efficiency.tracker_compaction.001",
         "task.template_and_output_efficiency.workflow_guidance.001"
       ],
       "prd_ids": [
@@ -530,8 +529,8 @@
         "docs/planning/prds/template_and_output_efficiency.md",
         "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
         "docs/planning/tasks/closed/template_output_efficiency_compact_authoring.md",
+        "docs/planning/tasks/closed/template_output_efficiency_tracker_compaction.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md",
         "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/documentation/",

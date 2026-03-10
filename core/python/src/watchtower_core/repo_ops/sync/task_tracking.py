@@ -7,6 +7,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.sync.tracking_common import markdown_repo_link, render_markdown_table
 from watchtower_core.repo_ops.task_documents import (
     TERMINAL_TASK_STATUSES,
     TaskDocument,
@@ -68,53 +69,13 @@ class TaskTrackingSyncService:
             [
                 "# Task Tracking",
                 "",
-                "## Summary",
-                (
-                    "This document provides the human-readable tracking view for "
-                    "local task records under `docs/planning/tasks/`. Rebuild it "
-                    "from the governed task files instead of using it as the "
-                    "primary task source of truth."
-                ),
-                "",
                 "## Open Tasks",
-                _table_for_tasks(open_tasks),
+                _table_for_tasks(self._repo_root, open_tasks, empty_message="_No open tasks._"),
                 "",
                 "## Closed Tasks",
-                _table_for_tasks(closed_tasks),
+                _table_for_tasks(self._repo_root, closed_tasks, empty_message="_No closed tasks._"),
                 "",
-                "## Update Rules",
-                (
-                    "- Treat the task files under `docs/planning/tasks/open/` "
-                    "and `docs/planning/tasks/closed/` as the authoritative "
-                    "local task source."
-                ),
-                (
-                    "- Rebuild this tracker in the same change set when task "
-                    "files are added, removed, moved, or materially updated."
-                ),
-                (
-                    "- Keep the machine-readable companion index at "
-                    "[task_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/"
-                    "indexes/tasks/task_index.v1.json) aligned with this tracker."
-                ),
-                "",
-                "## References",
-                "- [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)",
-                (
-                    "- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/"
-                    "standards/governance/task_tracking_standard.md)"
-                ),
-                (
-                    "- [task_md_standard.md](/home/j/WatchTowerPlan/docs/"
-                    "standards/documentation/task_md_standard.md)"
-                ),
-                (
-                    "- [task_index_standard.md](/home/j/WatchTowerPlan/docs/"
-                    "standards/data_contracts/task_index_standard.md)"
-                ),
-                "",
-                "## Updated At",
-                f"- `{updated_at}`",
+                f"_Updated At: `{updated_at}`_",
                 "",
             ]
         )
@@ -144,25 +105,30 @@ def _sort_key(task: TaskDocument) -> tuple[int, int, str]:
     )
 
 
-def _table_for_tasks(tasks: list[TaskDocument]) -> str:
-    lines = [
-        "| Task ID | Task Status | Priority | Owner | Trace ID | Path | Summary | Blocked By |",
-        "|---|---|---|---|---|---|---|---|",
-    ]
+def _table_for_tasks(repo_root: Path, tasks: list[TaskDocument], *, empty_message: str) -> str:
     if not tasks:
-        lines.append(
-            "| `None` | `None` | `None` | `None` | `None` | `None` | "
-            "No tasks in this class. | `None` |"
-        )
-        return "\n".join(lines)
+        return empty_message
 
+    include_blockers = any(task.list_values("blocked_by") for task in tasks)
+    headers = ["Task", "Status", "Priority", "Owner", "Trace ID", "Summary"]
+    if include_blockers:
+        headers.append("Blocked By")
+    rows: list[tuple[str, ...]] = []
     for task in tasks:
-        trace_id = task.trace_id or "None"
-        blocked_by = "; ".join(task.list_values("blocked_by")) or "None"
-        lines.append(
-            "| "
-            f"`{task.task_id}` | `{task.task_status}` | `{task.priority}` | "
-            f"`{task.owner}` | `{trace_id}` | `{task.relative_path}` | "
-            f"{task.summary} | `{blocked_by}` |"
-        )
-    return "\n".join(lines)
+        row = [
+            markdown_repo_link(
+                repo_root,
+                task.relative_path,
+                label=task.task_id,
+            ),
+            f"`{task.task_status}`",
+            f"`{task.priority}`",
+            f"`{task.owner}`",
+            f"`{task.trace_id}`" if task.trace_id is not None else "-",
+            task.summary,
+        ]
+        if include_blockers:
+            blocked_by = "; ".join(task.list_values("blocked_by")) or "-"
+            row.append(blocked_by)
+        rows.append(tuple(row))
+    return "\n".join(render_markdown_table(tuple(headers), tuple(rows)))

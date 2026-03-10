@@ -7,7 +7,12 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.repo_ops.sync.tracking_common import initiative_status_map, latest_timestamp
+from watchtower_core.repo_ops.sync.tracking_common import (
+    initiative_status_map,
+    latest_timestamp,
+    markdown_repo_link,
+    render_markdown_table,
+)
 
 PRD_TRACKING_DOCUMENT_PATH = "docs/planning/prds/prd_tracking.md"
 
@@ -36,73 +41,34 @@ class PrdTrackingSyncService:
         trace_statuses = initiative_status_map(self._loader)
         updated_at = latest_timestamp(tuple(entry.updated_at for entry in prd_index.entries))
 
-        lines = [
-            "# PRD Tracking",
-            "",
-            "## Summary",
-            (
-                "This document provides the human-readable tracking view for PRDs "
-                "under `docs/planning/prds/`."
-            ),
-            "",
-            "## Current PRDs",
-            (
-                "| Trace ID | PRD ID | Initiative Status | Path | Summary | "
-                "Linked Designs and Plans |"
-            ),
-            "|---|---|---|---|---|---|",
-        ]
+        lines = ["# PRD Tracking", "", "## PRDs"]
         if not prd_index.entries:
-            lines.append(
-                "| `None` | `None` | `None` | `None` | No PRDs are currently tracked. | `None` |"
-            )
+            lines.append("_No PRDs._")
         else:
+            rows: list[tuple[str, ...]] = []
             for entry in prd_index.entries:
                 initiative_status = trace_statuses.get(entry.trace_id, "active")
-                linked = "; ".join((*entry.linked_design_ids, *entry.linked_plan_ids)) or "None"
-                lines.append(
-                    "| "
-                    f"`{entry.trace_id}` | `{entry.prd_id}` | `{initiative_status}` | "
-                    f"`{entry.doc_path}` | {entry.summary} | `{linked}` |"
+                linked = "; ".join((*entry.linked_design_ids, *entry.linked_plan_ids)) or "-"
+                rows.append(
+                    (
+                        f"`{entry.trace_id}`",
+                        markdown_repo_link(
+                            self._repo_root,
+                            entry.doc_path,
+                            label=entry.prd_id,
+                        ),
+                        f"`{initiative_status}`",
+                        entry.summary,
+                        linked,
+                    )
                 )
-
-        lines.extend(
-            [
-                "",
-                "## Update Rules",
-                (
-                    "- Rebuild this tracker in the same change set when a PRD is "
-                    "added, renamed, removed, materially retargeted, or when a "
-                    "trace initiative changes closeout state."
-                ),
-                (
-                    "- Keep the machine-readable companion index at "
-                    "[prd_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/"
-                    "indexes/prds/prd_index.v1.json) aligned with this tracker."
-                ),
-                (
-                    "- Treat the unified traceability index at "
-                    "[traceability_index.v1.json](/home/j/WatchTowerPlan/core/"
-                    "control_plane/indexes/traceability/traceability_index.v1.json) "
-                    "as the source for initiative closeout status."
-                ),
-                "",
-                "## References",
-                "- [README.md](/home/j/WatchTowerPlan/docs/planning/prds/README.md)",
-                (
-                    "- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/"
-                    "documentation/prd_md_standard.md)"
-                ),
-                (
-                    "- [prd_index_standard.md](/home/j/WatchTowerPlan/docs/"
-                    "standards/data_contracts/prd_index_standard.md)"
-                ),
-                "",
-                "## Updated At",
-                f"- `{updated_at}`",
-                "",
-            ]
-        )
+            lines.extend(
+                render_markdown_table(
+                    ("Trace ID", "PRD", "Status", "Summary", "Linked Designs and Plans"),
+                    tuple(rows),
+                )
+            )
+        lines.extend(["", f"_Updated At: `{updated_at}`_", ""])
         return PrdTrackingBuildResult(content="\n".join(lines), prd_count=len(prd_index.entries))
 
     def write_document(

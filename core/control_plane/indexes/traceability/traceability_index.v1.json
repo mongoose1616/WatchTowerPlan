@@ -446,7 +446,7 @@
       "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-10T16:19:08Z",
+      "updated_at": "2026-03-10T16:27:59Z",
       "prd_ids": [
         "prd.template_and_output_efficiency"
       ],
@@ -505,8 +505,8 @@
         "docs/planning/prds/template_and_output_efficiency.md",
         "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
         "docs/planning/tasks/closed/template_output_efficiency_compact_authoring.md",
+        "docs/planning/tasks/closed/template_output_efficiency_tracker_compaction.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md",
         "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/documentation/",
