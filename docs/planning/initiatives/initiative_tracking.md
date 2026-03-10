@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.end_to_end_repo_review_and_rationalization` | `execution` | repository_maintainer | `1` | [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md) | [end_to_end_query_cli_modularity.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_query_cli_modularity.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.end_to_end_repo_review_and_rationalization` | `completed` | [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md) | `2026-03-10T20:33:10Z` | Delivered and validated final pre-implementation repository rationalization. |
 | `trace.machine_first_coordination_surface` | `completed` | [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md) | `2026-03-10T19:36:51Z` | Delivered and validated machine-first coordination surfaces. |
 | `trace.preimplementation_repo_review_and_hardening` | `completed` | [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md) | `2026-03-10T18:48:07Z` | Delivered and validated pre-implementation repository review and hardening. |
 | `trace.core_export_hardening_followup` | `completed` | [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md) | `2026-03-10T17:12:30Z` | Implemented and validated export hardening follow-up. |
@@ -20,4 +19,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-10T21:58:00Z`_
+_Updated At: `2026-03-10T20:33:10Z`_

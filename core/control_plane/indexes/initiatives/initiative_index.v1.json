@@ -357,35 +357,14 @@
       "title": "End-to-End Repository Review and Rationalization PRD",
       "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-10T21:58:00Z",
-      "open_task_count": 1,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T20:33:10Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
-      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001",
-          "title": "Split query CLI registration and handlers into smaller family modules",
-          "task_status": "ready",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
-          ]
-        }
-      ],
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
       "prd_ids": [
         "prd.end_to_end_repo_review_and_rationalization"
       ],
@@ -419,6 +398,8 @@
       "evidence_ids": [
         "evidence.end_to_end_repo_review_and_rationalization.planning_baseline"
       ],
+      "closed_at": "2026-03-10T20:33:10Z",
+      "closure_reason": "Delivered and validated final pre-implementation repository rationalization.",
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/end_to_end_repo_review_and_rationalization_acceptance.v1.json",
@@ -453,9 +434,9 @@
         "docs/planning/tasks/closed/end_to_end_derived_metadata.md",
         "docs/planning/tasks/closed/end_to_end_doc_guardrails.md",
         "docs/planning/tasks/closed/end_to_end_external_pack_validation.md",
+        "docs/planning/tasks/closed/end_to_end_query_cli_modularity.md",
         "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/documentation/",
         "workflows/"

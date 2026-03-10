@@ -3,49 +3,28 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-10T21:58:00Z",
-  "coordination_mode": "active_work",
-  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
-  "recommended_next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-  "recommended_surface_path": "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
-  "active_initiative_count": 1,
+  "updated_at": "2026-03-10T20:33:10Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
+  "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
+  "recommended_surface_path": "docs/planning/README.md",
+  "active_initiative_count": 0,
   "blocked_task_count": 0,
-  "actionable_task_count": 1,
+  "actionable_task_count": 0,
   "entries": [
     {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",
       "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-10T21:58:00Z",
-      "open_task_count": 1,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T20:33:10Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
-      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001",
-          "title": "Split query CLI registration and handlers into smaller family modules",
-          "task_status": "ready",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
-          ]
-        }
-      ],
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
       "prd_ids": [
         "prd.end_to_end_repo_review_and_rationalization"
       ],
@@ -79,6 +58,8 @@
       "evidence_ids": [
         "evidence.end_to_end_repo_review_and_rationalization.planning_baseline"
       ],
+      "closed_at": "2026-03-10T20:33:10Z",
+      "closure_reason": "Delivered and validated final pre-implementation repository rationalization.",
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/end_to_end_repo_review_and_rationalization_acceptance.v1.json",
@@ -113,9 +94,9 @@
         "docs/planning/tasks/closed/end_to_end_derived_metadata.md",
         "docs/planning/tasks/closed/end_to_end_doc_guardrails.md",
         "docs/planning/tasks/closed/end_to_end_external_pack_validation.md",
+        "docs/planning/tasks/closed/end_to_end_query_cli_modularity.md",
         "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/documentation/",
         "workflows/"
@@ -843,23 +824,16 @@
       ]
     }
   ],
-  "actionable_tasks": [
+  "actionable_tasks": [],
+  "recent_closed_initiatives": [
     {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
-      "initiative_title": "End-to-End Repository Review and Rationalization PRD",
-      "task_id": "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001",
-      "title": "Split query CLI registration and handlers into smaller family modules",
-      "task_status": "ready",
-      "priority": "medium",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
-      "is_actionable": true,
-      "depends_on": [
-        "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
-      ]
-    }
-  ],
-  "recent_closed_initiatives": [
+      "title": "End-to-End Repository Review and Rationalization PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T20:33:10Z",
+      "key_surface_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+      "closure_reason": "Delivered and validated final pre-implementation repository rationalization."
+    },
     {
       "trace_id": "trace.machine_first_coordination_surface",
       "title": "Machine-First Coordination Surface PRD",
@@ -931,14 +905,6 @@
       "closed_at": "2026-03-10T03:59:28Z",
       "key_surface_path": "docs/planning/design/features/command_documentation_and_lookup.md",
       "closure_reason": "Delivered and validated; future command-surface expansion belongs to a new bounded initiative"
-    },
-    {
-      "trace_id": "trace.acceptance_evidence_reconciliation",
-      "title": "Acceptance and Evidence Reconciliation Design",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-10T03:58:40Z",
-      "key_surface_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-      "closure_reason": "Delivered and validated; future expansion belongs to a new bounded initiative"
     }
   ]
 }
