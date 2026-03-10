@@ -5,7 +5,7 @@
   "status": "active",
   "trace_id": "trace.core_export_hardening_followup",
   "overall_result": "warning",
-  "recorded_at": "2026-03-10T15:24:07Z",
+  "recorded_at": "2026-03-10T16:02:31Z",
   "source_prd_ids": [
     "prd.core_export_hardening_followup"
   ],
@@ -28,7 +28,7 @@
         "docs/planning/design/features/core_export_hardening.md",
         "docs/planning/design/implementation/core_export_hardening_execution.md",
         "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
-        "docs/planning/tasks/open/core_export_sync_output_snapshots.md",
+        "docs/planning/tasks/closed/core_export_sync_output_snapshots.md",
         "docs/planning/tasks/open/core_export_command_source_metadata.md",
         "docs/planning/tasks/open/core_export_public_api_boundary.md"
       ],
@@ -41,15 +41,15 @@
       "acceptance_ids": [
         "ac.core_export_hardening_followup.001"
       ],
-      "notes": "The follow-up hardening initiative now has its traced planning chain, a closed bootstrap task, and one open implementation task per review finding."
+      "notes": "The follow-up hardening initiative now has its traced planning chain, a closed bootstrap task, one completed implementation slice, and two open follow-up tasks."
     },
     {
       "check_id": "check.core_export_hardening_followup.output_dir_sync_plan",
       "title": "Output-directory sync fix scoped",
-      "result": "warning",
+      "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/core_export_hardening.md",
-        "docs/planning/tasks/open/core_export_sync_output_snapshots.md"
+        "docs/planning/tasks/closed/core_export_sync_output_snapshots.md"
       ],
       "subject_ids": [
         "design.features.core_export_hardening",
@@ -58,7 +58,7 @@
       "acceptance_ids": [
         "ac.core_export_hardening_followup.002"
       ],
-      "notes": "The snapshot overlay approach and regression target are defined, but the implementation has not landed yet."
+      "notes": "The sync coordinator now overlays generated artifacts when materializing an output directory, and the regression test proves downstream coordination trackers do not read stale canonical indexes."
     },
     {
       "check_id": "check.core_export_hardening_followup.command_metadata_plan",
@@ -117,5 +117,5 @@
     "docs/planning/design/design_tracking.md",
     "docs/planning/tasks/task_tracking.md"
   ],
-  "notes": "Planning-baseline evidence for the post-review export hardening initiative. The implementation work is still open, so the evidence remains warning until the three bounded slices land and validate."
+  "notes": "Planning-baseline evidence for the post-review export hardening initiative. One bounded implementation slice is complete, but the evidence remains warning until the remaining two slices land and validate."
 }

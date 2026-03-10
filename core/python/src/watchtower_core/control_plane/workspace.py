@@ -118,6 +118,31 @@ class ArtifactStore(Protocol):
 
 
 @dataclass(frozen=True, slots=True)
+class OverlayArtifactSource:
+    """Artifact source that prefers overlay outputs and falls back to base artifacts."""
+
+    primary: ArtifactSource
+    fallback: ArtifactSource
+
+    def load_json_object(self, relative_path: str) -> dict[str, Any]:
+        """Load one JSON object, preferring the overlay when present."""
+        try:
+            return self.primary.load_json_object(relative_path)
+        except (ArtifactLoadError, FileNotFoundError):
+            return self.fallback.load_json_object(relative_path)
+
+    def iter_json_objects(self, relative_directory: str) -> tuple[tuple[str, dict[str, Any]], ...]:
+        """Iterate direct JSON children with overlay paths taking precedence."""
+        merged: dict[str, dict[str, Any]] = {
+            logical_path: document
+            for logical_path, document in self.fallback.iter_json_objects(relative_directory)
+        }
+        for logical_path, document in self.primary.iter_json_objects(relative_directory):
+            merged[logical_path] = document
+        return tuple((logical_path, merged[logical_path]) for logical_path in sorted(merged))
+
+
+@dataclass(frozen=True, slots=True)
 class FileSystemArtifactIO:
     """Default filesystem-backed artifact source and store."""
 

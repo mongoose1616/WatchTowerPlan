@@ -69,7 +69,7 @@
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-10T15:24:07Z",
+      "updated_at": "2026-03-10T16:02:31Z",
       "prd_ids": [
         "prd.core_export_hardening_followup"
       ],
@@ -135,16 +135,16 @@
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/core_export_sync_output_snapshots.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/core_export_command_source_metadata.md",
         "docs/planning/tasks/open/core_export_public_api_boundary.md",
-        "docs/planning/tasks/open/core_export_sync_output_snapshots.md",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [
         "traceability"
       ],
-      "notes": "Planning-baseline evidence for the post-review export hardening initiative. The implementation work is still open, so the evidence remains warning until the three bounded slices land and validate."
+      "notes": "Planning-baseline evidence for the post-review export hardening initiative. One bounded implementation slice is complete, but the evidence remains warning until the remaining two slices land and validate."
     },
     {
       "trace_id": "trace.core_export_readiness_and_optimization",

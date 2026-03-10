@@ -82,8 +82,8 @@
       "status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-10T15:24:07Z",
-      "open_task_count": 3,
+      "updated_at": "2026-03-10T16:02:31Z",
+      "open_task_count": 2,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
       "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
@@ -94,8 +94,7 @@
       ],
       "active_task_ids": [
         "task.core_export_hardening_followup.command_metadata.001",
-        "task.core_export_hardening_followup.public_api_boundary.001",
-        "task.core_export_hardening_followup.sync_output_dir.001"
+        "task.core_export_hardening_followup.public_api_boundary.001"
       ],
       "prd_ids": [
         "prd.core_export_hardening_followup"
@@ -156,16 +155,16 @@
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/core_export_sync_output_snapshots.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/core_export_command_source_metadata.md",
         "docs/planning/tasks/open/core_export_public_api_boundary.md",
-        "docs/planning/tasks/open/core_export_sync_output_snapshots.md",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [
         "traceability"
       ],
-      "notes": "Planning-baseline evidence for the post-review export hardening initiative. The implementation work is still open, so the evidence remains warning until the three bounded slices land and validate."
+      "notes": "Planning-baseline evidence for the post-review export hardening initiative. One bounded implementation slice is complete, but the evidence remains warning until the remaining two slices land and validate."
     },
     {
       "trace_id": "trace.core_export_readiness_and_optimization",

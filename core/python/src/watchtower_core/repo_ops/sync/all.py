@@ -8,6 +8,11 @@ from typing import Protocol, cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.control_plane.workspace import (
+    FileSystemArtifactIO,
+    OverlayArtifactSource,
+    WorkspaceConfig,
+)
 from watchtower_core.sync.registry import SYNC_TARGET_SPECS, SyncTargetSpec
 
 
@@ -78,8 +83,10 @@ class AllSyncService:
         write: bool = False,
         output_dir: Path | None = None,
     ) -> AllSyncResult:
+        runtime_loader = self._runtime_loader(output_dir)
         records = [
             self._run_registered_sync(
+                loader=runtime_loader,
                 spec=spec,
                 write=write,
                 output_dir=output_dir,
@@ -95,11 +102,12 @@ class AllSyncService:
     def _run_registered_sync(
         self,
         *,
+        loader: ControlPlaneLoader,
         spec: SyncTargetSpec,
         write: bool,
         output_dir: Path | None,
     ) -> AllSyncRecord:
-        service = spec.service_factory(self._loader)
+        service = spec.service_factory(loader)
         if spec.mode == "document":
             return self._run_document_sync(
                 target=spec.target,
@@ -211,3 +219,23 @@ class AllSyncService:
             if isinstance(value, int):
                 details[attr] = value
         return details
+
+    def _runtime_loader(self, output_dir: Path | None) -> ControlPlaneLoader:
+        if output_dir is None:
+            return self._loader
+
+        overlay_workspace = WorkspaceConfig(
+            repo_root=output_dir,
+            control_plane_root=output_dir / "core" / "control_plane",
+            python_workspace_root=output_dir / "core" / "python",
+        )
+        overlay_source = OverlayArtifactSource(
+            primary=FileSystemArtifactIO(overlay_workspace),
+            fallback=self._loader.artifact_source,
+        )
+        return ControlPlaneLoader(
+            workspace_config=self._loader.workspace_config,
+            schema_store=self._loader.schema_store,
+            artifact_source=overlay_source,
+            artifact_store=self._loader.artifact_store,
+        )

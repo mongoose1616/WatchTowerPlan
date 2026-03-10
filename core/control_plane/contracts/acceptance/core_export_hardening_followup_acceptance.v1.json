@@ -36,7 +36,7 @@
       "validation_targets": [
         "core/python/src/watchtower_core/control_plane/workspace.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
-        "docs/planning/tasks/open/core_export_sync_output_snapshots.md"
+        "docs/planning/tasks/closed/core_export_sync_output_snapshots.md"
       ],
       "related_paths": [
         "core/python/tests/unit/test_all_sync.py",

@@ -5,11 +5,11 @@ title: "Make output-directory sync snapshots dependency-correct"
 summary: "Ensure sync output directories feed later dependent targets from the materialized snapshot instead of stale canonical derived artifacts."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "feature"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T15:24:07Z"
+updated_at: "2026-03-10T16:02:31Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -42,4 +42,4 @@ Ensure sync output directories feed later dependent targets from the materialize
 - [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
 
 ## Updated At
-- `2026-03-10T15:24:07Z`
+- `2026-03-10T16:02:31Z`

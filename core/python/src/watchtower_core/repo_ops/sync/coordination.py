@@ -26,8 +26,10 @@ class CoordinationSyncService(AllSyncService):
         write: bool = False,
         output_dir: Path | None = None,
     ) -> AllSyncResult:
+        runtime_loader = self._runtime_loader(output_dir)
         records = [
             self._run_registered_sync(
+                loader=runtime_loader,
                 spec=spec,
                 write=write,
                 output_dir=output_dir,
