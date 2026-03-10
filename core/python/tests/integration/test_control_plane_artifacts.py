@@ -46,6 +46,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     path_index = loader.load_repository_path_index()
     command_index = loader.load_command_index()
     foundation_index = loader.load_foundation_index()
+    initiative_index = loader.load_initiative_index()
     reference_index = loader.load_reference_index()
     standard_index = loader.load_standard_index()
     workflow_index = loader.load_workflow_index()
@@ -56,6 +57,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     assert path_index.artifact_id == "index.repository_paths"
     assert command_index.artifact_id == "index.commands"
     assert foundation_index.artifact_id == "index.foundations"
+    assert initiative_index.artifact_id == "index.initiatives"
     assert reference_index.artifact_id == "index.references"
     assert standard_index.artifact_id == "index.standards"
     assert workflow_index.artifact_id == "index.workflows"
@@ -75,10 +77,31 @@ def test_control_plane_loader_validates_current_traceability_artifacts() -> None
         "core/control_plane/ledgers/validation_evidence/"
         "core_python_foundation_traceability_validation.v1.json"
     )
+    initiative_index = loader.load_validated_document(
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+    )
 
     assert acceptance_contract["id"] == "contract.acceptance.core_python_foundation"
     assert traceability_index["id"] == "index.traceability"
     assert validation_evidence["id"] == "evidence.core_python_foundation.traceability_baseline"
+    assert initiative_index["id"] == "index.initiatives"
+
+
+def test_initiative_index_examples_validate_against_the_schema() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    valid_example = _load_json_object(
+        REPO_ROOT / "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json"
+    )
+    invalid_example = _load_json_object(
+        REPO_ROOT
+        / "core/control_plane/examples/invalid/indexes/"
+        "initiative_index_missing_phase.v1.example.json"
+    )
+
+    store.validate_instance(valid_example)
+    with pytest.raises(ValidationError):
+        store.validate_instance(invalid_example)
 
 
 def test_governed_document_front_matter_profiles_validate() -> None:

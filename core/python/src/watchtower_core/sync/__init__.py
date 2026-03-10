@@ -20,6 +20,14 @@ from watchtower_core.sync.foundation_index import (
     FoundationIndexSyncService,
 )
 from watchtower_core.sync.github_tasks import GitHubTaskSyncParams, GitHubTaskSyncService
+from watchtower_core.sync.initiative_index import (
+    INITIATIVE_INDEX_ARTIFACT_PATH,
+    InitiativeIndexSyncService,
+)
+from watchtower_core.sync.initiative_tracking import (
+    INITIATIVE_TRACKING_DOCUMENT_PATH,
+    InitiativeTrackingSyncService,
+)
 from watchtower_core.sync.prd_index import PRD_INDEX_ARTIFACT_PATH, PrdIndexSyncService
 from watchtower_core.sync.prd_tracking import PrdTrackingSyncService
 from watchtower_core.sync.reference_index import (
@@ -63,6 +71,10 @@ __all__ = [
     "FoundationIndexSyncService",
     "GitHubTaskSyncParams",
     "GitHubTaskSyncService",
+    "INITIATIVE_INDEX_ARTIFACT_PATH",
+    "INITIATIVE_TRACKING_DOCUMENT_PATH",
+    "InitiativeIndexSyncService",
+    "InitiativeTrackingSyncService",
     "PRD_INDEX_ARTIFACT_PATH",
     "PrdIndexSyncService",
     "PrdTrackingSyncService",

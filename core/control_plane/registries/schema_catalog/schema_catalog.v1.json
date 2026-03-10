@@ -74,6 +74,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1",
+      "title": "Initiative Index",
+      "description": "Schema for machine-readable initiative index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "initiative_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+      "aliases": [
+        "initiative coordination index schema",
+        "initiative phase lookup schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
       "title": "PRD Index",
       "description": "Schema for machine-readable PRD index artifacts.",

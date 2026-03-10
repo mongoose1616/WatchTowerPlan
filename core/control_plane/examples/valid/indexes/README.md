@@ -11,6 +11,7 @@
 | `core/control_plane/examples/valid/indexes/decision_index.v1.example.json` | Valid decision index example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/indexes/design_document_index.v1.example.json` | Valid design-document index example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/indexes/foundation_index.v1.example.json` | Valid foundation index example aligned with the published artifact schema. |
+| `core/control_plane/examples/valid/indexes/initiative_index.v1.example.json` | Valid initiative index example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/indexes/prd_index.v1.example.json` | Valid PRD index example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/indexes/reference_index.v1.example.json` | Valid reference index example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/indexes/repository_path_index.v1.example.json` | Valid repository path index example aligned with the published artifact schema. |

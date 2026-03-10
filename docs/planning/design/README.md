@@ -12,6 +12,7 @@
 | `docs/planning/design/implementation/` | Holds implementation-plan documents that break approved designs into concrete engineering work. |
 
 ## Notes
+- Start with `docs/planning/initiatives/initiative_tracking.md` when you need cross-family phase, owner, or next-step visibility for the initiative behind a design.
 - Documents under `docs/planning/design/features/**` should follow [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md) and start from [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md).
 - Documents under `docs/planning/design/implementation/**` should follow [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md) and start from [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md).
 - Governed feature designs and implementation plans should use front matter that validates against their published design-family profiles.

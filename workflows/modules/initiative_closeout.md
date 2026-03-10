@@ -1,11 +1,11 @@
 # Initiative Closeout Workflow
 
 ## Purpose
-Use this workflow to mark one traced initiative as completed, superseded, cancelled, or abandoned while keeping the traceability index and human planning trackers aligned.
+Use this workflow to mark one traced initiative as completed, superseded, cancelled, or abandoned while keeping the traceability index, initiative coordination view, and mirrored family trackers aligned.
 
 ## Use When
 - A traced initiative has reached a terminal outcome that should be explicit and durable.
-- Human planning trackers and the unified traceability index need to agree on the same initiative outcome.
+- The initiative view, family trackers, and unified traceability index need to agree on the same initiative outcome.
 - A task needs a closeout phase that goes beyond commit creation or ordinary handoff review.
 
 ## Inputs
@@ -19,6 +19,7 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
 ## Additional Files to Load
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): defines the allowable initiative end states and the mirrored surfaces that must stay aligned.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): requires closeout to preserve explicit trace links rather than relying on prose-only state.
+- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the derived initiative surfaces that must stay aligned with the terminal closeout state.
 - [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md): documents the command surface that performs the closeout mutation and derived-surface rebuild.
 
 ## Workflow
@@ -34,10 +35,11 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
    - Keep initiative outcome separate from artifact lifecycle `status`.
 4. Refresh human and machine mirrors.
    - Update the traceability index entry.
+   - Refresh the initiative index and initiative tracker that project current initiative status.
    - Refresh the PRD, decision, and design trackers that mirror initiative status.
 5. Validate the closeout result.
    - Re-run the narrowest meaningful traceability and schema checks for the touched surfaces.
-   - Ensure the closeout state is explicit in both the machine-readable traceability layer and the human-readable planning trackers.
+   - Ensure the closeout state is explicit in the machine-readable traceability layer, the initiative view, and the mirrored family trackers.
 
 ## Data Structure
 - Target trace ID
@@ -45,14 +47,16 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
 - Closure metadata
 - Open-task exception list when present
 - Updated traceability surface
-- Updated planning trackers
+- Updated initiative coordination surfaces
+- Updated family trackers
 
 ## Outputs
 - Updated traceability entry with initiative closeout metadata
-- Updated planning trackers that mirror initiative status
+- Updated initiative index and initiative tracker that mirror the terminal initiative state
+- Updated PRD, decision, and design trackers that mirror initiative status
 - A short record of any allowed open-task or validation exceptions that remained at closeout
 
 ## Done When
 - The target trace has a terminal initiative status recorded explicitly.
-- The traceability index and human planning trackers agree on the current initiative outcome.
+- The traceability index, initiative view, and mirrored family trackers agree on the current initiative outcome.
 - Any remaining open-task or validation exception is explicit rather than implied.

@@ -13,6 +13,7 @@ Use this workflow to define the task objective, scope boundary, and success cond
 - Known artifacts, surfaces, or outputs in scope
 - Current ambiguity, constraints, or assumptions
 - Any acceptance criteria, target outcome, or handoff expectation already provided
+- Existing `trace_id`, current initiative phase, or current initiative owner when the work belongs to an already-tracked initiative
 
 ## Workflow
 1. State the task objective.
@@ -22,6 +23,7 @@ Use this workflow to define the task objective, scope boundary, and success cond
    - Identify what is in scope for the active task.
    - Identify adjacent concerns that should stay out of scope for this task.
    - Name the repository surfaces most likely to be touched or inspected.
+   - When the task belongs to an existing initiative, record the `trace_id` and current initiative phase explicitly so downstream workflows do not have to re-derive them.
 3. Capture success conditions and blockers.
    - Record what must be true for the task to count as complete.
    - Surface missing inputs, assumptions, conflicts, or ambiguity that may still block progress.
@@ -31,6 +33,7 @@ Use this workflow to define the task objective, scope boundary, and success cond
 - Task objective
 - Scope boundary
 - In-scope surfaces
+- Existing initiative context when present
 - Out-of-scope concerns
 - Success conditions
 - Blocking ambiguity or assumptions

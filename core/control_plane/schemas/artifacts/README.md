@@ -12,6 +12,7 @@
 | `core/control_plane/schemas/artifacts/decision_index.v1.schema.json` | Schema for the machine-readable decision-index artifact family. |
 | `core/control_plane/schemas/artifacts/design_document_index.v1.schema.json` | Schema for the machine-readable design-document index artifact family. |
 | `core/control_plane/schemas/artifacts/foundation_index.v1.schema.json` | Schema for the machine-readable foundation-index artifact family. |
+| `core/control_plane/schemas/artifacts/initiative_index.v1.schema.json` | Schema for the machine-readable initiative-index artifact family. |
 | `core/control_plane/schemas/artifacts/prd_index.v1.schema.json` | Schema for the machine-readable PRD-index artifact family. |
 | `core/control_plane/schemas/artifacts/reference_index.v1.schema.json` | Schema for the machine-readable reference-index artifact family. |
 | `core/control_plane/schemas/artifacts/repository_path_index.v1.schema.json` | Schema for the generated repository path index artifact family. |

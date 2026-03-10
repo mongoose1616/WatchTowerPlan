@@ -12,11 +12,12 @@ Use this workflow to hand a task from one owner, phase, or execution stage to th
 - Source task or task set that is changing phase
 - Intended next phase, next owner, or successor-task boundary
 - Current blockers, dependencies, linked planning IDs, and `trace_id` values
-- Current task tracker, task index, and traceability surfaces when the transition affects traced work
+- Current task tracker, task index, initiative view, and traceability surfaces when the transition affects traced work
 
 ## Additional Files to Load
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the authoritative task-state vocabulary and explicit dependency rules this workflow must preserve.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): phase transitions must preserve upstream and downstream trace links rather than forcing later readers to infer them.
+- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): traced handoffs may change the initiative phase, active owner, or next-step projection that downstream contributors rely on.
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): terminal phase transitions may need closeout escalation when no open execution work remains.
 - [task_lifecycle_management.md](/home/j/WatchTowerPlan/workflows/modules/task_lifecycle_management.md): source task updates and successor-task creation should stay aligned with the repository's normal task lifecycle rules.
 
@@ -34,6 +35,7 @@ Use this workflow to hand a task from one owner, phase, or execution stage to th
 4. Refresh companion tracking surfaces.
    - Rebuild the task tracker and task index after the phase transition changes task metadata or task files.
    - Refresh traceability when the transition affects traced work or the active task chain for one initiative.
+   - Refresh the initiative index and initiative tracker when the transition changes current phase, active ownership, blockers, or the next-step projection for the initiative.
 5. Validate the handoff and escalation state.
    - Confirm the next responsible phase or owner is explicit and that no blockers or successor relationships became orphaned.
    - If the transition appears to finish the traced initiative, recommend or merge initiative closeout rather than leaving the terminal state implicit.
@@ -41,14 +43,15 @@ Use this workflow to hand a task from one owner, phase, or execution stage to th
 ## Data Structure
 - Source task state before and after transition
 - Successor-task set when the work splits by phase or owner
+- Initiative phase or ownership projection changes when the work belongs to a traced initiative
 - Dependency and trace-link updates caused by the handoff
 
 ## Outputs
 - Updated source and successor task records with explicit handoff state
-- Updated derived task tracker, task index, and traceability surfaces when affected
+- Updated derived task tracker, task index, initiative surfaces, and traceability surfaces when affected
 - A clear next-phase or closeout recommendation
 
 ## Done When
 - The next owner or next phase is explicit in the task corpus.
-- Successor, dependency, and trace relationships remain queryable after the handoff.
+- Successor, dependency, trace, and initiative-phase relationships remain queryable after the handoff.
 - Any closeout escalation or remaining blocker is explicit rather than implied.

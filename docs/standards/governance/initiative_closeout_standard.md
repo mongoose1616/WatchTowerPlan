@@ -9,14 +9,16 @@ tags:
   - "governance"
   - "initiative_closeout"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T01:48:35Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/control_plane/indexes/traceability/traceability_index.v1.json"
+  - "core/control_plane/indexes/initiatives/initiative_index.v1.json"
   - "docs/planning/prds/prd_tracking.md"
   - "docs/planning/design/design_tracking.md"
   - "docs/planning/decisions/decision_tracking.md"
+  - "docs/planning/initiatives/initiative_tracking.md"
 aliases:
   - "initiative closure"
   - "trace closeout"
@@ -34,7 +36,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 
 ## Scope
 - Applies to initiative-level closeout fields stored on traceability index entries.
-- Applies to the human planning trackers that mirror initiative closeout status.
+- Applies to the human planning trackers and derived initiative coordination views that mirror initiative closeout status.
 - Covers closeout status values, required closeout fields, and the baseline closeout workflow boundary.
 - Does not redefine artifact lifecycle status for PRDs, decisions, designs, or plans.
 
@@ -67,6 +69,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - Prefer closing or explicitly deferring open tasks before terminal initiative closeout.
 - If a terminal closeout is recorded while open tasks remain, the exception should be explicit in the operator workflow or command invocation.
 - Mirror initiative closeout status into the PRD, decision, and design trackers from the traceability index rather than maintaining a second human-authored closeout source.
+- Mirror initiative closeout status into the derived initiative index and initiative tracker from the traceability index rather than maintaining a second initiative-closeout authority.
 
 ## Structure or Data Model
 | Field | Meaning |
@@ -81,8 +84,9 @@ This standard defines how traced initiatives move to a terminal closeout state w
 2. Choose the terminal initiative status.
 3. Record `closed_at` and `closure_reason`, and `superseded_by_trace_id` when required.
 4. Update the traceability index entry for that trace.
-5. Refresh the human planning trackers that mirror initiative status.
-6. Record any remaining open-task exception explicitly when closeout happens with unfinished task records.
+5. Refresh the derived initiative coordination surfaces.
+6. Refresh the human planning trackers that mirror initiative status.
+7. Record any remaining open-task exception explicitly when closeout happens with unfinished task records.
 
 ## Validation
 - Every traceability entry should publish `initiative_status`.
@@ -97,8 +101,9 @@ This standard defines how traced initiatives move to a terminal closeout state w
 
 ## References
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
+- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
 - [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T01:48:35Z`

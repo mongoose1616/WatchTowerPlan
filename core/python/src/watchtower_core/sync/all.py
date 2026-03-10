@@ -32,6 +32,14 @@ from watchtower_core.sync.foundation_index import (
     FOUNDATION_INDEX_ARTIFACT_PATH,
     FoundationIndexSyncService,
 )
+from watchtower_core.sync.initiative_index import (
+    INITIATIVE_INDEX_ARTIFACT_PATH,
+    InitiativeIndexSyncService,
+)
+from watchtower_core.sync.initiative_tracking import (
+    INITIATIVE_TRACKING_DOCUMENT_PATH,
+    InitiativeTrackingSyncService,
+)
 from watchtower_core.sync.prd_index import PRD_INDEX_ARTIFACT_PATH, PrdIndexSyncService
 from watchtower_core.sync.prd_tracking import PRD_TRACKING_DOCUMENT_PATH, PrdTrackingSyncService
 from watchtower_core.sync.reference_index import (
@@ -209,6 +217,14 @@ class AllSyncService:
                 write=write,
                 output_dir=output_dir,
             ),
+            self._run_document_sync(
+                target="initiative-index",
+                artifact_kind="index",
+                relative_output_path=INITIATIVE_INDEX_ARTIFACT_PATH,
+                service=InitiativeIndexSyncService(self._loader),
+                write=write,
+                output_dir=output_dir,
+            ),
             self._run_tracking_sync(
                 target="prd-tracking",
                 artifact_kind="tracker",
@@ -242,6 +258,15 @@ class AllSyncService:
                 relative_output_path=TASK_TRACKING_DOCUMENT_PATH,
                 service=TaskTrackingSyncService(self._loader),
                 record_count_attr="task_count",
+                write=write,
+                output_dir=output_dir,
+            ),
+            self._run_tracking_sync(
+                target="initiative-tracking",
+                artifact_kind="tracker",
+                relative_output_path=INITIATIVE_TRACKING_DOCUMENT_PATH,
+                service=InitiativeTrackingSyncService(self._loader),
+                record_count_attr="initiative_count",
                 write=write,
                 output_dir=output_dir,
             ),

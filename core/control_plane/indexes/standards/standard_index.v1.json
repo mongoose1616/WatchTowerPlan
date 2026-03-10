@@ -221,6 +221,42 @@
       ]
     },
     {
+      "standard_id": "std.data_contracts.initiative_index",
+      "category": "data_contracts",
+      "title": "Initiative Index Standard",
+      "summary": "This standard defines the role, structure, and boundary rules for machine-readable initiative indexes stored under `core/control_plane/indexes/initiatives/`.",
+      "status": "active",
+      "doc_path": "docs/standards/data_contracts/initiative_index_standard.md",
+      "updated_at": "2026-03-10T01:37:35Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "internal_reference_paths": [
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/metadata/timestamp_standard.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "core/control_plane/indexes/initiatives/README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/metadata/timestamp_standard.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "core/control_plane/indexes/initiatives/README.md"
+      ],
+      "tags": [
+        "standard",
+        "data_contracts",
+        "initiative_index"
+      ]
+    },
+    {
       "standard_id": "std.data_contracts.prd_index",
       "category": "data_contracts",
       "title": "PRD Index Standard",
@@ -1431,21 +1467,24 @@
       "summary": "This standard defines how traced initiatives move to a terminal closeout state without overloading artifact lifecycle status.",
       "status": "active",
       "doc_path": "docs/standards/governance/initiative_closeout_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T01:48:35Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/design/design_tracking.md",
-        "docs/planning/decisions/decision_tracking.md"
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "workflows/modules/initiative_closeout.md"
+        "workflows/modules/initiative_closeout.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
       ],
       "applied_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -1458,6 +1497,48 @@
         "standard",
         "governance",
         "initiative_closeout"
+      ]
+    },
+    {
+      "standard_id": "std.governance.initiative_tracking",
+      "category": "governance",
+      "title": "Initiative Tracking Standard",
+      "summary": "This standard defines the repository's cross-family initiative tracking model so one trace can be followed from PRD through design, planning, execution, validation, and closeout.",
+      "status": "active",
+      "doc_path": "docs/standards/governance/initiative_tracking_standard.md",
+      "updated_at": "2026-03-10T01:37:35Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/initiatives/",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/README.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "initiative_tracking"
       ]
     },
     {
@@ -1549,7 +1630,7 @@
       "summary": "This standard defines the repository's baseline traceability model so product intent, decisions, designs, implementation plans, and later executable or validation surfaces can be linked end to end.",
       "status": "active",
       "doc_path": "docs/standards/governance/traceability_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T01:48:35Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
@@ -1564,6 +1645,7 @@
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
         "docs/planning/design/design_tracking.md"
       ],
       "applied_reference_paths": [

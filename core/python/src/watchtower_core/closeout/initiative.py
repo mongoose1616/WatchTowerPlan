@@ -9,8 +9,11 @@ from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.control_plane.models import TaskIndexEntry
 from watchtower_core.sync.decision_tracking import DecisionTrackingSyncService
 from watchtower_core.sync.design_tracking import DesignTrackingSyncService
+from watchtower_core.sync.initiative_index import InitiativeIndexSyncService
+from watchtower_core.sync.initiative_tracking import InitiativeTrackingSyncService
 from watchtower_core.sync.prd_tracking import PrdTrackingSyncService
 from watchtower_core.utils import utc_timestamp_now
 
@@ -30,6 +33,8 @@ class InitiativeCloseoutResult:
     open_task_ids: tuple[str, ...]
     wrote: bool
     traceability_output_path: str | None
+    initiative_index_output_path: str | None
+    initiative_tracking_output_path: str | None
     prd_tracking_output_path: str | None
     decision_tracking_output_path: str | None
     design_tracking_output_path: str | None
@@ -89,6 +94,8 @@ class InitiativeCloseoutService:
         self._loader.schema_store.validate_instance(document)
 
         traceability_output_path: str | None = None
+        initiative_index_output_path: str | None = None
+        initiative_tracking_output_path: str | None = None
         prd_tracking_output_path: str | None = None
         decision_tracking_output_path: str | None = None
         design_tracking_output_path: str | None = None
@@ -100,6 +107,18 @@ class InitiativeCloseoutService:
             )
             traceability_output_path = str(traceability_path)
 
+            initiative_index_service = InitiativeIndexSyncService(self._loader)
+            initiative_index_output_path = str(
+                initiative_index_service.write_document(
+                    initiative_index_service.build_document()
+                )
+            )
+            initiative_tracking_service = InitiativeTrackingSyncService(self._loader)
+            initiative_tracking_output_path = str(
+                initiative_tracking_service.write_document(
+                    initiative_tracking_service.build_document()
+                )
+            )
             prd_tracking_service = PrdTrackingSyncService(self._loader)
             prd_tracking_output_path = str(
                 prd_tracking_service.write_document(prd_tracking_service.build_document())
@@ -126,6 +145,8 @@ class InitiativeCloseoutService:
             open_task_ids=open_task_ids,
             wrote=write,
             traceability_output_path=traceability_output_path,
+            initiative_index_output_path=initiative_index_output_path,
+            initiative_tracking_output_path=initiative_tracking_output_path,
             prd_tracking_output_path=prd_tracking_output_path,
             decision_tracking_output_path=decision_tracking_output_path,
             design_tracking_output_path=design_tracking_output_path,
@@ -157,9 +178,31 @@ class InitiativeCloseoutService:
             raise ValueError(f"Unknown trace ID: {trace_id}") from exc
 
         task_index = self._loader.load_task_index()
-        open_task_ids: list[str] = []
+        task_entries_by_id = {entry.task_id: entry for entry in task_index.entries}
+        candidate_entries: dict[str, TaskIndexEntry] = {}
+        missing_task_ids: list[str] = []
+
         for task_id in trace_entry.task_ids:
-            task_entry = task_index.get(task_id)
-            if task_entry.task_status not in TERMINAL_TASK_STATUSES:
-                open_task_ids.append(task_id)
+            task_entry = task_entries_by_id.get(task_id)
+            if task_entry is None:
+                missing_task_ids.append(task_id)
+                continue
+            candidate_entries[task_id] = task_entry
+
+        if missing_task_ids:
+            joined = ", ".join(sorted(missing_task_ids))
+            raise ValueError(
+                f"Trace {trace_id} references missing linked tasks in the task index: {joined}. "
+                "Rebuild traceability and task surfaces before closeout."
+            )
+
+        for task_entry in task_index.entries:
+            if task_entry.trace_id == trace_id:
+                candidate_entries[task_entry.task_id] = task_entry
+
+        open_task_ids = sorted(
+            task_id
+            for task_id, task_entry in candidate_entries.items()
+            if task_entry.task_status not in TERMINAL_TASK_STATUSES
+        )
         return tuple(open_task_ids)

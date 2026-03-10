@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1",
+  "title": "Initiative Index",
+  "description": "Machine-readable coordination index for traced initiatives across PRDs, decisions, designs, plans, tasks, validation, and closeout.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "index.initiatives"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/initiativeEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "initiativeStatus": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "superseded",
+        "cancelled",
+        "abandoned"
+      ]
+    },
+    "currentPhase": {
+      "type": "string",
+      "enum": [
+        "prd",
+        "design",
+        "implementation_planning",
+        "execution",
+        "validation",
+        "closeout",
+        "closed"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "taskIdPattern": {
+      "type": "string",
+      "pattern": "^task\\.[a-z0-9]+(?:_[a-z0-9]+)*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "idList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/idPattern"
+      }
+    },
+    "taskIdList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/taskIdPattern"
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "initiativeEntry": {
+      "type": "object",
+      "required": [
+        "trace_id",
+        "title",
+        "summary",
+        "status",
+        "initiative_status",
+        "current_phase",
+        "updated_at",
+        "open_task_count",
+        "blocked_task_count",
+        "key_surface_path",
+        "next_action",
+        "next_surface_path"
+      ],
+      "properties": {
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "initiative_status": {
+          "$ref": "#/$defs/initiativeStatus"
+        },
+        "current_phase": {
+          "$ref": "#/$defs/currentPhase"
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "open_task_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked_task_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "key_surface_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_surface_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primary_owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active_owners": {
+          "$ref": "#/$defs/stringList"
+        },
+        "active_task_ids": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "blocked_by_task_ids": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "prd_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "decision_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "design_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "plan_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "task_ids": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "acceptance_contract_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "closed_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "closure_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "superseded_by_trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "const": "active"
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "current_phase": {
+                "not": {
+                  "const": "closed"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "enum": [
+                  "completed",
+                  "superseded",
+                  "cancelled",
+                  "abandoned"
+                ]
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "closed_at",
+              "closure_reason"
+            ],
+            "properties": {
+              "current_phase": {
+                "const": "closed"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "const": "superseded"
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "superseded_by_trace_id"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -17,6 +17,8 @@ def test_all_sync_runs_in_dry_run_mode() -> None:
     assert result.wrote is False
     assert any(record.target == "command-index" for record in result.records)
     assert any(record.target == "foundation-index" for record in result.records)
+    assert any(record.target == "initiative-index" for record in result.records)
+    assert any(record.target == "initiative-tracking" for record in result.records)
     assert any(record.target == "repository-paths" for record in result.records)
 
 
@@ -30,4 +32,6 @@ def test_all_sync_can_materialize_to_output_dir(tmp_path: Path) -> None:
     assert result.wrote is True
     assert (output_dir / "core/control_plane/indexes/commands/command_index.v1.json").exists()
     assert (output_dir / "core/control_plane/indexes/foundations/foundation_index.v1.json").exists()
+    assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.v1.json").exists()
     assert (output_dir / "docs/planning/prds/prd_tracking.md").exists()
+    assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()

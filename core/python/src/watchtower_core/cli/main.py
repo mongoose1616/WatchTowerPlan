@@ -23,6 +23,8 @@ from watchtower_core.query import (
     DesignDocumentSearchParams,
     FoundationQueryService,
     FoundationSearchParams,
+    InitiativeQueryService,
+    InitiativeSearchParams,
     PrdQueryService,
     PrdSearchParams,
     ReferenceQueryService,
@@ -49,6 +51,8 @@ from watchtower_core.sync import (
     FoundationIndexSyncService,
     GitHubTaskSyncParams,
     GitHubTaskSyncService,
+    InitiativeIndexSyncService,
+    InitiativeTrackingSyncService,
     PrdIndexSyncService,
     PrdTrackingSyncService,
     ReferenceIndexSyncService,
@@ -109,12 +113,15 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query references --query uv",
             "uv run watchtower-core query standards --category governance --format json",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query initiatives --current-phase execution",
             "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core query tasks --task-status backlog",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync all",
             "uv run watchtower-core sync foundation-index",
+            "uv run watchtower-core sync initiative-index",
+            "uv run watchtower-core sync initiative-tracking",
             "uv run watchtower-core sync reference-index",
             "uv run watchtower-core sync standard-index",
             "uv run watchtower-core sync workflow-index",
@@ -177,6 +184,7 @@ def build_parser() -> argparse.ArgumentParser:
             `standards` for governed repository standards, `prds`,
             `decisions`, `designs`, `acceptance`, `evidence`, and `tasks`
             for planning and execution lookup, and
+            `initiatives` for the cross-family phase and ownership view, and
             `trace` when you already know the trace identifier you want.
             """
         ).strip(),
@@ -190,6 +198,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query standards --reference-path "
             "docs/references/github_collaboration_reference.md",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query initiatives --owner repository_maintainer",
             "uv run watchtower-core query decisions --decision-status accepted",
             "uv run watchtower-core query designs --family implementation_plan",
             "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
@@ -874,6 +883,67 @@ def build_parser() -> argparse.ArgumentParser:
     )
     query_tasks_parser.set_defaults(handler=_run_query_tasks)
 
+    query_initiatives_parser = query_subparsers.add_parser(
+        "initiatives",
+        help="Search the initiative index.",
+        description=dedent(
+            """
+            Search the cross-family initiative index for the current phase,
+            active ownership, blockers, and next step of a traced initiative.
+
+            Use this when the main question is where an initiative is in the
+            PRD -> design -> implementation -> validation -> closeout flow.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core query initiatives --current-phase execution",
+            "uv run watchtower-core query initiatives --blocked-only --format json",
+            "uv run watchtower-core query initiatives --trace-id trace.core_python_foundation",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_initiatives_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over initiative fields such as trace ID, title, "
+            "summary, owner, next action, and linked artifact IDs."
+        ),
+    )
+    query_initiatives_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.core_python_foundation.",
+    )
+    query_initiatives_parser.add_argument(
+        "--initiative-status",
+        help="Exact initiative-status filter such as active or completed.",
+    )
+    query_initiatives_parser.add_argument(
+        "--current-phase",
+        help="Exact current-phase filter such as prd, execution, or closeout.",
+    )
+    query_initiatives_parser.add_argument(
+        "--owner",
+        help="Exact owner filter against the current active owners for the initiative.",
+    )
+    query_initiatives_parser.add_argument(
+        "--blocked-only",
+        action="store_true",
+        help="Return only initiatives with one or more currently blocked active tasks.",
+    )
+    query_initiatives_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_initiatives_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_initiatives_parser.set_defaults(handler=_run_query_initiatives)
+
     query_trace_parser = query_subparsers.add_parser(
         "trace",
         help="Resolve one traceability record by trace ID.",
@@ -933,6 +1003,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync decision-tracking",
             "uv run watchtower-core sync design-document-index",
             "uv run watchtower-core sync design-tracking",
+            "uv run watchtower-core sync initiative-index",
+            "uv run watchtower-core sync initiative-tracking",
             "uv run watchtower-core sync task-index",
             "uv run watchtower-core sync task-tracking",
             "uv run watchtower-core sync github-tasks --repo owner/repo --task-id "
@@ -1241,6 +1313,52 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_sync_arguments(sync_design_tracking_parser)
     sync_design_tracking_parser.set_defaults(handler=_run_sync_design_tracking)
+
+    sync_initiative_index_parser = sync_subparsers.add_parser(
+        "initiative-index",
+        help="Rebuild the initiative index from traceability, planning, and task indexes.",
+        description=dedent(
+            """
+            Rebuild the cross-family initiative index from traceability plus
+            the current planning and task indexes.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync initiative-index",
+            "uv run watchtower-core sync initiative-index --write",
+            "uv run watchtower-core sync initiative-index --output "
+            "/tmp/initiative_index.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_initiative_index_parser)
+    sync_initiative_index_parser.set_defaults(handler=_run_sync_initiative_index)
+
+    sync_initiative_tracking_parser = sync_subparsers.add_parser(
+        "initiative-tracking",
+        help="Rebuild the human-readable initiative tracker from the initiative index.",
+        description=dedent(
+            """
+            Rebuild the human-readable initiative tracker from the governed
+            initiative index.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            tracker or `--output` to materialize it elsewhere.
+            """
+        ).strip(),
+        epilog=_examples(
+            "uv run watchtower-core sync initiative-tracking",
+            "uv run watchtower-core sync initiative-tracking --write",
+            "uv run watchtower-core sync initiative-tracking --output "
+            "/tmp/initiative_tracking.md --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    _add_common_sync_arguments(sync_initiative_tracking_parser)
+    sync_initiative_tracking_parser.set_defaults(handler=_run_sync_initiative_tracking)
 
     sync_task_index_parser = sync_subparsers.add_parser(
         "task-index",
@@ -2589,6 +2707,83 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
     return 0
 
 
+def _run_query_initiatives(args: argparse.Namespace) -> int:
+    service = InitiativeQueryService(ControlPlaneLoader())
+    entries = service.search(
+        InitiativeSearchParams(
+            query=args.query,
+            trace_id=args.trace_id,
+            initiative_status=args.initiative_status,
+            current_phase=args.current_phase,
+            owner=args.owner,
+            blocked_only=args.blocked_only,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query initiatives",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [
+            {
+                "trace_id": entry.trace_id,
+                "title": entry.title,
+                "summary": entry.summary,
+                "status": entry.status,
+                "initiative_status": entry.initiative_status,
+                "current_phase": entry.current_phase,
+                "updated_at": entry.updated_at,
+                "open_task_count": entry.open_task_count,
+                "blocked_task_count": entry.blocked_task_count,
+                "key_surface_path": entry.key_surface_path,
+                "next_action": entry.next_action,
+                "next_surface_path": entry.next_surface_path,
+                "primary_owner": entry.primary_owner,
+                "active_owners": list(entry.active_owners),
+                "active_task_ids": list(entry.active_task_ids),
+                "blocked_by_task_ids": list(entry.blocked_by_task_ids),
+                "prd_ids": list(entry.prd_ids),
+                "decision_ids": list(entry.decision_ids),
+                "design_ids": list(entry.design_ids),
+                "plan_ids": list(entry.plan_ids),
+                "task_ids": list(entry.task_ids),
+                "acceptance_ids": list(entry.acceptance_ids),
+                "acceptance_contract_ids": list(entry.acceptance_contract_ids),
+                "evidence_ids": list(entry.evidence_ids),
+                "closed_at": entry.closed_at,
+                "closure_reason": entry.closure_reason,
+                "superseded_by_trace_id": entry.superseded_by_trace_id,
+                "related_paths": list(entry.related_paths),
+                "tags": list(entry.tags),
+                "notes": entry.notes,
+            }
+            for entry in entries
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No initiative entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} initiative entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        owner_text = entry.primary_owner or (
+            ", ".join(entry.active_owners) if entry.active_owners else "unassigned"
+        )
+        print(f"- {entry.trace_id} [{entry.current_phase}, {entry.initiative_status}]")
+        print(f"  {entry.title}")
+        print(f"  Owners: {owner_text}")
+        print(
+            f"  Open tasks: {entry.open_task_count} "
+            f"(blocked={entry.blocked_task_count})"
+        )
+        print(f"  Next: {entry.next_action}")
+        print(f"  Open first: {entry.next_surface_path}")
+    return 0
+
+
 def _run_query_trace(args: argparse.Namespace) -> int:
     service = TraceabilityQueryService(ControlPlaneLoader())
     try:
@@ -2882,6 +3077,55 @@ def _run_sync_design_tracking(args: argparse.Namespace) -> int:
     return 0
 
 
+def _run_sync_initiative_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync initiative-index",
+        artifact_label="initiative index",
+        service=InitiativeIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_initiative_tracking(args: argparse.Namespace) -> int:
+    service = InitiativeTrackingSyncService.from_repo_root()
+    result = service.build_document()
+    destination: str | None = None
+    wrote = False
+
+    if args.write or args.output is not None:
+        target = _resolve_output_path(args.output)
+        destination = str(service.write_document(result, target))
+        wrote = True
+
+    payload: dict[str, object] = {
+        "command": "watchtower-core sync initiative-tracking",
+        "status": "ok",
+        "initiative_count": result.initiative_count,
+        "active_count": result.active_count,
+        "closed_count": result.closed_count,
+        "wrote": wrote,
+        "artifact_path": destination,
+    }
+    if args.include_document:
+        payload["document"] = result.content
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if wrote:
+        print(
+            "Rebuilt initiative tracking with "
+            f"{result.initiative_count} initiatives and wrote it to {destination}."
+        )
+        return 0
+
+    print(
+        "Rebuilt initiative tracking with "
+        f"{result.initiative_count} initiatives in dry-run mode."
+    )
+    print("Use --write to update the canonical tracker or --output <path> to write elsewhere.")
+    return 0
+
+
 def _run_sync_task_index(args: argparse.Namespace) -> int:
     return _run_sync_document_command(
         args,
@@ -3027,6 +3271,7 @@ def _run_sync_document_command(
         | DecisionIndexSyncService
         | DesignDocumentIndexSyncService
         | FoundationIndexSyncService
+        | InitiativeIndexSyncService
         | PrdIndexSyncService
         | ReferenceIndexSyncService
         | RepositoryPathIndexSyncService
@@ -3101,6 +3346,8 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
         "open_task_ids": list(result.open_task_ids),
         "wrote": result.wrote,
         "traceability_output_path": result.traceability_output_path,
+        "initiative_index_output_path": result.initiative_index_output_path,
+        "initiative_tracking_output_path": result.initiative_tracking_output_path,
         "prd_tracking_output_path": result.prd_tracking_output_path,
         "decision_tracking_output_path": result.decision_tracking_output_path,
         "design_tracking_output_path": result.design_tracking_output_path,
@@ -3116,7 +3363,7 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
     if result.open_task_ids:
         print(f"Open Tasks Left In Place: {', '.join(result.open_task_ids)}")
     if result.wrote:
-        print("Canonical traceability and planning trackers were updated.")
+        print("Canonical traceability, initiative, and planning trackers were updated.")
     else:
         print("Dry-run only. Use --write to persist the closeout state.")
     return 0

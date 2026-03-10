@@ -80,6 +80,11 @@ uv run watchtower-core query tasks --task-status backlog
 
 ```sh
 cd core/python
+uv run watchtower-core query initiatives --current-phase execution
+```
+
+```sh
+cd core/python
 uv run watchtower-core sync command-index
 ```
 
@@ -111,6 +116,16 @@ uv run watchtower-core sync workflow-index
 ```sh
 cd core/python
 uv run watchtower-core sync prd-index
+```
+
+```sh
+cd core/python
+uv run watchtower-core sync initiative-index
+```
+
+```sh
+cd core/python
+uv run watchtower-core sync initiative-tracking
 ```
 
 ```sh
@@ -172,8 +187,8 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - With no subcommand, the current implementation prints the root CLI help text, including onboarding-friendly examples, and exits successfully.
 - With a valid subcommand, the root command dispatches to that subcommand handler.
 - The current top-level command families are `doctor`, `query`, `sync`, `closeout`, and `validate`.
-- `query` now covers repository navigation, command discovery, governed foundations lookup, workflow-module lookup, curated reference lookup, standards and best-practice lookup, planning lookup, acceptance contracts, validation evidence, task lookup, and trace lookup.
-- The `sync` family now covers one-shot local rebuilds through `sync all`, plus command lookup, foundation lookup, reference lookup, standard lookup, workflow lookup, PRD tracking, decision tracking, design tracking, task tracking, GitHub task sync with managed labels, traceability, and repository-path rebuilds.
+- `query` now covers repository navigation, command discovery, governed foundations lookup, workflow-module lookup, curated reference lookup, standards and best-practice lookup, planning lookup, initiative coordination lookup, acceptance contracts, validation evidence, task lookup, and trace lookup.
+- The `sync` family now covers one-shot local rebuilds through `sync all`, plus command lookup, foundation lookup, reference lookup, standard lookup, workflow lookup, PRD tracking, decision tracking, design tracking, initiative tracking, task tracking, GitHub task sync with managed labels, traceability, and repository-path rebuilds.
 - `validate` now covers aggregate repo validation, document front matter, governed document semantics, schema-backed governed artifacts, and semantic acceptance reconciliation.
 - Unknown subcommands are rejected by the underlying CLI parser.
 - The current command surface is intentionally small and acts as the operator entrypoint for the growing core workspace.
@@ -193,4 +208,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-09T23:59:23Z`
+- `2026-03-10T01:48:35Z`

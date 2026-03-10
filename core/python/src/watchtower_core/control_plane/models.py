@@ -646,6 +646,106 @@ class FoundationIndex:
 
 
 @dataclass(frozen=True, slots=True)
+class InitiativeIndexEntry:
+    """Initiative-index entry."""
+
+    trace_id: str
+    title: str
+    summary: str
+    status: str
+    initiative_status: str
+    current_phase: str
+    updated_at: str
+    open_task_count: int
+    blocked_task_count: int
+    key_surface_path: str
+    next_action: str
+    next_surface_path: str
+    primary_owner: str | None = None
+    active_owners: tuple[str, ...] = ()
+    active_task_ids: tuple[str, ...] = ()
+    blocked_by_task_ids: tuple[str, ...] = ()
+    prd_ids: tuple[str, ...] = ()
+    decision_ids: tuple[str, ...] = ()
+    design_ids: tuple[str, ...] = ()
+    plan_ids: tuple[str, ...] = ()
+    task_ids: tuple[str, ...] = ()
+    acceptance_ids: tuple[str, ...] = ()
+    acceptance_contract_ids: tuple[str, ...] = ()
+    evidence_ids: tuple[str, ...] = ()
+    closed_at: str | None = None
+    closure_reason: str | None = None
+    superseded_by_trace_id: str | None = None
+    related_paths: tuple[str, ...] = ()
+    tags: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> InitiativeIndexEntry:
+        return cls(
+            trace_id=document["trace_id"],
+            title=document["title"],
+            summary=document["summary"],
+            status=document["status"],
+            initiative_status=document["initiative_status"],
+            current_phase=document["current_phase"],
+            updated_at=document["updated_at"],
+            open_task_count=document["open_task_count"],
+            blocked_task_count=document["blocked_task_count"],
+            key_surface_path=document["key_surface_path"],
+            next_action=document["next_action"],
+            next_surface_path=document["next_surface_path"],
+            primary_owner=document.get("primary_owner"),
+            active_owners=tuple(document.get("active_owners", ())),
+            active_task_ids=tuple(document.get("active_task_ids", ())),
+            blocked_by_task_ids=tuple(document.get("blocked_by_task_ids", ())),
+            prd_ids=tuple(document.get("prd_ids", ())),
+            decision_ids=tuple(document.get("decision_ids", ())),
+            design_ids=tuple(document.get("design_ids", ())),
+            plan_ids=tuple(document.get("plan_ids", ())),
+            task_ids=tuple(document.get("task_ids", ())),
+            acceptance_ids=tuple(document.get("acceptance_ids", ())),
+            acceptance_contract_ids=tuple(document.get("acceptance_contract_ids", ())),
+            evidence_ids=tuple(document.get("evidence_ids", ())),
+            closed_at=document.get("closed_at"),
+            closure_reason=document.get("closure_reason"),
+            superseded_by_trace_id=document.get("superseded_by_trace_id"),
+            related_paths=tuple(document.get("related_paths", ())),
+            tags=tuple(document.get("tags", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class InitiativeIndex:
+    """Typed initiative-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[InitiativeIndexEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> InitiativeIndex:
+        entries = tuple(InitiativeIndexEntry.from_document(entry) for entry in document["entries"])
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, trace_id: str) -> InitiativeIndexEntry:
+        """Return an initiative-index entry by trace identifier."""
+        for entry in self.entries:
+            if entry.trace_id == trace_id:
+                return entry
+        raise KeyError(trace_id)
+
+
+@dataclass(frozen=True, slots=True)
 class StandardIndexEntry:
     """Standard-index entry."""
 

@@ -11,6 +11,7 @@
 | `docs/planning/prds/prd_tracking.md` | Human-readable tracker for the current PRD corpus. |
 
 ## Notes
+- Start with `docs/planning/initiatives/initiative_tracking.md` when you need cross-family phase, owner, or next-step visibility for a PRD-backed initiative.
 - PRDs in this directory should follow [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md).
 - Start new documents from [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md).
 - Keep the machine-readable companion index aligned under `core/control_plane/indexes/prds/`.

@@ -1,0 +1,56 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1",
+  "id": "index.initiatives",
+  "title": "Initiative Index",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.core_python_foundation",
+      "title": "Core Python Foundation PRD",
+      "summary": "Tracks the current cross-family phase, ownership, and next step for the core Python foundation initiative.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T01:48:35Z",
+      "open_task_count": 1,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/core_python_foundation.md",
+      "next_action": "Continue the active task set and keep the initiative surfaces aligned as work lands.",
+      "next_surface_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.core_python_foundation.execution.001"
+      ],
+      "prd_ids": [
+        "prd.core_python_foundation"
+      ],
+      "design_ids": [
+        "design.features.core_python_workspace_and_harness"
+      ],
+      "plan_ids": [
+        "design.implementation.control_plane_loaders_and_schema_store"
+      ],
+      "task_ids": [
+        "task.core_python_foundation.execution.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_python_foundation.001"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_python_foundation"
+      ],
+      "related_paths": [
+        "core/python/",
+        "docs/planning/prds/core_python_foundation.md"
+      ],
+      "tags": [
+        "planning",
+        "python",
+        "traceability"
+      ]
+    }
+  ]
+}

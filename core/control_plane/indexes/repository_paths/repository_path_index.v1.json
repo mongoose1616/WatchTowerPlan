@@ -344,6 +344,13 @@
       "parent_path": "core/control_plane/examples/invalid/indexes/"
     },
     {
+      "path": "core/control_plane/examples/invalid/indexes/initiative_index_missing_phase.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid initiative index example missing the required current-phase field.",
+      "parent_path": "core/control_plane/examples/invalid/indexes/"
+    },
+    {
       "path": "core/control_plane/examples/invalid/indexes/prd_index_missing_trace_id.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -586,6 +593,13 @@
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Valid foundation index example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/indexes/"
+    },
+    {
+      "path": "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid initiative index example aligned with the published artifact schema.",
       "parent_path": "core/control_plane/examples/valid/indexes/"
     },
     {
@@ -836,6 +850,27 @@
       "surface_kind": "control_plane_index",
       "summary": "Machine-readable foundation index for governed foundation documents and their downstream citation or application use.",
       "parent_path": "core/control_plane/indexes/foundations/"
+    },
+    {
+      "path": "core/control_plane/indexes/initiatives/",
+      "kind": "directory",
+      "surface_kind": "control_plane_indexes",
+      "summary": "Machine-readable initiative indexes that project current phase, ownership, and next-step status across traced planning surfaces.",
+      "parent_path": "core/control_plane/indexes/"
+    },
+    {
+      "path": "core/control_plane/indexes/initiatives/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Describes the purpose of the initiative-index directory and its current artifacts.",
+      "parent_path": "core/control_plane/indexes/initiatives/"
+    },
+    {
+      "path": "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Machine-readable initiative index for current traced initiatives, their phases, active owners, and next actions.",
+      "parent_path": "core/control_plane/indexes/initiatives/"
     },
     {
       "path": "core/control_plane/indexes/prds/",
@@ -1361,6 +1396,13 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable foundation-index artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable initiative-index artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {
@@ -2035,6 +2077,13 @@
       "parent_path": "docs/commands/core_python/"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_initiatives.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core query initiatives command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query_paths.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -2144,6 +2193,20 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Human-readable command page for the watchtower-core sync github-tasks command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_initiative_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync initiative-index command.",
+      "parent_path": "docs/commands/core_python/"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_initiative_tracking.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Human-readable command page for the watchtower-core sync initiative-tracking command.",
       "parent_path": "docs/commands/core_python/"
     },
     {
@@ -2528,6 +2591,27 @@
       "surface_kind": "implementation_plan",
       "summary": "Implementation plan for the first control-plane loader and SchemaStore slice in the core Python workspace.",
       "parent_path": "docs/planning/design/implementation/"
+    },
+    {
+      "path": "docs/planning/initiatives/",
+      "kind": "directory",
+      "surface_kind": "planning_root",
+      "summary": "Holds the start-here initiative view that projects phase, owner, and next-step status across the planning corpus.",
+      "parent_path": "docs/planning/"
+    },
+    {
+      "path": "docs/planning/initiatives/README.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Describes the purpose of the initiatives directory and how it relates to the family-specific planning surfaces.",
+      "parent_path": "docs/planning/initiatives/"
+    },
+    {
+      "path": "docs/planning/initiatives/initiative_tracking.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Generated human-readable initiative board for current traced initiatives, their phases, active owners, and next steps.",
+      "parent_path": "docs/planning/initiatives/"
     },
     {
       "path": "docs/planning/prds/",
@@ -3191,6 +3275,13 @@
       "parent_path": "docs/standards/data_contracts/"
     },
     {
+      "path": "docs/standards/data_contracts/initiative_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable initiative indexes.",
+      "parent_path": "docs/standards/data_contracts/"
+    },
+    {
       "path": "docs/standards/data_contracts/prd_index_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -3461,6 +3552,13 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines initiative-level closeout state and its human and machine mirror surfaces.",
+      "parent_path": "docs/standards/governance/"
+    },
+    {
+      "path": "docs/standards/governance/initiative_tracking_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the cross-family initiative coordination view and phase model built on top of traceability and task data.",
       "parent_path": "docs/standards/governance/"
     },
     {
@@ -3894,7 +3992,7 @@
       "path": "workflows/modules/initiative_closeout.md",
       "kind": "file",
       "surface_kind": "workflow_module",
-      "summary": "Workflow module for applying terminal closeout state to traced initiatives and their mirrored planning trackers.",
+      "summary": "Workflow module for applying terminal closeout state to traced initiatives and their mirrored initiative and family tracking surfaces.",
       "parent_path": "workflows/modules/"
     },
     {

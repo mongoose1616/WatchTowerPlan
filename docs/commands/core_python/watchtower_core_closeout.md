@@ -39,13 +39,16 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints closeout-specific help and exits successfully.
-- The current leaf command is `initiative`, which applies terminal initiative state to the traceability index and regenerates the mirrored planning trackers in write mode.
+- The current leaf command is `initiative`, which applies terminal initiative state to the traceability index and regenerates the mirrored initiative and family tracking surfaces in write mode.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core closeout initiative` | Applies terminal closeout state for one traced initiative. |
+| `watchtower-core query initiatives` | Reads the initiative view that the closeout command also refreshes in write mode. |
 | `watchtower-core query trace` | Reads the traceability entry that the closeout command updates. |
+| `watchtower-core sync initiative-index` | Rebuilds one of the initiative coordination surfaces the closeout command also updates in write mode. |
+| `watchtower-core sync initiative-tracking` | Rebuilds the human-readable initiative tracker the closeout command also updates in write mode. |
 | `watchtower-core sync prd-tracking` | Rebuilds one of the human trackers the closeout command also updates in write mode. |
 | `watchtower-core sync decision-tracking` | Rebuilds one of the human trackers the closeout command also updates in write mode. |
 | `watchtower-core sync design-tracking` | Rebuilds one of the human trackers the closeout command also updates in write mode. |
@@ -55,4 +58,4 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 - `core/python/src/watchtower_core/closeout/`
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-10T02:10:18Z`

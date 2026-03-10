@@ -42,7 +42,12 @@ def test_control_plane_loader_reads_command_index() -> None:
     query_standards = command_index.get("command.watchtower_core.query.standards")
     query_acceptance = command_index.get("command.watchtower_core.query.acceptance")
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
+    query_initiatives = command_index.get("command.watchtower_core.query.initiatives")
     query_trace = command_index.get("command.watchtower_core.query.trace")
+    sync_initiative_index = command_index.get("command.watchtower_core.sync.initiative_index")
+    sync_initiative_tracking = command_index.get(
+        "command.watchtower_core.sync.initiative_tracking"
+    )
     sync_standard_index = command_index.get("command.watchtower_core.sync.standard_index")
     sync_workflow_index = command_index.get("command.watchtower_core.sync.workflow_index")
     sync_traceability = command_index.get("command.watchtower_core.sync.traceability_index")
@@ -84,6 +89,11 @@ def test_control_plane_loader_reads_command_index() -> None:
         query_evidence.doc_path
         == "docs/commands/core_python/watchtower_core_query_evidence.md"
     )
+    assert query_initiatives.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_initiatives.doc_path
+        == "docs/commands/core_python/watchtower_core_query_initiatives.md"
+    )
     query_references = command_index.get("command.watchtower_core.query.references")
     assert query_trace.parent_command_id == "command.watchtower_core.query"
     assert query_references.parent_command_id == "command.watchtower_core.query"
@@ -102,6 +112,16 @@ def test_control_plane_loader_reads_command_index() -> None:
     sync_all = command_index.get("command.watchtower_core.sync.all")
     assert sync_all.parent_command_id == "command.watchtower_core.sync"
     assert sync_all.doc_path == "docs/commands/core_python/watchtower_core_sync_all.md"
+    assert sync_initiative_index.parent_command_id == "command.watchtower_core.sync"
+    assert (
+        sync_initiative_index.doc_path
+        == "docs/commands/core_python/watchtower_core_sync_initiative_index.md"
+    )
+    assert sync_initiative_tracking.parent_command_id == "command.watchtower_core.sync"
+    assert (
+        sync_initiative_tracking.doc_path
+        == "docs/commands/core_python/watchtower_core_sync_initiative_tracking.md"
+    )
     assert sync_foundation_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_foundation_index.doc_path
@@ -158,6 +178,26 @@ def test_control_plane_loader_reads_traceability_index() -> None:
 
     assert trace.trace_id == "trace.core_python_foundation"
     assert "design.features.schema_resolution_and_index_search" in trace.design_ids
+
+
+def test_control_plane_loader_reads_initiative_index() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    initiative_index = loader.load_initiative_index()
+    entry = initiative_index.get("trace.core_python_foundation")
+
+    assert entry.trace_id == "trace.core_python_foundation"
+    assert entry.current_phase in {
+        "prd",
+        "design",
+        "implementation_planning",
+        "execution",
+        "validation",
+        "closeout",
+        "closed",
+    }
+    assert entry.next_surface_path
+    assert entry.key_surface_path
 
 
 def test_control_plane_loader_reads_planning_indexes() -> None:

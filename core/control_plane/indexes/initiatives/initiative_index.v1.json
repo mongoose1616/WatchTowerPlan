@@ -1,0 +1,243 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1",
+  "id": "index.initiatives",
+  "title": "Initiative Index",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.acceptance_evidence_reconciliation",
+      "title": "Acceptance and Evidence Reconciliation Design",
+      "summary": "Defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "design",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+      "next_action": "Create or update an implementation plan so the approved design becomes executable work.",
+      "next_surface_path": "docs/planning/design/implementation/",
+      "design_ids": [
+        "design.features.acceptance_evidence_reconciliation"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md"
+      ],
+      "tags": [
+        "acceptance",
+        "design",
+        "evidence",
+        "reconciliation",
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.command_documentation_and_lookup",
+      "title": "Command Documentation and Lookup Design",
+      "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "design",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/command_documentation_and_lookup.md",
+      "next_action": "Create or update an implementation plan so the approved design becomes executable work.",
+      "next_surface_path": "docs/planning/design/implementation/",
+      "design_ids": [
+        "design.features.command_documentation_and_lookup"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/",
+        "docs/planning/design/features/command_documentation_and_lookup.md"
+      ],
+      "tags": [
+        "commands",
+        "design",
+        "lookup",
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.core_python_foundation",
+      "title": "Core Python Foundation PRD",
+      "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-09T23:02:08Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/core_python_foundation.md",
+      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "prd_ids": [
+        "prd.core_python_foundation"
+      ],
+      "decision_ids": [
+        "decision.core_python_workspace_root"
+      ],
+      "design_ids": [
+        "design.features.core_python_workspace_and_harness",
+        "design.features.python_validator_execution",
+        "design.features.schema_resolution_and_index_search"
+      ],
+      "plan_ids": [
+        "design.implementation.control_plane_loaders_and_schema_store"
+      ],
+      "acceptance_ids": [
+        "ac.core_python_foundation.001",
+        "ac.core_python_foundation.002",
+        "ac.core_python_foundation.003",
+        "ac.core_python_foundation.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_python_foundation"
+      ],
+      "evidence_ids": [
+        "evidence.core_python_foundation.traceability_baseline"
+      ],
+      "related_paths": [
+        "core/README.md",
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/decisions/decision_index.v1.json",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+        "core/control_plane/indexes/prds/prd_index.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/schemas/artifacts/",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/decisions/core_python_workspace_root.md",
+        "docs/planning/design/",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "docs/planning/prds/core_python_foundation.md"
+      ],
+      "tags": [
+        "control_plane",
+        "decision",
+        "design",
+        "implementation",
+        "planning",
+        "python",
+        "query",
+        "schema",
+        "schema_store",
+        "traceability",
+        "validation",
+        "workspace"
+      ],
+      "notes": "First executable slice for the core Python helper and harness layer."
+    },
+    {
+      "trace_id": "trace.github_collaboration",
+      "title": "GitHub Collaboration Scaffolding",
+      "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "design",
+      "updated_at": "2026-03-10T00:13:52Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
+      "next_action": "Create or update an implementation plan so the approved design becomes executable work.",
+      "next_surface_path": "docs/planning/design/implementation/",
+      "design_ids": [
+        "design.features.github_collaboration_scaffolding"
+      ],
+      "related_paths": [
+        ".github/",
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/tasks/"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.initiative_closeout",
+      "title": "Initiative Closeout and Planning Trackers",
+      "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "design",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+      "next_action": "Create or update an implementation plan so the approved design becomes executable work.",
+      "next_surface_path": "docs/planning/design/implementation/",
+      "design_ids": [
+        "design.features.initiative_closeout_and_planning_trackers"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/prds/prd_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.local_task_tracking",
+      "title": "GitHub Task Push Sync",
+      "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-09T18:25:06Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/github_task_push_sync.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/design/features/github_task_push_sync.md",
+      "design_ids": [
+        "design.features.github_task_push_sync",
+        "design.features.local_task_tracking_and_github_sync"
+      ],
+      "task_ids": [
+        "task.local_task_tracking.github_sync.001",
+        "task.local_task_tracking_foundation.001"
+      ],
+      "closed_at": "2026-03-09T16:14:50Z",
+      "closure_reason": "Delivered and validated",
+      "related_paths": [
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/github_task_sync.md",
+        "docs/planning/tasks/closed/local_task_tracking_foundation.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    }
+  ]
+}

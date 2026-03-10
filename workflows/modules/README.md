@@ -25,7 +25,7 @@
 | `workflows/modules/foundations_context_review.md` | Shared workflow module for loading repository foundation documents during planning and design work. |
 | `workflows/modules/github_task_sync.md` | Workflow module for pushing local-first task records to GitHub issues and optional project items while preserving local task authority. |
 | `workflows/modules/implementation_planning.md` | Workflow module for turning a PRD into an implementation plan. |
-| `workflows/modules/initiative_closeout.md` | Workflow module for applying terminal closeout state to traced initiatives and their mirrored planning trackers. |
+| `workflows/modules/initiative_closeout.md` | Workflow module for applying terminal closeout state to traced initiatives and their mirrored initiative and family tracking surfaces. |
 | `workflows/modules/internal_context_review.md` | Shared workflow module for identifying the internal standards, templates, workflows, and canonical docs that govern a task. |
 | `workflows/modules/prd_generation.md` | Workflow module for planning and generating a PRD. |
 | `workflows/modules/reference_distillation.md` | Workflow module for distilling external source material into stable local guidance. |

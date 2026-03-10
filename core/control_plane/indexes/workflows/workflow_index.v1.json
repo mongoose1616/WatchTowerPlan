@@ -269,7 +269,7 @@
     {
       "workflow_id": "workflow.initiative_closeout",
       "title": "Initiative Closeout Workflow",
-      "summary": "Use this workflow to mark one traced initiative as completed, superseded, cancelled, or abandoned while keeping the traceability index and human planning trackers aligned.",
+      "summary": "Use this workflow to mark one traced initiative as completed, superseded, cancelled, or abandoned while keeping the traceability index, initiative coordination view, and mirrored family trackers aligned.",
       "status": "active",
       "doc_path": "workflows/modules/initiative_closeout.md",
       "uses_internal_references": true,
@@ -277,11 +277,13 @@
       "related_paths": [
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md"
       ]
     },
@@ -375,7 +377,7 @@
     {
       "workflow_id": "workflow.task_lifecycle_management",
       "title": "Task Lifecycle Management Workflow",
-      "summary": "Use this workflow to create, update, split, unblock, or close local task records while keeping the derived task tracker, task index, and traced planning joins aligned.",
+      "summary": "Use this workflow to create, update, split, unblock, or close local task records while keeping the derived task tracker, task index, initiative coordination view, and traced planning joins aligned.",
       "status": "active",
       "doc_path": "workflows/modules/task_lifecycle_management.md",
       "uses_internal_references": true,
@@ -384,13 +386,15 @@
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
-        "docs/standards/governance/traceability_standard.md"
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
-        "docs/standards/governance/traceability_standard.md"
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
       ]
     },
     {
@@ -404,12 +408,14 @@
       "related_paths": [
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
         "workflows/modules/task_lifecycle_management.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
         "workflows/modules/task_lifecycle_management.md"
       ]
@@ -426,20 +432,24 @@
     {
       "workflow_id": "workflow.traceability_reconciliation",
       "title": "Traceability Reconciliation Workflow",
-      "summary": "Use this workflow to reconcile traced planning and governance artifacts with their companion human trackers, family-specific indexes, and unified traceability joins so durable links do not drift silently.",
+      "summary": "Use this workflow to reconcile traced planning and governance artifacts with their companion human trackers, initiative coordination views, family-specific indexes, and unified traceability joins so durable links do not drift silently.",
       "status": "active",
       "doc_path": "workflows/modules/traceability_reconciliation.md",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
         "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
-        "docs/commands/core_python/watchtower_core_sync_traceability_index.md"
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/commands/core_python/watchtower_core_sync.md"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
-        "docs/commands/core_python/watchtower_core_sync_traceability_index.md"
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/commands/core_python/watchtower_core_sync.md"
       ]
     }
   ]

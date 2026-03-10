@@ -24,6 +24,7 @@
 | `docs/commands/core_python/watchtower_core_query_acceptance.md` | Human-readable command page for the watchtower-core query acceptance command. |
 | `docs/commands/core_python/watchtower_core_query_evidence.md` | Human-readable command page for the watchtower-core query evidence command. |
 | `docs/commands/core_python/watchtower_core_query_tasks.md` | Human-readable command page for the watchtower-core query tasks command. |
+| `docs/commands/core_python/watchtower_core_query_initiatives.md` | Human-readable command page for the watchtower-core query initiatives command. |
 | `docs/commands/core_python/watchtower_core_query_trace.md` | Human-readable command page for the watchtower-core query trace command. |
 | `docs/commands/core_python/watchtower_core_sync.md` | Human-readable command page for the watchtower-core sync command group. |
 | `docs/commands/core_python/watchtower_core_sync_all.md` | Human-readable command page for the watchtower-core sync all command. |
@@ -38,6 +39,8 @@
 | `docs/commands/core_python/watchtower_core_sync_decision_tracking.md` | Human-readable command page for the watchtower-core sync decision-tracking command. |
 | `docs/commands/core_python/watchtower_core_sync_design_document_index.md` | Human-readable command page for the watchtower-core sync design-document-index command. |
 | `docs/commands/core_python/watchtower_core_sync_design_tracking.md` | Human-readable command page for the watchtower-core sync design-tracking command. |
+| `docs/commands/core_python/watchtower_core_sync_initiative_index.md` | Human-readable command page for the watchtower-core sync initiative-index command. |
+| `docs/commands/core_python/watchtower_core_sync_initiative_tracking.md` | Human-readable command page for the watchtower-core sync initiative-tracking command. |
 | `docs/commands/core_python/watchtower_core_sync_task_index.md` | Human-readable command page for the watchtower-core sync task-index command. |
 | `docs/commands/core_python/watchtower_core_sync_task_tracking.md` | Human-readable command page for the watchtower-core sync task-tracking command. |
 | `docs/commands/core_python/watchtower_core_sync_github_tasks.md` | Human-readable command page for the watchtower-core sync github-tasks command. |

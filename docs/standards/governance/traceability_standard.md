@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T01:48:35Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -27,6 +27,7 @@ This standard defines the repository's baseline traceability model so product in
 ## Scope
 - Applies to durable planning and governance artifacts such as PRDs, decision records, feature designs, implementation plans, task records, and their machine-readable indexes.
 - Applies to acceptance contracts, validation-evidence artifacts, and the unified traceability index when those families participate in a traced initiative.
+- Applies to derived initiative coordination views when they project from traceability and current planning or task state.
 - Defines the baseline trace chain, required identifiers, and synchronization expectations across human-readable and machine-readable tracking surfaces.
 
 ## Use When
@@ -62,6 +63,7 @@ This standard defines the repository's baseline traceability model so product in
   - validation evidence
   - closeout artifacts when that family is established
 - Use the unified traceability index as the machine-readable join layer for the full traced chain.
+- Use the initiative index and initiative tracker as derived coordination projections over the traceability layer plus current planning and task state.
 - Use `initiative_status` on the traceability entry for initiative outcome instead of overloading artifact lifecycle `status`.
 - Keep family-specific indexes as their local lookup surfaces and keep them aligned with the unified traceability index.
 - A PRD should publish:
@@ -116,7 +118,8 @@ This standard defines the repository's baseline traceability model so product in
 4. Add or refresh the machine-readable index entry for that family.
 5. Update upstream or downstream artifacts when the change introduces or invalidates a trace link.
 6. Refresh the unified traceability index when the change affects a traced initiative.
-7. Record missing downstream trace work explicitly when the full chain cannot be completed in the same change.
+7. Refresh the derived initiative coordination surfaces when the change affects initiative phase, ownership, or next-step projection materially.
+8. Record missing downstream trace work explicitly when the full chain cannot be completed in the same change.
 
 ## Examples
 - A PRD should name requirement IDs so a later implementation plan or validation artifact can point back to them.
@@ -136,8 +139,9 @@ This standard defines the repository's baseline traceability model so product in
 
 ## References
 - [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
+- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
 - [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T01:48:35Z`

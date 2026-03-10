@@ -1,7 +1,7 @@
 # Task Lifecycle Management Workflow
 
 ## Purpose
-Use this workflow to create, update, split, unblock, or close local task records while keeping the derived task tracker, task index, and traced planning joins aligned.
+Use this workflow to create, update, split, unblock, or close local task records while keeping the derived task tracker, task index, initiative coordination view, and traced planning joins aligned.
 
 ## Use When
 - Engineer-sized execution work needs a new tracked task or an existing task needs a material state change.
@@ -12,13 +12,14 @@ Use this workflow to create, update, split, unblock, or close local task records
 - Scoped task-management request or active work item
 - Current local task corpus under `docs/planning/tasks/`
 - Any linked `trace_id`, planning IDs, repository paths, or existing blocker or dependency IDs
-- Current task tracker, task index, and traceability surfaces when the task is traced
+- Current task tracker, task index, initiative tracker or index, and traceability surfaces when the task is traced
 
 ## Additional Files to Load
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the local task authority model, task-state vocabulary, and same-change rebuild expectations.
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): defines the required task-record shape and placement rules.
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable companion surface that must stay aligned with task records.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced tasks must preserve explicit links back to planning and forward to derived trace joins.
+- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): traced task changes may shift the derived initiative phase, owner, blocker state, or next-step projection.
 
 ## Workflow
 1. Confirm the task-management boundary.
@@ -34,6 +35,7 @@ Use this workflow to create, update, split, unblock, or close local task records
 4. Refresh the derived task surfaces.
    - Rebuild the human-readable task tracker and the machine-readable task index in the same change set.
    - Refresh the traceability index when the task carries a `trace_id` or when its traced links changed materially.
+   - Refresh the initiative index and initiative tracker when the task carries a `trace_id` and the task change affects current phase, active ownership, blocker state, or next-step projection.
 5. Validate the resulting lifecycle state.
    - Check that task placement matches the task-status class and that referenced blocker or dependency IDs resolve.
    - Record the next expected action, follow-up, or handoff explicitly if the task is not terminal.
@@ -41,14 +43,16 @@ Use this workflow to create, update, split, unblock, or close local task records
 ## Data Structure
 - Authoritative task record under `docs/planning/tasks/open/` or `docs/planning/tasks/closed/`
 - Derived task tracker and task index
+- Derived initiative coordination surfaces when the task belongs to a traced initiative
 - Optional traceability join updates when the task belongs to a traced initiative
 
 ## Outputs
 - Created or updated task record files
 - Updated `docs/planning/tasks/task_tracking.md` and `core/control_plane/indexes/tasks/task_index.v1.json`
-- Updated `core/control_plane/indexes/traceability/traceability_index.v1.json` when traced task state changed
+- Updated `docs/planning/initiatives/initiative_tracking.md` and `core/control_plane/indexes/initiatives/initiative_index.v1.json` when traced task state changed
+- Updated `core/control_plane/indexes/traceability/traceability_index.v1.json` when traced task links changed materially
 
 ## Done When
 - The authoritative task record reflects the intended lifecycle state clearly.
-- The derived task tracker and task index agree with the current task corpus.
+- The derived task tracker, task index, and initiative view agree with the current task corpus.
 - Any traced task changes have an explicit traceability outcome or an explicit recorded exception.
