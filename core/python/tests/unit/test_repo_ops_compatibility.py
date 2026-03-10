@@ -16,8 +16,30 @@ from watchtower_core.repo_ops.query.evidence import ValidationEvidenceQueryServi
 from watchtower_core.repo_ops.query.initiatives import InitiativeQueryService
 from watchtower_core.repo_ops.query.tasks import TaskQueryService
 from watchtower_core.repo_ops.query.traceability import TraceabilityQueryService
+from watchtower_core.repo_ops.sync import (
+    AllSyncService,
+    CommandIndexSyncService,
+    GitHubTaskSyncService,
+    TaskTrackingSyncService,
+    TraceabilityIndexSyncService,
+)
 from watchtower_core.repo_ops.validation.document_semantics import (
     DocumentSemanticsValidationService,
+)
+from watchtower_core.sync import (
+    AllSyncService as LegacyAllSyncService,
+)
+from watchtower_core.sync import (
+    CommandIndexSyncService as LegacyCommandIndexSyncService,
+)
+from watchtower_core.sync import (
+    GitHubTaskSyncService as LegacyGitHubTaskSyncService,
+)
+from watchtower_core.sync import (
+    TaskTrackingSyncService as LegacyTaskTrackingSyncService,
+)
+from watchtower_core.sync import (
+    TraceabilityIndexSyncService as LegacyTraceabilityIndexSyncService,
 )
 from watchtower_core.validation.document_semantics import (
     DocumentSemanticsValidationService as LegacyDocumentSemanticsValidationService,
@@ -34,3 +56,11 @@ def test_repo_ops_query_services_remain_available_via_compatibility_wrappers() -
 
 def test_repo_ops_document_semantics_service_remains_available_via_compatibility_wrapper() -> None:
     assert LegacyDocumentSemanticsValidationService is DocumentSemanticsValidationService
+
+
+def test_repo_ops_sync_services_remain_available_via_compatibility_wrappers() -> None:
+    assert LegacyAllSyncService is AllSyncService
+    assert LegacyCommandIndexSyncService is CommandIndexSyncService
+    assert LegacyGitHubTaskSyncService is GitHubTaskSyncService
+    assert LegacyTaskTrackingSyncService is TaskTrackingSyncService
+    assert LegacyTraceabilityIndexSyncService is TraceabilityIndexSyncService

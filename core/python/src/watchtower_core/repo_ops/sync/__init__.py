@@ -1,4 +1,4 @@
-"""Derived-artifact refresh and materialization helpers for governed control-plane surfaces."""
+"""Repository-specific sync services."""
 
 from __future__ import annotations
 
