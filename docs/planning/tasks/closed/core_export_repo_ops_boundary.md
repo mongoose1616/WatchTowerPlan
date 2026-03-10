@@ -5,11 +5,11 @@ title: "Isolate repo-ops from reusable core"
 summary: "Move repository-specific query, sync, validation, and planning-document semantics into explicit repo-ops surfaces so reusable layers stop depending on WatchTowerPlan-only behavior."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "feature"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T04:28:34Z"
+updated_at: "2026-03-10T05:45:03Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -47,4 +47,4 @@ Move repository-specific query, sync, validation, and planning-document semantic
 - [core_python_foundation.md](/home/j/WatchTowerPlan/docs/planning/prds/core_python_foundation.md)
 
 ## Updated At
-- `2026-03-10T04:28:34Z`
+- `2026-03-10T05:45:03Z`
