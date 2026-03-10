@@ -83,7 +83,10 @@
         "kind",
         "surface_kind",
         "summary",
-        "parent_path"
+        "parent_path",
+        "maturity",
+        "priority",
+        "audience_hint"
       ],
       "properties": {
         "path": {
@@ -111,6 +114,33 @@
         "parent_path": {
           "$ref": "#/$defs/pathString",
           "description": "Repository-relative parent path or . for root-level entries."
+        },
+        "maturity": {
+          "type": "string",
+          "enum": [
+            "authoritative",
+            "supporting",
+            "scaffold"
+          ],
+          "description": "Retrieval hint describing whether the path is an authoritative entrypoint, a supporting surface, or a scaffold boundary."
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ],
+          "description": "Retrieval hint used to rank higher-signal entrypoints ahead of lower-value scaffolds."
+        },
+        "audience_hint": {
+          "type": "string",
+          "enum": [
+            "shared",
+            "automation",
+            "maintainer"
+          ],
+          "description": "Primary audience hint for the indexed path."
         },
         "aliases": {
           "$ref": "#/$defs/stringList",

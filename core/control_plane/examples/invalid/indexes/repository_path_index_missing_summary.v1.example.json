@@ -10,7 +10,10 @@
       "path": "README.md",
       "kind": "file",
       "surface_kind": "root_readme",
-      "parent_path": "."
+      "parent_path": ".",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
     }
   ]
 }

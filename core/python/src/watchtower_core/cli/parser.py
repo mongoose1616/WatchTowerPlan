@@ -36,6 +36,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync all",
+            "uv run watchtower-core sync coordination",
             "uv run watchtower-core sync foundation-index",
             "uv run watchtower-core sync initiative-index",
             "uv run watchtower-core sync initiative-tracking",

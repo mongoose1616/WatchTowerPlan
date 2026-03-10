@@ -37,8 +37,8 @@
       "validation_targets": [
         "core/python/src/watchtower_core/",
         "docs/planning/design/features/core_export_ready_architecture.md",
-        "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
-        "docs/planning/tasks/open/core_export_workspace_injection.md"
+        "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/closed/core_export_workspace_injection.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/control_plane/",
@@ -57,8 +57,8 @@
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/validation/",
-        "docs/planning/tasks/open/core_export_command_registry.md",
-        "docs/planning/tasks/open/core_export_sync_validation_registries.md"
+        "docs/planning/tasks/closed/core_export_command_registry.md",
+        "docs/planning/tasks/closed/core_export_sync_validation_registries.md"
       ],
       "related_paths": [
         "docs/commands/core_python/",
@@ -75,7 +75,7 @@
       "validation_targets": [
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
         "core/control_plane/indexes/workflows/workflow_index.v1.json",
-        "docs/planning/tasks/open/core_export_retrieval_and_coordination.md"
+        "docs/planning/tasks/closed/core_export_retrieval_and_coordination.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/query/",

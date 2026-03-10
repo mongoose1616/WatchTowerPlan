@@ -151,6 +151,9 @@ class RepositoryPathEntry:
     surface_kind: str
     summary: str
     parent_path: str
+    maturity: str = "supporting"
+    priority: str = "medium"
+    audience_hint: str = "shared"
     aliases: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
     related_paths: tuple[str, ...] = ()
@@ -163,6 +166,9 @@ class RepositoryPathEntry:
             surface_kind=document["surface_kind"],
             summary=document["summary"],
             parent_path=document["parent_path"],
+            maturity=document.get("maturity", "supporting"),
+            priority=document.get("priority", "medium"),
+            audience_hint=document.get("audience_hint", "shared"),
             aliases=tuple(document.get("aliases", ())),
             tags=tuple(document.get("tags", ())),
             related_paths=tuple(document.get("related_paths", ())),
@@ -845,6 +851,11 @@ class WorkflowIndexEntry:
     doc_path: str
     uses_internal_references: bool
     uses_external_references: bool
+    phase_type: str = "shared"
+    task_family: str = "workflow"
+    primary_risks: tuple[str, ...] = ()
+    trigger_tags: tuple[str, ...] = ()
+    companion_workflow_ids: tuple[str, ...] = ()
     related_paths: tuple[str, ...] = ()
     reference_doc_paths: tuple[str, ...] = ()
     internal_reference_paths: tuple[str, ...] = ()
@@ -861,8 +872,13 @@ class WorkflowIndexEntry:
             summary=document["summary"],
             status=document["status"],
             doc_path=document["doc_path"],
+            phase_type=document.get("phase_type", "shared"),
+            task_family=document.get("task_family", "workflow"),
             uses_internal_references=document["uses_internal_references"],
             uses_external_references=document["uses_external_references"],
+            primary_risks=tuple(document.get("primary_risks", ())),
+            trigger_tags=tuple(document.get("trigger_tags", ())),
+            companion_workflow_ids=tuple(document.get("companion_workflow_ids", ())),
             related_paths=tuple(document.get("related_paths", ())),
             reference_doc_paths=tuple(document.get("reference_doc_paths", ())),
             internal_reference_paths=tuple(document.get("internal_reference_paths", ())),

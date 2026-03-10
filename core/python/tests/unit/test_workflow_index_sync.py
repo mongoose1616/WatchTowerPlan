@@ -23,7 +23,12 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
     assert isinstance(entries, list)
     assert any(
         entry["workflow_id"] == "workflow.github_task_sync"
+        and entry["phase_type"] == "execution"
+        and entry["task_family"] == "github_integration"
         and entry["uses_internal_references"] is True
+        and "partial_update" in entry["primary_risks"]
+        and "sync" in entry["trigger_tags"]
+        and "workflow.task_lifecycle_management" in entry.get("companion_workflow_ids", [])
         and "docs/standards/governance/github_task_sync_standard.md"
         in entry.get("internal_reference_paths", [])
         for entry in entries

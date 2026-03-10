@@ -12,6 +12,9 @@
       "surface_kind": "root_readme",
       "summary": "Repository entrypoint and top-level orientation surface.",
       "parent_path": ".",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared",
       "aliases": [
         "repo root"
       ],
@@ -29,6 +32,9 @@
       "surface_kind": "documentation",
       "summary": "Documentation root for standards, references, designs, and templates.",
       "parent_path": ".",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared",
       "tags": [
         "docs"
       ],

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "repository_path_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T06:39:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -52,6 +52,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - Start with `entrypoints` unless a concrete retrieval need justifies the maintenance cost of a full-tree catalog.
 - Keep entry summaries concise and retrieval-oriented rather than copying long README prose.
 - Prefer deriving summaries and related-path hints from current repository documentation when that guidance exists.
+- Publish retrieval metadata that helps both humans and agents distinguish authoritative entrypoints from scaffolding or support surfaces.
 - Include optional aliases, tags, and related paths only when they materially improve lookup quality.
 - Exclude ignored caches, transient runtime state, tool output, and other non-governed filesystem noise from the canonical path index.
 - Do not let the path index silently replace `README.md` as the human-facing orientation layer.
@@ -77,6 +78,9 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 | `surface_kind` | Required | Short family label such as `workflow`, `standard`, `template`, `control_plane`, or `source`. |
 | `summary` | Required | Concise retrieval-oriented description of why the path matters. |
 | `parent_path` | Required | Repository-relative parent path or `.` for root-level entries. |
+| `maturity` | Required | Retrieval-oriented authority hint. Use `authoritative`, `supporting`, or `scaffold`. |
+| `priority` | Required | Retrieval-oriented ranking hint. Use `high`, `medium`, or `low`. |
+| `audience_hint` | Required | Retrieval-oriented audience hint. Use `shared`, `automation`, or `maintainer`. |
 | `aliases` | Optional | Short alternate terms that materially help retrieval. |
 | `tags` | Optional | Controlled or semi-controlled lookup terms when they improve query quality. |
 | `related_paths` | Optional | Other repository-relative paths strongly associated with the entry. |
@@ -97,6 +101,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - The path index should validate against its published schema.
 - Every entry should use repository-relative paths that currently exist in the repository.
 - `coverage_mode` should match the actual breadth of the artifact.
+- `maturity`, `priority`, and `audience_hint` should stay retrieval-oriented and consistent with the actual role of the indexed path.
 - Reviewers should reject entries that merely repeat long prose from README files without improving lookup.
 - Reviewers should reject path indexes that include ignored caches or transient runtime state as if they were governed surfaces.
 
@@ -117,4 +122,4 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - The repository path index exists to improve machine retrieval and path lookup, not to become a second prose documentation system.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T06:39:00Z`

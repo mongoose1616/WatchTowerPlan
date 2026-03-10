@@ -66,6 +66,8 @@ from watchtower_core.sync.workflow_index import (
 
 SyncServiceFactory = Callable[[ControlPlaneLoader], object]
 SyncTargetMode = Literal["document", "tracking"]
+SyncTargetGroup = Literal["coordination"]
+COORDINATION_SYNC_GROUP: SyncTargetGroup = "coordination"
 
 
 @dataclass(frozen=True, slots=True)
@@ -78,6 +80,7 @@ class SyncTargetSpec:
     relative_output_path: str
     service_factory: SyncServiceFactory
     record_count_attr: str | None = None
+    groups: tuple[SyncTargetGroup, ...] = ()
 
 
 SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
@@ -143,6 +146,7 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         artifact_kind="index",
         relative_output_path=TASK_INDEX_ARTIFACT_PATH,
         service_factory=TaskIndexSyncService,
+        groups=(COORDINATION_SYNC_GROUP,),
     ),
     SyncTargetSpec(
         target="traceability-index",
@@ -150,6 +154,7 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         artifact_kind="index",
         relative_output_path=TRACEABILITY_INDEX_ARTIFACT_PATH,
         service_factory=TraceabilityIndexSyncService,
+        groups=(COORDINATION_SYNC_GROUP,),
     ),
     SyncTargetSpec(
         target="initiative-index",
@@ -157,6 +162,7 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         artifact_kind="index",
         relative_output_path=INITIATIVE_INDEX_ARTIFACT_PATH,
         service_factory=InitiativeIndexSyncService,
+        groups=(COORDINATION_SYNC_GROUP,),
     ),
     SyncTargetSpec(
         target="prd-tracking",
@@ -188,6 +194,7 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         relative_output_path=TASK_TRACKING_DOCUMENT_PATH,
         service_factory=TaskTrackingSyncService,
         record_count_attr="task_count",
+        groups=(COORDINATION_SYNC_GROUP,),
     ),
     SyncTargetSpec(
         target="initiative-tracking",
@@ -196,6 +203,7 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         relative_output_path=INITIATIVE_TRACKING_DOCUMENT_PATH,
         service_factory=InitiativeTrackingSyncService,
         record_count_attr="initiative_count",
+        groups=(COORDINATION_SYNC_GROUP,),
     ),
     SyncTargetSpec(
         target="repository-paths",
@@ -207,4 +215,16 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
 )
 
 
-__all__ = ["SYNC_TARGET_SPECS", "SyncTargetSpec", "SyncTargetMode"]
+def sync_target_specs_for_group(group: SyncTargetGroup) -> tuple[SyncTargetSpec, ...]:
+    """Return sync targets that belong to one explicit orchestration group."""
+    return tuple(spec for spec in SYNC_TARGET_SPECS if group in spec.groups)
+
+
+__all__ = [
+    "COORDINATION_SYNC_GROUP",
+    "SYNC_TARGET_SPECS",
+    "SyncTargetGroup",
+    "SyncTargetMode",
+    "SyncTargetSpec",
+    "sync_target_specs_for_group",
+]

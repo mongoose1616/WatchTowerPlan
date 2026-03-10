@@ -9,8 +9,19 @@
       "title": "Code Validation Workflow",
       "status": "active",
       "doc_path": "workflows/modules/code_validation.md",
+      "phase_type": "validation",
+      "task_family": "engineering_validation",
       "uses_internal_references": true,
-      "uses_external_references": false
+      "uses_external_references": false,
+      "primary_risks": [
+        "unverified_change",
+        "false_confidence"
+      ],
+      "trigger_tags": [
+        "validate",
+        "test",
+        "lint"
+      ]
     }
   ]
 }

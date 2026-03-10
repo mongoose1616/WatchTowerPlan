@@ -87,8 +87,12 @@
         "summary",
         "status",
         "doc_path",
+        "phase_type",
+        "task_family",
         "uses_internal_references",
-        "uses_external_references"
+        "uses_external_references",
+        "primary_risks",
+        "trigger_tags"
       ],
       "properties": {
         "workflow_id": {
@@ -108,11 +112,44 @@
         "doc_path": {
           "$ref": "#/$defs/docPath"
         },
+        "phase_type": {
+          "type": "string",
+          "enum": [
+            "shared",
+            "scoping",
+            "inspection",
+            "research",
+            "planning",
+            "execution",
+            "review",
+            "validation",
+            "reconciliation",
+            "closeout"
+          ]
+        },
+        "task_family": {
+          "type": "string",
+          "minLength": 1
+        },
         "uses_internal_references": {
           "type": "boolean"
         },
         "uses_external_references": {
           "type": "boolean"
+        },
+        "primary_risks": {
+          "$ref": "#/$defs/stringList"
+        },
+        "trigger_tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "companion_workflow_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/idPattern"
+          }
         },
         "related_paths": {
           "$ref": "#/$defs/stringList"

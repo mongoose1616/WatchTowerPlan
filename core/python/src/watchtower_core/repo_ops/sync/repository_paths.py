@@ -6,8 +6,9 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import RepositoryPathEntry
+from watchtower_core.control_plane.models import RepositoryPathEntry, RepositoryPathIndex
 from watchtower_core.control_plane.paths import discover_repo_root
 
 REPOSITORY_PATH_INDEX_ARTIFACT_PATH = (
@@ -137,6 +138,52 @@ def _surface_kind(relative_path: str, kind: str) -> str:
     return "repository_surface" if kind == "directory" else "repository_file"
 
 
+def _maturity_for_surface_kind(surface_kind: str) -> str:
+    if surface_kind == "instruction":
+        return "scaffold"
+    if surface_kind in {
+        "routing_table",
+        "workflow_module",
+        "command_doc",
+        "prd",
+        "decision_record",
+        "feature_design",
+        "implementation_plan",
+        "reference_doc",
+        "standard_doc",
+        "foundation_doc",
+        "python_source",
+        "python_source_file",
+        "control_plane_schema",
+        "control_plane_registry",
+        "control_plane_contract",
+        "control_plane_policy",
+        "control_plane_index",
+    }:
+        return "authoritative"
+    return "supporting"
+
+
+def _priority_for_maturity(maturity: str) -> str:
+    if maturity == "authoritative":
+        return "high"
+    if maturity == "scaffold":
+        return "low"
+    return "medium"
+
+
+def _audience_hint(relative_path: str, surface_kind: str) -> str:
+    if surface_kind in {"instruction", "routing_table", "workflow_module"}:
+        return "automation"
+    if relative_path.startswith("core/python/src/") or relative_path.startswith(
+        "core/python/tests/"
+    ):
+        return "maintainer"
+    if relative_path.startswith("core/control_plane/"):
+        return "maintainer"
+    return "shared"
+
+
 def _entry_to_document(entry: RepositoryPathEntry) -> dict[str, object]:
     document: dict[str, object] = {
         "path": entry.path,
@@ -144,6 +191,9 @@ def _entry_to_document(entry: RepositoryPathEntry) -> dict[str, object]:
         "surface_kind": entry.surface_kind,
         "summary": entry.summary,
         "parent_path": entry.parent_path,
+        "maturity": entry.maturity,
+        "priority": entry.priority,
+        "audience_hint": entry.audience_hint,
     }
     if entry.aliases:
         document["aliases"] = list(entry.aliases)
@@ -166,8 +216,7 @@ class RepositoryPathIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
     def build_document(self) -> dict[str, object]:
-        existing_index = self._loader.load_repository_path_index()
-        existing_entries = {entry.path: entry for entry in existing_index.entries}
+        existing_entries = _load_existing_entries(self._loader)
         derived_entries: dict[str, RepositoryPathEntry] = {}
 
         for readme_path in sorted(self._repo_root.rglob("README.md")):
@@ -180,13 +229,18 @@ class RepositoryPathIndexSyncService:
                     continue
 
                 kind = _kind_for_path(self._repo_root, row.path)
+                surface_kind = _surface_kind(row.path, kind)
                 current = existing_entries.get(row.path)
+                maturity = _maturity_for_surface_kind(surface_kind)
                 derived_entries[row.path] = RepositoryPathEntry(
                     path=row.path,
                     kind=kind,
-                    surface_kind=_surface_kind(row.path, kind),
+                    surface_kind=surface_kind,
                     summary=row.summary,
                     parent_path=_parent_path(row.path),
+                    maturity=maturity,
+                    priority=_priority_for_maturity(maturity),
+                    audience_hint=_audience_hint(row.path, surface_kind),
                     aliases=current.aliases if current is not None else (),
                     tags=current.tags if current is not None else (),
                     related_paths=current.related_paths if current is not None else (),
@@ -211,3 +265,13 @@ class RepositoryPathIndexSyncService:
         target = destination or (self._repo_root / REPOSITORY_PATH_INDEX_ARTIFACT_PATH)
         target.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
         return target
+
+
+def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, RepositoryPathEntry]:
+    try:
+        document = loader.load_json_object(REPOSITORY_PATH_INDEX_ARTIFACT_PATH)
+    except ArtifactLoadError:
+        return {}
+
+    existing_index = RepositoryPathIndex.from_document(document)
+    return {entry.path: entry for entry in existing_index.entries}

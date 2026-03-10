@@ -48,6 +48,7 @@
 - `uv run watchtower-core query initiatives --current-phase execution`
 - `uv run watchtower-core sync prd-index`
 - `uv run watchtower-core sync all`
+- `uv run watchtower-core sync coordination`
 - `uv run watchtower-core sync foundation-index`
 - `uv run watchtower-core sync standard-index`
 - `uv run watchtower-core sync workflow-index`
@@ -113,6 +114,7 @@
 - `docs/commands/core_python/watchtower_core_closeout_initiative.md`
 - `docs/commands/core_python/watchtower_core_sync.md`
 - `docs/commands/core_python/watchtower_core_sync_all.md`
+- `docs/commands/core_python/watchtower_core_sync_coordination.md`
 - `docs/commands/core_python/watchtower_core_sync_command_index.md`
 - `docs/commands/core_python/watchtower_core_sync_foundation_index.md`
 - `docs/commands/core_python/watchtower_core_sync_reference_index.md`

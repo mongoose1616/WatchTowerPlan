@@ -5,7 +5,7 @@
   "status": "active",
   "trace_id": "trace.core_export_readiness_and_optimization",
   "overall_result": "warning",
-  "recorded_at": "2026-03-10T04:44:27Z",
+  "recorded_at": "2026-03-10T06:26:48Z",
   "source_prd_ids": [
     "prd.core_export_readiness_and_optimization"
   ],
@@ -28,12 +28,12 @@
         "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/implementation/core_export_readiness_execution.md",
         "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
-        "docs/planning/tasks/open/core_export_command_registry.md",
+        "docs/planning/tasks/closed/core_export_command_registry.md",
         "docs/planning/tasks/open/core_export_pack_interfaces.md",
-        "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
-        "docs/planning/tasks/open/core_export_retrieval_and_coordination.md",
-        "docs/planning/tasks/open/core_export_sync_validation_registries.md",
-        "docs/planning/tasks/open/core_export_workspace_injection.md",
+        "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/closed/core_export_retrieval_and_coordination.md",
+        "docs/planning/tasks/closed/core_export_sync_validation_registries.md",
+        "docs/planning/tasks/closed/core_export_workspace_injection.md",
         "docs/standards/engineering/git_workflow_standard.md"
       ],
       "subject_ids": [
@@ -50,11 +50,11 @@
     {
       "check_id": "check.core_export_readiness_and_optimization.export_boundary_plan",
       "title": "Export boundary architecture captured",
-      "result": "warning",
+      "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/core_export_ready_architecture.md",
-        "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
-        "docs/planning/tasks/open/core_export_workspace_injection.md"
+        "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/closed/core_export_workspace_injection.md"
       ],
       "subject_ids": [
         "design.features.core_export_ready_architecture",
@@ -64,16 +64,16 @@
       "acceptance_ids": [
         "ac.core_export_readiness_and_optimization.002"
       ],
-      "notes": "The reusable-versus-repo-ops split and injected workspace boundaries are designed and task-scoped, but package implementation has not started yet."
+      "notes": "The reusable-versus-repo-ops split and injected workspace boundaries are now implemented, tested, and reflected in the active package layout."
     },
     {
       "check_id": "check.core_export_readiness_and_optimization.registry_authority_plan",
       "title": "Registry-backed authority work scoped",
-      "result": "warning",
+      "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/core_export_ready_architecture.md",
-        "docs/planning/tasks/open/core_export_command_registry.md",
-        "docs/planning/tasks/open/core_export_sync_validation_registries.md"
+        "docs/planning/tasks/closed/core_export_command_registry.md",
+        "docs/planning/tasks/closed/core_export_sync_validation_registries.md"
       ],
       "subject_ids": [
         "design.features.core_export_ready_architecture",
@@ -83,15 +83,15 @@
       "acceptance_ids": [
         "ac.core_export_readiness_and_optimization.003"
       ],
-      "notes": "The command, sync, and validation registry changes are defined as the first implementation slices but are still pending package changes."
+      "notes": "The command, sync, and validation registry changes are implemented and validated in the package and companion command surfaces."
     },
     {
       "check_id": "check.core_export_readiness_and_optimization.retrieval_plan",
       "title": "Retrieval metadata work scoped",
-      "result": "warning",
+      "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/core_export_ready_architecture.md",
-        "docs/planning/tasks/open/core_export_retrieval_and_coordination.md"
+        "docs/planning/tasks/closed/core_export_retrieval_and_coordination.md"
       ],
       "subject_ids": [
         "design.features.core_export_ready_architecture",
@@ -100,7 +100,7 @@
       "acceptance_ids": [
         "ac.core_export_readiness_and_optimization.004"
       ],
-      "notes": "The additional repository-path and workflow routing metadata is planned, but the indexes and ranking logic have not been updated yet."
+      "notes": "The repository-path and workflow indexes now publish retrieval metadata, and the query and sync surfaces expose the new coordination-oriented filters and rebuild path."
     },
     {
       "check_id": "check.core_export_readiness_and_optimization.pack_contract_plan",
@@ -163,5 +163,5 @@
     "docs/planning/tasks/task_tracking.md",
     "docs/standards/engineering/git_workflow_standard.md"
   ],
-  "notes": "Planning-baseline evidence recorded at initiative bootstrap. Passed checks cover the current planning chain, workspace validation baseline, and scope guardrails. Warning checks mark implementation work that remains open."
+  "notes": "Planning-baseline evidence updated after the boundary, registry, workspace-injection, and retrieval slices landed. The remaining warning check tracks the still-open generic pack-facing interface work."
 }

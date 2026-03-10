@@ -299,7 +299,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_paths.md",
-      "synopsis": "uv run watchtower-core query paths [-h] [--query QUERY] [--surface-kind SURFACE_KIND] [--tag TAG] [--parent-path PARENT_PATH] [--limit LIMIT] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core query paths [-h] [--query QUERY] [--surface-kind SURFACE_KIND] [--maturity MATURITY] [--priority PRIORITY] [--audience-hint AUDIENCE_HINT] [--tag TAG] [--parent-path PARENT_PATH] [--limit LIMIT] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/main.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
@@ -451,7 +451,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_workflows.md",
-      "synopsis": "uv run watchtower-core query workflows [-h] [--query QUERY] [--workflow-id WORKFLOW_ID] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--limit LIMIT] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core query workflows [-h] [--query QUERY] [--workflow-id WORKFLOW_ID] [--phase-type PHASE_TYPE] [--task-family TASK_FAMILY] [--trigger-tag TRIGGER_TAG] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--limit LIMIT] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/main.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
@@ -537,6 +537,30 @@
         "sync",
         "command",
         "index"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync.coordination",
+      "command": "watchtower-core sync coordination",
+      "summary": "Rebuild the deterministic coordination slice for task, traceability, and initiative surfaces in dependency order.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_coordination.md",
+      "synopsis": "uv run watchtower-core sync coordination [-h] [--write] [--output-dir OUTPUT_DIR] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/main.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "coordination"
       ]
     },
     {

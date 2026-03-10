@@ -69,7 +69,7 @@
       "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-10T05:58:19Z",
+      "updated_at": "2026-03-10T06:26:48Z",
       "prd_ids": [
         "prd.core_export_readiness_and_optimization"
       ],
@@ -147,11 +147,11 @@
         "docs/planning/tasks/closed/core_export_command_registry.md",
         "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
         "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/closed/core_export_retrieval_and_coordination.md",
         "docs/planning/tasks/closed/core_export_sync_validation_registries.md",
         "docs/planning/tasks/closed/core_export_workspace_injection.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/core_export_pack_interfaces.md",
-        "docs/planning/tasks/open/core_export_retrieval_and_coordination.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/engineering/",
@@ -161,7 +161,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning-baseline evidence recorded at initiative bootstrap. Passed checks cover the current planning chain, workspace validation baseline, and scope guardrails. Warning checks mark implementation work that remains open."
+      "notes": "Planning-baseline evidence updated after the boundary, registry, workspace-injection, and retrieval slices landed. The remaining warning check tracks the still-open generic pack-facing interface work."
     },
     {
       "trace_id": "trace.core_python_foundation",

@@ -15,6 +15,9 @@ class WorkflowSearchParams:
 
     query: str | None = None
     workflow_id: str | None = None
+    phase_type: str | None = None
+    task_family: str | None = None
+    trigger_tag: str | None = None
     related_path: str | None = None
     reference_path: str | None = None
     limit: int | None = None
@@ -30,6 +33,9 @@ class WorkflowQueryService:
         """Return workflow entries matching the requested filters."""
         index = self._loader.load_workflow_index()
         workflow_id = params.workflow_id.casefold() if params.workflow_id is not None else None
+        phase_type = params.phase_type.casefold() if params.phase_type is not None else None
+        task_family = params.task_family.casefold() if params.task_family is not None else None
+        trigger_tag = params.trigger_tag.casefold() if params.trigger_tag is not None else None
         related_path = params.related_path.casefold() if params.related_path is not None else None
         reference_path = (
             params.reference_path.casefold() if params.reference_path is not None else None
@@ -38,6 +44,14 @@ class WorkflowQueryService:
         matches: list[tuple[int, WorkflowIndexEntry]] = []
         for entry in index.entries:
             if workflow_id is not None and entry.workflow_id.casefold() != workflow_id:
+                continue
+            if phase_type is not None and entry.phase_type.casefold() != phase_type:
+                continue
+            if task_family is not None and entry.task_family.casefold() != task_family:
+                continue
+            if trigger_tag is not None and trigger_tag not in {
+                value.casefold() for value in entry.trigger_tags
+            }:
                 continue
             if related_path is not None and related_path not in {
                 value.casefold() for value in entry.related_paths
@@ -54,6 +68,11 @@ class WorkflowQueryService:
                     entry.workflow_id,
                     entry.title,
                     entry.summary,
+                    entry.phase_type,
+                    entry.task_family,
+                    *entry.primary_risks,
+                    *entry.trigger_tags,
+                    *entry.companion_workflow_ids,
                     *entry.related_paths,
                     *entry.reference_doc_paths,
                     *entry.internal_reference_paths,

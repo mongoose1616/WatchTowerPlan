@@ -17,6 +17,7 @@ def register_sync_family(
         _run_help,
         _run_sync_all,
         _run_sync_command_index,
+        _run_sync_coordination,
         _run_sync_decision_index,
         _run_sync_decision_tracking,
         _run_sync_design_document_index,
@@ -52,6 +53,8 @@ def register_sync_family(
             "uv run watchtower-core sync command-index --write",
             "uv run watchtower-core sync all",
             "uv run watchtower-core sync all --write",
+            "uv run watchtower-core sync coordination",
+            "uv run watchtower-core sync coordination --write",
             "uv run watchtower-core sync reference-index",
             "uv run watchtower-core sync reference-index --write",
             "uv run watchtower-core sync standard-index",
@@ -169,6 +172,47 @@ def register_sync_family(
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     sync_all_parser.set_defaults(handler=_run_sync_all)
+
+    sync_coordination_parser = sync_subparsers.add_parser(
+        "coordination",
+        help="Rebuild the deterministic task and initiative coordination slice.",
+        description=dedent(
+            """
+            Rebuild the deterministic coordination slice for task, traceability,
+            and initiative surfaces in dependency order.
+
+            This is the focused rebuild path for local execution coordination
+            without refreshing unrelated reference, standards, or command docs.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core sync coordination",
+            "uv run watchtower-core sync coordination --write",
+            "uv run watchtower-core sync coordination --output-dir "
+            "/tmp/watchtower_coordination --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    sync_coordination_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Write rebuilt coordination surfaces to their canonical repository paths.",
+    )
+    sync_coordination_parser.add_argument(
+        "--output-dir",
+        type=Path,
+        help=(
+            "Optional explicit directory for materializing the coordination slice while "
+            "preserving repo-relative paths."
+        ),
+    )
+    sync_coordination_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    sync_coordination_parser.set_defaults(handler=_run_sync_coordination)
 
     sync_reference_index_parser = sync_subparsers.add_parser(
         "reference-index",

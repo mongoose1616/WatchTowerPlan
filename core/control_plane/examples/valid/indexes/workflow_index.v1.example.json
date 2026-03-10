@@ -10,8 +10,24 @@
       "summary": "Use this workflow to publish local-first task records to GitHub while preserving local authority.",
       "status": "active",
       "doc_path": "workflows/modules/github_task_sync.md",
+      "phase_type": "execution",
+      "task_family": "github_integration",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "primary_risks": [
+        "partial_update",
+        "behavior_regression"
+      ],
+      "trigger_tags": [
+        "github",
+        "issues",
+        "project",
+        "sync"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_lifecycle_management",
+        "workflow.task_handoff_review"
+      ],
       "related_paths": [
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/task_tracking_standard.md",

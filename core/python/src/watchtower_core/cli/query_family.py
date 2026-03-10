@@ -88,6 +88,7 @@ def register_query_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query paths --query command",
+            "uv run watchtower-core query paths --maturity authoritative --priority high",
             "uv run watchtower-core query paths --surface-kind command_doc --limit 5 --format json",
         ),
         formatter_class=HelpFormatter,
@@ -99,6 +100,18 @@ def register_query_family(
     query_paths_parser.add_argument(
         "--surface-kind",
         help="Exact surface-kind filter such as command_doc, standard_doc, or control_plane_index.",
+    )
+    query_paths_parser.add_argument(
+        "--maturity",
+        help="Exact retrieval-maturity filter such as authoritative, supporting, or scaffold.",
+    )
+    query_paths_parser.add_argument(
+        "--priority",
+        help="Exact retrieval-priority filter such as high, medium, or low.",
+    )
+    query_paths_parser.add_argument(
+        "--audience-hint",
+        help="Exact audience-hint filter such as shared, automation, or maintainer.",
     )
     query_paths_parser.add_argument("--tag", help="Exact tag filter.")
     query_paths_parser.add_argument(
@@ -251,6 +264,7 @@ def register_query_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query workflows --query validation",
+            "uv run watchtower-core query workflows --phase-type reconciliation",
             "uv run watchtower-core query workflows --reference-path "
             "docs/references/github_collaboration_reference.md --format json",
         ),
@@ -266,6 +280,18 @@ def register_query_family(
     query_workflows_parser.add_argument(
         "--workflow-id",
         help="Exact workflow identifier such as workflow.code_validation.",
+    )
+    query_workflows_parser.add_argument(
+        "--phase-type",
+        help="Exact workflow phase filter such as execution, validation, or reconciliation.",
+    )
+    query_workflows_parser.add_argument(
+        "--task-family",
+        help="Exact workflow task-family filter such as engineering_validation or traceability.",
+    )
+    query_workflows_parser.add_argument(
+        "--trigger-tag",
+        help="Exact trigger-tag filter such as github, validation, or scope.",
     )
     query_workflows_parser.add_argument(
         "--related-path",

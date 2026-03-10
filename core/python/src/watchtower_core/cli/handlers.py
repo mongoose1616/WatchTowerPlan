@@ -44,6 +44,7 @@ from watchtower_core.query import (
 from watchtower_core.sync import (
     AllSyncService,
     CommandIndexSyncService,
+    CoordinationSyncService,
     DecisionIndexSyncService,
     DecisionTrackingSyncService,
     DesignDocumentIndexSyncService,
@@ -2060,6 +2061,9 @@ def _run_query_paths(args: argparse.Namespace) -> int:
         RepositoryPathSearchParams(
             query=args.query,
             surface_kind=args.surface_kind,
+            maturity=args.maturity,
+            priority=args.priority,
+            audience_hint=args.audience_hint,
             tag=args.tag,
             parent_path=args.parent_path,
             limit=args.limit,
@@ -2076,6 +2080,9 @@ def _run_query_paths(args: argparse.Namespace) -> int:
                 "surface_kind": entry.surface_kind,
                 "summary": entry.summary,
                 "parent_path": entry.parent_path,
+                "maturity": entry.maturity,
+                "priority": entry.priority,
+                "audience_hint": entry.audience_hint,
                 "aliases": list(entry.aliases),
                 "tags": list(entry.tags),
                 "related_paths": list(entry.related_paths),
@@ -2092,7 +2099,10 @@ def _run_query_paths(args: argparse.Namespace) -> int:
 
     print(f"Found {len(entries)} repository path entr{'y' if len(entries) == 1 else 'ies'}:")
     for entry in entries:
-        print(f"- {entry.path} [{entry.surface_kind}]")
+        print(
+            f"- {entry.path} "
+            f"[{entry.surface_kind}, {entry.maturity}, {entry.priority}, {entry.audience_hint}]"
+        )
         print(f"  {entry.summary}")
     return 0
 
@@ -2212,6 +2222,9 @@ def _run_query_workflows(args: argparse.Namespace) -> int:
         WorkflowSearchParams(
             query=args.query,
             workflow_id=args.workflow_id,
+            phase_type=args.phase_type,
+            task_family=args.task_family,
+            trigger_tag=args.trigger_tag,
             related_path=args.related_path,
             reference_path=args.reference_path,
             limit=args.limit,
@@ -2228,8 +2241,13 @@ def _run_query_workflows(args: argparse.Namespace) -> int:
                 "summary": entry.summary,
                 "status": entry.status,
                 "doc_path": entry.doc_path,
+                "phase_type": entry.phase_type,
+                "task_family": entry.task_family,
                 "uses_internal_references": entry.uses_internal_references,
                 "uses_external_references": entry.uses_external_references,
+                "primary_risks": list(entry.primary_risks),
+                "trigger_tags": list(entry.trigger_tags),
+                "companion_workflow_ids": list(entry.companion_workflow_ids),
                 "related_paths": list(entry.related_paths),
                 "reference_doc_paths": list(entry.reference_doc_paths),
                 "internal_reference_paths": list(entry.internal_reference_paths),
@@ -2249,7 +2267,7 @@ def _run_query_workflows(args: argparse.Namespace) -> int:
 
     print(f"Found {len(entries)} workflow entr{'y' if len(entries) == 1 else 'ies'}:")
     for entry in entries:
-        print(f"- {entry.workflow_id} [{entry.status}]")
+        print(f"- {entry.workflow_id} [{entry.status}, {entry.phase_type}, {entry.task_family}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
         print(
@@ -2972,6 +2990,47 @@ def _run_sync_all(args: argparse.Namespace) -> int:
         else ("write mode" if result.wrote else "dry-run mode")
     )
     print(f"Ran sync all across {len(result.records)} targets in {mode}.")
+    for record in result.records:
+        print(
+            f"- {record.target} [{record.artifact_kind}] "
+            f"record_count={record.record_count}"
+        )
+        if record.output_path is not None:
+            print(f"  Wrote to {record.output_path}")
+    return 0
+
+
+def _run_sync_coordination(args: argparse.Namespace) -> int:
+    service = CoordinationSyncService.from_repo_root()
+    result = service.run(write=args.write, output_dir=args.output_dir)
+    payload = {
+        "command": "watchtower-core sync coordination",
+        "status": "ok",
+        "result_count": len(result.records),
+        "wrote": result.wrote,
+        "output_dir": result.output_dir,
+        "results": [
+            {
+                "target": record.target,
+                "artifact_kind": record.artifact_kind,
+                "relative_output_path": record.relative_output_path,
+                "output_path": record.output_path,
+                "wrote": record.wrote,
+                "record_count": record.record_count,
+                "details": record.details,
+            }
+            for record in result.records
+        ],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    mode = (
+        f"output-dir mode at {result.output_dir}"
+        if result.output_dir is not None
+        else ("write mode" if result.wrote else "dry-run mode")
+    )
+    print(f"Ran sync coordination across {len(result.records)} targets in {mode}.")
     for record in result.records:
         print(
             f"- {record.target} [{record.artifact_kind}] "

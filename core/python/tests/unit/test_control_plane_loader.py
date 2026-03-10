@@ -28,6 +28,9 @@ def test_control_plane_loader_reads_repository_path_index() -> None:
 
     assert index.coverage_mode == "entrypoints"
     assert entry.surface_kind == "python_workspace"
+    assert entry.maturity == "supporting"
+    assert entry.priority == "medium"
+    assert entry.audience_hint == "shared"
     assert "core/python/AGENTS.md" in entry.related_paths
 
 
@@ -48,6 +51,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     sync_initiative_tracking = command_index.get(
         "command.watchtower_core.sync.initiative_tracking"
     )
+    sync_coordination = command_index.get("command.watchtower_core.sync.coordination")
     sync_standard_index = command_index.get("command.watchtower_core.sync.standard_index")
     sync_workflow_index = command_index.get("command.watchtower_core.sync.workflow_index")
     sync_traceability = command_index.get("command.watchtower_core.sync.traceability_index")
@@ -112,6 +116,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     sync_all = command_index.get("command.watchtower_core.sync.all")
     assert sync_all.parent_command_id == "command.watchtower_core.sync"
     assert sync_all.doc_path == "docs/commands/core_python/watchtower_core_sync_all.md"
+    assert sync_coordination.parent_command_id == "command.watchtower_core.sync"
+    assert (
+        sync_coordination.doc_path
+        == "docs/commands/core_python/watchtower_core_sync_coordination.md"
+    )
     assert sync_initiative_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_initiative_index.doc_path
@@ -232,7 +241,12 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     assert standard.uses_external_references is True
     assert "docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
     assert workflow.doc_path == "workflows/modules/github_task_sync.md"
+    assert workflow.phase_type == "execution"
+    assert workflow.task_family == "github_integration"
     assert workflow.uses_internal_references is True
+    assert "partial_update" in workflow.primary_risks
+    assert "sync" in workflow.trigger_tags
+    assert "workflow.task_lifecycle_management" in workflow.companion_workflow_ids
     assert (
         "docs/standards/governance/github_task_sync_standard.md"
         in workflow.internal_reference_paths

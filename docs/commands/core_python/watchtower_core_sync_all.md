@@ -7,6 +7,7 @@ This command rebuilds all local deterministic indexes and human-readable tracker
 - You changed several authored planning, standards, command, or reference surfaces and want one coordinated local rebuild.
 - You want to materialize the full local derived state into a separate directory for inspection.
 - You want a bounded alternative to manually running many sync commands in sequence.
+- You do not want the narrower `sync coordination` slice because you need more than task and initiative surfaces refreshed.
 
 ## Command
 | Field | Value |
@@ -57,6 +58,7 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
+| `watchtower-core sync coordination` | Rebuilds the smaller task, traceability, and initiative slice when `sync all` would be unnecessarily broad. |
 | `watchtower-core sync command-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core sync foundation-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core sync reference-index` | Rebuilds one of the surfaces included in `sync all`. |
@@ -72,4 +74,4 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 - `core/python/src/watchtower_core/sync/registry.py`
 
 ## Updated At
-- `2026-03-10T05:24:43Z`
+- `2026-03-10T06:39:00Z`

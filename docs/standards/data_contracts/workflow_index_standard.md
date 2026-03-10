@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "workflow_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:55:31Z"
+updated_at: "2026-03-10T06:39:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -47,6 +47,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Use JSON for the published workflow-index artifact.
 - Every workflow index entry must point to an existing workflow module under `workflows/modules/`.
 - Carry stable `workflow_id` values derived from the workflow module filename in the form `workflow.<module_name>`.
+- Publish retrieval metadata that helps routing and query tooling distinguish workflow phase, task family, common trigger terms, and companion workflows.
 - Capture whether the workflow explicitly publishes extra repo-local files to load and whether those files carry external authority transitively through governed local reference docs.
 - Capture local governed reference-doc paths separately from broader internal path references.
 - Derive workflow reference fields from the optional `Additional Files to Load` section rather than from generic routing-baseline boilerplate.
@@ -72,8 +73,13 @@ Provide a compact lookup and governance surface for workflow modules and their t
 | `summary` | Required | Concise description derived from the workflow `Purpose` section. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `doc_path` | Required | Repository-relative path to the workflow module. |
+| `phase_type` | Required | Retrieval-oriented workflow phase such as `inspection`, `execution`, `validation`, or `reconciliation`. |
+| `task_family` | Required | Stable retrieval-oriented task family such as `engineering_validation` or `traceability`. |
 | `uses_internal_references` | Required | Whether the workflow publishes extra repo-local files to load. |
 | `uses_external_references` | Required | Whether the workflow’s extra files to load depend on external authority, transitively through governed local reference docs. |
+| `primary_risks` | Required | Short controlled list of the main failure modes this workflow is meant to manage. |
+| `trigger_tags` | Required | Retrieval-oriented trigger terms used for workflow lookup. |
+| `companion_workflow_ids` | Optional | Stable workflow identifiers that are commonly paired with this workflow. |
 | `related_paths` | Optional | Internal repository paths explicitly related to the workflow entry, including task-specific extra load files. |
 | `reference_doc_paths` | Optional | Governed reference-doc paths cited in `Additional Files to Load`. |
 | `internal_reference_paths` | Optional | Internal repository paths cited in `Additional Files to Load`. |
@@ -86,7 +92,9 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - The workflow index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `workflows/modules/`.
 - Every entry should have a stable `workflow_id`.
+- `phase_type`, `task_family`, and `trigger_tags` should stay retrieval-oriented and should not duplicate whole workflow prose blocks.
 - `reference_doc_paths` should point only to governed reference docs under `docs/references/`.
+- `companion_workflow_ids`, when present, should resolve to other entries in the same workflow index artifact.
 - Workflows that rely on external authority should cite a governed local reference doc rather than only raw external URLs.
 - Generic routing-baseline files should not appear as workflow additional-load paths.
 - Reviewers should reject entries that omit material task-specific additional files already present in the source workflow module.
@@ -102,4 +110,4 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-10T00:55:31Z`
+- `2026-03-10T06:39:00Z`
