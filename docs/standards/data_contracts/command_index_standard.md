@@ -38,6 +38,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/commands/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model command lookup as an index, not as a registry.
 - Treat the command index as a machine-readable routing aid rather than the authoritative definition of command behavior.

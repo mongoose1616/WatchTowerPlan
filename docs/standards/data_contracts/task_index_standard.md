@@ -44,6 +44,7 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model task lookup as an index, not as a registry.
 - Keep the authoritative task content in the task Markdown records under `docs/planning/tasks/`.

@@ -39,6 +39,7 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [decision_tracking.md](/home/j/WatchTowerPlan/docs/planning/decisions/decision_tracking.md): companion planning or design surface this standard should remain consistent with.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/decisions/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model decision tracking as an index, not as a registry.
 - Treat the decision index as a machine-readable lookup and trace surface rather than the authority for decision content.

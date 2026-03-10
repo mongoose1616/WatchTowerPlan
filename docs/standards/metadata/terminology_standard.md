@@ -39,6 +39,7 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+
 ## Guidance
 - Prefer one canonical repository term for each recurring concept.
 - Keep canonical terms stable across standards, workflows, templates, and machine-readable artifacts.

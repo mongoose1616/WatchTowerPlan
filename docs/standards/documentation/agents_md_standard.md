@@ -37,6 +37,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - [routing_table_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/routing_table_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [agent_template.md](/home/j/WatchTowerPlan/docs/templates/agent_template.md): authoring scaffold that should stay aligned with this standard.
+
 ## Guidance
 - `AGENTS.md` must act as a thin instruction layer for the current scope.
 - Every retained bullet in an `AGENTS.md` file must be a live rule for that scope.

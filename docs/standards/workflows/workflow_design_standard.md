@@ -40,6 +40,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
 - [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): companion repository surface this standard should stay aligned with.
+
 ## Inputs
 - The task type or execution concern the workflow is meant to govern.
 - The adjacent routing behavior and companion workflows that interact with it.

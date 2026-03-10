@@ -39,6 +39,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md): authoring scaffold that should stay aligned with this standard.
 - [README.md](/home/j/WatchTowerPlan/docs/planning/design/features/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Store feature designs under `docs/planning/design/features/`.
 - Keep one primary feature or tightly related capability cluster per design.

@@ -42,6 +42,7 @@ Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boile
 - [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md): authoring scaffold that should stay aligned with this standard.
 - [README.md](/home/j/WatchTowerPlan/docs/planning/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Store PRDs under `docs/planning/prds/`.
 - Use governed front matter on PRDs and keep it aligned with the shared record metadata at the top of the document.

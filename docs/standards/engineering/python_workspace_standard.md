@@ -43,6 +43,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [ruff_reference.md](/home/j/WatchTowerPlan/docs/references/ruff_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [mypy_reference.md](/home/j/WatchTowerPlan/docs/references/mypy_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+
 ## Guidance
 - Keep all Python-specific repository surfaces under `core/python/`.
 - Keep authored machine-readable authority under `core/control_plane/`; do not move schemas, registries, contracts, policies, or indexes into the Python workspace.

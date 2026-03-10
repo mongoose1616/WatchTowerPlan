@@ -52,6 +52,7 @@ This standard defines the repository's local-first task tracking model so multip
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Treat local task records as the authoritative local execution surface.
 - Store one task per Markdown file.

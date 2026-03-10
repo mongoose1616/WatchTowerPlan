@@ -51,6 +51,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md): workflow surface that operationalizes or depends on this standard.
+
 ## Guidance
 - Do not overload artifact lifecycle `status` with initiative outcome.
 - Store initiative closeout state on the traceability entry for the shared `trace_id`.

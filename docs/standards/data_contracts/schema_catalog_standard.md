@@ -40,6 +40,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validators/validator_registry.v1.json): companion governed or implementation surface this standard describes or constrains.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/schema_catalog/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model schema lookup as a registry, not as an index.
 - Treat the schema catalog as the canonical machine-readable mapping from published schema `$id` values to canonical repository paths.

@@ -39,6 +39,7 @@ Keep decision records consistent enough that rationale, status, affected surface
 - [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md): authoring scaffold that should stay aligned with this standard.
 - [README.md](/home/j/WatchTowerPlan/docs/planning/decisions/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Store durable decision records under `docs/planning/decisions/`.
 - Keep one primary decision per document.

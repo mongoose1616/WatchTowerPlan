@@ -38,6 +38,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for separating stable routing context from task-specific extra files to load.
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
+
 ## Guidance
 - Load `AGENTS.md` first as the repository-wide instruction wrapper.
 - Apply only the global rules from `AGENTS.md` before task routing.

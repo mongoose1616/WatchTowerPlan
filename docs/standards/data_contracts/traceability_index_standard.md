@@ -45,6 +45,7 @@ This standard defines the unified machine-readable traceability index stored und
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model end-to-end trace lookup as an index, not a registry.
 - Store published traceability indexes under `core/control_plane/indexes/traceability/`.

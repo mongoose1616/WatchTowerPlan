@@ -42,6 +42,7 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Keep the human source of acceptance intent in the PRD.
 - Use acceptance contracts as the machine-readable projection of durable acceptance criteria.

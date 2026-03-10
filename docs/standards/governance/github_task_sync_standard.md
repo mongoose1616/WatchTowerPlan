@@ -51,6 +51,7 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [local_task_tracking_and_github_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/local_task_tracking_and_github_sync.md): companion planning or design surface this standard should remain consistent with.
 - [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+
 ## Guidance
 - Treat local task records as the authoritative source of truth.
 - Treat GitHub issue numbers, node IDs, repositories, and project item IDs as foreign keys only.

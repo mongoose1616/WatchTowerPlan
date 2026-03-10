@@ -40,6 +40,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md): companion planning or design surface this standard should remain consistent with.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/design_documents/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model design-document tracking as an index, not as a registry.
 - Treat the design-document index as a machine-readable lookup and relationship surface rather than the authority for design content.

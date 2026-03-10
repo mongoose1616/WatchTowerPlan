@@ -39,6 +39,7 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md): authoring scaffold that should stay aligned with this standard.
 - [README.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Store implementation plans under `docs/planning/design/implementation/`.
 - Keep one primary execution slice or tightly related engineering plan per document.

@@ -42,6 +42,7 @@ This standard defines the repository commit-message policy for human maintainers
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced work should keep durable trace metadata visible in commit history.
 - [git_commit_message_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_message_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [commit_closeout.md](/home/j/WatchTowerPlan/workflows/modules/commit_closeout.md): workflow surface that operationalizes or depends on this standard.
+
 ## Guidance
 ### Canonical Format and Quick Reference
 ```text

@@ -41,6 +41,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
+
 ## Guidance
 - Start from the routed workflow set and the nearest applicable `AGENTS.md` and `README.md` before making changes.
 - Keep human planning authority in `docs/planning/`, machine-readable authority in `core/control_plane/`, and executable Python behavior in `core/python/`.

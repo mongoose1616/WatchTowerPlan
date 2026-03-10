@@ -47,6 +47,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
 - [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
 - [adr_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/adr_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+
 ## Guidance
 - Store durable decision records under `docs/planning/decisions/`.
 - Capture one durable decision per record. Do not blend unrelated decisions into one artifact just because they were discussed together.

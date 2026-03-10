@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T16:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -43,6 +43,7 @@ Keep standards structured enough that internal and external authority is not onl
 - Keep one primary standard concern per document.
 - Use `Related Standards and Sources` for the authorities that materially shape the standard, not for loose “nice to read” links.
 - Every bullet in `Related Standards and Sources` should use `source: implication` form so the repo-local consequence of the cited authority is explicit.
+- Leave one blank line between the last item in a bullet or numbered list and the next heading.
 - Keep `References` for companion docs, examples, and supporting material that help the reader navigate the repo or verify implementation.
 - When an external topic already has a governed local reference under `docs/references/**`, cite that local reference instead of scattering raw external URLs.
 - Keep `Updated At` aligned with front matter `updated_at`.
@@ -65,6 +66,7 @@ Keep standards structured enough that internal and external authority is not onl
 ## Validation
 - Standard-doc front matter should validate against `standard_front_matter.v1.schema.json`.
 - `Related Standards and Sources` should use explained `source: implication` bullets rather than bare link lists.
+- Headings should not appear immediately after a bullet or numbered list item without a blank separator line.
 - `References` should remain present and should not silently absorb the applied-implication role.
 - `updated_at` in front matter and the `Updated At` body section should match.
 
@@ -78,4 +80,4 @@ Keep standards structured enough that internal and external authority is not onl
 - [README.md](/home/j/WatchTowerPlan/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T16:45:00Z`

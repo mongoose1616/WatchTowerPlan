@@ -42,6 +42,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - [check_jsonschema_reference.md](/home/j/WatchTowerPlan/docs/references/check_jsonschema_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [pydantic_strict_mode_reference.md](/home/j/WatchTowerPlan/docs/references/pydantic_strict_mode_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Treat the schema as the canonical contract for any governed machine-readable artifact that core owns or formally accepts.
 - Use JSON Schema Draft 2020-12 as the repository baseline for schema-authored validation.

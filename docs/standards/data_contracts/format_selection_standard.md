@@ -42,6 +42,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 - [ndjson_spec_reference.md](/home/j/WatchTowerPlan/docs/references/ndjson_spec_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [sqlite_wal_reference.md](/home/j/WatchTowerPlan/docs/references/sqlite_wal_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [commonmark_reference.md](/home/j/WatchTowerPlan/docs/references/commonmark_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+
 ## Guidance
 - Prefer the simplest format that preserves determinism, reviewability, and clear source-of-truth boundaries.
 - Keep human-facing guidance in Markdown.

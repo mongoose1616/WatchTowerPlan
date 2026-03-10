@@ -43,6 +43,7 @@ This standard defines committed validation-evidence artifacts stored under `core
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Store durable validation evidence under `core/control_plane/ledgers/validation_evidence/`.
 - Use JSON for published validation-evidence artifacts.

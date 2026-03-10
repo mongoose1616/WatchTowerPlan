@@ -45,6 +45,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+
 ## Guidance
 - Write CLI help for a new engineer first, then for a frequent operator, and only then for an already-context-loaded maintainer.
 - Use plain task-oriented language such as `Search documented commands` or `Rebuild the repository path index`; avoid short internal shorthand that assumes prior knowledge.

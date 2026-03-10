@@ -39,6 +39,7 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md): authoring scaffold that should stay aligned with this standard.
 - [README.md](/home/j/WatchTowerPlan/docs/commands/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Store repository-native command docs under `docs/commands/`.
 - Do not place command docs under `docs/references/`; they are local command pages, not external references.

@@ -39,6 +39,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/docs/references/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/references/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model reference lookup as an index, not as a registry.
 - Treat the reference index as a machine-readable lookup surface rather than the authority for reference content.

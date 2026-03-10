@@ -37,6 +37,7 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+
 ## Guidance
 - Use `status` only for lifecycle state of governed artifacts.
 - Do not reuse this field for validation outcomes such as passed or failed checks.

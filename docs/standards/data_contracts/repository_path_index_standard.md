@@ -38,6 +38,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - [readme_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/readme_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model repository path lookup as an index, not as a registry.
 - Treat the path index as derived support data rather than as canonical authority.

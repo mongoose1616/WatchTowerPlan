@@ -39,6 +39,7 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [rfc_3339_timestamp_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_3339_timestamp_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [rfc_9557_timestamp_extensions_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9557_timestamp_extensions_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+
 ## Guidance
 - Use UTC for governed mutable timestamps across repository docs, control-plane artifacts, and generated outputs.
 - Serialize governed timestamps as RFC 3339 date-time strings with a trailing `Z`.

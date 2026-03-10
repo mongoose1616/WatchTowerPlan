@@ -50,6 +50,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+
 ## Guidance
 - Treat GitHub issues as hosted intake or hosted execution mirrors, not as the sole authoritative task record.
 - Keep repo-local PRDs, decisions, designs, tasks, contracts, evidence, and traceability surfaces authoritative.

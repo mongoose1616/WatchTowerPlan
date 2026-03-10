@@ -46,6 +46,7 @@ This standard defines the repository's baseline traceability model so product in
 - [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+
 ## Guidance
 - Use one shared `trace_id` to tie the artifacts of a single initiative, feature, or change boundary together.
 - Use explicit identifiers for durable planning artifacts instead of relying only on filenames or titles.

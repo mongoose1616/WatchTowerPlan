@@ -46,6 +46,7 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md): authoring scaffold that should stay aligned with this standard.
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Store one task per file.
 - Use a stable `task_id` in front matter instead of relying on the filename for identity.

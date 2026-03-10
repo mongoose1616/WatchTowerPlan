@@ -39,6 +39,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/standards/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
 ## Guidance
 - Model standard lookup as an index, not as a registry.
 - Treat the standard index as a machine-readable lookup and governance-audit surface rather than the authority for standard content.

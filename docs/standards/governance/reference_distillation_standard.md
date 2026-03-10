@@ -42,6 +42,7 @@ This standard defines how externally published source material is distilled into
 - [reference_distillation.md](/home/j/WatchTowerPlan/workflows/modules/reference_distillation.md): workflow surface that operationalizes or depends on this standard.
 - [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
 - [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
+
 ## Guidance
 - Prefer authoritative primary sources over secondhand summaries when the topic is standards-driven, version-sensitive, or materially affects repository behavior.
 - Always capture the canonical upstream source for externally governed topics.

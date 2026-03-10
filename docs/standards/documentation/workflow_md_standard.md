@@ -40,6 +40,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - [workflow_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/workflow_index_standard.md): workflow modules publish machine-readable lookup records through the derived workflow index.
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
+
 ## Guidance
 - Workflow files should live under `workflows/modules/` unless a narrower repository standard defines another workflow surface.
 - Each file should define one workflow with one primary execution concern.

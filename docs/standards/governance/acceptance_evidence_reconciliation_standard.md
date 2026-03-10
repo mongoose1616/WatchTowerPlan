@@ -50,6 +50,7 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/workflows/modules/acceptance_evidence_reconciliation.md): workflow surface that operationalizes or depends on this standard.
+
 ## Guidance
 - Reconcile acceptance at the shared `trace_id` level.
 - Treat PRD acceptance IDs as the human source of acceptance intent.

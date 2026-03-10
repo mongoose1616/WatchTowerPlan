@@ -39,6 +39,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 - [rfc_9562_uuid_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9562_uuid_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [semantic_versioning_reference.md](/home/j/WatchTowerPlan/docs/references/semantic_versioning_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+
 ## Guidance
 - Treat the stable machine identifier as distinct from the path, visible title, and current lifecycle status.
 - Assign one canonical machine identifier per governed artifact.

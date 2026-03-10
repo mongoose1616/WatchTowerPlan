@@ -36,6 +36,7 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_table_template.md](/home/j/WatchTowerPlan/docs/templates/routing_table_template.md): authoring scaffold that should stay aligned with this standard.
+
 ## Guidance
 - `ROUTING_TABLE.md` must be the canonical routing index for workflow selection.
 - The file should stay compact and table-first rather than turning into a long narrative document.
