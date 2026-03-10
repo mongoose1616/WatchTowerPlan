@@ -26,6 +26,9 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=examples(
             "uv run watchtower-core doctor",
             "uv run watchtower-core route preview --request \"review code and commit\"",
+            "uv run watchtower-core plan scaffold --kind prd --trace-id trace.example "
+            "--document-id prd.example --title \"Example PRD\" "
+            "--summary \"Frames the example initiative.\" --format json",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query coordination --format json",
             "uv run watchtower-core query foundations --query philosophy",

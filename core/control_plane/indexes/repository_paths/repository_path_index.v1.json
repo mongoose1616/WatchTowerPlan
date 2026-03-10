@@ -3412,6 +3412,36 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_plan.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for planning scaffold and bootstrap commands.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Scaffold a compact traced PRD, design, plan, and bootstrap-task chain.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_plan_scaffold.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Scaffold one compact governed planning document.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query.md",
       "kind": "file",
       "surface_kind": "command_doc",

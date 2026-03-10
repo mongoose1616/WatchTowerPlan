@@ -47,6 +47,9 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core" in spec_by_id
     assert "command.watchtower_core.route" in spec_by_id
     assert "command.watchtower_core.route.preview" in spec_by_id
+    assert "command.watchtower_core.plan" in spec_by_id
+    assert "command.watchtower_core.plan.scaffold" in spec_by_id
+    assert "command.watchtower_core.plan.bootstrap" in spec_by_id
     assert "command.watchtower_core.task" in spec_by_id
     assert "command.watchtower_core.task.create" in spec_by_id
     assert "command.watchtower_core.task.update" in spec_by_id
@@ -68,6 +71,18 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert (
         spec_by_id["command.watchtower_core.route.preview"].implementation_path
         == "core/python/src/watchtower_core/cli/route_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan"].implementation_path
+        == "core/python/src/watchtower_core/cli/plan_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.scaffold"].implementation_path
+        == "core/python/src/watchtower_core/cli/plan_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.plan.bootstrap"].implementation_path
+        == "core/python/src/watchtower_core/cli/plan_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.task"].implementation_path

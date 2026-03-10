@@ -54,6 +54,10 @@ def test_root_command_prints_help(capsys) -> None:
         "uv run watchtower-core route preview --request "
         "\"review code and commit\"" in captured.out
     )
+    assert (
+        "uv run watchtower-core plan scaffold --kind prd --trace-id trace.example "
+        "--document-id prd.example --title \"Example PRD\"" in captured.out
+    )
     assert "uv run watchtower-core query coordination --format json" in captured.out
     assert (
         "uv run watchtower-core query standards --category governance --format json"
@@ -121,6 +125,17 @@ def test_route_group_prints_group_specific_help(capsys) -> None:
     assert "Preview the workflow modules that the current routing surfaces would" in captured.out
     assert "preview" in captured.out
     assert "uv run watchtower-core route preview --request" in captured.out
+
+
+def test_plan_group_prints_group_specific_help(capsys) -> None:
+    result = main(["plan"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Scaffold compact governed planning documents" in captured.out
+    assert "scaffold" in captured.out
+    assert "bootstrap" in captured.out
+    assert "uv run watchtower-core plan scaffold --kind prd" in captured.out
 
 
 def test_task_group_prints_group_specific_help(capsys) -> None:
@@ -287,6 +302,36 @@ def test_task_create_supports_json_output(capsys) -> None:
     assert payload["task_id"] == "task.cli_preview.example.001"
     assert payload["wrote"] is False
     assert payload["changed"] is True
+
+
+def test_plan_scaffold_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "plan",
+            "scaffold",
+            "--kind",
+            "prd",
+            "--trace-id",
+            "trace.plan_cli_preview",
+            "--document-id",
+            "prd.plan_cli_preview",
+            "--title",
+            "Plan CLI Preview PRD",
+            "--summary",
+            "Previews the planning scaffold command without writing a file.",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core plan scaffold"
+    assert payload["status"] == "ok"
+    assert payload["kind"] == "prd"
+    assert payload["document_id"] == "prd.plan_cli_preview"
+    assert payload["wrote"] is False
 
 
 def test_query_commands_supports_json_output(capsys) -> None:

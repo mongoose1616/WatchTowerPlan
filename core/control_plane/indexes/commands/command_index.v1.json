@@ -97,6 +97,72 @@
       "notes": "Current behavior is a minimal scaffold-level smoke check with no mutation."
     },
     {
+      "command_id": "command.watchtower_core.plan",
+      "command": "watchtower-core plan",
+      "summary": "Scaffold compact governed planning documents from the current repository conventions.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_plan.md",
+      "synopsis": "uv run watchtower-core plan [-h] <plan_command> ...",
+      "implementation_path": "core/python/src/watchtower_core/cli/plan_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "tags": [
+        "python",
+        "cli",
+        "plan"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.bootstrap",
+      "command": "watchtower-core plan bootstrap",
+      "summary": "Scaffold a compact traced planning chain for one new initiative.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+      "synopsis": "uv run watchtower-core plan bootstrap [-h] --trace-id TRACE_ID --title TITLE --summary SUMMARY [--owner OWNER] [--applies-to APPLIES_TO] [--alias ALIAS] [--file-stem FILE_STEM] [--include-decision] [--decision-id DECISION_ID] [--source-request SOURCE_REQUEST] [--reference REFERENCE] [--task-id TASK_ID] [--task-owner TASK_OWNER] [--task-kind {feature,bug,chore,documentation,governance,research}] [--task-priority {critical,high,medium,low}] [--updated-at UPDATED_AT] [--include-documents] [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/plan_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "bootstrap"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.plan.scaffold",
+      "command": "watchtower-core plan scaffold",
+      "summary": "Scaffold one compact governed planning document using the current repository planning shape.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_plan_scaffold.md",
+      "synopsis": "uv run watchtower-core plan scaffold [-h] --kind {prd,feature-design,implementation-plan,decision} --trace-id TRACE_ID --document-id DOCUMENT_ID --title TITLE --summary SUMMARY [--owner OWNER] [--status STATUS] [--applies-to APPLIES_TO] [--alias ALIAS] [--file-stem FILE_STEM] [--linked-prd LINKED_PRD] [--linked-decision LINKED_DECISION] [--linked-design LINKED_DESIGN] [--linked-plan LINKED_PLAN] [--linked-acceptance LINKED_ACCEPTANCE] [--source-request SOURCE_REQUEST] [--reference REFERENCE] [--updated-at UPDATED_AT] [--include-document] [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/plan_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.plan",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "plan",
+        "scaffold"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query",
       "command": "watchtower-core query",
       "summary": "Search the governed lookup surfaces without opening the raw JSON artifacts directly.",

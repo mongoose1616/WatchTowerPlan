@@ -38,6 +38,7 @@
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
 - `uv run watchtower-core route preview --request "review code and commit"`
+- `uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative." --format json`
 - `uv run watchtower-core query coordination --format json`
 - `uv run watchtower-core query commands --query coordination --format json`
 - `uv run watchtower-core query foundations --query philosophy`
@@ -68,7 +69,9 @@
 - Start with [README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md) for command-doc navigation.
 - Open [watchtower_core.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
 - Open [watchtower_core_route.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
+- Open [watchtower_core_plan.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_plan.md) when you need one-step planning scaffolds or traced bootstrap chains.
 - Use the group pages for deeper browsing:
+  - [watchtower_core_plan.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_plan.md)
   - [watchtower_core_query.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query.md)
   - [watchtower_core_task.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_task.md)
   - [watchtower_core_sync.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync.md)

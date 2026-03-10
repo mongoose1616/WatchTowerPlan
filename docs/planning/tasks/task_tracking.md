@@ -3,7 +3,6 @@
 ## Open Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
 | --- | --- | --- | --- | --- | --- |
-| [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_planning_scaffolds.md) | `backlog` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates. |
 | [task.workflow_system_operationalization.reconciliation_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_reconciliation_guidance.md) | `backlog` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes. |
 
 ## Closed Tasks
@@ -46,5 +45,6 @@
 | [task.local_task_tracking.github_sync.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_task_sync.md) | `done` | `medium` | `repository_maintainer` | `trace.local_task_tracking` | Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity. |
 | [task.machine_first_coordination_surface.entrypoints.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/machine_first_coordination_entrypoints.md) | `done` | `medium` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Generate a compact human coordination tracker and reroute planning and agent entrypoint guidance so humans and agents start from the same derived coordination state. |
 | [task.template_and_output_efficiency.workflow_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.template_and_output_efficiency` | Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content. |
+| [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_planning_scaffolds.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates. |
 
-_Updated At: `2026-03-10T23:01:32Z`_
+_Updated At: `2026-03-10T23:17:55Z`_

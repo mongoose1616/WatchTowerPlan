@@ -8,6 +8,7 @@ from dataclasses import dataclass
 
 from watchtower_core.cli.closeout_family import register_closeout_family
 from watchtower_core.cli.doctor_family import register_doctor_family
+from watchtower_core.cli.plan_family import register_plan_family
 from watchtower_core.cli.query_family import register_query_family
 from watchtower_core.cli.route_family import register_route_family
 from watchtower_core.cli.sync_family import register_sync_family
@@ -36,6 +37,11 @@ COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
         name="route",
         registrar=register_route_family,
         implementation_path="core/python/src/watchtower_core/cli/route_family.py",
+    ),
+    CommandGroupSpec(
+        name="plan",
+        registrar=register_plan_family,
+        implementation_path="core/python/src/watchtower_core/cli/plan_family.py",
     ),
     CommandGroupSpec(
         name="query",

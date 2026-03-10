@@ -5,7 +5,7 @@ This command is the root CLI entrypoint for the core Python workspace and dispat
 
 ## Use When
 - You want to discover the current core helper and harness commands.
-- You need a stable CLI entrypoint for workspace checks, route preview, governed validation, index queries, task lifecycle operations, derived-artifact sync tasks, or initiative closeout.
+- You need a stable CLI entrypoint for workspace checks, route preview, planning scaffolds, governed validation, index queries, task lifecycle operations, derived-artifact sync tasks, or initiative closeout.
 - You want the built-in help output for the current command surface.
 
 ## Command
@@ -23,7 +23,7 @@ uv run watchtower-core <command> [args]
 ```
 
 ## Arguments and Options
-- `<command>`: Dispatch to an available subcommand such as `doctor`, `route`, `query`, `task`, `sync`, `closeout`, or `validate`.
+- `<command>`: Dispatch to an available subcommand such as `doctor`, `route`, `plan`, `query`, `task`, `sync`, `closeout`, or `validate`.
 - `-h`, `--help`: Show the command help text.
 - No root-command-specific options exist yet beyond help and subcommand selection.
 
@@ -41,6 +41,11 @@ uv run watchtower-core doctor
 ```sh
 cd core/python
 uv run watchtower-core route preview --request "review code and commit"
+```
+
+```sh
+cd core/python
+uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative." --format json
 ```
 
 ```sh
@@ -206,8 +211,9 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 ## Behavior and Outputs
 - With no subcommand, the current implementation prints the root CLI help text, including onboarding-friendly examples, and exits successfully.
 - With a valid subcommand, the root command dispatches to that subcommand handler.
-- The current top-level command families are `doctor`, `route`, `query`, `task`, `sync`, `closeout`, and `validate`.
+- The current top-level command families are `doctor`, `route`, `plan`, `query`, `task`, `sync`, `closeout`, and `validate`.
 - `route` now provides deterministic advisory preview over the current routing surfaces for a free-form request or explicit task type.
+- `plan` scaffolds compact PRDs, feature designs, implementation plans, decision records, and traced bootstrap chains while keeping authored Markdown files authoritative.
 - `query` now covers repository navigation, command discovery, the explicit coordination start-here path, governed foundations lookup, workflow-module lookup, curated reference lookup, standards and best-practice lookup, planning lookup, acceptance contracts, validation evidence, task lookup, initiative-family lookup, and trace lookup.
 - `task` creates, updates, and transitions governed local task records while keeping task documents authoritative and refreshing the coordination slice in write mode.
 - The `sync` family now covers one-shot local rebuilds through `sync all`, a focused task-traceability-initiative-coordination rebuild through `sync coordination`, plus command lookup, foundation lookup, reference lookup, route lookup, standard lookup, workflow lookup, PRD tracking, decision tracking, design tracking, initiative tracking, task tracking, GitHub task sync with managed labels, traceability, and repository-path rebuilds.
@@ -220,6 +226,7 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 |---|---|
 | `watchtower-core doctor` | Lightweight workspace health snapshot exposed through the root CLI. |
 | `watchtower-core route` | Namespace command for advisory routed-workflow preview. |
+| `watchtower-core plan` | Namespace command for compact planning scaffolds and traced bootstrap chains. |
 | `watchtower-core query` | Namespace command for governed index lookups over paths, commands, coordination, planning docs, acceptance contracts, evidence, tasks, and traces. |
 | `watchtower-core task` | Namespace command for governed local task creation, updates, and handoff-style transitions. |
 | `watchtower-core sync` | Namespace command for rebuilding derived governed artifacts and hosted task mirrors. |
@@ -233,4 +240,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-10T22:54:30Z`
+- `2026-03-10T23:01:32Z`

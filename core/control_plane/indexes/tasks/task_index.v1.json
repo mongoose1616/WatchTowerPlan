@@ -906,12 +906,12 @@
       "title": "Add compact planning scaffold commands",
       "summary": "Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/workflow_planning_scaffolds.md",
-      "updated_at": "2026-03-10T21:59:21Z",
+      "doc_path": "docs/planning/tasks/closed/workflow_planning_scaffolds.md",
+      "updated_at": "2026-03-10T23:17:55Z",
       "trace_id": "trace.workflow_system_operationalization",
       "depends_on": [
         "task.workflow_system_operationalization.bootstrap.001"

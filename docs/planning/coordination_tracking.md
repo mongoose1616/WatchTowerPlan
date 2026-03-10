@@ -6,18 +6,17 @@
 | Mode | `active_work` |
 | Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
 | Next | Start or continue the active task set and keep the current task records aligned with execution progress. |
-| Open First | [docs/planning/tasks/open/workflow_planning_scaffolds.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_planning_scaffolds.md) |
+| Open First | [docs/planning/tasks/open/workflow_reconciliation_guidance.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_reconciliation_guidance.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
 | Trace ID | Phase | Owners | Next | Action |
 | --- | --- | --- | --- | --- |
-| `trace.workflow_system_operationalization` | `execution` | repository_maintainer | [workflow_planning_scaffolds.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_planning_scaffolds.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.workflow_system_operationalization` | `execution` | repository_maintainer | [workflow_reconciliation_guidance.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_reconciliation_guidance.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_planning_scaffolds.md) | `trace.workflow_system_operationalization` | `backlog` | `medium` | `repository_maintainer` |
 | [task.workflow_system_operationalization.reconciliation_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_reconciliation_guidance.md) | `trace.workflow_system_operationalization` | `backlog` | `medium` | `repository_maintainer` |
 
 ## Recent Closeouts
@@ -29,4 +28,4 @@
 | `trace.core_export_hardening_followup` | `completed` | `2026-03-10T17:12:30Z` | [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md) |
 | `trace.template_and_output_efficiency` | `completed` | `2026-03-10T16:35:23Z` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) |
 
-_Updated At: `2026-03-10T23:01:32Z`_
+_Updated At: `2026-03-10T23:17:55Z`_
