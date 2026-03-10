@@ -34,7 +34,7 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - Deciding whether an artifact should be deprecated or deleted.
 
 ## Related Standards and Sources
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 ## Guidance
@@ -90,7 +90,7 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - Prefer deleting obsolete governed artifacts instead of expanding the deprecation taxonomy.
 
 ## References
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 

@@ -1,6 +1,6 @@
 ---
-id: "foundation.product_narrative_brochure"
-title: "Product Narrative Brochure"
+id: "foundation.customer_story"
+title: "Customer Story"
 summary: "Provides a customer-facing narrative summary of the product story, user problem, and intended operator experience."
 type: "foundation"
 status: "active"
@@ -16,11 +16,12 @@ applies_to:
   - "docs/planning/"
 aliases:
   - "customer story"
+  - "product narrative brochure"
   - "product narrative"
   - "product brochure"
 ---
 
-# Product Narrative Brochure
+# Customer Story
 
 ## Audience
 
@@ -133,8 +134,8 @@ WatchTower is not intended to be:
 5. The product becomes more useful over time because validated knowledge compounds.
 
 ## References
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
 
 ## Updated At
 - `2026-03-10T00:10:09Z`

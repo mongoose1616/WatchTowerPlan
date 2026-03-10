@@ -49,10 +49,10 @@ This document defines the first push-only sync from local task records to GitHub
 - There is no live GitHub sync implementation yet, and no current way to publish local task state to a hosted board.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): keep durable machine-readable authority explicit and reviewable in git.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): combine planning, execution, validation, and closeout without hiding state in disconnected tools.
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): keep Markdown as the human task source and JSON as the machine-readable lookup surface.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one authoritative source per concern and derive companion lookup surfaces from it.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep durable machine-readable authority explicit and reviewable in git.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): combine planning, execution, validation, and closeout without hiding state in disconnected tools.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): keep Markdown as the human task source and JSON as the machine-readable lookup surface.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one authoritative source per concern and derive companion lookup surfaces from it.
 
 ## Internal Standards and Canonical References Applied
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): local task Markdown records must stay the authoritative task source.

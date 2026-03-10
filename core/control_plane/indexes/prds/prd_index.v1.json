@@ -45,9 +45,9 @@
         "docs/planning/design/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/product.md",
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",

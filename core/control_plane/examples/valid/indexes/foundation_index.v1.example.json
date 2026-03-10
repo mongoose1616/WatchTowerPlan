@@ -5,12 +5,12 @@
   "status": "active",
   "entries": [
     {
-      "foundation_id": "foundation.design_philosophy",
-      "title": "Design Philosophy",
-      "summary": "Defines the governing design philosophy for the repository and its operating model.",
+      "foundation_id": "foundation.engineering_design_principles",
+      "title": "Engineering Design Principles",
+      "summary": "Defines the governing engineering design principles and operating model for the repository.",
       "status": "active",
       "authority": "authoritative",
-      "doc_path": "docs/foundations/design_philosophy.md",
+      "doc_path": "docs/foundations/engineering_design_principles.md",
       "updated_at": "2026-03-09T23:22:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
@@ -21,9 +21,9 @@
         "docs/standards/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/product.md",
-        "docs/foundations/standards.md",
-        "docs/foundations/technology_stack.md"
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md"
       ],
       "cited_by_paths": [
         "docs/planning/prds/core_python_foundation.md",
@@ -34,7 +34,9 @@
         "docs/standards/engineering/engineering_best_practices_standard.md"
       ],
       "aliases": [
-        "repository design philosophy"
+        "design philosophy",
+        "repository design philosophy",
+        "engineering design principles"
       ],
       "tags": [
         "foundation",

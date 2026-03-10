@@ -323,7 +323,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     query_foundations_parser.add_argument(
         "--foundation-id",
-        help="Exact foundation identifier such as foundation.design_philosophy.",
+        help="Exact foundation identifier such as foundation.engineering_design_principles.",
     )
     query_foundations_parser.add_argument(
         "--authority",

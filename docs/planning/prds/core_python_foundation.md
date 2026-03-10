@@ -88,9 +88,9 @@ The repository now has a growing control-plane surface, but the executable Pytho
 - Should future Python tooling regenerate acceptance contracts and traceability indexes automatically, or keep them as reviewed artifacts refreshed through explicit commands?
 
 ## Foundations References Applied
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): core should provide routing, validation, evidence capture, and reusable closeout behavior.
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): core should remain deterministic, schema-first, and traceable.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): important planning and validation surfaces should exist in both human-readable and machine-usable forms.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): core should provide routing, validation, evidence capture, and reusable closeout behavior.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): core should remain deterministic, schema-first, and traceable.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): important planning and validation surfaces should exist in both human-readable and machine-usable forms.
 
 ## References
 - [core_python_workspace_and_harness.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_python_workspace_and_harness.md)

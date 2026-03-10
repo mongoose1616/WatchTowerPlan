@@ -47,9 +47,9 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - Multiple engineers need a predictable hosted layer for intake and review even when the authoritative planning state stays in git.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): preserve deterministic, inspectable authority boundaries rather than hiding planning state in an external tool.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): support maintainers and automated workflows with reusable structured surfaces.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep human-facing and machine-facing collaboration surfaces aligned in the same change set when they depend on each other.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): preserve deterministic, inspectable authority boundaries rather than hiding planning state in an external tool.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): support maintainers and automated workflows with reusable structured surfaces.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep human-facing and machine-facing collaboration surfaces aligned in the same change set when they depend on each other.
 
 ## Internal Standards and Canonical References Applied
 - [github_collaboration_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_collaboration_standard.md): GitHub should remain a hosted collaboration layer that complements repo-local authority instead of replacing it.

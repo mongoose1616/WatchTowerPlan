@@ -36,7 +36,7 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): foundation docs must publish governed metadata so the intent layer is indexable and traceable.
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): external authority that materially shapes foundations should be normalized through local reference docs when practical.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): foundation docs must use UTC `updated_at` values consistently.
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): foundation documents are the intent layer that should stay auditable instead of only implicit.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): foundation documents are the intent layer that should stay auditable instead of only implicit.
 
 ## Guidance
 - Store governed foundation documents under `docs/foundations/`.

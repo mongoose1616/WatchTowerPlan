@@ -33,7 +33,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Splitting a large workflow into smaller routed modules.
 
 ## Related Standards and Sources
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
@@ -111,7 +111,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Update routing surfaces in the same change set when a workflow split, merge, or rename changes task classification.
 
 ## References
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
 - [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)

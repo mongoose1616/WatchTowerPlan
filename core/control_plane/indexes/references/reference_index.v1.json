@@ -188,9 +188,9 @@
       ],
       "related_paths": [
         "docs/standards/governance/reference_distillation_standard.md",
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/templates/documentation_template.md",
         "docs/templates/readme_template.md",
         "docs/templates/workflow_template.md"

@@ -1,6 +1,6 @@
 ---
-id: "foundation.technology_stack"
-title: "Technology Stack"
+id: "foundation.engineering_stack_direction"
+title: "Engineering Stack Direction"
 summary: "Defines the current technology-direction baseline and selection rules for the repository."
 type: "foundation"
 status: "active"
@@ -16,11 +16,12 @@ applies_to:
   - "core/python/"
   - "docs/standards/"
 aliases:
+  - "technology stack"
   - "stack direction"
   - "engineering stack direction"
 ---
 
-# Technology Stack
+# Engineering Stack Direction
 
 This repository is still defining the product more than implementing it, so the stack should be read as a working direction rather than a frozen inventory. The selection rule is straightforward: prefer local-first, inspectable, deterministic tools that improve LLM/agent effectiveness, support strong validation, and preserve clear source-of-truth boundaries.
 
@@ -83,8 +84,8 @@ Any new technology should earn its way in. The stack is there to support the pro
 - Reject tools that blur authority boundaries or make failure modes harder to inspect.
 
 ## References
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 
 ## Updated At

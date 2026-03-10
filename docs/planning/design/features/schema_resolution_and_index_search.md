@@ -53,10 +53,10 @@ This document defines the feature-level technical design for deterministic local
 - `core/python/src/watchtower_core/` is the consolidated package root and currently contains scaffold-only modules.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): keep core deterministic, local-first, and fail-closed rather than inference-heavy.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): keep core as the shared machine substrate rather than a UI-first search product.
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): favor simple local Python and structured machine-readable contracts before adding heavier infrastructure.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one canonical machine-readable authority per concept and avoid parallel truth in code.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep core deterministic, local-first, and fail-closed rather than inference-heavy.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep core as the shared machine substrate rather than a UI-first search product.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): favor simple local Python and structured machine-readable contracts before adding heavier infrastructure.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one canonical machine-readable authority per concept and avoid parallel truth in code.
 
 ## Internal Standards and Canonical References Applied
 - [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): schema lookup should resolve through cataloged schema IDs rather than repository scans.

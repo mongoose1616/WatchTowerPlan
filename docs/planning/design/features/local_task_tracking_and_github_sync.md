@@ -49,10 +49,10 @@ This document defines the feature-level design for local-first task records, a g
 - Planning trackers are not appropriate as the live task board because they summarize document families, not execution state.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): keep machine-readable authority explicit and reviewable in git.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): keep repository-native execution support local and inspectable before introducing hosted dependencies.
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): use Markdown for human task records and JSON for machine-readable task lookup.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one source of truth per concern and derive secondary lookup surfaces.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep machine-readable authority explicit and reviewable in git.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep repository-native execution support local and inspectable before introducing hosted dependencies.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): use Markdown for human task records and JSON for machine-readable task lookup.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one source of truth per concern and derive secondary lookup surfaces.
 
 ## Internal Standards and Canonical References Applied
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): one task per file and local-first authority should shape the tracking model.

@@ -173,7 +173,7 @@ def test_query_foundations_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core query foundations"
     assert payload["status"] == "ok"
     assert any(
-        entry["foundation_id"] == "foundation.design_philosophy"
+        entry["foundation_id"] == "foundation.engineering_design_principles"
         for entry in payload["results"]
     )
 

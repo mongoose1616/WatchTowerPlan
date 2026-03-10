@@ -72,7 +72,7 @@ Provide an in-repo, offline-friendly reference for Diataxis so planning docs, st
 ### Why It Matters Here
 - `workflows/**` primarily map to how-to guidance because they define procedural steps for planning tasks and operational flows.
 - `docs/standards/**` primarily map to reference because they define structures, rules, naming, contracts, and documentation expectations.
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md), [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md), and [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md) primarily map to explanation because they describe rationale, interpretation, and layered application rather than serving as strict lookup-only artifacts.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md), [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md), and [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md) primarily map to explanation because they describe rationale, interpretation, and layered application rather than serving as strict lookup-only artifacts.
 - `docs/templates/**` support how-to and tutorial-style authoring depending on whether a template is being used as a scaffold, a teaching aid, or a repeatable documentation starting point.
 - `README.md` files should usually act as orientation or navigation docs and should stay concise instead of absorbing full standards, workflows, or deep explanation content.
 

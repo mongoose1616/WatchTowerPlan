@@ -151,8 +151,8 @@
         "docs/references/commonmark_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/references/rfc_8259_json_reference.md",
@@ -162,8 +162,8 @@
         "docs/references/commonmark_reference.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/references/rfc_8259_json_reference.md",
@@ -367,8 +367,8 @@
         "docs/references/pydantic_strict_mode_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/foundations/standards.md",
-        "docs/foundations/technology_stack.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/format_selection_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
@@ -378,8 +378,8 @@
         "core/control_plane/README.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/standards.md",
-        "docs/foundations/technology_stack.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/format_selection_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
@@ -449,12 +449,12 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
-        "docs/foundations/standards.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/standards.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
@@ -734,14 +734,14 @@
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/design_philosophy.md",
+        "docs/foundations/engineering_design_principles.md",
         "docs/foundations/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/design_philosophy.md"
+        "docs/foundations/engineering_design_principles.md"
       ],
       "tags": [
         "standard",
@@ -793,9 +793,9 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/prd_index_standard.md",
         "workflows/modules/prd_generation.md",
-        "docs/foundations/product.md",
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/templates/prd_template.md",
         "docs/planning/prds/README.md"
       ],
@@ -803,9 +803,9 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/prd_index_standard.md",
         "workflows/modules/prd_generation.md",
-        "docs/foundations/product.md",
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/templates/prd_template.md",
         "docs/planning/prds/README.md"
       ],
@@ -1045,7 +1045,7 @@
         "docs/standards/data_contracts/command_index_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/design_philosophy.md"
+        "docs/foundations/engineering_design_principles.md"
       ],
       "applied_reference_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
@@ -1054,7 +1054,7 @@
         "docs/standards/data_contracts/command_index_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "docs/foundations/design_philosophy.md"
+        "docs/foundations/engineering_design_principles.md"
       ],
       "tags": [
         "standard",
@@ -1073,29 +1073,30 @@
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [
-        "docs/references/git_commit_reference.md",
-        "docs/references/conventional_commits_reference.md",
         "docs/references/git_commit_message_guidance_reference.md",
+        "docs/references/conventional_commits_reference.md",
         "docs/references/semantic_versioning_reference.md"
       ],
       "internal_reference_paths": [
         "docs/standards/engineering/engineering_best_practices_standard.md",
-        "docs/references/git_commit_reference.md",
+        "docs/references/git_commit_message_guidance_reference.md",
         "workflows/modules/commit_closeout.md",
         "docs/references/conventional_commits_reference.md",
-        "docs/references/git_commit_message_guidance_reference.md",
         "docs/references/semantic_versioning_reference.md",
         "docs/standards/governance/reference_distillation_standard.md"
       ],
       "applied_reference_paths": [
         "docs/standards/engineering/engineering_best_practices_standard.md",
-        "docs/references/git_commit_reference.md",
+        "docs/references/git_commit_message_guidance_reference.md",
         "workflows/modules/commit_closeout.md"
       ],
       "external_reference_urls": [
-        "https://www.conventionalcommits.org/en/v1.0.0/",
         "https://cbea.ms/git-commit/",
+        "https://www.conventionalcommits.org/en/v1.0.0/",
         "https://semver.org/"
+      ],
+      "applied_external_reference_urls": [
+        "https://cbea.ms/git-commit/"
       ],
       "tags": [
         "standard",
@@ -1647,16 +1648,16 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
         "docs/standards/governance/reference_distillation_standard.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
@@ -1751,7 +1752,7 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
-        "docs/foundations/standards.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/templates/workflow_template.md",
@@ -1759,7 +1760,7 @@
         "AGENTS.md"
       ],
       "applied_reference_paths": [
-        "docs/foundations/standards.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/templates/workflow_template.md",

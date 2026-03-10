@@ -54,10 +54,10 @@ This document defines the feature-level technical design for a Python validation
 - The repository has standards for schemas, naming and IDs, lifecycle status, format selection, and front matter, but it does not yet have a Python execution path that turns those artifacts into actual validation behavior.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): keep core local-first, deterministic, schema-first, and fail-closed.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): keep core as the shared runtime and governance substrate rather than the user-facing product.
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): favor Python for helper and harness layers and JSON Schema for machine-validated contracts.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one canonical source for machine-facing facts and avoid parallel truth in code.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep core local-first, deterministic, schema-first, and fail-closed.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep core as the shared runtime and governance substrate rather than the user-facing product.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): favor Python for helper and harness layers and JSON Schema for machine-validated contracts.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one canonical source for machine-facing facts and avoid parallel truth in code.
 
 ## Internal Standards and Canonical References Applied
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): schema-backed validators need to consume published artifact and interface schemas rather than local ad hoc contracts.

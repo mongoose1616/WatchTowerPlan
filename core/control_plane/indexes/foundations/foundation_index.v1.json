@@ -5,277 +5,12 @@
   "status": "active",
   "entries": [
     {
-      "foundation_id": "foundation.customer_story_v1",
-      "title": "Customer Story v1",
-      "summary": "Comparison draft that reframes the product narrative as an explicit customer-facing story and value document.",
-      "status": "draft",
-      "authority": "supporting",
-      "doc_path": "docs/foundations/customer_story.v1.md",
-      "updated_at": "2026-03-10T00:10:09Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/foundations/",
-        "docs/planning/"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/product_narrative_brochure.md",
-        "docs/foundations/product.md",
-        "docs/foundations/design_philosophy.md"
-      ],
-      "aliases": [
-        "product narrative",
-        "product brochure",
-        "product narrative audience draft"
-      ],
-      "tags": [
-        "foundation",
-        "product_narrative",
-        "comparison_draft"
-      ]
-    },
-    {
-      "foundation_id": "foundation.design_philosophy",
-      "title": "Design Philosophy",
-      "summary": "Defines the governing design philosophy for the repository and its operating model.",
-      "status": "active",
-      "authority": "authoritative",
-      "doc_path": "docs/foundations/design_philosophy.md",
-      "updated_at": "2026-03-10T00:10:09Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "core/control_plane/",
-        "core/python/",
-        "workflows/modules/",
-        "docs/standards/"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/product.md",
-        "docs/foundations/standards.md",
-        "docs/foundations/technology_stack.md"
-      ],
-      "cited_by_paths": [
-        "docs/foundations/customer_story.v1.md",
-        "docs/foundations/engineering_design_principles.v1.md",
-        "docs/foundations/engineering_stack_direction.v1.md",
-        "docs/foundations/product.md",
-        "docs/foundations/product_direction.v1.md",
-        "docs/foundations/product_narrative_brochure.md",
-        "docs/foundations/repository_standards_posture.v1.md",
-        "docs/foundations/standards.md",
-        "docs/foundations/technology_stack.md",
-        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-        "docs/planning/design/features/command_documentation_and_lookup.md",
-        "docs/planning/design/features/core_python_workspace_and_harness.md",
-        "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md",
-        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
-        "docs/planning/design/features/python_validator_execution.md",
-        "docs/planning/design/features/schema_resolution_and_index_search.md",
-        "docs/planning/prds/core_python_foundation.md",
-        "docs/standards/documentation/foundation_md_standard.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/engineering/engineering_best_practices_standard.md",
-        "docs/standards/metadata/terminology_standard.md",
-        "workflows/modules/foundations_context_review.md"
-      ],
-      "applied_by_paths": [
-        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-        "docs/planning/design/features/command_documentation_and_lookup.md",
-        "docs/planning/design/features/core_python_workspace_and_harness.md",
-        "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md",
-        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
-        "docs/planning/design/features/python_validator_execution.md",
-        "docs/planning/design/features/schema_resolution_and_index_search.md",
-        "docs/planning/prds/core_python_foundation.md",
-        "docs/standards/documentation/foundation_md_standard.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/engineering/engineering_best_practices_standard.md",
-        "docs/standards/metadata/terminology_standard.md",
-        "workflows/modules/foundations_context_review.md"
-      ],
-      "aliases": [
-        "repository design philosophy",
-        "engineering design principles"
-      ],
-      "tags": [
-        "foundation",
-        "design_philosophy"
-      ]
-    },
-    {
-      "foundation_id": "foundation.engineering_design_principles_v1",
-      "title": "Engineering Design Principles v1",
-      "summary": "Comparison draft that reframes the design philosophy as an engineer-facing operating-principles document.",
-      "status": "draft",
-      "authority": "supporting",
-      "doc_path": "docs/foundations/engineering_design_principles.v1.md",
-      "updated_at": "2026-03-10T00:02:35Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "core/control_plane/",
-        "core/python/",
-        "workflows/modules/",
-        "docs/standards/"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/standards.md",
-        "docs/foundations/technology_stack.md"
-      ],
-      "aliases": [
-        "repository design philosophy",
-        "design philosophy audience draft"
-      ],
-      "tags": [
-        "foundation",
-        "design_philosophy",
-        "comparison_draft"
-      ]
-    },
-    {
-      "foundation_id": "foundation.engineering_stack_direction_v1",
-      "title": "Engineering Stack Direction v1",
-      "summary": "Comparison draft that reframes the technology stack foundation as an engineering-facing stack-direction document.",
-      "status": "draft",
-      "authority": "supporting",
-      "doc_path": "docs/foundations/engineering_stack_direction.v1.md",
-      "updated_at": "2026-03-09T23:41:18Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "core/control_plane/",
-        "core/python/",
-        "docs/standards/"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/standards/data_contracts/format_selection_standard.md"
-      ],
-      "aliases": [
-        "stack direction",
-        "technology stack audience draft"
-      ],
-      "tags": [
-        "foundation",
-        "technology_stack",
-        "comparison_draft"
-      ]
-    },
-    {
-      "foundation_id": "foundation.product",
-      "title": "Product",
-      "summary": "Defines the product shape and shared product-layer boundaries for the repository.",
-      "status": "active",
-      "authority": "authoritative",
-      "doc_path": "docs/foundations/product.md",
-      "updated_at": "2026-03-10T00:10:09Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/planning/",
-        "core/control_plane/",
-        "workflows/modules/"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/standards.md",
-        "docs/foundations/product_narrative_brochure.md"
-      ],
-      "cited_by_paths": [
-        "docs/foundations/customer_story.v1.md",
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/engineering_design_principles.v1.md",
-        "docs/foundations/engineering_stack_direction.v1.md",
-        "docs/foundations/product_direction.v1.md",
-        "docs/foundations/product_narrative_brochure.md",
-        "docs/foundations/repository_standards_posture.v1.md",
-        "docs/foundations/standards.md",
-        "docs/foundations/technology_stack.md",
-        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-        "docs/planning/design/features/command_documentation_and_lookup.md",
-        "docs/planning/design/features/core_python_workspace_and_harness.md",
-        "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md",
-        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
-        "docs/planning/design/features/python_validator_execution.md",
-        "docs/planning/design/features/schema_resolution_and_index_search.md",
-        "docs/planning/prds/core_python_foundation.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/metadata/terminology_standard.md",
-        "workflows/modules/foundations_context_review.md"
-      ],
-      "applied_by_paths": [
-        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-        "docs/planning/design/features/command_documentation_and_lookup.md",
-        "docs/planning/design/features/core_python_workspace_and_harness.md",
-        "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md",
-        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
-        "docs/planning/design/features/python_validator_execution.md",
-        "docs/planning/design/features/schema_resolution_and_index_search.md",
-        "docs/planning/prds/core_python_foundation.md",
-        "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/metadata/terminology_standard.md",
-        "workflows/modules/foundations_context_review.md"
-      ],
-      "aliases": [
-        "product shape",
-        "product direction"
-      ],
-      "tags": [
-        "foundation",
-        "product"
-      ]
-    },
-    {
-      "foundation_id": "foundation.product_direction_v1",
-      "title": "Product Direction v1",
-      "summary": "Comparison draft that reframes the product foundation as a product-direction document for planning and scope decisions.",
-      "status": "draft",
-      "authority": "supporting",
-      "doc_path": "docs/foundations/product_direction.v1.md",
-      "updated_at": "2026-03-10T00:04:20Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/planning/",
-        "core/control_plane/",
-        "workflows/modules/"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/product.md",
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/standards.md",
-        "docs/foundations/product_narrative_brochure.md"
-      ],
-      "aliases": [
-        "product shape",
-        "product audience draft"
-      ],
-      "tags": [
-        "foundation",
-        "product",
-        "comparison_draft"
-      ]
-    },
-    {
-      "foundation_id": "foundation.product_narrative_brochure",
-      "title": "Product Narrative Brochure",
+      "foundation_id": "foundation.customer_story",
+      "title": "Customer Story",
       "summary": "Provides a customer-facing narrative summary of the product story, user problem, and intended operator experience.",
       "status": "active",
       "authority": "supporting",
-      "doc_path": "docs/foundations/product_narrative_brochure.md",
+      "doc_path": "docs/foundations/customer_story.md",
       "updated_at": "2026-03-10T00:10:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
@@ -284,16 +19,15 @@
         "docs/planning/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/product.md",
-        "docs/foundations/design_philosophy.md"
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_design_principles.md"
       ],
       "cited_by_paths": [
-        "docs/foundations/customer_story.v1.md",
-        "docs/foundations/product.md",
-        "docs/foundations/product_direction.v1.md"
+        "docs/foundations/product_direction.md"
       ],
       "aliases": [
         "customer story",
+        "product narrative brochure",
         "product narrative",
         "product brochure"
       ],
@@ -303,62 +37,31 @@
       ]
     },
     {
-      "foundation_id": "foundation.repository_standards_posture_v1",
-      "title": "Repository Standards Posture v1",
-      "summary": "Comparison draft that reframes the standards foundation as an internal standards-posture document.",
-      "status": "draft",
-      "authority": "supporting",
-      "doc_path": "docs/foundations/repository_standards_posture.v1.md",
-      "updated_at": "2026-03-09T23:41:18Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/",
-        "core/control_plane/",
-        "workflows/modules/"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/standards.md",
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md"
-      ],
-      "aliases": [
-        "standards posture",
-        "standards audience draft"
-      ],
-      "tags": [
-        "foundation",
-        "standards",
-        "comparison_draft"
-      ]
-    },
-    {
-      "foundation_id": "foundation.standards",
-      "title": "Standards",
-      "summary": "Explains the repository-wide standards posture and why governed standards matter.",
+      "foundation_id": "foundation.engineering_design_principles",
+      "title": "Engineering Design Principles",
+      "summary": "Defines the governing engineering design principles and operating model for the repository.",
       "status": "active",
       "authority": "authoritative",
-      "doc_path": "docs/foundations/standards.md",
+      "doc_path": "docs/foundations/engineering_design_principles.md",
       "updated_at": "2026-03-10T00:10:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/",
         "core/control_plane/",
-        "workflows/modules/"
+        "core/python/",
+        "workflows/modules/",
+        "docs/standards/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md"
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md"
       ],
       "cited_by_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/engineering_design_principles.v1.md",
-        "docs/foundations/product.md",
-        "docs/foundations/product_direction.v1.md",
-        "docs/foundations/repository_standards_posture.v1.md",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
@@ -369,11 +72,11 @@
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
         "docs/planning/prds/core_python_foundation.md",
-        "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/standards/data_contracts/schema_standard.md",
-        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/workflows/workflow_design_standard.md"
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/metadata/terminology_standard.md",
+        "workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
@@ -386,28 +89,29 @@
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
         "docs/planning/prds/core_python_foundation.md",
-        "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/standards/data_contracts/schema_standard.md",
-        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
-        "docs/standards/workflows/workflow_design_standard.md"
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/metadata/terminology_standard.md",
+        "workflows/modules/foundations_context_review.md"
       ],
       "aliases": [
-        "standards posture",
-        "repository standards posture"
+        "design philosophy",
+        "repository design philosophy",
+        "engineering design principles"
       ],
       "tags": [
         "foundation",
-        "standards"
+        "design_philosophy"
       ]
     },
     {
-      "foundation_id": "foundation.technology_stack",
-      "title": "Technology Stack",
+      "foundation_id": "foundation.engineering_stack_direction",
+      "title": "Engineering Stack Direction",
       "summary": "Defines the current technology-direction baseline and selection rules for the repository.",
       "status": "active",
       "authority": "authoritative",
-      "doc_path": "docs/foundations/technology_stack.md",
+      "doc_path": "docs/foundations/engineering_stack_direction.md",
       "updated_at": "2026-03-10T00:10:09Z",
       "uses_internal_references": true,
       "uses_external_references": false,
@@ -417,16 +121,13 @@
         "docs/standards/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
         "docs/standards/data_contracts/format_selection_standard.md"
       ],
       "cited_by_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/engineering_design_principles.v1.md",
-        "docs/foundations/engineering_stack_direction.v1.md",
-        "docs/foundations/repository_standards_posture.v1.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/github_task_push_sync.md",
@@ -449,12 +150,143 @@
         "docs/standards/data_contracts/schema_standard.md"
       ],
       "aliases": [
+        "technology stack",
         "stack direction",
         "engineering stack direction"
       ],
       "tags": [
         "foundation",
         "technology_stack"
+      ]
+    },
+    {
+      "foundation_id": "foundation.product_direction",
+      "title": "Product Direction",
+      "summary": "Defines the product direction, layer boundaries, and first-wave scope for the repository.",
+      "status": "active",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/product_direction.md",
+      "updated_at": "2026-03-10T00:10:09Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/",
+        "workflows/modules/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/customer_story.md"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/metadata/terminology_standard.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "applied_by_paths": [
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/metadata/terminology_standard.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "aliases": [
+        "product",
+        "product shape",
+        "product direction"
+      ],
+      "tags": [
+        "foundation",
+        "product"
+      ]
+    },
+    {
+      "foundation_id": "foundation.repository_standards_posture",
+      "title": "Repository Standards Posture",
+      "summary": "Explains the repository-wide standards posture and why governed standards matter.",
+      "status": "active",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/repository_standards_posture.md",
+      "updated_at": "2026-03-10T00:10:09Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/",
+        "core/control_plane/",
+        "workflows/modules/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_stack_direction.md"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md"
+      ],
+      "applied_by_paths": [
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md"
+      ],
+      "aliases": [
+        "standards",
+        "standards posture",
+        "repository standards posture"
+      ],
+      "tags": [
+        "foundation",
+        "standards"
       ]
     }
   ]

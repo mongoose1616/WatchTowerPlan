@@ -50,10 +50,10 @@ This document defines the feature-level design for a human-readable command-page
 - Current command discovery would require reading package code or general workspace READMEs directly.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): keep discovery local, explicit, and inspectable rather than relying on hidden heuristics.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): keep core command surfaces operational and support-oriented rather than product-marketing surfaces.
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): use Markdown for human guidance and JSON for machine-readable lookup surfaces.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one canonical purpose per artifact and avoid parallel truth between docs and machine-readable indexes.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep discovery local, explicit, and inspectable rather than relying on hidden heuristics.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep core command surfaces operational and support-oriented rather than product-marketing surfaces.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): use Markdown for human guidance and JSON for machine-readable lookup surfaces.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one canonical purpose per artifact and avoid parallel truth between docs and machine-readable indexes.
 
 ## Internal Standards and Canonical References Applied
 - [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): command pages need a stable human-readable synopsis, options, examples, and behavior shape.

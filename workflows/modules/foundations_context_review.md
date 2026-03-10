@@ -18,8 +18,8 @@ Use this workflow to load the repository foundation documents that materially sh
 - [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
 - [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): identifies the design-philosophy constraints this workflow should surface for planning tasks.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): identifies the product-shape constraints this workflow should surface when planning depends on foundation context.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): identifies the design-philosophy constraints this workflow should surface for planning tasks.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): identifies the product-shape constraints this workflow should surface when planning depends on foundation context.
 
 ## Workflow
 1. Select the relevant foundation documents.

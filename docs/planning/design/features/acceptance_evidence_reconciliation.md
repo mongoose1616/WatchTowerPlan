@@ -49,9 +49,9 @@ This document defines the feature-level design for the acceptance and evidence r
 - The repository now has enough acceptance, evidence, and traceability structure to justify a live workflow and a semantic validation command.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): keep repository behavior deterministic, inspectable, and local-first rather than dependent on hidden inference.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): preserve reusable validation and closeout capabilities that can support maintainers and automated workflows.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep companion human-readable and machine-readable surfaces aligned in the same change set when they depend on one another.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep repository behavior deterministic, inspectable, and local-first rather than dependent on hidden inference.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): preserve reusable validation and closeout capabilities that can support maintainers and automated workflows.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep companion human-readable and machine-readable surfaces aligned in the same change set when they depend on one another.
 
 ## Internal Standards and Canonical References Applied
 - [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance IDs and expected outcomes need to stay machine-readable and stable across reconciliation.

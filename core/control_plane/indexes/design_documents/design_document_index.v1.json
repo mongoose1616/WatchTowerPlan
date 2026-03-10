@@ -21,9 +21,9 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
         "docs/standards/data_contracts/validation_evidence_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -58,10 +58,10 @@
         "core/python/src/watchtower_core/cli/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "core/python/",
         "docs/standards/documentation/command_md_standard.md",
         "docs/standards/data_contracts/command_index_standard.md",
@@ -93,10 +93,10 @@
         "core/control_plane/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "core/python/",
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
@@ -130,9 +130,9 @@
         "core/python/src/watchtower_core/sync/github_tasks.py"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         ".github/",
         "docs/standards/governance/github_collaboration_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
@@ -164,10 +164,10 @@
         "core/python/src/watchtower_core/sync/github_tasks.py"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
@@ -199,10 +199,10 @@
         "docs/planning/decisions/decision_tracking.md"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
@@ -227,10 +227,10 @@
         "core/python/src/watchtower_core/sync/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
@@ -257,10 +257,10 @@
         "core/control_plane/ledgers/validation_evidence/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "core/python",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
@@ -298,10 +298,10 @@
         "core/python/src/watchtower_core/query/"
       ],
       "internal_reference_paths": [
-        "docs/foundations/design_philosophy.md",
-        "docs/foundations/product.md",
-        "docs/foundations/technology_stack.md",
-        "docs/foundations/standards.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
         "core/python",
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",

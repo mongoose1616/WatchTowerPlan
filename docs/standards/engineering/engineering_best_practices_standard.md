@@ -40,7 +40,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): foundation intent this standard must remain aligned with.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
 ## Guidance
 - Start from the routed workflow set and the nearest applicable `AGENTS.md` and `README.md` before making changes.
 - Keep human planning authority in `docs/planning/`, machine-readable authority in `core/control_plane/`, and executable Python behavior in `core/python/`.
@@ -97,7 +97,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
 
 ## Notes
 - This standard is intentionally repo-specific. It complements narrower standards rather than replacing them.

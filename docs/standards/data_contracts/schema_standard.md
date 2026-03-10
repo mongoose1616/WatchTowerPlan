@@ -33,8 +33,8 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Reviewing whether a schema change is breaking, incomplete, or improperly placed.
 
 ## Related Standards and Sources
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): foundation intent this standard must remain aligned with.
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -115,8 +115,8 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Record breaking acceptance or compatibility changes in the relevant compatibility contract and committed migration history when that structure is in use.
 
 ## References
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)

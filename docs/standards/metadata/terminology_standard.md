@@ -33,8 +33,8 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - Mapping external terminology into repository-native language.
 
 ## Related Standards and Sources
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): foundation intent this standard must remain aligned with.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): foundation intent this standard must remain aligned with.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): foundation intent this standard must remain aligned with.
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -79,8 +79,8 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - Prefer explicit migration from an old term to a new one rather than leaving both in active use indefinitely.
 
 ## References
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)

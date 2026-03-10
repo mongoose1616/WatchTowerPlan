@@ -24,7 +24,7 @@ uv run watchtower-core query foundations [--query <text>] [--foundation-id <foun
 
 ## Arguments and Options
 - `--query <text>`: Free-text query over indexed foundation fields such as ID, title, summary, aliases, and related paths.
-- `--foundation-id <foundation_id>`: Exact foundation identifier such as `foundation.design_philosophy`.
+- `--foundation-id <foundation_id>`: Exact foundation identifier such as `foundation.engineering_design_principles`.
 - `--authority <authority>`: Exact authority filter such as `authoritative` or `supporting`.
 - `--tag <tag>`: Exact tag filter.
 - `--related-path <path>`: Exact repository-path filter such as `core/python/` or `workflows/modules/`.

@@ -53,10 +53,10 @@ This document defines the feature-level technical design for the consolidated Py
 - Existing feature designs for validator execution and schema resolution assume a Python package surface but do not yet define the final workspace root.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): keep the runtime deterministic, local-first, and separated from canonical machine-readable authority.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): keep core as the governed substrate and execution helper layer rather than a product-specific UI surface.
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): favor Python for helper and harness logic and JSON Schema for machine-validated contracts.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): avoid parallel truth by keeping control-plane authority in artifacts and execution logic in Python.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep the runtime deterministic, local-first, and separated from canonical machine-readable authority.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep core as the governed substrate and execution helper layer rather than a product-specific UI surface.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): favor Python for helper and harness logic and JSON Schema for machine-validated contracts.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): avoid parallel truth by keeping control-plane authority in artifacts and execution logic in Python.
 
 ## Internal Standards and Canonical References Applied
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): `core/python/` must remain the single Python workspace root with one onboarding contract.

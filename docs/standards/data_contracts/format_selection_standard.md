@@ -33,8 +33,8 @@ Keep format choices small, predictable, and aligned with the repository's author
 - Reviewing whether an existing format choice is introducing avoidable complexity.
 
 ## Related Standards and Sources
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): foundation intent this standard must remain aligned with.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): foundation intent this standard must remain aligned with.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): foundation intent this standard must remain aligned with.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [rfc_8259_json_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_8259_json_reference.md): local reference surface for the external or canonical guidance this standard depends on.
@@ -110,8 +110,8 @@ Keep format choices small, predictable, and aligned with the repository's author
 - If a narrower standard adopts a different format for a specific artifact family, it must justify the exception explicitly.
 
 ## References
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
 - [rfc_8259_json_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_8259_json_reference.md)

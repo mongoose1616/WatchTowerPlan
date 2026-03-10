@@ -173,7 +173,7 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     prd = prd_index.get("prd.core_python_foundation")
     decision = decision_index.get("decision.core_python_workspace_root")
     design = design_index.get("design.features.python_validator_execution")
-    foundation = foundation_index.get("foundation.design_philosophy")
+    foundation = foundation_index.get("foundation.engineering_design_principles")
     standard = standard_index.get("std.governance.github_collaboration")
     workflow = workflow_index.get("workflow.code_validation")
 
@@ -184,7 +184,7 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     assert design.family == "feature_design"
     assert design.trace_id == "trace.core_python_foundation"
     assert foundation.authority == "authoritative"
-    assert foundation.doc_path == "docs/foundations/design_philosophy.md"
+    assert foundation.doc_path == "docs/foundations/engineering_design_principles.md"
     assert prd.uses_internal_references is True
     assert decision.uses_internal_references is True
     assert design.uses_internal_references is True
@@ -214,9 +214,9 @@ def test_control_plane_loader_reads_foundation_index() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     foundation_index = loader.load_foundation_index()
-    entry = foundation_index.get("foundation.design_philosophy")
+    entry = foundation_index.get("foundation.engineering_design_principles")
 
-    assert entry.doc_path == "docs/foundations/design_philosophy.md"
+    assert entry.doc_path == "docs/foundations/engineering_design_principles.md"
     assert entry.authority == "authoritative"
     assert (
         "docs/standards/engineering/engineering_best_practices_standard.md"

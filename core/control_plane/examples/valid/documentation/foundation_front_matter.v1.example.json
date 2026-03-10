@@ -1,7 +1,7 @@
 {
-  "id": "foundation.design_philosophy",
-  "title": "Design Philosophy",
-  "summary": "Defines the governing design philosophy for the repository and its operating model.",
+  "id": "foundation.engineering_design_principles",
+  "title": "Engineering Design Principles",
+  "summary": "Defines the governing engineering design principles and operating model for the repository.",
   "type": "foundation",
   "status": "active",
   "tags": [
@@ -13,12 +13,14 @@
   "audience": "shared",
   "authority": "authoritative",
   "applies_to": [
-    "docs/foundations/design_philosophy.md",
+    "docs/foundations/engineering_design_principles.md",
     "core/control_plane/",
     "core/python/",
     "workflows/modules/"
   ],
   "aliases": [
-    "repository design philosophy"
+    "design philosophy",
+    "repository design philosophy",
+    "engineering design principles"
   ]
 }

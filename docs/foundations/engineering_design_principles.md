@@ -1,7 +1,7 @@
 ---
-id: "foundation.design_philosophy"
-title: "Design Philosophy"
-summary: "Defines the governing design philosophy for the repository and its operating model."
+id: "foundation.engineering_design_principles"
+title: "Engineering Design Principles"
+summary: "Defines the governing engineering design principles and operating model for the repository."
 type: "foundation"
 status: "active"
 tags:
@@ -17,11 +17,12 @@ applies_to:
   - "workflows/modules/"
   - "docs/standards/"
 aliases:
+  - "design philosophy"
   - "repository design philosophy"
   - "engineering design principles"
 ---
 
-# Design Philosophy
+# Engineering Design Principles
 
 This repository is meant to feel like a governed operating environment for LLM/agent-driven work, not a pile of notes, prompts, and helper scripts. The design philosophy is simple: let the agent handle the structured execution, keep the shared substrate trustworthy, keep the operator-facing experience guided and readable, and keep the boundary between human outputs and canonical machine state explicit.
 
@@ -75,9 +76,9 @@ Domain packs are where the system becomes useful to an operator. They should fee
 - Optimize for smooth movement from intake to execution, evidence capture, and closeout.
 
 ## References
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md)
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
 
 ## Updated At
 - `2026-03-10T00:10:09Z`

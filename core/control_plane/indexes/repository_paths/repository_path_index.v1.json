@@ -2273,73 +2273,38 @@
       "parent_path": "docs/foundations/"
     },
     {
-      "path": "docs/foundations/customer_story.v1.md",
+      "path": "docs/foundations/customer_story.md",
       "kind": "file",
       "surface_kind": "foundation_doc",
-      "summary": "Audience-shaped companion draft of the narrative brochure for customers, operators, and designers.",
+      "summary": "Provides the customer-facing product story, user problem, and intended operator experience.",
       "parent_path": "docs/foundations/"
     },
     {
-      "path": "docs/foundations/design_philosophy.md",
+      "path": "docs/foundations/engineering_design_principles.md",
       "kind": "file",
       "surface_kind": "foundation_doc",
-      "summary": "Defines the governing design philosophy for the repository and its operating model.",
+      "summary": "Defines the governing engineering design principles and operating model for the repository.",
       "parent_path": "docs/foundations/"
     },
     {
-      "path": "docs/foundations/engineering_design_principles.v1.md",
+      "path": "docs/foundations/engineering_stack_direction.md",
       "kind": "file",
       "surface_kind": "foundation_doc",
-      "summary": "Audience-shaped companion draft of the design philosophy for engineers and maintainers.",
+      "summary": "Defines the current technology-direction baseline and selection rules for the repository.",
       "parent_path": "docs/foundations/"
     },
     {
-      "path": "docs/foundations/engineering_stack_direction.v1.md",
+      "path": "docs/foundations/product_direction.md",
       "kind": "file",
       "surface_kind": "foundation_doc",
-      "summary": "Audience-shaped companion draft of the technology stack foundation for engineers.",
+      "summary": "Defines the product direction, layer boundaries, and first-wave scope.",
       "parent_path": "docs/foundations/"
     },
     {
-      "path": "docs/foundations/product.md",
-      "kind": "file",
-      "surface_kind": "foundation_doc",
-      "summary": "Defines the product shape and shared product-layer boundaries.",
-      "parent_path": "docs/foundations/"
-    },
-    {
-      "path": "docs/foundations/product_direction.v1.md",
-      "kind": "file",
-      "surface_kind": "foundation_doc",
-      "summary": "Audience-shaped companion draft of the product foundation for product owners and engineering leads.",
-      "parent_path": "docs/foundations/"
-    },
-    {
-      "path": "docs/foundations/product_narrative_brochure.md",
-      "kind": "file",
-      "surface_kind": "foundation_doc",
-      "summary": "Provides the customer-facing product narrative and value framing.",
-      "parent_path": "docs/foundations/"
-    },
-    {
-      "path": "docs/foundations/repository_standards_posture.v1.md",
-      "kind": "file",
-      "surface_kind": "foundation_doc",
-      "summary": "Audience-shaped companion draft of the standards foundation for maintainers and contributors.",
-      "parent_path": "docs/foundations/"
-    },
-    {
-      "path": "docs/foundations/standards.md",
+      "path": "docs/foundations/repository_standards_posture.md",
       "kind": "file",
       "surface_kind": "foundation_doc",
       "summary": "Explains the repository-wide standards posture and why governed standards matter.",
-      "parent_path": "docs/foundations/"
-    },
-    {
-      "path": "docs/foundations/technology_stack.md",
-      "kind": "file",
-      "surface_kind": "foundation_doc",
-      "summary": "Defines the current technology-direction baseline for the repository.",
       "parent_path": "docs/foundations/"
     },
     {

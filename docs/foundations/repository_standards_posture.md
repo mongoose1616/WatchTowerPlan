@@ -1,6 +1,6 @@
 ---
-id: "foundation.standards"
-title: "Standards"
+id: "foundation.repository_standards_posture"
+title: "Repository Standards Posture"
 summary: "Explains the repository-wide standards posture and why governed standards matter."
 type: "foundation"
 status: "active"
@@ -16,11 +16,12 @@ applies_to:
   - "core/control_plane/"
   - "workflows/modules/"
 aliases:
+  - "standards"
   - "standards posture"
   - "repository standards posture"
 ---
 
-# Standards
+# Repository Standards Posture
 
 Standards in this repository exist to protect coherence in an LLM/agent-driven system. They are not decoration and they are not optional cleanup work. The point is to keep product intent, machine state, workflows, human-readable outputs, and evidence aligned so the system remains trustworthy as it grows.
 
@@ -73,9 +74,9 @@ Domain pack standards should keep packs expressive for their domain without lett
 - Allow domain-specific expression without bypassing shared core contracts.
 
 ## References
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md)
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md)
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md)
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
 
 ## Updated At
 - `2026-03-10T00:10:09Z`

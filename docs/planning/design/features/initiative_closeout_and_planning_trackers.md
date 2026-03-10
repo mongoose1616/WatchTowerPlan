@@ -50,10 +50,10 @@ This document defines the first initiative closeout model, its traceability fiel
 - No single surface currently records whether a traced initiative is completed, superseded, cancelled, or abandoned.
 
 ## Foundations References Applied
-- [design_philosophy.md](/home/j/WatchTowerPlan/docs/foundations/design_philosophy.md): keep machine-readable authority explicit and use derived human surfaces for orientation.
-- [product.md](/home/j/WatchTowerPlan/docs/foundations/product.md): preserve reusable closeout behavior tied to planning, validation, and execution.
-- [technology_stack.md](/home/j/WatchTowerPlan/docs/foundations/technology_stack.md): keep JSON for machine-readable join state and Markdown for human-readable tracker views.
-- [standards.md](/home/j/WatchTowerPlan/docs/foundations/standards.md): keep one source of truth for initiative outcome and derive secondary mirrors from it.
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep machine-readable authority explicit and use derived human surfaces for orientation.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): preserve reusable closeout behavior tied to planning, validation, and execution.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): keep JSON for machine-readable join state and Markdown for human-readable tracker views.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): keep one source of truth for initiative outcome and derive secondary mirrors from it.
 
 ## Internal Standards and Canonical References Applied
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): initiative lifecycle closeout has to update the shared trace record rather than only the human trackers.
