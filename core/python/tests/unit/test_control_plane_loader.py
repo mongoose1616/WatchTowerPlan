@@ -44,6 +44,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     query_workflows = command_index.get("command.watchtower_core.query.workflows")
     query_standards = command_index.get("command.watchtower_core.query.standards")
     query_acceptance = command_index.get("command.watchtower_core.query.acceptance")
+    query_coordination = command_index.get("command.watchtower_core.query.coordination")
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
     query_initiatives = command_index.get("command.watchtower_core.query.initiatives")
     query_trace = command_index.get("command.watchtower_core.query.trace")
@@ -87,6 +88,15 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert (
         query_standards.doc_path
         == "docs/commands/core_python/watchtower_core_query_standards.md"
+    )
+    assert query_coordination.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_coordination.doc_path
+        == "docs/commands/core_python/watchtower_core_query_coordination.md"
+    )
+    assert (
+        query_coordination.implementation_path
+        == "core/python/src/watchtower_core/cli/query_family.py"
     )
     assert query_acceptance.parent_command_id == "command.watchtower_core.query"
     assert (
@@ -215,6 +225,7 @@ def test_control_plane_loader_reads_initiative_index() -> None:
         "closeout",
         "closed",
     }
+    assert isinstance(entry.active_task_summaries, tuple)
     assert entry.next_surface_path
     assert entry.key_surface_path
 

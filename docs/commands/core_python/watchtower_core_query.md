@@ -14,7 +14,7 @@ This command group searches the governed lookup indexes for repository paths, do
 | Invocation | `watchtower-core query` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
 
 ## Synopsis
 ```sh
@@ -23,7 +23,7 @@ uv run watchtower-core query <query_command> [args]
 ```
 
 ## Arguments and Options
-- `<query_command>`: Choose `paths`, `commands`, `foundations`, `workflows`, `references`, `standards`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `tasks`, `initiatives`, or `trace`.
+- `<query_command>`: Choose `paths`, `commands`, `coordination`, `foundations`, `workflows`, `references`, `standards`, `prds`, `decisions`, `designs`, `acceptance`, `evidence`, `tasks`, `initiatives`, or `trace`.
 - `-h`, `--help`: Show the command help text.
 - No group-level filters exist; pass filtering arguments to the selected leaf command.
 
@@ -36,6 +36,11 @@ uv run watchtower-core query --help
 ```sh
 cd core/python
 uv run watchtower-core query commands --query doctor
+```
+
+```sh
+cd core/python
+uv run watchtower-core query coordination --format json
 ```
 
 ```sh
@@ -102,13 +107,15 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 - With no leaf command, the current implementation prints query-specific help and exits successfully.
 - The command group is read-only and does not mutate repository state.
 - Each leaf command supports `--format human` and `--format json`.
-- Use `paths` for repository navigation, `commands` for CLI discovery, `foundations` for the governed intent layer, `workflows` for workflow-module lookup, `references` for the reference corpus, `standards` for standards and best-practice lookup, `prds`, `decisions`, and `designs` for planning lookup, `acceptance` and `evidence` for governed acceptance coverage lookup, `tasks` for local execution work lookup, `initiatives` for the cross-family phase and ownership view, and `trace` when you already know the trace ID.
+- Use `coordination` as the machine start-here path for active traced work and next-step lookup.
+- Use `paths` for repository navigation, `commands` for CLI discovery, `foundations` for the governed intent layer, `workflows` for workflow-module lookup, `references` for the reference corpus, `standards` for standards and best-practice lookup, `prds`, `decisions`, and `designs` for planning lookup, `acceptance` and `evidence` for governed acceptance coverage lookup, `tasks` for local execution work lookup, `initiatives` for broader initiative-family lookup including closed history, and `trace` when you already know the trace ID.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core query paths` | Searches the repository path index. |
 | `watchtower-core query commands` | Searches the command index. |
+| `watchtower-core query coordination` | Starts with the active initiative coordination view. |
 | `watchtower-core query foundations` | Searches the foundation index. |
 | `watchtower-core query workflows` | Searches the workflow index. |
 | `watchtower-core query references` | Searches the reference index. |
@@ -124,8 +131,8 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 | `watchtower-core` | Root command that dispatches to this command group. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/query_family.py`
 - `core/python/src/watchtower_core/query/`
 
 ## Updated At
-- `2026-03-10T01:48:35Z`
+- `2026-03-10T18:10:36Z`

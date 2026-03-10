@@ -65,6 +65,18 @@
         "closed"
       ]
     },
+    "taskStatus": {
+      "type": "string",
+      "enum": [
+        "backlog",
+        "ready",
+        "in_progress",
+        "blocked",
+        "in_review",
+        "done",
+        "cancelled"
+      ]
+    },
     "idPattern": {
       "type": "string",
       "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
@@ -89,6 +101,15 @@
         "$ref": "#/$defs/taskIdPattern"
       }
     },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ]
+    },
     "stringList": {
       "type": "array",
       "minItems": 1,
@@ -96,6 +117,58 @@
       "items": {
         "type": "string",
         "minLength": 1
+      }
+    },
+    "activeTaskSummary": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "title",
+        "task_status",
+        "priority",
+        "owner",
+        "doc_path",
+        "is_actionable"
+      ],
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/taskIdPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_status": {
+          "$ref": "#/$defs/taskStatus"
+        },
+        "priority": {
+          "$ref": "#/$defs/priority"
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "is_actionable": {
+          "type": "boolean"
+        },
+        "blocked_by": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "depends_on": {
+          "$ref": "#/$defs/taskIdList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "activeTaskSummaryList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/activeTaskSummary"
       }
     },
     "initiativeEntry": {
@@ -167,6 +240,9 @@
         },
         "active_task_ids": {
           "$ref": "#/$defs/taskIdList"
+        },
+        "active_task_summaries": {
+          "$ref": "#/$defs/activeTaskSummaryList"
         },
         "blocked_by_task_ids": {
           "$ref": "#/$defs/taskIdList"
@@ -261,7 +337,8 @@
           },
           "then": {
             "required": [
-              "active_task_ids"
+              "active_task_ids",
+              "active_task_summaries"
             ],
             "anyOf": [
               {

@@ -3252,6 +3252,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_coordination.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Machine start-here command page for active traced initiative coordination and next-step lookup.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_sync.md",
       "kind": "file",
       "surface_kind": "command_doc",

@@ -28,6 +28,19 @@ IMPLEMENTATION_PLAN_DIRECTORY = "docs/planning/design/implementation/"
 TASK_OPEN_DIRECTORY = "docs/planning/tasks/open/"
 
 TERMINAL_TASK_STATUSES = {"done", "cancelled"}
+TASK_STATUS_ORDER = {
+    "ready": 0,
+    "in_progress": 1,
+    "in_review": 2,
+    "backlog": 3,
+    "blocked": 4,
+}
+PRIORITY_ORDER = {
+    "critical": 0,
+    "high": 1,
+    "medium": 2,
+    "low": 3,
+}
 PHASE_ORDER = {
     "prd": 1,
     "design": 2,
@@ -106,16 +119,25 @@ class InitiativeIndexSyncService:
         active_tasks = tuple(
             entry for entry in task_entries if entry.task_status not in TERMINAL_TASK_STATUSES
         )
+        task_lookup = {entry.task_id: entry for entry in task_entries}
         active_owners = tuple(sorted({entry.owner for entry in active_tasks}))
         primary_owner = active_owners[0] if len(active_owners) == 1 else None
         blocked_by_task_ids = tuple(
-            sorted({task_id for entry in active_tasks for task_id in entry.blocked_by})
+            sorted(
+                {
+                    task_id
+                    for entry in active_tasks
+                    for task_id in (
+                        *entry.blocked_by,
+                        *_unresolved_dependency_ids(entry, task_lookup),
+                    )
+                }
+            )
         )
         blocked_task_count = sum(
-            1
-            for entry in active_tasks
-            if entry.task_status == "blocked" or len(entry.blocked_by) > 0
+            1 for entry in active_tasks if _task_is_blocked(entry, task_lookup)
         )
+        active_task_summaries = _build_active_task_summaries(active_tasks, task_lookup)
 
         current_phase = _determine_current_phase(
             trace_entry=trace_entry,
@@ -134,6 +156,7 @@ class InitiativeIndexSyncService:
             current_phase=current_phase,
             initiative_status=trace_entry.initiative_status,
             active_tasks=active_tasks,
+            task_lookup=task_lookup,
             blocked_task_count=blocked_task_count,
             key_surface_path=key_surface_path,
         )
@@ -158,6 +181,7 @@ class InitiativeIndexSyncService:
             entry["active_owners"] = list(active_owners)
         if active_tasks:
             entry["active_task_ids"] = [entry.task_id for entry in active_tasks]
+            entry["active_task_summaries"] = active_task_summaries
         if blocked_by_task_ids:
             entry["blocked_by_task_ids"] = list(blocked_by_task_ids)
         if trace_entry.prd_ids:
@@ -278,6 +302,7 @@ def _next_step(
     current_phase: str,
     initiative_status: str,
     active_tasks: tuple[TaskIndexEntry, ...],
+    task_lookup: dict[str, TaskIndexEntry],
     blocked_task_count: int,
     key_surface_path: str,
 ) -> tuple[str, str]:
@@ -311,11 +336,8 @@ def _next_step(
             TASK_OPEN_DIRECTORY,
         )
     if current_phase == "execution":
-        next_task_path = (
-            sorted(entry.doc_path for entry in active_tasks)[0]
-            if active_tasks
-            else TASK_OPEN_DIRECTORY
-        )
+        focus_task = _select_coordination_task(active_tasks, task_lookup)
+        next_task_path = focus_task.doc_path if focus_task is not None else TASK_OPEN_DIRECTORY
         if blocked_task_count > 0:
             return (
                 (
@@ -367,3 +389,103 @@ def _next_step(
         "Inspect the initiative source surfaces and decide the next bounded planning step.",
         key_surface_path,
     )
+
+
+def _build_active_task_summaries(
+    active_tasks: tuple[TaskIndexEntry, ...],
+    task_lookup: dict[str, TaskIndexEntry],
+) -> list[dict[str, object]]:
+    summaries: list[dict[str, object]] = []
+    for entry in sorted(
+        active_tasks,
+        key=lambda item: _coordination_task_sort_key(item, task_lookup),
+    ):
+        summary: dict[str, object] = {
+            "task_id": entry.task_id,
+            "title": entry.title,
+            "task_status": entry.task_status,
+            "priority": entry.priority,
+            "owner": entry.owner,
+            "doc_path": entry.doc_path,
+            "is_actionable": _task_is_actionable(entry, task_lookup),
+        }
+        if entry.blocked_by:
+            summary["blocked_by"] = list(entry.blocked_by)
+        if entry.depends_on:
+            summary["depends_on"] = list(entry.depends_on)
+        summaries.append(summary)
+    return summaries
+
+
+def _select_coordination_task(
+    active_tasks: tuple[TaskIndexEntry, ...],
+    task_lookup: dict[str, TaskIndexEntry],
+) -> TaskIndexEntry | None:
+    actionable_tasks = [
+        entry for entry in active_tasks if _task_is_actionable(entry, task_lookup)
+    ]
+    if actionable_tasks:
+        return sorted(
+            actionable_tasks,
+            key=lambda item: _coordination_task_sort_key(item, task_lookup),
+        )[0]
+    if not active_tasks:
+        return None
+    return sorted(
+        active_tasks,
+        key=lambda item: _blocked_task_sort_key(item, task_lookup),
+    )[0]
+
+
+def _coordination_task_sort_key(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> tuple[int, int, int, str]:
+    return (
+        0 if _task_is_actionable(entry, task_lookup) else 1,
+        TASK_STATUS_ORDER.get(entry.task_status, 99),
+        PRIORITY_ORDER.get(entry.priority, 99),
+        entry.task_id,
+    )
+
+
+def _blocked_task_sort_key(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> tuple[int, int, int, str]:
+    return (
+        0 if _task_is_blocked(entry, task_lookup) else 1,
+        PRIORITY_ORDER.get(entry.priority, 99),
+        TASK_STATUS_ORDER.get(entry.task_status, 99),
+        entry.task_id,
+    )
+
+
+def _task_is_actionable(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> bool:
+    return not _task_is_blocked(entry, task_lookup)
+
+
+def _task_is_blocked(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> bool:
+    return (
+        entry.task_status == "blocked"
+        or bool(entry.blocked_by)
+        or bool(_unresolved_dependency_ids(entry, task_lookup))
+    )
+
+
+def _unresolved_dependency_ids(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> tuple[str, ...]:
+    unresolved: list[str] = []
+    for dependency_id in entry.depends_on:
+        dependency = task_lookup.get(dependency_id)
+        if dependency is None or dependency.task_status not in TERMINAL_TASK_STATUSES:
+            unresolved.append(dependency_id)
+    return tuple(unresolved)

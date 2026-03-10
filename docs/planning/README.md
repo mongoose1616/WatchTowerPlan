@@ -15,6 +15,7 @@
 
 ## Notes
 - Start with `docs/planning/initiatives/` when the main question is "what is happening with this initiative right now?"
+- Start with `uv run watchtower-core query coordination --format json` when the main question is the machine-readable active initiative view and next action.
 - Keep upstream product intent in `prds/`, solution design in `design/`, and durable choice history in `decisions/`.
 - Keep engineer-sized execution work in `tasks/` rather than overloading PRD or design trackers as task boards.
 - Keep standards in `docs/standards/`, references in `docs/references/`, and workflows in `workflows/`.

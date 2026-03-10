@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "initiative_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T05:35:00Z"
+updated_at: "2026-03-10T18:10:36Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,6 +53,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Build the initiative index from the traceability index plus current planning and task indexes rather than scanning human trackers.
 - Carry `current_phase`, `next_action`, and `next_surface_path` in every active initiative entry.
 - Carry active owner and open-task projection for every active initiative.
+- Carry compact `active_task_summaries` for active initiatives outside `closeout` so the first machine coordination pass can see task titles, status, priority, ownership, and actionability without reopening the task index immediately.
 - Do not publish an active initiative entry without linked task IDs.
 - Mirror terminal initiative closeout state from traceability rather than inventing a second closeout authority.
 
@@ -84,6 +85,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | `primary_owner` | Conditionally required | Use when exactly one active owner is present. |
 | `active_owners` | Conditionally required | Current owners of open tasks when present and especially when more than one owner is active. |
 | `active_task_ids` | Conditionally required | Non-terminal local task IDs for active initiatives. Required for active initiatives outside `closeout`. |
+| `active_task_summaries` | Conditionally required | Compact active-task summaries for active initiatives outside `closeout`, including task title, status, priority, owner, doc path, and actionability. |
 | `blocked_by_task_ids` | Optional | Blocking task IDs referenced by current active tasks when present. |
 | `prd_ids` | Optional | Linked PRD IDs for the initiative. |
 | `decision_ids` | Optional | Linked decision IDs for the initiative. |
@@ -105,7 +107,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Every initiative entry should correspond to one current traceability entry.
 - `current_phase` should agree with the current planning and task state implied by the authoritative source surfaces.
 - Active initiative `task_ids` should agree with the current linked task corpus.
-- Active initiatives outside `closeout` should also keep `primary_owner` or `active_owners` plus `active_task_ids` aligned with the current non-terminal task corpus.
+- Active initiatives outside `closeout` should also keep `primary_owner` or `active_owners` plus `active_task_ids` and `active_task_summaries` aligned with the current non-terminal task corpus.
 - Active `closeout` entries may have only historical `task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
 - Terminal initiative entries should also publish the required closeout fields.
 
@@ -121,4 +123,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md)
 
 ## Updated At
-- `2026-03-10T05:35:00Z`
+- `2026-03-10T18:10:36Z`

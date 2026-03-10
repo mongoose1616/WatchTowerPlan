@@ -37,6 +37,7 @@
 - `uv run mypy src`
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
+- `uv run watchtower-core query coordination --format json`
 - `uv run watchtower-core query commands --query coordination --format json`
 - `uv run watchtower-core query foundations --query philosophy`
 - `uv run watchtower-core query workflows --query validation`

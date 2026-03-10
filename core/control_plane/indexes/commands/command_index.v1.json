@@ -172,6 +172,30 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.query.coordination",
+      "command": "watchtower-core query coordination",
+      "summary": "Search the initiative index through the machine start-here coordination path for traced work.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_coordination.md",
+      "synopsis": "uv run watchtower-core query coordination [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "coordination"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.decisions",
       "command": "watchtower-core query decisions",
       "summary": "Search the decision index for governed durable decision records.",

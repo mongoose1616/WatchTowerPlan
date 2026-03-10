@@ -665,6 +665,35 @@ class FoundationIndex:
 
 
 @dataclass(frozen=True, slots=True)
+class InitiativeActiveTaskSummary:
+    """Compact active-task summary embedded in an initiative-index entry."""
+
+    task_id: str
+    title: str
+    task_status: str
+    priority: str
+    owner: str
+    doc_path: str
+    is_actionable: bool
+    blocked_by: tuple[str, ...] = ()
+    depends_on: tuple[str, ...] = ()
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> InitiativeActiveTaskSummary:
+        return cls(
+            task_id=document["task_id"],
+            title=document["title"],
+            task_status=document["task_status"],
+            priority=document["priority"],
+            owner=document["owner"],
+            doc_path=document["doc_path"],
+            is_actionable=document["is_actionable"],
+            blocked_by=tuple(document.get("blocked_by", ())),
+            depends_on=tuple(document.get("depends_on", ())),
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class InitiativeIndexEntry:
     """Initiative-index entry."""
 
@@ -683,6 +712,7 @@ class InitiativeIndexEntry:
     primary_owner: str | None = None
     active_owners: tuple[str, ...] = ()
     active_task_ids: tuple[str, ...] = ()
+    active_task_summaries: tuple[InitiativeActiveTaskSummary, ...] = ()
     blocked_by_task_ids: tuple[str, ...] = ()
     prd_ids: tuple[str, ...] = ()
     decision_ids: tuple[str, ...] = ()
@@ -717,6 +747,10 @@ class InitiativeIndexEntry:
             primary_owner=document.get("primary_owner"),
             active_owners=tuple(document.get("active_owners", ())),
             active_task_ids=tuple(document.get("active_task_ids", ())),
+            active_task_summaries=tuple(
+                InitiativeActiveTaskSummary.from_document(entry)
+                for entry in document.get("active_task_summaries", ())
+            ),
             blocked_by_task_ids=tuple(document.get("blocked_by_task_ids", ())),
             prd_ids=tuple(document.get("prd_ids", ())),
             decision_ids=tuple(document.get("decision_ids", ())),

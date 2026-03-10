@@ -16,6 +16,7 @@ def register_query_family(
         _run_help,
         _run_query_acceptance,
         _run_query_commands,
+        _run_query_coordination,
         _run_query_decisions,
         _run_query_designs,
         _run_query_evidence,
@@ -39,18 +40,19 @@ def register_query_family(
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `foundations` for the intent-layer foundation corpus, `workflows`
-            for workflow-module lookup, `references` for the reference library,
-            `standards` for governed repository standards, `prds`,
-            `decisions`, `designs`, `acceptance`, `evidence`, and `tasks`
-            for planning and execution lookup, and
-            `initiatives` for the cross-family phase and ownership view, and
-            `trace` when you already know the trace identifier you want.
+            `coordination` for the machine start-here initiative view, `foundations`
+            for the intent-layer foundation corpus, `workflows` for workflow-module
+            lookup, `references` for the reference library, `standards` for governed
+            repository standards, `prds`, `decisions`, `designs`, `acceptance`,
+            `evidence`, and `tasks` for planning and execution lookup,
+            `initiatives` for broader initiative-family lookup including history,
+            and `trace` when you already know the trace identifier you want.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query paths --query control plane",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query coordination --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --related-path "
             "docs/standards/documentation/workflow_md_standard.md",
@@ -774,6 +776,72 @@ def register_query_family(
     )
     query_tasks_parser.set_defaults(handler=_run_query_tasks)
 
+    query_coordination_parser = query_subparsers.add_parser(
+        "coordination",
+        help="Start with the active initiative coordination view.",
+        description=dedent(
+            """
+            Search the initiative index through the machine start-here
+            coordination path for traced work.
+
+            By default this command returns active initiatives only. Use
+            `initiatives` for broader family lookup or pass `--initiative-status`
+            explicitly when you want a narrower historical state.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query coordination",
+            "uv run watchtower-core query coordination --blocked-only --format json",
+            "uv run watchtower-core query coordination --initiative-status completed "
+            "--trace-id trace.core_python_foundation",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_coordination_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over initiative coordination fields such as trace ID, "
+            "title, next action, and active task summaries."
+        ),
+    )
+    query_coordination_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.core_python_foundation.",
+    )
+    query_coordination_parser.add_argument(
+        "--initiative-status",
+        help=(
+            "Exact initiative-status filter such as active, completed, or superseded. "
+            "Defaults to active when omitted."
+        ),
+    )
+    query_coordination_parser.add_argument(
+        "--current-phase",
+        help="Exact current-phase filter such as prd, execution, or closeout.",
+    )
+    query_coordination_parser.add_argument(
+        "--owner",
+        help="Exact owner filter against the current active owners for the initiative.",
+    )
+    query_coordination_parser.add_argument(
+        "--blocked-only",
+        action="store_true",
+        help="Return only initiatives with one or more currently blocked active tasks.",
+    )
+    query_coordination_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_coordination_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_coordination_parser.set_defaults(handler=_run_query_coordination)
+
     query_initiatives_parser = query_subparsers.add_parser(
         "initiatives",
         help="Search the initiative index.",
@@ -782,8 +850,9 @@ def register_query_family(
             Search the cross-family initiative index for the current phase,
             active ownership, blockers, and next step of a traced initiative.
 
-            Use this when the main question is where an initiative is in the
-            PRD -> design -> implementation -> validation -> closeout flow.
+            Use this when you need broader initiative-family lookup or
+            historical closed-state inspection beyond the start-here
+            `coordination` path.
             """
         ).strip(),
         epilog=examples(

@@ -227,7 +227,7 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable initiative indexes stored under `core/control_plane/indexes/initiatives/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/initiative_index_standard.md",
-      "updated_at": "2026-03-10T05:35:00Z",
+      "updated_at": "2026-03-10T18:10:36Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
@@ -1593,7 +1593,7 @@
       "summary": "This standard defines the repository's cross-family initiative tracking model so one trace can be followed from PRD through design, planning, execution, validation, and closeout.",
       "status": "active",
       "doc_path": "docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-10T16:19:08Z",
+      "updated_at": "2026-03-10T18:10:36Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [

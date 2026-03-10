@@ -32,6 +32,7 @@ def test_root_command_prints_help(capsys) -> None:
     assert result == 0
     assert "watchtower-core" in captured.out
     assert "uv run watchtower-core doctor" in captured.out
+    assert "uv run watchtower-core query coordination --format json" in captured.out
     assert (
         "uv run watchtower-core query standards --category governance --format json"
         in captured.out
@@ -67,6 +68,7 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert result == 0
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
+    assert "query coordination" in captured.out
     assert "query foundations" in captured.out
     assert "query workflows" in captured.out
     assert "query references" in captured.out
@@ -453,6 +455,41 @@ def test_query_initiatives_supports_json_output(capsys) -> None:
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core query initiatives"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["trace_id"] == "trace.core_python_foundation" for entry in payload["results"]
+    )
+
+
+def test_query_coordination_defaults_to_active_status(capsys) -> None:
+    result = main(["query", "coordination", "--format", "json"])
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query coordination"
+    assert payload["status"] == "ok"
+    assert payload["default_initiative_status"] == "active"
+
+
+def test_query_coordination_supports_explicit_historical_lookup(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "coordination",
+            "--initiative-status",
+            "completed",
+            "--trace-id",
+            "trace.core_python_foundation",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query coordination"
     assert payload["status"] == "ok"
     assert any(
         entry["trace_id"] == "trace.core_python_foundation" for entry in payload["results"]

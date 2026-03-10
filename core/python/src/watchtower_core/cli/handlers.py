@@ -10,7 +10,7 @@ from textwrap import dedent
 
 from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import TaskIndexEntry
+from watchtower_core.control_plane.models import InitiativeIndexEntry, TaskIndexEntry
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.repo_ops.query import (
     AcceptanceContractQueryService,
@@ -2802,51 +2802,115 @@ def _run_query_initiatives(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
+    return _emit_initiative_query_results(
+        args,
+        command_name="watchtower-core query initiatives",
+        entries=entries,
+        empty_message="No initiative entries matched the requested filters.",
+        show_task_summaries=False,
+    )
+
+
+def _run_query_coordination(args: argparse.Namespace) -> int:
+    service = InitiativeQueryService(ControlPlaneLoader())
+    initiative_status = args.initiative_status or "active"
+    entries = service.search(
+        InitiativeSearchParams(
+            query=args.query,
+            trace_id=args.trace_id,
+            initiative_status=initiative_status,
+            current_phase=args.current_phase,
+            owner=args.owner,
+            blocked_only=args.blocked_only,
+            limit=args.limit,
+        )
+    )
+    return _emit_initiative_query_results(
+        args,
+        command_name="watchtower-core query coordination",
+        entries=entries,
+        empty_message=(
+            "No coordination entries matched the requested filters. "
+            "Use `query initiatives` or pass `--initiative-status` to inspect closed history."
+        ),
+        show_task_summaries=True,
+        default_initiative_status=(
+            initiative_status if args.initiative_status is None else None
+        ),
+    )
+
+
+def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
+    return {
+        "trace_id": entry.trace_id,
+        "title": entry.title,
+        "summary": entry.summary,
+        "status": entry.status,
+        "initiative_status": entry.initiative_status,
+        "current_phase": entry.current_phase,
+        "updated_at": entry.updated_at,
+        "open_task_count": entry.open_task_count,
+        "blocked_task_count": entry.blocked_task_count,
+        "key_surface_path": entry.key_surface_path,
+        "next_action": entry.next_action,
+        "next_surface_path": entry.next_surface_path,
+        "primary_owner": entry.primary_owner,
+        "active_owners": list(entry.active_owners),
+        "active_task_ids": list(entry.active_task_ids),
+        "active_task_summaries": [
+            {
+                "task_id": task.task_id,
+                "title": task.title,
+                "task_status": task.task_status,
+                "priority": task.priority,
+                "owner": task.owner,
+                "doc_path": task.doc_path,
+                "is_actionable": task.is_actionable,
+                "blocked_by": list(task.blocked_by),
+                "depends_on": list(task.depends_on),
+            }
+            for task in entry.active_task_summaries
+        ],
+        "blocked_by_task_ids": list(entry.blocked_by_task_ids),
+        "prd_ids": list(entry.prd_ids),
+        "decision_ids": list(entry.decision_ids),
+        "design_ids": list(entry.design_ids),
+        "plan_ids": list(entry.plan_ids),
+        "task_ids": list(entry.task_ids),
+        "acceptance_ids": list(entry.acceptance_ids),
+        "acceptance_contract_ids": list(entry.acceptance_contract_ids),
+        "evidence_ids": list(entry.evidence_ids),
+        "closed_at": entry.closed_at,
+        "closure_reason": entry.closure_reason,
+        "superseded_by_trace_id": entry.superseded_by_trace_id,
+        "related_paths": list(entry.related_paths),
+        "tags": list(entry.tags),
+        "notes": entry.notes,
+    }
+
+
+def _emit_initiative_query_results(
+    args: argparse.Namespace,
+    *,
+    command_name: str,
+    entries: tuple[InitiativeIndexEntry, ...],
+    empty_message: str,
+    show_task_summaries: bool,
+    default_initiative_status: str | None = None,
+) -> int:
     payload = {
-        "command": "watchtower-core query initiatives",
+        "command": command_name,
         "status": "ok",
         "result_count": len(entries),
-        "results": [
-            {
-                "trace_id": entry.trace_id,
-                "title": entry.title,
-                "summary": entry.summary,
-                "status": entry.status,
-                "initiative_status": entry.initiative_status,
-                "current_phase": entry.current_phase,
-                "updated_at": entry.updated_at,
-                "open_task_count": entry.open_task_count,
-                "blocked_task_count": entry.blocked_task_count,
-                "key_surface_path": entry.key_surface_path,
-                "next_action": entry.next_action,
-                "next_surface_path": entry.next_surface_path,
-                "primary_owner": entry.primary_owner,
-                "active_owners": list(entry.active_owners),
-                "active_task_ids": list(entry.active_task_ids),
-                "blocked_by_task_ids": list(entry.blocked_by_task_ids),
-                "prd_ids": list(entry.prd_ids),
-                "decision_ids": list(entry.decision_ids),
-                "design_ids": list(entry.design_ids),
-                "plan_ids": list(entry.plan_ids),
-                "task_ids": list(entry.task_ids),
-                "acceptance_ids": list(entry.acceptance_ids),
-                "acceptance_contract_ids": list(entry.acceptance_contract_ids),
-                "evidence_ids": list(entry.evidence_ids),
-                "closed_at": entry.closed_at,
-                "closure_reason": entry.closure_reason,
-                "superseded_by_trace_id": entry.superseded_by_trace_id,
-                "related_paths": list(entry.related_paths),
-                "tags": list(entry.tags),
-                "notes": entry.notes,
-            }
-            for entry in entries
-        ],
+        "results": [_initiative_entry_payload(entry) for entry in entries],
     }
+    if default_initiative_status is not None:
+        payload["default_initiative_status"] = default_initiative_status
     if _print_payload(args, payload) == 0:
         return 0
 
     if not entries:
-        print("No initiative entries matched the requested filters.")
+        print(empty_message)
         return 0
 
     print(f"Found {len(entries)} initiative entr{'y' if len(entries) == 1 else 'ies'}:")
@@ -2861,6 +2925,14 @@ def _run_query_initiatives(args: argparse.Namespace) -> int:
             f"  Open tasks: {entry.open_task_count} "
             f"(blocked={entry.blocked_task_count})"
         )
+        if show_task_summaries and entry.active_task_summaries:
+            for task in entry.active_task_summaries:
+                state = "actionable" if task.is_actionable else "blocked"
+                print(
+                    f"  Task: {task.task_id} "
+                    f"[{task.task_status}, {task.priority}, {state}]"
+                )
+                print(f"    {task.title}")
         print(f"  Next: {entry.next_action}")
         print(f"  Open first: {entry.next_surface_path}")
     return 0

@@ -24,6 +24,17 @@
       "active_task_ids": [
         "task.core_python_foundation.execution.001"
       ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.core_python_foundation.execution.001",
+          "title": "Execute the core Python foundation implementation slice",
+          "task_status": "in_progress",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+          "is_actionable": true
+        }
+      ],
       "prd_ids": [
         "prd.core_python_foundation"
       ],

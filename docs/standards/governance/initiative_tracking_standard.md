@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:19:08Z"
+updated_at: "2026-03-10T18:10:36Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -30,6 +30,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Give humans one start-here surface for "what is this initiative, who owns it, what phase is it in, and what is next?"
 - Preserve the current artifact-family structure for PRDs, decisions, designs, plans, and tasks instead of collapsing them into one mixed planning folder.
 - Publish one machine-readable initiative projection so queries and workflows do not have to reconstruct current phase and ownership from several indexes every time.
+- Expose one explicit machine start-here path through `watchtower-core query coordination` while keeping the authored planning families and broader `query initiatives` surface intact.
 
 ## Scope
 - Applies to the human-readable initiative tracker under `docs/planning/initiatives/`.
@@ -62,6 +63,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Use the initiative layer as the cross-family coordination view, not as a replacement for those authored families.
 - Treat the initiative index and initiative tracker as derived projections, not as the authoritative source for artifact content or task state.
 - Keep `initiative_tracking.md` compact and scan-first. Prefer brief zero-state text and linked key surfaces over repeated explanatory scaffolding.
+- Use `watchtower-core query coordination --format json` as the default machine start-here path for active traced work.
 - Use the unified traceability index as the authoritative machine join for durable artifact links and initiative closeout state.
 - Use the task index and task records as the authoritative source for active owners, open tasks, blockers, and execution status.
 - Publish one initiative entry per shared `trace_id`.
@@ -85,6 +87,7 @@ This standard defines the repository's cross-family initiative tracking model so
   - `closed`
 - Derive `primary_owner` only when exactly one active owner is present on non-terminal task records for the initiative.
 - Publish `active_owners` and `active_task_ids` when open task records exist.
+- Publish compact `active_task_summaries` for active initiatives outside `closeout` so machines can see task names and actionability without reparsing the task index first.
 - Allow active `closeout` entries to publish historical `task_ids` without `active_task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
 - Active initiatives outside `closeout` should carry linked task IDs and active-task projection instead of relying on implied execution ownership.
 - Use `closed` as the initiative phase for terminal initiative states rather than overloading `current_phase` with `completed`, `superseded`, `cancelled`, or `abandoned`.
@@ -139,4 +142,4 @@ This standard defines the repository's cross-family initiative tracking model so
 - [README.md](/home/j/WatchTowerPlan/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-10T16:19:08Z`
+- `2026-03-10T18:10:36Z`

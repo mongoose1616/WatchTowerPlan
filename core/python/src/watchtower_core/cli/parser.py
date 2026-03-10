@@ -25,12 +25,12 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=examples(
             "uv run watchtower-core doctor",
             "uv run watchtower-core query commands --query doctor --format json",
+            "uv run watchtower-core query coordination --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --query validation",
             "uv run watchtower-core query references --query uv",
             "uv run watchtower-core query standards --category governance --format json",
             "uv run watchtower-core query prds --trace-id trace.core_python_foundation",
-            "uv run watchtower-core query initiatives --current-phase execution",
             "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core query tasks --task-status backlog",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",

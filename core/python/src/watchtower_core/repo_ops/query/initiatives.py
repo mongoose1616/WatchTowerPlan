@@ -76,6 +76,22 @@ class InitiativeQueryService:
                     entry.next_surface_path,
                     *entry.active_owners,
                     *entry.active_task_ids,
+                    *(task.task_id for task in entry.active_task_summaries),
+                    *(task.title for task in entry.active_task_summaries),
+                    *(task.task_status for task in entry.active_task_summaries),
+                    *(task.priority for task in entry.active_task_summaries),
+                    *(task.owner for task in entry.active_task_summaries),
+                    *(task.doc_path for task in entry.active_task_summaries),
+                    *(
+                        blocker
+                        for task in entry.active_task_summaries
+                        for blocker in task.blocked_by
+                    ),
+                    *(
+                        dependency
+                        for task in entry.active_task_summaries
+                        for dependency in task.depends_on
+                    ),
                     *entry.prd_ids,
                     *entry.decision_ids,
                     *entry.design_ids,

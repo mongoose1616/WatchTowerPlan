@@ -465,8 +465,8 @@
       "status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-10T18:05:14Z",
-      "open_task_count": 2,
+      "updated_at": "2026-03-10T18:20:44Z",
+      "open_task_count": 1,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
       "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
@@ -476,8 +476,21 @@
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.preimplementation_repo_review_and_hardening.core_modularity.001",
-        "task.preimplementation_repo_review_and_hardening.machine_coordination.001"
+        "task.preimplementation_repo_review_and_hardening.core_modularity.001"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.preimplementation_repo_review_and_hardening.core_modularity.001",
+          "title": "Split core monoliths and add supplemental schema loading",
+          "task_status": "ready",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/preimplementation_core_modularity.md",
+          "is_actionable": true,
+          "depends_on": [
+            "task.preimplementation_repo_review_and_hardening.machine_coordination.001"
+          ]
+        }
       ],
       "prd_ids": [
         "prd.preimplementation_repo_review_and_hardening"
@@ -542,11 +555,11 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/tasks/closed/preimplementation_machine_coordination.md",
         "docs/planning/tasks/closed/preimplementation_readme_entrypoints.md",
         "docs/planning/tasks/closed/preimplementation_repo_review_bootstrap.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/preimplementation_core_modularity.md",
-        "docs/planning/tasks/open/preimplementation_machine_coordination.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/references/README.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
