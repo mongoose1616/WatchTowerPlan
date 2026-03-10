@@ -18,7 +18,7 @@ from watchtower_core.adapters import (
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.sync.planning_documents import (
+from watchtower_core.repo_ops.planning_documents import (
     ordered_unique,
     validate_required_section_order,
 )

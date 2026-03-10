@@ -13,8 +13,8 @@ from watchtower_core.integrations.github import (
     GitHubLabelSpec,
     GitHubProjectContext,
 )
-from watchtower_core.query.tasks import TaskQueryService, TaskSearchParams
-from watchtower_core.sync.task_documents import (
+from watchtower_core.repo_ops.query.tasks import TaskQueryService, TaskSearchParams
+from watchtower_core.repo_ops.task_documents import (
     TaskDocument,
     load_task_document,
     update_task_document_front_matter,

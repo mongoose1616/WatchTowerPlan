@@ -8,6 +8,15 @@ from pathlib import Path
 from typing import cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.planning_documents import iter_markdown_documents
+from watchtower_core.repo_ops.task_documents import (
+    TASK_CLOSED_ROOT,
+    TASK_EXCLUDED_NAMES,
+    TASK_OPEN_ROOT,
+)
+from watchtower_core.repo_ops.validation.document_semantics import (
+    DocumentSemanticsValidationService,
+)
 from watchtower_core.sync.decision_index import DECISION_DOC_ROOT, DECISION_EXCLUDED_NAMES
 from watchtower_core.sync.design_document_index import (
     DESIGN_EXCLUDED_NAMES,
@@ -15,19 +24,12 @@ from watchtower_core.sync.design_document_index import (
     IMPLEMENTATION_PLAN_ROOT,
 )
 from watchtower_core.sync.foundation_index import FOUNDATION_DOC_ROOT, FOUNDATION_EXCLUDED_NAMES
-from watchtower_core.sync.planning_documents import iter_markdown_documents
 from watchtower_core.sync.prd_index import PRD_DOC_ROOT, PRD_EXCLUDED_NAMES
 from watchtower_core.sync.reference_index import REFERENCE_DOC_ROOT, REFERENCE_EXCLUDED_NAMES
 from watchtower_core.sync.standard_index import STANDARD_DOC_ROOT, STANDARD_EXCLUDED_NAMES
-from watchtower_core.sync.task_documents import (
-    TASK_CLOSED_ROOT,
-    TASK_EXCLUDED_NAMES,
-    TASK_OPEN_ROOT,
-)
 from watchtower_core.sync.workflow_index import WORKFLOW_DOC_ROOT, WORKFLOW_EXCLUDED_NAMES
 from watchtower_core.validation.acceptance import AcceptanceReconciliationService
 from watchtower_core.validation.artifact import ArtifactValidationService
-from watchtower_core.validation.document_semantics import DocumentSemanticsValidationService
 from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
 from watchtower_core.validation.models import ValidationIssue, ValidationResult

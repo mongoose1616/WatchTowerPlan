@@ -7,7 +7,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.sync.task_documents import (
+from watchtower_core.repo_ops.task_documents import (
     TERMINAL_TASK_STATUSES,
     TaskDocument,
     iter_task_documents,

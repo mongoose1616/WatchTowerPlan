@@ -1,31 +1,9 @@
 """Index-backed query helpers for core retrieval surfaces."""
 
-from watchtower_core.query.acceptance import (
-    AcceptanceContractQueryService,
-    AcceptanceContractSearchParams,
-)
-from watchtower_core.query.commands import CommandQueryService, CommandSearchParams
-from watchtower_core.query.decisions import DecisionQueryService, DecisionSearchParams
-from watchtower_core.query.designs import (
-    DesignDocumentQueryService,
-    DesignDocumentSearchParams,
-)
-from watchtower_core.query.evidence import (
-    ValidationEvidenceQueryService,
-    ValidationEvidenceSearchParams,
-)
-from watchtower_core.query.foundations import FoundationQueryService, FoundationSearchParams
-from watchtower_core.query.initiatives import InitiativeQueryService, InitiativeSearchParams
-from watchtower_core.query.prds import PrdQueryService, PrdSearchParams
-from watchtower_core.query.references import ReferenceQueryService, ReferenceSearchParams
-from watchtower_core.query.repository import (
-    RepositoryPathQueryService,
-    RepositoryPathSearchParams,
-)
-from watchtower_core.query.standards import StandardQueryService, StandardSearchParams
-from watchtower_core.query.tasks import TaskQueryService, TaskSearchParams
-from watchtower_core.query.traceability import TraceabilityQueryService
-from watchtower_core.query.workflows import WorkflowQueryService, WorkflowSearchParams
+from __future__ import annotations
+
+from importlib import import_module
+from typing import Any
 
 __all__ = [
     "AcceptanceContractQueryService",
@@ -56,3 +34,40 @@ __all__ = [
     "WorkflowQueryService",
     "WorkflowSearchParams",
 ]
+
+_EXPORT_MODULES = {
+    "AcceptanceContractQueryService": "watchtower_core.repo_ops.query.acceptance",
+    "AcceptanceContractSearchParams": "watchtower_core.repo_ops.query.acceptance",
+    "CommandQueryService": "watchtower_core.query.commands",
+    "CommandSearchParams": "watchtower_core.query.commands",
+    "DecisionQueryService": "watchtower_core.query.decisions",
+    "DecisionSearchParams": "watchtower_core.query.decisions",
+    "DesignDocumentQueryService": "watchtower_core.query.designs",
+    "DesignDocumentSearchParams": "watchtower_core.query.designs",
+    "ValidationEvidenceQueryService": "watchtower_core.repo_ops.query.evidence",
+    "ValidationEvidenceSearchParams": "watchtower_core.repo_ops.query.evidence",
+    "FoundationQueryService": "watchtower_core.query.foundations",
+    "FoundationSearchParams": "watchtower_core.query.foundations",
+    "InitiativeQueryService": "watchtower_core.repo_ops.query.initiatives",
+    "InitiativeSearchParams": "watchtower_core.repo_ops.query.initiatives",
+    "PrdQueryService": "watchtower_core.query.prds",
+    "PrdSearchParams": "watchtower_core.query.prds",
+    "ReferenceQueryService": "watchtower_core.query.references",
+    "ReferenceSearchParams": "watchtower_core.query.references",
+    "RepositoryPathQueryService": "watchtower_core.query.repository",
+    "RepositoryPathSearchParams": "watchtower_core.query.repository",
+    "StandardQueryService": "watchtower_core.query.standards",
+    "StandardSearchParams": "watchtower_core.query.standards",
+    "TaskQueryService": "watchtower_core.repo_ops.query.tasks",
+    "TaskSearchParams": "watchtower_core.repo_ops.query.tasks",
+    "TraceabilityQueryService": "watchtower_core.repo_ops.query.traceability",
+    "WorkflowQueryService": "watchtower_core.query.workflows",
+    "WorkflowSearchParams": "watchtower_core.query.workflows",
+}
+
+
+def __getattr__(name: str) -> Any:
+    module_name = _EXPORT_MODULES.get(name)
+    if module_name is None:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    return getattr(import_module(module_name), name)

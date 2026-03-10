@@ -1,20 +1,9 @@
 """Validation services and result models for governed artifacts."""
 
-from watchtower_core.validation.acceptance import AcceptanceReconciliationService
-from watchtower_core.validation.all import (
-    ValidationAllRecord,
-    ValidationAllResult,
-    ValidationAllService,
-    ValidationFamilySummary,
-)
-from watchtower_core.validation.artifact import ArtifactValidationService
-from watchtower_core.validation.document_semantics import (
-    DocumentSemanticsValidationService,
-)
-from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
-from watchtower_core.validation.front_matter import FrontMatterValidationService
-from watchtower_core.validation.models import ValidationIssue, ValidationResult
-from watchtower_core.validation.registry import VALIDATION_FAMILY_SPECS, ValidationFamilySpec
+from __future__ import annotations
+
+from importlib import import_module
+from typing import Any
 
 __all__ = [
     "AcceptanceReconciliationService",
@@ -32,3 +21,27 @@ __all__ = [
     "ValidationResult",
     "ValidationSelectionError",
 ]
+
+_EXPORT_MODULES = {
+    "AcceptanceReconciliationService": "watchtower_core.validation.acceptance",
+    "ArtifactValidationService": "watchtower_core.validation.artifact",
+    "DocumentSemanticsValidationService": "watchtower_core.validation.document_semantics",
+    "FrontMatterValidationService": "watchtower_core.validation.front_matter",
+    "ValidationAllRecord": "watchtower_core.validation.all",
+    "ValidationAllResult": "watchtower_core.validation.all",
+    "ValidationAllService": "watchtower_core.validation.all",
+    "VALIDATION_FAMILY_SPECS": "watchtower_core.validation.registry",
+    "ValidationExecutionError": "watchtower_core.validation.errors",
+    "ValidationFamilySpec": "watchtower_core.validation.registry",
+    "ValidationFamilySummary": "watchtower_core.validation.all",
+    "ValidationIssue": "watchtower_core.validation.models",
+    "ValidationResult": "watchtower_core.validation.models",
+    "ValidationSelectionError": "watchtower_core.validation.errors",
+}
+
+
+def __getattr__(name: str) -> Any:
+    module_name = _EXPORT_MODULES.get(name)
+    if module_name is None:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    return getattr(import_module(module_name), name)

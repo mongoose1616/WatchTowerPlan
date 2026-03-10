@@ -8,7 +8,7 @@ from pathlib import Path
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import TaskIndexEntry
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.sync.task_documents import iter_task_documents
+from watchtower_core.repo_ops.task_documents import iter_task_documents
 
 TASK_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
 

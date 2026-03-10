@@ -9,7 +9,7 @@ from typing import Any
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.sync.planning_documents import (
+from watchtower_core.repo_ops.planning_documents import (
     PlanningDocument,
     collect_reference_indicators,
     iter_markdown_documents,
