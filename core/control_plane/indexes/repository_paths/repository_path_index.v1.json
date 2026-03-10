@@ -155,6 +155,13 @@
       "parent_path": "core/control_plane/contracts/acceptance/"
     },
     {
+      "path": "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_contract",
+      "summary": "Acceptance contract for the core export readiness and optimization trace.",
+      "parent_path": "core/control_plane/contracts/acceptance/"
+    },
+    {
       "path": "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
       "kind": "file",
       "surface_kind": "control_plane_contract",
@@ -1176,6 +1183,13 @@
       "kind": "file",
       "surface_kind": "control_plane_ledger",
       "summary": "Describes the purpose of the validation-evidence ledger directory and its current contents.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Planning-baseline validation evidence for the core export readiness and optimization trace.",
       "parent_path": "core/control_plane/ledgers/validation_evidence/"
     },
     {
@@ -3608,6 +3622,13 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the repository-standard Git commit message policy for human and assistant contributors.",
+      "parent_path": "docs/standards/engineering/"
+    },
+    {
+      "path": "docs/standards/engineering/git_workflow_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines repository-standard local git workflow behavior including branch naming, lifecycle, and sync expectations.",
       "parent_path": "docs/standards/engineering/"
     },
     {

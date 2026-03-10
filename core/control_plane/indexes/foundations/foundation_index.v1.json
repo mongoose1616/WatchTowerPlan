@@ -24,7 +24,13 @@
         "docs/foundations/engineering_design_principles.md"
       ],
       "cited_by_paths": [
-        "docs/foundations/product_direction.md"
+        "docs/foundations/product_direction.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md"
+      ],
+      "applied_by_paths": [
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md"
       ],
       "aliases": [
         "customer story",
@@ -66,6 +72,7 @@
         "docs/foundations/repository_standards_posture.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
@@ -73,6 +80,7 @@
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
         "docs/planning/prds/core_python_foundation.md",
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
@@ -83,6 +91,7 @@
       "applied_by_paths": [
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
@@ -90,6 +99,7 @@
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
         "docs/planning/prds/core_python_foundation.md",
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
@@ -190,6 +200,7 @@
         "docs/foundations/repository_standards_posture.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
@@ -197,6 +208,7 @@
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
         "docs/planning/prds/core_python_foundation.md",
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/metadata/terminology_standard.md",
@@ -205,6 +217,7 @@
       "applied_by_paths": [
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
@@ -212,6 +225,7 @@
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
         "docs/planning/prds/core_python_foundation.md",
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/metadata/terminology_standard.md",
@@ -253,6 +267,7 @@
         "docs/foundations/product_direction.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
@@ -260,6 +275,7 @@
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
         "docs/planning/prds/core_python_foundation.md",
         "docs/standards/data_contracts/format_selection_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
@@ -271,6 +287,7 @@
       "applied_by_paths": [
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
@@ -278,6 +295,7 @@
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
         "docs/planning/prds/core_python_foundation.md",
         "docs/standards/data_contracts/format_selection_standard.md",
         "docs/standards/data_contracts/schema_standard.md",

@@ -47,6 +47,190 @@
       ]
     },
     {
+      "task_id": "task.core_export_readiness_and_optimization.bootstrap.001",
+      "title": "Bootstrap the core export readiness and optimization initiative",
+      "summary": "Creates the initiative's PRD, feature design, implementation plan, acceptance baseline artifacts, open execution tasks, and git workflow standard so export-readiness work can proceed from governed local surfaces.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
+      "updated_at": "2026-03-10T04:44:27Z",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "related_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution",
+        "std.engineering.git_workflow"
+      ],
+      "applies_to": [
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md",
+        "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.v1.json",
+        "docs/standards/engineering/git_workflow_standard.md",
+        "docs/planning/tasks/open/"
+      ]
+    },
+    {
+      "task_id": "task.core_export_readiness_and_optimization.command_registry.001",
+      "title": "Establish registry-backed CLI authority",
+      "summary": "Introduce registry-backed CLI command authority so parser wiring, command lookup, and command-surface maintenance no longer depend on one monolithic CLI file and doc-derived machine metadata.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_command_registry.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "related_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/sync/command_index.py",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.core_export_readiness_and_optimization.pack_interfaces.001",
+      "title": "Publish generic pack-facing interfaces",
+      "summary": "Add generic pack-facing schemas, examples, and validation hooks for work-item notes, extraction outputs, promoted knowledge, promotion records, and pack indexes without starting domain-pack implementation.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_pack_interfaces.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "depends_on": [
+        "task.core_export_readiness_and_optimization.repo_ops_boundary.001",
+        "task.core_export_readiness_and_optimization.workspace_injection.001"
+      ],
+      "related_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "applies_to": [
+        "core/control_plane/schemas/interfaces/",
+        "core/control_plane/examples/",
+        "core/control_plane/registries/schema_catalog/",
+        "core/python/src/watchtower_core/"
+      ]
+    },
+    {
+      "task_id": "task.core_export_readiness_and_optimization.repo_ops_boundary.001",
+      "title": "Isolate repo-ops from reusable core",
+      "summary": "Move repository-specific query, sync, validation, and planning-document semantics into explicit repo-ops surfaces so reusable layers stop depending on WatchTowerPlan-only behavior.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "related_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/adapters/"
+      ]
+    },
+    {
+      "task_id": "task.core_export_readiness_and_optimization.retrieval_and_coordination.001",
+      "title": "Add retrieval metadata and coordination slice orchestration",
+      "summary": "Extend retrieval indexes with stronger authority hints and add a deterministic coordination rebuild slice for task, traceability, and initiative surfaces.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_retrieval_and_coordination.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "depends_on": [
+        "task.core_export_readiness_and_optimization.repo_ops_boundary.001",
+        "task.core_export_readiness_and_optimization.sync_validation_registries.001"
+      ],
+      "related_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "applies_to": [
+        "core/control_plane/indexes/repository_paths/",
+        "core/control_plane/indexes/workflows/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/query/"
+      ]
+    },
+    {
+      "task_id": "task.core_export_readiness_and_optimization.sync_validation_registries.001",
+      "title": "Replace manual sync and validation enumerations with registries",
+      "summary": "Introduce governed sync-family and validation-family registries so orchestration, listing, and coverage checks no longer depend on duplicated manual enumerations.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_sync_validation_registries.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "depends_on": [
+        "task.core_export_readiness_and_optimization.command_registry.001"
+      ],
+      "related_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "docs/commands/core_python/"
+      ]
+    },
+    {
+      "task_id": "task.core_export_readiness_and_optimization.workspace_injection.001",
+      "title": "Inject workspace config and artifact adapters",
+      "summary": "Replace implicit repo-root discovery with injected workspace configuration, artifact sources, and artifact stores so reusable services can run against non-WatchTowerPlan layouts.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_workspace_injection.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "depends_on": [
+        "task.core_export_readiness_and_optimization.repo_ops_boundary.001"
+      ],
+      "related_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/",
+        "core/python/tests/"
+      ]
+    },
+    {
       "task_id": "task.core_python_foundation.closeout.001",
       "title": "Close out the core Python foundation initiative",
       "summary": "Tracks the remaining initiative-level closeout for the core Python foundation slice.",

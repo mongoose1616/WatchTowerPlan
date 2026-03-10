@@ -5,6 +5,57 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "prd_id": "prd.core_export_readiness_and_optimization",
+      "title": "Core Export Readiness and Optimization PRD",
+      "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/core_export_readiness_and_optimization.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.core_export_readiness_and_optimization.001",
+        "req.core_export_readiness_and_optimization.002",
+        "req.core_export_readiness_and_optimization.003",
+        "req.core_export_readiness_and_optimization.004",
+        "req.core_export_readiness_and_optimization.005",
+        "req.core_export_readiness_and_optimization.006",
+        "req.core_export_readiness_and_optimization.007"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.001",
+        "ac.core_export_readiness_and_optimization.002",
+        "ac.core_export_readiness_and_optimization.003",
+        "ac.core_export_readiness_and_optimization.004",
+        "ac.core_export_readiness_and_optimization.005",
+        "ac.core_export_readiness_and_optimization.006",
+        "ac.core_export_readiness_and_optimization.007"
+      ],
+      "linked_design_ids": [
+        "design.features.core_export_ready_architecture"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/design/",
+        "docs/standards/engineering/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/customer_story.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/design/features/github_collaboration_scaffolding.md"
+      ]
+    },
+    {
       "trace_id": "trace.core_python_foundation",
       "prd_id": "prd.core_python_foundation",
       "title": "Core Python Foundation PRD",

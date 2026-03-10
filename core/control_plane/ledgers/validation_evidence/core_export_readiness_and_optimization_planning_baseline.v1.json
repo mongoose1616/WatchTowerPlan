@@ -1,0 +1,167 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.core_export_readiness_and_optimization.planning_baseline",
+  "title": "Core Export Readiness and Optimization Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.core_export_readiness_and_optimization",
+  "overall_result": "warning",
+  "recorded_at": "2026-03-10T04:44:27Z",
+  "source_prd_ids": [
+    "prd.core_export_readiness_and_optimization"
+  ],
+  "source_design_ids": [
+    "design.features.core_export_ready_architecture"
+  ],
+  "source_plan_ids": [
+    "design.implementation.core_export_readiness_execution"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.core_export_readiness_and_optimization"
+  ],
+  "checks": [
+    {
+      "check_id": "check.core_export_readiness_and_optimization.planning_chain",
+      "title": "Planning corpus baseline",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md",
+        "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
+        "docs/planning/tasks/open/core_export_command_registry.md",
+        "docs/planning/tasks/open/core_export_pack_interfaces.md",
+        "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/open/core_export_retrieval_and_coordination.md",
+        "docs/planning/tasks/open/core_export_sync_validation_registries.md",
+        "docs/planning/tasks/open/core_export_workspace_injection.md",
+        "docs/standards/engineering/git_workflow_standard.md"
+      ],
+      "subject_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution",
+        "task.core_export_readiness_and_optimization.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.001"
+      ],
+      "notes": "The initiative now has its traced planning chain, a closed bootstrap task, the initial open execution task set, and the local git workflow standard."
+    },
+    {
+      "check_id": "check.core_export_readiness_and_optimization.export_boundary_plan",
+      "title": "Export boundary architecture captured",
+      "result": "warning",
+      "subject_paths": [
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/open/core_export_workspace_injection.md"
+      ],
+      "subject_ids": [
+        "design.features.core_export_ready_architecture",
+        "task.core_export_readiness_and_optimization.repo_ops_boundary.001",
+        "task.core_export_readiness_and_optimization.workspace_injection.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.002"
+      ],
+      "notes": "The reusable-versus-repo-ops split and injected workspace boundaries are designed and task-scoped, but package implementation has not started yet."
+    },
+    {
+      "check_id": "check.core_export_readiness_and_optimization.registry_authority_plan",
+      "title": "Registry-backed authority work scoped",
+      "result": "warning",
+      "subject_paths": [
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/tasks/open/core_export_command_registry.md",
+        "docs/planning/tasks/open/core_export_sync_validation_registries.md"
+      ],
+      "subject_ids": [
+        "design.features.core_export_ready_architecture",
+        "task.core_export_readiness_and_optimization.command_registry.001",
+        "task.core_export_readiness_and_optimization.sync_validation_registries.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.003"
+      ],
+      "notes": "The command, sync, and validation registry changes are defined as the first implementation slices but are still pending package changes."
+    },
+    {
+      "check_id": "check.core_export_readiness_and_optimization.retrieval_plan",
+      "title": "Retrieval metadata work scoped",
+      "result": "warning",
+      "subject_paths": [
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/tasks/open/core_export_retrieval_and_coordination.md"
+      ],
+      "subject_ids": [
+        "design.features.core_export_ready_architecture",
+        "task.core_export_readiness_and_optimization.retrieval_and_coordination.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.004"
+      ],
+      "notes": "The additional repository-path and workflow routing metadata is planned, but the indexes and ranking logic have not been updated yet."
+    },
+    {
+      "check_id": "check.core_export_readiness_and_optimization.pack_contract_plan",
+      "title": "Pack-facing interface work scoped",
+      "result": "warning",
+      "subject_paths": [
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/tasks/open/core_export_pack_interfaces.md"
+      ],
+      "subject_ids": [
+        "design.features.core_export_ready_architecture",
+        "task.core_export_readiness_and_optimization.pack_interfaces.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.005"
+      ],
+      "notes": "The generic pack-facing interface set is defined and task-scoped, but the governed schemas and examples have not landed yet."
+    },
+    {
+      "check_id": "check.core_export_readiness_and_optimization.validation_baseline",
+      "title": "Current workspace validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/",
+        "core/python/tests/",
+        "core/control_plane/",
+        "docs/planning/"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.006"
+      ],
+      "notes": "This bootstrap change set is expected to remain green on the current workspace validation baseline once the companion acceptance and evidence artifacts are published and synced."
+    },
+    {
+      "check_id": "check.core_export_readiness_and_optimization.scope_guardrails",
+      "title": "Initiative scope guardrails",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md"
+      ],
+      "subject_ids": [
+        "prd.core_export_readiness_and_optimization",
+        "design.features.core_export_ready_architecture",
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.007"
+      ],
+      "notes": "The initiative is explicitly bounded to an in-repo export-ready core boundary and defers standalone package extraction and CTF implementation work."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md",
+    "docs/standards/engineering/git_workflow_standard.md"
+  ],
+  "notes": "Planning-baseline evidence recorded at initiative bootstrap. Passed checks cover the current planning chain, workspace validation baseline, and scope guardrails. Warning checks mark implementation work that remains open."
+}

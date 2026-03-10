@@ -76,6 +76,115 @@
       ]
     },
     {
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "title": "Core Export Readiness and Optimization PRD",
+      "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T04:44:27Z",
+      "open_task_count": 6,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/core_export_readiness_and_optimization.md",
+      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+      "next_surface_path": "docs/planning/tasks/open/core_export_command_registry.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.core_export_readiness_and_optimization.command_registry.001",
+        "task.core_export_readiness_and_optimization.pack_interfaces.001",
+        "task.core_export_readiness_and_optimization.repo_ops_boundary.001",
+        "task.core_export_readiness_and_optimization.retrieval_and_coordination.001",
+        "task.core_export_readiness_and_optimization.sync_validation_registries.001",
+        "task.core_export_readiness_and_optimization.workspace_injection.001"
+      ],
+      "prd_ids": [
+        "prd.core_export_readiness_and_optimization"
+      ],
+      "design_ids": [
+        "design.features.core_export_ready_architecture"
+      ],
+      "plan_ids": [
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "task_ids": [
+        "task.core_export_readiness_and_optimization.bootstrap.001",
+        "task.core_export_readiness_and_optimization.command_registry.001",
+        "task.core_export_readiness_and_optimization.pack_interfaces.001",
+        "task.core_export_readiness_and_optimization.repo_ops_boundary.001",
+        "task.core_export_readiness_and_optimization.retrieval_and_coordination.001",
+        "task.core_export_readiness_and_optimization.sync_validation_registries.001",
+        "task.core_export_readiness_and_optimization.workspace_injection.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.001",
+        "ac.core_export_readiness_and_optimization.002",
+        "ac.core_export_readiness_and_optimization.003",
+        "ac.core_export_readiness_and_optimization.004",
+        "ac.core_export_readiness_and_optimization.005",
+        "ac.core_export_readiness_and_optimization.006",
+        "ac.core_export_readiness_and_optimization.007"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_export_readiness_and_optimization"
+      ],
+      "evidence_ids": [
+        "evidence.core_export_readiness_and_optimization.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json",
+        "core/control_plane/examples/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/repository_paths/",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/workflows/",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.v1.json",
+        "core/control_plane/registries/schema_catalog/",
+        "core/control_plane/schemas/interfaces/",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/adapters/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/sync/command_index.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "docs/planning/design/",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/core_export_command_registry.md",
+        "docs/planning/tasks/open/core_export_pack_interfaces.md",
+        "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/open/core_export_retrieval_and_coordination.md",
+        "docs/planning/tasks/open/core_export_sync_validation_registries.md",
+        "docs/planning/tasks/open/core_export_workspace_injection.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "docs/standards/engineering/",
+        "docs/standards/engineering/git_workflow_standard.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence recorded at initiative bootstrap. Passed checks cover the current planning chain, workspace validation baseline, and scope guardrails. Warning checks mark implementation work that remains open."
+    },
+    {
       "trace_id": "trace.core_python_foundation",
       "title": "Core Python Foundation PRD",
       "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations.",

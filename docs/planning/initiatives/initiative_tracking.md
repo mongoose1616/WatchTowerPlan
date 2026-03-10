@@ -6,7 +6,7 @@ This document provides the human-readable start-here view for traced initiatives
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key Surface | Next Surface | Next Action |
 |---|---|---|---|---|---|---|
-| `None` | `None` | `None` | `0` | `None` | `None` | No active initiatives are currently tracked. |
+| `trace.core_export_readiness_and_optimization` | `execution` | repository_maintainer | `6` | `docs/planning/prds/core_export_readiness_and_optimization.md` | `docs/planning/tasks/open/core_export_command_registry.md` | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Closed Initiatives
 | Trace ID | Initiative Status | Key Surface | Closed At | Closure Reason |
@@ -32,4 +32,4 @@ This document provides the human-readable start-here view for traced initiatives
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
 
 ## Updated At
-- `2026-03-10T03:57:14Z`
+- `2026-03-10T04:44:27Z`

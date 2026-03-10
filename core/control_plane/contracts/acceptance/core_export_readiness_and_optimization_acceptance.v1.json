@@ -1,0 +1,136 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.core_export_readiness_and_optimization",
+  "title": "Core Export Readiness and Optimization Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.core_export_readiness_and_optimization",
+  "source_prd_id": "prd.core_export_readiness_and_optimization",
+  "entries": [
+    {
+      "acceptance_id": "ac.core_export_readiness_and_optimization.001",
+      "summary": "The planning corpus publishes an active PRD, feature design, implementation plan, bootstrap closeout, and durable open task set for the initiative.",
+      "source_requirement_ids": [
+        "req.core_export_readiness_and_optimization.007"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md",
+        "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
+        "docs/planning/tasks/open/"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_readiness_and_optimization.002",
+      "summary": "The package publishes an explicit reusable-versus-repo-ops boundary and reusable services can be constructed through injected workspace and artifact interfaces.",
+      "source_requirement_ids": [
+        "req.core_export_readiness_and_optimization.001",
+        "req.core_export_readiness_and_optimization.002",
+        "req.core_export_readiness_and_optimization.007"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/tasks/open/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/open/core_export_workspace_injection.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_readiness_and_optimization.003",
+      "summary": "CLI command wiring, command lookup metadata, and sync or validation orchestration are registry-backed rather than maintained through monolithic manual surfaces.",
+      "source_requirement_ids": [
+        "req.core_export_readiness_and_optimization.003",
+        "req.core_export_readiness_and_optimization.004",
+        "req.core_export_readiness_and_optimization.007"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "docs/planning/tasks/open/core_export_command_registry.md",
+        "docs/planning/tasks/open/core_export_sync_validation_registries.md"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_readiness_and_optimization.004",
+      "summary": "Repository-path and workflow retrieval surfaces publish additional routing and ranking metadata that reduce ambiguity about authoritative entrypoints.",
+      "source_requirement_ids": [
+        "req.core_export_readiness_and_optimization.005",
+        "req.core_export_readiness_and_optimization.007"
+      ],
+      "validation_targets": [
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "docs/planning/tasks/open/core_export_retrieval_and_coordination.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/query/",
+        "workflows/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_readiness_and_optimization.005",
+      "summary": "Generic pack-facing contracts and examples exist under core/control_plane without introducing domain-pack runtime content.",
+      "source_requirement_ids": [
+        "req.core_export_readiness_and_optimization.006",
+        "req.core_export_readiness_and_optimization.007"
+      ],
+      "validation_targets": [
+        "core/control_plane/schemas/interfaces/",
+        "core/control_plane/examples/",
+        "docs/planning/tasks/open/core_export_pack_interfaces.md"
+      ],
+      "related_paths": [
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_readiness_and_optimization.006",
+      "summary": "The repository stays green on the current Python validation baseline while the export-readiness refactor lands in place.",
+      "source_requirement_ids": [
+        "req.core_export_readiness_and_optimization.007"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/",
+        "core/python/tests/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_readiness_and_optimization.007",
+      "summary": "The initiative remains scoped to an export-ready in-repo boundary and does not extract a standalone package or start CTF implementation work.",
+      "source_requirement_ids": [
+        "req.core_export_readiness_and_optimization.007"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md"
+      ],
+      "related_paths": [
+        "docs/standards/engineering/git_workflow_standard.md",
+        "docs/planning/tasks/open/"
+      ]
+    }
+  ]
+}

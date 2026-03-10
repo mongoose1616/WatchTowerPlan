@@ -77,6 +77,43 @@
       ]
     },
     {
+      "document_id": "design.features.core_export_ready_architecture",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "family": "feature_design",
+      "title": "Core Export-Ready Architecture Design",
+      "summary": "Defines the in-repo architecture needed to separate reusable core behavior from WatchTowerPlan repo-operations, reduce maintenance fan-out, and publish generic pack-facing contracts.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/core_export_ready_architecture.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/core_export_readiness_execution.md",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/",
+        "docs/standards/",
+        "docs/planning/design/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/customer_story.md",
+        "core/python/",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md"
+      ]
+    },
+    {
       "document_id": "design.features.core_python_workspace_and_harness",
       "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
@@ -360,6 +397,43 @@
         "schema_store"
       ],
       "notes": "First executable slice for the core Python helper and harness layer."
+    },
+    {
+      "document_id": "design.implementation.core_export_readiness_execution",
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "family": "implementation_plan",
+      "title": "Core Export Readiness and Optimization Implementation Plan",
+      "summary": "Breaks the export-readiness architecture into concrete in-repo phases that isolate repo-ops, reduce maintenance fan-out, and publish generic pack-facing contracts without extracting the package yet.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/core_export_readiness_execution.md",
+      "updated_at": "2026-03-10T04:44:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/core_export_ready_architecture.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/",
+        "core/control_plane/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "core/python/",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/engineering/git_workflow_standard.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json"
+      ]
     }
   ]
 }

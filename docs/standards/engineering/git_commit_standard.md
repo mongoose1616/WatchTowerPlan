@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T02:30:31Z"
+updated_at: "2026-03-10T04:28:34Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -27,7 +27,8 @@ This standard defines the repository commit-message policy for human maintainers
 ## Scope
 - Covers commit message format, allowed types, scope usage, breaking-change notation, body and footer expectations, and local automation guidance.
 - Applies to commits created for this repository by human maintainers and assistant contributors.
-- Does not define branch naming, pull-request title policy, or broader release-management process.
+- Does not define branch naming or local branch lifecycle policy. Those rules live in [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md).
+- Does not define pull-request title policy or broader release-management process.
 
 ## Use When
 - Creating or reviewing a commit message for repository work.
@@ -35,6 +36,7 @@ This standard defines the repository commit-message policy for human maintainers
 - Checking whether human or agent-generated commit text meets the repository contract.
 
 ## Related Standards and Sources
+- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md): commit closeout should fit the local branch workflow instead of carrying branch policy inline.
 - [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly in commit metadata.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced work should keep durable trace metadata visible in commit history.
@@ -247,6 +249,7 @@ fi
 - Update contributor-facing workflows or templates in the same change set when commit expectations change for humans or agents.
 
 ## References
+- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md)
 - [conventional_commits_reference.md](/home/j/WatchTowerPlan/docs/references/conventional_commits_reference.md)
 - [git_commit_message_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_message_guidance_reference.md)
 - [semantic_versioning_reference.md](/home/j/WatchTowerPlan/docs/references/semantic_versioning_reference.md)
@@ -257,4 +260,4 @@ fi
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-10T02:30:31Z`
+- `2026-03-10T04:28:34Z`

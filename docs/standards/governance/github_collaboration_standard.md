@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "github"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T02:30:31Z"
+updated_at: "2026-03-10T04:28:34Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -35,6 +35,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - Applies to `.github/ISSUE_TEMPLATE/`, `.github/pull_request_template.md`, and the GitHub collaboration rules referenced by task sync.
 - Applies to the human process for issue intake and pull request closeout on GitHub.
 - Applies to the expected GitHub Project v2 custom-field model when a team uses GitHub Projects with this repository.
+- Does not define local branch naming, local branch sync, or local commit-message policy.
 - Does not make GitHub the authoritative task, planning, or traceability surface.
 
 ## Use When
@@ -43,6 +44,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - Configuring a GitHub Project for this repository.
 
 ## Related Standards and Sources
+- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md): local branch creation, naming, and sync behavior should stay separate from hosted collaboration rules.
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -51,6 +53,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 ## Guidance
 - Treat GitHub issues as hosted intake or hosted execution mirrors, not as the sole authoritative task record.
 - Keep repo-local PRDs, decisions, designs, tasks, contracts, evidence, and traceability surfaces authoritative.
+- Keep local branch naming and local history maintenance under [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md) instead of redefining them in hosted collaboration rules.
 - Use GitHub issue forms for structured intake only.
 - Before merge, accepted GitHub work should link or create the corresponding repo-local planning or task artifact.
 - Every pull request should publish:
@@ -104,10 +107,11 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - Update `.github/`, `github_task_sync_standard.md`, and the GitHub sync command docs in the same change set when the collaboration contract changes materially.
 
 ## References
+- [git_workflow_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_workflow_standard.md)
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
 - [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 - [README.md](/home/j/WatchTowerPlan/.github/README.md)
 
 ## Updated At
-- `2026-03-10T02:30:31Z`
+- `2026-03-10T04:28:34Z`

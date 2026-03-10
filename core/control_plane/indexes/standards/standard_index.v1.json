@@ -1143,7 +1143,7 @@
       "summary": "This standard defines the repository commit-message policy for human maintainers and assistant contributors. It combines Conventional Commits v1.0.0 with local commit-writing guidance so history remains human-auditable and machine-parseable.",
       "status": "active",
       "doc_path": "docs/standards/engineering/git_commit_standard.md",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "updated_at": "2026-03-10T04:28:34Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [
@@ -1152,6 +1152,7 @@
         "docs/references/semantic_versioning_reference.md"
       ],
       "internal_reference_paths": [
+        "docs/standards/engineering/git_workflow_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/governance/task_handling_threshold_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -1162,6 +1163,7 @@
         "docs/standards/governance/reference_distillation_standard.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/engineering/git_workflow_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/governance/task_handling_threshold_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -1180,6 +1182,41 @@
         "standard",
         "engineering",
         "git_commit"
+      ]
+    },
+    {
+      "standard_id": "std.engineering.git_workflow",
+      "category": "engineering",
+      "title": "Git Workflow Standard",
+      "summary": "This standard defines repository-standard local git workflow behavior, including branch naming, branch lifecycle, and local sync expectations for human and assistant contributors.",
+      "status": "active",
+      "doc_path": "docs/standards/engineering/git_workflow_standard.md",
+      "updated_at": "2026-03-10T04:28:34Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/standards/engineering/git_commit_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "workflows/modules/commit_closeout.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/git_commit_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/git_commit_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ],
+      "tags": [
+        "standard",
+        "engineering",
+        "git_workflow"
       ]
     },
     {
@@ -1361,7 +1398,7 @@
       "summary": "This standard defines how GitHub issue forms, pull requests, labels, and project fields complement the repo-local planning and task model.",
       "status": "active",
       "doc_path": "docs/standards/governance/github_collaboration_standard.md",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "updated_at": "2026-03-10T04:28:34Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
@@ -1373,6 +1410,7 @@
         "docs/references/github_collaboration_reference.md"
       ],
       "internal_reference_paths": [
+        "docs/standards/engineering/git_workflow_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -1381,6 +1419,7 @@
         ".github/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/engineering/git_workflow_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
