@@ -43,6 +43,7 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - Use exactly one `README.md` per directory.
 - Do not add front matter or lifecycle `status` to a directory README.
 - Keep the document short enough to scan quickly.
+- Default to the smallest useful orientation surface. If readers need a generated query, command index, or companion document for exhaustive lookup, link to it instead of duplicating its contents.
 - The title should be the repository-relative directory path in backticks. Use `# \`.\`` for the repository root.
 - Include a `Description` section that states what belongs in the directory and any important usage boundaries.
 - Include one inventory section:
@@ -52,8 +53,11 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - Inventory tables must use exactly two columns: `Path` and `Description`.
 - Do not use bullet lists or prose paragraphs as the primary inventory format.
 - Default the inventory to the directory's direct entrypoints and most important child paths rather than a recursive dump of everything below it.
+- Do not enumerate long same-shape families item-by-item when a grouped entrypoint or lookup surface already exists.
+- If a directory contains many siblings with one stable naming pattern, describe the pattern once and list only the anchor files or path families a reader should open first.
 - Include the local `README.md` itself in the inventory table.
 - Add `Boundaries` only when the directory has important exclusions, ownership limits, or storage rules that a reader needs immediately.
+- Add `Notes` when a compact usage hint, naming pattern, or companion lookup surface materially reduces scanning cost.
 - Prefer linking to companion documents rather than copying their detailed content into the README.
 - Do not turn a README into a standards document, workflow module, changelog, or broad narrative overview.
 - Do not embed local operating instructions that belong in `AGENTS.md`.
@@ -78,6 +82,7 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - The inventory should point to real local files or paths and describe why a reader would care about them.
 - The inventory should be expressed as a Markdown table with the standard two-column shape.
 - The file should be short and scannable enough to serve as quick context before deeper reading.
+- When the directory has many similar entries, the README should point to the governing naming pattern or lookup surface instead of repeating low-value inventories.
 - The README should not contain front matter, workflow procedure, or broad repository policy that belongs elsewhere.
 
 ## Change Control

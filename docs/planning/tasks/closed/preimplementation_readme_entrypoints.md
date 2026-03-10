@@ -5,11 +5,11 @@ title: "Compact the highest-traffic README entrypoints"
 summary: "Make the most frequently opened README entrypoints compact, high-signal orientation surfaces and tighten the README rules so exhaustive directory dumps do not recur."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "documentation"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T17:55:24Z"
+updated_at: "2026-03-10T18:05:14Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -38,9 +38,13 @@ Make the most frequently opened README entrypoints compact, high-signal orientat
 - The targeted READMEs are materially shorter and still useful.
 - The README standard and template explicitly discourage exhaustive directory dumps in large same-shape families.
 
+## Outcome
+- The targeted READMEs now point readers to grouped entrypoints and governed query surfaces instead of dumping long file inventories.
+- The README standard and template now explicitly prefer anchor files, path families, and compact notes over exhaustive same-shape enumerations.
+
 ## Links
 - [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md)
 - [preimplementation_repo_readiness.md](/home/j/WatchTowerPlan/docs/planning/design/features/preimplementation_repo_readiness.md)
 
 ## Updated At
-- `2026-03-10T17:55:24Z`
+- `2026-03-10T18:05:14Z`
