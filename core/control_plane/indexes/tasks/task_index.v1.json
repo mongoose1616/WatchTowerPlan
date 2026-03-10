@@ -473,12 +473,12 @@
       "title": "Split core monoliths and add supplemental schema loading",
       "summary": "Refactor the largest coordination-facing Python modules into smaller family modules and add supplemental schema registration for future external pack-owned artifacts.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/preimplementation_core_modularity.md",
-      "updated_at": "2026-03-10T17:55:24Z",
+      "doc_path": "docs/planning/tasks/closed/preimplementation_core_modularity.md",
+      "updated_at": "2026-03-10T18:47:27Z",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "depends_on": [
         "task.preimplementation_repo_review_and_hardening.machine_coordination.001"

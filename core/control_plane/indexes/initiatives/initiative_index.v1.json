@@ -463,35 +463,14 @@
       "title": "Pre-Implementation Repository Review and Hardening PRD",
       "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-10T18:20:44Z",
-      "open_task_count": 1,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T18:47:27Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
-      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/preimplementation_core_modularity.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.preimplementation_repo_review_and_hardening.core_modularity.001"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.preimplementation_repo_review_and_hardening.core_modularity.001",
-          "title": "Split core monoliths and add supplemental schema loading",
-          "task_status": "ready",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/preimplementation_core_modularity.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.preimplementation_repo_review_and_hardening.machine_coordination.001"
-          ]
-        }
-      ],
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
       "prd_ids": [
         "prd.preimplementation_repo_review_and_hardening"
       ],
@@ -523,6 +502,8 @@
       "evidence_ids": [
         "evidence.preimplementation_repo_review_and_hardening.planning_baseline"
       ],
+      "closed_at": "2026-03-10T18:48:07Z",
+      "closure_reason": "Delivered and validated pre-implementation repository review and hardening.",
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/preimplementation_repo_review_and_hardening_acceptance.v1.json",
@@ -554,11 +535,11 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/tasks/closed/preimplementation_core_modularity.md",
         "docs/planning/tasks/closed/preimplementation_machine_coordination.md",
         "docs/planning/tasks/closed/preimplementation_readme_entrypoints.md",
         "docs/planning/tasks/closed/preimplementation_repo_review_bootstrap.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/preimplementation_core_modularity.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/references/README.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
