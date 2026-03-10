@@ -68,8 +68,10 @@
       "title": "Core Export Hardening Follow-Up PRD",
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
       "status": "active",
-      "initiative_status": "active",
+      "initiative_status": "completed",
       "updated_at": "2026-03-10T17:04:57Z",
+      "closed_at": "2026-03-10T17:12:30Z",
+      "closure_reason": "Implemented and validated export hardening follow-up.",
       "prd_ids": [
         "prd.core_export_hardening_followup"
       ],

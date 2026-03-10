@@ -80,14 +80,14 @@
       "title": "Core Export Hardening Follow-Up PRD",
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "closeout",
+      "initiative_status": "completed",
+      "current_phase": "closed",
       "updated_at": "2026-03-10T17:04:57Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
-      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
       "prd_ids": [
         "prd.core_export_hardening_followup"
       ],
@@ -116,6 +116,8 @@
       "evidence_ids": [
         "evidence.core_export_hardening_followup.planning_baseline"
       ],
+      "closed_at": "2026-03-10T17:12:30Z",
+      "closure_reason": "Implemented and validated export hardening follow-up.",
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/core_export_hardening_followup_acceptance.v1.json",
