@@ -6,7 +6,7 @@ summary: "Defines the planning intent for the core Python workspace, control-pla
 type: "prd"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T04:55:49Z"
+updated_at: "2026-03-10T03:57:14Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -29,7 +29,7 @@ aliases:
 - `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
 - `Linked Acceptance Contracts`: `contract.acceptance.core_python_foundation`
 - `Linked Validation Evidence`: `evidence.core_python_foundation.traceability_baseline`
-- `Updated At`: `2026-03-09T04:55:49Z`
+- `Updated At`: `2026-03-10T03:57:14Z`
 
 ## Summary
 This PRD defines the product and planning intent for the core Python helper and harness foundation that operates over the versioned control plane.
@@ -80,12 +80,13 @@ The repository now has a growing control-plane surface, but the executable Pytho
 - Engineers can identify the active PRD, decision, designs, implementation plan, and validation evidence for the core Python foundation in one review pass.
 
 ## Risks and Dependencies
-- The runtime loader and evidence model still need code implementation in `core/python/`.
+- The current core runtime is implemented and validated, but future extraction into `WatchTower` still needs an explicit modularization and export slice.
 - If new planning docs are added without updating indexes and trackers, traceability will drift again.
 - Validation evidence standards and traceability indexes must stay aligned with the validator registry and planning indexes.
 
 ## Open Questions
 - Should future Python tooling regenerate acceptance contracts and traceability indexes automatically, or keep them as reviewed artifacts refreshed through explicit commands?
+- Should the next bounded follow-up split reusable runtime layers from `WatchTowerPlan` repo-operations so the core can be consumed directly by `WatchTower`?
 
 ## Foundations References Applied
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): core should provide routing, validation, evidence capture, and reusable closeout behavior.

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "title": "Migration Record",
+  "description": "Machine-readable migration ledger record for controlled repository transitions.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "subject",
+    "recorded_at",
+    "from_state",
+    "to_state",
+    "summary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^migration\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "subject": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "recorded_at": {
+      "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+    },
+    "from_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "to_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "related_paths": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

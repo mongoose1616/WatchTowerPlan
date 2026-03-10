@@ -6,15 +6,16 @@ This document provides the human-readable start-here view for traced initiatives
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key Surface | Next Surface | Next Action |
 |---|---|---|---|---|---|---|
-| `trace.acceptance_evidence_reconciliation` | `design` | unassigned | `0` | `docs/planning/design/features/acceptance_evidence_reconciliation.md` | `docs/planning/design/implementation/` | Create or update an implementation plan so the approved design becomes executable work. |
-| `trace.command_documentation_and_lookup` | `design` | unassigned | `0` | `docs/planning/design/features/command_documentation_and_lookup.md` | `docs/planning/design/implementation/` | Create or update an implementation plan so the approved design becomes executable work. |
-| `trace.github_collaboration` | `design` | unassigned | `0` | `docs/planning/design/features/github_collaboration_scaffolding.md` | `docs/planning/design/implementation/` | Create or update an implementation plan so the approved design becomes executable work. |
-| `trace.initiative_closeout` | `design` | unassigned | `0` | `docs/planning/design/features/initiative_closeout_and_planning_trackers.md` | `docs/planning/design/implementation/` | Create or update an implementation plan so the approved design becomes executable work. |
-| `trace.core_python_foundation` | `closeout` | unassigned | `0` | `docs/planning/prds/core_python_foundation.md` | `docs/commands/core_python/watchtower_core_closeout_initiative.md` | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
+| `None` | `None` | `None` | `0` | `None` | `None` | No active initiatives are currently tracked. |
 
 ## Closed Initiatives
 | Trace ID | Initiative Status | Key Surface | Closed At | Closure Reason |
 |---|---|---|---|---|
+| `trace.initiative_closeout` | `completed` | `docs/planning/design/features/initiative_closeout_and_planning_trackers.md` | `2026-03-10T03:59:28Z` | Delivered and validated; future planning-closeout expansion belongs to a new bounded initiative |
+| `trace.github_collaboration` | `completed` | `docs/planning/design/features/github_collaboration_scaffolding.md` | `2026-03-10T03:59:28Z` | Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative |
+| `trace.core_python_foundation` | `completed` | `docs/planning/prds/core_python_foundation.md` | `2026-03-10T03:59:28Z` | Delivered and validated; future core export and product work belong to a new bounded initiative |
+| `trace.command_documentation_and_lookup` | `completed` | `docs/planning/design/features/command_documentation_and_lookup.md` | `2026-03-10T03:59:28Z` | Delivered and validated; future command-surface expansion belongs to a new bounded initiative |
+| `trace.acceptance_evidence_reconciliation` | `completed` | `docs/planning/design/features/acceptance_evidence_reconciliation.md` | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | `docs/planning/design/features/github_task_push_sync.md` | `2026-03-09T16:14:50Z` | Delivered and validated |
 
 ## Update Rules
@@ -31,4 +32,4 @@ This document provides the human-readable start-here view for traced initiatives
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
 
 ## Updated At
-- `2026-03-10T02:30:31Z`
+- `2026-03-10T03:57:14Z`

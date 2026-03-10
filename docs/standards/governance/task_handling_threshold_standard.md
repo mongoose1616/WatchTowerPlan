@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_threshold"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T02:30:31Z"
+updated_at: "2026-03-10T05:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -68,6 +68,7 @@ This standard defines when repository work must create, update, transition, or e
 - When a durable task is not required, record an explicit `No-Task-Reason` in the commit or pull-request closeout metadata for non-trivial changes.
 - Do not use silence as the signal that no task was needed.
 - When a durable task exists, use its stable `task_id` in commit or pull-request metadata instead of inventing parallel ad hoc identifiers.
+- Active traced initiatives should not remain active in initiative or traceability projections without linked durable task IDs.
 
 ## Structure or Data Model
 ### Allowed task-handling outcomes
@@ -87,6 +88,7 @@ This standard defines when repository work must create, update, transition, or e
 - Reviewers should reject non-trivial work whose task-handling outcome is implicit.
 - Handoff and closeout should make clear whether a durable task exists or why one was not needed.
 - Traced work should not reach closeout with neither a linked task nor an explicit no-task reason.
+- Active traced initiatives should not remain active in derived coordination views without linked durable task IDs.
 
 ## Change Control
 - Update this standard when the repository changes its threshold for durable task tracking or the metadata used to record explicit no-task outcomes.
@@ -99,4 +101,4 @@ This standard defines when repository work must create, update, transition, or e
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-10T02:30:31Z`
+- `2026-03-10T05:00:00Z`

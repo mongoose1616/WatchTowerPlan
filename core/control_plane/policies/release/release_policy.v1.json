@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:policies:release-policy:v1",
+  "id": "policy.release.core_python_workspace",
+  "title": "Core Python Workspace Release Policy",
+  "status": "active",
+  "policy_scope": "core_python_workspace",
+  "required_validations": [
+    "watchtower-core sync all --write",
+    "watchtower-core validate all",
+    "./.venv/bin/python -m mypy src",
+    "./.venv/bin/ruff check src tests/unit tests/integration",
+    "./.venv/bin/python -m pytest"
+  ],
+  "required_evidence_ids": [
+    "evidence.core_python_foundation.traceability_baseline"
+  ],
+  "release_notes_required": true,
+  "related_paths": [
+    "core/python/",
+    "core/control_plane/ledgers/releases/",
+    "docs/standards/validations/repository_validation_standard.md"
+  ],
+  "notes": "The first release policy covers local release readiness for the governed Python workspace and its control-plane companions."
+}

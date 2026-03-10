@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:ledgers:release-record:v1",
+  "title": "Release Record",
+  "description": "Machine-readable release ledger record.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "release_version",
+    "recorded_at",
+    "summary",
+    "evidence_paths"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:ledgers:release-record:v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^release\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "trace_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "release_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recorded_at": {
+      "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_paths": {
+      "$ref": "#/$defs/stringList"
+    },
+    "related_paths": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

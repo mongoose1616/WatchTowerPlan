@@ -196,7 +196,7 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core doctor` | Lightweight workspace smoke check exposed through the root CLI. |
+| `watchtower-core doctor` | Lightweight workspace health snapshot exposed through the root CLI. |
 | `watchtower-core query` | Namespace command for governed index lookups over paths, commands, planning docs, acceptance contracts, evidence, tasks, and traces. |
 | `watchtower-core sync` | Namespace command for rebuilding derived governed artifacts and hosted task mirrors. |
 | `watchtower-core closeout` | Namespace command for initiative-level closeout operations over traced planning surfaces. |
@@ -208,4 +208,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-10T01:48:35Z`
+- `2026-03-10T05:20:00Z`

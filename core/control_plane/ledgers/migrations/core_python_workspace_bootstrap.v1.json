@@ -1,0 +1,17 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.core_python_workspace.bootstrap.v1",
+  "title": "Core Python Workspace Bootstrap Migration",
+  "status": "active",
+  "subject": "core.python.workspace",
+  "recorded_at": "2026-03-10T04:45:00Z",
+  "from_state": "reserved_core_python_workspace",
+  "to_state": "active_governed_core_python_workspace",
+  "summary": "Records the transition from a reserved core Python scaffold to an active governed workspace with query, sync, validation, and closeout capabilities.",
+  "related_paths": [
+    "core/python/README.md",
+    "docs/planning/decisions/core_python_workspace_root.md",
+    "docs/standards/engineering/python_workspace_standard.md"
+  ],
+  "notes": "This baseline migration marks the first stable controlled transition for the governed Python workspace."
+}

@@ -101,8 +101,8 @@ def build_parser() -> argparse.ArgumentParser:
             WatchTower core helper and harness workspace.
 
             Run this command from `core/python/` with `uv run` to inspect governed
-            control-plane data, run lightweight workspace checks, and rebuild
-            derived indexes.
+            control-plane data, run workspace health snapshots, validate governed
+            artifacts, and rebuild derived indexes and trackers.
             """
         ).strip(),
         epilog=_examples(
@@ -146,11 +146,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     doctor_parser = subparsers.add_parser(
         "doctor",
-        help="Run a quick workspace smoke check.",
+        help="Run a lightweight workspace health snapshot.",
         description=dedent(
             """
-            Run a small, low-risk check that confirms the core Python CLI is
-            installed and reachable.
+            Run a small, low-risk workspace health snapshot that confirms the
+            core Python CLI is installed and that the main governed lookup
+            surfaces load successfully.
 
             Start here if you are new to the workspace or want the simplest
             successful `watchtower-core` invocation.
@@ -318,6 +319,7 @@ def build_parser() -> argparse.ArgumentParser:
         ).strip(),
         epilog=_examples(
             "uv run watchtower-core query foundations --query philosophy",
+            "uv run watchtower-core query foundations --audience maintainers",
             "uv run watchtower-core query foundations --applied-by-path "
             "docs/standards/engineering/engineering_best_practices_standard.md --format json",
         ),
@@ -333,6 +335,10 @@ def build_parser() -> argparse.ArgumentParser:
     query_foundations_parser.add_argument(
         "--foundation-id",
         help="Exact foundation identifier such as foundation.engineering_design_principles.",
+    )
+    query_foundations_parser.add_argument(
+        "--audience",
+        help="Exact audience filter such as shared, maintainers, or contributors.",
     )
     query_foundations_parser.add_argument(
         "--authority",
@@ -1973,17 +1979,70 @@ def _run_help(args: argparse.Namespace) -> int:
 
 
 def _run_doctor(args: argparse.Namespace) -> int:
+    loader = ControlPlaneLoader()
+    schema_catalog = loader.load_schema_catalog()
+    validator_registry = loader.load_validator_registry()
+    command_index = loader.load_command_index()
+    foundation_index = loader.load_foundation_index()
+    reference_index = loader.load_reference_index()
+    standard_index = loader.load_standard_index()
+    workflow_index = loader.load_workflow_index()
+    task_index = loader.load_task_index()
+    initiative_index = loader.load_initiative_index()
+    traceability_index = loader.load_traceability_index()
     payload = {
         "command": "watchtower-core doctor",
         "workspace": "core_python",
+        "repo_root": str(loader.repo_root),
         "status": "ok",
-        "message": "watchtower_core workspace scaffold is available.",
+        "message": (
+            "watchtower-core workspace is available and core governed surfaces "
+            "loaded successfully."
+        ),
+        "counts": {
+            "schemas": len(schema_catalog.records),
+            "validators": len(validator_registry.validators),
+            "commands": len(command_index.entries),
+            "foundations": len(foundation_index.entries),
+            "references": len(reference_index.entries),
+            "standards": len(standard_index.entries),
+            "workflows": len(workflow_index.entries),
+            "initiatives": len(initiative_index.entries),
+            "tasks": len(task_index.entries),
+            "traces": len(traceability_index.entries),
+        },
+        "recommended_baseline": [
+            "watchtower-core sync all --write",
+            "watchtower-core validate all",
+            "./.venv/bin/python -m mypy src",
+            "./.venv/bin/ruff check src tests/unit tests/integration",
+            "./.venv/bin/python -m pytest",
+        ],
     }
     if args.format == "json":
         print(json.dumps(payload, sort_keys=True))
         return 0
 
     print(payload["message"])
+    print(f"Repo Root: {payload['repo_root']}")
+    counts = payload["counts"]
+    if isinstance(counts, dict):
+        print(
+            "Loaded: "
+            f"{counts['schemas']} schemas, "
+            f"{counts['validators']} validators, "
+            f"{counts['commands']} commands, "
+            f"{counts['foundations']} foundations, "
+            f"{counts['references']} references, "
+            f"{counts['standards']} standards, "
+            f"{counts['workflows']} workflows, "
+            f"{counts['initiatives']} initiatives, "
+            f"{counts['tasks']} tasks, "
+            f"{counts['traces']} traces"
+        )
+    print("Recommended baseline:")
+    for command in payload["recommended_baseline"]:
+        print(f"- {command}")
     return 0
 
 
@@ -2089,6 +2148,7 @@ def _run_query_foundations(args: argparse.Namespace) -> int:
         FoundationSearchParams(
             query=args.query,
             foundation_id=args.foundation_id,
+            audience=args.audience,
             authority=args.authority,
             tag=args.tag,
             related_path=args.related_path,
@@ -2108,6 +2168,7 @@ def _run_query_foundations(args: argparse.Namespace) -> int:
                 "title": entry.title,
                 "summary": entry.summary,
                 "status": entry.status,
+                "audience": entry.audience,
                 "authority": entry.authority,
                 "doc_path": entry.doc_path,
                 "updated_at": entry.updated_at,
@@ -2134,7 +2195,7 @@ def _run_query_foundations(args: argparse.Namespace) -> int:
 
     print(f"Found {len(entries)} foundation entr{'y' if len(entries) == 1 else 'ies'}:")
     for entry in entries:
-        print(f"- {entry.foundation_id} [{entry.authority}]")
+        print(f"- {entry.foundation_id} [{entry.authority}, {entry.audience}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
         print(

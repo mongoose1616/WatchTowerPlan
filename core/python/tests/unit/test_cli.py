@@ -11,7 +11,7 @@ def test_doctor_command_returns_zero(capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "workspace scaffold is available" in captured.out
+    assert "workspace is available and core governed surfaces loaded successfully" in captured.out
 
 
 def test_doctor_command_supports_json_output(capsys) -> None:

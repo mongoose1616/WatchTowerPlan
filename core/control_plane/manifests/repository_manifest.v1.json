@@ -1,0 +1,25 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:manifests:repository-manifest:v1",
+  "id": "manifest.repository.watchtower_plan",
+  "title": "WatchTowerPlan Repository Manifest",
+  "status": "active",
+  "manifest_kind": "repository",
+  "repo_root": ".",
+  "surface_paths": [
+    "docs/",
+    "workflows/",
+    "core/control_plane/",
+    "core/python/"
+  ],
+  "command_entrypoints": [
+    "core/python/src/watchtower_core/cli/main.py",
+    "docs/commands/core_python/watchtower_core.md"
+  ],
+  "related_paths": [
+    "README.md",
+    "AGENTS.md",
+    "core/README.md",
+    "workflows/ROUTING_TABLE.md"
+  ],
+  "notes": "This manifest records the canonical top-level governed surfaces and operator entrypoints for the repository."
+}

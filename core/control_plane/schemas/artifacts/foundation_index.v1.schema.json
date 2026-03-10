@@ -52,6 +52,14 @@
         "historical"
       ]
     },
+    "audience": {
+      "type": "string",
+      "enum": [
+        "shared",
+        "maintainers",
+        "contributors"
+      ]
+    },
     "idPattern": {
       "type": "string",
       "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
@@ -103,6 +111,7 @@
         "title",
         "summary",
         "status",
+        "audience",
         "authority",
         "doc_path",
         "updated_at",
@@ -123,6 +132,9 @@
         },
         "status": {
           "$ref": "#/$defs/lifecycleStatus"
+        },
+        "audience": {
+          "$ref": "#/$defs/audience"
         },
         "authority": {
           "$ref": "#/$defs/authority"

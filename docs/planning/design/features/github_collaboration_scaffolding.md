@@ -6,7 +6,7 @@ summary: "Defines the hosted GitHub intake, pull request, and project-field scaf
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:13:52Z"
+updated_at: "2026-03-10T03:57:14Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -27,7 +27,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-10T00:13:52Z`
+- `Updated At`: `2026-03-10T03:57:14Z`
 
 ## Summary
 This document defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.
@@ -43,7 +43,7 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 
 ## Current-State Context
 - The repo now has a local-first task system, push-only GitHub task sync, and initiative closeout.
-- There is still no GitHub-native scaffolding for intake or PR review.
+- The repo now also has GitHub-native intake and PR scaffolding through issue forms and the pull-request template.
 - Multiple engineers need a predictable hosted layer for intake and review even when the authoritative planning state stays in git.
 
 ## Foundations References Applied
@@ -134,4 +134,4 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields)
 
 ## Updated At
-- `2026-03-10T00:13:52Z`
+- `2026-03-10T03:57:14Z`

@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "foundation_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T05:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -41,6 +41,7 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 ## Guidance
 - Store governed foundation documents under `docs/foundations/`.
 - Use governed front matter on foundation documents and validate it against the published foundation front matter profile.
+- Keep front-matter `audience` accurate so intent-layer retrieval can route human and agent readers effectively.
 - Keep each foundation document centered on one primary intent surface, such as product shape, design philosophy, standards posture, or technology direction.
 - Keep foundation docs durable and repo-native. They should explain current repository intent, not historical lineage.
 - When external guidance materially shapes a foundation doc, prefer citing a governed local reference under `docs/references/**` instead of only raw external URLs.
@@ -79,4 +80,4 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T05:00:00Z`

@@ -1,9 +1,10 @@
 # `core/control_plane/manifests`
 
 ## Description
-`This directory is reserved for authored machine-readable declarations owned by core. Keep manifest-like documents here when they declare supported capabilities, artifact sets, or other shared control-plane facts. No live manifest artifacts are published here yet.`
+`This directory holds authored machine-readable declarations owned by core. Keep manifest-like documents here when they declare supported capabilities, artifact sets, or other shared control-plane facts.`
 
 ## Files
 | Path | Description |
 |---|---|
-| `core/control_plane/manifests/README.md` | Describes the purpose of the manifests directory and its current boundaries. |
+| `core/control_plane/manifests/README.md` | Describes the purpose of the manifests directory and its current contents. |
+| `core/control_plane/manifests/repository_manifest.v1.json` | Repository manifest describing the canonical top-level governed surfaces and command entrypoints. |

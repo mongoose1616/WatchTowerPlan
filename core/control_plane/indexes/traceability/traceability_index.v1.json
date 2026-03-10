@@ -9,16 +9,22 @@
       "title": "Acceptance and Evidence Reconciliation Design",
       "summary": "Defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-10T03:53:14Z",
+      "closed_at": "2026-03-10T03:58:40Z",
+      "closure_reason": "Delivered and validated; future expansion belongs to a new bounded initiative",
       "design_ids": [
         "design.features.acceptance_evidence_reconciliation"
+      ],
+      "task_ids": [
+        "task.acceptance_evidence_reconciliation.followup.001"
       ],
       "related_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/",
-        "docs/planning/design/features/acceptance_evidence_reconciliation.md"
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md"
       ],
       "tags": [
         "acceptance",
@@ -33,16 +39,22 @@
       "title": "Command Documentation and Lookup Design",
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-10T03:53:14Z",
+      "closed_at": "2026-03-10T03:59:28Z",
+      "closure_reason": "Delivered and validated; future command-surface expansion belongs to a new bounded initiative",
       "design_ids": [
         "design.features.command_documentation_and_lookup"
+      ],
+      "task_ids": [
+        "task.command_documentation_and_lookup.followup.001"
       ],
       "related_paths": [
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/python/src/watchtower_core/cli/",
         "docs/commands/",
-        "docs/planning/design/features/command_documentation_and_lookup.md"
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/tasks/closed/command_documentation_and_lookup_followup.md"
       ],
       "tags": [
         "commands",
@@ -56,8 +68,10 @@
       "title": "Core Python Foundation PRD",
       "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-10T03:57:14Z",
+      "closed_at": "2026-03-10T03:59:28Z",
+      "closure_reason": "Delivered and validated; future core export and product work belong to a new bounded initiative",
       "prd_ids": [
         "prd.core_python_foundation"
       ],
@@ -71,6 +85,9 @@
       ],
       "plan_ids": [
         "design.implementation.control_plane_loaders_and_schema_store"
+      ],
+      "task_ids": [
+        "task.core_python_foundation.closeout.001"
       ],
       "requirement_ids": [
         "req.core_python_foundation.001",
@@ -106,6 +123,7 @@
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/decisions/decision_index.v1.json",
         "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/control_plane/indexes/prds/prd_index.v1.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
@@ -127,7 +145,8 @@
         "docs/planning/design/features/python_validator_execution.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
-        "docs/planning/prds/core_python_foundation.md"
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/planning/tasks/closed/core_python_foundation_closeout.md"
       ],
       "tags": [
         "control_plane",
@@ -150,16 +169,22 @@
       "title": "GitHub Collaboration Scaffolding",
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-10T00:13:52Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-10T03:57:14Z",
+      "closed_at": "2026-03-10T03:59:28Z",
+      "closure_reason": "Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative",
       "design_ids": [
         "design.features.github_collaboration_scaffolding"
+      ],
+      "task_ids": [
+        "task.github_collaboration.followup.001"
       ],
       "related_paths": [
         ".github/",
         "core/python/src/watchtower_core/sync/github_tasks.py",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/tasks/"
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/github_collaboration_followup.md"
       ],
       "tags": [
         "traceability"
@@ -170,17 +195,26 @@
       "title": "Initiative Closeout and Planning Trackers",
       "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-09T18:25:06Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-10T03:57:14Z",
+      "closed_at": "2026-03-10T03:59:28Z",
+      "closure_reason": "Delivered and validated; future planning-closeout expansion belongs to a new bounded initiative",
       "design_ids": [
         "design.features.initiative_closeout_and_planning_trackers"
       ],
+      "task_ids": [
+        "task.initiative_closeout.followup.001"
+      ],
       "related_paths": [
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/python/src/watchtower_core/closeout/initiative.py",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-        "docs/planning/prds/prd_tracking.md"
+        "docs/planning/initiatives/",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/initiative_closeout_followup.md"
       ],
       "tags": [
         "traceability"

@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:release-record:v1",
+  "id": "release.core_python_foundation.v1_0_0",
+  "title": "Core Python Foundation Release Record",
+  "status": "active",
+  "trace_id": "trace.core_python_foundation",
+  "release_version": "v1.0.0",
+  "recorded_at": "2026-03-10T04:45:00Z",
+  "summary": "Records the first governed release baseline for the local Python workspace, its control-plane loaders, validation flows, and planning/query surfaces.",
+  "evidence_paths": [
+    "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+    "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json"
+  ],
+  "related_paths": [
+    "core/python/",
+    "core/control_plane/policies/release/release_policy.v1.json",
+    "docs/planning/prds/core_python_foundation.md"
+  ],
+  "notes": "This first release record is local and governance-oriented rather than a public package release."
+}

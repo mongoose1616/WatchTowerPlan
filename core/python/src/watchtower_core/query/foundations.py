@@ -15,6 +15,7 @@ class FoundationSearchParams:
 
     query: str | None = None
     foundation_id: str | None = None
+    audience: str | None = None
     authority: str | None = None
     tag: str | None = None
     related_path: str | None = None
@@ -36,6 +37,7 @@ class FoundationQueryService:
         foundation_id = (
             params.foundation_id.casefold() if params.foundation_id is not None else None
         )
+        audience = params.audience.casefold() if params.audience is not None else None
         authority = params.authority.casefold() if params.authority is not None else None
         tag = params.tag.casefold() if params.tag is not None else None
         related_path = params.related_path.casefold() if params.related_path is not None else None
@@ -52,6 +54,8 @@ class FoundationQueryService:
         matches: list[tuple[int, FoundationIndexEntry]] = []
         for entry in index.entries:
             if foundation_id is not None and entry.foundation_id.casefold() != foundation_id:
+                continue
+            if audience is not None and entry.audience.casefold() != audience:
                 continue
             if authority is not None and entry.authority.casefold() != authority:
                 continue
@@ -78,6 +82,7 @@ class FoundationQueryService:
                 params.query,
                 (
                     entry.foundation_id,
+                    entry.audience,
                     entry.authority,
                     entry.title,
                     entry.summary,

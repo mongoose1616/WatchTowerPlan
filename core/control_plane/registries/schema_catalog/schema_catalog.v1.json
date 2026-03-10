@@ -18,6 +18,32 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1",
+      "title": "Compatibility Contract",
+      "description": "Schema for machine-readable compatibility contract artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "compatibility_contract",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/compatibility_contract.v1.schema.json",
+      "aliases": [
+        "compatibility boundary schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:contracts:intake-contract:v1",
+      "title": "Intake Contract",
+      "description": "Schema for machine-readable intake contract artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "intake_contract",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/intake_contract.v1.schema.json",
+      "aliases": [
+        "input boundary schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:command-index:v1",
       "title": "Command Index",
       "description": "Schema for machine-readable command index artifacts.",
@@ -155,6 +181,84 @@
       "aliases": [
         "workflow lookup schema",
         "workflow module index schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+      "title": "Migration Record",
+      "description": "Schema for machine-readable migration ledger artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "migration_record",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/migration_record.v1.schema.json",
+      "aliases": [
+        "migration ledger schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:ledgers:release-record:v1",
+      "title": "Release Record",
+      "description": "Schema for machine-readable release ledger artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "release_record",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/release_record.v1.schema.json",
+      "aliases": [
+        "release ledger schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:manifests:repository-manifest:v1",
+      "title": "Repository Manifest",
+      "description": "Schema for machine-readable repository manifest artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "repository_manifest",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/repository_manifest.v1.schema.json",
+      "aliases": [
+        "repository manifest schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:policies:release-policy:v1",
+      "title": "Release Policy",
+      "description": "Schema for machine-readable release policy artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "release_policy",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/release_policy.v1.schema.json",
+      "aliases": [
+        "release governance schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1",
+      "title": "Artifact Type Registry",
+      "description": "Schema for machine-readable artifact-type registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "artifact_type_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/artifact_type_registry.v1.schema.json",
+      "aliases": [
+        "artifact kind catalog schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:policy-catalog:v1",
+      "title": "Policy Catalog",
+      "description": "Schema for machine-readable policy catalog registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "policy_catalog",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/policy_catalog.v1.schema.json",
+      "aliases": [
+        "policy registry schema"
       ]
     },
     {

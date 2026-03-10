@@ -113,6 +113,7 @@ class TraceAccumulator:
     _note_rank: int = 999
     _statuses: set[str] = field(default_factory=set)
     _timestamps: set[str] = field(default_factory=set)
+    _has_active_tasks: bool = False
     prd_ids: set[str] = field(default_factory=set)
     decision_ids: set[str] = field(default_factory=set)
     design_ids: set[str] = field(default_factory=set)
@@ -219,6 +220,19 @@ class TraceAccumulator:
         note = entry.get("notes")
         if isinstance(note, str) and note:
             self.merge_note(rank=900, note=note)
+        self._reopen_completed_initiative_if_needed()
+
+    def mark_task_state(self, *, task_status: str) -> None:
+        if task_status not in {"done", "cancelled"}:
+            self._has_active_tasks = True
+
+    def _reopen_completed_initiative_if_needed(self) -> None:
+        if self.initiative_status != "completed" or not self._has_active_tasks:
+            return
+        self.initiative_status = "active"
+        self.closed_at = None
+        self.closure_reason = None
+        self.superseded_by_trace_id = None
 
     @staticmethod
     def _set_list_field(document: dict[str, object], field_name: str, values: set[str]) -> None:
@@ -376,6 +390,9 @@ class TraceabilityIndexSyncService:
             if not isinstance(trace_id_value, str) or not trace_id_value:
                 continue
             accumulator = self._accumulator(accumulators, trace_id_value)
+            task_status = entry.get("task_status")
+            if isinstance(task_status, str):
+                accumulator.mark_task_state(task_status=task_status)
             accumulator.merge_primary(
                 rank=5,
                 title=str(entry["title"]),

@@ -577,6 +577,7 @@ class FoundationIndexEntry:
     title: str
     summary: str
     status: str
+    audience: str
     authority: str
     doc_path: str
     updated_at: str
@@ -599,6 +600,7 @@ class FoundationIndexEntry:
             title=document["title"],
             summary=document["summary"],
             status=document["status"],
+            audience=document["audience"],
             authority=document["authority"],
             doc_path=document["doc_path"],
             updated_at=document["updated_at"],

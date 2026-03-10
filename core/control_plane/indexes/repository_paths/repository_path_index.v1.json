@@ -172,7 +172,14 @@
       "path": "core/control_plane/contracts/compatibility/README.md",
       "kind": "file",
       "surface_kind": "control_plane_contract",
-      "summary": "Describes the purpose of the compatibility contracts directory and its current boundaries.",
+      "summary": "Describes the purpose of the compatibility contracts directory and its current contents.",
+      "parent_path": "core/control_plane/contracts/compatibility/"
+    },
+    {
+      "path": "core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_contract",
+      "summary": "Compatibility contract for the governed local Python workspace and its helper-runtime boundaries.",
       "parent_path": "core/control_plane/contracts/compatibility/"
     },
     {
@@ -186,7 +193,14 @@
       "path": "core/control_plane/contracts/intake/README.md",
       "kind": "file",
       "surface_kind": "control_plane_contract",
-      "summary": "Describes the purpose of the intake contracts directory and its current boundaries.",
+      "summary": "Describes the purpose of the intake contracts directory and its current contents.",
+      "parent_path": "core/control_plane/contracts/intake/"
+    },
+    {
+      "path": "core/control_plane/contracts/intake/core_python_workspace_intake.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_contract",
+      "summary": "Intake contract for governed Markdown, governed JSON artifacts, and Python-workspace changes accepted by the local helper-runtime loop.",
       "parent_path": "core/control_plane/contracts/intake/"
     },
     {
@@ -1106,7 +1120,14 @@
       "path": "core/control_plane/ledgers/migrations/README.md",
       "kind": "file",
       "surface_kind": "control_plane_ledger",
-      "summary": "Describes the purpose of the migration ledger directory and its current boundaries.",
+      "summary": "Describes the purpose of the migration ledger directory and its current contents.",
+      "parent_path": "core/control_plane/ledgers/migrations/"
+    },
+    {
+      "path": "core/control_plane/ledgers/migrations/core_python_workspace_bootstrap.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the transition from a reserved Python scaffold to an active governed local workspace.",
       "parent_path": "core/control_plane/ledgers/migrations/"
     },
     {
@@ -1120,7 +1141,14 @@
       "path": "core/control_plane/ledgers/releases/README.md",
       "kind": "file",
       "surface_kind": "control_plane_ledger",
-      "summary": "Describes the purpose of the release ledger directory and its current boundaries.",
+      "summary": "Describes the purpose of the release ledger directory and its current contents.",
+      "parent_path": "core/control_plane/ledgers/releases/"
+    },
+    {
+      "path": "core/control_plane/ledgers/releases/core_python_foundation_release.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Release ledger record for the first governed core Python foundation release baseline.",
       "parent_path": "core/control_plane/ledgers/releases/"
     },
     {
@@ -1168,7 +1196,14 @@
       "path": "core/control_plane/manifests/README.md",
       "kind": "file",
       "surface_kind": "control_plane_file",
-      "summary": "Describes the purpose of the manifests directory and its current boundaries.",
+      "summary": "Describes the purpose of the manifests directory and its current contents.",
+      "parent_path": "core/control_plane/manifests/"
+    },
+    {
+      "path": "core/control_plane/manifests/repository_manifest.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_file",
+      "summary": "Repository manifest describing the canonical top-level governed surfaces and command entrypoints.",
       "parent_path": "core/control_plane/manifests/"
     },
     {
@@ -1219,7 +1254,14 @@
       "path": "core/control_plane/policies/release/README.md",
       "kind": "file",
       "surface_kind": "control_plane_policy",
-      "summary": "Describes the purpose of the release policy directory and its current boundaries.",
+      "summary": "Describes the purpose of the release policy directory and its current contents.",
+      "parent_path": "core/control_plane/policies/release/"
+    },
+    {
+      "path": "core/control_plane/policies/release/release_policy.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_policy",
+      "summary": "Release policy for the governed local Python workspace and its required release readiness evidence.",
       "parent_path": "core/control_plane/policies/release/"
     },
     {
@@ -1268,7 +1310,14 @@
       "path": "core/control_plane/registries/artifact_types/README.md",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the artifact type registry directory and its current boundaries.",
+      "summary": "Describes the purpose of the artifact type registry directory and its current contents.",
+      "parent_path": "core/control_plane/registries/artifact_types/"
+    },
+    {
+      "path": "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Registry of active governed artifact kinds, their families, schemas, and canonical paths.",
       "parent_path": "core/control_plane/registries/artifact_types/"
     },
     {
@@ -1282,7 +1331,14 @@
       "path": "core/control_plane/registries/policy_catalog/README.md",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the policy catalog directory and its current boundaries.",
+      "summary": "Describes the purpose of the policy catalog directory and its current contents.",
+      "parent_path": "core/control_plane/registries/policy_catalog/"
+    },
+    {
+      "path": "core/control_plane/registries/policy_catalog/policy_catalog.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Registry of active governed policy artifacts and their canonical paths.",
       "parent_path": "core/control_plane/registries/policy_catalog/"
     },
     {
@@ -1371,10 +1427,24 @@
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {
+      "path": "core/control_plane/schemas/artifacts/artifact_type_registry.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable artifact-type registry artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
       "path": "core/control_plane/schemas/artifacts/command_index.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable command-index artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/compatibility_contract.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable compatibility-contract artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {
@@ -1406,6 +1476,27 @@
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {
+      "path": "core/control_plane/schemas/artifacts/intake_contract.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable intake-contract artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/migration_record.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable migration-record artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/policy_catalog.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable policy-catalog registry artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
       "path": "core/control_plane/schemas/artifacts/prd_index.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -1417,6 +1508,27 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable reference-index artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/release_policy.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable release-policy artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/release_record.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable release-record artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/repository_manifest.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable repository-manifest artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/"
     },
     {

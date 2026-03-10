@@ -6,7 +6,7 @@ This document provides the human-readable tracking view for durable decision rec
 ## Current Decision Records
 | Trace ID | Decision ID | Initiative Status | Path | Decision Status | Summary |
 |---|---|---|---|---|---|
-| `trace.core_python_foundation` | `decision.core_python_workspace_root` | `active` | `docs/planning/decisions/core_python_workspace_root.md` | `accepted` | Records the decision to use core/python as the single Python workspace root alongside the versioned control plane. |
+| `trace.core_python_foundation` | `decision.core_python_workspace_root` | `completed` | `docs/planning/decisions/core_python_workspace_root.md` | `accepted` | Records the decision to use core/python as the single Python workspace root alongside the versioned control plane. |
 
 ## Update Rules
 - Rebuild this tracker in the same change set when a decision record is added, renamed, removed, materially retargeted, or when a trace initiative changes closeout state.

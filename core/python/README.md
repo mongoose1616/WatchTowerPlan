@@ -77,6 +77,7 @@
 
 ### Notes
 - `uv run ...` is the default workflow for this repository.
+- `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
 - `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.
 - `./tools/dev_shell.sh` is for interactive use and does not require `uv` once the shell is active.
 - If you used `./tools/dev_shell.sh`, leave the activated shell with `exit`.

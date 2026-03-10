@@ -19,6 +19,20 @@
       ]
     },
     {
+      "id": "validator.control_plane.compatibility_contract",
+      "title": "Compatibility Contract Validator",
+      "description": "Validates machine-readable compatibility contract artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "compatibility_contract",
+      "applies_to": [
+        "core/control_plane/contracts/compatibility/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.command_index",
       "title": "Command Index Validator",
       "description": "Validates machine-readable command index artifacts.",
@@ -89,6 +103,34 @@
       ]
     },
     {
+      "id": "validator.control_plane.intake_contract",
+      "title": "Intake Contract Validator",
+      "description": "Validates machine-readable intake contract artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "intake_contract",
+      "applies_to": [
+        "core/control_plane/contracts/intake/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:contracts:intake-contract:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.migration_record",
+      "title": "Migration Record Validator",
+      "description": "Validates machine-readable migration ledger artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "migration_record",
+      "applies_to": [
+        "core/control_plane/ledgers/migrations/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:migration-record:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.prd_index",
       "title": "PRD Index Validator",
       "description": "Validates machine-readable PRD index artifacts.",
@@ -117,6 +159,48 @@
       ]
     },
     {
+      "id": "validator.control_plane.release_policy",
+      "title": "Release Policy Validator",
+      "description": "Validates machine-readable release policy artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "release_policy",
+      "applies_to": [
+        "core/control_plane/policies/release/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:policies:release-policy:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.release_record",
+      "title": "Release Record Validator",
+      "description": "Validates machine-readable release ledger artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "release_record",
+      "applies_to": [
+        "core/control_plane/ledgers/releases/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:release-record:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.repository_manifest",
+      "title": "Repository Manifest Validator",
+      "description": "Validates machine-readable repository manifest artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "repository_manifest",
+      "applies_to": [
+        "core/control_plane/manifests/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:manifests:repository-manifest:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.repository_path_index",
       "title": "Repository Path Index Validator",
       "description": "Validates machine-readable repository path index artifacts.",
@@ -142,6 +226,34 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:schema-catalog:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.artifact_type_registry",
+      "title": "Artifact Type Registry Validator",
+      "description": "Validates machine-readable artifact-type registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "artifact_type_registry",
+      "applies_to": [
+        "core/control_plane/registries/artifact_types/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.policy_catalog",
+      "title": "Policy Catalog Validator",
+      "description": "Validates machine-readable policy catalog registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "policy_catalog",
+      "applies_to": [
+        "core/control_plane/registries/policy_catalog/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:policy-catalog:v1"
       ]
     },
     {

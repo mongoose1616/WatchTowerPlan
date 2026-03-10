@@ -19,12 +19,13 @@ This command searches the governed foundation index so engineers and agents can 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query foundations [--query <text>] [--foundation-id <foundation_id>] [--authority <authority>] [--tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--cited-by-path <doc_path>] [--applied-by-path <doc_path>] [--limit <n>] [--format <human|json>]
+uv run watchtower-core query foundations [--query <text>] [--foundation-id <foundation_id>] [--audience <audience>] [--authority <authority>] [--tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--cited-by-path <doc_path>] [--applied-by-path <doc_path>] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
 - `--query <text>`: Free-text query over indexed foundation fields such as ID, title, summary, aliases, and related paths.
 - `--foundation-id <foundation_id>`: Exact foundation identifier such as `foundation.engineering_design_principles`.
+- `--audience <audience>`: Exact audience filter such as `shared`, `maintainers`, or `contributors`.
 - `--authority <authority>`: Exact authority filter such as `authoritative` or `supporting`.
 - `--tag <tag>`: Exact tag filter.
 - `--related-path <path>`: Exact repository-path filter such as `core/python/` or `workflows/modules/`.
@@ -48,13 +49,18 @@ uv run watchtower-core query foundations --related-path core/python/
 
 ```sh
 cd core/python
+uv run watchtower-core query foundations --audience maintainers --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core query foundations --applied-by-path docs/standards/engineering/engineering_best_practices_standard.md --format json
 ```
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints matching foundation IDs, authorities, titles, summaries, and current citation or application counts.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and reference-capture fields such as `reference_doc_paths`, `internal_reference_paths`, `external_reference_urls`, `cited_by_paths`, and `applied_by_paths`.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and reference-capture fields such as `audience`, `reference_doc_paths`, `internal_reference_paths`, `external_reference_urls`, `cited_by_paths`, and `applied_by_paths`.
 - If no entries match the requested filters, the command exits successfully and reports that no foundation entries matched.
 
 ## Related Commands
@@ -71,4 +77,4 @@ uv run watchtower-core query foundations --applied-by-path docs/standards/engine
 - `core/control_plane/indexes/foundations/foundation_index.v1.json`
 
 ## Updated At
-- `2026-03-09T23:22:09Z`
+- `2026-03-10T05:00:00Z`

@@ -230,11 +230,54 @@
             ]
           },
           "then": {
+            "required": [
+              "task_ids"
+            ],
             "properties": {
               "current_phase": {
                 "not": {
                   "const": "closed"
                 }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "const": "active"
+              },
+              "current_phase": {
+                "not": {
+                  "const": "closeout"
+                }
+              }
+            },
+            "required": [
+              "initiative_status",
+              "current_phase"
+            ]
+          },
+          "then": {
+            "required": [
+              "active_task_ids"
+            ],
+            "anyOf": [
+              {
+                "required": [
+                  "primary_owner"
+                ]
+              },
+              {
+                "required": [
+                  "active_owners"
+                ]
+              }
+            ],
+            "properties": {
+              "open_task_count": {
+                "minimum": 1
               }
             }
           }

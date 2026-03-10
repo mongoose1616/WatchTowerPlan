@@ -1,0 +1,296 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1",
+  "id": "registry.artifact_types",
+  "title": "Artifact Type Registry",
+  "status": "active",
+  "artifact_types": [
+    {
+      "kind": "acceptance_contract",
+      "title": "Acceptance Contract",
+      "status": "active",
+      "family": "contract",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+      ]
+    },
+    {
+      "kind": "artifact_type_registry",
+      "title": "Artifact Type Registry",
+      "status": "active",
+      "family": "registry",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json"
+      ]
+    },
+    {
+      "kind": "command_index",
+      "title": "Command Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:command-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ]
+    },
+    {
+      "kind": "compatibility_contract",
+      "title": "Compatibility Contract",
+      "status": "active",
+      "family": "contract",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json"
+      ]
+    },
+    {
+      "kind": "decision_index",
+      "title": "Decision Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:decision-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/decisions/decision_index.v1.json"
+      ]
+    },
+    {
+      "kind": "design_document_index",
+      "title": "Design Document Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:design-document-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+      ]
+    },
+    {
+      "kind": "foundation_index",
+      "title": "Foundation Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:foundation-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/foundations/foundation_index.v1.json"
+      ]
+    },
+    {
+      "kind": "initiative_index",
+      "title": "Initiative Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:initiative-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+      ]
+    },
+    {
+      "kind": "intake_contract",
+      "title": "Intake Contract",
+      "status": "active",
+      "family": "contract",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:contracts:intake-contract:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/contracts/intake/core_python_workspace_intake.v1.json"
+      ]
+    },
+    {
+      "kind": "migration_record",
+      "title": "Migration Record",
+      "status": "active",
+      "family": "ledger",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:migration-record:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/ledgers/migrations/core_python_workspace_bootstrap.v1.json"
+      ]
+    },
+    {
+      "kind": "policy_catalog",
+      "title": "Policy Catalog",
+      "status": "active",
+      "family": "registry",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:policy-catalog:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/registries/policy_catalog/policy_catalog.v1.json"
+      ]
+    },
+    {
+      "kind": "prd_index",
+      "title": "PRD Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:prd-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/prds/prd_index.v1.json"
+      ]
+    },
+    {
+      "kind": "reference_index",
+      "title": "Reference Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:reference-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/references/reference_index.v1.json"
+      ]
+    },
+    {
+      "kind": "release_policy",
+      "title": "Release Policy",
+      "status": "active",
+      "family": "policy",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:policies:release-policy:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/policies/release/release_policy.v1.json"
+      ]
+    },
+    {
+      "kind": "release_record",
+      "title": "Release Record",
+      "status": "active",
+      "family": "ledger",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:release-record:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/ledgers/releases/core_python_foundation_release.v1.json"
+      ]
+    },
+    {
+      "kind": "repository_manifest",
+      "title": "Repository Manifest",
+      "status": "active",
+      "family": "manifest",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:manifests:repository-manifest:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/manifests/repository_manifest.v1.json"
+      ]
+    },
+    {
+      "kind": "repository_path_index",
+      "title": "Repository Path Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ]
+    },
+    {
+      "kind": "schema_catalog",
+      "title": "Schema Catalog",
+      "status": "active",
+      "family": "registry",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:schema-catalog:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
+      ]
+    },
+    {
+      "kind": "standard_index",
+      "title": "Standard Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:standard-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ]
+    },
+    {
+      "kind": "task_index",
+      "title": "Task Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:task-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/tasks/task_index.v1.json"
+      ]
+    },
+    {
+      "kind": "traceability_index",
+      "title": "Traceability Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:traceability-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    },
+    {
+      "kind": "validation_evidence",
+      "title": "Validation Evidence",
+      "status": "active",
+      "family": "ledger",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json"
+      ]
+    },
+    {
+      "kind": "validator_registry",
+      "title": "Validator Registry",
+      "status": "active",
+      "family": "registry",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:validator-registry:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/registries/validators/validator_registry.v1.json"
+      ]
+    },
+    {
+      "kind": "workflow_index",
+      "title": "Workflow Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:workflow-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/workflows/workflow_index.v1.json"
+      ]
+    }
+  ]
+}

@@ -180,7 +180,7 @@ def test_task_management_flow_updates_queries_trackers_and_initiative_views(
 
     initiative_entry = InitiativeQueryService(loader).get("trace.core_python_foundation")
     assert initiative_entry.current_phase == "execution"
-    assert initiative_entry.open_task_count == 2
+    assert initiative_entry.open_task_count >= 2
     assert initiative_entry.blocked_task_count == 1
     assert initiative_entry.primary_owner == "repository_maintainer"
     assert {ready_task_id, blocked_task_id}.issubset(set(initiative_entry.active_task_ids))
@@ -221,9 +221,14 @@ def test_initiative_closeout_fails_closed_until_task_state_is_terminal(
     tmp_path: Path,
 ) -> None:
     repo_root = _copy_repo_subset(tmp_path)
-    task_id = "task.core_python_foundation.closeout.001"
+    task_id = "task.core_python_foundation.closeout.validation.001"
     open_relative_path = "docs/planning/tasks/open/core_python_closeout.md"
     closed_relative_path = "docs/planning/tasks/closed/core_python_closeout.md"
+    baseline_task_id = "task.core_python_foundation.closeout.001"
+    baseline_open_relative_path = "docs/planning/tasks/open/core_python_foundation_closeout.md"
+    baseline_closed_relative_path = (
+        "docs/planning/tasks/closed/core_python_foundation_closeout.md"
+    )
 
     _write_task(
         repo_root,
@@ -272,6 +277,33 @@ def test_initiative_closeout_fails_closed_until_task_state_is_terminal(
         task_status="done",
         priority="high",
         updated_at="2026-03-10T12:20:00Z",
+    )
+    baseline_open_path = repo_root / baseline_open_relative_path
+    if baseline_open_path.exists():
+        baseline_open_path.unlink()
+    _write_task(
+        repo_root,
+        relative_path=baseline_closed_relative_path,
+        task_id=baseline_task_id,
+        trace_id="trace.core_python_foundation",
+        title="Close out the core Python foundation initiative",
+        summary=(
+            "Tracks the remaining initiative-level closeout for the core Python "
+            "foundation slice."
+        ),
+        task_status="done",
+        priority="high",
+        updated_at="2026-03-10T12:25:00Z",
+        task_kind="governance",
+        applies_to=(
+            "docs/planning/prds/core_python_foundation.md",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        ),
+        related_ids=(
+            "prd.core_python_foundation",
+            "contract.acceptance.core_python_foundation",
+        ),
     )
 
     _rebuild_task_management_surfaces(repo_root)

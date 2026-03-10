@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:policy-catalog:v1",
+  "title": "Policy Catalog",
+  "description": "Machine-readable registry of active governed policy artifacts.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "policies"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:policy-catalog:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.policy_catalog"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "policies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/policyEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "policyEntry": {
+      "type": "object",
+      "required": [
+        "policy_id",
+        "title",
+        "status",
+        "policy_kind",
+        "canonical_path"
+      ],
+      "properties": {
+        "policy_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "policy_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applies_to": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

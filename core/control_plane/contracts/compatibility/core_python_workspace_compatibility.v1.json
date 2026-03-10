@@ -1,0 +1,41 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1",
+  "id": "contract.compatibility.core_python_workspace",
+  "title": "Core Python Workspace Compatibility Contract",
+  "status": "active",
+  "subject": "core.python.workspace",
+  "compatibility": [
+    {
+      "surface": "python_interpreter",
+      "supported_versions": [
+        "3.12"
+      ],
+      "support_level": "supported",
+      "notes": "The governed Python workspace is pinned through .python-version and local tooling expectations."
+    },
+    {
+      "surface": "workspace_tooling",
+      "supported_versions": [
+        "uv lockfile contract v1",
+        "JSON Schema Draft 2020-12"
+      ],
+      "support_level": "supported",
+      "notes": "Workspace bootstrap, schema validation, and command docs assume the current local toolchain contract."
+    },
+    {
+      "surface": "command_interface",
+      "supported_versions": [
+        "watchtower-core local CLI v1"
+      ],
+      "support_level": "supported",
+      "notes": "Operator-facing command behavior is documented under docs/commands/core_python/ and should stay backward-stable within the current workspace slice."
+    }
+  ],
+  "related_paths": [
+    "core/python/.python-version",
+    "core/python/pyproject.toml",
+    "docs/standards/engineering/python_workspace_standard.md",
+    "docs/commands/core_python/watchtower_core.md"
+  ],
+  "notes": "This first compatibility contract covers the governed local Python workspace only."
+}

@@ -6,7 +6,7 @@ summary: "Defines the first initiative closeout model, its traceability fields, 
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-10T03:57:14Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-10T03:57:14Z`
 
 ## Summary
 This document defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.
@@ -47,7 +47,7 @@ This document defines the first initiative closeout model, its traceability fiel
 ## Current-State Context
 - The repository already has human planning trackers plus machine-readable PRD, decision, design, task, and traceability indexes.
 - The machine traceability layer can already join most of the planning chain.
-- No single surface currently records whether a traced initiative is completed, superseded, cancelled, or abandoned.
+- Initiative outcome is now recorded through the traceability layer and mirrored into the initiative index and planning trackers.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep machine-readable authority explicit and use derived human surfaces for orientation.
@@ -148,4 +148,4 @@ This document defines the first initiative closeout model, its traceability fiel
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-10T03:57:14Z`

@@ -1,0 +1,50 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:intake-contract:v1",
+  "id": "contract.intake.core_python_workspace",
+  "title": "Core Python Workspace Intake Contract",
+  "status": "active",
+  "subject": "core.python.workspace",
+  "accepted_inputs": [
+    {
+      "input_kind": "governed_markdown",
+      "path_globs": [
+        "docs/**/*.md",
+        "workflows/modules/*.md"
+      ],
+      "required_validator_ids": [
+        "validator.documentation.standard_semantics",
+        "validator.documentation.workflow_semantics"
+      ],
+      "notes": "Governed docs and workflow modules are accepted when they satisfy front matter and semantic validation."
+    },
+    {
+      "input_kind": "governed_json_artifact",
+      "path_globs": [
+        "core/control_plane/**/*.json"
+      ],
+      "notes": "Machine-readable control-plane artifacts are accepted when they validate against the published schema catalog and validator registry."
+    },
+    {
+      "input_kind": "python_workspace_change",
+      "path_globs": [
+        "core/python/**/*.py",
+        "core/python/pyproject.toml",
+        "core/python/uv.lock"
+      ],
+      "notes": "Python workspace changes are accepted when the workspace validation baseline passes."
+    }
+  ],
+  "required_follow_up_commands": [
+    "watchtower-core sync all --write",
+    "watchtower-core validate all",
+    "./.venv/bin/python -m mypy src",
+    "./.venv/bin/ruff check src tests/unit tests/integration",
+    "./.venv/bin/python -m pytest"
+  ],
+  "related_paths": [
+    "core/python/",
+    "docs/standards/validations/repository_validation_standard.md",
+    "docs/standards/operations/repository_maintenance_loop_standard.md"
+  ],
+  "notes": "This first intake contract covers the governed local repo surfaces that feed the Python helper-runtime."
+}

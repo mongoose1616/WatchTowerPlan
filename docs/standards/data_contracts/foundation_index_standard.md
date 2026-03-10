@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "foundation_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T05:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,6 +46,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Use JSON for the published foundation-index artifact.
 - Every foundation index entry must point to an existing governed foundation document under `docs/foundations/`.
 - Carry stable `foundation_id` values from governed front matter.
+- Carry front-matter `audience` into the index so intent-layer routing is queryable without reparsing Markdown.
 - Capture reverse citation and reverse application paths so repo tooling can answer which standards, workflows, and planning docs currently rely on a foundation doc.
 - When a foundation doc depends on external authority, prefer citing a local governed reference doc in `docs/references/**` rather than only raw external URLs.
 - Keep the index aligned with the foundations corpus in the same change set.
@@ -67,6 +68,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 | `title` | Required | Human-readable foundation title. |
 | `summary` | Required | Concise description of the foundation document. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
+| `audience` | Required | Retrieval-oriented readership signal mirrored from front matter. |
 | `authority` | Required | Retrieval and precedence signal from front matter. |
 | `doc_path` | Required | Repository-relative path to the foundation document. |
 | `updated_at` | Required | RFC 3339 UTC timestamp matching the foundation doc’s `Updated At` value. |
@@ -86,6 +88,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - The foundation index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `docs/foundations/`.
 - Every entry should have a stable `foundation_id`.
+- Every entry should preserve the governed front-matter `audience` value.
 - `reference_doc_paths` should point only to governed reference docs under `docs/references/`.
 - Reverse citation and application paths should point only to Markdown docs under `docs/**` or `workflows/**`.
 - Reviewers should reject entries that omit material citation or application usage already present in the source docs.
@@ -100,4 +103,4 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T05:00:00Z`

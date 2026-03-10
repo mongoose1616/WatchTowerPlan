@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T01:48:35Z"
+updated_at: "2026-03-10T05:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -80,6 +80,7 @@ This standard defines the repository's baseline traceability model so product in
 - Acceptance contracts should preserve source `acceptance_id` values from the PRD rather than inventing alternate identifiers.
 - Validation-evidence artifacts should publish the validators, acceptance items, and subject surfaces they cover when those are known.
 - Task records should publish `trace_id` when they belong to a traced initiative and should preserve task-to-task dependencies explicitly.
+- Active traced initiatives should not remain active without linked task records.
 - Machine-readable indexes for PRDs, decisions, design documents, task records, and traceability joins should carry `trace_id` explicitly so tooling can join related artifacts without parsing prose.
 - Update trackers and indexes in the same change set when a traced planning artifact is added, renamed, removed, or materially retargeted.
 - Prefer a missing-link follow-up note over silent omission when a downstream artifact cannot yet point back to its upstream planning source.
@@ -106,7 +107,7 @@ This standard defines the repository's baseline traceability model so product in
 | Decision record | `trace_id` plus linked PRDs, designs, plans, or affected paths when they exist |
 | Feature design | `trace_id`, source request, and linked implementation plans when they exist |
 | Implementation plan | `trace_id` plus source designs, PRDs, or decisions that justify the plan |
-| Task record | optional `trace_id`, explicit task `id`, and linked planning IDs or task dependencies when they exist |
+| Task record | `trace_id` for traced initiatives, explicit task `id`, and linked planning IDs or task dependencies when they exist |
 | Acceptance contract | `trace_id`, source `prd_id`, and preserved `acceptance_id` values |
 | Validation evidence | `trace_id`, covered validators or check methods, and covered acceptance or artifact surfaces |
 | Unified traceability index | `trace_id` plus joined upstream and downstream artifact identifiers |
@@ -132,6 +133,7 @@ This standard defines the repository's baseline traceability model so product in
 - Human trackers and machine indexes should agree on the set of current PRDs, decisions, designs, plans, contracts, and evidence artifacts they claim to cover.
 - A reviewer should be able to walk upstream and downstream links without relying on verbal context.
 - Trace links should be updated when a planning artifact is renamed or materially retargeted.
+- Active trace entries should carry linked task IDs instead of relying on implied execution state.
 
 ## Change Control
 - Update this standard when the repository changes the baseline trace chain or introduces a new first-class traced artifact family.
@@ -144,4 +146,4 @@ This standard defines the repository's baseline traceability model so product in
 - [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
 
 ## Updated At
-- `2026-03-10T01:48:35Z`
+- `2026-03-10T05:00:00Z`

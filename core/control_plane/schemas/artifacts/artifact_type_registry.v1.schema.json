@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1",
+  "title": "Artifact Type Registry",
+  "description": "Machine-readable registry of governed artifact kinds published by the repository.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "artifact_types"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.artifact_types"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "artifact_types": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/artifactTypeEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "artifactTypeEntry": {
+      "type": "object",
+      "required": [
+        "kind",
+        "title",
+        "status",
+        "family"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "family": {
+          "type": "string",
+          "enum": ["contract", "index", "ledger", "manifest", "policy", "registry"]
+        },
+        "schema_ids": {
+          "$ref": "#/$defs/stringList"
+        },
+        "canonical_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

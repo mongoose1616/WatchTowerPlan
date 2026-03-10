@@ -71,7 +71,7 @@
     {
       "command_id": "command.watchtower_core.doctor",
       "command": "watchtower-core doctor",
-      "summary": "This command runs the current lightweight workspace smoke check for the core Python package and confirms that the local CLI entrypoint is available.",
+      "summary": "This command runs the current workspace health snapshot for the core Python package and confirms that the local CLI entrypoint plus the main governed lookup surfaces load successfully.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -251,7 +251,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_foundations.md",
-      "synopsis": "uv run watchtower-core query foundations [--query <text>] [--foundation-id <foundation_id>] [--authority <authority>] [--tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--cited-by-path <doc_path>] [--applied-by-path <doc_path>] [--limit <n>] [--format <human|json>]",
+      "synopsis": "uv run watchtower-core query foundations [--query <text>] [--foundation-id <foundation_id>] [--audience <audience>] [--authority <authority>] [--tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--cited-by-path <doc_path>] [--applied-by-path <doc_path>] [--limit <n>] [--format <human|json>]",
       "implementation_path": "core/python/src/watchtower_core/cli/main.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",

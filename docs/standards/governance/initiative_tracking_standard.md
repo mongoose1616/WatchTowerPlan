@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T01:37:35Z"
+updated_at: "2026-03-10T05:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -64,6 +64,9 @@ This standard defines the repository's cross-family initiative tracking model so
 - Use the unified traceability index as the authoritative machine join for durable artifact links and initiative closeout state.
 - Use the task index and task records as the authoritative source for active owners, open tasks, blockers, and execution status.
 - Publish one initiative entry per shared `trace_id`.
+- Keep active initiatives explicitly task-backed; do not leave an initiative active without durable task linkage.
+- Active initiatives should usually be explicitly owned through non-terminal task records.
+- The one allowed exception is active `closeout` phase, where all linked tasks may already be terminal and initiative closeout is the only remaining step.
 - Every initiative entry must make these questions easy to answer:
   - what this initiative is
   - whether it is active or closed
@@ -81,6 +84,8 @@ This standard defines the repository's cross-family initiative tracking model so
   - `closed`
 - Derive `primary_owner` only when exactly one active owner is present on non-terminal task records for the initiative.
 - Publish `active_owners` and `active_task_ids` when open task records exist.
+- Allow active `closeout` entries to publish historical `task_ids` without `active_task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
+- Active initiatives outside `closeout` should carry linked task IDs and active-task projection instead of relying on implied execution ownership.
 - Use `closed` as the initiative phase for terminal initiative states rather than overloading `current_phase` with `completed`, `superseded`, `cancelled`, or `abandoned`.
 - Make `next_action` specific enough that the next contributor can act without re-deriving the lifecycle state from several trackers.
 - Make `next_surface_path` point to the repo-local surface the next contributor should open first.
@@ -115,7 +120,9 @@ This standard defines the repository's cross-family initiative tracking model so
 ## Validation
 - Every initiative entry should correspond to one current traceability entry.
 - Every initiative entry should publish `current_phase`, `next_action`, and `next_surface_path`.
-- Initiative owner and active-task projection should agree with the current open task corpus.
+- Active initiative owner and active-task projection should agree with the current open task corpus whenever non-terminal tasks exist.
+- Active initiatives should not remain in the index without linked task IDs.
+- Active initiatives outside `closeout` should not remain in the index without non-terminal task ownership.
 - Initiative closeout state should agree with the traceability index rather than competing with it.
 - Reviewers should reject initiative views that hide ambiguity by inventing owners, tasks, or progress that the source surfaces do not publish.
 
@@ -131,4 +138,4 @@ This standard defines the repository's cross-family initiative tracking model so
 - [README.md](/home/j/WatchTowerPlan/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-10T01:37:35Z`
+- `2026-03-10T05:35:00Z`

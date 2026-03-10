@@ -5,6 +5,112 @@
   "status": "active",
   "entries": [
     {
+      "task_id": "task.acceptance_evidence_reconciliation.followup.001",
+      "title": "Close remaining acceptance and evidence reconciliation follow-up",
+      "summary": "Tracks the remaining closeout and verification follow-up for the acceptance and evidence reconciliation initiative.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md",
+      "updated_at": "2026-03-10T03:53:14Z",
+      "trace_id": "trace.acceptance_evidence_reconciliation",
+      "related_ids": [
+        "design.features.acceptance_evidence_reconciliation"
+      ],
+      "applies_to": [
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
+      "task_id": "task.command_documentation_and_lookup.followup.001",
+      "title": "Close remaining command documentation and lookup follow-up",
+      "summary": "Tracks the remaining closeout and verification follow-up for the command documentation and lookup initiative.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/command_documentation_and_lookup_followup.md",
+      "updated_at": "2026-03-10T03:53:14Z",
+      "trace_id": "trace.command_documentation_and_lookup",
+      "related_ids": [
+        "design.features.command_documentation_and_lookup"
+      ],
+      "applies_to": [
+        "docs/commands/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/src/watchtower_core/cli/"
+      ]
+    },
+    {
+      "task_id": "task.core_python_foundation.closeout.001",
+      "title": "Close out the core Python foundation initiative",
+      "summary": "Tracks the remaining initiative-level closeout for the core Python foundation slice.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/core_python_foundation_closeout.md",
+      "updated_at": "2026-03-10T03:53:14Z",
+      "trace_id": "trace.core_python_foundation",
+      "related_ids": [
+        "prd.core_python_foundation",
+        "contract.acceptance.core_python_foundation"
+      ],
+      "applies_to": [
+        "docs/planning/prds/core_python_foundation.md",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.github_collaboration.followup.001",
+      "title": "Close remaining GitHub collaboration follow-up",
+      "summary": "Tracks the remaining closeout and verification follow-up for the GitHub collaboration scaffolding initiative.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/github_collaboration_followup.md",
+      "updated_at": "2026-03-10T03:53:14Z",
+      "trace_id": "trace.github_collaboration",
+      "related_ids": [
+        "design.features.github_collaboration_scaffolding"
+      ],
+      "applies_to": [
+        ".github/",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "core/python/src/watchtower_core/sync/github_tasks.py"
+      ]
+    },
+    {
+      "task_id": "task.initiative_closeout.followup.001",
+      "title": "Close remaining initiative closeout follow-up",
+      "summary": "Tracks the remaining closeout and verification follow-up for the initiative closeout and planning tracker initiative.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/initiative_closeout_followup.md",
+      "updated_at": "2026-03-10T03:53:14Z",
+      "trace_id": "trace.initiative_closeout",
+      "related_ids": [
+        "design.features.initiative_closeout_and_planning_trackers"
+      ],
+      "applies_to": [
+        "docs/planning/initiatives/",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/python/src/watchtower_core/closeout/initiative.py"
+      ]
+    },
+    {
       "task_id": "task.local_task_tracking.github_sync.001",
       "title": "Add GitHub task sync support",
       "summary": "Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity.",

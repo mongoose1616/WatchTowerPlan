@@ -11,7 +11,7 @@
       "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations.",
       "status": "active",
       "doc_path": "docs/planning/prds/core_python_foundation.md",
-      "updated_at": "2026-03-09T04:55:49Z",
+      "updated_at": "2026-03-10T03:57:14Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "requirement_ids": [

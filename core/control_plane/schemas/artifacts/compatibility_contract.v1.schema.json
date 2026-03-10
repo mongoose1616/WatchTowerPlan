@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1",
+  "title": "Compatibility Contract",
+  "description": "Machine-readable compatibility contract that declares supported boundaries for a governed surface.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "subject",
+    "compatibility"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^contract\\.compatibility\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "subject": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "compatibility": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/compatibilityEntry"
+      }
+    },
+    "related_paths": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "compatibilityEntry": {
+      "type": "object",
+      "required": [
+        "surface",
+        "supported_versions",
+        "support_level"
+      ],
+      "properties": {
+        "surface": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supported_versions": {
+          "$ref": "#/$defs/stringList"
+        },
+        "support_level": {
+          "type": "string",
+          "enum": ["supported", "transitional", "deprecated"]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

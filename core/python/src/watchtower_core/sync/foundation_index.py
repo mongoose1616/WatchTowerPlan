@@ -39,7 +39,7 @@ FOUNDATION_EXCLUDED_NAMES = {"README.md"}
 
 def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, Any]]:
     try:
-        document = loader.load_validated_document(FOUNDATION_INDEX_ARTIFACT_PATH)
+        document = loader.load_json_object(FOUNDATION_INDEX_ARTIFACT_PATH)
     except ArtifactLoadError:
         return {}
 
@@ -153,6 +153,7 @@ class FoundationIndexSyncService:
                 "title": front_matter["title"],
                 "summary": front_matter["summary"],
                 "status": front_matter["status"],
+                "audience": front_matter["audience"],
                 "authority": front_matter["authority"],
                 "doc_path": relative_path,
                 "updated_at": updated_at,

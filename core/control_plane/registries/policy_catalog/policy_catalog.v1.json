@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:policy-catalog:v1",
+  "id": "registry.policy_catalog",
+  "title": "Policy Catalog",
+  "status": "active",
+  "policies": [
+    {
+      "policy_id": "policy.release.core_python_workspace",
+      "title": "Core Python Workspace Release Policy",
+      "status": "active",
+      "policy_kind": "release_policy",
+      "canonical_path": "core/control_plane/policies/release/release_policy.v1.json",
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/ledgers/releases/"
+      ],
+      "notes": "First active policy artifact published by the repository."
+    }
+  ]
+}

@@ -170,6 +170,9 @@
             ]
           },
           "then": {
+            "required": [
+              "task_ids"
+            ],
             "not": {
               "anyOf": [
                 {
