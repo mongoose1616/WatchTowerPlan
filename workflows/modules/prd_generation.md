@@ -37,33 +37,25 @@ Use this workflow to turn a scoped planning request into a review-ready product 
    - Add measurable success metrics where possible.
    - Note failure conditions or risks.
 3. Gather requirements.
-   - Capture functional requirements, non-functional requirements, user flows or key scenarios, and acceptance criteria.
+   - Capture the requirements, scenarios, and acceptance criteria that materially reduce ambiguity for the current scope.
+   - Do not force user stories, metrics, or rollout notes when the PRD can stay simpler without losing review value.
 4. Plan delivery.
-   - Record dependencies, risks, milestones or phases, and unresolved questions.
+   - Record dependencies, risks, milestones or phases, and unresolved questions only when they affect review or later planning.
 5. Draft the PRD.
-   - Convert the planning notes into the PRD structure below.
+   - Convert the planning notes into the leanest PRD shape allowed by the PRD standard.
    - Remove ambiguity and vague language.
    - Keep requirements testable.
 
 ## Data Structure
-- Title
-- Summary
 - Problem statement
-- Goals
-- Non-goals
-- Target users
-- User stories or scenarios
-- Requirements
-- Acceptance criteria
-- Success metrics
+- Goals and non-goals
+- Requirements and acceptance criteria
 - Risks and dependencies
-- Rollout or launch notes
-- Open questions
+- Optional actors, scenarios, metrics, or open questions only when material
 
 ## Outputs
-- A scoped project plan
 - A review-ready PRD draft
-- A list of unresolved questions and decisions
+- Explicit unresolved questions only when they remain
 
 ## Done When
 - The problem, goals, scope, and requirements are documented.
@@ -71,3 +63,4 @@ Use this workflow to turn a scoped planning request into a review-ready product 
 - The PRD reflects applicable internal standards, canonical references, and existing planning patterns.
 - Success metrics and acceptance criteria are defined.
 - Risks, dependencies, and open questions are visible.
+- The PRD does not carry low-value planning filler that the current scope does not need.

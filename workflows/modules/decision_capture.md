@@ -26,6 +26,7 @@ Use this workflow to analyze viable options and record a durable repository deci
 ## Workflow
 1. Define the viable options and tradeoffs.
    - Capture the credible options, including the option to defer or reject the change when relevant.
+   - Do not expand trivial choices into long option catalogs when the tradeoff is already narrow and obvious.
    - Compare them in terms of correctness, complexity, maintainability, policy fit, delivery risk, and downstream consequences.
    - Record why an option is recommended, rejected, or deferred when the tradeoff matters.
 2. Record the decision outcome.
@@ -34,30 +35,24 @@ Use this workflow to analyze viable options and record a durable repository deci
    - Mark the status clearly, such as proposed, accepted, deferred, or rejected.
 3. Record consequences and repository impacts.
    - Identify what standards, workflows, designs, plans, or implementation work must change because of the decision.
-   - Distinguish immediate follow-up work from longer-term implications.
+   - Distinguish immediate follow-up work from longer-term implications, but keep the list to material impacts.
    - If the accepted outcome should become active repository policy, note which canonical artifacts must be updated so the decision does not live only in the decision record.
 
 ## Data Structure
-- Title
-- Decision statement
-- Decision status
-- Source request
-- Affected surfaces
-- Options considered
-- Recommended or chosen outcome
-- Rationale
-- Consequences and follow-up impacts
-- Dependencies
-- Risks
-- Open questions
+- Decision statement and status
+- Source request and affected surfaces
+- Material options considered
+- Chosen outcome, rationale, and consequences
+- Optional dependencies, risks, and open questions when they remain material
 
 ## Outputs
 - A durable decision record or decision recommendation
 - A clear statement of the outcome, rationale, and status
-- A list of affected artifacts, follow-up work, and unresolved questions
+- Affected artifacts and follow-up only when they are material to the decision
 
 ## Done When
 - One decision has been captured clearly rather than blended with unrelated issues.
 - The decision reflects applicable internal standards, canonical references, and existing repository patterns.
 - The rationale, tradeoffs, and consequences are visible.
 - The next artifacts or workflows affected by the decision are identified explicitly.
+- The decision record does not pad narrow choices with low-value option or consequence boilerplate.

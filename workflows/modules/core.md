@@ -35,9 +35,9 @@ Use this workflow to load the minimum shared standards and instructions that app
 - Open routing or instruction conflicts
 
 ## Outputs
-- A shared-context package for the routed task
-- A confirmed routed module set for downstream execution
-- A short record of the shared standards, local overlays, and unresolved instruction conflicts that materially affect the task
+- Shared context loaded for the routed task
+- Confirmed routed module set for downstream execution
+- Any instruction conflict that materially affects execution, if present
 
 ## Done When
 - The minimum shared instructions for the routed task have been loaded.

@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:55:31Z"
+updated_at: "2026-03-10T16:31:28Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -56,6 +56,9 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Keep the required section names stable so routed use and review stay predictable.
 - `Workflow` should be written as an ordered sequence when step order matters.
 - `Inputs`, `Data Structure`, `Outputs`, and `Done When` should stay compact and task-oriented rather than turning into long narrative sections.
+- `Data Structure` should describe internal working state or tracked fields, not a shadow outline for the final repository artifact.
+- `Outputs` should name the actual resulting surfaces. When the changed document, tracker, code change, or validation result is itself the output, do not pad the workflow with extra record-keeping deliverables.
+- Prefer `1` to `5` bullets in `Inputs`, `Data Structure`, and `Outputs` unless the task genuinely needs more structure.
 - `Additional Files to Load` should be omitted when the routing baseline already provides enough context.
 - `Additional Files to Load` should list only repo-local files that a reader or agent should open in addition to the normal routing baseline.
 - `Additional Files to Load` bullets should use `source: execution implication` form so the local effect of each file is explicit.
@@ -88,6 +91,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The required sections should appear in the standard order with the standard names.
 - The file should stay focused on one execution concern rather than mixing multiple unrelated procedures.
 - The workflow body should be actionable and sequence-aware rather than only descriptive.
+- `Data Structure` and `Outputs` should remain brief and should not require standalone meta deliverables unless another governed surface explicitly requires them.
 - `Additional Files to Load` should be absent when the workflow does not need extra repo-local context beyond the routing baseline.
 - If `Additional Files to Load` is present, each bullet should identify a concrete repo-local file and explain the execution implication of loading it.
 - If `Additional Files to Load` is present, it should not repeat generic routing-baseline authorities.
@@ -112,4 +116,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-10T00:55:31Z`
+- `2026-03-10T16:31:28Z`

@@ -21,6 +21,7 @@ Use this workflow to review, update, and reconcile existing repository documenta
 ## Workflow
 1. Inventory the current documentation set.
    - List the files in scope.
+   - Keep the inventory proportional to the change instead of narrating every unaffected file.
    - Identify missing README files, stale files, duplicate coverage, and unclear ownership.
    - Flag documents that appear to overlap or compete for the same purpose.
 2. Compare docs to current reality.
@@ -34,7 +35,7 @@ Use this workflow to review, update, and reconcile existing repository documenta
 4. Refresh the content.
    - Update summaries, purpose statements, paths, tables, examples, and guidance to match the current repository state.
    - Remove stale claims and replace them with current facts.
-   - Tighten structure so the document is easier to route to and easier to maintain.
+   - Tighten structure so the document is easier to route to, easier to maintain, and free of author-only scaffolding.
 5. Reconcile related surfaces and review maintainability.
    - Update affected templates, standards, README files, references, or companion docs in the same change set when needed.
    - Keep document relationships coherent so refreshed docs do not contradict each other.
@@ -47,14 +48,12 @@ Use this workflow to review, update, and reconcile existing repository documenta
 - Outdated or inconsistent items
 - Updated documents
 - Related documents affected
-- Quality and structure issues removed
-- Open questions
+- Remaining follow-up only when unresolved
 
 ## Outputs
 - A refreshed documentation set for the selected scope
-- A list of corrected inconsistencies or stale items
-- A short record of related docs that were updated together to keep the refreshed scope coherent
-- A short record of remaining gaps that still need follow-up work
+- Related doc updates needed to keep the refreshed scope coherent
+- Explicit remaining gaps only when follow-up is still needed
 
 ## Done When
 - The documents in scope match the current repository structure and behavior.
@@ -62,3 +61,4 @@ Use this workflow to review, update, and reconcile existing repository documenta
 - The refresh reflects applicable internal standards, canonical references, and existing repository patterns.
 - Related docs are no longer contradicting each other within the refreshed scope.
 - The refreshed documents are easier to navigate, classify, and maintain.
+- Low-value boilerplate or placeholder content has been removed from the refreshed scope.

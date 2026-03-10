@@ -3,7 +3,7 @@
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| `trace.template_and_output_efficiency` | `execution` | repository_maintainer | `1` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) | [template_output_efficiency_workflow_guidance.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.template_and_output_efficiency` | `closeout` | unassigned | `0` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) | [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |

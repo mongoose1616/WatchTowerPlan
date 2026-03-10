@@ -5,11 +5,11 @@ title: "Tighten workflow guidance for proportional output"
 summary: "Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "documentation"
 priority: "medium"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:00:54Z"
+updated_at: "2026-03-10T16:34:28Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -46,4 +46,4 @@ Update planning and documentation workflow modules so they prefer the smallest u
 - [template_and_output_efficiency_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/template_and_output_efficiency_execution.md)
 
 ## Updated At
-- `2026-03-10T16:00:54Z`
+- `2026-03-10T16:34:28Z`

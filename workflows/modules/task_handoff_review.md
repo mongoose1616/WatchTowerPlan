@@ -38,8 +38,8 @@ Use this workflow to confirm that the active task output is coherent, handoff-re
 - Commit-closeout recommendation when relevant
 
 ## Outputs
-- A handoff-ready result summary
-- A short record of related-surface updates, initiative follow-up when relevant, deferred work, and open questions
+- A handoff-ready result or update
+- Same-change related-surface updates and deferred follow-up, when any
 - A clear signal about whether commit closeout should be added next
 
 ## Done When

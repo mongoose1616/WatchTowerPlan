@@ -1,9 +1,7 @@
 # Task Tracking
 
 ## Open Tasks
-| Task | Status | Priority | Owner | Trace ID | Summary |
-| --- | --- | --- | --- | --- | --- |
-| [task.template_and_output_efficiency.workflow_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md) | `ready` | `medium` | `repository_maintainer` | `trace.template_and_output_efficiency` | Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content. |
+_No open tasks._
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -29,5 +27,6 @@
 | [task.github_collaboration.followup.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_collaboration_followup.md) | `done` | `medium` | `repository_maintainer` | `trace.github_collaboration` | Tracks the remaining closeout and verification follow-up for the GitHub collaboration scaffolding initiative. |
 | [task.initiative_closeout.followup.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/initiative_closeout_followup.md) | `done` | `medium` | `repository_maintainer` | `trace.initiative_closeout` | Tracks the remaining closeout and verification follow-up for the initiative closeout and planning tracker initiative. |
 | [task.local_task_tracking.github_sync.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_task_sync.md) | `done` | `medium` | `repository_maintainer` | `trace.local_task_tracking` | Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity. |
+| [task.template_and_output_efficiency.workflow_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.template_and_output_efficiency` | Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content. |
 
 _Updated At: `2026-03-10T17:04:57Z`_

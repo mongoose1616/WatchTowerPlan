@@ -29,33 +29,29 @@ Use this workflow to author a new repository document that is accurate, well-str
    - Split the output if multiple standards, topics, or areas would otherwise be forced into one file.
 3. Define the document structure.
    - Establish the title, summary, and core sections before drafting.
-   - Include required sections, tables, mappings, or metadata where appropriate.
+   - Include required sections, tables, mappings, or metadata where appropriate, but do not pre-seed optional sections that add no value for the current scope.
    - Keep the title and section structure tightly tied to the document's single focus.
 4. Draft the document.
    - Write the content using current repository terminology and paths.
    - Prefer clear, direct language over vague summary text.
    - Keep the document tied to actual repository surfaces instead of abstract descriptions when possible.
+   - Delete placeholder or author-only scaffolding once the real document shape is clear.
 5. Reconcile related docs and review classification.
    - Check whether templates, README files, standards, or companion docs should also be updated.
    - Ensure the new document does not duplicate or contradict an existing canonical document.
-   - Confirm the result is easy to scan and stays within one primary documentation concern.
+   - Confirm the result is easy to scan, stays within one primary documentation concern, and does not carry low-value boilerplate.
 
 ## Data Structure
 - Document goal
 - Document scope boundary
-- Target audience
-- Source materials used
 - Chosen document type
-- Key sections or structure
-- Related documents
-- Quality checks applied during review
-- Open questions
+- Minimal section set
+- Related documents to keep aligned
 
 ## Outputs
 - A newly created document aligned with the current repository structure and standards
-- A short record of source inputs and related docs affected
-- A short record of any companion documents needed when the original request was broader than one focused document
-- A short record of the quality checks applied during drafting and review
+- Companion doc updates only when same-change coherence requires them
+- Explicit follow-up only when a real documentation gap remains
 
 ## Done When
 - The new document exists in the correct repository location.
@@ -63,3 +59,4 @@ Use this workflow to author a new repository document that is accurate, well-str
 - The document reflects applicable internal standards, canonical references, and existing repository patterns.
 - The document uses an appropriate structure and does not conflict with existing docs.
 - The document is clearly scoped to one succinct standard, topic, or area.
+- Low-value template boilerplate has been removed unless the document family explicitly requires it.

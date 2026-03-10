@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:55:31Z"
+updated_at: "2026-03-10T16:31:28Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -51,7 +51,8 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Make triggers explicit through `Use When`.
 - Make expected inputs explicit through `Inputs`.
 - Make execution behavior explicit through `Workflow`.
-- Make the expected shape of outputs explicit through `Data Structure` and `Outputs`.
+- Use `Data Structure` and `Outputs` to describe the workflow's internal working shape and real task outcomes, not to justify extra prose in repository artifacts.
+- Prefer the smallest useful repository artifact, response, or change set that satisfies the task.
 - Make stop conditions explicit through `Done When`.
 - Prefer composing multiple small workflows over one catch-all workflow that mixes unrelated execution concerns.
 - When the same concrete execution phase recurs across multiple task families, factor it into a reusable shared workflow module instead of copying it into every task-family workflow.
@@ -66,6 +67,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Workflows should prefer clarify-before-execute behavior when ambiguity materially affects correctness.
 - Workflow steps should call out adjacent-document updates or companion workflow loading when coherence requires it.
 - Workflow modules should be written so they can be merged with other routed modules without contradicting them.
+- Do not treat `Outputs` as permission to require meta summaries, quality-check reports, source logs, or progress notes when the changed artifact or validation result already captures that information.
 
 ## Structure or Data Model
 ### Required module sections
@@ -75,8 +77,8 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 | `Use When` | Defines the trigger conditions | Make routing or invocation intent clear. |
 | `Inputs` | Defines the information the workflow expects | Include standards or canonical docs when they materially govern execution. |
 | `Workflow` | Defines the ordered execution behavior | Steps should be concrete and bounded. |
-| `Data Structure` | Defines the working structure the workflow expects or produces | Use when the workflow needs a stable internal shape. |
-| `Outputs` | Defines the intended deliverables | Keep outputs tied to actual task outcomes. |
+| `Data Structure` | Defines the internal working structure the workflow expects or produces | Keep it brief and avoid mirroring final-document headings unless the workflow truly depends on them. |
+| `Outputs` | Defines the intended deliverables | List actual changed surfaces or resulting artifacts, not generic meta records. |
 | `Done When` | Defines completion criteria | Make stopping conditions visible. |
 
 ### Optional module sections
@@ -111,6 +113,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - The module should be executable as written without broad unstated assumptions.
 - The workflow should not duplicate the role of `AGENTS.md`, `ROUTING_TABLE.md`, or a standards document.
 - The required sections should be present and materially useful rather than empty headings.
+- `Data Structure` and `Outputs` should stay concise and should not imply extra deliverables beyond the requested task.
 - `Additional Files to Load` should appear only when the workflow actually needs task-specific extra files beyond the routing baseline.
 - When `Additional Files to Load` appears, it should point to concrete repo-local files and explain why each file changes execution.
 - Generic routing-baseline files should not be repeated as task-specific authorities.
@@ -135,4 +138,4 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-10T00:55:31Z`
+- `2026-03-10T16:31:28Z`

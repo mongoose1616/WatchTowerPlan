@@ -35,37 +35,29 @@ Use this workflow to turn approved planning inputs into an actionable implementa
    - Identify which parts of the system will change first and how the work should be staged.
    - Record execution assumptions, design-dependent decisions, and plan-level tradeoffs where they matter.
 3. Break the work down.
-   - Split the work into milestones, workstreams, or tasks.
+   - Split the work into milestones, workstreams, or tasks only at the level needed to guide execution.
    - Separate parallel work from sequential work.
-   - Include testing, documentation, migration, and rollout work where needed.
+   - Include testing, documentation, migration, and rollout work where needed, but do not create ceremony-only breakdown rows.
 4. Plan validation.
    - Map requirements and acceptance criteria to verification steps.
-   - Identify unit, integration, end-to-end, and manual validation needs.
+   - Identify unit, integration, end-to-end, and manual validation needs proportionally to the risk and scope.
    - Define what must be true before the work is considered complete.
 5. Sequence delivery.
    - Order the work based on dependencies and risk.
    - Call out prerequisites, blockers, and handoffs.
-   - Define rollout phases if the change should ship incrementally.
+   - Define rollout phases only when the change should ship incrementally or migration timing materially matters.
 
 ## Data Structure
-- Title
-- Summary
-- Source PRD
-- Scope summary
-- Assumptions and constraints
+- Source design or request
+- Scope summary and assumptions
 - Proposed technical approach
-- Work breakdown
-- Dependencies
-- Risks
-- Validation plan
-- Rollout or migration plan
-- Open questions
+- Work breakdown and validation plan
+- Risks and optional dependencies, rollout notes, or open questions when material
 
 ## Outputs
 - A review-ready implementation plan
-- An execution plan derived from the approved design inputs
-- A scoped work breakdown tied to the PRD
-- A list of dependencies, risks, and unresolved questions
+- An execution-oriented work breakdown tied to the design or PRD
+- Explicit dependencies, risks, and unresolved questions only when they remain material
 
 ## Done When
 - The PRD and approved design inputs have been translated into actionable engineering work.
@@ -73,3 +65,4 @@ Use this workflow to turn approved planning inputs into an actionable implementa
 - Dependencies, sequencing, and validation are documented.
 - Risks, assumptions, and open questions are visible.
 - An engineer can begin execution without needing major missing context filled in verbally.
+- The plan uses the smallest breakdown that still preserves execution clarity.

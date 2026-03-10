@@ -10,7 +10,7 @@ tags:
   - "agents"
   - "prompt_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:55:31Z"
+updated_at: "2026-03-10T16:31:28Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -59,6 +59,8 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - Prefer narrow workflow modules with one primary objective. Small specialized modules compose better than broad workflows that mix planning, validation, reconciliation, and closeout into one prompt surface.
 - Turn authority capture into execution hints. A workflow should name only the extra repo-local files the agent should open next and explain why each file matters.
 - Prefer local distilled references over raw vendor URLs. If external guidance matters, point the workflow at a governed local reference doc so execution stays repo-native and queryable.
+- Treat `Data Structure` and `Outputs` as internal workflow scaffolding. They should stay terse and should not imply extra repository prose when the final artifact already carries the needed information.
+- If the requested change itself is the output, say so directly instead of inventing extra records, summaries, or checklists.
 
 ### Preferred Workflow-Authoring Decisions
 | Question | Preferred Answer | Why |
@@ -68,6 +70,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 | What form should each extra-context bullet use? | `source: execution implication` | Tells the reader or agent why the file matters, not just that it exists. |
 | What should the extra-context section point to? | Repo-local files, especially standards, templates, command docs, and local references | Keeps execution deterministic and aligned with governed repository surfaces. |
 | What should happen when no extra files are needed? | Omit the section entirely | Avoids token-heavy filler and false precision. |
+| How should `Data Structure` and `Outputs` be written? | As terse internal workflow scaffolding | Prevents them from turning into prompts for extra low-value artifact prose. |
 
 ### Anti-Patterns
 - Repeating `AGENTS.md`, `workflows/ROUTING_TABLE.md`, `workflows/modules/core.md`, or the generic workflow standards in every workflow module.
@@ -75,6 +78,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - Using raw external URLs in workflow modules when a local reference doc can carry the same authority.
 - Mixing multiple execution concerns into one workflow because the task family is broad.
 - Writing long descriptive prose that leaves the actual ordered steps implicit.
+- Using `Outputs` to require meta summaries, source logs, or quality-check writeups when the resulting artifact or command outcome already captures that information.
 
 ### What Good Additional Load Hints Look Like
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary this workflow must preserve.
@@ -134,4 +138,4 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - The repository standards remain the authority; this document is the distilled working reference that informs them.
 
 ## Updated At
-- `2026-03-10T00:55:31Z`
+- `2026-03-10T16:31:28Z`

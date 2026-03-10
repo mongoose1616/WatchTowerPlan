@@ -1068,7 +1068,7 @@
       "summary": "This standard defines the document-level structure and boundary rules for workflow Markdown files in this repository.",
       "status": "active",
       "doc_path": "docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-10T00:55:31Z",
+      "updated_at": "2026-03-10T16:31:28Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [
@@ -2094,7 +2094,7 @@
       "summary": "This standard defines how workflow modules in this repository should be designed, structured, and bounded.",
       "status": "active",
       "doc_path": "docs/standards/workflows/workflow_design_standard.md",
-      "updated_at": "2026-03-10T00:55:31Z",
+      "updated_at": "2026-03-10T16:31:28Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [

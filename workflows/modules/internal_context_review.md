@@ -6,7 +6,7 @@ Use this workflow to identify the repository-specific standards, templates, work
 ## Use When
 - A routed task needs repository-specific standards or canonical references to judge the work correctly.
 - The active task could drift into ad hoc local policy if internal guidance is not loaded first.
-- A task should produce a short record of the internal documents that materially governed the work.
+- A task needs the governing internal documents identified without loading broad low-value context.
 
 ## Inputs
 - Scoped task brief
@@ -24,7 +24,7 @@ Use this workflow to identify the repository-specific standards, templates, work
    - Keep only the internal documents that materially change how the task should be executed or judged.
    - Avoid broad loading that does not affect the active work.
 3. Record the governing internal context.
-   - Note which internal documents should shape the task output or decision.
+   - Note only the internal documents that should shape the task output or decision.
    - Surface any internal guidance gaps that may require clarification, documentation work, or narrower standards later.
 
 ## Data Structure
@@ -34,8 +34,8 @@ Use this workflow to identify the repository-specific standards, templates, work
 - Internal guidance gaps or conflicts
 
 ## Outputs
-- A short record of the internal standards, workflows, templates, and canonical references that govern the task
-- A clear internal-context package for downstream task modules
+- Material internal standards, templates, workflows, and canonical references applied to the task
+- Internal guidance gaps only when they affect execution
 
 ## Done When
 - The active task is grounded in the material internal repository guidance.

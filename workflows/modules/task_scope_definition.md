@@ -42,7 +42,7 @@ Use this workflow to define the task objective, scope boundary, and success cond
 
 ## Outputs
 - A scoped task brief that downstream workflow modules can use
-- A short record of in-scope surfaces, success conditions, and blockers
+- Blocking ambiguity called out only when it materially affects execution
 
 ## Done When
 - The task objective and scope boundary are explicit.

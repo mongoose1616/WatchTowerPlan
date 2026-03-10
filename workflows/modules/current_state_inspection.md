@@ -36,8 +36,8 @@ Use this workflow to inspect the current repository, codebase, document set, or 
 - Open questions
 
 ## Outputs
-- A current-state context summary for the active task
-- A short record of affected surfaces, constraints, and existing local patterns
+- Current-state facts needed for the active task
+- Affected surfaces and constraints kept to the minimum useful set
 
 ## Done When
 - The task has a concrete current-state picture rather than only a requested target state.

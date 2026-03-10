@@ -7,6 +7,8 @@
 > Treat `AGENTS.md`, `workflows/ROUTING_TABLE.md`, and `workflows/modules/core.md` as already-loaded routing baseline, not as per-module load hints.
 > Use `## Additional Files to Load` only when the module truly needs extra repo-local files beyond the normal routing baseline.
 > When `## Additional Files to Load` is present, keep it short, use repository-native Markdown links, and write each bullet in `source: execution implication` form.
+> Treat `## Data Structure` and `## Outputs` as terse workflow-internal scaffolding. They should not imply extra repository sections, extra summaries, or extra status records unless another governed surface explicitly requires them.
+> If the workflow result is a single document, code change, validation run, or task update, say that plainly and stop.
 
 ## Purpose
 Use this workflow to <state the single execution objective clearly and concretely>.
@@ -30,15 +32,16 @@ Use this workflow to <state the single execution objective clearly and concretel
    - <Add a short clarifying detail when the step needs interpretation constraints.>
 2. <Write the next concrete step.>
    - <Keep steps ordered and actionable rather than descriptive only.>
+   - <Prefer the smallest useful artifact or response that still satisfies the task.>
 3. <Continue until the workflow reaches a clear stop condition.>
 
 ## Data Structure
-- <Describe the working structure, checklist shape, or tracked state the workflow expects or produces.>
-- <Keep this brief if the workflow does not rely on a strong internal structure.>
+- <Describe the workflow's internal working state or tracked fields.>
+- <Keep this very brief and avoid restating the final artifact outline unless execution depends on it.>
 
 ## Outputs
-- <List the concrete deliverables, records, or updated surfaces the workflow should produce.>
-- <Keep outputs tied to real task outcomes.>
+- <List the concrete resulting surfaces or artifacts.>
+- <Do not add meta deliverables unless another governed surface explicitly requires them.>
 
 ## Done When
 - <State the completion criteria that make the workflow complete.>
