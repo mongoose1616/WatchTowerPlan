@@ -64,6 +64,7 @@ from watchtower_core.sync import (
     WorkflowIndexSyncService,
 )
 from watchtower_core.validation import (
+    VALIDATION_FAMILY_SPECS,
     AcceptanceReconciliationService,
     ArtifactValidationService,
     DocumentSemanticsValidationService,
@@ -3461,10 +3462,11 @@ def _run_validate_all(args: argparse.Namespace) -> int:
     service = ValidationAllService(ControlPlaneLoader())
     try:
         result = service.run(
-            include_front_matter=not args.skip_front_matter,
-            include_document_semantics=not args.skip_document_semantics,
-            include_artifacts=not args.skip_artifacts,
-            include_acceptance=not args.skip_acceptance,
+            included_families=tuple(
+                spec.family
+                for spec in VALIDATION_FAMILY_SPECS
+                if not getattr(args, spec.cli_skip_attr)
+            ),
         )
     except ValueError as exc:
         return _emit_command_error(

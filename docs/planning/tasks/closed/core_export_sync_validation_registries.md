@@ -5,11 +5,11 @@ title: "Replace manual sync and validation enumerations with registries"
 summary: "Introduce governed sync-family and validation-family registries so orchestration, listing, and coverage checks no longer depend on duplicated manual enumerations."
 type: "task"
 status: "active"
-task_status: "backlog"
+task_status: "done"
 task_kind: "feature"
 priority: "medium"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T04:28:34Z"
+updated_at: "2026-03-10T05:24:43Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -48,4 +48,4 @@ Introduce governed sync-family and validation-family registries so orchestration
 - [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md)
 
 ## Updated At
-- `2026-03-10T04:28:34Z`
+- `2026-03-10T05:24:43Z`

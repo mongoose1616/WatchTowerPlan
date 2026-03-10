@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
+from typing import cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.sync.decision_index import DECISION_DOC_ROOT, DECISION_EXCLUDED_NAMES
@@ -30,6 +31,7 @@ from watchtower_core.validation.document_semantics import DocumentSemanticsValid
 from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
+from watchtower_core.validation.registry import VALIDATION_FAMILY_SPECS
 
 
 @dataclass(frozen=True, slots=True)
@@ -114,34 +116,40 @@ class ValidationAllService:
     def run(
         self,
         *,
-        include_front_matter: bool = True,
-        include_document_semantics: bool = True,
-        include_artifacts: bool = True,
-        include_acceptance: bool = True,
+        included_families: tuple[str, ...] | None = None,
     ) -> ValidationAllResult:
         """Run the selected validation families and return their aggregate results."""
-        included_families: list[str] = []
+        requested_families = (
+            {spec.family for spec in VALIDATION_FAMILY_SPECS}
+            if included_families is None
+            else set(included_families)
+        )
+        unknown_families = requested_families.difference(
+            spec.family for spec in VALIDATION_FAMILY_SPECS
+        )
+        if unknown_families:
+            unknown = ", ".join(sorted(unknown_families))
+            raise ValueError(f"validate all received unknown validation families: {unknown}")
+
+        resolved_families: list[str] = []
         records: list[ValidationAllRecord] = []
 
-        if include_front_matter:
-            included_families.append("front_matter")
-            records.extend(self._validate_front_matter())
-        if include_document_semantics:
-            included_families.append("document_semantics")
-            records.extend(self._validate_document_semantics())
-        if include_artifacts:
-            included_families.append("artifacts")
-            records.extend(self._validate_artifacts())
-        if include_acceptance:
-            included_families.append("acceptance")
-            records.extend(self._validate_acceptance())
+        for spec in VALIDATION_FAMILY_SPECS:
+            if spec.family not in requested_families:
+                continue
+            runner = cast(
+                Callable[[], tuple[ValidationAllRecord, ...]],
+                getattr(self, spec.runner_name),
+            )
+            resolved_families.append(spec.family)
+            records.extend(runner())
 
-        if not included_families:
+        if not resolved_families:
             raise ValueError("validate all requires at least one validation family.")
 
         return ValidationAllResult(
             records=tuple(records),
-            included_families=tuple(included_families),
+            included_families=tuple(resolved_families),
         )
 
     def _validate_front_matter(self) -> tuple[ValidationAllRecord, ...]:

@@ -1916,14 +1916,14 @@
       "path": "core/python/tests/unit/test_all_sync.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for the coordinated all-sync orchestration service.",
+      "summary": "Unit tests for the registry-backed all-sync orchestration service.",
       "parent_path": "core/python/tests/unit/"
     },
     {
       "path": "core/python/tests/unit/test_all_validation.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for the coordinated validate-all orchestration service.",
+      "summary": "Unit tests for the registry-backed validate-all orchestration service.",
       "parent_path": "core/python/tests/unit/"
     },
     {

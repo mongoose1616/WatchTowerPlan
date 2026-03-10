@@ -4,6 +4,7 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.sync import AllSyncService
+from watchtower_core.sync.registry import SYNC_TARGET_SPECS
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -15,11 +16,16 @@ def test_all_sync_runs_in_dry_run_mode() -> None:
     result = service.run()
 
     assert result.wrote is False
-    assert any(record.target == "command-index" for record in result.records)
-    assert any(record.target == "foundation-index" for record in result.records)
-    assert any(record.target == "initiative-index" for record in result.records)
-    assert any(record.target == "initiative-tracking" for record in result.records)
-    assert any(record.target == "repository-paths" for record in result.records)
+    assert tuple(record.target for record in result.records) == tuple(
+        spec.target for spec in SYNC_TARGET_SPECS
+    )
+
+
+def test_sync_target_registry_is_unique() -> None:
+    assert len({spec.target for spec in SYNC_TARGET_SPECS}) == len(SYNC_TARGET_SPECS)
+    assert len({spec.relative_output_path for spec in SYNC_TARGET_SPECS}) == len(
+        SYNC_TARGET_SPECS
+    )
 
 
 def test_all_sync_can_materialize_to_output_dir(tmp_path: Path) -> None:

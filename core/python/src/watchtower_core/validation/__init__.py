@@ -14,6 +14,7 @@ from watchtower_core.validation.document_semantics import (
 from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
+from watchtower_core.validation.registry import VALIDATION_FAMILY_SPECS, ValidationFamilySpec
 
 __all__ = [
     "AcceptanceReconciliationService",
@@ -23,7 +24,9 @@ __all__ = [
     "ValidationAllRecord",
     "ValidationAllResult",
     "ValidationAllService",
+    "VALIDATION_FAMILY_SPECS",
     "ValidationExecutionError",
+    "ValidationFamilySpec",
     "ValidationFamilySummary",
     "ValidationIssue",
     "ValidationResult",

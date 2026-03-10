@@ -1,7 +1,7 @@
 # `watchtower-core sync all`
 
 ## Summary
-This command rebuilds all local deterministic indexes and human-readable trackers in one run, using the existing sync services in dependency order.
+This command rebuilds all local deterministic indexes and human-readable trackers in one run, using the registry-backed sync target set in dependency order.
 
 ## Use When
 - You changed several authored planning, standards, command, or reference surfaces and want one coordinated local rebuild.
@@ -45,7 +45,7 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 ```
 
 ## Behavior and Outputs
-- The command runs local deterministic sync targets in dependency order so later rebuilds can read the earlier generated surfaces from disk when needed.
+- The command runs the registry-backed local deterministic sync target set in dependency order so later rebuilds can read the earlier generated surfaces from disk when needed.
 - The current target set includes command, foundation, reference, standard, workflow, PRD, decision, design, initiative, task, traceability, and repository-path indexes, plus the PRD, decision, design, initiative, and task trackers.
 - The command does not call hosted integrations. It intentionally excludes `sync github-tasks`.
 - With no mutation flags, the command runs in dry-run mode and only reports what would be rebuilt.
@@ -69,6 +69,7 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
 - `core/python/src/watchtower_core/sync/all.py`
+- `core/python/src/watchtower_core/sync/registry.py`
 
 ## Updated At
-- `2026-03-10T01:48:35Z`
+- `2026-03-10T05:24:43Z`

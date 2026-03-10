@@ -183,12 +183,12 @@
       "title": "Replace manual sync and validation enumerations with registries",
       "summary": "Introduce governed sync-family and validation-family registries so orchestration, listing, and coverage checks no longer depend on duplicated manual enumerations.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/core_export_sync_validation_registries.md",
-      "updated_at": "2026-03-10T04:28:34Z",
+      "doc_path": "docs/planning/tasks/closed/core_export_sync_validation_registries.md",
+      "updated_at": "2026-03-10T05:24:43Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "depends_on": [
         "task.core_export_readiness_and_optimization.command_registry.001"

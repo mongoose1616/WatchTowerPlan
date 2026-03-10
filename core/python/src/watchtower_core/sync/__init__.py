@@ -34,6 +34,7 @@ from watchtower_core.sync.reference_index import (
     REFERENCE_INDEX_ARTIFACT_PATH,
     ReferenceIndexSyncService,
 )
+from watchtower_core.sync.registry import SYNC_TARGET_SPECS, SyncTargetSpec
 from watchtower_core.sync.repository_paths import (
     REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
     RepositoryPathIndexSyncService,
@@ -82,8 +83,10 @@ __all__ = [
     "ReferenceIndexSyncService",
     "REPOSITORY_PATH_INDEX_ARTIFACT_PATH",
     "RepositoryPathIndexSyncService",
+    "SYNC_TARGET_SPECS",
     "STANDARD_INDEX_ARTIFACT_PATH",
     "StandardIndexSyncService",
+    "SyncTargetSpec",
     "TASK_INDEX_ARTIFACT_PATH",
     "TASK_TRACKING_DOCUMENT_PATH",
     "TaskIndexSyncService",
