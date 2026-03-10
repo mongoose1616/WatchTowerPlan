@@ -64,10 +64,15 @@ def test_control_plane_loader_reads_command_index() -> None:
     )
     validate_artifact = command_index.get("command.watchtower_core.validate.artifact")
 
+    assert command_index.get("command.watchtower_core").implementation_path == (
+        "core/python/src/watchtower_core/cli/parser.py"
+    )
     assert doctor.parent_command_id == "command.watchtower_core"
     assert doctor.doc_path == "docs/commands/core_python/watchtower_core_doctor.md"
+    assert doctor.implementation_path == "core/python/src/watchtower_core/cli/doctor_family.py"
     assert query_paths.default_output_format == "human"
     assert query_paths.doc_path == "docs/commands/core_python/watchtower_core_query_paths.md"
+    assert query_paths.implementation_path == "core/python/src/watchtower_core/cli/query_family.py"
     assert query_foundations.parent_command_id == "command.watchtower_core.query"
     assert (
         query_foundations.doc_path
@@ -116,6 +121,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     sync_all = command_index.get("command.watchtower_core.sync.all")
     assert sync_all.parent_command_id == "command.watchtower_core.sync"
     assert sync_all.doc_path == "docs/commands/core_python/watchtower_core_sync_all.md"
+    assert sync_all.implementation_path == "core/python/src/watchtower_core/cli/sync_family.py"
     assert sync_coordination.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_coordination.doc_path
@@ -157,6 +163,10 @@ def test_control_plane_loader_reads_command_index() -> None:
     )
     assert validate_all.parent_command_id == "command.watchtower_core.validate"
     assert validate_all.doc_path == "docs/commands/core_python/watchtower_core_validate_all.md"
+    assert (
+        validate_all.implementation_path
+        == "core/python/src/watchtower_core/cli/validate_family.py"
+    )
     assert validate_acceptance.parent_command_id == "command.watchtower_core.validate"
     assert (
         validate_acceptance.doc_path

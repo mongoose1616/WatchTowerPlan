@@ -21,12 +21,33 @@ class CommandGroupSpec:
 
     name: str
     registrar: CommandRegistrar
+    implementation_path: str
 
 
 COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
-    CommandGroupSpec(name="doctor", registrar=register_doctor_family),
-    CommandGroupSpec(name="query", registrar=register_query_family),
-    CommandGroupSpec(name="sync", registrar=register_sync_family),
-    CommandGroupSpec(name="closeout", registrar=register_closeout_family),
-    CommandGroupSpec(name="validate", registrar=register_validate_family),
+    CommandGroupSpec(
+        name="doctor",
+        registrar=register_doctor_family,
+        implementation_path="core/python/src/watchtower_core/cli/doctor_family.py",
+    ),
+    CommandGroupSpec(
+        name="query",
+        registrar=register_query_family,
+        implementation_path="core/python/src/watchtower_core/cli/query_family.py",
+    ),
+    CommandGroupSpec(
+        name="sync",
+        registrar=register_sync_family,
+        implementation_path="core/python/src/watchtower_core/cli/sync_family.py",
+    ),
+    CommandGroupSpec(
+        name="closeout",
+        registrar=register_closeout_family,
+        implementation_path="core/python/src/watchtower_core/cli/closeout_family.py",
+    ),
+    CommandGroupSpec(
+        name="validate",
+        registrar=register_validate_family,
+        implementation_path="core/python/src/watchtower_core/cli/validate_family.py",
+    ),
 )

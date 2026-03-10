@@ -5,9 +5,14 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass
 
-CLI_MAIN_PATH = "core/python/src/watchtower_core/cli/main.py"
+from watchtower_core.cli.registry import COMMAND_GROUP_SPECS
+
+CLI_PARSER_PATH = "core/python/src/watchtower_core/cli/parser.py"
 CLI_MAIN_ENTRYPOINT = "watchtower_core.cli.main:main"
 COMMAND_DOC_ROOT = "docs/commands/core_python"
+COMMAND_GROUP_IMPLEMENTATION_PATHS = {
+    spec.name: spec.implementation_path for spec in COMMAND_GROUP_SPECS
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -68,7 +73,7 @@ def _build_spec(parser: argparse.ArgumentParser) -> CommandParserSpec:
         workspace="core_python",
         doc_path=_command_doc_path(tokens),
         synopsis=_synopsis_for_parser(parser),
-        implementation_path=CLI_MAIN_PATH,
+        implementation_path=_implementation_path(tokens),
         package_entrypoint=CLI_MAIN_ENTRYPOINT,
         parent_command_id=_parent_command_id(tokens),
         output_formats=output_formats,
@@ -108,6 +113,17 @@ def _extract_output_formats(parser: argparse.ArgumentParser) -> tuple[tuple[str,
 def _command_doc_path(tokens: tuple[str, ...]) -> str:
     suffix = "_".join(token.replace("-", "_") for token in tokens)
     return f"{COMMAND_DOC_ROOT}/{suffix}.md"
+
+
+def _implementation_path(tokens: tuple[str, ...]) -> str:
+    if len(tokens) == 1:
+        return CLI_PARSER_PATH
+
+    family = tokens[1]
+    try:
+        return COMMAND_GROUP_IMPLEMENTATION_PATHS[family]
+    except KeyError as exc:
+        raise ValueError(f"Unknown CLI command family for parser metadata: {family}") from exc
 
 
 def _normalize_command_token(token: str) -> str:

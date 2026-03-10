@@ -7,7 +7,6 @@ This document provides the human-readable tracking view for local task records u
 | Task ID | Task Status | Priority | Owner | Trace ID | Path | Summary | Blocked By |
 |---|---|---|---|---|---|---|---|
 | `task.core_export_hardening_followup.public_api_boundary.001` | `ready` | `high` | `repository_maintainer` | `trace.core_export_hardening_followup` | `docs/planning/tasks/open/core_export_public_api_boundary.md` | Move repo-specific consumers onto repo_ops surfaces and stop advertising repo-specific query, sync, and aggregate validation APIs from top-level export-safe namespaces. | `None` |
-| `task.core_export_hardening_followup.command_metadata.001` | `ready` | `medium` | `repository_maintainer` | `trace.core_export_hardening_followup` | `docs/planning/tasks/open/core_export_command_source_metadata.md` | Publish command-family implementation paths in command metadata instead of pointing every command at the thin root CLI entrypoint. | `None` |
 
 ## Closed Tasks
 | Task ID | Task Status | Priority | Owner | Trace ID | Path | Summary | Blocked By |
@@ -23,6 +22,7 @@ This document provides the human-readable tracking view for local task records u
 | `task.local_task_tracking_foundation.001` | `done` | `high` | `repository_maintainer` | `trace.local_task_tracking` | `docs/planning/tasks/closed/local_task_tracking_foundation.md` | Establishes governed local task records, a generated human tracker, a generated machine index, and Python query and sync commands for task coordination. | `None` |
 | `task.acceptance_evidence_reconciliation.followup.001` | `done` | `medium` | `repository_maintainer` | `trace.acceptance_evidence_reconciliation` | `docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md` | Tracks the remaining closeout and verification follow-up for the acceptance and evidence reconciliation initiative. | `None` |
 | `task.command_documentation_and_lookup.followup.001` | `done` | `medium` | `repository_maintainer` | `trace.command_documentation_and_lookup` | `docs/planning/tasks/closed/command_documentation_and_lookup_followup.md` | Tracks the remaining closeout and verification follow-up for the command documentation and lookup initiative. | `None` |
+| `task.core_export_hardening_followup.command_metadata.001` | `done` | `medium` | `repository_maintainer` | `trace.core_export_hardening_followup` | `docs/planning/tasks/closed/core_export_command_source_metadata.md` | Publish command-family implementation paths in command metadata instead of pointing every command at the thin root CLI entrypoint. | `None` |
 | `task.core_export_readiness_and_optimization.retrieval_and_coordination.001` | `done` | `medium` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_retrieval_and_coordination.md` | Extend retrieval indexes with stronger authority hints and add a deterministic coordination rebuild slice for task, traceability, and initiative surfaces. | `None` |
 | `task.core_export_readiness_and_optimization.sync_validation_registries.001` | `done` | `medium` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | `docs/planning/tasks/closed/core_export_sync_validation_registries.md` | Introduce governed sync-family and validation-family registries so orchestration, listing, and coverage checks no longer depend on duplicated manual enumerations. | `None` |
 | `task.github_collaboration.followup.001` | `done` | `medium` | `repository_maintainer` | `trace.github_collaboration` | `docs/planning/tasks/closed/github_collaboration_followup.md` | Tracks the remaining closeout and verification follow-up for the GitHub collaboration scaffolding initiative. | `None` |
@@ -41,4 +41,4 @@ This document provides the human-readable tracking view for local task records u
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 
 ## Updated At
-- `2026-03-10T16:02:31Z`
+- `2026-03-10T16:18:44Z`

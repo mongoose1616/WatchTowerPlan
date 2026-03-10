@@ -5,11 +5,11 @@ title: "Repair command implementation metadata"
 summary: "Publish command-family implementation paths in command metadata instead of pointing every command at the thin root CLI entrypoint."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "feature"
 priority: "medium"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T15:24:07Z"
+updated_at: "2026-03-10T16:18:44Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -44,4 +44,4 @@ Publish command-family implementation paths in command metadata instead of point
 - [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
 
 ## Updated At
-- `2026-03-10T15:24:07Z`
+- `2026-03-10T16:18:44Z`

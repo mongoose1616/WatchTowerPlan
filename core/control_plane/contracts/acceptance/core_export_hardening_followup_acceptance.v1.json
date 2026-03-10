@@ -54,7 +54,7 @@
       "validation_targets": [
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
-        "docs/planning/tasks/open/core_export_command_source_metadata.md"
+        "docs/planning/tasks/closed/core_export_command_source_metadata.md"
       ],
       "related_paths": [
         "core/control_plane/indexes/commands/command_index.v1.json",

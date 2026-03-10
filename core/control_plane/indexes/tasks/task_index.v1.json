@@ -77,12 +77,12 @@
       "title": "Repair command implementation metadata",
       "summary": "Publish command-family implementation paths in command metadata instead of pointing every command at the thin root CLI entrypoint.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/core_export_command_source_metadata.md",
-      "updated_at": "2026-03-10T15:24:07Z",
+      "doc_path": "docs/planning/tasks/closed/core_export_command_source_metadata.md",
+      "updated_at": "2026-03-10T16:18:44Z",
       "trace_id": "trace.core_export_hardening_followup",
       "depends_on": [
         "task.core_export_hardening_followup.sync_output_dir.001"
