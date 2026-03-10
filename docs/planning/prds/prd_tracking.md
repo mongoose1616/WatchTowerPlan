@@ -9,6 +9,7 @@ This document provides the human-readable tracking view for PRDs under `docs/pla
 | `trace.core_export_hardening_followup` | `prd.core_export_hardening_followup` | `completed` | `docs/planning/prds/core_export_hardening_followup.md` | Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services. | `design.features.core_export_hardening; design.implementation.core_export_hardening_execution` |
 | `trace.core_export_readiness_and_optimization` | `prd.core_export_readiness_and_optimization` | `completed` | `docs/planning/prds/core_export_readiness_and_optimization.md` | Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work. | `design.features.core_export_ready_architecture; design.implementation.core_export_readiness_execution` |
 | `trace.core_python_foundation` | `prd.core_python_foundation` | `completed` | `docs/planning/prds/core_python_foundation.md` | Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations. | `design.features.core_python_workspace_and_harness; design.features.python_validator_execution; design.features.schema_resolution_and_index_search; design.implementation.control_plane_loaders_and_schema_store` |
+| `trace.template_and_output_efficiency` | `prd.template_and_output_efficiency` | `active` | `docs/planning/prds/template_and_output_efficiency.md` | Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate. | `design.features.compact_document_authoring_and_tracking; design.implementation.template_and_output_efficiency_execution` |
 
 ## Update Rules
 - Rebuild this tracker in the same change set when a PRD is added, renamed, removed, materially retargeted, or when a trace initiative changes closeout state.
@@ -21,4 +22,4 @@ This document provides the human-readable tracking view for PRDs under `docs/pla
 - [prd_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/prd_index_standard.md)
 
 ## Updated At
-- `2026-03-10T15:24:07Z`
+- `2026-03-10T16:00:54Z`

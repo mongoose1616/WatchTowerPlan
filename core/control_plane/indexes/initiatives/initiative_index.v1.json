@@ -457,6 +457,93 @@
       "tags": [
         "traceability"
       ]
+    },
+    {
+      "trace_id": "trace.template_and_output_efficiency",
+      "title": "Template and Output Efficiency PRD",
+      "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T16:00:54Z",
+      "open_task_count": 3,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/template_and_output_efficiency.md",
+      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+      "next_surface_path": "docs/planning/tasks/open/template_output_efficiency_compact_authoring.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.template_and_output_efficiency.compact_authoring.001",
+        "task.template_and_output_efficiency.tracker_compaction.001",
+        "task.template_and_output_efficiency.workflow_guidance.001"
+      ],
+      "prd_ids": [
+        "prd.template_and_output_efficiency"
+      ],
+      "design_ids": [
+        "design.features.compact_document_authoring_and_tracking"
+      ],
+      "plan_ids": [
+        "design.implementation.template_and_output_efficiency_execution"
+      ],
+      "task_ids": [
+        "task.template_and_output_efficiency.bootstrap.001",
+        "task.template_and_output_efficiency.compact_authoring.001",
+        "task.template_and_output_efficiency.tracker_compaction.001",
+        "task.template_and_output_efficiency.workflow_guidance.001"
+      ],
+      "acceptance_ids": [
+        "ac.template_and_output_efficiency.001",
+        "ac.template_and_output_efficiency.002",
+        "ac.template_and_output_efficiency.003",
+        "ac.template_and_output_efficiency.004",
+        "ac.template_and_output_efficiency.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.template_and_output_efficiency"
+      ],
+      "evidence_ids": [
+        "evidence.template_and_output_efficiency.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/template_and_output_efficiency_acceptance.v1.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/template_and_output_efficiency_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/",
+        "docs/",
+        "docs/planning/",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/template_and_output_efficiency.md",
+        "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/template_output_efficiency_compact_authoring.md",
+        "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md",
+        "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/",
+        "docs/standards/workflows/",
+        "docs/templates/",
+        "workflows/modules/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the template and output efficiency initiative."
     }
   ]
 }

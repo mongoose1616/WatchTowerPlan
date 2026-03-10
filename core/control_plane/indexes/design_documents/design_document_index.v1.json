@@ -77,6 +77,39 @@
       ]
     },
     {
+      "document_id": "design.features.compact_document_authoring_and_tracking",
+      "trace_id": "trace.template_and_output_efficiency",
+      "family": "feature_design",
+      "title": "Compact Document Authoring and Tracking Design",
+      "summary": "Defines the design for making authored templates and generated planning trackers compact by default while preserving governed machine-readable authority.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+      "updated_at": "2026-03-10T16:00:54Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
+        "docs/templates/",
+        "docs/standards/documentation/",
+        "workflows/modules/",
+        "core/python/src/watchtower_core/repo_ops/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/planning/prds/template_and_output_efficiency.md",
+        "docs/templates/README.md",
+        "docs/templates/prd_template.md",
+        "docs/templates/decision_record_template.md",
+        "workflows/modules/documentation_generation.md"
+      ]
+    },
+    {
       "document_id": "design.features.core_export_hardening",
       "trace_id": "trace.core_export_hardening_followup",
       "family": "feature_design",
@@ -486,6 +519,34 @@
         "docs/planning/prds/core_python_foundation.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json"
+      ]
+    },
+    {
+      "document_id": "design.implementation.template_and_output_efficiency_execution",
+      "trace_id": "trace.template_and_output_efficiency",
+      "family": "implementation_plan",
+      "title": "Template and Output Efficiency Implementation Plan",
+      "summary": "Breaks the template and output efficiency initiative into compact authoring, tracker compaction, and workflow-guidance slices.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
+      "updated_at": "2026-03-10T16:00:54Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md"
+      ],
+      "related_paths": [
+        "docs/templates/",
+        "workflows/modules/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/planning/prds/template_and_output_efficiency.md",
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md"
       ]
     }
   ]

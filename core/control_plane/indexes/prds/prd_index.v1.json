@@ -154,6 +154,54 @@
         "python",
         "traceability"
       ]
+    },
+    {
+      "trace_id": "trace.template_and_output_efficiency",
+      "prd_id": "prd.template_and_output_efficiency",
+      "title": "Template and Output Efficiency PRD",
+      "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/template_and_output_efficiency.md",
+      "updated_at": "2026-03-10T16:00:54Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.template_and_output_efficiency.001",
+        "req.template_and_output_efficiency.002",
+        "req.template_and_output_efficiency.003",
+        "req.template_and_output_efficiency.004",
+        "req.template_and_output_efficiency.005"
+      ],
+      "acceptance_ids": [
+        "ac.template_and_output_efficiency.001",
+        "ac.template_and_output_efficiency.002",
+        "ac.template_and_output_efficiency.003",
+        "ac.template_and_output_efficiency.004",
+        "ac.template_and_output_efficiency.005"
+      ],
+      "linked_design_ids": [
+        "design.features.compact_document_authoring_and_tracking"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.template_and_output_efficiency_execution"
+      ],
+      "related_paths": [
+        "docs/templates/",
+        "docs/planning/",
+        "workflows/modules/",
+        "core/python/src/watchtower_core/repo_ops/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
+      ]
     }
   ]
 }

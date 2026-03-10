@@ -1,0 +1,121 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.template_and_output_efficiency.planning_baseline",
+  "title": "Template and Output Efficiency Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.template_and_output_efficiency",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-10T16:00:54Z",
+  "source_prd_ids": [
+    "prd.template_and_output_efficiency"
+  ],
+  "source_design_ids": [
+    "design.features.compact_document_authoring_and_tracking"
+  ],
+  "source_plan_ids": [
+    "design.implementation.template_and_output_efficiency_execution"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.template_and_output_efficiency"
+  ],
+  "checks": [
+    {
+      "check_id": "check.template_and_output_efficiency.planning_chain",
+      "title": "Planning corpus baseline",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/template_and_output_efficiency.md",
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
+        "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
+        "docs/planning/tasks/open/template_output_efficiency_compact_authoring.md",
+        "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md",
+        "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md"
+      ],
+      "subject_ids": [
+        "prd.template_and_output_efficiency",
+        "design.features.compact_document_authoring_and_tracking",
+        "design.implementation.template_and_output_efficiency_execution",
+        "task.template_and_output_efficiency.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.template_and_output_efficiency.001"
+      ],
+      "notes": "The initiative now has its traced planning chain, a closed bootstrap task, and three bounded implementation tasks."
+    },
+    {
+      "check_id": "check.template_and_output_efficiency.authoring_scope",
+      "title": "Compact authoring scope defined",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/tasks/open/template_output_efficiency_compact_authoring.md"
+      ],
+      "subject_ids": [
+        "design.features.compact_document_authoring_and_tracking",
+        "task.template_and_output_efficiency.compact_authoring.001"
+      ],
+      "acceptance_ids": [
+        "ac.template_and_output_efficiency.002"
+      ],
+      "notes": "The initiative explicitly scopes compact-authoring rules, template alignment, and planning-validator updates into one bounded slice."
+    },
+    {
+      "check_id": "check.template_and_output_efficiency.tracker_scope",
+      "title": "Tracker compaction scope defined",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md"
+      ],
+      "subject_ids": [
+        "design.features.compact_document_authoring_and_tracking",
+        "task.template_and_output_efficiency.tracker_compaction.001"
+      ],
+      "acceptance_ids": [
+        "ac.template_and_output_efficiency.003"
+      ],
+      "notes": "The tracker slice is bounded to generated human-readable planning surfaces while keeping the machine indexes authoritative."
+    },
+    {
+      "check_id": "check.template_and_output_efficiency.workflow_scope",
+      "title": "Workflow-guidance scope defined",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md"
+      ],
+      "subject_ids": [
+        "design.features.compact_document_authoring_and_tracking",
+        "task.template_and_output_efficiency.workflow_guidance.001"
+      ],
+      "acceptance_ids": [
+        "ac.template_and_output_efficiency.004"
+      ],
+      "notes": "The workflow slice is bounded to instructions that materially shape future authored output."
+    },
+    {
+      "check_id": "check.template_and_output_efficiency.validation_baseline",
+      "title": "Current workspace validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "acceptance_ids": [
+        "ac.template_and_output_efficiency.005"
+      ],
+      "notes": "The repo is green at bootstrap and ready for the bounded compactness slices."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/template_and_output_efficiency_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning-baseline evidence for the template and output efficiency initiative."
+}

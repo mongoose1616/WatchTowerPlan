@@ -439,6 +439,108 @@
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/"
       ]
+    },
+    {
+      "task_id": "task.template_and_output_efficiency.bootstrap.001",
+      "title": "Bootstrap the template and output efficiency initiative",
+      "summary": "Create the traced planning chain, acceptance baseline, and bounded task set for compact template and tracker work.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
+      "updated_at": "2026-03-10T16:00:54Z",
+      "trace_id": "trace.template_and_output_efficiency",
+      "related_ids": [
+        "prd.template_and_output_efficiency",
+        "design.features.compact_document_authoring_and_tracking",
+        "design.implementation.template_and_output_efficiency_execution"
+      ],
+      "applies_to": [
+        "docs/planning/prds/template_and_output_efficiency.md",
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
+        "core/control_plane/contracts/acceptance/template_and_output_efficiency_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/template_and_output_efficiency_planning_baseline.v1.json",
+        "docs/planning/tasks/open/"
+      ]
+    },
+    {
+      "task_id": "task.template_and_output_efficiency.compact_authoring.001",
+      "title": "Define compact authoring rules and align governed templates",
+      "summary": "Add the compact-authoring standard, align templates with governed outputs, and relax low-value required sections without weakening machine-readable authority.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/template_output_efficiency_compact_authoring.md",
+      "updated_at": "2026-03-10T16:00:54Z",
+      "trace_id": "trace.template_and_output_efficiency",
+      "related_ids": [
+        "prd.template_and_output_efficiency",
+        "design.features.compact_document_authoring_and_tracking",
+        "design.implementation.template_and_output_efficiency_execution"
+      ],
+      "applies_to": [
+        "docs/templates/",
+        "docs/standards/documentation/",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ]
+    },
+    {
+      "task_id": "task.template_and_output_efficiency.tracker_compaction.001",
+      "title": "Compact generated planning tracker outputs",
+      "summary": "Make generated planning trackers denser and more scan-friendly by removing low-value filler while preserving the routing value of the human-readable view.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md",
+      "updated_at": "2026-03-10T16:00:54Z",
+      "trace_id": "trace.template_and_output_efficiency",
+      "depends_on": [
+        "task.template_and_output_efficiency.compact_authoring.001"
+      ],
+      "related_ids": [
+        "prd.template_and_output_efficiency",
+        "design.features.compact_document_authoring_and_tracking",
+        "design.implementation.template_and_output_efficiency_execution"
+      ],
+      "applies_to": [
+        "docs/planning/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.template_and_output_efficiency.workflow_guidance.001",
+      "title": "Tighten workflow guidance for proportional output",
+      "summary": "Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "documentation",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md",
+      "updated_at": "2026-03-10T16:00:54Z",
+      "trace_id": "trace.template_and_output_efficiency",
+      "depends_on": [
+        "task.template_and_output_efficiency.compact_authoring.001"
+      ],
+      "related_ids": [
+        "prd.template_and_output_efficiency",
+        "design.features.compact_document_authoring_and_tracking",
+        "design.implementation.template_and_output_efficiency_execution"
+      ],
+      "applies_to": [
+        "workflows/modules/",
+        "docs/templates/",
+        "docs/standards/workflows/"
+      ]
     }
   ]
 }

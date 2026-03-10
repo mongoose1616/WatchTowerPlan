@@ -350,6 +350,8 @@ def test_query_designs_supports_json_output(capsys) -> None:
             "designs",
             "--family",
             "feature_design",
+            "--trace-id",
+            "trace.core_python_foundation",
             "--format",
             "json",
         ]

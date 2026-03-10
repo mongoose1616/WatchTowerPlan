@@ -1,0 +1,96 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.template_and_output_efficiency",
+  "title": "Template and Output Efficiency Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.template_and_output_efficiency",
+  "source_prd_id": "prd.template_and_output_efficiency",
+  "entries": [
+    {
+      "acceptance_id": "ac.template_and_output_efficiency.001",
+      "summary": "The planning corpus publishes an active PRD, feature design, implementation plan, closed bootstrap task, and bounded task set for the initiative.",
+      "source_requirement_ids": [
+        "req.template_and_output_efficiency.005"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/template_and_output_efficiency.md",
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
+        "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
+        "docs/planning/tasks/open/"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.template_and_output_efficiency.002",
+      "summary": "Authored templates and companion standards default to compact, high-signal structure and align with the governed machine-readable outputs they produce.",
+      "source_requirement_ids": [
+        "req.template_and_output_efficiency.001",
+        "req.template_and_output_efficiency.002"
+      ],
+      "validation_targets": [
+        "docs/templates/",
+        "docs/standards/documentation/",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "docs/planning/tasks/closed/template_output_efficiency_compact_authoring.md"
+      ],
+      "related_paths": [
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.template_and_output_efficiency.003",
+      "summary": "Generated planning trackers render compactly without low-value filler while the machine-readable indexes remain the dense authority surface.",
+      "source_requirement_ids": [
+        "req.template_and_output_efficiency.003"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "docs/planning/tasks/closed/template_output_efficiency_tracker_compaction.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.template_and_output_efficiency.004",
+      "summary": "Workflow modules that drive new planning and documentation output explicitly prefer proportional content and avoid encouraging low-value meta text.",
+      "source_requirement_ids": [
+        "req.template_and_output_efficiency.004"
+      ],
+      "validation_targets": [
+        "workflows/modules/",
+        "docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md"
+      ],
+      "related_paths": [
+        "docs/standards/workflows/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.template_and_output_efficiency.005",
+      "summary": "The repository remains green on the current validation baseline while the initiative lands and closes.",
+      "source_requirement_ids": [
+        "req.template_and_output_efficiency.005"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "related_paths": [
+        "core/python/tests/"
+      ]
+    }
+  ]
+}
