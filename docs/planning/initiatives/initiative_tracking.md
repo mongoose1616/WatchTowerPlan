@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.machine_first_coordination_surface` | `closeout` | unassigned | `0` | [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md) | [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.machine_first_coordination_surface` | `completed` | [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md) | `2026-03-10T19:36:51Z` | Delivered and validated machine-first coordination surfaces. |
 | `trace.preimplementation_repo_review_and_hardening` | `completed` | [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md) | `2026-03-10T18:48:07Z` | Delivered and validated pre-implementation repository review and hardening. |
 | `trace.core_export_hardening_followup` | `completed` | [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md) | `2026-03-10T17:12:30Z` | Implemented and validated export hardening follow-up. |
 | `trace.template_and_output_efficiency` | `completed` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) | `2026-03-10T16:35:23Z` | Implemented and validated template and output efficiency improvements. |

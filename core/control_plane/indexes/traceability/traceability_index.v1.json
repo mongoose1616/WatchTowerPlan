@@ -445,8 +445,10 @@
       "title": "Machine-First Coordination Surface PRD",
       "summary": "Defines the work needed to publish one always-useful machine coordination surface, keep human planning entrypoints derived from it, and reduce planning-navigation sprawl before product implementation starts.",
       "status": "active",
-      "initiative_status": "active",
+      "initiative_status": "completed",
       "updated_at": "2026-03-10T19:29:01Z",
+      "closed_at": "2026-03-10T19:36:51Z",
+      "closure_reason": "Delivered and validated machine-first coordination surfaces.",
       "prd_ids": [
         "prd.machine_first_coordination_surface"
       ],
@@ -508,6 +510,7 @@
         "docs/commands/core_python/",
         "docs/planning/",
         "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/machine_first_coordination_entry_surface.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/machine_first_coordination_surface.md",
