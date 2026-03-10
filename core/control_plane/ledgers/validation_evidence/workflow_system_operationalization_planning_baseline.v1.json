@@ -1,0 +1,113 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.workflow_system_operationalization.planning_baseline",
+  "title": "Workflow System Operationalization Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.workflow_system_operationalization",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-10T21:59:21Z",
+  "source_prd_ids": [
+    "prd.workflow_system_operationalization"
+  ],
+  "source_decision_ids": [
+    "decision.workflow_operationalization_direction"
+  ],
+  "source_design_ids": [
+    "design.features.workflow_routing_and_authoring"
+  ],
+  "source_plan_ids": [
+    "design.implementation.workflow_system_operationalization_execution"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.workflow_system_operationalization"
+  ],
+  "checks": [
+    {
+      "check_id": "check.workflow_system_operationalization.planning_chain",
+      "title": "Workflow-system planning baseline",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/workflow_system_operationalization.md",
+        "docs/planning/decisions/workflow_operationalization_direction.md",
+        "docs/planning/design/features/workflow_routing_and_authoring.md",
+        "docs/planning/design/implementation/workflow_system_operationalization_execution.md",
+        "docs/planning/tasks/closed/workflow_system_bootstrap.md",
+        "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
+        "docs/planning/tasks/open/workflow_planning_scaffolds.md",
+        "docs/planning/tasks/open/workflow_task_cli.md",
+        "docs/planning/tasks/open/workflow_reconciliation_guidance.md"
+      ],
+      "subject_ids": [
+        "prd.workflow_system_operationalization",
+        "decision.workflow_operationalization_direction",
+        "design.features.workflow_routing_and_authoring",
+        "design.implementation.workflow_system_operationalization_execution",
+        "task.workflow_system_operationalization.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_system_operationalization.001"
+      ],
+      "notes": "The workflow-system follow-up now has a traced planning chain, accepted direction, closed bootstrap task, and four bounded execution tasks."
+    },
+    {
+      "check_id": "check.workflow_system_operationalization.route_scope",
+      "title": "Route preview and workflow metadata scope",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.workflow_system_operationalization.route_preview_and_metadata.001"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_system_operationalization.002"
+      ],
+      "notes": "The initiative scopes governed workflow metadata and executable route preview rather than a broader autonomous router."
+    },
+    {
+      "check_id": "check.workflow_system_operationalization.authoring_scope",
+      "title": "Planning and task authoring scope",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/open/workflow_planning_scaffolds.md",
+        "docs/planning/tasks/open/workflow_task_cli.md",
+        "docs/templates/"
+      ],
+      "subject_ids": [
+        "task.workflow_system_operationalization.planning_scaffolds.001",
+        "task.workflow_system_operationalization.task_cli.001"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_system_operationalization.003",
+        "ac.workflow_system_operationalization.004"
+      ],
+      "notes": "The initiative limits authoring automation to compact scaffolds and structured task lifecycle commands."
+    },
+    {
+      "check_id": "check.workflow_system_operationalization.guidance_scope",
+      "title": "Reconciliation guidance and validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
+        "workflows/",
+        "docs/standards/"
+      ],
+      "subject_ids": [
+        "task.workflow_system_operationalization.reconciliation_guidance.001"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_system_operationalization.005"
+      ],
+      "notes": "The initiative includes a bounded documentation slice for reconciliation-family decision support and keeps the current validation baseline intact."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/workflow_system_operationalization_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning-baseline evidence for the workflow system operationalization initiative."
+}

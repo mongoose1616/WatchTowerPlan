@@ -351,6 +351,57 @@
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md"
       ]
+    },
+    {
+      "trace_id": "trace.workflow_system_operationalization",
+      "prd_id": "prd.workflow_system_operationalization",
+      "title": "Workflow System Operationalization PRD",
+      "summary": "Defines the follow-up work needed to make workflow routing, planning scaffolding, and task lifecycle handling executable, machine-readable, and easier to use before WatchTower implementation begins.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/workflow_system_operationalization.md",
+      "updated_at": "2026-03-10T21:59:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.workflow_system_operationalization.001",
+        "req.workflow_system_operationalization.002",
+        "req.workflow_system_operationalization.003",
+        "req.workflow_system_operationalization.004",
+        "req.workflow_system_operationalization.005",
+        "req.workflow_system_operationalization.006",
+        "req.workflow_system_operationalization.007"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_system_operationalization.001",
+        "ac.workflow_system_operationalization.002",
+        "ac.workflow_system_operationalization.003",
+        "ac.workflow_system_operationalization.004",
+        "ac.workflow_system_operationalization.005"
+      ],
+      "linked_decision_ids": [
+        "decision.workflow_operationalization_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.workflow_routing_and_authoring"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.workflow_system_operationalization_execution"
+      ],
+      "related_paths": [
+        "workflows/",
+        "docs/planning/",
+        "core/control_plane/",
+        "core/python/src/watchtower_core/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/governance/task_tracking_standard.md"
+      ]
     }
   ]
 }

@@ -1,0 +1,87 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.workflow_system_operationalization",
+  "title": "Workflow System Operationalization Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.workflow_system_operationalization",
+  "source_prd_id": "prd.workflow_system_operationalization",
+  "entries": [
+    {
+      "acceptance_id": "ac.workflow_system_operationalization.001",
+      "summary": "The planning corpus publishes the PRD, decision record, feature design, implementation plan, acceptance contract, planning evidence, closed bootstrap task, and bounded execution tasks for workflow-system operationalization.",
+      "source_requirement_ids": [
+        "req.workflow_system_operationalization.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/workflow_system_operationalization.md",
+        "docs/planning/decisions/workflow_operationalization_direction.md",
+        "docs/planning/design/features/workflow_routing_and_authoring.md",
+        "docs/planning/design/implementation/workflow_system_operationalization_execution.md",
+        "docs/planning/tasks/closed/workflow_system_bootstrap.md",
+        "docs/planning/tasks/open/"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.workflow_system_operationalization.002",
+      "summary": "A governed workflow metadata registry and derived route index exist, and route preview uses them to project workflow-module selections in human and JSON forms.",
+      "source_requirement_ids": [
+        "req.workflow_system_operationalization.002",
+        "req.workflow_system_operationalization.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/registries/",
+        "core/control_plane/indexes/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.workflow_system_operationalization.003",
+      "summary": "Planning scaffold commands generate compact governed planning artifacts and initiative-bootstrap scaffolds from the current repository templates.",
+      "source_requirement_ids": [
+        "req.workflow_system_operationalization.004"
+      ],
+      "validation_targets": [
+        "docs/templates/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.workflow_system_operationalization.004",
+      "summary": "Task lifecycle commands can create tasks, update structured task metadata, and perform handoff-style transitions while keeping placement and derived surfaces aligned.",
+      "source_requirement_ids": [
+        "req.workflow_system_operationalization.005"
+      ],
+      "validation_targets": [
+        "docs/planning/tasks/",
+        "core/control_plane/indexes/tasks/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.workflow_system_operationalization.005",
+      "summary": "Reconciliation route guidance clearly distinguishes the reconciliation families and the repository remains green on the current validation baseline.",
+      "source_requirement_ids": [
+        "req.workflow_system_operationalization.006",
+        "req.workflow_system_operationalization.007"
+      ],
+      "validation_targets": [
+        "workflows/",
+        "docs/standards/",
+        "docs/references/",
+        "core/python/",
+        "core/control_plane/"
+      ]
+    }
+  ]
+}

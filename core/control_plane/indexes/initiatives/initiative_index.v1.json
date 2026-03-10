@@ -359,7 +359,7 @@
       "status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-10T20:33:10Z",
+      "updated_at": "2026-03-10T22:12:00Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
@@ -814,6 +814,152 @@
         "traceability"
       ],
       "notes": "Planning-baseline evidence for the template and output efficiency initiative."
+    },
+    {
+      "trace_id": "trace.workflow_system_operationalization",
+      "title": "Workflow System Operationalization PRD",
+      "summary": "Defines the follow-up work needed to make workflow routing, planning scaffolding, and task lifecycle handling executable, machine-readable, and easier to use before WatchTower implementation begins.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T21:59:21Z",
+      "open_task_count": 4,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/workflow_system_operationalization.md",
+      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+      "next_surface_path": "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.workflow_system_operationalization.planning_scaffolds.001",
+        "task.workflow_system_operationalization.reconciliation_guidance.001",
+        "task.workflow_system_operationalization.route_preview_and_metadata.001",
+        "task.workflow_system_operationalization.task_cli.001"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.workflow_system_operationalization.route_preview_and_metadata.001",
+          "title": "Add route preview and governed workflow metadata authority",
+          "task_status": "backlog",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
+          "is_actionable": true,
+          "depends_on": [
+            "task.workflow_system_operationalization.bootstrap.001"
+          ]
+        },
+        {
+          "task_id": "task.workflow_system_operationalization.task_cli.001",
+          "title": "Add task lifecycle CLI commands",
+          "task_status": "backlog",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/workflow_task_cli.md",
+          "is_actionable": true,
+          "depends_on": [
+            "task.workflow_system_operationalization.bootstrap.001"
+          ]
+        },
+        {
+          "task_id": "task.workflow_system_operationalization.planning_scaffolds.001",
+          "title": "Add compact planning scaffold commands",
+          "task_status": "backlog",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/workflow_planning_scaffolds.md",
+          "is_actionable": true,
+          "depends_on": [
+            "task.workflow_system_operationalization.bootstrap.001"
+          ]
+        },
+        {
+          "task_id": "task.workflow_system_operationalization.reconciliation_guidance.001",
+          "title": "Tighten reconciliation workflow decision guidance",
+          "task_status": "backlog",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
+          "is_actionable": true,
+          "depends_on": [
+            "task.workflow_system_operationalization.bootstrap.001"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.workflow_system_operationalization"
+      ],
+      "decision_ids": [
+        "decision.workflow_operationalization_direction"
+      ],
+      "design_ids": [
+        "design.features.workflow_routing_and_authoring"
+      ],
+      "plan_ids": [
+        "design.implementation.workflow_system_operationalization_execution"
+      ],
+      "task_ids": [
+        "task.workflow_system_operationalization.bootstrap.001",
+        "task.workflow_system_operationalization.planning_scaffolds.001",
+        "task.workflow_system_operationalization.reconciliation_guidance.001",
+        "task.workflow_system_operationalization.route_preview_and_metadata.001",
+        "task.workflow_system_operationalization.task_cli.001"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_system_operationalization.001",
+        "ac.workflow_system_operationalization.002",
+        "ac.workflow_system_operationalization.003",
+        "ac.workflow_system_operationalization.004",
+        "ac.workflow_system_operationalization.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.workflow_system_operationalization"
+      ],
+      "evidence_ids": [
+        "evidence.workflow_system_operationalization.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/workflow_system_operationalization_acceptance.v1.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/tasks/",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_system_operationalization_planning_baseline.v1.json",
+        "core/control_plane/registries/",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/workflow_operationalization_direction.md",
+        "docs/planning/design/features/workflow_routing_and_authoring.md",
+        "docs/planning/design/implementation/workflow_system_operationalization_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/workflow_system_operationalization.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/workflow_system_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/workflow_planning_scaffolds.md",
+        "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
+        "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
+        "docs/planning/tasks/open/workflow_task_cli.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/",
+        "docs/standards/",
+        "docs/standards/workflows/",
+        "docs/templates/",
+        "workflows/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the workflow system operationalization initiative."
     }
   ]
 }

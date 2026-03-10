@@ -873,6 +873,140 @@
         "docs/templates/",
         "docs/standards/workflows/"
       ]
+    },
+    {
+      "task_id": "task.workflow_system_operationalization.bootstrap.001",
+      "title": "Bootstrap the workflow system operationalization initiative",
+      "summary": "Creates the traced planning chain, accepted direction, acceptance baseline, planning evidence, and bounded execution tasks for the workflow-system follow-up.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/workflow_system_bootstrap.md",
+      "updated_at": "2026-03-10T21:59:21Z",
+      "trace_id": "trace.workflow_system_operationalization",
+      "related_ids": [
+        "prd.workflow_system_operationalization",
+        "design.features.workflow_routing_and_authoring",
+        "design.implementation.workflow_system_operationalization_execution",
+        "decision.workflow_operationalization_direction"
+      ],
+      "applies_to": [
+        "docs/planning/prds/workflow_system_operationalization.md",
+        "docs/planning/design/features/workflow_routing_and_authoring.md",
+        "docs/planning/design/implementation/workflow_system_operationalization_execution.md",
+        "docs/planning/decisions/workflow_operationalization_direction.md",
+        "core/control_plane/contracts/acceptance/workflow_system_operationalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_system_operationalization_planning_baseline.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.workflow_system_operationalization.planning_scaffolds.001",
+      "title": "Add compact planning scaffold commands",
+      "summary": "Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/workflow_planning_scaffolds.md",
+      "updated_at": "2026-03-10T21:59:21Z",
+      "trace_id": "trace.workflow_system_operationalization",
+      "depends_on": [
+        "task.workflow_system_operationalization.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.workflow_system_operationalization",
+        "design.features.workflow_routing_and_authoring",
+        "design.implementation.workflow_system_operationalization_execution"
+      ],
+      "applies_to": [
+        "docs/templates/",
+        "docs/planning/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/"
+      ]
+    },
+    {
+      "task_id": "task.workflow_system_operationalization.reconciliation_guidance.001",
+      "title": "Tighten reconciliation workflow decision guidance",
+      "summary": "Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "documentation",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
+      "updated_at": "2026-03-10T21:59:21Z",
+      "trace_id": "trace.workflow_system_operationalization",
+      "depends_on": [
+        "task.workflow_system_operationalization.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.workflow_system_operationalization",
+        "design.features.workflow_routing_and_authoring",
+        "design.implementation.workflow_system_operationalization_execution"
+      ],
+      "applies_to": [
+        "workflows/modules/",
+        "docs/standards/workflows/",
+        "docs/references/"
+      ]
+    },
+    {
+      "task_id": "task.workflow_system_operationalization.route_preview_and_metadata.001",
+      "title": "Add route preview and governed workflow metadata authority",
+      "summary": "Move workflow retrieval metadata into governed control-plane artifacts, add a derived route index, and expose executable route preview through the CLI.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
+      "updated_at": "2026-03-10T21:59:21Z",
+      "trace_id": "trace.workflow_system_operationalization",
+      "depends_on": [
+        "task.workflow_system_operationalization.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.workflow_system_operationalization",
+        "design.features.workflow_routing_and_authoring",
+        "design.implementation.workflow_system_operationalization_execution"
+      ],
+      "applies_to": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/"
+      ]
+    },
+    {
+      "task_id": "task.workflow_system_operationalization.task_cli.001",
+      "title": "Add task lifecycle CLI commands",
+      "summary": "Expose task creation, structured task updates, and handoff-style transitions through a first-class CLI family while preserving task-document authority.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/workflow_task_cli.md",
+      "updated_at": "2026-03-10T21:59:21Z",
+      "trace_id": "trace.workflow_system_operationalization",
+      "depends_on": [
+        "task.workflow_system_operationalization.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.workflow_system_operationalization",
+        "design.features.workflow_routing_and_authoring",
+        "design.implementation.workflow_system_operationalization_execution"
+      ],
+      "applies_to": [
+        "docs/planning/tasks/",
+        "core/control_plane/indexes/tasks/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/"
+      ]
     }
   ]
 }

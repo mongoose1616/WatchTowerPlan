@@ -184,6 +184,52 @@
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md"
       ]
+    },
+    {
+      "trace_id": "trace.workflow_system_operationalization",
+      "decision_id": "decision.workflow_operationalization_direction",
+      "title": "Workflow Operationalization Direction",
+      "summary": "Records the decision to keep workflow documents authoritative while adding machine-readable route and metadata artifacts plus bounded authoring commands.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/workflow_operationalization_direction.md",
+      "updated_at": "2026-03-10T21:59:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.workflow_system_operationalization"
+      ],
+      "linked_design_ids": [
+        "design.features.workflow_routing_and_authoring"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.workflow_system_operationalization_execution"
+      ],
+      "related_paths": [
+        "workflows/",
+        "docs/planning/",
+        "core/control_plane/",
+        "core/python/src/watchtower_core/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "core/control_plane/registries/",
+        "core/control_plane/indexes/",
+        "docs/commands/core_python/",
+        "core/python/src/watchtower_core/cli/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/planning/prds/workflow_system_operationalization.md",
+        "docs/planning/design/features/workflow_routing_and_authoring.md",
+        "docs/planning/decisions/end_to_end_repo_rationalization_direction.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/governance/task_tracking_standard.md"
+      ]
     }
   ]
 }
