@@ -41,6 +41,59 @@ def test_route_index_sync_writes_temp_output(tmp_path: Path) -> None:
     assert written_document["id"] == "index.routes"
 
 
+def test_route_index_sync_ignores_non_route_tables(tmp_path: Path) -> None:
+    repo_root = tmp_path / "repo"
+    workflows_dir = repo_root / "workflows"
+    modules_dir = workflows_dir / "modules"
+    modules_dir.mkdir(parents=True)
+    (modules_dir / "core.md").write_text("# Core\n", encoding="utf-8")
+    (modules_dir / "task_scope_definition.md").write_text(
+        "# Task Scope Definition\n",
+        encoding="utf-8",
+    )
+    (workflows_dir / "ROUTING_TABLE.md").write_text(
+        "\n".join(
+            [
+                "# Routing Table",
+                "",
+                "## Reconciliation Quick Guide",
+                "",
+                "| Primary Drift Boundary | Preferred Route | Typical Surfaces |",
+                "|---|---|---|",
+                "| docs versus code | `Documentation-Implementation Reconciliation` | docs |",
+                "",
+                "| Task Type | Trigger Keywords (Examples) | Required Workflows |",
+                "|---|---|---|",
+                "| Example Route | example task | `modules/core.md`, "
+                "`modules/task_scope_definition.md` |",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    service = RouteIndexSyncService(ControlPlaneLoader(REPO_ROOT))
+    service._repo_root = repo_root
+
+    document = service.build_document()
+
+    assert document["entries"] == [
+        {
+            "route_id": "route.example_route",
+            "task_type": "Example Route",
+            "trigger_keywords": ["example task"],
+            "required_workflow_ids": [
+                "workflow.core",
+                "workflow.task_scope_definition",
+            ],
+            "required_workflow_paths": [
+                "workflows/modules/core.md",
+                "workflows/modules/task_scope_definition.md",
+            ],
+        }
+    ]
+
+
 def test_route_preview_service_scores_request_text() -> None:
     service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
 

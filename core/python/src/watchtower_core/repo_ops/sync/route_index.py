@@ -12,6 +12,7 @@ from watchtower_core.control_plane.paths import discover_repo_root
 
 ROUTING_TABLE_DOCUMENT_PATH = "workflows/ROUTING_TABLE.md"
 ROUTE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/routes/route_index.v1.json"
+_ROUTE_TABLE_HEADER = "| Task Type | Trigger Keywords (Examples) | Required Workflows |"
 
 
 def _route_id(task_type: str) -> str:
@@ -30,6 +31,27 @@ def _workflow_id(workflow_path: str) -> str:
     return f"workflow.{Path(workflow_path).stem}"
 
 
+def _extract_route_table(markdown: str) -> str:
+    """Return only the routed task table from the routing document."""
+    table_lines: list[str] = []
+    collecting = False
+
+    for line in markdown.splitlines():
+        stripped = line.strip()
+        if not collecting:
+            if stripped == _ROUTE_TABLE_HEADER:
+                collecting = True
+                table_lines.append(stripped)
+            continue
+        if not stripped or not stripped.startswith("|"):
+            break
+        table_lines.append(stripped)
+
+    if not table_lines:
+        raise ValueError("Routing table document is missing the routed task table.")
+    return "\n".join(table_lines)
+
+
 class RouteIndexSyncService:
     """Build and write the route index from the routing table."""
 
@@ -42,9 +64,10 @@ class RouteIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
     def build_document(self) -> dict[str, object]:
-        rows = parse_markdown_table(
-            (self._repo_root / ROUTING_TABLE_DOCUMENT_PATH).read_text(encoding="utf-8")
+        routing_markdown = (self._repo_root / ROUTING_TABLE_DOCUMENT_PATH).read_text(
+            encoding="utf-8"
         )
+        rows = parse_markdown_table(_extract_route_table(routing_markdown))
         entries: list[dict[str, object]] = []
 
         for row in rows:
