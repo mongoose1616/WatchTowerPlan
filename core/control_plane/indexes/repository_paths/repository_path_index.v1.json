@@ -3452,6 +3452,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/coordination_tracking.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Generated human-readable current-state tracker for planning coordination, next action, and compact active work context.",
+      "parent_path": "docs/planning/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/decisions/",
       "kind": "directory",
       "surface_kind": "decision_docs",
@@ -3730,7 +3740,7 @@
       "path": "docs/planning/initiatives/",
       "kind": "directory",
       "surface_kind": "planning_root",
-      "summary": "Holds the start-here initiative view that projects phase, owner, and next-step status across the planning corpus.",
+      "summary": "Holds the initiative-family tracking view that projects phase, owner, and next-step status across traced planning work.",
       "parent_path": "docs/planning/",
       "maturity": "supporting",
       "priority": "medium",
@@ -4516,6 +4526,16 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines semantic reconciliation across acceptance intent, machine contracts, evidence, and traceability.",
+      "parent_path": "docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/standards/governance/coordination_tracking_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the compact human coordination tracker and the planning-root start-here experience.",
       "parent_path": "docs/standards/governance/",
       "maturity": "authoritative",
       "priority": "high",

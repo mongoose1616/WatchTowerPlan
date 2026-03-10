@@ -473,12 +473,12 @@
       "title": "Publish the derived coordination index",
       "summary": "Add the coordination-index artifact family, sync logic, loader support, and query integration so one machine-readable surface becomes the default planning current-state entrypoint.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/machine_first_coordination_index.md",
-      "updated_at": "2026-03-10T18:54:43Z",
+      "doc_path": "docs/planning/tasks/closed/machine_first_coordination_index.md",
+      "updated_at": "2026-03-10T19:20:47Z",
       "trace_id": "trace.machine_first_coordination_surface",
       "depends_on": [
         "task.machine_first_coordination_surface.bootstrap.001"
@@ -502,12 +502,12 @@
       "title": "Align human and agent coordination entrypoints",
       "summary": "Generate a compact human coordination tracker and reroute planning and agent entrypoint guidance so humans and agents start from the same derived coordination state.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
-      "updated_at": "2026-03-10T18:54:43Z",
+      "doc_path": "docs/planning/tasks/closed/machine_first_coordination_entrypoints.md",
+      "updated_at": "2026-03-10T19:29:01Z",
       "trace_id": "trace.machine_first_coordination_surface",
       "depends_on": [
         "task.machine_first_coordination_surface.coordination_index.001"

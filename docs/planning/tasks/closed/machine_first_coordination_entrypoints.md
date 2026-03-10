@@ -5,11 +5,11 @@ title: "Align human and agent coordination entrypoints"
 summary: "Generate a compact human coordination tracker and reroute planning and agent entrypoint guidance so humans and agents start from the same derived coordination state."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "feature"
 priority: "medium"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T18:54:43Z"
+updated_at: "2026-03-10T19:29:01Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -41,9 +41,14 @@ Generate a compact human coordination tracker and reroute planning and agent ent
 - Agents are routed to `query coordination` as the default planning current-state surface.
 - Family trackers remain available but stop acting as the first default entrypoint.
 
+## Outcome
+- Added `docs/planning/coordination_tracking.md` as the compact human companion to the coordination index.
+- Updated planning README, family README, command, and agent entrypoint guidance to route humans and agents through the coordination surfaces first.
+- Kept initiative and task trackers available as deeper family views instead of removing them.
+
 ## Links
 - [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/design/features/machine_first_coordination_surface.md)
 - [machine_first_coordination_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/machine_first_coordination_execution.md)
 
 ## Updated At
-- `2026-03-10T18:54:43Z`
+- `2026-03-10T19:29:01Z`

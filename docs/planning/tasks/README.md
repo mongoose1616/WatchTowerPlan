@@ -12,7 +12,8 @@
 | `docs/planning/tasks/closed/` | Holds terminal local task records. |
 
 ## Notes
-- Start with `docs/planning/initiatives/initiative_tracking.md` when you need to know whether an initiative is actively assigned and what should happen next beyond one task file.
+- Start with `docs/planning/coordination_tracking.md` when you need the current planning state and next action before opening task-specific surfaces.
+- Use `docs/planning/initiatives/initiative_tracking.md` when you need the deeper initiative-family context behind a task.
 - Treat one task file as one bounded work item.
 - Treat task files as the local source of truth.
 - Rebuild `task_tracking.md` and `core/control_plane/indexes/tasks/task_index.v1.json` after task changes.

@@ -566,7 +566,7 @@
     {
       "command_id": "command.watchtower_core.sync.coordination",
       "command": "watchtower-core sync coordination",
-      "summary": "Rebuild the deterministic coordination slice for task, traceability, initiative, and coordination-index surfaces in dependency order.",
+      "summary": "Rebuild the deterministic coordination slice for task, traceability, initiative, coordination-index, and compact coordination-tracking surfaces in dependency order.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",

@@ -151,7 +151,7 @@ uv run watchtower-core sync repository-paths --write
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints sync-specific help and exits successfully.
 - The command group explains the available sync surfaces without requiring engineers to inspect the implementation directly.
-- The current leaf commands are `all` for one-shot local rebuilds across all deterministic sync surfaces, `coordination` for the focused task-traceability-initiative-coordination rebuild slice, `command-index` for command-doc lookup rebuilds, `foundation-index` for the governed foundation intent corpus, `reference-index` for reference-corpus lookup rebuilds, `standard-index` for standards and best-practice lookup rebuilds, `workflow-index` for workflow-module lookup rebuilds, `prd-index` and `prd-tracking` for PRD machine and human tracking refreshes, `decision-index` and `decision-tracking` for decision machine and human tracking refreshes, `design-document-index` and `design-tracking` for design machine and human tracking refreshes, `initiative-index` and `initiative-tracking` for the initiative-family coordination view, `task-index` for machine task lookup rebuilds, `task-tracking` for the human-readable task board, `github-tasks` for push-only local task sync to GitHub including bounded managed labels, `traceability-index` for joined planning and evidence rebuilds, and `repository-paths` for README inventory rebuilds.
+- The current leaf commands are `all` for one-shot local rebuilds across all deterministic sync surfaces, `coordination` for the focused task-traceability-initiative-coordination rebuild slice plus the compact root coordination tracker, `command-index` for command-doc lookup rebuilds, `foundation-index` for the governed foundation intent corpus, `reference-index` for reference-corpus lookup rebuilds, `standard-index` for standards and best-practice lookup rebuilds, `workflow-index` for workflow-module lookup rebuilds, `prd-index` and `prd-tracking` for PRD machine and human tracking refreshes, `decision-index` and `decision-tracking` for decision machine and human tracking refreshes, `design-document-index` and `design-tracking` for design machine and human tracking refreshes, `initiative-index` and `initiative-tracking` for the initiative-family coordination view, `task-index` for machine task lookup rebuilds, `task-tracking` for the human-readable task board, `github-tasks` for push-only local task sync to GitHub including bounded managed labels, `traceability-index` for joined planning and evidence rebuilds, and `repository-paths` for README inventory rebuilds.
 - Individual leaf commands may be dry-run by default and should document their mutation flags explicitly.
 
 ## Related Commands
@@ -159,7 +159,7 @@ uv run watchtower-core sync repository-paths --write
 |---|---|
 | `watchtower-core sync command-index` | Rebuilds the command index from registry-backed CLI metadata while requiring companion command docs. |
 | `watchtower-core sync all` | Rebuilds all local deterministic indexes and trackers in dependency order. |
-| `watchtower-core sync coordination` | Rebuilds only the deterministic task, traceability, initiative, and coordination-index slice. |
+| `watchtower-core sync coordination` | Rebuilds only the deterministic task, traceability, initiative, coordination-index, and compact coordination-tracker slice. |
 | `watchtower-core sync foundation-index` | Rebuilds the foundation index from governed foundation docs. |
 | `watchtower-core sync reference-index` | Rebuilds the reference index from governed reference docs. |
 | `watchtower-core sync standard-index` | Rebuilds the standard index from governed standards docs. |
@@ -190,4 +190,4 @@ uv run watchtower-core sync repository-paths --write
 - `core/python/src/watchtower_core/repo_ops/sync/`
 
 ## Updated At
-- `2026-03-10T19:06:55Z`
+- `2026-03-10T19:29:01Z`

@@ -15,6 +15,10 @@ from watchtower_core.repo_ops.sync.coordination_index import (
     COORDINATION_INDEX_ARTIFACT_PATH,
     CoordinationIndexSyncService,
 )
+from watchtower_core.repo_ops.sync.coordination_tracking import (
+    COORDINATION_TRACKING_DOCUMENT_PATH,
+    CoordinationTrackingSyncService,
+)
 from watchtower_core.repo_ops.sync.decision_index import (
     DECISION_INDEX_ARTIFACT_PATH,
     DecisionIndexSyncService,
@@ -221,6 +225,15 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         relative_output_path=INITIATIVE_TRACKING_DOCUMENT_PATH,
         service_factory=InitiativeTrackingSyncService,
         record_count_attr="initiative_count",
+        groups=(COORDINATION_SYNC_GROUP,),
+    ),
+    SyncTargetSpec(
+        target="coordination-tracking",
+        mode="tracking",
+        artifact_kind="tracker",
+        relative_output_path=COORDINATION_TRACKING_DOCUMENT_PATH,
+        service_factory=CoordinationTrackingSyncService,
+        record_count_attr="coordination_entry_count",
         groups=(COORDINATION_SYNC_GROUP,),
     ),
     SyncTargetSpec(

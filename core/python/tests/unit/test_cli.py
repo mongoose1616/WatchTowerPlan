@@ -573,7 +573,7 @@ def test_sync_coordination_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core sync coordination"
     assert payload["status"] == "ok"
-    assert payload["result_count"] == 6
+    assert payload["result_count"] == 7
     assert payload["wrote"] is False
     assert payload["output_dir"] is None
     assert [entry["target"] for entry in payload["results"]] == [
@@ -583,6 +583,7 @@ def test_sync_coordination_supports_json_output(capsys) -> None:
         "coordination-index",
         "task-tracking",
         "initiative-tracking",
+        "coordination-tracking",
     ]
 
 
@@ -853,6 +854,7 @@ def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, caps
     ).exists()
     assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()
+    assert (output_dir / "docs/planning/coordination_tracking.md").exists()
 
 
 def test_sync_standard_index_can_write_to_explicit_output(tmp_path: Path, capsys) -> None:

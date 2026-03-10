@@ -207,6 +207,7 @@ class AllSyncService:
     def _tracking_details(self, result: object) -> dict[str, int]:
         details: dict[str, int] = {}
         for attr in (
+            "coordination_entry_count",
             "prd_count",
             "decision_count",
             "task_count",
@@ -214,6 +215,9 @@ class AllSyncService:
             "closed_count",
             "feature_design_count",
             "implementation_plan_count",
+            "active_initiative_count",
+            "actionable_task_count",
+            "recent_closed_count",
         ):
             value = getattr(result, attr, None)
             if isinstance(value, int):

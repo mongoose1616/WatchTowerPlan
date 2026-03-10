@@ -74,13 +74,14 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable coordination indexes stored under `core/control_plane/indexes/coordination/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/coordination_index_standard.md",
-      "updated_at": "2026-03-10T19:06:55Z",
+      "updated_at": "2026-03-10T19:29:01Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
@@ -90,6 +91,7 @@
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
@@ -1427,6 +1429,40 @@
       ]
     },
     {
+      "standard_id": "std.governance.coordination_tracking",
+      "category": "governance",
+      "title": "Coordination Tracking Standard",
+      "summary": "This standard defines the repository's compact human coordination tracker so humans can start from one derived current-state view without replacing family-specific planning artifacts.",
+      "status": "active",
+      "doc_path": "docs/standards/governance/coordination_tracking_standard.md",
+      "updated_at": "2026-03-10T19:29:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/planning/README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/planning/README.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "coordination_tracking"
+      ]
+    },
+    {
       "standard_id": "std.governance.decision_capture",
       "category": "governance",
       "title": "Decision Capture Standard",
@@ -1629,7 +1665,7 @@
       "summary": "This standard defines the repository's cross-family initiative tracking model so one trace can be followed from PRD through design, planning, execution, validation, and closeout.",
       "status": "active",
       "doc_path": "docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-10T19:06:55Z",
+      "updated_at": "2026-03-10T19:29:01Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -1639,6 +1675,7 @@
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/planning/prds/prd_tracking.md",
@@ -1650,6 +1687,7 @@
       "applied_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/planning/prds/prd_tracking.md",

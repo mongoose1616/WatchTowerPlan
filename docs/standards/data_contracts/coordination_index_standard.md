@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "coordination_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T19:06:55Z"
+updated_at: "2026-03-10T19:29:01Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -38,6 +38,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): defines the initiative-family projection that this coordination layer reads from.
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): defines the task authority layer behind actionable work and blockers.
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace join that initiative state still mirrors.
+- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md): defines the compact human companion tracker derived from this index.
 - [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the human initiative coordination layer that remains available beneath this machine-first view.
 - [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by coordination records.
@@ -92,12 +93,13 @@ This standard defines the role, structure, and boundary rules for machine-readab
 ## Change Control
 - Update this standard when the repository changes the coordination-mode model or the projected coordination root fields.
 - Update the companion artifact schema, examples, live coordination index, and query/sync behavior in the same change set when this artifact family changes structurally.
-- Update nearby planning guidance when the coordination start-here experience changes materially.
+- Update the coordination-tracking companion surface and nearby planning guidance when the coordination start-here experience changes materially.
 
 ## References
 - [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
+- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md)
 
 ## Updated At
-- `2026-03-10T19:06:55Z`
+- `2026-03-10T19:29:01Z`

@@ -1,4 +1,4 @@
-"""Coordinated rebuild helpers for task, initiative, and coordination surfaces."""
+"""Coordinated rebuild helpers for machine and human coordination surfaces."""
 
 from __future__ import annotations
 

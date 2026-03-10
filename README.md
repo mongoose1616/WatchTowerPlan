@@ -12,3 +12,8 @@
 | `docs/` | Holds durable repository documentation, standards, references, and templates. |
 | `workflows/` | Holds the routing table and task-execution workflow modules. |
 | `core/` | Holds shared implementation assets and the authored control-plane tree. |
+
+## Notes
+- Human start-here: `docs/planning/coordination_tracking.md`
+- Machine start-here: `cd core/python && uv run watchtower-core query coordination --format json`
+- Use family-specific planning directories only after the coordination surfaces point you to the deeper artifact set you need.

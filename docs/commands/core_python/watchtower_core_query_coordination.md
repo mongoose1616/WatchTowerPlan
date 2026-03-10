@@ -36,6 +36,7 @@ uv run watchtower-core query coordination [--query <text>] [--trace-id <trace_id
 ## Notes
 - This command defaults to active initiatives because it is the coordination start-here path.
 - The JSON output also carries top-level coordination state, recommended next action, actionable-task summaries, and recent closeout context.
+- `docs/planning/coordination_tracking.md` is the compact human companion view built from the same coordination state.
 - Use `watchtower-core query initiatives` when you want broader initiative-family lookup or exhaustive closed-history browsing.
 
 ## Examples
@@ -77,4 +78,4 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 - `core/control_plane/indexes/coordination/coordination_index.v1.json`
 
 ## Updated At
-- `2026-03-10T19:06:55Z`
+- `2026-03-10T19:29:01Z`

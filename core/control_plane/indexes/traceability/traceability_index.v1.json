@@ -446,7 +446,7 @@
       "summary": "Defines the work needed to publish one always-useful machine coordination surface, keep human planning entrypoints derived from it, and reduce planning-navigation sprawl before product implementation starts.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-10T19:20:47Z",
+      "updated_at": "2026-03-10T19:29:01Z",
       "prd_ids": [
         "prd.machine_first_coordination_surface"
       ],
@@ -516,9 +516,9 @@
         "docs/planning/prds/machine_first_coordination_surface.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
+        "docs/planning/tasks/closed/machine_first_coordination_entrypoints.md",
         "docs/planning/tasks/closed/machine_first_coordination_index.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
         "docs/planning/tasks/task_tracking.md",
         "workflows/"
       ],

@@ -6,7 +6,7 @@
 ## Notes
 - Start with `watchtower_core.md` for the root command and shared options.
 - Use the command-group pages before opening individual subcommand pages.
-- Use `watchtower_core_query_coordination.md` when the main question is which traced initiative is active and what should happen next.
+- Use `watchtower_core_query_coordination.md` when the main question is current planning state, next action, and active work context.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.
 
 ## Files

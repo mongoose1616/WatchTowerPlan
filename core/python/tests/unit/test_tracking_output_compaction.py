@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.sync.coordination_tracking import CoordinationTrackingSyncService
 from watchtower_core.repo_ops.sync.decision_tracking import DecisionTrackingSyncService
 from watchtower_core.repo_ops.sync.design_tracking import DesignTrackingSyncService
 from watchtower_core.repo_ops.sync.initiative_tracking import InitiativeTrackingSyncService
@@ -20,6 +21,7 @@ def test_generated_tracking_outputs_omit_old_boilerplate_sections() -> None:
         DesignTrackingSyncService(loader).build_document().content,
         TaskTrackingSyncService(loader).build_document().content,
         InitiativeTrackingSyncService(loader).build_document().content,
+        CoordinationTrackingSyncService(loader).build_document().content,
     )
 
     for content in contents:
@@ -37,6 +39,7 @@ def test_generated_tracking_outputs_use_links_and_not_placeholder_rows() -> None
         DesignTrackingSyncService(loader).build_document().content,
         TaskTrackingSyncService(loader).build_document().content,
         InitiativeTrackingSyncService(loader).build_document().content,
+        CoordinationTrackingSyncService(loader).build_document().content,
     )
 
     for content in contents:

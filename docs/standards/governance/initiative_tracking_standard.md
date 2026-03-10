@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T19:06:55Z"
+updated_at: "2026-03-10T19:29:01Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -27,7 +27,7 @@ aliases:
 This standard defines the repository's cross-family initiative tracking model so one trace can be followed from PRD through design, planning, execution, validation, and closeout.
 
 ## Purpose
-- Give humans one start-here surface for "what is this initiative, who owns it, what phase is it in, and what is next?"
+- Give humans one family-specific initiative view for "what is this initiative, who owns it, what phase is it in, and what is next?"
 - Preserve the current artifact-family structure for PRDs, decisions, designs, plans, and tasks instead of collapsing them into one mixed planning folder.
 - Publish one machine-readable initiative projection so the coordination layer and family-specific workflows do not have to reconstruct current phase and ownership from several indexes every time.
 - Keep `watchtower-core query coordination` pointed at the repo-level coordination index while preserving `query initiatives` as the initiative-family lookup surface.
@@ -46,6 +46,7 @@ This standard defines the repository's cross-family initiative tracking model so
 ## Related Standards and Sources
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): defines the trace spine and joined artifact expectations that initiative tracking projects from.
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): defines initiative-level closeout status and terminal-state requirements that the initiative view must mirror.
+- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md): defines the repo-level human start-here tracker that now sits above this family view.
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the authoritative local task layer that initiative owner and active-task projection must read from.
 - [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): defines the machine-readable initiative projection contract.
 - [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md): family tracker that remains the PRD-local view under the initiative layer.
@@ -61,6 +62,7 @@ This standard defines the repository's cross-family initiative tracking model so
   - designs and plans in `docs/planning/design/`
   - engineer-sized execution tasks in `docs/planning/tasks/`
 - Use the initiative layer as the cross-family coordination view, not as a replacement for those authored families.
+- Use `docs/planning/coordination_tracking.md` as the root human start-here surface for current planning state.
 - Treat the initiative index and initiative tracker as derived projections, not as the authoritative source for artifact content or task state.
 - Keep `initiative_tracking.md` compact and scan-first. Prefer brief zero-state text and linked key surfaces over repeated explanatory scaffolding.
 - Use `watchtower-core query coordination --format json` as the default machine start-here path for repo-level planning state.
@@ -120,7 +122,7 @@ This standard defines the repository's cross-family initiative tracking model so
 2. Rebuild the family-specific indexes and the unified traceability index when traced artifacts or tasks change materially.
 3. Rebuild the initiative index after those source surfaces change.
 4. Rebuild the human initiative tracker from the initiative index in the same change set.
-5. Use the initiative tracker as the primary human start-here surface for cross-family planning status.
+5. Use the initiative tracker as the deeper initiative-family view beneath `coordination_tracking.md`.
 
 ## Validation
 - Every initiative entry should correspond to one current traceability entry.
@@ -138,9 +140,10 @@ This standard defines the repository's cross-family initiative tracking model so
 ## References
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
+- [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md)
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
 - [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
 - [README.md](/home/j/WatchTowerPlan/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-10T19:06:55Z`
+- `2026-03-10T19:29:01Z`

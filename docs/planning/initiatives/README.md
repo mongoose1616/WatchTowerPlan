@@ -10,7 +10,8 @@
 | `docs/planning/initiatives/initiative_tracking.md` | Generated human-readable initiative board for current traced initiatives, their phases, active owners, and next steps. |
 
 ## Notes
-- Use this directory as the start-here planning surface for cross-family initiative status.
+- Use `docs/planning/coordination_tracking.md` as the root planning start-here surface.
+- Use this directory for the deeper initiative-family view beneath the root coordination tracker.
 - Use `uv run watchtower-core query coordination --format json` as the machine start-here path for current planning state.
 - Treat the family directories under `docs/planning/prds/`, `docs/planning/design/`, `docs/planning/decisions/`, and `docs/planning/tasks/` as the authored source surfaces.
 - Treat `initiative_tracking.md` as a derived projection, not as the source of truth for PRD, design, task, or closeout content.
