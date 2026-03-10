@@ -25,3 +25,4 @@
 | `core/python/tests/unit/test_schema_store.py` | Unit tests for schema-catalog-backed schema resolution and validation. |
 | `core/python/tests/unit/test_traceability_index_sync.py` | Unit tests for rebuilding the traceability index from governed source artifacts. |
 | `core/python/tests/unit/test_validation_evidence.py` | Unit tests for durable validation-evidence document building and write flows. |
+| `core/python/tests/unit/test_workspace_injection.py` | Unit tests for injected workspace mappings, logical artifact paths, and default artifact writes outside the fixed repo layout. |

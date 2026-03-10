@@ -2,5 +2,18 @@
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.schemas import SchemaStore
+from watchtower_core.control_plane.workspace import (
+    ArtifactSource,
+    ArtifactStore,
+    FileSystemArtifactIO,
+    WorkspaceConfig,
+)
 
-__all__ = ["ControlPlaneLoader", "SchemaStore"]
+__all__ = [
+    "ArtifactSource",
+    "ArtifactStore",
+    "ControlPlaneLoader",
+    "FileSystemArtifactIO",
+    "SchemaStore",
+    "WorkspaceConfig",
+]

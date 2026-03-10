@@ -46,16 +46,16 @@ def resolve_target_path(
     if raw_path.is_absolute():
         resolved_path = raw_path.resolve()
     else:
-        resolved_path = (loader.repo_root / raw_path).resolve()
+        resolved_path = loader.resolve_path(raw_path.as_posix()).resolve()
 
     if not resolved_path.exists() or not resolved_path.is_file():
         raise ValidationExecutionError(f"Target file does not exist: {path}")
 
     try:
-        relative_path = resolved_path.relative_to(loader.repo_root).as_posix()
-        return resolved_path, relative_path, relative_path
+        relative_path = loader.workspace_config.logical_path_for(resolved_path)
     except ValueError:
         return resolved_path, str(resolved_path), None
+    return resolved_path, relative_path, relative_path
 
 
 def iter_schema_validation_issues(

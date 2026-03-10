@@ -5,11 +5,11 @@ title: "Inject workspace config and artifact adapters"
 summary: "Replace implicit repo-root discovery with injected workspace configuration, artifact sources, and artifact stores so reusable services can run against non-WatchTowerPlan layouts."
 type: "task"
 status: "active"
-task_status: "backlog"
+task_status: "done"
 task_kind: "feature"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T04:28:34Z"
+updated_at: "2026-03-10T05:58:19Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -48,4 +48,4 @@ Replace implicit repo-root discovery with injected workspace configuration, arti
 - [control_plane_loaders_and_schema_store.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/control_plane_loaders_and_schema_store.md)
 
 ## Updated At
-- `2026-03-10T04:28:34Z`
+- `2026-03-10T05:58:19Z`

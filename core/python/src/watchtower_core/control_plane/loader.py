@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
@@ -25,8 +24,13 @@ from watchtower_core.control_plane.models import (
     ValidatorRegistry,
     WorkflowIndex,
 )
-from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.control_plane.schemas import SchemaStore
+from watchtower_core.control_plane.workspace import (
+    ArtifactSource,
+    ArtifactStore,
+    FileSystemArtifactIO,
+    WorkspaceConfig,
+)
 
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validators/validator_registry.v1.json"
 REPOSITORY_PATH_INDEX_PATH = (
@@ -56,24 +60,49 @@ class ControlPlaneLoader:
         self,
         repo_root: Path | None = None,
         schema_store: SchemaStore | None = None,
+        *,
+        workspace_config: WorkspaceConfig | None = None,
+        artifact_source: ArtifactSource | None = None,
+        artifact_store: ArtifactStore | None = None,
     ) -> None:
-        self.repo_root = discover_repo_root(repo_root)
-        self.schema_store = schema_store or SchemaStore.from_repo_root(self.repo_root)
+        effective_workspace = workspace_config or (
+            schema_store.workspace_config
+            if schema_store is not None
+            else WorkspaceConfig.from_repo_root(repo_root)
+        )
+        if (
+            workspace_config is not None
+            and schema_store is not None
+            and schema_store.workspace_config != workspace_config
+        ):
+            raise ValueError(
+                "ControlPlaneLoader received mismatched workspace_config and schema_store."
+            )
+
+        default_io = FileSystemArtifactIO(effective_workspace)
+        self.workspace_config = effective_workspace
+        self.repo_root = effective_workspace.repo_root
+        self.artifact_source = artifact_source or (
+            schema_store.artifact_source if schema_store is not None else default_io
+        )
+        self.artifact_store = artifact_store or default_io
+        self.schema_store = schema_store or SchemaStore.from_workspace(
+            effective_workspace,
+            artifact_source=self.artifact_source,
+        )
 
     def load_json_object(self, relative_path: str) -> dict[str, Any]:
         """Load a repository-relative JSON object."""
-        path = self.repo_root / relative_path
         try:
-            with path.open("r", encoding="utf-8") as handle:
-                loaded = json.load(handle)
+            return self.artifact_source.load_json_object(relative_path)
+        except ArtifactLoadError:
+            raise
         except FileNotFoundError as exc:
             raise ArtifactLoadError(f"Could not load governed artifact at {relative_path}") from exc
 
-        if not isinstance(loaded, dict):
-            raise ArtifactLoadError(
-                f"Expected JSON object at {relative_path}, found {type(loaded).__name__}"
-            )
-        return loaded
+    def resolve_path(self, relative_path: str) -> Path:
+        """Resolve one repository-relative path through the current workspace mapping."""
+        return self.workspace_config.resolve_path(relative_path)
 
     def load_validated_document(self, relative_path: str) -> dict[str, Any]:
         """Load and validate a governed artifact that declares its own $schema."""
@@ -159,11 +188,10 @@ class ControlPlaneLoader:
         relative_directory: str,
     ) -> tuple[tuple[str, dict[str, Any]], ...]:
         """Load and validate every JSON document directly under one governed directory."""
-        directory = self.repo_root / relative_directory
         documents: list[tuple[str, dict[str, Any]]] = []
-        for path in sorted(directory.glob("*.json")):
-            relative_path = path.relative_to(self.repo_root).as_posix()
-            documents.append((relative_path, self.load_validated_document(relative_path)))
+        for relative_path, document in self.artifact_source.iter_json_objects(relative_directory):
+            self.schema_store.validate_instance(document)
+            documents.append((relative_path, document))
         return tuple(documents)
 
     def load_acceptance_contracts(self) -> tuple[AcceptanceContract, ...]:

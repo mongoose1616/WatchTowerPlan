@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import re
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -179,9 +178,7 @@ class ValidationEvidenceRecorder:
         destination: Path,
     ) -> Path:
         """Write a validated JSON document to disk."""
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
-        return destination
+        return self._loader.artifact_store.write_json_file(destination, document)
 
     def record(
         self,
@@ -218,12 +215,24 @@ class ValidationEvidenceRecorder:
             updated_at=recorded_at,
         )
 
-        evidence_path = evidence_output or (self._loader.repo_root / evidence_relative_path)
-        traceability_path = traceability_output or (
-            self._loader.repo_root / TRACEABILITY_INDEX_PATH
-        )
-        self.write_document(document, destination=evidence_path)
-        self.write_document(updated_traceability, destination=traceability_path)
+        if evidence_output is None:
+            evidence_path = self._loader.artifact_store.write_json_object(
+                evidence_relative_path,
+                document,
+            )
+        else:
+            evidence_path = self.write_document(document, destination=evidence_output)
+
+        if traceability_output is None:
+            traceability_path = self._loader.artifact_store.write_json_object(
+                TRACEABILITY_INDEX_PATH,
+                updated_traceability,
+            )
+        else:
+            traceability_path = self.write_document(
+                updated_traceability,
+                destination=traceability_output,
+            )
         return EvidenceWriteResult(
             evidence_id=resolved_evidence_id,
             evidence_relative_path=evidence_relative_path,

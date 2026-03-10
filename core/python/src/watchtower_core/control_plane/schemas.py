@@ -2,31 +2,22 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
 from jsonschema import Draft202012Validator
 from referencing import Registry, Resource
 
-from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
+from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.models import SchemaCatalog, SchemaCatalogRecord
-from watchtower_core.control_plane.paths import control_plane_path, discover_repo_root
+from watchtower_core.control_plane.workspace import (
+    ArtifactSource,
+    FileSystemArtifactIO,
+    WorkspaceConfig,
+)
 
 SCHEMA_CATALOG_SCHEMA_PATH = "core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json"
 SCHEMA_CATALOG_ARTIFACT_PATH = "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
-
-
-def _load_json(path: Path) -> dict[str, Any]:
-    try:
-        with path.open("r", encoding="utf-8") as handle:
-            loaded = json.load(handle)
-    except FileNotFoundError as exc:
-        raise ArtifactLoadError(f"Could not load governed artifact at {path}") from exc
-
-    if not isinstance(loaded, dict):
-        raise ArtifactLoadError(f"Expected JSON object at {path}, found {type(loaded).__name__}")
-    return loaded
 
 
 class SchemaStore:
@@ -35,12 +26,15 @@ class SchemaStore:
     def __init__(
         self,
         *,
-        repo_root: Path,
+        workspace_config: WorkspaceConfig,
+        artifact_source: ArtifactSource,
         catalog: SchemaCatalog,
         schema_documents: dict[str, dict[str, Any]],
         registry: Registry,
     ) -> None:
-        self.repo_root = repo_root
+        self.workspace_config = workspace_config
+        self.repo_root = workspace_config.repo_root
+        self.artifact_source = artifact_source
         self.catalog = catalog
         self._schema_documents = schema_documents
         self._registry = registry
@@ -48,25 +42,27 @@ class SchemaStore:
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> SchemaStore:
         """Bootstrap the schema store from the local schema catalog."""
-        resolved_root = discover_repo_root(repo_root)
-        catalog_schema_path = control_plane_path(resolved_root, SCHEMA_CATALOG_SCHEMA_PATH)
-        catalog_artifact_path = control_plane_path(resolved_root, SCHEMA_CATALOG_ARTIFACT_PATH)
+        return cls.from_workspace(WorkspaceConfig.from_repo_root(repo_root))
 
-        catalog_schema = _load_json(catalog_schema_path)
-        catalog_document = _load_json(catalog_artifact_path)
+    @classmethod
+    def from_workspace(
+        cls,
+        workspace_config: WorkspaceConfig,
+        *,
+        artifact_source: ArtifactSource | None = None,
+    ) -> SchemaStore:
+        """Bootstrap the schema store from one injected workspace mapping."""
+        source = artifact_source or FileSystemArtifactIO(workspace_config)
+        catalog_schema = source.load_json_object(SCHEMA_CATALOG_SCHEMA_PATH)
+        catalog_document = source.load_json_object(SCHEMA_CATALOG_ARTIFACT_PATH)
         Draft202012Validator(catalog_schema).validate(catalog_document)
 
-        catalog = SchemaCatalog.from_document(catalog_document, resolved_root)
+        catalog = SchemaCatalog.from_document(catalog_document, workspace_config)
         schema_documents: dict[str, dict[str, Any]] = {}
         registry = Registry()
 
         for record in catalog.records:
-            if not record.canonical_path.exists():
-                raise SchemaResolutionError(
-                    f"Cataloged schema path does not exist: {record.canonical_relative_path}"
-                )
-
-            schema_document = _load_json(record.canonical_path)
+            schema_document = source.load_json_object(record.canonical_relative_path)
             schema_id = schema_document.get("$id")
             if schema_id != record.schema_id:
                 raise SchemaResolutionError(
@@ -82,7 +78,8 @@ class SchemaStore:
             )
 
         return cls(
-            repo_root=resolved_root,
+            workspace_config=workspace_config,
+            artifact_source=source,
             catalog=catalog,
             schema_documents=schema_documents,
             registry=registry,

@@ -82,8 +82,8 @@
       "status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-10T05:45:03Z",
-      "open_task_count": 3,
+      "updated_at": "2026-03-10T05:58:19Z",
+      "open_task_count": 2,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/core_export_readiness_and_optimization.md",
       "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
@@ -94,8 +94,7 @@
       ],
       "active_task_ids": [
         "task.core_export_readiness_and_optimization.pack_interfaces.001",
-        "task.core_export_readiness_and_optimization.retrieval_and_coordination.001",
-        "task.core_export_readiness_and_optimization.workspace_injection.001"
+        "task.core_export_readiness_and_optimization.retrieval_and_coordination.001"
       ],
       "prd_ids": [
         "prd.core_export_readiness_and_optimization"
@@ -166,10 +165,10 @@
         "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
         "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
         "docs/planning/tasks/closed/core_export_sync_validation_registries.md",
+        "docs/planning/tasks/closed/core_export_workspace_injection.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/core_export_pack_interfaces.md",
         "docs/planning/tasks/open/core_export_retrieval_and_coordination.md",
-        "docs/planning/tasks/open/core_export_workspace_injection.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/engineering/",

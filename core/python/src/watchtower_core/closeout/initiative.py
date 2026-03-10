@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass
 
 from watchtower_core.control_plane.loader import (
@@ -100,10 +99,9 @@ class InitiativeCloseoutService:
         decision_tracking_output_path: str | None = None
         design_tracking_output_path: str | None = None
         if write:
-            traceability_path = self._loader.repo_root / TRACEABILITY_INDEX_PATH
-            traceability_path.write_text(
-                f"{json.dumps(document, indent=2)}\n",
-                encoding="utf-8",
+            traceability_path = self._loader.artifact_store.write_json_object(
+                TRACEABILITY_INDEX_PATH,
+                document,
             )
             traceability_output_path = str(traceability_path)
 
@@ -153,8 +151,7 @@ class InitiativeCloseoutService:
         )
 
     def _load_current_document(self) -> dict[str, object]:
-        path = self._loader.repo_root / TRACEABILITY_INDEX_PATH
-        loaded = json.loads(path.read_text(encoding="utf-8"))
+        loaded = self._loader.load_json_object(TRACEABILITY_INDEX_PATH)
         if not isinstance(loaded, dict):
             raise ValueError("Traceability index is not a JSON object.")
         return loaded

@@ -2032,6 +2032,13 @@
       "parent_path": "core/python/tests/unit/"
     },
     {
+      "path": "core/python/tests/unit/test_workspace_injection.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for injected workspace mappings, logical artifact paths, and default artifact writes outside the fixed repo layout.",
+      "parent_path": "core/python/tests/unit/"
+    },
+    {
       "path": "core/python/tools/",
       "kind": "directory",
       "surface_kind": "python_workspace",

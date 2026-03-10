@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from watchtower_core.control_plane.workspace import WorkspaceConfig
+
 
 @dataclass(frozen=True, slots=True)
 class SchemaCatalogRecord:
@@ -24,7 +26,11 @@ class SchemaCatalogRecord:
     notes: str | None = None
 
     @classmethod
-    def from_document(cls, document: dict[str, Any], repo_root: Path) -> SchemaCatalogRecord:
+    def from_document(
+        cls,
+        document: dict[str, Any],
+        workspace_config: WorkspaceConfig,
+    ) -> SchemaCatalogRecord:
         return cls(
             schema_id=document["schema_id"],
             title=document["title"],
@@ -34,7 +40,7 @@ class SchemaCatalogRecord:
             subject_kind=document["subject_kind"],
             version=document["version"],
             canonical_relative_path=document["canonical_path"],
-            canonical_path=repo_root / document["canonical_path"],
+            canonical_path=workspace_config.resolve_path(document["canonical_path"]),
             aliases=tuple(document.get("aliases", ())),
             notes=document.get("notes"),
         )
@@ -51,9 +57,14 @@ class SchemaCatalog:
     records: tuple[SchemaCatalogRecord, ...]
 
     @classmethod
-    def from_document(cls, document: dict[str, Any], repo_root: Path) -> SchemaCatalog:
+    def from_document(
+        cls,
+        document: dict[str, Any],
+        workspace_config: WorkspaceConfig,
+    ) -> SchemaCatalog:
         records = tuple(
-            SchemaCatalogRecord.from_document(record, repo_root) for record in document["schemas"]
+            SchemaCatalogRecord.from_document(record, workspace_config)
+            for record in document["schemas"]
         )
         return cls(
             schema_id=document["$schema"],

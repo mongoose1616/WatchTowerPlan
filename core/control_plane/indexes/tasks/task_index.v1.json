@@ -209,12 +209,12 @@
       "title": "Inject workspace config and artifact adapters",
       "summary": "Replace implicit repo-root discovery with injected workspace configuration, artifact sources, and artifact stores so reusable services can run against non-WatchTowerPlan layouts.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/core_export_workspace_injection.md",
-      "updated_at": "2026-03-10T04:28:34Z",
+      "doc_path": "docs/planning/tasks/closed/core_export_workspace_injection.md",
+      "updated_at": "2026-03-10T05:58:19Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "depends_on": [
         "task.core_export_readiness_and_optimization.repo_ops_boundary.001"

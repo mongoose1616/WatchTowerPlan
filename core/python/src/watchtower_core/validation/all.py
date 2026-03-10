@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from pathlib import Path
 from typing import cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -272,7 +271,6 @@ class ValidationAllService:
 
     def _artifact_targets(self) -> tuple[str, ...]:
         registry = self._loader.load_validator_registry()
-        repo_root = self._loader.repo_root
         ordered_paths: list[str] = []
         seen: set[str] = set()
         for validator in registry.validators:
@@ -283,7 +281,7 @@ class ValidationAllService:
             if validator.artifact_kind == "documentation_front_matter":
                 continue
             for pattern in validator.applies_to:
-                for relative_path in self._artifact_paths_for_pattern(repo_root, pattern):
+                for relative_path in self._artifact_paths_for_pattern(pattern):
                     if relative_path in seen:
                         continue
                     seen.add(relative_path)
@@ -341,17 +339,16 @@ class ValidationAllService:
 
     def _artifact_paths_for_pattern(
         self,
-        repo_root: Path,
         pattern: str,
     ) -> tuple[str, ...]:
         if pattern.endswith("/**"):
             relative_root = pattern.removesuffix("/**")
             return tuple(
-                path.relative_to(repo_root).as_posix()
-                for path in sorted((repo_root / relative_root).glob("*.json"))
+                self._loader.workspace_config.logical_path_for(path)
+                for path in sorted(self._loader.resolve_path(relative_root).glob("*.json"))
             )
         if pattern.endswith(".json"):
-            path = repo_root / pattern
+            path = self._loader.resolve_path(pattern)
             if path.exists():
                 return (pattern,)
             return ()
