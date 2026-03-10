@@ -1,0 +1,121 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.core_export_hardening_followup.planning_baseline",
+  "title": "Core Export Hardening Follow-Up Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.core_export_hardening_followup",
+  "overall_result": "warning",
+  "recorded_at": "2026-03-10T15:24:07Z",
+  "source_prd_ids": [
+    "prd.core_export_hardening_followup"
+  ],
+  "source_design_ids": [
+    "design.features.core_export_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.core_export_hardening_execution"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.core_export_hardening_followup"
+  ],
+  "checks": [
+    {
+      "check_id": "check.core_export_hardening_followup.planning_chain",
+      "title": "Planning corpus baseline",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/design/implementation/core_export_hardening_execution.md",
+        "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+        "docs/planning/tasks/open/core_export_sync_output_snapshots.md",
+        "docs/planning/tasks/open/core_export_command_source_metadata.md",
+        "docs/planning/tasks/open/core_export_public_api_boundary.md"
+      ],
+      "subject_ids": [
+        "prd.core_export_hardening_followup",
+        "design.features.core_export_hardening",
+        "design.implementation.core_export_hardening_execution",
+        "task.core_export_hardening_followup.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_hardening_followup.001"
+      ],
+      "notes": "The follow-up hardening initiative now has its traced planning chain, a closed bootstrap task, and one open implementation task per review finding."
+    },
+    {
+      "check_id": "check.core_export_hardening_followup.output_dir_sync_plan",
+      "title": "Output-directory sync fix scoped",
+      "result": "warning",
+      "subject_paths": [
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/tasks/open/core_export_sync_output_snapshots.md"
+      ],
+      "subject_ids": [
+        "design.features.core_export_hardening",
+        "task.core_export_hardening_followup.sync_output_dir.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_hardening_followup.002"
+      ],
+      "notes": "The snapshot overlay approach and regression target are defined, but the implementation has not landed yet."
+    },
+    {
+      "check_id": "check.core_export_hardening_followup.command_metadata_plan",
+      "title": "Command metadata repair scoped",
+      "result": "warning",
+      "subject_paths": [
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/tasks/open/core_export_command_source_metadata.md"
+      ],
+      "subject_ids": [
+        "design.features.core_export_hardening",
+        "task.core_export_hardening_followup.command_metadata.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_hardening_followup.003"
+      ],
+      "notes": "The command-family implementation-path fix is planned but not implemented yet."
+    },
+    {
+      "check_id": "check.core_export_hardening_followup.public_boundary_plan",
+      "title": "Public boundary cleanup scoped",
+      "result": "warning",
+      "subject_paths": [
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/tasks/open/core_export_public_api_boundary.md"
+      ],
+      "subject_ids": [
+        "design.features.core_export_hardening",
+        "task.core_export_hardening_followup.public_api_boundary.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_hardening_followup.004"
+      ],
+      "notes": "The repo-specific import cleanup and top-level export hardening are planned but not implemented yet."
+    },
+    {
+      "check_id": "check.core_export_hardening_followup.validation_baseline",
+      "title": "Current workspace validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_hardening_followup.005"
+      ],
+      "notes": "The repo is green at bootstrap and ready for bounded hardening slices."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/core_export_hardening_followup_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning-baseline evidence for the post-review export hardening initiative. The implementation work is still open, so the evidence remains warning until the three bounded slices land and validate."
+}

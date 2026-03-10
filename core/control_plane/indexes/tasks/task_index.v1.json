@@ -47,6 +47,109 @@
       ]
     },
     {
+      "task_id": "task.core_export_hardening_followup.bootstrap.001",
+      "title": "Bootstrap the core export hardening follow-up initiative",
+      "summary": "Create the traced planning chain, acceptance baseline, and bounded implementation task set for the export-hardening follow-up work.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+      "updated_at": "2026-03-10T15:24:07Z",
+      "trace_id": "trace.core_export_hardening_followup",
+      "related_ids": [
+        "prd.core_export_hardening_followup",
+        "design.features.core_export_hardening",
+        "design.implementation.core_export_hardening_execution"
+      ],
+      "applies_to": [
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/design/implementation/core_export_hardening_execution.md",
+        "core/control_plane/contracts/acceptance/core_export_hardening_followup_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/core_export_hardening_followup_planning_baseline.v1.json",
+        "docs/planning/tasks/open/"
+      ]
+    },
+    {
+      "task_id": "task.core_export_hardening_followup.command_metadata.001",
+      "title": "Repair command implementation metadata",
+      "summary": "Publish command-family implementation paths in command metadata instead of pointing every command at the thin root CLI entrypoint.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_command_source_metadata.md",
+      "updated_at": "2026-03-10T15:24:07Z",
+      "trace_id": "trace.core_export_hardening_followup",
+      "depends_on": [
+        "task.core_export_hardening_followup.sync_output_dir.001"
+      ],
+      "related_ids": [
+        "prd.core_export_hardening_followup",
+        "design.features.core_export_hardening",
+        "design.implementation.core_export_hardening_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.core_export_hardening_followup.public_api_boundary.001",
+      "title": "Harden the public export-safe API boundary",
+      "summary": "Move repo-specific consumers onto repo_ops surfaces and stop advertising repo-specific query, sync, and aggregate validation APIs from top-level export-safe namespaces.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_public_api_boundary.md",
+      "updated_at": "2026-03-10T15:24:07Z",
+      "trace_id": "trace.core_export_hardening_followup",
+      "depends_on": [
+        "task.core_export_hardening_followup.command_metadata.001"
+      ],
+      "related_ids": [
+        "prd.core_export_hardening_followup",
+        "design.features.core_export_hardening",
+        "design.implementation.core_export_hardening_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.core_export_hardening_followup.sync_output_dir.001",
+      "title": "Make output-directory sync snapshots dependency-correct",
+      "summary": "Ensure sync output directories feed later dependent targets from the materialized snapshot instead of stale canonical derived artifacts.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_export_sync_output_snapshots.md",
+      "updated_at": "2026-03-10T15:24:07Z",
+      "trace_id": "trace.core_export_hardening_followup",
+      "related_ids": [
+        "prd.core_export_hardening_followup",
+        "design.features.core_export_hardening",
+        "design.implementation.core_export_hardening_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/control_plane/workspace.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/unit/test_all_sync.py"
+      ]
+    },
+    {
       "task_id": "task.core_export_readiness_and_optimization.bootstrap.001",
       "title": "Bootstrap the core export readiness and optimization initiative",
       "summary": "Creates the initiative's PRD, feature design, implementation plan, acceptance baseline artifacts, open execution tasks, and git workflow standard so export-readiness work can proceed from governed local surfaces.",

@@ -5,6 +5,49 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.core_export_hardening_followup",
+      "prd_id": "prd.core_export_hardening_followup",
+      "title": "Core Export Hardening Follow-Up PRD",
+      "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/core_export_hardening_followup.md",
+      "updated_at": "2026-03-10T15:24:07Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.core_export_hardening_followup.001",
+        "req.core_export_hardening_followup.002",
+        "req.core_export_hardening_followup.003",
+        "req.core_export_hardening_followup.004"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_hardening_followup.001",
+        "ac.core_export_hardening_followup.002",
+        "ac.core_export_hardening_followup.003",
+        "ac.core_export_hardening_followup.004",
+        "ac.core_export_hardening_followup.005"
+      ],
+      "linked_design_ids": [
+        "design.features.core_export_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.core_export_hardening_execution"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/design/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md"
+      ]
+    },
+    {
       "trace_id": "trace.core_export_readiness_and_optimization",
       "prd_id": "prd.core_export_readiness_and_optimization",
       "title": "Core Export Readiness and Optimization PRD",

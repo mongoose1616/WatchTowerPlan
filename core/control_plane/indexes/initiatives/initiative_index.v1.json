@@ -76,6 +76,98 @@
       ]
     },
     {
+      "trace_id": "trace.core_export_hardening_followup",
+      "title": "Core Export Hardening Follow-Up PRD",
+      "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T15:24:07Z",
+      "open_task_count": 3,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
+      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+      "next_surface_path": "docs/planning/tasks/open/core_export_command_source_metadata.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.core_export_hardening_followup.command_metadata.001",
+        "task.core_export_hardening_followup.public_api_boundary.001",
+        "task.core_export_hardening_followup.sync_output_dir.001"
+      ],
+      "prd_ids": [
+        "prd.core_export_hardening_followup"
+      ],
+      "design_ids": [
+        "design.features.core_export_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.core_export_hardening_execution"
+      ],
+      "task_ids": [
+        "task.core_export_hardening_followup.bootstrap.001",
+        "task.core_export_hardening_followup.command_metadata.001",
+        "task.core_export_hardening_followup.public_api_boundary.001",
+        "task.core_export_hardening_followup.sync_output_dir.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_hardening_followup.001",
+        "ac.core_export_hardening_followup.002",
+        "ac.core_export_hardening_followup.003",
+        "ac.core_export_hardening_followup.004",
+        "ac.core_export_hardening_followup.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_export_hardening_followup"
+      ],
+      "evidence_ids": [
+        "evidence.core_export_hardening_followup.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/core_export_hardening_followup_acceptance.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/core_export_hardening_followup_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/workspace.py",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "core/python/tests/unit/test_all_sync.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_sync_all.md",
+        "docs/commands/core_python/watchtower_core_sync_coordination.md",
+        "docs/planning/",
+        "docs/planning/design/",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/design/implementation/core_export_hardening_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/core_export_command_source_metadata.md",
+        "docs/planning/tasks/open/core_export_public_api_boundary.md",
+        "docs/planning/tasks/open/core_export_sync_output_snapshots.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the post-review export hardening initiative. The implementation work is still open, so the evidence remains warning until the three bounded slices land and validate."
+    },
+    {
       "trace_id": "trace.core_export_readiness_and_optimization",
       "title": "Core Export Readiness and Optimization PRD",
       "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",

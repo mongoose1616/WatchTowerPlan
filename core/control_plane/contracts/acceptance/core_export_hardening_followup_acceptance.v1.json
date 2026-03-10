@@ -1,0 +1,99 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.core_export_hardening_followup",
+  "title": "Core Export Hardening Follow-Up Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.core_export_hardening_followup",
+  "source_prd_id": "prd.core_export_hardening_followup",
+  "entries": [
+    {
+      "acceptance_id": "ac.core_export_hardening_followup.001",
+      "summary": "The planning corpus publishes an active PRD, feature design, implementation plan, closed bootstrap task, and durable task set for the follow-up hardening initiative.",
+      "source_requirement_ids": [
+        "req.core_export_hardening_followup.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/design/implementation/core_export_hardening_execution.md",
+        "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+        "docs/planning/tasks/"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_hardening_followup.002",
+      "summary": "Output-directory sync runs read dependency inputs from the materialized snapshot when later targets depend on earlier generated artifacts.",
+      "source_requirement_ids": [
+        "req.core_export_hardening_followup.001",
+        "req.core_export_hardening_followup.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/workspace.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "docs/planning/tasks/open/core_export_sync_output_snapshots.md"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/test_all_sync.py",
+        "docs/commands/core_python/watchtower_core_sync_all.md",
+        "docs/commands/core_python/watchtower_core_sync_coordination.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_hardening_followup.003",
+      "summary": "Command metadata publishes useful command-family implementation paths instead of pointing every command at the thin root CLI entrypoint.",
+      "source_requirement_ids": [
+        "req.core_export_hardening_followup.002",
+        "req.core_export_hardening_followup.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+        "docs/planning/tasks/open/core_export_command_source_metadata.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "docs/commands/core_python/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_hardening_followup.004",
+      "summary": "Top-level export-safe Python namespaces no longer advertise repo-specific query, sync, or aggregate validation services as reusable APIs.",
+      "source_requirement_ids": [
+        "req.core_export_hardening_followup.003",
+        "req.core_export_hardening_followup.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "docs/planning/tasks/open/core_export_public_api_boundary.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.core_export_hardening_followup.005",
+      "summary": "The repository stays green on the current validation baseline while the hardening follow-up lands and closes.",
+      "source_requirement_ids": [
+        "req.core_export_hardening_followup.004"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/",
+        "core/python/tests/"
+      ]
+    }
+  ]
+}
