@@ -1,9 +1,7 @@
 # Task Tracking
 
 ## Open Tasks
-| Task | Status | Priority | Owner | Trace ID | Summary |
-| --- | --- | --- | --- | --- | --- |
-| [task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_query_cli_modularity.md) | `ready` | `medium` | `repository_maintainer` | `trace.end_to_end_repo_review_and_rationalization` | Reduce maintenance risk in the largest remaining CLI modules by splitting query parser registration and query runtime handlers into smaller family-focused modules without changing the durable command contract. |
+_No open tasks._
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -36,10 +34,11 @@
 | [task.core_export_hardening_followup.command_metadata.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/core_export_command_source_metadata.md) | `done` | `medium` | `repository_maintainer` | `trace.core_export_hardening_followup` | Publish command-family implementation paths in command metadata instead of pointing every command at the thin root CLI entrypoint. |
 | [task.core_export_readiness_and_optimization.retrieval_and_coordination.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/core_export_retrieval_and_coordination.md) | `done` | `medium` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | Extend retrieval indexes with stronger authority hints and add a deterministic coordination rebuild slice for task, traceability, and initiative surfaces. |
 | [task.core_export_readiness_and_optimization.sync_validation_registries.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/core_export_sync_validation_registries.md) | `done` | `medium` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | Introduce governed sync-family and validation-family registries so orchestration, listing, and coverage checks no longer depend on duplicated manual enumerations. |
+| [task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/end_to_end_query_cli_modularity.md) | `done` | `medium` | `repository_maintainer` | `trace.end_to_end_repo_review_and_rationalization` | Reduce maintenance risk in the largest remaining CLI modules by splitting query parser registration and query runtime handlers into smaller family-focused modules without changing the durable command contract. |
 | [task.github_collaboration.followup.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_collaboration_followup.md) | `done` | `medium` | `repository_maintainer` | `trace.github_collaboration` | Tracks the remaining closeout and verification follow-up for the GitHub collaboration scaffolding initiative. |
 | [task.initiative_closeout.followup.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/initiative_closeout_followup.md) | `done` | `medium` | `repository_maintainer` | `trace.initiative_closeout` | Tracks the remaining closeout and verification follow-up for the initiative closeout and planning tracker initiative. |
 | [task.local_task_tracking.github_sync.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_task_sync.md) | `done` | `medium` | `repository_maintainer` | `trace.local_task_tracking` | Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity. |
 | [task.machine_first_coordination_surface.entrypoints.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/machine_first_coordination_entrypoints.md) | `done` | `medium` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Generate a compact human coordination tracker and reroute planning and agent entrypoint guidance so humans and agents start from the same derived coordination state. |
 | [task.template_and_output_efficiency.workflow_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.template_and_output_efficiency` | Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content. |
 
-_Updated At: `2026-03-10T21:58:00Z`_
+_Updated At: `2026-03-10T22:12:00Z`_

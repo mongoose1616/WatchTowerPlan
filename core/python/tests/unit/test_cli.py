@@ -5,6 +5,9 @@ from pathlib import Path
 
 from watchtower_core.cli import handlers
 from watchtower_core.cli.main import main
+from watchtower_core.cli.query_coordination_handlers import (
+    _run_query_coordination as split_query_coordination,
+)
 from watchtower_core.cli.query_handlers import _run_query_coordination
 
 
@@ -34,6 +37,10 @@ def test_doctor_command_supports_json_output(capsys) -> None:
 
 def test_legacy_handler_facade_reexports_split_handler_modules() -> None:
     assert handlers._run_query_coordination is _run_query_coordination
+
+
+def test_query_handler_facade_reexports_split_query_modules() -> None:
+    assert _run_query_coordination is split_query_coordination
 
 
 def test_root_command_prints_help(capsys) -> None:

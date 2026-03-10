@@ -5,11 +5,11 @@ title: "Split query CLI registration and handlers into smaller family modules"
 summary: "Reduce maintenance risk in the largest remaining CLI modules by splitting query parser registration and query runtime handlers into smaller family-focused modules without changing the durable command contract."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "chore"
 priority: "medium"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T19:43:34Z"
+updated_at: "2026-03-10T22:12:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -40,9 +40,14 @@ Reduce maintenance risk in the largest remaining CLI modules by splitting query 
 - Query command behavior and output contracts stay stable.
 - Docs and tests stay green after the refactor.
 
+## Notes
+- Split query parser registration into discovery, knowledge, records, and coordination modules while preserving the top-level `query` command contract.
+- Split runtime handlers along the same boundaries and kept `query_handlers.py` as a thin compatibility facade for legacy imports.
+- Added a compatibility regression test and reran the CLI-focused unit suite, mypy, and ruff against the refactor.
+
 ## Links
 - [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)
 - [end_to_end_repo_rationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)
 
 ## Updated At
-- `2026-03-10T19:43:34Z`
+- `2026-03-10T22:12:00Z`

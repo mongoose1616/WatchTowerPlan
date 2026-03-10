@@ -471,12 +471,12 @@
       "title": "Split query CLI registration and handlers into smaller family modules",
       "summary": "Reduce maintenance risk in the largest remaining CLI modules by splitting query parser registration and query runtime handlers into smaller family-focused modules without changing the durable command contract.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "chore",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
-      "updated_at": "2026-03-10T19:43:34Z",
+      "doc_path": "docs/planning/tasks/closed/end_to_end_query_cli_modularity.md",
+      "updated_at": "2026-03-10T22:12:00Z",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "depends_on": [
         "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
