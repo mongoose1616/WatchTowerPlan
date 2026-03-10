@@ -3482,6 +3482,46 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_task.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for task lifecycle commands that mutate governed local task records in dry-run or write mode.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_task_create.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Create one governed task document from compact structured inputs.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_task_transition.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Apply a bounded handoff-style status or ownership transition to one task.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_task_update.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Apply structured field and body updates to one governed task record.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_validate.md",
       "kind": "file",
       "surface_kind": "command_doc",

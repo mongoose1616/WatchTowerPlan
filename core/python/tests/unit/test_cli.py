@@ -65,6 +65,10 @@ def test_root_command_prints_help(capsys) -> None:
     )
     assert "uv run watchtower-core query foundations --query philosophy" in captured.out
     assert "uv run watchtower-core query workflows --query validation" in captured.out
+    assert (
+        "uv run watchtower-core task transition --task-id task.example.001 "
+        "--task-status done --format json" in captured.out
+    )
     assert "uv run watchtower-core sync standard-index" in captured.out
     assert "uv run watchtower-core sync foundation-index" in captured.out
     assert "uv run watchtower-core sync workflow-index" in captured.out
@@ -117,6 +121,18 @@ def test_route_group_prints_group_specific_help(capsys) -> None:
     assert "Preview the workflow modules that the current routing surfaces would" in captured.out
     assert "preview" in captured.out
     assert "uv run watchtower-core route preview --request" in captured.out
+
+
+def test_task_group_prints_group_specific_help(capsys) -> None:
+    result = main(["task"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Create, update, and transition governed local task records" in captured.out
+    assert "create" in captured.out
+    assert "update" in captured.out
+    assert "transition" in captured.out
+    assert "uv run watchtower-core task create --task-id task.example.001" in captured.out
 
 
 def test_sync_group_prints_group_specific_help(capsys) -> None:
@@ -235,6 +251,42 @@ def test_route_preview_supports_json_output(capsys) -> None:
         workflow["workflow_id"] == "workflow.repository_review"
         for workflow in payload["selected_workflows"]
     )
+
+
+def test_task_create_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "task",
+            "create",
+            "--task-id",
+            "task.cli_preview.example.001",
+            "--title",
+            "Preview the task command",
+            "--summary",
+            "Previews the task create command without writing a file.",
+            "--task-kind",
+            "documentation",
+            "--priority",
+            "medium",
+            "--owner",
+            "repository_maintainer",
+            "--scope",
+            "Preview the create command.",
+            "--done-when",
+            "The dry-run payload is returned.",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core task create"
+    assert payload["status"] == "ok"
+    assert payload["task_id"] == "task.cli_preview.example.001"
+    assert payload["wrote"] is False
+    assert payload["changed"] is True
 
 
 def test_query_commands_supports_json_output(capsys) -> None:

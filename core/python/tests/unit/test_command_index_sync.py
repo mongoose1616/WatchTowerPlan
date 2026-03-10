@@ -47,6 +47,10 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert "command.watchtower_core" in spec_by_id
     assert "command.watchtower_core.route" in spec_by_id
     assert "command.watchtower_core.route.preview" in spec_by_id
+    assert "command.watchtower_core.task" in spec_by_id
+    assert "command.watchtower_core.task.create" in spec_by_id
+    assert "command.watchtower_core.task.update" in spec_by_id
+    assert "command.watchtower_core.task.transition" in spec_by_id
     assert "command.watchtower_core.sync.command_index" in spec_by_id
     assert "command.watchtower_core.sync.route_index" in spec_by_id
     assert (
@@ -64,6 +68,22 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     assert (
         spec_by_id["command.watchtower_core.route.preview"].implementation_path
         == "core/python/src/watchtower_core/cli/route_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.task"].implementation_path
+        == "core/python/src/watchtower_core/cli/task_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.task.create"].implementation_path
+        == "core/python/src/watchtower_core/cli/task_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.task.update"].implementation_path
+        == "core/python/src/watchtower_core/cli/task_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.task.transition"].implementation_path
+        == "core/python/src/watchtower_core/cli/task_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.query.commands"].implementation_path

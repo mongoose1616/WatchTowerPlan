@@ -3,6 +3,7 @@
 from watchtower_core.adapters.front_matter import (
     FrontMatterParseError,
     load_front_matter,
+    render_front_matter,
     replace_front_matter,
 )
 from watchtower_core.adapters.markdown import (
@@ -38,6 +39,7 @@ __all__ = [
     "load_markdown_body",
     "normalize_repo_path_reference",
     "parse_markdown_table",
+    "render_front_matter",
     "replace_front_matter",
     "split_semicolon_list",
 ]

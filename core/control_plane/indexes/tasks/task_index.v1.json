@@ -986,12 +986,12 @@
       "title": "Add task lifecycle CLI commands",
       "summary": "Expose task creation, structured task updates, and handoff-style transitions through a first-class CLI family while preserving task-document authority.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/workflow_task_cli.md",
-      "updated_at": "2026-03-10T21:59:21Z",
+      "doc_path": "docs/planning/tasks/closed/workflow_task_cli.md",
+      "updated_at": "2026-03-10T23:01:32Z",
       "trace_id": "trace.workflow_system_operationalization",
       "depends_on": [
         "task.workflow_system_operationalization.bootstrap.001"

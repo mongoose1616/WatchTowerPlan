@@ -811,7 +811,7 @@
       "summary": "Defines the follow-up work needed to make workflow routing, planning scaffolding, and task lifecycle handling executable, machine-readable, and easier to use before WatchTower implementation begins.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-10T23:00:00Z",
+      "updated_at": "2026-03-10T23:01:32Z",
       "prd_ids": [
         "prd.workflow_system_operationalization"
       ],
@@ -876,10 +876,10 @@
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/workflow_route_preview_and_metadata.md",
         "docs/planning/tasks/closed/workflow_system_bootstrap.md",
+        "docs/planning/tasks/closed/workflow_task_cli.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/workflow_planning_scaffolds.md",
         "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
-        "docs/planning/tasks/open/workflow_task_cli.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/references/",
         "docs/standards/",

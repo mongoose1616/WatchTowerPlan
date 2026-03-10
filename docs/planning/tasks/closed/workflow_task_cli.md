@@ -1,28 +1,29 @@
 ---
-id: "task.workflow_system_operationalization.task_cli.001"
-trace_id: "trace.workflow_system_operationalization"
-title: "Add task lifecycle CLI commands"
-summary: "Expose task creation, structured task updates, and handoff-style transitions through a first-class CLI family while preserving task-document authority."
-type: "task"
-status: "active"
-task_status: "backlog"
-task_kind: "feature"
-priority: "high"
-owner: "repository_maintainer"
-updated_at: "2026-03-10T21:59:21Z"
-audience: "shared"
-authority: "authoritative"
+id: task.workflow_system_operationalization.task_cli.001
+trace_id: trace.workflow_system_operationalization
+title: Add task lifecycle CLI commands
+summary: Expose task creation, structured task updates, and handoff-style transitions
+  through a first-class CLI family while preserving task-document authority.
+type: task
+status: active
+task_status: done
+task_kind: feature
+priority: high
+owner: repository_maintainer
+updated_at: '2026-03-10T23:01:32Z'
+audience: shared
+authority: authoritative
 applies_to:
-  - "docs/planning/tasks/"
-  - "core/control_plane/indexes/tasks/"
-  - "core/python/src/watchtower_core/"
-  - "docs/commands/core_python/"
+- docs/planning/tasks/
+- core/control_plane/indexes/tasks/
+- core/python/src/watchtower_core/
+- docs/commands/core_python/
 related_ids:
-  - "prd.workflow_system_operationalization"
-  - "design.features.workflow_routing_and_authoring"
-  - "design.implementation.workflow_system_operationalization_execution"
+- prd.workflow_system_operationalization
+- design.features.workflow_routing_and_authoring
+- design.implementation.workflow_system_operationalization_execution
 depends_on:
-  - "task.workflow_system_operationalization.bootstrap.001"
+- task.workflow_system_operationalization.bootstrap.001
 ---
 
 # Add task lifecycle CLI commands
@@ -45,4 +46,4 @@ Expose task creation, structured task updates, and handoff-style transitions thr
 - [workflow_system_operationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/workflow_system_operationalization_execution.md)
 
 ## Updated At
-- `2026-03-10T21:59:21Z`
+- `2026-03-10T23:01:32Z`

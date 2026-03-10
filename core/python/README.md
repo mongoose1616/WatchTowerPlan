@@ -46,6 +46,7 @@
 - `uv run watchtower-core query standards --category governance --format json`
 - `uv run watchtower-core query tasks --task-status backlog`
 - `uv run watchtower-core query tasks --blocked-only --include-dependency-details`
+- `uv run watchtower-core task transition --task-id task.example.001 --task-status done --format json`
 - `uv run watchtower-core query acceptance --trace-id trace.core_python_foundation`
 - `uv run watchtower-core query evidence --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core query initiatives --current-phase execution`
@@ -69,6 +70,7 @@
 - Open [watchtower_core_route.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
 - Use the group pages for deeper browsing:
   - [watchtower_core_query.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query.md)
+  - [watchtower_core_task.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_task.md)
   - [watchtower_core_sync.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync.md)
   - [watchtower_core_validate.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_validate.md)
   - [watchtower_core_closeout.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout.md)

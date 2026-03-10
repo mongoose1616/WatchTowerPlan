@@ -13,6 +13,7 @@ from watchtower_core.adapters import (
     extract_updated_at_from_section,
     load_front_matter,
     load_markdown_body,
+    render_front_matter,
     replace_front_matter,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -265,6 +266,25 @@ def update_task_document_front_matter(
     return True
 
 
+def write_task_document(
+    loader: ControlPlaneLoader,
+    relative_path: str,
+    *,
+    front_matter: Mapping[str, Any],
+    sections: Mapping[str, str],
+) -> None:
+    """Write one governed task document from front matter and rendered sections."""
+    title = _required_string(dict(front_matter), "title", path=relative_path)
+    ordered_front_matter = _ordered_front_matter(front_matter)
+    path = loader.repo_root / relative_path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    rendered_front_matter = render_front_matter(ordered_front_matter)
+    path.write_text(
+        f"---\n{rendered_front_matter}\n---\n\n{_render_task_body(title, sections)}",
+        encoding="utf-8",
+    )
+
+
 def _ordered_front_matter(front_matter: Mapping[str, Any]) -> dict[str, Any]:
     ordered: dict[str, Any] = {}
     for key in TASK_FRONT_MATTER_KEY_ORDER:
@@ -281,3 +301,10 @@ def _required_string(front_matter: dict[str, Any], key: str, *, path: str) -> st
     if not isinstance(value, str) or not value.strip():
         raise ValueError(f"{path} front matter key {key} is missing or empty.")
     return value.strip()
+
+
+def _render_task_body(title: str, sections: Mapping[str, str]) -> str:
+    lines = [f"# {title}", ""]
+    for section_title, section_body in sections.items():
+        lines.extend((f"## {section_title}", section_body.strip(), ""))
+    return "\n".join(lines).rstrip() + "\n"

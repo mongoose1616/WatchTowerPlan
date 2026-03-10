@@ -1085,6 +1085,96 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.task",
+      "command": "watchtower-core task",
+      "summary": "Create, update, and transition governed local task records while keeping task documents authoritative and refreshing the derived coordination slice on write.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_task.md",
+      "synopsis": "uv run watchtower-core task [-h] <task_command> ...",
+      "implementation_path": "core/python/src/watchtower_core/cli/task_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "tags": [
+        "python",
+        "cli",
+        "task"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.task.create",
+      "command": "watchtower-core task create",
+      "summary": "Create one governed local task document from compact structured inputs.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_task_create.md",
+      "synopsis": "uv run watchtower-core task create [-h] --task-id TASK_ID [--trace-id TRACE_ID] --title TITLE --summary SUMMARY --task-kind {feature,bug,chore,documentation,governance,research} --priority {critical,high,medium,low} --owner OWNER [--task-status {backlog,ready,in_progress,blocked,in_review,done,cancelled}] --scope SCOPE --done-when DONE_WHEN [--applies-to APPLIES_TO] [--related-id RELATED_ID] [--depends-on DEPENDS_ON] [--blocked-by BLOCKED_BY] [--file-stem FILE_STEM] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/task_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.task",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "task",
+        "create"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.task.transition",
+      "command": "watchtower-core task transition",
+      "summary": "Apply a bounded handoff-style transition to one task by updating the task status, owner, or blocker state while preserving task-document authority.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_task_transition.md",
+      "synopsis": "uv run watchtower-core task transition [-h] --task-id TASK_ID --task-status {backlog,ready,in_progress,blocked,in_review,done,cancelled} [--next-owner NEXT_OWNER] [--depends-on DEPENDS_ON] [--clear-depends-on] [--blocked-by BLOCKED_BY] [--clear-blocked-by] [--file-stem FILE_STEM] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/task_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.task",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "task",
+        "transition"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.task.update",
+      "command": "watchtower-core task update",
+      "summary": "Update one governed task document without hand-editing front matter.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_task_update.md",
+      "synopsis": "uv run watchtower-core task update [-h] --task-id TASK_ID [--trace-id TRACE_ID] [--clear-trace-id] [--title TITLE] [--summary SUMMARY] [--task-kind {feature,bug,chore,documentation,governance,research}] [--priority {critical,high,medium,low}] [--owner OWNER] [--task-status {backlog,ready,in_progress,blocked,in_review,done,cancelled}] [--scope SCOPE] [--done-when DONE_WHEN] [--applies-to APPLIES_TO] [--clear-applies-to] [--related-id RELATED_ID] [--clear-related-ids] [--depends-on DEPENDS_ON] [--clear-depends-on] [--blocked-by BLOCKED_BY] [--clear-blocked-by] [--file-stem FILE_STEM] [--updated-at UPDATED_AT] [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/task_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.task",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "task",
+        "update"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.validate",
       "command": "watchtower-core validate",
       "summary": "Run validation commands against governed repository artifacts and document surfaces.",

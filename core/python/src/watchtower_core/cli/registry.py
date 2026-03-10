@@ -11,6 +11,7 @@ from watchtower_core.cli.doctor_family import register_doctor_family
 from watchtower_core.cli.query_family import register_query_family
 from watchtower_core.cli.route_family import register_route_family
 from watchtower_core.cli.sync_family import register_sync_family
+from watchtower_core.cli.task_family import register_task_family
 from watchtower_core.cli.validate_family import register_validate_family
 
 CommandRegistrar = Callable[[argparse._SubParsersAction], None]
@@ -40,6 +41,11 @@ COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
         name="query",
         registrar=register_query_family,
         implementation_path="core/python/src/watchtower_core/cli/query_family.py",
+    ),
+    CommandGroupSpec(
+        name="task",
+        registrar=register_task_family,
+        implementation_path="core/python/src/watchtower_core/cli/task_family.py",
     ),
     CommandGroupSpec(
         name="sync",

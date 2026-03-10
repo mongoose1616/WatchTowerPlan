@@ -36,6 +36,8 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core query tasks --task-status backlog",
             "uv run watchtower-core query tasks --blocked-only --include-dependency-details",
+            "uv run watchtower-core task transition --task-id task.example.001 "
+            "--task-status done --format json",
             "uv run watchtower-core sync command-index",
             "uv run watchtower-core sync all",
             "uv run watchtower-core sync coordination",
