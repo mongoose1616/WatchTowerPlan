@@ -14,12 +14,6 @@ Use this workflow to inventory the repository's major surfaces, implementation a
 - Top-level docs, manifests, control-plane artifacts, and workflow surfaces
 - Known risk areas or inventory questions
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
-
 ## Workflow
 1. Map the main repository surfaces.
    - Identify the primary documentation, workflow, implementation, schema, registry, contract, policy, and example surfaces.

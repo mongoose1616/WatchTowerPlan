@@ -13,12 +13,8 @@ Use this workflow to identify the repository-specific standards, templates, work
 - Relevant repository surfaces already identified for the task
 - Applicable standards, templates, workflows, ADRs, and canonical docs already known or likely relevant
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
-- [README.md](/home/j/WatchTowerPlan/docs/standards/README.md): identifies the governed standards corpus this workflow is expected to load selectively.
+## Additional Files to Load
+- [README.md](/home/j/WatchTowerPlan/docs/standards/README.md): identifies the governed standards corpus this workflow is expected to scan selectively instead of broad-loading the repository.
 
 ## Workflow
 1. Gather the governing internal documents.

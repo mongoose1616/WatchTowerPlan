@@ -307,7 +307,7 @@ def test_governed_decision_docs_explain_applied_references() -> None:
         )
 
 
-def test_workflow_modules_publish_explained_related_sources() -> None:
+def test_workflow_modules_publish_task_specific_additional_load_files() -> None:
     for path in sorted((REPO_ROOT / "workflows/modules").glob("*.md")):
         if path.name == "README.md":
             continue
@@ -320,10 +320,24 @@ def test_workflow_modules_publish_explained_related_sources() -> None:
                 flags=re.MULTILINE | re.DOTALL,
             )
         }
-        section = sections.get("Related Standards and Sources")
-        assert section is not None, f"missing Related Standards and Sources section: {path}"
+        section = sections.get("Additional Files to Load")
+        if section is None:
+            continue
         bullets = [line.strip() for line in section.splitlines() if line.strip().startswith("- ")]
-        assert bullets, f"missing workflow related-source bullets: {path}"
+        assert bullets, f"missing workflow additional-load bullets: {path}"
+        assert len(bullets) <= 5, f"too many workflow additional-load bullets: {path}"
         assert all(": " in bullet for bullet in bullets), (
-            f"unexplained workflow related-source bullet: {path}"
+            f"unexplained workflow additional-load bullet: {path}"
+        )
+        assert all(
+            "/home/j/WatchTowerPlan/AGENTS.md" not in bullet
+            and "/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md" not in bullet
+            and "/home/j/WatchTowerPlan/workflows/modules/core.md" not in bullet
+            and "/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md"
+            not in bullet
+            and "/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md"
+            not in bullet
+            for bullet in bullets
+        ), (
+            f"workflow additional-load section repeats routing-baseline files: {path}"
         )

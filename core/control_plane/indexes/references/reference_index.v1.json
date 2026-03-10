@@ -31,6 +31,54 @@
       ]
     },
     {
+      "reference_id": "ref.agent_workflow_authoring",
+      "title": "Agent Workflow Authoring Reference",
+      "summary": "Working reference for writing workflow modules that are efficient, explicit, and load only the context an LLM or agent actually needs.",
+      "status": "active",
+      "doc_path": "docs/references/agent_workflow_authoring_reference.md",
+      "updated_at": "2026-03-10T00:55:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "canonical_upstream_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
+      ],
+      "cited_by_paths": [
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md"
+      ],
+      "applied_by_paths": [
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/templates/workflow_template.md",
+        "workflows/modules",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json"
+      ],
+      "aliases": [
+        "llm_workflow_authoring",
+        "agent_context_loading",
+        "workflow_prompting"
+      ],
+      "tags": [
+        "reference",
+        "workflows",
+        "agents",
+        "prompt_authoring"
+      ]
+    },
+    {
       "reference_id": "ref.check_jsonschema",
       "title": "check-jsonschema Reference",
       "summary": "This document provides a working reference for `check-jsonschema` as a schema-validation tool.",
@@ -96,7 +144,11 @@
         "https://www.conventionalcommits.org/en/v1.0.0/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/git_commit_standard.md"
+        "docs/standards/engineering/git_commit_standard.md",
+        "workflows/modules/commit_closeout.md"
+      ],
+      "applied_by_paths": [
+        "workflows/modules/commit_closeout.md"
       ],
       "related_paths": [
         "docs/standards/engineering/git_commit_standard.md"
@@ -269,7 +321,12 @@
         "https://cbea.ms/git-commit/"
       ],
       "cited_by_paths": [
-        "docs/standards/engineering/git_commit_standard.md"
+        "docs/standards/engineering/git_commit_standard.md",
+        "workflows/modules/commit_closeout.md"
+      ],
+      "applied_by_paths": [
+        "docs/standards/engineering/git_commit_standard.md",
+        "workflows/modules/commit_closeout.md"
       ],
       "related_paths": [
         "docs/standards/engineering/git_commit_standard.md"
@@ -299,13 +356,15 @@
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/governance/github_task_sync_standard.md"
+        "docs/standards/governance/github_task_sync_standard.md",
+        "workflows/modules/github_task_sync.md"
       ],
       "applied_by_paths": [
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/standards/governance/github_collaboration_standard.md",
-        "docs/standards/governance/github_task_sync_standard.md"
+        "docs/standards/governance/github_task_sync_standard.md",
+        "workflows/modules/github_task_sync.md"
       ],
       "related_paths": [
         ".github/",

@@ -14,12 +14,8 @@ Use this workflow to consult authoritative external guidance only when internal 
 - Specific open questions, uncertainties, or version-sensitive concerns
 - Candidate authoritative sources when already known
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): constrains how material external guidance should be normalized into repo-local references.
+## Additional Files to Load
+- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): constrains how material external guidance should be normalized into repo-local references before it becomes recurring workflow input.
 
 ## Workflow
 1. Decide whether external research is necessary.

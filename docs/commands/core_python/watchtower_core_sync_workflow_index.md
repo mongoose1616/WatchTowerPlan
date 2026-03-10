@@ -47,8 +47,9 @@ uv run watchtower-core sync workflow-index --output /tmp/workflow_index.v1.json 
 
 ## Behavior and Outputs
 - The command reads workflow modules under `workflows/modules/` and rebuilds the machine-readable workflow index deterministically.
-- The rebuild validates workflow structure, section order, explained governing-source bullets, and governed local-reference usage.
-- Workflow modules that cite raw external URLs without also citing a governed local reference doc under `docs/references/` are rejected during rebuild.
+- The rebuild validates workflow structure, section order, optional explained `Additional Files to Load` bullets, and governed local-reference usage.
+- Workflow modules that publish `Additional Files to Load` must keep it task-specific, repo-local, and free of generic routing-baseline boilerplate.
+- Workflow modules that try to cite raw external URLs instead of governed local reference docs under `docs/references/` are rejected during rebuild.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many workflow entries were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.
@@ -68,4 +69,4 @@ uv run watchtower-core sync workflow-index --output /tmp/workflow_index.v1.json 
 - `core/control_plane/indexes/workflows/workflow_index.v1.json`
 
 ## Updated At
-- `2026-03-09T23:59:23Z`
+- `2026-03-10T00:55:31Z`

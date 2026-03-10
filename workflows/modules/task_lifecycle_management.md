@@ -14,9 +14,7 @@ Use this workflow to create, update, split, unblock, or close local task records
 - Any linked `trace_id`, planning IDs, repository paths, or existing blocker or dependency IDs
 - Current task tracker, task index, and traceability surfaces when the task is traced
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
+## Additional Files to Load
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the local task authority model, task-state vocabulary, and same-change rebuild expectations.
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): defines the required task-record shape and placement rules.
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable companion surface that must stay aligned with task records.

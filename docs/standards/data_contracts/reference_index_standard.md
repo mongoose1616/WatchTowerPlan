@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "reference_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T00:55:31Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -74,7 +74,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 | `uses_external_references` | Required | Whether the reference document explicitly publishes external canonical upstream URLs. |
 | `canonical_upstream_urls` | Required | External authority URLs from the `Canonical Upstream` section. |
 | `cited_by_paths` | Optional | Governed Markdown paths under `docs/**` or `workflows/**` that cite the reference doc or its canonical upstream URLs. |
-| `applied_by_paths` | Optional | Governed Markdown paths under `docs/**` or `workflows/**` that apply the reference in an applied-reference or related-authority section. |
+| `applied_by_paths` | Optional | Governed Markdown paths under `docs/**` or `workflows/**` that apply the reference in an applied-reference section or a workflow `Additional Files to Load` section. |
 | `related_paths` | Optional | Internal repository paths explicitly mapped from the reference document. |
 | `aliases` | Optional | Retrieval-oriented aliases from front matter or curated index data. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
@@ -99,4 +99,4 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T00:55:31Z`

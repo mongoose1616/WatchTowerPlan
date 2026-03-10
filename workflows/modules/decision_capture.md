@@ -18,11 +18,10 @@ Use this workflow to analyze viable options and record a durable repository deci
 - External guidance notes when needed
 - Known options, constraints, assumptions, risks, and stakeholders
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+## Additional Files to Load
+- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): defines what belongs in a durable repository decision and when this workflow should create one.
+- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md): defines the required decision-record structure and applied-reference capture.
+- [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md): provides the drafting shape for the final decision document.
 
 ## Workflow
 1. Define the viable options and tradeoffs.

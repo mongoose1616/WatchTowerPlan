@@ -3,8 +3,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.sync import WorkflowIndexSyncService
+from watchtower_core.sync.workflow_index import validate_workflow_additional_load_section
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -19,9 +22,9 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
     entries = document["entries"]
     assert isinstance(entries, list)
     assert any(
-        entry["workflow_id"] == "workflow.code_validation"
+        entry["workflow_id"] == "workflow.github_task_sync"
         and entry["uses_internal_references"] is True
-        and "docs/standards/documentation/workflow_md_standard.md"
+        and "docs/standards/governance/github_task_sync_standard.md"
         in entry.get("internal_reference_paths", [])
         for entry in entries
     )
@@ -38,3 +41,29 @@ def test_workflow_index_sync_writes_temp_output(tmp_path: Path) -> None:
     assert written_path == output_path
     written_document = json.loads(output_path.read_text(encoding="utf-8"))
     assert written_document["id"] == "index.workflows"
+
+
+def test_validate_workflow_additional_load_section_accepts_task_specific_files() -> None:
+    section = (
+        "- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/"
+        "prd_md_standard.md): defines the required PRD structure for the output.\n"
+    )
+
+    result = validate_workflow_additional_load_section(
+        "workflows/modules/prd_generation.md",
+        section,
+        repo_root=REPO_ROOT,
+    )
+
+    assert result == ("docs/standards/documentation/prd_md_standard.md",)
+
+
+def test_validate_workflow_additional_load_section_rejects_routing_baseline_files() -> None:
+    section = "- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): already loaded.\n"
+
+    with pytest.raises(ValueError, match="routing-baseline files"):
+        validate_workflow_additional_load_section(
+            "workflows/modules/code_validation.md",
+            section,
+            repo_root=REPO_ROOT,
+        )

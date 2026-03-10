@@ -13,16 +13,14 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_acceptance.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_acceptance.md"
       ]
     },
     {
@@ -31,20 +29,8 @@
       "summary": "Use this workflow to reduce the specific ambiguity, conflict, or missing input that is materially blocking the active task.",
       "status": "active",
       "doc_path": "workflows/modules/clarification.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.code_implementation",
@@ -52,20 +38,8 @@
       "summary": "Use this workflow to define the implementation approach and apply the requested code change while keeping the affected repository surfaces coherent.",
       "status": "active",
       "doc_path": "workflows/modules/code_implementation.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.code_review",
@@ -73,20 +47,8 @@
       "summary": "Use this workflow to evaluate a code change for correctness, risk, maintainability, and standards alignment, then summarize the resulting findings clearly.",
       "status": "active",
       "doc_path": "workflows/modules/code_review.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.code_validation",
@@ -94,20 +56,8 @@
       "summary": "Use this workflow to define, execute, and assess the validation needed for a code change or target surface.",
       "status": "active",
       "doc_path": "workflows/modules/code_validation.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.commit_closeout",
@@ -116,18 +66,22 @@
       "status": "active",
       "doc_path": "workflows/modules/commit_closeout.md",
       "uses_internal_references": true,
-      "uses_external_references": false,
+      "uses_external_references": true,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/references/git_commit_message_guidance_reference.md",
+        "docs/references/conventional_commits_reference.md"
+      ],
+      "reference_doc_paths": [
+        "docs/references/git_commit_message_guidance_reference.md",
+        "docs/references/conventional_commits_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/references/git_commit_message_guidance_reference.md",
+        "docs/references/conventional_commits_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://cbea.ms/git-commit/",
+        "https://www.conventionalcommits.org/en/v1.0.0/"
       ]
     },
     {
@@ -136,20 +90,8 @@
       "summary": "Use this workflow to load the minimum shared standards and instructions that apply across all routed workflow modules.",
       "status": "active",
       "doc_path": "workflows/modules/core.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.current_state_inspection",
@@ -157,20 +99,8 @@
       "summary": "Use this workflow to inspect the current repository, codebase, document set, or architecture surfaces relevant to the active task before recommendations, edits, or judgments are made.",
       "status": "active",
       "doc_path": "workflows/modules/current_state_inspection.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.decision_capture",
@@ -181,16 +111,14 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md"
       ]
     },
     {
@@ -199,20 +127,8 @@
       "summary": "Use this workflow to author a new repository document that is accurate, well-structured, correctly classified, and scoped to one succinct standard, topic, or area.",
       "status": "active",
       "doc_path": "workflows/modules/documentation_generation.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.documentation_implementation_reconciliation",
@@ -220,20 +136,8 @@
       "summary": "Use this workflow to compare implementation behavior against companion documentation and machine-readable lookup surfaces so drift is found, classified, and resolved explicitly.",
       "status": "active",
       "doc_path": "workflows/modules/documentation_implementation_reconciliation.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.documentation_refresh",
@@ -241,20 +145,8 @@
       "summary": "Use this workflow to review, update, and reconcile existing repository documentation so it stays accurate, current, structurally consistent, and correctly classified.",
       "status": "active",
       "doc_path": "workflows/modules/documentation_refresh.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.external_guidance_research",
@@ -265,17 +157,9 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md",
         "docs/standards/governance/reference_distillation_standard.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md",
         "docs/standards/governance/reference_distillation_standard.md"
       ]
     },
@@ -288,16 +172,12 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/templates/feature_design_template.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/templates/feature_design_template.md"
       ]
     },
     {
@@ -309,18 +189,10 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/product_direction.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/product_direction.md"
       ]
@@ -332,22 +204,30 @@
       "status": "active",
       "doc_path": "workflows/modules/github_task_sync.md",
       "uses_internal_references": true,
-      "uses_external_references": false,
+      "uses_external_references": true,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
+        "docs/references/github_collaboration_reference.md",
         "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "workflows/modules/task_lifecycle_management.md"
       ],
+      "reference_doc_paths": [
+        "docs/references/github_collaboration_reference.md"
+      ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
+        "docs/references/github_collaboration_reference.md",
         "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "workflows/modules/task_lifecycle_management.md"
+      ],
+      "external_reference_urls": [
+        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository",
+        "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository",
+        "https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields",
+        "https://docs.github.com/en/rest/issues/issues",
+        "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
       ]
     },
     {
@@ -359,16 +239,14 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_artifact.md",
+        "docs/commands/core_python/watchtower_core_sync_all.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_artifact.md",
+        "docs/commands/core_python/watchtower_core_sync_all.md"
       ]
     },
     {
@@ -380,16 +258,12 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md"
       ]
     },
     {
@@ -401,16 +275,14 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
       ]
     },
     {
@@ -422,17 +294,9 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md",
         "docs/standards/README.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md",
         "docs/standards/README.md"
       ]
     },
@@ -445,16 +309,12 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/templates/prd_template.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/templates/prd_template.md"
       ]
     },
     {
@@ -466,16 +326,14 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/governance/reference_distillation_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/governance/reference_distillation_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md"
       ]
     },
     {
@@ -484,20 +342,8 @@
       "summary": "Use this workflow to assess an inventoried repository for coherence, freshness, maintainability, validation coverage, security posture, operational readiness, and developer experience.",
       "status": "active",
       "doc_path": "workflows/modules/repository_assessment.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.repository_inventory_review",
@@ -505,20 +351,8 @@
       "summary": "Use this workflow to inventory the repository's major surfaces, implementation areas, tooling, and ownership boundaries before deeper repository assessment begins.",
       "status": "active",
       "doc_path": "workflows/modules/repository_inventory_review.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.repository_review",
@@ -526,20 +360,8 @@
       "summary": "Use this workflow to synthesize an existing repository review into prioritized findings, risks, and remediation guidance.",
       "status": "active",
       "doc_path": "workflows/modules/repository_review.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.task_handoff_review",
@@ -547,20 +369,8 @@
       "summary": "Use this workflow to confirm that the active task output is coherent, handoff-ready, and accompanied by any needed related-surface updates, follow-up notes, or commit-closeout escalation.",
       "status": "active",
       "doc_path": "workflows/modules/task_handoff_review.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.task_lifecycle_management",
@@ -571,16 +381,12 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/traceability_standard.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
@@ -596,16 +402,12 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
         "workflows/modules/task_lifecycle_management.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
@@ -618,20 +420,8 @@
       "summary": "Use this workflow to define the task objective, scope boundary, and success conditions clearly enough that downstream workflow modules can execute without guessing.",
       "status": "active",
       "doc_path": "workflows/modules/task_scope_definition.md",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
-      ]
+      "uses_internal_references": false,
+      "uses_external_references": false
     },
     {
       "workflow_id": "workflow.traceability_reconciliation",
@@ -642,16 +432,14 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/commands/core_python/watchtower_core_sync_traceability_index.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/workflows/workflow_design_standard.md",
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/ROUTING_TABLE.md",
-        "AGENTS.md"
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/commands/core_python/watchtower_core_sync_traceability_index.md"
       ]
     }
   ]

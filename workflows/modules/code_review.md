@@ -18,12 +18,6 @@ Use this workflow to evaluate a code change for correctness, risk, maintainabili
 - Known risks, constraints, or review focus areas
 - Open questions
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
-
 ## Workflow
 1. Evaluate the change.
    - Check correctness, edge cases, failure handling, maintainability, and consistency with the intended design.

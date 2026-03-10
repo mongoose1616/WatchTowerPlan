@@ -16,11 +16,10 @@ Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validat
 - Current traceability entry
 - Current validator registry
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+## Additional Files to Load
+- [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): defines the machine-readable acceptance boundary this workflow is reconciling.
+- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): defines the evidence artifact shape and validation linkage this workflow should preserve.
+- [watchtower_core_validate_acceptance.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_validate_acceptance.md): documents the command surface used to run acceptance reconciliation deterministically.
 
 ## Workflow
 1. Resolve the trace boundary.

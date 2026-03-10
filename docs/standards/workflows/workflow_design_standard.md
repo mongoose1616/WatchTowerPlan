@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T00:55:31Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
 - [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules narrow, explicit, and efficient for LLM or agent use.
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
 - [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): companion repository surface this standard should stay aligned with.
@@ -58,7 +59,9 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Put classification rules in `ROUTING_TABLE.md`, not inside workflow modules.
 - Put normative repository policy in `docs/standards/**`, not inside workflow modules.
 - Workflows may reference standards, templates, or canonical docs, but they should not silently replace them.
-- Workflow modules should publish a `Related Standards and Sources` section when repository standards, foundations, templates, or canonical docs materially govern execution.
+- Workflow modules may publish `Additional Files to Load` only when extra repo-local files beyond the routing baseline materially change execution.
+- `Additional Files to Load` should point to the next files an agent or maintainer should actually open, not to generic repo-wide context that routing already guarantees.
+- `Additional Files to Load` bullets should use `source: execution implication` form and remain short enough to keep the module scan-friendly.
 - Steps should be ordered and concrete enough that the workflow can be followed without hidden verbal context.
 - Workflows should prefer clarify-before-execute behavior when ambiguity materially affects correctness.
 - Workflow steps should call out adjacent-document updates or companion workflow loading when coherence requires it.
@@ -71,11 +74,15 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 | `Purpose` | Defines the workflow's primary objective | Keep it singular and specific. |
 | `Use When` | Defines the trigger conditions | Make routing or invocation intent clear. |
 | `Inputs` | Defines the information the workflow expects | Include standards or canonical docs when they materially govern execution. |
-| `Related Standards and Sources` | Defines the local authorities that materially govern execution | Use `source: implication` bullets rather than a loose reading list. |
 | `Workflow` | Defines the ordered execution behavior | Steps should be concrete and bounded. |
 | `Data Structure` | Defines the working structure the workflow expects or produces | Use when the workflow needs a stable internal shape. |
 | `Outputs` | Defines the intended deliverables | Keep outputs tied to actual task outcomes. |
 | `Done When` | Defines completion criteria | Make stopping conditions visible. |
+
+### Optional module sections
+| Section | Optional Role | Notes |
+|---|---|---|
+| `Additional Files to Load` | Identifies extra repo-local files to open beyond the routing baseline | Keep it short and use `source: execution implication` bullets. |
 
 ### Boundary rules
 - A workflow module should not mix routing logic, repository-wide wrappers, and task execution in one document.
@@ -83,14 +90,16 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - A workflow module should not depend on unstated tribal knowledge to be usable.
 - A shared phase module is valid only when it remains a concrete execution concern rather than vague meta-guidance.
 - A workflow module may reference external sources only when authoritative guidance materially affects the workflow and no adequate internal source exists.
+- A workflow module should not restate routing-baseline files as if they were task-specific additional context.
 
 ## Process or Workflow
 1. Identify the single execution concern the workflow should own.
 2. Confirm that the concern belongs in a workflow module rather than a standard, template, or routing surface.
 3. Draft the module using the workflow template and the required sections.
-4. Tighten the steps until the module is specific enough to execute without broad inferred behavior.
-5. Check whether the workflow should stay standalone or whether the concern should be split into multiple smaller modules.
-6. Align the new or updated workflow with the routing table and any companion standards in the same change set when needed.
+4. Add `Additional Files to Load` only when the module truly needs extra repo-local files beyond normal routing context.
+5. Tighten the steps until the module is specific enough to execute without broad inferred behavior.
+6. Check whether the workflow should stay standalone or whether the concern should be split into multiple smaller modules.
+7. Align the new or updated workflow with the routing table and any companion standards in the same change set when needed.
 
 ## Examples
 - A code-implementation workflow belongs in `workflows/modules/` because it defines execution behavior for implementing changes.
@@ -102,7 +111,9 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - The module should be executable as written without broad unstated assumptions.
 - The workflow should not duplicate the role of `AGENTS.md`, `ROUTING_TABLE.md`, or a standards document.
 - The required sections should be present and materially useful rather than empty headings.
-- Governing standards, templates, or canonical docs should be explicit when they materially shape execution.
+- `Additional Files to Load` should appear only when the workflow actually needs task-specific extra files beyond the routing baseline.
+- When `Additional Files to Load` appears, it should point to concrete repo-local files and explain why each file changes execution.
+- Generic routing-baseline files should not be repeated as task-specific authorities.
 - The module should compose cleanly with the other routed workflows that are likely to be loaded with it.
 
 ## Change Control
@@ -113,6 +124,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 ## References
 - [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
 - [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
+- [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md)
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
 - [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md)
@@ -123,4 +135,4 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T00:55:31Z`

@@ -2681,6 +2681,13 @@
       "parent_path": "docs/references/"
     },
     {
+      "path": "docs/references/agent_workflow_authoring_reference.md",
+      "kind": "file",
+      "surface_kind": "reference_doc",
+      "summary": "Provides a working reference for authoring workflow modules that are efficient for LLM and agent usage.",
+      "parent_path": "docs/references/"
+    },
+    {
       "path": "docs/references/check_jsonschema_reference.md",
       "kind": "file",
       "surface_kind": "reference_doc",

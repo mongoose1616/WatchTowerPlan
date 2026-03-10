@@ -14,9 +14,7 @@ Use this workflow to hand a task from one owner, phase, or execution stage to th
 - Current blockers, dependencies, linked planning IDs, and `trace_id` values
 - Current task tracker, task index, and traceability surfaces when the transition affects traced work
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
+## Additional Files to Load
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the authoritative task-state vocabulary and explicit dependency rules this workflow must preserve.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): phase transitions must preserve upstream and downstream trace links rather than forcing later readers to infer them.
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): terminal phase transitions may need closeout escalation when no open execution work remains.

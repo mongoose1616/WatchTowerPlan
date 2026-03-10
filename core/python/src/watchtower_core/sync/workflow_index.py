@@ -32,12 +32,20 @@ WORKFLOW_REQUIRED_SECTIONS = (
     "Purpose",
     "Use When",
     "Inputs",
-    "Related Standards and Sources",
     "Workflow",
     "Data Structure",
     "Outputs",
     "Done When",
 )
+WORKFLOW_ADDITIONAL_LOAD_SECTION = "Additional Files to Load"
+WORKFLOW_MAX_ADDITIONAL_LOAD_BULLETS = 5
+WORKFLOW_DISALLOWED_ADDITIONAL_LOAD_PATHS = {
+    "AGENTS.md",
+    "workflows/ROUTING_TABLE.md",
+    "workflows/modules/core.md",
+    "docs/standards/workflows/workflow_design_standard.md",
+    "docs/standards/documentation/workflow_md_standard.md",
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -54,6 +62,85 @@ class WorkflowDocument:
     reference_doc_paths: tuple[str, ...]
     internal_reference_paths: tuple[str, ...]
     external_reference_urls: tuple[str, ...]
+
+
+def validate_workflow_additional_load_section(
+    relative_path: str,
+    section: str | None,
+    *,
+    repo_root: Path,
+) -> tuple[str, ...]:
+    """Validate and return task-specific extra files to load for one workflow."""
+    if section is None:
+        return ()
+
+    validate_explained_bullet_section(relative_path, WORKFLOW_ADDITIONAL_LOAD_SECTION, section)
+
+    bullets = [
+        line.strip()
+        for line in section.splitlines()
+        if line.strip().startswith("- ")
+    ]
+    if len(bullets) > WORKFLOW_MAX_ADDITIONAL_LOAD_BULLETS:
+        raise ValueError(
+            f"{relative_path} section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} must not contain "
+            f"more than {WORKFLOW_MAX_ADDITIONAL_LOAD_BULLETS} bullets."
+        )
+    if extract_external_urls(section):
+        raise ValueError(
+            f"{relative_path} section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} must point to "
+            "repo-local files, not raw external URLs."
+        )
+
+    resolved_paths: list[str] = []
+    for bullet in bullets:
+        bullet_paths = extract_repo_path_references(bullet, repo_root)
+        if len(bullet_paths) != 1:
+            raise ValueError(
+                f"{relative_path} section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} must give "
+                "exactly one repo-local file reference per bullet."
+            )
+        resolved_paths.extend(bullet_paths)
+
+    additional_paths = ordered_unique(tuple(resolved_paths))
+    if len(additional_paths) != len(resolved_paths):
+        raise ValueError(
+            f"{relative_path} section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} must not repeat the "
+            "same repo-local file in multiple bullets."
+        )
+
+    disallowed_paths = [
+        path
+        for path in additional_paths
+        if path in WORKFLOW_DISALLOWED_ADDITIONAL_LOAD_PATHS
+    ]
+    if disallowed_paths:
+        joined = ", ".join(disallowed_paths)
+        raise ValueError(
+            f"{relative_path} section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} repeats "
+            f"routing-baseline files that should stay implicit: {joined}"
+        )
+    return additional_paths
+
+
+def validate_workflow_section_order(
+    relative_path: str,
+    sections: dict[str, str],
+) -> None:
+    """Validate required workflow section order plus optional additional-load placement."""
+    validate_required_section_order(relative_path, sections, WORKFLOW_REQUIRED_SECTIONS)
+    if WORKFLOW_ADDITIONAL_LOAD_SECTION not in sections:
+        return
+
+    section_order = list(sections.keys())
+    additional_index = section_order.index(WORKFLOW_ADDITIONAL_LOAD_SECTION)
+    inputs_index = section_order.index("Inputs")
+    workflow_index = section_order.index("Workflow")
+    if not inputs_index < additional_index < workflow_index:
+        raise ValueError(
+            f"{relative_path} places optional section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} "
+            "outside the allowed position between 'Inputs' and 'Workflow'."
+        )
 
 
 def load_workflow_document(loader: ControlPlaneLoader, relative_path: str) -> WorkflowDocument:
@@ -92,26 +179,21 @@ def load_workflow_document_with_reference_map(
     if missing_sections:
         joined = ", ".join(missing_sections)
         raise ValueError(f"{relative_path} is missing required sections: {joined}")
-    validate_required_section_order(relative_path, sections, WORKFLOW_REQUIRED_SECTIONS)
-    validate_explained_bullet_section(
+    validate_workflow_section_order(relative_path, sections)
+    internal_reference_paths = validate_workflow_additional_load_section(
         relative_path,
-        "Related Standards and Sources",
-        sections["Related Standards and Sources"],
+        sections.get(WORKFLOW_ADDITIONAL_LOAD_SECTION),
+        repo_root=loader.repo_root,
     )
     if not title.endswith(" Workflow"):
         raise ValueError(f"{relative_path} workflow title must end with ' Workflow'.")
 
     summary = extract_first_paragraph(sections["Purpose"])
-    internal_reference_paths = ordered_unique(
-        extract_repo_path_references(sections["Related Standards and Sources"], loader.repo_root)
-    )
     reference_doc_paths = tuple(
         value for value in internal_reference_paths if value.startswith("docs/references/")
     )
 
-    direct_external_urls = ordered_unique(
-        extract_external_urls(sections["Related Standards and Sources"])
-    )
+    direct_external_urls: tuple[str, ...] = ()
     transitive_external_urls = ordered_unique(
         *(
             reference_urls_by_path.get(reference_path, ())
@@ -119,11 +201,6 @@ def load_workflow_document_with_reference_map(
         )
     )
     external_reference_urls = ordered_unique(direct_external_urls, transitive_external_urls)
-    if direct_external_urls and not reference_doc_paths:
-        raise ValueError(
-            f"{relative_path} cites external authority directly but does not cite a governed "
-            "local reference doc under docs/references/."
-        )
 
     return WorkflowDocument(
         workflow_id=f"workflow.{Path(relative_path).stem}",

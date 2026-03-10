@@ -14,12 +14,6 @@ Use this workflow to define the task objective, scope boundary, and success cond
 - Current ambiguity, constraints, or assumptions
 - Any acceptance criteria, target outcome, or handoff expectation already provided
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
-
 ## Workflow
 1. State the task objective.
    - Describe the primary goal in one or two sentences.

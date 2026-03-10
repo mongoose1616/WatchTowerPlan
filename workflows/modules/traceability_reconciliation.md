@@ -17,11 +17,10 @@ Use this workflow to reconcile traced planning and governance artifacts with the
 - Known authority rules for identifiers, links, and tracker or index ownership
 - Known missing links, deferred follow-up work, or open questions
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+## Additional Files to Load
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): defines the required cross-surface links and trace-level field semantics this workflow must preserve.
+- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the machine-readable trace join surface that should match the planning corpus.
+- [watchtower_core_sync_traceability_index.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_traceability_index.md): documents the command surface that rebuilds the derived traceability join.
 
 ## Workflow
 1. Define the traceability boundary.

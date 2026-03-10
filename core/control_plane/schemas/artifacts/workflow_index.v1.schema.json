@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:watchtower:schema:artifacts:indexes:workflow-index:v1",
   "title": "Workflow Index",
-  "description": "Machine-readable lookup index for governed workflow modules and the internal or external authority they rely on.",
+  "description": "Machine-readable lookup index for governed workflow modules and any task-specific extra files they require beyond the routing baseline.",
   "type": "object",
   "required": [
     "$schema",

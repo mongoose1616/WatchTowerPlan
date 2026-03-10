@@ -422,7 +422,7 @@
     {
       "command_id": "command.watchtower_core.query.workflows",
       "command": "watchtower-core query workflows",
-      "summary": "This command searches the governed workflow index so engineers and agents can find workflow modules by behavior, governing source, or related repository path.",
+      "summary": "This command searches the governed workflow index so engineers and agents can find workflow modules by behavior, task-specific extra files to load, or related repository path.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",

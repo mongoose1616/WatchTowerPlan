@@ -17,11 +17,9 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 - [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
 - Open questions about scope, breaking-change status, or related footers
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+## Additional Files to Load
+- [git_commit_message_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_message_guidance_reference.md): defines the local commit-message shape this workflow should preserve when writing the final commit.
+- [conventional_commits_reference.md](/home/j/WatchTowerPlan/docs/references/conventional_commits_reference.md): provides the commit prefix guidance used when a conventional commit style is helpful.
 
 ## Workflow
 1. Inspect the change set and confirm commit readiness.

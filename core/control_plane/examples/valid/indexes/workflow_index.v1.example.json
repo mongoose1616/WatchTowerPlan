@@ -5,23 +5,35 @@
   "status": "active",
   "entries": [
     {
-      "workflow_id": "workflow.code_validation",
-      "title": "Code Validation Workflow",
-      "summary": "Use this workflow to validate changed code and governed artifacts before closeout.",
+      "workflow_id": "workflow.github_task_sync",
+      "title": "GitHub Task Sync Workflow",
+      "summary": "Use this workflow to publish local-first task records to GitHub while preserving local authority.",
       "status": "active",
-      "doc_path": "workflows/modules/code_validation.md",
+      "doc_path": "workflows/modules/github_task_sync.md",
       "uses_internal_references": true,
-      "uses_external_references": false,
+      "uses_external_references": true,
       "related_paths": [
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/modules/core.md"
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "workflows/modules/task_lifecycle_management.md",
+        "docs/references/github_collaboration_reference.md"
+      ],
+      "reference_doc_paths": [
+        "docs/references/github_collaboration_reference.md"
       ],
       "internal_reference_paths": [
-        "docs/standards/documentation/workflow_md_standard.md",
-        "workflows/modules/core.md"
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "workflows/modules/task_lifecycle_management.md",
+        "docs/references/github_collaboration_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://docs.github.com/en/rest/issues/issues"
       ],
       "tags": [
-        "validation",
+        "github",
         "workflow"
       ]
     }

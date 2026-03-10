@@ -1,11 +1,11 @@
 # `watchtower-core query workflows`
 
 ## Summary
-This command searches the governed workflow index so engineers and agents can find workflow modules by behavior, governing source, or related repository path.
+This command searches the governed workflow index so engineers and agents can find workflow modules by behavior, task-specific extra files to load, or related repository path.
 
 ## Use When
-- You know the behavior or governing source you need, but not yet the exact workflow module name.
-- You want to confirm which workflow module cites a specific standard, reference doc, or canonical file.
+- You know the behavior or task-specific file you need, but not yet the exact workflow module name.
+- You want to confirm which workflow module tells an agent to open a specific standard, template, reference doc, or canonical file next.
 - You want machine-readable workflow lookup results for scripts, workflows, or agent calls.
 
 ## Command
@@ -23,9 +23,9 @@ uv run watchtower-core query workflows [--query <text>] [--workflow-id <workflow
 ```
 
 ## Arguments and Options
-- `--query <text>`: Free-text query over indexed workflow fields such as workflow ID, title, summary, related paths, and references.
+- `--query <text>`: Free-text query over indexed workflow fields such as workflow ID, title, summary, extra load paths, and reference docs.
 - `--workflow-id <workflow_id>`: Exact workflow identifier such as `workflow.code_validation`.
-- `--related-path <path>`: Exact repository-path filter such as `docs/standards/documentation/workflow_md_standard.md`.
+- `--related-path <path>`: Exact repository-path filter such as `docs/templates/prd_template.md`.
 - `--reference-path <doc_path>`: Exact governed reference-doc filter such as `docs/references/github_collaboration_reference.md`.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
@@ -39,7 +39,7 @@ uv run watchtower-core query workflows --query validation
 
 ```sh
 cd core/python
-uv run watchtower-core query workflows --related-path docs/standards/documentation/workflow_md_standard.md
+uv run watchtower-core query workflows --related-path docs/templates/prd_template.md
 ```
 
 ```sh
@@ -49,8 +49,8 @@ uv run watchtower-core query workflows --reference-path docs/references/github_c
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- In `human` mode, the command prints matching workflow IDs, titles, summaries, and current internal or external reference use.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and reference-capture fields such as `reference_doc_paths`, `internal_reference_paths`, and `external_reference_urls`.
+- In `human` mode, the command prints matching workflow IDs, titles, summaries, and any indexed task-specific files to load.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and workflow lookup fields such as `reference_doc_paths`, `internal_reference_paths`, and `external_reference_urls`.
 - If no entries match the requested filters, the command exits successfully and reports that no workflow entries matched.
 
 ## Related Commands
@@ -67,4 +67,4 @@ uv run watchtower-core query workflows --reference-path docs/references/github_c
 - `core/control_plane/indexes/workflows/workflow_index.v1.json`
 
 ## Updated At
-- `2026-03-09T23:59:23Z`
+- `2026-03-10T00:55:31Z`

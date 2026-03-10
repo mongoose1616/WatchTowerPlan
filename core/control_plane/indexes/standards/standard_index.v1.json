@@ -259,7 +259,7 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable reference indexes stored under `core/control_plane/indexes/references/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/reference_index_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:55:31Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "reference_doc_paths": [
@@ -579,20 +579,39 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable workflow indexes stored under `core/control_plane/indexes/workflows/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/workflow_index_standard.md",
-      "updated_at": "2026-03-09T23:59:23Z",
+      "updated_at": "2026-03-10T00:55:31Z",
       "uses_internal_references": true,
-      "uses_external_references": false,
+      "uses_external_references": true,
+      "reference_doc_paths": [
+        "docs/references/agent_workflow_authoring_reference.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/workflow_md_standard.md",
+        "docs/references/agent_workflow_authoring_reference.md",
         "docs/standards/data_contracts/reference_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/data_contracts/format_selection_standard.md"
       ],
       "applied_reference_paths": [
         "docs/standards/documentation/workflow_md_standard.md",
+        "docs/references/agent_workflow_authoring_reference.md",
         "docs/standards/data_contracts/reference_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/data_contracts/format_selection_standard.md"
+      ],
+      "external_reference_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
+      ],
+      "applied_external_reference_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
       ],
       "tags": [
         "standard",
@@ -969,12 +988,16 @@
       "summary": "This standard defines the document-level structure and boundary rules for workflow Markdown files in this repository.",
       "status": "active",
       "doc_path": "docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-09T23:59:23Z",
+      "updated_at": "2026-03-10T00:55:31Z",
       "uses_internal_references": true,
-      "uses_external_references": false,
+      "uses_external_references": true,
+      "reference_doc_paths": [
+        "docs/references/agent_workflow_authoring_reference.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/references/agent_workflow_authoring_reference.md",
         "docs/standards/data_contracts/workflow_index_standard.md",
         "docs/templates/workflow_template.md",
         "workflows/ROUTING_TABLE.md",
@@ -983,9 +1006,24 @@
       "applied_reference_paths": [
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/references/agent_workflow_authoring_reference.md",
         "docs/standards/data_contracts/workflow_index_standard.md",
         "docs/templates/workflow_template.md",
         "workflows/ROUTING_TABLE.md"
+      ],
+      "external_reference_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
+      ],
+      "applied_external_reference_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
       ],
       "tags": [
         "standard",
@@ -1720,20 +1758,39 @@
       "summary": "This standard defines how repository instructions, routing surfaces, and workflow modules are loaded so task execution starts with the minimum correct context.",
       "status": "active",
       "doc_path": "docs/standards/workflows/routing_and_context_loading_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:55:31Z",
       "uses_internal_references": true,
-      "uses_external_references": false,
+      "uses_external_references": true,
+      "reference_doc_paths": [
+        "docs/references/agent_workflow_authoring_reference.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/agents_md_standard.md",
         "docs/standards/documentation/routing_table_md_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
+        "docs/references/agent_workflow_authoring_reference.md",
         "workflows/ROUTING_TABLE.md"
       ],
       "applied_reference_paths": [
         "docs/standards/documentation/agents_md_standard.md",
         "docs/standards/documentation/routing_table_md_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
+        "docs/references/agent_workflow_authoring_reference.md",
         "workflows/ROUTING_TABLE.md"
+      ],
+      "external_reference_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
+      ],
+      "applied_external_reference_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
       ],
       "tags": [
         "standard",
@@ -1748,13 +1805,17 @@
       "summary": "This standard defines how workflow modules in this repository should be designed, structured, and bounded.",
       "status": "active",
       "doc_path": "docs/standards/workflows/workflow_design_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T00:55:31Z",
       "uses_internal_references": true,
-      "uses_external_references": false,
+      "uses_external_references": true,
+      "reference_doc_paths": [
+        "docs/references/agent_workflow_authoring_reference.md"
+      ],
       "internal_reference_paths": [
         "docs/foundations/repository_standards_posture.md",
         "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/references/agent_workflow_authoring_reference.md",
         "docs/templates/workflow_template.md",
         "workflows/ROUTING_TABLE.md",
         "AGENTS.md"
@@ -1763,9 +1824,24 @@
         "docs/foundations/repository_standards_posture.md",
         "docs/standards/documentation/workflow_md_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/references/agent_workflow_authoring_reference.md",
         "docs/templates/workflow_template.md",
         "workflows/ROUTING_TABLE.md",
         "AGENTS.md"
+      ],
+      "external_reference_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
+      ],
+      "applied_external_reference_urls": [
+        "https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide",
+        "https://cookbook.openai.com/examples/prompt_caching101",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+        "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
       ],
       "tags": [
         "standard",

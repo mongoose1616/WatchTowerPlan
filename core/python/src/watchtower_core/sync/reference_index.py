@@ -303,8 +303,8 @@ CITATION_AUDIT_FAMILIES: tuple[tuple[str, set[str], tuple[str, ...], tuple[str, 
     (
         "workflows/modules",
         {"README.md"},
-        ("Related Standards and Sources",),
-        ("Related Standards and Sources",),
+        ("Additional Files to Load",),
+        ("Additional Files to Load",),
     ),
 )
 

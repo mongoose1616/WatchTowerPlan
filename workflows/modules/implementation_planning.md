@@ -21,11 +21,9 @@ Use this workflow to turn approved planning inputs into an actionable implementa
 - Known dependencies
 - Open questions
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+## Additional Files to Load
+- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): defines the required plan structure, validation expectations, and handoff sections for the output.
+- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md): provides the drafting shape for the execution-ready implementation plan.
 
 ## Workflow
 1. Review the planning inputs.

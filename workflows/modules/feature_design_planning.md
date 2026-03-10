@@ -18,11 +18,9 @@ Use this workflow to define design options, recommend a technical design, and ca
 - Constraints, dependencies, and non-functional requirements
 - Known risks, assumptions, or open questions
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+## Additional Files to Load
+- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): defines the required feature-design structure and applied-reference capture for the output.
+- [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md): provides the drafting shape for the review-ready design artifact.
 
 ## Workflow
 1. Define design options and tradeoffs.

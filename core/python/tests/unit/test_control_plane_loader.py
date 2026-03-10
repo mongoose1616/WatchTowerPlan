@@ -175,7 +175,7 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     design = design_index.get("design.features.python_validator_execution")
     foundation = foundation_index.get("foundation.engineering_design_principles")
     standard = standard_index.get("std.governance.github_collaboration")
-    workflow = workflow_index.get("workflow.code_validation")
+    workflow = workflow_index.get("workflow.github_task_sync")
 
     assert prd.trace_id == "trace.core_python_foundation"
     assert "req.core_python_foundation.003" in prd.requirement_ids
@@ -191,8 +191,12 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     assert standard.category == "governance"
     assert standard.uses_external_references is True
     assert "docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
-    assert workflow.doc_path == "workflows/modules/code_validation.md"
+    assert workflow.doc_path == "workflows/modules/github_task_sync.md"
     assert workflow.uses_internal_references is True
+    assert (
+        "docs/standards/governance/github_task_sync_standard.md"
+        in workflow.internal_reference_paths
+    )
 
 
 def test_control_plane_loader_reads_reference_index() -> None:

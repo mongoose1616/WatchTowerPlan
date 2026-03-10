@@ -15,11 +15,10 @@ Use this workflow to publish local-first task records to GitHub issues and optio
 - Current task records plus any existing GitHub foreign-key metadata
 - Available GitHub credentials and local derived task surfaces
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
+## Additional Files to Load
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary, foreign-key set, and status mapping this workflow must preserve.
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): local task records remain authoritative even when GitHub mirrors exist.
+- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): distills the GitHub issue and project behavior this workflow may need to map local tasks onto.
 - [watchtower_core_sync_github_tasks.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_github_tasks.md): documents the command surface that performs the actual push-only sync.
 - [task_lifecycle_management.md](/home/j/WatchTowerPlan/workflows/modules/task_lifecycle_management.md): GitHub sync writes local task metadata and must leave the authoritative task corpus aligned afterward.
 

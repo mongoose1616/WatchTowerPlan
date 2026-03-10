@@ -12,7 +12,7 @@
 
 ## Current High-Signal Areas
 - Active local support: front matter, JSON Schema, commit-message guidance, semantic versioning, Python workspace tooling, and Python test/lint/typecheck references.
-- Supporting current standards: naming and IDs, data-contract formats, schema governance, documentation templates, and decision-capture guidance.
+- Supporting current standards: naming and IDs, data-contract formats, schema governance, documentation templates, decision-capture guidance, and agent/workflow authoring.
 - Candidate future guidance: supply-chain attestations, telemetry, SQLite-backed state, AI governance, and security assessment frameworks.
 
 ## Files
@@ -20,6 +20,7 @@
 |---|---|
 | `docs/references/README.md` | Describes the purpose of the external references directory and indexes the reference files stored here. |
 | `docs/references/AGENTS.md` | Defines directory-specific instructions for external reference documents. |
+| `docs/references/agent_workflow_authoring_reference.md` | Provides a working reference for authoring workflow modules that are efficient for LLM and agent usage. |
 | `docs/references/adr_guidance_reference.md` | Provides a working reference for ADR Guidance. |
 | `docs/references/check_jsonschema_reference.md` | Provides a working reference for check-jsonschema. |
 | `docs/references/commonmark_reference.md` | Provides a working reference for CommonMark. |

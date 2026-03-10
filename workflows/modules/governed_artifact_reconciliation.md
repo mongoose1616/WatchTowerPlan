@@ -16,11 +16,10 @@ Use this workflow to reconcile schema-backed governed artifacts with their compa
 - Known source-of-truth rules for the artifact families in scope
 - Known discrepancies, resolution constraints, or open questions
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+## Additional Files to Load
+- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): defines the schema-backed artifact constraints and same-change-set expectations this workflow should reconcile.
+- [watchtower_core_validate_artifact.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_validate_artifact.md): documents the command surface for schema-backed governed-artifact validation.
+- [watchtower_core_sync_all.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_all.md): documents the broad rebuild path when multiple governed indexes or catalogs changed together.
 
 ## Workflow
 1. Define the artifact-family boundary.

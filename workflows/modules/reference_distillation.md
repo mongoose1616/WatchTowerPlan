@@ -21,11 +21,10 @@ Use this workflow to extract durable local guidance from external source materia
 - Version, baseline, or date-sensitivity information when relevant
 - Open questions or uncertainties in the source material
 
-## Related Standards and Sources
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): defines the workflow-boundary and composition rules this module must follow.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): defines the required Markdown structure and section order for this module.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): determines how and when this module is selected or merged during routed execution.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): provides the repository-wide instruction layer this module operates within.
+## Additional Files to Load
+- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): defines how external source material should be normalized into repo-local reference documents.
+- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): defines the required structure and quality bar for the resulting reference doc.
+- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md): provides the dense local-reference shape the output should follow.
 
 ## Workflow
 1. Read and verify the source material directly.
