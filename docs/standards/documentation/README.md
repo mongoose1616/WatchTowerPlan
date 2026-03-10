@@ -11,6 +11,7 @@
 | `docs/standards/documentation/command_md_standard.md` | Defines the standard for human-readable command pages. |
 | `docs/standards/documentation/compact_document_authoring_standard.md` | Defines the repository rule for compact, high-signal authored documents and generated human-readable outputs. |
 | `docs/standards/documentation/decision_record_md_standard.md` | Defines the standard for decision records under `docs/planning/decisions/`. |
+| `docs/standards/documentation/documentation_semantics_standard.md` | Defines the cross-family semantic guardrails for governed Markdown docs and workflow modules. |
 | `docs/standards/documentation/feature_design_md_standard.md` | Defines the standard for feature-design documents under `docs/planning/design/features/`. |
 | `docs/standards/documentation/foundation_md_standard.md` | Defines the standard for governed foundation documents under `docs/foundations/`. |
 | `docs/standards/documentation/implementation_plan_md_standard.md` | Defines the standard for implementation-plan documents under `docs/planning/design/implementation/`. |

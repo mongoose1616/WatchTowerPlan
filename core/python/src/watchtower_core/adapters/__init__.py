@@ -8,6 +8,7 @@ from watchtower_core.adapters.front_matter import (
 from watchtower_core.adapters.markdown import (
     extract_external_urls,
     extract_first_paragraph,
+    extract_markdown_links,
     extract_metadata_bullets,
     extract_path_like_references,
     extract_prefixed_ids,
@@ -25,6 +26,7 @@ __all__ = [
     "FrontMatterParseError",
     "extract_external_urls",
     "extract_first_paragraph",
+    "extract_markdown_links",
     "extract_metadata_bullets",
     "extract_path_like_references",
     "extract_prefixed_ids",

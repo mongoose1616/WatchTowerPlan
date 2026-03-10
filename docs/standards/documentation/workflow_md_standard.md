@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:31:28Z"
+updated_at: "2026-03-10T20:33:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -34,6 +34,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Reviewing whether a workflow file is structurally consistent with the repository model.
 
 ## Related Standards and Sources
+- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): workflow modules inherit the shared semantic guardrails for repo-local links and list-to-heading spacing.
 - [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules explicit, narrow, and efficient for LLM or agent use.
@@ -65,6 +66,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - `Additional Files to Load` bullets should use `source: execution implication` form so the local effect of each file is explicit.
 - `Additional Files to Load` should stay short, normally `1` to `5` bullets.
 - `Additional Files to Load` should not repeat repo-wide baseline surfaces such as `AGENTS.md`, `workflows/ROUTING_TABLE.md`, `workflows/modules/core.md`, or the generic workflow standards.
+- Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
 - Workflow modules should stay structured enough that the derived workflow index can capture their title, purpose summary, and task-specific additional files without manual curation.
 - `Data Structure` and `Outputs` may remain brief when the workflow does not define a stable working structure or durable deliverable, but the headings should still be present.
 - Use repository-native Markdown links when `Additional Files to Load` is present so the files can be captured and queried deterministically.
@@ -95,6 +97,7 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - `Data Structure` and `Outputs` should remain brief and should not require standalone meta deliverables unless another governed surface explicitly requires them.
 - `Additional Files to Load` should be absent when the workflow does not need extra repo-local context beyond the routing baseline.
 - If `Additional Files to Load` is present, each bullet should identify a concrete repo-local file and explain the execution implication of loading it.
+- Repo-local Markdown links should resolve to existing files or directories under the repository root.
 - If `Additional Files to Load` is present, it should not repeat generic routing-baseline authorities.
 - Content that belongs in `AGENTS.md`, `ROUTING_TABLE.md`, or `docs/standards/**` should not be embedded as if it were workflow procedure.
 
@@ -111,10 +114,11 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
 - [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md)
+- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md)
 
 ## Notes
 - The workflow template is an authoring scaffold. This standard is the normative file-shape rule.
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-10T16:31:28Z`
+- `2026-03-10T20:33:00Z`

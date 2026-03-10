@@ -820,6 +820,45 @@
       ]
     },
     {
+      "standard_id": "std.documentation.documentation_semantics",
+      "category": "documentation",
+      "title": "Documentation Semantics Standard",
+      "summary": "This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow modules.",
+      "status": "active",
+      "doc_path": "docs/standards/documentation/documentation_semantics_standard.md",
+      "updated_at": "2026-03-10T20:33:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": true,
+      "reference_doc_paths": [
+        "docs/references/commonmark_reference.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/references/commonmark_reference.md",
+        "docs/commands/core_python/watchtower_core_validate_document_semantics.md",
+        "docs/commands/core_python/watchtower_core_validate_all.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/references/commonmark_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://spec.commonmark.org/0.31.2/"
+      ],
+      "applied_external_reference_urls": [
+        "https://spec.commonmark.org/0.31.2/"
+      ],
+      "tags": [
+        "standard",
+        "documentation",
+        "documentation_semantics"
+      ]
+    },
+    {
       "standard_id": "std.documentation.feature_design_md",
       "category": "documentation",
       "title": "Feature Design Document Standard",
@@ -1039,10 +1078,11 @@
       "summary": "This standard defines the expected document shape for governed standard and best-practice documents stored under `docs/standards/`.",
       "status": "active",
       "doc_path": "docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-10T16:45:00Z",
+      "updated_at": "2026-03-10T20:33:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/data_contracts/standard_index_standard.md",
@@ -1050,6 +1090,7 @@
         "docs/standards/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/data_contracts/standard_index_standard.md",
@@ -1106,13 +1147,14 @@
       "summary": "This standard defines the document-level structure and boundary rules for workflow Markdown files in this repository.",
       "status": "active",
       "doc_path": "docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-10T16:31:28Z",
+      "updated_at": "2026-03-10T20:33:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [
         "docs/references/agent_workflow_authoring_reference.md"
       ],
       "internal_reference_paths": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/references/agent_workflow_authoring_reference.md",
@@ -1122,6 +1164,7 @@
         "AGENTS.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/references/agent_workflow_authoring_reference.md",
@@ -2083,7 +2126,7 @@
       "summary": "This standard defines the baseline validation expectations for repository changes across governed documents, governed artifacts, and the Python helper workspace.",
       "status": "active",
       "doc_path": "docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "updated_at": "2026-03-10T20:33:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -2093,6 +2136,7 @@
         "workflows/"
       ],
       "internal_reference_paths": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
@@ -2101,6 +2145,7 @@
         "docs/commands/core_python/watchtower_core_sync_all.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/data_contracts/schema_standard.md",

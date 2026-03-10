@@ -4332,6 +4332,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/standards/documentation/documentation_semantics_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the cross-family semantic guardrails for governed Markdown docs and workflow modules.",
+      "parent_path": "docs/standards/documentation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/standards/documentation/feature_design_md_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",

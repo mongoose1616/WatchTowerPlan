@@ -1,10 +1,11 @@
 # `watchtower-core validate document-semantics`
 
 ## Summary
-This command validates one governed Markdown document against repo-native semantic rules such as required sections, section order, applied-reference explanation, and family-specific guardrails.
+This command validates one governed Markdown document against repo-native semantic rules such as repo-local link integrity, required sections, section order, applied-reference explanation, and family-specific guardrails.
 
 ## Use When
 - You want to validate governed document structure beyond front matter alone.
+- You want broken repo-local Markdown links to fail before closeout.
 - You need a structured semantic validation result for a workflow, script, or agent.
 - You want to confirm that a workflow, standard, foundation doc, PRD, decision, or design doc still satisfies its document standard.
 
@@ -53,6 +54,7 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 
 ## Behavior and Outputs
 - The command loads the validator registry and resolves the matching document-semantics validator automatically when the path is repository-local.
+- Repo-local Markdown links are validated fail closed when they point to missing repository targets.
 - If `--validator-id` is provided, the command validates against that explicit semantic validator instead of auto-selecting by path.
 - In `human` mode, the command prints `PASS` or `FAIL`, the selected validator, and any validation issues.
 - In `json` mode, the command prints one JSON object with the execution status, pass or fail result, selected validator, issue count, and issue records.
@@ -74,4 +76,4 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 - `core/control_plane/registries/validators/validator_registry.v1.json`
 
 ## Updated At
-- `2026-03-09T23:59:23Z`
+- `2026-03-10T20:33:00Z`

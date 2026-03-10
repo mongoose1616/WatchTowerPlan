@@ -359,8 +359,8 @@
       "status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-10T19:43:34Z",
-      "open_task_count": 4,
+      "updated_at": "2026-03-10T20:42:00Z",
+      "open_task_count": 3,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
       "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
@@ -371,7 +371,6 @@
       ],
       "active_task_ids": [
         "task.end_to_end_repo_review_and_rationalization.derived_metadata.001",
-        "task.end_to_end_repo_review_and_rationalization.doc_guardrails.001",
         "task.end_to_end_repo_review_and_rationalization.external_pack_validation.001",
         "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001"
       ],
@@ -383,18 +382,6 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/open/end_to_end_derived_metadata.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
-          ]
-        },
-        {
-          "task_id": "task.end_to_end_repo_review_and_rationalization.doc_guardrails.001",
-          "title": "Add documentation guardrails for repo-local link integrity",
-          "task_status": "ready",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/end_to_end_doc_guardrails.md",
           "is_actionable": true,
           "depends_on": [
             "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
@@ -489,10 +476,10 @@
         "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/tasks/closed/end_to_end_doc_guardrails.md",
         "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/end_to_end_derived_metadata.md",
-        "docs/planning/tasks/open/end_to_end_doc_guardrails.md",
         "docs/planning/tasks/open/end_to_end_external_pack_validation.md",
         "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
         "docs/planning/tasks/task_tracking.md",

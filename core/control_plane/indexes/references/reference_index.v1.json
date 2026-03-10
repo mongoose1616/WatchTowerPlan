@@ -117,10 +117,12 @@
         "https://spec.commonmark.org/0.31.2/"
       ],
       "cited_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md"
       ],
       "applied_by_paths": [
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md"
       ],
       "related_paths": [
         "docs/standards/data_contracts/format_selection_standard.md",

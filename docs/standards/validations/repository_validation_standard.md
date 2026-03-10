@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T02:30:31Z"
+updated_at: "2026-03-10T20:33:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -43,6 +43,7 @@ This standard defines the baseline validation expectations for repository change
 - Defining or updating local automation that checks repository health.
 
 ## Related Standards and Sources
+- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): document-semantics validation should fail closed on shared Markdown guardrails such as repo-local link integrity.
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): Python validation commands should run from the canonical workspace using the standard local environment.
 - [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): validation should stay aligned with same-change-set updates across docs, code, and governed artifacts.
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): schema-backed surfaces should fail closed when malformed.
@@ -55,6 +56,7 @@ This standard defines the baseline validation expectations for repository change
 - Before closeout for non-trivial changes, run the broadest meaningful validation for the touched surfaces.
 - When derived trackers or indexes changed, run `watchtower-core sync all --write` before the final broad validation pass.
 - Use `watchtower-core validate all` as the baseline aggregate validation for governed docs, governed artifacts, and acceptance reconciliation.
+- Treat broken repo-local Markdown links as validation failures, not reviewer-only cleanup.
 - When `core/python/**` changes, the normal workspace validation baseline is:
   - `./.venv/bin/python -m mypy src`
   - `./.venv/bin/ruff check src tests/unit tests/integration`
@@ -82,8 +84,9 @@ This standard defines the baseline validation expectations for repository change
 ## References
 - [watchtower_core_validate_all.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_validate_all.md)
 - [watchtower_core_sync_all.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_all.md)
+- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md)
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-10T02:30:31Z`
+- `2026-03-10T20:33:00Z`

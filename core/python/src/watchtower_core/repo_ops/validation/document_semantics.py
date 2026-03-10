@@ -7,6 +7,7 @@ from pathlib import Path
 
 from watchtower_core.adapters import (
     extract_external_urls,
+    extract_markdown_links,
     extract_repo_path_references,
     extract_sections,
     extract_title,
@@ -158,6 +159,12 @@ class DocumentSemanticsValidationService:
             raise ValidationExecutionError(
                 "Document-semantics validation requires a repository-local path."
             )
+
+        self._validate_repo_local_markdown_links(
+            relative_target_path,
+            resolved_path,
+            load_markdown_body(resolved_path),
+        )
 
         if validator_id == "validator.documentation.reference_semantics":
             self._validate_reference_document(relative_target_path, resolved_path)
@@ -351,6 +358,69 @@ class DocumentSemanticsValidationService:
             joined = ", ".join(missing_sections)
             raise ValueError(f"{relative_path} is missing required sections: {joined}")
         validate_required_section_order(relative_path, sections, required_sections)
+
+    def _validate_repo_local_markdown_links(
+        self,
+        relative_path: str,
+        resolved_path: Path,
+        markdown: str,
+    ) -> None:
+        repo_root = self._loader.repo_root.resolve()
+        in_fence = False
+
+        for line_number, line in enumerate(markdown.splitlines(), start=1):
+            stripped = line.strip()
+            if stripped.startswith("```") or stripped.startswith("~~~"):
+                in_fence = not in_fence
+                continue
+            if in_fence:
+                continue
+            for target in extract_markdown_links(line):
+                target_path = self._resolve_repo_local_markdown_link_target(
+                    target,
+                    repo_root=repo_root,
+                    source_path=resolved_path,
+                )
+                if target_path is None or target_path.exists():
+                    continue
+                normalized = target_path.relative_to(repo_root).as_posix()
+                raise ValueError(
+                    f"{relative_path} repo-local Markdown link on line {line_number} "
+                    f"points to a missing target: {target} -> {normalized}"
+                )
+
+    def _resolve_repo_local_markdown_link_target(
+        self,
+        target: str,
+        *,
+        repo_root: Path,
+        source_path: Path,
+    ) -> Path | None:
+        stripped = target.strip()
+        if not stripped or stripped.startswith(("http://", "https://", "mailto:", "#")):
+            return None
+
+        without_fragment = stripped.split("#", 1)[0].split("?", 1)[0].strip()
+        if not without_fragment:
+            return None
+
+        candidate = Path(without_fragment)
+        if candidate.is_absolute():
+            resolved = candidate.resolve()
+            try:
+                resolved.relative_to(repo_root)
+            except ValueError:
+                return None
+            return resolved
+
+        for base_path in (source_path.parent, repo_root):
+            resolved = (base_path / candidate).resolve()
+            try:
+                resolved.relative_to(repo_root)
+            except ValueError:
+                continue
+            return resolved
+        return None
 
     def _validate_blank_line_before_heading_after_list(
         self,

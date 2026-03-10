@@ -17,6 +17,7 @@ authority: "authoritative"
 # <Standard Title>
 
 > Leave one blank line between the last item in a bullet or numbered list and the next heading.
+> Use repo-local Markdown links only when the target already exists or is being created in the same change.
 
 ## Summary
 <One short explanation of what this standard governs.>

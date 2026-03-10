@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:45:00Z"
+updated_at: "2026-03-10T20:33:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,6 +33,7 @@ Keep standards structured enough that internal and external authority is not onl
 - Reviewing whether a standard captures the concrete local effect of the authorities it cites.
 
 ## Related Standards and Sources
+- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md): governed standards inherit the shared semantic guardrails for repo-local links and list-to-heading spacing.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): governed standards must use the standard front matter profile.
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): external authority should be normalized through local reference docs when practical.
 - [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): standard docs must remain structured enough for the governed standard index to capture citation and application signals.
@@ -43,6 +44,7 @@ Keep standards structured enough that internal and external authority is not onl
 - Keep one primary standard concern per document.
 - Use `Related Standards and Sources` for the authorities that materially shape the standard, not for loose “nice to read” links.
 - Every bullet in `Related Standards and Sources` should use `source: implication` form so the repo-local consequence of the cited authority is explicit.
+- Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
 - Leave one blank line between the last item in a bullet or numbered list and the next heading.
 - Keep `References` for companion docs, examples, and supporting material that help the reader navigate the repo or verify implementation.
 - When an external topic already has a governed local reference under `docs/references/**`, cite that local reference instead of scattering raw external URLs.
@@ -66,6 +68,7 @@ Keep standards structured enough that internal and external authority is not onl
 ## Validation
 - Standard-doc front matter should validate against `standard_front_matter.v1.schema.json`.
 - `Related Standards and Sources` should use explained `source: implication` bullets rather than bare link lists.
+- Repo-local Markdown links should resolve to existing files or directories under the repository root.
 - Headings should not appear immediately after a bullet or numbered list item without a blank separator line.
 - `References` should remain present and should not silently absorb the applied-implication role.
 - `updated_at` in front matter and the `Updated At` body section should match.
@@ -77,7 +80,8 @@ Keep standards structured enough that internal and external authority is not onl
 ## References
 - [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
+- [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md)
 - [README.md](/home/j/WatchTowerPlan/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-10T16:45:00Z`
+- `2026-03-10T20:33:00Z`

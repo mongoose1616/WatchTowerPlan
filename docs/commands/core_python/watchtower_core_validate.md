@@ -71,7 +71,7 @@ uv run watchtower-core validate acceptance --trace-id trace.core_python_foundati
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints validate-specific help and exits successfully.
 - The command group is a stable entrypoint for governed validation behavior rather than a one-off script surface.
-- The current leaf commands are `all` for aggregate repo validation, `front-matter` for governed Markdown metadata, `document-semantics` for governed Markdown structure and applied-reference rules, `artifact` for schema-backed JSON artifacts, and `acceptance` for semantic reconciliation across PRD acceptance, contracts, evidence, validators, and traceability.
+- The current leaf commands are `all` for aggregate repo validation, `front-matter` for governed Markdown metadata, `document-semantics` for governed Markdown structure, repo-local link integrity, and applied-reference rules, `artifact` for schema-backed JSON artifacts, and `acceptance` for semantic reconciliation across PRD acceptance, contracts, evidence, validators, and traceability.
 - Individual leaf commands may return a non-zero exit code when validation fails even if the command itself executed successfully.
 - Leaf commands may optionally emit durable evidence artifacts and synchronized traceability updates when they explicitly support that behavior.
 
@@ -91,4 +91,4 @@ uv run watchtower-core validate acceptance --trace-id trace.core_python_foundati
 - `core/python/src/watchtower_core/validation/`
 
 ## Updated At
-- `2026-03-09T23:59:23Z`
+- `2026-03-10T20:33:00Z`
