@@ -10,7 +10,7 @@
       "summary": "Defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T03:53:14Z",
+      "updated_at": "2026-03-10T03:58:40Z",
       "closed_at": "2026-03-10T03:58:40Z",
       "closure_reason": "Delivered and validated; future expansion belongs to a new bounded initiative",
       "design_ids": [
@@ -69,7 +69,7 @@
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T17:04:57Z",
+      "updated_at": "2026-03-10T17:12:30Z",
       "closed_at": "2026-03-10T17:12:30Z",
       "closure_reason": "Implemented and validated export hardening follow-up.",
       "prd_ids": [
@@ -154,7 +154,7 @@
       "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T06:42:17Z",
+      "updated_at": "2026-03-10T06:46:17Z",
       "closed_at": "2026-03-10T06:46:17Z",
       "closure_reason": "Delivered and validated; future WatchTower pack implementation belongs to a new bounded initiative",
       "prd_ids": [
@@ -257,7 +257,7 @@
       "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T03:57:14Z",
+      "updated_at": "2026-03-10T03:59:28Z",
       "closed_at": "2026-03-10T03:59:28Z",
       "closure_reason": "Delivered and validated; future core export and product work belong to a new bounded initiative",
       "prd_ids": [
@@ -358,7 +358,7 @@
       "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-10T20:42:00Z",
+      "updated_at": "2026-03-10T21:24:00Z",
       "prd_ids": [
         "prd.end_to_end_repo_review_and_rationalization"
       ],
@@ -432,10 +432,10 @@
         "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/tasks/closed/end_to_end_derived_metadata.md",
         "docs/planning/tasks/closed/end_to_end_doc_guardrails.md",
         "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/end_to_end_derived_metadata.md",
         "docs/planning/tasks/open/end_to_end_external_pack_validation.md",
         "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
         "docs/planning/tasks/task_tracking.md",
@@ -453,7 +453,7 @@
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T03:57:14Z",
+      "updated_at": "2026-03-10T03:59:28Z",
       "closed_at": "2026-03-10T03:59:28Z",
       "closure_reason": "Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative",
       "design_ids": [
@@ -479,7 +479,7 @@
       "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T03:57:14Z",
+      "updated_at": "2026-03-10T03:59:28Z",
       "closed_at": "2026-03-10T03:59:28Z",
       "closure_reason": "Delivered and validated; future planning-closeout expansion belongs to a new bounded initiative",
       "design_ids": [
@@ -541,7 +541,7 @@
       "summary": "Defines the work needed to publish one always-useful machine coordination surface, keep human planning entrypoints derived from it, and reduce planning-navigation sprawl before product implementation starts.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T19:29:01Z",
+      "updated_at": "2026-03-10T19:36:51Z",
       "closed_at": "2026-03-10T19:36:51Z",
       "closure_reason": "Delivered and validated machine-first coordination surfaces.",
       "prd_ids": [
@@ -631,7 +631,7 @@
       "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T18:47:27Z",
+      "updated_at": "2026-03-10T18:48:07Z",
       "closed_at": "2026-03-10T18:48:07Z",
       "closure_reason": "Delivered and validated pre-implementation repository review and hardening.",
       "prd_ids": [
@@ -728,7 +728,7 @@
       "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T16:34:28Z",
+      "updated_at": "2026-03-10T16:35:23Z",
       "closed_at": "2026-03-10T16:35:23Z",
       "closure_reason": "Implemented and validated template and output efficiency improvements.",
       "prd_ids": [

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T19:29:01Z"
+updated_at: "2026-03-10T21:18:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -94,6 +94,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Allow active `closeout` entries to publish historical `task_ids` without `active_task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
 - Active initiatives outside `closeout` should carry linked task IDs and active-task projection instead of relying on implied execution ownership.
 - Use `closed` as the initiative phase for terminal initiative states rather than overloading `current_phase` with `completed`, `superseded`, `cancelled`, or `abandoned`.
+- For terminal initiatives, project entry `updated_at` from the later of traceability `updated_at` and `closed_at`.
 - Make `next_action` specific enough that the next contributor can act without re-deriving the lifecycle state from several trackers.
 - Make `next_surface_path` point to the repo-local surface the next contributor should open first.
 
@@ -131,6 +132,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Active initiatives should not remain in the index without linked task IDs.
 - Active initiatives outside `closeout` should not remain in the index without non-terminal task ownership.
 - Initiative closeout state should agree with the traceability index rather than competing with it.
+- Terminal initiative entries should not publish `updated_at` earlier than `closed_at`.
 - Reviewers should reject initiative views that hide ambiguity by inventing owners, tasks, or progress that the source surfaces do not publish.
 
 ## Change Control
@@ -146,4 +148,4 @@ This standard defines the repository's cross-family initiative tracking model so
 - [README.md](/home/j/WatchTowerPlan/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-10T19:29:01Z`
+- `2026-03-10T21:18:00Z`

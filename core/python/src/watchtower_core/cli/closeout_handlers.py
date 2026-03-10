@@ -41,7 +41,9 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
         "wrote": result.wrote,
         "traceability_output_path": result.traceability_output_path,
         "initiative_index_output_path": result.initiative_index_output_path,
+        "coordination_index_output_path": result.coordination_index_output_path,
         "initiative_tracking_output_path": result.initiative_tracking_output_path,
+        "coordination_tracking_output_path": result.coordination_tracking_output_path,
         "prd_tracking_output_path": result.prd_tracking_output_path,
         "decision_tracking_output_path": result.decision_tracking_output_path,
         "design_tracking_output_path": result.design_tracking_output_path,
@@ -57,7 +59,10 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
     if result.open_task_ids:
         print(f"Open Tasks Left In Place: {', '.join(result.open_task_ids)}")
     if result.wrote:
-        print("Canonical traceability, initiative, and planning trackers were updated.")
+        print(
+            "Canonical traceability, initiative, coordination, and planning trackers "
+            "were updated."
+        )
     else:
         print("Dry-run only. Use --write to persist the closeout state.")
     return 0

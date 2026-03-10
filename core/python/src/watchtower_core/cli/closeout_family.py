@@ -21,8 +21,8 @@ def register_closeout_family(
         description=dedent(
             """
             Apply initiative-level closeout state to the governed traceability
-            index and refresh the human-readable planning trackers that mirror
-            that state.
+            index and refresh the derived initiative, coordination, and
+            human-readable planning trackers that mirror that state.
             """
         ).strip(),
         epilog=examples(
@@ -47,8 +47,8 @@ def register_closeout_family(
         description=dedent(
             """
             Set terminal closeout state for one traced initiative and, in write
-            mode, persist it to the traceability index plus the derived PRD,
-            decision, and design trackers.
+            mode, persist it to the traceability index plus the derived
+            initiative, coordination, PRD, decision, and design trackers.
             """
         ).strip(),
         epilog=examples(

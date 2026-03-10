@@ -6,18 +6,17 @@
 | Mode | `active_work` |
 | Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
 | Next | Start or continue the active task set and keep the current task records aligned with execution progress. |
-| Open First | [docs/planning/tasks/open/end_to_end_derived_metadata.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_derived_metadata.md) |
+| Open First | [docs/planning/tasks/open/end_to_end_external_pack_validation.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_external_pack_validation.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
 | Trace ID | Phase | Owners | Next | Action |
 | --- | --- | --- | --- | --- |
-| `trace.end_to_end_repo_review_and_rationalization` | `execution` | repository_maintainer | [end_to_end_derived_metadata.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_derived_metadata.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.end_to_end_repo_review_and_rationalization` | `execution` | repository_maintainer | [end_to_end_external_pack_validation.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_external_pack_validation.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.end_to_end_repo_review_and_rationalization.derived_metadata.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_derived_metadata.md) | `trace.end_to_end_repo_review_and_rationalization` | `ready` | `high` | `repository_maintainer` |
 | [task.end_to_end_repo_review_and_rationalization.external_pack_validation.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_external_pack_validation.md) | `trace.end_to_end_repo_review_and_rationalization` | `ready` | `high` | `repository_maintainer` |
 | [task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_query_cli_modularity.md) | `trace.end_to_end_repo_review_and_rationalization` | `ready` | `medium` | `repository_maintainer` |
 
@@ -30,4 +29,4 @@
 | `trace.template_and_output_efficiency` | `completed` | `2026-03-10T16:35:23Z` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) |
 | `trace.core_export_readiness_and_optimization` | `completed` | `2026-03-10T06:46:17Z` | [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md) |
 
-_Updated At: `2026-03-10T20:42:00Z`_
+_Updated At: `2026-03-10T21:24:00Z`_

@@ -18,6 +18,13 @@ def latest_timestamp(values: tuple[str, ...]) -> str:
     return max(values) if values else "None"
 
 
+def effective_updated_at(updated_at: str, closed_at: str | None = None) -> str:
+    """Return the effective update timestamp, treating closeout as a state change."""
+    if closed_at and closed_at > updated_at:
+        return closed_at
+    return updated_at
+
+
 def markdown_repo_link(repo_root: Path, relative_path: str, *, label: str) -> str:
     """Return one repository-local Markdown link for a tracker cell."""
     return f"[{label}]({repo_root / relative_path})"

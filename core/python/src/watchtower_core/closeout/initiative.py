@@ -9,6 +9,8 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import TaskIndexEntry
+from watchtower_core.repo_ops.sync.coordination_index import CoordinationIndexSyncService
+from watchtower_core.repo_ops.sync.coordination_tracking import CoordinationTrackingSyncService
 from watchtower_core.repo_ops.sync.decision_tracking import DecisionTrackingSyncService
 from watchtower_core.repo_ops.sync.design_tracking import DesignTrackingSyncService
 from watchtower_core.repo_ops.sync.initiative_index import InitiativeIndexSyncService
@@ -33,7 +35,9 @@ class InitiativeCloseoutResult:
     wrote: bool
     traceability_output_path: str | None
     initiative_index_output_path: str | None
+    coordination_index_output_path: str | None
     initiative_tracking_output_path: str | None
+    coordination_tracking_output_path: str | None
     prd_tracking_output_path: str | None
     decision_tracking_output_path: str | None
     design_tracking_output_path: str | None
@@ -83,6 +87,7 @@ class InitiativeCloseoutService:
 
         resolved_closed_at = closed_at or utc_timestamp_now()
         target_entry["initiative_status"] = initiative_status
+        target_entry["updated_at"] = resolved_closed_at
         target_entry["closed_at"] = resolved_closed_at
         target_entry["closure_reason"] = closure_reason
         if superseded_by_trace_id is not None:
@@ -94,7 +99,9 @@ class InitiativeCloseoutService:
 
         traceability_output_path: str | None = None
         initiative_index_output_path: str | None = None
+        coordination_index_output_path: str | None = None
         initiative_tracking_output_path: str | None = None
+        coordination_tracking_output_path: str | None = None
         prd_tracking_output_path: str | None = None
         decision_tracking_output_path: str | None = None
         design_tracking_output_path: str | None = None
@@ -111,10 +118,22 @@ class InitiativeCloseoutService:
                     initiative_index_service.build_document()
                 )
             )
+            coordination_index_service = CoordinationIndexSyncService(self._loader)
+            coordination_index_output_path = str(
+                coordination_index_service.write_document(
+                    coordination_index_service.build_document()
+                )
+            )
             initiative_tracking_service = InitiativeTrackingSyncService(self._loader)
             initiative_tracking_output_path = str(
                 initiative_tracking_service.write_document(
                     initiative_tracking_service.build_document()
+                )
+            )
+            coordination_tracking_service = CoordinationTrackingSyncService(self._loader)
+            coordination_tracking_output_path = str(
+                coordination_tracking_service.write_document(
+                    coordination_tracking_service.build_document()
                 )
             )
             prd_tracking_service = PrdTrackingSyncService(self._loader)
@@ -144,7 +163,9 @@ class InitiativeCloseoutService:
             wrote=write,
             traceability_output_path=traceability_output_path,
             initiative_index_output_path=initiative_index_output_path,
+            coordination_index_output_path=coordination_index_output_path,
             initiative_tracking_output_path=initiative_tracking_output_path,
+            coordination_tracking_output_path=coordination_tracking_output_path,
             prd_tracking_output_path=prd_tracking_output_path,
             decision_tracking_output_path=decision_tracking_output_path,
             design_tracking_output_path=design_tracking_output_path,

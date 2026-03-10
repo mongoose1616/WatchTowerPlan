@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_closeout"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T01:48:35Z"
+updated_at: "2026-03-10T21:18:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -69,8 +69,9 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - `superseded` must also record `superseded_by_trace_id`.
 - Prefer closing or explicitly deferring open tasks before terminal initiative closeout.
 - If a terminal closeout is recorded while open tasks remain, the exception should be explicit in the operator workflow or command invocation.
+- When terminal closeout metadata changes the traceability entry, `updated_at` should advance to the effective closeout timestamp.
 - Mirror initiative closeout status into the PRD, decision, and design trackers from the traceability index rather than maintaining a second human-authored closeout source.
-- Mirror initiative closeout status into the derived initiative index and initiative tracker from the traceability index rather than maintaining a second initiative-closeout authority.
+- Mirror initiative closeout status into the derived initiative index, coordination surfaces, and initiative tracker from the traceability index rather than maintaining a second initiative-closeout authority.
 
 ## Structure or Data Model
 | Field | Meaning |
@@ -84,8 +85,8 @@ This standard defines how traced initiatives move to a terminal closeout state w
 1. Confirm the initiative `trace_id` and its current linked planning or execution surfaces.
 2. Choose the terminal initiative status.
 3. Record `closed_at` and `closure_reason`, and `superseded_by_trace_id` when required.
-4. Update the traceability index entry for that trace.
-5. Refresh the derived initiative coordination surfaces.
+4. Update the traceability index entry for that trace and advance its effective `updated_at`.
+5. Refresh the derived initiative and coordination surfaces.
 6. Refresh the human planning trackers that mirror initiative status.
 7. Record any remaining open-task exception explicitly when closeout happens with unfinished task records.
 
@@ -93,6 +94,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - Every traceability entry should publish `initiative_status`.
 - Terminal initiative states should also publish `closed_at` and `closure_reason`.
 - `superseded` entries should also publish `superseded_by_trace_id`.
+- Terminal closeout should not leave `updated_at` behind `closed_at`.
 - Human planning trackers should agree with the traceability index on initiative closeout status.
 - Reviewers should reject closeout state that is only implied in prose and not published in the traceability layer.
 
@@ -107,4 +109,4 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md)
 
 ## Updated At
-- `2026-03-10T01:48:35Z`
+- `2026-03-10T21:18:00Z`

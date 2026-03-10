@@ -29,7 +29,7 @@
     {
       "command_id": "command.watchtower_core.closeout",
       "command": "watchtower-core closeout",
-      "summary": "Apply initiative-level closeout state to the governed traceability index and refresh the human-readable planning trackers that mirror that state.",
+      "summary": "Apply initiative-level closeout state to the governed traceability index and refresh the derived initiative, coordination, and human-readable planning trackers that mirror that state.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -47,7 +47,7 @@
     {
       "command_id": "command.watchtower_core.closeout.initiative",
       "command": "watchtower-core closeout initiative",
-      "summary": "Set terminal closeout state for one traced initiative and, in write mode, persist it to the traceability index plus the derived PRD, decision, and design trackers.",
+      "summary": "Set terminal closeout state for one traced initiative and, in write mode, persist it to the traceability index plus the derived initiative, coordination, PRD, decision, and design trackers.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",

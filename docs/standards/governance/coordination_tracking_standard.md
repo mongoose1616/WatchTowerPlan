@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "coordination_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T19:29:01Z"
+updated_at: "2026-03-10T21:18:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -61,6 +61,7 @@ This standard defines the repository's compact human coordination tracker so hum
 - Keep zero-state text short and explicit.
 - Do not hand-edit `coordination_tracking.md` as an authored planning record.
 - Keep the tracker smaller than the combined trackers it summarizes.
+- Keep the tracker `_Updated At` value aligned with the latest effective initiative state change, including terminal closeout.
 
 ## Structure or Data Model
 ### Source-of-truth layers
@@ -89,6 +90,7 @@ This standard defines the repository's compact human coordination tracker so hum
 - The tracker should link to repo-local surfaces for deeper detail.
 - The tracker should stay compact and should not grow into a second full tracker family.
 - The tracker should remain useful even when no initiative is active.
+- The tracker `_Updated At` value should not trail a later initiative closeout timestamp.
 
 ## Change Control
 - Update this standard when the repository changes the human planning start-here experience or the compact coordination tracker structure.
@@ -101,4 +103,4 @@ This standard defines the repository's compact human coordination tracker so hum
 - [README.md](/home/j/WatchTowerPlan/docs/planning/README.md)
 
 ## Updated At
-- `2026-03-10T19:29:01Z`
+- `2026-03-10T21:18:00Z`

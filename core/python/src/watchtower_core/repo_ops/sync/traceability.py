@@ -208,6 +208,7 @@ class TraceAccumulator:
         initiative_status = entry.get("initiative_status")
         if isinstance(initiative_status, str) and initiative_status:
             self.initiative_status = initiative_status
+        existing_updated_at = entry.get("updated_at")
         closed_at = entry.get("closed_at")
         if isinstance(closed_at, str) and closed_at:
             self.closed_at = closed_at
@@ -221,6 +222,10 @@ class TraceAccumulator:
         if isinstance(note, str) and note:
             self.merge_note(rank=900, note=note)
         self._reopen_completed_initiative_if_needed()
+        if isinstance(existing_updated_at, str) and existing_updated_at:
+            self._timestamps.add(existing_updated_at)
+        if self.initiative_status != "active" and isinstance(closed_at, str) and closed_at:
+            self._timestamps.add(closed_at)
 
     def mark_task_state(self, *, task_status: str) -> None:
         if task_status not in {"done", "cancelled"}:

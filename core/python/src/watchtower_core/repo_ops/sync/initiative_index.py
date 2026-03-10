@@ -15,6 +15,7 @@ from watchtower_core.control_plane.models import (
     TraceabilityEntry,
 )
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.sync.tracking_common import effective_updated_at
 
 INITIATIVE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/initiatives/initiative_index.v1.json"
 VALIDATE_ACCEPTANCE_COMMAND_DOC = (
@@ -160,6 +161,7 @@ class InitiativeIndexSyncService:
             blocked_task_count=blocked_task_count,
             key_surface_path=key_surface_path,
         )
+        entry_updated_at = effective_updated_at(trace_entry.updated_at, trace_entry.closed_at)
 
         entry: dict[str, object] = {
             "trace_id": trace_entry.trace_id,
@@ -168,7 +170,7 @@ class InitiativeIndexSyncService:
             "status": trace_entry.status,
             "initiative_status": trace_entry.initiative_status,
             "current_phase": current_phase,
-            "updated_at": trace_entry.updated_at,
+            "updated_at": entry_updated_at,
             "open_task_count": len(active_tasks),
             "blocked_task_count": blocked_task_count,
             "key_surface_path": key_surface_path,
