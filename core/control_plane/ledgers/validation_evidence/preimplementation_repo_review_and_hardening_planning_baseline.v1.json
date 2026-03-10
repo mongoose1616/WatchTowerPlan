@@ -1,0 +1,97 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.preimplementation_repo_review_and_hardening.planning_baseline",
+  "title": "Pre-Implementation Repository Review and Hardening Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.preimplementation_repo_review_and_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-10T17:55:24Z",
+  "source_prd_ids": [
+    "prd.preimplementation_repo_review_and_hardening"
+  ],
+  "source_decision_ids": [
+    "decision.preimplementation_machine_coordination_entrypoint"
+  ],
+  "source_design_ids": [
+    "design.features.preimplementation_repo_readiness"
+  ],
+  "source_plan_ids": [
+    "design.implementation.preimplementation_repo_hardening_execution"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.preimplementation_repo_review_and_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.preimplementation_repo_review_and_hardening.planning_chain",
+      "title": "Planning chain bootstrap",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/design/features/preimplementation_repo_readiness.md",
+        "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md",
+        "docs/planning/tasks/closed/preimplementation_repo_review_bootstrap.md",
+        "docs/planning/tasks/open/preimplementation_readme_entrypoints.md",
+        "docs/planning/tasks/open/preimplementation_machine_coordination.md",
+        "docs/planning/tasks/open/preimplementation_core_modularity.md"
+      ],
+      "subject_ids": [
+        "prd.preimplementation_repo_review_and_hardening",
+        "decision.preimplementation_machine_coordination_entrypoint",
+        "design.features.preimplementation_repo_readiness",
+        "design.implementation.preimplementation_repo_hardening_execution",
+        "task.preimplementation_repo_review_and_hardening.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.preimplementation_repo_review_and_hardening.001"
+      ],
+      "notes": "The initiative is bootstrapped with the traced planning chain, a closed bootstrap task, and three bounded open execution tasks."
+    },
+    {
+      "check_id": "check.preimplementation_repo_review_and_hardening.review_findings",
+      "title": "Review findings recorded as bounded work",
+      "result": "passed",
+      "subject_paths": [
+        "docs/references/README.md",
+        "docs/commands/core_python/README.md",
+        "core/python/README.md",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/python/src/watchtower_core/cli/handlers.py",
+        "core/python/src/watchtower_core/control_plane/models.py",
+        "core/python/src/watchtower_core/control_plane/schemas.py"
+      ],
+      "acceptance_ids": [
+        "ac.preimplementation_repo_review_and_hardening.002",
+        "ac.preimplementation_repo_review_and_hardening.003",
+        "ac.preimplementation_repo_review_and_hardening.004"
+      ],
+      "notes": "The review isolated three bounded follow-up slices: README compaction, machine coordination entrypoint strengthening, and core modularity plus supplemental schema loading."
+    },
+    {
+      "check_id": "check.preimplementation_repo_review_and_hardening.validation_baseline",
+      "title": "Current workspace validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "acceptance_ids": [
+        "ac.preimplementation_repo_review_and_hardening.005"
+      ],
+      "notes": "The repository is green at initiative bootstrap and ready for bounded remediation slices."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/preimplementation_repo_review_and_hardening_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning-baseline evidence for the pre-implementation repository review and hardening initiative."
+}

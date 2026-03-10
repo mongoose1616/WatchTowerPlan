@@ -459,6 +459,109 @@
       ]
     },
     {
+      "trace_id": "trace.preimplementation_repo_review_and_hardening",
+      "title": "Pre-Implementation Repository Review and Hardening PRD",
+      "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T17:55:24Z",
+      "open_task_count": 3,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+      "next_surface_path": "docs/planning/tasks/open/preimplementation_core_modularity.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.preimplementation_repo_review_and_hardening.core_modularity.001",
+        "task.preimplementation_repo_review_and_hardening.machine_coordination.001",
+        "task.preimplementation_repo_review_and_hardening.readme_entrypoints.001"
+      ],
+      "prd_ids": [
+        "prd.preimplementation_repo_review_and_hardening"
+      ],
+      "decision_ids": [
+        "decision.preimplementation_machine_coordination_entrypoint"
+      ],
+      "design_ids": [
+        "design.features.preimplementation_repo_readiness"
+      ],
+      "plan_ids": [
+        "design.implementation.preimplementation_repo_hardening_execution"
+      ],
+      "task_ids": [
+        "task.preimplementation_repo_review_and_hardening.bootstrap.001",
+        "task.preimplementation_repo_review_and_hardening.core_modularity.001",
+        "task.preimplementation_repo_review_and_hardening.machine_coordination.001",
+        "task.preimplementation_repo_review_and_hardening.readme_entrypoints.001"
+      ],
+      "acceptance_ids": [
+        "ac.preimplementation_repo_review_and_hardening.001",
+        "ac.preimplementation_repo_review_and_hardening.002",
+        "ac.preimplementation_repo_review_and_hardening.003",
+        "ac.preimplementation_repo_review_and_hardening.004",
+        "ac.preimplementation_repo_review_and_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.preimplementation_repo_review_and_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.preimplementation_repo_review_and_hardening.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/preimplementation_repo_review_and_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/preimplementation_repo_review_and_hardening_planning_baseline.v1.json",
+        "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/handlers.py",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/models.py",
+        "core/python/src/watchtower_core/control_plane/schemas.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/tests/",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/README.md",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/preimplementation_repo_readiness.md",
+        "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md",
+        "docs/planning/initiatives/README.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/tasks/closed/preimplementation_repo_review_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/preimplementation_core_modularity.md",
+        "docs/planning/tasks/open/preimplementation_machine_coordination.md",
+        "docs/planning/tasks/open/preimplementation_readme_entrypoints.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/README.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/templates/readme_template.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the pre-implementation repository review and hardening initiative."
+    },
+    {
       "trace_id": "trace.template_and_output_efficiency",
       "title": "Template and Output Efficiency PRD",
       "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",

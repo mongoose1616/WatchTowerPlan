@@ -337,6 +337,38 @@
       ]
     },
     {
+      "document_id": "design.features.preimplementation_repo_readiness",
+      "trace_id": "trace.preimplementation_repo_review_and_hardening",
+      "family": "feature_design",
+      "title": "Pre-Implementation Repository Readiness Design",
+      "summary": "Defines the review-backed design for compact documentation entrypoints, a clear machine coordination start-here path, and more modular configurable core package surfaces.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/preimplementation_repo_readiness.md",
+      "updated_at": "2026-03-10T17:55:24Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md",
+        "docs/",
+        "docs/planning/",
+        "core/control_plane/",
+        "core/python/src/watchtower_core/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md"
+      ]
+    },
+    {
       "document_id": "design.features.python_validator_execution",
       "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
@@ -519,6 +551,35 @@
         "docs/planning/prds/core_python_foundation.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json"
+      ]
+    },
+    {
+      "document_id": "design.implementation.preimplementation_repo_hardening_execution",
+      "trace_id": "trace.preimplementation_repo_review_and_hardening",
+      "family": "implementation_plan",
+      "title": "Pre-Implementation Repository Hardening Execution Plan",
+      "summary": "Breaks the repository review remediation into bounded slices for README entrypoints, machine coordination, and core modularity plus supplemental schema loading.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md",
+      "updated_at": "2026-03-10T17:55:24Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/preimplementation_repo_readiness.md"
+      ],
+      "related_paths": [
+        "docs/",
+        "core/control_plane/",
+        "core/python/src/watchtower_core/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/design/features/preimplementation_repo_readiness.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
       ]
     },
     {

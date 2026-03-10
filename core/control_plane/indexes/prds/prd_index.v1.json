@@ -156,6 +156,55 @@
       ]
     },
     {
+      "trace_id": "trace.preimplementation_repo_review_and_hardening",
+      "prd_id": "prd.preimplementation_repo_review_and_hardening",
+      "title": "Pre-Implementation Repository Review and Hardening PRD",
+      "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+      "updated_at": "2026-03-10T17:55:24Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.preimplementation_repo_review_and_hardening.001",
+        "req.preimplementation_repo_review_and_hardening.002",
+        "req.preimplementation_repo_review_and_hardening.003",
+        "req.preimplementation_repo_review_and_hardening.004",
+        "req.preimplementation_repo_review_and_hardening.005",
+        "req.preimplementation_repo_review_and_hardening.006"
+      ],
+      "acceptance_ids": [
+        "ac.preimplementation_repo_review_and_hardening.001",
+        "ac.preimplementation_repo_review_and_hardening.002",
+        "ac.preimplementation_repo_review_and_hardening.003",
+        "ac.preimplementation_repo_review_and_hardening.004",
+        "ac.preimplementation_repo_review_and_hardening.005"
+      ],
+      "linked_decision_ids": [
+        "decision.preimplementation_machine_coordination_entrypoint"
+      ],
+      "linked_design_ids": [
+        "design.features.preimplementation_repo_readiness"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.preimplementation_repo_hardening_execution"
+      ],
+      "related_paths": [
+        "docs/",
+        "workflows/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/prds/template_and_output_efficiency.md",
+        "docs/standards/engineering/git_workflow_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.template_and_output_efficiency",
       "prd_id": "prd.template_and_output_efficiency",
       "title": "Template and Output Efficiency PRD",

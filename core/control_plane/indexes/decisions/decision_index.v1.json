@@ -50,6 +50,50 @@
         "python",
         "workspace"
       ]
+    },
+    {
+      "trace_id": "trace.preimplementation_repo_review_and_hardening",
+      "decision_id": "decision.preimplementation_machine_coordination_entrypoint",
+      "title": "Machine Coordination Entrypoint Decision",
+      "summary": "Records the decision to keep the current authored planning families and strengthen the initiative index as the primary machine coordination entrypoint for traced work.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+      "updated_at": "2026-03-10T17:55:24Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.preimplementation_repo_review_and_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.preimplementation_repo_readiness"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.preimplementation_repo_hardening_execution"
+      ],
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/cli/",
+        "docs/planning/README.md",
+        "docs/planning/initiatives/README.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/design/features/preimplementation_repo_readiness.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
     }
   ]
 }
