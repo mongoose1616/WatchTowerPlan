@@ -52,6 +52,53 @@
       ]
     },
     {
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "decision_id": "decision.end_to_end_repo_rationalization_direction",
+      "title": "End-to-End Repository Rationalization Direction",
+      "summary": "Records the decision to keep the current planning-family model and coordination start-here path while focusing the final pre-implementation follow-up on trust-surface guardrails, external pack validation, and CLI modularity.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/end_to_end_repo_rationalization_direction.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.end_to_end_repo_review_and_rationalization"
+      ],
+      "linked_design_ids": [
+        "design.features.end_to_end_repo_rationalization"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.end_to_end_repo_rationalization_execution"
+      ],
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/",
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/cli/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/design/features/end_to_end_repo_rationalization.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/schema_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.machine_first_coordination_surface",
       "decision_id": "decision.machine_first_coordination_entry_surface",
       "title": "Machine-First Coordination Entry Surface Decision",

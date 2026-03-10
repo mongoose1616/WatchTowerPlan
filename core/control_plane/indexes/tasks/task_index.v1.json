@@ -356,6 +356,144 @@
       ]
     },
     {
+      "task_id": "task.end_to_end_repo_review_and_rationalization.bootstrap.001",
+      "title": "Bootstrap the end-to-end repo review and rationalization initiative",
+      "summary": "Creates the traced planning chain, accepted direction, acceptance baseline, planning evidence, and bounded execution task set for the final pre-implementation review follow-up.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "related_ids": [
+        "prd.end_to_end_repo_review_and_rationalization",
+        "design.features.end_to_end_repo_rationalization",
+        "design.implementation.end_to_end_repo_rationalization_execution",
+        "decision.end_to_end_repo_rationalization_direction"
+      ],
+      "applies_to": [
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/design/features/end_to_end_repo_rationalization.md",
+        "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
+        "docs/planning/decisions/end_to_end_repo_rationalization_direction.md",
+        "core/control_plane/contracts/acceptance/end_to_end_repo_review_and_rationalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/end_to_end_repo_review_and_rationalization_planning_baseline.v1.json",
+        "docs/planning/tasks/open/"
+      ]
+    },
+    {
+      "task_id": "task.end_to_end_repo_review_and_rationalization.derived_metadata.001",
+      "title": "Harden derived coordination metadata around closeout state",
+      "summary": "Make traceability-derived initiative and coordination surfaces keep timestamps aligned with closeout-driven state changes so current-state trackers remain trustworthy.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/end_to_end_derived_metadata.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "depends_on": [
+        "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.end_to_end_repo_review_and_rationalization",
+        "design.features.end_to_end_repo_rationalization",
+        "design.implementation.end_to_end_repo_rationalization_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/closeout/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/",
+        "docs/planning/"
+      ]
+    },
+    {
+      "task_id": "task.end_to_end_repo_review_and_rationalization.doc_guardrails.001",
+      "title": "Add documentation guardrails for repo-local link integrity",
+      "summary": "Extend document-semantics validation so repo-local markdown links fail closed and keep documentation-coherence drift from recurring silently.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/end_to_end_doc_guardrails.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "depends_on": [
+        "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.end_to_end_repo_review_and_rationalization",
+        "design.features.end_to_end_repo_rationalization",
+        "design.implementation.end_to_end_repo_rationalization_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/",
+        "docs/standards/documentation/",
+        "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.end_to_end_repo_review_and_rationalization.external_pack_validation.001",
+      "title": "Expose external pack validation through supplemental schema loading",
+      "summary": "Add file-system supplemental schema loading and CLI-level external artifact validation so future pack-owned artifacts can be validated without patching the canonical schema catalog.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/end_to_end_external_pack_validation.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "depends_on": [
+        "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.end_to_end_repo_review_and_rationalization",
+        "design.features.end_to_end_repo_rationalization",
+        "design.implementation.end_to_end_repo_rationalization_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "docs/commands/core_python/",
+        "core/control_plane/schemas/interfaces/packs/"
+      ]
+    },
+    {
+      "task_id": "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001",
+      "title": "Split query CLI registration and handlers into smaller family modules",
+      "summary": "Reduce maintenance risk in the largest remaining CLI modules by splitting query parser registration and query runtime handlers into smaller family-focused modules without changing the durable command contract.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "chore",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "depends_on": [
+        "task.end_to_end_repo_review_and_rationalization.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.end_to_end_repo_review_and_rationalization",
+        "design.features.end_to_end_repo_rationalization",
+        "design.implementation.end_to_end_repo_rationalization_execution"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/"
+      ]
+    },
+    {
       "task_id": "task.github_collaboration.followup.001",
       "title": "Close remaining GitHub collaboration follow-up",
       "summary": "Tracks the remaining closeout and verification follow-up for the GitHub collaboration scaffolding initiative.",

@@ -353,6 +353,101 @@
       "notes": "First executable slice for the core Python helper and harness layer."
     },
     {
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "title": "End-to-End Repository Review and Rationalization PRD",
+      "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "prd_ids": [
+        "prd.end_to_end_repo_review_and_rationalization"
+      ],
+      "decision_ids": [
+        "decision.end_to_end_repo_rationalization_direction"
+      ],
+      "design_ids": [
+        "design.features.end_to_end_repo_rationalization"
+      ],
+      "plan_ids": [
+        "design.implementation.end_to_end_repo_rationalization_execution"
+      ],
+      "task_ids": [
+        "task.end_to_end_repo_review_and_rationalization.bootstrap.001",
+        "task.end_to_end_repo_review_and_rationalization.derived_metadata.001",
+        "task.end_to_end_repo_review_and_rationalization.doc_guardrails.001",
+        "task.end_to_end_repo_review_and_rationalization.external_pack_validation.001",
+        "task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001"
+      ],
+      "requirement_ids": [
+        "req.end_to_end_repo_review_and_rationalization.001",
+        "req.end_to_end_repo_review_and_rationalization.002",
+        "req.end_to_end_repo_review_and_rationalization.003",
+        "req.end_to_end_repo_review_and_rationalization.004",
+        "req.end_to_end_repo_review_and_rationalization.005",
+        "req.end_to_end_repo_review_and_rationalization.006",
+        "req.end_to_end_repo_review_and_rationalization.007"
+      ],
+      "acceptance_ids": [
+        "ac.end_to_end_repo_review_and_rationalization.001",
+        "ac.end_to_end_repo_review_and_rationalization.002",
+        "ac.end_to_end_repo_review_and_rationalization.003",
+        "ac.end_to_end_repo_review_and_rationalization.004",
+        "ac.end_to_end_repo_review_and_rationalization.005",
+        "ac.end_to_end_repo_review_and_rationalization.006"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.end_to_end_repo_review_and_rationalization"
+      ],
+      "evidence_ids": [
+        "evidence.end_to_end_repo_review_and_rationalization.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/end_to_end_repo_review_and_rationalization_acceptance.v1.json",
+        "core/control_plane/indexes/commands/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/coordination/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/end_to_end_repo_review_and_rationalization_planning_baseline.v1.json",
+        "core/control_plane/schemas/interfaces/packs/",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/closeout/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/end_to_end_repo_rationalization_direction.md",
+        "docs/planning/design/features/end_to_end_repo_rationalization.md",
+        "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/end_to_end_derived_metadata.md",
+        "docs/planning/tasks/open/end_to_end_doc_guardrails.md",
+        "docs/planning/tasks/open/end_to_end_external_pack_validation.md",
+        "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the end-to-end repository review and rationalization initiative."
+    },
+    {
       "trace_id": "trace.github_collaboration",
       "title": "GitHub Collaboration Scaffolding",
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",

@@ -3,17 +3,24 @@
 ## Current State
 | Field | Value |
 | --- | --- |
-| Mode | `ready_for_bootstrap` |
-| Summary | No active initiatives are open. The repository is ready for one new bounded initiative. |
-| Next | Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work. |
-| Open First | [docs/planning/README.md](/home/j/WatchTowerPlan/docs/planning/README.md) |
+| Mode | `active_work` |
+| Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
+| Next | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| Open First | [docs/planning/tasks/open/end_to_end_derived_metadata.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_derived_metadata.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Next | Action |
+| --- | --- | --- | --- | --- |
+| `trace.end_to_end_repo_review_and_rationalization` | `execution` | repository_maintainer | [end_to_end_derived_metadata.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_derived_metadata.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Actionable Tasks
-_No actionable tasks._
+| Task | Initiative | Status | Priority | Owner |
+| --- | --- | --- | --- | --- |
+| [task.end_to_end_repo_review_and_rationalization.derived_metadata.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_derived_metadata.md) | `trace.end_to_end_repo_review_and_rationalization` | `ready` | `high` | `repository_maintainer` |
+| [task.end_to_end_repo_review_and_rationalization.doc_guardrails.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_doc_guardrails.md) | `trace.end_to_end_repo_review_and_rationalization` | `ready` | `high` | `repository_maintainer` |
+| [task.end_to_end_repo_review_and_rationalization.external_pack_validation.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_external_pack_validation.md) | `trace.end_to_end_repo_review_and_rationalization` | `ready` | `high` | `repository_maintainer` |
+| [task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_query_cli_modularity.md) | `trace.end_to_end_repo_review_and_rationalization` | `ready` | `medium` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -24,4 +31,4 @@ _No actionable tasks._
 | `trace.template_and_output_efficiency` | `completed` | `2026-03-10T16:35:23Z` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) |
 | `trace.core_export_readiness_and_optimization` | `completed` | `2026-03-10T06:46:17Z` | [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md) |
 
-_Updated At: `2026-03-10T19:29:01Z`_
+_Updated At: `2026-03-10T19:43:34Z`_

@@ -211,6 +211,38 @@
       ]
     },
     {
+      "document_id": "design.features.end_to_end_repo_rationalization",
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "family": "feature_design",
+      "title": "End-to-End Repository Rationalization Design",
+      "summary": "Defines the review-backed design for documentation link guardrails, closeout-consistent derived metadata, external pack validation seams, and smaller query CLI modules.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/end_to_end_repo_rationalization.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
+        "docs/",
+        "workflows/",
+        "core/control_plane/",
+        "core/python/src/watchtower_core/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/design/features/preimplementation_repo_readiness.md",
+        "docs/planning/design/features/machine_first_coordination_surface.md"
+      ]
+    },
+    {
       "document_id": "design.features.github_collaboration_scaffolding",
       "trace_id": "trace.github_collaboration",
       "family": "feature_design",
@@ -581,6 +613,36 @@
         "docs/planning/prds/core_python_foundation.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json"
+      ]
+    },
+    {
+      "document_id": "design.implementation.end_to_end_repo_rationalization_execution",
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "family": "implementation_plan",
+      "title": "End-to-End Repository Rationalization Execution Plan",
+      "summary": "Breaks the final pre-implementation review follow-up into bounded slices for documentation guardrails, derived metadata hardening, external pack validation seams, and query CLI modularity.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/end_to_end_repo_rationalization.md"
+      ],
+      "related_paths": [
+        "docs/",
+        "workflows/",
+        "core/control_plane/",
+        "core/python/src/watchtower_core/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/design/features/end_to_end_repo_rationalization.md",
+        "docs/planning/decisions/end_to_end_repo_rationalization_direction.md"
       ]
     },
     {

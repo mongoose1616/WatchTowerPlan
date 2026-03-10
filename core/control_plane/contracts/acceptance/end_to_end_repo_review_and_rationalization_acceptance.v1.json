@@ -1,0 +1,98 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.end_to_end_repo_review_and_rationalization",
+  "title": "End-to-End Repository Review and Rationalization Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+  "source_prd_id": "prd.end_to_end_repo_review_and_rationalization",
+  "entries": [
+    {
+      "acceptance_id": "ac.end_to_end_repo_review_and_rationalization.001",
+      "summary": "The planning corpus publishes the PRD, decision record, feature design, implementation plan, acceptance contract, planning evidence, bootstrap task, and bounded execution tasks for the final review follow-up initiative.",
+      "source_requirement_ids": [
+        "req.end_to_end_repo_review_and_rationalization.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/decisions/end_to_end_repo_rationalization_direction.md",
+        "docs/planning/design/features/end_to_end_repo_rationalization.md",
+        "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
+        "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
+        "docs/planning/tasks/open/"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.end_to_end_repo_review_and_rationalization.002",
+      "summary": "Documentation semantics validation rejects broken repo-local markdown links and the current documentation corpus passes the stronger rule.",
+      "source_requirement_ids": [
+        "req.end_to_end_repo_review_and_rationalization.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/",
+        "docs/",
+        "workflows/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.end_to_end_repo_review_and_rationalization.003",
+      "summary": "Closeout-driven initiative and coordination surfaces keep timestamps aligned with the latest effective state change.",
+      "source_requirement_ids": [
+        "req.end_to_end_repo_review_and_rationalization.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.end_to_end_repo_review_and_rationalization.004",
+      "summary": "External artifacts can be validated against supplemental schemas supplied from files or directories without modifying the canonical schema catalog.",
+      "source_requirement_ids": [
+        "req.end_to_end_repo_review_and_rationalization.004",
+        "req.end_to_end_repo_review_and_rationalization.005"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/validation/",
+        "docs/commands/core_python/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.end_to_end_repo_review_and_rationalization.005",
+      "summary": "Query parser registration and runtime handlers are split into smaller family modules while keeping the durable command contract, docs, and tests aligned.",
+      "source_requirement_ids": [
+        "req.end_to_end_repo_review_and_rationalization.006"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "docs/commands/core_python/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.end_to_end_repo_review_and_rationalization.006",
+      "summary": "The repository remains green on the current validation baseline throughout the initiative.",
+      "source_requirement_ids": [
+        "req.end_to_end_repo_review_and_rationalization.007"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

@@ -156,6 +156,58 @@
       ]
     },
     {
+      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
+      "prd_id": "prd.end_to_end_repo_review_and_rationalization",
+      "title": "End-to-End Repository Review and Rationalization PRD",
+      "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+      "updated_at": "2026-03-10T19:43:34Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.end_to_end_repo_review_and_rationalization.001",
+        "req.end_to_end_repo_review_and_rationalization.002",
+        "req.end_to_end_repo_review_and_rationalization.003",
+        "req.end_to_end_repo_review_and_rationalization.004",
+        "req.end_to_end_repo_review_and_rationalization.005",
+        "req.end_to_end_repo_review_and_rationalization.006",
+        "req.end_to_end_repo_review_and_rationalization.007"
+      ],
+      "acceptance_ids": [
+        "ac.end_to_end_repo_review_and_rationalization.001",
+        "ac.end_to_end_repo_review_and_rationalization.002",
+        "ac.end_to_end_repo_review_and_rationalization.003",
+        "ac.end_to_end_repo_review_and_rationalization.004",
+        "ac.end_to_end_repo_review_and_rationalization.005",
+        "ac.end_to_end_repo_review_and_rationalization.006"
+      ],
+      "linked_decision_ids": [
+        "decision.end_to_end_repo_rationalization_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.end_to_end_repo_rationalization"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.end_to_end_repo_rationalization_execution"
+      ],
+      "related_paths": [
+        "docs/",
+        "workflows/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/customer_story.md",
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/prds/machine_first_coordination_surface.md"
+      ]
+    },
+    {
       "trace_id": "trace.machine_first_coordination_surface",
       "prd_id": "prd.machine_first_coordination_surface",
       "title": "Machine-First Coordination Surface PRD",
