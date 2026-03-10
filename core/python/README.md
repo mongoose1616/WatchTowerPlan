@@ -59,6 +59,7 @@
 - `uv run watchtower-core validate all --skip-acceptance`
 - `uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md`
 - `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
+- `uv run watchtower-core validate artifact --path /tmp/pack_note.json --schema-id urn:watchtower:schema:external:pack-note:v1 --supplemental-schema-path /tmp/pack_schemas --format json`
 
 ## Command Docs
 - Start with [README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md) for command-doc navigation.
@@ -97,3 +98,4 @@
 ## Programmatic Use
 - `watchtower_core.control_plane.WorkspaceConfig` and `ControlPlaneLoader` support alternate workspace layouts instead of hard-wiring callers to this repo shape.
 - `watchtower_core.control_plane.SupplementalSchemaDocument` lets external consumers register additional schemas in-memory for validation without modifying this repository's canonical schema catalog.
+- `ControlPlaneLoader(... supplemental_schema_paths=...)` and `SchemaStore.from_workspace(... supplemental_schema_paths=...)` let callers load supplemental schemas from explicit files or directories for bounded external artifact validation.

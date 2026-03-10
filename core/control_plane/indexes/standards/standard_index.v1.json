@@ -432,7 +432,7 @@
       "summary": "This standard defines how governed structured data is modeled with JSON Schema in this repository and how those schemas are organized under `core/control_plane/schemas/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/schema_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T21:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [
@@ -2126,7 +2126,7 @@
       "summary": "This standard defines the baseline validation expectations for repository changes across governed documents, governed artifacts, and the Python helper workspace.",
       "status": "active",
       "doc_path": "docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-10T20:33:00Z",
+      "updated_at": "2026-03-10T21:55:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [

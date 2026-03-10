@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidatorDefinition
 from watchtower_core.validation.common import (
@@ -17,25 +19,42 @@ from watchtower_core.validation.errors import ValidationExecutionError, Validati
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
 
 
+@dataclass(frozen=True, slots=True)
+class _ArtifactValidationPlan:
+    validator_id: str
+    engine: str
+    schema_ids: tuple[str, ...]
+
+
 class ArtifactValidationService:
     """Validate JSON governed artifacts through registry-backed schema validators."""
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
 
-    def validate(self, path: str | Path, validator_id: str | None = None) -> ValidationResult:
+    def validate(
+        self,
+        path: str | Path,
+        validator_id: str | None = None,
+        *,
+        schema_id: str | None = None,
+    ) -> ValidationResult:
         """Validate one JSON artifact through an explicit or auto-selected validator."""
         resolved_path, target_path, relative_target_path = resolve_target_path(self._loader, path)
-        validator = self._resolve_validator(relative_target_path, validator_id)
 
         try:
             payload = self._load_json_object(resolved_path)
         except ValueError as exc:
+            plan = self._build_parse_failure_plan(
+                relative_target_path,
+                validator_id=validator_id,
+                schema_id=schema_id,
+            )
             return ValidationResult(
-                validator_id=validator.validator_id,
+                validator_id=plan.validator_id,
                 target_path=target_path,
-                engine=validator.engine,
-                schema_ids=validator.schema_ids,
+                engine=plan.engine,
+                schema_ids=plan.schema_ids,
                 passed=False,
                 issues=(
                     ValidationIssue(
@@ -45,14 +64,86 @@ class ArtifactValidationService:
                 ),
             )
 
-        issues = iter_schema_validation_issues(self._loader, payload, validator.schema_ids)
+        plan = self._resolve_validation_plan(
+            relative_target_path,
+            validator_id=validator_id,
+            schema_id=schema_id,
+            payload=payload,
+        )
+        try:
+            issues = iter_schema_validation_issues(self._loader, payload, plan.schema_ids)
+        except SchemaResolutionError as exc:
+            raise ValidationExecutionError(str(exc)) from exc
         return ValidationResult(
-            validator_id=validator.validator_id,
+            validator_id=plan.validator_id,
             target_path=target_path,
-            engine=validator.engine,
-            schema_ids=validator.schema_ids,
+            engine=plan.engine,
+            schema_ids=plan.schema_ids,
             passed=not issues,
             issues=tuple(issues),
+        )
+
+    def _build_parse_failure_plan(
+        self,
+        relative_target_path: str | None,
+        *,
+        validator_id: str | None,
+        schema_id: str | None,
+    ) -> _ArtifactValidationPlan:
+        if validator_id is not None:
+            validator = self._resolve_validator(relative_target_path, validator_id)
+            return self._plan_from_validator(validator)
+        if schema_id is not None:
+            return self._direct_schema_plan(schema_id)
+        if relative_target_path is not None:
+            validator = self._resolve_validator(relative_target_path, None)
+            return self._plan_from_validator(validator)
+        return _ArtifactValidationPlan(
+            validator_id="schema:auto",
+            engine="json_schema",
+            schema_ids=(),
+        )
+
+    def _resolve_validation_plan(
+        self,
+        relative_target_path: str | None,
+        *,
+        validator_id: str | None,
+        schema_id: str | None,
+        payload: dict[str, Any],
+    ) -> _ArtifactValidationPlan:
+        if validator_id is not None:
+            validator = self._resolve_validator(relative_target_path, validator_id)
+            return self._plan_from_validator(validator)
+        if schema_id is not None:
+            return self._direct_schema_plan(schema_id)
+        if relative_target_path is not None:
+            validator = self._resolve_validator(relative_target_path, None)
+            return self._plan_from_validator(validator)
+
+        payload_schema_id = payload.get("$schema")
+        if not isinstance(payload_schema_id, str) or not payload_schema_id:
+            raise ValidationSelectionError(
+                "External files require --validator-id, --schema-id, or a document $schema."
+            )
+        return self._direct_schema_plan(payload_schema_id)
+
+    def _plan_from_validator(self, validator: ValidatorDefinition) -> _ArtifactValidationPlan:
+        return _ArtifactValidationPlan(
+            validator_id=validator.validator_id,
+            engine=validator.engine,
+            schema_ids=validator.schema_ids,
+        )
+
+    def _direct_schema_plan(self, schema_id: str) -> _ArtifactValidationPlan:
+        if not schema_id:
+            raise ValidationSelectionError(
+                "Direct schema validation requires a non-empty schema ID."
+            )
+        return _ArtifactValidationPlan(
+            validator_id=f"schema:{schema_id}",
+            engine="json_schema",
+            schema_ids=(schema_id,),
         )
 
     def _resolve_validator(

@@ -442,12 +442,12 @@
       "title": "Expose external pack validation through supplemental schema loading",
       "summary": "Add file-system supplemental schema loading and CLI-level external artifact validation so future pack-owned artifacts can be validated without patching the canonical schema catalog.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/end_to_end_external_pack_validation.md",
-      "updated_at": "2026-03-10T19:43:34Z",
+      "doc_path": "docs/planning/tasks/closed/end_to_end_external_pack_validation.md",
+      "updated_at": "2026-03-10T21:58:00Z",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "depends_on": [
         "task.end_to_end_repo_review_and_rationalization.bootstrap.001"

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -8,6 +9,11 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+
+
+def write_json(path: Path, document: dict[str, object]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
 
 
 def test_control_plane_loader_reads_validator_registry() -> None:
@@ -302,10 +308,36 @@ def test_control_plane_loader_accepts_supplemental_schema_documents() -> None:
     assert loader.supplemental_schema_ids == (schema_id,)
 
 
+def test_control_plane_loader_accepts_supplemental_schema_paths(tmp_path: Path) -> None:
+    schema_path = tmp_path / "schemas" / "loader_path.v1.schema.json"
+    schema_id = "urn:watchtower:schema:external:loader-path-check:v1"
+    write_json(
+        schema_path,
+        {
+            "$id": schema_id,
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "Loader Path Check",
+            "description": "Schema loaded from a filesystem path.",
+            "type": "object",
+            "properties": {"kind": {"const": "loader_path_check"}},
+            "required": ["kind"],
+            "additionalProperties": False,
+        },
+    )
+
+    loader = ControlPlaneLoader(
+        REPO_ROOT,
+        supplemental_schema_paths=(schema_path,),
+    )
+
+    loader.schema_store.validate_instance({"kind": "loader_path_check"}, schema_id=schema_id)
+    assert loader.supplemental_schema_ids == (schema_id,)
+
+
 def test_control_plane_loader_rejects_supplemental_docs_with_explicit_schema_store() -> None:
     schema_store = SchemaStore.from_repo_root(REPO_ROOT)
 
-    with pytest.raises(ValueError, match="supplemental_schema_documents"):
+    with pytest.raises(ValueError, match="supplemental schema documents or paths"):
         ControlPlaneLoader(
             REPO_ROOT,
             schema_store=schema_store,
@@ -319,6 +351,17 @@ def test_control_plane_loader_rejects_supplemental_docs_with_explicit_schema_sto
                     source_label="external:conflict",
                 ),
             ),
+        )
+
+
+def test_control_plane_loader_rejects_supplemental_paths_with_explicit_schema_store() -> None:
+    schema_store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    with pytest.raises(ValueError, match="supplemental schema documents or paths"):
+        ControlPlaneLoader(
+            REPO_ROOT,
+            schema_store=schema_store,
+            supplemental_schema_paths=("core/control_plane/schemas/interfaces/packs",),
         )
 
 

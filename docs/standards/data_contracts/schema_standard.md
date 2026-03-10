@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T21:55:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -61,6 +61,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Keep enums and other shared constrained values in shared reusable schema fragments when reuse materially reduces drift.
 - Reuse the shared UTC timestamp fragment for governed `updated_at`, `recorded_at`, and `generated_at` fields instead of open-coding separate timestamp rules.
 - Keep interface schemas separate from core-authored artifact schemas even when the fields overlap. Accepted external input is a different contract boundary from core-owned canonical state.
+- When external validation needs schemas that do not belong in the canonical catalog, load them through explicit supplemental schema paths or in-memory supplemental schema documents instead of mutating the repository-owned catalog opportunistically.
 - Pair published schemas with canonical valid and invalid examples under `core/control_plane/examples/` when the schema describes a reusable artifact family or external interface.
 - Update related contracts, registries, policies, examples, and validation logic in the same change set when a schema change alters behavior or acceptance boundaries.
 
@@ -109,6 +110,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Canonical `valid/` and `invalid/` examples should prove the acceptance boundary for reusable schema families and external interfaces.
 - Reviewers should be able to identify whether a schema change also requires updates to contracts, registries, policies, or compatibility rules.
 - If runtime models reject data that the published schema accepts, tighten the schema or document the stricter runtime rule explicitly rather than leaving hidden divergence.
+- Supplemental schema loading should fail closed on missing paths, invalid JSON, invalid schemas, or duplicate `$id` values.
 
 ## Change Control
 - Update this standard when the repository changes the schema baseline, schema placement model, or fail-closed rules.
@@ -131,4 +133,4 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - If a future format standard introduces more specific serialization or naming rules for schema files, it should refine rather than weaken this standard.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T21:55:00Z`

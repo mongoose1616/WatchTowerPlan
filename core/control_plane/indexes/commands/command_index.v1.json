@@ -1096,7 +1096,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_validate_artifact.md",
-      "synopsis": "uv run watchtower-core validate artifact [-h] --path PATH [--validator-id VALIDATOR_ID] [--format {human,json}] [--record-evidence] [--trace-id TRACE_ID] [--evidence-id EVIDENCE_ID] [--subject-id SUBJECT_ID] [--acceptance-id ACCEPTANCE_ID] [--evidence-output EVIDENCE_OUTPUT] [--traceability-output TRACEABILITY_OUTPUT]",
+      "synopsis": "uv run watchtower-core validate artifact [-h] --path PATH [--validator-id VALIDATOR_ID | --schema-id SCHEMA_ID] [--supplemental-schema-path SUPPLEMENTAL_SCHEMA_PATH] [--format {human,json}] [--record-evidence] [--trace-id TRACE_ID] [--evidence-id EVIDENCE_ID] [--subject-id SUBJECT_ID] [--acceptance-id ACCEPTANCE_ID] [--evidence-output EVIDENCE_OUTPUT] [--traceability-output TRACEABILITY_OUTPUT]",
       "implementation_path": "core/python/src/watchtower_core/cli/validate_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.validate",

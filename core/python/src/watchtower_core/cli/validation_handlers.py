@@ -10,6 +10,7 @@ from watchtower_core.cli.handler_common import (
     _print_payload,
     _resolve_output_path,
 )
+from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.repo_ops.validation import VALIDATION_FAMILY_SPECS, ValidationAllService
@@ -48,11 +49,60 @@ def _run_validate_document_semantics(args: argparse.Namespace) -> int:
 
 
 def _run_validate_artifact(args: argparse.Namespace) -> int:
-    return _run_validation_command(
-        args,
-        command_name="watchtower-core validate artifact",
+    command_name = "watchtower-core validate artifact"
+    message = _validate_evidence_arguments(args)
+    if message is not None:
+        return _emit_command_error(args, command_name, message)
+
+    try:
+        loader = ControlPlaneLoader(
+            supplemental_schema_paths=tuple(args.supplemental_schema_path),
+        )
+    except SchemaResolutionError as exc:
+        return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
+
+    service = ArtifactValidationService(loader)
+    try:
+        result = service.validate(
+            args.path,
+            validator_id=args.validator_id,
+            schema_id=args.schema_id,
+        )
+    except (
+        SchemaResolutionError,
+        ValidationExecutionError,
+        ValidationSelectionError,
+    ) as exc:
+        return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
+
+    evidence_write = None
+    if args.record_evidence:
+        recorder = ValidationEvidenceRecorder(loader)
+        try:
+            evidence_write = recorder.record(
+                result,
+                trace_id=args.trace_id,
+                evidence_id=args.evidence_id,
+                subject_ids=tuple(args.subject_id),
+                acceptance_ids=tuple(args.acceptance_id),
+                evidence_output=_resolve_output_path(args.evidence_output),
+                traceability_output=_resolve_output_path(args.traceability_output),
+            )
+        except ValueError as exc:
+            return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
+
+    result_payload = _build_validation_payload(
+        command_name=command_name,
+        result=result,
+        evidence_write=evidence_write,
+    )
+    if _print_payload(args, result_payload) == 0:
+        return 0 if result.passed else 1
+
+    return _print_validation_summary(
+        result,
+        evidence_write=evidence_write,
         success_message="Artifact validated successfully.",
-        service_factory=ArtifactValidationService,
     )
 
 

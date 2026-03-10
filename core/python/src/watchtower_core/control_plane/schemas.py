@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -48,6 +49,66 @@ class SupplementalSchemaDocument:
         return schema_id
 
 
+def _resolve_supplemental_schema_path(
+    raw_path: Path | str,
+    *,
+    workspace_config: WorkspaceConfig,
+) -> Path:
+    candidate = Path(raw_path)
+    if not candidate.is_absolute():
+        candidate = workspace_config.repo_root / candidate
+    resolved = candidate.resolve()
+    if not resolved.exists():
+        raise SchemaResolutionError(f"Supplemental schema path does not exist: {raw_path}")
+    return resolved
+
+
+def _load_supplemental_schema_document_from_file(path: Path) -> SupplementalSchemaDocument:
+    try:
+        loaded = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise SchemaResolutionError(f"Supplemental schema {path} is not valid JSON.") from exc
+
+    if not isinstance(loaded, dict):
+        raise SchemaResolutionError(
+            f"Supplemental schema {path} must be a top-level JSON object."
+        )
+    return SupplementalSchemaDocument.from_document(loaded, source_label=str(path))
+
+
+def load_supplemental_schema_documents_from_paths(
+    schema_paths: Sequence[Path | str],
+    *,
+    workspace_config: WorkspaceConfig,
+) -> tuple[SupplementalSchemaDocument, ...]:
+    """Load supplemental schemas from explicit files or directories."""
+    documents: list[SupplementalSchemaDocument] = []
+    for raw_path in schema_paths:
+        resolved_path = _resolve_supplemental_schema_path(
+            raw_path,
+            workspace_config=workspace_config,
+        )
+        if resolved_path.is_file():
+            documents.append(_load_supplemental_schema_document_from_file(resolved_path))
+            continue
+        if not resolved_path.is_dir():
+            raise SchemaResolutionError(
+                f"Supplemental schema path is not a file or directory: {raw_path}"
+            )
+
+        json_paths = sorted(path for path in resolved_path.rglob("*.json") if path.is_file())
+        if not json_paths:
+            raise SchemaResolutionError(
+                "Supplemental schema directory does not contain any JSON files: "
+                f"{resolved_path}"
+            )
+        documents.extend(
+            _load_supplemental_schema_document_from_file(json_path)
+            for json_path in json_paths
+        )
+    return tuple(documents)
+
+
 class SchemaStore:
     """Resolve and validate published schemas through the schema catalog."""
 
@@ -75,11 +136,13 @@ class SchemaStore:
         repo_root: Path | None = None,
         *,
         supplemental_schema_documents: Sequence[SupplementalSchemaDocument] = (),
+        supplemental_schema_paths: Sequence[Path | str] = (),
     ) -> SchemaStore:
         """Bootstrap the schema store from the local schema catalog."""
         return cls.from_workspace(
             WorkspaceConfig.from_repo_root(repo_root),
             supplemental_schema_documents=supplemental_schema_documents,
+            supplemental_schema_paths=supplemental_schema_paths,
         )
 
     @classmethod
@@ -89,6 +152,7 @@ class SchemaStore:
         *,
         artifact_source: ArtifactSource | None = None,
         supplemental_schema_documents: Sequence[SupplementalSchemaDocument] = (),
+        supplemental_schema_paths: Sequence[Path | str] = (),
     ) -> SchemaStore:
         """Bootstrap the schema store from one injected workspace mapping."""
         source = artifact_source or FileSystemArtifactIO(workspace_config)
@@ -100,6 +164,12 @@ class SchemaStore:
         schema_documents: dict[str, dict[str, Any]] = {}
         registry = Registry()
         supplemental_schema_ids: list[str] = []
+        supplemental_schemas = tuple(supplemental_schema_documents) + (
+            load_supplemental_schema_documents_from_paths(
+                supplemental_schema_paths,
+                workspace_config=workspace_config,
+            )
+        )
 
         for record in catalog.records:
             schema_document = source.load_json_object(record.canonical_relative_path)
@@ -117,7 +187,7 @@ class SchemaStore:
                 Resource.from_contents(schema_document),
             )
 
-        for supplemental_schema in supplemental_schema_documents:
+        for supplemental_schema in supplemental_schemas:
             schema_id = supplemental_schema.schema_id()
             if schema_id in schema_documents:
                 raise SchemaResolutionError(

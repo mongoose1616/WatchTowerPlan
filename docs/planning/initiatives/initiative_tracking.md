@@ -3,7 +3,7 @@
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| `trace.end_to_end_repo_review_and_rationalization` | `execution` | repository_maintainer | `2` | [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md) | [end_to_end_external_pack_validation.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_external_pack_validation.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.end_to_end_repo_review_and_rationalization` | `execution` | repository_maintainer | `1` | [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md) | [end_to_end_query_cli_modularity.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/end_to_end_query_cli_modularity.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -20,4 +20,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-10T21:24:00Z`_
+_Updated At: `2026-03-10T21:58:00Z`_

@@ -206,8 +206,9 @@ def register_validate_family(
             validators published in the control plane.
 
             The command auto-selects the validator from the registry when the
-            path is repository-local, or you can provide `--validator-id`
-            explicitly for external or temporary files.
+            path is repository-local. For external or temporary files, you can
+            provide `--validator-id`, validate directly against `--schema-id`,
+            or rely on a document `$schema` plus supplemental schema paths.
             """
         ).strip(),
         epilog=examples(
@@ -218,6 +219,11 @@ def register_validate_family(
             "--format json",
             "uv run watchtower-core validate artifact --path /tmp/example.json "
             "--validator-id validator.control_plane.acceptance_contract",
+            "uv run watchtower-core validate artifact --path /tmp/pack_note.json "
+            "--schema-id urn:watchtower:schema:external:pack-note:v1 "
+            "--supplemental-schema-path /tmp/pack_schemas",
+            "uv run watchtower-core validate artifact --path /tmp/pack_note.json "
+            "--supplemental-schema-path /tmp/pack_schemas --format json",
             "uv run watchtower-core validate artifact --path "
             "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json "
             "--record-evidence --trace-id trace.core_python_foundation",
@@ -229,11 +235,28 @@ def register_validate_family(
         required=True,
         help="Repository-relative or absolute path to the JSON artifact to validate.",
     )
-    validate_artifact_parser.add_argument(
+    validator_selection_group = validate_artifact_parser.add_mutually_exclusive_group()
+    validator_selection_group.add_argument(
         "--validator-id",
         help=(
-            "Optional explicit validator identifier. Required for files outside "
-            "the repository tree."
+            "Optional explicit validator identifier. Use this to force one "
+            "registry-backed validator."
+        ),
+    )
+    validator_selection_group.add_argument(
+        "--schema-id",
+        help=(
+            "Optional direct schema identifier. Use this to validate against a "
+            "cataloged or supplemental schema without selecting a registry validator."
+        ),
+    )
+    validate_artifact_parser.add_argument(
+        "--supplemental-schema-path",
+        action="append",
+        default=[],
+        help=(
+            "Optional repository-relative or absolute path to one supplemental "
+            "schema file or directory. Repeat for multiple locations."
         ),
     )
     add_common_validation_arguments(validate_artifact_parser)

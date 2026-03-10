@@ -67,6 +67,7 @@ class ControlPlaneLoader:
         artifact_source: ArtifactSource | None = None,
         artifact_store: ArtifactStore | None = None,
         supplemental_schema_documents: tuple[SupplementalSchemaDocument, ...] = (),
+        supplemental_schema_paths: tuple[Path | str, ...] = (),
     ) -> None:
         effective_workspace = workspace_config or (
             schema_store.workspace_config
@@ -81,10 +82,12 @@ class ControlPlaneLoader:
             raise ValueError(
                 "ControlPlaneLoader received mismatched workspace_config and schema_store."
             )
-        if schema_store is not None and supplemental_schema_documents:
+        if schema_store is not None and (
+            supplemental_schema_documents or supplemental_schema_paths
+        ):
             raise ValueError(
-                "ControlPlaneLoader cannot accept supplemental_schema_documents when "
-                "schema_store is provided explicitly."
+                "ControlPlaneLoader cannot accept supplemental schema documents or paths "
+                "when schema_store is provided explicitly."
             )
 
         default_io = FileSystemArtifactIO(effective_workspace)
@@ -98,6 +101,7 @@ class ControlPlaneLoader:
             effective_workspace,
             artifact_source=self.artifact_source,
             supplemental_schema_documents=supplemental_schema_documents,
+            supplemental_schema_paths=supplemental_schema_paths,
         )
         self.supplemental_schema_ids = self.schema_store.supplemental_schema_ids
 

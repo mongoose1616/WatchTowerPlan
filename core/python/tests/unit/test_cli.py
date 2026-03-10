@@ -8,6 +8,11 @@ from watchtower_core.cli.main import main
 from watchtower_core.cli.query_handlers import _run_query_coordination
 
 
+def write_json(path: Path, document: dict[str, object]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
 def test_doctor_command_returns_zero(capsys) -> None:
     result = main(["doctor"])
 
@@ -1177,6 +1182,82 @@ def test_validate_artifact_reports_parse_failure(tmp_path: Path, capsys) -> None
     assert payload["passed"] is False
     assert payload["issue_count"] == 1
     assert payload["issues"][0]["code"] == "json_parse_invalid"
+
+
+def test_validate_artifact_supports_external_schema_id_and_supplemental_schema_path(
+    tmp_path: Path, capsys
+) -> None:
+    schema_path = tmp_path / "schemas" / "external_note.v1.schema.json"
+    artifact_path = tmp_path / "artifacts" / "external_note.v1.json"
+    schema_id = "urn:watchtower:schema:external:cli-pack-note:v1"
+    write_json(
+        schema_path,
+        {
+            "$id": schema_id,
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "CLI Pack Note",
+            "description": "External pack note schema loaded through CLI options.",
+            "type": "object",
+            "properties": {"kind": {"const": "cli_pack_note"}},
+            "required": ["kind"],
+            "additionalProperties": False,
+        },
+    )
+    write_json(artifact_path, {"kind": "cli_pack_note"})
+
+    result = main(
+        [
+            "validate",
+            "artifact",
+            "--path",
+            str(artifact_path),
+            "--schema-id",
+            schema_id,
+            "--supplemental-schema-path",
+            str(schema_path),
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core validate artifact"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is True
+    assert payload["validator_id"] == f"schema:{schema_id}"
+    assert payload["schema_ids"] == [schema_id]
+
+
+def test_validate_artifact_reports_invalid_supplemental_schema_path(
+    tmp_path: Path, capsys
+) -> None:
+    artifact_path = tmp_path / "artifacts" / "external_note.v1.json"
+    missing_schema_path = tmp_path / "schemas" / "missing"
+    write_json(artifact_path, {"kind": "cli_pack_note"})
+
+    result = main(
+        [
+            "validate",
+            "artifact",
+            "--path",
+            str(artifact_path),
+            "--schema-id",
+            "urn:watchtower:schema:external:cli-pack-note:v1",
+            "--supplemental-schema-path",
+            str(missing_schema_path),
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload["command"] == "watchtower-core validate artifact"
+    assert payload["status"] == "error"
+    assert "Supplemental schema path does not exist" in payload["message"]
 
 
 def test_validate_artifact_can_record_evidence_to_temp_outputs(
