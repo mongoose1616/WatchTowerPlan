@@ -6,7 +6,7 @@ summary: "Defines the feature-level technical design for deterministic local sch
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,10 +28,10 @@ aliases:
 - `Linked PRDs`: `prd.core_python_foundation`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-10T02:30:31Z`
 
 ## Summary
-This document defines the feature-level technical design for deterministic local schema resolution and index-backed repository search in the future Python helper layer.
+This document defines the feature-level technical design for deterministic local schema resolution and index-backed repository search in the Python helper layer.
 
 ## Source Request
 - User request to define the best method for loading schemas and searching indexes as the repository file count grows.
@@ -48,9 +48,9 @@ This document defines the feature-level technical design for deterministic local
 ## Current-State Context
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` already defines a generated repository path index for entrypoint retrieval.
 - `core/control_plane/registries/validators/validator_registry.v1.json` already declares validation capabilities by stable validator ID.
-- `core/control_plane/registries/schema_catalog/` exists as a directory boundary but does not yet publish a governed schema catalog artifact.
-- Current ad hoc schema validation requires manual local schema-store wiring because published schema `$id` values are URNs rather than file paths.
-- `core/python/src/watchtower_core/` is the consolidated package root and currently contains scaffold-only modules.
+- `core/control_plane/registries/schema_catalog/schema_catalog.v1.json` now publishes the governed schema catalog artifact.
+- Published schema `$id` values are now resolved through the catalog-backed `SchemaStore` rather than only by ad hoc local wiring.
+- `core/python/src/watchtower_core/` now contains live control-plane loaders, query services, sync services, and validation services built on the same deterministic lookup boundary.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep core deterministic, local-first, and fail-closed rather than inference-heavy.
@@ -161,4 +161,4 @@ This document defines the feature-level technical design for deterministic local
 - [repository_path_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/repository_paths/repository_path_index.v1.json)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-10T02:30:31Z`

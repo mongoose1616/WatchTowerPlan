@@ -260,6 +260,7 @@
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/data_contracts/status_tracking_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
         "docs/standards/workflows/workflow_design_standard.md"
       ],
       "applied_by_paths": [
@@ -277,6 +278,7 @@
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/data_contracts/status_tracking_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
         "docs/standards/workflows/workflow_design_standard.md"
       ],
       "aliases": [

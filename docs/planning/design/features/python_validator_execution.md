@@ -6,7 +6,7 @@ summary: "Defines the feature-level technical design for a Python validation lay
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `prd.core_python_foundation`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `design.implementation.control_plane_loaders_and_schema_store`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-10T02:30:31Z`
 
 ## Summary
 This document defines the feature-level technical design for a Python validation layer that reads the authored validator registry from `core/control_plane/` and executes validators deterministically against governed artifacts.
@@ -51,7 +51,7 @@ This document defines the feature-level technical design for a Python validation
 - `core/control_plane/schemas/interfaces/documentation/` already publishes governed front matter validation interfaces for reference, standard, workflow, PRD, and decision-record documents.
 - `core/control_plane/contracts/acceptance/`, `core/control_plane/ledgers/validation_evidence/`, and `core/control_plane/indexes/traceability/` now provide the downstream contract, evidence, and join surfaces the validator layer now writes to in its first durable evidence path.
 - `core/python/src/watchtower_core/validation/` is the package boundary for validator execution and now provides registry-backed front-matter and JSON artifact validation services.
-- The repository has standards for schemas, naming and IDs, lifecycle status, format selection, and front matter, but it does not yet have a Python execution path that turns those artifacts into actual validation behavior.
+- The repository now has a Python execution path that turns those artifacts into live behavior through front-matter validation, schema-backed artifact validation, document-semantics validation, acceptance reconciliation, and durable validation evidence.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep core local-first, deterministic, schema-first, and fail-closed.
@@ -166,4 +166,4 @@ This document defines the feature-level technical design for a Python validation
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-10T02:30:31Z`

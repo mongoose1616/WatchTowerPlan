@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:13:52Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,8 @@ This standard defines the repository commit-message policy for human maintainers
 
 ## Related Standards and Sources
 - [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly in commit metadata.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced work should keep durable trace metadata visible in commit history.
 - [git_commit_message_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_message_guidance_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 - [commit_closeout.md](/home/j/WatchTowerPlan/workflows/modules/commit_closeout.md): workflow surface that operationalizes or depends on this standard.
 ## Guidance
@@ -97,8 +99,12 @@ This standard defines the repository commit-message policy for human maintainers
 
 #### Footers (optional metadata)
 - Put each footer on its own line after a blank separator.
-- Common tokens: `BREAKING CHANGE:`, `Closes: #123`, `Refs: #45`, `Acked-by: role@example.org`, `Co-authored-by: Name <email>`.
-- Order footers as: breaking notice, issue references, acknowledgments or sign-offs.
+- Common tokens: `BREAKING CHANGE:`, `Closes: #123`, `Refs: #45`, `Trace-ID: trace.example`, `Task-ID: task.example`, `No-Task-Reason: bounded one-shot change`, `Acked-by: role@example.org`, `Co-authored-by: Name <email>`.
+- Order footers as: breaking notice, issue references, trace/task metadata, acknowledgments or sign-offs.
+- For traced or non-trivial work, include at least one of:
+  - `Trace-ID:`
+  - `Task-ID:`
+  - `No-Task-Reason:`
 
 ### Breaking Change Guidance
 1. Use both the `!` marker and a `BREAKING CHANGE:` footer for high-impact changes when feasible.
@@ -129,7 +135,7 @@ workflow.
    - Explain rationale, edge cases, or side effects.
    - Include migration instructions for breaking changes.
 5. Append footers.
-   - Add tickets, approvals, and co-authors to preserve traceability.
+   - Add tickets, trace or task metadata, approvals, and co-authors to preserve backtrace.
 6. Share for review.
    - When posting commit text in collaboration tools or review threads, wrap it in fenced `text` blocks for exact copying.
 7. Record rationale.
@@ -161,6 +167,7 @@ workflow.
 - The subject line uses an allowed type, optional scope, imperative verb, 72 characters or fewer, and no trailing punctuation.
 - The body explains context or migration steps when the change is complex, risky, or non-obvious, with lines wrapped near 80 characters.
 - Footers capture breaking changes, issues, approvals, and collaborators using `Token: value` format.
+- Traced or non-trivial changes should publish `Trace-ID`, `Task-ID`, or an explicit `No-Task-Reason`.
 - Commit text is reviewed for spelling, case, and placeholder removal before commit or before being shared for review.
 
 ## Examples
@@ -250,4 +257,4 @@ fi
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-10T00:13:52Z`
+- `2026-03-10T02:30:31Z`

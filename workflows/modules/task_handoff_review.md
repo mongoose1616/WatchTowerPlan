@@ -25,6 +25,7 @@ Use this workflow to confirm that the active task output is coherent, handoff-re
    - Distinguish same-change updates from explicit deferred follow-up work.
 3. Record follow-up and closeout needs.
    - Surface unresolved questions, risks, blockers, and recommended next steps explicitly.
+   - Confirm the task-handling outcome is explicit for non-trivial work: durable task present, task transition recorded, or explicit no-task reason.
    - If the change is ready to be committed, add the commit-closeout workflow rather than improvising commit behavior here.
 
 ## Data Structure
@@ -33,6 +34,7 @@ Use this workflow to confirm that the active task output is coherent, handoff-re
 - Initiative or trace follow-up when the task belongs to a traced initiative
 - Deferred follow-up work
 - Remaining risks or open questions
+- Task-handling outcome when the work is non-trivial
 - Commit-closeout recommendation when relevant
 
 ## Outputs

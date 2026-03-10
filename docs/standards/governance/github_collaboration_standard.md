@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "github"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -55,7 +55,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - Before merge, accepted GitHub work should link or create the corresponding repo-local planning or task artifact.
 - Every pull request should publish:
   - the primary `trace_id`
-  - the local task ID or IDs when task tracking applies
+  - the local task ID or IDs when task tracking applies, or an explicit no-task reason when it does not
   - the validation commands or checks actually run
   - whether human and machine companion surfaces were updated
 - Use the managed GitHub labels created by `watchtower-core sync github-tasks` for mirrored execution metadata:
@@ -110,4 +110,4 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - [README.md](/home/j/WatchTowerPlan/.github/README.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T02:30:31Z`

@@ -69,7 +69,8 @@
       "uses_external_references": true,
       "related_paths": [
         "docs/references/git_commit_message_guidance_reference.md",
-        "docs/references/conventional_commits_reference.md"
+        "docs/references/conventional_commits_reference.md",
+        "docs/standards/governance/task_handling_threshold_standard.md"
       ],
       "reference_doc_paths": [
         "docs/references/git_commit_message_guidance_reference.md",
@@ -77,7 +78,8 @@
       ],
       "internal_reference_paths": [
         "docs/references/git_commit_message_guidance_reference.md",
-        "docs/references/conventional_commits_reference.md"
+        "docs/references/conventional_commits_reference.md",
+        "docs/standards/governance/task_handling_threshold_standard.md"
       ],
       "external_reference_urls": [
         "https://cbea.ms/git-commit/",

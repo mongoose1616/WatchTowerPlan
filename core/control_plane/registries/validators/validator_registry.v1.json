@@ -19,6 +19,48 @@
       ]
     },
     {
+      "id": "validator.control_plane.command_index",
+      "title": "Command Index Validator",
+      "description": "Validates machine-readable command index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "command_index",
+      "applies_to": [
+        "core/control_plane/indexes/commands/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:command-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.decision_index",
+      "title": "Decision Index Validator",
+      "description": "Validates machine-readable decision index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "decision_index",
+      "applies_to": [
+        "core/control_plane/indexes/decisions/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:decision-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.design_document_index",
+      "title": "Design Document Index Validator",
+      "description": "Validates machine-readable design-document index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "design_document_index",
+      "applies_to": [
+        "core/control_plane/indexes/design_documents/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:design-document-index:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.foundation_index",
       "title": "Foundation Index Validator",
       "description": "Validates machine-readable foundation index artifacts.",
@@ -47,6 +89,90 @@
       ]
     },
     {
+      "id": "validator.control_plane.prd_index",
+      "title": "PRD Index Validator",
+      "description": "Validates machine-readable PRD index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "prd_index",
+      "applies_to": [
+        "core/control_plane/indexes/prds/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:prd-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.reference_index",
+      "title": "Reference Index Validator",
+      "description": "Validates machine-readable reference index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "reference_index",
+      "applies_to": [
+        "core/control_plane/indexes/references/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:reference-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.repository_path_index",
+      "title": "Repository Path Index Validator",
+      "description": "Validates machine-readable repository path index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "repository_path_index",
+      "applies_to": [
+        "core/control_plane/indexes/repository_paths/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:repository-path-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.schema_catalog",
+      "title": "Schema Catalog Validator",
+      "description": "Validates authored schema catalog registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "schema_catalog",
+      "applies_to": [
+        "core/control_plane/registries/schema_catalog/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:schema-catalog:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.standard_index",
+      "title": "Standard Index Validator",
+      "description": "Validates machine-readable standard index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "standard_index",
+      "applies_to": [
+        "core/control_plane/indexes/standards/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:standard-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.task_index",
+      "title": "Task Index Validator",
+      "description": "Validates machine-readable task index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "task_index",
+      "applies_to": [
+        "core/control_plane/indexes/tasks/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:task-index:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.traceability_index",
       "title": "Traceability Index Validator",
       "description": "Validates unified machine-readable traceability index artifacts.",
@@ -72,6 +198,20 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.validator_registry",
+      "title": "Validator Registry Validator",
+      "description": "Validates authored validator registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "validator_registry",
+      "applies_to": [
+        "core/control_plane/registries/validators/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:validator-registry:v1"
       ]
     },
     {

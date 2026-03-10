@@ -6,7 +6,7 @@ summary: "Defines the feature-level design for local-first task records, a gener
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-10T02:30:31Z`
 
 ## Summary
 This document defines the feature-level design for local-first task records, a generated task tracker, a generated task index, and later GitHub sync support.
@@ -40,12 +40,12 @@ This document defines the feature-level design for local-first task records, a g
 - Covers task records under `docs/planning/tasks/`.
 - Covers the generated human tracker and generated machine-readable task index.
 - Covers Python query and sync commands for the local task surfaces.
-- Reserves optional GitHub foreign keys for later sync.
-- Does not implement live GitHub API sync in this initial slice.
+- Covers optional GitHub foreign keys and the first push-only GitHub sync path for local-first task records.
+- Does not implement two-way GitHub reconciliation in this slice.
 
 ## Current-State Context
 - The repository already has PRD, design, decision, and traceability tracking.
-- The repository does not yet have a first-class task family for active execution work.
+- The repository now has a first-class task family for active execution work under `docs/planning/tasks/`, with derived task and initiative views.
 - Planning trackers are not appropriate as the live task board because they summarize document families, not execution state.
 
 ## Foundations References Applied
@@ -155,4 +155,4 @@ This document defines the feature-level design for local-first task records, a g
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-10T02:30:31Z`

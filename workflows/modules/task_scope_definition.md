@@ -24,6 +24,7 @@ Use this workflow to define the task objective, scope boundary, and success cond
    - Identify adjacent concerns that should stay out of scope for this task.
    - Name the repository surfaces most likely to be touched or inspected.
    - When the task belongs to an existing initiative, record the `trace_id` and current initiative phase explicitly so downstream workflows do not have to re-derive them.
+   - Decide whether the task-handling threshold implies a durable task record or an explicit no-task outcome before deeper work begins.
 3. Capture success conditions and blockers.
    - Record what must be true for the task to count as complete.
    - Surface missing inputs, assumptions, conflicts, or ambiguity that may still block progress.
@@ -34,6 +35,7 @@ Use this workflow to define the task objective, scope boundary, and success cond
 - Scope boundary
 - In-scope surfaces
 - Existing initiative context when present
+- Task-handling outcome when the work is non-trivial
 - Out-of-scope concerns
 - Success conditions
 - Blocking ambiguity or assumptions

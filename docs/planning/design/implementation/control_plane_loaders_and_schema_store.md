@@ -6,7 +6,7 @@ summary: "Breaks the first executable core/python slice into concrete work for l
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -29,7 +29,7 @@ aliases:
 - `Linked Decisions`: `decision.core_python_workspace_root`
 - `Source Designs`: `design.features.core_python_workspace_and_harness`; `design.features.python_validator_execution`; `design.features.schema_resolution_and_index_search`
 - `Linked Acceptance Contracts`: `contract.acceptance.core_python_foundation`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-10T02:30:31Z`
 
 ## Summary
 This plan breaks the first executable `core/python` slice into concrete work for loading governed control-plane artifacts and resolving schemas locally through a reusable `SchemaStore`.
@@ -57,7 +57,7 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - `core/control_plane/registries/validators/validator_registry.v1.json` declares validation capabilities that later code will need to load.
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` and `core/control_plane/indexes/commands/command_index.v1.json` now provide governed lookup surfaces.
 - `core/control_plane/contracts/acceptance/`, `core/control_plane/indexes/traceability/`, and `core/control_plane/ledgers/validation_evidence/` now publish the first downstream traceability surfaces the loader layer will eventually need to expose.
-- `core/python/src/watchtower_core/control_plane/` is still scaffold-only.
+- `core/python/src/watchtower_core/control_plane/` now publishes live loaders, typed models, and schema-resolution helpers that later query, sync, and validation slices reuse.
 
 ## Internal Standards and Canonical References Applied
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): loaders and query services should stay in modular package code under `core/python/`.
@@ -122,4 +122,4 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-10T02:30:31Z`

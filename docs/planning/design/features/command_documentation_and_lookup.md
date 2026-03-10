@@ -6,7 +6,7 @@ summary: "Defines the feature-level design for a human-readable command-page fam
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-10T02:30:31Z`
 
 ## Summary
 This document defines the feature-level design for a human-readable command-page family under `docs/commands/` and a machine-readable command index under `core/control_plane/indexes/commands/`.
@@ -40,14 +40,14 @@ This document defines the feature-level design for a human-readable command-page
 - Covers the command-doc family, command-page template, and command-index artifact family.
 - Covers the first command documentation for the `watchtower-core` CLI.
 - Covers the relationship between human command pages and machine-readable command lookup.
-- Does not implement richer CLI behavior beyond the current scaffolded command surface.
-- Does not introduce shell completions, external man-page generation, or database-backed command search.
+- Does not define shell completions, external man-page generation, or richer command discovery beyond the current governed command-doc and command-index surfaces.
+- Does not introduce database-backed command search.
 
 ## Current-State Context
-- `core/python/` now exists as the consolidated Python workspace and exposes a thin `watchtower-core` CLI with a `doctor` subcommand.
-- The repository does not yet have a dedicated command-doc family under `docs/`.
-- The repository does not yet publish a command-specific machine-readable index.
-- Current command discovery would require reading package code or general workspace READMEs directly.
+- `core/python/` now exists as the consolidated Python workspace and exposes `watchtower-core` command families for `doctor`, `query`, `sync`, `closeout`, and `validate`.
+- The repository now has a dedicated command-doc family under `docs/commands/`.
+- The repository now publishes a governed command-specific machine-readable index at `core/control_plane/indexes/commands/command_index.v1.json`.
+- Current command discovery can start from `docs/commands/`, the command index, or the repository path index rather than reading package code directly.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep discovery local, explicit, and inspectable rather than relying on hidden heuristics.
@@ -152,4 +152,4 @@ This document defines the feature-level design for a human-readable command-page
 - [command_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/command_index_standard.md)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-10T02:30:31Z`

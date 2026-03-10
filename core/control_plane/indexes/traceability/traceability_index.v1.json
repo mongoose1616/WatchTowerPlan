@@ -10,7 +10,7 @@
       "summary": "Defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-09T18:25:06Z",
+      "updated_at": "2026-03-10T02:30:31Z",
       "design_ids": [
         "design.features.acceptance_evidence_reconciliation"
       ],
@@ -34,7 +34,7 @@
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-09T18:25:06Z",
+      "updated_at": "2026-03-10T02:30:31Z",
       "design_ids": [
         "design.features.command_documentation_and_lookup"
       ],
@@ -57,7 +57,7 @@
       "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T02:30:31Z",
       "prd_ids": [
         "prd.core_python_foundation"
       ],
@@ -192,7 +192,7 @@
       "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-09T18:25:06Z",
+      "updated_at": "2026-03-10T02:30:31Z",
       "closed_at": "2026-03-09T16:14:50Z",
       "closure_reason": "Delivered and validated",
       "design_ids": [

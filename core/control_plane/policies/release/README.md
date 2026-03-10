@@ -1,7 +1,7 @@
 # `core/control_plane/policies/release`
 
 ## Description
-`This directory holds policy documents that define release publication rules and required release-evidence expectations.`
+`This directory is reserved for active release policy documents that will define release publication rules and required release-evidence expectations. No live governed release-policy artifacts are published here yet.`
 
 ## Files
 | Path | Description |

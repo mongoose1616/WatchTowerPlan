@@ -71,7 +71,7 @@
     {
       "command_id": "command.watchtower_core.doctor",
       "command": "watchtower-core doctor",
-      "summary": "This command runs the current lightweight workspace smoke check for the core Python package and confirms that the scaffolded CLI surface is available.",
+      "summary": "This command runs the current lightweight workspace smoke check for the core Python package and confirms that the local CLI entrypoint is available.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",

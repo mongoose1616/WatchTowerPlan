@@ -1143,7 +1143,7 @@
       "summary": "This standard defines the repository commit-message policy for human maintainers and assistant contributors. It combines Conventional Commits v1.0.0 with local commit-writing guidance so history remains human-auditable and machine-parseable.",
       "status": "active",
       "doc_path": "docs/standards/engineering/git_commit_standard.md",
-      "updated_at": "2026-03-10T00:13:52Z",
+      "updated_at": "2026-03-10T02:30:31Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [
@@ -1153,6 +1153,8 @@
       ],
       "internal_reference_paths": [
         "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
+        "docs/standards/governance/traceability_standard.md",
         "docs/references/git_commit_message_guidance_reference.md",
         "workflows/modules/commit_closeout.md",
         "docs/references/conventional_commits_reference.md",
@@ -1161,6 +1163,8 @@
       ],
       "applied_reference_paths": [
         "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
+        "docs/standards/governance/traceability_standard.md",
         "docs/references/git_commit_message_guidance_reference.md",
         "workflows/modules/commit_closeout.md"
       ],
@@ -1357,7 +1361,7 @@
       "summary": "This standard defines how GitHub issue forms, pull requests, labels, and project fields complement the repo-local planning and task model.",
       "status": "active",
       "doc_path": "docs/standards/governance/github_collaboration_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T02:30:31Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
@@ -1584,13 +1588,54 @@
       ]
     },
     {
+      "standard_id": "std.governance.task_handling_threshold",
+      "category": "governance",
+      "title": "Task Handling Threshold Standard",
+      "summary": "This standard defines when repository work must create, update, transition, or explicitly decline a durable local task record.",
+      "status": "active",
+      "doc_path": "docs/standards/governance/task_handling_threshold_standard.md",
+      "updated_at": "2026-03-10T02:30:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/tasks/",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/task_handoff_review.md",
+        "workflows/modules/commit_closeout.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/engineering/git_commit_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/task_handoff_review.md",
+        "workflows/modules/commit_closeout.md",
+        "docs/planning/tasks/README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/engineering/git_commit_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/task_handoff_review.md",
+        "workflows/modules/commit_closeout.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "task_threshold"
+      ]
+    },
+    {
       "standard_id": "std.governance.task_tracking",
       "category": "governance",
       "title": "Task Tracking Standard",
       "summary": "This standard defines the repository's local-first task tracking model so multiple engineers or agents can coordinate active work without turning planning trackers into a task board.",
       "status": "active",
       "doc_path": "docs/standards/governance/task_tracking_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T02:30:31Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -1599,6 +1644,7 @@
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
@@ -1609,6 +1655,7 @@
       ],
       "applied_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
@@ -1831,6 +1878,83 @@
         "standard",
         "metadata",
         "timestamp"
+      ]
+    },
+    {
+      "standard_id": "std.operations.repository_maintenance_loop",
+      "category": "operations",
+      "title": "Repository Maintenance Loop Standard",
+      "summary": "This standard defines the recurring local repository-maintenance loop for keeping docs, workflows, governed artifacts, and derived surfaces aligned as the repo grows.",
+      "status": "active",
+      "doc_path": "docs/standards/operations/repository_maintenance_loop_standard.md",
+      "updated_at": "2026-03-10T02:30:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/",
+        "workflows/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/documentation_refresh.md",
+        "docs/README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/documentation_refresh.md"
+      ],
+      "tags": [
+        "standard",
+        "operations",
+        "maintenance"
+      ]
+    },
+    {
+      "standard_id": "std.validations.repository_validation",
+      "category": "validations",
+      "title": "Repository Validation Standard",
+      "summary": "This standard defines the baseline validation expectations for repository changes across governed documents, governed artifacts, and the Python helper workspace.",
+      "status": "active",
+      "doc_path": "docs/standards/validations/repository_validation_standard.md",
+      "updated_at": "2026-03-10T02:30:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/commands/core_python/watchtower_core_sync_all.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/commands/core_python/watchtower_core_sync_all.md"
+      ],
+      "tags": [
+        "standard",
+        "validations",
+        "repository_validation"
       ]
     },
     {

@@ -10,6 +10,7 @@ from jsonschema import ValidationError
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.schemas import SchemaStore
+from watchtower_core.validation.artifact import ArtifactValidationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 FRONT_MATTER_PATTERN = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
@@ -85,6 +86,34 @@ def test_control_plane_loader_validates_current_traceability_artifacts() -> None
     assert traceability_index["id"] == "index.traceability"
     assert validation_evidence["id"] == "evidence.core_python_foundation.traceability_baseline"
     assert initiative_index["id"] == "index.initiatives"
+
+
+def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = ArtifactValidationService(loader)
+    target_roots = (
+        REPO_ROOT / "core/control_plane/contracts/acceptance",
+        REPO_ROOT / "core/control_plane/indexes/commands",
+        REPO_ROOT / "core/control_plane/indexes/decisions",
+        REPO_ROOT / "core/control_plane/indexes/design_documents",
+        REPO_ROOT / "core/control_plane/indexes/foundations",
+        REPO_ROOT / "core/control_plane/indexes/initiatives",
+        REPO_ROOT / "core/control_plane/indexes/prds",
+        REPO_ROOT / "core/control_plane/indexes/references",
+        REPO_ROOT / "core/control_plane/indexes/repository_paths",
+        REPO_ROOT / "core/control_plane/indexes/standards",
+        REPO_ROOT / "core/control_plane/indexes/tasks",
+        REPO_ROOT / "core/control_plane/indexes/traceability",
+        REPO_ROOT / "core/control_plane/indexes/workflows",
+        REPO_ROOT / "core/control_plane/ledgers/validation_evidence",
+        REPO_ROOT / "core/control_plane/registries/schema_catalog",
+        REPO_ROOT / "core/control_plane/registries/validators",
+    )
+
+    for root in target_roots:
+        for path in sorted(root.glob("*.json")):
+            result = service.validate(path.relative_to(REPO_ROOT).as_posix())
+            assert result.passed, f"{path} failed schema validation: {result.issues}"
 
 
 def test_initiative_index_examples_validate_against_the_schema() -> None:

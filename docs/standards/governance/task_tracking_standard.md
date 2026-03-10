@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -44,6 +44,7 @@ This standard defines the repository's local-first task tracking model so multip
 
 ## Related Standards and Sources
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): companion standard that defines when work must create, update, transition, or explicitly decline a durable task record.
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -110,10 +111,11 @@ This standard defines the repository's local-first task tracking model so multip
 
 ## Process or Workflow
 1. Create one task file per engineer-sized work item.
-2. Put the task in `open/` or `closed/` based on its execution status class.
-3. Keep the task front matter current when the task owner, task status, blockers, or linked planning surfaces change.
-4. Rebuild the human tracker and task index in the same change set after task changes.
-5. Rebuild the traceability index in the same change set when traced tasks are added, removed, or materially retargeted.
+2. Evaluate the task-handling threshold before leaving the task outcome implicit.
+3. Put the task in `open/` or `closed/` based on its execution status class.
+4. Keep the task front matter current when the task owner, task status, blockers, or linked planning surfaces change.
+5. Rebuild the human tracker and task index in the same change set after task changes.
+6. Rebuild the traceability index in the same change set when traced tasks are added, removed, or materially retargeted.
 
 ## Examples
 - A new implementation slice with one owner and one bounded outcome should be one task file under `open/`.
@@ -134,10 +136,11 @@ This standard defines the repository's local-first task tracking model so multip
 
 ## References
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
+- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md)
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T02:30:31Z`

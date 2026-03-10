@@ -3569,6 +3569,13 @@
       "parent_path": "docs/standards/governance/"
     },
     {
+      "path": "docs/standards/governance/task_handling_threshold_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines when repository work must create, update, transition, or explicitly decline a durable local task record.",
+      "parent_path": "docs/standards/governance/"
+    },
+    {
       "path": "docs/standards/governance/task_tracking_standard.md",
       "kind": "file",
       "surface_kind": "standard_doc",
@@ -3635,7 +3642,14 @@
       "path": "docs/standards/operations/README.md",
       "kind": "file",
       "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the operations standards directory and its intended future contents.",
+      "summary": "Describes the purpose of the operations standards directory and the standards stored here.",
+      "parent_path": "docs/standards/operations/"
+    },
+    {
+      "path": "docs/standards/operations/repository_maintenance_loop_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the recurring local maintenance loop for keeping docs, workflows, governed artifacts, and derived surfaces aligned.",
       "parent_path": "docs/standards/operations/"
     },
     {
@@ -3649,7 +3663,14 @@
       "path": "docs/standards/validations/README.md",
       "kind": "file",
       "surface_kind": "standard_doc",
-      "summary": "Describes the purpose of the validations standards directory and its intended future contents.",
+      "summary": "Describes the purpose of the validations standards directory and the standards stored here.",
+      "parent_path": "docs/standards/validations/"
+    },
+    {
+      "path": "docs/standards/validations/repository_validation_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the baseline validation expectations for repository changes across governed docs, governed artifacts, and the Python workspace.",
       "parent_path": "docs/standards/validations/"
     },
     {

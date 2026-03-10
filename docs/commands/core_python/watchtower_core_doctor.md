@@ -1,7 +1,7 @@
 # `watchtower-core doctor`
 
 ## Summary
-This command runs the current lightweight workspace smoke check for the core Python package and confirms that the scaffolded CLI surface is available.
+This command runs the current lightweight workspace smoke check for the core Python package and confirms that the local CLI entrypoint is available.
 
 ## Use When
 - You want a quick sanity check that the core Python CLI is wired correctly.
@@ -54,4 +54,4 @@ uv run watchtower-core doctor --format json
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-09T05:43:47Z`
+- `2026-03-10T02:30:31Z`

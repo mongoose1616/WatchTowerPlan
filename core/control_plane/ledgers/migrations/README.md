@@ -1,7 +1,7 @@
 # `core/control_plane/ledgers/migrations`
 
 ## Description
-`This directory holds the committed append-only history of schema, registry, contract, or policy migrations that need durable reviewable records.`
+`This directory is reserved for the committed append-only history of schema, registry, contract, or policy migrations that need durable reviewable records. No live migration-ledger artifacts are published here yet.`
 
 ## Files
 | Path | Description |

@@ -1,7 +1,7 @@
 # `core/control_plane/registries/artifact_types`
 
 ## Description
-`This directory holds the governed catalog of artifact kinds recognized by core and referenced across schemas, policies, and validators.`
+`This directory is reserved for the governed catalog of artifact kinds recognized by core and referenced across schemas, policies, and validators. No live artifact-type registry artifacts are published here yet.`
 
 ## Files
 | Path | Description |

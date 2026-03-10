@@ -6,7 +6,7 @@ summary: "Defines the feature-level design for the acceptance and evidence recon
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-10T02:30:31Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-10T02:30:31Z`
 
 ## Summary
 This document defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.
@@ -45,8 +45,8 @@ This document defines the feature-level design for the acceptance and evidence r
 ## Current-State Context
 - The repository already defines machine-readable acceptance contracts under `core/control_plane/contracts/acceptance/` and durable validation evidence under `core/control_plane/ledgers/validation_evidence/`.
 - The current traceability model expects acceptance and evidence surfaces to join back to PRDs, validators, and traced initiatives.
-- The current workflow set now has stronger traceability and governed-artifact reconciliation phases, but it still does not have a dedicated reusable phase for acceptance-to-evidence coverage reconciliation.
-- The repository now has enough acceptance, evidence, and traceability structure to justify a live workflow and a semantic validation command.
+- The current workflow set now includes a dedicated reusable phase for acceptance-to-evidence coverage reconciliation.
+- The repository now has a live workflow module and semantic validation command for this concern.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): keep repository behavior deterministic, inspectable, and local-first rather than dependent on hidden inference.
@@ -65,7 +65,7 @@ This document defines the feature-level design for the acceptance and evidence r
 - Make acceptance-to-evidence reconciliation a repeatable concern once repository usage justifies it.
 - Preserve clear authority boundaries between PRDs, acceptance contracts, validators, validation evidence, and traceability indexes.
 - Keep blocker semantics explicit rather than leaving missing evidence or missing coverage to reviewer inference.
-- Avoid adding a workflow module before the repository has enough recurring acceptance and evidence activity to make the module concrete.
+- Keep the reusable workflow and semantic validator narrow enough that the concern stays concrete as more traces adopt it.
 
 ## Options Considered
 ### Option 1
@@ -152,4 +152,4 @@ This document defines the feature-level design for the acceptance and evidence r
 - [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-10T02:30:31Z`
