@@ -144,3 +144,53 @@ class CommandIndex:
             if entry.command_id == command_id:
                 return entry
         raise KeyError(command_id)
+
+
+@dataclass(frozen=True, slots=True)
+class RouteIndexEntry:
+    """Route-index entry."""
+
+    route_id: str
+    task_type: str
+    trigger_keywords: tuple[str, ...]
+    required_workflow_ids: tuple[str, ...]
+    required_workflow_paths: tuple[str, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> RouteIndexEntry:
+        return cls(
+            route_id=document["route_id"],
+            task_type=document["task_type"],
+            trigger_keywords=tuple(document["trigger_keywords"]),
+            required_workflow_ids=tuple(document["required_workflow_ids"]),
+            required_workflow_paths=tuple(document["required_workflow_paths"]),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class RouteIndex:
+    """Typed route-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[RouteIndexEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> RouteIndex:
+        entries = tuple(RouteIndexEntry.from_document(entry) for entry in document["entries"])
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, route_id: str) -> RouteIndexEntry:
+        """Return a route-index entry by identifier."""
+        for entry in self.entries:
+            if entry.route_id == route_id:
+                return entry
+        raise KeyError(route_id)

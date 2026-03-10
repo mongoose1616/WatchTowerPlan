@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:route-index:v1",
+  "title": "Route Index",
+  "description": "Machine-readable lookup index for routed task types and their required workflow modules.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:route-index:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "index.routes"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/routeEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "workflowPathList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^workflows/modules/.+\\.md$"
+      }
+    },
+    "routeEntry": {
+      "type": "object",
+      "required": [
+        "route_id",
+        "task_type",
+        "trigger_keywords",
+        "required_workflow_ids",
+        "required_workflow_paths"
+      ],
+      "properties": {
+        "route_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "task_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trigger_keywords": {
+          "$ref": "#/$defs/stringList"
+        },
+        "required_workflow_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/idPattern"
+          }
+        },
+        "required_workflow_paths": {
+          "$ref": "#/$defs/workflowPathList"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

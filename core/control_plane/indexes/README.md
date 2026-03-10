@@ -16,6 +16,7 @@
 | `core/control_plane/indexes/prds/` | Machine-readable indexes for PRDs and their traceability anchors. |
 | `core/control_plane/indexes/references/` | Machine-readable indexes for reference docs, their upstream authority, and local touchpoints. |
 | `core/control_plane/indexes/repository_paths/` | Generated repository path indexes for retrieval and navigation. |
+| `core/control_plane/indexes/routes/` | Machine-readable indexes for routed task types and their required workflow modules. |
 | `core/control_plane/indexes/standards/` | Machine-readable indexes for governed standards and best-practice documents. |
 | `core/control_plane/indexes/tasks/` | Machine-readable indexes for local task records and task lookup. |
 | `core/control_plane/indexes/workflows/` | Machine-readable indexes for workflow modules and their governing sources. |

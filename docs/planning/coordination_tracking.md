@@ -6,18 +6,17 @@
 | Mode | `active_work` |
 | Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
 | Next | Start or continue the active task set and keep the current task records aligned with execution progress. |
-| Open First | [docs/planning/tasks/open/workflow_route_preview_and_metadata.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_route_preview_and_metadata.md) |
+| Open First | [docs/planning/tasks/open/workflow_task_cli.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_task_cli.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
 | Trace ID | Phase | Owners | Next | Action |
 | --- | --- | --- | --- | --- |
-| `trace.workflow_system_operationalization` | `execution` | repository_maintainer | [workflow_route_preview_and_metadata.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_route_preview_and_metadata.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.workflow_system_operationalization` | `execution` | repository_maintainer | [workflow_task_cli.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_task_cli.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.workflow_system_operationalization.route_preview_and_metadata.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_route_preview_and_metadata.md) | `trace.workflow_system_operationalization` | `backlog` | `high` | `repository_maintainer` |
 | [task.workflow_system_operationalization.task_cli.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_task_cli.md) | `trace.workflow_system_operationalization` | `backlog` | `high` | `repository_maintainer` |
 | [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_planning_scaffolds.md) | `trace.workflow_system_operationalization` | `backlog` | `medium` | `repository_maintainer` |
 | [task.workflow_system_operationalization.reconciliation_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_reconciliation_guidance.md) | `trace.workflow_system_operationalization` | `backlog` | `medium` | `repository_maintainer` |
@@ -31,4 +30,4 @@
 | `trace.core_export_hardening_followup` | `completed` | `2026-03-10T17:12:30Z` | [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md) |
 | `trace.template_and_output_efficiency` | `completed` | `2026-03-10T16:35:23Z` | [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md) |
 
-_Updated At: `2026-03-10T22:12:00Z`_
+_Updated At: `2026-03-10T23:00:00Z`_

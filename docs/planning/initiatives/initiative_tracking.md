@@ -3,7 +3,7 @@
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| `trace.workflow_system_operationalization` | `execution` | repository_maintainer | `4` | [workflow_system_operationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_system_operationalization.md) | [workflow_route_preview_and_metadata.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_route_preview_and_metadata.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.workflow_system_operationalization` | `execution` | repository_maintainer | `3` | [workflow_system_operationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_system_operationalization.md) | [workflow_task_cli.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/workflow_task_cli.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -21,4 +21,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-10T22:12:00Z`_
+_Updated At: `2026-03-10T23:00:00Z`_

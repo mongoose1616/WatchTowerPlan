@@ -18,12 +18,14 @@ def build_parser() -> argparse.ArgumentParser:
             WatchTower core helper and harness workspace.
 
             Run this command from `core/python/` with `uv run` to inspect governed
-            control-plane data, run workspace health snapshots, validate governed
-            artifacts, and rebuild derived indexes and trackers.
+            control-plane data, preview workflow routes, run workspace health
+            snapshots, validate governed artifacts, and rebuild derived indexes
+            and trackers.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core doctor",
+            "uv run watchtower-core route preview --request \"review code and commit\"",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query coordination --format json",
             "uv run watchtower-core query foundations --query philosophy",
@@ -38,6 +40,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync all",
             "uv run watchtower-core sync coordination",
             "uv run watchtower-core sync foundation-index",
+            "uv run watchtower-core sync route-index",
             "uv run watchtower-core sync initiative-index",
             "uv run watchtower-core sync initiative-tracking",
             "uv run watchtower-core sync reference-index",

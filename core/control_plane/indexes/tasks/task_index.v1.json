@@ -959,12 +959,12 @@
       "title": "Add route preview and governed workflow metadata authority",
       "summary": "Move workflow retrieval metadata into governed control-plane artifacts, add a derived route index, and expose executable route preview through the CLI.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
-      "updated_at": "2026-03-10T21:59:21Z",
+      "doc_path": "docs/planning/tasks/closed/workflow_route_preview_and_metadata.md",
+      "updated_at": "2026-03-10T23:00:00Z",
       "trace_id": "trace.workflow_system_operationalization",
       "depends_on": [
         "task.workflow_system_operationalization.bootstrap.001"

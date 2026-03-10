@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "workflow_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T06:39:00Z"
+updated_at: "2026-03-10T22:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -34,6 +34,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Related Standards and Sources
 - [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): workflow modules must keep their required headings and optional additional-load bullets aligned so the index can derive from them cleanly.
+- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md): route lookup uses the workflow index as its companion workflow-resolution surface.
 - [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules small and publishing only task-specific extra files.
 - [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): workflow reference capture should stay aligned with the broader governed reference model.
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): the workflow index complements path lookup with workflow-specific retrieval.
@@ -44,6 +45,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Treat the workflow index as a machine-readable lookup surface rather than the authority for workflow behavior.
 - Store published workflow indexes under `core/control_plane/indexes/workflows/`.
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
+- Author workflow retrieval metadata under `core/control_plane/registries/workflows/` instead of hardcoding it in Python.
 - Use JSON for the published workflow-index artifact.
 - Every workflow index entry must point to an existing workflow module under `workflows/modules/`.
 - Carry stable `workflow_id` values derived from the workflow module filename in the form `workflow.<module_name>`.
@@ -90,6 +92,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Validation
 - The workflow index should validate against its published artifact schema.
+- The companion workflow metadata registry should validate against its published artifact schema before rebuilding the workflow index.
 - Every `doc_path` should exist and point to a file under `workflows/modules/`.
 - Every entry should have a stable `workflow_id`.
 - `phase_type`, `task_family`, and `trigger_tags` should stay retrieval-oriented and should not duplicate whole workflow prose blocks.
@@ -101,13 +104,14 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Change Control
 - Update this standard when the repository changes how workflows are indexed, queried, or audited.
-- Update the companion artifact schema, examples, live workflow index, command docs, and query or sync surfaces in the same change set when the workflow-index family changes structurally.
+- Update the companion artifact schema, workflow metadata registry, examples, live workflow index, command docs, and query or sync surfaces in the same change set when the workflow-index family changes structurally.
 
 ## References
 - [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
+- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md)
 - [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md)
 - [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-10T06:39:00Z`
+- `2026-03-10T22:45:00Z`

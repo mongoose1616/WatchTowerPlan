@@ -3,14 +3,14 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-10T22:12:00Z",
+  "updated_at": "2026-03-10T23:00:00Z",
   "coordination_mode": "active_work",
   "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
   "recommended_next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-  "recommended_surface_path": "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
+  "recommended_surface_path": "docs/planning/tasks/open/workflow_task_cli.md",
   "active_initiative_count": 1,
   "blocked_task_count": 0,
-  "actionable_task_count": 4,
+  "actionable_task_count": 3,
   "entries": [
     {
       "trace_id": "trace.workflow_system_operationalization",
@@ -19,12 +19,12 @@
       "status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-10T21:59:21Z",
-      "open_task_count": 4,
+      "updated_at": "2026-03-10T23:00:00Z",
+      "open_task_count": 3,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/workflow_system_operationalization.md",
       "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
+      "next_surface_path": "docs/planning/tasks/open/workflow_task_cli.md",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
@@ -32,22 +32,9 @@
       "active_task_ids": [
         "task.workflow_system_operationalization.planning_scaffolds.001",
         "task.workflow_system_operationalization.reconciliation_guidance.001",
-        "task.workflow_system_operationalization.route_preview_and_metadata.001",
         "task.workflow_system_operationalization.task_cli.001"
       ],
       "active_task_summaries": [
-        {
-          "task_id": "task.workflow_system_operationalization.route_preview_and_metadata.001",
-          "title": "Add route preview and governed workflow metadata authority",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.workflow_system_operationalization.bootstrap.001"
-          ]
-        },
         {
           "task_id": "task.workflow_system_operationalization.task_cli.001",
           "title": "Add task lifecycle CLI commands",
@@ -138,11 +125,11 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/workflow_system_operationalization.md",
         "docs/planning/tasks/",
+        "docs/planning/tasks/closed/workflow_route_preview_and_metadata.md",
         "docs/planning/tasks/closed/workflow_system_bootstrap.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/workflow_planning_scaffolds.md",
         "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
-        "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
         "docs/planning/tasks/open/workflow_task_cli.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/references/",
@@ -971,20 +958,6 @@
     }
   ],
   "actionable_tasks": [
-    {
-      "trace_id": "trace.workflow_system_operationalization",
-      "initiative_title": "Workflow System Operationalization PRD",
-      "task_id": "task.workflow_system_operationalization.route_preview_and_metadata.001",
-      "title": "Add route preview and governed workflow metadata authority",
-      "task_status": "backlog",
-      "priority": "high",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/workflow_route_preview_and_metadata.md",
-      "is_actionable": true,
-      "depends_on": [
-        "task.workflow_system_operationalization.bootstrap.001"
-      ]
-    },
     {
       "trace_id": "trace.workflow_system_operationalization",
       "initiative_title": "Workflow System Operationalization PRD",

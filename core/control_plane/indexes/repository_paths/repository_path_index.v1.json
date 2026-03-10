@@ -538,6 +538,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/examples/invalid/indexes/route_index_missing_workflow_ids.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid route index example missing required workflow identifiers.",
+      "parent_path": "core/control_plane/examples/invalid/indexes/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/examples/invalid/indexes/standard_index_external_without_urls.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -732,6 +742,16 @@
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Invalid validator registry example with required schema references omitted.",
+      "parent_path": "core/control_plane/examples/invalid/registries/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/invalid/registries/workflow_metadata_registry_missing_phase_type.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid workflow metadata registry example missing the required phase type.",
       "parent_path": "core/control_plane/examples/invalid/registries/",
       "maturity": "supporting",
       "priority": "medium",
@@ -998,6 +1018,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/examples/valid/indexes/route_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid route index example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/indexes/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -1192,6 +1222,16 @@
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Valid validator registry example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/registries/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/registries/workflow_metadata_registry.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid workflow metadata registry example aligned with the published artifact schema.",
       "parent_path": "core/control_plane/examples/valid/registries/",
       "maturity": "supporting",
       "priority": "medium",
@@ -1568,6 +1608,36 @@
       "surface_kind": "control_plane_index",
       "summary": "First-pass repository path index artifact covering high-signal entrypoints.",
       "parent_path": "core/control_plane/indexes/repository_paths/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/indexes/routes/",
+      "kind": "directory",
+      "surface_kind": "control_plane_indexes",
+      "summary": "Machine-readable indexes for routed task types and their required workflow modules.",
+      "parent_path": "core/control_plane/indexes/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/indexes/routes/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Describes the purpose of the route-index directory and its current artifact.",
+      "parent_path": "core/control_plane/indexes/routes/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/indexes/routes/route_index.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Canonical machine-readable route index rebuilt from `workflows/ROUTING_TABLE.md`.",
+      "parent_path": "core/control_plane/indexes/routes/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -2144,6 +2214,36 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/registries/workflows/",
+      "kind": "directory",
+      "surface_kind": "control_plane_registries",
+      "summary": "Publishes authored workflow retrieval metadata consumed by workflow indexing and route preview.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/workflows/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Describes the purpose of the workflow-registry directory and its current artifact family.",
+      "parent_path": "core/control_plane/registries/workflows/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Canonical authored workflow metadata registry consumed by workflow indexing and route preview.",
+      "parent_path": "core/control_plane/registries/workflows/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/schemas/",
       "kind": "directory",
       "surface_kind": "control_plane_schemas",
@@ -2372,6 +2472,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/schemas/artifacts/route_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable route-index artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -2436,6 +2546,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable workflow-index artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/workflow_metadata_registry.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the authored workflow-metadata registry artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3322,10 +3442,40 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_route.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Entry page for advisory route preview commands.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_route_preview.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Preview surface for routed workflow modules by request text or explicit task type.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_sync.md",
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_route_index.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Rebuild surface for the machine-readable route index derived from the routing table.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4186,6 +4336,16 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the standard for generated repository path indexes.",
+      "parent_path": "docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/standards/data_contracts/route_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for machine-readable route indexes.",
       "parent_path": "docs/standards/data_contracts/",
       "maturity": "authoritative",
       "priority": "high",

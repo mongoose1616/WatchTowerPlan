@@ -9,3 +9,4 @@
 | `core/control_plane/examples/valid/registries/README.md` | Describes the purpose of the valid registry examples directory. |
 | `core/control_plane/examples/valid/registries/schema_catalog.v1.example.json` | Valid schema catalog example aligned with the published artifact schema. |
 | `core/control_plane/examples/valid/registries/validator_registry.v1.example.json` | Valid validator registry example aligned with the published artifact schema. |
+| `core/control_plane/examples/valid/registries/workflow_metadata_registry.v1.example.json` | Valid workflow metadata registry example aligned with the published artifact schema. |

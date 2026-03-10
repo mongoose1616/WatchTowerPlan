@@ -1,7 +1,7 @@
 # `core/control_plane/indexes/workflows`
 
 ## Description
-`This directory holds the machine-readable workflow index used to look up workflow modules and any task-specific extra files they require beyond the routing baseline.`
+`This directory holds the machine-readable workflow index used to look up workflow modules and any task-specific extra files they require beyond the routing baseline, using companion authored metadata from `core/control_plane/registries/workflows/`.`
 
 ## Files
 | Path | Description |

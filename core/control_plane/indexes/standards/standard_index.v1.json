@@ -392,6 +392,34 @@
       ]
     },
     {
+      "standard_id": "std.data_contracts.route_index",
+      "category": "data_contracts",
+      "title": "Route Index Standard",
+      "summary": "This standard defines the role, structure, and boundary rules for machine-readable route indexes stored under `core/control_plane/indexes/routes/`.",
+      "status": "active",
+      "doc_path": "docs/standards/data_contracts/route_index_standard.md",
+      "updated_at": "2026-03-10T22:45:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "tags": [
+        "standard",
+        "data_contracts",
+        "route_index"
+      ]
+    },
+    {
       "standard_id": "std.data_contracts.schema_catalog",
       "category": "data_contracts",
       "title": "Schema Catalog Standard",
@@ -653,7 +681,7 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable workflow indexes stored under `core/control_plane/indexes/workflows/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/workflow_index_standard.md",
-      "updated_at": "2026-03-10T06:39:00Z",
+      "updated_at": "2026-03-10T22:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [
@@ -661,6 +689,7 @@
       ],
       "internal_reference_paths": [
         "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
         "docs/references/agent_workflow_authoring_reference.md",
         "docs/standards/data_contracts/reference_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
@@ -668,6 +697,7 @@
       ],
       "applied_reference_paths": [
         "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
         "docs/references/agent_workflow_authoring_reference.md",
         "docs/standards/data_contracts/reference_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
@@ -2166,7 +2196,7 @@
       "summary": "This standard defines how repository instructions, routing surfaces, and workflow modules are loaded so task execution starts with the minimum correct context.",
       "status": "active",
       "doc_path": "docs/standards/workflows/routing_and_context_loading_standard.md",
-      "updated_at": "2026-03-10T00:55:31Z",
+      "updated_at": "2026-03-10T22:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "reference_doc_paths": [
@@ -2176,6 +2206,7 @@
         "docs/standards/documentation/agents_md_standard.md",
         "docs/standards/documentation/routing_table_md_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
         "docs/references/agent_workflow_authoring_reference.md",
         "workflows/ROUTING_TABLE.md"
       ],
@@ -2183,6 +2214,7 @@
         "docs/standards/documentation/agents_md_standard.md",
         "docs/standards/documentation/routing_table_md_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
         "docs/references/agent_workflow_authoring_reference.md",
         "workflows/ROUTING_TABLE.md"
       ],

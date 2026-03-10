@@ -18,6 +18,7 @@ from watchtower_core.adapters import (
 )
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import WorkflowMetadataDefinition
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.planning_documents import (
     ordered_unique,
@@ -65,281 +66,6 @@ WORKFLOW_TRIGGER_TAG_STOPWORDS = {
     "when",
     "workflow",
 }
-WORKFLOW_PHASE_RISKS = {
-    "shared": ("missing_context", "route_mismatch"),
-    "scoping": ("scope_drift", "ambiguity_leak"),
-    "inspection": ("stale_context", "hidden_dependencies"),
-    "research": ("stale_external_guidance", "source_misuse"),
-    "planning": ("design_gap", "execution_drift"),
-    "execution": ("partial_update", "behavior_regression"),
-    "review": ("unprioritized_findings", "release_misalignment"),
-    "validation": ("unverified_change", "false_confidence"),
-    "reconciliation": ("companion_drift", "authority_conflict"),
-    "closeout": ("mixed_change_set", "implicit_follow_up"),
-}
-
-
-@dataclass(frozen=True, slots=True)
-class WorkflowRetrievalMetadata:
-    """Deterministic retrieval metadata for one workflow module."""
-
-    phase_type: str
-    task_family: str
-    extra_trigger_tags: tuple[str, ...] = ()
-    companion_workflow_ids: tuple[str, ...] = ()
-
-
-WORKFLOW_RETRIEVAL_METADATA: dict[str, WorkflowRetrievalMetadata] = {
-    "workflow.acceptance_evidence_reconciliation": WorkflowRetrievalMetadata(
-        phase_type="reconciliation",
-        task_family="artifact_acceptance",
-        extra_trigger_tags=("acceptance", "evidence", "reconcile"),
-        companion_workflow_ids=(
-            "workflow.traceability_reconciliation",
-            "workflow.code_validation",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.clarification": WorkflowRetrievalMetadata(
-        phase_type="scoping",
-        task_family="scope_management",
-        extra_trigger_tags=("clarify", "ambiguity", "question"),
-        companion_workflow_ids=(
-            "workflow.task_scope_definition",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.code_implementation": WorkflowRetrievalMetadata(
-        phase_type="execution",
-        task_family="engineering",
-        extra_trigger_tags=("implement", "feature", "fix"),
-        companion_workflow_ids=(
-            "workflow.code_validation",
-            "workflow.documentation_refresh",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.code_review": WorkflowRetrievalMetadata(
-        phase_type="review",
-        task_family="engineering_review",
-        extra_trigger_tags=("review", "audit", "findings"),
-        companion_workflow_ids=(
-            "workflow.code_validation",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.code_validation": WorkflowRetrievalMetadata(
-        phase_type="validation",
-        task_family="engineering_validation",
-        extra_trigger_tags=("validate", "test", "lint", "mypy", "ruff"),
-        companion_workflow_ids=("workflow.task_handoff_review",),
-    ),
-    "workflow.commit_closeout": WorkflowRetrievalMetadata(
-        phase_type="closeout",
-        task_family="commit_management",
-        extra_trigger_tags=("commit", "closeout", "message"),
-        companion_workflow_ids=("workflow.task_handoff_review",),
-    ),
-    "workflow.core": WorkflowRetrievalMetadata(
-        phase_type="shared",
-        task_family="core_context",
-        extra_trigger_tags=("baseline", "shared", "context"),
-    ),
-    "workflow.current_state_inspection": WorkflowRetrievalMetadata(
-        phase_type="inspection",
-        task_family="state_inspection",
-        extra_trigger_tags=("inspect", "state", "local"),
-        companion_workflow_ids=(
-            "workflow.internal_context_review",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.decision_capture": WorkflowRetrievalMetadata(
-        phase_type="planning",
-        task_family="decision_management",
-        extra_trigger_tags=("decision", "adr", "tradeoff"),
-        companion_workflow_ids=(
-            "workflow.traceability_reconciliation",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.documentation_generation": WorkflowRetrievalMetadata(
-        phase_type="execution",
-        task_family="documentation",
-        extra_trigger_tags=("docs", "write", "generate"),
-        companion_workflow_ids=("workflow.task_handoff_review",),
-    ),
-    "workflow.documentation_implementation_reconciliation": WorkflowRetrievalMetadata(
-        phase_type="reconciliation",
-        task_family="documentation",
-        extra_trigger_tags=("docs", "reconcile", "parity"),
-        companion_workflow_ids=(
-            "workflow.code_validation",
-            "workflow.documentation_refresh",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.documentation_refresh": WorkflowRetrievalMetadata(
-        phase_type="execution",
-        task_family="documentation",
-        extra_trigger_tags=("docs", "refresh", "update"),
-        companion_workflow_ids=("workflow.task_handoff_review",),
-    ),
-    "workflow.external_guidance_research": WorkflowRetrievalMetadata(
-        phase_type="research",
-        task_family="external_research",
-        extra_trigger_tags=("research", "external", "official"),
-        companion_workflow_ids=(
-            "workflow.internal_context_review",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.feature_design_planning": WorkflowRetrievalMetadata(
-        phase_type="planning",
-        task_family="design_planning",
-        extra_trigger_tags=("design", "architecture", "solution"),
-        companion_workflow_ids=(
-            "workflow.implementation_planning",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.foundations_context_review": WorkflowRetrievalMetadata(
-        phase_type="inspection",
-        task_family="foundations_review",
-        extra_trigger_tags=("foundations", "intent", "context"),
-        companion_workflow_ids=("workflow.task_handoff_review",),
-    ),
-    "workflow.github_task_sync": WorkflowRetrievalMetadata(
-        phase_type="execution",
-        task_family="github_integration",
-        extra_trigger_tags=("github", "issues", "project", "sync"),
-        companion_workflow_ids=(
-            "workflow.task_lifecycle_management",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.governed_artifact_reconciliation": WorkflowRetrievalMetadata(
-        phase_type="reconciliation",
-        task_family="artifact_governance",
-        extra_trigger_tags=("artifact", "schema", "registry"),
-        companion_workflow_ids=(
-            "workflow.code_validation",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.implementation_planning": WorkflowRetrievalMetadata(
-        phase_type="planning",
-        task_family="implementation_planning",
-        extra_trigger_tags=("implementation", "execution", "plan"),
-        companion_workflow_ids=(
-            "workflow.feature_design_planning",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.initiative_closeout": WorkflowRetrievalMetadata(
-        phase_type="closeout",
-        task_family="initiative_closeout",
-        extra_trigger_tags=("initiative", "closeout", "supersede"),
-        companion_workflow_ids=(
-            "workflow.traceability_reconciliation",
-            "workflow.code_validation",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.internal_context_review": WorkflowRetrievalMetadata(
-        phase_type="inspection",
-        task_family="policy_alignment",
-        extra_trigger_tags=("standards", "policy", "context"),
-        companion_workflow_ids=(
-            "workflow.external_guidance_research",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.prd_generation": WorkflowRetrievalMetadata(
-        phase_type="planning",
-        task_family="product_planning",
-        extra_trigger_tags=("prd", "requirements", "product"),
-        companion_workflow_ids=("workflow.task_handoff_review",),
-    ),
-    "workflow.reference_distillation": WorkflowRetrievalMetadata(
-        phase_type="research",
-        task_family="reference_distillation",
-        extra_trigger_tags=("distill", "reference", "source"),
-        companion_workflow_ids=("workflow.task_handoff_review",),
-    ),
-    "workflow.repository_assessment": WorkflowRetrievalMetadata(
-        phase_type="review",
-        task_family="repository_review",
-        extra_trigger_tags=("assessment", "health", "risks"),
-        companion_workflow_ids=(
-            "workflow.repository_inventory_review",
-            "workflow.repository_review",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.repository_inventory_review": WorkflowRetrievalMetadata(
-        phase_type="inspection",
-        task_family="repository_review",
-        extra_trigger_tags=("inventory", "structure", "surface"),
-        companion_workflow_ids=(
-            "workflow.repository_assessment",
-            "workflow.repository_review",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.repository_review": WorkflowRetrievalMetadata(
-        phase_type="review",
-        task_family="repository_review",
-        extra_trigger_tags=("repository", "review", "audit"),
-        companion_workflow_ids=(
-            "workflow.repository_inventory_review",
-            "workflow.repository_assessment",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.task_handoff_review": WorkflowRetrievalMetadata(
-        phase_type="review",
-        task_family="handoff",
-        extra_trigger_tags=("handoff", "followup", "related"),
-    ),
-    "workflow.task_lifecycle_management": WorkflowRetrievalMetadata(
-        phase_type="execution",
-        task_family="task_management",
-        extra_trigger_tags=("task", "status", "board"),
-        companion_workflow_ids=(
-            "workflow.traceability_reconciliation",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.task_phase_transition": WorkflowRetrievalMetadata(
-        phase_type="execution",
-        task_family="task_management",
-        extra_trigger_tags=("handoff", "phase", "transition"),
-        companion_workflow_ids=(
-            "workflow.task_lifecycle_management",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.task_scope_definition": WorkflowRetrievalMetadata(
-        phase_type="scoping",
-        task_family="scope_management",
-        extra_trigger_tags=("scope", "objective", "boundary"),
-        companion_workflow_ids=(
-            "workflow.current_state_inspection",
-            "workflow.internal_context_review",
-            "workflow.task_handoff_review",
-        ),
-    ),
-    "workflow.traceability_reconciliation": WorkflowRetrievalMetadata(
-        phase_type="reconciliation",
-        task_family="traceability",
-        extra_trigger_tags=("trace", "initiative", "tracker"),
-        companion_workflow_ids=(
-            "workflow.code_validation",
-            "workflow.task_handoff_review",
-        ),
-    ),
-}
 
 
 @dataclass(frozen=True, slots=True)
@@ -380,13 +106,6 @@ def _derive_trigger_tags(
         if len(token) > 2 and token not in WORKFLOW_TRIGGER_TAG_STOPWORDS
     )
     return ordered_unique(filtered_tokens)
-
-
-def _workflow_retrieval_metadata(workflow_id: str) -> WorkflowRetrievalMetadata:
-    try:
-        return WORKFLOW_RETRIEVAL_METADATA[workflow_id]
-    except KeyError as exc:
-        raise ValueError(f"Workflow retrieval metadata is missing for {workflow_id}.") from exc
 
 
 def validate_workflow_additional_load_section(
@@ -470,6 +189,10 @@ def validate_workflow_section_order(
 
 def load_workflow_document(loader: ControlPlaneLoader, relative_path: str) -> WorkflowDocument:
     """Load and validate one workflow module from its repository-relative path."""
+    metadata_registry = loader.load_workflow_metadata_registry()
+    metadata_by_workflow_id = {
+        entry.workflow_id: entry for entry in metadata_registry.entries
+    }
     reference_document = ReferenceIndexSyncService(loader).build_document()
     reference_entries = reference_document.get("entries")
     if not isinstance(reference_entries, list):
@@ -482,6 +205,7 @@ def load_workflow_document(loader: ControlPlaneLoader, relative_path: str) -> Wo
     return load_workflow_document_with_reference_map(
         loader,
         relative_path,
+        metadata_by_workflow_id=metadata_by_workflow_id,
         reference_urls_by_path=reference_urls_by_path,
     )
 
@@ -490,6 +214,7 @@ def load_workflow_document_with_reference_map(
     loader: ControlPlaneLoader,
     relative_path: str,
     *,
+    metadata_by_workflow_id: dict[str, WorkflowMetadataDefinition],
     reference_urls_by_path: dict[str, tuple[str, ...]],
 ) -> WorkflowDocument:
     """Load and validate one workflow module using a prebuilt reference-url map."""
@@ -527,7 +252,10 @@ def load_workflow_document_with_reference_map(
     )
     external_reference_urls = ordered_unique(direct_external_urls, transitive_external_urls)
     workflow_id = f"workflow.{Path(relative_path).stem}"
-    retrieval_metadata = _workflow_retrieval_metadata(workflow_id)
+    try:
+        retrieval_metadata = metadata_by_workflow_id[workflow_id]
+    except KeyError as exc:
+        raise ValueError(f"Workflow retrieval metadata is missing for {workflow_id}.") from exc
 
     return WorkflowDocument(
         workflow_id=workflow_id,
@@ -538,7 +266,7 @@ def load_workflow_document_with_reference_map(
         task_family=retrieval_metadata.task_family,
         uses_internal_references=bool(internal_reference_paths),
         uses_external_references=bool(external_reference_urls),
-        primary_risks=WORKFLOW_PHASE_RISKS[retrieval_metadata.phase_type],
+        primary_risks=retrieval_metadata.primary_risks,
         trigger_tags=_derive_trigger_tags(
             workflow_id,
             title,
@@ -588,6 +316,10 @@ class WorkflowIndexSyncService:
 
     def build_document(self) -> dict[str, object]:
         existing_entries = _load_existing_entries(self._loader)
+        metadata_registry = self._loader.load_workflow_metadata_registry()
+        metadata_by_workflow_id = {
+            entry.workflow_id: entry for entry in metadata_registry.entries
+        }
         reference_document = ReferenceIndexSyncService(self._loader).build_document()
         reference_entries = reference_document.get("entries")
         if not isinstance(reference_entries, list):
@@ -608,6 +340,7 @@ class WorkflowIndexSyncService:
             workflow = load_workflow_document_with_reference_map(
                 self._loader,
                 relative_path,
+                metadata_by_workflow_id=metadata_by_workflow_id,
                 reference_urls_by_path=reference_urls_by_path,
             )
             current = existing_entries.get(workflow.workflow_id, {})

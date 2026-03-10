@@ -26,6 +26,7 @@ from watchtower_core.repo_ops.sync import (
     PrdTrackingSyncService,
     ReferenceIndexSyncService,
     RepositoryPathIndexSyncService,
+    RouteIndexSyncService,
     StandardIndexSyncService,
     TaskIndexSyncService,
     TaskTrackingSyncService,
@@ -152,6 +153,15 @@ def _run_sync_reference_index(args: argparse.Namespace) -> int:
         command_name="watchtower-core sync reference-index",
         artifact_label="reference index",
         service=ReferenceIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_route_index(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync route-index",
+        artifact_label="route index",
+        service=RouteIndexSyncService.from_repo_root(),
     )
 
 

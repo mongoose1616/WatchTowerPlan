@@ -1,0 +1,680 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:route-index:v1",
+  "id": "index.routes",
+  "title": "Route Index",
+  "status": "active",
+  "entries": [
+    {
+      "route_id": "route.code_implementation",
+      "task_type": "Code Implementation",
+      "trigger_keywords": [
+        "implement",
+        "build",
+        "create feature",
+        "add feature",
+        "fix bug",
+        "change behavior",
+        "write code"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.code_implementation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/code_implementation.md",
+        "workflows/modules/code_validation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.code_review",
+      "task_type": "Code Review",
+      "trigger_keywords": [
+        "review code",
+        "audit code",
+        "inspect diff",
+        "inspect changes",
+        "PR review",
+        "code review"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.code_review",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/code_review.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.code_validation",
+      "task_type": "Code Validation",
+      "trigger_keywords": [
+        "validate",
+        "verification",
+        "verify",
+        "test",
+        "lint",
+        "typecheck",
+        "build check",
+        "QA"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/code_validation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.clarification",
+      "task_type": "Clarification",
+      "trigger_keywords": [
+        "clarify",
+        "clarification",
+        "ambiguous request",
+        "unclear scope",
+        "missing details",
+        "resolve ambiguity",
+        "unblock question"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.clarification",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/clarification.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.commit_closeout",
+      "task_type": "Commit Closeout",
+      "trigger_keywords": [
+        "git commit",
+        "create commit",
+        "group commit",
+        "grouped commit",
+        "atomic commit",
+        "commit pass",
+        "commit changes",
+        "commit updates",
+        "finalize commit",
+        "close out change set"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.internal_context_review",
+        "workflow.commit_closeout",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/commit_closeout.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.decision_capture",
+      "task_type": "Decision Capture",
+      "trigger_keywords": [
+        "decision record",
+        "record decision",
+        "ADR",
+        "architecture decision",
+        "tradeoff record",
+        "rationale record"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.decision_capture",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/decision_capture.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.documentation_implementation_reconciliation",
+      "task_type": "Documentation-Implementation Reconciliation",
+      "trigger_keywords": [
+        "reconcile docs with code",
+        "docs vs code",
+        "code vs docs",
+        "documentation parity",
+        "implementation drift",
+        "stale command docs",
+        "stale docs versus behavior"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.code_validation",
+        "workflow.documentation_refresh",
+        "workflow.documentation_implementation_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/code_validation.md",
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/documentation_implementation_reconciliation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.documentation_generation",
+      "task_type": "Documentation Generation",
+      "trigger_keywords": [
+        "create doc",
+        "write doc",
+        "generate doc",
+        "new README",
+        "new standard",
+        "new reference",
+        "create reference doc",
+        "new template"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.documentation_generation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/documentation_generation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.documentation_refresh",
+      "task_type": "Documentation Refresh",
+      "trigger_keywords": [
+        "refresh docs",
+        "update docs",
+        "reconcile docs",
+        "clean up docs",
+        "fix stale docs",
+        "doc maintenance"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.documentation_refresh",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.github_task_sync",
+      "task_type": "GitHub Task Sync",
+      "trigger_keywords": [
+        "github task sync",
+        "sync to github",
+        "sync tasks to github",
+        "sync open tasks",
+        "sync open tasks to github",
+        "sync tasks to github issues",
+        "github issues",
+        "publish tasks to github",
+        "github issues sync",
+        "github project sync",
+        "github board sync",
+        "push local tasks to github"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.github_task_sync",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/github_task_sync.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.governed_artifact_reconciliation",
+      "task_type": "Governed Artifact Reconciliation",
+      "trigger_keywords": [
+        "governed artifact reconciliation",
+        "artifact family drift",
+        "control plane drift",
+        "schema drift",
+        "registry drift",
+        "index drift",
+        "contract drift"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.code_validation",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/code_validation.md",
+        "workflows/modules/governed_artifact_reconciliation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.prd_generation",
+      "task_type": "PRD Generation",
+      "trigger_keywords": [
+        "PRD",
+        "product requirements",
+        "requirements doc",
+        "feature planning",
+        "scope feature",
+        "product planning"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.foundations_context_review",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.prd_generation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/foundations_context_review.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/prd_generation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.feature_design_planning",
+      "task_type": "Feature Design Planning",
+      "trigger_keywords": [
+        "feature design",
+        "technical design",
+        "solution design",
+        "design proposal",
+        "design spec",
+        "architecture proposal"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.foundations_context_review",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.feature_design_planning",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/foundations_context_review.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/feature_design_planning.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.implementation_planning",
+      "task_type": "Implementation Planning",
+      "trigger_keywords": [
+        "implementation plan",
+        "engineering plan",
+        "technical plan",
+        "break down PRD",
+        "work breakdown",
+        "execution plan"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.implementation_planning",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/implementation_planning.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.acceptance_and_evidence_reconciliation",
+      "task_type": "Acceptance and Evidence Reconciliation",
+      "trigger_keywords": [
+        "acceptance reconciliation",
+        "evidence reconciliation",
+        "reconcile acceptance",
+        "reconcile evidence"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.code_validation",
+        "workflow.traceability_reconciliation",
+        "workflow.acceptance_evidence_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/code_validation.md",
+        "workflows/modules/traceability_reconciliation.md",
+        "workflows/modules/acceptance_evidence_reconciliation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.initiative_closeout",
+      "task_type": "Initiative Closeout",
+      "trigger_keywords": [
+        "initiative closeout",
+        "close initiative",
+        "planning closeout",
+        "trace closeout",
+        "mark initiative complete",
+        "supersede initiative"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.code_validation",
+        "workflow.traceability_reconciliation",
+        "workflow.initiative_closeout",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/code_validation.md",
+        "workflows/modules/traceability_reconciliation.md",
+        "workflows/modules/initiative_closeout.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.reference_distillation",
+      "task_type": "Reference Distillation",
+      "trigger_keywords": [
+        "reference distillation",
+        "distill source",
+        "distill reference",
+        "distill standard",
+        "map external guidance",
+        "extract local guidance from source"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.reference_distillation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/reference_distillation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.repository_review",
+      "task_type": "Repository Review",
+      "trigger_keywords": [
+        "repo review",
+        "repository review",
+        "full audit",
+        "health check",
+        "coherence review",
+        "standards review",
+        "best practices review"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.internal_context_review",
+        "workflow.repository_inventory_review",
+        "workflow.external_guidance_research",
+        "workflow.repository_assessment",
+        "workflow.repository_review",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/repository_inventory_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/repository_assessment.md",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.task_lifecycle_management",
+      "task_type": "Task Lifecycle Management",
+      "trigger_keywords": [
+        "create task",
+        "create tasks",
+        "create tracked tasks",
+        "update task",
+        "update tasks",
+        "track task",
+        "manage task",
+        "split task",
+        "reopen task",
+        "cancel task",
+        "unblock task",
+        "close task",
+        "mark task blocked",
+        "blocked by",
+        "blocker update",
+        "task dependency",
+        "dependency chain",
+        "assign owner",
+        "assign owners",
+        "task board",
+        "task status"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.task_lifecycle_management",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/task_lifecycle_management.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.task_phase_transition",
+      "task_type": "Task Phase Transition",
+      "trigger_keywords": [
+        "hand off task",
+        "hand off the task",
+        "hand off this task",
+        "task handoff",
+        "phase transition",
+        "phase handoff",
+        "move task to design",
+        "move to design",
+        "move task to implementation",
+        "move to implementation",
+        "from design to implementation",
+        "move task to review",
+        "move to review",
+        "move task to validation",
+        "move to validation",
+        "hand off to validation",
+        "transfer task ownership",
+        "transfer ownership"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.task_phase_transition",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/task_phase_transition.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.traceability_reconciliation",
+      "task_type": "Traceability Reconciliation",
+      "trigger_keywords": [
+        "traceability reconciliation",
+        "trace audit",
+        "traceability drift",
+        "stale trace links",
+        "tracker versus index drift",
+        "reconcile planning indexes"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.code_validation",
+        "workflow.traceability_reconciliation",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/code_validation.md",
+        "workflows/modules/traceability_reconciliation.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:route-index:v1",
+  "id": "index.routes",
+  "title": "Route Index",
+  "status": "active",
+  "entries": [
+    {
+      "route_id": "route.code_implementation",
+      "task_type": "Code Implementation",
+      "trigger_keywords": [
+        "implement",
+        "fix"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/code_implementation.md"
+      ]
+    }
+  ]
+}

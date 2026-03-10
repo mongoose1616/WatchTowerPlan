@@ -37,6 +37,7 @@
 - `uv run mypy src`
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
+- `uv run watchtower-core route preview --request "review code and commit"`
 - `uv run watchtower-core query coordination --format json`
 - `uv run watchtower-core query commands --query coordination --format json`
 - `uv run watchtower-core query foundations --query philosophy`
@@ -51,6 +52,7 @@
 - `uv run watchtower-core sync prd-index`
 - `uv run watchtower-core sync all`
 - `uv run watchtower-core sync coordination`
+- `uv run watchtower-core sync route-index`
 - `uv run watchtower-core sync initiative-index`
 - `uv run watchtower-core sync task-index`
 - `uv run watchtower-core sync github-tasks --repo owner/repo`
@@ -64,6 +66,7 @@
 ## Command Docs
 - Start with [README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md) for command-doc navigation.
 - Open [watchtower_core.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
+- Open [watchtower_core_route.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
 - Use the group pages for deeper browsing:
   - [watchtower_core_query.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query.md)
   - [watchtower_core_sync.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync.md)
@@ -81,6 +84,7 @@
 ### Notes
 - `uv run ...` is the default workflow for this repository.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
+- `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
 - `uv run watchtower-core query coordination --format json` is the default machine-readable current-state entrypoint and stays useful even when no initiative is active.
 - `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
 - `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.

@@ -492,6 +492,48 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.route",
+      "command": "watchtower-core route",
+      "summary": "Preview the workflow modules that the current routing surfaces would activate for a request.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_route.md",
+      "synopsis": "uv run watchtower-core route [-h] <route_command> ...",
+      "implementation_path": "core/python/src/watchtower_core/cli/route_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core",
+      "tags": [
+        "python",
+        "cli",
+        "route"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.route.preview",
+      "command": "watchtower-core route preview",
+      "summary": "Preview the workflow-module route selected by the current routing data.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_route_preview.md",
+      "synopsis": "uv run watchtower-core route preview [-h] (--request REQUEST | --task-type TASK_TYPE) [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/route_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.route",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "route",
+        "preview"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.sync",
       "command": "watchtower-core sync",
       "summary": "Rebuild derived governed artifacts from authored repository sources.",
@@ -891,6 +933,31 @@
         "indexes"
       ],
       "notes": "Runs in dry-run mode by default and only writes when --write or --output is provided."
+    },
+    {
+      "command_id": "command.watchtower_core.sync.route_index",
+      "command": "watchtower-core sync route-index",
+      "summary": "Rebuild the route index from `workflows/ROUTING_TABLE.md`.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_route_index.md",
+      "synopsis": "uv run watchtower-core sync route-index [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "route",
+        "index"
+      ]
     },
     {
       "command_id": "command.watchtower_core.sync.standard_index",

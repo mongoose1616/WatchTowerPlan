@@ -18,6 +18,7 @@
 | `docs/standards/data_contracts/prd_index_standard.md` | Defines the standard for machine-readable PRD indexes. |
 | `docs/standards/data_contracts/reference_index_standard.md` | Defines the standard for machine-readable reference indexes. |
 | `docs/standards/data_contracts/repository_path_index_standard.md` | Defines the standard for generated repository path indexes. |
+| `docs/standards/data_contracts/route_index_standard.md` | Defines the standard for machine-readable route indexes. |
 | `docs/standards/data_contracts/schema_catalog_standard.md` | Defines the standard for the authored schema catalog registry. |
 | `docs/standards/data_contracts/schema_standard.md` | Defines schema expectations for governed structured data. |
 | `docs/standards/data_contracts/standard_index_standard.md` | Defines the standard for machine-readable standard indexes. |

@@ -30,6 +30,7 @@ def register_sync_family(
         _run_sync_prd_tracking,
         _run_sync_reference_index,
         _run_sync_repository_paths,
+        _run_sync_route_index,
         _run_sync_standard_index,
         _run_sync_task_index,
         _run_sync_task_tracking,
@@ -57,6 +58,8 @@ def register_sync_family(
             "uv run watchtower-core sync coordination --write",
             "uv run watchtower-core sync reference-index",
             "uv run watchtower-core sync reference-index --write",
+            "uv run watchtower-core sync route-index",
+            "uv run watchtower-core sync route-index --write",
             "uv run watchtower-core sync standard-index",
             "uv run watchtower-core sync standard-index --write",
             "uv run watchtower-core sync workflow-index",
@@ -237,6 +240,28 @@ def register_sync_family(
     )
     add_common_sync_arguments(sync_reference_index_parser)
     sync_reference_index_parser.set_defaults(handler=_run_sync_reference_index)
+
+    sync_route_index_parser = sync_subparsers.add_parser(
+        "route-index",
+        help="Rebuild the route index from the canonical routing table.",
+        description=dedent(
+            """
+            Rebuild the route index from `workflows/ROUTING_TABLE.md`.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core sync route-index",
+            "uv run watchtower-core sync route-index --write",
+            "uv run watchtower-core sync route-index --output /tmp/route_index.v1.json "
+            "--format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    add_common_sync_arguments(sync_route_index_parser)
+    sync_route_index_parser.set_defaults(handler=_run_sync_route_index)
 
     sync_standard_index_parser = sync_subparsers.add_parser(
         "standard-index",

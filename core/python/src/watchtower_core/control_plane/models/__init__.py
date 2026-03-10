@@ -5,6 +5,8 @@ from watchtower_core.control_plane.models.catalog import (
     SchemaCatalogRecord,
     ValidatorDefinition,
     ValidatorRegistry,
+    WorkflowMetadataDefinition,
+    WorkflowMetadataRegistry,
 )
 from watchtower_core.control_plane.models.coordination import (
     CoordinationIndex,
@@ -23,6 +25,8 @@ from watchtower_core.control_plane.models.navigation import (
     CommandIndexEntry,
     RepositoryPathEntry,
     RepositoryPathIndex,
+    RouteIndex,
+    RouteIndexEntry,
 )
 from watchtower_core.control_plane.models.planning import (
     DecisionIndex,
@@ -70,6 +74,8 @@ __all__ = [
     "ReferenceIndexEntry",
     "RepositoryPathEntry",
     "RepositoryPathIndex",
+    "RouteIndex",
+    "RouteIndexEntry",
     "SchemaCatalog",
     "SchemaCatalogRecord",
     "StandardIndex",
@@ -82,6 +88,8 @@ __all__ = [
     "ValidationEvidenceCheck",
     "ValidatorDefinition",
     "ValidatorRegistry",
+    "WorkflowMetadataDefinition",
+    "WorkflowMetadataRegistry",
     "WorkflowIndex",
     "WorkflowIndexEntry",
 ]

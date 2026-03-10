@@ -60,6 +60,10 @@ from watchtower_core.repo_ops.sync.repository_paths import (
     REPOSITORY_PATH_INDEX_ARTIFACT_PATH,
     RepositoryPathIndexSyncService,
 )
+from watchtower_core.repo_ops.sync.route_index import (
+    ROUTE_INDEX_ARTIFACT_PATH,
+    RouteIndexSyncService,
+)
 from watchtower_core.repo_ops.sync.standard_index import (
     STANDARD_INDEX_ARTIFACT_PATH,
     StandardIndexSyncService,
@@ -118,6 +122,13 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         artifact_kind="index",
         relative_output_path=REFERENCE_INDEX_ARTIFACT_PATH,
         service_factory=ReferenceIndexSyncService,
+    ),
+    SyncTargetSpec(
+        target="route-index",
+        mode="document",
+        artifact_kind="index",
+        relative_output_path=ROUTE_INDEX_ARTIFACT_PATH,
+        service_factory=RouteIndexSyncService,
     ),
     SyncTargetSpec(
         target="standard-index",

@@ -29,6 +29,18 @@ def test_control_plane_loader_reads_validator_registry() -> None:
     )
 
 
+def test_control_plane_loader_reads_workflow_metadata_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    registry = loader.load_workflow_metadata_registry()
+    entry = registry.get("workflow.github_task_sync")
+
+    assert registry.artifact_id == "registry.workflow_metadata"
+    assert entry.phase_type == "execution"
+    assert entry.task_family == "github_integration"
+    assert "workflow.task_lifecycle_management" in entry.companion_workflow_ids
+
+
 def test_control_plane_loader_reads_repository_path_index() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
@@ -57,11 +69,14 @@ def test_control_plane_loader_reads_command_index() -> None:
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
     query_initiatives = command_index.get("command.watchtower_core.query.initiatives")
     query_trace = command_index.get("command.watchtower_core.query.trace")
+    route_group = command_index.get("command.watchtower_core.route")
+    route_preview = command_index.get("command.watchtower_core.route.preview")
     sync_initiative_index = command_index.get("command.watchtower_core.sync.initiative_index")
     sync_initiative_tracking = command_index.get(
         "command.watchtower_core.sync.initiative_tracking"
     )
     sync_coordination = command_index.get("command.watchtower_core.sync.coordination")
+    sync_route_index = command_index.get("command.watchtower_core.sync.route_index")
     sync_standard_index = command_index.get("command.watchtower_core.sync.standard_index")
     sync_workflow_index = command_index.get("command.watchtower_core.sync.workflow_index")
     sync_traceability = command_index.get("command.watchtower_core.sync.traceability_index")
@@ -80,6 +95,21 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert doctor.parent_command_id == "command.watchtower_core"
     assert doctor.doc_path == "docs/commands/core_python/watchtower_core_doctor.md"
     assert doctor.implementation_path == "core/python/src/watchtower_core/cli/doctor_family.py"
+    assert route_group.parent_command_id == "command.watchtower_core"
+    assert route_group.doc_path == "docs/commands/core_python/watchtower_core_route.md"
+    assert (
+        route_group.implementation_path
+        == "core/python/src/watchtower_core/cli/route_family.py"
+    )
+    assert route_preview.parent_command_id == "command.watchtower_core.route"
+    assert (
+        route_preview.doc_path
+        == "docs/commands/core_python/watchtower_core_route_preview.md"
+    )
+    assert (
+        route_preview.implementation_path
+        == "core/python/src/watchtower_core/cli/route_family.py"
+    )
     assert query_paths.default_output_format == "human"
     assert query_paths.doc_path == "docs/commands/core_python/watchtower_core_query_paths.md"
     assert query_paths.implementation_path == "core/python/src/watchtower_core/cli/query_family.py"
@@ -146,6 +176,15 @@ def test_control_plane_loader_reads_command_index() -> None:
         sync_coordination.doc_path
         == "docs/commands/core_python/watchtower_core_sync_coordination.md"
     )
+    assert sync_route_index.parent_command_id == "command.watchtower_core.sync"
+    assert (
+        sync_route_index.doc_path
+        == "docs/commands/core_python/watchtower_core_sync_route_index.md"
+    )
+    assert (
+        sync_route_index.implementation_path
+        == "core/python/src/watchtower_core/cli/sync_family.py"
+    )
     assert sync_initiative_index.parent_command_id == "command.watchtower_core.sync"
     assert (
         sync_initiative_index.doc_path
@@ -206,6 +245,18 @@ def test_control_plane_loader_reads_command_index() -> None:
         validate_artifact.doc_path
         == "docs/commands/core_python/watchtower_core_validate_artifact.md"
     )
+
+
+def test_control_plane_loader_reads_route_index() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    route_index = loader.load_route_index()
+    entry = route_index.get("route.code_review")
+
+    assert route_index.artifact_id == "index.routes"
+    assert entry.task_type == "Code Review"
+    assert "workflow.code_review" in entry.required_workflow_ids
+    assert "workflows/modules/code_review.md" in entry.required_workflow_paths
 
 
 def test_control_plane_loader_reads_traceability_index() -> None:

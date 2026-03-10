@@ -170,6 +170,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:route-index:v1",
+      "title": "Route Index",
+      "description": "Schema for machine-readable route index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "route_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/route_index.v1.schema.json",
+      "aliases": [
+        "route lookup schema",
+        "routing table index schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:standard-index:v1",
       "title": "Standard Index",
       "description": "Schema for machine-readable standard index artifacts.",
@@ -342,6 +356,20 @@
       "canonical_path": "core/control_plane/schemas/artifacts/validator_registry.v1.schema.json",
       "aliases": [
         "validator catalog schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1",
+      "title": "Workflow Metadata Registry",
+      "description": "Schema for authored workflow metadata registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "workflow_metadata_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/workflow_metadata_registry.v1.schema.json",
+      "aliases": [
+        "workflow retrieval metadata schema",
+        "workflow metadata registry schema"
       ]
     },
     {

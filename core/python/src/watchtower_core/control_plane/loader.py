@@ -17,6 +17,7 @@ from watchtower_core.control_plane.models import (
     PrdIndex,
     ReferenceIndex,
     RepositoryPathIndex,
+    RouteIndex,
     SchemaCatalog,
     StandardIndex,
     TaskIndex,
@@ -24,6 +25,7 @@ from watchtower_core.control_plane.models import (
     ValidationEvidenceArtifact,
     ValidatorRegistry,
     WorkflowIndex,
+    WorkflowMetadataRegistry,
 )
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 from watchtower_core.control_plane.workspace import (
@@ -34,10 +36,14 @@ from watchtower_core.control_plane.workspace import (
 )
 
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validators/validator_registry.v1.json"
+WORKFLOW_METADATA_REGISTRY_PATH = (
+    "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json"
+)
 REPOSITORY_PATH_INDEX_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
 )
 COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
+ROUTE_INDEX_PATH = "core/control_plane/indexes/routes/route_index.v1.json"
 REFERENCE_INDEX_PATH = "core/control_plane/indexes/references/reference_index.v1.json"
 FOUNDATION_INDEX_PATH = "core/control_plane/indexes/foundations/foundation_index.v1.json"
 INITIATIVE_INDEX_PATH = "core/control_plane/indexes/initiatives/initiative_index.v1.json"
@@ -134,6 +140,12 @@ class ControlPlaneLoader:
             self.load_validated_document(VALIDATOR_REGISTRY_PATH)
         )
 
+    def load_workflow_metadata_registry(self) -> WorkflowMetadataRegistry:
+        """Load the current workflow metadata registry."""
+        return WorkflowMetadataRegistry.from_document(
+            self.load_validated_document(WORKFLOW_METADATA_REGISTRY_PATH)
+        )
+
     def load_repository_path_index(self) -> RepositoryPathIndex:
         """Load the current repository path index."""
         return RepositoryPathIndex.from_document(
@@ -143,6 +155,10 @@ class ControlPlaneLoader:
     def load_command_index(self) -> CommandIndex:
         """Load the current command index."""
         return CommandIndex.from_document(self.load_validated_document(COMMAND_INDEX_PATH))
+
+    def load_route_index(self) -> RouteIndex:
+        """Load the current route index."""
+        return RouteIndex.from_document(self.load_validated_document(ROUTE_INDEX_PATH))
 
     def load_reference_index(self) -> ReferenceIndex:
         """Load the current reference index."""

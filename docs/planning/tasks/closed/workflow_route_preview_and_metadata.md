@@ -5,11 +5,11 @@ title: "Add route preview and governed workflow metadata authority"
 summary: "Move workflow retrieval metadata into governed control-plane artifacts, add a derived route index, and expose executable route preview through the CLI."
 type: "task"
 status: "active"
-task_status: "backlog"
+task_status: "done"
 task_kind: "feature"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T21:59:21Z"
+updated_at: "2026-03-10T23:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -45,4 +45,4 @@ Move workflow retrieval metadata into governed control-plane artifacts, add a de
 - [workflow_system_operationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/workflow_system_operationalization_execution.md)
 
 ## Updated At
-- `2026-03-10T21:59:21Z`
+- `2026-03-10T23:00:00Z`

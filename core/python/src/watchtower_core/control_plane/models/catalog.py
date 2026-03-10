@@ -1,4 +1,4 @@
-"""Typed models for schema catalog and validator registry artifacts."""
+"""Typed models for schema catalog and registry artifacts."""
 
 from __future__ import annotations
 
@@ -140,3 +140,58 @@ class ValidatorRegistry:
             if entry.validator_id == validator_id:
                 return entry
         raise KeyError(validator_id)
+
+
+@dataclass(frozen=True, slots=True)
+class WorkflowMetadataDefinition:
+    """Workflow metadata registry entry."""
+
+    workflow_id: str
+    phase_type: str
+    task_family: str
+    primary_risks: tuple[str, ...]
+    extra_trigger_tags: tuple[str, ...] = ()
+    companion_workflow_ids: tuple[str, ...] = ()
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> WorkflowMetadataDefinition:
+        return cls(
+            workflow_id=document["workflow_id"],
+            phase_type=document["phase_type"],
+            task_family=document["task_family"],
+            primary_risks=tuple(document["primary_risks"]),
+            extra_trigger_tags=tuple(document.get("extra_trigger_tags", ())),
+            companion_workflow_ids=tuple(document.get("companion_workflow_ids", ())),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class WorkflowMetadataRegistry:
+    """Typed workflow-metadata registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[WorkflowMetadataDefinition, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> WorkflowMetadataRegistry:
+        entries = tuple(
+            WorkflowMetadataDefinition.from_document(entry)
+            for entry in document["entries"]
+        )
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, workflow_id: str) -> WorkflowMetadataDefinition:
+        """Return one workflow metadata entry by workflow identifier."""
+        for entry in self.entries:
+            if entry.workflow_id == workflow_id:
+                return entry
+        raise KeyError(workflow_id)

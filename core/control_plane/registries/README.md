@@ -10,4 +10,5 @@
 | `core/control_plane/registries/schema_catalog/` | Maps schema identifiers, versions, and canonical paths. |
 | `core/control_plane/registries/artifact_types/` | Defines machine-recognized artifact kinds and their identifiers. |
 | `core/control_plane/registries/validators/` | Catalogs validator identities, capabilities, and selection metadata. |
+| `core/control_plane/registries/workflows/` | Publishes authored workflow retrieval metadata consumed by workflow indexing and route preview. |
 | `core/control_plane/registries/policy_catalog/` | Catalogs published policy sets by stable identifier. |

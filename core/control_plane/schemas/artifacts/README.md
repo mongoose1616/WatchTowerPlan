@@ -25,10 +25,12 @@
 | `core/control_plane/schemas/artifacts/release_record.v1.schema.json` | Schema for the machine-readable release-record artifact family. |
 | `core/control_plane/schemas/artifacts/repository_manifest.v1.schema.json` | Schema for the machine-readable repository-manifest artifact family. |
 | `core/control_plane/schemas/artifacts/repository_path_index.v1.schema.json` | Schema for the generated repository path index artifact family. |
+| `core/control_plane/schemas/artifacts/route_index.v1.schema.json` | Schema for the machine-readable route-index artifact family. |
 | `core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json` | Schema for the authored schema catalog registry artifact family. |
 | `core/control_plane/schemas/artifacts/standard_index.v1.schema.json` | Schema for the machine-readable standard-index artifact family. |
 | `core/control_plane/schemas/artifacts/task_index.v1.schema.json` | Schema for the machine-readable task-index artifact family. |
 | `core/control_plane/schemas/artifacts/traceability_index.v1.schema.json` | Schema for the unified machine-readable traceability-index artifact family. |
 | `core/control_plane/schemas/artifacts/validation_evidence.v1.schema.json` | Schema for the durable validation-evidence artifact family. |
 | `core/control_plane/schemas/artifacts/validator_registry.v1.schema.json` | Schema for the authored validator registry artifact family. |
+| `core/control_plane/schemas/artifacts/workflow_metadata_registry.v1.schema.json` | Schema for the authored workflow-metadata registry artifact family. |
 | `core/control_plane/schemas/artifacts/workflow_index.v1.schema.json` | Schema for the machine-readable workflow-index artifact family. |

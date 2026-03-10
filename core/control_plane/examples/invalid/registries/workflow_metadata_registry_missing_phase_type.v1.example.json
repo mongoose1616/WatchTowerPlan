@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1",
+  "id": "registry.workflow_metadata",
+  "title": "Workflow Metadata Registry",
+  "status": "active",
+  "entries": [
+    {
+      "workflow_id": "workflow.code_validation",
+      "task_family": "engineering_validation",
+      "primary_risks": [
+        "unverified_change",
+        "false_confidence"
+      ]
+    }
+  ]
+}

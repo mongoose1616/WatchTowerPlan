@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T00:55:31Z"
+updated_at: "2026-03-10T22:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +36,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [routing_table_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/routing_table_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md): defines the derived machine-readable route surface used for advisory route preview.
 - [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for separating stable routing context from task-specific extra files to load.
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
 
@@ -43,6 +44,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Load `AGENTS.md` first as the repository-wide instruction wrapper.
 - Apply only the global rules from `AGENTS.md` before task routing.
 - After reading `AGENTS.md`, consult `workflows/ROUTING_TABLE.md` to determine the minimum relevant workflow modules.
+- Use `watchtower-core route preview` when a compact executable preview helps, but treat it as advisory over the authored routing surfaces rather than as a replacement authority.
 - Always include the shared core workflow module in routed task sets.
 - Load only the minimum modules required for the matched task type or task types.
 - Route from the full prompt context rather than exact keyword matching alone. Treat routing-table trigger keywords as examples that help classification, not as an exhaustive command grammar.
@@ -83,6 +85,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The same request should route to the same module set under normal conditions.
 - `AGENTS.md`, the routing table, and the workflow modules should not duplicate each other's responsibilities.
 - Routing changes should be reflected in all three layers when needed.
+- Route-preview and route-index surfaces should stay aligned with `AGENTS.md`, the routing table, and workflow metadata when routing behavior changes.
 
 ## Change Control
 - Update this standard when the repository changes how routing or context loading works.
@@ -92,6 +95,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - [agents_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/agents_md_standard.md)
 - [routing_table_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/routing_table_md_standard.md)
 - [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
+- [route_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/route_index_standard.md)
 - [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md)
 
 ## Notes
@@ -99,4 +103,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-10T00:55:31Z`
+- `2026-03-10T22:45:00Z`

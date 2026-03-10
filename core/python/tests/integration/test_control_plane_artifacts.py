@@ -44,24 +44,28 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
 
     catalog = loader.load_schema_catalog()
     validators = loader.load_validator_registry()
+    workflow_metadata_registry = loader.load_workflow_metadata_registry()
     path_index = loader.load_repository_path_index()
     command_index = loader.load_command_index()
     foundation_index = loader.load_foundation_index()
     initiative_index = loader.load_initiative_index()
     coordination_index = loader.load_coordination_index()
     reference_index = loader.load_reference_index()
+    route_index = loader.load_route_index()
     standard_index = loader.load_standard_index()
     workflow_index = loader.load_workflow_index()
     task_index = loader.load_task_index()
 
     assert catalog.artifact_id == "registry.schema_catalog"
     assert validators.artifact_id == "registry.validators"
+    assert workflow_metadata_registry.artifact_id == "registry.workflow_metadata"
     assert path_index.artifact_id == "index.repository_paths"
     assert command_index.artifact_id == "index.commands"
     assert foundation_index.artifact_id == "index.foundations"
     assert initiative_index.artifact_id == "index.initiatives"
     assert coordination_index.artifact_id == "index.coordination"
     assert reference_index.artifact_id == "index.references"
+    assert route_index.artifact_id == "index.routes"
     assert standard_index.artifact_id == "index.standards"
     assert workflow_index.artifact_id == "index.workflows"
     assert task_index.artifact_id == "index.tasks"
@@ -110,6 +114,7 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
         REPO_ROOT / "core/control_plane/indexes/prds",
         REPO_ROOT / "core/control_plane/indexes/references",
         REPO_ROOT / "core/control_plane/indexes/repository_paths",
+        REPO_ROOT / "core/control_plane/indexes/routes",
         REPO_ROOT / "core/control_plane/indexes/standards",
         REPO_ROOT / "core/control_plane/indexes/tasks",
         REPO_ROOT / "core/control_plane/indexes/traceability",
@@ -123,6 +128,7 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
         REPO_ROOT / "core/control_plane/registries/policy_catalog",
         REPO_ROOT / "core/control_plane/registries/schema_catalog",
         REPO_ROOT / "core/control_plane/registries/validators",
+        REPO_ROOT / "core/control_plane/registries/workflows",
     )
 
     for root in target_roots:
@@ -158,6 +164,42 @@ def test_coordination_index_examples_validate_against_the_schema() -> None:
         REPO_ROOT
         / "core/control_plane/examples/invalid/indexes/"
         "coordination_index_missing_mode.v1.example.json"
+    )
+
+    store.validate_instance(valid_example)
+    with pytest.raises(ValidationError):
+        store.validate_instance(invalid_example)
+
+
+def test_route_index_examples_validate_against_the_schema() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    valid_example = _load_json_object(
+        REPO_ROOT / "core/control_plane/examples/valid/indexes/route_index.v1.example.json"
+    )
+    invalid_example = _load_json_object(
+        REPO_ROOT
+        / "core/control_plane/examples/invalid/indexes/"
+        "route_index_missing_workflow_ids.v1.example.json"
+    )
+
+    store.validate_instance(valid_example)
+    with pytest.raises(ValidationError):
+        store.validate_instance(invalid_example)
+
+
+def test_workflow_metadata_registry_examples_validate_against_the_schema() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    valid_example = _load_json_object(
+        REPO_ROOT
+        / "core/control_plane/examples/valid/registries/"
+        "workflow_metadata_registry.v1.example.json"
+    )
+    invalid_example = _load_json_object(
+        REPO_ROOT
+        / "core/control_plane/examples/invalid/registries/"
+        "workflow_metadata_registry_missing_phase_type.v1.example.json"
     )
 
     store.validate_instance(valid_example)

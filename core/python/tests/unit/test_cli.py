@@ -50,6 +50,10 @@ def test_root_command_prints_help(capsys) -> None:
     assert result == 0
     assert "watchtower-core" in captured.out
     assert "uv run watchtower-core doctor" in captured.out
+    assert (
+        "uv run watchtower-core route preview --request "
+        "\"review code and commit\"" in captured.out
+    )
     assert "uv run watchtower-core query coordination --format json" in captured.out
     assert (
         "uv run watchtower-core query standards --category governance --format json"
@@ -66,6 +70,7 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core sync workflow-index" in captured.out
     assert "uv run watchtower-core sync coordination" in captured.out
     assert "uv run watchtower-core sync repository-paths" in captured.out
+    assert "uv run watchtower-core sync route-index" in captured.out
     assert "uv run watchtower-core sync task-index" in captured.out
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert (
@@ -104,6 +109,16 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     )
 
 
+def test_route_group_prints_group_specific_help(capsys) -> None:
+    result = main(["route"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Preview the workflow modules that the current routing surfaces would" in captured.out
+    assert "preview" in captured.out
+    assert "uv run watchtower-core route preview --request" in captured.out
+
+
 def test_sync_group_prints_group_specific_help(capsys) -> None:
     result = main(["sync"])
 
@@ -115,6 +130,7 @@ def test_sync_group_prints_group_specific_help(capsys) -> None:
     assert "coordination" in captured.out
     assert "foundation-index" in captured.out
     assert "reference-index" in captured.out
+    assert "route-index" in captured.out
     assert "standard-index" in captured.out
     assert "workflow-index" in captured.out
     assert "prd-index" in captured.out
@@ -194,6 +210,31 @@ def test_query_paths_supports_retrieval_metadata_filters(capsys) -> None:
     assert all(entry["maturity"] == "authoritative" for entry in payload["results"])
     assert all(entry["priority"] == "high" for entry in payload["results"])
     assert all(entry["audience_hint"] == "shared" for entry in payload["results"])
+
+
+def test_route_preview_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "route",
+            "preview",
+            "--task-type",
+            "Repository Review",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core route preview"
+    assert payload["status"] == "ok"
+    assert payload["selected_route_count"] == 1
+    assert payload["selected_routes"][0]["task_type"] == "Repository Review"
+    assert any(
+        workflow["workflow_id"] == "workflow.repository_review"
+        for workflow in payload["selected_workflows"]
+    )
 
 
 def test_query_commands_supports_json_output(capsys) -> None:

@@ -221,6 +221,18 @@
       ]
     },
     {
+      "kind": "route_index",
+      "title": "Route Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:route-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/routes/route_index.v1.json"
+      ]
+    },
+    {
       "kind": "schema_catalog",
       "title": "Schema Catalog",
       "status": "active",
@@ -302,6 +314,18 @@
       ],
       "canonical_paths": [
         "core/control_plane/indexes/workflows/workflow_index.v1.json"
+      ]
+    },
+    {
+      "kind": "workflow_metadata_registry",
+      "title": "Workflow Metadata Registry",
+      "status": "active",
+      "family": "registry",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json"
       ]
     }
   ]

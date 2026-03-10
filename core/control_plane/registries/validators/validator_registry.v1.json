@@ -229,6 +229,20 @@
       ]
     },
     {
+      "id": "validator.control_plane.route_index",
+      "title": "Route Index Validator",
+      "description": "Validates machine-readable route index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "route_index",
+      "applies_to": [
+        "core/control_plane/indexes/routes/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:route-index:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.schema_catalog",
       "title": "Schema Catalog Validator",
       "description": "Validates authored schema catalog registry artifacts.",
@@ -352,6 +366,20 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:indexes:workflow-index:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.workflow_metadata_registry",
+      "title": "Workflow Metadata Registry Validator",
+      "description": "Validates machine-readable workflow metadata registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "workflow_metadata_registry",
+      "applies_to": [
+        "core/control_plane/registries/workflows/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1"
       ]
     },
     {

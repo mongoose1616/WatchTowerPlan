@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1",
+  "title": "Workflow Metadata Registry",
+  "description": "Authored workflow retrieval metadata used by workflow indexing and route preview.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.workflow_metadata"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/workflowMetadataEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "phaseType": {
+      "type": "string",
+      "enum": [
+        "shared",
+        "scoping",
+        "inspection",
+        "research",
+        "planning",
+        "execution",
+        "review",
+        "validation",
+        "reconciliation",
+        "closeout"
+      ]
+    },
+    "workflowMetadataEntry": {
+      "type": "object",
+      "required": [
+        "workflow_id",
+        "phase_type",
+        "task_family",
+        "primary_risks"
+      ],
+      "properties": {
+        "workflow_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "phase_type": {
+          "$ref": "#/$defs/phaseType"
+        },
+        "task_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primary_risks": {
+          "$ref": "#/$defs/stringList"
+        },
+        "extra_trigger_tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "companion_workflow_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/idPattern"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

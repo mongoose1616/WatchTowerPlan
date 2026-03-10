@@ -24,6 +24,7 @@ def test_command_index_sync_builds_schema_valid_document() -> None:
         entry["command_id"] == "command.watchtower_core.sync.command_index"
         for entry in entries
     )
+    assert any(entry["command_id"] == "command.watchtower_core.route.preview" for entry in entries)
 
 
 def test_command_index_sync_writes_temp_output(tmp_path: Path) -> None:
@@ -44,7 +45,10 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     spec_by_id = {spec.command_id: spec for spec in specs}
 
     assert "command.watchtower_core" in spec_by_id
+    assert "command.watchtower_core.route" in spec_by_id
+    assert "command.watchtower_core.route.preview" in spec_by_id
     assert "command.watchtower_core.sync.command_index" in spec_by_id
+    assert "command.watchtower_core.sync.route_index" in spec_by_id
     assert (
         spec_by_id["command.watchtower_core"].implementation_path
         == "core/python/src/watchtower_core/cli/parser.py"
@@ -54,11 +58,23 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_core/cli/doctor_family.py"
     )
     assert (
+        spec_by_id["command.watchtower_core.route"].implementation_path
+        == "core/python/src/watchtower_core/cli/route_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.route.preview"].implementation_path
+        == "core/python/src/watchtower_core/cli/route_family.py"
+    )
+    assert (
         spec_by_id["command.watchtower_core.query.commands"].implementation_path
         == "core/python/src/watchtower_core/cli/query_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.sync.command_index"].implementation_path
+        == "core/python/src/watchtower_core/cli/sync_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.sync.route_index"].implementation_path
         == "core/python/src/watchtower_core/cli/sync_family.py"
     )
     assert (

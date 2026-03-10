@@ -1,0 +1,544 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1",
+  "id": "registry.workflow_metadata",
+  "title": "Workflow Metadata Registry",
+  "status": "active",
+  "entries": [
+    {
+      "workflow_id": "workflow.acceptance_evidence_reconciliation",
+      "phase_type": "reconciliation",
+      "task_family": "artifact_acceptance",
+      "primary_risks": [
+        "companion_drift",
+        "authority_conflict"
+      ],
+      "extra_trigger_tags": [
+        "acceptance",
+        "evidence",
+        "reconcile"
+      ],
+      "companion_workflow_ids": [
+        "workflow.traceability_reconciliation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.clarification",
+      "phase_type": "scoping",
+      "task_family": "scope_management",
+      "primary_risks": [
+        "scope_drift",
+        "ambiguity_leak"
+      ],
+      "extra_trigger_tags": [
+        "clarify",
+        "ambiguity",
+        "question"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_scope_definition",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.code_implementation",
+      "phase_type": "execution",
+      "task_family": "engineering",
+      "primary_risks": [
+        "partial_update",
+        "behavior_regression"
+      ],
+      "extra_trigger_tags": [
+        "implement",
+        "feature",
+        "fix"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.documentation_refresh",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.code_review",
+      "phase_type": "review",
+      "task_family": "engineering_review",
+      "primary_risks": [
+        "unprioritized_findings",
+        "release_misalignment"
+      ],
+      "extra_trigger_tags": [
+        "review",
+        "audit",
+        "findings"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.code_validation",
+      "phase_type": "validation",
+      "task_family": "engineering_validation",
+      "primary_risks": [
+        "unverified_change",
+        "false_confidence"
+      ],
+      "extra_trigger_tags": [
+        "validate",
+        "test",
+        "lint",
+        "mypy",
+        "ruff"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.commit_closeout",
+      "phase_type": "closeout",
+      "task_family": "commit_management",
+      "primary_risks": [
+        "mixed_change_set",
+        "implicit_follow_up"
+      ],
+      "extra_trigger_tags": [
+        "commit",
+        "closeout",
+        "message"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.core",
+      "phase_type": "shared",
+      "task_family": "core_context",
+      "primary_risks": [
+        "missing_context",
+        "route_mismatch"
+      ],
+      "extra_trigger_tags": [
+        "baseline",
+        "shared",
+        "context"
+      ]
+    },
+    {
+      "workflow_id": "workflow.current_state_inspection",
+      "phase_type": "inspection",
+      "task_family": "state_inspection",
+      "primary_risks": [
+        "stale_context",
+        "hidden_dependencies"
+      ],
+      "extra_trigger_tags": [
+        "inspect",
+        "state",
+        "local"
+      ],
+      "companion_workflow_ids": [
+        "workflow.internal_context_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.decision_capture",
+      "phase_type": "planning",
+      "task_family": "decision_management",
+      "primary_risks": [
+        "design_gap",
+        "execution_drift"
+      ],
+      "extra_trigger_tags": [
+        "decision",
+        "adr",
+        "tradeoff"
+      ],
+      "companion_workflow_ids": [
+        "workflow.traceability_reconciliation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.documentation_generation",
+      "phase_type": "execution",
+      "task_family": "documentation",
+      "primary_risks": [
+        "partial_update",
+        "behavior_regression"
+      ],
+      "extra_trigger_tags": [
+        "docs",
+        "write",
+        "generate"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.documentation_implementation_reconciliation",
+      "phase_type": "reconciliation",
+      "task_family": "documentation",
+      "primary_risks": [
+        "companion_drift",
+        "authority_conflict"
+      ],
+      "extra_trigger_tags": [
+        "docs",
+        "reconcile",
+        "parity"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.documentation_refresh",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.documentation_refresh",
+      "phase_type": "execution",
+      "task_family": "documentation",
+      "primary_risks": [
+        "partial_update",
+        "behavior_regression"
+      ],
+      "extra_trigger_tags": [
+        "docs",
+        "refresh",
+        "update"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.external_guidance_research",
+      "phase_type": "research",
+      "task_family": "external_research",
+      "primary_risks": [
+        "stale_external_guidance",
+        "source_misuse"
+      ],
+      "extra_trigger_tags": [
+        "research",
+        "external",
+        "official"
+      ],
+      "companion_workflow_ids": [
+        "workflow.internal_context_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.feature_design_planning",
+      "phase_type": "planning",
+      "task_family": "design_planning",
+      "primary_risks": [
+        "design_gap",
+        "execution_drift"
+      ],
+      "extra_trigger_tags": [
+        "design",
+        "architecture",
+        "solution"
+      ],
+      "companion_workflow_ids": [
+        "workflow.implementation_planning",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.foundations_context_review",
+      "phase_type": "inspection",
+      "task_family": "foundations_review",
+      "primary_risks": [
+        "stale_context",
+        "hidden_dependencies"
+      ],
+      "extra_trigger_tags": [
+        "foundations",
+        "intent",
+        "context"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.github_task_sync",
+      "phase_type": "execution",
+      "task_family": "github_integration",
+      "primary_risks": [
+        "partial_update",
+        "behavior_regression"
+      ],
+      "extra_trigger_tags": [
+        "github",
+        "issues",
+        "project",
+        "sync"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_lifecycle_management",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.governed_artifact_reconciliation",
+      "phase_type": "reconciliation",
+      "task_family": "artifact_governance",
+      "primary_risks": [
+        "companion_drift",
+        "authority_conflict"
+      ],
+      "extra_trigger_tags": [
+        "artifact",
+        "schema",
+        "registry"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.implementation_planning",
+      "phase_type": "planning",
+      "task_family": "implementation_planning",
+      "primary_risks": [
+        "design_gap",
+        "execution_drift"
+      ],
+      "extra_trigger_tags": [
+        "implementation",
+        "execution",
+        "plan"
+      ],
+      "companion_workflow_ids": [
+        "workflow.feature_design_planning",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.initiative_closeout",
+      "phase_type": "closeout",
+      "task_family": "initiative_closeout",
+      "primary_risks": [
+        "mixed_change_set",
+        "implicit_follow_up"
+      ],
+      "extra_trigger_tags": [
+        "initiative",
+        "closeout",
+        "supersede"
+      ],
+      "companion_workflow_ids": [
+        "workflow.traceability_reconciliation",
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.internal_context_review",
+      "phase_type": "inspection",
+      "task_family": "policy_alignment",
+      "primary_risks": [
+        "stale_context",
+        "hidden_dependencies"
+      ],
+      "extra_trigger_tags": [
+        "standards",
+        "policy",
+        "context"
+      ],
+      "companion_workflow_ids": [
+        "workflow.external_guidance_research",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.prd_generation",
+      "phase_type": "planning",
+      "task_family": "product_planning",
+      "primary_risks": [
+        "design_gap",
+        "execution_drift"
+      ],
+      "extra_trigger_tags": [
+        "prd",
+        "requirements",
+        "product"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.reference_distillation",
+      "phase_type": "research",
+      "task_family": "reference_distillation",
+      "primary_risks": [
+        "stale_external_guidance",
+        "source_misuse"
+      ],
+      "extra_trigger_tags": [
+        "distill",
+        "reference",
+        "source"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_assessment",
+      "phase_type": "review",
+      "task_family": "repository_review",
+      "primary_risks": [
+        "unprioritized_findings",
+        "release_misalignment"
+      ],
+      "extra_trigger_tags": [
+        "assessment",
+        "health",
+        "risks"
+      ],
+      "companion_workflow_ids": [
+        "workflow.repository_inventory_review",
+        "workflow.repository_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_inventory_review",
+      "phase_type": "inspection",
+      "task_family": "repository_review",
+      "primary_risks": [
+        "stale_context",
+        "hidden_dependencies"
+      ],
+      "extra_trigger_tags": [
+        "inventory",
+        "structure",
+        "surface"
+      ],
+      "companion_workflow_ids": [
+        "workflow.repository_assessment",
+        "workflow.repository_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.repository_review",
+      "phase_type": "review",
+      "task_family": "repository_review",
+      "primary_risks": [
+        "unprioritized_findings",
+        "release_misalignment"
+      ],
+      "extra_trigger_tags": [
+        "repository",
+        "review",
+        "audit"
+      ],
+      "companion_workflow_ids": [
+        "workflow.repository_inventory_review",
+        "workflow.repository_assessment",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_handoff_review",
+      "phase_type": "review",
+      "task_family": "handoff",
+      "primary_risks": [
+        "unprioritized_findings",
+        "release_misalignment"
+      ],
+      "extra_trigger_tags": [
+        "handoff",
+        "followup",
+        "related"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_lifecycle_management",
+      "phase_type": "execution",
+      "task_family": "task_management",
+      "primary_risks": [
+        "partial_update",
+        "behavior_regression"
+      ],
+      "extra_trigger_tags": [
+        "task",
+        "status",
+        "board"
+      ],
+      "companion_workflow_ids": [
+        "workflow.traceability_reconciliation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_phase_transition",
+      "phase_type": "execution",
+      "task_family": "task_management",
+      "primary_risks": [
+        "partial_update",
+        "behavior_regression"
+      ],
+      "extra_trigger_tags": [
+        "handoff",
+        "phase",
+        "transition"
+      ],
+      "companion_workflow_ids": [
+        "workflow.task_lifecycle_management",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.task_scope_definition",
+      "phase_type": "scoping",
+      "task_family": "scope_management",
+      "primary_risks": [
+        "scope_drift",
+        "ambiguity_leak"
+      ],
+      "extra_trigger_tags": [
+        "scope",
+        "objective",
+        "boundary"
+      ],
+      "companion_workflow_ids": [
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
+      "workflow_id": "workflow.traceability_reconciliation",
+      "phase_type": "reconciliation",
+      "task_family": "traceability",
+      "primary_risks": [
+        "companion_drift",
+        "authority_conflict"
+      ],
+      "extra_trigger_tags": [
+        "trace",
+        "initiative",
+        "tracker"
+      ],
+      "companion_workflow_ids": [
+        "workflow.code_validation",
+        "workflow.task_handoff_review"
+      ]
+    }
+  ]
+}
