@@ -36,7 +36,7 @@
       "summary": "Working reference for writing workflow modules that are efficient, explicit, and load only the context an LLM or agent actually needs.",
       "status": "active",
       "doc_path": "docs/references/agent_workflow_authoring_reference.md",
-      "updated_at": "2026-03-10T16:31:28Z",
+      "updated_at": "2026-03-10T23:21:57Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [

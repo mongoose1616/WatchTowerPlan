@@ -24,6 +24,15 @@ When a request explicitly hands work from one owner or phase to another, use the
 
 When a request needs hosted GitHub issue or project visibility for local task records, use the GitHub Task Sync route or merge `modules/github_task_sync.md` into the active route rather than treating the sync command as an ad hoc manual follow-up.
 
+## Reconciliation Quick Guide
+
+| Primary Drift Boundary | Preferred Route | Typical Surfaces |
+|---|---|---|
+| Implementation behavior versus companion docs or machine-readable lookup surfaces | `Documentation-Implementation Reconciliation` | code, tests, CLI help, command pages, README files, examples, lookup indexes |
+| Traced planning or governance artifacts versus trackers, initiative views, family indexes, or trace joins | `Traceability Reconciliation` | PRDs, designs, plans, decisions, task or initiative trackers, traceability and initiative indexes |
+| Schema-backed artifact families versus schemas, examples, registries, indexes, loaders, or validators | `Governed Artifact Reconciliation` | contracts, schemas, registries, catalogs, examples, validators, loader assumptions |
+| One trace's acceptance intent versus its acceptance contract, evidence, validator linkage, or trace coverage | `Acceptance and Evidence Reconciliation` | PRD acceptance IDs, acceptance contracts, validation evidence, validator registry, traceability coverage |
+
 | Task Type | Trigger Keywords (Examples) | Required Workflows |
 |---|---|---|
 | Code Implementation | implement, build, create feature, add feature, fix bug, change behavior, write code | `modules/core.md`, `modules/task_scope_definition.md`, `modules/current_state_inspection.md`, `modules/internal_context_review.md`, `modules/external_guidance_research.md`, `modules/code_implementation.md`, `modules/code_validation.md`, `modules/task_handoff_review.md` |

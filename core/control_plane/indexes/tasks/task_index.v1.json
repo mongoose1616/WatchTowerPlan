@@ -933,12 +933,12 @@
       "title": "Tighten reconciliation workflow decision guidance",
       "summary": "Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
-      "updated_at": "2026-03-10T21:59:21Z",
+      "doc_path": "docs/planning/tasks/closed/workflow_reconciliation_guidance.md",
+      "updated_at": "2026-03-10T23:23:39Z",
       "trace_id": "trace.workflow_system_operationalization",
       "depends_on": [
         "task.workflow_system_operationalization.bootstrap.001"

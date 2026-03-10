@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T22:45:00Z"
+updated_at: "2026-03-10T23:21:57Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -65,6 +65,14 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Classification logic belongs in the routing table, not in the workflow modules themselves.
 - Prompt-context auto-routing belongs to the routing layer formed by `AGENTS.md` plus `ROUTING_TABLE.md`, not to a separate workflow module.
 
+## Reconciliation Route Selection
+| Primary Drift Boundary | Preferred Route | Typical Surfaces |
+|---|---|---|
+| Implementation behavior versus companion docs or lookup surfaces | `Documentation-Implementation Reconciliation` | code, tests, CLI help, command pages, README files, examples, lookup indexes |
+| Traced planning or governance artifacts versus trackers, initiative views, family indexes, or trace joins | `Traceability Reconciliation` | PRDs, designs, plans, decisions, task or initiative trackers, traceability and initiative indexes |
+| Schema-backed artifact families versus schemas, examples, registries, indexes, loaders, or validators | `Governed Artifact Reconciliation` | contracts, schemas, registries, catalogs, examples, validators, loader assumptions |
+| One trace's acceptance intent versus its acceptance contract, evidence, validator linkage, or trace coverage | `Acceptance and Evidence Reconciliation` | PRD acceptance IDs, acceptance contracts, validation evidence, validator registry, traceability coverage |
+
 ## Process or Workflow
 1. Read `AGENTS.md`.
 2. Apply repository-wide constraints and root-level dos and don'ts.
@@ -103,4 +111,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-10T22:45:00Z`
+- `2026-03-10T23:21:57Z`

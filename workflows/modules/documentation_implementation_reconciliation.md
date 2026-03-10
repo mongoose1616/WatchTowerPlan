@@ -7,6 +7,7 @@ Use this workflow to compare implementation behavior against companion documenta
 - A code, command, schema, or governed artifact change may have invalidated README files, command pages, examples, or machine-readable lookup surfaces.
 - A review or maintenance pass needs an explicit docs-versus-implementation reconciliation step rather than relying on broad repository review alone.
 - A task's main risk is stale or contradictory behavior documentation rather than missing implementation.
+- Choose this route when the disagreement is mainly about behavior claims, not traced planning links or schema-family coherence.
 
 ## Inputs
 - Scoped reconciliation brief

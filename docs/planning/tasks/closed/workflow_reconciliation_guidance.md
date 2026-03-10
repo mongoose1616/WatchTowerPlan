@@ -1,27 +1,28 @@
 ---
-id: "task.workflow_system_operationalization.reconciliation_guidance.001"
-trace_id: "trace.workflow_system_operationalization"
-title: "Tighten reconciliation workflow decision guidance"
-summary: "Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes."
-type: "task"
-status: "active"
-task_status: "backlog"
-task_kind: "documentation"
-priority: "medium"
-owner: "repository_maintainer"
-updated_at: "2026-03-10T21:59:21Z"
-audience: "shared"
-authority: "authoritative"
+id: task.workflow_system_operationalization.reconciliation_guidance.001
+trace_id: trace.workflow_system_operationalization
+title: Tighten reconciliation workflow decision guidance
+summary: Add compact decision support that distinguishes documentation, traceability,
+  governed-artifact, and acceptance-evidence reconciliation routes.
+type: task
+status: active
+task_status: done
+task_kind: documentation
+priority: medium
+owner: repository_maintainer
+updated_at: '2026-03-10T23:23:39Z'
+audience: shared
+authority: authoritative
 applies_to:
-  - "workflows/modules/"
-  - "docs/standards/workflows/"
-  - "docs/references/"
+- workflows/modules/
+- docs/standards/workflows/
+- docs/references/
 related_ids:
-  - "prd.workflow_system_operationalization"
-  - "design.features.workflow_routing_and_authoring"
-  - "design.implementation.workflow_system_operationalization_execution"
+- prd.workflow_system_operationalization
+- design.features.workflow_routing_and_authoring
+- design.implementation.workflow_system_operationalization_execution
 depends_on:
-  - "task.workflow_system_operationalization.bootstrap.001"
+- task.workflow_system_operationalization.bootstrap.001
 ---
 
 # Tighten reconciliation workflow decision guidance
@@ -44,4 +45,4 @@ Add compact decision support that distinguishes documentation, traceability, gov
 - [workflow_routing_and_authoring.md](/home/j/WatchTowerPlan/docs/planning/design/features/workflow_routing_and_authoring.md)
 
 ## Updated At
-- `2026-03-10T21:59:21Z`
+- `2026-03-10T23:23:39Z`

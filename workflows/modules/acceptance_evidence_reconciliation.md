@@ -7,6 +7,7 @@ Use this workflow to reconcile PRD acceptance IDs, acceptance contracts, validat
 - A task changes PRD acceptance criteria, acceptance contracts, validation evidence, or traceability joins.
 - A trace needs an explicit acceptance-coverage review before closeout or handoff.
 - Reviewers need a reusable semantic check rather than only schema validation.
+- Choose this route when one trace's acceptance intent, coverage, or evidence linkage is the main question rather than general planning or artifact-family drift.
 
 ## Inputs
 - Target `trace_id`

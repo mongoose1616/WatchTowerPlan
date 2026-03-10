@@ -8,6 +8,7 @@ Use this workflow to reconcile traced planning and governance artifacts with the
 - A review or maintenance pass needs an explicit traceability check rather than relying only on planning workflows or handoff review.
 - A task's main risk is stale identifiers, missing upstream or downstream links, or disagreement between human-readable and machine-readable planning surfaces.
 - The new initiative layer may have drifted from the family-specific planning surfaces or the traceability join.
+- Choose this route when the disagreement is mainly about traced IDs, links, or tracker or index projection rather than raw implementation behavior or schema shape.
 
 ## Inputs
 - Scoped traceability reconciliation brief

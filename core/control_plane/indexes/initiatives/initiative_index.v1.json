@@ -820,35 +820,14 @@
       "title": "Workflow System Operationalization PRD",
       "summary": "Defines the follow-up work needed to make workflow routing, planning scaffolding, and task lifecycle handling executable, machine-readable, and easier to use before WatchTower implementation begins.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-10T23:17:55Z",
-      "open_task_count": 1,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T23:23:54Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/workflow_system_operationalization.md",
-      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.workflow_system_operationalization.reconciliation_guidance.001"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.workflow_system_operationalization.reconciliation_guidance.001",
-          "title": "Tighten reconciliation workflow decision guidance",
-          "task_status": "backlog",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.workflow_system_operationalization.bootstrap.001"
-          ]
-        }
-      ],
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/workflow_system_operationalization.md",
       "prd_ids": [
         "prd.workflow_system_operationalization"
       ],
@@ -881,6 +860,8 @@
       "evidence_ids": [
         "evidence.workflow_system_operationalization.planning_baseline"
       ],
+      "closed_at": "2026-03-10T23:23:54Z",
+      "closure_reason": "Operationalized route preview, workflow metadata, planning scaffolds, task lifecycle commands, and reconciliation guidance.",
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/workflow_system_operationalization_acceptance.v1.json",
@@ -903,11 +884,11 @@
         "docs/planning/prds/workflow_system_operationalization.md",
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/workflow_planning_scaffolds.md",
+        "docs/planning/tasks/closed/workflow_reconciliation_guidance.md",
         "docs/planning/tasks/closed/workflow_route_preview_and_metadata.md",
         "docs/planning/tasks/closed/workflow_system_bootstrap.md",
         "docs/planning/tasks/closed/workflow_task_cli.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/workflow_reconciliation_guidance.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/references/",
         "docs/standards/",

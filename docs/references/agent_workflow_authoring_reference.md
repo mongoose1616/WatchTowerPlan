@@ -10,7 +10,7 @@ tags:
   - "agents"
   - "prompt_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:31:28Z"
+updated_at: "2026-03-10T23:21:57Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -80,6 +80,13 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - Writing long descriptive prose that leaves the actual ordered steps implicit.
 - Using `Outputs` to require meta summaries, source logs, or quality-check writeups when the resulting artifact or command outcome already captures that information.
 
+### Reconciliation Boundary Rule
+- Pick reconciliation routes by the primary authority conflict, not by the total number of touched files.
+- Use documentation-implementation reconciliation for behavior claims.
+- Use traceability reconciliation for traced planning links and tracker or index agreement.
+- Use governed-artifact reconciliation for schema-backed family coherence.
+- Use acceptance-evidence reconciliation for one trace's acceptance coverage and evidence linkage.
+
 ### What Good Additional Load Hints Look Like
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary this workflow must preserve.
 - [task_lifecycle_management.md](/home/j/WatchTowerPlan/workflows/modules/task_lifecycle_management.md): task sync changes local task metadata and must leave the authoritative local corpus aligned afterward.
@@ -138,4 +145,4 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - The repository standards remain the authority; this document is the distilled working reference that informs them.
 
 ## Updated At
-- `2026-03-10T16:31:28Z`
+- `2026-03-10T23:21:57Z`
