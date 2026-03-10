@@ -459,6 +459,126 @@
       ]
     },
     {
+      "trace_id": "trace.machine_first_coordination_surface",
+      "title": "Machine-First Coordination Surface PRD",
+      "summary": "Defines the work needed to publish one always-useful machine coordination surface, keep human planning entrypoints derived from it, and reduce planning-navigation sprawl before product implementation starts.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T18:54:43Z",
+      "open_task_count": 2,
+      "blocked_task_count": 1,
+      "key_surface_path": "docs/planning/prds/machine_first_coordination_surface.md",
+      "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
+      "next_surface_path": "docs/planning/tasks/open/machine_first_coordination_index.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.machine_first_coordination_surface.coordination_index.001",
+        "task.machine_first_coordination_surface.entrypoints.001"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.machine_first_coordination_surface.coordination_index.001",
+          "title": "Publish the derived coordination index",
+          "task_status": "ready",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/machine_first_coordination_index.md",
+          "is_actionable": true,
+          "depends_on": [
+            "task.machine_first_coordination_surface.bootstrap.001"
+          ]
+        },
+        {
+          "task_id": "task.machine_first_coordination_surface.entrypoints.001",
+          "title": "Align human and agent coordination entrypoints",
+          "task_status": "ready",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
+          "is_actionable": false,
+          "depends_on": [
+            "task.machine_first_coordination_surface.coordination_index.001"
+          ]
+        }
+      ],
+      "blocked_by_task_ids": [
+        "task.machine_first_coordination_surface.coordination_index.001"
+      ],
+      "prd_ids": [
+        "prd.machine_first_coordination_surface"
+      ],
+      "decision_ids": [
+        "decision.machine_first_coordination_entry_surface"
+      ],
+      "design_ids": [
+        "design.features.machine_first_coordination_surface"
+      ],
+      "plan_ids": [
+        "design.implementation.machine_first_coordination_execution"
+      ],
+      "task_ids": [
+        "task.machine_first_coordination_surface.bootstrap.001",
+        "task.machine_first_coordination_surface.coordination_index.001",
+        "task.machine_first_coordination_surface.entrypoints.001"
+      ],
+      "acceptance_ids": [
+        "ac.machine_first_coordination_surface.001",
+        "ac.machine_first_coordination_surface.002",
+        "ac.machine_first_coordination_surface.003",
+        "ac.machine_first_coordination_surface.004",
+        "ac.machine_first_coordination_surface.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.machine_first_coordination_surface"
+      ],
+      "evidence_ids": [
+        "evidence.machine_first_coordination_surface.planning_baseline"
+      ],
+      "related_paths": [
+        "AGENTS.md",
+        "README.md",
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/machine_first_coordination_surface_acceptance.v1.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/machine_first_coordination_surface_planning_baseline.v1.json",
+        "core/control_plane/schemas/artifacts/",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/design/implementation/machine_first_coordination_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/machine_first_coordination_surface.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
+        "docs/planning/tasks/open/machine_first_coordination_index.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the machine-first coordination surface initiative."
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "title": "Pre-Implementation Repository Review and Hardening PRD",
       "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",

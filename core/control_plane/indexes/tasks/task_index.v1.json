@@ -441,6 +441,91 @@
       ]
     },
     {
+      "task_id": "task.machine_first_coordination_surface.bootstrap.001",
+      "title": "Bootstrap the machine-first coordination surface initiative",
+      "summary": "Creates the traced planning chain, decision record, acceptance baseline, and bounded execution task set for the coordination-surface follow-up work.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
+      "updated_at": "2026-03-10T18:54:43Z",
+      "trace_id": "trace.machine_first_coordination_surface",
+      "related_ids": [
+        "prd.machine_first_coordination_surface",
+        "design.features.machine_first_coordination_surface",
+        "design.implementation.machine_first_coordination_execution",
+        "decision.machine_first_coordination_entry_surface"
+      ],
+      "applies_to": [
+        "docs/planning/prds/machine_first_coordination_surface.md",
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/design/implementation/machine_first_coordination_execution.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "core/control_plane/contracts/acceptance/machine_first_coordination_surface_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/machine_first_coordination_surface_planning_baseline.v1.json",
+        "docs/planning/tasks/open/"
+      ]
+    },
+    {
+      "task_id": "task.machine_first_coordination_surface.coordination_index.001",
+      "title": "Publish the derived coordination index",
+      "summary": "Add the coordination-index artifact family, sync logic, loader support, and query integration so one machine-readable surface becomes the default planning current-state entrypoint.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/machine_first_coordination_index.md",
+      "updated_at": "2026-03-10T18:54:43Z",
+      "trace_id": "trace.machine_first_coordination_surface",
+      "depends_on": [
+        "task.machine_first_coordination_surface.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.machine_first_coordination_surface",
+        "design.features.machine_first_coordination_surface",
+        "design.implementation.machine_first_coordination_execution"
+      ],
+      "applies_to": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.machine_first_coordination_surface.entrypoints.001",
+      "title": "Align human and agent coordination entrypoints",
+      "summary": "Generate a compact human coordination tracker and reroute planning and agent entrypoint guidance so humans and agents start from the same derived coordination state.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
+      "updated_at": "2026-03-10T18:54:43Z",
+      "trace_id": "trace.machine_first_coordination_surface",
+      "depends_on": [
+        "task.machine_first_coordination_surface.coordination_index.001"
+      ],
+      "related_ids": [
+        "prd.machine_first_coordination_surface",
+        "design.features.machine_first_coordination_surface",
+        "design.implementation.machine_first_coordination_execution"
+      ],
+      "applies_to": [
+        "docs/planning/",
+        "README.md",
+        "AGENTS.md",
+        "docs/commands/core_python/",
+        "core/python/tests/"
+      ]
+    },
+    {
       "task_id": "task.preimplementation_repo_review_and_hardening.bootstrap.001",
       "title": "Bootstrap the pre-implementation repo review and hardening initiative",
       "summary": "Creates the traced planning chain, decision record, acceptance baseline, and bounded execution task set for the full pre-implementation repository review and hardening pass.",

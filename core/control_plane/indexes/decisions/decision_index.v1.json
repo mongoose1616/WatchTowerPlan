@@ -52,6 +52,49 @@
       ]
     },
     {
+      "trace_id": "trace.machine_first_coordination_surface",
+      "decision_id": "decision.machine_first_coordination_entry_surface",
+      "title": "Machine-First Coordination Entry Surface Decision",
+      "summary": "Records the decision to add one derived coordination index above the family-specific planning indexes and use it as the default machine start-here surface.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+      "updated_at": "2026-03-10T18:54:43Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.machine_first_coordination_surface"
+      ],
+      "linked_design_ids": [
+        "design.features.machine_first_coordination_surface"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.machine_first_coordination_execution"
+      ],
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/cli/",
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/planning/prds/machine_first_coordination_surface.md",
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "decision_id": "decision.preimplementation_machine_coordination_entrypoint",
       "title": "Machine Coordination Entrypoint Decision",

@@ -1,7 +1,10 @@
 # Task Tracking
 
 ## Open Tasks
-_No open tasks._
+| Task | Status | Priority | Owner | Trace ID | Summary |
+| --- | --- | --- | --- | --- | --- |
+| [task.machine_first_coordination_surface.coordination_index.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/machine_first_coordination_index.md) | `ready` | `high` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Add the coordination-index artifact family, sync logic, loader support, and query integration so one machine-readable surface becomes the default planning current-state entrypoint. |
+| [task.machine_first_coordination_surface.entrypoints.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/machine_first_coordination_entrypoints.md) | `ready` | `medium` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Generate a compact human coordination tracker and reroute planning and agent entrypoint guidance so humans and agents start from the same derived coordination state. |
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -16,6 +19,7 @@ _No open tasks._
 | [task.core_export_readiness_and_optimization.workspace_injection.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/core_export_workspace_injection.md) | `done` | `high` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | Replace implicit repo-root discovery with injected workspace configuration, artifact sources, and artifact stores so reusable services can run against non-WatchTowerPlan layouts. |
 | [task.core_python_foundation.closeout.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/core_python_foundation_closeout.md) | `done` | `high` | `repository_maintainer` | `trace.core_python_foundation` | Tracks the remaining initiative-level closeout for the core Python foundation slice. |
 | [task.local_task_tracking_foundation.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/local_task_tracking_foundation.md) | `done` | `high` | `repository_maintainer` | `trace.local_task_tracking` | Establishes governed local task records, a generated human tracker, a generated machine index, and Python query and sync commands for task coordination. |
+| [task.machine_first_coordination_surface.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/machine_first_coordination_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Creates the traced planning chain, decision record, acceptance baseline, and bounded execution task set for the coordination-surface follow-up work. |
 | [task.preimplementation_repo_review_and_hardening.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/preimplementation_repo_review_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.preimplementation_repo_review_and_hardening` | Creates the traced planning chain, decision record, acceptance baseline, and bounded execution task set for the full pre-implementation repository review and hardening pass. |
 | [task.preimplementation_repo_review_and_hardening.core_modularity.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/preimplementation_core_modularity.md) | `done` | `high` | `repository_maintainer` | `trace.preimplementation_repo_review_and_hardening` | Refactor the largest coordination-facing Python modules into smaller family modules and add supplemental schema registration for future external pack-owned artifacts. |
 | [task.preimplementation_repo_review_and_hardening.machine_coordination.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/preimplementation_machine_coordination.md) | `done` | `high` | `repository_maintainer` | `trace.preimplementation_repo_review_and_hardening` | Elevate the initiative index into the explicit machine coordination start-here path for traced work and expose it through clearer query and documentation surfaces. |
@@ -33,4 +37,4 @@ _No open tasks._
 | [task.local_task_tracking.github_sync.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_task_sync.md) | `done` | `medium` | `repository_maintainer` | `trace.local_task_tracking` | Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity. |
 | [task.template_and_output_efficiency.workflow_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.template_and_output_efficiency` | Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content. |
 
-_Updated At: `2026-03-10T18:47:27Z`_
+_Updated At: `2026-03-10T18:54:43Z`_

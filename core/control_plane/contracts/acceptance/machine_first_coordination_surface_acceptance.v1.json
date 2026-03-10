@@ -1,0 +1,83 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.machine_first_coordination_surface",
+  "title": "Machine-First Coordination Surface Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.machine_first_coordination_surface",
+  "source_prd_id": "prd.machine_first_coordination_surface",
+  "entries": [
+    {
+      "acceptance_id": "ac.machine_first_coordination_surface.001",
+      "summary": "The planning corpus publishes the PRD, decision record, feature design, implementation plan, acceptance contract, planning evidence, bootstrap task, and bounded execution tasks for the coordination-surface initiative.",
+      "source_requirement_ids": [
+        "req.machine_first_coordination_surface.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/machine_first_coordination_surface.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/design/implementation/machine_first_coordination_execution.md",
+        "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
+        "docs/planning/tasks/open/"
+      ],
+      "related_paths": [
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.machine_first_coordination_surface.002",
+      "summary": "A governed coordination index exists and projects active work, actionable tasks, recent closeouts, and bootstrap-ready state from existing authoritative family surfaces.",
+      "source_requirement_ids": [
+        "req.machine_first_coordination_surface.001",
+        "req.machine_first_coordination_surface.002"
+      ],
+      "validation_targets": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/control_plane/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.machine_first_coordination_surface.003",
+      "summary": "The coordination query and sync surfaces use the derived coordination index and keep command docs aligned with the behavior.",
+      "source_requirement_ids": [
+        "req.machine_first_coordination_surface.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ]
+    },
+    {
+      "acceptance_id": "ac.machine_first_coordination_surface.004",
+      "summary": "A compact human coordination tracker exists as a derived byproduct, and planning and agent entrypoint docs route to it consistently.",
+      "source_requirement_ids": [
+        "req.machine_first_coordination_surface.004",
+        "req.machine_first_coordination_surface.005"
+      ],
+      "validation_targets": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/README.md",
+        "AGENTS.md",
+        "README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.machine_first_coordination_surface.005",
+      "summary": "The repository remains green on the current validation baseline while the coordination surface is introduced.",
+      "source_requirement_ids": [
+        "req.machine_first_coordination_surface.006"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

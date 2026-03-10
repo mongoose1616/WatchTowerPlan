@@ -337,6 +337,36 @@
       ]
     },
     {
+      "document_id": "design.features.machine_first_coordination_surface",
+      "trace_id": "trace.machine_first_coordination_surface",
+      "family": "feature_design",
+      "title": "Machine-First Coordination Surface Design",
+      "summary": "Defines the derived coordination index and compact human byproduct needed to make one always-useful coordination surface the default start-here view for planning state.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/machine_first_coordination_surface.md",
+      "updated_at": "2026-03-10T18:54:43Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/machine_first_coordination_execution.md",
+        "docs/planning/",
+        "core/control_plane/indexes/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/cli/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/customer_story.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/planning/prds/machine_first_coordination_surface.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
+      ]
+    },
+    {
       "document_id": "design.features.preimplementation_repo_readiness",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "family": "feature_design",
@@ -551,6 +581,32 @@
         "docs/planning/prds/core_python_foundation.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json"
+      ]
+    },
+    {
+      "document_id": "design.implementation.machine_first_coordination_execution",
+      "trace_id": "trace.machine_first_coordination_surface",
+      "family": "implementation_plan",
+      "title": "Machine-First Coordination Surface Implementation Plan",
+      "summary": "Breaks the coordination-surface work into bounded slices for the coordination index, the generated human byproduct, and aligned planning entrypoint guidance.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/machine_first_coordination_execution.md",
+      "updated_at": "2026-03-10T18:54:43Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/machine_first_coordination_surface.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/",
+        "core/python/src/watchtower_core/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/planning/prds/machine_first_coordination_surface.md",
+        "docs/planning/design/features/machine_first_coordination_surface.md"
       ]
     },
     {

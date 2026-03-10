@@ -1,0 +1,109 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.machine_first_coordination_surface.planning_baseline",
+  "title": "Machine-First Coordination Surface Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.machine_first_coordination_surface",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-10T18:54:43Z",
+  "source_prd_ids": [
+    "prd.machine_first_coordination_surface"
+  ],
+  "source_decision_ids": [
+    "decision.machine_first_coordination_entry_surface"
+  ],
+  "source_design_ids": [
+    "design.features.machine_first_coordination_surface"
+  ],
+  "source_plan_ids": [
+    "design.implementation.machine_first_coordination_execution"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.machine_first_coordination_surface"
+  ],
+  "checks": [
+    {
+      "check_id": "check.machine_first_coordination_surface.planning_chain",
+      "title": "Planning corpus baseline",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/machine_first_coordination_surface.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/design/implementation/machine_first_coordination_execution.md",
+        "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
+        "docs/planning/tasks/open/machine_first_coordination_index.md",
+        "docs/planning/tasks/open/machine_first_coordination_entrypoints.md"
+      ],
+      "subject_ids": [
+        "prd.machine_first_coordination_surface",
+        "decision.machine_first_coordination_entry_surface",
+        "design.features.machine_first_coordination_surface",
+        "design.implementation.machine_first_coordination_execution",
+        "task.machine_first_coordination_surface.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.machine_first_coordination_surface.001"
+      ],
+      "notes": "The coordination-surface initiative now has its traced planning chain, accepted decision, closed bootstrap task, and two bounded execution tasks."
+    },
+    {
+      "check_id": "check.machine_first_coordination_surface.machine_surface_scope",
+      "title": "Coordination index scope defined",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/tasks/open/machine_first_coordination_index.md"
+      ],
+      "subject_ids": [
+        "design.features.machine_first_coordination_surface",
+        "task.machine_first_coordination_surface.coordination_index.001"
+      ],
+      "acceptance_ids": [
+        "ac.machine_first_coordination_surface.002",
+        "ac.machine_first_coordination_surface.003"
+      ],
+      "notes": "The design and task set define one derived coordination index that stays above the family-specific planning indexes and powers the coordination query path."
+    },
+    {
+      "check_id": "check.machine_first_coordination_surface.entrypoint_scope",
+      "title": "Human and agent entrypoint alignment scoped",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/tasks/open/machine_first_coordination_entrypoints.md"
+      ],
+      "subject_ids": [
+        "design.features.machine_first_coordination_surface",
+        "task.machine_first_coordination_surface.entrypoints.001"
+      ],
+      "acceptance_ids": [
+        "ac.machine_first_coordination_surface.004"
+      ],
+      "notes": "The initiative includes a compact human coordination tracker and aligned planning plus agent entrypoint guidance."
+    },
+    {
+      "check_id": "check.machine_first_coordination_surface.validation_baseline",
+      "title": "Current workspace validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ],
+      "acceptance_ids": [
+        "ac.machine_first_coordination_surface.005"
+      ],
+      "notes": "The repo is green at bootstrap and ready for the bounded coordination-surface follow-up work."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/machine_first_coordination_surface_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning-baseline evidence for the machine-first coordination surface initiative."
+}

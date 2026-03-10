@@ -156,6 +156,54 @@
       ]
     },
     {
+      "trace_id": "trace.machine_first_coordination_surface",
+      "prd_id": "prd.machine_first_coordination_surface",
+      "title": "Machine-First Coordination Surface PRD",
+      "summary": "Defines the work needed to publish one always-useful machine coordination surface, keep human planning entrypoints derived from it, and reduce planning-navigation sprawl before product implementation starts.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/machine_first_coordination_surface.md",
+      "updated_at": "2026-03-10T18:54:43Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.machine_first_coordination_surface.001",
+        "req.machine_first_coordination_surface.002",
+        "req.machine_first_coordination_surface.003",
+        "req.machine_first_coordination_surface.004",
+        "req.machine_first_coordination_surface.005",
+        "req.machine_first_coordination_surface.006"
+      ],
+      "acceptance_ids": [
+        "ac.machine_first_coordination_surface.001",
+        "ac.machine_first_coordination_surface.002",
+        "ac.machine_first_coordination_surface.003",
+        "ac.machine_first_coordination_surface.004",
+        "ac.machine_first_coordination_surface.005"
+      ],
+      "linked_decision_ids": [
+        "decision.machine_first_coordination_entry_surface"
+      ],
+      "linked_design_ids": [
+        "design.features.machine_first_coordination_surface"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.machine_first_coordination_execution"
+      ],
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/indexes/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/cli/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/design/features/core_export_ready_architecture.md"
+      ]
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "prd_id": "prd.preimplementation_repo_review_and_hardening",
       "title": "Pre-Implementation Repository Review and Hardening PRD",
