@@ -446,7 +446,7 @@
       "summary": "Defines the work needed to publish one always-useful machine coordination surface, keep human planning entrypoints derived from it, and reduce planning-navigation sprawl before product implementation starts.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-10T18:54:43Z",
+      "updated_at": "2026-03-10T19:20:47Z",
       "prd_ids": [
         "prd.machine_first_coordination_surface"
       ],
@@ -492,6 +492,8 @@
         "core/control_plane/contracts/acceptance/machine_first_coordination_surface_acceptance.v1.json",
         "core/control_plane/indexes/",
         "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/coordination/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/machine_first_coordination_surface_planning_baseline.v1.json",
         "core/control_plane/schemas/artifacts/",
@@ -514,9 +516,9 @@
         "docs/planning/prds/machine_first_coordination_surface.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
+        "docs/planning/tasks/closed/machine_first_coordination_index.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
-        "docs/planning/tasks/open/machine_first_coordination_index.md",
         "docs/planning/tasks/task_tracking.md",
         "workflows/"
       ],

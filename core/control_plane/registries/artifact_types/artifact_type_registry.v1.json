@@ -53,6 +53,18 @@
       ]
     },
     {
+      "kind": "coordination_index",
+      "title": "Coordination Index",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+      ]
+    },
+    {
       "kind": "decision_index",
       "title": "Decision Index",
       "status": "active",

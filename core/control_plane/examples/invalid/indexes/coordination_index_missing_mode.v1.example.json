@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:coordination-index:v1",
+  "id": "index.coordination",
+  "title": "Coordination Index",
+  "status": "active",
+  "updated_at": "2026-03-10T19:06:55Z",
+  "summary": "Missing the required coordination mode.",
+  "recommended_next_action": "Bootstrap a new initiative.",
+  "recommended_surface_path": "docs/planning/README.md",
+  "active_initiative_count": 0,
+  "blocked_task_count": 0,
+  "actionable_task_count": 0,
+  "entries": [],
+  "actionable_tasks": [],
+  "recent_closed_initiatives": []
+}

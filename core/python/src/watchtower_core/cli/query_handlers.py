@@ -13,6 +13,8 @@ from watchtower_core.repo_ops.query import (
     AcceptanceContractSearchParams,
     CommandQueryService,
     CommandSearchParams,
+    CoordinationQueryService,
+    CoordinationSearchParams,
     DecisionQueryService,
     DecisionSearchParams,
     DesignDocumentQueryService,
@@ -794,10 +796,10 @@ def _run_query_initiatives(args: argparse.Namespace) -> int:
 
 
 def _run_query_coordination(args: argparse.Namespace) -> int:
-    service = InitiativeQueryService(ControlPlaneLoader())
+    service = CoordinationQueryService(ControlPlaneLoader())
     initiative_status = args.initiative_status or "active"
-    entries = service.search(
-        InitiativeSearchParams(
+    result = service.search(
+        CoordinationSearchParams(
             query=args.query,
             trace_id=args.trace_id,
             initiative_status=initiative_status,
@@ -807,19 +809,93 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    return _emit_initiative_query_results(
-        args,
-        command_name="watchtower-core query coordination",
-        entries=entries,
-        empty_message=(
-            "No coordination entries matched the requested filters. "
-            "Use `query initiatives` or pass `--initiative-status` to inspect closed history."
-        ),
-        show_task_summaries=True,
-        default_initiative_status=(
-            initiative_status if args.initiative_status is None else None
-        ),
+    payload = {
+        "command": "watchtower-core query coordination",
+        "status": "ok",
+        "coordination_mode": result.index.coordination_mode,
+        "summary": result.index.summary,
+        "recommended_next_action": result.index.recommended_next_action,
+        "recommended_surface_path": result.index.recommended_surface_path,
+        "active_initiative_count": result.index.active_initiative_count,
+        "blocked_task_count": result.index.blocked_task_count,
+        "actionable_task_count": result.index.actionable_task_count,
+        "recent_closed_initiatives": [
+            {
+                "trace_id": entry.trace_id,
+                "title": entry.title,
+                "initiative_status": entry.initiative_status,
+                "closed_at": entry.closed_at,
+                "key_surface_path": entry.key_surface_path,
+                "closure_reason": entry.closure_reason,
+            }
+            for entry in result.index.recent_closed_initiatives
+        ],
+        "actionable_tasks": [
+            {
+                "trace_id": entry.trace_id,
+                "initiative_title": entry.initiative_title,
+                "task_id": entry.task_id,
+                "title": entry.title,
+                "task_status": entry.task_status,
+                "priority": entry.priority,
+                "owner": entry.owner,
+                "doc_path": entry.doc_path,
+                "is_actionable": entry.is_actionable,
+                "blocked_by": list(entry.blocked_by),
+                "depends_on": list(entry.depends_on),
+            }
+            for entry in result.index.actionable_tasks
+        ],
+        "result_count": len(result.entries),
+        "results": [_initiative_entry_payload(entry) for entry in result.entries],
+    }
+    if args.initiative_status is None:
+        payload["default_initiative_status"] = initiative_status
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    print(f"Coordination mode: {result.index.coordination_mode}")
+    print(result.index.summary)
+    print(f"Next: {result.index.recommended_next_action}")
+    print(f"Open first: {result.index.recommended_surface_path}")
+
+    if not result.entries:
+        if result.index.recent_closed_initiatives:
+            print("Recent closeouts:")
+            for entry in result.index.recent_closed_initiatives[:3]:
+                print(
+                    f"- {entry.trace_id} [{entry.initiative_status}] "
+                    f"{entry.closed_at}"
+                )
+                print(f"  {entry.title}")
+        return 0
+
+    print(
+        f"Found {len(result.entries)} "
+        f"initiative entr{'y' if len(result.entries) == 1 else 'ies'}:"
     )
+    for entry in result.entries:
+        owner_text = entry.primary_owner or (
+            ", ".join(entry.active_owners) if entry.active_owners else "unassigned"
+        )
+        print(f"- {entry.trace_id} [{entry.current_phase}, {entry.initiative_status}]")
+        print(f"  {entry.title}")
+        print(f"  Owners: {owner_text}")
+        print(
+            f"  Open tasks: {entry.open_task_count} "
+            f"(blocked={entry.blocked_task_count})"
+        )
+        if entry.active_task_summaries:
+            for task in entry.active_task_summaries:
+                state = "actionable" if task.is_actionable else "blocked"
+                print(
+                    f"  Task: {task.task_id} "
+                    f"[{task.task_status}, {task.priority}, {state}]"
+                )
+                print(f"    {task.title}")
+        print(f"  Next: {entry.next_action}")
+        print(f"  Open first: {entry.next_surface_path}")
+    return 0
 
 
 def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T18:10:36Z"
+updated_at: "2026-03-10T19:06:55Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -29,8 +29,8 @@ This standard defines the repository's cross-family initiative tracking model so
 ## Purpose
 - Give humans one start-here surface for "what is this initiative, who owns it, what phase is it in, and what is next?"
 - Preserve the current artifact-family structure for PRDs, decisions, designs, plans, and tasks instead of collapsing them into one mixed planning folder.
-- Publish one machine-readable initiative projection so queries and workflows do not have to reconstruct current phase and ownership from several indexes every time.
-- Expose one explicit machine start-here path through `watchtower-core query coordination` while keeping the authored planning families and broader `query initiatives` surface intact.
+- Publish one machine-readable initiative projection so the coordination layer and family-specific workflows do not have to reconstruct current phase and ownership from several indexes every time.
+- Keep `watchtower-core query coordination` pointed at the repo-level coordination index while preserving `query initiatives` as the initiative-family lookup surface.
 
 ## Scope
 - Applies to the human-readable initiative tracker under `docs/planning/initiatives/`.
@@ -63,7 +63,8 @@ This standard defines the repository's cross-family initiative tracking model so
 - Use the initiative layer as the cross-family coordination view, not as a replacement for those authored families.
 - Treat the initiative index and initiative tracker as derived projections, not as the authoritative source for artifact content or task state.
 - Keep `initiative_tracking.md` compact and scan-first. Prefer brief zero-state text and linked key surfaces over repeated explanatory scaffolding.
-- Use `watchtower-core query coordination --format json` as the default machine start-here path for active traced work.
+- Use `watchtower-core query coordination --format json` as the default machine start-here path for repo-level planning state.
+- Keep the initiative layer compact enough that the coordination index can project from it without becoming a second planning authority.
 - Use the unified traceability index as the authoritative machine join for durable artifact links and initiative closeout state.
 - Use the task index and task records as the authoritative source for active owners, open tasks, blockers, and execution status.
 - Publish one initiative entry per shared `trace_id`.
@@ -142,4 +143,4 @@ This standard defines the repository's cross-family initiative tracking model so
 - [README.md](/home/j/WatchTowerPlan/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-10T18:10:36Z`
+- `2026-03-10T19:06:55Z`

@@ -4,9 +4,9 @@
 This command searches the governed initiative index for broader initiative-family lookup, including filtered history and non-default initiative-status views.
 
 ## Use When
-- You want initiative-family lookup beyond the default active-only coordination start-here path.
+- You want initiative-family lookup beyond the default coordination start-here path.
 - You need to filter initiatives by phase, owner, status, or blockers.
-- You want machine-readable initiative coordination data for a workflow, script, or agent and need more than the default `coordination` view.
+- You want machine-readable initiative-family data for a workflow, script, or agent and need more than the default `coordination` view.
 
 ## Command
 | Field | Value |
@@ -34,7 +34,7 @@ uv run watchtower-core query initiatives [--query <text>] [--trace-id <trace_id>
 - `-h`, `--help`: Show the command help text.
 
 ## Notes
-- Use `watchtower-core query coordination` when you want the machine start-here path for active traced work.
+- Use `watchtower-core query coordination` when you want the machine start-here path for current planning state.
 - This command remains the broader initiative query surface for explicit historical or status-specific lookup.
 
 ## Examples
@@ -63,7 +63,7 @@ uv run watchtower-core query initiatives --trace-id trace.core_python_foundation
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
-| `watchtower-core query coordination` | Preferred machine start-here path for active traced work. |
+| `watchtower-core query coordination` | Preferred machine start-here path for current planning state. |
 | `watchtower-core sync initiative-index` | Rebuilds the initiative index that this command reads. |
 | `watchtower-core sync initiative-tracking` | Rebuilds the human-readable tracker derived from the same initiative view. |
 | `watchtower-core query trace` | Resolves the underlying traceability record for one known trace ID. |
@@ -75,4 +75,4 @@ uv run watchtower-core query initiatives --trace-id trace.core_python_foundation
 - `core/control_plane/indexes/initiatives/initiative_index.v1.json`
 
 ## Updated At
-- `2026-03-10T18:10:36Z`
+- `2026-03-10T19:06:55Z`

@@ -174,7 +174,7 @@
     {
       "command_id": "command.watchtower_core.query.coordination",
       "command": "watchtower-core query coordination",
-      "summary": "Search the initiative index through the machine start-here coordination path for traced work.",
+      "summary": "Search the coordination index through the machine start-here path for current planning state.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -566,7 +566,7 @@
     {
       "command_id": "command.watchtower_core.sync.coordination",
       "command": "watchtower-core sync coordination",
-      "summary": "Rebuild the deterministic coordination slice for task, traceability, and initiative surfaces in dependency order.",
+      "summary": "Rebuild the deterministic coordination slice for task, traceability, initiative, and coordination-index surfaces in dependency order.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",

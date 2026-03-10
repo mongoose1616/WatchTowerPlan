@@ -193,7 +193,7 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - With a valid subcommand, the root command dispatches to that subcommand handler.
 - The current top-level command families are `doctor`, `query`, `sync`, `closeout`, and `validate`.
 - `query` now covers repository navigation, command discovery, the explicit coordination start-here path, governed foundations lookup, workflow-module lookup, curated reference lookup, standards and best-practice lookup, planning lookup, acceptance contracts, validation evidence, task lookup, initiative-family lookup, and trace lookup.
-- The `sync` family now covers one-shot local rebuilds through `sync all`, a focused task-traceability-initiative rebuild through `sync coordination`, plus command lookup, foundation lookup, reference lookup, standard lookup, workflow lookup, PRD tracking, decision tracking, design tracking, initiative tracking, task tracking, GitHub task sync with managed labels, traceability, and repository-path rebuilds.
+- The `sync` family now covers one-shot local rebuilds through `sync all`, a focused task-traceability-initiative-coordination rebuild through `sync coordination`, plus command lookup, foundation lookup, reference lookup, standard lookup, workflow lookup, PRD tracking, decision tracking, design tracking, initiative tracking, task tracking, GitHub task sync with managed labels, traceability, and repository-path rebuilds.
 - `validate` now covers aggregate repo validation, document front matter, governed document semantics, schema-backed governed artifacts, and semantic acceptance reconciliation.
 - Unknown subcommands are rejected by the underlying CLI parser.
 - The current command surface is intentionally small and acts as the operator entrypoint for the growing core workspace.
@@ -213,4 +213,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/python/README.md`
 
 ## Updated At
-- `2026-03-10T18:10:36Z`
+- `2026-03-10T19:06:55Z`

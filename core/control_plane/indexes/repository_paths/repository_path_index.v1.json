@@ -458,6 +458,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/examples/invalid/indexes/coordination_index_missing_mode.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid coordination index example missing the required coordination-mode field.",
+      "parent_path": "core/control_plane/examples/invalid/indexes/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/examples/invalid/indexes/decision_index_missing_decision_status.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -908,6 +918,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid coordination index example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/indexes/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/examples/valid/indexes/decision_index.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -1251,6 +1271,36 @@
       "surface_kind": "control_plane_index",
       "summary": "First-pass command index for the core Python workspace and watchtower-core CLI family.",
       "parent_path": "core/control_plane/indexes/commands/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/indexes/coordination/",
+      "kind": "directory",
+      "surface_kind": "control_plane_indexes",
+      "summary": "Machine-readable coordination indexes for one current-state start-here view above the family-specific planning indexes.",
+      "parent_path": "core/control_plane/indexes/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/indexes/coordination/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Describes the purpose of the coordination-index directory and its current artifacts.",
+      "parent_path": "core/control_plane/indexes/coordination/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/indexes/coordination/coordination_index.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Machine-readable coordination index for current planning mode, recommended next action, actionable work, and recent closeouts.",
+      "parent_path": "core/control_plane/indexes/coordination/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -2176,6 +2226,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable compatibility-contract artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable coordination-index artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4026,6 +4086,16 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the standard for machine-readable command indexes.",
+      "parent_path": "docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/standards/data_contracts/coordination_index_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for the machine-readable coordination index.",
       "parent_path": "docs/standards/data_contracts/",
       "maturity": "authoritative",
       "priority": "high",

@@ -476,6 +476,15 @@ def test_query_coordination_defaults_to_active_status(capsys) -> None:
     assert payload["command"] == "watchtower-core query coordination"
     assert payload["status"] == "ok"
     assert payload["default_initiative_status"] == "active"
+    assert payload["coordination_mode"] in {
+        "active_work",
+        "blocked_work",
+        "ready_for_bootstrap",
+    }
+    assert payload["recommended_next_action"]
+    assert payload["recommended_surface_path"]
+    assert "actionable_tasks" in payload
+    assert "recent_closed_initiatives" in payload
 
 
 def test_query_coordination_supports_explicit_historical_lookup(capsys) -> None:
@@ -564,13 +573,14 @@ def test_sync_coordination_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core sync coordination"
     assert payload["status"] == "ok"
-    assert payload["result_count"] == 5
+    assert payload["result_count"] == 6
     assert payload["wrote"] is False
     assert payload["output_dir"] is None
     assert [entry["target"] for entry in payload["results"]] == [
         "task-index",
         "traceability-index",
         "initiative-index",
+        "coordination-index",
         "task-tracking",
         "initiative-tracking",
     ]
@@ -837,6 +847,9 @@ def test_sync_coordination_can_write_to_explicit_output_dir(tmp_path: Path, caps
     assert (output_dir / "core/control_plane/indexes/tasks/task_index.v1.json").exists()
     assert (
         output_dir / "core/control_plane/indexes/traceability/traceability_index.v1.json"
+    ).exists()
+    assert (
+        output_dir / "core/control_plane/indexes/coordination/coordination_index.v1.json"
     ).exists()
     assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()

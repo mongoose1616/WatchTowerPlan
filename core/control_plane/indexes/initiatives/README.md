@@ -12,4 +12,5 @@
 ## Notes
 - Treat this directory as a derived lookup surface, not as the source of truth for planning or task content.
 - Build the initiative index from traceability plus the current planning and task indexes.
+- Keep the coordination overlay aligned at `core/control_plane/indexes/coordination/coordination_index.v1.json`.
 - Keep the human-readable companion tracker aligned at `docs/planning/initiatives/initiative_tracking.md`.

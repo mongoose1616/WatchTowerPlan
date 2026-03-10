@@ -1,7 +1,7 @@
 # `watchtower-core query`
 
 ## Summary
-This command group searches the governed lookup indexes for repository paths, documented commands, foundation docs, workflow modules, curated references, governed standards, planning artifacts, initiative coordination views, and traceability records.
+This command group searches the governed lookup indexes for repository paths, documented commands, foundation docs, workflow modules, curated references, governed standards, planning artifacts, coordination views, and traceability records.
 
 ## Use When
 - You need to discover a path, command, or trace record without opening raw control-plane JSON files directly.
@@ -107,7 +107,7 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 - With no leaf command, the current implementation prints query-specific help and exits successfully.
 - The command group is read-only and does not mutate repository state.
 - Each leaf command supports `--format human` and `--format json`.
-- Use `coordination` as the machine start-here path for active traced work and next-step lookup.
+- Use `coordination` as the machine start-here path for current planning state and next-step lookup.
 - Use `paths` for repository navigation, `commands` for CLI discovery, `foundations` for the governed intent layer, `workflows` for workflow-module lookup, `references` for the reference corpus, `standards` for standards and best-practice lookup, `prds`, `decisions`, and `designs` for planning lookup, `acceptance` and `evidence` for governed acceptance coverage lookup, `tasks` for local execution work lookup, `initiatives` for broader initiative-family lookup including closed history, and `trace` when you already know the trace ID.
 
 ## Related Commands
@@ -115,7 +115,7 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 |---|---|
 | `watchtower-core query paths` | Searches the repository path index. |
 | `watchtower-core query commands` | Searches the command index. |
-| `watchtower-core query coordination` | Starts with the active initiative coordination view. |
+| `watchtower-core query coordination` | Starts with the current coordination view and recommended next action. |
 | `watchtower-core query foundations` | Searches the foundation index. |
 | `watchtower-core query workflows` | Searches the workflow index. |
 | `watchtower-core query references` | Searches the reference index. |
@@ -135,4 +135,4 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 - `core/python/src/watchtower_core/query/`
 
 ## Updated At
-- `2026-03-10T18:10:36Z`
+- `2026-03-10T19:06:55Z`

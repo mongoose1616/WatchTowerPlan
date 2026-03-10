@@ -231,6 +231,118 @@ class TaskIndex:
 
 
 @dataclass(frozen=True, slots=True)
+class CoordinationTaskSummary:
+    """Compact top-level actionable-task summary carried by the coordination index."""
+
+    trace_id: str
+    initiative_title: str
+    task_id: str
+    title: str
+    task_status: str
+    priority: str
+    owner: str
+    doc_path: str
+    is_actionable: bool
+    blocked_by: tuple[str, ...] = ()
+    depends_on: tuple[str, ...] = ()
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> CoordinationTaskSummary:
+        return cls(
+            trace_id=document["trace_id"],
+            initiative_title=document["initiative_title"],
+            task_id=document["task_id"],
+            title=document["title"],
+            task_status=document["task_status"],
+            priority=document["priority"],
+            owner=document["owner"],
+            doc_path=document["doc_path"],
+            is_actionable=document["is_actionable"],
+            blocked_by=tuple(document.get("blocked_by", ())),
+            depends_on=tuple(document.get("depends_on", ())),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class CoordinationRecentInitiativeSummary:
+    """Compact recent-closeout summary embedded in the coordination index."""
+
+    trace_id: str
+    title: str
+    initiative_status: str
+    closed_at: str
+    key_surface_path: str
+    closure_reason: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> CoordinationRecentInitiativeSummary:
+        return cls(
+            trace_id=document["trace_id"],
+            title=document["title"],
+            initiative_status=document["initiative_status"],
+            closed_at=document["closed_at"],
+            key_surface_path=document["key_surface_path"],
+            closure_reason=document.get("closure_reason"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class CoordinationIndex:
+    """Typed coordination-index artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    updated_at: str
+    coordination_mode: str
+    summary: str
+    recommended_next_action: str
+    recommended_surface_path: str
+    active_initiative_count: int
+    blocked_task_count: int
+    actionable_task_count: int
+    entries: tuple[InitiativeIndexEntry, ...]
+    actionable_tasks: tuple[CoordinationTaskSummary, ...]
+    recent_closed_initiatives: tuple[CoordinationRecentInitiativeSummary, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> CoordinationIndex:
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            updated_at=document["updated_at"],
+            coordination_mode=document["coordination_mode"],
+            summary=document["summary"],
+            recommended_next_action=document["recommended_next_action"],
+            recommended_surface_path=document["recommended_surface_path"],
+            active_initiative_count=document["active_initiative_count"],
+            blocked_task_count=document["blocked_task_count"],
+            actionable_task_count=document["actionable_task_count"],
+            entries=tuple(
+                InitiativeIndexEntry.from_document(entry) for entry in document["entries"]
+            ),
+            actionable_tasks=tuple(
+                CoordinationTaskSummary.from_document(entry)
+                for entry in document.get("actionable_tasks", ())
+            ),
+            recent_closed_initiatives=tuple(
+                CoordinationRecentInitiativeSummary.from_document(entry)
+                for entry in document.get("recent_closed_initiatives", ())
+            ),
+        )
+
+    def get(self, trace_id: str) -> InitiativeIndexEntry:
+        """Return one coordination entry by trace identifier."""
+        for entry in self.entries:
+            if entry.trace_id == trace_id:
+                return entry
+        raise KeyError(trace_id)
+
+
+@dataclass(frozen=True, slots=True)
 class TraceabilityEntry:
     """Traceability-index entry."""
 

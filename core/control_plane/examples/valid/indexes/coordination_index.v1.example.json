@@ -1,0 +1,98 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:coordination-index:v1",
+  "id": "index.coordination",
+  "title": "Coordination Index",
+  "status": "active",
+  "updated_at": "2026-03-10T19:06:55Z",
+  "coordination_mode": "active_work",
+  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
+  "recommended_next_action": "Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands.",
+  "recommended_surface_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+  "active_initiative_count": 1,
+  "blocked_task_count": 0,
+  "actionable_task_count": 1,
+  "entries": [
+    {
+      "trace_id": "trace.core_python_foundation",
+      "title": "Core Python Foundation PRD",
+      "summary": "Tracks the current cross-family phase, ownership, and next step for the core Python foundation initiative.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T01:48:35Z",
+      "open_task_count": 1,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/core_python_foundation.md",
+      "next_action": "Continue the active task set and keep the initiative surfaces aligned as work lands.",
+      "next_surface_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.core_python_foundation.execution.001"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.core_python_foundation.execution.001",
+          "title": "Execute the core Python foundation implementation slice",
+          "task_status": "in_progress",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+          "is_actionable": true
+        }
+      ],
+      "prd_ids": [
+        "prd.core_python_foundation"
+      ],
+      "design_ids": [
+        "design.features.core_python_workspace_and_harness"
+      ],
+      "plan_ids": [
+        "design.implementation.control_plane_loaders_and_schema_store"
+      ],
+      "task_ids": [
+        "task.core_python_foundation.execution.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_python_foundation.001"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_python_foundation"
+      ],
+      "related_paths": [
+        "core/python/",
+        "docs/planning/prds/core_python_foundation.md"
+      ],
+      "tags": [
+        "planning",
+        "python",
+        "traceability"
+      ]
+    }
+  ],
+  "actionable_tasks": [
+    {
+      "trace_id": "trace.core_python_foundation",
+      "initiative_title": "Core Python Foundation PRD",
+      "task_id": "task.core_python_foundation.execution.001",
+      "title": "Execute the core Python foundation implementation slice",
+      "task_status": "in_progress",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+      "is_actionable": true
+    }
+  ],
+  "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.local_task_tracking",
+      "title": "Local Task Tracking",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-09T16:14:50Z",
+      "key_surface_path": "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+      "closure_reason": "Delivered and validated."
+    }
+  ]
+}

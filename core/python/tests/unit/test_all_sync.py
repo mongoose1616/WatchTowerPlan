@@ -49,6 +49,7 @@ def test_coordination_sync_group_has_expected_targets_in_order() -> None:
         "task-index",
         "traceability-index",
         "initiative-index",
+        "coordination-index",
         "task-tracking",
         "initiative-tracking",
     )
@@ -65,6 +66,7 @@ def test_coordination_sync_runs_in_dry_run_mode() -> None:
         "task-index",
         "traceability-index",
         "initiative-index",
+        "coordination-index",
         "task-tracking",
         "initiative-tracking",
     )
@@ -98,6 +100,9 @@ def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None
         output_dir / "core/control_plane/indexes/traceability/traceability_index.v1.json"
     ).exists()
     assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.v1.json").exists()
+    assert (
+        output_dir / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+    ).exists()
     assert (output_dir / "docs/planning/tasks/task_tracking.md").exists()
     assert (output_dir / "docs/planning/initiatives/initiative_tracking.md").exists()
 
@@ -125,6 +130,11 @@ def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_pa
 
     tracker_path = output_dir / "docs/planning/initiatives/initiative_tracking.md"
     tracker_text = tracker_path.read_text(encoding="utf-8")
+    coordination_index_path = (
+        output_dir / "core/control_plane/indexes/coordination/coordination_index.v1.json"
+    )
+    coordination_text = coordination_index_path.read_text(encoding="utf-8")
     assert result.wrote is True
     assert "trace.core_export_hardening_followup" in tracker_text
     assert "STALE SNAPSHOT MARKER" not in tracker_text
+    assert "STALE SNAPSHOT MARKER" not in coordination_text

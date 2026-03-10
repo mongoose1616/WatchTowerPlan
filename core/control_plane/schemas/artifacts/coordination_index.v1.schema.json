@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:coordination-index:v1",
+  "title": "Coordination Index",
+  "description": "Machine-readable coordination overlay above the initiative index for current planning state, actionable work, and bootstrap readiness.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "updated_at",
+    "coordination_mode",
+    "summary",
+    "recommended_next_action",
+    "recommended_surface_path",
+    "active_initiative_count",
+    "blocked_task_count",
+    "actionable_task_count",
+    "entries",
+    "actionable_tasks",
+    "recent_closed_initiatives"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "index.coordination"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/lifecycleStatus"
+    },
+    "updated_at": {
+      "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+    },
+    "coordination_mode": {
+      "$ref": "#/$defs/coordinationMode"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recommended_next_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recommended_surface_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "active_initiative_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "blocked_task_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "actionable_task_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/initiativeEntry"
+      }
+    },
+    "actionable_tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/coordinationTaskSummary"
+      }
+    },
+    "recent_closed_initiatives": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recentClosedInitiativeSummary"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "coordinationMode": {
+      "type": "string",
+      "enum": [
+        "active_work",
+        "blocked_work",
+        "ready_for_bootstrap"
+      ]
+    },
+    "coordinationTaskSummary": {
+      "type": "object",
+      "required": [
+        "trace_id",
+        "initiative_title",
+        "task_id",
+        "title",
+        "task_status",
+        "priority",
+        "owner",
+        "doc_path",
+        "is_actionable"
+      ],
+      "properties": {
+        "trace_id": {
+          "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/idPattern"
+        },
+        "initiative_title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/taskIdPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_status": {
+          "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/taskStatus"
+        },
+        "priority": {
+          "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/priority"
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "is_actionable": {
+          "type": "boolean"
+        },
+        "blocked_by": {
+          "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/taskIdList"
+        },
+        "depends_on": {
+          "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/taskIdList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "recentClosedInitiativeSummary": {
+      "type": "object",
+      "required": [
+        "trace_id",
+        "title",
+        "initiative_status",
+        "closed_at",
+        "key_surface_path"
+      ],
+      "properties": {
+        "trace_id": {
+          "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initiative_status": {
+          "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/initiativeStatus"
+        },
+        "closed_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "key_surface_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "closure_reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

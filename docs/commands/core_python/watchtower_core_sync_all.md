@@ -7,7 +7,7 @@ This command rebuilds all local deterministic indexes and human-readable tracker
 - You changed several authored planning, standards, command, or reference surfaces and want one coordinated local rebuild.
 - You want to materialize the full local derived state into a separate directory for inspection.
 - You want a bounded alternative to manually running many sync commands in sequence.
-- You do not want the narrower `sync coordination` slice because you need more than task and initiative surfaces refreshed.
+- You do not want the narrower `sync coordination` slice because you need more than the coordination surfaces refreshed.
 
 ## Command
 | Field | Value |
@@ -15,7 +15,7 @@ This command rebuilds all local deterministic indexes and human-readable tracker
 | Invocation | `watchtower-core sync all` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -47,7 +47,7 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 
 ## Behavior and Outputs
 - The command runs the registry-backed local deterministic sync target set in dependency order so later rebuilds can read the earlier generated surfaces from disk when needed.
-- The current target set includes command, foundation, reference, standard, workflow, PRD, decision, design, initiative, task, traceability, and repository-path indexes, plus the PRD, decision, design, initiative, and task trackers.
+- The current target set includes command, foundation, reference, standard, workflow, PRD, decision, design, coordination, initiative, task, traceability, and repository-path indexes, plus the PRD, decision, design, initiative, and task trackers.
 - The command does not call hosted integrations. It intentionally excludes `sync github-tasks`.
 - With no mutation flags, the command runs in dry-run mode and only reports what would be rebuilt.
 - With `--write`, the command writes each rebuilt surface back to its canonical repository path.
@@ -58,7 +58,7 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 | Command | Relationship |
 |---|---|
 | `watchtower-core sync` | Parent command group for governed artifact rebuild operations. |
-| `watchtower-core sync coordination` | Rebuilds the smaller task, traceability, and initiative slice when `sync all` would be unnecessarily broad. |
+| `watchtower-core sync coordination` | Rebuilds the smaller task, traceability, initiative, and coordination slice when `sync all` would be unnecessarily broad. |
 | `watchtower-core sync command-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core sync foundation-index` | Rebuilds one of the surfaces included in `sync all`. |
 | `watchtower-core sync reference-index` | Rebuilds one of the surfaces included in `sync all`. |
@@ -69,9 +69,9 @@ uv run watchtower-core sync all --output-dir /tmp/watchtower_sync --format json
 | `watchtower-core sync initiative-tracking` | Rebuilds one of the surfaces included in `sync all`. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/all.py`
-- `core/python/src/watchtower_core/sync/registry.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
+- `core/python/src/watchtower_core/repo_ops/sync/all.py`
+- `core/python/src/watchtower_core/repo_ops/sync/registry.py`
 
 ## Updated At
-- `2026-03-10T06:39:00Z`
+- `2026-03-10T19:06:55Z`

@@ -1,0 +1,103 @@
+---
+id: "std.data_contracts.coordination_index"
+title: "Coordination Index Standard"
+summary: "This standard defines the role, structure, and boundary rules for machine-readable coordination indexes stored under `core/control_plane/indexes/coordination/`."
+type: "standard"
+status: "active"
+tags:
+  - "standard"
+  - "data_contracts"
+  - "coordination_index"
+owner: "repository_maintainer"
+updated_at: "2026-03-10T19:06:55Z"
+audience: "shared"
+authority: "authoritative"
+---
+
+# Coordination Index Standard
+
+## Summary
+This standard defines the role, structure, and boundary rules for machine-readable coordination indexes stored under `core/control_plane/indexes/coordination/`.
+
+## Purpose
+- Provide one always-useful machine start-here surface for current planning state.
+- Project actionable work, blockers, recent closeouts, and bootstrap-ready guidance without reopening multiple planning families on the first pass.
+- Keep the coordination layer derived so it does not compete with initiative, task, or traceability authority.
+
+## Scope
+- Applies to machine-readable coordination index artifacts stored under `core/control_plane/indexes/coordination/`.
+- Covers placement, root artifact fields, coordination-mode semantics, and the projected initiative and task summaries carried by this family.
+- Does not replace initiative, task, or traceability indexes as their family authorities.
+
+## Use When
+- Building agent or automation entrypoints that need one deterministic current-state surface.
+- Refreshing coordination state after initiative, task, or traceability surfaces change.
+- Reviewing whether the repository is actively executing work, blocked, or ready for one new initiative.
+
+## Related Standards and Sources
+- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): defines the initiative-family projection that this coordination layer reads from.
+- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): defines the task authority layer behind actionable work and blockers.
+- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace join that initiative state still mirrors.
+- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the human initiative coordination layer that remains available beneath this machine-first view.
+- [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
+- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by coordination records.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/coordination/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+
+## Guidance
+- Model the coordination surface as a derived index, not as an authored planning document.
+- Store published coordination indexes under `core/control_plane/indexes/coordination/`.
+- Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
+- Build the coordination index from the initiative index and its task-backed active-task projection rather than reparsing human trackers.
+- Publish one repo-level coordination mode and one recommended next action plus next surface path at the root of the artifact.
+- Carry actionable-task summaries only when they improve the first machine coordination pass.
+- Carry recent closeout summaries as compact context rather than reproducing the full closed-history corpus.
+- Keep the coordination index smaller than the combined family indexes it summarizes.
+- Do not invent owners, blockers, or status beyond what the initiative and task surfaces already publish.
+
+## Structure or Data Model
+### Root artifact fields
+| Field | Requirement | Notes |
+|---|---|---|
+| `$schema` | Required | Use the published schema identifier for the coordination-index artifact family. |
+| `id` | Required | Stable identifier for the coordination index artifact. |
+| `title` | Required | Human-readable title for the index artifact. |
+| `status` | Required | Use the governed lifecycle vocabulary. |
+| `updated_at` | Required | Latest timestamp mirrored from the current initiative corpus. |
+| `coordination_mode` | Required | Use one of `active_work`, `blocked_work`, or `ready_for_bootstrap`. |
+| `summary` | Required | Concise explanation of the current coordination state. |
+| `recommended_next_action` | Required | Short next-step statement for the default current state. |
+| `recommended_surface_path` | Required | Repository-relative path to open first for the recommended next step. |
+| `active_initiative_count` | Required | Number of active initiative entries currently projected. |
+| `blocked_task_count` | Required | Number of blocked active tasks across active initiatives. |
+| `actionable_task_count` | Required | Number of actionable active tasks across active initiatives. |
+| `entries` | Required | Initiative summaries used by the coordination query path. |
+| `actionable_tasks` | Required | Compact actionable-task summaries when present. Use an empty array when none are actionable. |
+| `recent_closed_initiatives` | Required | Compact closeout context. Use an empty array when none are available. |
+
+### Coordination expectations
+| Field | Expectation |
+|---|---|
+| `coordination_mode` | `active_work` means active work exists, `blocked_work` means active execution exists but no actionable task is available, `ready_for_bootstrap` means no active initiatives remain. |
+| `entries` | Keep initiative-shaped summaries compact and derived from the initiative index. |
+| `actionable_tasks` | Include trace context so a caller can jump directly to the right initiative and task surface. |
+| `recent_closed_initiatives` | Publish only compact summaries needed for recent context and review handoff. |
+
+## Validation
+- The coordination index should validate against its published artifact schema.
+- Every entry in the coordination index should correspond to one current initiative-index entry.
+- Root counts should agree with the projected active initiatives and actionable-task summaries.
+- `recommended_next_action` and `recommended_surface_path` should stay useful when the repo has no active initiative.
+- The coordination index should remain compact enough that it improves machine navigation instead of recreating family-authority detail.
+
+## Change Control
+- Update this standard when the repository changes the coordination-mode model or the projected coordination root fields.
+- Update the companion artifact schema, examples, live coordination index, and query/sync behavior in the same change set when this artifact family changes structurally.
+- Update nearby planning guidance when the coordination start-here experience changes materially.
+
+## References
+- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
+- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
+- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
+
+## Updated At
+- `2026-03-10T19:06:55Z`

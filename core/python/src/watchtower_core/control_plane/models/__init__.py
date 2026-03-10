@@ -7,6 +7,9 @@ from watchtower_core.control_plane.models.catalog import (
     ValidatorRegistry,
 )
 from watchtower_core.control_plane.models.coordination import (
+    CoordinationIndex,
+    CoordinationRecentInitiativeSummary,
+    CoordinationTaskSummary,
     InitiativeActiveTaskSummary,
     InitiativeIndex,
     InitiativeIndexEntry,
@@ -49,6 +52,9 @@ __all__ = [
     "AcceptanceContractItem",
     "CommandIndex",
     "CommandIndexEntry",
+    "CoordinationIndex",
+    "CoordinationRecentInitiativeSummary",
+    "CoordinationTaskSummary",
     "DecisionIndex",
     "DecisionIndexEntry",
     "DesignDocumentIndex",

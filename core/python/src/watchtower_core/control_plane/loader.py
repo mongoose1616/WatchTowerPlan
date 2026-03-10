@@ -9,6 +9,7 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
     CommandIndex,
+    CoordinationIndex,
     DecisionIndex,
     DesignDocumentIndex,
     FoundationIndex,
@@ -40,6 +41,7 @@ COMMAND_INDEX_PATH = "core/control_plane/indexes/commands/command_index.v1.json"
 REFERENCE_INDEX_PATH = "core/control_plane/indexes/references/reference_index.v1.json"
 FOUNDATION_INDEX_PATH = "core/control_plane/indexes/foundations/foundation_index.v1.json"
 INITIATIVE_INDEX_PATH = "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+COORDINATION_INDEX_PATH = "core/control_plane/indexes/coordination/coordination_index.v1.json"
 STANDARD_INDEX_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
 WORKFLOW_INDEX_PATH = "core/control_plane/indexes/workflows/workflow_index.v1.json"
 PRD_INDEX_PATH = "core/control_plane/indexes/prds/prd_index.v1.json"
@@ -149,6 +151,12 @@ class ControlPlaneLoader:
     def load_initiative_index(self) -> InitiativeIndex:
         """Load the current initiative index."""
         return InitiativeIndex.from_document(self.load_validated_document(INITIATIVE_INDEX_PATH))
+
+    def load_coordination_index(self) -> CoordinationIndex:
+        """Load the current coordination index."""
+        return CoordinationIndex.from_document(
+            self.load_validated_document(COORDINATION_INDEX_PATH)
+        )
 
     def load_standard_index(self) -> StandardIndex:
         """Load the current standard index."""

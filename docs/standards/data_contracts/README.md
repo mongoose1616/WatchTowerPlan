@@ -9,6 +9,7 @@
 | `docs/standards/data_contracts/README.md` | Describes the purpose of the data contracts standards directory and the standards stored here. |
 | `docs/standards/data_contracts/acceptance_contract_standard.md` | Defines the standard for machine-readable acceptance contracts. |
 | `docs/standards/data_contracts/command_index_standard.md` | Defines the standard for machine-readable command indexes. |
+| `docs/standards/data_contracts/coordination_index_standard.md` | Defines the standard for the machine-readable coordination index. |
 | `docs/standards/data_contracts/decision_index_standard.md` | Defines the standard for machine-readable decision indexes. |
 | `docs/standards/data_contracts/design_document_index_standard.md` | Defines the standard for machine-readable design-document indexes. |
 | `docs/standards/data_contracts/foundation_index_standard.md` | Defines the standard for machine-readable foundation indexes. |

@@ -40,7 +40,7 @@ def register_query_family(
             artifacts directly.
 
             Use `paths` for repository navigation, `commands` for CLI discovery,
-            `coordination` for the machine start-here initiative view, `foundations`
+            `coordination` for the machine start-here planning view, `foundations`
             for the intent-layer foundation corpus, `workflows` for workflow-module
             lookup, `references` for the reference library, `standards` for governed
             repository standards, `prds`, `decisions`, `designs`, `acceptance`,
@@ -778,11 +778,11 @@ def register_query_family(
 
     query_coordination_parser = query_subparsers.add_parser(
         "coordination",
-        help="Start with the active initiative coordination view.",
+        help="Start with the current planning coordination view.",
         description=dedent(
             """
-            Search the initiative index through the machine start-here
-            coordination path for traced work.
+            Search the coordination index through the machine start-here
+            path for current planning state.
 
             By default this command returns active initiatives only. Use
             `initiatives` for broader family lookup or pass `--initiative-status`
@@ -800,8 +800,8 @@ def register_query_family(
     query_coordination_parser.add_argument(
         "--query",
         help=(
-            "Free-text query over initiative coordination fields such as trace ID, "
-            "title, next action, and active task summaries."
+            "Free-text query over coordination fields such as trace ID, title, "
+            "next action, and active task summaries."
         ),
     )
     query_coordination_parser.add_argument(

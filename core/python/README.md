@@ -80,6 +80,8 @@
 ### Notes
 - `uv run ...` is the default workflow for this repository.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
+- `uv run watchtower-core query coordination --format json` is the default machine-readable current-state entrypoint and stays useful even when no initiative is active.
+- `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
 - `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.
 - `./tools/dev_shell.sh` is for interactive use and does not require `uv` once the shell is active.
 - If you used `./tools/dev_shell.sh`, leave the activated shell with `exit`.

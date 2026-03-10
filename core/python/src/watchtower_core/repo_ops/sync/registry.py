@@ -11,6 +11,10 @@ from watchtower_core.repo_ops.sync.command_index import (
     COMMAND_INDEX_ARTIFACT_PATH,
     CommandIndexSyncService,
 )
+from watchtower_core.repo_ops.sync.coordination_index import (
+    COORDINATION_INDEX_ARTIFACT_PATH,
+    CoordinationIndexSyncService,
+)
 from watchtower_core.repo_ops.sync.decision_index import (
     DECISION_INDEX_ARTIFACT_PATH,
     DecisionIndexSyncService,
@@ -168,6 +172,14 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         artifact_kind="index",
         relative_output_path=INITIATIVE_INDEX_ARTIFACT_PATH,
         service_factory=InitiativeIndexSyncService,
+        groups=(COORDINATION_SYNC_GROUP,),
+    ),
+    SyncTargetSpec(
+        target="coordination-index",
+        mode="document",
+        artifact_kind="index",
+        relative_output_path=COORDINATION_INDEX_ARTIFACT_PATH,
+        service_factory=CoordinationIndexSyncService,
         groups=(COORDINATION_SYNC_GROUP,),
     ),
     SyncTargetSpec(

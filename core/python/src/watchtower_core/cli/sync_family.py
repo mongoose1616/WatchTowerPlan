@@ -175,11 +175,11 @@ def register_sync_family(
 
     sync_coordination_parser = sync_subparsers.add_parser(
         "coordination",
-        help="Rebuild the deterministic task and initiative coordination slice.",
+        help="Rebuild the deterministic task and coordination slice.",
         description=dedent(
             """
             Rebuild the deterministic coordination slice for task, traceability,
-            and initiative surfaces in dependency order.
+            initiative, and coordination-index surfaces in dependency order.
 
             This is the focused rebuild path for local execution coordination
             without refreshing unrelated reference, standards, or command docs.

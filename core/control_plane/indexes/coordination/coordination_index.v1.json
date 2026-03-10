@@ -1,0 +1,849 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:coordination-index:v1",
+  "id": "index.coordination",
+  "title": "Coordination Index",
+  "status": "active",
+  "updated_at": "2026-03-10T19:20:47Z",
+  "coordination_mode": "active_work",
+  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
+  "recommended_next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+  "recommended_surface_path": "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
+  "active_initiative_count": 1,
+  "blocked_task_count": 0,
+  "actionable_task_count": 1,
+  "entries": [
+    {
+      "trace_id": "trace.machine_first_coordination_surface",
+      "title": "Machine-First Coordination Surface PRD",
+      "summary": "Defines the work needed to publish one always-useful machine coordination surface, keep human planning entrypoints derived from it, and reduce planning-navigation sprawl before product implementation starts.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-10T19:20:47Z",
+      "open_task_count": 1,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/machine_first_coordination_surface.md",
+      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+      "next_surface_path": "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.machine_first_coordination_surface.entrypoints.001"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.machine_first_coordination_surface.entrypoints.001",
+          "title": "Align human and agent coordination entrypoints",
+          "task_status": "ready",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
+          "is_actionable": true,
+          "depends_on": [
+            "task.machine_first_coordination_surface.coordination_index.001"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.machine_first_coordination_surface"
+      ],
+      "decision_ids": [
+        "decision.machine_first_coordination_entry_surface"
+      ],
+      "design_ids": [
+        "design.features.machine_first_coordination_surface"
+      ],
+      "plan_ids": [
+        "design.implementation.machine_first_coordination_execution"
+      ],
+      "task_ids": [
+        "task.machine_first_coordination_surface.bootstrap.001",
+        "task.machine_first_coordination_surface.coordination_index.001",
+        "task.machine_first_coordination_surface.entrypoints.001"
+      ],
+      "acceptance_ids": [
+        "ac.machine_first_coordination_surface.001",
+        "ac.machine_first_coordination_surface.002",
+        "ac.machine_first_coordination_surface.003",
+        "ac.machine_first_coordination_surface.004",
+        "ac.machine_first_coordination_surface.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.machine_first_coordination_surface"
+      ],
+      "evidence_ids": [
+        "evidence.machine_first_coordination_surface.planning_baseline"
+      ],
+      "related_paths": [
+        "AGENTS.md",
+        "README.md",
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/machine_first_coordination_surface_acceptance.v1.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/coordination/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/machine_first_coordination_surface_planning_baseline.v1.json",
+        "core/control_plane/schemas/artifacts/",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/design/implementation/machine_first_coordination_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/machine_first_coordination_surface.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
+        "docs/planning/tasks/closed/machine_first_coordination_index.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the machine-first coordination surface initiative."
+    },
+    {
+      "trace_id": "trace.preimplementation_repo_review_and_hardening",
+      "title": "Pre-Implementation Repository Review and Hardening PRD",
+      "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T18:47:27Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+      "prd_ids": [
+        "prd.preimplementation_repo_review_and_hardening"
+      ],
+      "decision_ids": [
+        "decision.preimplementation_machine_coordination_entrypoint"
+      ],
+      "design_ids": [
+        "design.features.preimplementation_repo_readiness"
+      ],
+      "plan_ids": [
+        "design.implementation.preimplementation_repo_hardening_execution"
+      ],
+      "task_ids": [
+        "task.preimplementation_repo_review_and_hardening.bootstrap.001",
+        "task.preimplementation_repo_review_and_hardening.core_modularity.001",
+        "task.preimplementation_repo_review_and_hardening.machine_coordination.001",
+        "task.preimplementation_repo_review_and_hardening.readme_entrypoints.001"
+      ],
+      "acceptance_ids": [
+        "ac.preimplementation_repo_review_and_hardening.001",
+        "ac.preimplementation_repo_review_and_hardening.002",
+        "ac.preimplementation_repo_review_and_hardening.003",
+        "ac.preimplementation_repo_review_and_hardening.004",
+        "ac.preimplementation_repo_review_and_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.preimplementation_repo_review_and_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.preimplementation_repo_review_and_hardening.planning_baseline"
+      ],
+      "closed_at": "2026-03-10T18:48:07Z",
+      "closure_reason": "Delivered and validated pre-implementation repository review and hardening.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/preimplementation_repo_review_and_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/preimplementation_repo_review_and_hardening_planning_baseline.v1.json",
+        "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/handlers.py",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/schemas.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/tests/",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/README.md",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/preimplementation_repo_readiness.md",
+        "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md",
+        "docs/planning/initiatives/README.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/tasks/closed/preimplementation_core_modularity.md",
+        "docs/planning/tasks/closed/preimplementation_machine_coordination.md",
+        "docs/planning/tasks/closed/preimplementation_readme_entrypoints.md",
+        "docs/planning/tasks/closed/preimplementation_repo_review_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/README.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/templates/readme_template.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the pre-implementation repository review and hardening initiative."
+    },
+    {
+      "trace_id": "trace.core_export_hardening_followup",
+      "title": "Core Export Hardening Follow-Up PRD",
+      "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T17:04:57Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
+      "prd_ids": [
+        "prd.core_export_hardening_followup"
+      ],
+      "design_ids": [
+        "design.features.core_export_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.core_export_hardening_execution"
+      ],
+      "task_ids": [
+        "task.core_export_hardening_followup.bootstrap.001",
+        "task.core_export_hardening_followup.command_metadata.001",
+        "task.core_export_hardening_followup.public_api_boundary.001",
+        "task.core_export_hardening_followup.sync_output_dir.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_hardening_followup.001",
+        "ac.core_export_hardening_followup.002",
+        "ac.core_export_hardening_followup.003",
+        "ac.core_export_hardening_followup.004",
+        "ac.core_export_hardening_followup.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_export_hardening_followup"
+      ],
+      "evidence_ids": [
+        "evidence.core_export_hardening_followup.planning_baseline"
+      ],
+      "closed_at": "2026-03-10T17:12:30Z",
+      "closure_reason": "Implemented and validated export hardening follow-up.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/core_export_hardening_followup_acceptance.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/core_export_hardening_followup_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/workspace.py",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "core/python/tests/unit/test_all_sync.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_sync_all.md",
+        "docs/commands/core_python/watchtower_core_sync_coordination.md",
+        "docs/planning/",
+        "docs/planning/design/",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/design/implementation/core_export_hardening_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/core_export_command_source_metadata.md",
+        "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/core_export_public_api_boundary.md",
+        "docs/planning/tasks/closed/core_export_sync_output_snapshots.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the post-review export hardening initiative. All three bounded implementation slices are complete and validated."
+    },
+    {
+      "trace_id": "trace.template_and_output_efficiency",
+      "title": "Template and Output Efficiency PRD",
+      "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T16:34:28Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/template_and_output_efficiency.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/template_and_output_efficiency.md",
+      "prd_ids": [
+        "prd.template_and_output_efficiency"
+      ],
+      "design_ids": [
+        "design.features.compact_document_authoring_and_tracking"
+      ],
+      "plan_ids": [
+        "design.implementation.template_and_output_efficiency_execution"
+      ],
+      "task_ids": [
+        "task.template_and_output_efficiency.bootstrap.001",
+        "task.template_and_output_efficiency.compact_authoring.001",
+        "task.template_and_output_efficiency.tracker_compaction.001",
+        "task.template_and_output_efficiency.workflow_guidance.001"
+      ],
+      "acceptance_ids": [
+        "ac.template_and_output_efficiency.001",
+        "ac.template_and_output_efficiency.002",
+        "ac.template_and_output_efficiency.003",
+        "ac.template_and_output_efficiency.004",
+        "ac.template_and_output_efficiency.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.template_and_output_efficiency"
+      ],
+      "evidence_ids": [
+        "evidence.template_and_output_efficiency.planning_baseline"
+      ],
+      "closed_at": "2026-03-10T16:35:23Z",
+      "closure_reason": "Implemented and validated template and output efficiency improvements.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/template_and_output_efficiency_acceptance.v1.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/template_and_output_efficiency_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/",
+        "docs/",
+        "docs/planning/",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/template_and_output_efficiency.md",
+        "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
+        "docs/planning/tasks/closed/template_output_efficiency_compact_authoring.md",
+        "docs/planning/tasks/closed/template_output_efficiency_tracker_compaction.md",
+        "docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/",
+        "docs/standards/workflows/",
+        "docs/templates/",
+        "workflows/modules/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the template and output efficiency initiative."
+    },
+    {
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "title": "Core Export Readiness and Optimization PRD",
+      "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T06:42:17Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/core_export_readiness_and_optimization.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/core_export_readiness_and_optimization.md",
+      "prd_ids": [
+        "prd.core_export_readiness_and_optimization"
+      ],
+      "design_ids": [
+        "design.features.core_export_ready_architecture"
+      ],
+      "plan_ids": [
+        "design.implementation.core_export_readiness_execution"
+      ],
+      "task_ids": [
+        "task.core_export_readiness_and_optimization.bootstrap.001",
+        "task.core_export_readiness_and_optimization.command_registry.001",
+        "task.core_export_readiness_and_optimization.pack_interfaces.001",
+        "task.core_export_readiness_and_optimization.repo_ops_boundary.001",
+        "task.core_export_readiness_and_optimization.retrieval_and_coordination.001",
+        "task.core_export_readiness_and_optimization.sync_validation_registries.001",
+        "task.core_export_readiness_and_optimization.workspace_injection.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_export_readiness_and_optimization.001",
+        "ac.core_export_readiness_and_optimization.002",
+        "ac.core_export_readiness_and_optimization.003",
+        "ac.core_export_readiness_and_optimization.004",
+        "ac.core_export_readiness_and_optimization.005",
+        "ac.core_export_readiness_and_optimization.006",
+        "ac.core_export_readiness_and_optimization.007"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_export_readiness_and_optimization"
+      ],
+      "evidence_ids": [
+        "evidence.core_export_readiness_and_optimization.planning_baseline"
+      ],
+      "closed_at": "2026-03-10T06:46:17Z",
+      "closure_reason": "Delivered and validated; future WatchTower pack implementation belongs to a new bounded initiative",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json",
+        "core/control_plane/examples/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/repository_paths/",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/workflows/",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.v1.json",
+        "core/control_plane/registries/schema_catalog/",
+        "core/control_plane/schemas/interfaces/",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/adapters/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/sync/command_index.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "docs/planning/design/",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/implementation/core_export_readiness_execution.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/core_export_command_registry.md",
+        "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
+        "docs/planning/tasks/closed/core_export_pack_interfaces.md",
+        "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/closed/core_export_retrieval_and_coordination.md",
+        "docs/planning/tasks/closed/core_export_sync_validation_registries.md",
+        "docs/planning/tasks/closed/core_export_workspace_injection.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "docs/standards/engineering/",
+        "docs/standards/engineering/git_workflow_standard.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence updated after all planned export-readiness slices landed. The initiative now has the reusable boundary refactor, registry-driven orchestration, retrieval metadata, and generic pack-facing interfaces in place and validated."
+    },
+    {
+      "trace_id": "trace.initiative_closeout",
+      "title": "Initiative Closeout and Planning Trackers",
+      "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T03:57:14Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+      "design_ids": [
+        "design.features.initiative_closeout_and_planning_trackers"
+      ],
+      "task_ids": [
+        "task.initiative_closeout.followup.001"
+      ],
+      "closed_at": "2026-03-10T03:59:28Z",
+      "closure_reason": "Delivered and validated; future planning-closeout expansion belongs to a new bounded initiative",
+      "related_paths": [
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+        "docs/planning/initiatives/",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/initiative_closeout_followup.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.github_collaboration",
+      "title": "GitHub Collaboration Scaffolding",
+      "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T03:57:14Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
+      "design_ids": [
+        "design.features.github_collaboration_scaffolding"
+      ],
+      "task_ids": [
+        "task.github_collaboration.followup.001"
+      ],
+      "closed_at": "2026-03-10T03:59:28Z",
+      "closure_reason": "Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative",
+      "related_paths": [
+        ".github/",
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "docs/planning/design/features/github_collaboration_scaffolding.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/github_collaboration_followup.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.core_python_foundation",
+      "title": "Core Python Foundation PRD",
+      "summary": "Defines the planning intent for the core Python workspace, control-plane loaders, validation, and query foundations.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T03:57:14Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/core_python_foundation.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/core_python_foundation.md",
+      "prd_ids": [
+        "prd.core_python_foundation"
+      ],
+      "decision_ids": [
+        "decision.core_python_workspace_root"
+      ],
+      "design_ids": [
+        "design.features.core_python_workspace_and_harness",
+        "design.features.python_validator_execution",
+        "design.features.schema_resolution_and_index_search"
+      ],
+      "plan_ids": [
+        "design.implementation.control_plane_loaders_and_schema_store"
+      ],
+      "task_ids": [
+        "task.core_python_foundation.closeout.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_python_foundation.001",
+        "ac.core_python_foundation.002",
+        "ac.core_python_foundation.003",
+        "ac.core_python_foundation.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_python_foundation"
+      ],
+      "evidence_ids": [
+        "evidence.core_python_foundation.traceability_baseline"
+      ],
+      "closed_at": "2026-03-10T03:59:28Z",
+      "closure_reason": "Delivered and validated; future core export and product work belong to a new bounded initiative",
+      "related_paths": [
+        "core/README.md",
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/decisions/decision_index.v1.json",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/prds/prd_index.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/schemas/artifacts/",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/decisions/core_python_workspace_root.md",
+        "docs/planning/design/",
+        "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/planning/tasks/closed/core_python_foundation_closeout.md"
+      ],
+      "tags": [
+        "control_plane",
+        "decision",
+        "design",
+        "implementation",
+        "planning",
+        "python",
+        "query",
+        "schema",
+        "schema_store",
+        "traceability",
+        "validation",
+        "workspace"
+      ],
+      "notes": "First executable slice for the core Python helper and harness layer."
+    },
+    {
+      "trace_id": "trace.command_documentation_and_lookup",
+      "title": "Command Documentation and Lookup Design",
+      "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T05:14:33Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/command_documentation_and_lookup.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/design/features/command_documentation_and_lookup.md",
+      "design_ids": [
+        "design.features.command_documentation_and_lookup"
+      ],
+      "task_ids": [
+        "task.command_documentation_and_lookup.followup.001"
+      ],
+      "closed_at": "2026-03-10T03:59:28Z",
+      "closure_reason": "Delivered and validated; future command-surface expansion belongs to a new bounded initiative",
+      "related_paths": [
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/tasks/closed/command_documentation_and_lookup_followup.md"
+      ],
+      "tags": [
+        "commands",
+        "design",
+        "lookup",
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.acceptance_evidence_reconciliation",
+      "title": "Acceptance and Evidence Reconciliation Design",
+      "summary": "Defines the feature-level design for the acceptance and evidence reconciliation flow that keeps acceptance contracts, validator expectations, validation evidence, and traceability joins aligned.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T03:53:14Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+      "design_ids": [
+        "design.features.acceptance_evidence_reconciliation"
+      ],
+      "task_ids": [
+        "task.acceptance_evidence_reconciliation.followup.001"
+      ],
+      "closed_at": "2026-03-10T03:58:40Z",
+      "closure_reason": "Delivered and validated; future expansion belongs to a new bounded initiative",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+        "docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md"
+      ],
+      "tags": [
+        "acceptance",
+        "design",
+        "evidence",
+        "reconciliation",
+        "traceability"
+      ]
+    },
+    {
+      "trace_id": "trace.local_task_tracking",
+      "title": "GitHub Task Push Sync",
+      "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
+      "status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-10T02:30:31Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/design/features/github_task_push_sync.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/design/features/github_task_push_sync.md",
+      "design_ids": [
+        "design.features.github_task_push_sync",
+        "design.features.local_task_tracking_and_github_sync"
+      ],
+      "task_ids": [
+        "task.local_task_tracking.github_sync.001",
+        "task.local_task_tracking_foundation.001"
+      ],
+      "closed_at": "2026-03-09T16:14:50Z",
+      "closure_reason": "Delivered and validated",
+      "related_paths": [
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "docs/planning/design/features/github_task_push_sync.md",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/github_task_sync.md",
+        "docs/planning/tasks/closed/local_task_tracking_foundation.md"
+      ],
+      "tags": [
+        "traceability"
+      ]
+    }
+  ],
+  "actionable_tasks": [
+    {
+      "trace_id": "trace.machine_first_coordination_surface",
+      "initiative_title": "Machine-First Coordination Surface PRD",
+      "task_id": "task.machine_first_coordination_surface.entrypoints.001",
+      "title": "Align human and agent coordination entrypoints",
+      "task_status": "ready",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/machine_first_coordination_entrypoints.md",
+      "is_actionable": true,
+      "depends_on": [
+        "task.machine_first_coordination_surface.coordination_index.001"
+      ]
+    }
+  ],
+  "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.preimplementation_repo_review_and_hardening",
+      "title": "Pre-Implementation Repository Review and Hardening PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T18:48:07Z",
+      "key_surface_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+      "closure_reason": "Delivered and validated pre-implementation repository review and hardening."
+    },
+    {
+      "trace_id": "trace.core_export_hardening_followup",
+      "title": "Core Export Hardening Follow-Up PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T17:12:30Z",
+      "key_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
+      "closure_reason": "Implemented and validated export hardening follow-up."
+    },
+    {
+      "trace_id": "trace.template_and_output_efficiency",
+      "title": "Template and Output Efficiency PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T16:35:23Z",
+      "key_surface_path": "docs/planning/prds/template_and_output_efficiency.md",
+      "closure_reason": "Implemented and validated template and output efficiency improvements."
+    },
+    {
+      "trace_id": "trace.core_export_readiness_and_optimization",
+      "title": "Core Export Readiness and Optimization PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T06:46:17Z",
+      "key_surface_path": "docs/planning/prds/core_export_readiness_and_optimization.md",
+      "closure_reason": "Delivered and validated; future WatchTower pack implementation belongs to a new bounded initiative"
+    },
+    {
+      "trace_id": "trace.initiative_closeout",
+      "title": "Initiative Closeout and Planning Trackers",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T03:59:28Z",
+      "key_surface_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
+      "closure_reason": "Delivered and validated; future planning-closeout expansion belongs to a new bounded initiative"
+    },
+    {
+      "trace_id": "trace.github_collaboration",
+      "title": "GitHub Collaboration Scaffolding",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T03:59:28Z",
+      "key_surface_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
+      "closure_reason": "Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative"
+    },
+    {
+      "trace_id": "trace.core_python_foundation",
+      "title": "Core Python Foundation PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T03:59:28Z",
+      "key_surface_path": "docs/planning/prds/core_python_foundation.md",
+      "closure_reason": "Delivered and validated; future core export and product work belong to a new bounded initiative"
+    },
+    {
+      "trace_id": "trace.command_documentation_and_lookup",
+      "title": "Command Documentation and Lookup Design",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T03:59:28Z",
+      "key_surface_path": "docs/planning/design/features/command_documentation_and_lookup.md",
+      "closure_reason": "Delivered and validated; future command-surface expansion belongs to a new bounded initiative"
+    },
+    {
+      "trace_id": "trace.acceptance_evidence_reconciliation",
+      "title": "Acceptance and Evidence Reconciliation Design",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-10T03:58:40Z",
+      "key_surface_path": "docs/planning/design/features/acceptance_evidence_reconciliation.md",
+      "closure_reason": "Delivered and validated; future expansion belongs to a new bounded initiative"
+    },
+    {
+      "trace_id": "trace.local_task_tracking",
+      "title": "GitHub Task Push Sync",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-09T16:14:50Z",
+      "key_surface_path": "docs/planning/design/features/github_task_push_sync.md",
+      "closure_reason": "Delivered and validated"
+    }
+  ]
+}

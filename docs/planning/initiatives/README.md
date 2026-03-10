@@ -11,7 +11,7 @@
 
 ## Notes
 - Use this directory as the start-here planning surface for cross-family initiative status.
-- Use `uv run watchtower-core query coordination --format json` as the machine start-here path for active traced work.
+- Use `uv run watchtower-core query coordination --format json` as the machine start-here path for current planning state.
 - Treat the family directories under `docs/planning/prds/`, `docs/planning/design/`, `docs/planning/decisions/`, and `docs/planning/tasks/` as the authored source surfaces.
 - Treat `initiative_tracking.md` as a derived projection, not as the source of truth for PRD, design, task, or closeout content.
 - Keep the machine-readable companion index aligned under `core/control_plane/indexes/initiatives/`.

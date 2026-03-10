@@ -11,6 +11,7 @@
 | `core/control_plane/schemas/artifacts/artifact_type_registry.v1.schema.json` | Schema for the machine-readable artifact-type registry artifact family. |
 | `core/control_plane/schemas/artifacts/compatibility_contract.v1.schema.json` | Schema for the machine-readable compatibility-contract artifact family. |
 | `core/control_plane/schemas/artifacts/command_index.v1.schema.json` | Schema for the machine-readable command-index artifact family. |
+| `core/control_plane/schemas/artifacts/coordination_index.v1.schema.json` | Schema for the machine-readable coordination-index artifact family. |
 | `core/control_plane/schemas/artifacts/decision_index.v1.schema.json` | Schema for the machine-readable decision-index artifact family. |
 | `core/control_plane/schemas/artifacts/design_document_index.v1.schema.json` | Schema for the machine-readable design-document index artifact family. |
 | `core/control_plane/schemas/artifacts/foundation_index.v1.schema.json` | Schema for the machine-readable foundation-index artifact family. |

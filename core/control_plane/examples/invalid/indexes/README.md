@@ -8,6 +8,7 @@
 |---|---|
 | `core/control_plane/examples/invalid/indexes/README.md` | Describes the purpose of the invalid index examples directory. |
 | `core/control_plane/examples/invalid/indexes/command_index_subcommand_missing_parent.v1.example.json` | Invalid command index example with a subcommand parent reference omitted. |
+| `core/control_plane/examples/invalid/indexes/coordination_index_missing_mode.v1.example.json` | Invalid coordination index example missing the required coordination-mode field. |
 | `core/control_plane/examples/invalid/indexes/decision_index_missing_decision_status.v1.example.json` | Invalid decision index example missing a required decision outcome status. |
 | `core/control_plane/examples/invalid/indexes/design_document_index_plan_missing_sources.v1.example.json` | Invalid design-document index example with an implementation plan entry missing required source paths. |
 | `core/control_plane/examples/invalid/indexes/foundation_index_external_without_urls.v1.example.json` | Invalid foundation index example with external-reference usage declared but no external URLs published. |

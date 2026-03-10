@@ -47,6 +47,20 @@
       ]
     },
     {
+      "id": "validator.control_plane.coordination_index",
+      "title": "Coordination Index Validator",
+      "description": "Validates machine-readable coordination index artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "coordination_index",
+      "applies_to": [
+        "core/control_plane/indexes/coordination/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:coordination-index:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.decision_index",
       "title": "Decision Index Validator",
       "description": "Validates machine-readable decision index artifacts.",

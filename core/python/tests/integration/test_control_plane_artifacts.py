@@ -48,6 +48,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     command_index = loader.load_command_index()
     foundation_index = loader.load_foundation_index()
     initiative_index = loader.load_initiative_index()
+    coordination_index = loader.load_coordination_index()
     reference_index = loader.load_reference_index()
     standard_index = loader.load_standard_index()
     workflow_index = loader.load_workflow_index()
@@ -59,6 +60,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     assert command_index.artifact_id == "index.commands"
     assert foundation_index.artifact_id == "index.foundations"
     assert initiative_index.artifact_id == "index.initiatives"
+    assert coordination_index.artifact_id == "index.coordination"
     assert reference_index.artifact_id == "index.references"
     assert standard_index.artifact_id == "index.standards"
     assert workflow_index.artifact_id == "index.workflows"
@@ -81,11 +83,15 @@ def test_control_plane_loader_validates_current_traceability_artifacts() -> None
     initiative_index = loader.load_validated_document(
         "core/control_plane/indexes/initiatives/initiative_index.v1.json"
     )
+    coordination_index = loader.load_validated_document(
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+    )
 
     assert acceptance_contract["id"] == "contract.acceptance.core_python_foundation"
     assert traceability_index["id"] == "index.traceability"
     assert validation_evidence["id"] == "evidence.core_python_foundation.traceability_baseline"
     assert initiative_index["id"] == "index.initiatives"
+    assert coordination_index["id"] == "index.coordination"
 
 
 def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -> None:
@@ -96,6 +102,7 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
         REPO_ROOT / "core/control_plane/contracts/compatibility",
         REPO_ROOT / "core/control_plane/contracts/intake",
         REPO_ROOT / "core/control_plane/indexes/commands",
+        REPO_ROOT / "core/control_plane/indexes/coordination",
         REPO_ROOT / "core/control_plane/indexes/decisions",
         REPO_ROOT / "core/control_plane/indexes/design_documents",
         REPO_ROOT / "core/control_plane/indexes/foundations",
@@ -134,6 +141,23 @@ def test_initiative_index_examples_validate_against_the_schema() -> None:
         REPO_ROOT
         / "core/control_plane/examples/invalid/indexes/"
         "initiative_index_missing_phase.v1.example.json"
+    )
+
+    store.validate_instance(valid_example)
+    with pytest.raises(ValidationError):
+        store.validate_instance(invalid_example)
+
+
+def test_coordination_index_examples_validate_against_the_schema() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    valid_example = _load_json_object(
+        REPO_ROOT / "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json"
+    )
+    invalid_example = _load_json_object(
+        REPO_ROOT
+        / "core/control_plane/examples/invalid/indexes/"
+        "coordination_index_missing_mode.v1.example.json"
     )
 
     store.validate_instance(valid_example)

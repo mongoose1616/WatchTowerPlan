@@ -58,6 +58,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:coordination-index:v1",
+      "title": "Coordination Index",
+      "description": "Schema for machine-readable coordination index artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "coordination_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
+      "aliases": [
+        "coordination start-here index schema",
+        "planning coordination overlay schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:decision-index:v1",
       "title": "Decision Index",
       "description": "Schema for machine-readable decision index artifacts.",

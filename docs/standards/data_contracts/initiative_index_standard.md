@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "initiative_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T18:10:36Z"
+updated_at: "2026-03-10T19:06:55Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -20,9 +20,10 @@ authority: "authoritative"
 This standard defines the role, structure, and boundary rules for machine-readable initiative indexes stored under `core/control_plane/indexes/initiatives/`.
 
 ## Purpose
-- Provide one compact machine-readable coordination view over the current traced initiative corpus.
+- Provide one compact machine-readable initiative-family view over the current traced initiative corpus.
 - Let agents and engineers answer "what phase is this initiative in, who is working on it, and what is next?" without reparsing multiple family trackers or raw Markdown documents.
 - Keep the initiative view derived so it does not compete with the traceability index, family indexes, or task records as authoritative sources.
+- Keep the initiative layer distinct from the repo-level coordination index that now sits above it as the default machine start-here surface.
 
 ## Scope
 - Applies to machine-readable initiative index artifacts stored under `core/control_plane/indexes/initiatives/`.
@@ -39,6 +40,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): defines the traced artifact relationships the initiative index projects from.
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): defines initiative closeout state that this index must mirror.
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the task authority layer this index must use for owner and open-task projection.
+- [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md): defines the repo-level coordination overlay that projects from this initiative-family view.
 - [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): defines the schema-catalog update expectations for this artifact family.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): defines the timestamp format used by initiative records.
 - [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md): companion human-readable initiative view that should remain aligned with this index.
@@ -47,6 +49,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 ## Guidance
 - Model initiative coordination as an index, not as a registry.
 - Treat the initiative index as a derived machine-readable projection over traced planning and task surfaces.
+- Keep the initiative index focused on initiative-family detail rather than repo-level bootstrap or recent-closeout summary state.
 - Store published initiative indexes under `core/control_plane/indexes/initiatives/`.
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Use JSON for the published initiative index artifact.
@@ -123,4 +126,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md)
 
 ## Updated At
-- `2026-03-10T18:10:36Z`
+- `2026-03-10T19:06:55Z`
