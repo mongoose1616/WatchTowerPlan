@@ -68,8 +68,10 @@
       "title": "Core Export Readiness and Optimization PRD",
       "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",
       "status": "active",
-      "initiative_status": "active",
+      "initiative_status": "completed",
       "updated_at": "2026-03-10T06:42:17Z",
+      "closed_at": "2026-03-10T06:46:17Z",
+      "closure_reason": "Delivered and validated; future WatchTower pack implementation belongs to a new bounded initiative",
       "prd_ids": [
         "prd.core_export_readiness_and_optimization"
       ],
