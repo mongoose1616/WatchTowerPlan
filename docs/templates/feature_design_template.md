@@ -19,9 +19,10 @@ aliases:
 
 > Use this template for feature-level technical designs that should be specific enough for implementation planning.
 > Store the finished document under `docs/planning/design/features/` and keep it aligned with [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md).
-> Keep front matter valid against the governed feature-design front matter profile and keep `updated_at` aligned with the `Updated At` section below.
+> Keep front matter valid against the governed feature-design front matter profile and keep `updated_at` aligned with the `Record Metadata` block below.
 > Keep the document focused on one feature or narrowly related capability.
 > Record the recommended design, its tradeoffs, and the implementation guardrails without turning the document into a task checklist.
+> Add optional sections only when they materially clarify the design.
 
 ## Record Metadata
 - `Trace ID`: `trace.example_feature`
@@ -45,17 +46,6 @@ aliases:
 ## Current-State Context
 - <Relevant codebase, control-plane, workflow, or documentation context.>
 - <Current gaps or constraints that shape the design.>
-
-## Foundations References Applied
-- <Relevant docs/foundations document>: <Design implication, constraint, or rule adopted from it.>
-- <Relevant docs/foundations document>: <Design implication, constraint, or rule adopted from it.>
-
-## Internal Standards and Canonical References Applied
-- <Relevant standard, template, schema, registry, contract, or canonical internal doc>: <What this authority requires or changes in the design.>
-- <Relevant standard, template, schema, registry, contract, or canonical internal doc>: <What this authority requires or changes in the design.>
-
-## External Sources Consulted
-- <Primary external source>: <What it clarified, constrained, or justified in this design. Delete if none were needed.>
 
 ## Design Goals and Constraints
 - <Primary design goal.>
@@ -96,21 +86,17 @@ aliases:
 - <Rule that implementation planning must preserve.>
 - <Rule that implementation planning must preserve.>
 
-## Implementation-Planning Handoff Notes
-- <What implementation planning should break down next.>
-- <Dependencies or prerequisites implementation planning must account for.>
-
-## Dependencies
-- <Internal or external dependency.>
-
 ## Risks
 - <Concrete risk or uncertainty.>
-
-## Open Questions
-- <Unresolved design question. Delete if none remain.>
 
 ## References
 - <Relevant internal or external document.>
 
-## Updated At
-- `YYYY-MM-DDTHH:MM:SSZ`
+## Optional Sections
+Add only when they materially improve the design:
+- `Foundations References Applied` using `source: implication` bullets
+- `Internal Standards and Canonical References Applied` using `source: implication` bullets
+- `External Sources Consulted`
+- `Implementation-Planning Handoff Notes`
+- `Dependencies`
+- `Open Questions`

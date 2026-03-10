@@ -19,9 +19,10 @@ aliases:
 
 > Use this template for implementation plans that translate an approved feature design or user request into concrete engineering work.
 > Store the finished document under `docs/planning/design/implementation/` and keep it aligned with [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md).
-> Keep front matter valid against the governed implementation-plan front matter profile and keep `updated_at` aligned with the `Updated At` section below.
+> Keep front matter valid against the governed implementation-plan front matter profile and keep `updated_at` aligned with the `Record Metadata` block below.
 > Keep the plan focused on one implementation slice or tightly related execution package.
 > Record the technical approach, work breakdown, validation plan, and rollout expectations without turning the document into commit-by-commit notes.
+> Add optional sections only when they materially clarify execution.
 
 ## Record Metadata
 - `Trace ID`: `trace.example_feature`
@@ -47,14 +48,6 @@ aliases:
 - <Hard constraint the implementation must preserve.>
 - <Assumption that shapes the work breakdown.>
 
-## Current-State Context
-- <Relevant current repository surfaces, code paths, schemas, or documents.>
-- <Current gaps or constraints that make this plan necessary.>
-
-## Internal Standards and Canonical References Applied
-- <Relevant internal standard, schema, registry, contract, or canonical repository doc>: <What this authority requires in the implementation plan.>
-- <Relevant internal standard, schema, registry, contract, or canonical repository doc>: <What this authority requires in the implementation plan.>
-
 ## Proposed Technical Approach
 - <High-level implementation structure and module or artifact boundaries.>
 - <How the plan composes with existing repository surfaces.>
@@ -64,9 +57,6 @@ aliases:
 2. <Concrete work slice or step.>
 3. <Concrete work slice or step.>
 
-## Dependencies
-- <Internal or external dependency.>
-
 ## Risks
 - <Concrete risk or uncertainty.>
 
@@ -74,14 +64,13 @@ aliases:
 - <How the implementation will be verified.>
 - <Tests, checks, or review evidence expected.>
 
-## Rollout or Migration Plan
-- <Describe rollout expectations, even if no migration is needed.>
-
-## Open Questions
-- <Unresolved planning question. Delete if none remain.>
-
 ## References
 - <Relevant feature design, standard, or artifact.>
 
-## Updated At
-- `YYYY-MM-DDTHH:MM:SSZ`
+## Optional Sections
+Add only when they materially improve execution clarity:
+- `Current-State Context`
+- `Internal Standards and Canonical References Applied` using `source: implication` bullets
+- `Dependencies`
+- `Rollout or Migration Plan`
+- `Open Questions`

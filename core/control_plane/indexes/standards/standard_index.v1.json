@@ -74,7 +74,7 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable decision indexes stored under `core/control_plane/indexes/decisions/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/decision_index_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T16:11:26Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
@@ -106,7 +106,7 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable design-document indexes stored under `core/control_plane/indexes/design_documents/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/design_document_index_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T16:11:26Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
@@ -263,7 +263,7 @@
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable PRD indexes stored under `core/control_plane/indexes/prds/`.",
       "status": "active",
       "doc_path": "docs/standards/data_contracts/prd_index_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T16:11:26Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
@@ -716,19 +716,54 @@
       ]
     },
     {
+      "standard_id": "std.documentation.compact_document_authoring",
+      "category": "documentation",
+      "title": "Compact Document Authoring Standard",
+      "summary": "This standard defines the repository rule that authored human-readable documents should default to the smallest useful shape that still preserves reviewability and machine-readable authority.",
+      "status": "active",
+      "doc_path": "docs/standards/documentation/compact_document_authoring_standard.md",
+      "updated_at": "2026-03-10T16:11:26Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "internal_reference_paths": [
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/templates/README.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/task_md_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/workflows/workflow_design_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
+      ],
+      "tags": [
+        "standard",
+        "documentation",
+        "compact_authoring"
+      ]
+    },
+    {
       "standard_id": "std.documentation.decision_record_md",
       "category": "documentation",
       "title": "Decision Record Document Standard",
       "summary": "This standard defines the structure, placement, and document-shape rules for durable decision records stored under `docs/planning/decisions/`.",
       "status": "active",
       "doc_path": "docs/standards/documentation/decision_record_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T16:11:26Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
         "docs/standards/governance/decision_capture_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/templates/decision_record_template.md",
         "docs/planning/decisions/README.md"
       ],
@@ -736,6 +771,7 @@
         "docs/standards/governance/decision_capture_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/templates/decision_record_template.md",
         "docs/planning/decisions/README.md"
       ],
@@ -752,13 +788,14 @@
       "summary": "This standard defines the structure, placement, and boundary rules for feature-level technical design documents stored under `docs/planning/design/features/`.",
       "status": "active",
       "doc_path": "docs/standards/documentation/feature_design_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T16:11:26Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/templates/feature_design_template.md",
         "docs/planning/design/features/README.md"
       ],
@@ -766,6 +803,7 @@
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/templates/feature_design_template.md",
         "docs/planning/design/features/README.md"
       ],
@@ -811,13 +849,14 @@
       "summary": "This standard defines the structure, placement, and boundary rules for implementation-plan documents stored under `docs/planning/design/implementation/`.",
       "status": "active",
       "doc_path": "docs/standards/documentation/implementation_plan_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T16:11:26Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/templates/implementation_plan_template.md",
         "docs/planning/design/implementation/README.md"
       ],
@@ -825,6 +864,7 @@
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/templates/implementation_plan_template.md",
         "docs/planning/design/implementation/README.md"
       ],
@@ -841,13 +881,14 @@
       "summary": "This standard defines the role, structure, placement, and quality expectations for product requirements documents (PRDs) in this repository.",
       "status": "active",
       "doc_path": "docs/standards/documentation/prd_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T16:11:26Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/prd_index_standard.md",
         "workflows/modules/prd_generation.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/repository_standards_posture.md",
@@ -858,6 +899,7 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/prd_index_standard.md",
         "workflows/modules/prd_generation.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/repository_standards_posture.md",
@@ -988,7 +1030,7 @@
       "summary": "This standard defines the role, structure, placement, and quality expectations for local-first task records under docs/planning/tasks/.",
       "status": "active",
       "doc_path": "docs/standards/documentation/task_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-10T16:11:26Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -1000,6 +1042,7 @@
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/templates/task_template.md",
         "docs/planning/tasks/README.md"
       ],
@@ -1008,6 +1051,7 @@
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "docs/templates/task_template.md",
         "docs/planning/tasks/README.md"
       ],

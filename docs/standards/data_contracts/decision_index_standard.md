@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "decision_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T16:11:26Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -73,7 +73,7 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 | `record_status` | Required | Use the governed lifecycle vocabulary for the document record. |
 | `decision_status` | Required | Use the decision outcome vocabulary from the decision-capture standard. |
 | `doc_path` | Required | Repository-relative path to the decision record. |
-| `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the decision document’s `Updated At` value. |
+| `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the decision record front matter `updated_at` value and the `Record Metadata` value. |
 | `uses_internal_references` | Required | Whether the decision explicitly cited internal repository references. |
 | `uses_external_references` | Required | Whether the decision explicitly cited external sources. |
 | `linked_prd_ids` | Optional | Related PRD IDs when they exist. |
@@ -106,4 +106,4 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T16:11:26Z`

@@ -19,6 +19,66 @@ from watchtower_core.adapters import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
+PRD_REQUIRED_SECTIONS = (
+    "Summary",
+    "Problem Statement",
+    "Goals",
+    "Non-Goals",
+    "Requirements",
+    "Acceptance Criteria",
+    "Risks and Dependencies",
+    "References",
+)
+PRD_OPTIONAL_EXPLAINED_SECTIONS = ("Foundations References Applied",)
+
+DECISION_REQUIRED_SECTIONS = (
+    "Summary",
+    "Decision Statement",
+    "Trigger or Source Request",
+    "Current Context and Constraints",
+    "Affected Surfaces",
+    "Options Considered",
+    "Chosen Outcome",
+    "Rationale and Tradeoffs",
+    "Consequences and Follow-Up Impacts",
+    "Risks, Dependencies, and Assumptions",
+    "References",
+)
+DECISION_OPTIONAL_EXPLAINED_SECTIONS = ("Applied References and Implications",)
+
+FEATURE_DESIGN_REQUIRED_SECTIONS = (
+    "Summary",
+    "Source Request",
+    "Scope and Feature Boundary",
+    "Current-State Context",
+    "Design Goals and Constraints",
+    "Options Considered",
+    "Recommended Design",
+    "Affected Surfaces",
+    "Design Guardrails",
+    "Risks",
+    "References",
+)
+FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS = (
+    "Foundations References Applied",
+    "Internal Standards and Canonical References Applied",
+)
+
+IMPLEMENTATION_PLAN_REQUIRED_SECTIONS = (
+    "Summary",
+    "Source Request or Design",
+    "Scope Summary",
+    "Assumptions and Constraints",
+    "Proposed Technical Approach",
+    "Work Breakdown",
+    "Risks",
+    "Validation Plan",
+    "References",
+)
+IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS = (
+    "Internal Standards and Canonical References Applied",
+)
+
 
 def ordered_unique(*groups: tuple[str, ...]) -> tuple[str, ...]:
     """Return values in first-seen order with duplicates removed."""
@@ -143,6 +203,7 @@ def load_governed_document(
     status_label: str,
     required_sections: tuple[str, ...] = (),
     required_explained_sections: tuple[str, ...] = (),
+    optional_explained_sections: tuple[str, ...] = (),
     require_updated_at_section: bool = False,
 ) -> PlanningDocument:
     """Load one governed planning document and validate its metadata alignment."""
@@ -164,6 +225,8 @@ def load_governed_document(
     validate_required_section_order(relative_path, sections, required_sections)
     for title in required_explained_sections:
         validate_explained_bullet_section(relative_path, title, sections.get(title))
+    for title in optional_explained_sections:
+        validate_explained_bullet_section_if_present(relative_path, title, sections.get(title))
 
     document = PlanningDocument(
         relative_path=relative_path,

@@ -22,6 +22,7 @@ TASK_OPEN_ROOT = "docs/planning/tasks/open"
 TASK_CLOSED_ROOT = "docs/planning/tasks/closed"
 TASK_EXCLUDED_NAMES = {"README.md"}
 TERMINAL_TASK_STATUSES = {"done", "cancelled"}
+TASK_REQUIRED_SECTIONS = ("Summary", "Scope", "Done When")
 TASK_FRONT_MATTER_KEY_ORDER = (
     "id",
     "trace_id",
@@ -198,7 +199,7 @@ def load_task_document(loader: ControlPlaneLoader, relative_path: str) -> TaskDo
         sections=sections,
     )
 
-    required_sections = {"Summary", "Context", "Scope", "Done When", "Links"}
+    required_sections = set(TASK_REQUIRED_SECTIONS)
     missing_sections = sorted(required_sections.difference(sections))
     if missing_sections:
         joined = ", ".join(missing_sections)

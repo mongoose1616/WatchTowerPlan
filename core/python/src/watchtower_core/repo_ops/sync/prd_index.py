@@ -10,6 +10,8 @@ from watchtower_core.adapters import extract_prefixed_ids
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.planning_documents import (
+    PRD_OPTIONAL_EXPLAINED_SECTIONS,
+    PRD_REQUIRED_SECTIONS,
     collect_reference_indicators,
     iter_markdown_documents,
     load_governed_document,
@@ -64,21 +66,8 @@ class PrdIndexSyncService:
                 schema_id=PRD_FRONT_MATTER_SCHEMA_ID,
                 id_label="PRD ID",
                 status_label="Status",
-                required_sections=(
-                    "Summary",
-                    "Problem Statement",
-                    "Goals",
-                    "Non-Goals",
-                    "Target Users or Actors",
-                    "Key Scenarios",
-                    "Requirements",
-                    "Acceptance Criteria",
-                    "Success Metrics",
-                    "Risks and Dependencies",
-                    "Foundations References Applied",
-                    "References",
-                ),
-                required_explained_sections=("Foundations References Applied",),
+                required_sections=PRD_REQUIRED_SECTIONS,
+                optional_explained_sections=PRD_OPTIONAL_EXPLAINED_SECTIONS,
             )
             current = existing_entries.get(document.document_id, {})
             (

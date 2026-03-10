@@ -33,12 +33,11 @@ related_ids:
 
 # `<Task Title>`
 
+> Keep the body compact. Front matter carries most machine-readable structure already.
+> Start with the required sections below and add optional sections only when they materially improve execution clarity.
+
 ## Summary
 `<Short human-readable summary of the task.>`
-
-## Context
-- `<Why this task exists now.>`
-- `<Which problem, gap, or follow-up it addresses.>`
 
 ## Scope
 - `<Concrete task boundary item one.>`
@@ -48,11 +47,9 @@ related_ids:
 - `<Observable completion condition one.>`
 - `<Observable completion condition two.>`
 
-## Links
-- `<Relevant PRD, design, decision, command, schema, or implementation surface.>`
-
-## Notes
-`<Optional. Delete this section if there are no task-local notes, handoff notes, or sync notes yet.>`
-
-## Updated At
-- `2026-03-09T14:41:51Z`
+## Optional Sections
+Add only when they materially improve the task record:
+- `Context`
+- `Links`
+- `Notes`
+- `Updated At`

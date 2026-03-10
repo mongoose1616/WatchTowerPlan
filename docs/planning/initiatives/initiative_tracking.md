@@ -6,7 +6,7 @@ This document provides the human-readable start-here view for traced initiatives
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key Surface | Next Surface | Next Action |
 |---|---|---|---|---|---|---|
-| `trace.template_and_output_efficiency` | `execution` | repository_maintainer | `3` | `docs/planning/prds/template_and_output_efficiency.md` | `docs/planning/tasks/open/template_output_efficiency_compact_authoring.md` | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.template_and_output_efficiency` | `execution` | repository_maintainer | `2` | `docs/planning/prds/template_and_output_efficiency.md` | `docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md` | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Closed Initiatives
 | Trace ID | Initiative Status | Key Surface | Closed At | Closure Reason |

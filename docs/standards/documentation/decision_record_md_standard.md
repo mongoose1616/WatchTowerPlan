@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "decision_record_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T16:11:26Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,11 +36,13 @@ Keep decision records consistent enough that rationale, status, affected surface
 - [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [decision_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/decision_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md): authoring scaffold that should stay aligned with this standard.
 - [README.md](/home/j/WatchTowerPlan/docs/planning/decisions/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Store durable decision records under `docs/planning/decisions/`.
 - Keep one primary decision per document.
+- Use governed front matter on decision records and keep it aligned with the record metadata block.
 - Include explicit record metadata near the top of the document so decision ID, record status, and decision status are easy to find.
 - Include a shared `Trace ID` in the record metadata so the decision can join to its PRD, design, and implementation-plan context.
 - Distinguish clearly between:
@@ -49,6 +51,7 @@ Keep decision records consistent enough that rationale, status, affected surface
 - Link the decision to affected PRDs, designs, plans, or paths when they exist.
 - When internal standards, foundation docs, or local references materially shaped the chosen outcome, record them in `Applied References and Implications` using `source: implication` bullets.
 - Keep the decision record focused on the decision boundary and its tradeoffs rather than restating broad repository background.
+- A body `Updated At` section is optional; front matter `updated_at` and the `Record Metadata` value remain the required anchors.
 - Update the decision tracker and machine-readable decision index in the same change set when a decision record changes materially.
 
 ## Structure or Data Model
@@ -67,7 +70,6 @@ Keep decision records consistent enough that rationale, status, affected surface
 | `Decision Statement` | Required | State the decision in one clear sentence. |
 | `Trigger or Source Request` | Required | Record what prompted the decision. |
 | `Current Context and Constraints` | Required | Summarize the current state that shaped the decision. |
-| `Applied References and Implications` | Required when any cited authority materially shaped the chosen outcome | Use `source: implication` bullets rather than bare links. |
 | `Affected Surfaces` | Required | Identify the PRDs, designs, plans, or paths affected. |
 | `Options Considered` | Required | Record the viable options and tradeoffs. |
 | `Chosen Outcome` | Required | Record the recommended or accepted outcome. |
@@ -79,6 +81,7 @@ Keep decision records consistent enough that rationale, status, affected surface
 ### Optional sections for decision records
 | Section | Use When |
 |---|---|
+| `Applied References and Implications` | A cited authority materially shaped the chosen outcome. Use `source: implication` bullets rather than bare links. |
 | `Open Questions` | A real unresolved question remains. |
 | `Supersession` | The decision supersedes or is superseded by another decision. |
 
@@ -92,7 +95,7 @@ Keep decision records consistent enough that rationale, status, affected surface
 - Decision records should contain the required sections in the documented order.
 - The decision boundary and current status should be easy to identify without reading the full document.
 - Affected upstream and downstream planning artifacts should be linked when they exist.
-- `Applied References and Implications` should explain what each cited authority changed locally rather than listing links only when the section is present.
+- `Applied References and Implications` should explain what each cited authority changed locally when the section is present.
 - Reviewers should reject decision records that capture multiple unrelated decisions or omit the outcome state.
 
 ## Change Control
@@ -105,4 +108,4 @@ Keep decision records consistent enough that rationale, status, affected surface
 - [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T16:11:26Z`

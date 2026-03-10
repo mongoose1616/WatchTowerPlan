@@ -9,6 +9,7 @@
 | `docs/planning/design/features/README.md` | Describes the purpose of the feature-design directory, its current documents, and the standards that govern them. |
 | `docs/planning/design/features/acceptance_evidence_reconciliation.md` | Feature design for a future reusable acceptance and validation-evidence reconciliation phase. |
 | `docs/planning/design/features/command_documentation_and_lookup.md` | Feature design for human-readable command pages and machine-readable command lookup. |
+| `docs/planning/design/features/compact_document_authoring_and_tracking.md` | Feature design for compact default templates, compact planning trackers, and proportional authoring guidance. |
 | `docs/planning/design/features/core_python_workspace_and_harness.md` | Feature design for the consolidated core Python workspace and the first helper-harness package boundaries. |
 | `docs/planning/design/features/github_collaboration_scaffolding.md` | Feature design for GitHub issue forms, pull request expectations, and the hosted project field model. |
 | `docs/planning/design/features/github_task_push_sync.md` | Feature design for push-only GitHub sync from local task records to issues and optional project items. |

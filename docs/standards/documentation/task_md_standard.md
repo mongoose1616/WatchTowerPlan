@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "task_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T16:11:26Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -43,6 +43,7 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md): authoring scaffold that should stay aligned with this standard.
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
@@ -55,16 +56,18 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - Keep GitHub sync metadata in front matter when a task has been published externally.
 - Keep the body focused on why the task exists, what is in scope, what counts as done, and which planning or implementation surfaces it touches.
 - Keep task prose short and execution-oriented.
-- Use real repository paths and stable IDs in the links or metadata rather than informal notes.
+- Use real repository paths and stable IDs in front matter or optional links rather than informal notes.
+- `Context` and `Links` are optional when the title, summary, front matter, and scope already make the task legible.
 - Do not hand-maintain `task_tracking.md` as if it were the source of truth for task state.
 
 ## Structure or Data Model
+- governed front matter
 - Title
 - `Summary`
-- `Context`
 - `Scope`
 - `Done When`
-- `Links`
+- optional `Context`
+- optional `Links`
 - optional `Notes`
 - optional `Updated At`
 
@@ -79,6 +82,7 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - The task should validate against the published task front-matter profile.
 - The H1 title should align with the front matter title.
 - The task should make ownership, execution status, and completion criteria easy to find.
+- Optional sections should be omitted when they do not add non-derivable information.
 - The task should not mix multiple unrelated work items into one file.
 - The task location should match the task-status class defined by the governance standard.
 
@@ -94,4 +98,4 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T16:11:26Z`

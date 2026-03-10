@@ -16,6 +16,14 @@ from watchtower_core.adapters import (
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidatorDefinition
 from watchtower_core.repo_ops.planning_documents import (
+    DECISION_OPTIONAL_EXPLAINED_SECTIONS,
+    DECISION_REQUIRED_SECTIONS,
+    FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS,
+    FEATURE_DESIGN_REQUIRED_SECTIONS,
+    IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS,
+    IMPLEMENTATION_PLAN_REQUIRED_SECTIONS,
+    PRD_OPTIONAL_EXPLAINED_SECTIONS,
+    PRD_REQUIRED_SECTIONS,
     load_governed_document,
     validate_explained_bullet_section,
     validate_required_section_order,
@@ -282,21 +290,8 @@ class DocumentSemanticsValidationService:
             schema_id=PRD_FRONT_MATTER_SCHEMA_ID,
             id_label="PRD ID",
             status_label="Status",
-            required_sections=(
-                "Summary",
-                "Problem Statement",
-                "Goals",
-                "Non-Goals",
-                "Target Users or Actors",
-                "Key Scenarios",
-                "Requirements",
-                "Acceptance Criteria",
-                "Success Metrics",
-                "Risks and Dependencies",
-                "Foundations References Applied",
-                "References",
-            ),
-            required_explained_sections=("Foundations References Applied",),
+            required_sections=PRD_REQUIRED_SECTIONS,
+            optional_explained_sections=PRD_OPTIONAL_EXPLAINED_SECTIONS,
         )
 
     def _validate_decision_document(self, relative_path: str) -> None:
@@ -306,22 +301,8 @@ class DocumentSemanticsValidationService:
             schema_id=DECISION_FRONT_MATTER_SCHEMA_ID,
             id_label="Decision ID",
             status_label="Record Status",
-            required_sections=(
-                "Summary",
-                "Decision Statement",
-                "Trigger or Source Request",
-                "Current Context and Constraints",
-                "Applied References and Implications",
-                "Affected Surfaces",
-                "Options Considered",
-                "Chosen Outcome",
-                "Rationale and Tradeoffs",
-                "Consequences and Follow-Up Impacts",
-                "Risks, Dependencies, and Assumptions",
-                "References",
-            ),
-            required_explained_sections=("Applied References and Implications",),
-            require_updated_at_section=True,
+            required_sections=DECISION_REQUIRED_SECTIONS,
+            optional_explained_sections=DECISION_OPTIONAL_EXPLAINED_SECTIONS,
         )
 
     def _validate_feature_design_document(self, relative_path: str) -> None:
@@ -331,28 +312,8 @@ class DocumentSemanticsValidationService:
             schema_id=FEATURE_DESIGN_FRONT_MATTER_SCHEMA_ID,
             id_label="Design ID",
             status_label="Design Status",
-            required_sections=(
-                "Summary",
-                "Source Request",
-                "Scope and Feature Boundary",
-                "Current-State Context",
-                "Foundations References Applied",
-                "Internal Standards and Canonical References Applied",
-                "Design Goals and Constraints",
-                "Options Considered",
-                "Recommended Design",
-                "Affected Surfaces",
-                "Design Guardrails",
-                "Implementation-Planning Handoff Notes",
-                "Dependencies",
-                "Risks",
-                "References",
-            ),
-            required_explained_sections=(
-                "Foundations References Applied",
-                "Internal Standards and Canonical References Applied",
-            ),
-            require_updated_at_section=True,
+            required_sections=FEATURE_DESIGN_REQUIRED_SECTIONS,
+            optional_explained_sections=FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS,
         )
 
     def _validate_implementation_plan_document(self, relative_path: str) -> None:
@@ -362,23 +323,8 @@ class DocumentSemanticsValidationService:
             schema_id=IMPLEMENTATION_PLAN_FRONT_MATTER_SCHEMA_ID,
             id_label="Plan ID",
             status_label="Plan Status",
-            required_sections=(
-                "Summary",
-                "Source Request or Design",
-                "Scope Summary",
-                "Assumptions and Constraints",
-                "Current-State Context",
-                "Internal Standards and Canonical References Applied",
-                "Proposed Technical Approach",
-                "Work Breakdown",
-                "Dependencies",
-                "Risks",
-                "Validation Plan",
-                "Rollout or Migration Plan",
-                "References",
-            ),
-            required_explained_sections=("Internal Standards and Canonical References Applied",),
-            require_updated_at_section=True,
+            required_sections=IMPLEMENTATION_PLAN_REQUIRED_SECTIONS,
+            optional_explained_sections=IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS,
         )
 
     def _validate_title_and_required_sections(

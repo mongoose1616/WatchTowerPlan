@@ -22,23 +22,9 @@ authority: "authoritative"
 ## Purpose
 <Explain why this rule exists.>
 
-## Scope
-- <What this standard governs.>
-- <What it does not govern.>
-
-## Use When
-- <When a maintainer should consult this standard.>
-
-## Related Standards and Sources
-- <Related internal standard, foundation doc, or local reference>: <What this authority requires or changes locally.>
-- <Related internal standard, foundation doc, or local reference>: <What this authority requires or changes locally.>
-
 ## Guidance
 - <Primary rule or best practice.>
 - <Primary rule or best practice.>
-
-## Structure or Data Model
-<Delete this section when the standard does not define a stable structure.>
 
 ## Validation
 - <How reviewers or automation should verify compliance.>
@@ -49,5 +35,10 @@ authority: "authoritative"
 ## References
 - <Companion document, example, artifact, or supporting local reference.>
 
-## Updated At
-- `YYYY-MM-DDTHH:MM:SSZ`
+## Optional Sections
+Add only when they materially improve the standard:
+- `Scope`
+- `Use When`
+- `Related Standards and Sources`
+- `Structure or Data Model`
+- `Updated At`

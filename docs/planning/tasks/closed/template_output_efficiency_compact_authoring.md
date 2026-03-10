@@ -5,11 +5,11 @@ title: "Define compact authoring rules and align governed templates"
 summary: "Add the compact-authoring standard, align templates with governed outputs, and relax low-value required sections without weakening machine-readable authority."
 type: "task"
 status: "active"
-task_status: "ready"
+task_status: "done"
 task_kind: "governance"
 priority: "high"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:00:54Z"
+updated_at: "2026-03-10T16:19:08Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -43,6 +43,7 @@ Add the compact-authoring standard, align templates with governed outputs, and r
 - [template_and_output_efficiency.md](/home/j/WatchTowerPlan/docs/planning/prds/template_and_output_efficiency.md)
 - [compact_document_authoring_and_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/features/compact_document_authoring_and_tracking.md)
 - [template_and_output_efficiency_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/template_and_output_efficiency_execution.md)
+- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md)
 
 ## Updated At
-- `2026-03-10T16:00:54Z`
+- `2026-03-10T16:19:08Z`

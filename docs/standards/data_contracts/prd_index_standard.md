@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "prd_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T16:11:26Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -71,7 +71,7 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 | `summary` | Required | Concise description of the PRD. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `doc_path` | Required | Repository-relative path to the PRD. |
-| `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the PRD’s `Updated At` value. |
+| `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the PRD front matter `updated_at` value and the `Record Metadata` value. |
 | `uses_internal_references` | Required | Whether the PRD explicitly cited internal repository references. |
 | `uses_external_references` | Required | Whether the PRD explicitly cited external sources. |
 | `requirement_ids` | Optional | Durable requirement identifiers published by the PRD. |
@@ -103,4 +103,4 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T16:11:26Z`

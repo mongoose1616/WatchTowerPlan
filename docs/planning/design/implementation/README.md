@@ -8,6 +8,7 @@
 |---|---|
 | `docs/planning/design/implementation/README.md` | Describes the purpose of the implementation-plan directory, its current plans, and the standards that govern them. |
 | `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` | Implementation plan for the first control-plane loader and SchemaStore slice in the core Python workspace. |
+| `docs/planning/design/implementation/template_and_output_efficiency_execution.md` | Implementation plan for compact authoring rules, tracker compaction, and workflow-guidance tightening. |
 
 ## Notes
 - Documents in this directory should follow [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md).

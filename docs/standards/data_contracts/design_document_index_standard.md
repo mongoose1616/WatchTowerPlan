@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "design_document_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T16:11:26Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -77,7 +77,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 | `summary` | Required | Concise description of the design document. |
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `doc_path` | Required | Repository-relative path to the Markdown design document. |
-| `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the design document’s `Updated At` value. |
+| `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the design document front matter `updated_at` value and the `Record Metadata` value. |
 | `uses_internal_references` | Required | Whether the design document explicitly cited internal repository references. |
 | `uses_external_references` | Required | Whether the design document explicitly cited external sources. |
 | `source_paths` | Required for implementation plans | Paths to the driving feature design, PRD, or other source surfaces. |
@@ -123,4 +123,4 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The machine index is for lookup, query, and future tooling. Neither surface replaces the design documents themselves.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T16:11:26Z`

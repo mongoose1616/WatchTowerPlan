@@ -10,6 +10,8 @@ from watchtower_core.adapters import extract_path_like_references
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.planning_documents import (
+    DECISION_OPTIONAL_EXPLAINED_SECTIONS,
+    DECISION_REQUIRED_SECTIONS,
     collect_reference_indicators,
     iter_markdown_documents,
     load_governed_document,
@@ -67,21 +69,8 @@ class DecisionIndexSyncService:
                 schema_id=DECISION_FRONT_MATTER_SCHEMA_ID,
                 id_label="Decision ID",
                 status_label="Record Status",
-                required_sections=(
-                    "Summary",
-                    "Decision Statement",
-                    "Trigger or Source Request",
-                    "Current Context and Constraints",
-                    "Applied References and Implications",
-                    "Affected Surfaces",
-                    "Options Considered",
-                    "Chosen Outcome",
-                    "Rationale and Tradeoffs",
-                    "Consequences and Follow-Up Impacts",
-                    "Risks, Dependencies, and Assumptions",
-                    "References",
-                ),
-                required_explained_sections=("Applied References and Implications",),
+                required_sections=DECISION_REQUIRED_SECTIONS,
+                optional_explained_sections=DECISION_OPTIONAL_EXPLAINED_SECTIONS,
             )
             current = existing_entries.get(document.document_id, {})
             (

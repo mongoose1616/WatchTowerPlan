@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "prd_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-10T16:11:26Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -20,7 +20,7 @@ authority: "authoritative"
 This standard defines the role, structure, placement, and quality expectations for product requirements documents (PRDs) in this repository.
 
 ## Purpose
-Keep PRDs reviewable, scoped, and decision-ready so product intent is clear before implementation planning or code changes begin.
+Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boilerplate into small repository initiatives.
 
 ## Scope
 - Applies to PRD documents stored under `docs/planning/prds/`.
@@ -36,6 +36,7 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [prd_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [prd_generation.md](/home/j/WatchTowerPlan/workflows/modules/prd_generation.md): workflow surface that operationalizes or depends on this standard.
+- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): foundation intent this standard must remain aligned with.
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): foundation intent this standard must remain aligned with.
 - [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
@@ -43,37 +44,39 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - [README.md](/home/j/WatchTowerPlan/docs/planning/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 ## Guidance
 - Store PRDs under `docs/planning/prds/`.
+- Use governed front matter on PRDs and keep it aligned with the shared record metadata at the top of the document.
 - A PRD should define product intent, scope, and validation expectations before implementation details dominate the conversation.
 - A PRD should stay focused on one feature, initiative, or product change boundary.
 - A PRD should make goals and non-goals explicit.
-- A PRD should identify the target users, operators, or stakeholders affected by the change.
-- A PRD should describe the key user scenarios or flows the change must support.
 - A PRD should express requirements in a way that can later be planned, designed, and validated.
-- A PRD should include acceptance criteria and success metrics when those can be made concrete.
+- A PRD should include acceptance criteria, and should add success metrics when they materially improve review or later validation.
 - A PRD should record important risks, dependencies, assumptions, and open questions rather than burying them in prose.
-- A PRD should reference the applicable foundation documents when those documents materially shape the product direction or scope.
-- When a PRD includes `Foundations References Applied`, each bullet should explain the product implication created by that source rather than listing the path alone.
+- Add `Target Users or Actors` only when the affected actors are not already obvious from the problem and requirements.
+- Add `Key Scenarios` only when scenarios materially reduce ambiguity.
+- Add `Foundations References Applied` only when a foundation document materially changes local scope or direction. When present, each bullet should explain the implication rather than listing the path alone.
 - A PRD should include a `References` section that makes internal or external source use explicit when it informed the document.
 - A PRD should include a compact metadata section near the top with a shared `Trace ID`, stable `PRD ID`, lifecycle `Status`, and `Updated At` RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`.
+- A body `Updated At` section is optional; front matter `updated_at` and the `Record Metadata` value remain the required machine and human anchors.
 - When a PRD has durable requirements or acceptance criteria, assign stable IDs to them so downstream planning and validation work can point back explicitly.
 - Update the PRD tracker and the machine-readable PRD index in the same change set when a PRD is added, renamed, removed, or materially retargeted.
 - A PRD should not become a detailed implementation plan, architecture design, or task breakdown. Those belong in later companion artifacts.
 
 ## Structure or Data Model
 - Title
+- governed front matter
 - `Record Metadata`
 - `Summary`
 - Problem statement
 - Goals
 - Non-goals
-- Target users or actors
-- Key scenarios or user stories
 - Requirements
 - Acceptance criteria
-- Success metrics
 - Risks and dependencies
-- Open questions
-- Foundations references applied when relevant
+- `Target Users or Actors` when needed
+- `Key Scenarios` when needed
+- `Success Metrics` when needed
+- `Open Questions` when needed
+- `Foundations References Applied` when relevant
 - `References`
 
 ### Placement rules
@@ -88,8 +91,9 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - The PRD should distinguish product requirements from implementation choices.
 - The PRD should include enough structure that later design and implementation planning can trace back to it.
 - Requirements and acceptance criteria should be concrete enough to test or review later.
-- Stable `PRD ID` and `Updated At` values should be easy to find.
+- Stable `PRD ID` and `Updated At` values should be easy to find in front matter and record metadata.
 - The PRD should include a `References` section, and that section should make relevant internal or external source use explicit rather than leaving it implicit in prose.
+- Optional sections should be omitted when they do not add non-derivable information.
 - When requirement or acceptance IDs are used, they should be stable and unique within the PRD.
 - The PRD should not sprawl across multiple unrelated initiatives.
 
@@ -111,4 +115,4 @@ Keep PRDs reviewable, scoped, and decision-ready so product intent is clear befo
 - If implementation structure becomes the dominant content, the material should move into a feature design or implementation plan.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-10T16:11:26Z`

@@ -9,6 +9,7 @@
 | `docs/standards/documentation/README.md` | Describes the purpose of the documentation standards directory and the standards stored here. |
 | `docs/standards/documentation/agents_md_standard.md` | Defines the standard for AGENTS.md files. |
 | `docs/standards/documentation/command_md_standard.md` | Defines the standard for human-readable command pages. |
+| `docs/standards/documentation/compact_document_authoring_standard.md` | Defines the repository rule for compact, high-signal authored documents and generated human-readable outputs. |
 | `docs/standards/documentation/decision_record_md_standard.md` | Defines the standard for decision records under `docs/planning/decisions/`. |
 | `docs/standards/documentation/feature_design_md_standard.md` | Defines the standard for feature-design documents under `docs/planning/design/features/`. |
 | `docs/standards/documentation/foundation_md_standard.md` | Defines the standard for governed foundation documents under `docs/foundations/`. |

@@ -1,7 +1,7 @@
 # `docs/templates`
 
 ## Description
-`This directory contains reusable document templates for the planning repository. Use these files as starting points when creating new standards, references, workflows, README files, routing tables, or other structured repository documents.`
+`This directory contains reusable document templates for the planning repository. Use these files as starting points when creating new standards, references, workflows, README files, routing tables, or other structured repository documents, and keep them aligned with the governed outputs they produce.`
 
 ## Files
 | Path | Description |

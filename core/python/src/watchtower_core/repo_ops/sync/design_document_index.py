@@ -10,6 +10,10 @@ from typing import Any
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.planning_documents import (
+    FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS,
+    FEATURE_DESIGN_REQUIRED_SECTIONS,
+    IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS,
+    IMPLEMENTATION_PLAN_REQUIRED_SECTIONS,
     PlanningDocument,
     collect_reference_indicators,
     iter_markdown_documents,
@@ -184,28 +188,8 @@ class DesignDocumentIndexSyncService:
                         schema_id=FEATURE_DESIGN_FRONT_MATTER_SCHEMA_ID,
                         id_label="Design ID",
                         status_label="Design Status",
-                        required_sections=(
-                            "Summary",
-                            "Source Request",
-                            "Scope and Feature Boundary",
-                            "Current-State Context",
-                            "Foundations References Applied",
-                            "Internal Standards and Canonical References Applied",
-                            "Design Goals and Constraints",
-                            "Options Considered",
-                            "Recommended Design",
-                            "Affected Surfaces",
-                            "Design Guardrails",
-                            "Implementation-Planning Handoff Notes",
-                            "Dependencies",
-                            "Risks",
-                            "References",
-                        ),
-                        required_explained_sections=(
-                            "Foundations References Applied",
-                            "Internal Standards and Canonical References Applied",
-                        ),
-                        require_updated_at_section=True,
+                        required_sections=FEATURE_DESIGN_REQUIRED_SECTIONS,
+                        optional_explained_sections=FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS,
                     ),
                 )
             )
@@ -224,25 +208,10 @@ class DesignDocumentIndexSyncService:
                         schema_id=IMPLEMENTATION_PLAN_FRONT_MATTER_SCHEMA_ID,
                         id_label="Plan ID",
                         status_label="Plan Status",
-                        required_sections=(
-                            "Summary",
-                            "Source Request or Design",
-                            "Scope Summary",
-                            "Assumptions and Constraints",
-                            "Current-State Context",
-                            "Internal Standards and Canonical References Applied",
-                            "Proposed Technical Approach",
-                            "Work Breakdown",
-                            "Dependencies",
-                            "Risks",
-                            "Validation Plan",
-                            "Rollout or Migration Plan",
-                            "References",
+                        required_sections=IMPLEMENTATION_PLAN_REQUIRED_SECTIONS,
+                        optional_explained_sections=(
+                            IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS
                         ),
-                        required_explained_sections=(
-                            "Internal Standards and Canonical References Applied",
-                        ),
-                        require_updated_at_section=True,
                     ),
                 )
             )
