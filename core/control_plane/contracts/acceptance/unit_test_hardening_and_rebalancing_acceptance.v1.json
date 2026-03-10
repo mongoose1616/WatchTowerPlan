@@ -1,0 +1,95 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.unit_test_hardening_and_rebalancing",
+  "title": "Unit Test Hardening and Rebalancing Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.unit_test_hardening_and_rebalancing",
+  "source_prd_id": "prd.unit_test_hardening_and_rebalancing",
+  "entries": [
+    {
+      "acceptance_id": "ac.unit_test_hardening_and_rebalancing.001",
+      "summary": "The planning corpus publishes the PRD, feature design, implementation plan, acceptance contract, planning evidence artifact, closed bootstrap task, and bounded execution tasks for the unit-test hardening initiative.",
+      "source_requirement_ids": [
+        "req.unit_test_hardening_and_rebalancing.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md",
+        "docs/planning/tasks/open/"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/unit_test_hardening_and_rebalancing_acceptance.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.unit_test_hardening_and_rebalancing.002",
+      "summary": "Critical executable coverage improves for GitHub integration, GitHub task sync, closeout handlers, and low-coverage route, plan, and task command surfaces.",
+      "source_requirement_ids": [
+        "req.unit_test_hardening_and_rebalancing.002",
+        "req.unit_test_hardening_and_rebalancing.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/integrations/github/",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.unit_test_hardening_and_rebalancing.003",
+      "summary": "The CLI suite is rebalanced through shared fixture support and smaller family-oriented test modules instead of one expanding monolithic CLI file.",
+      "source_requirement_ids": [
+        "req.unit_test_hardening_and_rebalancing.004",
+        "req.unit_test_hardening_and_rebalancing.006"
+      ],
+      "validation_targets": [
+        "core/python/tests/",
+        "core/python/tests/unit/",
+        "core/python/tests/fixtures/",
+        "core/python/tests/unit/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.unit_test_hardening_and_rebalancing.004",
+      "summary": "Aggregate sync, aggregate validation, closeout, and coordination or initiative derivation paths have meaningful failure and edge-state coverage.",
+      "source_requirement_ids": [
+        "req.unit_test_hardening_and_rebalancing.005"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/closeout/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.unit_test_hardening_and_rebalancing.005",
+      "summary": "The unit-test README and companion guidance describe the suite as a hybrid unit or contract surface, explain shared fixture expectations, and stay aligned with the implemented test layout.",
+      "source_requirement_ids": [
+        "req.unit_test_hardening_and_rebalancing.006"
+      ],
+      "validation_targets": [
+        "core/python/tests/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/fixtures/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.unit_test_hardening_and_rebalancing.006",
+      "summary": "The repository stays green on unit, integration, lint, typecheck, sync, validation, and doctor baselines after the hardening work lands.",
+      "source_requirement_ids": [
+        "req.unit_test_hardening_and_rebalancing.007"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ]
+    }
+  ]
+}

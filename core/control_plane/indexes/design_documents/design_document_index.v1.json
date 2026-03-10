@@ -510,6 +510,25 @@
       ]
     },
     {
+      "document_id": "design.features.unit_test_hardening_and_rebalancing",
+      "trace_id": "trace.unit_test_hardening_and_rebalancing",
+      "family": "feature_design",
+      "title": "Unit Test Hardening and Rebalancing Feature Design",
+      "summary": "Defines the technical design boundary for Unit Test Hardening and Rebalancing.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
+      "updated_at": "2026-03-10T23:34:10Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
+        "core/python/tests",
+        "core/python/src/watchtower_core",
+        "docs/commands/core_python",
+        "docs/planning"
+      ]
+    },
+    {
       "document_id": "design.features.workflow_routing_and_authoring",
       "trace_id": "trace.workflow_system_operationalization",
       "family": "feature_design",
@@ -758,6 +777,27 @@
         "docs/standards/governance/task_tracking_standard.md",
         "docs/planning/prds/template_and_output_efficiency.md",
         "docs/planning/design/features/compact_document_authoring_and_tracking.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.unit_test_hardening_and_rebalancing",
+      "trace_id": "trace.unit_test_hardening_and_rebalancing",
+      "family": "implementation_plan",
+      "title": "Unit Test Hardening and Rebalancing Implementation Plan",
+      "summary": "Breaks Unit Test Hardening and Rebalancing into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
+      "updated_at": "2026-03-10T23:34:10Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/unit_test_hardening_and_rebalancing.md"
+      ],
+      "related_paths": [
+        "core/python/tests",
+        "core/python/src/watchtower_core",
+        "docs/commands/core_python",
+        "docs/planning"
       ]
     },
     {
