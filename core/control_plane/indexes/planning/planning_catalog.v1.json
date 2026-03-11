@@ -3599,13 +3599,13 @@
       "title": "Repo-Local Hotspot Modularity Hardening PRD",
       "summary": "Reduce the remaining centralized repo-local hotspot modules that the March 2026 report set still identifies as maintenance pressure.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-11T06:48:23Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T06:53:05Z",
       "coordination": {
-        "current_phase": "closeout",
+        "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
-        "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-        "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
         "open_task_count": 0,
         "blocked_task_count": 0
       },
@@ -3994,7 +3994,6 @@
         "core/python/tests/unit/test_task_lifecycle.py",
         "core/python/tests/unit/test_traceability_index_sync.py",
         "docs/",
-        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
@@ -4018,7 +4017,306 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Validation evidence for closing the remaining report-validated repo-local hotspot modularity issue cluster."
+      "notes": "Validation evidence for closing the remaining report-validated repo-local hotspot modularity issue cluster.",
+      "closed_at": "2026-03-11T06:53:05Z",
+      "closure_reason": "Closed the remaining report-validated repo-local hotspot modularity issue cluster, published acceptance coverage, and revalidated the repository baseline."
+    },
+    {
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "title": "Route Preview Natural Request Matching PRD",
+      "summary": "Harden advisory route preview so natural maintenance requests route to task-lifecycle and commit-closeout surfaces without requiring exact trigger phrases.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T14:21:54Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/route_preview_natural_request_matching.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/route_preview_natural_request_matching.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.route_preview_natural_request_matching",
+          "title": "Route Preview Natural Request Matching PRD",
+          "summary": "Harden advisory route preview so natural maintenance requests route to task-lifecycle and commit-closeout surfaces without requiring exact trigger phrases.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/route_preview_natural_request_matching.md",
+          "updated_at": "2026-03-11T13:51:18Z",
+          "requirement_ids": [
+            "req.route_preview_natural_request_matching.001",
+            "req.route_preview_natural_request_matching.002",
+            "req.route_preview_natural_request_matching.003",
+            "req.route_preview_natural_request_matching.004"
+          ],
+          "acceptance_ids": [
+            "ac.route_preview_natural_request_matching.001",
+            "ac.route_preview_natural_request_matching.002",
+            "ac.route_preview_natural_request_matching.003",
+            "ac.route_preview_natural_request_matching.004"
+          ],
+          "linked_decision_ids": [
+            "decision.route_preview_natural_request_matching_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.route_preview_natural_request_matching"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.route_preview_natural_request_matching"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.route_preview_natural_request_matching_direction",
+          "title": "Route Preview Natural Request Matching Direction",
+          "summary": "Record the bounded direction for fixing natural maintenance-request route preview matching without introducing semantic routing.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
+          "updated_at": "2026-03-11T13:51:18Z",
+          "linked_prd_ids": [
+            "prd.route_preview_natural_request_matching"
+          ],
+          "linked_design_ids": [
+            "design.features.route_preview_natural_request_matching"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.route_preview_natural_request_matching"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.route_preview_natural_request_matching",
+          "family": "feature_design",
+          "title": "Route Preview Natural Request Matching Design",
+          "summary": "Define the bounded governed-keyword and regression-coverage changes needed for natural maintenance-request route matching.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+          "updated_at": "2026-03-11T13:51:18Z"
+        },
+        {
+          "document_id": "design.implementation.route_preview_natural_request_matching",
+          "family": "implementation_plan",
+          "title": "Route Preview Natural Request Matching Implementation Plan",
+          "summary": "Break the natural maintenance-request route matching fix into one bounded implementation and validation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
+          "updated_at": "2026-03-11T13:51:18Z",
+          "source_paths": [
+            "docs/planning/design/features/route_preview_natural_request_matching_design.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.route_preview_natural_request_matching.bootstrap.001",
+          "title": "Bootstrap the route-preview natural-request matching trace",
+          "summary": "Create the traced planning chain and bounded execution task for the natural route-preview matching regression.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/bootstrap_the_route_preview_natural_request_matching_trace.md",
+          "updated_at": "2026-03-11T13:50:20Z",
+          "related_ids": [
+            "prd.route_preview_natural_request_matching",
+            "decision.route_preview_natural_request_matching_direction",
+            "design.features.route_preview_natural_request_matching",
+            "design.implementation.route_preview_natural_request_matching"
+          ]
+        },
+        {
+          "task_id": "task.route_preview_natural_request_matching.hardening.001",
+          "title": "Harden route preview for natural maintenance requests",
+          "summary": "Make advisory route preview match task-lifecycle and commit-closeout surfaces for natural report-review maintenance requests.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "bug",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/harden_route_preview_for_natural_maintenance_requests.md",
+          "updated_at": "2026-03-11T14:16:05Z",
+          "related_ids": [
+            "prd.route_preview_natural_request_matching",
+            "design.features.route_preview_natural_request_matching",
+            "design.implementation.route_preview_natural_request_matching"
+          ],
+          "applies_to": [
+            "workflows/ROUTING_TABLE.md",
+            "core/control_plane/indexes/routes/route_index.v1.json",
+            "core/python/src/watchtower_core/repo_ops/query/routes.py",
+            "docs/commands/core_python/watchtower_core_route_preview.md"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.route_preview_natural_request_matching",
+          "title": "Route Preview Natural Request Matching Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.route_preview_natural_request_matching",
+          "doc_path": "core/control_plane/contracts/acceptance/route_preview_natural_request_matching_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.route_preview_natural_request_matching.001",
+            "ac.route_preview_natural_request_matching.002",
+            "ac.route_preview_natural_request_matching.003",
+            "ac.route_preview_natural_request_matching.004"
+          ],
+          "required_validator_ids": [
+            "validator.control_plane.acceptance_contract",
+            "validator.control_plane.traceability_index",
+            "validator.control_plane.validation_evidence"
+          ],
+          "validation_targets": [
+            "core/control_plane/",
+            "core/control_plane/indexes/routes/route_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/python/",
+            "core/python/src/watchtower_core/repo_ops/query/routes.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_route_index_sync.py",
+            "docs/",
+            "docs/commands/core_python/watchtower_core_route_preview.md",
+            "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
+            "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+            "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
+            "docs/planning/prds/route_preview_natural_request_matching.md",
+            "docs/planning/tasks/",
+            "docs/planning/tasks/closed/bootstrap_the_route_preview_natural_request_matching_trace.md",
+            "workflows/",
+            "workflows/ROUTING_TABLE.md"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/decision_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.route_preview_natural_request_matching.validation_baseline",
+          "title": "Route Preview Natural Request Matching Validation Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-11T14:18:56Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.v1.json",
+          "check_ids": [
+            "check.route_preview_natural_request_matching.planning_chain",
+            "check.route_preview_natural_request_matching.exact_request",
+            "check.route_preview_natural_request_matching.companion_alignment",
+            "check.route_preview_natural_request_matching.acceptance_contract",
+            "check.route_preview_natural_request_matching.closeout_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.route_preview_natural_request_matching.001",
+            "ac.route_preview_natural_request_matching.002",
+            "ac.route_preview_natural_request_matching.003",
+            "ac.route_preview_natural_request_matching.004"
+          ],
+          "validator_ids": [
+            "validator.control_plane.acceptance_contract",
+            "validator.control_plane.traceability_index",
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/route_preview_natural_request_matching_acceptance.v1.json",
+            "core/control_plane/indexes/routes/route_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "docs/commands/core_python/watchtower_core_route_preview.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/decision_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.route_preview_natural_request_matching"
+      ],
+      "decision_ids": [
+        "decision.route_preview_natural_request_matching_direction"
+      ],
+      "design_ids": [
+        "design.features.route_preview_natural_request_matching"
+      ],
+      "plan_ids": [
+        "design.implementation.route_preview_natural_request_matching"
+      ],
+      "task_ids": [
+        "task.route_preview_natural_request_matching.bootstrap.001",
+        "task.route_preview_natural_request_matching.hardening.001"
+      ],
+      "requirement_ids": [
+        "req.route_preview_natural_request_matching.001",
+        "req.route_preview_natural_request_matching.002",
+        "req.route_preview_natural_request_matching.003",
+        "req.route_preview_natural_request_matching.004"
+      ],
+      "acceptance_ids": [
+        "ac.route_preview_natural_request_matching.001",
+        "ac.route_preview_natural_request_matching.002",
+        "ac.route_preview_natural_request_matching.003",
+        "ac.route_preview_natural_request_matching.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.route_preview_natural_request_matching"
+      ],
+      "evidence_ids": [
+        "evidence.route_preview_natural_request_matching.validation_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.traceability_index",
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/route_preview_natural_request_matching_acceptance.v1.json",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+        "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/bootstrap_the_route_preview_natural_request_matching_trace.md",
+        "docs/planning/tasks/closed/harden_route_preview_for_natural_maintenance_requests.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "tags": [
+        "bug",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Validation evidence for closing the remaining natural maintenance-request route-preview gap identified during the final report review.",
+      "closed_at": "2026-03-11T14:21:54Z",
+      "closure_reason": "Validated the final report-review route-preview fix, published acceptance evidence, and cleared the last active report-remediation trace."
     },
     {
       "trace_id": "trace.standard_runtime_and_route_explicitness",

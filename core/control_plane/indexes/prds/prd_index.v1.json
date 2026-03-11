@@ -491,6 +491,50 @@
       ]
     },
     {
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "prd_id": "prd.route_preview_natural_request_matching",
+      "title": "Route Preview Natural Request Matching PRD",
+      "summary": "Harden advisory route preview so natural maintenance requests route to task-lifecycle and commit-closeout surfaces without requiring exact trigger phrases.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/route_preview_natural_request_matching.md",
+      "updated_at": "2026-03-11T13:51:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.route_preview_natural_request_matching.001",
+        "req.route_preview_natural_request_matching.002",
+        "req.route_preview_natural_request_matching.003",
+        "req.route_preview_natural_request_matching.004"
+      ],
+      "acceptance_ids": [
+        "ac.route_preview_natural_request_matching.001",
+        "ac.route_preview_natural_request_matching.002",
+        "ac.route_preview_natural_request_matching.003",
+        "ac.route_preview_natural_request_matching.004"
+      ],
+      "linked_decision_ids": [
+        "decision.route_preview_natural_request_matching_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.route_preview_natural_request_matching"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.route_preview_natural_request_matching"
+      ],
+      "related_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md"
+      ]
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "prd_id": "prd.standard_runtime_and_route_explicitness",
       "title": "Standard, Runtime, and Route Explicitness Hardening PRD",

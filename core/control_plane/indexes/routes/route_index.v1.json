@@ -143,6 +143,9 @@
         "commit changes",
         "commit updates",
         "finalize commit",
+        "commit",
+        "commits",
+        "closeout",
         "close out change set"
       ],
       "required_workflow_ids": [
@@ -572,6 +575,8 @@
         "create tracked tasks",
         "update task",
         "update tasks",
+        "task",
+        "tasks",
         "track task",
         "manage task",
         "split task",

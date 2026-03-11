@@ -41,7 +41,7 @@ uv run watchtower-core route preview --request "review code and commit the chang
 
 ```sh
 cd core/python
-uv run watchtower-core route preview --request "review the report, update tasks, validate the fixes, and commit closeout" --format json
+uv run watchtower-core route preview --request "review /home/j/WatchTower/report and fix the valid issues with planning, tasks, validation, and commits" --format json
 ```
 
 ```sh
@@ -54,7 +54,7 @@ uv run watchtower-core route preview --task-type "Task Lifecycle Management"
 - Exactly one route selector is required: either `--request` or `--task-type`.
 - In `human` mode, the command prints the selected routed task types, matched trigger keywords, and the merged active workflow-module set.
 - In `json` mode, the command prints one JSON object with the command name, selected routes, selected workflows, and any advisory warnings.
-- Free-form request matching is deterministic and advisory. It now scores exact phrases first, then falls back to route-specific token coverage over task types and trigger keywords so realistic maintenance requests do not require verbatim routing-table phrases.
+- Free-form request matching is deterministic and advisory. It scores exact phrases first, then falls back to route-specific token coverage over task types and trigger keywords so realistic maintenance requests such as report-review remediation with `tasks` and `commits` do not require verbatim routing-table phrases.
 - The authored routing surfaces remain authoritative when a human or agent executes the task.
 - If no route matches the request text strongly enough, the command exits successfully with an empty selection plus a warning to refine the request or use `--task-type`.
 

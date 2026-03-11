@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.route_preview_natural_request_matching` | `completed` | [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md) | `2026-03-11T14:21:54Z` | Validated the final report-review route-preview fix, published acceptance evidence, and cleared the last active report-remediation trace. |
 | `trace.repo_local_hotspot_modularity` | `completed` | [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md) | `2026-03-11T06:53:05Z` | Closed the remaining report-validated repo-local hotspot modularity issue cluster, published acceptance coverage, and revalidated the repository baseline. |
 | `trace.standard_runtime_and_route_explicitness` | `completed` | [standard_runtime_and_route_explicitness_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md) | `2026-03-11T06:27:00Z` | Validated the March 2026 report set, closed the remaining standard, runtime, and route explicitness gaps, published durable acceptance evidence, and revalidated the repository baseline. |
 | `trace.derived_projection_status_semantics` | `completed` | [derived_projection_status_semantics_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/derived_projection_status_semantics_alignment.md) | `2026-03-11T03:37:01Z` | Aligned derived initiative and coordination projections to use explicit artifact_status semantics, published acceptance and validation evidence, and revalidated the repository baseline. |
@@ -26,4 +27,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-11T06:53:05Z`_
+_Updated At: `2026-03-11T14:21:54Z`_

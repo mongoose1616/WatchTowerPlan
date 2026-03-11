@@ -352,6 +352,45 @@
       ]
     },
     {
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "decision_id": "decision.route_preview_natural_request_matching_direction",
+      "title": "Route Preview Natural Request Matching Direction",
+      "summary": "Record the bounded direction for fixing natural maintenance-request route preview matching without introducing semantic routing.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
+      "updated_at": "2026-03-11T13:51:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.route_preview_natural_request_matching"
+      ],
+      "linked_design_ids": [
+        "design.features.route_preview_natural_request_matching"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.route_preview_natural_request_matching"
+      ],
+      "related_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "decision_id": "decision.standard_runtime_and_route_explicitness_direction",
       "title": "Standard, Runtime, and Route Explicitness Hardening Direction Decision",

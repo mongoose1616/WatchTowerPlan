@@ -111,7 +111,10 @@ def test_route_preview_service_matches_realistic_maintenance_request() -> None:
     service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
 
     result = service.preview(
-        request_text="review the report, update tasks, validate the fixes, and commit closeout"
+        request_text=(
+            "review /home/j/WatchTower/report and fix the valid issues with planning, "
+            "tasks, validation, and commits"
+        )
     )
 
     task_types = {match.task_type for match in result.selected_routes}

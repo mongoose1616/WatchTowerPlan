@@ -588,6 +588,35 @@
       ]
     },
     {
+      "document_id": "design.features.route_preview_natural_request_matching",
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "family": "feature_design",
+      "title": "Route Preview Natural Request Matching Design",
+      "summary": "Define the bounded governed-keyword and regression-coverage changes needed for natural maintenance-request route matching.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+      "updated_at": "2026-03-11T13:51:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md"
+      ]
+    },
+    {
       "document_id": "design.features.schema_resolution_and_index_search",
       "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
@@ -1021,6 +1050,34 @@
         "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
         "docs/planning/design/implementation/core_export_hardening_execution.md",
         "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.route_preview_natural_request_matching",
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "family": "implementation_plan",
+      "title": "Route Preview Natural Request Matching Implementation Plan",
+      "summary": "Break the natural maintenance-request route matching fix into one bounded implementation and validation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
+      "updated_at": "2026-03-11T13:51:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/route_preview_natural_request_matching_design.md"
+      ],
+      "related_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md"
       ]
     },
     {

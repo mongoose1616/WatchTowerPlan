@@ -7,5 +7,18 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/ledgers/validation_evidence/README.md` | Describes the purpose of the validation-evidence ledger directory and its current contents. |
+| `core/control_plane/ledgers/validation_evidence/core_export_hardening_followup_planning_baseline.v1.json` | Planning-baseline validation evidence for the core export hardening follow-up trace. |
 | `core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.v1.json` | Planning-baseline validation evidence for the core export readiness and optimization trace. |
 | `core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json` | Durable validation-evidence artifact for the initial core Python foundation traceability chain. |
+| `core/control_plane/ledgers/validation_evidence/derived_projection_status_semantics_validation.v1.json` | Validation evidence for the derived projection status-semantics alignment trace. |
+| `core/control_plane/ledgers/validation_evidence/end_to_end_repo_review_and_rationalization_planning_baseline.v1.json` | Planning-baseline validation evidence for the end-to-end repository review and rationalization trace. |
+| `core/control_plane/ledgers/validation_evidence/foundation_scope_and_entrypoint_realignment_planning_baseline.v1.json` | Planning-baseline validation evidence for the foundation scope and entrypoint realignment trace. |
+| `core/control_plane/ledgers/validation_evidence/machine_first_coordination_surface_planning_baseline.v1.json` | Planning-baseline validation evidence for the machine-first coordination surface trace. |
+| `core/control_plane/ledgers/validation_evidence/planning_authority_unification_planning_baseline.v1.json` | Planning-baseline validation evidence for the planning authority unification trace. |
+| `core/control_plane/ledgers/validation_evidence/preimplementation_repo_review_and_hardening_planning_baseline.v1.json` | Planning-baseline validation evidence for the pre-implementation repo review and hardening trace. |
+| `core/control_plane/ledgers/validation_evidence/repo_local_hotspot_modularity_validation_baseline.v1.json` | Validation-baseline evidence for the repo-local hotspot modularity hardening trace. |
+| `core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.v1.json` | Validation-baseline evidence for the natural maintenance-request route-preview hardening trace. |
+| `core/control_plane/ledgers/validation_evidence/standard_runtime_and_route_explicitness_validation_baseline.v1.json` | Validation-baseline evidence for the standard, runtime, and route explicitness hardening trace. |
+| `core/control_plane/ledgers/validation_evidence/template_and_output_efficiency_planning_baseline.v1.json` | Planning-baseline validation evidence for the template and output efficiency trace. |
+| `core/control_plane/ledgers/validation_evidence/unit_test_hardening_and_rebalancing_planning_baseline.v1.json` | Planning-baseline validation evidence for the unit test hardening and rebalancing trace. |
+| `core/control_plane/ledgers/validation_evidence/workflow_system_operationalization_planning_baseline.v1.json` | Planning-baseline validation evidence for the workflow-system operationalization trace. |

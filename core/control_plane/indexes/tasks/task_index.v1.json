@@ -1079,6 +1079,49 @@
       ]
     },
     {
+      "task_id": "task.route_preview_natural_request_matching.bootstrap.001",
+      "title": "Bootstrap the route-preview natural-request matching trace",
+      "summary": "Create the traced planning chain and bounded execution task for the natural route-preview matching regression.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/bootstrap_the_route_preview_natural_request_matching_trace.md",
+      "updated_at": "2026-03-11T13:50:20Z",
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "related_ids": [
+        "prd.route_preview_natural_request_matching",
+        "decision.route_preview_natural_request_matching_direction",
+        "design.features.route_preview_natural_request_matching",
+        "design.implementation.route_preview_natural_request_matching"
+      ]
+    },
+    {
+      "task_id": "task.route_preview_natural_request_matching.hardening.001",
+      "title": "Harden route preview for natural maintenance requests",
+      "summary": "Make advisory route preview match task-lifecycle and commit-closeout surfaces for natural report-review maintenance requests.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/harden_route_preview_for_natural_maintenance_requests.md",
+      "updated_at": "2026-03-11T14:16:05Z",
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "related_ids": [
+        "prd.route_preview_natural_request_matching",
+        "design.features.route_preview_natural_request_matching",
+        "design.implementation.route_preview_natural_request_matching"
+      ],
+      "applies_to": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md"
+      ]
+    },
+    {
       "task_id": "task.standard_runtime_and_route_explicitness.bootstrap.001",
       "title": "Bootstrap Standard, Runtime, and Route Explicitness Hardening planning chain",
       "summary": "Bootstraps the initial planning chain for Standard, Runtime, and Route Explicitness Hardening.",

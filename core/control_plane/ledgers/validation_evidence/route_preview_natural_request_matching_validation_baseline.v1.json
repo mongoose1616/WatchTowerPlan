@@ -1,0 +1,143 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.route_preview_natural_request_matching.validation_baseline",
+  "title": "Route Preview Natural Request Matching Validation Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.route_preview_natural_request_matching",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T14:18:56Z",
+  "source_prd_ids": [
+    "prd.route_preview_natural_request_matching"
+  ],
+  "source_decision_ids": [
+    "decision.route_preview_natural_request_matching_direction"
+  ],
+  "source_design_ids": [
+    "design.features.route_preview_natural_request_matching"
+  ],
+  "source_plan_ids": [
+    "design.implementation.route_preview_natural_request_matching"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.route_preview_natural_request_matching"
+  ],
+  "checks": [
+    {
+      "check_id": "check.route_preview_natural_request_matching.planning_chain",
+      "title": "Planning chain and bounded task closure stay aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
+        "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+        "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
+        "docs/planning/tasks/closed/bootstrap_the_route_preview_natural_request_matching_trace.md",
+        "docs/planning/tasks/closed/harden_route_preview_for_natural_maintenance_requests.md"
+      ],
+      "subject_ids": [
+        "prd.route_preview_natural_request_matching",
+        "decision.route_preview_natural_request_matching_direction",
+        "design.features.route_preview_natural_request_matching",
+        "design.implementation.route_preview_natural_request_matching",
+        "task.route_preview_natural_request_matching.bootstrap.001",
+        "task.route_preview_natural_request_matching.hardening.001"
+      ],
+      "acceptance_ids": [
+        "ac.route_preview_natural_request_matching.001"
+      ],
+      "notes": "The route-preview trace now publishes the full planning chain and both bounded task records are closed before initiative closeout."
+    },
+    {
+      "check_id": "check.route_preview_natural_request_matching.exact_request",
+      "title": "Exact report-review request routes to the intended workflow set",
+      "result": "passed",
+      "subject_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_index_sync.py"
+      ],
+      "subject_ids": [
+        "route.commit_closeout",
+        "route.task_lifecycle_management",
+        "route.repository_review",
+        "route.code_validation"
+      ],
+      "acceptance_ids": [
+        "ac.route_preview_natural_request_matching.002"
+      ],
+      "notes": "The exact report-review maintenance request returns Repository Review, Task Lifecycle Management, Code Validation, and Commit Closeout, and does not match Code Review."
+    },
+    {
+      "check_id": "check.route_preview_natural_request_matching.companion_alignment",
+      "title": "Routing metadata, docs, tests, and traceability joins stay aligned",
+      "result": "passed",
+      "subject_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/contracts/acceptance/route_preview_natural_request_matching_acceptance.v1.json",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "contract.acceptance.route_preview_natural_request_matching",
+        "index.traceability"
+      ],
+      "validator_id": "validator.control_plane.traceability_index",
+      "acceptance_ids": [
+        "ac.route_preview_natural_request_matching.003"
+      ],
+      "notes": "The governed route keywords, derived route index, command guidance, acceptance contract, and planning mirrors now point at the same natural maintenance-request behavior."
+    },
+    {
+      "check_id": "check.route_preview_natural_request_matching.acceptance_contract",
+      "title": "Acceptance contract remains schema-valid for closeout",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/route_preview_natural_request_matching_acceptance.v1.json"
+      ],
+      "subject_ids": [
+        "contract.acceptance.route_preview_natural_request_matching"
+      ],
+      "validator_id": "validator.control_plane.acceptance_contract",
+      "acceptance_ids": [
+        "ac.route_preview_natural_request_matching.004"
+      ],
+      "notes": "The bounded route-preview acceptance contract remains the durable closeout authority for planning, route behavior, companion-surface alignment, and validation expectations."
+    },
+    {
+      "check_id": "check.route_preview_natural_request_matching.closeout_baseline",
+      "title": "Bounded closeout baseline is green on the hardened route-preview state",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.v1.json",
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.route_preview_natural_request_matching.004"
+      ],
+      "notes": "sync all --write, the exact route-preview request, validate all --skip-acceptance, the two targeted route-preview pytest selectors, python -m mypy src, ruff check ., and the full pytest -q suite all passed against the hardened repository state."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/route_preview_natural_request_matching_acceptance.v1.json",
+    "core/control_plane/indexes/routes/route_index.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/commands/core_python/watchtower_core_route_preview.md",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence for closing the remaining natural maintenance-request route-preview gap identified during the final report review."
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.route_preview_natural_request_matching",
+  "title": "Route Preview Natural Request Matching Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.route_preview_natural_request_matching",
+  "source_prd_id": "prd.route_preview_natural_request_matching",
+  "entries": [
+    {
+      "acceptance_id": "ac.route_preview_natural_request_matching.001",
+      "summary": "The planning corpus publishes the PRD, accepted direction decision, feature design, implementation plan, closed bootstrap task, and bounded route-hardening task for the natural route-preview matching trace.",
+      "source_requirement_ids": [
+        "req.route_preview_natural_request_matching.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
+        "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+        "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
+        "docs/planning/tasks/closed/bootstrap_the_route_preview_natural_request_matching_trace.md",
+        "docs/planning/tasks/"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.route_preview_natural_request_matching.002",
+      "summary": "The exact report-review maintenance request routes to Repository Review, Task Lifecycle Management, Code Validation, and Commit Closeout without regressing into Code Review.",
+      "source_requirement_ids": [
+        "req.route_preview_natural_request_matching.001",
+        "req.route_preview_natural_request_matching.002",
+        "req.route_preview_natural_request_matching.003"
+      ],
+      "validation_targets": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.route_preview_natural_request_matching.003",
+      "summary": "The routing table, route index, route-preview docs, and acceptance joins stay aligned after the natural-request hardening change.",
+      "source_requirement_ids": [
+        "req.route_preview_natural_request_matching.004"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.traceability_index"
+      ],
+      "validation_targets": [
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    },
+    {
+      "acceptance_id": "ac.route_preview_natural_request_matching.004",
+      "summary": "The repository passes the bounded closeout baseline for route-index sync, non-acceptance validation, targeted route-preview tests, acceptance validation, mypy, and ruff.",
+      "source_requirement_ids": [
+        "req.route_preview_natural_request_matching.004"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

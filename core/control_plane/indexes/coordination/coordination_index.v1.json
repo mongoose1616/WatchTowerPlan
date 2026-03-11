@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-11T06:53:05Z",
+  "updated_at": "2026-03-11T14:21:54Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,82 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "title": "Route Preview Natural Request Matching PRD",
+      "summary": "Harden advisory route preview so natural maintenance requests route to task-lifecycle and commit-closeout surfaces without requiring exact trigger phrases.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-11T14:21:54Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/route_preview_natural_request_matching.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/route_preview_natural_request_matching.md",
+      "prd_ids": [
+        "prd.route_preview_natural_request_matching"
+      ],
+      "decision_ids": [
+        "decision.route_preview_natural_request_matching_direction"
+      ],
+      "design_ids": [
+        "design.features.route_preview_natural_request_matching"
+      ],
+      "plan_ids": [
+        "design.implementation.route_preview_natural_request_matching"
+      ],
+      "task_ids": [
+        "task.route_preview_natural_request_matching.bootstrap.001",
+        "task.route_preview_natural_request_matching.hardening.001"
+      ],
+      "acceptance_ids": [
+        "ac.route_preview_natural_request_matching.001",
+        "ac.route_preview_natural_request_matching.002",
+        "ac.route_preview_natural_request_matching.003",
+        "ac.route_preview_natural_request_matching.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.route_preview_natural_request_matching"
+      ],
+      "evidence_ids": [
+        "evidence.route_preview_natural_request_matching.validation_baseline"
+      ],
+      "closed_at": "2026-03-11T14:21:54Z",
+      "closure_reason": "Validated the final report-review route-preview fix, published acceptance evidence, and cleared the last active report-remediation trace.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/route_preview_natural_request_matching_acceptance.v1.json",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+        "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/bootstrap_the_route_preview_natural_request_matching_trace.md",
+        "docs/planning/tasks/closed/harden_route_preview_for_natural_maintenance_requests.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence for closing the remaining natural maintenance-request route-preview gap identified during the final report review."
+    },
     {
       "trace_id": "trace.repo_local_hotspot_modularity",
       "title": "Repo-Local Hotspot Modularity Hardening PRD",
@@ -1502,6 +1578,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.route_preview_natural_request_matching",
+      "title": "Route Preview Natural Request Matching PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-11T14:21:54Z",
+      "key_surface_path": "docs/planning/prds/route_preview_natural_request_matching.md",
+      "closure_reason": "Validated the final report-review route-preview fix, published acceptance evidence, and cleared the last active report-remediation trace."
+    },
+    {
       "trace_id": "trace.repo_local_hotspot_modularity",
       "title": "Repo-Local Hotspot Modularity Hardening PRD",
       "initiative_status": "completed",
@@ -1572,14 +1656,6 @@
       "closed_at": "2026-03-10T19:36:51Z",
       "key_surface_path": "docs/planning/prds/machine_first_coordination_surface.md",
       "closure_reason": "Delivered and validated machine-first coordination surfaces."
-    },
-    {
-      "trace_id": "trace.preimplementation_repo_review_and_hardening",
-      "title": "Pre-Implementation Repository Review and Hardening PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-10T18:48:07Z",
-      "key_surface_path": "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
-      "closure_reason": "Delivered and validated pre-implementation repository review and hardening."
     }
   ]
 }
