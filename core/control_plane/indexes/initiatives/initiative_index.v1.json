@@ -453,30 +453,20 @@
       "status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-11T01:33:06Z",
-      "open_task_count": 2,
-      "blocked_task_count": 1,
+      "updated_at": "2026-03-11T01:38:04Z",
+      "open_task_count": 1,
+      "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
-      "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-      "next_surface_path": "docs/planning/tasks/open/foundation_scope_alignment.md",
+      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+      "next_surface_path": "docs/planning/tasks/open/root_entrypoint_contract.md",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001",
         "task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001"
       ],
       "active_task_summaries": [
-        {
-          "task_id": "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001",
-          "title": "Align foundation scope with current repository boundary",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/foundation_scope_alignment.md",
-          "is_actionable": true
-        },
         {
           "task_id": "task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001",
           "title": "Tighten root and planning entrypoint contract",
@@ -484,14 +474,11 @@
           "priority": "medium",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/open/root_entrypoint_contract.md",
-          "is_actionable": false,
+          "is_actionable": true,
           "depends_on": [
             "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001"
           ]
         }
-      ],
-      "blocked_by_task_ids": [
-        "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001"
       ],
       "prd_ids": [
         "prd.foundation_scope_and_entrypoint_realignment"
@@ -540,6 +527,7 @@
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/engineering_stack_direction.md",
         "docs/foundations/product_direction.md",
+        "docs/foundations/repository_scope.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/planning/README.md",
         "docs/planning/coordination_tracking.md",
@@ -550,9 +538,9 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/foundation_scope_alignment.md",
         "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/foundation_scope_alignment.md",
         "docs/planning/tasks/open/root_entrypoint_contract.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/"

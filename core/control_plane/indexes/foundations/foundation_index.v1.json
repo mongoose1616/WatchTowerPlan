@@ -7,12 +7,12 @@
     {
       "foundation_id": "foundation.customer_story",
       "title": "Customer Story",
-      "summary": "Provides a customer-facing narrative summary of the product story, user problem, and intended operator experience.",
+      "summary": "Provides supporting future-state product narrative for the intended WatchTower operator experience.",
       "status": "active",
       "audience": "shared",
       "authority": "supporting",
       "doc_path": "docs/foundations/customer_story.md",
-      "updated_at": "2026-03-10T00:10:09Z",
+      "updated_at": "2026-03-11T01:34:31Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -20,6 +20,7 @@
         "docs/planning/"
       ],
       "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/engineering_design_principles.md"
       ],
@@ -55,7 +56,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/engineering_design_principles.md",
-      "updated_at": "2026-03-10T00:10:09Z",
+      "updated_at": "2026-03-11T01:34:31Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -65,6 +66,7 @@
         "docs/standards/"
       ],
       "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/foundations/engineering_stack_direction.md"
@@ -73,6 +75,7 @@
         "docs/foundations/customer_story.md",
         "docs/foundations/engineering_stack_direction.md",
         "docs/foundations/product_direction.md",
+        "docs/foundations/repository_scope.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
@@ -159,7 +162,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/engineering_stack_direction.md",
-      "updated_at": "2026-03-10T00:10:09Z",
+      "updated_at": "2026-03-11T01:34:31Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -168,6 +171,7 @@
         "docs/standards/"
       ],
       "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/product_direction.md",
         "docs/standards/data_contracts/format_selection_standard.md"
@@ -209,12 +213,12 @@
     {
       "foundation_id": "foundation.product_direction",
       "title": "Product Direction",
-      "summary": "Defines the product direction, layer boundaries, and first-wave scope for the repository.",
+      "summary": "Defines the intended future WatchTower product shape and how that future direction relates to the current repository boundary.",
       "status": "active",
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/product_direction.md",
-      "updated_at": "2026-03-10T00:10:09Z",
+      "updated_at": "2026-03-11T01:34:31Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -223,6 +227,7 @@
         "workflows/modules/"
       ],
       "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/foundations/customer_story.md"
@@ -231,6 +236,7 @@
         "docs/foundations/customer_story.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_scope.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
@@ -302,14 +308,53 @@
       ]
     },
     {
+      "foundation_id": "foundation.repository_scope",
+      "title": "Repository Scope",
+      "summary": "Defines the current repository charter, ownership boundary, and the relationship between WatchTowerPlan and future WatchTower product implementation.",
+      "status": "active",
+      "audience": "shared",
+      "authority": "authoritative",
+      "doc_path": "docs/foundations/repository_scope.md",
+      "updated_at": "2026-03-11T01:34:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/",
+        "workflows/",
+        "core/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "SUMMARY.md"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_standards_posture.md"
+      ],
+      "aliases": [
+        "repository scope",
+        "repository charter",
+        "current repo boundary"
+      ],
+      "tags": [
+        "foundation",
+        "scope",
+        "repository_charter"
+      ]
+    },
+    {
       "foundation_id": "foundation.repository_standards_posture",
       "title": "Repository Standards Posture",
-      "summary": "Explains the repository-wide standards posture and why governed standards matter.",
+      "summary": "Explains the repository-wide standards posture, authority model, and why governed standards matter.",
       "status": "active",
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/repository_standards_posture.md",
-      "updated_at": "2026-03-10T00:10:09Z",
+      "updated_at": "2026-03-11T01:34:31Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -318,6 +363,7 @@
         "workflows/modules/"
       ],
       "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/engineering_stack_direction.md"
