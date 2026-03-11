@@ -7,6 +7,7 @@
 | Path | Description |
 |---|---|
 | `README.md` | Describes the purpose of the repository root and the main entrypoints stored here. |
+| `SUMMARY.md` | Durable whole-repo audit and roadmap report for the current repository state. |
 | `AGENTS.md` | Defines the repository-wide wrapper instructions and points task routing to `workflows/ROUTING_TABLE.md`. |
 | `.github/` | Holds GitHub-hosted collaboration scaffolding such as issue forms and the pull request template. |
 | `docs/` | Holds durable repository documentation, standards, references, and templates. |
@@ -16,4 +17,5 @@
 ## Notes
 - Human start-here: `docs/planning/coordination_tracking.md`
 - Machine start-here: `cd core/python && uv run watchtower-core query coordination --format json`
+- Latest whole-repo review: `SUMMARY.md`
 - Use family-specific planning directories only after the coordination surfaces point you to the deeper artifact set you need.

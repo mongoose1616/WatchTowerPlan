@@ -63,6 +63,16 @@
       ]
     },
     {
+      "path": "SUMMARY.md",
+      "kind": "file",
+      "surface_kind": "repository_file",
+      "summary": "Durable whole-repo audit and roadmap report for the current repository state.",
+      "parent_path": ".",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "core/",
       "kind": "directory",
       "surface_kind": "core_surface",
