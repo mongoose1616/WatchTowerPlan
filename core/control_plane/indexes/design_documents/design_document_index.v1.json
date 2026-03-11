@@ -517,8 +517,8 @@
       "summary": "Defines the technical design boundary for Unit Test Hardening and Rebalancing.",
       "status": "draft",
       "doc_path": "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
-      "updated_at": "2026-03-10T23:34:10Z",
-      "uses_internal_references": false,
+      "updated_at": "2026-03-11T00:44:30Z",
+      "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
@@ -526,6 +526,15 @@
         "core/python/src/watchtower_core",
         "docs/commands/core_python",
         "docs/planning"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/traceability_standard.md"
       ]
     },
     {
@@ -787,8 +796,8 @@
       "summary": "Breaks Unit Test Hardening and Rebalancing into a bounded implementation slice.",
       "status": "draft",
       "doc_path": "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
-      "updated_at": "2026-03-10T23:34:10Z",
-      "uses_internal_references": false,
+      "updated_at": "2026-03-11T00:44:30Z",
+      "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
         "docs/planning/design/features/unit_test_hardening_and_rebalancing.md"
@@ -798,6 +807,13 @@
         "core/python/src/watchtower_core",
         "docs/commands/core_python",
         "docs/planning"
+      ],
+      "internal_reference_paths": [
+        "core/python/",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/traceability_standard.md"
       ]
     },
     {

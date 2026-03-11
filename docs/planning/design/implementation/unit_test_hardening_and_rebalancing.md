@@ -7,7 +7,7 @@ summary: Breaks Unit Test Hardening and Rebalancing into a bounded implementatio
 type: implementation_plan
 status: draft
 owner: repository_maintainer
-updated_at: '2026-03-10T23:34:10Z'
+updated_at: '2026-03-11T00:44:30Z'
 audience: shared
 authority: supporting
 applies_to:
@@ -30,7 +30,7 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.unit_test_hardening_and_rebalancing`
 - `Linked Acceptance Contracts`: `contract.acceptance.unit_test_hardening_and_rebalancing`
-- `Updated At`: `2026-03-10T23:34:10Z`
+- `Updated At`: `2026-03-11T00:44:30Z`
 
 ## Summary
 Breaks unit-test hardening and suite rebalancing into bounded slices for planning bootstrap, executable coverage, suite structure, and orchestration hardening.
@@ -47,6 +47,12 @@ Breaks unit-test hardening and suite rebalancing into bounded slices for plannin
 ## Assumptions and Constraints
 - The current unit suite already provides useful repository-contract coverage, so the work should be additive and restructuring-oriented rather than a wholesale rewrite.
 - The initiative should prefer direct handler or service tests over more aggregate CLI smoke tests whenever both can cover the same behavior.
+
+## Internal Standards and Canonical References Applied
+- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): the plan should state the concrete standards and canonical references that constrain the execution sequence.
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): each slice should stay modular, validated, and aligned with its companion planning surfaces.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): validation and execution stay inside `core/python/` and use the canonical workspace tooling.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): task, tracker, and initiative closeout steps must move with the implementation work instead of being deferred informally.
 
 ## Proposed Technical Approach
 - Land the work in small slices: bootstrap and tasking, critical executable coverage, suite-structure rebalancing, orchestration-failure coverage, and closeout.
@@ -73,4 +79,4 @@ Breaks unit-test hardening and suite rebalancing into bounded slices for plannin
 - User-supplied WatchTower unit-test review dated `2026-03-10`
 
 ## Updated At
-- `2026-03-10T23:34:10Z`
+- `2026-03-11T00:44:30Z`

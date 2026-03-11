@@ -820,14 +820,14 @@
       "title": "Unit Test Hardening and Rebalancing PRD",
       "summary": "Harden under-covered executable test surfaces, rebalance the unit suite structure, and tighten unit-suite documentation so WatchTowerPlan has a more reliable and maintainable test foundation before WatchTower product implementation begins.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "closeout",
-      "updated_at": "2026-03-11T00:40:05Z",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-11T00:44:30Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
-      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
       "prd_ids": [
         "prd.unit_test_hardening_and_rebalancing"
       ],
@@ -858,6 +858,8 @@
       "evidence_ids": [
         "evidence.unit_test_hardening_and_rebalancing.planning_baseline"
       ],
+      "closed_at": "2026-03-11T00:41:16Z",
+      "closure_reason": "Expanded unit coverage, rebalanced the suite, and closed the planned hardening work.",
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/unit_test_hardening_and_rebalancing_acceptance.v1.json",

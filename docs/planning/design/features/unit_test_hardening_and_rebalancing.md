@@ -6,7 +6,7 @@ summary: Defines the technical design boundary for Unit Test Hardening and Rebal
 type: feature_design
 status: draft
 owner: repository_maintainer
-updated_at: '2026-03-10T23:34:10Z'
+updated_at: '2026-03-11T00:44:30Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `prd.unit_test_hardening_and_rebalancing`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `design.implementation.unit_test_hardening_and_rebalancing`
-- `Updated At`: `2026-03-10T23:34:10Z`
+- `Updated At`: `2026-03-11T00:44:30Z`
 
 ## Summary
 Defines the technical design boundary for strengthening low-coverage executable test surfaces, rebalancing the unit suite structure, and tightening suite-local testing guidance.
@@ -47,6 +47,17 @@ Defines the technical design boundary for strengthening low-coverage executable 
 - The verified unit-suite review remains directionally accurate after rechecking current state: `176` unit tests pass, overall coverage remains `75%`, GitHub integration remains critically under-covered, and `test_cli.py` still carries most CLI smoke coverage.
 - New workflow-operationalization code introduced additional low-coverage handler and lifecycle surfaces such as `plan_handlers.py`, `task_handlers.py`, and `planning_scaffolds.py`, so the follow-up must cover both legacy and newly added command families.
 - Many tests still bind directly to the canonical repository root or inline temp-repo builders, and there is still no shared `conftest.py`.
+
+## Foundations References Applied
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): coverage work should improve confidence by testing the narrowest meaningful executable boundary instead of piling more broad smoke tests into one place.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): human-readable planning and machine-readable tracking surfaces need to stay aligned while the unit-suite structure changes.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): the test foundation should be reliable and maintainable before WatchTower product implementation starts consuming the exported core.
+
+## Internal Standards and Canonical References Applied
+- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): feature designs should explain the concrete repository standards and references that shape the design, not only the desired outcome.
+- [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): the changes stay inside the canonical Python workspace and its governed command and validation flow.
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): the suite should move toward smaller focused tests, deterministic fixtures, and same-change documentation or tracker updates.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the initiative keeps its planning, task, and acceptance surfaces synchronized while execution slices land.
 
 ## Design Goals and Constraints
 - Move expensive behavior checks down to the handler or service layer whenever broad parser smoke tests are not the best assertion point.
@@ -114,4 +125,4 @@ Defines the technical design boundary for strengthening low-coverage executable 
 - User-supplied WatchTower unit-test review dated `2026-03-10`
 
 ## Updated At
-- `2026-03-10T23:34:10Z`
+- `2026-03-11T00:44:30Z`

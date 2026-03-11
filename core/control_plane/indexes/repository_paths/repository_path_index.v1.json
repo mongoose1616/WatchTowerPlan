@@ -3058,6 +3058,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/tests/unit/conftest.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Shared pytest fixtures for common JSON-writing and future unit-suite helpers.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/unit/test_acceptance_reconciliation.py",
       "kind": "file",
       "surface_kind": "python_test_file",
@@ -3101,7 +3111,37 @@
       "path": "core/python/tests/unit/test_cli.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for the watchtower-core CLI command surfaces.",
+      "summary": "Thin smoke tests for the watchtower-core entrypoint, help output, and compatibility facades.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_cli_query_commands.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Parser-level JSON contract tests for query, route, task-create, and plan-scaffold CLI families.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_cli_sync_commands.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Parser-level JSON and output-path tests for the sync command family.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_cli_validate_commands.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Parser-level JSON and evidence-recording tests for the validation command family.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
