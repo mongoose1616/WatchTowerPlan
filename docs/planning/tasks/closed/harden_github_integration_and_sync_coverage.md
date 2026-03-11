@@ -6,11 +6,11 @@ summary: Add direct deterministic unit coverage for GitHub client behavior and G
   task-sync write or failure paths.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-10T23:36:22Z'
+updated_at: '2026-03-11T00:07:54Z'
 audience: shared
 authority: authoritative
 applies_to:

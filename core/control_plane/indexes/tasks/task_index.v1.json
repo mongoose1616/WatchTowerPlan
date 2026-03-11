@@ -931,12 +931,12 @@
       "title": "Harden GitHub integration and sync coverage",
       "summary": "Add direct deterministic unit coverage for GitHub client behavior and GitHub task-sync write or failure paths.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/harden_github_integration_and_sync_coverage.md",
-      "updated_at": "2026-03-10T23:36:22Z",
+      "doc_path": "docs/planning/tasks/closed/harden_github_integration_and_sync_coverage.md",
+      "updated_at": "2026-03-11T00:07:54Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "depends_on": [
         "task.unit_test_hardening_and_rebalancing.bootstrap.001"
