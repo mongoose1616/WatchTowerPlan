@@ -10,6 +10,7 @@ from watchtower_core.control_plane.models import (
     AcceptanceContract,
     DecisionIndexEntry,
     DesignDocumentIndexEntry,
+    InitiativeActiveTaskSummary,
     InitiativeIndexEntry,
     PrdIndexEntry,
     TaskIndexEntry,
@@ -273,7 +274,7 @@ def _coordination_section(entry: InitiativeIndexEntry) -> dict[str, object]:
     return document
 
 
-def _active_task_summary(task: object) -> dict[str, object]:
+def _active_task_summary(task: InitiativeActiveTaskSummary) -> dict[str, object]:
     document: dict[str, object] = {
         "task_id": task.task_id,
         "title": task.title,

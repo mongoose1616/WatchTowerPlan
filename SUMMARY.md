@@ -6,6 +6,16 @@ This document is a repo-wide assessment of `WatchTowerPlan`. It evaluates the re
 
 This is a repository review, not a `/home/j/WatchTower` product-readiness memo. Future product direction is discussed only where the repository's own foundations already make that future product intent part of the governing context.
 
+## Verification Update
+
+This review was rechecked on March 11, 2026 against the live repository state after the follow-up planning-authority and status-semantics initiatives closed.
+
+- No longer valid: the missing short repository charter concern has been addressed by [`docs/foundations/repository_scope.md`](docs/foundations/repository_scope.md).
+- No longer valid: the missing canonical machine planning catalog concern has been addressed by [`core/control_plane/indexes/planning/planning_catalog.v1.json`](core/control_plane/indexes/planning/planning_catalog.v1.json) and the corresponding query surfaces.
+- No longer valid: the missing machine authority-map concern has been addressed by the planning authority registry surfaces and `watchtower-core query authority`.
+- Resolved after verification: the ambiguous initiative-family projection field named `status` has been replaced by explicit `artifact_status` while preserving distinct `initiative_status` semantics in initiative and coordination query results.
+- Remaining recommendations in this report should now be read as future optimization opportunities, not as open coherence defects blocking repository closeout.
+
 ## Review Context and Baseline
 
 Before this report was authored, the repository baseline was:

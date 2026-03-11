@@ -156,6 +156,49 @@
       ]
     },
     {
+      "trace_id": "trace.derived_projection_status_semantics",
+      "prd_id": "prd.derived_projection_status_semantics",
+      "title": "Derived Projection Status Semantics Alignment PRD",
+      "summary": "Make initiative and coordination projections publish explicit artifact-status fields so machine consumers do not misread closed initiatives as active.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/derived_projection_status_semantics_alignment.md",
+      "updated_at": "2026-03-11T03:29:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.derived_projection_status_semantics.001",
+        "req.derived_projection_status_semantics.002",
+        "req.derived_projection_status_semantics.003"
+      ],
+      "acceptance_ids": [
+        "ac.derived_projection_status_semantics.001",
+        "ac.derived_projection_status_semantics.002",
+        "ac.derived_projection_status_semantics.003",
+        "ac.derived_projection_status_semantics.004"
+      ],
+      "linked_decision_ids": [
+        "decision.derived_projection_status_semantics_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.derived_projection_status_semantics"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.derived_projection_status_semantics"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/initiatives/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "SUMMARY.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/planning/prds/planning_authority_unification.md"
+      ]
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "prd_id": "prd.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",

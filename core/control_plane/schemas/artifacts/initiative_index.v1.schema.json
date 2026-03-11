@@ -177,7 +177,7 @@
         "trace_id",
         "title",
         "summary",
-        "status",
+        "artifact_status",
         "initiative_status",
         "current_phase",
         "updated_at",
@@ -199,7 +199,7 @@
           "type": "string",
           "minLength": 1
         },
-        "status": {
+        "artifact_status": {
           "$ref": "#/$defs/lifecycleStatus"
         },
         "initiative_status": {

@@ -42,7 +42,7 @@ class InitiativeIndexEntry:
     trace_id: str
     title: str
     summary: str
-    status: str
+    artifact_status: str
     initiative_status: str
     current_phase: str
     updated_at: str
@@ -77,7 +77,7 @@ class InitiativeIndexEntry:
             trace_id=document["trace_id"],
             title=document["title"],
             summary=document["summary"],
-            status=document["status"],
+            artifact_status=document["artifact_status"],
             initiative_status=document["initiative_status"],
             current_phase=document["current_phase"],
             updated_at=document["updated_at"],

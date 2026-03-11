@@ -341,7 +341,7 @@ def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
         "trace_id": entry.trace_id,
         "title": entry.title,
         "summary": entry.summary,
-        "status": entry.status,
+        "artifact_status": entry.artifact_status,
         "initiative_status": entry.initiative_status,
         "current_phase": entry.current_phase,
         "updated_at": entry.updated_at,

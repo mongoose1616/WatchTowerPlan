@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.derived_projection_status_semantics` | `completed` | [derived_projection_status_semantics_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/derived_projection_status_semantics_alignment.md) | `2026-03-11T03:37:01Z` | Aligned derived initiative and coordination projections to use explicit artifact_status semantics, published acceptance and validation evidence, and revalidated the repository baseline. |
 | `trace.planning_authority_unification` | `completed` | [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md) | `2026-03-11T03:11:45Z` | Published the canonical planning catalog and authority map, aligned navigation guidance, and validated the full repository baseline |
 | `trace.foundation_scope_and_entrypoint_realignment` | `completed` | [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md) | `2026-03-11T01:42:35Z` | Clarified repository scope, realigned foundations, and tightened root entrypoints. |
 | `trace.unit_test_hardening_and_rebalancing` | `completed` | [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/unit_test_hardening_and_rebalancing.md) | `2026-03-11T00:41:16Z` | Expanded unit coverage, rebalanced the suite, and closed the planned hardening work. |
@@ -23,4 +24,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-11T03:11:45Z`_
+_Updated At: `2026-03-11T03:37:01Z`_

@@ -35,7 +35,7 @@ def test_planning_catalog_sync_builds_explicit_status_sections(tmp_path: Path) -
         if item["trace_id"] == "trace.planning_authority_unification"
     )
     assert "artifact_status" in entry
-    assert entry["initiative_status"] == "active"
+    assert entry["initiative_status"] == "completed"
     assert "status" not in entry
     assert entry["coordination"]["current_phase"]
     assert entry["tasks"][0]["task_status"]
@@ -48,7 +48,23 @@ def test_planning_catalog_query_service_filters_by_phase_and_owner(tmp_path: Pat
     repo_root = _build_control_plane_fixture_repo(tmp_path)
     loader = ControlPlaneLoader(repo_root)
     service = PlanningCatalogSyncService(loader)
-    service.write_document(service.build_document())
+    document = service.build_document()
+    entries = document["entries"]
+    assert isinstance(entries, list)
+    target = next(
+        item
+        for item in entries
+        if item["trace_id"] == "trace.planning_authority_unification"
+    )
+    coordination = target["coordination"]
+    assert isinstance(coordination, dict)
+    coordination["current_phase"] = "execution"
+    coordination["primary_owner"] = "repository_maintainer"
+    coordination["active_owners"] = ["repository_maintainer"]
+    coordination["active_task_ids"] = [
+        "task.planning_authority_unification.planning_catalog.001"
+    ]
+    service.write_document(document)
 
     entries = PlanningCatalogQueryService(ControlPlaneLoader(repo_root)).search(
         PlanningCatalogSearchParams(

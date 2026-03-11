@@ -1,0 +1,85 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.derived_projection_status_semantics",
+  "title": "Derived Projection Status Semantics Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.derived_projection_status_semantics",
+  "source_prd_id": "prd.derived_projection_status_semantics",
+  "entries": [
+    {
+      "acceptance_id": "ac.derived_projection_status_semantics.001",
+      "summary": "Initiative-family query output returns closed initiatives with artifact_status and initiative_status and without an ambiguous entry-level status field.",
+      "source_requirement_ids": [
+        "req.derived_projection_status_semantics.001",
+        "req.derived_projection_status_semantics.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.derived_projection_status_semantics.002",
+      "summary": "The initiative-index and coordination-index contracts, schemas, and examples validate after the initiative-entry field rename.",
+      "source_requirement_ids": [
+        "req.derived_projection_status_semantics.001",
+        "req.derived_projection_status_semantics.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+        "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
+        "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json",
+        "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json",
+        "core/control_plane/examples/invalid/indexes/initiative_index_missing_phase.v1.example.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+      ],
+      "related_paths": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_coordination_index_sync.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.derived_projection_status_semantics.003",
+      "summary": "Standards and command docs explain the distinction between root artifact status, initiative-entry artifact_status, and initiative_status.",
+      "source_requirement_ids": [
+        "req.derived_projection_status_semantics.003"
+      ],
+      "validation_targets": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/derived_projection_status_semantics_alignment.md",
+        "docs/planning/decisions/derived_projection_status_semantics_alignment_direction.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.derived_projection_status_semantics.004",
+      "summary": "The repository remains green on the current validation baseline after the initiative-entry contract rename lands.",
+      "source_requirement_ids": [
+        "req.derived_projection_status_semantics.003"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "related_paths": [
+        "core/python/tests/",
+        "docs/planning/tasks/open/align_derived_initiative_projection_status_contracts.md"
+      ]
+    }
+  ]
+}

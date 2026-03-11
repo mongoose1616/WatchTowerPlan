@@ -58,7 +58,7 @@ uv run watchtower-core query initiatives --trace-id trace.core_python_foundation
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints matching trace IDs, current phases, initiative statuses, active owners, open-task counts, and next-step guidance.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, and result records, including compact active-task summaries when present.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, and result records, including `artifact_status`, `initiative_status`, and compact active-task summaries when present.
 - If no entries match the requested filters, the command exits successfully and reports that no initiative entries matched.
 
 ## Related Commands

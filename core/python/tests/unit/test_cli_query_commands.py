@@ -470,9 +470,12 @@ def test_query_coordination_supports_explicit_historical_lookup(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core query coordination"
     assert payload["status"] == "ok"
-    assert any(
-        entry["trace_id"] == "trace.core_python_foundation" for entry in payload["results"]
+    matched = next(
+        entry for entry in payload["results"] if entry["trace_id"] == "trace.core_python_foundation"
     )
+    assert matched["artifact_status"] == "active"
+    assert matched["initiative_status"] == "completed"
+    assert "status" not in matched
 
 
 def test_query_planning_supports_json_output(capsys) -> None:
@@ -496,6 +499,32 @@ def test_query_planning_supports_json_output(capsys) -> None:
     assert "artifact_status" in payload["results"][0]
     assert "status" not in payload["results"][0]
     assert payload["results"][0]["coordination"]["current_phase"]
+
+
+def test_query_initiatives_uses_explicit_artifact_status_field(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "initiatives",
+            "--trace-id",
+            "trace.core_python_foundation",
+            "--initiative-status",
+            "completed",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query initiatives"
+    entry = next(
+        item for item in payload["results"] if item["trace_id"] == "trace.core_python_foundation"
+    )
+    assert entry["artifact_status"] == "active"
+    assert entry["initiative_status"] == "completed"
+    assert "status" not in entry
 
 
 def test_query_authority_supports_json_output(capsys) -> None:

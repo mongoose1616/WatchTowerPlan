@@ -76,7 +76,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | `trace_id` | Required | Shared umbrella identifier for the initiative. |
 | `title` | Required | Human-readable initiative title. |
 | `summary` | Required | Concise description of the initiative. |
-| `status` | Required | Use the governed lifecycle vocabulary mirrored from traceability. |
+| `artifact_status` | Required | Use the governed lifecycle vocabulary mirrored from traceability for the projected governing artifact. |
 | `initiative_status` | Required | Use the initiative closeout vocabulary mirrored from traceability. |
 | `current_phase` | Required | Use the governed initiative-phase vocabulary. |
 | `updated_at` | Required | RFC 3339 UTC timestamp matching the latest governing source. |
@@ -113,6 +113,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Active initiatives outside `closeout` should also keep `primary_owner` or `active_owners` plus `active_task_ids` and `active_task_summaries` aligned with the current non-terminal task corpus.
 - Active `closeout` entries may have only historical `task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
 - Terminal initiative entries should also publish the required closeout fields.
+- Entry payloads should use `artifact_status` rather than a generic `status` field so initiative outcome and artifact lifecycle remain distinct.
 
 ## Change Control
 - Update this standard when the repository changes the initiative-phase projection model or initiative-index entry shape.

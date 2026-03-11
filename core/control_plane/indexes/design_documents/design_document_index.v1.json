@@ -211,6 +211,35 @@
       ]
     },
     {
+      "document_id": "design.features.derived_projection_status_semantics",
+      "trace_id": "trace.derived_projection_status_semantics",
+      "family": "feature_design",
+      "title": "Derived Projection Status Semantics Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Derived Projection Status Semantics Alignment.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/derived_projection_status_semantics_alignment.md",
+      "updated_at": "2026-03-11T03:29:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/derived_projection_status_semantics_alignment.md",
+        "core/control_plane/indexes/initiatives/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/repository_scope.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "SUMMARY.md"
+      ]
+    },
+    {
       "document_id": "design.features.end_to_end_repo_rationalization",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "family": "feature_design",
@@ -731,6 +760,35 @@
         "docs/planning/prds/core_python_foundation.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json"
+      ]
+    },
+    {
+      "document_id": "design.implementation.derived_projection_status_semantics",
+      "trace_id": "trace.derived_projection_status_semantics",
+      "family": "implementation_plan",
+      "title": "Derived Projection Status Semantics Alignment Implementation Plan",
+      "summary": "Breaks Derived Projection Status Semantics Alignment into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/derived_projection_status_semantics_alignment.md",
+      "updated_at": "2026-03-11T03:29:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/derived_projection_status_semantics_alignment.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/initiatives/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "SUMMARY.md",
+        "docs/planning/prds/derived_projection_status_semantics_alignment.md"
       ]
     },
     {

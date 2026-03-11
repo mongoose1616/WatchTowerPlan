@@ -1,0 +1,103 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.derived_projection_status_semantics.validation_baseline",
+  "title": "Derived Projection Status Semantics Alignment Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.derived_projection_status_semantics",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T03:36:33Z",
+  "source_prd_ids": [
+    "prd.derived_projection_status_semantics"
+  ],
+  "source_decision_ids": [
+    "decision.derived_projection_status_semantics_direction"
+  ],
+  "source_design_ids": [
+    "design.features.derived_projection_status_semantics"
+  ],
+  "source_plan_ids": [
+    "design.implementation.derived_projection_status_semantics"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.derived_projection_status_semantics"
+  ],
+  "checks": [
+    {
+      "check_id": "check.derived_projection_status_semantics.query_contract_alignment",
+      "title": "Derived initiative query contract uses explicit artifact status",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md"
+      ],
+      "subject_ids": [
+        "task.derived_projection_status_semantics.projection_contracts.001"
+      ],
+      "acceptance_ids": [
+        "ac.derived_projection_status_semantics.001"
+      ],
+      "notes": "The completed initiative query for trace.planning_authority_unification now returns artifact_status plus initiative_status and no entry-level status field."
+    },
+    {
+      "check_id": "check.derived_projection_status_semantics.artifact_contract_validation",
+      "title": "Initiative and coordination artifact contracts validate after the rename",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+        "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
+        "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json",
+        "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json",
+        "core/control_plane/examples/invalid/indexes/initiative_index_missing_phase.v1.example.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+      ],
+      "acceptance_ids": [
+        "ac.derived_projection_status_semantics.002"
+      ],
+      "notes": "sync all rebuilt the live initiative and coordination indexes successfully, and the governed artifact integration tests passed with the renamed initiative-entry field."
+    },
+    {
+      "check_id": "check.derived_projection_status_semantics.documentation_alignment",
+      "title": "Standards and command docs explain the explicit status semantics",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md"
+      ],
+      "acceptance_ids": [
+        "ac.derived_projection_status_semantics.003"
+      ],
+      "notes": "The companion docs now distinguish root artifact status from initiative-entry artifact_status and initiative_status."
+    },
+    {
+      "check_id": "check.derived_projection_status_semantics.validation_baseline",
+      "title": "Repository validation baseline remains green",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "acceptance_ids": [
+        "ac.derived_projection_status_semantics.004"
+      ],
+      "notes": "ruff check ., python -m mypy src, sync all --write, validate all, doctor, targeted initiative-contract tests, and the full pytest suite passed after the contract rename and final planning-catalog test alignment."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/derived_projection_status_semantics_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence for the derived initiative-family status-semantics alignment initiative."
+}

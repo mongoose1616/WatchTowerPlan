@@ -52,6 +52,46 @@
       ]
     },
     {
+      "trace_id": "trace.derived_projection_status_semantics",
+      "decision_id": "decision.derived_projection_status_semantics_direction",
+      "title": "Derived Projection Status Semantics Alignment Direction Decision",
+      "summary": "Records the decision to use explicit artifact_status naming for derived initiative and coordination projection entries.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/derived_projection_status_semantics_alignment_direction.md",
+      "updated_at": "2026-03-11T03:29:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.derived_projection_status_semantics"
+      ],
+      "linked_design_ids": [
+        "design.features.derived_projection_status_semantics"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.derived_projection_status_semantics"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/initiatives/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "SUMMARY.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "decision_id": "decision.end_to_end_repo_rationalization_direction",
       "title": "End-to-End Repository Rationalization Direction",

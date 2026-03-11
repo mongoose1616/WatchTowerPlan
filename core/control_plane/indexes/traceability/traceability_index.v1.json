@@ -353,6 +353,96 @@
       "notes": "First executable slice for the core Python helper and harness layer."
     },
     {
+      "trace_id": "trace.derived_projection_status_semantics",
+      "title": "Derived Projection Status Semantics Alignment PRD",
+      "summary": "Make initiative and coordination projections publish explicit artifact-status fields so machine consumers do not misread closed initiatives as active.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T03:37:01Z",
+      "closed_at": "2026-03-11T03:37:01Z",
+      "closure_reason": "Aligned derived initiative and coordination projections to use explicit artifact_status semantics, published acceptance and validation evidence, and revalidated the repository baseline.",
+      "prd_ids": [
+        "prd.derived_projection_status_semantics"
+      ],
+      "decision_ids": [
+        "decision.derived_projection_status_semantics_direction"
+      ],
+      "design_ids": [
+        "design.features.derived_projection_status_semantics"
+      ],
+      "plan_ids": [
+        "design.implementation.derived_projection_status_semantics"
+      ],
+      "task_ids": [
+        "task.derived_projection_status_semantics.bootstrap.001",
+        "task.derived_projection_status_semantics.projection_contracts.001"
+      ],
+      "requirement_ids": [
+        "req.derived_projection_status_semantics.001",
+        "req.derived_projection_status_semantics.002",
+        "req.derived_projection_status_semantics.003"
+      ],
+      "acceptance_ids": [
+        "ac.derived_projection_status_semantics.001",
+        "ac.derived_projection_status_semantics.002",
+        "ac.derived_projection_status_semantics.003",
+        "ac.derived_projection_status_semantics.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.derived_projection_status_semantics"
+      ],
+      "evidence_ids": [
+        "evidence.derived_projection_status_semantics.validation_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/derived_projection_status_semantics_acceptance.v1.json",
+        "core/control_plane/examples/invalid/indexes/initiative_index_missing_phase.v1.example.json",
+        "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json",
+        "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json",
+        "core/control_plane/indexes/coordination/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/derived_projection_status_semantics_validation.v1.json",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
+        "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+        "core/python/",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/tests/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/planning/decisions/derived_projection_status_semantics_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/derived_projection_status_semantics_alignment.md",
+        "docs/planning/design/implementation/derived_projection_status_semantics_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/derived_projection_status_semantics_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/align_derived_initiative_projection_status_contracts.md",
+        "docs/planning/tasks/closed/derived_projection_status_semantics_alignment_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence for the derived initiative-family status-semantics alignment initiative."
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",
       "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",

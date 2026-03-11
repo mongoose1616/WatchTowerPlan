@@ -167,7 +167,7 @@ class InitiativeIndexSyncService:
             "trace_id": trace_entry.trace_id,
             "title": trace_entry.title,
             "summary": trace_entry.summary,
-            "status": trace_entry.status,
+            "artifact_status": trace_entry.status,
             "initiative_status": trace_entry.initiative_status,
             "current_phase": current_phase,
             "updated_at": entry_updated_at,

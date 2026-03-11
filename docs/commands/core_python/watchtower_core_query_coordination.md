@@ -61,7 +61,7 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 - The command is read-only and does not mutate repository state.
 - With no explicit `--initiative-status`, the command defaults to `active`.
 - In `human` mode, the command prints the top-level coordination mode, recommended next action, matching initiatives, and recent closeout context when useful.
-- In `json` mode, the command prints one JSON object with the command name, coordination mode, recommended next action, result records, actionable tasks, recent closeouts, and the active-only default when it was applied.
+- In `json` mode, the command prints one JSON object with the command name, coordination mode, recommended next action, result records, actionable tasks, recent closeouts, and the active-only default when it was applied. Embedded initiative entries use `artifact_status` plus `initiative_status`.
 - If no entries match the requested filters, the command still returns the current coordination mode and the default next step.
 
 ## Related Commands

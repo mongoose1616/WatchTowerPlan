@@ -93,7 +93,7 @@ def _initiative_entry(**overrides: object) -> SimpleNamespace:
         "trace_id": "trace.example",
         "title": "Example Initiative",
         "summary": "Initiative summary.",
-        "status": "active",
+        "artifact_status": "active",
         "initiative_status": "active",
         "current_phase": "execution",
         "updated_at": "2026-03-10T23:59:59Z",

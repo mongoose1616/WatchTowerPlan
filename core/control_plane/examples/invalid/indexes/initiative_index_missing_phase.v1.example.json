@@ -8,7 +8,7 @@
       "trace_id": "trace.core_python_foundation",
       "title": "Core Python Foundation PRD",
       "summary": "Invalid example missing the required current-phase field.",
-      "status": "active",
+      "artifact_status": "active",
       "initiative_status": "active",
       "updated_at": "2026-03-10T01:48:35Z",
       "open_task_count": 1,

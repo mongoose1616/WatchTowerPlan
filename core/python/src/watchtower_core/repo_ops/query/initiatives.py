@@ -68,6 +68,7 @@ class InitiativeQueryService:
                     entry.trace_id,
                     entry.title,
                     entry.summary,
+                    entry.artifact_status,
                     entry.initiative_status,
                     entry.current_phase,
                     entry.primary_owner or "",

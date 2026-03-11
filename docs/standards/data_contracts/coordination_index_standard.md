@@ -54,6 +54,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Carry recent closeout summaries as compact context rather than reproducing the full closed-history corpus.
 - Keep the coordination index smaller than the combined family indexes it summarizes.
 - Do not invent owners, blockers, or status beyond what the initiative and task surfaces already publish.
+- Keep embedded initiative summaries aligned with initiative-index explicit field naming, including `artifact_status` for lifecycle and `initiative_status` for outcome.
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -82,6 +83,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | `entries` | Keep initiative-shaped summaries compact and derived from the initiative index. |
 | `actionable_tasks` | Include trace context so a caller can jump directly to the right initiative and task surface. |
 | `recent_closed_initiatives` | Publish only compact summaries needed for recent context and review handoff. |
+| Initiative entry status fields | Use `artifact_status` for lifecycle and `initiative_status` for initiative outcome. |
 
 ## Validation
 - The coordination index should validate against its published artifact schema.

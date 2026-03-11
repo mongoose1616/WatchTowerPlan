@@ -356,6 +356,59 @@
       ]
     },
     {
+      "task_id": "task.derived_projection_status_semantics.bootstrap.001",
+      "title": "Bootstrap Derived Projection Status Semantics Alignment planning chain",
+      "summary": "Bootstraps the initial planning chain for Derived Projection Status Semantics Alignment.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/derived_projection_status_semantics_alignment_bootstrap.md",
+      "updated_at": "2026-03-11T03:19:22Z",
+      "trace_id": "trace.derived_projection_status_semantics",
+      "related_ids": [
+        "prd.derived_projection_status_semantics",
+        "design.features.derived_projection_status_semantics",
+        "design.implementation.derived_projection_status_semantics",
+        "decision.derived_projection_status_semantics_direction"
+      ],
+      "applies_to": [
+        "core/control_plane/indexes/initiatives/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ]
+    },
+    {
+      "task_id": "task.derived_projection_status_semantics.projection_contracts.001",
+      "title": "Align derived initiative projection status contracts",
+      "summary": "Rename the ambiguous per-entry initiative-family status field to artifact_status across schemas, sync, query, docs, and tests.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/align_derived_initiative_projection_status_contracts.md",
+      "updated_at": "2026-03-11T03:36:57Z",
+      "trace_id": "trace.derived_projection_status_semantics",
+      "related_ids": [
+        "prd.derived_projection_status_semantics",
+        "design.features.derived_projection_status_semantics",
+        "design.implementation.derived_projection_status_semantics",
+        "decision.derived_projection_status_semantics_direction"
+      ],
+      "applies_to": [
+        "core/control_plane/indexes/initiatives/",
+        "core/control_plane/indexes/coordination/",
+        "core/control_plane/schemas/artifacts/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ]
+    },
+    {
       "task_id": "task.end_to_end_repo_review_and_rationalization.bootstrap.001",
       "title": "Bootstrap the end-to-end repo review and rationalization initiative",
       "summary": "Creates the traced planning chain, accepted direction, acceptance baseline, planning evidence, and bounded execution task set for the final pre-implementation review follow-up.",
