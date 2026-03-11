@@ -4,7 +4,6 @@
 | Task | Status | Priority | Owner | Trace ID | Summary |
 | --- | --- | --- | --- | --- | --- |
 | [task.unit_test_hardening_and_rebalancing.orchestration_hardening.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md) | `backlog` | `medium` | `repository_maintainer` | `trace.unit_test_hardening_and_rebalancing` | Add meaningful failure and edge-state tests for aggregate sync, aggregate validation, initiative closeout, and derived coordination or initiative projections. |
-| [task.unit_test_hardening_and_rebalancing.suite_rebalance.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/rebalance_unit_suite_structure_and_docs.md) | `backlog` | `medium` | `repository_maintainer` | `trace.unit_test_hardening_and_rebalancing` | Split the oversized CLI test surface, add shared fixture support, and update unit-suite documentation to match the suite's actual boundary and contributor patterns. |
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -49,7 +48,8 @@
 | [task.machine_first_coordination_surface.entrypoints.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/machine_first_coordination_entrypoints.md) | `done` | `medium` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Generate a compact human coordination tracker and reroute planning and agent entrypoint guidance so humans and agents start from the same derived coordination state. |
 | [task.template_and_output_efficiency.workflow_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.template_and_output_efficiency` | Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content. |
 | [task.unit_test_hardening_and_rebalancing.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md) | `done` | `medium` | `repository_maintainer` | `trace.unit_test_hardening_and_rebalancing` | Bootstraps the initial planning chain for Unit Test Hardening and Rebalancing. |
+| [task.unit_test_hardening_and_rebalancing.suite_rebalance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md) | `done` | `medium` | `repository_maintainer` | `trace.unit_test_hardening_and_rebalancing` | Split the oversized CLI test surface, add shared fixture support, and update unit-suite documentation to match the suite's actual boundary and contributor patterns. |
 | [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_planning_scaffolds.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates. |
 | [task.workflow_system_operationalization.reconciliation_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_reconciliation_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes. |
 
-_Updated At: `2026-03-11T00:07:54Z`_
+_Updated At: `2026-03-11T00:15:24Z`_

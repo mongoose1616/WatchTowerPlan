@@ -983,12 +983,12 @@
       "title": "Rebalance unit suite structure and docs",
       "summary": "Split the oversized CLI test surface, add shared fixture support, and update unit-suite documentation to match the suite's actual boundary and contributor patterns.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/rebalance_unit_suite_structure_and_docs.md",
-      "updated_at": "2026-03-10T23:36:39Z",
+      "doc_path": "docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md",
+      "updated_at": "2026-03-11T00:15:24Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "depends_on": [
         "task.unit_test_hardening_and_rebalancing.bootstrap.001"

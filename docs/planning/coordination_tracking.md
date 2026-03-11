@@ -18,7 +18,6 @@
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
 | [task.unit_test_hardening_and_rebalancing.orchestration_hardening.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md) | `trace.unit_test_hardening_and_rebalancing` | `backlog` | `medium` | `repository_maintainer` |
-| [task.unit_test_hardening_and_rebalancing.suite_rebalance.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/rebalance_unit_suite_structure_and_docs.md) | `trace.unit_test_hardening_and_rebalancing` | `backlog` | `medium` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -29,4 +28,4 @@
 | `trace.preimplementation_repo_review_and_hardening` | `completed` | `2026-03-10T18:48:07Z` | [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md) |
 | `trace.core_export_hardening_followup` | `completed` | `2026-03-10T17:12:30Z` | [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md) |
 
-_Updated At: `2026-03-11T00:07:54Z`_
+_Updated At: `2026-03-11T00:15:24Z`_

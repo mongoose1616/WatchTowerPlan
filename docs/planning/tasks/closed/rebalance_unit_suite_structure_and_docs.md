@@ -6,11 +6,11 @@ summary: Split the oversized CLI test surface, add shared fixture support, and u
   unit-suite documentation to match the suite's actual boundary and contributor patterns.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: documentation
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-10T23:36:39Z'
+updated_at: '2026-03-11T00:15:24Z'
 audience: shared
 authority: authoritative
 applies_to:
