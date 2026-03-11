@@ -52,6 +52,11 @@ Defines the design for separating current repository scope from future product n
 - [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): root and foundation surfaces should reduce ambiguity rather than add more co-equal entrypoints.
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): future product direction remains a valid foundation, but only when its relationship to current repo scope is explicit.
 
+## Internal Standards and Canonical References Applied
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the design keeps the new scope and entrypoint work explicitly linked to one trace, one decision, one acceptance contract, and bounded tasks.
+- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the fix should reduce ambiguity with minimal new prose and avoid replacing a thin root router with another large narrative document.
+- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md): the feature scope is constrained to issues evidenced in the durable whole-repo review rather than reopening unrelated review findings.
+
 ## Design Goals and Constraints
 - Publish one explicit repository-scope foundation instead of relying on inference across several documents.
 - Keep product-direction and customer-narrative context available without letting it override current repository scope.

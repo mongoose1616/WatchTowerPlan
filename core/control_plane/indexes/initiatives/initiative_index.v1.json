@@ -451,14 +451,14 @@
       "title": "Foundation Scope and EntryPoint Realignment PRD",
       "summary": "Clarify current repository scope versus future WatchTower product narrative, tighten root entrypoints, and align foundation language with the export-ready core boundary.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "closeout",
-      "updated_at": "2026-03-11T01:39:27Z",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-11T01:42:35Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
-      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
       "prd_ids": [
         "prd.foundation_scope_and_entrypoint_realignment"
       ],
@@ -489,6 +489,8 @@
       "evidence_ids": [
         "evidence.foundation_scope_and_entrypoint_realignment.planning_baseline"
       ],
+      "closed_at": "2026-03-11T01:42:35Z",
+      "closure_reason": "Clarified repository scope, realigned foundations, and tightened root entrypoints.",
       "related_paths": [
         "README.md",
         "SUMMARY.md",

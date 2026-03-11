@@ -52,6 +52,11 @@ Breaks the foundation-scope and root-entrypoint cleanup into bounded documentati
 - The repo is validated and currently in `ready_for_bootstrap`, so the main need is coherence rather than new execution capability.
 - [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) already captures the evidence and rationale for this cleanup.
 
+## Internal Standards and Canonical References Applied
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the plan must preserve explicit links from the initiative to the decision, acceptance contract, evidence, and bounded tasks through closeout.
+- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): the work breakdown and rollout plan need to terminate in a clean initiative closeout with no hidden open-task exceptions.
+- [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the execution slices should keep the cleanup documentation-only and avoid expanding the scope into adjacent planning-graph or validator work.
+
 ## Proposed Technical Approach
 - Record an accepted direction decision that establishes the repository-scope precedence model.
 - Create an acceptance contract and planning-baseline evidence that tie the new trace to the expected doc-only slices.

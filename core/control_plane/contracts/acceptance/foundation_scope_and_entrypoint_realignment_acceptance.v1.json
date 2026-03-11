@@ -18,7 +18,8 @@
         "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
         "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
-        "docs/planning/tasks/open/"
+        "docs/planning/tasks/closed/foundation_scope_alignment.md",
+        "docs/planning/tasks/closed/root_entrypoint_contract.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -39,7 +40,7 @@
         "docs/foundations/repository_scope.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/customer_story.md",
-        "docs/planning/tasks/open/foundation_scope_alignment.md"
+        "docs/planning/tasks/closed/foundation_scope_alignment.md"
       ],
       "related_paths": [
         "SUMMARY.md",
@@ -56,7 +57,7 @@
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/engineering_stack_direction.md",
         "docs/foundations/repository_standards_posture.md",
-        "docs/planning/tasks/open/foundation_scope_alignment.md"
+        "docs/planning/tasks/closed/foundation_scope_alignment.md"
       ],
       "related_paths": [
         "core/python/README.md",
@@ -73,7 +74,7 @@
         "README.md",
         "docs/planning/README.md",
         "docs/foundations/README.md",
-        "docs/planning/tasks/open/root_entrypoint_contract.md"
+        "docs/planning/tasks/closed/root_entrypoint_contract.md"
       ],
       "related_paths": [
         "SUMMARY.md",

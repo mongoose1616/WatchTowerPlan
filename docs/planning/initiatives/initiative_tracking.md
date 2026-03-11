@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.foundation_scope_and_entrypoint_realignment` | `closeout` | unassigned | `0` | [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md) | [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.foundation_scope_and_entrypoint_realignment` | `completed` | [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md) | `2026-03-11T01:42:35Z` | Clarified repository scope, realigned foundations, and tightened root entrypoints. |
 | `trace.unit_test_hardening_and_rebalancing` | `completed` | [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/unit_test_hardening_and_rebalancing.md) | `2026-03-11T00:41:16Z` | Expanded unit coverage, rebalanced the suite, and closed the planned hardening work. |
 | `trace.workflow_system_operationalization` | `completed` | [workflow_system_operationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_system_operationalization.md) | `2026-03-10T23:23:54Z` | Operationalized route preview, workflow metadata, planning scaffolds, task lifecycle commands, and reconciliation guidance. |
 | `trace.end_to_end_repo_review_and_rationalization` | `completed` | [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md) | `2026-03-10T20:33:10Z` | Delivered and validated final pre-implementation repository rationalization. |
@@ -23,4 +22,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-11T01:39:27Z`_
+_Updated At: `2026-03-11T01:42:35Z`_

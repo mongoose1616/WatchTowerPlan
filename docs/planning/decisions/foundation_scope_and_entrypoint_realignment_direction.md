@@ -44,6 +44,11 @@ Publish one authoritative repository-scope foundation for current `WatchTowerPla
 - The root README is correctly thin, but it does not currently point to one explicit repository charter document.
 - The repo is healthy and validated, so the problem is coherence and routing rather than correctness or missing tooling.
 
+## Applied References and Implications
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): the chosen direction preserves explicit authority boundaries, compactness, and the reusable-core versus repo-ops split while clarifying current scope.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the decision favors one clearer authority surface over several co-equal foundation entrypoints for the same scope question.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the scope-direction change should remain explicitly tied to one trace, one accepted decision, and bounded closeable tasks rather than diffuse documentation edits.
+
 ## Affected Surfaces
 - `docs/foundations/`
 - `README.md`

@@ -123,9 +123,17 @@
         "docs/planning/README.md"
       ],
       "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md",
         "SUMMARY.md",
         "README.md",
         "docs/planning/coordination_tracking.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md"
       ]
     },
     {

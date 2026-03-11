@@ -3,12 +3,12 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-11T01:39:27Z",
-  "coordination_mode": "active_work",
-  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
-  "recommended_next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-  "recommended_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
-  "active_initiative_count": 1,
+  "updated_at": "2026-03-11T01:42:35Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
+  "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
+  "recommended_surface_path": "docs/planning/README.md",
+  "active_initiative_count": 0,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
@@ -17,14 +17,14 @@
       "title": "Foundation Scope and EntryPoint Realignment PRD",
       "summary": "Clarify current repository scope versus future WatchTower product narrative, tighten root entrypoints, and align foundation language with the export-ready core boundary.",
       "status": "active",
-      "initiative_status": "active",
-      "current_phase": "closeout",
-      "updated_at": "2026-03-11T01:39:27Z",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-11T01:42:35Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
-      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
       "prd_ids": [
         "prd.foundation_scope_and_entrypoint_realignment"
       ],
@@ -55,6 +55,8 @@
       "evidence_ids": [
         "evidence.foundation_scope_and_entrypoint_realignment.planning_baseline"
       ],
+      "closed_at": "2026-03-11T01:42:35Z",
+      "closure_reason": "Clarified repository scope, realigned foundations, and tightened root entrypoints.",
       "related_paths": [
         "README.md",
         "SUMMARY.md",
@@ -1097,6 +1099,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "title": "Foundation Scope and EntryPoint Realignment PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-11T01:42:35Z",
+      "key_surface_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+      "closure_reason": "Clarified repository scope, realigned foundations, and tightened root entrypoints."
+    },
+    {
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "title": "Unit Test Hardening and Rebalancing PRD",
       "initiative_status": "completed",
@@ -1167,14 +1177,6 @@
       "closed_at": "2026-03-10T03:59:28Z",
       "key_surface_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
       "closure_reason": "Delivered and validated; future planning-closeout expansion belongs to a new bounded initiative"
-    },
-    {
-      "trace_id": "trace.github_collaboration",
-      "title": "GitHub Collaboration Scaffolding",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-10T03:59:28Z",
-      "key_surface_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
-      "closure_reason": "Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative"
     }
   ]
 }

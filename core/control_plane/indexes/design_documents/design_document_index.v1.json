@@ -262,6 +262,8 @@
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/foundations/product_direction.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "SUMMARY.md",
         "README.md",
         "docs/foundations/README.md"
@@ -749,6 +751,9 @@
         "docs/planning/README.md"
       ],
       "internal_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
         "SUMMARY.md",
         "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
