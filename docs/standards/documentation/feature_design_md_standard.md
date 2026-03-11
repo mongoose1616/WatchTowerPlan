@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "feature_design_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T23:35:00Z"
+updated_at: "2026-03-11T20:38:54Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -51,7 +51,10 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - When an external topic already has a governed local reference under `docs/references/**`, cite that local reference as the repo-native lookup surface instead of scattering raw external URLs through the design body.
 - Treat repo-local entries in `Affected Surfaces` as authoritative relationship inputs for the machine-readable design-document index; prefer explicit repository paths or links that normalize to repository paths.
 - Include only the external sources that materially shaped the design. Omit that section when none were needed.
-- `Foundations References Applied` and `Internal Standards and Canonical References Applied` are optional, but when present they must explain the local implication of each cited source. Bare link lists are insufficient.
+- Publish `Foundations References Applied` and `Internal Standards and Canonical
+  References Applied` as required explained sections so the design's local
+  authority inputs stay explicit and machine-reviewable. Bare link lists are
+  insufficient.
 - `Implementation-Planning Handoff Notes`, `Dependencies`, and `Open Questions` are optional and should be omitted when they add no new information.
 - A body `Updated At` section is optional; front matter `updated_at` and the `Record Metadata` value remain the required anchors.
 
@@ -70,6 +73,8 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 | `Source Request` | Required | Record the request, issue, or planning input that triggered the design. |
 | `Scope and Feature Boundary` | Required | Define what the design covers and excludes. |
 | `Current-State Context` | Required | Describe current repository surfaces, constraints, or gaps that matter. |
+| `Foundations References Applied` | Required | Use `source: implication` bullets for the foundations documents that materially shape the design direction. |
+| `Internal Standards and Canonical References Applied` | Required | Use `source: implication` bullets for the standards, schemas, registries, or canonical surfaces that constrain the design. |
 | `Design Goals and Constraints` | Required | State the main goals, non-goals, and invariants. |
 | `Options Considered` | Required | Compare at least two meaningful approaches when tradeoffs exist. |
 | `Recommended Design` | Required | Describe the chosen architecture, flow, and failure behavior. |
@@ -81,8 +86,6 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 ### Optional sections for feature designs
 | Section | Use When |
 |---|---|
-| `Foundations References Applied` | A foundations document materially changes the local design direction. Each bullet should record `source: implication`. |
-| `Internal Standards and Canonical References Applied` | An internal standard, schema, registry, or canonical repo surface materially constrains the design. Each bullet should record `source: implication`. |
 | `External Sources Consulted` | An external primary source materially shaped the design. Each bullet should record what the source clarified, constrained, or justified. |
 | `Implementation-Planning Handoff Notes` | The implementation plan needs explicit follow-up notes beyond what the design already makes obvious. |
 | `Dependencies` | Real dependencies materially affect sequencing or feasibility. |
@@ -110,7 +113,8 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - Feature designs should contain the required sections in the documented order.
 - Feature-design front matter should validate against `feature_design_front_matter.v1.schema.json`.
 - The recommended design should be specific enough that an implementation plan can break it into concrete work without re-deciding the architecture.
-- Optional applied-reference sections should explain the implication of each cited source when present.
+- Required applied-reference sections should explain the implication of each cited
+  source.
 - `updated_at` in front matter and `Record Metadata` should match.
 - Repo-local `Affected Surfaces` entries should be specific enough that derived `related_paths` can represent the design footprint without reparsing additional prose.
 - Reviewers should reject feature designs that are only requirements capture, only task checklists, or missing the reasoning behind the recommendation.
@@ -130,4 +134,4 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - A good feature design reduces rework in implementation planning by making tradeoffs and guardrails explicit.
 
 ## Updated At
-- `2026-03-11T23:35:00Z`
+- `2026-03-11T20:38:54Z`

@@ -5015,6 +5015,414 @@
       "closure_reason": "Published the canonical planning catalog and authority map, aligned navigation guidance, and validated the full repository baseline"
     },
     {
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "title": "Planning Semantics and Decision Contract Alignment PRD",
+      "summary": "Align decision-record standards and templates with the enforced governed contract and extend shared document-semantics enforcement across governed planning documents.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T21:01:05Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.planning_semantics_and_decision_contract_alignment",
+          "title": "Planning Semantics and Decision Contract Alignment PRD",
+          "summary": "Align decision-record standards and templates with the enforced governed contract and extend shared document-semantics enforcement across governed planning documents.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
+          "updated_at": "2026-03-11T20:31:23Z",
+          "requirement_ids": [
+            "req.planning_semantics_and_decision_contract_alignment.001",
+            "req.planning_semantics_and_decision_contract_alignment.002",
+            "req.planning_semantics_and_decision_contract_alignment.003"
+          ],
+          "acceptance_ids": [
+            "ac.planning_semantics_and_decision_contract_alignment.001",
+            "ac.planning_semantics_and_decision_contract_alignment.002",
+            "ac.planning_semantics_and_decision_contract_alignment.003",
+            "ac.planning_semantics_and_decision_contract_alignment.004",
+            "ac.planning_semantics_and_decision_contract_alignment.005"
+          ],
+          "linked_decision_ids": [
+            "decision.planning_semantics_and_decision_contract_alignment_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.planning_semantics_and_decision_contract_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.planning_semantics_and_decision_contract_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.planning_semantics_and_decision_contract_alignment_direction",
+          "title": "Planning Semantics and Decision Contract Alignment Direction Decision",
+          "summary": "Records the accepted direction for converging decision-record authoring rules and shared Markdown semantics enforcement.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/planning_semantics_and_decision_contract_alignment_direction.md",
+          "updated_at": "2026-03-11T20:31:23Z",
+          "linked_prd_ids": [
+            "prd.planning_semantics_and_decision_contract_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.planning_semantics_and_decision_contract_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.planning_semantics_and_decision_contract_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.planning_semantics_and_decision_contract_alignment",
+          "family": "feature_design",
+          "title": "Planning Semantics and Decision Contract Alignment Feature Design",
+          "summary": "Defines the technical design boundary for converging decision-record authoring rules and shared Markdown semantics enforcement.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+          "updated_at": "2026-03-11T20:31:23Z"
+        },
+        {
+          "document_id": "design.implementation.planning_semantics_and_decision_contract_alignment",
+          "family": "implementation_plan",
+          "title": "Planning Semantics and Decision Contract Alignment Implementation Plan",
+          "summary": "Breaks the shared Markdown semantics and decision-record contract alignment work into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md",
+          "updated_at": "2026-03-11T20:31:23Z",
+          "source_paths": [
+            "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+            "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.planning_semantics_and_decision_contract_alignment.bootstrap.001",
+          "title": "Bootstrap Planning Semantics and Decision Contract Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Planning Semantics and Decision Contract Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/planning_semantics_and_decision_contract_alignment_bootstrap.md",
+          "updated_at": "2026-03-11T20:31:23Z",
+          "related_ids": [
+            "prd.planning_semantics_and_decision_contract_alignment",
+            "design.features.planning_semantics_and_decision_contract_alignment",
+            "design.implementation.planning_semantics_and_decision_contract_alignment",
+            "decision.planning_semantics_and_decision_contract_alignment_direction",
+            "contract.acceptance.planning_semantics_and_decision_contract_alignment",
+            "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+            "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001",
+            "task.planning_semantics_and_decision_contract_alignment.validation_closeout.001"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/decision_record_md_standard.md",
+            "docs/standards/documentation/feature_design_md_standard.md",
+            "docs/standards/documentation/implementation_plan_md_standard.md",
+            "docs/templates/decision_record_template.md",
+            "docs/templates/feature_design_template.md",
+            "docs/templates/implementation_plan_template.md",
+            "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+          ]
+        },
+        {
+          "task_id": "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+          "title": "Align planning authoring contracts with live enforcement",
+          "summary": "Update the decision-record, feature-design, and implementation-plan standards, templates, and regression coverage so authoring guidance matches the live required applied-reference sections.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "documentation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/align_planning_authoring_contracts_with_live_enforcement.md",
+          "updated_at": "2026-03-11T20:49:38Z",
+          "related_ids": [
+            "prd.planning_semantics_and_decision_contract_alignment",
+            "design.features.planning_semantics_and_decision_contract_alignment",
+            "design.implementation.planning_semantics_and_decision_contract_alignment",
+            "decision.planning_semantics_and_decision_contract_alignment_direction",
+            "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/decision_record_md_standard.md",
+            "docs/standards/documentation/feature_design_md_standard.md",
+            "docs/standards/documentation/implementation_plan_md_standard.md",
+            "docs/templates/decision_record_template.md",
+            "docs/templates/feature_design_template.md",
+            "docs/templates/implementation_plan_template.md",
+            "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py"
+          ]
+        },
+        {
+          "task_id": "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001",
+          "title": "Enforce shared heading-separation semantics across governed docs",
+          "summary": "Centralize the heading-after-list blank-line rule and apply it across governed planning, workflow, and companion sync parsing paths.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "bug",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/enforce_shared_heading_separation_semantics_across_governed_docs.md",
+          "updated_at": "2026-03-11T20:49:38Z",
+          "related_ids": [
+            "prd.planning_semantics_and_decision_contract_alignment",
+            "design.features.planning_semantics_and_decision_contract_alignment",
+            "design.implementation.planning_semantics_and_decision_contract_alignment",
+            "decision.planning_semantics_and_decision_contract_alignment_direction",
+            "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/documentation_semantics_standard.md",
+            "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
+            "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+            "core/python/tests/unit/test_decision_index_sync.py",
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/test_workflow_index_sync.py"
+          ]
+        },
+        {
+          "task_id": "task.planning_semantics_and_decision_contract_alignment.validation_closeout.001",
+          "title": "Validate and close Planning Semantics and Decision Contract Alignment",
+          "summary": "Refresh derived surfaces, rerun repository validation, publish acceptance evidence, reconcile stale regression fixtures that still encoded pre-hardening planning-document shapes, and close the traced initiative cleanly.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_planning_semantics_and_decision_contract_alignment.md",
+          "updated_at": "2026-03-11T21:00:02Z",
+          "depends_on": [
+            "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+            "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001"
+          ],
+          "related_ids": [
+            "prd.planning_semantics_and_decision_contract_alignment",
+            "design.features.planning_semantics_and_decision_contract_alignment",
+            "design.implementation.planning_semantics_and_decision_contract_alignment",
+            "decision.planning_semantics_and_decision_contract_alignment_direction",
+            "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+          ],
+          "applies_to": [
+            "docs/planning/",
+            "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json",
+            "core/control_plane/indexes/",
+            "core/python/tests/unit/test_design_document_index_sync.py"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.planning_semantics_and_decision_contract_alignment",
+          "title": "Planning Semantics and Decision Contract Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.planning_semantics_and_decision_contract_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.planning_semantics_and_decision_contract_alignment.001",
+            "ac.planning_semantics_and_decision_contract_alignment.002",
+            "ac.planning_semantics_and_decision_contract_alignment.003",
+            "ac.planning_semantics_and_decision_contract_alignment.004",
+            "ac.planning_semantics_and_decision_contract_alignment.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
+            "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_decision_index_sync.py",
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/test_workflow_index_sync.py",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/planning_semantics_and_decision_contract_alignment_direction.md",
+            "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+            "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
+            "docs/planning/tasks/closed/align_planning_authoring_contracts_with_live_enforcement.md",
+            "docs/planning/tasks/closed/enforce_shared_heading_separation_semantics_across_governed_docs.md",
+            "docs/planning/tasks/closed/planning_semantics_and_decision_contract_alignment_bootstrap.md",
+            "docs/planning/tasks/closed/validate_and_close_planning_semantics_and_decision_contract_alignment.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/documentation/decision_record_md_standard.md",
+            "docs/standards/documentation/documentation_semantics_standard.md",
+            "docs/standards/documentation/feature_design_md_standard.md",
+            "docs/standards/documentation/implementation_plan_md_standard.md",
+            "docs/templates/decision_record_template.md",
+            "docs/templates/feature_design_template.md",
+            "docs/templates/implementation_plan_template.md"
+          ],
+          "related_paths": [
+            "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+            "core/control_plane/indexes/tasks/task_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+            "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/governance/decision_capture_standard.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.planning_semantics_and_decision_contract_alignment.planning_baseline",
+          "title": "Planning Semantics and Decision Contract Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-11T20:54:10Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.planning_semantics_and_decision_contract_alignment.planning_baseline",
+            "check.planning_semantics_and_decision_contract_alignment.decision_authoring_contract",
+            "check.planning_semantics_and_decision_contract_alignment.design_authoring_contracts",
+            "check.planning_semantics_and_decision_contract_alignment.shared_markdown_semantics",
+            "check.planning_semantics_and_decision_contract_alignment.validation_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.planning_semantics_and_decision_contract_alignment.001",
+            "ac.planning_semantics_and_decision_contract_alignment.002",
+            "ac.planning_semantics_and_decision_contract_alignment.003",
+            "ac.planning_semantics_and_decision_contract_alignment.004",
+            "ac.planning_semantics_and_decision_contract_alignment.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.planning_semantics_and_decision_contract_alignment"
+      ],
+      "decision_ids": [
+        "decision.planning_semantics_and_decision_contract_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.planning_semantics_and_decision_contract_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.planning_semantics_and_decision_contract_alignment"
+      ],
+      "task_ids": [
+        "task.planning_semantics_and_decision_contract_alignment.bootstrap.001",
+        "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+        "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001",
+        "task.planning_semantics_and_decision_contract_alignment.validation_closeout.001"
+      ],
+      "requirement_ids": [
+        "req.planning_semantics_and_decision_contract_alignment.001",
+        "req.planning_semantics_and_decision_contract_alignment.002",
+        "req.planning_semantics_and_decision_contract_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.planning_semantics_and_decision_contract_alignment.001",
+        "ac.planning_semantics_and_decision_contract_alignment.002",
+        "ac.planning_semantics_and_decision_contract_alignment.003",
+        "ac.planning_semantics_and_decision_contract_alignment.004",
+        "ac.planning_semantics_and_decision_contract_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.planning_semantics_and_decision_contract_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_design_document_index_sync.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_workflow_index_sync.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/planning_semantics_and_decision_contract_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/align_planning_authoring_contracts_with_live_enforcement.md",
+        "docs/planning/tasks/closed/enforce_shared_heading_separation_semantics_across_governed_docs.md",
+        "docs/planning/tasks/closed/planning_semantics_and_decision_contract_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/templates/feature_design_template.md",
+        "docs/templates/implementation_plan_template.md"
+      ],
+      "tags": [
+        "bug",
+        "documentation",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-11T20:54:10Z for trace.planning_semantics_and_decision_contract_alignment.",
+      "closed_at": "2026-03-11T21:01:05Z",
+      "closure_reason": "Closed after aligning planning-document authoring contracts, extending shared markdown semantics enforcement, and reconciling stale regression fixtures discovered during full-suite validation."
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "title": "Pre-Implementation Repository Review and Hardening PRD",
       "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",

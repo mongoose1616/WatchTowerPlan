@@ -1,0 +1,155 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.planning_semantics_and_decision_contract_alignment.planning_baseline",
+  "title": "Planning Semantics and Decision Contract Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T21:01:23Z",
+  "source_prd_ids": [
+    "prd.planning_semantics_and_decision_contract_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.planning_semantics_and_decision_contract_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.planning_semantics_and_decision_contract_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.planning_semantics_and_decision_contract_alignment.planning_baseline",
+      "title": "Planning baseline is aligned for the standards-review trace",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/decisions/planning_semantics_and_decision_contract_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json",
+        "docs/planning/tasks/closed/planning_semantics_and_decision_contract_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_planning_authoring_contracts_with_live_enforcement.md",
+        "docs/planning/tasks/closed/enforce_shared_heading_separation_semantics_across_governed_docs.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_semantics_and_decision_contract_alignment.md"
+      ],
+      "subject_ids": [
+        "prd.planning_semantics_and_decision_contract_alignment",
+        "design.features.planning_semantics_and_decision_contract_alignment",
+        "design.implementation.planning_semantics_and_decision_contract_alignment",
+        "task.planning_semantics_and_decision_contract_alignment.bootstrap.001",
+        "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+        "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001",
+        "task.planning_semantics_and_decision_contract_alignment.validation_closeout.001",
+        "contract.acceptance.planning_semantics_and_decision_contract_alignment",
+        "decision.planning_semantics_and_decision_contract_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_semantics_and_decision_contract_alignment.001"
+      ],
+      "notes": "The trace now carries a real PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed planning-baseline evidence, and the bounded closed task set produced by the standards review."
+    },
+    {
+      "check_id": "check.planning_semantics_and_decision_contract_alignment.decision_authoring_contract",
+      "title": "Decision-record authoring contract matches live enforcement",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.planning_semantics_and_decision_contract_alignment.002"
+      ],
+      "notes": "The decision-record standard and template now require Applied References and Implications, and regression coverage fails closed if that section is treated as optional again."
+    },
+    {
+      "check_id": "check.planning_semantics_and_decision_contract_alignment.design_authoring_contracts",
+      "title": "Design-document authoring contracts require applied-reference sections",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/templates/feature_design_template.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.planning_semantics_and_decision_contract_alignment.003"
+      ],
+      "notes": "Feature-design and implementation-plan standards and templates now require the applied-reference sections already reflected in scaffolds and the live corpus, and semantic validation rejects their omission."
+    },
+    {
+      "check_id": "check.planning_semantics_and_decision_contract_alignment.shared_markdown_semantics",
+      "title": "Shared heading-separation semantics are enforced across validation and sync",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_workflow_index_sync.py"
+      ],
+      "subject_ids": [
+        "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001"
+      ],
+      "acceptance_ids": [
+        "ac.planning_semantics_and_decision_contract_alignment.004"
+      ],
+      "notes": "The shared heading-after-list helper now drives governed planning loaders plus workflow, standard, reference, and foundation sync paths, and focused regressions confirm both validation and sync reject the invalid Markdown shape."
+    },
+    {
+      "check_id": "check.planning_semantics_and_decision_contract_alignment.validation_baseline",
+      "title": "Repository validation baseline is green for the refreshed standards-review trace",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.planning_semantics_and_decision_contract_alignment",
+        "decision.planning_semantics_and_decision_contract_alignment_direction",
+        "design.features.planning_semantics_and_decision_contract_alignment",
+        "design.implementation.planning_semantics_and_decision_contract_alignment",
+        "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+        "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001",
+        "task.planning_semantics_and_decision_contract_alignment.validation_closeout.001",
+        "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+      ],
+      "acceptance_ids": [
+        "ac.planning_semantics_and_decision_contract_alignment.005"
+      ],
+      "notes": "watchtower-core sync all --write --format json, watchtower-core validate acceptance --trace-id trace.planning_semantics_and_decision_contract_alignment --format json, watchtower-core validate all --format json, pytest -q, python -m mypy src/watchtower_core, and ruff check passed after the standards-review fixes landed and the stale design-document index regression fixtures were reconciled with the hardened planning-document contract."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-11T21:01:23Z for trace.planning_semantics_and_decision_contract_alignment after initiative closeout and final validation alignment.",
+  "source_decision_ids": [
+    "decision.planning_semantics_and_decision_contract_alignment_direction"
+  ]
+}

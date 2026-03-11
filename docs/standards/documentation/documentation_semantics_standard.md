@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "documentation_semantics"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T20:38:54Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -43,15 +43,20 @@ Keep document-level validation fail closed on the small set of semantic rules th
 - Repo-local Markdown links may use repository-absolute or document-relative targets, but they should not escape the current repository root.
 - Pure fragment links and external URLs do not participate in repo-local existence checks.
 - Leave one blank line between the last item in a list block and the next heading.
+- Apply shared Markdown-semantic rules through common parsing helpers so
+  governed validation and derived sync surfaces do not disagree about the same
+  authored input.
 - Keep cross-family semantic rules here and keep family-specific structure or content rules in the narrower document-family standards.
 
 ## Operationalization
 - `Modes`: `validation`; `documentation`; `artifact`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_document_semantics.md`; `docs/commands/core_python/watchtower_core_validate_all.md`; `core/control_plane/registries/validators/validator_registry.v1.json`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/markdown_semantics.py`; `core/python/src/watchtower_core/repo_ops/planning_documents.py`; `core/python/src/watchtower_core/repo_ops/sync/workflow_index.py`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_document_semantics.md`; `docs/commands/core_python/watchtower_core_validate_all.md`; `core/control_plane/registries/validators/validator_registry.v1.json`
 
 ## Validation
 - `watchtower-core validate document-semantics` should fail when a repo-local Markdown link target does not exist.
 - `watchtower-core validate document-semantics` should fail when a heading immediately follows a list block without a blank separator line.
+- Governed Markdown loaders reused by sync or index rebuild surfaces should
+  reject the same invalid heading pattern instead of silently accepting it.
 - Family-specific semantic validators may add stricter rules, but they should not weaken these shared rules.
 - `watchtower-core validate all` should include document-semantics validation by default.
 
@@ -65,4 +70,4 @@ Keep document-level validation fail closed on the small set of semantic rules th
 - [commonmark_reference.md](/home/j/WatchTowerPlan/docs/references/commonmark_reference.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T20:38:54Z`

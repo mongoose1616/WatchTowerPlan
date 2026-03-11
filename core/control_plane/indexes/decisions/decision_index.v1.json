@@ -508,6 +508,49 @@
       ]
     },
     {
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "decision_id": "decision.planning_semantics_and_decision_contract_alignment_direction",
+      "title": "Planning Semantics and Decision Contract Alignment Direction Decision",
+      "summary": "Records the accepted direction for converging decision-record authoring rules and shared Markdown semantics enforcement.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/planning_semantics_and_decision_contract_alignment_direction.md",
+      "updated_at": "2026-03-11T20:31:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.planning_semantics_and_decision_contract_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_semantics_and_decision_contract_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_semantics_and_decision_contract_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/templates/feature_design_template.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "decision_id": "decision.preimplementation_machine_coordination_entrypoint",
       "title": "Machine Coordination Entrypoint Decision",

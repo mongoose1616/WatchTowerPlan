@@ -18,6 +18,9 @@ from watchtower_core.adapters import (
     split_semicolon_list,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.markdown_semantics import (
+    validate_blank_line_before_heading_after_list,
+)
 
 PRD_REQUIRED_SECTIONS = (
     "Summary",
@@ -61,10 +64,11 @@ FEATURE_DESIGN_REQUIRED_SECTIONS = (
     "Risks",
     "References",
 )
-FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS = (
+FEATURE_DESIGN_REQUIRED_EXPLAINED_SECTIONS = (
     "Foundations References Applied",
     "Internal Standards and Canonical References Applied",
 )
+FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS: tuple[str, ...] = ()
 
 IMPLEMENTATION_PLAN_REQUIRED_SECTIONS = (
     "Summary",
@@ -77,9 +81,10 @@ IMPLEMENTATION_PLAN_REQUIRED_SECTIONS = (
     "Validation Plan",
     "References",
 )
-IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS = (
+IMPLEMENTATION_PLAN_REQUIRED_EXPLAINED_SECTIONS = (
     "Internal Standards and Canonical References Applied",
 )
+IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS: tuple[str, ...] = ()
 
 
 def ordered_unique(*groups: tuple[str, ...]) -> tuple[str, ...]:
@@ -214,6 +219,7 @@ def load_governed_document(
     loader.schema_store.validate_instance(front_matter, schema_id=schema_id)
 
     markdown = load_markdown_body(path)
+    validate_blank_line_before_heading_after_list(relative_path, markdown)
     visible_title = extract_title(markdown)
     sections = extract_sections(markdown)
     if "Record Metadata" not in sections:

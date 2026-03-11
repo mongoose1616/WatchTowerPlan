@@ -22,6 +22,7 @@ aliases:
 > Keep front matter valid against the governed feature-design front matter profile and keep `updated_at` aligned with the `Record Metadata` block below.
 > Keep the document focused on one feature or narrowly related capability.
 > Record the recommended design, its tradeoffs, and the implementation guardrails without turning the document into a task checklist.
+> Publish `Foundations References Applied` and `Internal Standards and Canonical References Applied` as explained `source: implication` sections.
 > Add optional sections only when they materially clarify the design.
 
 ## Record Metadata
@@ -46,6 +47,12 @@ aliases:
 ## Current-State Context
 - <Relevant codebase, control-plane, workflow, or documentation context.>
 - <Current gaps or constraints that shape the design.>
+
+## Foundations References Applied
+- <Foundations source>: <Why it changes this design.>
+
+## Internal Standards and Canonical References Applied
+- <Internal authority>: <Why it constrains this design.>
 
 ## Design Goals and Constraints
 - <Primary design goal.>
@@ -94,8 +101,6 @@ aliases:
 
 ## Optional Sections
 Add only when they materially improve the design:
-- `Foundations References Applied` using `source: implication` bullets
-- `Internal Standards and Canonical References Applied` using `source: implication` bullets
 - `External Sources Consulted`
 - `Implementation-Planning Handoff Notes`
 - `Dependencies`

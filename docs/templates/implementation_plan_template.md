@@ -23,6 +23,7 @@ aliases:
 > Keep the plan focused on one implementation slice or tightly related execution package.
 > Record the technical approach, work breakdown, validation plan, and rollout expectations without turning the document into commit-by-commit notes.
 > Keep at least one traceable repo-local source surface across `Source Designs`, `Linked PRDs`, or repo-local references in `Source Request or Design`; `Source Designs` may be `None` only when another traceable source remains.
+> Publish `Internal Standards and Canonical References Applied` as an explained `source: implication` section.
 > Add optional sections only when they materially clarify execution.
 
 ## Record Metadata
@@ -49,6 +50,9 @@ aliases:
 - <Hard constraint the implementation must preserve.>
 - <Assumption that shapes the work breakdown.>
 
+## Internal Standards and Canonical References Applied
+- <Internal authority>: <Why it constrains this implementation.>
+
 ## Proposed Technical Approach
 - <High-level implementation structure and module or artifact boundaries.>
 - <How the plan composes with existing repository surfaces.>
@@ -71,7 +75,6 @@ aliases:
 ## Optional Sections
 Add only when they materially improve execution clarity:
 - `Current-State Context`
-- `Internal Standards and Canonical References Applied` using `source: implication` bullets
 - `Dependencies`
 - `Rollout or Migration Plan`
 - `Open Questions`

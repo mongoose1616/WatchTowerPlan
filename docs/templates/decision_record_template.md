@@ -44,6 +44,9 @@ aliases:
 ## Current Context and Constraints
 - <Constraint or current-state fact>
 
+## Applied References and Implications
+- <Reference or authority>: <Why it affects this decision.>
+
 ## Affected Surfaces
 - <PRD, design, plan, standard, workflow, or implementation path affected>
 
@@ -75,6 +78,5 @@ aliases:
 
 ## Optional Sections
 Add only when they materially improve the decision record:
-- `Applied References and Implications` using `source: implication` bullets
 - `Open Questions`
 - `Supersession`

@@ -1166,7 +1166,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/decision_record_md_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-11T20:38:54Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1208,7 +1208,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/documentation_semantics_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-11T20:38:54Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1217,6 +1217,9 @@
         "artifact"
       ],
       "operationalization_paths": [
+        "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "docs/commands/core_python/watchtower_core_validate_document_semantics.md",
         "docs/commands/core_python/watchtower_core_validate_all.md",
@@ -1259,7 +1262,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/feature_design_md_standard.md",
-      "updated_at": "2026-03-11T23:35:00Z",
+      "updated_at": "2026-03-11T20:38:54Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1342,7 +1345,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/implementation_plan_md_standard.md",
-      "updated_at": "2026-03-11T23:35:00Z",
+      "updated_at": "2026-03-11T20:38:54Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

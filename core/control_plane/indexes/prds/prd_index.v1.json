@@ -619,6 +619,48 @@
       ]
     },
     {
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "prd_id": "prd.planning_semantics_and_decision_contract_alignment",
+      "title": "Planning Semantics and Decision Contract Alignment PRD",
+      "summary": "Align decision-record standards and templates with the enforced governed contract and extend shared document-semantics enforcement across governed planning documents.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
+      "updated_at": "2026-03-11T20:31:23Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.planning_semantics_and_decision_contract_alignment.001",
+        "req.planning_semantics_and_decision_contract_alignment.002",
+        "req.planning_semantics_and_decision_contract_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.planning_semantics_and_decision_contract_alignment.001",
+        "ac.planning_semantics_and_decision_contract_alignment.002",
+        "ac.planning_semantics_and_decision_contract_alignment.003",
+        "ac.planning_semantics_and_decision_contract_alignment.004",
+        "ac.planning_semantics_and_decision_contract_alignment.005"
+      ],
+      "linked_decision_ids": [
+        "decision.planning_semantics_and_decision_contract_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_semantics_and_decision_contract_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_semantics_and_decision_contract_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/templates/feature_design_template.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ]
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "prd_id": "prd.preimplementation_repo_review_and_hardening",
       "title": "Pre-Implementation Repository Review and Hardening PRD",

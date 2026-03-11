@@ -209,88 +209,88 @@ def _write_decision_fixture(
     include_applied_references: bool,
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    applied_references_section = (
-        """
-        ## Applied References and Implications
-        - docs/standards/governance/decision_capture_standard.md: keeps the
-          decision aligned with the governed repository rule.
-
-        """
-        if include_applied_references
-        else ""
+    lines = [
+        "---",
+        "trace_id: trace.example_decision_semantics",
+        "id: decision.example_decision_semantics",
+        "title: Example Decision Semantics",
+        "summary: Exercises the decision semantic validator.",
+        "type: decision_record",
+        "status: active",
+        "owner: repository_maintainer",
+        "updated_at: '2026-03-11T17:05:00Z'",
+        "audience: shared",
+        "authority: supporting",
+        "---",
+        "",
+        "# Example Decision Semantics",
+        "",
+        "## Record Metadata",
+        "- `Trace ID`: `trace.example_decision_semantics`",
+        "- `Decision ID`: `decision.example_decision_semantics`",
+        "- `Record Status`: `active`",
+        "- `Decision Status`: `accepted`",
+        "- `Linked PRDs`: `None`",
+        "- `Linked Designs`: `None`",
+        "- `Linked Implementation Plans`: `None`",
+        "- `Updated At`: `2026-03-11T17:05:00Z`",
+        "",
+        "## Summary",
+        "Exercises the decision semantic validator.",
+        "",
+        "## Decision Statement",
+        "Keep the example small and deterministic.",
+        "",
+        "## Trigger or Source Request",
+        "- Added for semantic validation coverage.",
+        "",
+        "## Current Context and Constraints",
+        "- The example fixture must be valid apart from the targeted issue.",
+        "",
+    ]
+    if include_applied_references:
+        lines.extend(
+            (
+                "## Applied References and Implications",
+                "- docs/standards/governance/decision_capture_standard.md: keeps the decision "
+                "aligned with the governed repository rule.",
+                "",
+            )
+        )
+    lines.extend(
+        (
+            "## Affected Surfaces",
+            "- `docs/planning/decisions/example_decision_semantics.md`",
+            "",
+            "## Options Considered",
+            "### Option 1",
+            "- Minimal fixture.",
+            "- Strength.",
+            "- Tradeoff.",
+            "",
+            "### Option 2",
+            "- Larger fixture.",
+            "- Strength.",
+            "- Tradeoff.",
+            "",
+            "## Chosen Outcome",
+            "Use the minimal fixture.",
+            "",
+            "## Rationale and Tradeoffs",
+            "- Small fixture: easier to keep deterministic.",
+            "",
+            "## Consequences and Follow-Up Impacts",
+            "- Tests will fail only for the intended issue.",
+            "",
+            "## Risks, Dependencies, and Assumptions",
+            "- The validator rules stay aligned with governed decision expectations.",
+            "",
+            "## References",
+            "- docs/standards/governance/decision_capture_standard.md",
+            "",
+        )
     )
-    path.write_text(
-        dedent(
-            f"""\
-            ---
-            trace_id: trace.example_decision_semantics
-            id: decision.example_decision_semantics
-            title: Example Decision Semantics
-            summary: Exercises the decision semantic validator.
-            type: decision_record
-            status: active
-            owner: repository_maintainer
-            updated_at: '2026-03-11T17:05:00Z'
-            audience: shared
-            authority: supporting
-            ---
-
-            # Example Decision Semantics
-
-            ## Record Metadata
-            - `Trace ID`: `trace.example_decision_semantics`
-            - `Decision ID`: `decision.example_decision_semantics`
-            - `Record Status`: `active`
-            - `Decision Status`: `accepted`
-            - `Linked PRDs`: `None`
-            - `Linked Designs`: `None`
-            - `Linked Implementation Plans`: `None`
-            - `Updated At`: `2026-03-11T17:05:00Z`
-
-            ## Summary
-            Exercises the decision semantic validator.
-
-            ## Decision Statement
-            Keep the example small and deterministic.
-
-            ## Trigger or Source Request
-            - Added for semantic validation coverage.
-
-            ## Current Context and Constraints
-            - The example fixture must be valid apart from the targeted issue.
-
-            {applied_references_section}## Affected Surfaces
-            - `docs/planning/decisions/example_decision_semantics.md`
-
-            ## Options Considered
-            ### Option 1
-            - Minimal fixture.
-            - Strength.
-            - Tradeoff.
-
-            ### Option 2
-            - Larger fixture.
-            - Strength.
-            - Tradeoff.
-
-            ## Chosen Outcome
-            Use the minimal fixture.
-
-            ## Rationale and Tradeoffs
-            - Small fixture: easier to keep deterministic.
-
-            ## Consequences and Follow-Up Impacts
-            - Tests will fail only for the intended issue.
-
-            ## Risks, Dependencies, and Assumptions
-            - The validator rules stay aligned with governed decision expectations.
-
-            ## References
-            - docs/standards/governance/decision_capture_standard.md
-            """
-        ),
-        encoding="utf-8",
-    )
+    path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def test_document_semantics_validation_auto_selects_workflow_validator() -> None:
@@ -340,6 +340,73 @@ def test_document_semantics_validation_rejects_heading_after_list_without_blank_
     result = service.validate("docs/standards/documentation/example_standard.md")
 
     assert result.passed is False
+    assert result.issue_count == 1
+    assert "separated from the preceding list by a blank line" in result.issues[0].message
+
+
+def test_document_semantics_validation_rejects_heading_after_list_without_blank_line_in_decision(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    decision_path = repo_root / "docs/planning/decisions/example_decision_semantics.md"
+    _write_decision_fixture(decision_path, include_applied_references=True)
+    decision_path.write_text(
+        decision_path.read_text(encoding="utf-8").replace(
+            "coverage.\n\n## Current Context and Constraints",
+            "coverage.\n## Current Context and Constraints",
+        ),
+        encoding="utf-8",
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/planning/decisions/example_decision_semantics.md")
+
+    assert result.passed is False
+    assert result.validator_id == "validator.documentation.decision_record_semantics"
+    assert result.issue_count == 1
+    assert "separated from the preceding list by a blank line" in result.issues[0].message
+
+
+def test_document_semantics_validation_rejects_heading_after_list_without_blank_line_in_workflow(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    workflow_path = repo_root / "workflows/modules/code_validation.md"
+    workflow_path.parent.mkdir(parents=True, exist_ok=True)
+    workflow_path.write_text(
+        dedent(
+            """\
+            # Code Validation Workflow
+
+            ## Purpose
+            Use this workflow to test blank-line heading separation for workflows.
+
+            ## Use When
+            - Validating workflow semantics.
+
+            ## Inputs
+            - One example request.
+            ## Workflow
+            1. Run the workflow semantic check.
+
+            ## Data Structure
+            - One workflow fixture.
+
+            ## Outputs
+            - One validation result.
+
+            ## Done When
+            - The workflow fails for the expected heading-separation reason.
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("workflows/modules/code_validation.md")
+
+    assert result.passed is False
+    assert result.validator_id == "validator.documentation.workflow_semantics"
     assert result.issue_count == 1
     assert "separated from the preceding list by a blank line" in result.issues[0].message
 
@@ -489,5 +556,184 @@ def test_document_semantics_validation_rejects_missing_decision_applied_referenc
     assert result.validator_id == "validator.documentation.decision_record_semantics"
     assert result.issue_count == 1
     assert "missing required sections: Applied References and Implications" in (
+        result.issues[0].message
+    )
+
+
+def test_document_semantics_validation_rejects_missing_feature_design_applied_references(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    feature_path = repo_root / "docs/planning/design/features/example_feature_semantics.md"
+    feature_path.parent.mkdir(parents=True, exist_ok=True)
+    feature_path.write_text(
+        dedent(
+            """\
+            ---
+            trace_id: trace.example_feature_semantics
+            id: design.features.example_feature_semantics
+            title: Example Feature Semantics
+            summary: Exercises the feature-design semantic validator.
+            type: feature_design
+            status: active
+            owner: repository_maintainer
+            updated_at: '2026-03-11T20:38:54Z'
+            audience: shared
+            authority: authoritative
+            ---
+
+            # Example Feature Semantics
+
+            ## Record Metadata
+            - `Trace ID`: `trace.example_feature_semantics`
+            - `Design ID`: `design.features.example_feature_semantics`
+            - `Design Status`: `active`
+            - `Linked PRDs`: `None`
+            - `Linked Decisions`: `None`
+            - `Linked Implementation Plans`: `None`
+            - `Updated At`: `2026-03-11T20:38:54Z`
+
+            ## Summary
+            Exercises the feature-design semantic validator.
+
+            ## Source Request
+            - Added for semantic validation coverage.
+
+            ## Scope and Feature Boundary
+            - Covers one feature-design fixture.
+
+            ## Current-State Context
+            - The example is valid apart from the targeted missing sections.
+
+            ## Design Goals and Constraints
+            - Keep the fixture small and deterministic.
+
+            ## Options Considered
+            ### Option 1
+            - Minimal fixture.
+            - Strength.
+            - Tradeoff.
+
+            ### Option 2
+            - Larger fixture.
+            - Strength.
+            - Tradeoff.
+
+            ## Recommended Design
+            ### Architecture
+            - Use the minimal fixture.
+
+            ### Data and Interface Impacts
+            - None beyond the semantic validator.
+
+            ### Execution Flow
+            1. Write the fixture.
+            2. Run validation.
+            3. Confirm the missing-section failure.
+
+            ### Invariants and Failure Cases
+            - The validator should fail for the missing applied-reference sections.
+
+            ## Affected Surfaces
+            - docs/planning/design/features/example_feature_semantics.md
+
+            ## Design Guardrails
+            - Keep the fixture deterministic.
+
+            ## Risks
+            - The validator could drift from the authored contract.
+
+            ## References
+            - docs/standards/documentation/feature_design_md_standard.md
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/planning/design/features/example_feature_semantics.md")
+
+    assert result.passed is False
+    assert result.validator_id == "validator.documentation.feature_design_semantics"
+    assert result.issue_count == 1
+    assert "missing required section: Foundations References Applied" in (
+        result.issues[0].message
+    )
+
+
+def test_document_semantics_validation_rejects_missing_implementation_plan_applied_references(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    plan_path = repo_root / "docs/planning/design/implementation/example_plan_semantics.md"
+    plan_path.parent.mkdir(parents=True, exist_ok=True)
+    plan_path.write_text(
+        dedent(
+            """\
+            ---
+            trace_id: trace.example_plan_semantics
+            id: design.implementation.example_plan_semantics
+            title: Example Implementation Plan Semantics
+            summary: Exercises the implementation-plan semantic validator.
+            type: implementation_plan
+            status: active
+            owner: repository_maintainer
+            updated_at: '2026-03-11T20:38:54Z'
+            audience: shared
+            authority: supporting
+            ---
+
+            # Example Implementation Plan Semantics
+
+            ## Record Metadata
+            - `Trace ID`: `trace.example_plan_semantics`
+            - `Plan ID`: `design.implementation.example_plan_semantics`
+            - `Plan Status`: `active`
+            - `Linked PRDs`: `None`
+            - `Linked Decisions`: `None`
+            - `Source Designs`: `design.features.example_feature_semantics`
+            - `Linked Acceptance Contracts`: `None`
+            - `Updated At`: `2026-03-11T20:38:54Z`
+
+            ## Summary
+            Exercises the implementation-plan semantic validator.
+
+            ## Source Request or Design
+            - docs/planning/design/features/example_feature_semantics.md
+
+            ## Scope Summary
+            - Covers one implementation-plan fixture.
+
+            ## Assumptions and Constraints
+            - Keep the fixture small and deterministic.
+
+            ## Proposed Technical Approach
+            - Use the minimal fixture.
+
+            ## Work Breakdown
+            1. Write the fixture.
+            2. Run validation.
+            3. Confirm the missing-section failure.
+
+            ## Risks
+            - The validator could drift from the authored contract.
+
+            ## Validation Plan
+            - Run the semantic validator.
+
+            ## References
+            - docs/standards/documentation/implementation_plan_md_standard.md
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/planning/design/implementation/example_plan_semantics.md")
+
+    assert result.passed is False
+    assert result.validator_id == "validator.documentation.implementation_plan_semantics"
+    assert result.issue_count == 1
+    assert "missing required section: Internal Standards and Canonical References Applied" in (
         result.issues[0].message
     )

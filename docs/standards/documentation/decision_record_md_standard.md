@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "decision_record_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T20:38:54Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,7 +50,10 @@ Keep decision records consistent enough that rationale, status, affected surface
   - `Record Status`, which follows the governed lifecycle vocabulary
   - `Decision Status`, which captures the outcome state such as `proposed` or `accepted`
 - Link the decision to affected PRDs, designs, plans, or paths when they exist.
-- When internal standards, foundation docs, or local references materially shaped the chosen outcome, record them in `Applied References and Implications` using `source: implication` bullets.
+- Publish `Applied References and Implications` as a required section using
+  `source: implication` bullets. At minimum, cite the internal standards,
+  foundations, references, or canonical repository documents that materially
+  constrained the chosen outcome.
 - Keep the decision record focused on the decision boundary and its tradeoffs rather than restating broad repository background.
 - A body `Updated At` section is optional; front matter `updated_at` and the `Record Metadata` value remain the required anchors.
 - Update the decision tracker and machine-readable decision index in the same change set when a decision record changes materially.
@@ -71,6 +74,7 @@ Keep decision records consistent enough that rationale, status, affected surface
 | `Decision Statement` | Required | State the decision in one clear sentence. |
 | `Trigger or Source Request` | Required | Record what prompted the decision. |
 | `Current Context and Constraints` | Required | Summarize the current state that shaped the decision. |
+| `Applied References and Implications` | Required | Use `source: implication` bullets that explain which authorities materially constrained the chosen outcome. |
 | `Affected Surfaces` | Required | Identify the PRDs, designs, plans, or paths affected. |
 | `Options Considered` | Required | Record the viable options and tradeoffs. |
 | `Chosen Outcome` | Required | Record the recommended or accepted outcome. |
@@ -82,7 +86,6 @@ Keep decision records consistent enough that rationale, status, affected surface
 ### Optional sections for decision records
 | Section | Use When |
 |---|---|
-| `Applied References and Implications` | A cited authority materially shaped the chosen outcome. Use `source: implication` bullets rather than bare links. |
 | `Open Questions` | A real unresolved question remains. |
 | `Supersession` | The decision supersedes or is superseded by another decision. |
 
@@ -100,7 +103,8 @@ Keep decision records consistent enough that rationale, status, affected surface
 - Decision records should contain the required sections in the documented order.
 - The decision boundary and current status should be easy to identify without reading the full document.
 - Affected upstream and downstream planning artifacts should be linked when they exist.
-- `Applied References and Implications` should explain what each cited authority changed locally when the section is present.
+- `Applied References and Implications` should always be present and should explain
+  what each cited authority changed locally.
 - Reviewers should reject decision records that capture multiple unrelated decisions or omit the outcome state.
 
 ## Change Control
@@ -113,4 +117,4 @@ Keep decision records consistent enough that rationale, status, affected surface
 - [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T20:38:54Z`

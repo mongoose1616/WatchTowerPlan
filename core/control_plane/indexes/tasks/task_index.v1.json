@@ -1249,6 +1249,134 @@
       ]
     },
     {
+      "task_id": "task.planning_semantics_and_decision_contract_alignment.bootstrap.001",
+      "title": "Bootstrap Planning Semantics and Decision Contract Alignment planning chain",
+      "summary": "Bootstraps the initial planning chain for Planning Semantics and Decision Contract Alignment.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/planning_semantics_and_decision_contract_alignment_bootstrap.md",
+      "updated_at": "2026-03-11T20:31:23Z",
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "related_ids": [
+        "prd.planning_semantics_and_decision_contract_alignment",
+        "design.features.planning_semantics_and_decision_contract_alignment",
+        "design.implementation.planning_semantics_and_decision_contract_alignment",
+        "decision.planning_semantics_and_decision_contract_alignment_direction",
+        "contract.acceptance.planning_semantics_and_decision_contract_alignment",
+        "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+        "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001",
+        "task.planning_semantics_and_decision_contract_alignment.validation_closeout.001"
+      ],
+      "applies_to": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/templates/feature_design_template.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ]
+    },
+    {
+      "task_id": "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+      "title": "Align planning authoring contracts with live enforcement",
+      "summary": "Update the decision-record, feature-design, and implementation-plan standards, templates, and regression coverage so authoring guidance matches the live required applied-reference sections.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/align_planning_authoring_contracts_with_live_enforcement.md",
+      "updated_at": "2026-03-11T20:49:38Z",
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "related_ids": [
+        "prd.planning_semantics_and_decision_contract_alignment",
+        "design.features.planning_semantics_and_decision_contract_alignment",
+        "design.implementation.planning_semantics_and_decision_contract_alignment",
+        "decision.planning_semantics_and_decision_contract_alignment_direction",
+        "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+      ],
+      "applies_to": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/templates/feature_design_template.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ]
+    },
+    {
+      "task_id": "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001",
+      "title": "Enforce shared heading-separation semantics across governed docs",
+      "summary": "Centralize the heading-after-list blank-line rule and apply it across governed planning, workflow, and companion sync parsing paths.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/enforce_shared_heading_separation_semantics_across_governed_docs.md",
+      "updated_at": "2026-03-11T20:49:38Z",
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "related_ids": [
+        "prd.planning_semantics_and_decision_contract_alignment",
+        "design.features.planning_semantics_and_decision_contract_alignment",
+        "design.implementation.planning_semantics_and_decision_contract_alignment",
+        "decision.planning_semantics_and_decision_contract_alignment_direction",
+        "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+      ],
+      "applies_to": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_workflow_index_sync.py"
+      ]
+    },
+    {
+      "task_id": "task.planning_semantics_and_decision_contract_alignment.validation_closeout.001",
+      "title": "Validate and close Planning Semantics and Decision Contract Alignment",
+      "summary": "Refresh derived surfaces, rerun repository validation, publish acceptance evidence, reconcile stale regression fixtures that still encoded pre-hardening planning-document shapes, and close the traced initiative cleanly.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_planning_semantics_and_decision_contract_alignment.md",
+      "updated_at": "2026-03-11T21:00:02Z",
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "depends_on": [
+        "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001",
+        "task.planning_semantics_and_decision_contract_alignment.shared_heading_semantics.001"
+      ],
+      "related_ids": [
+        "prd.planning_semantics_and_decision_contract_alignment",
+        "design.features.planning_semantics_and_decision_contract_alignment",
+        "design.implementation.planning_semantics_and_decision_contract_alignment",
+        "decision.planning_semantics_and_decision_contract_alignment_direction",
+        "contract.acceptance.planning_semantics_and_decision_contract_alignment"
+      ],
+      "applies_to": [
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/planning_semantics_and_decision_contract_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json",
+        "core/control_plane/indexes/",
+        "core/python/tests/unit/test_design_document_index_sync.py"
+      ]
+    },
+    {
       "task_id": "task.preimplementation_repo_review_and_hardening.bootstrap.001",
       "title": "Bootstrap the pre-implementation repo review and hardening initiative",
       "summary": "Creates the traced planning chain, decision record, acceptance baseline, and bounded execution task set for the full pre-implementation repository review and hardening pass.",

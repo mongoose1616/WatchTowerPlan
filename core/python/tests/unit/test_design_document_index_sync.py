@@ -10,6 +10,25 @@ from watchtower_core.repo_ops.sync import DesignDocumentIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
+FEATURE_DESIGN_REQUIRED_REFERENCE_SECTIONS = """\
+
+            ## Foundations References Applied
+            - `docs/references/commonmark_reference.md`: The fixture keeps the Markdown
+              structure aligned with the governed parsing rules.
+
+            ## Internal Standards and Canonical References Applied
+            - `docs/standards/documentation/feature_design_md_standard.md`: The fixture
+              stays aligned with the enforced feature-design authoring contract.
+"""
+
+IMPLEMENTATION_PLAN_REQUIRED_REFERENCE_SECTIONS = """\
+
+            ## Internal Standards and Canonical References Applied
+            - `docs/standards/documentation/implementation_plan_md_standard.md`: The
+              fixture stays aligned with the enforced implementation-plan authoring
+              contract.
+"""
+
 
 def test_design_document_index_sync_builds_schema_valid_document() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
@@ -123,7 +142,7 @@ def test_design_document_index_sync_projects_feature_design_affected_surfaces(
     feature_path.parent.mkdir(parents=True, exist_ok=True)
     feature_path.write_text(
         dedent(
-            """\
+            f"""\
             ---
             trace_id: trace.design_index_fixture
             id: design.features.design_index_fixture
@@ -163,6 +182,7 @@ def test_design_document_index_sync_projects_feature_design_affected_surfaces(
             ## Design Goals and Constraints
             - Preserve normalized repository-relative paths.
 
+            {FEATURE_DESIGN_REQUIRED_REFERENCE_SECTIONS}
             ## Options Considered
             ### Option 1
             - Keep the current omission.
@@ -215,7 +235,7 @@ def test_design_document_index_sync_accepts_prd_and_repo_local_source_paths(
     plan_path.parent.mkdir(parents=True, exist_ok=True)
     plan_path.write_text(
         dedent(
-            """\
+            f"""\
             ---
             trace_id: trace.design_index_fixture
             id: design.implementation.design_index_fixture
@@ -254,6 +274,7 @@ def test_design_document_index_sync_accepts_prd_and_repo_local_source_paths(
             ## Assumptions and Constraints
             - The implementation plan is driven by a PRD and one repo-local source path.
 
+            {IMPLEMENTATION_PLAN_REQUIRED_REFERENCE_SECTIONS}
             ## Proposed Technical Approach
             - Derive source paths from the linked PRD and the repo-local source path.
 
@@ -292,7 +313,7 @@ def test_design_document_index_sync_rejects_implementation_plan_without_traceabl
     plan_path.parent.mkdir(parents=True, exist_ok=True)
     plan_path.write_text(
         dedent(
-            """\
+            f"""\
             ---
             trace_id: trace.design_index_fixture
             id: design.implementation.design_index_fixture
@@ -330,6 +351,7 @@ def test_design_document_index_sync_rejects_implementation_plan_without_traceabl
             ## Assumptions and Constraints
             - No source design or PRD is linked.
 
+            {IMPLEMENTATION_PLAN_REQUIRED_REFERENCE_SECTIONS}
             ## Proposed Technical Approach
             - Build the design index.
 

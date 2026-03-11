@@ -18,6 +18,9 @@ from watchtower_core.adapters import (
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.markdown_semantics import (
+    validate_blank_line_before_heading_after_list,
+)
 from watchtower_core.repo_ops.planning_documents import (
     ordered_unique,
     validate_required_section_order,
@@ -95,6 +98,7 @@ class FoundationIndexSyncService:
             )
 
             markdown = load_markdown_body(path)
+            validate_blank_line_before_heading_after_list(relative_path, markdown)
             visible_title = extract_title(markdown)
             if visible_title != front_matter["title"]:
                 raise ValueError(

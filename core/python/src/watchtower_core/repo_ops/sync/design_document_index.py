@@ -12,8 +12,10 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.planning_documents import (
     FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS,
+    FEATURE_DESIGN_REQUIRED_EXPLAINED_SECTIONS,
     FEATURE_DESIGN_REQUIRED_SECTIONS,
     IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS,
+    IMPLEMENTATION_PLAN_REQUIRED_EXPLAINED_SECTIONS,
     IMPLEMENTATION_PLAN_REQUIRED_SECTIONS,
     PRD_OPTIONAL_EXPLAINED_SECTIONS,
     PRD_REQUIRED_SECTIONS,
@@ -188,6 +190,9 @@ class DesignDocumentIndexSyncService:
                         id_label="Design ID",
                         status_label="Design Status",
                         required_sections=FEATURE_DESIGN_REQUIRED_SECTIONS,
+                        required_explained_sections=(
+                            FEATURE_DESIGN_REQUIRED_EXPLAINED_SECTIONS
+                        ),
                         optional_explained_sections=FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS,
                     ),
                 )
@@ -208,6 +213,9 @@ class DesignDocumentIndexSyncService:
                         id_label="Plan ID",
                         status_label="Plan Status",
                         required_sections=IMPLEMENTATION_PLAN_REQUIRED_SECTIONS,
+                        required_explained_sections=(
+                            IMPLEMENTATION_PLAN_REQUIRED_EXPLAINED_SECTIONS
+                        ),
                         optional_explained_sections=(
                             IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS
                         ),

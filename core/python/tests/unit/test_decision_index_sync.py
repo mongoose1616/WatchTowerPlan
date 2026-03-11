@@ -5,6 +5,8 @@ from pathlib import Path
 from shutil import copytree
 from textwrap import dedent
 
+import pytest
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.sync import DecisionIndexSyncService
 
@@ -148,3 +150,100 @@ def test_decision_index_sync_normalizes_document_relative_affected_surfaces(
         if entry["decision_id"] == "decision.relative_decision_index"
     )
     assert entry["related_paths"] == ["docs/templates/"]
+
+
+def test_decision_index_sync_rejects_heading_after_list_without_blank_line(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    decision_path = repo_root / "docs/planning/decisions/invalid_spacing_decision.md"
+    decision_path.parent.mkdir(parents=True, exist_ok=True)
+    decision_path.write_text(
+        dedent(
+            """\
+            ---
+            trace_id: trace.invalid_spacing_decision_index
+            id: decision.invalid_spacing_decision_index
+            title: Invalid Spacing Decision Index Coverage
+            summary: Reproduces heading separation enforcement for decision index sync.
+            type: decision_record
+            status: active
+            owner: repository_maintainer
+            updated_at: '2026-03-11T20:38:54Z'
+            audience: shared
+            authority: supporting
+            ---
+
+            # Invalid Spacing Decision Index Coverage
+
+            ## Record Metadata
+            - `Trace ID`: `trace.invalid_spacing_decision_index`
+            - `Decision ID`: `decision.invalid_spacing_decision_index`
+            - `Record Status`: `active`
+            - `Decision Status`: `accepted`
+            - `Linked PRDs`: `None`
+            - `Linked Designs`: `None`
+            - `Linked Implementation Plans`: `None`
+            - `Updated At`: `2026-03-11T20:38:54Z`
+
+            ## Summary
+            Reproduces heading separation enforcement for decision index sync.
+
+            ## Decision Statement
+            Shared sync should reject headings that follow list blocks without a blank line.
+
+            ## Trigger or Source Request
+            - Added to cover shared Markdown semantics in sync.
+            ## Current Context and Constraints
+            - Decision-index sync loads governed decision records directly.
+
+            ## Applied References and Implications
+            - `docs/standards/documentation/decision_record_md_standard.md`: the
+              decision record shape stays governed during sync.
+
+            ## Affected Surfaces
+            - docs/planning/decisions/invalid_spacing_decision.md
+
+            ## Options Considered
+            ### Option 1
+            - Keep the invalid spacing.
+            - Strength: reproduces the bug.
+            - Tradeoff: sync would accept malformed Markdown.
+
+            ### Option 2
+            - Reject the malformed spacing.
+            - Strength: sync and validation stay aligned.
+            - Tradeoff: authored docs must be cleaned up.
+
+            ## Chosen Outcome
+            Reject the malformed spacing.
+
+            ## Rationale and Tradeoffs
+            - Shared helpers should fail closed in sync and validation paths.
+
+            ## Consequences and Follow-Up Impacts
+            - Decision-index sync will stop accepting this invalid shape.
+
+            ## Risks, Dependencies, and Assumptions
+            - The shared helper must stay consistent with the semantics standard.
+
+            ## References
+            - docs/standards/documentation/decision_record_md_standard.md
+            """
+        ),
+        encoding="utf-8",
+    )
+    standard_path = repo_root / "docs/standards/documentation/decision_record_md_standard.md"
+    standard_path.parent.mkdir(parents=True, exist_ok=True)
+    standard_path.write_text(
+        (REPO_ROOT / "docs/standards/documentation/decision_record_md_standard.md").read_text(
+            encoding="utf-8"
+        ),
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+    service = DecisionIndexSyncService(loader)
+
+    with pytest.raises(ValueError, match="separated from the preceding list by a blank line"):
+        service.build_document()

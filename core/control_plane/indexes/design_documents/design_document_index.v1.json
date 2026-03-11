@@ -762,6 +762,36 @@
       ]
     },
     {
+      "document_id": "design.features.planning_semantics_and_decision_contract_alignment",
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "family": "feature_design",
+      "title": "Planning Semantics and Decision Contract Alignment Feature Design",
+      "summary": "Defines the technical design boundary for converging decision-record authoring rules and shared Markdown semantics enforcement.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+      "updated_at": "2026-03-11T20:31:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/templates/feature_design_template.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.preimplementation_repo_readiness",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "family": "feature_design",
@@ -1495,6 +1525,36 @@
         "SUMMARY.md",
         "docs/planning/prds/planning_authority_unification.md",
         "docs/planning/design/features/planning_authority_unification.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.planning_semantics_and_decision_contract_alignment",
+      "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+      "family": "implementation_plan",
+      "title": "Planning Semantics and Decision Contract Alignment Implementation Plan",
+      "summary": "Breaks the shared Markdown semantics and decision-record contract alignment work into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md",
+      "updated_at": "2026-03-11T20:31:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/templates/feature_design_template.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md"
       ]
     },
     {

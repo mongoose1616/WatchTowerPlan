@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "implementation_plan_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T23:35:00Z"
+updated_at: "2026-03-11T20:38:54Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -49,7 +49,9 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - `Source Designs` may be `None` when the plan is instead anchored by linked PRDs or other repo-local source surfaces cited in `Source Request or Design`, but the plan must still retain at least one traceable repo-local source.
 - Keep implementation plans above commit-by-commit notes; they should guide execution, not replace code review or workflow procedure.
 - When an external topic already has a governed local reference under `docs/references/**`, cite that local reference as the repo-native lookup surface instead of scattering raw external URLs through the plan body.
-- Include `Internal Standards and Canonical References Applied` only when a cited authority materially constrains the implementation details. When present, it must explain the local implication of each cited authority. Bare link lists are insufficient.
+- Publish `Internal Standards and Canonical References Applied` as a required
+  explained section so the implementation's local authority inputs stay
+  explicit and machine-reviewable. Bare link lists are insufficient.
 - Add `Current-State Context`, `Dependencies`, `Rollout or Migration Plan`, and `Open Questions` only when they materially improve execution clarity.
 - A body `Updated At` section is optional; front matter `updated_at` and the `Record Metadata` value remain the required anchors.
 
@@ -68,6 +70,7 @@ Keep implementation plans concrete enough to guide engineering work while preser
 | `Source Request or Design` | Required | Record the driving feature design, PRD, or user request. |
 | `Scope Summary` | Required | State what the plan covers and excludes. |
 | `Assumptions and Constraints` | Required | Record the assumptions or hard constraints that shape the work. |
+| `Internal Standards and Canonical References Applied` | Required | Use `source: implication` bullets for the standards, schemas, registries, or canonical repo surfaces that materially constrain the implementation. |
 | `Proposed Technical Approach` | Required | Describe the intended implementation structure and module boundaries. |
 | `Work Breakdown` | Required | Break the work into concrete steps or slices. |
 | `Risks` | Required | Record concrete risks or uncertainties. |
@@ -78,7 +81,6 @@ Keep implementation plans concrete enough to guide engineering work while preser
 | Section | Use When |
 |---|---|
 | `Current-State Context` | Current repository surfaces or constraints matter and are not already obvious from the source design or request. |
-| `Internal Standards and Canonical References Applied` | A cited internal authority materially constrains the implementation. Each bullet should record `source: implication`. |
 | `Dependencies` | Real dependencies materially affect sequencing or feasibility. |
 | `Rollout or Migration Plan` | Rollout, migration, or staged delivery expectations materially affect implementation. |
 | `Open Questions` | Real planning questions remain unresolved. |
@@ -105,7 +107,8 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Implementation-plan front matter should validate against `implementation_plan_front_matter.v1.schema.json`.
 - The work breakdown should be concrete enough to guide coding, testing, and review.
 - The plan should clearly state how success will be validated.
-- The `Internal Standards and Canonical References Applied` section should explain the implication of each cited source when the section is present.
+- The required `Internal Standards and Canonical References Applied` section
+  should explain the implication of each cited source.
 - `updated_at` in front matter and `Record Metadata` should match.
 - Reviewers should reject plans whose `Source Request or Design` section and metadata leave the plan without any traceable repo-local source surface.
 - Reviewers should reject plans that restate a feature design without introducing a real technical approach or execution breakdown.
@@ -125,4 +128,4 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Plans should stay modular so later capability areas can reuse the same planning shape.
 
 ## Updated At
-- `2026-03-11T23:35:00Z`
+- `2026-03-11T20:38:54Z`

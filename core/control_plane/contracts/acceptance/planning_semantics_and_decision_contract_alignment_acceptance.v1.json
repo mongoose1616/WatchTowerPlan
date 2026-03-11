@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.planning_semantics_and_decision_contract_alignment",
+  "title": "Planning Semantics and Decision Contract Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
+  "source_prd_id": "prd.planning_semantics_and_decision_contract_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.planning_semantics_and_decision_contract_alignment.001",
+      "summary": "The trace publishes the full planning chain, accepted direction decision, refreshed acceptance contract, refreshed planning-baseline evidence, and the bounded execution task set for the standards-review slice.",
+      "source_requirement_ids": [
+        "req.planning_semantics_and_decision_contract_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/decisions/planning_semantics_and_decision_contract_alignment_direction.md",
+        "docs/planning/tasks/closed/planning_semantics_and_decision_contract_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_planning_authoring_contracts_with_live_enforcement.md",
+        "docs/planning/tasks/closed/enforce_shared_heading_separation_semantics_across_governed_docs.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_semantics_and_decision_contract_alignment.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline refreshed at 2026-03-11T21:01:23Z after all traced tasks reached terminal closeout and coordination returned to the ready-for-bootstrap state."
+    },
+    {
+      "acceptance_id": "ac.planning_semantics_and_decision_contract_alignment.002",
+      "summary": "The decision-record standard and template now require Applied References and Implications, and regression coverage fails closed if the decision authoring contract drifts again.",
+      "source_requirement_ids": [
+        "req.planning_semantics_and_decision_contract_alignment.001",
+        "req.planning_semantics_and_decision_contract_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "related_paths": [
+        "docs/standards/governance/decision_capture_standard.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_semantics_and_decision_contract_alignment.003",
+      "summary": "The feature-design and implementation-plan standards and templates now require their live applied-reference sections, and document semantics validation rejects their omission.",
+      "source_requirement_ids": [
+        "req.planning_semantics_and_decision_contract_alignment.001",
+        "req.planning_semantics_and_decision_contract_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/templates/feature_design_template.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "related_paths": [
+        "docs/planning/design/features/planning_semantics_and_decision_contract_alignment.md",
+        "docs/planning/design/implementation/planning_semantics_and_decision_contract_alignment.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_semantics_and_decision_contract_alignment.004",
+      "summary": "Shared heading-after-list semantics are enforced consistently across governed planning documents, workflow modules, and the sync loaders that parse authored Markdown directly.",
+      "source_requirement_ids": [
+        "req.planning_semantics_and_decision_contract_alignment.002",
+        "req.planning_semantics_and_decision_contract_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "core/python/src/watchtower_core/repo_ops/markdown_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_workflow_index_sync.py"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_semantics_and_decision_contract_alignment.005",
+      "summary": "The trace closes on a green repository baseline after sync, acceptance validation, aggregate validation, tests, type checking, and linting.",
+      "source_requirement_ids": [
+        "req.planning_semantics_and_decision_contract_alignment.002",
+        "req.planning_semantics_and_decision_contract_alignment.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    }
+  ]
+}

@@ -20,6 +20,9 @@ from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import WorkflowMetadataDefinition
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.markdown_semantics import (
+    validate_blank_line_before_heading_after_list,
+)
 from watchtower_core.repo_ops.planning_documents import (
     ordered_unique,
     validate_explained_bullet_section,
@@ -225,6 +228,7 @@ def load_workflow_document_with_reference_map(
     """Load and validate one workflow module using a prebuilt reference-url map."""
     path = loader.repo_root / relative_path
     markdown = load_markdown_body(path)
+    validate_blank_line_before_heading_after_list(relative_path, markdown)
     title = extract_title(markdown)
     sections = extract_sections(markdown)
 
