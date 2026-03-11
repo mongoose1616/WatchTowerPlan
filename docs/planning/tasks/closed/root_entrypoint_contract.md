@@ -6,11 +6,11 @@ summary: Keep the root as a thin router, point humans and agents at the updated 
   guidance, and align top-level entrypoint docs with the clarified foundation boundary.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: documentation
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-11T01:26:55Z'
+updated_at: '2026-03-11T01:39:27Z'
 audience: shared
 authority: authoritative
 applies_to:

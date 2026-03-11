@@ -1,9 +1,7 @@
 # Task Tracking
 
 ## Open Tasks
-| Task | Status | Priority | Owner | Trace ID | Summary |
-| --- | --- | --- | --- | --- | --- |
-| [task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/root_entrypoint_contract.md) | `backlog` | `medium` | `repository_maintainer` | `trace.foundation_scope_and_entrypoint_realignment` | Keep the root as a thin router, point humans and agents at the updated scope guidance, and align top-level entrypoint docs with the clarified foundation boundary. |
+_No open tasks._
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -44,6 +42,7 @@
 | [task.core_export_readiness_and_optimization.retrieval_and_coordination.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/core_export_retrieval_and_coordination.md) | `done` | `medium` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | Extend retrieval indexes with stronger authority hints and add a deterministic coordination rebuild slice for task, traceability, and initiative surfaces. |
 | [task.core_export_readiness_and_optimization.sync_validation_registries.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/core_export_sync_validation_registries.md) | `done` | `medium` | `repository_maintainer` | `trace.core_export_readiness_and_optimization` | Introduce governed sync-family and validation-family registries so orchestration, listing, and coverage checks no longer depend on duplicated manual enumerations. |
 | [task.end_to_end_repo_review_and_rationalization.query_cli_modularity.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/end_to_end_query_cli_modularity.md) | `done` | `medium` | `repository_maintainer` | `trace.end_to_end_repo_review_and_rationalization` | Reduce maintenance risk in the largest remaining CLI modules by splitting query parser registration and query runtime handlers into smaller family-focused modules without changing the durable command contract. |
+| [task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/root_entrypoint_contract.md) | `done` | `medium` | `repository_maintainer` | `trace.foundation_scope_and_entrypoint_realignment` | Keep the root as a thin router, point humans and agents at the updated scope guidance, and align top-level entrypoint docs with the clarified foundation boundary. |
 | [task.github_collaboration.followup.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_collaboration_followup.md) | `done` | `medium` | `repository_maintainer` | `trace.github_collaboration` | Tracks the remaining closeout and verification follow-up for the GitHub collaboration scaffolding initiative. |
 | [task.initiative_closeout.followup.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/initiative_closeout_followup.md) | `done` | `medium` | `repository_maintainer` | `trace.initiative_closeout` | Tracks the remaining closeout and verification follow-up for the initiative closeout and planning tracker initiative. |
 | [task.local_task_tracking.github_sync.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_task_sync.md) | `done` | `medium` | `repository_maintainer` | `trace.local_task_tracking` | Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity. |
@@ -55,4 +54,4 @@
 | [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_planning_scaffolds.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates. |
 | [task.workflow_system_operationalization.reconciliation_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_reconciliation_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes. |
 
-_Updated At: `2026-03-11T01:38:04Z`_
+_Updated At: `2026-03-11T01:39:27Z`_

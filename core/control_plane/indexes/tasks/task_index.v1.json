@@ -548,12 +548,12 @@
       "title": "Tighten root and planning entrypoint contract",
       "summary": "Keep the root as a thin router, point humans and agents at the updated scope guidance, and align top-level entrypoint docs with the clarified foundation boundary.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/root_entrypoint_contract.md",
-      "updated_at": "2026-03-11T01:26:55Z",
+      "doc_path": "docs/planning/tasks/closed/root_entrypoint_contract.md",
+      "updated_at": "2026-03-11T01:39:27Z",
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "depends_on": [
         "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001"

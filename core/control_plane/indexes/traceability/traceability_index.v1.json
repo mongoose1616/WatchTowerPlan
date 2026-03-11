@@ -455,7 +455,7 @@
       "summary": "Clarify current repository scope versus future WatchTower product narrative, tighten root entrypoints, and align foundation language with the export-ready core boundary.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-11T01:38:04Z",
+      "updated_at": "2026-03-11T01:39:27Z",
       "prd_ids": [
         "prd.foundation_scope_and_entrypoint_realignment"
       ],
@@ -523,8 +523,8 @@
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/foundation_scope_alignment.md",
         "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
+        "docs/planning/tasks/closed/root_entrypoint_contract.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/root_entrypoint_contract.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/"
       ],

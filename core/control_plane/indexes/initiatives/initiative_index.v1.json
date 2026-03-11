@@ -452,34 +452,13 @@
       "summary": "Clarify current repository scope versus future WatchTower product narrative, tighten root entrypoints, and align foundation language with the export-ready core boundary.",
       "status": "active",
       "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-11T01:38:04Z",
-      "open_task_count": 1,
+      "current_phase": "closeout",
+      "updated_at": "2026-03-11T01:39:27Z",
+      "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
-      "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/root_entrypoint_contract.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001",
-          "title": "Tighten root and planning entrypoint contract",
-          "task_status": "backlog",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/root_entrypoint_contract.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001"
-          ]
-        }
-      ],
+      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
       "prd_ids": [
         "prd.foundation_scope_and_entrypoint_realignment"
       ],
@@ -540,8 +519,8 @@
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/foundation_scope_alignment.md",
         "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
+        "docs/planning/tasks/closed/root_entrypoint_contract.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/root_entrypoint_contract.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/"
       ],

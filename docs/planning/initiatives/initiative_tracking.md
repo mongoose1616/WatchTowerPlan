@@ -3,7 +3,7 @@
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| `trace.foundation_scope_and_entrypoint_realignment` | `execution` | repository_maintainer | `1` | [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md) | [root_entrypoint_contract.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/root_entrypoint_contract.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.foundation_scope_and_entrypoint_realignment` | `closeout` | unassigned | `0` | [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md) | [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -23,4 +23,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-11T01:38:04Z`_
+_Updated At: `2026-03-11T01:39:27Z`_
