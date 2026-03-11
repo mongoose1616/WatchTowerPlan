@@ -62,8 +62,14 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/validation/acceptance.py",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-        "docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md"
+        "docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md",
+        "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/acceptance_evidence_reconciliation.md"
       ],
       "tags": [
         "acceptance",
@@ -133,10 +139,14 @@
       ],
       "related_paths": [
         "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/schemas/artifacts/command_index.v1.schema.json",
         "core/python/src/watchtower_core/cli/",
         "docs/commands/",
         "docs/planning/design/features/command_documentation_and_lookup.md",
-        "docs/planning/tasks/closed/command_documentation_and_lookup_followup.md"
+        "docs/planning/tasks/closed/command_documentation_and_lookup_followup.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/templates/command_reference_template.md"
       ],
       "tags": [
         "commands",
@@ -212,7 +222,8 @@
           "doc_path": "docs/planning/design/implementation/core_export_hardening_execution.md",
           "updated_at": "2026-03-10T15:24:07Z",
           "source_paths": [
-            "docs/planning/design/features/core_export_hardening.md"
+            "docs/planning/design/features/core_export_hardening.md",
+            "docs/planning/prds/core_export_hardening_followup.md"
           ]
         }
       ],
@@ -549,7 +560,8 @@
           "doc_path": "docs/planning/design/implementation/core_export_readiness_execution.md",
           "updated_at": "2026-03-10T04:44:27Z",
           "source_paths": [
-            "docs/planning/design/features/core_export_ready_architecture.md"
+            "docs/planning/design/features/core_export_ready_architecture.md",
+            "docs/planning/prds/core_export_readiness_and_optimization.md"
           ]
         }
       ],
@@ -875,6 +887,7 @@
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json",
         "core/control_plane/examples/",
+        "core/control_plane/indexes/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/repository_paths/",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
@@ -888,7 +901,10 @@
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/adapters/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/closeout/",
         "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/evidence/",
+        "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/sync/command_index.py",
@@ -1038,7 +1054,9 @@
           "source_paths": [
             "docs/planning/design/features/core_python_workspace_and_harness.md",
             "docs/planning/design/features/python_validator_execution.md",
-            "docs/planning/design/features/schema_resolution_and_index_search.md"
+            "docs/planning/design/features/schema_resolution_and_index_search.md",
+            "docs/planning/prds/core_python_foundation.md",
+            "docs/planning/decisions/core_python_workspace_root.md"
           ]
         }
       ],
@@ -1196,6 +1214,9 @@
         "core/README.md",
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+        "core/control_plane/contracts/intake/",
+        "core/control_plane/examples/invalid/registries/",
+        "core/control_plane/examples/valid/registries/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/decisions/decision_index.v1.json",
         "core/control_plane/indexes/design_documents/design_document_index.v1.json",
@@ -1205,6 +1226,7 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json",
+        "core/control_plane/registries/schema_catalog/",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/registries/validators/validator_registry.v1.json",
         "core/control_plane/schemas/artifacts/",
@@ -1214,7 +1236,9 @@
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/validation/",
+        "core/python/tests/integration/",
         "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
         "docs/planning/decisions/core_python_workspace_root.md",
         "docs/planning/design/",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
@@ -1222,7 +1246,9 @@
         "docs/planning/design/features/schema_resolution_and_index_search.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "docs/planning/prds/core_python_foundation.md",
-        "docs/planning/tasks/closed/core_python_foundation_closeout.md"
+        "docs/planning/tasks/closed/core_python_foundation_closeout.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
       ],
       "tags": [
         "control_plane",
@@ -1329,7 +1355,8 @@
           "doc_path": "docs/planning/design/implementation/derived_projection_status_semantics_alignment.md",
           "updated_at": "2026-03-11T03:29:01Z",
           "source_paths": [
-            "docs/planning/design/features/derived_projection_status_semantics_alignment.md"
+            "docs/planning/design/features/derived_projection_status_semantics_alignment.md",
+            "docs/planning/prds/derived_projection_status_semantics_alignment.md"
           ]
         }
       ],
@@ -1550,6 +1577,357 @@
       "closure_reason": "Aligned derived initiative and coordination projections to use explicit artifact_status semantics, published acceptance and validation evidence, and revalidated the repository baseline."
     },
     {
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "title": "Design Document Index Relationship Alignment PRD",
+      "summary": "Closes reproduced design-document index drift by projecting feature-design affected surfaces into related_paths and deriving implementation-plan source_paths from traceable PRD or repo-local sources instead of requiring Source Designs only.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T23:37:00Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.design_document_index_relationship_alignment",
+          "title": "Design Document Index Relationship Alignment PRD",
+          "summary": "Closes reproduced design-document index drift by projecting feature-design affected surfaces into related_paths and deriving implementation-plan source_paths from traceable PRD or repo-local sources instead of requiring Source Designs only.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
+          "updated_at": "2026-03-11T19:24:39Z",
+          "requirement_ids": [
+            "req.design_document_index_relationship_alignment.001",
+            "req.design_document_index_relationship_alignment.002",
+            "req.design_document_index_relationship_alignment.003",
+            "req.design_document_index_relationship_alignment.004",
+            "req.design_document_index_relationship_alignment.005"
+          ],
+          "acceptance_ids": [
+            "ac.design_document_index_relationship_alignment.001",
+            "ac.design_document_index_relationship_alignment.002",
+            "ac.design_document_index_relationship_alignment.003",
+            "ac.design_document_index_relationship_alignment.004",
+            "ac.design_document_index_relationship_alignment.005"
+          ],
+          "linked_decision_ids": [
+            "decision.design_document_index_relationship_alignment_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.design_document_index_relationship_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.design_document_index_relationship_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.design_document_index_relationship_alignment_direction",
+          "title": "Design Document Index Relationship Alignment Direction Decision",
+          "summary": "Records the accepted direction for Design Document Index Relationship Alignment.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+          "updated_at": "2026-03-11T19:24:39Z",
+          "linked_prd_ids": [
+            "prd.design_document_index_relationship_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.design_document_index_relationship_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.design_document_index_relationship_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.design_document_index_relationship_alignment",
+          "family": "feature_design",
+          "title": "Design Document Index Relationship Alignment Feature Design",
+          "summary": "Defines the technical design boundary for Design Document Index Relationship Alignment.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/design_document_index_relationship_alignment.md",
+          "updated_at": "2026-03-11T19:24:39Z"
+        },
+        {
+          "document_id": "design.implementation.design_document_index_relationship_alignment",
+          "family": "implementation_plan",
+          "title": "Design Document Index Relationship Alignment Implementation Plan",
+          "summary": "Breaks Design Document Index Relationship Alignment into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+          "updated_at": "2026-03-11T19:24:39Z",
+          "source_paths": [
+            "docs/planning/design/features/design_document_index_relationship_alignment.md",
+            "docs/planning/prds/design_document_index_relationship_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.design_document_index_relationship_alignment.bootstrap.001",
+          "title": "Bootstrap Design Document Index Relationship Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Design Document Index Relationship Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "bug",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
+          "updated_at": "2026-03-11T19:28:10Z",
+          "related_ids": [
+            "prd.design_document_index_relationship_alignment",
+            "design.features.design_document_index_relationship_alignment",
+            "design.implementation.design_document_index_relationship_alignment",
+            "decision.design_document_index_relationship_alignment_direction",
+            "contract.acceptance.design_document_index_relationship_alignment"
+          ],
+          "applies_to": [
+            "docs/planning/design/",
+            "docs/standards/data_contracts/design_document_index_standard.md",
+            "docs/standards/documentation/feature_design_md_standard.md",
+            "docs/standards/documentation/implementation_plan_md_standard.md",
+            "docs/templates/implementation_plan_template.md",
+            "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.design_document_index_relationship_alignment.feature_design_related_paths.001",
+          "title": "Project feature-design affected surfaces into design-index related paths",
+          "summary": "Derive feature-design related_paths from the required Affected Surfaces section and preserve the result in derived planning surfaces.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "bug",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+          "updated_at": "2026-03-11T19:36:07Z",
+          "related_ids": [
+            "prd.design_document_index_relationship_alignment",
+            "design.features.design_document_index_relationship_alignment",
+            "design.implementation.design_document_index_relationship_alignment",
+            "decision.design_document_index_relationship_alignment_direction",
+            "contract.acceptance.design_document_index_relationship_alignment"
+          ],
+          "applies_to": [
+            "docs/planning/design/",
+            "docs/standards/data_contracts/design_document_index_standard.md",
+            "docs/standards/documentation/feature_design_md_standard.md",
+            "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.design_document_index_relationship_alignment.implementation_plan_source_paths.001",
+          "title": "Broaden implementation-plan source paths beyond source designs",
+          "summary": "Derive implementation-plan source_paths from linked PRDs and repo-local source surfaces, then align companion tracking and standards guidance.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "bug",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md",
+          "updated_at": "2026-03-11T19:36:07Z",
+          "related_ids": [
+            "prd.design_document_index_relationship_alignment",
+            "design.features.design_document_index_relationship_alignment",
+            "design.implementation.design_document_index_relationship_alignment",
+            "decision.design_document_index_relationship_alignment_direction",
+            "contract.acceptance.design_document_index_relationship_alignment"
+          ],
+          "applies_to": [
+            "docs/planning/design/",
+            "docs/standards/data_contracts/design_document_index_standard.md",
+            "docs/standards/documentation/implementation_plan_md_standard.md",
+            "docs/templates/implementation_plan_template.md",
+            "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+            "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+            "core/python/tests/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.design_document_index_relationship_alignment",
+          "title": "Design Document Index Relationship Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.design_document_index_relationship_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.design_document_index_relationship_alignment.001",
+            "ac.design_document_index_relationship_alignment.002",
+            "ac.design_document_index_relationship_alignment.003",
+            "ac.design_document_index_relationship_alignment.004",
+            "ac.design_document_index_relationship_alignment.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+            "core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+            "core/python/tests/unit/README.md",
+            "core/python/tests/unit/test_design_document_index_sync.py",
+            "core/python/tests/unit/test_tracking_output_compaction.py",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+            "docs/planning/design/features/design_document_index_relationship_alignment.md",
+            "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/design_document_index_relationship_alignment.md",
+            "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md",
+            "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
+            "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/data_contracts/design_document_index_standard.md",
+            "docs/standards/documentation/feature_design_md_standard.md",
+            "docs/standards/documentation/implementation_plan_md_standard.md",
+            "docs/templates/implementation_plan_template.md"
+          ],
+          "related_paths": [
+            "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+            "core/control_plane/indexes/tasks/task_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/design/features/design_document_index_relationship_alignment.md",
+            "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/data_contracts/design_document_index_standard.md",
+            "docs/standards/documentation/feature_design_md_standard.md",
+            "docs/standards/documentation/implementation_plan_md_standard.md",
+            "docs/templates/implementation_plan_template.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.design_document_index_relationship_alignment.planning_baseline",
+          "title": "Design Document Index Relationship Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-11T23:37:00Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.design_document_index_relationship_alignment.planning_baseline",
+            "check.design_document_index_relationship_alignment.feature_design_related_paths",
+            "check.design_document_index_relationship_alignment.implementation_plan_source_paths",
+            "check.design_document_index_relationship_alignment.relationship_contract_alignment",
+            "check.design_document_index_relationship_alignment.validation_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.design_document_index_relationship_alignment.001",
+            "ac.design_document_index_relationship_alignment.002",
+            "ac.design_document_index_relationship_alignment.003",
+            "ac.design_document_index_relationship_alignment.004",
+            "ac.design_document_index_relationship_alignment.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.design_document_index_relationship_alignment"
+      ],
+      "decision_ids": [
+        "decision.design_document_index_relationship_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.design_document_index_relationship_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.design_document_index_relationship_alignment"
+      ],
+      "task_ids": [
+        "task.design_document_index_relationship_alignment.bootstrap.001",
+        "task.design_document_index_relationship_alignment.feature_design_related_paths.001",
+        "task.design_document_index_relationship_alignment.implementation_plan_source_paths.001"
+      ],
+      "requirement_ids": [
+        "req.design_document_index_relationship_alignment.001",
+        "req.design_document_index_relationship_alignment.002",
+        "req.design_document_index_relationship_alignment.003",
+        "req.design_document_index_relationship_alignment.004",
+        "req.design_document_index_relationship_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.design_document_index_relationship_alignment.001",
+        "ac.design_document_index_relationship_alignment.002",
+        "ac.design_document_index_relationship_alignment.003",
+        "ac.design_document_index_relationship_alignment.004",
+        "ac.design_document_index_relationship_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.design_document_index_relationship_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.design_document_index_relationship_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/unit/test_design_document_index_sync.py",
+        "core/python/tests/unit/test_tracking_output_compaction.py",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+        "docs/planning/design/",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/design_document_index_relationship_alignment.md",
+        "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/design_document_index_relationship_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md",
+        "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md"
+      ],
+      "tags": [
+        "bug",
+        "feature_design",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-11T23:37:00Z for trace.design_document_index_relationship_alignment.",
+      "closed_at": "2026-03-11T19:37:52Z",
+      "closure_reason": "Closed after aligning design-document relationship indexing with governed standards and validation."
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",
       "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",
@@ -1639,7 +2017,9 @@
           "doc_path": "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
           "updated_at": "2026-03-10T19:43:34Z",
           "source_paths": [
-            "docs/planning/design/features/end_to_end_repo_rationalization.md"
+            "docs/planning/design/features/end_to_end_repo_rationalization.md",
+            "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+            "docs/planning/decisions/end_to_end_repo_rationalization_direction.md"
           ]
         }
       ],
@@ -1912,9 +2292,20 @@
         "core/python/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/query_family.py",
+        "core/python/src/watchtower_core/cli/query_handlers.py",
+        "core/python/src/watchtower_core/cli/validate_family.py",
+        "core/python/src/watchtower_core/cli/validation_handlers.py",
         "core/python/src/watchtower_core/closeout/",
         "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/control_plane/schemas.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/validation/",
@@ -1936,6 +2327,7 @@
         "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
         "docs/standards/documentation/",
         "workflows/"
       ],
@@ -2039,7 +2431,8 @@
           "doc_path": "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
           "updated_at": "2026-03-11T01:27:13Z",
           "source_paths": [
-            "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
+            "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+            "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md"
           ]
         }
       ],
@@ -2339,6 +2732,7 @@
       "related_paths": [
         ".github/",
         "core/python/src/watchtower_core/sync/github_tasks.py",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/github_collaboration_followup.md"
@@ -2408,7 +2802,11 @@
       "related_paths": [
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/schemas/artifacts/traceability_index.v1.schema.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/sync/design_tracking.py",
+        "core/python/src/watchtower_core/sync/prd_tracking.py",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
@@ -2511,7 +2909,8 @@
           "doc_path": "docs/planning/design/implementation/internal_project_code_review_and_hardening.md",
           "updated_at": "2026-03-11T16:10:47Z",
           "source_paths": [
-            "docs/planning/design/features/internal_project_code_review_and_hardening.md"
+            "docs/planning/design/features/internal_project_code_review_and_hardening.md",
+            "docs/planning/prds/internal_project_code_review_and_hardening.md"
           ]
         }
       ],
@@ -2841,7 +3240,8 @@
           "doc_path": "docs/planning/design/implementation/internal_project_code_review_follow_up.md",
           "updated_at": "2026-03-11T16:37:08Z",
           "source_paths": [
-            "docs/planning/design/features/internal_project_code_review_follow_up.md"
+            "docs/planning/design/features/internal_project_code_review_follow_up.md",
+            "docs/planning/prds/internal_project_code_review_follow_up.md"
           ]
         }
       ],
@@ -3174,7 +3574,9 @@
           "doc_path": "docs/planning/design/implementation/internal_project_review_and_hardening.md",
           "updated_at": "2026-03-11T15:11:22Z",
           "source_paths": [
-            "docs/planning/design/features/internal_project_review_and_hardening.md"
+            "docs/planning/design/features/internal_project_review_and_hardening.md",
+            "docs/planning/prds/internal_project_review_and_hardening.md",
+            "docs/planning/decisions/internal_project_review_and_hardening_direction.md"
           ]
         }
       ],
@@ -3388,8 +3790,10 @@
       ],
       "related_paths": [
         "core/control_plane/",
+        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/internal_project_review_and_hardening_acceptance.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/internal_project_review_and_hardening_planning_baseline.v1.json",
         "core/python/",
         "core/python/src/watchtower_core/cli/plan_handlers.py",
@@ -3400,6 +3804,7 @@
         "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/tests/integration/",
         "core/python/tests/integration/test_planning_scaffolds_service.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
@@ -3523,7 +3928,8 @@
           "doc_path": "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
           "updated_at": "2026-03-11T17:51:15Z",
           "source_paths": [
-            "docs/planning/design/features/internal_project_standards_review_and_hardening.md"
+            "docs/planning/design/features/internal_project_standards_review_and_hardening.md",
+            "docs/planning/prds/internal_project_standards_review_and_hardening.md"
           ]
         }
       ],
@@ -3885,6 +4291,10 @@
       ],
       "related_paths": [
         "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/schemas/artifacts/task_index.v1.schema.json",
+        "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+        "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/sync/github_tasks.py",
@@ -3892,7 +4302,12 @@
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/github_task_sync.md",
-        "docs/planning/tasks/closed/local_task_tracking_foundation.md"
+        "docs/planning/tasks/closed/local_task_tracking_foundation.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/templates/task_template.md"
       ],
       "tags": [
         "feature",
@@ -3990,7 +4405,8 @@
           "doc_path": "docs/planning/design/implementation/machine_first_coordination_execution.md",
           "updated_at": "2026-03-10T18:54:43Z",
           "source_paths": [
-            "docs/planning/design/features/machine_first_coordination_surface.md"
+            "docs/planning/design/features/machine_first_coordination_surface.md",
+            "docs/planning/prds/machine_first_coordination_surface.md"
           ]
         }
       ],
@@ -4328,7 +4744,8 @@
           "doc_path": "docs/planning/design/implementation/planning_authority_unification.md",
           "updated_at": "2026-03-11T01:48:43Z",
           "source_paths": [
-            "docs/planning/design/features/planning_authority_unification.md"
+            "docs/planning/design/features/planning_authority_unification.md",
+            "docs/planning/prds/planning_authority_unification.md"
           ]
         }
       ],
@@ -4540,6 +4957,7 @@
         "README.md",
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/planning_authority_unification_acceptance.v1.json",
+        "core/control_plane/examples/valid/",
         "core/control_plane/examples/valid/indexes/planning_catalog.v1.example.json",
         "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
         "core/control_plane/indexes/planning/",
@@ -4551,10 +4969,12 @@
         "core/control_plane/registries/authority_map/authority_map.v1.json",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/schemas/artifacts/",
         "core/control_plane/schemas/artifacts/authority_map.v1.schema.json",
         "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
         "core/python/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/sync/",
@@ -4682,7 +5102,9 @@
           "doc_path": "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md",
           "updated_at": "2026-03-10T17:55:24Z",
           "source_paths": [
-            "docs/planning/design/features/preimplementation_repo_readiness.md"
+            "docs/planning/design/features/preimplementation_repo_readiness.md",
+            "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+            "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
           ]
         }
       ],
@@ -4925,6 +5347,7 @@
         "core/python/src/watchtower_core/cli/handlers.py",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/schemas.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/tests/",
@@ -5054,7 +5477,8 @@
           "doc_path": "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
           "updated_at": "2026-03-11T06:43:01Z",
           "source_paths": [
-            "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md"
+            "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+            "docs/planning/prds/repo_local_hotspot_modularity_hardening.md"
           ]
         }
       ],
@@ -5479,7 +5903,8 @@
           "doc_path": "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
           "updated_at": "2026-03-11T13:51:18Z",
           "source_paths": [
-            "docs/planning/design/features/route_preview_natural_request_matching_design.md"
+            "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+            "docs/planning/prds/route_preview_natural_request_matching.md"
           ]
         }
       ],
@@ -5778,7 +6203,8 @@
           "doc_path": "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
           "updated_at": "2026-03-11T06:44:04Z",
           "source_paths": [
-            "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md"
+            "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+            "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md"
           ]
         }
       ],
@@ -6129,7 +6555,8 @@
           "doc_path": "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
           "updated_at": "2026-03-10T16:00:54Z",
           "source_paths": [
-            "docs/planning/design/features/compact_document_authoring_and_tracking.md"
+            "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+            "docs/planning/prds/template_and_output_efficiency.md"
           ]
         }
       ],
@@ -6359,6 +6786,7 @@
         "core/python/src/watchtower_core/repo_ops/",
         "core/python/src/watchtower_core/repo_ops/planning_documents.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/",
         "docs/",
@@ -6377,6 +6805,7 @@
         "docs/planning/tasks/open/",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/documentation/",
+        "docs/standards/governance/",
         "docs/standards/workflows/",
         "docs/templates/",
         "workflows/modules/"
@@ -6460,7 +6889,8 @@
           "doc_path": "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
           "updated_at": "2026-03-11T00:44:30Z",
           "source_paths": [
-            "docs/planning/design/features/unit_test_hardening_and_rebalancing.md"
+            "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
+            "docs/planning/prds/unit_test_hardening_and_rebalancing.md"
           ]
         }
       ],
@@ -6852,7 +7282,8 @@
           "doc_path": "docs/planning/design/implementation/workflow_system_operationalization_execution.md",
           "updated_at": "2026-03-10T21:59:21Z",
           "source_paths": [
-            "docs/planning/design/features/workflow_routing_and_authoring.md"
+            "docs/planning/design/features/workflow_routing_and_authoring.md",
+            "docs/planning/prds/workflow_system_operationalization.md"
           ]
         }
       ],
@@ -7107,9 +7538,12 @@
         "core/control_plane/indexes/workflows/workflow_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/workflow_system_operationalization_planning_baseline.v1.json",
         "core/control_plane/registries/",
+        "core/control_plane/schemas/artifacts/",
         "core/python/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/",
         "core/python/tests/",
         "docs/commands/core_python/",
         "docs/planning/",

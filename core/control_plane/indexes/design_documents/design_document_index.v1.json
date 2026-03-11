@@ -16,9 +16,15 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
+        "workflows/modules/acceptance_evidence_reconciliation.md",
+        "workflows/ROUTING_TABLE.md",
+        "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
-        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/validation/acceptance.py"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -54,6 +60,10 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/commands/",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/templates/command_reference_template.md",
+        "core/control_plane/schemas/artifacts/command_index.v1.schema.json",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/python/src/watchtower_core/cli/"
       ],
@@ -91,7 +101,12 @@
         "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
         "docs/templates/",
         "docs/standards/documentation/",
+        "docs/standards/governance/",
         "workflows/modules/",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/",
         "core/python/src/watchtower_core/repo_ops/"
       ],
       "internal_reference_paths": [
@@ -122,6 +137,13 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/core_export_hardening_execution.md",
+        "core/python/src/watchtower_core/control_plane/workspace.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
         "core/python/src/watchtower_core/",
         "docs/planning/design/"
       ],
@@ -149,9 +171,21 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/core_export_readiness_execution.md",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/closeout/",
+        "core/python/src/watchtower_core/evidence/",
+        "core/python/src/watchtower_core/integrations/github/",
+        "core/control_plane/schemas/interfaces/",
+        "core/control_plane/examples/",
+        "core/control_plane/indexes/",
+        "docs/commands/core_python/",
+        "docs/standards/",
         "core/python/src/watchtower_core/",
         "core/control_plane/",
-        "docs/standards/",
         "docs/planning/design/"
       ],
       "internal_reference_paths": [
@@ -186,7 +220,12 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "core/README.md",
         "core/python/",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
         "core/control_plane/"
       ],
       "internal_reference_paths": [
@@ -240,6 +279,40 @@
       ]
     },
     {
+      "document_id": "design.features.design_document_index_relationship_alignment",
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "family": "feature_design",
+      "title": "Design Document Index Relationship Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Design Document Index Relationship Alignment.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/design_document_index_relationship_alignment.md",
+      "updated_at": "2026-03-11T19:24:39Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+        "docs/planning/design/",
+        "docs/planning/design/design_tracking.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.end_to_end_repo_rationalization",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "family": "feature_design",
@@ -252,6 +325,21 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
+        "core/python/src/watchtower_core/control_plane/schemas.py",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/cli/query_family.py",
+        "core/python/src/watchtower_core/cli/query_handlers.py",
+        "core/python/src/watchtower_core/cli/validate_family.py",
+        "core/python/src/watchtower_core/cli/validation_handlers.py",
+        "docs/commands/core_python/",
+        "docs/standards/",
+        "core/python/tests/",
         "docs/",
         "workflows/",
         "core/control_plane/",
@@ -312,7 +400,8 @@
       "related_paths": [
         ".github/",
         "docs/planning/tasks/",
-        "core/python/src/watchtower_core/sync/github_tasks.py"
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -345,8 +434,14 @@
       "uses_external_references": true,
       "related_paths": [
         "docs/planning/tasks/",
-        "core/control_plane/indexes/tasks/task_index.v1.json",
-        "core/python/src/watchtower_core/sync/github_tasks.py"
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+        "core/control_plane/schemas/artifacts/task_index.v1.schema.json",
+        "core/python/src/watchtower_core/integrations/github/",
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "core/control_plane/indexes/tasks/task_index.v1.json"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -378,10 +473,15 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
+        "core/control_plane/schemas/artifacts/traceability_index.v1.schema.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
         "docs/planning/design/design_tracking.md",
-        "docs/planning/decisions/decision_tracking.md"
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/sync/prd_tracking.py",
+        "core/python/src/watchtower_core/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/sync/design_tracking.py"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -407,6 +507,15 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/internal_project_code_review_and_hardening.md",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "docs/commands/core_python/watchtower_core_plan_scaffold.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "core/python/README.md",
         "core/python/",
         "core/control_plane/",
         "docs/"
@@ -433,6 +542,16 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/internal_project_code_review_follow_up.md",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+        "core/python/README.md",
         "core/python/",
         "core/control_plane/",
         "docs/"
@@ -459,6 +578,18 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/internal_project_review_and_hardening.md",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/cli/plan_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/",
+        "core/python/tests/integration/",
+        "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
         "core/python/",
         "core/control_plane/",
         "docs/",
@@ -490,9 +621,16 @@
         "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
         "docs/standards/",
         "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/src/watchtower_core/repo_ops/sync/",
-        "core/python/tests/"
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/",
+        "core/python/src/watchtower_core/repo_ops/sync/"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -519,7 +657,14 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/tasks/",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/templates/task_template.md",
+        "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+        "core/control_plane/schemas/artifacts/task_index.v1.schema.json",
         "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/"
       ],
@@ -549,10 +694,15 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/machine_first_coordination_execution.md",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/coordination/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
         "docs/planning/",
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/repo_ops/",
-        "core/python/src/watchtower_core/cli/"
+        "core/python/src/watchtower_core/repo_ops/"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -579,10 +729,24 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/planning_authority_unification.md",
+        "core/control_plane/indexes/planning/",
+        "core/control_plane/registries/authority_map/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/examples/valid/",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/core_python/",
+        "docs/planning/README.md",
+        "docs/standards/data_contracts/",
+        "docs/standards/governance/",
         "core/control_plane/",
         "core/python/",
-        "docs/planning/",
-        "docs/commands/core_python/"
+        "docs/planning/"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -610,6 +774,23 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md",
+        "docs/references/README.md",
+        "docs/commands/core_python/README.md",
+        "core/python/README.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/templates/readme_template.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/planning/README.md",
+        "docs/planning/initiatives/README.md",
+        "docs/commands/core_python/",
+        "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/tests/",
         "docs/",
         "docs/planning/",
         "core/control_plane/",
@@ -642,7 +823,11 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/validation/",
+        "core/python/tests/unit/",
+        "core/python/tests/integration/",
+        "core/control_plane/contracts/intake/",
         "core/control_plane/registries/validators/validator_registry.v1.json",
         "core/control_plane/ledgers/validation_evidence/"
       ],
@@ -741,6 +926,14 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/registries/schema_catalog/",
+        "core/control_plane/examples/valid/registries/",
+        "core/control_plane/examples/invalid/registries/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/tests/unit/",
+        "core/python/tests/integration/",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
         "core/python/src/watchtower_core/query/"
@@ -840,6 +1033,17 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/workflow_system_operationalization_execution.md",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "core/control_plane/registries/",
+        "core/control_plane/indexes/",
+        "core/control_plane/schemas/artifacts/",
+        "docs/commands/core_python/",
+        "docs/standards/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/tests/",
         "workflows/",
         "docs/planning/",
         "core/control_plane/",
@@ -873,7 +1077,9 @@
       "source_paths": [
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/python_validator_execution.md",
-        "docs/planning/design/features/schema_resolution_and_index_search.md"
+        "docs/planning/design/features/schema_resolution_and_index_search.md",
+        "docs/planning/prds/core_python_foundation.md",
+        "docs/planning/decisions/core_python_workspace_root.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/control_plane/",
@@ -914,7 +1120,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/core_export_hardening.md"
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/prds/core_export_hardening_followup.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/",
@@ -940,7 +1147,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/core_export_ready_architecture.md"
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/",
@@ -977,7 +1185,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/derived_projection_status_semantics_alignment.md"
+        "docs/planning/design/features/derived_projection_status_semantics_alignment.md",
+        "docs/planning/prds/derived_projection_status_semantics_alignment.md"
       ],
       "related_paths": [
         "core/control_plane/indexes/initiatives/",
@@ -995,6 +1204,40 @@
       ]
     },
     {
+      "document_id": "design.implementation.design_document_index_relationship_alignment",
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "family": "implementation_plan",
+      "title": "Design Document Index Relationship Alignment Implementation Plan",
+      "summary": "Breaks Design Document Index Relationship Alignment into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+      "updated_at": "2026-03-11T19:24:39Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/design_document_index_relationship_alignment.md",
+        "docs/planning/prds/design_document_index_relationship_alignment.md"
+      ],
+      "related_paths": [
+        "docs/planning/design/",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "document_id": "design.implementation.end_to_end_repo_rationalization_execution",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "family": "implementation_plan",
@@ -1006,7 +1249,9 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/end_to_end_repo_rationalization.md"
+        "docs/planning/design/features/end_to_end_repo_rationalization.md",
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
+        "docs/planning/decisions/end_to_end_repo_rationalization_direction.md"
       ],
       "related_paths": [
         "docs/",
@@ -1036,7 +1281,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md"
       ],
       "related_paths": [
         "docs/foundations/",
@@ -1063,7 +1309,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/internal_project_code_review_and_hardening.md"
+        "docs/planning/design/features/internal_project_code_review_and_hardening.md",
+        "docs/planning/prds/internal_project_code_review_and_hardening.md"
       ],
       "related_paths": [
         "core/python/",
@@ -1088,7 +1335,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/internal_project_code_review_follow_up.md"
+        "docs/planning/design/features/internal_project_code_review_follow_up.md",
+        "docs/planning/prds/internal_project_code_review_follow_up.md"
       ],
       "related_paths": [
         "core/python/",
@@ -1114,7 +1362,9 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/internal_project_review_and_hardening.md"
+        "docs/planning/design/features/internal_project_review_and_hardening.md",
+        "docs/planning/prds/internal_project_review_and_hardening.md",
+        "docs/planning/decisions/internal_project_review_and_hardening_direction.md"
       ],
       "related_paths": [
         "core/python/",
@@ -1142,7 +1392,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/internal_project_standards_review_and_hardening.md"
+        "docs/planning/design/features/internal_project_standards_review_and_hardening.md",
+        "docs/planning/prds/internal_project_standards_review_and_hardening.md"
       ],
       "related_paths": [
         "docs/standards/",
@@ -1172,7 +1423,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/machine_first_coordination_surface.md"
+        "docs/planning/design/features/machine_first_coordination_surface.md",
+        "docs/planning/prds/machine_first_coordination_surface.md"
       ],
       "related_paths": [
         "core/control_plane/indexes/",
@@ -1198,7 +1450,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/planning_authority_unification.md"
+        "docs/planning/design/features/planning_authority_unification.md",
+        "docs/planning/prds/planning_authority_unification.md"
       ],
       "related_paths": [
         "core/control_plane/",
@@ -1227,7 +1480,9 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/preimplementation_repo_readiness.md"
+        "docs/planning/design/features/preimplementation_repo_readiness.md",
+        "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
       ],
       "related_paths": [
         "docs/",
@@ -1256,7 +1511,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md"
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/cli/",
@@ -1285,7 +1541,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/route_preview_natural_request_matching_design.md"
+        "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md"
       ],
       "related_paths": [
         "workflows/ROUTING_TABLE.md",
@@ -1313,7 +1570,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md"
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md"
       ],
       "related_paths": [
         "docs/standards/",
@@ -1345,7 +1603,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/compact_document_authoring_and_tracking.md"
+        "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/prds/template_and_output_efficiency.md"
       ],
       "related_paths": [
         "docs/templates/",
@@ -1373,7 +1632,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/unit_test_hardening_and_rebalancing.md"
+        "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/prds/unit_test_hardening_and_rebalancing.md"
       ],
       "related_paths": [
         "core/python/tests",
@@ -1401,7 +1661,8 @@
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
-        "docs/planning/design/features/workflow_routing_and_authoring.md"
+        "docs/planning/design/features/workflow_routing_and_authoring.md",
+        "docs/planning/prds/workflow_system_operationalization.md"
       ],
       "related_paths": [
         "workflows/",

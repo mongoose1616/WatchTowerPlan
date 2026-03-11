@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from watchtower_core.adapters import extract_repo_path_references
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.planning_documents import (
@@ -14,11 +15,18 @@ from watchtower_core.repo_ops.planning_documents import (
     FEATURE_DESIGN_REQUIRED_SECTIONS,
     IMPLEMENTATION_PLAN_OPTIONAL_EXPLAINED_SECTIONS,
     IMPLEMENTATION_PLAN_REQUIRED_SECTIONS,
+    PRD_OPTIONAL_EXPLAINED_SECTIONS,
+    PRD_REQUIRED_SECTIONS,
     PlanningDocument,
     collect_reference_indicators,
     iter_markdown_documents,
     load_governed_document,
     ordered_unique,
+)
+from watchtower_core.repo_ops.sync.prd_index import (
+    PRD_DOC_ROOT,
+    PRD_EXCLUDED_NAMES,
+    PRD_FRONT_MATTER_SCHEMA_ID,
 )
 
 DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH = (
@@ -77,6 +85,7 @@ class DesignDocumentIndexSyncService:
             source.document.document_id: source.document.relative_path
             for source in sources
         }
+        prd_id_to_path = self._load_prd_id_to_path()
         entries: list[dict[str, object]] = []
 
         for source in sources:
@@ -97,16 +106,12 @@ class DesignDocumentIndexSyncService:
                 ),
                 external_sections=("External Sources Consulted", "References"),
             )
-            related_paths = ordered_unique(
-                _mapped_design_ids(
-                    document.metadata_ids(
-                        "Linked Implementation Plans",
-                        allowed_prefixes=("design.implementation.",),
-                    ),
-                    id_to_path,
-                ),
-                document.front_matter_path_values(),
-                _tuple_of_strings(current.get("related_paths")),
+            related_paths = _collect_related_paths(
+                document,
+                family=source.family,
+                repo_root=self._repo_root,
+                design_id_to_path=id_to_path,
+                current_related_paths=_tuple_of_strings(current.get("related_paths")),
             )
             tags = ordered_unique(
                 document.front_matter_list("tags"),
@@ -128,18 +133,12 @@ class DesignDocumentIndexSyncService:
             }
 
             if source.family == "implementation_plan":
-                source_paths = _mapped_design_ids(
-                    document.metadata_ids(
-                        "Source Designs",
-                        allowed_prefixes=("design.features.",),
-                    ),
-                    id_to_path,
+                source_paths = _collect_implementation_plan_source_paths(
+                    document,
+                    repo_root=self._repo_root,
+                    design_id_to_path=id_to_path,
+                    prd_id_to_path=prd_id_to_path,
                 )
-                if not source_paths:
-                    raise ValueError(
-                        f"{document.relative_path} is missing source design paths for its "
-                        "implementation-plan index entry."
-                    )
                 entry["source_paths"] = list(source_paths)
 
             if related_paths:
@@ -218,6 +217,102 @@ class DesignDocumentIndexSyncService:
 
         return tuple(sources)
 
+    def _load_prd_id_to_path(self) -> dict[str, str]:
+        prd_id_to_path: dict[str, str] = {}
+        for relative_path in iter_markdown_documents(
+            self._repo_root,
+            PRD_DOC_ROOT,
+            excluded_names=PRD_EXCLUDED_NAMES,
+        ):
+            document = load_governed_document(
+                self._loader,
+                relative_path,
+                schema_id=PRD_FRONT_MATTER_SCHEMA_ID,
+                id_label="PRD ID",
+                status_label="Status",
+                required_sections=PRD_REQUIRED_SECTIONS,
+                optional_explained_sections=PRD_OPTIONAL_EXPLAINED_SECTIONS,
+            )
+            prd_id_to_path[document.document_id] = document.relative_path
+        return prd_id_to_path
+
+
+def _collect_related_paths(
+    document: PlanningDocument,
+    *,
+    family: str,
+    repo_root: Path,
+    design_id_to_path: dict[str, str],
+    current_related_paths: tuple[str, ...],
+) -> tuple[str, ...]:
+    linked_plan_paths = _mapped_design_ids(
+        document.metadata_ids(
+            "Linked Implementation Plans",
+            allowed_prefixes=("design.implementation.",),
+        ),
+        design_id_to_path,
+    )
+    affected_surface_paths: tuple[str, ...] = ()
+    if family == "feature_design":
+        affected_surface_paths = tuple(
+            path
+            for path in extract_repo_path_references(
+                document.sections["Affected Surfaces"],
+                repo_root,
+                source_path=repo_root / document.relative_path,
+            )
+            if path != document.relative_path
+        )
+    return ordered_unique(
+        linked_plan_paths,
+        affected_surface_paths,
+        document.front_matter_path_values(),
+        current_related_paths,
+    )
+
+
+def _collect_implementation_plan_source_paths(
+    document: PlanningDocument,
+    *,
+    repo_root: Path,
+    design_id_to_path: dict[str, str],
+    prd_id_to_path: dict[str, str],
+) -> tuple[str, ...]:
+    source_design_paths = _mapped_design_ids(
+        document.metadata_ids(
+            "Source Designs",
+            allowed_prefixes=("design.features.",),
+        ),
+        design_id_to_path,
+    )
+    prd_source_paths = _mapped_prd_ids(
+        document.metadata_ids(
+            "Linked PRDs",
+            allowed_prefixes=("prd.",),
+        ),
+        prd_id_to_path,
+    )
+    section_source_paths = tuple(
+        path
+        for path in extract_repo_path_references(
+            document.sections["Source Request or Design"],
+            repo_root,
+            source_path=repo_root / document.relative_path,
+        )
+        if path != document.relative_path
+    )
+    source_paths = ordered_unique(
+        source_design_paths,
+        prd_source_paths,
+        section_source_paths,
+    )
+    if not source_paths:
+        raise ValueError(
+            f"{document.relative_path} is missing traceable source paths for its "
+            "implementation-plan index entry."
+        )
+    return source_paths
+
 
 def _mapped_design_ids(ids: tuple[str, ...], id_to_path: dict[str, str]) -> tuple[str, ...]:
     paths: list[str] = []
@@ -225,6 +320,16 @@ def _mapped_design_ids(ids: tuple[str, ...], id_to_path: dict[str, str]) -> tupl
         path = id_to_path.get(document_id)
         if path is None:
             raise ValueError(f"Unknown design document ID referenced in metadata: {document_id}")
+        paths.append(path)
+    return tuple(paths)
+
+
+def _mapped_prd_ids(ids: tuple[str, ...], id_to_path: dict[str, str]) -> tuple[str, ...]:
+    paths: list[str] = []
+    for document_id in ids:
+        path = id_to_path.get(document_id)
+        if path is None:
+            raise ValueError(f"Unknown PRD ID referenced in metadata: {document_id}")
         paths.append(path)
     return tuple(paths)
 

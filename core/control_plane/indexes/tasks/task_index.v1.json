@@ -409,6 +409,93 @@
       ]
     },
     {
+      "task_id": "task.design_document_index_relationship_alignment.bootstrap.001",
+      "title": "Bootstrap Design Document Index Relationship Alignment planning chain",
+      "summary": "Bootstraps the initial planning chain for Design Document Index Relationship Alignment.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
+      "updated_at": "2026-03-11T19:28:10Z",
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "related_ids": [
+        "prd.design_document_index_relationship_alignment",
+        "design.features.design_document_index_relationship_alignment",
+        "design.implementation.design_document_index_relationship_alignment",
+        "decision.design_document_index_relationship_alignment_direction",
+        "contract.acceptance.design_document_index_relationship_alignment"
+      ],
+      "applies_to": [
+        "docs/planning/design/",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.design_document_index_relationship_alignment.feature_design_related_paths.001",
+      "title": "Project feature-design affected surfaces into design-index related paths",
+      "summary": "Derive feature-design related_paths from the required Affected Surfaces section and preserve the result in derived planning surfaces.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+      "updated_at": "2026-03-11T19:36:07Z",
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "related_ids": [
+        "prd.design_document_index_relationship_alignment",
+        "design.features.design_document_index_relationship_alignment",
+        "design.implementation.design_document_index_relationship_alignment",
+        "decision.design_document_index_relationship_alignment_direction",
+        "contract.acceptance.design_document_index_relationship_alignment"
+      ],
+      "applies_to": [
+        "docs/planning/design/",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.design_document_index_relationship_alignment.implementation_plan_source_paths.001",
+      "title": "Broaden implementation-plan source paths beyond source designs",
+      "summary": "Derive implementation-plan source_paths from linked PRDs and repo-local source surfaces, then align companion tracking and standards guidance.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md",
+      "updated_at": "2026-03-11T19:36:07Z",
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "related_ids": [
+        "prd.design_document_index_relationship_alignment",
+        "design.features.design_document_index_relationship_alignment",
+        "design.implementation.design_document_index_relationship_alignment",
+        "decision.design_document_index_relationship_alignment_direction",
+        "contract.acceptance.design_document_index_relationship_alignment"
+      ],
+      "applies_to": [
+        "docs/planning/design/",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/"
+      ]
+    },
+    {
       "task_id": "task.end_to_end_repo_review_and_rationalization.bootstrap.001",
       "title": "Bootstrap the end-to-end repo review and rationalization initiative",
       "summary": "Creates the traced planning chain, accepted direction, acceptance baseline, planning evidence, and bounded execution task set for the final pre-implementation review follow-up.",

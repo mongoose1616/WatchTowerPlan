@@ -92,6 +92,55 @@
       ]
     },
     {
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "decision_id": "decision.design_document_index_relationship_alignment_direction",
+      "title": "Design Document Index Relationship Alignment Direction Decision",
+      "summary": "Records the accepted direction for Design Document Index Relationship Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+      "updated_at": "2026-03-11T19:24:39Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.design_document_index_relationship_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.design_document_index_relationship_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.design_document_index_relationship_alignment"
+      ],
+      "related_paths": [
+        "docs/planning/design/",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/",
+        "docs/planning/design/design_tracking.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ]
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "decision_id": "decision.end_to_end_repo_rationalization_direction",
       "title": "End-to-End Repository Rationalization Direction",

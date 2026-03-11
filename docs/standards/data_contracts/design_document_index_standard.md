@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "design_document_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T23:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -55,6 +55,9 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - Use a stable `document_id` per design document.
 - Record the document family explicitly as `feature_design` or `implementation_plan`.
 - Require `source_paths` for implementation plans so the plan-to-design relationship is explicit.
+- Derive feature-design `related_paths` from the required `Affected Surfaces` section whenever that section cites repo-local paths, then merge those paths with other durable design relationships such as linked implementation plans or explicit front matter path values.
+- Derive implementation-plan `source_paths` from every traceable source surface the authored contract allows: mapped `Source Designs`, linked PRDs, and repo-local paths cited in `Source Request or Design`.
+- Keep implementation-plan source labeling aligned across machine-readable and human-readable surfaces; the companion design tracker should use neutral `Sources` wording rather than implying every source is a feature design.
 - Capture whether the design explicitly used internal or external references so reference use is queryable without reparsing Markdown.
 - Keep the human-readable design tracker and the machine-readable index aligned in the same change set.
 
@@ -81,8 +84,8 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 | `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the design document front matter `updated_at` value and the `Record Metadata` value. |
 | `uses_internal_references` | Required | Whether the design document explicitly cited internal repository references. |
 | `uses_external_references` | Required | Whether the design document explicitly cited external sources. |
-| `source_paths` | Required for implementation plans | Paths to the driving feature design, PRD, or other source surfaces. |
-| `related_paths` | Optional | Related repo paths strongly associated with the design document. |
+| `source_paths` | Required for implementation plans | Paths to the driving feature design, PRD, or other traceable repo-local source surfaces. Derive these from `Source Designs`, `Linked PRDs`, and repo-local references in `Source Request or Design`. |
+| `related_paths` | Optional | Related repo paths strongly associated with the design document. For feature designs, this should include repo-local paths cited in `Affected Surfaces`. |
 | `internal_reference_paths` | Optional | Internal repository paths explicitly cited in the design document reference sections. |
 | `external_reference_urls` | Optional | External URLs explicitly cited in the design document reference sections. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
@@ -93,12 +96,12 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 2. Update the human-readable design tracker in `docs/planning/design/design_tracking.md` in the same change set.
 3. Add or update the design document front matter before generating or editing the machine-readable index entry.
 4. Add or update the corresponding entry in the machine-readable design-document index.
-5. Validate that every indexed `doc_path` and any listed related paths exist.
+5. Validate that every indexed `doc_path` exists, that feature-design `related_paths` preserve repo-local `Affected Surfaces` where present, and that every implementation-plan entry has at least one traceable `source_paths` value.
 6. Validate the design-document index artifact against its published schema before treating the change as complete.
 
 ## Examples
 - A feature design like `docs/planning/design/features/schema_resolution_and_index_search.md` should appear as a `feature_design` entry with its design title and summary.
-- An implementation plan like `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` should appear as an `implementation_plan` entry and name the feature designs it depends on in `source_paths`.
+- An implementation plan like `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` should appear as an `implementation_plan` entry and name the feature designs, PRDs, or other traceable repo-local sources it depends on in `source_paths`.
 - A directory README does not belong in this index because it is orientation, not a design document.
 
 ## Operationalization
@@ -109,6 +112,8 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The design-document index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `docs/planning/design/`.
 - Every implementation-plan entry should include `source_paths`.
+- Feature-design `related_paths` should retain repo-local `Affected Surfaces` so downstream planning and query surfaces can see the design footprint without reparsing Markdown.
+- Implementation-plan `source_paths` should fail closed when no traceable source surface exists after checking `Source Designs`, linked PRDs, and repo-local references in `Source Request or Design`.
 - The reference-presence flags should reflect the actual design-document sections that cite internal or external sources.
 - Reviewers should reject index entries that point to stale design docs or leave plan-to-design relationships implicit.
 
@@ -128,4 +133,4 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The machine index is for lookup, query, and future tooling. Neither surface replaces the design documents themselves.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T23:35:00Z`

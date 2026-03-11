@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "feature_design_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T23:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -49,6 +49,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - Do not use feature designs as workflow modules, changelogs, or commit-by-commit execution notes.
 - Do not move normative repository rules into a feature design when they belong in `docs/standards/**`.
 - When an external topic already has a governed local reference under `docs/references/**`, cite that local reference as the repo-native lookup surface instead of scattering raw external URLs through the design body.
+- Treat repo-local entries in `Affected Surfaces` as authoritative relationship inputs for the machine-readable design-document index; prefer explicit repository paths or links that normalize to repository paths.
 - Include only the external sources that materially shaped the design. Omit that section when none were needed.
 - `Foundations References Applied` and `Internal Standards and Canonical References Applied` are optional, but when present they must explain the local implication of each cited source. Bare link lists are insufficient.
 - `Implementation-Planning Handoff Notes`, `Dependencies`, and `Open Questions` are optional and should be omitted when they add no new information.
@@ -111,6 +112,7 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - The recommended design should be specific enough that an implementation plan can break it into concrete work without re-deciding the architecture.
 - Optional applied-reference sections should explain the implication of each cited source when present.
 - `updated_at` in front matter and `Record Metadata` should match.
+- Repo-local `Affected Surfaces` entries should be specific enough that derived `related_paths` can represent the design footprint without reparsing additional prose.
 - Reviewers should reject feature designs that are only requirements capture, only task checklists, or missing the reasoning behind the recommendation.
 
 ## Change Control
@@ -128,4 +130,4 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - A good feature design reduces rework in implementation planning by making tradeoffs and guardrails explicit.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T23:35:00Z`

@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-11T18:00:58Z",
+  "updated_at": "2026-03-11T23:37:00Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,89 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "title": "Design Document Index Relationship Alignment PRD",
+      "summary": "Closes reproduced design-document index drift by projecting feature-design affected surfaces into related_paths and deriving implementation-plan source_paths from traceable PRD or repo-local sources instead of requiring Source Designs only.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-11T23:37:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
+      "prd_ids": [
+        "prd.design_document_index_relationship_alignment"
+      ],
+      "decision_ids": [
+        "decision.design_document_index_relationship_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.design_document_index_relationship_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.design_document_index_relationship_alignment"
+      ],
+      "task_ids": [
+        "task.design_document_index_relationship_alignment.bootstrap.001",
+        "task.design_document_index_relationship_alignment.feature_design_related_paths.001",
+        "task.design_document_index_relationship_alignment.implementation_plan_source_paths.001"
+      ],
+      "acceptance_ids": [
+        "ac.design_document_index_relationship_alignment.001",
+        "ac.design_document_index_relationship_alignment.002",
+        "ac.design_document_index_relationship_alignment.003",
+        "ac.design_document_index_relationship_alignment.004",
+        "ac.design_document_index_relationship_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.design_document_index_relationship_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.design_document_index_relationship_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-11T19:37:52Z",
+      "closure_reason": "Closed after aligning design-document relationship indexing with governed standards and validation.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/unit/test_design_document_index_sync.py",
+        "core/python/tests/unit/test_tracking_output_compaction.py",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+        "docs/planning/design/",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/design_document_index_relationship_alignment.md",
+        "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/design_document_index_relationship_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md",
+        "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-11T23:37:00Z for trace.design_document_index_relationship_alignment."
+    },
     {
       "trace_id": "trace.internal_project_standards_review_and_hardening",
       "title": "Internal Project Standards Review and Hardening PRD",
@@ -320,8 +403,10 @@
       "closure_reason": "Completed the ultra-deep internal review, hardened bootstrap outputs and shared projection serialization, published durable evidence, and revalidated the repository baseline.",
       "related_paths": [
         "core/control_plane/",
+        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/internal_project_review_and_hardening_acceptance.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/internal_project_review_and_hardening_planning_baseline.v1.json",
         "core/python/",
         "core/python/src/watchtower_core/cli/plan_handlers.py",
@@ -332,6 +417,7 @@
         "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/tests/integration/",
         "core/python/tests/integration/test_planning_scaffolds_service.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
@@ -793,6 +879,7 @@
         "README.md",
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/planning_authority_unification_acceptance.v1.json",
+        "core/control_plane/examples/valid/",
         "core/control_plane/examples/valid/indexes/planning_catalog.v1.example.json",
         "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
         "core/control_plane/indexes/planning/",
@@ -804,10 +891,12 @@
         "core/control_plane/registries/authority_map/authority_map.v1.json",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/schemas/artifacts/",
         "core/control_plane/schemas/artifacts/authority_map.v1.schema.json",
         "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
         "core/python/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/sync/",
@@ -1080,9 +1169,12 @@
         "core/control_plane/indexes/workflows/workflow_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/workflow_system_operationalization_planning_baseline.v1.json",
         "core/control_plane/registries/",
+        "core/control_plane/schemas/artifacts/",
         "core/python/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/",
         "core/python/tests/",
         "docs/commands/core_python/",
         "docs/planning/",
@@ -1175,9 +1267,20 @@
         "core/python/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/query_family.py",
+        "core/python/src/watchtower_core/cli/query_handlers.py",
+        "core/python/src/watchtower_core/cli/validate_family.py",
+        "core/python/src/watchtower_core/cli/validation_handlers.py",
         "core/python/src/watchtower_core/closeout/",
         "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/control_plane/schemas.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/validation/",
@@ -1199,6 +1302,7 @@
         "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
         "docs/planning/tasks/open/",
         "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
         "docs/standards/documentation/",
         "workflows/"
       ],
@@ -1355,6 +1459,7 @@
         "core/python/src/watchtower_core/cli/handlers.py",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/schemas.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/tests/",
@@ -1528,6 +1633,7 @@
         "core/python/src/watchtower_core/repo_ops/",
         "core/python/src/watchtower_core/repo_ops/planning_documents.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/",
         "docs/",
@@ -1546,6 +1652,7 @@
         "docs/planning/tasks/open/",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/documentation/",
+        "docs/standards/governance/",
         "docs/standards/workflows/",
         "docs/templates/",
         "workflows/modules/"
@@ -1607,6 +1714,7 @@
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json",
         "core/control_plane/examples/",
+        "core/control_plane/indexes/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/repository_paths/",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
@@ -1620,7 +1728,10 @@
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/adapters/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/closeout/",
         "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/evidence/",
+        "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/sync/command_index.py",
@@ -1679,7 +1790,11 @@
       "related_paths": [
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/schemas/artifacts/traceability_index.v1.schema.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/sync/design_tracking.py",
+        "core/python/src/watchtower_core/sync/prd_tracking.py",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
@@ -1715,6 +1830,7 @@
       "related_paths": [
         ".github/",
         "core/python/src/watchtower_core/sync/github_tasks.py",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/github_collaboration_followup.md"
@@ -1771,6 +1887,9 @@
         "core/README.md",
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+        "core/control_plane/contracts/intake/",
+        "core/control_plane/examples/invalid/registries/",
+        "core/control_plane/examples/valid/registries/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/decisions/decision_index.v1.json",
         "core/control_plane/indexes/design_documents/design_document_index.v1.json",
@@ -1780,6 +1899,7 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json",
+        "core/control_plane/registries/schema_catalog/",
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/registries/validators/validator_registry.v1.json",
         "core/control_plane/schemas/artifacts/",
@@ -1789,7 +1909,9 @@
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/validation/",
+        "core/python/tests/integration/",
         "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
         "docs/planning/decisions/core_python_workspace_root.md",
         "docs/planning/design/",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
@@ -1797,7 +1919,9 @@
         "docs/planning/design/features/schema_resolution_and_index_search.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "docs/planning/prds/core_python_foundation.md",
-        "docs/planning/tasks/closed/core_python_foundation_closeout.md"
+        "docs/planning/tasks/closed/core_python_foundation_closeout.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
       ],
       "tags": [
         "control_plane",
@@ -1838,10 +1962,14 @@
       "closure_reason": "Delivered and validated; future command-surface expansion belongs to a new bounded initiative",
       "related_paths": [
         "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/schemas/artifacts/command_index.v1.schema.json",
         "core/python/src/watchtower_core/cli/",
         "docs/commands/",
         "docs/planning/design/features/command_documentation_and_lookup.md",
-        "docs/planning/tasks/closed/command_documentation_and_lookup_followup.md"
+        "docs/planning/tasks/closed/command_documentation_and_lookup_followup.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/templates/command_reference_template.md"
       ],
       "tags": [
         "commands",
@@ -1875,8 +2003,14 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/validation/acceptance.py",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
-        "docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md"
+        "docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md",
+        "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/acceptance_evidence_reconciliation.md"
       ],
       "tags": [
         "acceptance",
@@ -1911,6 +2045,10 @@
       "closure_reason": "Delivered and validated",
       "related_paths": [
         "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/schemas/artifacts/task_index.v1.schema.json",
+        "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+        "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/sync/github_tasks.py",
@@ -1918,7 +2056,12 @@
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/github_task_sync.md",
-        "docs/planning/tasks/closed/local_task_tracking_foundation.md"
+        "docs/planning/tasks/closed/local_task_tracking_foundation.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/templates/task_template.md"
       ],
       "tags": [
         "traceability"
@@ -1927,6 +2070,14 @@
   ],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "title": "Design Document Index Relationship Alignment PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-11T19:37:52Z",
+      "key_surface_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
+      "closure_reason": "Closed after aligning design-document relationship indexing with governed standards and validation."
+    },
     {
       "trace_id": "trace.internal_project_standards_review_and_hardening",
       "title": "Internal Project Standards Review and Hardening PRD",
@@ -1998,14 +2149,6 @@
       "closed_at": "2026-03-11T03:11:45Z",
       "key_surface_path": "docs/planning/prds/planning_authority_unification.md",
       "closure_reason": "Published the canonical planning catalog and authority map, aligned navigation guidance, and validated the full repository baseline"
-    },
-    {
-      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
-      "title": "Foundation Scope and EntryPoint Realignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-11T01:42:35Z",
-      "key_surface_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
-      "closure_reason": "Clarified repository scope, realigned foundations, and tightened root entrypoints."
     }
   ]
 }

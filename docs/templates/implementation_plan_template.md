@@ -22,6 +22,7 @@ aliases:
 > Keep front matter valid against the governed implementation-plan front matter profile and keep `updated_at` aligned with the `Record Metadata` block below.
 > Keep the plan focused on one implementation slice or tightly related execution package.
 > Record the technical approach, work breakdown, validation plan, and rollout expectations without turning the document into commit-by-commit notes.
+> Keep at least one traceable repo-local source surface across `Source Designs`, `Linked PRDs`, or repo-local references in `Source Request or Design`; `Source Designs` may be `None` only when another traceable source remains.
 > Add optional sections only when they materially clarify execution.
 
 ## Record Metadata
@@ -38,7 +39,7 @@ aliases:
 <Short explanation of the implementation slice and intended outcome.>
 
 ## Source Request or Design
-- <Feature design, PRD, or user request that drives this plan.>
+- <Feature design, PRD, or user request that drives this plan. Include a repo-local path or link when the plan is not anchored by `Source Designs`.>
 
 ## Scope Summary
 - <What this plan covers.>

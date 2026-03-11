@@ -111,7 +111,7 @@ class DesignTrackingSyncService:
                 "Plan",
                 "Status",
                 "Summary",
-                "Source Designs",
+                "Sources",
             ]
             if implementation_plan_has_notes:
                 implementation_headers.append("Notes")

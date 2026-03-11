@@ -45,3 +45,10 @@ def test_generated_tracking_outputs_use_links_and_not_placeholder_rows() -> None
     for content in contents:
         assert "](/home/j/WatchTowerPlan/" in content
         assert "| `None` | `None` |" not in content
+
+
+def test_design_tracking_uses_neutral_source_label() -> None:
+    content = DesignTrackingSyncService(ControlPlaneLoader(REPO_ROOT)).build_document().content
+
+    assert "Source Designs" not in content
+    assert "Sources" in content

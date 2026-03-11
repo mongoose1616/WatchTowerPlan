@@ -1,0 +1,108 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.design_document_index_relationship_alignment",
+  "title": "Design Document Index Relationship Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.design_document_index_relationship_alignment",
+  "source_prd_id": "prd.design_document_index_relationship_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.design_document_index_relationship_alignment.001",
+      "summary": "The trace publishes the full planning chain, the accepted direction decision, the refreshed acceptance contract, the planning-baseline evidence, the closed bootstrap task, and the two bounded execution tasks.",
+      "source_requirement_ids": [
+        "req.design_document_index_relationship_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/design_document_index_relationship_alignment.md",
+        "docs/planning/design/features/design_document_index_relationship_alignment.md",
+        "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+        "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+        "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+        "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline refreshed at 2026-03-11T23:37:00Z after the bootstrap task and both execution tasks reached terminal closeout."
+    },
+    {
+      "acceptance_id": "ac.design_document_index_relationship_alignment.002",
+      "summary": "Feature-design entries now project normalized repo-local Affected Surfaces into related_paths without dropping existing relationship derivation behavior.",
+      "source_requirement_ids": [
+        "req.design_document_index_relationship_alignment.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/tests/unit/test_design_document_index_sync.py"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.design_document_index_relationship_alignment.003",
+      "summary": "Implementation-plan entries now derive source_paths from source designs, linked PRDs, and repo-local Source Request or Design paths, while the design tracker renders the broader source model neutrally.",
+      "source_requirement_ids": [
+        "req.design_document_index_relationship_alignment.003",
+        "req.design_document_index_relationship_alignment.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/unit/test_design_document_index_sync.py",
+        "core/python/tests/unit/test_tracking_output_compaction.py"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "docs/planning/design/design_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.design_document_index_relationship_alignment.004",
+      "summary": "The accepted decision, standards docs, implementation-plan template, example artifact, and unit-test inventory all describe the corrected design-document relationship model consistently.",
+      "source_requirement_ids": [
+        "req.design_document_index_relationship_alignment.004"
+      ],
+      "validation_targets": [
+        "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/python/tests/unit/README.md"
+      ],
+      "related_paths": [
+        "docs/planning/design/features/design_document_index_relationship_alignment.md",
+        "docs/planning/design/implementation/design_document_index_relationship_alignment.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.design_document_index_relationship_alignment.005",
+      "summary": "The trace closes on a green repository baseline after acceptance validation, aggregate validation, tests, type checking, and linting.",
+      "source_requirement_ids": [
+        "req.design_document_index_relationship_alignment.005"
+      ],
+      "validation_targets": [
+        "core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    }
+  ]
+}

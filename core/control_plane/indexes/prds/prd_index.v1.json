@@ -199,6 +199,55 @@
       ]
     },
     {
+      "trace_id": "trace.design_document_index_relationship_alignment",
+      "prd_id": "prd.design_document_index_relationship_alignment",
+      "title": "Design Document Index Relationship Alignment PRD",
+      "summary": "Closes reproduced design-document index drift by projecting feature-design affected surfaces into related_paths and deriving implementation-plan source_paths from traceable PRD or repo-local sources instead of requiring Source Designs only.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
+      "updated_at": "2026-03-11T19:24:39Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.design_document_index_relationship_alignment.001",
+        "req.design_document_index_relationship_alignment.002",
+        "req.design_document_index_relationship_alignment.003",
+        "req.design_document_index_relationship_alignment.004",
+        "req.design_document_index_relationship_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.design_document_index_relationship_alignment.001",
+        "ac.design_document_index_relationship_alignment.002",
+        "ac.design_document_index_relationship_alignment.003",
+        "ac.design_document_index_relationship_alignment.004",
+        "ac.design_document_index_relationship_alignment.005"
+      ],
+      "linked_decision_ids": [
+        "decision.design_document_index_relationship_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.design_document_index_relationship_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.design_document_index_relationship_alignment"
+      ],
+      "related_paths": [
+        "docs/planning/design/",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md"
+      ]
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "prd_id": "prd.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",

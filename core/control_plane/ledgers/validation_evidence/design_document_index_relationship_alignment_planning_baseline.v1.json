@@ -1,0 +1,145 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.design_document_index_relationship_alignment.planning_baseline",
+  "title": "Design Document Index Relationship Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.design_document_index_relationship_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T23:37:00Z",
+  "source_prd_ids": [
+    "prd.design_document_index_relationship_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.design_document_index_relationship_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.design_document_index_relationship_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.design_document_index_relationship_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.design_document_index_relationship_alignment.planning_baseline",
+      "title": "Planning baseline is aligned for the completed relationship-alignment trace",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/design_document_index_relationship_alignment.md",
+        "docs/planning/design/features/design_document_index_relationship_alignment.md",
+        "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
+        "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
+        "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+        "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md"
+      ],
+      "subject_ids": [
+        "prd.design_document_index_relationship_alignment",
+        "design.features.design_document_index_relationship_alignment",
+        "design.implementation.design_document_index_relationship_alignment",
+        "task.design_document_index_relationship_alignment.bootstrap.001",
+        "task.design_document_index_relationship_alignment.feature_design_related_paths.001",
+        "task.design_document_index_relationship_alignment.implementation_plan_source_paths.001",
+        "contract.acceptance.design_document_index_relationship_alignment",
+        "decision.design_document_index_relationship_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.design_document_index_relationship_alignment.001"
+      ],
+      "notes": "The trace now carries a real PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed planning-baseline evidence, and all three closed task records."
+    },
+    {
+      "check_id": "check.design_document_index_relationship_alignment.feature_design_related_paths",
+      "title": "Feature-design affected surfaces project into design-index related paths",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/tests/unit/test_design_document_index_sync.py"
+      ],
+      "subject_ids": [
+        "task.design_document_index_relationship_alignment.feature_design_related_paths.001"
+      ],
+      "acceptance_ids": [
+        "ac.design_document_index_relationship_alignment.002"
+      ],
+      "notes": "Design-document index sync now extracts normalized repo-local paths from the required feature-design Affected Surfaces section and merges them into related_paths alongside linked implementation-plan and front-matter path relationships."
+    },
+    {
+      "check_id": "check.design_document_index_relationship_alignment.implementation_plan_source_paths",
+      "title": "Implementation-plan source paths derive from every traceable governed source surface",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/unit/test_design_document_index_sync.py",
+        "core/python/tests/unit/test_tracking_output_compaction.py"
+      ],
+      "subject_ids": [
+        "task.design_document_index_relationship_alignment.implementation_plan_source_paths.001"
+      ],
+      "acceptance_ids": [
+        "ac.design_document_index_relationship_alignment.003"
+      ],
+      "notes": "Implementation-plan source_paths now combine mapped Source Designs, linked PRDs, and normalized repo-local paths cited in Source Request or Design, while design-tracking output uses neutral Sources wording and sync still fails closed when no traceable source remains."
+    },
+    {
+      "check_id": "check.design_document_index_relationship_alignment.relationship_contract_alignment",
+      "title": "Standards, template guidance, example artifact, and planning docs describe the corrected relationship model consistently",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/templates/implementation_plan_template.md",
+        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/python/tests/unit/README.md"
+      ],
+      "subject_ids": [
+        "decision.design_document_index_relationship_alignment_direction",
+        "design.features.design_document_index_relationship_alignment",
+        "design.implementation.design_document_index_relationship_alignment"
+      ],
+      "acceptance_ids": [
+        "ac.design_document_index_relationship_alignment.004"
+      ],
+      "notes": "The accepted direction and the governed human and machine companion surfaces now all describe the broader, traceable design-document relationship model instead of preserving the old design-only wording."
+    },
+    {
+      "check_id": "check.design_document_index_relationship_alignment.validation_baseline",
+      "title": "Repository validation baseline is green for the completed relationship-alignment trace",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.design_document_index_relationship_alignment",
+        "decision.design_document_index_relationship_alignment_direction",
+        "design.features.design_document_index_relationship_alignment",
+        "design.implementation.design_document_index_relationship_alignment",
+        "task.design_document_index_relationship_alignment.feature_design_related_paths.001",
+        "task.design_document_index_relationship_alignment.implementation_plan_source_paths.001",
+        "contract.acceptance.design_document_index_relationship_alignment"
+      ],
+      "acceptance_ids": [
+        "ac.design_document_index_relationship_alignment.005"
+      ],
+      "notes": "watchtower-core sync all --write, watchtower-core validate acceptance --trace-id trace.design_document_index_relationship_alignment --format json, watchtower-core validate all --format json, pytest -q, python -m mypy src/watchtower_core, and ruff check passed after the trace reached terminal closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-11T23:37:00Z for trace.design_document_index_relationship_alignment.",
+  "source_decision_ids": [
+    "decision.design_document_index_relationship_alignment_direction"
+  ]
+}

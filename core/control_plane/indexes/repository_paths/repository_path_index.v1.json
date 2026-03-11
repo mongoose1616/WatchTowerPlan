@@ -3401,7 +3401,7 @@
       "path": "core/python/tests/unit/test_design_document_index_sync.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for rebuilding the design-document index from governed design docs.",
+      "summary": "Unit tests for rebuilding the design-document index from governed design docs, including affected-surface and source-path relationship derivation.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",

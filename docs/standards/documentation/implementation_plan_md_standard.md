@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "implementation_plan_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T23:35:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,6 +46,7 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Use governed front matter on implementation-plan documents and validate it against the published implementation-plan front matter profile.
 - Use implementation plans to translate an approved feature design into technical approach, work breakdown, validation, and rollout expectations.
 - Anchor each plan to the feature design, PRD, or direct user request that justified the work.
+- `Source Designs` may be `None` when the plan is instead anchored by linked PRDs or other repo-local source surfaces cited in `Source Request or Design`, but the plan must still retain at least one traceable repo-local source.
 - Keep implementation plans above commit-by-commit notes; they should guide execution, not replace code review or workflow procedure.
 - When an external topic already has a governed local reference under `docs/references/**`, cite that local reference as the repo-native lookup surface instead of scattering raw external URLs through the plan body.
 - Include `Internal Standards and Canonical References Applied` only when a cited authority materially constrains the implementation details. When present, it must explain the local implication of each cited authority. Bare link lists are insufficient.
@@ -106,6 +107,7 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - The plan should clearly state how success will be validated.
 - The `Internal Standards and Canonical References Applied` section should explain the implication of each cited source when the section is present.
 - `updated_at` in front matter and `Record Metadata` should match.
+- Reviewers should reject plans whose `Source Request or Design` section and metadata leave the plan without any traceable repo-local source surface.
 - Reviewers should reject plans that restate a feature design without introducing a real technical approach or execution breakdown.
 
 ## Change Control
@@ -123,4 +125,4 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Plans should stay modular so later capability areas can reuse the same planning shape.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T23:35:00Z`
