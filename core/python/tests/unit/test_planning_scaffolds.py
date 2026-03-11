@@ -55,7 +55,6 @@ def test_plan_scaffold_write_refreshes_prd_surfaces(tmp_path: Path) -> None:
     )
     assert any(entry["prd_id"] == "prd.unit_test_scaffold" for entry in prd_index["entries"])
 
-
 def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> None:
     repo_root = _build_fixture_repo(tmp_path)
     service = PlanningScaffoldService(ControlPlaneLoader(repo_root))
@@ -120,6 +119,60 @@ def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> No
         ControlPlaneLoader(repo_root)
     ).validate("trace.unit_test_bootstrap")
     assert validation_result.passed is True
+
+
+def test_plan_scaffold_write_refreshes_coordination_for_existing_trace(tmp_path: Path) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    service = PlanningScaffoldService(ControlPlaneLoader(repo_root))
+    trace_id = "trace.unit_test_scaffold_existing"
+    decision_id = "decision.unit_test_scaffold_existing.followup"
+
+    service.bootstrap(
+        PlanBootstrapParams(
+            trace_id=trace_id,
+            title="Unit Test Scaffold Existing",
+            summary="Bootstraps a trace before adding one more planning document.",
+            file_stem="unit_test_scaffold_existing",
+            include_decision=False,
+            updated_at="2026-03-10T23:59:59Z",
+        ),
+        write=True,
+    )
+
+    result = service.scaffold(
+        PlanScaffoldParams(
+            kind="decision",
+            trace_id=trace_id,
+            document_id=decision_id,
+            title="Unit Test Scaffold Existing Follow-Up Decision",
+            summary="Adds a follow-up decision to an existing traced initiative.",
+            linked_prd_ids=("prd.unit_test_scaffold_existing",),
+            linked_design_ids=("design.features.unit_test_scaffold_existing",),
+            linked_plan_ids=("design.implementation.unit_test_scaffold_existing",),
+            file_stem="unit_test_scaffold_existing_followup_decision",
+            updated_at="2026-03-11T00:05:00Z",
+        ),
+        write=True,
+    )
+
+    assert result.wrote is True
+
+    loader = ControlPlaneLoader(repo_root)
+    trace_entry = loader.load_traceability_index().get(trace_id)
+    assert decision_id in trace_entry.decision_ids
+
+    initiative_entry = loader.load_initiative_index().get(trace_id)
+    assert decision_id in initiative_entry.decision_ids
+    assert (
+        "docs/planning/decisions/unit_test_scaffold_existing_followup_decision.md"
+        in initiative_entry.related_paths
+    )
+
+    planning_entry = loader.load_planning_catalog().get(trace_id)
+    assert decision_id in planning_entry.decision_ids
+    assert any(
+        entry.decision_id == decision_id for entry in planning_entry.decisions
+    )
 
 
 def test_plan_scaffold_rejects_duplicate_doc_path(tmp_path: Path) -> None:

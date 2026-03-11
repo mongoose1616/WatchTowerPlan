@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-11T15:40:01Z",
+  "updated_at": "2026-03-11T16:24:19Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,88 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.internal_project_code_review_and_hardening",
+      "title": "Internal Project Code Review and Hardening PRD",
+      "summary": "Captures the ultra-deep internal code-review findings around stale derived planning surfaces after scaffold writes and initiative closeout operations.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-11T16:24:19Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/internal_project_code_review_and_hardening.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/internal_project_code_review_and_hardening.md",
+      "prd_ids": [
+        "prd.internal_project_code_review_and_hardening"
+      ],
+      "decision_ids": [
+        "decision.internal_project_code_review_and_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.internal_project_code_review_and_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.internal_project_code_review_and_hardening"
+      ],
+      "task_ids": [
+        "task.internal_project_code_review_and_hardening.bootstrap.001",
+        "task.internal_project_code_review_and_hardening.closeout_planning_catalog_sync.001",
+        "task.internal_project_code_review_and_hardening.scaffold_coordination_sync.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_and_hardening.001",
+        "ac.internal_project_code_review_and_hardening.002",
+        "ac.internal_project_code_review_and_hardening.003",
+        "ac.internal_project_code_review_and_hardening.004",
+        "ac.internal_project_code_review_and_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.internal_project_code_review_and_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.internal_project_code_review_and_hardening.planning_baseline"
+      ],
+      "closed_at": "2026-03-11T16:23:46Z",
+      "closure_reason": "Completed the internal code review, fixed the scaffold and closeout lifecycle sync defects, published durable evidence, and revalidated the repository baseline.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/internal_project_code_review_and_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/internal_project_code_review_and_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/src/watchtower_core/cli/plan_handlers.py",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/commands/core_python/watchtower_core_plan_scaffold.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/internal_project_code_review_and_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/internal_project_code_review_and_hardening.md",
+        "docs/planning/design/implementation/internal_project_code_review_and_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/internal_project_code_review_and_hardening.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/internal_project_code_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/internal_project_code_review_closeout_planning_catalog_sync.md",
+        "docs/planning/tasks/closed/internal_project_code_review_scaffold_coordination_sync.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence for the ultra-deep internal code review that closed lifecycle stale-state bugs in scaffold writes and initiative closeout while restoring the repository baseline and returning coordination to ready_for_bootstrap at 2026-03-11T16:24:19Z."
+    },
     {
       "trace_id": "trace.internal_project_review_and_hardening",
       "title": "Internal Project Review and Hardening PRD",
@@ -1667,6 +1749,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.internal_project_code_review_and_hardening",
+      "title": "Internal Project Code Review and Hardening PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-11T16:23:46Z",
+      "key_surface_path": "docs/planning/prds/internal_project_code_review_and_hardening.md",
+      "closure_reason": "Completed the internal code review, fixed the scaffold and closeout lifecycle sync defects, published durable evidence, and revalidated the repository baseline."
+    },
+    {
       "trace_id": "trace.internal_project_review_and_hardening",
       "title": "Internal Project Review and Hardening PRD",
       "initiative_status": "completed",
@@ -1737,14 +1827,6 @@
       "closed_at": "2026-03-10T23:23:54Z",
       "key_surface_path": "docs/planning/prds/workflow_system_operationalization.md",
       "closure_reason": "Operationalized route preview, workflow metadata, planning scaffolds, task lifecycle commands, and reconciliation guidance."
-    },
-    {
-      "trace_id": "trace.end_to_end_repo_review_and_rationalization",
-      "title": "End-to-End Repository Review and Rationalization PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-10T20:33:10Z",
-      "key_surface_path": "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
-      "closure_reason": "Delivered and validated final pre-implementation repository rationalization."
     }
   ]
 }

@@ -172,6 +172,8 @@ class PlanningScaffoldService:
         if write:
             self._write_rendered_document(rendered)
             self._refresh_planning_surfaces(kind=rendered.kind)
+            if self._trace_participates_in_coordination(rendered.trace_id):
+                CoordinationSyncService(self._loader).run(write=True)
         return _scaffold_result_from_rendered(rendered, wrote=write)
 
     def bootstrap(self, params: PlanBootstrapParams, *, write: bool) -> PlanBootstrapResult:
@@ -686,6 +688,16 @@ class PlanningScaffoldService:
         index_service.write_document(index_document)
         tracker_result = tracking_service.build_document()
         tracking_service.write_document(tracker_result)
+
+    def _trace_participates_in_coordination(self, trace_id: str) -> bool:
+        try:
+            self._loader.load_traceability_index().get(trace_id)
+            return True
+        except KeyError:
+            return any(
+                entry.trace_id == trace_id
+                for entry in self._loader.load_task_index().entries
+            )
 
 
 def _scaffold_result_from_rendered(

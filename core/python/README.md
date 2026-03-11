@@ -96,6 +96,8 @@
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
 - `uv run watchtower-core query coordination --format json` is the default machine-readable current-state entrypoint and stays useful even when no initiative is active.
 - `uv run watchtower-core query planning --trace-id <trace_id> --format json` is the canonical deep planning read path after coordination identifies the active trace.
+- `uv run watchtower-core plan scaffold --write ...` refreshes the traced coordination slice only when the target trace already participates in coordination or already has traced task state.
+- `uv run watchtower-core closeout initiative --write ...` refreshes the planning catalog in the same closeout slice as the initiative and coordination outputs.
 - `uv run watchtower-core query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
 - `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
 - `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.

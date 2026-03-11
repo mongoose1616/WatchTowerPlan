@@ -15,6 +15,7 @@ from watchtower_core.repo_ops.sync.decision_tracking import DecisionTrackingSync
 from watchtower_core.repo_ops.sync.design_tracking import DesignTrackingSyncService
 from watchtower_core.repo_ops.sync.initiative_index import InitiativeIndexSyncService
 from watchtower_core.repo_ops.sync.initiative_tracking import InitiativeTrackingSyncService
+from watchtower_core.repo_ops.sync.planning_catalog import PlanningCatalogSyncService
 from watchtower_core.repo_ops.sync.prd_tracking import PrdTrackingSyncService
 from watchtower_core.utils import utc_timestamp_now
 
@@ -35,6 +36,7 @@ class InitiativeCloseoutResult:
     wrote: bool
     traceability_output_path: str | None
     initiative_index_output_path: str | None
+    planning_catalog_output_path: str | None
     coordination_index_output_path: str | None
     initiative_tracking_output_path: str | None
     coordination_tracking_output_path: str | None
@@ -99,6 +101,7 @@ class InitiativeCloseoutService:
 
         traceability_output_path: str | None = None
         initiative_index_output_path: str | None = None
+        planning_catalog_output_path: str | None = None
         coordination_index_output_path: str | None = None
         initiative_tracking_output_path: str | None = None
         coordination_tracking_output_path: str | None = None
@@ -116,6 +119,12 @@ class InitiativeCloseoutService:
             initiative_index_output_path = str(
                 initiative_index_service.write_document(
                     initiative_index_service.build_document()
+                )
+            )
+            planning_catalog_service = PlanningCatalogSyncService(self._loader)
+            planning_catalog_output_path = str(
+                planning_catalog_service.write_document(
+                    planning_catalog_service.build_document()
                 )
             )
             coordination_index_service = CoordinationIndexSyncService(self._loader)
@@ -163,6 +172,7 @@ class InitiativeCloseoutService:
             wrote=write,
             traceability_output_path=traceability_output_path,
             initiative_index_output_path=initiative_index_output_path,
+            planning_catalog_output_path=planning_catalog_output_path,
             coordination_index_output_path=coordination_index_output_path,
             initiative_tracking_output_path=initiative_tracking_output_path,
             coordination_tracking_output_path=coordination_tracking_output_path,

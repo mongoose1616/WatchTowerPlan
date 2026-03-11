@@ -1,0 +1,89 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.internal_project_code_review_and_hardening",
+  "title": "Internal Project Code Review and Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.internal_project_code_review_and_hardening",
+  "source_prd_id": "prd.internal_project_code_review_and_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.internal_project_code_review_and_hardening.001",
+      "summary": "The trace publishes the full planning chain, the accepted direction, the acceptance contract, updated planning-baseline evidence, and the bounded task set for the code-review remediation.",
+      "source_requirement_ids": [
+        "req.internal_project_code_review_and_hardening.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/internal_project_code_review_and_hardening.md",
+        "docs/planning/decisions/internal_project_code_review_and_hardening_direction.md",
+        "docs/planning/design/features/internal_project_code_review_and_hardening.md",
+        "docs/planning/design/implementation/internal_project_code_review_and_hardening.md",
+        "docs/planning/tasks/closed/internal_project_code_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/internal_project_code_review_scaffold_coordination_sync.md",
+        "docs/planning/tasks/closed/internal_project_code_review_closeout_planning_catalog_sync.md"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/validation_evidence/internal_project_code_review_and_hardening_planning_baseline.v1.json",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "This trace closes only after the planning authority, bounded tasks, acceptance contract, and evidence artifacts all agree on the code-review remediation scope."
+    },
+    {
+      "acceptance_id": "ac.internal_project_code_review_and_hardening.002",
+      "summary": "Traced scaffold writes refresh traceability, initiative, planning-catalog, and coordination surfaces for existing coordinated traces while leaving standalone scaffold writes valid.",
+      "source_requirement_ids": [
+        "req.internal_project_code_review_and_hardening.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/tests/unit/test_planning_scaffolds.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.internal_project_code_review_and_hardening.003",
+      "summary": "Initiative closeout refreshes planning-catalog outputs and the closeout payload reports the additional output path.",
+      "source_requirement_ids": [
+        "req.internal_project_code_review_and_hardening.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/python/tests/unit/test_closeout_handlers.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.internal_project_code_review_and_hardening.004",
+      "summary": "Lifecycle command docs, runtime outputs, and workspace guidance stay aligned with the implemented scaffold and closeout sync behavior.",
+      "source_requirement_ids": [
+        "req.internal_project_code_review_and_hardening.004"
+      ],
+      "validation_targets": [
+        "docs/commands/core_python/watchtower_core_plan_scaffold.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "core/python/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.internal_project_code_review_and_hardening.005",
+      "summary": "The repository returns to a green baseline on validation, tests, type checking, and linting after the lifecycle-sync fixes land.",
+      "source_requirement_ids": [
+        "req.internal_project_code_review_and_hardening.005"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

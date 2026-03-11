@@ -395,6 +395,32 @@
       ]
     },
     {
+      "document_id": "design.features.internal_project_code_review_and_hardening",
+      "trace_id": "trace.internal_project_code_review_and_hardening",
+      "family": "feature_design",
+      "title": "Internal Project Code Review and Hardening Feature Design",
+      "summary": "Defines the code-review-backed design for lifecycle sync completeness across traced scaffold writes and initiative closeout.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/internal_project_code_review_and_hardening.md",
+      "updated_at": "2026-03-11T16:10:47Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/internal_project_code_review_and_hardening.md",
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.internal_project_review_and_hardening",
       "trace_id": "trace.internal_project_review_and_hardening",
       "family": "feature_design",
@@ -966,6 +992,31 @@
         "SUMMARY.md",
         "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.internal_project_code_review_and_hardening",
+      "trace_id": "trace.internal_project_code_review_and_hardening",
+      "family": "implementation_plan",
+      "title": "Internal Project Code Review and Hardening Implementation Plan",
+      "summary": "Breaks the code-review remediation into bounded scaffold-sync, closeout-sync, and validation slices.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/internal_project_code_review_and_hardening.md",
+      "updated_at": "2026-03-11T16:10:47Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/internal_project_code_review_and_hardening.md"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/engineering/git_commit_standard.md"
       ]
     },
     {

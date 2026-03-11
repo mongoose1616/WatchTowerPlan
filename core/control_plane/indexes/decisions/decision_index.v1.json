@@ -177,6 +177,53 @@
       ]
     },
     {
+      "trace_id": "trace.internal_project_code_review_and_hardening",
+      "decision_id": "decision.internal_project_code_review_and_hardening_direction",
+      "title": "Internal Project Code Review and Hardening Direction Decision",
+      "summary": "Records the decision to repair lifecycle stale-state bugs with conditional scaffold coordination refresh and explicit planning-catalog closeout refresh.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/internal_project_code_review_and_hardening_direction.md",
+      "updated_at": "2026-03-11T16:10:47Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.internal_project_code_review_and_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.internal_project_code_review_and_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.internal_project_code_review_and_hardening"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "docs/commands/core_python/watchtower_core_plan_scaffold.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "core/python/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/decision_capture_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/decision_capture_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.internal_project_review_and_hardening",
       "decision_id": "decision.internal_project_review_and_hardening_direction",
       "title": "Internal Project Review and Hardening Direction Decision",

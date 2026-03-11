@@ -8,6 +8,7 @@ from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import (
     COORDINATION_INDEX_PATH,
     INITIATIVE_INDEX_PATH,
+    PLANNING_CATALOG_PATH,
     TASK_INDEX_PATH,
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
@@ -76,6 +77,7 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
 
     assert result.traceability_output_path is not None
     assert result.initiative_index_output_path is not None
+    assert result.planning_catalog_output_path is not None
     assert result.coordination_index_output_path is not None
     assert result.initiative_tracking_output_path is not None
     assert result.coordination_tracking_output_path is not None
@@ -107,6 +109,17 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
         if isinstance(entry, dict)
         and isinstance(entry.get("updated_at"), str)
     )
+
+    written_planning_catalog = _load_json(repo_root, PLANNING_CATALOG_PATH)
+    planning_entry = next(
+        entry
+        for entry in written_planning_catalog["entries"]
+        if entry["trace_id"] == "trace.end_to_end_repo_review_and_rationalization"
+    )
+    assert planning_entry["initiative_status"] == "completed"
+    coordination = planning_entry.get("coordination")
+    assert isinstance(coordination, dict)
+    assert coordination["current_phase"] == "closed"
 
     coordination_tracking = (repo_root / "docs/planning/coordination_tracking.md").read_text(
         encoding="utf-8"

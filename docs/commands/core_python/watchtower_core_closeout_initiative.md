@@ -1,11 +1,11 @@
 # `watchtower-core closeout initiative`
 
 ## Summary
-This command records terminal closeout state for one traced initiative and, in write mode, refreshes the initiative and coordination views plus the mirrored family trackers that reflect that state.
+This command records terminal closeout state for one traced initiative and, in write mode, refreshes the initiative, planning-catalog, and coordination views plus the mirrored family trackers that reflect that state.
 
 ## Use When
 - A traced initiative is complete, superseded, cancelled, or abandoned.
-- You need the traceability index, initiative view, coordination surfaces, and family trackers to agree on the current initiative outcome.
+- You need the traceability index, initiative view, planning-catalog, coordination surfaces, and family trackers to agree on the current initiative outcome.
 - You want to dry-run the closeout record before mutating canonical planning surfaces.
 
 ## Command
@@ -46,19 +46,21 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not mutate canonical planning surfaces.
-- In write mode, the command updates the traceability index first, advances effective `updated_at` to the closeout timestamp, and then regenerates the initiative index, coordination index, initiative tracker, coordination tracker, and PRD, decision, and design trackers that mirror initiative status.
+- In write mode, the command updates the traceability index first, advances effective `updated_at` to the closeout timestamp, and then regenerates the initiative index, planning catalog, coordination index, initiative tracker, coordination tracker, and PRD, decision, and design trackers that mirror initiative status.
 - The command blocks closeout by default when linked tasks are still open, unless `--allow-open-tasks` is used explicitly.
 - In `human` mode, the command prints the chosen initiative status, timestamp, and write outcome.
-- In `json` mode, the command prints one JSON object with the trace ID, closeout metadata, open-task exception list, and output paths for the traceability, initiative, coordination, and family tracking surfaces when it wrote them.
+- In `json` mode, the command prints one JSON object with the trace ID, closeout metadata, open-task exception list, and output paths for the traceability, initiative, planning-catalog, coordination, and family tracking surfaces when it wrote them.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core closeout` | Parent command group for closeout operations. |
+| `watchtower-core query planning` | Reads the planning-catalog view this command now refreshes in write mode. |
 | `watchtower-core query initiatives` | Reads the initiative view this command refreshes in write mode. |
 | `watchtower-core query coordination` | Reads the coordination view this command refreshes in write mode. |
 | `watchtower-core query trace` | Reads the traceability entry this command updates. |
 | `watchtower-core sync initiative-index` | Rebuilds the machine-readable initiative index that this command also refreshes in write mode. |
+| `watchtower-core sync planning-catalog` | Rebuilds the planning catalog that this command now refreshes in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the coordination slice this command now refreshes in write mode. |
 | `watchtower-core sync initiative-tracking` | Rebuilds the human-readable initiative tracker that this command also refreshes in write mode. |
 | `watchtower-core sync prd-tracking` | Rebuilds one tracker that this command updates in write mode. |
@@ -70,4 +72,4 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 - `core/python/src/watchtower_core/closeout/initiative.py`
 
 ## Updated At
-- `2026-03-10T21:18:00Z`
+- `2026-03-11T16:10:47Z`

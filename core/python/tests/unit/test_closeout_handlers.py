@@ -40,6 +40,7 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
                 wrote=True,
                 traceability_output_path="core/control_plane/indexes/traceability/traceability_index.v1.json",
                 initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.v1.json",
+                planning_catalog_output_path="core/control_plane/indexes/planning/planning_catalog.v1.json",
                 coordination_index_output_path="core/control_plane/indexes/coordination/coordination_index.v1.json",
                 initiative_tracking_output_path="docs/planning/initiatives/initiative_tracking.md",
                 coordination_tracking_output_path="docs/planning/coordination_tracking.md",
@@ -61,8 +62,8 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
     assert "Superseded By: trace.next" in captured.out
     assert "Open Tasks Left In Place: task.example.001" in captured.out
     assert (
-        "Canonical traceability, initiative, coordination, and planning trackers "
-        "were updated."
+        "Canonical traceability, initiative, planning catalog, coordination, "
+        "and planning trackers were updated."
         in captured.out
     )
 
@@ -88,3 +89,43 @@ def test_closeout_initiative_supports_json_errors(monkeypatch, capsys) -> None:
         "message": "open tasks remain",
         "status": "error",
     }
+
+
+def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def close(self, **kwargs: object) -> SimpleNamespace:
+            return SimpleNamespace(
+                trace_id="trace.example",
+                initiative_status="completed",
+                closed_at="2026-03-10T23:59:59Z",
+                closure_reason="Closed for tests.",
+                superseded_by_trace_id=None,
+                open_task_ids=(),
+                wrote=True,
+                traceability_output_path="core/control_plane/indexes/traceability/traceability_index.v1.json",
+                initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.v1.json",
+                planning_catalog_output_path="core/control_plane/indexes/planning/planning_catalog.v1.json",
+                coordination_index_output_path="core/control_plane/indexes/coordination/coordination_index.v1.json",
+                initiative_tracking_output_path="docs/planning/initiatives/initiative_tracking.md",
+                coordination_tracking_output_path="docs/planning/coordination_tracking.md",
+                prd_tracking_output_path="docs/planning/prds/prd_tracking.md",
+                decision_tracking_output_path="docs/planning/decisions/decision_tracking.md",
+                design_tracking_output_path="docs/planning/design/design_tracking.md",
+            )
+
+    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(closeout_handlers, "InitiativeCloseoutService", FakeService)
+
+    result = closeout_handlers._run_closeout_initiative(_args(format="json"))
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core closeout initiative"
+    assert (
+        payload["planning_catalog_output_path"]
+        == "core/control_plane/indexes/planning/planning_catalog.v1.json"
+    )

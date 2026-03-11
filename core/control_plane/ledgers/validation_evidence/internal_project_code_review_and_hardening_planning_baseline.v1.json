@@ -1,0 +1,132 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.internal_project_code_review_and_hardening.planning_baseline",
+  "title": "Internal Project Code Review and Hardening Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.internal_project_code_review_and_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T16:24:19Z",
+  "source_prd_ids": [
+    "prd.internal_project_code_review_and_hardening"
+  ],
+  "source_decision_ids": [
+    "decision.internal_project_code_review_and_hardening_direction"
+  ],
+  "source_design_ids": [
+    "design.features.internal_project_code_review_and_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.internal_project_code_review_and_hardening"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.internal_project_code_review_and_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.internal_project_code_review_and_hardening.planning_chain",
+      "title": "Planning chain and bounded tasks are fully published",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/internal_project_code_review_and_hardening.md",
+        "docs/planning/decisions/internal_project_code_review_and_hardening_direction.md",
+        "docs/planning/design/features/internal_project_code_review_and_hardening.md",
+        "docs/planning/design/implementation/internal_project_code_review_and_hardening.md",
+        "docs/planning/tasks/closed/internal_project_code_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/internal_project_code_review_scaffold_coordination_sync.md",
+        "docs/planning/tasks/closed/internal_project_code_review_closeout_planning_catalog_sync.md"
+      ],
+      "subject_ids": [
+        "prd.internal_project_code_review_and_hardening",
+        "decision.internal_project_code_review_and_hardening_direction",
+        "design.features.internal_project_code_review_and_hardening",
+        "design.implementation.internal_project_code_review_and_hardening",
+        "task.internal_project_code_review_and_hardening.bootstrap.001",
+        "task.internal_project_code_review_and_hardening.scaffold_coordination_sync.001",
+        "task.internal_project_code_review_and_hardening.closeout_planning_catalog_sync.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_and_hardening.001"
+      ],
+      "notes": "The code-review trace now publishes the full planning chain, the accepted direction, the acceptance contract, the final evidence artifact, and three closed bounded tasks covering bootstrap, scaffold coordination refresh, and closeout planning-catalog refresh."
+    },
+    {
+      "check_id": "check.internal_project_code_review_and_hardening.scaffold_coordination_refresh",
+      "title": "Traced scaffold writes refresh coordination-derived planning surfaces",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "docs/commands/core_python/watchtower_core_plan_scaffold.md"
+      ],
+      "subject_ids": [
+        "task.internal_project_code_review_and_hardening.scaffold_coordination_sync.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_and_hardening.002"
+      ],
+      "notes": "Planning scaffold write mode now keeps family-specific sync behavior and conditionally refreshes traceability, initiative, planning-catalog, and coordination surfaces only when the target trace already participates in coordination."
+    },
+    {
+      "check_id": "check.internal_project_code_review_and_hardening.closeout_planning_catalog_refresh",
+      "title": "Initiative closeout refreshes planning-catalog and reports the output path",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
+      ],
+      "subject_ids": [
+        "task.internal_project_code_review_and_hardening.closeout_planning_catalog_sync.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_and_hardening.003"
+      ],
+      "notes": "Initiative closeout now rebuilds planning-catalog in the same write path as initiative and coordination outputs, and the CLI result surfaces the additional output path in both human and JSON output."
+    },
+    {
+      "check_id": "check.internal_project_code_review_and_hardening.docs_runtime_alignment",
+      "title": "Lifecycle docs and workspace guidance stay aligned with runtime behavior",
+      "result": "passed",
+      "subject_paths": [
+        "docs/commands/core_python/watchtower_core_plan_scaffold.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "core/python/README.md",
+        "docs/planning/decisions/internal_project_code_review_and_hardening_direction.md"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_and_hardening.004"
+      ],
+      "notes": "Command guidance, workspace documentation, and the accepted decision record now describe the conditional scaffold coordination refresh and the explicit planning-catalog closeout refresh consistently."
+    },
+    {
+      "check_id": "check.internal_project_code_review_and_hardening.closeout_baseline",
+      "title": "Repository baseline is green after the lifecycle-sync hardening work",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/ledgers/validation_evidence/internal_project_code_review_and_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.internal_project_code_review_and_hardening.005"
+      ],
+      "notes": "validate all --skip-acceptance, pytest -q, python -m mypy src/watchtower_core, ruff check, sync all --write, validate acceptance --trace-id trace.internal_project_code_review_and_hardening, initiative closeout --write, and final validate all all passed against the hardened closed-state repository baseline."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/internal_project_code_review_and_hardening_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence for the ultra-deep internal code review that closed lifecycle stale-state bugs in scaffold writes and initiative closeout while restoring the repository baseline and returning coordination to ready_for_bootstrap at 2026-03-11T16:24:19Z."
+}

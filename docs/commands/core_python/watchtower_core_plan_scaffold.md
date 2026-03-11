@@ -1,7 +1,7 @@
 # `watchtower-core plan scaffold`
 
 ## Summary
-This command scaffolds one compact governed PRD, feature design, implementation plan, or decision record and refreshes derived planning surfaces in write mode.
+This command scaffolds one compact governed PRD, feature design, implementation plan, or decision record and, in write mode, refreshes the family planning surfaces plus the traced coordination slice when the target trace already participates in coordination.
 
 ## Use When
 - You need one new planning document without copying the template by hand.
@@ -61,7 +61,9 @@ uv run watchtower-core plan scaffold --kind feature-design --trace-id trace.exam
 - By default the command runs in dry-run mode and does not create files.
 - Optional sections are omitted by default and the scaffold emits one compact placeholder per required section when richer inputs are not provided.
 - The command rejects path collisions and front-matter or record-metadata mismatches before writing.
-- In write mode, the command writes the scaffold to its canonical planning path and refreshes derived planning surfaces.
+- In write mode, the command writes the scaffold to its canonical planning path and refreshes the family-specific planning indexes and trackers for the selected document kind.
+- When the scaffold belongs to a trace that already appears in traceability or already has traced task state, write mode also refreshes `traceability`, `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking`.
+- Standalone single-document scaffolds for brand-new traces remain valid planning-authoring writes and do not implicitly bootstrap a new active initiative.
 - In `json` mode, the command prints one JSON object with the scaffold metadata, target path, write state, and optional document body.
 
 ## Related Commands
@@ -70,7 +72,8 @@ uv run watchtower-core plan scaffold --kind feature-design --trace-id trace.exam
 | `watchtower-core plan` | Parent command group for planning scaffold operations. |
 | `watchtower-core plan bootstrap` | Uses the same scaffold machinery to create a full traced planning chain. |
 | `watchtower-core task` | Use after scaffolding when the next step is bounded task execution. |
-| `watchtower-core sync all` | Rebuilds the same deterministic planning surfaces refreshed in write mode. |
+| `watchtower-core sync coordination` | Rebuilds the traced coordination slice that write mode now refreshes for coordination-participating traces. |
+| `watchtower-core sync all` | Rebuilds the same deterministic planning and coordination surfaces refreshed in write mode. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/plan_family.py`
@@ -78,4 +81,4 @@ uv run watchtower-core plan scaffold --kind feature-design --trace-id trace.exam
 - `core/python/src/watchtower_core/repo_ops/planning_scaffolds.py`
 
 ## Updated At
-- `2026-03-10T23:01:32Z`
+- `2026-03-11T16:10:47Z`
