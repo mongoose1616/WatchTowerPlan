@@ -714,6 +714,93 @@
       "notes": "Planning-baseline evidence for the machine-first coordination surface initiative."
     },
     {
+      "trace_id": "trace.planning_authority_unification",
+      "title": "Planning Authority Unification PRD",
+      "summary": "Create one canonical machine planning catalog, publish a machine authority map, and normalize planning query status semantics for machine consumers.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-11T01:58:37Z",
+      "prd_ids": [
+        "prd.planning_authority_unification"
+      ],
+      "decision_ids": [
+        "decision.planning_authority_unification_direction"
+      ],
+      "design_ids": [
+        "design.features.planning_authority_unification"
+      ],
+      "plan_ids": [
+        "design.implementation.planning_authority_unification"
+      ],
+      "task_ids": [
+        "task.planning_authority_unification.authority_map.001",
+        "task.planning_authority_unification.bootstrap.001",
+        "task.planning_authority_unification.planning_catalog.001"
+      ],
+      "requirement_ids": [
+        "req.planning_authority_unification.001",
+        "req.planning_authority_unification.002",
+        "req.planning_authority_unification.003",
+        "req.planning_authority_unification.004",
+        "req.planning_authority_unification.005"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authority_unification.001",
+        "ac.planning_authority_unification.002",
+        "ac.planning_authority_unification.003",
+        "ac.planning_authority_unification.004",
+        "ac.planning_authority_unification.005",
+        "ac.planning_authority_unification.006"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.planning_authority_unification"
+      ],
+      "evidence_ids": [
+        "evidence.planning_authority_unification.planning_baseline"
+      ],
+      "related_paths": [
+        "README.md",
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/planning_authority_unification_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_authority_unification_planning_baseline.v1.json",
+        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/planning_authority_unification.md",
+        "docs/planning/design/implementation/planning_authority_unification.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/planning_authority_unification_bootstrap.md",
+        "docs/planning/tasks/open/machine_authority_map_and_navigation.md",
+        "docs/planning/tasks/open/planning_catalog_and_query.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/",
+        "docs/standards/governance/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the planning authority unification initiative."
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "title": "Pre-Implementation Repository Review and Hardening PRD",
       "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",

@@ -3,15 +3,135 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-11T01:42:35Z",
-  "coordination_mode": "ready_for_bootstrap",
-  "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
-  "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
-  "recommended_surface_path": "docs/planning/README.md",
-  "active_initiative_count": 0,
-  "blocked_task_count": 0,
-  "actionable_task_count": 0,
+  "updated_at": "2026-03-11T01:58:37Z",
+  "coordination_mode": "active_work",
+  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
+  "recommended_next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
+  "recommended_surface_path": "docs/planning/tasks/open/planning_catalog_and_query.md",
+  "active_initiative_count": 1,
+  "blocked_task_count": 1,
+  "actionable_task_count": 1,
   "entries": [
+    {
+      "trace_id": "trace.planning_authority_unification",
+      "title": "Planning Authority Unification PRD",
+      "summary": "Create one canonical machine planning catalog, publish a machine authority map, and normalize planning query status semantics for machine consumers.",
+      "status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-11T01:58:37Z",
+      "open_task_count": 2,
+      "blocked_task_count": 1,
+      "key_surface_path": "docs/planning/prds/planning_authority_unification.md",
+      "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
+      "next_surface_path": "docs/planning/tasks/open/planning_catalog_and_query.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.planning_authority_unification.authority_map.001",
+        "task.planning_authority_unification.planning_catalog.001"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.planning_authority_unification.planning_catalog.001",
+          "title": "Publish planning catalog and canonical planning query",
+          "task_status": "backlog",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/planning_catalog_and_query.md",
+          "is_actionable": true
+        },
+        {
+          "task_id": "task.planning_authority_unification.authority_map.001",
+          "title": "Publish machine authority map and canonical navigation updates",
+          "task_status": "backlog",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/machine_authority_map_and_navigation.md",
+          "is_actionable": false,
+          "depends_on": [
+            "task.planning_authority_unification.planning_catalog.001"
+          ]
+        }
+      ],
+      "blocked_by_task_ids": [
+        "task.planning_authority_unification.planning_catalog.001"
+      ],
+      "prd_ids": [
+        "prd.planning_authority_unification"
+      ],
+      "decision_ids": [
+        "decision.planning_authority_unification_direction"
+      ],
+      "design_ids": [
+        "design.features.planning_authority_unification"
+      ],
+      "plan_ids": [
+        "design.implementation.planning_authority_unification"
+      ],
+      "task_ids": [
+        "task.planning_authority_unification.authority_map.001",
+        "task.planning_authority_unification.bootstrap.001",
+        "task.planning_authority_unification.planning_catalog.001"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authority_unification.001",
+        "ac.planning_authority_unification.002",
+        "ac.planning_authority_unification.003",
+        "ac.planning_authority_unification.004",
+        "ac.planning_authority_unification.005",
+        "ac.planning_authority_unification.006"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.planning_authority_unification"
+      ],
+      "evidence_ids": [
+        "evidence.planning_authority_unification.planning_baseline"
+      ],
+      "related_paths": [
+        "README.md",
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/planning_authority_unification_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_authority_unification_planning_baseline.v1.json",
+        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/planning_authority_unification.md",
+        "docs/planning/design/implementation/planning_authority_unification.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/planning_authority_unification_bootstrap.md",
+        "docs/planning/tasks/open/machine_authority_map_and_navigation.md",
+        "docs/planning/tasks/open/planning_catalog_and_query.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/",
+        "docs/standards/governance/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the planning authority unification initiative."
+    },
     {
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "title": "Foundation Scope and EntryPoint Realignment PRD",
@@ -1096,7 +1216,19 @@
       ]
     }
   ],
-  "actionable_tasks": [],
+  "actionable_tasks": [
+    {
+      "trace_id": "trace.planning_authority_unification",
+      "initiative_title": "Planning Authority Unification PRD",
+      "task_id": "task.planning_authority_unification.planning_catalog.001",
+      "title": "Publish planning catalog and canonical planning query",
+      "task_status": "backlog",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/planning_catalog_and_query.md",
+      "is_actionable": true
+    }
+  ],
   "recent_closed_initiatives": [
     {
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",

@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
+| --- | --- | --- | --- | --- | --- | --- |
+| `trace.planning_authority_unification` | `execution` | repository_maintainer | `2` (`blocked=1`) | [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md) | [planning_catalog_and_query.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/planning_catalog_and_query.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -22,4 +24,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-11T01:42:35Z`_
+_Updated At: `2026-03-11T01:58:37Z`_

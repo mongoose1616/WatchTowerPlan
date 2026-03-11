@@ -180,6 +180,54 @@
       ]
     },
     {
+      "trace_id": "trace.planning_authority_unification",
+      "decision_id": "decision.planning_authority_unification_direction",
+      "title": "Planning Authority Unification Direction Decision",
+      "summary": "Records the decision to add a canonical planning catalog and machine authority map while keeping current family views as projections or compatibility surfaces.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/planning_authority_unification_direction.md",
+      "updated_at": "2026-03-11T01:48:43Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.planning_authority_unification"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_authority_unification"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_authority_unification"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/planning/",
+        "core/control_plane/registries/authority_map/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/cli/",
+        "docs/planning/README.md",
+        "docs/standards/data_contracts/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/foundations/repository_standards_posture.md",
+        "SUMMARY.md",
+        "docs/planning/coordination_tracking.md",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/foundations/repository_standards_posture.md"
+      ]
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "decision_id": "decision.preimplementation_machine_coordination_entrypoint",
       "title": "Machine Coordination Entrypoint Decision",

@@ -1,0 +1,128 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.planning_authority_unification",
+  "title": "Planning Authority Unification Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.planning_authority_unification",
+  "source_prd_id": "prd.planning_authority_unification",
+  "entries": [
+    {
+      "acceptance_id": "ac.planning_authority_unification.001",
+      "summary": "The planning corpus publishes an active PRD, accepted decision, feature design, implementation plan, closed bootstrap task, and bounded execution tasks for the initiative.",
+      "source_requirement_ids": [
+        "req.planning_authority_unification.005"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/design/features/planning_authority_unification.md",
+        "docs/planning/design/implementation/planning_authority_unification.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/planning/tasks/closed/planning_authority_unification_bootstrap.md",
+        "docs/planning/tasks/open/planning_catalog_and_query.md",
+        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_authority_unification.002",
+      "summary": "The repo publishes a governed planning-catalog artifact family with schema, canonical artifact, validator coverage, typed loader support, sync support, and examples.",
+      "source_requirement_ids": [
+        "req.planning_authority_unification.001",
+        "req.planning_authority_unification.005"
+      ],
+      "validation_targets": [
+        "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/examples/valid/indexes/planning_catalog.v1.example.json",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "docs/planning/tasks/open/planning_catalog_and_query.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_authority_unification.003",
+      "summary": "The canonical planning query path publishes explicit status semantics and returns linked planning, task, acceptance, evidence, and coordination sections for one trace.",
+      "source_requirement_ids": [
+        "req.planning_authority_unification.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/planning/tasks/open/planning_catalog_and_query.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_authority_unification.004",
+      "summary": "The repo publishes a machine-readable authority map plus an authority query surface that resolves canonical planning and governance surfaces and preferred commands.",
+      "source_requirement_ids": [
+        "req.planning_authority_unification.003",
+        "req.planning_authority_unification.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/schemas/artifacts/authority_map.v1.schema.json",
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
+        "docs/commands/core_python/watchtower_core_query_authority.md",
+        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+      ],
+      "related_paths": [
+        "README.md",
+        "docs/planning/README.md",
+        "docs/standards/data_contracts/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_authority_unification.005",
+      "summary": "Root, planning, and command docs explain the canonical-versus-projection relationship across the planning and authority query surfaces.",
+      "source_requirement_ids": [
+        "req.planning_authority_unification.004"
+      ],
+      "validation_targets": [
+        "README.md",
+        "docs/planning/README.md",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/commands/core_python/watchtower_core_query_authority.md",
+        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/",
+        "docs/standards/governance/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_authority_unification.006",
+      "summary": "The repository remains green on the current validation baseline while the canonical planning and authority surfaces land.",
+      "source_requirement_ids": [
+        "req.planning_authority_unification.005"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "related_paths": [
+        "core/python/tests/"
+      ]
+    }
+  ]
+}

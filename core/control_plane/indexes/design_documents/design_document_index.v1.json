@@ -426,6 +426,37 @@
       ]
     },
     {
+      "document_id": "design.features.planning_authority_unification",
+      "trace_id": "trace.planning_authority_unification",
+      "family": "feature_design",
+      "title": "Planning Authority Unification Feature Design",
+      "summary": "Defines the technical design for a canonical planning catalog, a machine authority map, and explicit planning-status semantics.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/planning_authority_unification.md",
+      "updated_at": "2026-03-11T01:48:43Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/planning_authority_unification.md",
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/repository_scope.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "SUMMARY.md",
+        "docs/planning/coordination_tracking.md",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    },
+    {
       "document_id": "design.features.preimplementation_repo_readiness",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "family": "feature_design",
@@ -783,6 +814,35 @@
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/planning/prds/machine_first_coordination_surface.md",
         "docs/planning/design/features/machine_first_coordination_surface.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.planning_authority_unification",
+      "trace_id": "trace.planning_authority_unification",
+      "family": "implementation_plan",
+      "title": "Planning Authority Unification Implementation Plan",
+      "summary": "Breaks the planning catalog, authority-map, and status-semantics work into bounded executable slices.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/planning_authority_unification.md",
+      "updated_at": "2026-03-11T01:48:43Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/planning_authority_unification.md"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "SUMMARY.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/design/features/planning_authority_unification.md"
       ]
     },
     {

@@ -1,0 +1,112 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.planning_authority_unification.planning_baseline",
+  "title": "Planning Authority Unification Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.planning_authority_unification",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T01:48:43Z",
+  "source_prd_ids": [
+    "prd.planning_authority_unification"
+  ],
+  "source_decision_ids": [
+    "decision.planning_authority_unification_direction"
+  ],
+  "source_design_ids": [
+    "design.features.planning_authority_unification"
+  ],
+  "source_plan_ids": [
+    "design.implementation.planning_authority_unification"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.planning_authority_unification"
+  ],
+  "checks": [
+    {
+      "check_id": "check.planning_authority_unification.planning_chain",
+      "title": "Planning corpus baseline",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/design/features/planning_authority_unification.md",
+        "docs/planning/design/implementation/planning_authority_unification.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/planning/tasks/closed/planning_authority_unification_bootstrap.md",
+        "docs/planning/tasks/open/planning_catalog_and_query.md",
+        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+      ],
+      "subject_ids": [
+        "prd.planning_authority_unification",
+        "design.features.planning_authority_unification",
+        "design.implementation.planning_authority_unification",
+        "decision.planning_authority_unification_direction",
+        "task.planning_authority_unification.bootstrap.001",
+        "task.planning_authority_unification.planning_catalog.001",
+        "task.planning_authority_unification.authority_map.001"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authority_unification.001"
+      ],
+      "notes": "The initiative now has its traced planning chain, accepted direction, acceptance contract, and two bounded execution tasks."
+    },
+    {
+      "check_id": "check.planning_authority_unification.catalog_slice",
+      "title": "Planning catalog slice defined",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/planning_authority_unification.md",
+        "docs/planning/tasks/open/planning_catalog_and_query.md"
+      ],
+      "subject_ids": [
+        "design.features.planning_authority_unification",
+        "task.planning_authority_unification.planning_catalog.001"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authority_unification.002",
+        "ac.planning_authority_unification.003"
+      ],
+      "notes": "The first execution slice is bounded to the planning catalog, sync, query, and status-semantics work."
+    },
+    {
+      "check_id": "check.planning_authority_unification.authority_map_slice",
+      "title": "Authority-map slice defined",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/planning_authority_unification.md",
+        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+      ],
+      "subject_ids": [
+        "design.features.planning_authority_unification",
+        "task.planning_authority_unification.authority_map.001"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authority_unification.004",
+        "ac.planning_authority_unification.005"
+      ],
+      "notes": "The second slice is bounded to canonical-surface policy, authority lookup, and navigation updates after the planning catalog exists."
+    },
+    {
+      "check_id": "check.planning_authority_unification.validation_baseline",
+      "title": "Current workspace validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authority_unification.006"
+      ],
+      "notes": "The repository is green at bootstrap and ready for the planning-authority remediation slices."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/planning_authority_unification_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning-baseline evidence for the planning authority unification initiative."
+}

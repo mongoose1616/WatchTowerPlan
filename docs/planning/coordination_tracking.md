@@ -3,17 +3,21 @@
 ## Current State
 | Field | Value |
 | --- | --- |
-| Mode | `ready_for_bootstrap` |
-| Summary | No active initiatives are open. The repository is ready for one new bounded initiative. |
-| Next | Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work. |
-| Open First | [docs/planning/README.md](/home/j/WatchTowerPlan/docs/planning/README.md) |
+| Mode | `active_work` |
+| Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
+| Next | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| Open First | [docs/planning/tasks/open/planning_catalog_and_query.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/planning_catalog_and_query.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Next | Action |
+| --- | --- | --- | --- | --- |
+| `trace.planning_authority_unification` | `execution` | repository_maintainer | [planning_catalog_and_query.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/planning_catalog_and_query.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Actionable Tasks
-_No actionable tasks._
+| Task | Initiative | Status | Priority | Owner |
+| --- | --- | --- | --- | --- |
+| [task.planning_authority_unification.planning_catalog.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/planning_catalog_and_query.md) | `trace.planning_authority_unification` | `backlog` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -24,4 +28,4 @@ _No actionable tasks._
 | `trace.end_to_end_repo_review_and_rationalization` | `completed` | `2026-03-10T20:33:10Z` | [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md) |
 | `trace.machine_first_coordination_surface` | `completed` | `2026-03-10T19:36:51Z` | [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md) |
 
-_Updated At: `2026-03-11T01:42:35Z`_
+_Updated At: `2026-03-11T01:58:37Z`_

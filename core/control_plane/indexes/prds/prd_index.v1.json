@@ -302,6 +302,56 @@
       ]
     },
     {
+      "trace_id": "trace.planning_authority_unification",
+      "prd_id": "prd.planning_authority_unification",
+      "title": "Planning Authority Unification PRD",
+      "summary": "Create one canonical machine planning catalog, publish a machine authority map, and normalize planning query status semantics for machine consumers.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/planning_authority_unification.md",
+      "updated_at": "2026-03-11T01:48:43Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.planning_authority_unification.001",
+        "req.planning_authority_unification.002",
+        "req.planning_authority_unification.003",
+        "req.planning_authority_unification.004",
+        "req.planning_authority_unification.005"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authority_unification.001",
+        "ac.planning_authority_unification.002",
+        "ac.planning_authority_unification.003",
+        "ac.planning_authority_unification.004",
+        "ac.planning_authority_unification.005",
+        "ac.planning_authority_unification.006"
+      ],
+      "linked_decision_ids": [
+        "decision.planning_authority_unification_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_authority_unification"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_authority_unification"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/planning/",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/repository_scope.md",
+        "SUMMARY.md",
+        "docs/planning/coordination_tracking.md",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+      ]
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "prd_id": "prd.preimplementation_repo_review_and_hardening",
       "title": "Pre-Implementation Repository Review and Hardening PRD",

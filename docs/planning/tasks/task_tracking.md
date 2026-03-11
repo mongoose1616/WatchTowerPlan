@@ -1,7 +1,10 @@
 # Task Tracking
 
 ## Open Tasks
-_No open tasks._
+| Task | Status | Priority | Owner | Trace ID | Summary |
+| --- | --- | --- | --- | --- | --- |
+| [task.planning_authority_unification.authority_map.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/machine_authority_map_and_navigation.md) | `backlog` | `high` | `repository_maintainer` | `trace.planning_authority_unification` | Add the machine authority-map registry, authority query surface, and the documentation and standards updates that explain canonical planning precedence. |
+| [task.planning_authority_unification.planning_catalog.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/planning_catalog_and_query.md) | `backlog` | `high` | `repository_maintainer` | `trace.planning_authority_unification` | Build the planning-catalog artifact family and make it the canonical machine planning join through a dedicated query command. |
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -47,6 +50,7 @@ _No open tasks._
 | [task.initiative_closeout.followup.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/initiative_closeout_followup.md) | `done` | `medium` | `repository_maintainer` | `trace.initiative_closeout` | Tracks the remaining closeout and verification follow-up for the initiative closeout and planning tracker initiative. |
 | [task.local_task_tracking.github_sync.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/github_task_sync.md) | `done` | `medium` | `repository_maintainer` | `trace.local_task_tracking` | Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity. |
 | [task.machine_first_coordination_surface.entrypoints.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/machine_first_coordination_entrypoints.md) | `done` | `medium` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Generate a compact human coordination tracker and reroute planning and agent entrypoint guidance so humans and agents start from the same derived coordination state. |
+| [task.planning_authority_unification.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/planning_authority_unification_bootstrap.md) | `done` | `medium` | `repository_maintainer` | `trace.planning_authority_unification` | Bootstraps the initial planning chain for Planning Authority Unification. |
 | [task.template_and_output_efficiency.workflow_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.template_and_output_efficiency` | Update planning and documentation workflow modules so they prefer the smallest useful output and stop encouraging low-value meta content. |
 | [task.unit_test_hardening_and_rebalancing.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md) | `done` | `medium` | `repository_maintainer` | `trace.unit_test_hardening_and_rebalancing` | Bootstraps the initial planning chain for Unit Test Hardening and Rebalancing. |
 | [task.unit_test_hardening_and_rebalancing.orchestration_hardening.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md) | `done` | `medium` | `repository_maintainer` | `trace.unit_test_hardening_and_rebalancing` | Add meaningful failure and edge-state tests for aggregate sync, aggregate validation, initiative closeout, and derived coordination or initiative projections. |
@@ -54,4 +58,4 @@ _No open tasks._
 | [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_planning_scaffolds.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates. |
 | [task.workflow_system_operationalization.reconciliation_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_reconciliation_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes. |
 
-_Updated At: `2026-03-11T01:39:27Z`_
+_Updated At: `2026-03-11T01:58:37Z`_
