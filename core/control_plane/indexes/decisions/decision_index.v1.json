@@ -595,6 +595,46 @@
       ]
     },
     {
+      "trace_id": "trace.reference_and_workflow_standards_alignment",
+      "decision_id": "decision.reference_and_workflow_standards_alignment_direction",
+      "title": "Reference and Workflow Standards Alignment Direction Decision",
+      "summary": "Records the accepted direction for converging reference authoring rules and workflow additional-load enforcement.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
+      "updated_at": "2026-03-11T23:19:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.reference_and_workflow_standards_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.reference_and_workflow_standards_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.reference_and_workflow_standards_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/templates/workflow_template.md",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.repo_local_hotspot_modularity",
       "decision_id": "decision.repo_local_hotspot_modularity_direction",
       "title": "Repo-Local Hotspot Modularity Hardening Direction Decision",

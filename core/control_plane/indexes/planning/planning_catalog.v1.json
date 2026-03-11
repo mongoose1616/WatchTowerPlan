@@ -5020,7 +5020,7 @@
       "summary": "Align decision-record standards and templates with the enforced governed contract and extend shared document-semantics enforcement across governed planning documents.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-11T21:01:05Z",
+      "updated_at": "2026-03-11T21:01:23Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/planning_semantics_and_decision_contract_alignment.md",
@@ -5299,7 +5299,7 @@
           "title": "Planning Semantics and Decision Contract Alignment Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-11T20:54:10Z",
+          "recorded_at": "2026-03-11T21:01:23Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/planning_semantics_and_decision_contract_alignment_planning_baseline.v1.json",
           "check_ids": [
             "check.planning_semantics_and_decision_contract_alignment.planning_baseline",
@@ -5418,7 +5418,7 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-11T20:54:10Z for trace.planning_semantics_and_decision_contract_alignment.",
+      "notes": "Planning baseline evidence refreshed at 2026-03-11T21:01:23Z for trace.planning_semantics_and_decision_contract_alignment after initiative closeout and final validation alignment.",
       "closed_at": "2026-03-11T21:01:05Z",
       "closure_reason": "Closed after aligning planning-document authoring contracts, extending shared markdown semantics enforcement, and reconciling stale regression fixtures discovered during full-suite validation."
     },
@@ -5797,6 +5797,378 @@
       "notes": "Planning-baseline evidence for the pre-implementation repository review and hardening initiative.",
       "closed_at": "2026-03-10T18:48:07Z",
       "closure_reason": "Delivered and validated pre-implementation repository review and hardening."
+    },
+    {
+      "trace_id": "trace.reference_and_workflow_standards_alignment",
+      "title": "Reference and Workflow Standards Alignment PRD",
+      "summary": "Align governed reference authoring guidance with live validator and index expectations, and tighten workflow additional-load enforcement so generic workflow standards stay implicit.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T23:32:19Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.reference_and_workflow_standards_alignment",
+          "title": "Reference and Workflow Standards Alignment PRD",
+          "summary": "Align governed reference authoring guidance with live validator and index expectations, and tighten workflow additional-load enforcement so generic workflow standards stay implicit.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+          "updated_at": "2026-03-11T23:19:00Z",
+          "requirement_ids": [
+            "req.reference_and_workflow_standards_alignment.001",
+            "req.reference_and_workflow_standards_alignment.002",
+            "req.reference_and_workflow_standards_alignment.003",
+            "req.reference_and_workflow_standards_alignment.004"
+          ],
+          "acceptance_ids": [
+            "ac.reference_and_workflow_standards_alignment.001",
+            "ac.reference_and_workflow_standards_alignment.002",
+            "ac.reference_and_workflow_standards_alignment.003",
+            "ac.reference_and_workflow_standards_alignment.004"
+          ],
+          "linked_decision_ids": [
+            "decision.reference_and_workflow_standards_alignment_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.reference_and_workflow_standards_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.reference_and_workflow_standards_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.reference_and_workflow_standards_alignment_direction",
+          "title": "Reference and Workflow Standards Alignment Direction Decision",
+          "summary": "Records the accepted direction for converging reference authoring rules and workflow additional-load enforcement.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
+          "updated_at": "2026-03-11T23:19:00Z",
+          "linked_prd_ids": [
+            "prd.reference_and_workflow_standards_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.reference_and_workflow_standards_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.reference_and_workflow_standards_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.reference_and_workflow_standards_alignment",
+          "family": "feature_design",
+          "title": "Reference and Workflow Standards Alignment Feature Design",
+          "summary": "Defines the technical design boundary for converging governed reference authoring rules and workflow additional-load enforcement.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
+          "updated_at": "2026-03-11T23:19:00Z"
+        },
+        {
+          "document_id": "design.implementation.reference_and_workflow_standards_alignment",
+          "family": "implementation_plan",
+          "title": "Reference and Workflow Standards Alignment Implementation Plan",
+          "summary": "Breaks the reference-authoring and workflow-additional-load contract alignment work into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/reference_and_workflow_standards_alignment.md",
+          "updated_at": "2026-03-11T23:19:00Z",
+          "source_paths": [
+            "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
+            "docs/planning/prds/reference_and_workflow_standards_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.reference_and_workflow_standards_alignment.bootstrap.001",
+          "title": "Bootstrap Reference and Workflow Standards Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Reference and Workflow Standards Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/reference_and_workflow_standards_alignment_bootstrap.md",
+          "updated_at": "2026-03-11T23:19:00Z",
+          "related_ids": [
+            "prd.reference_and_workflow_standards_alignment",
+            "design.features.reference_and_workflow_standards_alignment",
+            "design.implementation.reference_and_workflow_standards_alignment",
+            "decision.reference_and_workflow_standards_alignment_direction",
+            "contract.acceptance.reference_and_workflow_standards_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/reference_md_standard.md",
+            "docs/templates/reference_template.md",
+            "docs/standards/documentation/workflow_md_standard.md",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py"
+          ]
+        },
+        {
+          "task_id": "task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001",
+          "title": "Align reference authoring contract with governed enforcement",
+          "summary": "Update reference authoring guidance and regression coverage so governed reference docs require Canonical Upstream just like the live validator and reference index already do.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/align_reference_authoring_contract_with_governed_enforcement.md",
+          "updated_at": "2026-03-11T23:25:32Z",
+          "related_ids": [
+            "prd.reference_and_workflow_standards_alignment",
+            "design.features.reference_and_workflow_standards_alignment",
+            "design.implementation.reference_and_workflow_standards_alignment",
+            "decision.reference_and_workflow_standards_alignment_direction",
+            "contract.acceptance.reference_and_workflow_standards_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/reference_md_standard.md",
+            "docs/templates/reference_template.md",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_document_semantics_validation.py"
+          ]
+        },
+        {
+          "task_id": "task.reference_and_workflow_standards_alignment.validation_closeout.001",
+          "title": "Validate and close Reference and Workflow Standards Alignment",
+          "summary": "Refresh derived surfaces, publish acceptance evidence, rerun the full repository validation stack, and close the traced initiative cleanly.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_reference_and_workflow_standards_alignment.md",
+          "updated_at": "2026-03-11T23:29:23Z",
+          "depends_on": [
+            "task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001",
+            "task.reference_and_workflow_standards_alignment.workflow_additional_load_alignment.001"
+          ],
+          "related_ids": [
+            "prd.reference_and_workflow_standards_alignment",
+            "design.features.reference_and_workflow_standards_alignment",
+            "design.implementation.reference_and_workflow_standards_alignment",
+            "decision.reference_and_workflow_standards_alignment_direction",
+            "contract.acceptance.reference_and_workflow_standards_alignment"
+          ],
+          "applies_to": [
+            "docs/planning/",
+            "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.v1.json",
+            "core/control_plane/indexes/",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/test_workflow_index_sync.py"
+          ]
+        },
+        {
+          "task_id": "task.reference_and_workflow_standards_alignment.workflow_additional_load_alignment.001",
+          "title": "Tighten workflow additional-load generic baseline enforcement",
+          "summary": "Reject generic workflow standards in Additional Files to Load, including routing_and_context_loading_standard.md, and add matching regression coverage.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/tighten_workflow_additional_load_generic_baseline_enforcement.md",
+          "updated_at": "2026-03-11T23:25:32Z",
+          "depends_on": [
+            "task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001"
+          ],
+          "related_ids": [
+            "prd.reference_and_workflow_standards_alignment",
+            "design.features.reference_and_workflow_standards_alignment",
+            "design.implementation.reference_and_workflow_standards_alignment",
+            "decision.reference_and_workflow_standards_alignment_direction",
+            "contract.acceptance.reference_and_workflow_standards_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/workflow_md_standard.md",
+            "docs/templates/workflow_template.md",
+            "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_workflow_index_sync.py"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.reference_and_workflow_standards_alignment",
+          "title": "Reference and Workflow Standards Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.reference_and_workflow_standards_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.reference_and_workflow_standards_alignment.001",
+            "ac.reference_and_workflow_standards_alignment.002",
+            "ac.reference_and_workflow_standards_alignment.003",
+            "ac.reference_and_workflow_standards_alignment.004"
+          ],
+          "validation_targets": [
+            "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/test_workflow_index_sync.py",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
+            "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
+            "docs/planning/design/implementation/reference_and_workflow_standards_alignment.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+            "docs/planning/tasks/closed/align_reference_authoring_contract_with_governed_enforcement.md",
+            "docs/planning/tasks/closed/reference_and_workflow_standards_alignment_bootstrap.md",
+            "docs/planning/tasks/closed/tighten_workflow_additional_load_generic_baseline_enforcement.md",
+            "docs/planning/tasks/closed/validate_and_close_reference_and_workflow_standards_alignment.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/documentation/reference_md_standard.md",
+            "docs/standards/documentation/workflow_md_standard.md",
+            "docs/templates/reference_template.md",
+            "docs/templates/workflow_template.md"
+          ],
+          "related_paths": [
+            "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+            "core/control_plane/indexes/tasks/task_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/data_contracts/reference_index_standard.md",
+            "docs/standards/data_contracts/workflow_index_standard.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.reference_and_workflow_standards_alignment.planning_baseline",
+          "title": "Reference and Workflow Standards Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-11T23:29:23Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.reference_and_workflow_standards_alignment.planning_baseline",
+            "check.reference_and_workflow_standards_alignment.reference_contract",
+            "check.reference_and_workflow_standards_alignment.workflow_additional_load",
+            "check.reference_and_workflow_standards_alignment.validation_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.reference_and_workflow_standards_alignment.001",
+            "ac.reference_and_workflow_standards_alignment.002",
+            "ac.reference_and_workflow_standards_alignment.003",
+            "ac.reference_and_workflow_standards_alignment.004"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.reference_and_workflow_standards_alignment"
+      ],
+      "decision_ids": [
+        "decision.reference_and_workflow_standards_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.reference_and_workflow_standards_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.reference_and_workflow_standards_alignment"
+      ],
+      "task_ids": [
+        "task.reference_and_workflow_standards_alignment.bootstrap.001",
+        "task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001",
+        "task.reference_and_workflow_standards_alignment.validation_closeout.001",
+        "task.reference_and_workflow_standards_alignment.workflow_additional_load_alignment.001"
+      ],
+      "requirement_ids": [
+        "req.reference_and_workflow_standards_alignment.001",
+        "req.reference_and_workflow_standards_alignment.002",
+        "req.reference_and_workflow_standards_alignment.003",
+        "req.reference_and_workflow_standards_alignment.004"
+      ],
+      "acceptance_ids": [
+        "ac.reference_and_workflow_standards_alignment.001",
+        "ac.reference_and_workflow_standards_alignment.002",
+        "ac.reference_and_workflow_standards_alignment.003",
+        "ac.reference_and_workflow_standards_alignment.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.reference_and_workflow_standards_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.reference_and_workflow_standards_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_workflow_index_sync.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
+        "docs/planning/design/implementation/reference_and_workflow_standards_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+        "docs/planning/tasks/closed/align_reference_authoring_contract_with_governed_enforcement.md",
+        "docs/planning/tasks/closed/reference_and_workflow_standards_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/tighten_workflow_additional_load_generic_baseline_enforcement.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_and_workflow_standards_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/templates/reference_template.md",
+        "docs/templates/workflow_template.md"
+      ],
+      "tags": [
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-11T23:29:23Z for trace.reference_and_workflow_standards_alignment.",
+      "closed_at": "2026-03-11T23:32:19Z",
+      "closure_reason": "Reference authoring guidance and workflow additional-load enforcement are aligned with the governed standards and validated end to end."
     },
     {
       "trace_id": "trace.repo_local_hotspot_modularity",

@@ -49,6 +49,7 @@ WORKFLOW_DISALLOWED_ADDITIONAL_LOAD_PATHS = {
     "workflows/ROUTING_TABLE.md",
     "workflows/modules/core.md",
     "docs/standards/workflows/workflow_design_standard.md",
+    "docs/standards/workflows/routing_and_context_loading_standard.md",
     "docs/standards/documentation/workflow_md_standard.md",
 }
 WORKFLOW_TRIGGER_TAG_STOPWORDS = {

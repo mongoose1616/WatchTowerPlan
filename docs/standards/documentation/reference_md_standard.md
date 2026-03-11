@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T23:19:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -23,7 +23,8 @@ This standard defines the role, structure, and quality expectations for referenc
 Keep reference documents focused on durable lookup content by separating reader-facing reference material from authoring workflows, lifecycle checks, and broader process guidance.
 
 ## Scope
-- Applies to reference documents in this repository, including external reference documents under `docs/references/**`.
+- Applies to reference documents in this repository, especially governed
+  external reference documents under `docs/references/**`.
 - Covers what belongs in a reference document, what should stay optional, and what should be enforced by workflows or standards instead of the document body.
 - Does not define the full authoring workflow for all documentation types.
 
@@ -44,7 +45,11 @@ Keep reference documents focused on durable lookup content by separating reader-
 - A reference document should cover one succinct standard, framework, format, specification, or working model.
 - Use the reference template when creating new reference documents.
 - When external published guidance materially shapes repository standards or design documents, prefer distilling it into `docs/references/**` and citing the local reference doc as the repo-native lookup surface rather than scattering raw vendor URLs across multiple docs.
-- Include `Canonical Upstream` when the topic depends on authoritative external sources.
+- Governed reference docs under `docs/references/**` must include
+  `Canonical Upstream` and publish at least one authoritative external source
+  URL.
+- Repo-native-only lookup content that has no canonical upstream authority
+  should live in another governed document family instead of `docs/references/**`.
 - Include `Local Mapping in This Repository` when the external topic needs a concrete connection to repository surfaces.
 - Omit generic reader-orientation sections such as `Audience` and `Use When` unless a specific reference truly needs them to avoid ambiguity.
 - `Quick Reference or Distilled Reference` should be useful enough that the reader can answer the common practical questions without immediately leaving the repo for the upstream source.
@@ -65,7 +70,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 - `Summary`
 - `Purpose`
 - `Scope`
-- `Canonical Upstream` when applicable
+- `Canonical Upstream`
 - `Related Standards and Sources`
 - `Quick Reference or Distilled Reference`
 - `Local Mapping in This Repository`
@@ -83,7 +88,8 @@ Keep reference documents focused on durable lookup content by separating reader-
 ## Validation
 - The document should be easy to scan as a lookup artifact.
 - The document should stay focused on one topic and should not sprawl into a survey of loosely related subjects.
-- Canonical upstream links should be present when the topic depends on external authority.
+- Governed reference docs under `docs/references/**` should publish canonical
+  upstream links.
 - Local mappings should point to real repository surfaces when they are included.
 - The quick-reference section should contain concrete lookup content rather than only high-level summary language.
 - The reader should be able to resolve the common local questions from the reference doc without needing the upstream source for every basic decision.
@@ -107,4 +113,4 @@ Keep reference documents focused on durable lookup content by separating reader-
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T23:19:00Z`

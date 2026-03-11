@@ -83,6 +83,21 @@ def test_validate_workflow_additional_load_section_rejects_routing_baseline_file
         )
 
 
+def test_validate_workflow_additional_load_section_rejects_generic_workflow_standards() -> None:
+    section = (
+        "- [routing_and_context_loading_standard.md]("
+        "/home/j/WatchTowerPlan/docs/standards/workflows/"
+        "routing_and_context_loading_standard.md): generic workflow baseline.\n"
+    )
+
+    with pytest.raises(ValueError, match="routing-baseline files"):
+        validate_workflow_additional_load_section(
+            "workflows/modules/code_validation.md",
+            section,
+            repo_root=REPO_ROOT,
+        )
+
+
 def test_validate_workflow_additional_load_section_accepts_document_relative_files(
     tmp_path: Path,
 ) -> None:

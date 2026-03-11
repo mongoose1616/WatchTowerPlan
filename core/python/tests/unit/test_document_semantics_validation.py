@@ -27,8 +27,19 @@ def _write_repo_file(path: Path, content: str = "# Placeholder\n") -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def _write_reference_fixture(path: Path, *, support_target: Path) -> None:
+def _write_reference_fixture(
+    path: Path,
+    *,
+    support_target: Path,
+    include_canonical_upstream: bool = True,
+) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    canonical_upstream = (
+        "## Canonical Upstream\n"
+        "- [Example upstream](https://example.com/reference)\n\n"
+        if include_canonical_upstream
+        else ""
+    )
     path.write_text(
         dedent(
             f"""\
@@ -49,10 +60,7 @@ def _write_reference_fixture(path: Path, *, support_target: Path) -> None:
 
             # Example Reference
 
-            ## Canonical Upstream
-            - [Example upstream](https://example.com/reference)
-
-            ## Quick Reference or Distilled Reference
+            {canonical_upstream}## Quick Reference or Distilled Reference
             One compact reference fixture.
 
             ## References
@@ -431,6 +439,27 @@ def test_document_semantics_validation_accepts_existing_repo_local_markdown_link
 
     assert result.passed is True
     assert result.issue_count == 0
+
+
+def test_document_semantics_validation_rejects_reference_without_canonical_upstream(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(
+        reference_path,
+        support_target=support_target,
+        include_canonical_upstream=False,
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/references/example_reference.md")
+
+    assert result.passed is False
+    assert result.issue_count == 1
+    assert "missing required sections: Canonical Upstream" in result.issues[0].message
 
 
 def test_document_semantics_validation_rejects_missing_repo_local_markdown_link_in_workflow(

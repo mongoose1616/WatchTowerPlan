@@ -5,6 +5,7 @@
 > Scope the file to one primary execution concern and delete any placeholder text that does not help the live workflow.
 > Do not add YAML front matter unless a narrower standard or validator explicitly requires it.
 > Treat `AGENTS.md`, `workflows/ROUTING_TABLE.md`, and `workflows/modules/core.md` as already-loaded routing baseline, not as per-module load hints.
+> Do not list generic workflow standards such as `workflow_design_standard.md`, `routing_and_context_loading_standard.md`, or `workflow_md_standard.md` in `## Additional Files to Load`; they stay implicit in the routing baseline.
 > Use `## Additional Files to Load` only when the module truly needs extra repo-local files beyond the normal routing baseline.
 > When `## Additional Files to Load` is present, keep it short, use repository-native Markdown links, and write each bullet in `source: execution implication` form.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.

@@ -1,0 +1,91 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.reference_and_workflow_standards_alignment",
+  "title": "Reference and Workflow Standards Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.reference_and_workflow_standards_alignment",
+  "source_prd_id": "prd.reference_and_workflow_standards_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.reference_and_workflow_standards_alignment.001",
+      "summary": "The trace publishes the full planning chain, the accepted direction decision, the refreshed acceptance contract, the refreshed planning-baseline evidence, and the closed bounded task set for the standards-alignment slice.",
+      "source_requirement_ids": [
+        "req.reference_and_workflow_standards_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+        "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
+        "docs/planning/design/implementation/reference_and_workflow_standards_alignment.md",
+        "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
+        "docs/planning/tasks/closed/reference_and_workflow_standards_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_reference_authoring_contract_with_governed_enforcement.md",
+        "docs/planning/tasks/closed/tighten_workflow_additional_load_generic_baseline_enforcement.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_and_workflow_standards_alignment.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline refreshed at 2026-03-11T23:29:23Z after the bootstrap task, both execution tasks, and the validation-closeout task reached terminal state."
+    },
+    {
+      "acceptance_id": "ac.reference_and_workflow_standards_alignment.002",
+      "summary": "The reference document standard and template now publish Canonical Upstream as a required governed section, and regression checks fail if that contract becomes optional again.",
+      "source_requirement_ids": [
+        "req.reference_and_workflow_standards_alignment.001",
+        "req.reference_and_workflow_standards_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.reference_and_workflow_standards_alignment.003",
+      "summary": "Workflow additional-load validation and sync reject generic workflow standards such as routing_and_context_loading_standard.md, and regression checks fail if the routing-baseline disallow set weakens again.",
+      "source_requirement_ids": [
+        "req.reference_and_workflow_standards_alignment.002",
+        "req.reference_and_workflow_standards_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/templates/workflow_template.md",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_workflow_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/workflow_index_standard.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.reference_and_workflow_standards_alignment.004",
+      "summary": "The trace closes on a green repository baseline after acceptance validation, aggregate validation, tests, type checking, linting, sync refresh, and coordination reconciliation.",
+      "source_requirement_ids": [
+        "req.reference_and_workflow_standards_alignment.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    }
+  ]
+}

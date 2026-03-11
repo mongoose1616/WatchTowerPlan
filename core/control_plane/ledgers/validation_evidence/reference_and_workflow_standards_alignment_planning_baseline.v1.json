@@ -1,0 +1,129 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.reference_and_workflow_standards_alignment.planning_baseline",
+  "title": "Reference and Workflow Standards Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.reference_and_workflow_standards_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T23:29:23Z",
+  "source_prd_ids": [
+    "prd.reference_and_workflow_standards_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.reference_and_workflow_standards_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.reference_and_workflow_standards_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.reference_and_workflow_standards_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.reference_and_workflow_standards_alignment.planning_baseline",
+      "title": "Planning baseline is aligned for the completed standards-alignment trace",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+        "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
+        "docs/planning/design/implementation/reference_and_workflow_standards_alignment.md",
+        "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/reference_and_workflow_standards_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_reference_authoring_contract_with_governed_enforcement.md",
+        "docs/planning/tasks/closed/tighten_workflow_additional_load_generic_baseline_enforcement.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_and_workflow_standards_alignment.md"
+      ],
+      "subject_ids": [
+        "prd.reference_and_workflow_standards_alignment",
+        "design.features.reference_and_workflow_standards_alignment",
+        "design.implementation.reference_and_workflow_standards_alignment",
+        "task.reference_and_workflow_standards_alignment.bootstrap.001",
+        "task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001",
+        "task.reference_and_workflow_standards_alignment.workflow_additional_load_alignment.001",
+        "task.reference_and_workflow_standards_alignment.validation_closeout.001",
+        "contract.acceptance.reference_and_workflow_standards_alignment",
+        "decision.reference_and_workflow_standards_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.reference_and_workflow_standards_alignment.001"
+      ],
+      "notes": "The trace now carries a real PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed planning-baseline evidence, and all four closed task records."
+    },
+    {
+      "check_id": "check.reference_and_workflow_standards_alignment.reference_contract",
+      "title": "Reference authoring guidance matches the governed canonical-upstream contract",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.reference_and_workflow_standards_alignment.002"
+      ],
+      "notes": "Governed docs/references authoring guidance now requires Canonical Upstream explicitly, stops advertising repo-native exceptions inside the governed family, and regression checks fail if the required section or template contract weakens again."
+    },
+    {
+      "check_id": "check.reference_and_workflow_standards_alignment.workflow_additional_load",
+      "title": "Workflow additional-load enforcement rejects generic routing-baseline standards",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/templates/workflow_template.md",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_workflow_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.reference_and_workflow_standards_alignment.workflow_additional_load_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.reference_and_workflow_standards_alignment.003"
+      ],
+      "notes": "Workflow sync and validation now reject docs/standards/workflows/routing_and_context_loading_standard.md alongside the other generic workflow standards that must remain implicit in Additional Files to Load."
+    },
+    {
+      "check_id": "check.reference_and_workflow_standards_alignment.validation_baseline",
+      "title": "Repository validation baseline is green for the completed standards-alignment trace",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.reference_and_workflow_standards_alignment",
+        "decision.reference_and_workflow_standards_alignment_direction",
+        "design.features.reference_and_workflow_standards_alignment",
+        "design.implementation.reference_and_workflow_standards_alignment",
+        "task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001",
+        "task.reference_and_workflow_standards_alignment.workflow_additional_load_alignment.001",
+        "task.reference_and_workflow_standards_alignment.validation_closeout.001",
+        "contract.acceptance.reference_and_workflow_standards_alignment"
+      ],
+      "acceptance_ids": [
+        "ac.reference_and_workflow_standards_alignment.004"
+      ],
+      "notes": "watchtower-core sync all --write, watchtower-core validate acceptance --trace-id trace.reference_and_workflow_standards_alignment --format json, watchtower-core validate all --format json, pytest -q, python -m mypy src/watchtower_core, ruff check, and watchtower-core query coordination --format json passed after the trace reached terminal closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-11T23:29:23Z for trace.reference_and_workflow_standards_alignment.",
+  "source_decision_ids": [
+    "decision.reference_and_workflow_standards_alignment_direction"
+  ]
+}

@@ -451,6 +451,25 @@ def test_governed_standards_explain_related_sources() -> None:
         )
 
 
+def test_reference_authoring_surfaces_stay_aligned_with_governed_contract() -> None:
+    standard_markdown = (
+        REPO_ROOT / "docs/standards/documentation/reference_md_standard.md"
+    ).read_text(encoding="utf-8")
+    template_markdown = (REPO_ROOT / "docs/templates/reference_template.md").read_text(
+        encoding="utf-8"
+    )
+
+    assert "`Canonical Upstream`" in standard_markdown
+    assert "| `Canonical Upstream` |" not in standard_markdown
+    assert "must include\n  `Canonical Upstream`" in standard_markdown or (
+        "must include `Canonical Upstream`" in standard_markdown
+    )
+    assert "## Canonical Upstream" in template_markdown, (
+        "reference template must include Canonical Upstream"
+    )
+    assert "does not belong in the governed `docs/references/**` family" in template_markdown
+
+
 def test_standard_document_template_stays_aligned_with_governed_contract() -> None:
     path = REPO_ROOT / "docs/templates/standard_document_template.md"
     markdown = path.read_text(encoding="utf-8")
@@ -645,6 +664,8 @@ def test_workflow_modules_publish_task_specific_additional_load_files() -> None:
             and "/home/j/WatchTowerPlan/workflows/modules/core.md" not in bullet
             and "/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md"
             not in bullet
+            and "/home/j/WatchTowerPlan/docs/standards/workflows/"
+            "routing_and_context_loading_standard.md" not in bullet
             and "/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md"
             not in bullet
             for bullet in bullets

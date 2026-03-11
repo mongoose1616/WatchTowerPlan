@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T23:19:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -65,7 +65,11 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - `Additional Files to Load` should list only repo-local files that a reader or agent should open in addition to the normal routing baseline.
 - `Additional Files to Load` bullets should use `source: execution implication` form so the local effect of each file is explicit.
 - `Additional Files to Load` should stay short, normally `1` to `5` bullets.
-- `Additional Files to Load` should not repeat repo-wide baseline surfaces such as `AGENTS.md`, `workflows/ROUTING_TABLE.md`, `workflows/modules/core.md`, or the generic workflow standards.
+- `Additional Files to Load` should not repeat repo-wide baseline surfaces such
+  as `AGENTS.md`, `workflows/ROUTING_TABLE.md`, `workflows/modules/core.md`, or
+  generic workflow standards such as
+  `workflow_design_standard.md`, `routing_and_context_loading_standard.md`, and
+  `workflow_md_standard.md`.
 - Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
 - Workflow modules should stay structured enough that the derived workflow index can capture their title, purpose summary, and task-specific additional files without manual curation.
 - `Data Structure` and `Outputs` may remain brief when the workflow does not define a stable working structure or durable deliverable, but the headings should still be present.
@@ -125,4 +129,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T23:19:00Z`

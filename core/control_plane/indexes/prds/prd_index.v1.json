@@ -710,6 +710,47 @@
       ]
     },
     {
+      "trace_id": "trace.reference_and_workflow_standards_alignment",
+      "prd_id": "prd.reference_and_workflow_standards_alignment",
+      "title": "Reference and Workflow Standards Alignment PRD",
+      "summary": "Align governed reference authoring guidance with live validator and index expectations, and tighten workflow additional-load enforcement so generic workflow standards stay implicit.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+      "updated_at": "2026-03-11T23:19:00Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.reference_and_workflow_standards_alignment.001",
+        "req.reference_and_workflow_standards_alignment.002",
+        "req.reference_and_workflow_standards_alignment.003",
+        "req.reference_and_workflow_standards_alignment.004"
+      ],
+      "acceptance_ids": [
+        "ac.reference_and_workflow_standards_alignment.001",
+        "ac.reference_and_workflow_standards_alignment.002",
+        "ac.reference_and_workflow_standards_alignment.003",
+        "ac.reference_and_workflow_standards_alignment.004"
+      ],
+      "linked_decision_ids": [
+        "decision.reference_and_workflow_standards_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.reference_and_workflow_standards_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.reference_and_workflow_standards_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/templates/workflow_template.md",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py"
+      ]
+    },
+    {
       "trace_id": "trace.repo_local_hotspot_modularity",
       "prd_id": "prd.repo_local_hotspot_modularity",
       "title": "Repo-Local Hotspot Modularity Hardening PRD",

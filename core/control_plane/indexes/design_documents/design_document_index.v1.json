@@ -886,6 +886,35 @@
       ]
     },
     {
+      "document_id": "design.features.reference_and_workflow_standards_alignment",
+      "trace_id": "trace.reference_and_workflow_standards_alignment",
+      "family": "feature_design",
+      "title": "Reference and Workflow Standards Alignment Feature Design",
+      "summary": "Defines the technical design boundary for converging governed reference authoring rules and workflow additional-load enforcement.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
+      "updated_at": "2026-03-11T23:19:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/reference_and_workflow_standards_alignment.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/templates/workflow_template.md",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.repo_local_hotspot_modularity",
       "trace_id": "trace.repo_local_hotspot_modularity",
       "family": "feature_design",
@@ -1586,6 +1615,35 @@
         "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
         "docs/planning/design/features/preimplementation_repo_readiness.md",
         "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.reference_and_workflow_standards_alignment",
+      "trace_id": "trace.reference_and_workflow_standards_alignment",
+      "family": "implementation_plan",
+      "title": "Reference and Workflow Standards Alignment Implementation Plan",
+      "summary": "Breaks the reference-authoring and workflow-additional-load contract alignment work into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/reference_and_workflow_standards_alignment.md",
+      "updated_at": "2026-03-11T23:19:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
+        "docs/planning/prds/reference_and_workflow_standards_alignment.md"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/reference_template.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/templates/workflow_template.md",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md"
       ]
     },
     {
