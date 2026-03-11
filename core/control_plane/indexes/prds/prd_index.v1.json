@@ -340,6 +340,49 @@
       ]
     },
     {
+      "trace_id": "trace.internal_project_code_review_followup",
+      "prd_id": "prd.internal_project_code_review_followup",
+      "title": "Internal Project Code Review Follow-up PRD",
+      "summary": "Captures the next ultra-deep internal code-review findings around invalid bootstrap decision scaffolds, missing decision-semantic enforcement, and bootstrap-phase coordination semantics.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/internal_project_code_review_follow_up.md",
+      "updated_at": "2026-03-11T16:37:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.internal_project_code_review_followup.001",
+        "req.internal_project_code_review_followup.002",
+        "req.internal_project_code_review_followup.003",
+        "req.internal_project_code_review_followup.004",
+        "req.internal_project_code_review_followup.005"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_followup.001",
+        "ac.internal_project_code_review_followup.002",
+        "ac.internal_project_code_review_followup.003",
+        "ac.internal_project_code_review_followup.004",
+        "ac.internal_project_code_review_followup.005"
+      ],
+      "linked_decision_ids": [
+        "decision.internal_project_code_review_followup_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.internal_project_code_review_followup"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.internal_project_code_review_followup"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md"
+      ]
+    },
+    {
       "trace_id": "trace.internal_project_review_and_hardening",
       "prd_id": "prd.internal_project_review_and_hardening",
       "title": "Internal Project Review and Hardening PRD",

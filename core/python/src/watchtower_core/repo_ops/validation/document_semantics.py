@@ -19,6 +19,7 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidatorDefinition
 from watchtower_core.repo_ops.planning_documents import (
     DECISION_OPTIONAL_EXPLAINED_SECTIONS,
+    DECISION_REQUIRED_EXPLAINED_SECTIONS,
     DECISION_REQUIRED_SECTIONS,
     FEATURE_DESIGN_OPTIONAL_EXPLAINED_SECTIONS,
     FEATURE_DESIGN_REQUIRED_SECTIONS,
@@ -322,6 +323,7 @@ class DocumentSemanticsValidationService:
             id_label="Decision ID",
             status_label="Record Status",
             required_sections=DECISION_REQUIRED_SECTIONS,
+            required_explained_sections=DECISION_REQUIRED_EXPLAINED_SECTIONS,
             optional_explained_sections=DECISION_OPTIONAL_EXPLAINED_SECTIONS,
         )
 

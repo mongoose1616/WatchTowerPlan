@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+from pathlib import Path
+from shutil import copytree
+from textwrap import dedent
+
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -8,6 +12,91 @@ from watchtower_core.repo_ops.validation import (
     ValidationAllService,
 )
 from watchtower_core.validation.errors import ValidationSelectionError
+
+REPO_ROOT = Path(__file__).resolve().parents[4]
+
+
+def _copy_control_plane_repo(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core/python").mkdir(parents=True)
+    return repo_root
+
+
+def _write_invalid_decision_fixture(path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        dedent(
+            """\
+            ---
+            trace_id: trace.validate_all_decision_semantics
+            id: decision.validate_all_decision_semantics
+            title: Validate All Decision Semantics
+            summary: Exercises aggregate validation for governed decision semantics.
+            type: decision_record
+            status: active
+            owner: repository_maintainer
+            updated_at: '2026-03-11T17:05:00Z'
+            audience: shared
+            authority: supporting
+            ---
+
+            # Validate All Decision Semantics
+
+            ## Record Metadata
+            - `Trace ID`: `trace.validate_all_decision_semantics`
+            - `Decision ID`: `decision.validate_all_decision_semantics`
+            - `Record Status`: `active`
+            - `Decision Status`: `accepted`
+            - `Linked PRDs`: `None`
+            - `Linked Designs`: `None`
+            - `Linked Implementation Plans`: `None`
+            - `Updated At`: `2026-03-11T17:05:00Z`
+
+            ## Summary
+            Exercises aggregate validation for governed decision semantics.
+
+            ## Decision Statement
+            Keep the aggregate validator aligned with decision semantics.
+
+            ## Trigger or Source Request
+            - Added to pin validate-all coverage.
+
+            ## Current Context and Constraints
+            - The fixture should fail only for the missing applied-reference section.
+
+            ## Affected Surfaces
+            - `docs/planning/decisions/validate_all_decision_semantics.md`
+
+            ## Options Considered
+            ### Option 1
+            - Keep the fixture minimal.
+            - Strength.
+            - Tradeoff.
+
+            ### Option 2
+            - Expand the fixture further.
+            - Strength.
+            - Tradeoff.
+
+            ## Chosen Outcome
+            Use the minimal invalid fixture.
+
+            ## Rationale and Tradeoffs
+            - Small fixture: isolates the aggregate validation regression.
+
+            ## Consequences and Follow-Up Impacts
+            - Validate-all should surface the decision-semantic failure directly.
+
+            ## Risks, Dependencies, and Assumptions
+            - The validator remains aligned with the governed decision rules.
+
+            ## References
+            - docs/standards/governance/decision_capture_standard.md
+            """
+        ),
+        encoding="utf-8",
+    )
 
 
 def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
@@ -86,3 +175,28 @@ def test_validate_all_records_selection_errors_as_failed_results(monkeypatch) ->
     assert result.records[0].result.validator_id == "validator.front_matter.aggregate_selection"
     assert result.records[0].result.issue_count == 1
     assert result.records[0].result.issues[0].code == "validation_target_resolution_error"
+
+
+def test_validate_all_reports_missing_decision_applied_reference_section(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    relative_path = "docs/planning/decisions/validate_all_decision_semantics.md"
+    _write_invalid_decision_fixture(repo_root / relative_path)
+    service = ValidationAllService(ControlPlaneLoader(repo_root))
+
+    monkeypatch.setattr(service, "_document_semantics_targets", lambda: (relative_path,))
+
+    result = service.run(included_families=("document_semantics",))
+
+    assert result.passed is False
+    assert result.failed_count == 1
+    assert result.records[0].family == "document_semantics"
+    assert result.records[0].target == relative_path
+    assert (
+        result.records[0].result.validator_id
+        == "validator.documentation.decision_record_semantics"
+    )
+    assert "missing required sections: Applied References and Implications" in (
+        result.records[0].result.issues[0].message
+    )

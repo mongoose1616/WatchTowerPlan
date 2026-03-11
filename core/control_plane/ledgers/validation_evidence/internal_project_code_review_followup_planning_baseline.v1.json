@@ -1,0 +1,144 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.internal_project_code_review_followup.planning_baseline",
+  "title": "Internal Project Code Review Follow-up Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.internal_project_code_review_followup",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T17:13:35Z",
+  "source_prd_ids": [
+    "prd.internal_project_code_review_followup"
+  ],
+  "source_design_ids": [
+    "design.features.internal_project_code_review_followup"
+  ],
+  "source_plan_ids": [
+    "design.implementation.internal_project_code_review_followup"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.internal_project_code_review_followup"
+  ],
+  "checks": [
+    {
+      "check_id": "check.internal_project_code_review_followup.planning_chain",
+      "title": "Follow-up planning chain and bounded tasks are fully published",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/internal_project_code_review_follow_up.md",
+        "docs/planning/design/features/internal_project_code_review_follow_up.md",
+        "docs/planning/design/implementation/internal_project_code_review_follow_up.md",
+        "docs/planning/decisions/internal_project_code_review_follow_up_direction.md",
+        "docs/planning/tasks/closed/internal_project_code_review_follow_up_bootstrap.md",
+        "docs/planning/tasks/closed/harden_bootstrap_decision_scaffold_output.md",
+        "docs/planning/tasks/closed/align_bootstrap_coordination_phase_semantics.md"
+      ],
+      "subject_ids": [
+        "prd.internal_project_code_review_followup",
+        "design.features.internal_project_code_review_followup",
+        "design.implementation.internal_project_code_review_followup",
+        "decision.internal_project_code_review_followup_direction",
+        "task.internal_project_code_review_followup.bootstrap.001",
+        "task.internal_project_code_review_followup.bootstrap_decision_scaffold_hardening.001",
+        "task.internal_project_code_review_followup.bootstrap_phase_semantics_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_followup.001"
+      ],
+      "notes": "The follow-up trace now publishes the rewritten planning chain, the accepted direction, the acceptance contract, the final evidence artifact, and three closed bounded tasks covering bootstrap, decision-semantic hardening, and bootstrap-phase alignment."
+    },
+    {
+      "check_id": "check.internal_project_code_review_followup.decision_semantics_scope",
+      "title": "Decision scaffold and semantic-validation scope is bounded",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "docs/planning/design/features/internal_project_code_review_follow_up.md",
+        "docs/planning/design/implementation/internal_project_code_review_follow_up.md",
+        "docs/planning/tasks/closed/harden_bootstrap_decision_scaffold_output.md",
+        "core/control_plane/contracts/acceptance/internal_project_code_review_followup_acceptance.v1.json"
+      ],
+      "subject_ids": [
+        "design.features.internal_project_code_review_followup",
+        "design.implementation.internal_project_code_review_followup",
+        "task.internal_project_code_review_followup.bootstrap_decision_scaffold_hardening.001",
+        "contract.acceptance.internal_project_code_review_followup"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_followup.002"
+      ],
+      "notes": "Shared decision scaffolds now emit Applied References and Implications by default, decision-semantic validation requires the same explained-bullet section, and aggregate validate-all coverage catches omissions directly."
+    },
+    {
+      "check_id": "check.internal_project_code_review_followup.bootstrap_phase_scope",
+      "title": "Bootstrap phase-semantics scope is bounded",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "docs/planning/design/features/internal_project_code_review_follow_up.md",
+        "docs/planning/design/implementation/internal_project_code_review_follow_up.md",
+        "docs/planning/tasks/closed/align_bootstrap_coordination_phase_semantics.md"
+      ],
+      "subject_ids": [
+        "design.features.internal_project_code_review_followup",
+        "design.implementation.internal_project_code_review_followup",
+        "task.internal_project_code_review_followup.bootstrap_phase_semantics_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_followup.003"
+      ],
+      "notes": "Bootstrap-only traces now stay in implementation_planning until non-bootstrap active work exists, while initiative and planning projections still expose the active bootstrap task consistently."
+    },
+    {
+      "check_id": "check.internal_project_code_review_followup.doc_alignment_scope",
+      "title": "Bootstrap docs and decision narrative are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+        "core/python/README.md",
+        "docs/planning/decisions/internal_project_code_review_follow_up_direction.md"
+      ],
+      "subject_ids": [
+        "decision.internal_project_code_review_followup_direction"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_followup.004"
+      ],
+      "notes": "The bootstrap command guidance, workspace README, and accepted direction all describe the same corrected decision-template and bootstrap-phase behavior."
+    },
+    {
+      "check_id": "check.internal_project_code_review_followup.validation_baseline",
+      "title": "Current workspace validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_code_review_followup.005"
+      ],
+      "notes": "validate acceptance --trace-id trace.internal_project_code_review_followup, validate all --format json, pytest -q, python -m mypy src/watchtower_core, ruff check, sync all --write, closeout initiative --write, final validate acceptance, final validate all, and final pytest -q all passed against the hardened closed-state repository baseline."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/internal_project_code_review_followup_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence for the follow-up internal project code review that aligned shared decision scaffolds, aggregate decision-semantic validation, and bootstrap-only phase semantics before returning coordination to ready_for_bootstrap at 2026-03-11T17:13:35Z.",
+  "source_decision_ids": [
+    "decision.internal_project_code_review_followup_direction"
+  ]
+}

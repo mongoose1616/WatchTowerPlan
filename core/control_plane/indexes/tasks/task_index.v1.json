@@ -734,6 +734,77 @@
       ]
     },
     {
+      "task_id": "task.internal_project_code_review_followup.bootstrap.001",
+      "title": "Bootstrap Internal Project Code Review Follow-up planning chain",
+      "summary": "Bootstraps the follow-up planning chain, rewrites it around the confirmed findings, and splits the execution work into bounded remediation tasks.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/internal_project_code_review_follow_up_bootstrap.md",
+      "updated_at": "2026-03-11T17:09:44Z",
+      "trace_id": "trace.internal_project_code_review_followup",
+      "related_ids": [
+        "prd.internal_project_code_review_followup",
+        "design.features.internal_project_code_review_followup",
+        "design.implementation.internal_project_code_review_followup",
+        "decision.internal_project_code_review_followup_direction",
+        "contract.acceptance.internal_project_code_review_followup"
+      ]
+    },
+    {
+      "task_id": "task.internal_project_code_review_followup.bootstrap_decision_scaffold_hardening.001",
+      "title": "Harden bootstrap decision scaffold output",
+      "summary": "Make plan bootstrap and scaffolded decision records publish the governed applied-reference section by default and enforce that same rule in repo semantic validation.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/harden_bootstrap_decision_scaffold_output.md",
+      "updated_at": "2026-03-11T17:13:25Z",
+      "trace_id": "trace.internal_project_code_review_followup",
+      "related_ids": [
+        "prd.internal_project_code_review_followup",
+        "decision.internal_project_code_review_followup_direction",
+        "design.features.internal_project_code_review_followup",
+        "design.implementation.internal_project_code_review_followup"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ]
+    },
+    {
+      "task_id": "task.internal_project_code_review_followup.bootstrap_phase_semantics_alignment.001",
+      "title": "Align bootstrap coordination phase semantics",
+      "summary": "Keep bootstrap-only planning traces in implementation_planning until real execution work exists.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/align_bootstrap_coordination_phase_semantics.md",
+      "updated_at": "2026-03-11T17:13:25Z",
+      "trace_id": "trace.internal_project_code_review_followup",
+      "related_ids": [
+        "prd.internal_project_code_review_followup",
+        "decision.internal_project_code_review_followup_direction",
+        "design.features.internal_project_code_review_followup",
+        "design.implementation.internal_project_code_review_followup"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py"
+      ]
+    },
+    {
       "task_id": "task.internal_project_review_and_hardening.bootstrap.001",
       "title": "Bootstrap Internal Project Review and Hardening planning chain",
       "summary": "Bootstraps the initial planning chain for Internal Project Review and Hardening.",

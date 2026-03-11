@@ -224,6 +224,56 @@
       ]
     },
     {
+      "trace_id": "trace.internal_project_code_review_followup",
+      "decision_id": "decision.internal_project_code_review_followup_direction",
+      "title": "Internal Project Code Review Follow-up Direction Decision",
+      "summary": "Records the accepted direction to harden bootstrap decision scaffolds, require the same decision-semantic rule in aggregate validation, and keep bootstrap-only traces in implementation_planning until real execution work exists.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/internal_project_code_review_follow_up_direction.md",
+      "updated_at": "2026-03-11T16:37:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.internal_project_code_review_followup"
+      ],
+      "linked_design_ids": [
+        "design.features.internal_project_code_review_followup"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.internal_project_code_review_followup"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+        "core/python/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.internal_project_review_and_hardening",
       "decision_id": "decision.internal_project_review_and_hardening_direction",
       "title": "Internal Project Review and Hardening Direction Decision",

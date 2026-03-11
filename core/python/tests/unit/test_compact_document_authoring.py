@@ -6,7 +6,7 @@ from textwrap import dedent
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.planning_documents import (
-    DECISION_OPTIONAL_EXPLAINED_SECTIONS,
+    DECISION_REQUIRED_EXPLAINED_SECTIONS,
     DECISION_REQUIRED_SECTIONS,
     load_governed_document,
 )
@@ -24,7 +24,9 @@ def _copy_control_plane_repo(tmp_path: Path) -> Path:
     return repo_root
 
 
-def test_load_governed_document_allows_lean_decision_records(tmp_path: Path) -> None:
+def test_load_governed_document_allows_lean_decision_records_with_applied_references(
+    tmp_path: Path,
+) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
     decision_path = repo_root / "docs/planning/decisions/lean_decision.md"
     decision_path.parent.mkdir(parents=True, exist_ok=True)
@@ -73,6 +75,10 @@ def test_load_governed_document_allows_lean_decision_records(tmp_path: Path) -> 
             ## Current Context and Constraints
             - The repo still needs governed front matter and stable machine-readable indexes.
 
+            ## Applied References and Implications
+            - docs/standards/documentation/decision_record_md_standard.md: keeps the compact
+              decision shape aligned with the governed decision template.
+
             ## Affected Surfaces
             - `docs/templates/`
             - `docs/planning/`
@@ -114,7 +120,7 @@ def test_load_governed_document_allows_lean_decision_records(tmp_path: Path) -> 
         id_label="Decision ID",
         status_label="Record Status",
         required_sections=DECISION_REQUIRED_SECTIONS,
-        optional_explained_sections=DECISION_OPTIONAL_EXPLAINED_SECTIONS,
+        required_explained_sections=DECISION_REQUIRED_EXPLAINED_SECTIONS,
     )
 
     assert document.document_id == "decision.example_compact_authoring"

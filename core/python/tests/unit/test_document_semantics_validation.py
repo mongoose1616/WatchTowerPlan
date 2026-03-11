@@ -96,6 +96,96 @@ def _write_standard_fixture(
     )
 
 
+def _write_decision_fixture(
+    path: Path,
+    *,
+    include_applied_references: bool,
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    applied_references_section = (
+        """
+        ## Applied References and Implications
+        - docs/standards/governance/decision_capture_standard.md: keeps the
+          decision aligned with the governed repository rule.
+
+        """
+        if include_applied_references
+        else ""
+    )
+    path.write_text(
+        dedent(
+            f"""\
+            ---
+            trace_id: trace.example_decision_semantics
+            id: decision.example_decision_semantics
+            title: Example Decision Semantics
+            summary: Exercises the decision semantic validator.
+            type: decision_record
+            status: active
+            owner: repository_maintainer
+            updated_at: '2026-03-11T17:05:00Z'
+            audience: shared
+            authority: supporting
+            ---
+
+            # Example Decision Semantics
+
+            ## Record Metadata
+            - `Trace ID`: `trace.example_decision_semantics`
+            - `Decision ID`: `decision.example_decision_semantics`
+            - `Record Status`: `active`
+            - `Decision Status`: `accepted`
+            - `Linked PRDs`: `None`
+            - `Linked Designs`: `None`
+            - `Linked Implementation Plans`: `None`
+            - `Updated At`: `2026-03-11T17:05:00Z`
+
+            ## Summary
+            Exercises the decision semantic validator.
+
+            ## Decision Statement
+            Keep the example small and deterministic.
+
+            ## Trigger or Source Request
+            - Added for semantic validation coverage.
+
+            ## Current Context and Constraints
+            - The example fixture must be valid apart from the targeted issue.
+
+            {applied_references_section}## Affected Surfaces
+            - `docs/planning/decisions/example_decision_semantics.md`
+
+            ## Options Considered
+            ### Option 1
+            - Minimal fixture.
+            - Strength.
+            - Tradeoff.
+
+            ### Option 2
+            - Larger fixture.
+            - Strength.
+            - Tradeoff.
+
+            ## Chosen Outcome
+            Use the minimal fixture.
+
+            ## Rationale and Tradeoffs
+            - Small fixture: easier to keep deterministic.
+
+            ## Consequences and Follow-Up Impacts
+            - Tests will fail only for the intended issue.
+
+            ## Risks, Dependencies, and Assumptions
+            - The validator rules stay aligned with governed decision expectations.
+
+            ## References
+            - docs/standards/governance/decision_capture_standard.md
+            """
+        ),
+        encoding="utf-8",
+    )
+
+
 def test_document_semantics_validation_auto_selects_workflow_validator() -> None:
     service = DocumentSemanticsValidationService(ControlPlaneLoader(REPO_ROOT))
 
@@ -216,3 +306,21 @@ def test_document_semantics_validation_rejects_missing_repo_local_markdown_link_
     assert result.issue_count == 1
     assert "repo-local Markdown link" in result.issues[0].message
     assert "missing_reference.md" in result.issues[0].message
+
+
+def test_document_semantics_validation_rejects_missing_decision_applied_references(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    decision_path = repo_root / "docs/planning/decisions/example_decision_semantics.md"
+    _write_decision_fixture(decision_path, include_applied_references=False)
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/planning/decisions/example_decision_semantics.md")
+
+    assert result.passed is False
+    assert result.validator_id == "validator.documentation.decision_record_semantics"
+    assert result.issue_count == 1
+    assert "missing required sections: Applied References and Implications" in (
+        result.issues[0].message
+    )

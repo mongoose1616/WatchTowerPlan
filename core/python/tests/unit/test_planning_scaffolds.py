@@ -106,6 +106,11 @@ def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> No
     ).read_text(encoding="utf-8")
     assert "## Internal Standards and Canonical References Applied" in implementation_plan_text
 
+    decision_text = (
+        repo_root / "docs/planning/decisions/unit_test_bootstrap_direction.md"
+    ).read_text(encoding="utf-8")
+    assert "## Applied References and Implications" in decision_text
+
     initiative_index = json.loads(
         (repo_root / "core/control_plane/indexes/initiatives/initiative_index.v1.json").read_text(
             encoding="utf-8"
@@ -156,6 +161,10 @@ def test_plan_scaffold_write_refreshes_coordination_for_existing_trace(tmp_path:
     )
 
     assert result.wrote is True
+    written_text = (
+        repo_root / "docs/planning/decisions/unit_test_scaffold_existing_followup_decision.md"
+    ).read_text(encoding="utf-8")
+    assert "## Applied References and Implications" in written_text
 
     loader = ControlPlaneLoader(repo_root)
     trace_entry = loader.load_traceability_index().get(trace_id)

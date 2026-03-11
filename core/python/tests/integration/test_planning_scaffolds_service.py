@@ -80,6 +80,10 @@ def test_plan_bootstrap_write_creates_traced_chain_and_bootstrap_task(tmp_path: 
     assert all((repo_root / document.doc_path).exists() for document in result.documents)
     assert (repo_root / result.acceptance_contract.doc_path).exists()
     assert (repo_root / result.validation_evidence.doc_path).exists()
+    decision_text = (
+        repo_root / "docs/planning/decisions/planning_scaffold_bootstrap_preview_direction.md"
+    ).read_text(encoding="utf-8")
+    assert "## Applied References and Implications" in decision_text
 
     loader = ControlPlaneLoader(repo_root)
     prd_entries = PrdQueryService(loader).search(PrdSearchParams(trace_id=trace_id))
@@ -100,7 +104,10 @@ def test_plan_bootstrap_write_creates_traced_chain_and_bootstrap_task(tmp_path: 
 
     initiative_entry = InitiativeQueryService(loader).get(trace_id)
     assert initiative_entry.trace_id == trace_id
+    assert initiative_entry.current_phase == "implementation_planning"
     assert task_entries[0].task_id in initiative_entry.active_task_ids
     assert initiative_entry.acceptance_contract_ids == (
         "contract.acceptance.planning_scaffold_bootstrap_preview",
     )
+    planning_entry = loader.load_planning_catalog().get(trace_id)
+    assert planning_entry.current_phase == "implementation_planning"

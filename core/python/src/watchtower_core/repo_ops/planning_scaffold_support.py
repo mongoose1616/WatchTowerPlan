@@ -128,6 +128,7 @@ _PLAN_KIND_TO_REQUIRED_SECTIONS = {
         "Decision Statement",
         "Trigger or Source Request",
         "Current Context and Constraints",
+        "Applied References and Implications",
         "Affected Surfaces",
         "Options Considered",
         "Chosen Outcome",
@@ -528,6 +529,10 @@ def render_sections(
             (),
             placeholder="<Constraint or current-state fact.>",
         ),
+        "Applied References and Implications": render_bullets(
+            (),
+            placeholder="<Reference or authority>: <Why it affects this decision.>",
+        ),
         "Affected Surfaces": render_bullets(
             params.applies_to,
             placeholder="<PRD, design, plan, standard, workflow, or implementation path affected.>",
@@ -608,6 +613,11 @@ def validate_rendered_document(loader: ControlPlaneLoader, rendered: RenderedDoc
     if rendered.kind == "decision":
         validate_metadata_scalar(
             metadata, "Decision Status", "proposed", path=rendered.doc_path
+        )
+        validate_explained_bullet_section(
+            rendered.doc_path,
+            "Applied References and Implications",
+            rendered.sections.get("Applied References and Implications"),
         )
     if rendered.kind == "feature-design":
         validate_explained_bullet_section(

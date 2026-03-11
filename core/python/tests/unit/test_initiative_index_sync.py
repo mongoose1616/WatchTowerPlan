@@ -5,10 +5,16 @@ from pathlib import Path
 from shutil import copytree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import TaskIndexEntry
+from watchtower_core.control_plane.models import (
+    DesignDocumentIndexEntry,
+    PrdIndexEntry,
+    TaskIndexEntry,
+    TraceabilityEntry,
+)
 from watchtower_core.repo_ops.sync.initiative_index import (
     InitiativeIndexSyncService,
     _build_active_task_summaries,
+    _determine_current_phase,
     _select_coordination_task,
     _task_is_blocked,
 )
@@ -47,6 +53,67 @@ def _task(
         trace_id="trace.preimplementation_repo_review_and_hardening",
         depends_on=depends_on,
         blocked_by=blocked_by,
+    )
+
+
+def _traceability_entry(trace_id: str) -> TraceabilityEntry:
+    return TraceabilityEntry(
+        trace_id=trace_id,
+        title="Bootstrap Follow-up",
+        summary="Exercises bootstrap phase derivation.",
+        status="active",
+        initiative_status="active",
+        updated_at="2026-03-11T17:05:00Z",
+        prd_ids=(f"prd.{trace_id.removeprefix('trace.')}",),
+        design_ids=(f"design.features.{trace_id.removeprefix('trace.')}",),
+        plan_ids=(f"design.implementation.{trace_id.removeprefix('trace.')}",),
+        acceptance_contract_ids=(f"contract.acceptance.{trace_id.removeprefix('trace.')}",),
+        evidence_ids=(f"evidence.{trace_id.removeprefix('trace.')}.planning_baseline",),
+    )
+
+
+def _prd_entry(trace_id: str) -> PrdIndexEntry:
+    suffix = trace_id.removeprefix("trace.")
+    return PrdIndexEntry(
+        trace_id=trace_id,
+        prd_id=f"prd.{suffix}",
+        title="Bootstrap Follow-up PRD",
+        summary="Exercises bootstrap phase derivation.",
+        status="active",
+        doc_path="docs/planning/prds/bootstrap_follow_up.md",
+        updated_at="2026-03-11T17:05:00Z",
+        uses_internal_references=False,
+        uses_external_references=False,
+    )
+
+
+def _design_entries(trace_id: str) -> tuple[DesignDocumentIndexEntry, ...]:
+    suffix = trace_id.removeprefix("trace.")
+    return (
+        DesignDocumentIndexEntry(
+            document_id=f"design.features.{suffix}",
+            trace_id=trace_id,
+            family="feature_design",
+            title="Bootstrap Follow-up Feature Design",
+            summary="Exercises bootstrap phase derivation.",
+            status="active",
+            doc_path="docs/planning/design/features/bootstrap_follow_up.md",
+            updated_at="2026-03-11T17:05:00Z",
+            uses_internal_references=False,
+            uses_external_references=False,
+        ),
+        DesignDocumentIndexEntry(
+            document_id=f"design.implementation.{suffix}",
+            trace_id=trace_id,
+            family="implementation_plan",
+            title="Bootstrap Follow-up Implementation Plan",
+            summary="Exercises bootstrap phase derivation.",
+            status="active",
+            doc_path="docs/planning/design/implementation/bootstrap_follow_up.md",
+            updated_at="2026-03-11T17:05:00Z",
+            uses_internal_references=False,
+            uses_external_references=False,
+        ),
     )
 
 
@@ -95,6 +162,50 @@ def test_active_task_summaries_mark_dependency_blocked_tasks() -> None:
     assert blocked_summary["is_actionable"] is False
     assert blocked_summary["depends_on"] == [blocker.task_id]
     assert _task_is_blocked(blocked, task_lookup) is True
+
+
+def test_bootstrap_only_active_tasks_keep_implementation_planning_phase() -> None:
+    trace_id = "trace.bootstrap_phase_semantics"
+    phase = _determine_current_phase(
+        trace_entry=_traceability_entry(trace_id),
+        prd_entries=(_prd_entry(trace_id),),
+        design_entries=_design_entries(trace_id),
+        active_tasks=(
+            _task(
+                task_id="task.bootstrap_phase_semantics.bootstrap.001",
+                title="Bootstrap the planning chain",
+                doc_path="docs/planning/tasks/open/bootstrap_phase_semantics_bootstrap.md",
+                task_status="in_progress",
+            ),
+        ),
+    )
+
+    assert phase == "implementation_planning"
+
+
+def test_non_bootstrap_active_tasks_still_project_execution_phase() -> None:
+    trace_id = "trace.bootstrap_phase_semantics_execution"
+    phase = _determine_current_phase(
+        trace_entry=_traceability_entry(trace_id),
+        prd_entries=(_prd_entry(trace_id),),
+        design_entries=_design_entries(trace_id),
+        active_tasks=(
+            _task(
+                task_id="task.bootstrap_phase_semantics_execution.bootstrap.001",
+                title="Bootstrap the planning chain",
+                doc_path="docs/planning/tasks/open/bootstrap_phase_semantics_execution_bootstrap.md",
+                task_status="ready",
+            ),
+            _task(
+                task_id="task.bootstrap_phase_semantics_execution.runtime_fix.001",
+                title="Land the runtime fix",
+                doc_path="docs/planning/tasks/open/bootstrap_phase_semantics_execution_runtime_fix.md",
+                task_status="in_progress",
+            ),
+        ),
+    )
+
+    assert phase == "execution"
 
 
 def test_initiative_index_allows_validation_phase_without_active_tasks(

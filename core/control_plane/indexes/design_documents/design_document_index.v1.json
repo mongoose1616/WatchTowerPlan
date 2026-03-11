@@ -421,6 +421,32 @@
       ]
     },
     {
+      "document_id": "design.features.internal_project_code_review_followup",
+      "trace_id": "trace.internal_project_code_review_followup",
+      "family": "feature_design",
+      "title": "Internal Project Code Review Follow-up Feature Design",
+      "summary": "Defines the follow-up design for bootstrap decision-template validity, decision-semantic enforcement, and bootstrap-phase coordination semantics.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/internal_project_code_review_follow_up.md",
+      "updated_at": "2026-03-11T16:37:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/internal_project_code_review_follow_up.md",
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.internal_project_review_and_hardening",
       "trace_id": "trace.internal_project_review_and_hardening",
       "family": "feature_design",
@@ -1016,6 +1042,32 @@
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/engineering/git_commit_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.internal_project_code_review_followup",
+      "trace_id": "trace.internal_project_code_review_followup",
+      "family": "implementation_plan",
+      "title": "Internal Project Code Review Follow-up Implementation Plan",
+      "summary": "Breaks the follow-up bootstrap hardening work into planning, scaffold-validity, semantic-validation, and coordination-phase slices.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/internal_project_code_review_follow_up.md",
+      "updated_at": "2026-03-11T16:37:08Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/internal_project_code_review_follow_up.md"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
         "docs/standards/engineering/git_commit_standard.md"
       ]
     },

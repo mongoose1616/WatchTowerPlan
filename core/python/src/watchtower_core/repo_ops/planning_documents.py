@@ -36,6 +36,7 @@ DECISION_REQUIRED_SECTIONS = (
     "Decision Statement",
     "Trigger or Source Request",
     "Current Context and Constraints",
+    "Applied References and Implications",
     "Affected Surfaces",
     "Options Considered",
     "Chosen Outcome",
@@ -44,7 +45,8 @@ DECISION_REQUIRED_SECTIONS = (
     "Risks, Dependencies, and Assumptions",
     "References",
 )
-DECISION_OPTIONAL_EXPLAINED_SECTIONS = ("Applied References and Implications",)
+DECISION_REQUIRED_EXPLAINED_SECTIONS = ("Applied References and Implications",)
+DECISION_OPTIONAL_EXPLAINED_SECTIONS: tuple[str, ...] = ()
 
 FEATURE_DESIGN_REQUIRED_SECTIONS = (
     "Summary",
