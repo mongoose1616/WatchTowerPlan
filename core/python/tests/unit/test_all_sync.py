@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+import pytest
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.sync import AllSyncService, CoordinationSyncService
 from watchtower_core.repo_ops.sync.registry import (
@@ -144,3 +146,29 @@ def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_pa
     assert "STALE SNAPSHOT MARKER" not in tracker_text
     assert "STALE SNAPSHOT MARKER" not in coordination_text
     assert "STALE SNAPSHOT MARKER" not in coordination_tracking_text
+
+
+def test_all_sync_rejects_document_targets_without_entries_list() -> None:
+    class BrokenDocumentService:
+        def build_document(self) -> dict[str, object]:
+            return {"id": "index.broken"}
+
+        def write_document(
+            self,
+            document: dict[str, object],
+            destination: Path | None = None,
+        ) -> Path:
+            raise AssertionError("Broken document targets should fail before write_document runs.")
+
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = AllSyncService(loader)
+
+    with pytest.raises(RuntimeError, match="broken-index document is missing its entries list"):
+        service._run_document_sync(
+            target="broken-index",
+            artifact_kind="index",
+            relative_output_path="core/control_plane/indexes/broken/broken_index.v1.json",
+            service=BrokenDocumentService(),
+            write=False,
+            output_dir=None,
+        )

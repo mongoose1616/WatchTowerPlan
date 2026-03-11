@@ -811,7 +811,7 @@
       "summary": "Harden under-covered executable test surfaces, rebalance the unit suite structure, and tighten unit-suite documentation so WatchTowerPlan has a more reliable and maintainable test foundation before WatchTower product implementation begins.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-11T00:15:24Z",
+      "updated_at": "2026-03-11T00:40:05Z",
       "prd_ids": [
         "prd.unit_test_hardening_and_rebalancing"
       ],
@@ -892,12 +892,12 @@
         "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md",
         "docs/planning/tasks/closed/harden_command_and_lifecycle_coverage.md",
         "docs/planning/tasks/closed/harden_github_integration_and_sync_coverage.md",
         "docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md",
         "docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md",
         "docs/planning/tasks/open/",
-        "docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [

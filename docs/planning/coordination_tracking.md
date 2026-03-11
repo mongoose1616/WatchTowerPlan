@@ -5,19 +5,17 @@
 | --- | --- |
 | Mode | `active_work` |
 | Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
-| Next | Start or continue the active task set and keep the current task records aligned with execution progress. |
-| Open First | [docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md) |
+| Next | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
+| Open First | [docs/commands/core_python/watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
 | Trace ID | Phase | Owners | Next | Action |
 | --- | --- | --- | --- | --- |
-| `trace.unit_test_hardening_and_rebalancing` | `execution` | repository_maintainer | [expand_orchestration_and_derivation_failure_coverage.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.unit_test_hardening_and_rebalancing` | `closeout` | unassigned | [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
 
 ## Actionable Tasks
-| Task | Initiative | Status | Priority | Owner |
-| --- | --- | --- | --- | --- |
-| [task.unit_test_hardening_and_rebalancing.orchestration_hardening.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md) | `trace.unit_test_hardening_and_rebalancing` | `backlog` | `medium` | `repository_maintainer` |
+_No actionable tasks._
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -28,4 +26,4 @@
 | `trace.preimplementation_repo_review_and_hardening` | `completed` | `2026-03-10T18:48:07Z` | [preimplementation_repo_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/preimplementation_repo_review_and_hardening.md) |
 | `trace.core_export_hardening_followup` | `completed` | `2026-03-10T17:12:30Z` | [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md) |
 
-_Updated At: `2026-03-11T00:15:24Z`_
+_Updated At: `2026-03-11T00:40:05Z`_

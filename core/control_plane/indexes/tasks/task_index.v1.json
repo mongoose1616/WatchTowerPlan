@@ -957,12 +957,12 @@
       "title": "Expand orchestration and derivation failure coverage",
       "summary": "Add meaningful failure and edge-state tests for aggregate sync, aggregate validation, initiative closeout, and derived coordination or initiative projections.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md",
-      "updated_at": "2026-03-10T23:36:47Z",
+      "doc_path": "docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md",
+      "updated_at": "2026-03-11T00:40:05Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "depends_on": [
         "task.unit_test_hardening_and_rebalancing.bootstrap.001"

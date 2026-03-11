@@ -3,7 +3,7 @@
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| `trace.unit_test_hardening_and_rebalancing` | `execution` | repository_maintainer | `1` | [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/unit_test_hardening_and_rebalancing.md) | [expand_orchestration_and_derivation_failure_coverage.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| `trace.unit_test_hardening_and_rebalancing` | `closeout` | unassigned | `0` | [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/unit_test_hardening_and_rebalancing.md) | [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -22,4 +22,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-11T00:15:24Z`_
+_Updated At: `2026-03-11T00:40:05Z`_

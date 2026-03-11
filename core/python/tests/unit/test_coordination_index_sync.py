@@ -121,3 +121,62 @@ def test_coordination_index_reports_ready_for_bootstrap_when_no_active_initiativ
     assert document["active_initiative_count"] == 0
     assert document["actionable_task_count"] == 0
     assert document["recommended_surface_path"] == "docs/planning/README.md"
+
+
+def test_coordination_index_reports_blocked_work_when_execution_has_only_blocked_tasks(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_control_plane_fixture_repo(tmp_path)
+    initiative_index = _load_initiative_index(repo_root)
+    entries = initiative_index["entries"]
+    assert isinstance(entries, list)
+    blocked_entry = entries[0]
+    assert isinstance(blocked_entry, dict)
+    blocked_entry["trace_id"] = "trace.example_blocked"
+    blocked_entry["title"] = "Example Blocked Initiative"
+    blocked_entry["initiative_status"] = "active"
+    blocked_entry["current_phase"] = "execution"
+    blocked_entry["updated_at"] = "2026-03-10T19:06:55Z"
+    blocked_entry["open_task_count"] = 1
+    blocked_entry["blocked_task_count"] = 1
+    blocked_entry["next_action"] = "Resolve the blocker before continuing."
+    blocked_entry["next_surface_path"] = "docs/planning/tasks/open/example_blocked.md"
+    blocked_entry["primary_owner"] = "repository_maintainer"
+    blocked_entry["active_owners"] = ["repository_maintainer"]
+    blocked_entry["active_task_ids"] = ["task.example_blocked.execution.001"]
+    blocked_entry["active_task_summaries"] = [
+        {
+            "task_id": "task.example_blocked.execution.001",
+            "title": "Wait on dependency resolution",
+            "task_status": "blocked",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "docs/planning/tasks/open/example_blocked.md",
+            "is_actionable": False,
+            "depends_on": ["task.example_blocked.prerequisite.001"],
+        }
+    ]
+    blocked_entry["task_ids"] = ["task.example_blocked.execution.001"]
+    for entry in entries[1:]:
+        assert isinstance(entry, dict)
+        entry["initiative_status"] = "completed"
+        entry["current_phase"] = "closed"
+        entry["closed_at"] = "2026-03-10T18:00:00Z"
+        entry["closure_reason"] = "Closed for fixture setup."
+        entry.pop("active_task_ids", None)
+        entry.pop("active_task_summaries", None)
+        entry["open_task_count"] = 0
+        entry["blocked_task_count"] = 0
+
+    _write_initiative_index(repo_root, initiative_index)
+
+    loader = ControlPlaneLoader(repo_root)
+    service = CoordinationIndexSyncService(loader)
+
+    document = service.build_document()
+
+    assert document["coordination_mode"] == "blocked_work"
+    assert document["active_initiative_count"] == 1
+    assert document["actionable_task_count"] == 0
+    assert document["blocked_task_count"] == 1
+    assert document["recommended_surface_path"] == "docs/planning/tasks/open/example_blocked.md"
