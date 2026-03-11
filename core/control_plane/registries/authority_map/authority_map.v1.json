@@ -1,0 +1,251 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:authority-map:v1",
+  "id": "registry.authority_map",
+  "title": "Authority Map",
+  "status": "active",
+  "entries": [
+    {
+      "question_id": "authority.planning.current_state",
+      "domain": "planning",
+      "question": "What is the current planning state and next action?",
+      "status": "active",
+      "artifact_kind": "coordination_index",
+      "canonical_path": "core/control_plane/indexes/coordination/coordination_index.v1.json",
+      "preferred_command": "watchtower-core query coordination",
+      "preferred_human_path": "docs/planning/coordination_tracking.md",
+      "status_fields": [
+        "mode",
+        "initiative_status",
+        "current_phase",
+        "task_status"
+      ],
+      "fallback_paths": [
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "aliases": [
+        "planning start here",
+        "current planning state",
+        "next action"
+      ],
+      "notes": "Use this first when the question is repo-level current work, blockers, or the next surface to open."
+    },
+    {
+      "question_id": "authority.planning.deep_trace_context",
+      "domain": "planning",
+      "question": "What is the full trace-linked planning context for one initiative?",
+      "status": "active",
+      "artifact_kind": "planning_catalog",
+      "canonical_path": "core/control_plane/indexes/planning/planning_catalog.v1.json",
+      "preferred_command": "watchtower-core query planning",
+      "preferred_human_path": "docs/commands/core_python/watchtower_core_query_planning.md",
+      "status_fields": [
+        "artifact_status",
+        "initiative_status",
+        "record_status",
+        "decision_status",
+        "task_status"
+      ],
+      "fallback_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "docs/planning/prds/"
+      ],
+      "aliases": [
+        "planning graph",
+        "deep planning lookup",
+        "trace planning context"
+      ],
+      "notes": "Use this after coordination identifies the trace, or when one machine-readable record must join planning, task, acceptance, evidence, and next-step state."
+    },
+    {
+      "question_id": "authority.planning.initiative_family",
+      "domain": "planning",
+      "question": "What is the compact initiative-family view, including history?",
+      "status": "active",
+      "artifact_kind": "initiative_index",
+      "canonical_path": "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+      "preferred_command": "watchtower-core query initiatives",
+      "preferred_human_path": "docs/planning/initiatives/initiative_tracking.md",
+      "status_fields": [
+        "initiative_status",
+        "current_phase",
+        "task_status"
+      ],
+      "fallback_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "aliases": [
+        "initiative history",
+        "initiative board",
+        "phase overview"
+      ],
+      "notes": "Use this when you need broader initiative-family lookup or closed-history browsing instead of the full deep planning join."
+    },
+    {
+      "question_id": "authority.planning.trace_join",
+      "domain": "planning",
+      "question": "What is the durable trace-linked source join and initiative closeout state?",
+      "status": "active",
+      "artifact_kind": "traceability_index",
+      "canonical_path": "core/control_plane/indexes/traceability/traceability_index.v1.json",
+      "preferred_command": "watchtower-core query trace",
+      "preferred_human_path": "docs/commands/core_python/watchtower_core_query_trace.md",
+      "status_fields": [
+        "status",
+        "initiative_status"
+      ],
+      "fallback_paths": [
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "docs/planning/decisions/decision_tracking.md"
+      ],
+      "aliases": [
+        "trace join",
+        "trace closeout state",
+        "linked planning ids"
+      ],
+      "notes": "Use this when the question is durable linked identifiers and initiative outcome rather than the richer planning read model."
+    },
+    {
+      "question_id": "authority.planning.task_execution",
+      "domain": "planning",
+      "question": "What is the authoritative task execution state and dependency graph?",
+      "status": "active",
+      "artifact_kind": "task_index",
+      "canonical_path": "core/control_plane/indexes/tasks/task_index.v1.json",
+      "preferred_command": "watchtower-core query tasks",
+      "preferred_human_path": "docs/planning/tasks/task_tracking.md",
+      "status_fields": [
+        "status",
+        "task_status",
+        "priority"
+      ],
+      "fallback_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "aliases": [
+        "task board",
+        "execution state",
+        "dependency graph"
+      ],
+      "notes": "Use this when the question is task ownership, blockers, dependencies, or execution state, not higher-level initiative summaries."
+    },
+    {
+      "question_id": "authority.governance.command_lookup",
+      "domain": "governance",
+      "question": "Which command surface should I use and where is it documented?",
+      "status": "active",
+      "artifact_kind": "command_index",
+      "canonical_path": "core/control_plane/indexes/commands/command_index.v1.json",
+      "preferred_command": "watchtower-core query commands",
+      "preferred_human_path": "docs/commands/core_python/README.md",
+      "status_fields": [
+        "status"
+      ],
+      "fallback_paths": [
+        "docs/commands/core_python/watchtower_core_query.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "aliases": [
+        "command discovery",
+        "cli lookup",
+        "command docs"
+      ],
+      "notes": "Use this when the main question is which CLI command or command page answers a repository task."
+    },
+    {
+      "question_id": "authority.governance.workflow_routing",
+      "domain": "governance",
+      "question": "Which workflow modules are canonical for this request type?",
+      "status": "active",
+      "artifact_kind": "route_index",
+      "canonical_path": "core/control_plane/indexes/routes/route_index.v1.json",
+      "preferred_command": "watchtower-core route preview",
+      "preferred_human_path": "workflows/ROUTING_TABLE.md",
+      "fallback_paths": [
+        "workflows/modules/",
+        "docs/commands/core_python/watchtower_core_route_preview.md"
+      ],
+      "aliases": [
+        "workflow route",
+        "task type routing",
+        "module selection"
+      ],
+      "notes": "Use this when you need the canonical routed workflow set for a request rather than browsing modules ad hoc."
+    },
+    {
+      "question_id": "authority.governance.standards_lookup",
+      "domain": "governance",
+      "question": "Which repository standard governs this surface or rule?",
+      "status": "active",
+      "artifact_kind": "standard_index",
+      "canonical_path": "core/control_plane/indexes/standards/standard_index.v1.json",
+      "preferred_command": "watchtower-core query standards",
+      "preferred_human_path": "docs/standards/README.md",
+      "status_fields": [
+        "status",
+        "category"
+      ],
+      "fallback_paths": [
+        "docs/standards/",
+        "docs/references/"
+      ],
+      "aliases": [
+        "standard lookup",
+        "governing rule",
+        "policy search"
+      ],
+      "notes": "Use this when the question is repository policy, not the current planning state or command contract."
+    },
+    {
+      "question_id": "authority.governance.foundation_intent",
+      "domain": "governance",
+      "question": "Which foundation document defines the governing intent for this area?",
+      "status": "active",
+      "artifact_kind": "foundation_index",
+      "canonical_path": "core/control_plane/indexes/foundations/foundation_index.v1.json",
+      "preferred_command": "watchtower-core query foundations",
+      "preferred_human_path": "docs/foundations/README.md",
+      "status_fields": [
+        "status",
+        "authority"
+      ],
+      "fallback_paths": [
+        "docs/foundations/",
+        "docs/foundations/repository_scope.md"
+      ],
+      "aliases": [
+        "foundation lookup",
+        "governing intent",
+        "repo philosophy"
+      ],
+      "notes": "Use this when the question is why the repository is designed or scoped a certain way."
+    },
+    {
+      "question_id": "authority.governance.repository_navigation",
+      "domain": "governance",
+      "question": "Which repository path or entrypoint is the right place to start?",
+      "status": "active",
+      "artifact_kind": "repository_path_index",
+      "canonical_path": "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+      "preferred_command": "watchtower-core query paths",
+      "preferred_human_path": "README.md",
+      "fallback_paths": [
+        "docs/commands/core_python/README.md",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ],
+      "aliases": [
+        "entrypoint lookup",
+        "path navigation",
+        "where to start"
+      ],
+      "notes": "Use this when the question is repository location or entrypoint discovery rather than one governed family lookup."
+    }
+  ]
+}

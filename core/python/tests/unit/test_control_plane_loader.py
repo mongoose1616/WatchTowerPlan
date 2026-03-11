@@ -29,6 +29,18 @@ def test_control_plane_loader_reads_validator_registry() -> None:
     )
 
 
+def test_control_plane_loader_reads_authority_map() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    authority_map = loader.load_authority_map()
+    entry = authority_map.get("authority.planning.deep_trace_context")
+
+    assert authority_map.artifact_id == "registry.authority_map"
+    assert entry.artifact_kind == "planning_catalog"
+    assert entry.preferred_command == "watchtower-core query planning"
+    assert "artifact_status" in entry.status_fields
+
+
 def test_control_plane_loader_reads_workflow_metadata_registry() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
@@ -66,6 +78,7 @@ def test_control_plane_loader_reads_command_index() -> None:
     query_standards = command_index.get("command.watchtower_core.query.standards")
     query_acceptance = command_index.get("command.watchtower_core.query.acceptance")
     query_coordination = command_index.get("command.watchtower_core.query.coordination")
+    query_authority = command_index.get("command.watchtower_core.query.authority")
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
     query_initiatives = command_index.get("command.watchtower_core.query.initiatives")
     query_trace = command_index.get("command.watchtower_core.query.trace")
@@ -136,6 +149,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     assert (
         query_coordination.implementation_path
         == "core/python/src/watchtower_core/cli/query_family.py"
+    )
+    assert query_authority.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_authority.doc_path
+        == "docs/commands/core_python/watchtower_core_query_authority.md"
     )
     assert query_acceptance.parent_command_id == "command.watchtower_core.query"
     assert (

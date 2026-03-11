@@ -42,12 +42,15 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints the trace ID, title, summary, initiative status, closeout metadata when present, and any linked PRD, decision, design, plan, task, acceptance-contract, or evidence IDs present in the record.
 - In `json` mode, the command prints one JSON object with the command name, status, and the resolved trace record.
+- This command stays the durable trace-linked source join, not the richer deep-planning read model that the planning catalog now provides.
 - If the trace ID is unknown, the command exits with status code `1` and reports the missing ID.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
+| `watchtower-core query authority` | Resolves when traceability is the canonical answer versus when coordination or the planning catalog should answer instead. |
+| `watchtower-core query planning` | Returns the richer planning read model when the question needs joined planning, task, acceptance, and evidence context. |
 | `watchtower-core query prds` | Searches the PRD index when you do not already know the exact trace ID. |
 | `watchtower-core query decisions` | Searches the decision index when you want decision records rather than a joined trace record. |
 | `watchtower-core query designs` | Searches the design-document index when you want design docs rather than a joined trace record. |
@@ -62,4 +65,4 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 - `core/control_plane/indexes/traceability/traceability_index.v1.json`
 
 ## Updated At
-- `2026-03-09T14:41:51Z`
+- `2026-03-11T03:10:00Z`

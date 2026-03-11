@@ -29,6 +29,18 @@
       ]
     },
     {
+      "kind": "authority_map",
+      "title": "Authority Map",
+      "status": "active",
+      "family": "registry",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:authority-map:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json"
+      ]
+    },
+    {
       "kind": "command_index",
       "title": "Command Index",
       "status": "active",

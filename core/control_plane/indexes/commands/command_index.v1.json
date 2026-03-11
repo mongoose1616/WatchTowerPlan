@@ -210,6 +210,30 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.query.authority",
+      "command": "watchtower-core query authority",
+      "summary": "Search the authored authority map for canonical planning and governance surfaces, preferred commands, and documented fallback paths.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_authority.md",
+      "synopsis": "uv run watchtower-core query authority [-h] [--query QUERY] [--question-id QUESTION_ID] [--domain {planning,governance}] [--artifact-kind ARTIFACT_KIND] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "authority"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.commands",
       "command": "watchtower-core query commands",
       "summary": "Search the command index for documented repository commands and subcommands.",

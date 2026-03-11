@@ -6,11 +6,11 @@ summary: Add the machine authority-map registry, authority query surface, and th
   documentation and standards updates that explain canonical planning precedence.
 type: task
 status: active
-task_status: in_progress
+task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-11T02:56:56Z'
+updated_at: '2026-03-11T03:11:35Z'
 audience: shared
 authority: authoritative
 applies_to:

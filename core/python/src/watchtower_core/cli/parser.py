@@ -33,6 +33,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core query coordination --format json",
             "uv run watchtower-core query planning --trace-id trace.core_python_foundation "
             "--format json",
+            "uv run watchtower-core query authority --domain planning --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --query validation",
             "uv run watchtower-core query references --query uv",

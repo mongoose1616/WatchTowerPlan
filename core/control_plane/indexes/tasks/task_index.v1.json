@@ -745,12 +745,12 @@
       "title": "Publish machine authority map and canonical navigation updates",
       "summary": "Add the machine authority-map registry, authority query surface, and the documentation and standards updates that explain canonical planning precedence.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/machine_authority_map_and_navigation.md",
-      "updated_at": "2026-03-11T02:56:56Z",
+      "doc_path": "docs/planning/tasks/closed/machine_authority_map_and_navigation.md",
+      "updated_at": "2026-03-11T03:11:35Z",
       "trace_id": "trace.planning_authority_unification",
       "depends_on": [
         "task.planning_authority_unification.planning_catalog.001"

@@ -53,12 +53,14 @@ uv run watchtower-core query planning --current-phase execution --owner reposito
 - In `human` mode, the command prints matching trace IDs, current phases, initiative statuses, owners, next-step guidance, and section counts for the joined planning record.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, and full planning-catalog entries.
 - The JSON payload uses explicit status fields inside the joined sections, including `artifact_status`, `initiative_status`, `record_status`, `decision_status`, and `task_status`.
+- This command is the canonical deep-planning read path, while coordination remains the start-here path and initiative or trace queries remain narrower projections.
 - If no entries match the requested filters, the command exits successfully and reports that no planning-catalog entries matched.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core query coordination` | Preferred machine start-here path before descending into one deep planning record. |
+| `watchtower-core query authority` | Resolves when the planning catalog is canonical versus when a narrower planning or governance surface should answer instead. |
 | `watchtower-core query initiatives` | Broader initiative-family lookup surface that stays compact instead of returning the full deep planning join. |
 | `watchtower-core query trace` | Resolves the traceability join when you need the source trace-linked IDs without the full planning catalog sections. |
 | `watchtower-core sync planning-catalog` | Rebuilds the planning catalog that this command reads. |
@@ -72,4 +74,4 @@ uv run watchtower-core query planning --current-phase execution --owner reposito
 - `core/control_plane/indexes/planning/planning_catalog.v1.json`
 
 ## Updated At
-- `2026-03-11T02:15:00Z`
+- `2026-03-11T03:10:00Z`

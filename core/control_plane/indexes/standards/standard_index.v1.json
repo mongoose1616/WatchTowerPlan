@@ -38,6 +38,38 @@
       ]
     },
     {
+      "standard_id": "std.data_contracts.authority_map",
+      "category": "data_contracts",
+      "title": "Authority Map Standard",
+      "summary": "This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/authority_map/`.",
+      "status": "active",
+      "doc_path": "docs/standards/data_contracts/authority_map_standard.md",
+      "updated_at": "2026-03-11T03:10:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "core/control_plane/registries/authority_map/README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "core/control_plane/registries/authority_map/README.md"
+      ],
+      "tags": [
+        "standard",
+        "data_contracts",
+        "authority_map"
+      ]
+    },
+    {
       "standard_id": "std.data_contracts.command_index",
       "category": "data_contracts",
       "title": "Command Index Standard",
@@ -1542,7 +1574,7 @@
       "summary": "This standard defines the repository's compact human coordination tracker so humans can start from one derived current-state view without replacing family-specific planning artifacts.",
       "status": "active",
       "doc_path": "docs/standards/governance/coordination_tracking_standard.md",
-      "updated_at": "2026-03-10T21:18:00Z",
+      "updated_at": "2026-03-11T03:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -1772,7 +1804,7 @@
       "summary": "This standard defines the repository's cross-family initiative tracking model so one trace can be followed from PRD through design, planning, execution, validation, and closeout.",
       "status": "active",
       "doc_path": "docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-10T21:18:00Z",
+      "updated_at": "2026-03-11T03:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -1941,7 +1973,7 @@
       "summary": "This standard defines the repository's baseline traceability model so product intent, decisions, designs, implementation plans, and later executable or validation surfaces can be linked end to end.",
       "status": "active",
       "doc_path": "docs/standards/governance/traceability_standard.md",
-      "updated_at": "2026-03-10T21:18:00Z",
+      "updated_at": "2026-03-11T03:10:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "internal_reference_paths": [

@@ -33,6 +33,20 @@
       ]
     },
     {
+      "id": "validator.control_plane.authority_map",
+      "title": "Authority Map Validator",
+      "description": "Validates authored authority-map registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "authority_map",
+      "applies_to": [
+        "core/control_plane/registries/authority_map/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:authority-map:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.command_index",
       "title": "Command Index Validator",
       "description": "Validates machine-readable command index artifacts.",

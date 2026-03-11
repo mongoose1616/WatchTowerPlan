@@ -55,13 +55,14 @@ def test_sync_coordination_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core sync coordination"
     assert payload["status"] == "ok"
-    assert payload["result_count"] == 7
+    assert payload["result_count"] == 8
     assert payload["wrote"] is False
     assert payload["output_dir"] is None
     assert [entry["target"] for entry in payload["results"]] == [
         "task-index",
         "traceability-index",
         "initiative-index",
+        "planning-catalog",
         "coordination-index",
         "task-tracking",
         "initiative-tracking",

@@ -8,6 +8,7 @@ from typing import Any
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
+    AuthorityMap,
     CommandIndex,
     CoordinationIndex,
     DecisionIndex,
@@ -37,6 +38,7 @@ from watchtower_core.control_plane.workspace import (
 )
 
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validators/validator_registry.v1.json"
+AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map/authority_map.v1.json"
 WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json"
 )
@@ -140,6 +142,12 @@ class ControlPlaneLoader:
         """Load the current validator registry."""
         return ValidatorRegistry.from_document(
             self.load_validated_document(VALIDATOR_REGISTRY_PATH)
+        )
+
+    def load_authority_map(self) -> AuthorityMap:
+        """Load the current authority-map registry."""
+        return AuthorityMap.from_document(
+            self.load_validated_document(AUTHORITY_MAP_PATH)
         )
 
     def load_workflow_metadata_registry(self) -> WorkflowMetadataRegistry:

@@ -7,6 +7,7 @@ from textwrap import dedent
 
 from watchtower_core.cli.common import HelpFormatter, examples
 from watchtower_core.cli.query_coordination_handlers import (
+    _run_query_authority,
     _run_query_coordination,
     _run_query_initiatives,
     _run_query_planning,
@@ -171,6 +172,62 @@ def register_query_coordination_commands(
     )
     query_coordination_parser.set_defaults(handler=_run_query_coordination)
 
+    query_authority_parser = query_subparsers.add_parser(
+        "authority",
+        help="Resolve the canonical machine surface for planning or governance questions.",
+        description=dedent(
+            """
+            Search the authored authority map for canonical planning and
+            governance surfaces, preferred commands, and documented fallback
+            paths.
+
+            Use this when you know the class of question you need to answer but
+            are not sure which machine surface is canonical, or when you need a
+            compact policy answer instead of scanning several indexes and docs.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query authority --domain planning",
+            "uv run watchtower-core query authority --question-id "
+            "authority.planning.deep_trace_context --format json",
+            "uv run watchtower-core query authority --artifact-kind route_index",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_authority_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over authority-map fields such as the question, "
+            "canonical path, preferred command, aliases, and fallback paths."
+        ),
+    )
+    query_authority_parser.add_argument(
+        "--question-id",
+        help="Exact authority question filter such as authority.planning.current_state.",
+    )
+    query_authority_parser.add_argument(
+        "--domain",
+        choices=("planning", "governance"),
+        help="Exact authority domain filter.",
+    )
+    query_authority_parser.add_argument(
+        "--artifact-kind",
+        help="Exact canonical artifact-kind filter such as planning_catalog or route_index.",
+    )
+    query_authority_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_authority_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_authority_parser.set_defaults(handler=_run_query_authority)
+
     query_planning_parser = query_subparsers.add_parser(
         "planning",
         help="Search the canonical planning catalog.",
@@ -188,7 +245,8 @@ def register_query_coordination_commands(
         epilog=examples(
             "uv run watchtower-core query planning --trace-id trace.core_python_foundation",
             "uv run watchtower-core query planning --initiative-status active --format json",
-            "uv run watchtower-core query planning --current-phase execution --owner repository_maintainer",
+            "uv run watchtower-core query planning --current-phase execution "
+            "--owner repository_maintainer",
         ),
         formatter_class=HelpFormatter,
     )

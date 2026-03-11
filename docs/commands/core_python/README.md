@@ -11,6 +11,7 @@
 - Use the command-group pages before opening individual subcommand pages.
 - Use `watchtower_core_query_coordination.md` when the main question is current planning state, next action, and active work context.
 - Use `watchtower_core_query_planning.md` when the main question is the canonical deep planning record for one trace after coordination routing.
+- Use `watchtower_core_query_authority.md` when the main question is which machine surface is canonical for a planning or governance lookup.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.
 
 ## Files
@@ -26,6 +27,7 @@
 | `docs/commands/core_python/watchtower_core_query.md` | Entry page for all governed query commands, including planning, standards, references, and trace surfaces. |
 | `docs/commands/core_python/watchtower_core_query_coordination.md` | Machine start-here command page for active traced initiative coordination and next-step lookup. |
 | `docs/commands/core_python/watchtower_core_query_planning.md` | Canonical deep-planning query page for one trace-linked planning record with explicit status semantics. |
+| `docs/commands/core_python/watchtower_core_query_authority.md` | Canonical surface-discovery query page for planning and governance questions. |
 | `docs/commands/core_python/watchtower_core_task.md` | Entry page for task lifecycle commands that mutate governed local task records in dry-run or write mode. |
 | `docs/commands/core_python/watchtower_core_task_create.md` | Create one governed task document from compact structured inputs. |
 | `docs/commands/core_python/watchtower_core_task_update.md` | Apply structured field and body updates to one governed task record. |

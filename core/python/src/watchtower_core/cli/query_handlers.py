@@ -3,6 +3,7 @@
 from watchtower_core.cli.query_coordination_handlers import (
     _emit_initiative_query_results,
     _initiative_entry_payload,
+    _run_query_authority,
     _run_query_coordination,
     _run_query_initiatives,
     _run_query_planning,
@@ -31,6 +32,7 @@ __all__ = [
     "_emit_initiative_query_results",
     "_initiative_entry_payload",
     "_run_query_acceptance",
+    "_run_query_authority",
     "_run_query_commands",
     "_run_query_coordination",
     "_run_query_decisions",

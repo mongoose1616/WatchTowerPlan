@@ -33,7 +33,8 @@ def register_query_family(
             lookup, `references` for the reference library, `standards` for governed
             repository standards, `prds`, `decisions`, `designs`, `acceptance`,
             `evidence`, and `tasks` for planning and execution lookup, `planning`
-            for the canonical deep planning join after coordination, `initiatives`
+            for the canonical deep planning join after coordination, `authority`
+            for canonical planning and governance surface lookup, `initiatives`
             for broader initiative-family lookup including history, and `trace`
             when you already know the trace identifier you want.
             """
@@ -43,6 +44,7 @@ def register_query_family(
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query coordination --format json",
             "uv run watchtower-core query planning --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query authority --domain planning --format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --related-path "
             "docs/standards/documentation/workflow_md_standard.md",

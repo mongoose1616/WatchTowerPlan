@@ -142,6 +142,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:authority-map:v1",
+      "title": "Authority Map",
+      "description": "Schema for authored authority-map registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "authority_map",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/authority_map.v1.schema.json",
+      "aliases": [
+        "canonical surface map schema",
+        "planning authority registry schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
       "title": "PRD Index",
       "description": "Schema for machine-readable PRD index artifacts.",

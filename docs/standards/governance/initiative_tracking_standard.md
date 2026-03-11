@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T21:18:00Z"
+updated_at: "2026-03-11T03:10:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -64,8 +64,10 @@ This standard defines the repository's cross-family initiative tracking model so
 - Use the initiative layer as the cross-family coordination view, not as a replacement for those authored families.
 - Use `docs/planning/coordination_tracking.md` as the root human start-here surface for current planning state.
 - Treat the initiative index and initiative tracker as derived projections, not as the authoritative source for artifact content or task state.
+- Treat the initiative layer as a compact projection, not as the canonical deep-planning join for one trace now that the planning catalog exists.
 - Keep `initiative_tracking.md` compact and scan-first. Prefer brief zero-state text and linked key surfaces over repeated explanatory scaffolding.
 - Use `watchtower-core query coordination --format json` as the default machine start-here path for repo-level planning state.
+- Use the authority map when you need to confirm whether initiative lookup, coordination, traceability, or the planning catalog is canonical for a specific planning question.
 - Keep the initiative layer compact enough that the coordination index can project from it without becoming a second planning authority.
 - Use the unified traceability index as the authoritative machine join for durable artifact links and initiative closeout state.
 - Use the task index and task records as the authoritative source for active owners, open tasks, blockers, and execution status.
@@ -148,4 +150,4 @@ This standard defines the repository's cross-family initiative tracking model so
 - [README.md](/home/j/WatchTowerPlan/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-10T21:18:00Z`
+- `2026-03-11T03:10:00Z`

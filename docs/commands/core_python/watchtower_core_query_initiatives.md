@@ -35,6 +35,8 @@ uv run watchtower-core query initiatives [--query <text>] [--trace-id <trace_id>
 
 ## Notes
 - Use `watchtower-core query coordination` when you want the machine start-here path for current planning state.
+- Use `watchtower-core query planning` when you need the canonical deep planning record for one trace rather than a compact initiative projection.
+- Use `watchtower-core query authority` when you need to confirm that initiative lookup is the right surface for the question you are asking.
 - This command remains the broader initiative query surface for explicit historical or status-specific lookup.
 
 ## Examples
@@ -64,6 +66,8 @@ uv run watchtower-core query initiatives --trace-id trace.core_python_foundation
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
 | `watchtower-core query coordination` | Preferred machine start-here path for current planning state. |
+| `watchtower-core query authority` | Resolves when initiative lookup is canonical versus when coordination, traceability, or planning should answer instead. |
+| `watchtower-core query planning` | Canonical deep-planning read path when the initiative summary is too compact. |
 | `watchtower-core sync initiative-index` | Rebuilds the initiative index that this command reads. |
 | `watchtower-core sync initiative-tracking` | Rebuilds the human-readable tracker derived from the same initiative view. |
 | `watchtower-core query trace` | Resolves the underlying traceability record for one known trace ID. |
@@ -75,4 +79,4 @@ uv run watchtower-core query initiatives --trace-id trace.core_python_foundation
 - `core/control_plane/indexes/initiatives/initiative_index.v1.json`
 
 ## Updated At
-- `2026-03-10T19:06:55Z`
+- `2026-03-11T03:10:00Z`

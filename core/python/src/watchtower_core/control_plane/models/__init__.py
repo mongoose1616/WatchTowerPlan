@@ -1,6 +1,8 @@
 """Typed models for governed control-plane artifacts."""
 
 from watchtower_core.control_plane.models.catalog import (
+    AuthorityMap,
+    AuthorityMapEntry,
     SchemaCatalog,
     SchemaCatalogRecord,
     ValidatorDefinition,
@@ -65,6 +67,8 @@ from watchtower_core.control_plane.models.validation import (
 __all__ = [
     "AcceptanceContract",
     "AcceptanceContractItem",
+    "AuthorityMap",
+    "AuthorityMapEntry",
     "CommandIndex",
     "CommandIndexEntry",
     "CoordinationIndex",

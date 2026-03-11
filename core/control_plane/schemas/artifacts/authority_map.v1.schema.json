@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:authority-map:v1",
+  "title": "Authority Map",
+  "description": "Authored machine-readable authority map for canonical planning and governance surfaces.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:authority-map:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.authority_map"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/authorityEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authorityDomain": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "governance"
+      ]
+    },
+    "authorityEntry": {
+      "type": "object",
+      "required": [
+        "question_id",
+        "domain",
+        "question",
+        "status",
+        "artifact_kind",
+        "canonical_path",
+        "preferred_command",
+        "fallback_paths"
+      ],
+      "properties": {
+        "question_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "domain": {
+          "$ref": "#/$defs/authorityDomain"
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "artifact_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preferred_command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preferred_human_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status_fields": {
+          "$ref": "#/$defs/stringList"
+        },
+        "fallback_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "aliases": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:authority-map:v1",
+  "id": "registry.authority_map",
+  "title": "Authority Map",
+  "status": "active",
+  "entries": [
+    {
+      "question_id": "authority.planning.current_state",
+      "domain": "planning",
+      "question": "What is the current planning state and next action?",
+      "status": "active",
+      "artifact_kind": "coordination_index",
+      "canonical_path": "core/control_plane/indexes/coordination/coordination_index.v1.json",
+      "preferred_command": "watchtower-core query coordination",
+      "preferred_human_path": "docs/planning/coordination_tracking.md",
+      "status_fields": [
+        "mode",
+        "initiative_status"
+      ],
+      "fallback_paths": [
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+      ],
+      "aliases": [
+        "planning start here"
+      ]
+    }
+  ]
+}

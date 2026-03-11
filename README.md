@@ -19,5 +19,6 @@
 - Human current-state start-here: `docs/planning/coordination_tracking.md`
 - Machine current-state start-here (preferred): `cd core/python && uv run watchtower-core query coordination --format json`
 - Machine current-state start-here (fallback): `cd core/python && ./.venv/bin/watchtower-core query coordination --format json`
+- Machine canonical-surface lookup: `cd core/python && ./.venv/bin/watchtower-core query authority --domain planning --format json`
 - Latest whole-repo review: `SUMMARY.md`
 - Use family-specific planning directories only after the coordination surfaces point you to the deeper artifact set you need.

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T21:18:00Z"
+updated_at: "2026-03-11T03:10:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -64,7 +64,9 @@ This standard defines the repository's baseline traceability model so product in
   - validation evidence
   - closeout artifacts when that family is established
 - Use the unified traceability index as the machine-readable join layer for the full traced chain.
+- Use the planning catalog as the preferred deep-planning read model above the traceability index when the question needs joined planning, task, acceptance, and evidence context.
 - Use the initiative index and initiative tracker as derived coordination projections over the traceability layer plus current planning and task state.
+- Use the authority map when you need to resolve whether traceability or another planning surface is canonical for a recurring lookup question.
 - Use `initiative_status` on the traceability entry for initiative outcome instead of overloading artifact lifecycle `status`.
 - Treat initiative closeout metadata as a meaningful traceability change; when terminal closeout is recorded, effective `updated_at` should be at least `closed_at`.
 - Keep family-specific indexes as their local lookup surfaces and keep them aligned with the unified traceability index.
@@ -149,4 +151,4 @@ This standard defines the repository's baseline traceability model so product in
 - [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
 
 ## Updated At
-- `2026-03-10T21:18:00Z`
+- `2026-03-11T03:10:00Z`

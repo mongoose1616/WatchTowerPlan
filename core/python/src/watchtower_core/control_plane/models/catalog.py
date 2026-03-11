@@ -143,6 +143,72 @@ class ValidatorRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class AuthorityMapEntry:
+    """Authority-map registry entry."""
+
+    question_id: str
+    domain: str
+    question: str
+    status: str
+    artifact_kind: str
+    canonical_path: str
+    preferred_command: str
+    fallback_paths: tuple[str, ...]
+    preferred_human_path: str | None = None
+    status_fields: tuple[str, ...] = ()
+    aliases: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> AuthorityMapEntry:
+        return cls(
+            question_id=document["question_id"],
+            domain=document["domain"],
+            question=document["question"],
+            status=document["status"],
+            artifact_kind=document["artifact_kind"],
+            canonical_path=document["canonical_path"],
+            preferred_command=document["preferred_command"],
+            fallback_paths=tuple(document["fallback_paths"]),
+            preferred_human_path=document.get("preferred_human_path"),
+            status_fields=tuple(document.get("status_fields", ())),
+            aliases=tuple(document.get("aliases", ())),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class AuthorityMap:
+    """Typed authority-map registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    entries: tuple[AuthorityMapEntry, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> AuthorityMap:
+        entries = tuple(
+            AuthorityMapEntry.from_document(entry) for entry in document["entries"]
+        )
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            entries=entries,
+        )
+
+    def get(self, question_id: str) -> AuthorityMapEntry:
+        """Return one authority-map entry by identifier."""
+        for entry in self.entries:
+            if entry.question_id == question_id:
+                return entry
+        raise KeyError(question_id)
+
+
+@dataclass(frozen=True, slots=True)
 class WorkflowMetadataDefinition:
     """Workflow metadata registry entry."""
 

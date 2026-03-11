@@ -10,8 +10,14 @@ from watchtower_core.cli.handler_common import (
     _task_dependency_payload,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import InitiativeIndexEntry, PlanningCatalogEntry
+from watchtower_core.control_plane.models import (
+    AuthorityMapEntry,
+    InitiativeIndexEntry,
+    PlanningCatalogEntry,
+)
 from watchtower_core.repo_ops.query import (
+    AuthorityMapQueryService,
+    AuthorityMapSearchParams,
     CoordinationQueryService,
     CoordinationSearchParams,
     InitiativeQueryService,
@@ -22,6 +28,43 @@ from watchtower_core.repo_ops.query import (
     TaskSearchParams,
     TraceabilityQueryService,
 )
+
+
+def _run_query_authority(args: argparse.Namespace) -> int:
+    service = AuthorityMapQueryService(ControlPlaneLoader())
+    entries = service.search(
+        AuthorityMapSearchParams(
+            query=args.query,
+            question_id=args.question_id,
+            domain=args.domain,
+            artifact_kind=args.artifact_kind,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query authority",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [_authority_entry_payload(entry) for entry in entries],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No authority-map entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} authority entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        print(f"- {entry.question_id} [{entry.domain} -> {entry.artifact_kind}]")
+        print(f"  {entry.question}")
+        print(f"  Canonical: {entry.canonical_path}")
+        print(f"  Command: {entry.preferred_command}")
+        if entry.preferred_human_path is not None:
+            print(f"  Human: {entry.preferred_human_path}")
+        if entry.status_fields:
+            print(f"  Status fields: {', '.join(entry.status_fields)}")
+    return 0
 
 
 def _run_query_tasks(args: argparse.Namespace) -> int:
@@ -338,6 +381,23 @@ def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
         "superseded_by_trace_id": entry.superseded_by_trace_id,
         "related_paths": list(entry.related_paths),
         "tags": list(entry.tags),
+        "notes": entry.notes,
+    }
+
+
+def _authority_entry_payload(entry: AuthorityMapEntry) -> dict[str, object]:
+    return {
+        "question_id": entry.question_id,
+        "domain": entry.domain,
+        "question": entry.question,
+        "status": entry.status,
+        "artifact_kind": entry.artifact_kind,
+        "canonical_path": entry.canonical_path,
+        "preferred_command": entry.preferred_command,
+        "preferred_human_path": entry.preferred_human_path,
+        "status_fields": list(entry.status_fields),
+        "fallback_paths": list(entry.fallback_paths),
+        "aliases": list(entry.aliases),
         "notes": entry.notes,
     }
 

@@ -275,16 +275,16 @@ def _coordination_section(entry: InitiativeIndexEntry) -> dict[str, object]:
 
 def _active_task_summary(task: object) -> dict[str, object]:
     document: dict[str, object] = {
-        "task_id": getattr(task, "task_id"),
-        "title": getattr(task, "title"),
-        "task_status": getattr(task, "task_status"),
-        "priority": getattr(task, "priority"),
-        "owner": getattr(task, "owner"),
-        "doc_path": getattr(task, "doc_path"),
-        "is_actionable": getattr(task, "is_actionable"),
+        "task_id": task.task_id,
+        "title": task.title,
+        "task_status": task.task_status,
+        "priority": task.priority,
+        "owner": task.owner,
+        "doc_path": task.doc_path,
+        "is_actionable": task.is_actionable,
     }
-    blocked_by = tuple(getattr(task, "blocked_by"))
-    depends_on = tuple(getattr(task, "depends_on"))
+    blocked_by = tuple(task.blocked_by)
+    depends_on = tuple(task.depends_on)
     if blocked_by:
         document["blocked_by"] = list(blocked_by)
     if depends_on:

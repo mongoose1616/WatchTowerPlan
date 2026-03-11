@@ -2164,6 +2164,36 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/registries/authority_map/",
+      "kind": "directory",
+      "surface_kind": "control_plane_registries",
+      "summary": "Defines canonical planning and governance lookup answers, preferred commands, and fallback surfaces.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/authority_map/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Describes the purpose of the authority-map registry directory and its current contents.",
+      "parent_path": "core/control_plane/registries/authority_map/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/authority_map/authority_map.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Canonical authored registry of supported planning and governance questions, preferred commands, and fallback surfaces.",
+      "parent_path": "core/control_plane/registries/authority_map/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/registries/policy_catalog/",
       "kind": "directory",
       "surface_kind": "control_plane_registries",
@@ -2346,6 +2376,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable artifact-type registry artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/authority_map.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the authored authority-map registry artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3542,6 +3582,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_authority.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Canonical surface-discovery query page for planning and governance questions.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_query_commands.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -4426,6 +4476,16 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the standard for machine-readable acceptance contracts.",
+      "parent_path": "docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/standards/data_contracts/authority_map_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for the authored authority-map registry.",
       "parent_path": "docs/standards/data_contracts/",
       "maturity": "authoritative",
       "priority": "high",

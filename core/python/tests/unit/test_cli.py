@@ -57,6 +57,7 @@ def test_root_command_prints_help(capsys) -> None:
         "uv run watchtower-core query planning --trace-id trace.core_python_foundation"
         in captured.out
     )
+    assert "uv run watchtower-core query authority --domain planning --format json" in captured.out
     assert (
         "uv run watchtower-core query standards --category governance --format json"
         in captured.out
@@ -100,6 +101,7 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert "query commands" in captured.out
     assert "query coordination" in captured.out
     assert "query planning" in captured.out
+    assert "query authority" in captured.out
     assert "query foundations" in captured.out
     assert "query workflows" in captured.out
     assert "query references" in captured.out

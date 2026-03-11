@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "coordination_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T21:18:00Z"
+updated_at: "2026-03-11T03:10:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -52,6 +52,7 @@ This standard defines the repository's compact human coordination tracker so hum
 ## Guidance
 - Treat `docs/planning/coordination_tracking.md` as the default human start-here planning surface.
 - Build the tracker from the coordination index rather than from ad hoc scans of family trackers.
+- Treat the coordination tracker as the human start-here companion to the coordination index, not as the canonical deep-planning answer for one trace.
 - Keep the tracker compact, scan-first, and capped:
   - current-state summary
   - small active-initiative preview
@@ -62,6 +63,7 @@ This standard defines the repository's compact human coordination tracker so hum
 - Do not hand-edit `coordination_tracking.md` as an authored planning record.
 - Keep the tracker smaller than the combined trackers it summarizes.
 - Keep the tracker `_Updated At` value aligned with the latest effective initiative state change, including terminal closeout.
+- Use the authority map when a contributor needs to confirm whether coordination or a deeper planning surface is canonical for the question at hand.
 
 ## Structure or Data Model
 ### Source-of-truth layers
@@ -103,4 +105,4 @@ This standard defines the repository's compact human coordination tracker so hum
 - [README.md](/home/j/WatchTowerPlan/docs/planning/README.md)
 
 ## Updated At
-- `2026-03-10T21:18:00Z`
+- `2026-03-11T03:10:00Z`

@@ -44,6 +44,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
 
     catalog = loader.load_schema_catalog()
     validators = loader.load_validator_registry()
+    authority_map = loader.load_authority_map()
     workflow_metadata_registry = loader.load_workflow_metadata_registry()
     path_index = loader.load_repository_path_index()
     command_index = loader.load_command_index()
@@ -59,6 +60,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
 
     assert catalog.artifact_id == "registry.schema_catalog"
     assert validators.artifact_id == "registry.validators"
+    assert authority_map.artifact_id == "registry.authority_map"
     assert workflow_metadata_registry.artifact_id == "registry.workflow_metadata"
     assert path_index.artifact_id == "index.repository_paths"
     assert command_index.artifact_id == "index.commands"
@@ -128,6 +130,7 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
         REPO_ROOT / "core/control_plane/manifests",
         REPO_ROOT / "core/control_plane/policies/release",
         REPO_ROOT / "core/control_plane/registries/artifact_types",
+        REPO_ROOT / "core/control_plane/registries/authority_map",
         REPO_ROOT / "core/control_plane/registries/policy_catalog",
         REPO_ROOT / "core/control_plane/registries/schema_catalog",
         REPO_ROOT / "core/control_plane/registries/validators",
@@ -220,6 +223,23 @@ def test_workflow_metadata_registry_examples_validate_against_the_schema() -> No
         REPO_ROOT
         / "core/control_plane/examples/invalid/registries/"
         "workflow_metadata_registry_missing_phase_type.v1.example.json"
+    )
+
+    store.validate_instance(valid_example)
+    with pytest.raises(ValidationError):
+        store.validate_instance(invalid_example)
+
+
+def test_authority_map_examples_validate_against_the_schema() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    valid_example = _load_json_object(
+        REPO_ROOT / "core/control_plane/examples/valid/registries/authority_map.v1.example.json"
+    )
+    invalid_example = _load_json_object(
+        REPO_ROOT
+        / "core/control_plane/examples/invalid/registries/"
+        "authority_map_missing_command.v1.example.json"
     )
 
     store.validate_instance(valid_example)

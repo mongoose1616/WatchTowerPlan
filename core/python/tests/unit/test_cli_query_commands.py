@@ -498,6 +498,28 @@ def test_query_planning_supports_json_output(capsys) -> None:
     assert payload["results"][0]["coordination"]["current_phase"]
 
 
+def test_query_authority_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "authority",
+            "--question-id",
+            "authority.planning.deep_trace_context",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query authority"
+    assert payload["status"] == "ok"
+    assert payload["results"][0]["question_id"] == "authority.planning.deep_trace_context"
+    assert payload["results"][0]["artifact_kind"] == "planning_catalog"
+    assert payload["results"][0]["preferred_command"] == "watchtower-core query planning"
+
+
 def test_query_trace_supports_json_output(capsys) -> None:
     result = main(
         ["query", "trace", "--trace-id", "trace.core_python_foundation", "--format", "json"]

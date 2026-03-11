@@ -37,6 +37,8 @@ uv run watchtower-core query coordination [--query <text>] [--trace-id <trace_id
 - This command defaults to active initiatives because it is the coordination start-here path.
 - The JSON output also carries top-level coordination state, recommended next action, actionable-task summaries, and recent closeout context.
 - `docs/planning/coordination_tracking.md` is the compact human companion view built from the same coordination state.
+- Use `watchtower-core query planning` after this command when you need the canonical deep planning record for one trace.
+- Use `watchtower-core query authority` when you need to confirm whether coordination is canonical for the question you are asking.
 - Use `watchtower-core query initiatives` when you want broader initiative-family lookup or exhaustive closed-history browsing.
 
 ## Examples
@@ -66,6 +68,8 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 | Command | Relationship |
 |---|---|
 | `watchtower-core query` | Parent command group for all index-backed lookup commands. |
+| `watchtower-core query authority` | Resolves whether coordination, planning, initiative, or governance surfaces are canonical for a recurring lookup question. |
+| `watchtower-core query planning` | Descends from the start-here coordination view into the canonical deep planning join for one trace. |
 | `watchtower-core query initiatives` | Broader initiative-family lookup surface, including closed-history inspection. |
 | `watchtower-core sync coordination` | Rebuilds the coordination index and its dependent machine and human coordination surfaces. |
 | `watchtower-core sync initiative-index` | Rebuilds one of the upstream initiative-family surfaces projected into coordination. |
@@ -78,4 +82,4 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 - `core/control_plane/indexes/coordination/coordination_index.v1.json`
 
 ## Updated At
-- `2026-03-10T19:29:01Z`
+- `2026-03-11T03:10:00Z`

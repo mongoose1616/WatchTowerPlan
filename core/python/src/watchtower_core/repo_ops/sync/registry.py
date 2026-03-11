@@ -43,13 +43,13 @@ from watchtower_core.repo_ops.sync.initiative_index import (
     INITIATIVE_INDEX_ARTIFACT_PATH,
     InitiativeIndexSyncService,
 )
-from watchtower_core.repo_ops.sync.planning_catalog import (
-    PLANNING_CATALOG_ARTIFACT_PATH,
-    PlanningCatalogSyncService,
-)
 from watchtower_core.repo_ops.sync.initiative_tracking import (
     INITIATIVE_TRACKING_DOCUMENT_PATH,
     InitiativeTrackingSyncService,
+)
+from watchtower_core.repo_ops.sync.planning_catalog import (
+    PLANNING_CATALOG_ARTIFACT_PATH,
+    PlanningCatalogSyncService,
 )
 from watchtower_core.repo_ops.sync.prd_index import PRD_INDEX_ARTIFACT_PATH, PrdIndexSyncService
 from watchtower_core.repo_ops.sync.prd_tracking import (
