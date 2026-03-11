@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T20:08:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -37,11 +37,13 @@ Keep standards structured enough that internal and external authority is not onl
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): governed standards must use the standard front matter profile.
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): external authority should be normalized through local reference docs when practical.
 - [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md): standard docs must remain structured enough for the governed standard index to capture citation and application signals.
+- [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md): authoring scaffold that should stay aligned with this standard.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): standard docs must use UTC `updated_at` values consistently.
 
 ## Guidance
 - Use governed front matter on standards and validate it against the standard front matter profile.
 - Keep one primary standard concern per document.
+- Use the standard-document template when creating or materially refreshing a governed standard unless a narrower family scaffold is intentionally more specific.
 - Use `Related Standards and Sources` for the authorities that materially shape the standard, not for loose “nice to read” links.
 - Every bullet in `Related Standards and Sources` should use `source: implication` form so the repo-local consequence of the cited authority is explicit.
 - Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
@@ -52,8 +54,8 @@ Keep standards structured enough that internal and external authority is not onl
 - Keep `Updated At` aligned with front matter `updated_at`.
 
 ## Operationalization
-- `Modes`: `validation`; `sync`; `query`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `docs/commands/core_python/watchtower_core_query_standards.md`
+- `Modes`: `validation`; `sync`; `query`; `documentation`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `docs/commands/core_python/watchtower_core_query_standards.md`; `docs/templates/standard_document_template.md`
 
 ## Structure or Data Model
 ### Required sections
@@ -85,10 +87,11 @@ Keep standards structured enough that internal and external authority is not onl
 - Update the standards template, standard index, and affected live standards in the same change set when this family changes structurally.
 
 ## References
+- [standard_document_template.md](/home/j/WatchTowerPlan/docs/templates/standard_document_template.md)
 - [standard_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/standard_index_standard.md)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
 - [documentation_semantics_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/documentation_semantics_standard.md)
 - [README.md](/home/j/WatchTowerPlan/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T20:08:00Z`

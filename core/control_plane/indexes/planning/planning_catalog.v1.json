@@ -6117,6 +6117,326 @@
       "closure_reason": "Validated the final report-review route-preview fix, published acceptance evidence, and cleared the last active report-remediation trace."
     },
     {
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "title": "Standard Authoring Surface Alignment PRD",
+      "summary": "Aligns the governed standard-authoring scaffold, lookup surfaces, and regression coverage with the live standard-document contract.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T20:10:00Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/standard_authoring_surface_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/standard_authoring_surface_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.standard_authoring_surface_alignment",
+          "title": "Standard Authoring Surface Alignment PRD",
+          "summary": "Aligns the governed standard-authoring scaffold, lookup surfaces, and regression coverage with the live standard-document contract.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/standard_authoring_surface_alignment.md",
+          "updated_at": "2026-03-11T20:05:00Z",
+          "requirement_ids": [
+            "req.standard_authoring_surface_alignment.001",
+            "req.standard_authoring_surface_alignment.002",
+            "req.standard_authoring_surface_alignment.003",
+            "req.standard_authoring_surface_alignment.004",
+            "req.standard_authoring_surface_alignment.005"
+          ],
+          "acceptance_ids": [
+            "ac.standard_authoring_surface_alignment.001",
+            "ac.standard_authoring_surface_alignment.002",
+            "ac.standard_authoring_surface_alignment.003",
+            "ac.standard_authoring_surface_alignment.004",
+            "ac.standard_authoring_surface_alignment.005"
+          ],
+          "linked_decision_ids": [
+            "decision.standard_authoring_surface_alignment_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.standard_authoring_surface_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.standard_authoring_surface_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.standard_authoring_surface_alignment_direction",
+          "title": "Standard Authoring Surface Alignment Direction Decision",
+          "summary": "Records the accepted direction for Standard Authoring Surface Alignment.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
+          "updated_at": "2026-03-11T20:05:00Z",
+          "linked_prd_ids": [
+            "prd.standard_authoring_surface_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.standard_authoring_surface_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.standard_authoring_surface_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.standard_authoring_surface_alignment",
+          "family": "feature_design",
+          "title": "Standard Authoring Surface Alignment Feature Design",
+          "summary": "Defines the technical design boundary for Standard Authoring Surface Alignment.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/standard_authoring_surface_alignment.md",
+          "updated_at": "2026-03-11T20:05:00Z"
+        },
+        {
+          "document_id": "design.implementation.standard_authoring_surface_alignment",
+          "family": "implementation_plan",
+          "title": "Standard Authoring Surface Alignment Implementation Plan",
+          "summary": "Breaks Standard Authoring Surface Alignment into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+          "updated_at": "2026-03-11T20:05:00Z",
+          "source_paths": [
+            "docs/planning/design/features/standard_authoring_surface_alignment.md",
+            "docs/planning/prds/standard_authoring_surface_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.standard_authoring_surface_alignment.bootstrap.001",
+          "title": "Bootstrap Standard Authoring Surface Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Standard Authoring Surface Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
+          "updated_at": "2026-03-11T20:02:06Z",
+          "related_ids": [
+            "prd.standard_authoring_surface_alignment",
+            "design.features.standard_authoring_surface_alignment",
+            "design.implementation.standard_authoring_surface_alignment",
+            "decision.standard_authoring_surface_alignment_direction",
+            "contract.acceptance.standard_authoring_surface_alignment"
+          ]
+        },
+        {
+          "task_id": "task.standard_authoring_surface_alignment.lookup_alignment.001",
+          "title": "Expose the standard authoring template through standards lookup and regression coverage",
+          "summary": "Publish the standard template as a real operational surface of the Standard Document Standard and add regression checks for the resulting query path.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md",
+          "updated_at": "2026-03-11T20:04:18Z",
+          "related_ids": [
+            "prd.standard_authoring_surface_alignment",
+            "design.features.standard_authoring_surface_alignment",
+            "design.implementation.standard_authoring_surface_alignment",
+            "decision.standard_authoring_surface_alignment_direction",
+            "contract.acceptance.standard_authoring_surface_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/standard_md_standard.md",
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py"
+          ]
+        },
+        {
+          "task_id": "task.standard_authoring_surface_alignment.template_contract.001",
+          "title": "Align standard document template with governed authoring contract",
+          "summary": "Restore the governed standard-document template so it authors the live required section contract instead of stale optional guidance.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "documentation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
+          "updated_at": "2026-03-11T20:04:18Z",
+          "related_ids": [
+            "prd.standard_authoring_surface_alignment",
+            "design.features.standard_authoring_surface_alignment",
+            "design.implementation.standard_authoring_surface_alignment",
+            "decision.standard_authoring_surface_alignment_direction",
+            "contract.acceptance.standard_authoring_surface_alignment"
+          ],
+          "applies_to": [
+            "docs/templates/standard_document_template.md",
+            "docs/standards/documentation/standard_md_standard.md"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.standard_authoring_surface_alignment",
+          "title": "Standard Authoring Surface Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.standard_authoring_surface_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/standard_authoring_surface_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.standard_authoring_surface_alignment.001",
+            "ac.standard_authoring_surface_alignment.002",
+            "ac.standard_authoring_surface_alignment.003",
+            "ac.standard_authoring_surface_alignment.004",
+            "ac.standard_authoring_surface_alignment.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.v1.json",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
+            "docs/planning/design/features/standard_authoring_surface_alignment.md",
+            "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/standard_authoring_surface_alignment.md",
+            "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
+            "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md",
+            "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/documentation/standard_md_standard.md",
+            "docs/templates/standard_document_template.md"
+          ],
+          "related_paths": [
+            "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/control_plane/indexes/tasks/task_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "docs/commands/core_python/watchtower_core_query_standards.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/documentation/standard_md_standard.md",
+            "docs/templates/standard_document_template.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.standard_authoring_surface_alignment.planning_baseline",
+          "title": "Standard Authoring Surface Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-11T20:10:00Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.standard_authoring_surface_alignment.planning_baseline",
+            "check.standard_authoring_surface_alignment.template_contract",
+            "check.standard_authoring_surface_alignment.lookup_alignment",
+            "check.standard_authoring_surface_alignment.validation_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.standard_authoring_surface_alignment.001",
+            "ac.standard_authoring_surface_alignment.002",
+            "ac.standard_authoring_surface_alignment.003",
+            "ac.standard_authoring_surface_alignment.004",
+            "ac.standard_authoring_surface_alignment.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/standard_authoring_surface_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.standard_authoring_surface_alignment"
+      ],
+      "decision_ids": [
+        "decision.standard_authoring_surface_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.standard_authoring_surface_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.standard_authoring_surface_alignment"
+      ],
+      "task_ids": [
+        "task.standard_authoring_surface_alignment.bootstrap.001",
+        "task.standard_authoring_surface_alignment.lookup_alignment.001",
+        "task.standard_authoring_surface_alignment.template_contract.001"
+      ],
+      "requirement_ids": [
+        "req.standard_authoring_surface_alignment.001",
+        "req.standard_authoring_surface_alignment.002",
+        "req.standard_authoring_surface_alignment.003",
+        "req.standard_authoring_surface_alignment.004",
+        "req.standard_authoring_surface_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.standard_authoring_surface_alignment.001",
+        "ac.standard_authoring_surface_alignment.002",
+        "ac.standard_authoring_surface_alignment.003",
+        "ac.standard_authoring_surface_alignment.004",
+        "ac.standard_authoring_surface_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.standard_authoring_surface_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.standard_authoring_surface_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/standard_authoring_surface_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/standard_authoring_surface_alignment.md",
+        "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/standard_authoring_surface_alignment.md",
+        "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
+        "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md",
+        "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/templates/standard_document_template.md"
+      ],
+      "tags": [
+        "documentation",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-11T20:10:00Z for trace.standard_authoring_surface_alignment.",
+      "closed_at": "2026-03-11T20:05:17Z",
+      "closure_reason": "Closed after aligning the standard-authoring scaffold, standards lookup surfaces, and regression coverage with the governed standard-document contract."
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "title": "Standard, Runtime, and Route Explicitness Hardening PRD",
       "summary": "Closes the still-valid report-set gaps around standards operationalization metadata, runtime package boundary documentation, and advisory route-preview matching.",

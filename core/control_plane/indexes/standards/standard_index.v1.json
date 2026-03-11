@@ -1544,25 +1544,28 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-11T20:08:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
         "validation",
         "sync",
-        "query"
+        "query",
+        "documentation"
       ],
       "operationalization_paths": [
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
-        "docs/commands/core_python/watchtower_core_query_standards.md"
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/templates/standard_document_template.md"
       ],
       "internal_reference_paths": [
         "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/templates/standard_document_template.md",
         "docs/standards/metadata/timestamp_standard.md",
         "docs/standards/README.md"
       ],
@@ -1571,6 +1574,7 @@
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/templates/standard_document_template.md",
         "docs/standards/metadata/timestamp_standard.md"
       ],
       "tags": [

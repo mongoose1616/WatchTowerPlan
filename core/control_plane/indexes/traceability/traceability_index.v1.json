@@ -1712,6 +1712,87 @@
       "notes": "Validation evidence for closing the remaining natural maintenance-request route-preview gap identified during the final report review."
     },
     {
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "title": "Standard Authoring Surface Alignment PRD",
+      "summary": "Aligns the governed standard-authoring scaffold, lookup surfaces, and regression coverage with the live standard-document contract.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T20:10:00Z",
+      "closed_at": "2026-03-11T20:05:17Z",
+      "closure_reason": "Closed after aligning the standard-authoring scaffold, standards lookup surfaces, and regression coverage with the governed standard-document contract.",
+      "prd_ids": [
+        "prd.standard_authoring_surface_alignment"
+      ],
+      "decision_ids": [
+        "decision.standard_authoring_surface_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.standard_authoring_surface_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.standard_authoring_surface_alignment"
+      ],
+      "task_ids": [
+        "task.standard_authoring_surface_alignment.bootstrap.001",
+        "task.standard_authoring_surface_alignment.lookup_alignment.001",
+        "task.standard_authoring_surface_alignment.template_contract.001"
+      ],
+      "requirement_ids": [
+        "req.standard_authoring_surface_alignment.001",
+        "req.standard_authoring_surface_alignment.002",
+        "req.standard_authoring_surface_alignment.003",
+        "req.standard_authoring_surface_alignment.004",
+        "req.standard_authoring_surface_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.standard_authoring_surface_alignment.001",
+        "ac.standard_authoring_surface_alignment.002",
+        "ac.standard_authoring_surface_alignment.003",
+        "ac.standard_authoring_surface_alignment.004",
+        "ac.standard_authoring_surface_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.standard_authoring_surface_alignment"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.standard_authoring_surface_alignment.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/standard_authoring_surface_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/standard_authoring_surface_alignment.md",
+        "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/standard_authoring_surface_alignment.md",
+        "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
+        "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md",
+        "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/templates/standard_document_template.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-11T20:10:00Z for trace.standard_authoring_surface_alignment."
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "title": "Standard, Runtime, and Route Explicitness Hardening PRD",
       "summary": "Closes the still-valid report-set gaps around standards operationalization metadata, runtime package boundary documentation, and advisory route-preview matching.",

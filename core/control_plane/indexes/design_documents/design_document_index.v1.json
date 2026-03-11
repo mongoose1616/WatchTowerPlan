@@ -960,6 +960,35 @@
       ]
     },
     {
+      "document_id": "design.features.standard_authoring_surface_alignment",
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "family": "feature_design",
+      "title": "Standard Authoring Surface Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Standard Authoring Surface Alignment.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/standard_authoring_surface_alignment.md",
+      "updated_at": "2026-03-11T20:05:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/templates/standard_document_template.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.standard_runtime_and_route_explicitness",
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "family": "feature_design",
@@ -1556,6 +1585,35 @@
         "docs/standards/data_contracts/validation_evidence_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/planning/prds/route_preview_natural_request_matching.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.standard_authoring_surface_alignment",
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "family": "implementation_plan",
+      "title": "Standard Authoring Surface Alignment Implementation Plan",
+      "summary": "Breaks Standard Authoring Surface Alignment into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+      "updated_at": "2026-03-11T20:05:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/standard_authoring_surface_alignment.md",
+        "docs/planning/prds/standard_authoring_surface_alignment.md"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/templates/standard_document_template.md",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md"
       ]
     },
     {

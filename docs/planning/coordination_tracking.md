@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.standard_authoring_surface_alignment` | `completed` | `2026-03-11T20:05:17Z` | [standard_authoring_surface_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_authoring_surface_alignment.md) |
 | `trace.design_document_index_relationship_alignment` | `completed` | `2026-03-11T19:37:52Z` | [design_document_index_relationship_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/design_document_index_relationship_alignment.md) |
 | `trace.internal_project_standards_review_and_hardening` | `completed` | `2026-03-11T18:00:45Z` | [internal_project_standards_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/internal_project_standards_review_and_hardening.md) |
 | `trace.internal_project_code_review_followup` | `completed` | `2026-03-11T17:13:35Z` | [internal_project_code_review_follow_up.md](/home/j/WatchTowerPlan/docs/planning/prds/internal_project_code_review_follow_up.md) |
 | `trace.internal_project_code_review_and_hardening` | `completed` | `2026-03-11T16:23:46Z` | [internal_project_code_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/internal_project_code_review_and_hardening.md) |
-| `trace.internal_project_review_and_hardening` | `completed` | `2026-03-11T15:40:01Z` | [internal_project_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/internal_project_review_and_hardening.md) |
 
 _Updated At: `2026-03-11T23:37:00Z`_

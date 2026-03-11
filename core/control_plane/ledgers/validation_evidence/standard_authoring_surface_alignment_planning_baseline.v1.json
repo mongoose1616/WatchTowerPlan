@@ -1,0 +1,122 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.standard_authoring_surface_alignment.planning_baseline",
+  "title": "Standard Authoring Surface Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.standard_authoring_surface_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T20:10:00Z",
+  "source_prd_ids": [
+    "prd.standard_authoring_surface_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.standard_authoring_surface_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.standard_authoring_surface_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.standard_authoring_surface_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.standard_authoring_surface_alignment.planning_baseline",
+      "title": "Planning baseline is aligned for the completed standard-authoring trace",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/standard_authoring_surface_alignment.md",
+        "docs/planning/design/features/standard_authoring_surface_alignment.md",
+        "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+        "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/standard_authoring_surface_alignment_acceptance.v1.json",
+        "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
+        "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md"
+      ],
+      "subject_ids": [
+        "prd.standard_authoring_surface_alignment",
+        "design.features.standard_authoring_surface_alignment",
+        "design.implementation.standard_authoring_surface_alignment",
+        "task.standard_authoring_surface_alignment.bootstrap.001",
+        "task.standard_authoring_surface_alignment.template_contract.001",
+        "task.standard_authoring_surface_alignment.lookup_alignment.001",
+        "contract.acceptance.standard_authoring_surface_alignment",
+        "decision.standard_authoring_surface_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.standard_authoring_surface_alignment.001"
+      ],
+      "notes": "The trace now carries a real PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed planning-baseline evidence, and all three closed task records."
+    },
+    {
+      "check_id": "check.standard_authoring_surface_alignment.template_contract",
+      "title": "Standard-document template matches the governed contract",
+      "result": "passed",
+      "subject_paths": [
+        "docs/templates/standard_document_template.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.standard_authoring_surface_alignment.template_contract.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_authoring_surface_alignment.002"
+      ],
+      "notes": "The standard template now includes the required standard-document sections, preserves explained related-source guidance, publishes operationalization metadata, and no longer lists required sections as optional."
+    },
+    {
+      "check_id": "check.standard_authoring_surface_alignment.lookup_alignment",
+      "title": "The standard template resolves through standards lookup as an operational surface",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.standard_authoring_surface_alignment.lookup_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_authoring_surface_alignment.003",
+        "ac.standard_authoring_surface_alignment.004"
+      ],
+      "notes": "The Standard Document Standard now operationalizes docs/templates/standard_document_template.md, standard-index sync projects that path into operationalization_paths, and the CLI query regression asserts that querying by the template path returns std.documentation.standard_md."
+    },
+    {
+      "check_id": "check.standard_authoring_surface_alignment.validation_baseline",
+      "title": "Repository validation baseline is green for the completed standard-authoring trace",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/standard_authoring_surface_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.standard_authoring_surface_alignment",
+        "decision.standard_authoring_surface_alignment_direction",
+        "design.features.standard_authoring_surface_alignment",
+        "design.implementation.standard_authoring_surface_alignment",
+        "task.standard_authoring_surface_alignment.template_contract.001",
+        "task.standard_authoring_surface_alignment.lookup_alignment.001",
+        "contract.acceptance.standard_authoring_surface_alignment"
+      ],
+      "acceptance_ids": [
+        "ac.standard_authoring_surface_alignment.005"
+      ],
+      "notes": "watchtower-core sync all --write, watchtower-core validate acceptance --trace-id trace.standard_authoring_surface_alignment --format json, watchtower-core validate all --format json, pytest -q, python -m mypy src/watchtower_core, and ruff check passed after the trace reached terminal closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/standard_authoring_surface_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-11T20:10:00Z for trace.standard_authoring_surface_alignment.",
+  "source_decision_ids": [
+    "decision.standard_authoring_surface_alignment_direction"
+  ]
+}

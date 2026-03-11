@@ -759,6 +759,52 @@
       ]
     },
     {
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "prd_id": "prd.standard_authoring_surface_alignment",
+      "title": "Standard Authoring Surface Alignment PRD",
+      "summary": "Aligns the governed standard-authoring scaffold, lookup surfaces, and regression coverage with the live standard-document contract.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/standard_authoring_surface_alignment.md",
+      "updated_at": "2026-03-11T20:05:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.standard_authoring_surface_alignment.001",
+        "req.standard_authoring_surface_alignment.002",
+        "req.standard_authoring_surface_alignment.003",
+        "req.standard_authoring_surface_alignment.004",
+        "req.standard_authoring_surface_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.standard_authoring_surface_alignment.001",
+        "ac.standard_authoring_surface_alignment.002",
+        "ac.standard_authoring_surface_alignment.003",
+        "ac.standard_authoring_surface_alignment.004",
+        "ac.standard_authoring_surface_alignment.005"
+      ],
+      "linked_decision_ids": [
+        "decision.standard_authoring_surface_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.standard_authoring_surface_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.standard_authoring_surface_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/templates/standard_document_template.md",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_design_principles.md"
+      ]
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "prd_id": "prd.standard_runtime_and_route_explicitness",
       "title": "Standard, Runtime, and Route Explicitness Hardening PRD",

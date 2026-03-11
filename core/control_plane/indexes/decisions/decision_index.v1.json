@@ -631,6 +631,47 @@
       ]
     },
     {
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "decision_id": "decision.standard_authoring_surface_alignment_direction",
+      "title": "Standard Authoring Surface Alignment Direction Decision",
+      "summary": "Records the accepted direction for Standard Authoring Surface Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
+      "updated_at": "2026-03-11T20:05:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.standard_authoring_surface_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.standard_authoring_surface_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.standard_authoring_surface_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/templates/standard_document_template.md",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "decision_id": "decision.standard_runtime_and_route_explicitness_direction",
       "title": "Standard, Runtime, and Route Explicitness Hardening Direction Decision",

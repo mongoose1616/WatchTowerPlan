@@ -1504,6 +1504,76 @@
       ]
     },
     {
+      "task_id": "task.standard_authoring_surface_alignment.bootstrap.001",
+      "title": "Bootstrap Standard Authoring Surface Alignment planning chain",
+      "summary": "Bootstraps the initial planning chain for Standard Authoring Surface Alignment.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
+      "updated_at": "2026-03-11T20:02:06Z",
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "related_ids": [
+        "prd.standard_authoring_surface_alignment",
+        "design.features.standard_authoring_surface_alignment",
+        "design.implementation.standard_authoring_surface_alignment",
+        "decision.standard_authoring_surface_alignment_direction",
+        "contract.acceptance.standard_authoring_surface_alignment"
+      ]
+    },
+    {
+      "task_id": "task.standard_authoring_surface_alignment.lookup_alignment.001",
+      "title": "Expose the standard authoring template through standards lookup and regression coverage",
+      "summary": "Publish the standard template as a real operational surface of the Standard Document Standard and add regression checks for the resulting query path.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md",
+      "updated_at": "2026-03-11T20:04:18Z",
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "related_ids": [
+        "prd.standard_authoring_surface_alignment",
+        "design.features.standard_authoring_surface_alignment",
+        "design.implementation.standard_authoring_surface_alignment",
+        "decision.standard_authoring_surface_alignment_direction",
+        "contract.acceptance.standard_authoring_surface_alignment"
+      ],
+      "applies_to": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ]
+    },
+    {
+      "task_id": "task.standard_authoring_surface_alignment.template_contract.001",
+      "title": "Align standard document template with governed authoring contract",
+      "summary": "Restore the governed standard-document template so it authors the live required section contract instead of stale optional guidance.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
+      "updated_at": "2026-03-11T20:04:18Z",
+      "trace_id": "trace.standard_authoring_surface_alignment",
+      "related_ids": [
+        "prd.standard_authoring_surface_alignment",
+        "design.features.standard_authoring_surface_alignment",
+        "design.implementation.standard_authoring_surface_alignment",
+        "decision.standard_authoring_surface_alignment_direction",
+        "contract.acceptance.standard_authoring_surface_alignment"
+      ],
+      "applies_to": [
+        "docs/templates/standard_document_template.md",
+        "docs/standards/documentation/standard_md_standard.md"
+      ]
+    },
+    {
       "task_id": "task.standard_runtime_and_route_explicitness.bootstrap.001",
       "title": "Bootstrap Standard, Runtime, and Route Explicitness Hardening planning chain",
       "summary": "Bootstraps the initial planning chain for Standard, Runtime, and Route Explicitness Hardening.",

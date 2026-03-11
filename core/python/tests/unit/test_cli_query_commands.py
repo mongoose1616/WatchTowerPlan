@@ -336,6 +336,31 @@ def test_query_standards_supports_operationalization_filters(capsys) -> None:
     )
 
 
+def test_query_standards_exposes_standard_template_operationalization_path(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "standards",
+            "--operationalization-path",
+            "docs/templates/standard_document_template.md",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query standards"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["standard_id"] == "std.documentation.standard_md"
+        and "docs/templates/standard_document_template.md"
+        in entry["operationalization_paths"]
+        for entry in payload["results"]
+    )
+
+
 def test_query_prds_supports_json_output(capsys) -> None:
     result = main(
         [

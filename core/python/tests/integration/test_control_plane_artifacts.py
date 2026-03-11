@@ -451,6 +451,65 @@ def test_governed_standards_explain_related_sources() -> None:
         )
 
 
+def test_standard_document_template_stays_aligned_with_governed_contract() -> None:
+    path = REPO_ROOT / "docs/templates/standard_document_template.md"
+    markdown = path.read_text(encoding="utf-8")
+
+    required_sections = (
+        "Summary",
+        "Purpose",
+        "Scope",
+        "Use When",
+        "Related Standards and Sources",
+        "Guidance",
+        "Operationalization",
+        "Validation",
+        "Change Control",
+        "References",
+        "Updated At",
+    )
+    for title in required_sections:
+        assert f"## {title}" in markdown, f"missing required standard-template section: {title}"
+
+    related_section_match = re.search(
+        r"^## Related Standards and Sources\n(.*?)(?=^## |\Z)",
+        markdown,
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    assert related_section_match is not None, "missing Related Standards and Sources section"
+    related_bullets = [
+        line.strip()
+        for line in related_section_match.group(1).splitlines()
+        if line.strip().startswith("- ")
+    ]
+    assert related_bullets, "missing related-source bullets in standard template"
+    assert all(": " in bullet for bullet in related_bullets), (
+        "standard template related-source bullets must use source: implication form"
+    )
+
+    operationalization_section_match = re.search(
+        r"^## Operationalization\n(.*?)(?=^## |\Z)",
+        markdown,
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    assert operationalization_section_match is not None, "missing Operationalization section"
+    operationalization_section = operationalization_section_match.group(1)
+    assert "- `Modes`:" in operationalization_section
+    assert "- `Operational Surfaces`:" in operationalization_section
+
+    optional_sections_match = re.search(
+        r"^## Optional Sections\n(.*?)(?=^## |\Z)",
+        markdown,
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    assert optional_sections_match is not None, "missing Optional Sections guidance"
+    optional_sections = optional_sections_match.group(1)
+    for title in required_sections:
+        assert f"`{title}`" not in optional_sections, (
+            f"required standard-template section incorrectly listed as optional: {title}"
+        )
+
+
 def test_governed_decision_docs_explain_applied_references() -> None:
     for path in sorted((REPO_ROOT / "docs/planning/decisions").rglob("*.md")):
         if path.name in {"README.md", "decision_tracking.md"}:

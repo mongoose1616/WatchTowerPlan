@@ -1,0 +1,98 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.standard_authoring_surface_alignment",
+  "title": "Standard Authoring Surface Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.standard_authoring_surface_alignment",
+  "source_prd_id": "prd.standard_authoring_surface_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.standard_authoring_surface_alignment.001",
+      "summary": "The trace publishes the full planning chain, the accepted direction decision, the refreshed acceptance contract, the planning-baseline evidence, the closed bootstrap task, and the two bounded execution tasks.",
+      "source_requirement_ids": [
+        "req.standard_authoring_surface_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/standard_authoring_surface_alignment.md",
+        "docs/planning/design/features/standard_authoring_surface_alignment.md",
+        "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
+        "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
+        "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
+        "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline refreshed at 2026-03-11T20:10:00Z after the bootstrap task and both execution tasks reached terminal closeout."
+    },
+    {
+      "acceptance_id": "ac.standard_authoring_surface_alignment.002",
+      "summary": "The standard-document template now carries the required governed standard-document sections and no longer tells authors that contract-required sections are optional.",
+      "source_requirement_ids": [
+        "req.standard_authoring_surface_alignment.002"
+      ],
+      "validation_targets": [
+        "docs/templates/standard_document_template.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/standard_md_standard.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standard_authoring_surface_alignment.003",
+      "summary": "The Standard Document Standard now operationalizes the standard template, and the derived standards lookup surfaces resolve that template back to its governing standard.",
+      "source_requirement_ids": [
+        "req.standard_authoring_surface_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/watchtower_core_query_standards.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standard_authoring_surface_alignment.004",
+      "summary": "Regression coverage fails closed when the standard template drops required sections or when querying standards by the template path stops returning the governing standard.",
+      "source_requirement_ids": [
+        "req.standard_authoring_surface_alignment.004"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/templates/standard_document_template.md",
+        "docs/standards/documentation/standard_md_standard.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standard_authoring_surface_alignment.005",
+      "summary": "The trace closes on a green repository baseline after acceptance validation, aggregate validation, tests, type checking, and linting.",
+      "source_requirement_ids": [
+        "req.standard_authoring_surface_alignment.005"
+      ],
+      "validation_targets": [
+        "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    }
+  ]
+}
