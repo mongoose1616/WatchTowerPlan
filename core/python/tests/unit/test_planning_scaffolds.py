@@ -12,6 +12,7 @@ from watchtower_core.repo_ops.planning_scaffolds import (
     PlanningScaffoldService,
     PlanScaffoldParams,
 )
+from watchtower_core.validation.acceptance import AcceptanceReconciliationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -74,13 +75,37 @@ def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> No
     assert result.wrote is True
     assert result.sync_refreshed is True
     assert len(result.documents) == 4
+    assert result.acceptance_contract.wrote is True
+    assert result.validation_evidence.wrote is True
     assert result.task_result.wrote is True
 
     assert (repo_root / "docs/planning/prds/unit_test_bootstrap.md").exists()
     assert (repo_root / "docs/planning/design/features/unit_test_bootstrap.md").exists()
     assert (repo_root / "docs/planning/design/implementation/unit_test_bootstrap.md").exists()
     assert (repo_root / "docs/planning/decisions/unit_test_bootstrap_direction.md").exists()
+    assert (
+        repo_root
+        / "core/control_plane/contracts/acceptance/unit_test_bootstrap_acceptance.v1.json"
+    ).exists()
+    assert (
+        repo_root
+        / (
+            "core/control_plane/ledgers/validation_evidence/"
+            "unit_test_bootstrap_planning_baseline.v1.json"
+        )
+    ).exists()
     assert (repo_root / "docs/planning/tasks/open/unit_test_bootstrap_bootstrap.md").exists()
+
+    feature_design_text = (
+        repo_root / "docs/planning/design/features/unit_test_bootstrap.md"
+    ).read_text(encoding="utf-8")
+    assert "## Foundations References Applied" in feature_design_text
+    assert "## Internal Standards and Canonical References Applied" in feature_design_text
+
+    implementation_plan_text = (
+        repo_root / "docs/planning/design/implementation/unit_test_bootstrap.md"
+    ).read_text(encoding="utf-8")
+    assert "## Internal Standards and Canonical References Applied" in implementation_plan_text
 
     initiative_index = json.loads(
         (repo_root / "core/control_plane/indexes/initiatives/initiative_index.v1.json").read_text(
@@ -91,6 +116,10 @@ def test_plan_bootstrap_can_write_full_chain_with_decision(tmp_path: Path) -> No
         entry["trace_id"] == "trace.unit_test_bootstrap"
         for entry in initiative_index["entries"]
     )
+    validation_result = AcceptanceReconciliationService(
+        ControlPlaneLoader(repo_root)
+    ).validate("trace.unit_test_bootstrap")
+    assert validation_result.passed is True
 
 
 def test_plan_scaffold_rejects_duplicate_doc_path(tmp_path: Path) -> None:

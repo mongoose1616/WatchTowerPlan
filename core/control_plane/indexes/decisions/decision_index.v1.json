@@ -177,6 +177,47 @@
       ]
     },
     {
+      "trace_id": "trace.internal_project_review_and_hardening",
+      "decision_id": "decision.internal_project_review_and_hardening_direction",
+      "title": "Internal Project Review and Hardening Direction Decision",
+      "summary": "Records the decision to keep repository validation strict, harden planning bootstrap to produce a complete baseline, and consolidate coordination payload shaping behind shared serializers.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/internal_project_review_and_hardening_direction.md",
+      "updated_at": "2026-03-11T15:11:22Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.internal_project_review_and_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.internal_project_review_and_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.internal_project_review_and_hardening"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.machine_first_coordination_surface",
       "decision_id": "decision.machine_first_coordination_entry_surface",
       "title": "Machine-First Coordination Entry Surface Decision",

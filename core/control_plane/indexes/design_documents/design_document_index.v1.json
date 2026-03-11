@@ -395,6 +395,35 @@
       ]
     },
     {
+      "document_id": "design.features.internal_project_review_and_hardening",
+      "trace_id": "trace.internal_project_review_and_hardening",
+      "family": "feature_design",
+      "title": "Internal Project Review and Hardening Feature Design",
+      "summary": "Defines the review-backed design for validation-compatible planning bootstrap output and canonical coordination payload serialization.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/internal_project_review_and_hardening.md",
+      "updated_at": "2026-03-11T15:11:22Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/internal_project_review_and_hardening.md",
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.local_task_tracking_and_github_sync",
       "trace_id": "trace.local_task_tracking",
       "family": "feature_design",
@@ -937,6 +966,34 @@
         "SUMMARY.md",
         "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.internal_project_review_and_hardening",
+      "trace_id": "trace.internal_project_review_and_hardening",
+      "family": "implementation_plan",
+      "title": "Internal Project Review and Hardening Implementation Plan",
+      "summary": "Breaks the internal review remediation into bounded slices for bootstrap hardening, projection canonicalization, and traced closeout.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/internal_project_review_and_hardening.md",
+      "updated_at": "2026-03-11T15:11:22Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/internal_project_review_and_hardening.md"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md"
       ]
     },
     {

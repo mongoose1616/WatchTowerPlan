@@ -73,9 +73,13 @@ def test_plan_bootstrap_write_creates_traced_chain_and_bootstrap_task(tmp_path: 
 
     assert result.wrote is True
     assert len(result.documents) == 4
+    assert result.acceptance_contract.wrote is True
+    assert result.validation_evidence.wrote is True
     assert result.task_result.wrote is True
     assert (repo_root / result.task_result.doc_path).exists()
     assert all((repo_root / document.doc_path).exists() for document in result.documents)
+    assert (repo_root / result.acceptance_contract.doc_path).exists()
+    assert (repo_root / result.validation_evidence.doc_path).exists()
 
     loader = ControlPlaneLoader(repo_root)
     prd_entries = PrdQueryService(loader).search(PrdSearchParams(trace_id=trace_id))
@@ -97,3 +101,6 @@ def test_plan_bootstrap_write_creates_traced_chain_and_bootstrap_task(tmp_path: 
     initiative_entry = InitiativeQueryService(loader).get(trace_id)
     assert initiative_entry.trace_id == trace_id
     assert task_entries[0].task_id in initiative_entry.active_task_ids
+    assert initiative_entry.acceptance_contract_ids == (
+        "contract.acceptance.planning_scaffold_bootstrap_preview",
+    )

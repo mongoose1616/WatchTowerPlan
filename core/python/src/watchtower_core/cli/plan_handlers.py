@@ -167,6 +167,32 @@ def _emit_bootstrap_result(
             }
             for document in result.documents
         ],
+        "acceptance_contract": {
+            "contract_id": result.acceptance_contract.contract_id,
+            "trace_id": result.acceptance_contract.trace_id,
+            "source_prd_id": result.acceptance_contract.source_prd_id,
+            "title": result.acceptance_contract.title,
+            "doc_path": result.acceptance_contract.doc_path,
+            "wrote": result.acceptance_contract.wrote,
+            **(
+                {"document": result.acceptance_contract.content}
+                if include_documents
+                else {}
+            ),
+        },
+        "validation_evidence": {
+            "evidence_id": result.validation_evidence.evidence_id,
+            "trace_id": result.validation_evidence.trace_id,
+            "title": result.validation_evidence.title,
+            "overall_result": result.validation_evidence.overall_result,
+            "doc_path": result.validation_evidence.doc_path,
+            "wrote": result.validation_evidence.wrote,
+            **(
+                {"document": result.validation_evidence.content}
+                if include_documents
+                else {}
+            ),
+        },
         "task": {
             "task_id": result.task_result.task_id,
             "title": result.task_result.title,
@@ -193,6 +219,16 @@ def _emit_bootstrap_result(
             print("")
             print(document.content.rstrip())
             print("")
+    print(f"- acceptance_contract: {result.acceptance_contract.doc_path}")
+    if include_documents:
+        print("")
+        print(result.acceptance_contract.content.rstrip())
+        print("")
+    print(f"- validation_evidence: {result.validation_evidence.doc_path}")
+    if include_documents:
+        print("")
+        print(result.validation_evidence.content.rstrip())
+        print("")
     print(f"- task: {result.task_result.doc_path}")
     if result.wrote:
         print("Derived planning surfaces were refreshed.")

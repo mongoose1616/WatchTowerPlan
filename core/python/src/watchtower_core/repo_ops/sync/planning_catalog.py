@@ -10,14 +10,24 @@ from watchtower_core.control_plane.models import (
     AcceptanceContract,
     DecisionIndexEntry,
     DesignDocumentIndexEntry,
-    InitiativeActiveTaskSummary,
     InitiativeIndexEntry,
+    PlanningAcceptanceContractSummary,
+    PlanningCatalogEntry,
+    PlanningCoordinationSection,
+    PlanningDecisionSummary,
+    PlanningDesignDocumentSummary,
+    PlanningPrdSummary,
+    PlanningTaskSummary,
+    PlanningValidationEvidenceSummary,
     PrdIndexEntry,
     TaskIndexEntry,
     TraceabilityEntry,
     ValidationEvidenceArtifact,
 )
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.planning_projection_serialization import (
+    serialize_planning_catalog_entry,
+)
 from watchtower_core.repo_ops.sync.tracking_common import latest_timestamp
 
 PLANNING_CATALOG_ARTIFACT_PATH = (
@@ -174,68 +184,59 @@ class PlanningCatalogSyncService:
             )
         )
 
-        entry: dict[str, object] = {
-            "trace_id": trace_entry.trace_id,
-            "title": trace_entry.title,
-            "summary": trace_entry.summary,
-            "artifact_status": trace_entry.status,
-            "initiative_status": trace_entry.initiative_status,
-            "updated_at": updated_at,
-            "coordination": _coordination_section(initiative_entry),
-        }
-        if prd_entries:
-            entry["prds"] = [_prd_summary(item) for item in prd_entries]
-        if decision_entries:
-            entry["decisions"] = [_decision_summary(item) for item in decision_entries]
-        if design_entries:
-            entry["design_documents"] = [
-                _design_summary(item) for item in design_entries
-            ]
-        if task_entries:
-            entry["tasks"] = [_task_summary(item) for item in task_entries]
-        if acceptance_contracts:
-            entry["acceptance_contracts"] = [
-                _acceptance_contract_summary(item) for item in acceptance_contracts
-            ]
-        if validation_evidence:
-            entry["validation_evidence"] = [
-                _validation_evidence_summary(item) for item in validation_evidence
-            ]
-        if trace_entry.prd_ids:
-            entry["prd_ids"] = list(trace_entry.prd_ids)
-        if trace_entry.decision_ids:
-            entry["decision_ids"] = list(trace_entry.decision_ids)
-        if trace_entry.design_ids:
-            entry["design_ids"] = list(trace_entry.design_ids)
-        if trace_entry.plan_ids:
-            entry["plan_ids"] = list(trace_entry.plan_ids)
-        if trace_entry.task_ids:
-            entry["task_ids"] = list(trace_entry.task_ids)
-        if trace_entry.requirement_ids:
-            entry["requirement_ids"] = list(trace_entry.requirement_ids)
-        if trace_entry.acceptance_ids:
-            entry["acceptance_ids"] = list(trace_entry.acceptance_ids)
-        if trace_entry.acceptance_contract_ids:
-            entry["acceptance_contract_ids"] = list(
-                trace_entry.acceptance_contract_ids
-            )
-        if trace_entry.evidence_ids:
-            entry["evidence_ids"] = list(trace_entry.evidence_ids)
-        if validator_ids:
-            entry["validator_ids"] = list(validator_ids)
-        if related_paths:
-            entry["related_paths"] = list(related_paths)
-        if tags:
-            entry["tags"] = list(tags)
-        if trace_entry.notes is not None:
-            entry["notes"] = trace_entry.notes
-        if trace_entry.closed_at is not None:
-            entry["closed_at"] = trace_entry.closed_at
-        if trace_entry.closure_reason is not None:
-            entry["closure_reason"] = trace_entry.closure_reason
-        if trace_entry.superseded_by_trace_id is not None:
-            entry["superseded_by_trace_id"] = trace_entry.superseded_by_trace_id
-        return entry
+        coordination = PlanningCoordinationSection(
+            current_phase=initiative_entry.current_phase,
+            key_surface_path=initiative_entry.key_surface_path,
+            next_action=initiative_entry.next_action,
+            next_surface_path=initiative_entry.next_surface_path,
+            open_task_count=initiative_entry.open_task_count,
+            blocked_task_count=initiative_entry.blocked_task_count,
+            primary_owner=initiative_entry.primary_owner,
+            active_owners=initiative_entry.active_owners,
+            active_task_ids=initiative_entry.active_task_ids,
+            active_task_summaries=initiative_entry.active_task_summaries,
+            blocked_by_task_ids=initiative_entry.blocked_by_task_ids,
+        )
+        planning_entry = PlanningCatalogEntry(
+            trace_id=trace_entry.trace_id,
+            title=trace_entry.title,
+            summary=trace_entry.summary,
+            artifact_status=trace_entry.status,
+            initiative_status=trace_entry.initiative_status,
+            updated_at=updated_at,
+            coordination=coordination,
+            prds=tuple(_planning_prd_summary(item) for item in prd_entries),
+            decisions=tuple(_planning_decision_summary(item) for item in decision_entries),
+            design_documents=tuple(
+                _planning_design_summary(item) for item in design_entries
+            ),
+            tasks=tuple(_planning_task_summary(item) for item in task_entries),
+            acceptance_contracts=tuple(
+                _planning_acceptance_contract_summary(item)
+                for item in acceptance_contracts
+            ),
+            validation_evidence=tuple(
+                _planning_validation_evidence_summary(item)
+                for item in validation_evidence
+            ),
+            prd_ids=trace_entry.prd_ids,
+            decision_ids=trace_entry.decision_ids,
+            design_ids=trace_entry.design_ids,
+            plan_ids=trace_entry.plan_ids,
+            task_ids=trace_entry.task_ids,
+            requirement_ids=trace_entry.requirement_ids,
+            acceptance_ids=trace_entry.acceptance_ids,
+            acceptance_contract_ids=trace_entry.acceptance_contract_ids,
+            evidence_ids=trace_entry.evidence_ids,
+            validator_ids=validator_ids,
+            related_paths=related_paths,
+            tags=tags,
+            notes=trace_entry.notes,
+            closed_at=trace_entry.closed_at,
+            closure_reason=trace_entry.closure_reason,
+            superseded_by_trace_id=trace_entry.superseded_by_trace_id,
+        )
+        return serialize_planning_catalog_entry(planning_entry, compact=True)
 
 
 def _group_by_trace[T: object](
@@ -250,166 +251,101 @@ def _group_by_trace[T: object](
     return {trace_id: tuple(values) for trace_id, values in grouped.items()}
 
 
-def _coordination_section(entry: InitiativeIndexEntry) -> dict[str, object]:
-    document: dict[str, object] = {
-        "current_phase": entry.current_phase,
-        "key_surface_path": entry.key_surface_path,
-        "next_action": entry.next_action,
-        "next_surface_path": entry.next_surface_path,
-        "open_task_count": entry.open_task_count,
-        "blocked_task_count": entry.blocked_task_count,
-    }
-    if entry.primary_owner is not None:
-        document["primary_owner"] = entry.primary_owner
-    if entry.active_owners:
-        document["active_owners"] = list(entry.active_owners)
-    if entry.active_task_ids:
-        document["active_task_ids"] = list(entry.active_task_ids)
-    if entry.active_task_summaries:
-        document["active_task_summaries"] = [
-            _active_task_summary(task) for task in entry.active_task_summaries
-        ]
-    if entry.blocked_by_task_ids:
-        document["blocked_by_task_ids"] = list(entry.blocked_by_task_ids)
-    return document
-
-
-def _active_task_summary(task: InitiativeActiveTaskSummary) -> dict[str, object]:
-    document: dict[str, object] = {
-        "task_id": task.task_id,
-        "title": task.title,
-        "task_status": task.task_status,
-        "priority": task.priority,
-        "owner": task.owner,
-        "doc_path": task.doc_path,
-        "is_actionable": task.is_actionable,
-    }
-    blocked_by = tuple(task.blocked_by)
-    depends_on = tuple(task.depends_on)
-    if blocked_by:
-        document["blocked_by"] = list(blocked_by)
-    if depends_on:
-        document["depends_on"] = list(depends_on)
-    return document
-
-
-def _prd_summary(entry: PrdIndexEntry) -> dict[str, object]:
-    document: dict[str, object] = {
-        "prd_id": entry.prd_id,
-        "title": entry.title,
-        "summary": entry.summary,
-        "artifact_status": entry.status,
-        "doc_path": entry.doc_path,
-        "updated_at": entry.updated_at,
-    }
-    if entry.requirement_ids:
-        document["requirement_ids"] = list(entry.requirement_ids)
-    if entry.acceptance_ids:
-        document["acceptance_ids"] = list(entry.acceptance_ids)
-    if entry.linked_decision_ids:
-        document["linked_decision_ids"] = list(entry.linked_decision_ids)
-    if entry.linked_design_ids:
-        document["linked_design_ids"] = list(entry.linked_design_ids)
-    if entry.linked_plan_ids:
-        document["linked_plan_ids"] = list(entry.linked_plan_ids)
-    return document
-
-
-def _decision_summary(entry: DecisionIndexEntry) -> dict[str, object]:
-    document: dict[str, object] = {
-        "decision_id": entry.decision_id,
-        "title": entry.title,
-        "summary": entry.summary,
-        "record_status": entry.record_status,
-        "decision_status": entry.decision_status,
-        "doc_path": entry.doc_path,
-        "updated_at": entry.updated_at,
-    }
-    if entry.linked_prd_ids:
-        document["linked_prd_ids"] = list(entry.linked_prd_ids)
-    if entry.linked_design_ids:
-        document["linked_design_ids"] = list(entry.linked_design_ids)
-    if entry.linked_plan_ids:
-        document["linked_plan_ids"] = list(entry.linked_plan_ids)
-    return document
-
-
-def _design_summary(entry: DesignDocumentIndexEntry) -> dict[str, object]:
-    document: dict[str, object] = {
-        "document_id": entry.document_id,
-        "family": entry.family,
-        "title": entry.title,
-        "summary": entry.summary,
-        "artifact_status": entry.status,
-        "doc_path": entry.doc_path,
-        "updated_at": entry.updated_at,
-    }
-    if entry.source_paths:
-        document["source_paths"] = list(entry.source_paths)
-    return document
-
-
-def _task_summary(entry: TaskIndexEntry) -> dict[str, object]:
-    document: dict[str, object] = {
-        "task_id": entry.task_id,
-        "title": entry.title,
-        "summary": entry.summary,
-        "artifact_status": entry.status,
-        "task_status": entry.task_status,
-        "task_kind": entry.task_kind,
-        "priority": entry.priority,
-        "owner": entry.owner,
-        "doc_path": entry.doc_path,
-        "updated_at": entry.updated_at,
-    }
-    if entry.blocked_by:
-        document["blocked_by"] = list(entry.blocked_by)
-    if entry.depends_on:
-        document["depends_on"] = list(entry.depends_on)
-    if entry.related_ids:
-        document["related_ids"] = list(entry.related_ids)
-    if entry.applies_to:
-        document["applies_to"] = list(entry.applies_to)
-    return document
-
-
-def _acceptance_contract_summary(entry: AcceptanceContract) -> dict[str, object]:
-    document: dict[str, object] = {
-        "contract_id": entry.contract_id,
-        "title": entry.title,
-        "artifact_status": entry.status,
-        "source_prd_id": entry.source_prd_id,
-        "doc_path": entry.doc_path,
-        "acceptance_ids": [item.acceptance_id for item in entry.entries],
-    }
-    validator_ids = _contract_validator_ids(entry)
-    validation_targets = tuple(
-        sorted(
-            {
-                target
-                for item in entry.entries
-                for target in item.validation_targets
-            }
-        )
+def _planning_prd_summary(entry: PrdIndexEntry) -> PlanningPrdSummary:
+    return PlanningPrdSummary(
+        prd_id=entry.prd_id,
+        title=entry.title,
+        summary=entry.summary,
+        artifact_status=entry.status,
+        doc_path=entry.doc_path,
+        updated_at=entry.updated_at,
+        requirement_ids=entry.requirement_ids,
+        acceptance_ids=entry.acceptance_ids,
+        linked_decision_ids=entry.linked_decision_ids,
+        linked_design_ids=entry.linked_design_ids,
+        linked_plan_ids=entry.linked_plan_ids,
     )
-    related_paths = tuple(
-        sorted(
-            {
-                *(
+
+
+def _planning_decision_summary(entry: DecisionIndexEntry) -> PlanningDecisionSummary:
+    return PlanningDecisionSummary(
+        decision_id=entry.decision_id,
+        title=entry.title,
+        summary=entry.summary,
+        record_status=entry.record_status,
+        decision_status=entry.decision_status,
+        doc_path=entry.doc_path,
+        updated_at=entry.updated_at,
+        linked_prd_ids=entry.linked_prd_ids,
+        linked_design_ids=entry.linked_design_ids,
+        linked_plan_ids=entry.linked_plan_ids,
+    )
+
+
+def _planning_design_summary(
+    entry: DesignDocumentIndexEntry,
+) -> PlanningDesignDocumentSummary:
+    return PlanningDesignDocumentSummary(
+        document_id=entry.document_id,
+        family=entry.family,
+        title=entry.title,
+        summary=entry.summary,
+        artifact_status=entry.status,
+        doc_path=entry.doc_path,
+        updated_at=entry.updated_at,
+        source_paths=entry.source_paths,
+    )
+
+
+def _planning_task_summary(entry: TaskIndexEntry) -> PlanningTaskSummary:
+    return PlanningTaskSummary(
+        task_id=entry.task_id,
+        title=entry.title,
+        summary=entry.summary,
+        artifact_status=entry.status,
+        task_status=entry.task_status,
+        task_kind=entry.task_kind,
+        priority=entry.priority,
+        owner=entry.owner,
+        doc_path=entry.doc_path,
+        updated_at=entry.updated_at,
+        blocked_by=entry.blocked_by,
+        depends_on=entry.depends_on,
+        related_ids=entry.related_ids,
+        applies_to=entry.applies_to,
+    )
+
+
+def _planning_acceptance_contract_summary(
+    entry: AcceptanceContract,
+) -> PlanningAcceptanceContractSummary:
+    return PlanningAcceptanceContractSummary(
+        contract_id=entry.contract_id,
+        title=entry.title,
+        artifact_status=entry.status,
+        source_prd_id=entry.source_prd_id,
+        doc_path=entry.doc_path,
+        acceptance_ids=tuple(item.acceptance_id for item in entry.entries),
+        required_validator_ids=_contract_validator_ids(entry),
+        validation_targets=tuple(
+            sorted(
+                {
+                    target
+                    for item in entry.entries
+                    for target in item.validation_targets
+                }
+            )
+        ),
+        related_paths=tuple(
+            sorted(
+                {
                     path
                     for item in entry.entries
                     for path in item.related_paths
-                )
-            }
-        )
+                }
+            )
+        ),
     )
-    if validator_ids:
-        document["required_validator_ids"] = list(validator_ids)
-    if validation_targets:
-        document["validation_targets"] = list(validation_targets)
-    if related_paths:
-        document["related_paths"] = list(related_paths)
-    return document
 
 
 def _contract_related_paths(entry: AcceptanceContract) -> tuple[str, ...]:
@@ -436,33 +372,29 @@ def _contract_validator_ids(entry: AcceptanceContract) -> tuple[str, ...]:
     )
 
 
-def _validation_evidence_summary(entry: ValidationEvidenceArtifact) -> dict[str, object]:
-    document: dict[str, object] = {
-        "evidence_id": entry.evidence_id,
-        "title": entry.title,
-        "artifact_status": entry.status,
-        "overall_result": entry.overall_result,
-        "recorded_at": entry.recorded_at,
-        "doc_path": entry.doc_path,
-        "check_ids": [check.check_id for check in entry.checks],
-    }
-    acceptance_ids = tuple(
-        sorted(
-            {
-                acceptance_id
-                for check in entry.checks
-                for acceptance_id in check.acceptance_ids
-            }
-        )
+def _planning_validation_evidence_summary(
+    entry: ValidationEvidenceArtifact,
+) -> PlanningValidationEvidenceSummary:
+    return PlanningValidationEvidenceSummary(
+        evidence_id=entry.evidence_id,
+        title=entry.title,
+        artifact_status=entry.status,
+        overall_result=entry.overall_result,
+        recorded_at=entry.recorded_at,
+        doc_path=entry.doc_path,
+        check_ids=tuple(check.check_id for check in entry.checks),
+        acceptance_ids=tuple(
+            sorted(
+                {
+                    acceptance_id
+                    for check in entry.checks
+                    for acceptance_id in check.acceptance_ids
+                }
+            )
+        ),
+        validator_ids=_evidence_validator_ids(entry),
+        related_paths=entry.related_paths,
     )
-    validator_ids = _evidence_validator_ids(entry)
-    if acceptance_ids:
-        document["acceptance_ids"] = list(acceptance_ids)
-    if validator_ids:
-        document["validator_ids"] = list(validator_ids)
-    if entry.related_paths:
-        document["related_paths"] = list(entry.related_paths)
-    return document
 
 
 def _evidence_validator_ids(entry: ValidationEvidenceArtifact) -> tuple[str, ...]:

@@ -9,6 +9,9 @@ from typing import Literal, Protocol
 
 from watchtower_core.adapters import extract_first_paragraph, extract_metadata_bullets
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.planning_documents import (
+    validate_explained_bullet_section,
+)
 
 PlanKind = Literal["prd", "feature-design", "implementation-plan", "decision"]
 
@@ -381,6 +384,14 @@ def render_sections(
                     "- <Current constraint or gap that shapes the design.>",
                 )
             ),
+            "Foundations References Applied": render_bullets(
+                (),
+                placeholder="<Foundations source>: <Why it changes this design.>",
+            ),
+            "Internal Standards and Canonical References Applied": render_bullets(
+                (),
+                placeholder="<Internal authority>: <Why it constrains this design.>",
+            ),
             "Design Goals and Constraints": "\n".join(
                 (
                     "- <Primary design goal.>",
@@ -465,6 +476,10 @@ def render_sections(
                     "- <Hard constraint the implementation must preserve.>",
                     "- <Assumption that shapes the work breakdown.>",
                 )
+            ),
+            "Internal Standards and Canonical References Applied": render_bullets(
+                (),
+                placeholder="<Internal authority>: <Why it constrains this implementation.>",
             ),
             "Proposed Technical Approach": "\n".join(
                 (
@@ -593,6 +608,23 @@ def validate_rendered_document(loader: ControlPlaneLoader, rendered: RenderedDoc
     if rendered.kind == "decision":
         validate_metadata_scalar(
             metadata, "Decision Status", "proposed", path=rendered.doc_path
+        )
+    if rendered.kind == "feature-design":
+        validate_explained_bullet_section(
+            rendered.doc_path,
+            "Foundations References Applied",
+            rendered.sections.get("Foundations References Applied"),
+        )
+        validate_explained_bullet_section(
+            rendered.doc_path,
+            "Internal Standards and Canonical References Applied",
+            rendered.sections.get("Internal Standards and Canonical References Applied"),
+        )
+    if rendered.kind == "implementation-plan":
+        validate_explained_bullet_section(
+            rendered.doc_path,
+            "Internal Standards and Canonical References Applied",
+            rendered.sections.get("Internal Standards and Canonical References Applied"),
         )
 
 

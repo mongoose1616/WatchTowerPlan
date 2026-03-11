@@ -2425,6 +2425,354 @@
       "closure_reason": "Delivered and validated; future planning-closeout expansion belongs to a new bounded initiative"
     },
     {
+      "trace_id": "trace.internal_project_review_and_hardening",
+      "title": "Internal Project Review and Hardening PRD",
+      "summary": "Defines the ultra-deep internal review remediation needed to keep planning bootstrap flows validation-compatible and to remove coordination payload drift risk from shared query and sync surfaces.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-11T15:38:00Z",
+      "coordination": {
+        "current_phase": "closeout",
+        "key_surface_path": "docs/planning/prds/internal_project_review_and_hardening.md",
+        "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+        "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.internal_project_review_and_hardening",
+          "title": "Internal Project Review and Hardening PRD",
+          "summary": "Defines the ultra-deep internal review remediation needed to keep planning bootstrap flows validation-compatible and to remove coordination payload drift risk from shared query and sync surfaces.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/internal_project_review_and_hardening.md",
+          "updated_at": "2026-03-11T15:11:22Z",
+          "requirement_ids": [
+            "req.internal_project_review_and_hardening.001",
+            "req.internal_project_review_and_hardening.002",
+            "req.internal_project_review_and_hardening.003",
+            "req.internal_project_review_and_hardening.004",
+            "req.internal_project_review_and_hardening.005"
+          ],
+          "acceptance_ids": [
+            "ac.internal_project_review_and_hardening.001",
+            "ac.internal_project_review_and_hardening.002",
+            "ac.internal_project_review_and_hardening.003",
+            "ac.internal_project_review_and_hardening.004",
+            "ac.internal_project_review_and_hardening.005"
+          ],
+          "linked_decision_ids": [
+            "decision.internal_project_review_and_hardening_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.internal_project_review_and_hardening"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.internal_project_review_and_hardening"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.internal_project_review_and_hardening_direction",
+          "title": "Internal Project Review and Hardening Direction Decision",
+          "summary": "Records the decision to keep repository validation strict, harden planning bootstrap to produce a complete baseline, and consolidate coordination payload shaping behind shared serializers.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/internal_project_review_and_hardening_direction.md",
+          "updated_at": "2026-03-11T15:11:22Z",
+          "linked_prd_ids": [
+            "prd.internal_project_review_and_hardening"
+          ],
+          "linked_design_ids": [
+            "design.features.internal_project_review_and_hardening"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.internal_project_review_and_hardening"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.internal_project_review_and_hardening",
+          "family": "feature_design",
+          "title": "Internal Project Review and Hardening Feature Design",
+          "summary": "Defines the review-backed design for validation-compatible planning bootstrap output and canonical coordination payload serialization.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/internal_project_review_and_hardening.md",
+          "updated_at": "2026-03-11T15:11:22Z"
+        },
+        {
+          "document_id": "design.implementation.internal_project_review_and_hardening",
+          "family": "implementation_plan",
+          "title": "Internal Project Review and Hardening Implementation Plan",
+          "summary": "Breaks the internal review remediation into bounded slices for bootstrap hardening, projection canonicalization, and traced closeout.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/internal_project_review_and_hardening.md",
+          "updated_at": "2026-03-11T15:11:22Z",
+          "source_paths": [
+            "docs/planning/design/features/internal_project_review_and_hardening.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.internal_project_review_and_hardening.bootstrap.001",
+          "title": "Bootstrap Internal Project Review and Hardening planning chain",
+          "summary": "Bootstraps the initial planning chain for Internal Project Review and Hardening.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/internal_project_review_and_hardening_bootstrap.md",
+          "updated_at": "2026-03-11T15:36:26Z",
+          "related_ids": [
+            "prd.internal_project_review_and_hardening",
+            "design.features.internal_project_review_and_hardening",
+            "design.implementation.internal_project_review_and_hardening",
+            "decision.internal_project_review_and_hardening_direction"
+          ],
+          "applies_to": [
+            "core/python/",
+            "core/control_plane/",
+            "docs/",
+            "workflows/"
+          ]
+        },
+        {
+          "task_id": "task.internal_project_review_and_hardening.bootstrap_hardening.001",
+          "title": "Harden planning bootstrap for validation-compatible traces",
+          "summary": "Makes bootstrap write mode publish repository-compliant docs, acceptance contract, and baseline evidence.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/internal_project_review_bootstrap_hardening.md",
+          "updated_at": "2026-03-11T15:36:35Z",
+          "related_ids": [
+            "prd.internal_project_review_and_hardening",
+            "decision.internal_project_review_and_hardening_direction",
+            "design.features.internal_project_review_and_hardening",
+            "design.implementation.internal_project_review_and_hardening"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+            "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+            "core/python/src/watchtower_core/evidence/validation_evidence.py",
+            "docs/commands/core_python/watchtower_core_plan_bootstrap.md"
+          ]
+        },
+        {
+          "task_id": "task.internal_project_review_and_hardening.projection_canonicalization.001",
+          "title": "Canonicalize planning and coordination projection serializers",
+          "summary": "Reuses shared serializers for initiative and planning payload shaping across sync and query surfaces.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/internal_project_review_projection_canonicalization.md",
+          "updated_at": "2026-03-11T15:36:40Z",
+          "related_ids": [
+            "prd.internal_project_review_and_hardening",
+            "decision.internal_project_review_and_hardening_direction",
+            "design.features.internal_project_review_and_hardening",
+            "design.implementation.internal_project_review_and_hardening"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/tests/unit/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.internal_project_review_and_hardening",
+          "title": "Internal Project Review and Hardening Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.internal_project_review_and_hardening",
+          "doc_path": "core/control_plane/contracts/acceptance/internal_project_review_and_hardening_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.internal_project_review_and_hardening.001",
+            "ac.internal_project_review_and_hardening.002",
+            "ac.internal_project_review_and_hardening.003",
+            "ac.internal_project_review_and_hardening.004",
+            "ac.internal_project_review_and_hardening.005"
+          ],
+          "required_validator_ids": [
+            "validator.control_plane.acceptance_contract",
+            "validator.control_plane.validation_evidence"
+          ],
+          "validation_targets": [
+            "core/control_plane/",
+            "core/python/",
+            "core/python/src/watchtower_core/cli/plan_handlers.py",
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+            "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+            "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+            "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+            "core/python/tests/integration/test_planning_scaffolds_service.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_initiative_index_sync.py",
+            "core/python/tests/unit/test_plan_and_task_handlers.py",
+            "core/python/tests/unit/test_planning_catalog_sync.py",
+            "core/python/tests/unit/test_planning_scaffolds.py",
+            "core/python/tests/unit/test_route_and_query_handlers.py",
+            "docs/",
+            "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+            "docs/planning/decisions/internal_project_review_and_hardening_direction.md",
+            "docs/planning/design/features/internal_project_review_and_hardening.md",
+            "docs/planning/design/implementation/internal_project_review_and_hardening.md",
+            "docs/planning/prds/internal_project_review_and_hardening.md",
+            "docs/planning/tasks/open/internal_project_review_and_hardening_bootstrap.md",
+            "docs/planning/tasks/open/internal_project_review_bootstrap_hardening.md",
+            "docs/planning/tasks/open/internal_project_review_projection_canonicalization.md",
+            "workflows/"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/decision_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.internal_project_review_and_hardening.planning_baseline",
+          "title": "Internal Project Review and Hardening Planning Baseline Validation Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-11T15:38:00Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/internal_project_review_and_hardening_planning_baseline.v1.json",
+          "check_ids": [
+            "check.internal_project_review_and_hardening.planning_chain",
+            "check.internal_project_review_and_hardening.bootstrap_outputs",
+            "check.internal_project_review_and_hardening.bootstrap_surface_alignment",
+            "check.internal_project_review_and_hardening.projection_canonicalization",
+            "check.internal_project_review_and_hardening.closeout_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.internal_project_review_and_hardening.001",
+            "ac.internal_project_review_and_hardening.002",
+            "ac.internal_project_review_and_hardening.003",
+            "ac.internal_project_review_and_hardening.004",
+            "ac.internal_project_review_and_hardening.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/internal_project_review_and_hardening_acceptance.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/decision_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.internal_project_review_and_hardening"
+      ],
+      "decision_ids": [
+        "decision.internal_project_review_and_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.internal_project_review_and_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.internal_project_review_and_hardening"
+      ],
+      "task_ids": [
+        "task.internal_project_review_and_hardening.bootstrap.001",
+        "task.internal_project_review_and_hardening.bootstrap_hardening.001",
+        "task.internal_project_review_and_hardening.projection_canonicalization.001"
+      ],
+      "requirement_ids": [
+        "req.internal_project_review_and_hardening.001",
+        "req.internal_project_review_and_hardening.002",
+        "req.internal_project_review_and_hardening.003",
+        "req.internal_project_review_and_hardening.004",
+        "req.internal_project_review_and_hardening.005"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_review_and_hardening.001",
+        "ac.internal_project_review_and_hardening.002",
+        "ac.internal_project_review_and_hardening.003",
+        "ac.internal_project_review_and_hardening.004",
+        "ac.internal_project_review_and_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.internal_project_review_and_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.internal_project_review_and_hardening.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/internal_project_review_and_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/internal_project_review_and_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/plan_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_plan_and_task_handlers.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/internal_project_review_and_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/internal_project_review_and_hardening.md",
+        "docs/planning/design/implementation/internal_project_review_and_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/internal_project_review_and_hardening.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/internal_project_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/internal_project_review_bootstrap_hardening.md",
+        "docs/planning/tasks/closed/internal_project_review_projection_canonicalization.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Validation evidence for the internal project review that hardened planning bootstrap outputs and canonicalized planning and coordination projection serialization."
+    },
+    {
       "trace_id": "trace.local_task_tracking",
       "title": "GitHub Task Push Sync",
       "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",

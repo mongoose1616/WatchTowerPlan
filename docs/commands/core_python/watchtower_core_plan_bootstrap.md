@@ -1,11 +1,11 @@
 # `watchtower-core plan bootstrap`
 
 ## Summary
-This command scaffolds a compact traced PRD, feature design, implementation plan, and bootstrap task chain, with an optional decision record, and refreshes derived planning surfaces in write mode.
+This command scaffolds a compact traced PRD, feature design, implementation plan, acceptance contract, planning-baseline evidence artifact, and bootstrap task chain, with an optional decision record, and refreshes derived planning surfaces in write mode.
 
 ## Use When
 - You want to start a new traced planning chain without hand-authoring each planning artifact from scratch.
-- You need the initial PRD, design, plan, and bootstrap task to share one trace and coherent derived planning surfaces.
+- You need the initial PRD, design, plan, acceptance contract, evidence artifact, and bootstrap task to share one trace and coherent derived planning surfaces.
 - You want dry-run preview before writing the scaffold chain to canonical planning paths.
 
 ## Command
@@ -40,7 +40,7 @@ uv run watchtower-core plan bootstrap --trace-id <trace_id> --title <title> --su
 - `--task-priority <critical|high|medium|low>`: Bootstrap task priority. Defaults to `medium`.
 - `--updated-at <timestamp>`: Optional explicit RFC 3339 UTC timestamp. Defaults to now.
 - `--include-documents`: Include rendered document content in the command output.
-- `--write`: Persist the scaffold chain and refresh derived planning surfaces.
+- `--write`: Persist the scaffold chain, acceptance contract, evidence artifact, and refresh derived planning surfaces.
 - `--format <human|json>`: Select human-readable or structured JSON output.
 - `-h`, `--help`: Show the command help text.
 
@@ -57,10 +57,10 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not create files.
-- The bootstrap flow creates a PRD, feature design, implementation plan, and one bootstrap task. Add `--include-decision` to include a first decision record in the same chain.
+- The bootstrap flow creates a PRD, feature design, implementation plan, acceptance contract, planning-baseline evidence artifact, and one bootstrap task. Add `--include-decision` to include a first decision record in the same chain.
 - Document IDs are derived from the trace suffix and the bootstrap task defaults to `task.<trace_suffix>.bootstrap.001` unless overridden.
-- In write mode, the command writes the scaffold chain and refreshes derived planning, task, initiative, traceability, and coordination surfaces.
-- In `json` mode, the command prints one JSON object with all scaffolded documents plus the bootstrap task outcome.
+- In write mode, the command writes the scaffold chain, the acceptance contract, the planning-baseline evidence artifact, and refreshes derived planning, task, initiative, traceability, and coordination surfaces.
+- In `json` mode, the command prints one JSON object with the scaffolded planning documents, acceptance contract, validation evidence, and bootstrap task outcome.
 
 ## Related Commands
 | Command | Relationship |
@@ -77,4 +77,4 @@ uv run watchtower-core plan bootstrap --trace-id trace.example --title "Example 
 - `core/python/src/watchtower_core/repo_ops/planning_scaffolds.py`
 
 ## Updated At
-- `2026-03-10T23:01:32Z`
+- `2026-03-11T15:11:22Z`

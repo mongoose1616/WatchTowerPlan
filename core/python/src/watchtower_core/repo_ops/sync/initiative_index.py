@@ -10,11 +10,16 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import (
     DecisionIndexEntry,
     DesignDocumentIndexEntry,
+    InitiativeActiveTaskSummary,
+    InitiativeIndexEntry,
     PrdIndexEntry,
     TaskIndexEntry,
     TraceabilityEntry,
 )
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.planning_projection_serialization import (
+    serialize_initiative_entry,
+)
 from watchtower_core.repo_ops.sync.tracking_common import effective_updated_at
 
 INITIATIVE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/initiatives/initiative_index.v1.json"
@@ -139,6 +144,10 @@ class InitiativeIndexSyncService:
             1 for entry in active_tasks if _task_is_blocked(entry, task_lookup)
         )
         active_task_summaries = _build_active_task_summaries(active_tasks, task_lookup)
+        active_task_summary_models = tuple(
+            InitiativeActiveTaskSummary.from_document(item)
+            for item in active_task_summaries
+        )
 
         current_phase = _determine_current_phase(
             trace_entry=trace_entry,
@@ -163,59 +172,52 @@ class InitiativeIndexSyncService:
         )
         entry_updated_at = effective_updated_at(trace_entry.updated_at, trace_entry.closed_at)
 
-        entry: dict[str, object] = {
-            "trace_id": trace_entry.trace_id,
-            "title": trace_entry.title,
-            "summary": trace_entry.summary,
-            "artifact_status": trace_entry.status,
-            "initiative_status": trace_entry.initiative_status,
-            "current_phase": current_phase,
-            "updated_at": entry_updated_at,
-            "open_task_count": len(active_tasks),
-            "blocked_task_count": blocked_task_count,
-            "key_surface_path": key_surface_path,
-            "next_action": next_action,
-            "next_surface_path": next_surface_path,
-        }
-        if primary_owner is not None:
-            entry["primary_owner"] = primary_owner
-        if active_owners:
-            entry["active_owners"] = list(active_owners)
-        if active_tasks:
-            entry["active_task_ids"] = [entry.task_id for entry in active_tasks]
-            entry["active_task_summaries"] = active_task_summaries
-        if blocked_by_task_ids:
-            entry["blocked_by_task_ids"] = list(blocked_by_task_ids)
-        if trace_entry.prd_ids:
-            entry["prd_ids"] = list(trace_entry.prd_ids)
-        if trace_entry.decision_ids:
-            entry["decision_ids"] = list(trace_entry.decision_ids)
-        if trace_entry.design_ids:
-            entry["design_ids"] = list(trace_entry.design_ids)
-        if trace_entry.plan_ids:
-            entry["plan_ids"] = list(trace_entry.plan_ids)
-        if trace_entry.task_ids:
-            entry["task_ids"] = list(trace_entry.task_ids)
-        if trace_entry.acceptance_ids:
-            entry["acceptance_ids"] = list(trace_entry.acceptance_ids)
-        if trace_entry.acceptance_contract_ids:
-            entry["acceptance_contract_ids"] = list(trace_entry.acceptance_contract_ids)
-        if trace_entry.evidence_ids:
-            entry["evidence_ids"] = list(trace_entry.evidence_ids)
-        if trace_entry.initiative_status != "active":
-            if trace_entry.closed_at is not None:
-                entry["closed_at"] = trace_entry.closed_at
-            if trace_entry.closure_reason is not None:
-                entry["closure_reason"] = trace_entry.closure_reason
-            if trace_entry.superseded_by_trace_id is not None:
-                entry["superseded_by_trace_id"] = trace_entry.superseded_by_trace_id
-        if trace_entry.related_paths:
-            entry["related_paths"] = list(trace_entry.related_paths)
-        if trace_entry.tags:
-            entry["tags"] = list(trace_entry.tags)
-        if trace_entry.notes is not None:
-            entry["notes"] = trace_entry.notes
-        return entry
+        initiative_entry = InitiativeIndexEntry(
+            trace_id=trace_entry.trace_id,
+            title=trace_entry.title,
+            summary=trace_entry.summary,
+            artifact_status=trace_entry.status,
+            initiative_status=trace_entry.initiative_status,
+            current_phase=current_phase,
+            updated_at=entry_updated_at,
+            open_task_count=len(active_tasks),
+            blocked_task_count=blocked_task_count,
+            key_surface_path=key_surface_path,
+            next_action=next_action,
+            next_surface_path=next_surface_path,
+            primary_owner=primary_owner,
+            active_owners=active_owners,
+            active_task_ids=tuple(entry.task_id for entry in active_tasks),
+            active_task_summaries=active_task_summary_models,
+            blocked_by_task_ids=blocked_by_task_ids,
+            prd_ids=trace_entry.prd_ids,
+            decision_ids=trace_entry.decision_ids,
+            design_ids=trace_entry.design_ids,
+            plan_ids=trace_entry.plan_ids,
+            task_ids=trace_entry.task_ids,
+            acceptance_ids=trace_entry.acceptance_ids,
+            acceptance_contract_ids=trace_entry.acceptance_contract_ids,
+            evidence_ids=trace_entry.evidence_ids,
+            closed_at=(
+                trace_entry.closed_at
+                if trace_entry.initiative_status != "active"
+                else None
+            ),
+            closure_reason=(
+                trace_entry.closure_reason
+                if trace_entry.initiative_status != "active"
+                else None
+            ),
+            superseded_by_trace_id=(
+                trace_entry.superseded_by_trace_id
+                if trace_entry.initiative_status != "active"
+                else None
+            ),
+            related_paths=trace_entry.related_paths,
+            tags=trace_entry.tags,
+            notes=trace_entry.notes,
+        )
+        return serialize_initiative_entry(initiative_entry, compact=True)
 
 
 def _group_by_trace[T: _TraceLinkedEntry](entries: tuple[T, ...]) -> dict[str, tuple[T, ...]]:

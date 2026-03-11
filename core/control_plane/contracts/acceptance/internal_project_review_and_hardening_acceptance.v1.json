@@ -1,0 +1,93 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.internal_project_review_and_hardening",
+  "title": "Internal Project Review and Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.internal_project_review_and_hardening",
+  "source_prd_id": "prd.internal_project_review_and_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.internal_project_review_and_hardening.001",
+      "summary": "The trace publishes the active PRD, accepted decision, feature design, implementation plan, acceptance contract, planning-baseline evidence, bootstrap task, and bounded execution tasks required for review remediation.",
+      "source_requirement_ids": [
+        "req.internal_project_review_and_hardening.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/internal_project_review_and_hardening.md",
+        "docs/planning/decisions/internal_project_review_and_hardening_direction.md",
+        "docs/planning/design/features/internal_project_review_and_hardening.md",
+        "docs/planning/design/implementation/internal_project_review_and_hardening.md",
+        "docs/planning/tasks/open/internal_project_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/open/internal_project_review_bootstrap_hardening.md",
+        "docs/planning/tasks/open/internal_project_review_projection_canonicalization.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.internal_project_review_and_hardening.002",
+      "summary": "Bootstrap write mode emits repository-compliant design docs and the minimum acceptance and evidence artifacts needed for a validation-compatible traced baseline.",
+      "source_requirement_ids": [
+        "req.internal_project_review_and_hardening.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.internal_project_review_and_hardening.003",
+      "summary": "The bootstrap command docs, runtime payloads, generated artifacts, and regression tests stay aligned after the bootstrap output expansion.",
+      "source_requirement_ids": [
+        "req.internal_project_review_and_hardening.003"
+      ],
+      "validation_targets": [
+        "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
+        "core/python/src/watchtower_core/cli/plan_handlers.py",
+        "core/python/tests/unit/test_plan_and_task_handlers.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.internal_project_review_and_hardening.004",
+      "summary": "Initiative and planning query payload shaping reuses canonical serializer helpers instead of maintaining parallel dict-building logic across sync and CLI surfaces.",
+      "source_requirement_ids": [
+        "req.internal_project_review_and_hardening.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.internal_project_review_and_hardening.005",
+      "summary": "The repository returns to a green baseline on validate all, pytest, mypy, and ruff after the internal hardening work lands.",
+      "source_requirement_ids": [
+        "req.internal_project_review_and_hardening.005"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

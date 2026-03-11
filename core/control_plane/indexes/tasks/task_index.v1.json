@@ -666,6 +666,81 @@
       ]
     },
     {
+      "task_id": "task.internal_project_review_and_hardening.bootstrap.001",
+      "title": "Bootstrap Internal Project Review and Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Internal Project Review and Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/internal_project_review_and_hardening_bootstrap.md",
+      "updated_at": "2026-03-11T15:36:26Z",
+      "trace_id": "trace.internal_project_review_and_hardening",
+      "related_ids": [
+        "prd.internal_project_review_and_hardening",
+        "design.features.internal_project_review_and_hardening",
+        "design.implementation.internal_project_review_and_hardening",
+        "decision.internal_project_review_and_hardening_direction"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.internal_project_review_and_hardening.bootstrap_hardening.001",
+      "title": "Harden planning bootstrap for validation-compatible traces",
+      "summary": "Makes bootstrap write mode publish repository-compliant docs, acceptance contract, and baseline evidence.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/internal_project_review_bootstrap_hardening.md",
+      "updated_at": "2026-03-11T15:36:35Z",
+      "trace_id": "trace.internal_project_review_and_hardening",
+      "related_ids": [
+        "prd.internal_project_review_and_hardening",
+        "decision.internal_project_review_and_hardening_direction",
+        "design.features.internal_project_review_and_hardening",
+        "design.implementation.internal_project_review_and_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "docs/commands/core_python/watchtower_core_plan_bootstrap.md"
+      ]
+    },
+    {
+      "task_id": "task.internal_project_review_and_hardening.projection_canonicalization.001",
+      "title": "Canonicalize planning and coordination projection serializers",
+      "summary": "Reuses shared serializers for initiative and planning payload shaping across sync and query surfaces.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/internal_project_review_projection_canonicalization.md",
+      "updated_at": "2026-03-11T15:36:40Z",
+      "trace_id": "trace.internal_project_review_and_hardening",
+      "related_ids": [
+        "prd.internal_project_review_and_hardening",
+        "decision.internal_project_review_and_hardening_direction",
+        "design.features.internal_project_review_and_hardening",
+        "design.implementation.internal_project_review_and_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/"
+      ]
+    },
+    {
       "task_id": "task.local_task_tracking.github_sync.001",
       "title": "Add GitHub task sync support",
       "summary": "Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity.",

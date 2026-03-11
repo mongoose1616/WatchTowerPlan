@@ -132,6 +132,24 @@ def test_plan_bootstrap_supports_json_output(monkeypatch, capsys) -> None:
                         content="# PRD\n",
                     ),
                 ),
+                acceptance_contract=SimpleNamespace(
+                    contract_id="contract.acceptance.plan_example",
+                    trace_id="trace.plan_example",
+                    source_prd_id="prd.plan_example",
+                    title="Plan Example Acceptance Contract",
+                    doc_path="core/control_plane/contracts/acceptance/plan_example_acceptance.v1.json",
+                    content='{"id":"contract.acceptance.plan_example"}\n',
+                    wrote=False,
+                ),
+                validation_evidence=SimpleNamespace(
+                    evidence_id="evidence.plan_example.planning_baseline",
+                    trace_id="trace.plan_example",
+                    title="Plan Example Planning Baseline Evidence",
+                    overall_result="passed",
+                    doc_path="core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.v1.json",
+                    content='{"id":"evidence.plan_example.planning_baseline"}\n',
+                    wrote=False,
+                ),
                 task_result=SimpleNamespace(
                     task_id="task.plan_example.bootstrap.001",
                     title="Bootstrap planning chain",
@@ -157,6 +175,11 @@ def test_plan_bootstrap_supports_json_output(monkeypatch, capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core plan bootstrap"
     assert payload["document_count"] == 1
+    assert payload["acceptance_contract"]["contract_id"] == "contract.acceptance.plan_example"
+    assert (
+        payload["validation_evidence"]["evidence_id"]
+        == "evidence.plan_example.planning_baseline"
+    )
     assert payload["task"]["task_id"] == "task.plan_example.bootstrap.001"
 
 
@@ -178,6 +201,24 @@ def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
                         doc_path="docs/planning/prds/plan_example.md",
                         content="# PRD\n",
                     ),
+                ),
+                acceptance_contract=SimpleNamespace(
+                    contract_id="contract.acceptance.plan_example",
+                    trace_id="trace.plan_example",
+                    source_prd_id="prd.plan_example",
+                    title="Plan Example Acceptance Contract",
+                    doc_path="core/control_plane/contracts/acceptance/plan_example_acceptance.v1.json",
+                    content='{"id":"contract.acceptance.plan_example"}\n',
+                    wrote=True,
+                ),
+                validation_evidence=SimpleNamespace(
+                    evidence_id="evidence.plan_example.planning_baseline",
+                    trace_id="trace.plan_example",
+                    title="Plan Example Planning Baseline Evidence",
+                    overall_result="passed",
+                    doc_path="core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.v1.json",
+                    content='{"id":"evidence.plan_example.planning_baseline"}\n',
+                    wrote=True,
                 ),
                 task_result=SimpleNamespace(
                     task_id="task.plan_example.bootstrap.001",
@@ -203,6 +244,14 @@ def test_plan_bootstrap_prints_human_summary(monkeypatch, capsys) -> None:
     assert result == 0
     assert "Wrote bootstrap chain with 1 planning documents" in captured.out
     assert "- prd: docs/planning/prds/plan_example.md" in captured.out
+    assert (
+        "- acceptance_contract: "
+        "core/control_plane/contracts/acceptance/plan_example_acceptance.v1.json"
+    ) in captured.out
+    assert (
+        "- validation_evidence: "
+        "core/control_plane/ledgers/validation_evidence/plan_example_planning_baseline.v1.json"
+    ) in captured.out
     assert "# PRD" in captured.out
     assert "Derived planning surfaces were refreshed." in captured.out
 

@@ -2,11 +2,16 @@
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from typing import Any
 
 from watchtower_core.adapters import render_front_matter
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.evidence.validation_evidence import (
+    VALIDATION_EVIDENCE_DIRECTORY,
+    VALIDATION_EVIDENCE_SCHEMA_ID,
+)
 from watchtower_core.repo_ops.planning_scaffold_support import (
     PLAN_KIND_CHOICES as _PLAN_KIND_CHOICES,
 )
@@ -50,6 +55,11 @@ from watchtower_core.repo_ops.task_lifecycle import (
 from watchtower_core.utils import utc_timestamp_now
 
 PLAN_KIND_CHOICES = _PLAN_KIND_CHOICES
+ACCEPTANCE_CONTRACT_SCHEMA_ID = (
+    "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1"
+)
+ACCEPTANCE_CONTRACT_DIRECTORY = "core/control_plane/contracts/acceptance"
+BOOTSTRAP_VALIDATION_EVIDENCE_VALIDATOR_ID = "validator.control_plane.validation_evidence"
 
 
 @dataclass(frozen=True, slots=True)
@@ -114,10 +124,38 @@ class ScaffoldDocumentResult:
 
 
 @dataclass(frozen=True, slots=True)
+class AcceptanceContractResult:
+    """Rendered result for one bootstrap acceptance contract artifact."""
+
+    contract_id: str
+    trace_id: str
+    source_prd_id: str
+    title: str
+    doc_path: str
+    content: str
+    wrote: bool
+
+
+@dataclass(frozen=True, slots=True)
+class ValidationEvidenceResult:
+    """Rendered result for one bootstrap validation-evidence artifact."""
+
+    evidence_id: str
+    trace_id: str
+    title: str
+    overall_result: str
+    doc_path: str
+    content: str
+    wrote: bool
+
+
+@dataclass(frozen=True, slots=True)
 class PlanBootstrapResult:
     """Result summary for one initiative bootstrap scaffold."""
 
     documents: tuple[ScaffoldDocumentResult, ...]
+    acceptance_contract: AcceptanceContractResult
+    validation_evidence: ValidationEvidenceResult
     task_result: TaskMutationResult
     wrote: bool
     sync_refreshed: bool
@@ -145,6 +183,8 @@ class PlanningScaffoldService:
         implementation_id = f"design.implementation.{trace_id_suffix}"
         decision_id = params.decision_id or f"decision.{trace_id_suffix}_direction"
         task_id = params.task_id or f"task.{trace_id_suffix}.bootstrap.001"
+        contract_id = f"contract.acceptance.{trace_id_suffix}"
+        evidence_id = f"evidence.{trace_id_suffix}.planning_baseline"
 
         rendered_documents = self._bootstrap_documents(
             params,
@@ -155,24 +195,80 @@ class PlanningScaffoldService:
             implementation_id=implementation_id,
             decision_id=decision_id,
         )
-        task_result = self._bootstrap_task_result(
+        preview_task_result = self._bootstrap_task_result(
             params,
             updated_at=updated_at,
             base_stem=base_stem,
             task_id=task_id,
-            related_ids=tuple(document.document_id for document in rendered_documents),
-            write=write,
+            related_ids=tuple(document.document_id for document in rendered_documents)
+            + (contract_id,),
+            write=False,
+        )
+        acceptance_contract_document, acceptance_contract_preview = (
+            self._bootstrap_acceptance_contract_artifact(
+                params,
+                updated_at=updated_at,
+                trace_id_suffix=trace_id_suffix,
+                prd_id=prd_id,
+                rendered_documents=tuple(rendered_documents),
+                task_doc_path=preview_task_result.doc_path,
+                contract_id=contract_id,
+            )
+        )
+        validation_evidence_document, validation_evidence_preview = (
+            self._bootstrap_validation_evidence_artifact(
+                params,
+                updated_at=updated_at,
+                trace_id_suffix=trace_id_suffix,
+                prd_id=prd_id,
+                design_id=design_id,
+                implementation_id=implementation_id,
+                decision_id=(decision_id if params.include_decision else None),
+                task_id=task_id,
+                task_doc_path=preview_task_result.doc_path,
+                contract_id=contract_id,
+                contract_doc_path=acceptance_contract_preview.doc_path,
+                evidence_id=evidence_id,
+                rendered_documents=tuple(rendered_documents),
+            )
         )
 
+        task_result = preview_task_result
         if write:
             for rendered in rendered_documents:
                 self._write_rendered_document(rendered)
-            self._refresh_bootstrap_surfaces(include_decision=params.include_decision)
+            self._refresh_bootstrap_document_surfaces(include_decision=params.include_decision)
+            self._write_json_artifact(
+                acceptance_contract_preview.doc_path,
+                acceptance_contract_document,
+            )
+            task_result = self._bootstrap_task_result(
+                params,
+                updated_at=updated_at,
+                base_stem=base_stem,
+                task_id=task_id,
+                related_ids=tuple(document.document_id for document in rendered_documents)
+                + (contract_id,),
+                write=True,
+            )
+            self._write_json_artifact(
+                validation_evidence_preview.doc_path,
+                validation_evidence_document,
+            )
+            CoordinationSyncService(self._loader).run(write=True)
 
         return PlanBootstrapResult(
             documents=tuple(
                 _scaffold_result_from_rendered(rendered, wrote=write)
                 for rendered in rendered_documents
+            ),
+            acceptance_contract=_acceptance_contract_result_from_preview(
+                acceptance_contract_preview,
+                wrote=write,
+            ),
+            validation_evidence=_validation_evidence_result_from_preview(
+                validation_evidence_preview,
+                wrote=write,
             ),
             task_result=TaskMutationResult(
                 task_id=task_result.task_id,
@@ -365,10 +461,15 @@ class PlanningScaffoldService:
                 owner=params.task_owner or params.owner,
                 scope_items=(
                     "Publish the initial PRD, feature design, and implementation plan chain.",
+                    "Publish the matching acceptance contract and planning-baseline evidence.",
                     "Establish the first tracked task for the initiative.",
                 ),
                 done_when_items=(
                     "The planning chain exists under canonical planning paths.",
+                    (
+                        "The acceptance contract and planning-baseline evidence exist "
+                        "under canonical control-plane paths."
+                    ),
                     "The bootstrap task is visible through the derived coordination surfaces.",
                 ),
                 applies_to=params.applies_to,
@@ -388,6 +489,13 @@ class PlanningScaffoldService:
             encoding="utf-8",
         )
 
+    def _write_json_artifact(
+        self,
+        relative_path: str,
+        document: dict[str, object],
+    ) -> None:
+        self._loader.artifact_store.write_json_object(relative_path, document)
+
     def _refresh_planning_surfaces(self, *, kind: PlanKind) -> None:
         if kind == "prd":
             self._write_index_and_tracker(
@@ -405,7 +513,7 @@ class PlanningScaffoldService:
                 tracking_service=DecisionTrackingSyncService(self._loader),
             )
 
-    def _refresh_bootstrap_surfaces(self, *, include_decision: bool) -> None:
+    def _refresh_bootstrap_document_surfaces(self, *, include_decision: bool) -> None:
         self._write_index_and_tracker(
             index_service=PrdIndexSyncService(self._loader),
             tracking_service=PrdTrackingSyncService(self._loader),
@@ -419,7 +527,154 @@ class PlanningScaffoldService:
                 index_service=DecisionIndexSyncService(self._loader),
                 tracking_service=DecisionTrackingSyncService(self._loader),
             )
-        CoordinationSyncService(self._loader).run(write=True)
+
+    def _bootstrap_acceptance_contract_artifact(
+        self,
+        params: PlanBootstrapParams,
+        *,
+        updated_at: str,
+        trace_id_suffix: str,
+        prd_id: str,
+        rendered_documents: tuple[RenderedDocument, ...],
+        task_doc_path: str,
+        contract_id: str,
+    ) -> tuple[dict[str, object], AcceptanceContractResult]:
+        doc_path = (
+            f"{ACCEPTANCE_CONTRACT_DIRECTORY}/{trace_id_suffix}_acceptance.v1.json"
+        )
+        ensure_available_path(self._loader, doc_path)
+        document: dict[str, object] = {
+            "$schema": ACCEPTANCE_CONTRACT_SCHEMA_ID,
+            "id": contract_id,
+            "title": f"{params.title} Acceptance Contract",
+            "status": "active",
+            "trace_id": params.trace_id,
+            "source_prd_id": prd_id,
+            "entries": [
+                {
+                    "acceptance_id": f"ac.{trace_id_suffix}.001",
+                    "summary": (
+                        "The bootstrap flow publishes the initial PRD, feature design, "
+                        "implementation plan, acceptance contract, planning-baseline "
+                        "evidence, and bootstrap task for the trace."
+                    ),
+                    "source_requirement_ids": [f"req.{trace_id_suffix}.001"],
+                    "validation_targets": [
+                        *(document.doc_path for document in rendered_documents),
+                        task_doc_path,
+                    ],
+                    "related_paths": [
+                        "docs/planning/prds/prd_tracking.md",
+                        "docs/planning/design/design_tracking.md",
+                        "docs/planning/tasks/task_tracking.md",
+                        "docs/planning/initiatives/initiative_tracking.md",
+                        "docs/planning/coordination_tracking.md",
+                    ],
+                    "notes": (
+                        f"Bootstrap baseline contract prepared at {updated_at} for "
+                        f"{params.trace_id}."
+                    ),
+                }
+            ],
+        }
+        self._loader.schema_store.validate_instance(
+            document,
+            schema_id=ACCEPTANCE_CONTRACT_SCHEMA_ID,
+        )
+        return document, AcceptanceContractResult(
+            contract_id=contract_id,
+            trace_id=params.trace_id,
+            source_prd_id=prd_id,
+            title=str(document["title"]),
+            doc_path=doc_path,
+            content=f"{json.dumps(document, indent=2)}\n",
+            wrote=False,
+        )
+
+    def _bootstrap_validation_evidence_artifact(
+        self,
+        params: PlanBootstrapParams,
+        *,
+        updated_at: str,
+        trace_id_suffix: str,
+        prd_id: str,
+        design_id: str,
+        implementation_id: str,
+        decision_id: str | None,
+        task_id: str,
+        task_doc_path: str,
+        contract_id: str,
+        contract_doc_path: str,
+        evidence_id: str,
+        rendered_documents: tuple[RenderedDocument, ...],
+    ) -> tuple[dict[str, object], ValidationEvidenceResult]:
+        doc_path = (
+            f"{VALIDATION_EVIDENCE_DIRECTORY}/{trace_id_suffix}_planning_baseline.v1.json"
+        )
+        ensure_available_path(self._loader, doc_path)
+        subject_paths = [
+            *(document.doc_path for document in rendered_documents),
+            contract_doc_path,
+        ]
+        if task_doc_path not in subject_paths:
+            subject_paths.append(task_doc_path)
+        subject_ids = [prd_id, design_id, implementation_id, task_id, contract_id]
+        if decision_id is not None:
+            subject_ids.append(decision_id)
+        document: dict[str, object] = {
+            "$schema": VALIDATION_EVIDENCE_SCHEMA_ID,
+            "id": evidence_id,
+            "title": f"{params.title} Planning Baseline Evidence",
+            "status": "active",
+            "trace_id": params.trace_id,
+            "overall_result": "passed",
+            "recorded_at": updated_at,
+            "source_prd_ids": [prd_id],
+            "source_design_ids": [design_id],
+            "source_plan_ids": [implementation_id],
+            "source_acceptance_contract_ids": [contract_id],
+            "checks": [
+                {
+                    "check_id": f"check.{trace_id_suffix}.planning_baseline",
+                    "title": "Bootstrap planning baseline is aligned",
+                    "result": "passed",
+                    "subject_paths": subject_paths,
+                    "subject_ids": subject_ids,
+                    "validator_id": BOOTSTRAP_VALIDATION_EVIDENCE_VALIDATOR_ID,
+                    "acceptance_ids": [f"ac.{trace_id_suffix}.001"],
+                    "notes": (
+                        "Bootstrap write mode published the initial planning chain, "
+                        "acceptance contract, evidence artifact, and bootstrap task "
+                        "in canonical repository paths."
+                    ),
+                }
+            ],
+            "related_paths": [
+                contract_doc_path,
+                "docs/planning/coordination_tracking.md",
+                "docs/planning/initiatives/initiative_tracking.md",
+                "docs/planning/tasks/task_tracking.md",
+            ],
+            "notes": (
+                f"Planning baseline evidence prepared at {updated_at} for "
+                f"{params.trace_id}."
+            ),
+        }
+        if decision_id is not None:
+            document["source_decision_ids"] = [decision_id]
+        self._loader.schema_store.validate_instance(
+            document,
+            schema_id=VALIDATION_EVIDENCE_SCHEMA_ID,
+        )
+        return document, ValidationEvidenceResult(
+            evidence_id=evidence_id,
+            trace_id=params.trace_id,
+            title=str(document["title"]),
+            overall_result=str(document["overall_result"]),
+            doc_path=doc_path,
+            content=f"{json.dumps(document, indent=2)}\n",
+            wrote=False,
+        )
 
     @staticmethod
     def _write_index_and_tracker(
@@ -447,5 +702,37 @@ def _scaffold_result_from_rendered(
         status=rendered.status,
         doc_path=rendered.doc_path,
         content=rendered.content,
+        wrote=wrote,
+    )
+
+
+def _acceptance_contract_result_from_preview(
+    preview: AcceptanceContractResult,
+    *,
+    wrote: bool,
+) -> AcceptanceContractResult:
+    return AcceptanceContractResult(
+        contract_id=preview.contract_id,
+        trace_id=preview.trace_id,
+        source_prd_id=preview.source_prd_id,
+        title=preview.title,
+        doc_path=preview.doc_path,
+        content=preview.content,
+        wrote=wrote,
+    )
+
+
+def _validation_evidence_result_from_preview(
+    preview: ValidationEvidenceResult,
+    *,
+    wrote: bool,
+) -> ValidationEvidenceResult:
+    return ValidationEvidenceResult(
+        evidence_id=preview.evidence_id,
+        trace_id=preview.trace_id,
+        title=preview.title,
+        overall_result=preview.overall_result,
+        doc_path=preview.doc_path,
+        content=preview.content,
         wrote=wrote,
     )
