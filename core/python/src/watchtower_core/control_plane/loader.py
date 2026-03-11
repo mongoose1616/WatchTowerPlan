@@ -14,6 +14,7 @@ from watchtower_core.control_plane.models import (
     DesignDocumentIndex,
     FoundationIndex,
     InitiativeIndex,
+    PlanningCatalog,
     PrdIndex,
     ReferenceIndex,
     RepositoryPathIndex,
@@ -57,6 +58,7 @@ DESIGN_DOCUMENT_INDEX_PATH = (
 )
 TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.v1.json"
+PLANNING_CATALOG_PATH = "core/control_plane/indexes/planning/planning_catalog.v1.json"
 ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
 
@@ -208,6 +210,12 @@ class ControlPlaneLoader:
         """Load the current traceability index."""
         return TraceabilityIndex.from_document(
             self.load_validated_document(TRACEABILITY_INDEX_PATH)
+        )
+
+    def load_planning_catalog(self) -> PlanningCatalog:
+        """Load the current canonical planning catalog."""
+        return PlanningCatalog.from_document(
+            self.load_validated_document(PLANNING_CATALOG_PATH)
         )
 
     def iter_validated_documents_under(self, relative_directory: str) -> tuple[dict[str, Any], ...]:

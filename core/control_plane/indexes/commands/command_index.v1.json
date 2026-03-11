@@ -410,6 +410,30 @@
       ]
     },
     {
+      "command_id": "command.watchtower_core.query.planning",
+      "command": "watchtower-core query planning",
+      "summary": "Search the canonical planning catalog for deep trace-linked planning context with explicit status semantics.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_query_planning.md",
+      "synopsis": "uv run watchtower-core query planning [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--limit LIMIT] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.query",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "query",
+        "planning"
+      ]
+    },
+    {
       "command_id": "command.watchtower_core.query.prds",
       "command": "watchtower-core query prds",
       "summary": "Search the PRD index for governed product requirements documents.",
@@ -894,6 +918,31 @@
         "sync",
         "initiative",
         "tracking"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.sync.planning_catalog",
+      "command": "watchtower-core sync planning-catalog",
+      "summary": "Rebuild the canonical planning catalog from traceability, initiative, planning-document, task, acceptance-contract, and validation-evidence sources.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_sync_planning_catalog.md",
+      "synopsis": "uv run watchtower-core sync planning-catalog [-h] [--write] [--output OUTPUT] [--include-document] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/sync_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.sync",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "sync",
+        "planning",
+        "catalog"
       ]
     },
     {

@@ -51,6 +51,7 @@ def test_coordination_sync_group_has_expected_targets_in_order() -> None:
         "task-index",
         "traceability-index",
         "initiative-index",
+        "planning-catalog",
         "coordination-index",
         "task-tracking",
         "initiative-tracking",
@@ -69,6 +70,7 @@ def test_coordination_sync_runs_in_dry_run_mode() -> None:
         "task-index",
         "traceability-index",
         "initiative-index",
+        "planning-catalog",
         "coordination-index",
         "task-tracking",
         "initiative-tracking",
@@ -104,6 +106,7 @@ def test_coordination_sync_can_materialize_to_output_dir(tmp_path: Path) -> None
         output_dir / "core/control_plane/indexes/traceability/traceability_index.v1.json"
     ).exists()
     assert (output_dir / "core/control_plane/indexes/initiatives/initiative_index.v1.json").exists()
+    assert (output_dir / "core/control_plane/indexes/planning/planning_catalog.v1.json").exists()
     assert (
         output_dir / "core/control_plane/indexes/coordination/coordination_index.v1.json"
     ).exists()
@@ -146,6 +149,11 @@ def test_coordination_sync_output_dir_uses_generated_dependency_artifacts(tmp_pa
     assert "STALE SNAPSHOT MARKER" not in tracker_text
     assert "STALE SNAPSHOT MARKER" not in coordination_text
     assert "STALE SNAPSHOT MARKER" not in coordination_tracking_text
+    planning_catalog_path = (
+        output_dir / "core/control_plane/indexes/planning/planning_catalog.v1.json"
+    )
+    planning_catalog_text = planning_catalog_path.read_text(encoding="utf-8")
+    assert "STALE SNAPSHOT MARKER" not in planning_catalog_text
 
 
 def test_all_sync_rejects_document_targets_without_entries_list() -> None:

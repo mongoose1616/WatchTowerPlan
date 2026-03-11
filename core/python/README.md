@@ -40,6 +40,7 @@
 - `uv run watchtower-core route preview --request "review code and commit"`
 - `uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative." --format json`
 - `uv run watchtower-core query coordination --format json`
+- `uv run watchtower-core query planning --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core query commands --query coordination --format json`
 - `uv run watchtower-core query foundations --query philosophy`
 - `uv run watchtower-core query workflows --query validation`
@@ -54,6 +55,7 @@
 - `uv run watchtower-core sync prd-index`
 - `uv run watchtower-core sync all`
 - `uv run watchtower-core sync coordination`
+- `uv run watchtower-core sync planning-catalog`
 - `uv run watchtower-core sync route-index`
 - `uv run watchtower-core sync initiative-index`
 - `uv run watchtower-core sync task-index`

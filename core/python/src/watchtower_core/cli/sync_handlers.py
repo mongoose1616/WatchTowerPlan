@@ -22,6 +22,7 @@ from watchtower_core.repo_ops.sync import (
     GitHubTaskSyncService,
     InitiativeIndexSyncService,
     InitiativeTrackingSyncService,
+    PlanningCatalogSyncService,
     PrdIndexSyncService,
     PrdTrackingSyncService,
     ReferenceIndexSyncService,
@@ -319,6 +320,15 @@ def _run_sync_initiative_index(args: argparse.Namespace) -> int:
         command_name="watchtower-core sync initiative-index",
         artifact_label="initiative index",
         service=InitiativeIndexSyncService.from_repo_root(),
+    )
+
+
+def _run_sync_planning_catalog(args: argparse.Namespace) -> int:
+    return _run_sync_document_command(
+        args,
+        command_name="watchtower-core sync planning-catalog",
+        artifact_label="planning catalog",
+        service=PlanningCatalogSyncService.from_repo_root(),
     )
 
 

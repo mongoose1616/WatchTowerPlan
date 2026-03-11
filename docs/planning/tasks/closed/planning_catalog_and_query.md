@@ -2,25 +2,26 @@
 id: task.planning_authority_unification.planning_catalog.001
 trace_id: trace.planning_authority_unification
 title: Publish planning catalog and canonical planning query
-summary: Build the planning-catalog artifact family and make it the canonical machine planning join through a dedicated query command.
+summary: Build the planning-catalog artifact family and make it the canonical machine
+  planning join through a dedicated query command.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-11T01:48:43Z'
+updated_at: '2026-03-11T02:56:51Z'
 audience: shared
 authority: authoritative
-related_ids:
-  - prd.planning_authority_unification
-  - design.features.planning_authority_unification
-  - design.implementation.planning_authority_unification
-  - decision.planning_authority_unification_direction
 applies_to:
-  - core/control_plane/
-  - core/python/
-  - docs/commands/core_python/
+- core/control_plane/
+- core/python/
+- docs/commands/core_python/
+related_ids:
+- prd.planning_authority_unification
+- design.features.planning_authority_unification
+- design.implementation.planning_authority_unification
+- decision.planning_authority_unification_direction
 ---
 
 # Publish planning catalog and canonical planning query

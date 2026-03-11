@@ -5,19 +5,19 @@
 | --- | --- |
 | Mode | `active_work` |
 | Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
-| Next | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
-| Open First | [docs/planning/tasks/open/planning_catalog_and_query.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/planning_catalog_and_query.md) |
+| Next | Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands. |
+| Open First | [docs/planning/tasks/open/machine_authority_map_and_navigation.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/machine_authority_map_and_navigation.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
 | Trace ID | Phase | Owners | Next | Action |
 | --- | --- | --- | --- | --- |
-| `trace.planning_authority_unification` | `execution` | repository_maintainer | [planning_catalog_and_query.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/planning_catalog_and_query.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| `trace.planning_authority_unification` | `execution` | repository_maintainer | [machine_authority_map_and_navigation.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/machine_authority_map_and_navigation.md) | Continue the active task set and keep planning, traceability, and derived surfaces aligned as work lands. |
 
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.planning_authority_unification.planning_catalog.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/planning_catalog_and_query.md) | `trace.planning_authority_unification` | `backlog` | `high` | `repository_maintainer` |
+| [task.planning_authority_unification.authority_map.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/machine_authority_map_and_navigation.md) | `trace.planning_authority_unification` | `in_progress` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -28,4 +28,4 @@
 | `trace.end_to_end_repo_review_and_rationalization` | `completed` | `2026-03-10T20:33:10Z` | [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md) |
 | `trace.machine_first_coordination_surface` | `completed` | `2026-03-10T19:36:51Z` | [machine_first_coordination_surface.md](/home/j/WatchTowerPlan/docs/planning/prds/machine_first_coordination_surface.md) |
 
-_Updated At: `2026-03-11T01:58:37Z`_
+_Updated At: `2026-03-11T02:56:56Z`_

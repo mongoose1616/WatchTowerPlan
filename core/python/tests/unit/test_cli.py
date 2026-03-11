@@ -54,6 +54,10 @@ def test_root_command_prints_help(capsys) -> None:
     )
     assert "uv run watchtower-core query coordination --format json" in captured.out
     assert (
+        "uv run watchtower-core query planning --trace-id trace.core_python_foundation"
+        in captured.out
+    )
+    assert (
         "uv run watchtower-core query standards --category governance --format json"
         in captured.out
     )
@@ -71,6 +75,7 @@ def test_root_command_prints_help(capsys) -> None:
     assert "uv run watchtower-core sync foundation-index" in captured.out
     assert "uv run watchtower-core sync workflow-index" in captured.out
     assert "uv run watchtower-core sync coordination" in captured.out
+    assert "uv run watchtower-core sync planning-catalog" in captured.out
     assert "uv run watchtower-core sync repository-paths" in captured.out
     assert "uv run watchtower-core sync route-index" in captured.out
     assert "uv run watchtower-core sync task-index" in captured.out
@@ -94,6 +99,7 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
     assert "Search the governed lookup surfaces" in captured.out
     assert "query commands" in captured.out
     assert "query coordination" in captured.out
+    assert "query planning" in captured.out
     assert "query foundations" in captured.out
     assert "query workflows" in captured.out
     assert "query references" in captured.out

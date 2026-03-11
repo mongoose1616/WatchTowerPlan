@@ -10,6 +10,7 @@
 - Use `watchtower_core_task.md` when the main question is how to create, update, or transition governed local task records.
 - Use the command-group pages before opening individual subcommand pages.
 - Use `watchtower_core_query_coordination.md` when the main question is current planning state, next action, and active work context.
+- Use `watchtower_core_query_planning.md` when the main question is the canonical deep planning record for one trace after coordination routing.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.
 
 ## Files
@@ -24,11 +25,13 @@
 | `docs/commands/core_python/watchtower_core_plan_bootstrap.md` | Scaffold a compact traced PRD, design, plan, and bootstrap-task chain. |
 | `docs/commands/core_python/watchtower_core_query.md` | Entry page for all governed query commands, including planning, standards, references, and trace surfaces. |
 | `docs/commands/core_python/watchtower_core_query_coordination.md` | Machine start-here command page for active traced initiative coordination and next-step lookup. |
+| `docs/commands/core_python/watchtower_core_query_planning.md` | Canonical deep-planning query page for one trace-linked planning record with explicit status semantics. |
 | `docs/commands/core_python/watchtower_core_task.md` | Entry page for task lifecycle commands that mutate governed local task records in dry-run or write mode. |
 | `docs/commands/core_python/watchtower_core_task_create.md` | Create one governed task document from compact structured inputs. |
 | `docs/commands/core_python/watchtower_core_task_update.md` | Apply structured field and body updates to one governed task record. |
 | `docs/commands/core_python/watchtower_core_task_transition.md` | Apply a bounded handoff-style status or ownership transition to one task. |
 | `docs/commands/core_python/watchtower_core_sync.md` | Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes. |
+| `docs/commands/core_python/watchtower_core_sync_planning_catalog.md` | Rebuild surface for the canonical planning catalog derived from trace-linked planning sources. |
 | `docs/commands/core_python/watchtower_core_sync_route_index.md` | Rebuild surface for the machine-readable route index derived from the routing table. |
 | `docs/commands/core_python/watchtower_core_validate.md` | Entry page for validation commands across artifacts, semantics, and repo-wide checks. |
 | `docs/commands/core_python/watchtower_core_closeout.md` | Entry page for closeout commands used to terminally update traced initiative state. |

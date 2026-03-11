@@ -145,6 +145,20 @@
       ]
     },
     {
+      "id": "validator.control_plane.planning_catalog",
+      "title": "Planning Catalog Validator",
+      "description": "Validates canonical machine-readable planning-catalog artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "planning_catalog",
+      "applies_to": [
+        "core/control_plane/indexes/planning/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.prd_index",
       "title": "PRD Index Validator",
       "description": "Validates machine-readable PRD index artifacts.",

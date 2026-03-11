@@ -149,6 +149,18 @@
       ]
     },
     {
+      "kind": "planning_catalog",
+      "title": "Planning Catalog",
+      "status": "active",
+      "family": "index",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/indexes/planning/planning_catalog.v1.json"
+      ]
+    },
+    {
       "kind": "prd_index",
       "title": "PRD Index",
       "status": "active",

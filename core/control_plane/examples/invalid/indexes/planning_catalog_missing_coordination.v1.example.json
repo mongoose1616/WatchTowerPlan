@@ -1,0 +1,16 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1",
+  "id": "index.planning_catalog",
+  "title": "Planning Catalog",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.example_trace",
+      "title": "Example Trace",
+      "summary": "Invalid example missing the required coordination section.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-11T02:10:00Z"
+    }
+  ]
+}

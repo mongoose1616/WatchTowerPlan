@@ -475,6 +475,29 @@ def test_query_coordination_supports_explicit_historical_lookup(capsys) -> None:
     )
 
 
+def test_query_planning_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "planning",
+            "--trace-id",
+            "trace.core_python_foundation",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query planning"
+    assert payload["status"] == "ok"
+    assert payload["results"][0]["trace_id"] == "trace.core_python_foundation"
+    assert "artifact_status" in payload["results"][0]
+    assert "status" not in payload["results"][0]
+    assert payload["results"][0]["coordination"]["current_phase"]
+
+
 def test_query_trace_supports_json_output(capsys) -> None:
     result = main(
         ["query", "trace", "--trace-id", "trace.core_python_foundation", "--format", "json"]

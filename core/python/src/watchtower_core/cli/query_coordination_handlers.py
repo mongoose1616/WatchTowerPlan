@@ -10,12 +10,14 @@ from watchtower_core.cli.handler_common import (
     _task_dependency_payload,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import InitiativeIndexEntry
+from watchtower_core.control_plane.models import InitiativeIndexEntry, PlanningCatalogEntry
 from watchtower_core.repo_ops.query import (
     CoordinationQueryService,
     CoordinationSearchParams,
     InitiativeQueryService,
     InitiativeSearchParams,
+    PlanningCatalogQueryService,
+    PlanningCatalogSearchParams,
     TaskQueryService,
     TaskSearchParams,
     TraceabilityQueryService,
@@ -244,6 +246,53 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
     return 0
 
 
+def _run_query_planning(args: argparse.Namespace) -> int:
+    service = PlanningCatalogQueryService(ControlPlaneLoader())
+    entries = service.search(
+        PlanningCatalogSearchParams(
+            query=args.query,
+            trace_id=args.trace_id,
+            initiative_status=args.initiative_status,
+            current_phase=args.current_phase,
+            owner=args.owner,
+            limit=args.limit,
+        )
+    )
+    payload = {
+        "command": "watchtower-core query planning",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [_planning_entry_payload(entry) for entry in entries],
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    if not entries:
+        print("No planning-catalog entries matched the requested filters.")
+        return 0
+
+    print(f"Found {len(entries)} planning entr{'y' if len(entries) == 1 else 'ies'}:")
+    for entry in entries:
+        owner_text = entry.primary_owner or (
+            ", ".join(entry.active_owners) if entry.active_owners else "unassigned"
+        )
+        print(
+            f"- {entry.trace_id} "
+            f"[{entry.current_phase}, {entry.initiative_status}, {entry.artifact_status}]"
+        )
+        print(f"  {entry.title}")
+        print(f"  Owners: {owner_text}")
+        print(f"  Next: {entry.coordination.next_action}")
+        print(
+            "  Sections: "
+            f"prds={len(entry.prds)} decisions={len(entry.decisions)} "
+            f"designs={len(entry.design_documents)} tasks={len(entry.tasks)} "
+            f"contracts={len(entry.acceptance_contracts)} "
+            f"evidence={len(entry.validation_evidence)}"
+        )
+    return 0
+
+
 def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
     return {
         "trace_id": entry.trace_id,
@@ -291,6 +340,152 @@ def _initiative_entry_payload(entry: InitiativeIndexEntry) -> dict[str, object]:
         "tags": list(entry.tags),
         "notes": entry.notes,
     }
+
+
+def _planning_entry_payload(entry: PlanningCatalogEntry) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "trace_id": entry.trace_id,
+        "title": entry.title,
+        "summary": entry.summary,
+        "artifact_status": entry.artifact_status,
+        "initiative_status": entry.initiative_status,
+        "updated_at": entry.updated_at,
+        "coordination": {
+            "current_phase": entry.coordination.current_phase,
+            "key_surface_path": entry.coordination.key_surface_path,
+            "next_action": entry.coordination.next_action,
+            "next_surface_path": entry.coordination.next_surface_path,
+            "open_task_count": entry.coordination.open_task_count,
+            "blocked_task_count": entry.coordination.blocked_task_count,
+            "primary_owner": entry.coordination.primary_owner,
+            "active_owners": list(entry.coordination.active_owners),
+            "active_task_ids": list(entry.coordination.active_task_ids),
+            "active_task_summaries": [
+                {
+                    "task_id": task.task_id,
+                    "title": task.title,
+                    "task_status": task.task_status,
+                    "priority": task.priority,
+                    "owner": task.owner,
+                    "doc_path": task.doc_path,
+                    "is_actionable": task.is_actionable,
+                    "blocked_by": list(task.blocked_by),
+                    "depends_on": list(task.depends_on),
+                }
+                for task in entry.coordination.active_task_summaries
+            ],
+            "blocked_by_task_ids": list(entry.coordination.blocked_by_task_ids),
+        },
+        "prds": [
+            {
+                "prd_id": item.prd_id,
+                "title": item.title,
+                "summary": item.summary,
+                "artifact_status": item.artifact_status,
+                "doc_path": item.doc_path,
+                "updated_at": item.updated_at,
+                "requirement_ids": list(item.requirement_ids),
+                "acceptance_ids": list(item.acceptance_ids),
+                "linked_decision_ids": list(item.linked_decision_ids),
+                "linked_design_ids": list(item.linked_design_ids),
+                "linked_plan_ids": list(item.linked_plan_ids),
+            }
+            for item in entry.prds
+        ],
+        "decisions": [
+            {
+                "decision_id": item.decision_id,
+                "title": item.title,
+                "summary": item.summary,
+                "record_status": item.record_status,
+                "decision_status": item.decision_status,
+                "doc_path": item.doc_path,
+                "updated_at": item.updated_at,
+                "linked_prd_ids": list(item.linked_prd_ids),
+                "linked_design_ids": list(item.linked_design_ids),
+                "linked_plan_ids": list(item.linked_plan_ids),
+            }
+            for item in entry.decisions
+        ],
+        "design_documents": [
+            {
+                "document_id": item.document_id,
+                "family": item.family,
+                "title": item.title,
+                "summary": item.summary,
+                "artifact_status": item.artifact_status,
+                "doc_path": item.doc_path,
+                "updated_at": item.updated_at,
+                "source_paths": list(item.source_paths),
+            }
+            for item in entry.design_documents
+        ],
+        "tasks": [
+            {
+                "task_id": item.task_id,
+                "title": item.title,
+                "summary": item.summary,
+                "artifact_status": item.artifact_status,
+                "task_status": item.task_status,
+                "task_kind": item.task_kind,
+                "priority": item.priority,
+                "owner": item.owner,
+                "doc_path": item.doc_path,
+                "updated_at": item.updated_at,
+                "blocked_by": list(item.blocked_by),
+                "depends_on": list(item.depends_on),
+                "related_ids": list(item.related_ids),
+                "applies_to": list(item.applies_to),
+            }
+            for item in entry.tasks
+        ],
+        "acceptance_contracts": [
+            {
+                "contract_id": item.contract_id,
+                "title": item.title,
+                "artifact_status": item.artifact_status,
+                "source_prd_id": item.source_prd_id,
+                "doc_path": item.doc_path,
+                "acceptance_ids": list(item.acceptance_ids),
+                "required_validator_ids": list(item.required_validator_ids),
+                "validation_targets": list(item.validation_targets),
+                "related_paths": list(item.related_paths),
+            }
+            for item in entry.acceptance_contracts
+        ],
+        "validation_evidence": [
+            {
+                "evidence_id": item.evidence_id,
+                "title": item.title,
+                "artifact_status": item.artifact_status,
+                "overall_result": item.overall_result,
+                "recorded_at": item.recorded_at,
+                "doc_path": item.doc_path,
+                "check_ids": list(item.check_ids),
+                "acceptance_ids": list(item.acceptance_ids),
+                "validator_ids": list(item.validator_ids),
+                "related_paths": list(item.related_paths),
+            }
+            for item in entry.validation_evidence
+        ],
+        "prd_ids": list(entry.prd_ids),
+        "decision_ids": list(entry.decision_ids),
+        "design_ids": list(entry.design_ids),
+        "plan_ids": list(entry.plan_ids),
+        "task_ids": list(entry.task_ids),
+        "requirement_ids": list(entry.requirement_ids),
+        "acceptance_ids": list(entry.acceptance_ids),
+        "acceptance_contract_ids": list(entry.acceptance_contract_ids),
+        "evidence_ids": list(entry.evidence_ids),
+        "validator_ids": list(entry.validator_ids),
+        "related_paths": list(entry.related_paths),
+        "tags": list(entry.tags),
+        "notes": entry.notes,
+        "closed_at": entry.closed_at,
+        "closure_reason": entry.closure_reason,
+        "superseded_by_trace_id": entry.superseded_by_trace_id,
+    }
+    return payload
 
 
 def _emit_initiative_query_results(

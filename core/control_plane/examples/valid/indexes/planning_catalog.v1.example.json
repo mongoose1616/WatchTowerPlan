@@ -1,0 +1,157 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1",
+  "id": "index.planning_catalog",
+  "title": "Planning Catalog",
+  "status": "active",
+  "entries": [
+    {
+      "trace_id": "trace.core_python_foundation",
+      "title": "Core Python Foundation PRD",
+      "summary": "Canonical planning-catalog record for the core Python foundation trace.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-11T02:10:00Z",
+      "coordination": {
+        "current_phase": "execution",
+        "key_surface_path": "docs/planning/prds/core_python_foundation.md",
+        "next_action": "Continue the active implementation slice and keep companion surfaces aligned.",
+        "next_surface_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+        "open_task_count": 1,
+        "blocked_task_count": 0,
+        "primary_owner": "repository_maintainer",
+        "active_owners": [
+          "repository_maintainer"
+        ],
+        "active_task_ids": [
+          "task.core_python_foundation.execution.001"
+        ],
+        "active_task_summaries": [
+          {
+            "task_id": "task.core_python_foundation.execution.001",
+            "title": "Execute the core Python foundation implementation slice",
+            "task_status": "in_progress",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+            "is_actionable": true
+          }
+        ]
+      },
+      "prds": [
+        {
+          "prd_id": "prd.core_python_foundation",
+          "title": "Core Python Foundation PRD",
+          "summary": "Frames the core Python foundation initiative.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/core_python_foundation.md",
+          "updated_at": "2026-03-10T01:48:35Z",
+          "requirement_ids": [
+            "req.core_python_foundation.001"
+          ],
+          "acceptance_ids": [
+            "ac.core_python_foundation.001"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.core_python_workspace_direction",
+          "title": "Core Python Workspace Direction",
+          "summary": "Records the decision to use one canonical Python workspace.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/core_python_workspace_direction.md",
+          "updated_at": "2026-03-10T01:48:35Z",
+          "linked_prd_ids": [
+            "prd.core_python_foundation"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.core_python_workspace_and_harness",
+          "family": "feature_design",
+          "title": "Core Python Workspace and Harness",
+          "summary": "Defines the Python workspace layout and command harness.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/core_python_workspace_and_harness.md",
+          "updated_at": "2026-03-10T01:48:35Z"
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.core_python_foundation.execution.001",
+          "title": "Execute the core Python foundation implementation slice",
+          "summary": "Implements the planned core Python workspace slice.",
+          "artifact_status": "active",
+          "task_status": "in_progress",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/core_python_foundation_execution.md",
+          "updated_at": "2026-03-10T01:48:35Z"
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.core_python_foundation",
+          "title": "Core Python Foundation Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.core_python_foundation",
+          "doc_path": "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.core_python_foundation.001"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.core_python_foundation.traceability_baseline",
+          "title": "Core Python Foundation Traceability Baseline",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-10T01:48:35Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/core_python_foundation_traceability_validation.v1.json",
+          "check_ids": [
+            "check.core_python_foundation.traceability"
+          ],
+          "acceptance_ids": [
+            "ac.core_python_foundation.001"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.core_python_foundation"
+      ],
+      "decision_ids": [
+        "decision.core_python_workspace_direction"
+      ],
+      "design_ids": [
+        "design.features.core_python_workspace_and_harness"
+      ],
+      "task_ids": [
+        "task.core_python_foundation.execution.001"
+      ],
+      "requirement_ids": [
+        "req.core_python_foundation.001"
+      ],
+      "acceptance_ids": [
+        "ac.core_python_foundation.001"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.core_python_foundation"
+      ],
+      "evidence_ids": [
+        "evidence.core_python_foundation.traceability_baseline"
+      ],
+      "related_paths": [
+        "core/python/",
+        "docs/planning/prds/core_python_foundation.md"
+      ],
+      "tags": [
+        "planning",
+        "python"
+      ]
+    }
+  ]
+}

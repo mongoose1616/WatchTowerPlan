@@ -128,6 +128,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1",
+      "title": "Planning Catalog",
+      "description": "Schema for the canonical machine-readable planning catalog artifact.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "planning_catalog",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
+      "aliases": [
+        "canonical planning graph schema",
+        "deep planning catalog schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:prd-index:v1",
       "title": "PRD Index",
       "description": "Schema for machine-readable PRD index artifacts.",

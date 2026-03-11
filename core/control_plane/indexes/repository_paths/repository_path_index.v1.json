@@ -1501,6 +1501,36 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/indexes/planning/",
+      "kind": "directory",
+      "surface_kind": "control_plane_indexes",
+      "summary": "Canonical machine-readable planning catalogs that join trace-linked planning, task, acceptance, evidence, and per-trace coordination state.",
+      "parent_path": "core/control_plane/indexes/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/indexes/planning/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Describes the purpose of the planning-catalog directory and its current artifacts.",
+      "parent_path": "core/control_plane/indexes/planning/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/indexes/planning/planning_catalog.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_index",
+      "summary": "Canonical machine-readable planning catalog for deep trace-linked planning lookup with explicit status semantics.",
+      "parent_path": "core/control_plane/indexes/planning/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/indexes/prds/",
       "kind": "directory",
       "surface_kind": "control_plane_indexes",
@@ -2406,6 +2436,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable migration-record artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the canonical machine-readable planning-catalog artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3522,6 +3562,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/commands/core_python/watchtower_core_query_planning.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Canonical deep-planning query page for one trace-linked planning record with explicit status semantics.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/commands/core_python/watchtower_core_route.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -3546,6 +3596,16 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_sync_planning_catalog.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Rebuild surface for the canonical planning catalog derived from trace-linked planning sources.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4436,6 +4496,16 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines the standard for machine-readable initiative indexes.",
+      "parent_path": "docs/standards/data_contracts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/standards/data_contracts/planning_catalog_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the standard for the canonical machine-readable planning catalog.",
       "parent_path": "docs/standards/data_contracts/",
       "maturity": "authoritative",
       "priority": "high",

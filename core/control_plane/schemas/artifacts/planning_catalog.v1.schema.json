@@ -1,0 +1,638 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1",
+  "title": "Planning Catalog",
+  "description": "Canonical machine-readable planning catalog that joins trace-linked planning, task, acceptance, evidence, and per-trace coordination state.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:indexes:planning-catalog:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "index.planning_catalog"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/planningEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "idPattern": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/idPattern"
+    },
+    "idList": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/idList"
+    },
+    "taskIdList": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/taskIdList"
+    },
+    "stringList": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/stringList"
+    },
+    "priority": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/priority"
+    },
+    "taskStatus": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/taskStatus"
+    },
+    "initiativeStatus": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/initiativeStatus"
+    },
+    "currentPhase": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/currentPhase"
+    },
+    "artifactStatus": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/lifecycleStatus"
+    },
+    "decisionStatus": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:decision-index:v1#/$defs/decisionStatus"
+    },
+    "recordStatus": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:decision-index:v1#/$defs/lifecycleStatus"
+    },
+    "evidenceResult": {
+      "$ref": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1#/$defs/resultStatus"
+    },
+    "activeTaskSummary": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/activeTaskSummary"
+    },
+    "activeTaskSummaryList": {
+      "$ref": "urn:watchtower:schema:artifacts:indexes:initiative-index:v1#/$defs/activeTaskSummaryList"
+    },
+    "coordinationSection": {
+      "type": "object",
+      "required": [
+        "current_phase",
+        "key_surface_path",
+        "next_action",
+        "next_surface_path",
+        "open_task_count",
+        "blocked_task_count"
+      ],
+      "properties": {
+        "current_phase": {
+          "$ref": "#/$defs/currentPhase"
+        },
+        "key_surface_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_surface_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "open_task_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked_task_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "primary_owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active_owners": {
+          "$ref": "#/$defs/stringList"
+        },
+        "active_task_ids": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "active_task_summaries": {
+          "$ref": "#/$defs/activeTaskSummaryList"
+        },
+        "blocked_by_task_ids": {
+          "$ref": "#/$defs/taskIdList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "prdSummary": {
+      "type": "object",
+      "required": [
+        "prd_id",
+        "title",
+        "summary",
+        "artifact_status",
+        "doc_path",
+        "updated_at"
+      ],
+      "properties": {
+        "prd_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_status": {
+          "$ref": "#/$defs/artifactStatus"
+        },
+        "doc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "requirement_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "linked_decision_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "linked_design_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "linked_plan_ids": {
+          "$ref": "#/$defs/idList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "decisionSummary": {
+      "type": "object",
+      "required": [
+        "decision_id",
+        "title",
+        "summary",
+        "record_status",
+        "decision_status",
+        "doc_path",
+        "updated_at"
+      ],
+      "properties": {
+        "decision_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_status": {
+          "$ref": "#/$defs/recordStatus"
+        },
+        "decision_status": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "doc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "linked_prd_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "linked_design_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "linked_plan_ids": {
+          "$ref": "#/$defs/idList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "designDocumentSummary": {
+      "type": "object",
+      "required": [
+        "document_id",
+        "family",
+        "title",
+        "summary",
+        "artifact_status",
+        "doc_path",
+        "updated_at"
+      ],
+      "properties": {
+        "document_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "family": {
+          "type": "string",
+          "enum": [
+            "feature_design",
+            "implementation_plan"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_status": {
+          "$ref": "#/$defs/artifactStatus"
+        },
+        "doc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "source_paths": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "taskSummary": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "title",
+        "summary",
+        "artifact_status",
+        "task_status",
+        "task_kind",
+        "priority",
+        "owner",
+        "doc_path",
+        "updated_at"
+      ],
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_status": {
+          "$ref": "#/$defs/artifactStatus"
+        },
+        "task_status": {
+          "$ref": "#/$defs/taskStatus"
+        },
+        "task_kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "$ref": "#/$defs/priority"
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "blocked_by": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "depends_on": {
+          "$ref": "#/$defs/taskIdList"
+        },
+        "related_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "applies_to": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "acceptanceContractSummary": {
+      "type": "object",
+      "required": [
+        "contract_id",
+        "title",
+        "artifact_status",
+        "source_prd_id",
+        "doc_path",
+        "acceptance_ids"
+      ],
+      "properties": {
+        "contract_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_status": {
+          "$ref": "#/$defs/artifactStatus"
+        },
+        "source_prd_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "doc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "required_validator_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "validation_targets": {
+          "$ref": "#/$defs/stringList"
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "validationEvidenceSummary": {
+      "type": "object",
+      "required": [
+        "evidence_id",
+        "title",
+        "artifact_status",
+        "overall_result",
+        "recorded_at",
+        "doc_path",
+        "check_ids"
+      ],
+      "properties": {
+        "evidence_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_status": {
+          "$ref": "#/$defs/artifactStatus"
+        },
+        "overall_result": {
+          "$ref": "#/$defs/evidenceResult"
+        },
+        "recorded_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "doc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "check_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "validator_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "planningEntry": {
+      "type": "object",
+      "required": [
+        "trace_id",
+        "title",
+        "summary",
+        "artifact_status",
+        "initiative_status",
+        "updated_at",
+        "coordination"
+      ],
+      "properties": {
+        "trace_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_status": {
+          "$ref": "#/$defs/artifactStatus"
+        },
+        "initiative_status": {
+          "$ref": "#/$defs/initiativeStatus"
+        },
+        "updated_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "coordination": {
+          "$ref": "#/$defs/coordinationSection"
+        },
+        "prds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/prdSummary"
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/decisionSummary"
+          }
+        },
+        "design_documents": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/designDocumentSummary"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/taskSummary"
+          }
+        },
+        "acceptance_contracts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/acceptanceContractSummary"
+          }
+        },
+        "validation_evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/validationEvidenceSummary"
+          }
+        },
+        "prd_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "decision_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "design_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "plan_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "task_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "requirement_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "acceptance_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "acceptance_contract_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "validator_ids": {
+          "$ref": "#/$defs/idList"
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "tags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "closed_at": {
+          "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "closure_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "superseded_by_trace_id": {
+          "$ref": "#/$defs/idPattern"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "const": "active"
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "closed_at"
+                  ]
+                },
+                {
+                  "required": [
+                    "closure_reason"
+                  ]
+                },
+                {
+                  "required": [
+                    "superseded_by_trace_id"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "enum": [
+                  "completed",
+                  "superseded",
+                  "cancelled",
+                  "abandoned"
+                ]
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "closed_at",
+              "closure_reason"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "initiative_status": {
+                "const": "superseded"
+              }
+            },
+            "required": [
+              "initiative_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "superseded_by_trace_id"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

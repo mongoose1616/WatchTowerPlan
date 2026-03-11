@@ -49,6 +49,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     command_index = loader.load_command_index()
     foundation_index = loader.load_foundation_index()
     initiative_index = loader.load_initiative_index()
+    planning_catalog = loader.load_planning_catalog()
     coordination_index = loader.load_coordination_index()
     reference_index = loader.load_reference_index()
     route_index = loader.load_route_index()
@@ -63,6 +64,7 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     assert command_index.artifact_id == "index.commands"
     assert foundation_index.artifact_id == "index.foundations"
     assert initiative_index.artifact_id == "index.initiatives"
+    assert planning_catalog.artifact_id == "index.planning_catalog"
     assert coordination_index.artifact_id == "index.coordination"
     assert reference_index.artifact_id == "index.references"
     assert route_index.artifact_id == "index.routes"
@@ -111,6 +113,7 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
         REPO_ROOT / "core/control_plane/indexes/design_documents",
         REPO_ROOT / "core/control_plane/indexes/foundations",
         REPO_ROOT / "core/control_plane/indexes/initiatives",
+        REPO_ROOT / "core/control_plane/indexes/planning",
         REPO_ROOT / "core/control_plane/indexes/prds",
         REPO_ROOT / "core/control_plane/indexes/references",
         REPO_ROOT / "core/control_plane/indexes/repository_paths",
@@ -164,6 +167,23 @@ def test_coordination_index_examples_validate_against_the_schema() -> None:
         REPO_ROOT
         / "core/control_plane/examples/invalid/indexes/"
         "coordination_index_missing_mode.v1.example.json"
+    )
+
+    store.validate_instance(valid_example)
+    with pytest.raises(ValidationError):
+        store.validate_instance(invalid_example)
+
+
+def test_planning_catalog_examples_validate_against_the_schema() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    valid_example = _load_json_object(
+        REPO_ROOT / "core/control_plane/examples/valid/indexes/planning_catalog.v1.example.json"
+    )
+    invalid_example = _load_json_object(
+        REPO_ROOT
+        / "core/control_plane/examples/invalid/indexes/"
+        "planning_catalog_missing_coordination.v1.example.json"
     )
 
     store.validate_instance(valid_example)

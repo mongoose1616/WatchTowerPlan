@@ -295,6 +295,40 @@
       ]
     },
     {
+      "standard_id": "std.data_contracts.planning_catalog",
+      "category": "data_contracts",
+      "title": "Planning Catalog Standard",
+      "summary": "This standard defines the role, structure, and boundary rules for the canonical machine-readable planning catalog stored under `core/control_plane/indexes/planning/`.",
+      "status": "active",
+      "doc_path": "docs/standards/data_contracts/planning_catalog_standard.md",
+      "updated_at": "2026-03-11T02:15:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "core/control_plane/indexes/planning/README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "core/control_plane/indexes/planning/README.md"
+      ],
+      "tags": [
+        "standard",
+        "data_contracts",
+        "planning_catalog"
+      ]
+    },
+    {
       "standard_id": "std.data_contracts.prd_index",
       "category": "data_contracts",
       "title": "PRD Index Standard",

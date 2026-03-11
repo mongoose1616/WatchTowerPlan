@@ -13,6 +13,7 @@
 | `core/control_plane/indexes/design_documents/` | Machine-readable indexes for tracking feature designs and implementation plans. |
 | `core/control_plane/indexes/foundations/` | Machine-readable indexes for governed foundation documents and their downstream citation or application use. |
 | `core/control_plane/indexes/initiatives/` | Machine-readable initiative indexes that project current phase, ownership, and next-step status across traced planning surfaces. |
+| `core/control_plane/indexes/planning/` | Canonical machine-readable planning catalogs that join trace-linked planning, task, acceptance, evidence, and per-trace coordination state. |
 | `core/control_plane/indexes/prds/` | Machine-readable indexes for PRDs and their traceability anchors. |
 | `core/control_plane/indexes/references/` | Machine-readable indexes for reference docs, their upstream authority, and local touchpoints. |
 | `core/control_plane/indexes/repository_paths/` | Generated repository path indexes for retrieval and navigation. |

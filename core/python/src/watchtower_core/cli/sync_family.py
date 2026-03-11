@@ -26,6 +26,7 @@ def register_sync_family(
         _run_sync_github_tasks,
         _run_sync_initiative_index,
         _run_sync_initiative_tracking,
+        _run_sync_planning_catalog,
         _run_sync_prd_index,
         _run_sync_prd_tracking,
         _run_sync_reference_index,
@@ -71,6 +72,7 @@ def register_sync_family(
             "uv run watchtower-core sync design-document-index",
             "uv run watchtower-core sync design-tracking",
             "uv run watchtower-core sync initiative-index",
+            "uv run watchtower-core sync planning-catalog",
             "uv run watchtower-core sync initiative-tracking",
             "uv run watchtower-core sync task-index",
             "uv run watchtower-core sync task-tracking",
@@ -217,6 +219,30 @@ def register_sync_family(
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     sync_coordination_parser.set_defaults(handler=_run_sync_coordination)
+
+    sync_planning_catalog_parser = sync_subparsers.add_parser(
+        "planning-catalog",
+        help="Rebuild the canonical planning catalog from trace-linked sources.",
+        description=dedent(
+            """
+            Rebuild the canonical planning catalog from traceability, initiative,
+            planning-document, task, acceptance-contract, and validation-evidence
+            sources.
+
+            By default this is a dry run. Add `--write` to update the canonical
+            artifact or `--output` to materialize the rebuilt document elsewhere.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core sync planning-catalog",
+            "uv run watchtower-core sync planning-catalog --write",
+            "uv run watchtower-core sync planning-catalog --output "
+            "/tmp/planning_catalog.v1.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    add_common_sync_arguments(sync_planning_catalog_parser)
+    sync_planning_catalog_parser.set_defaults(handler=_run_sync_planning_catalog)
 
     sync_reference_index_parser = sync_subparsers.add_parser(
         "reference-index",

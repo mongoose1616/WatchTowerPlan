@@ -23,7 +23,7 @@ uv run watchtower-core sync <sync_command> [args]
 ```
 
 ## Arguments and Options
-- `<sync_command>`: Choose the derived artifact or hosted-task sync you want to run, currently `all`, `coordination`, `command-index`, `foundation-index`, `reference-index`, `route-index`, `standard-index`, `workflow-index`, `prd-index`, `prd-tracking`, `decision-index`, `decision-tracking`, `design-document-index`, `design-tracking`, `initiative-index`, `initiative-tracking`, `task-index`, `task-tracking`, `github-tasks`, `traceability-index`, or `repository-paths`.
+- `<sync_command>`: Choose the derived artifact or hosted-task sync you want to run, currently `all`, `coordination`, `command-index`, `foundation-index`, `planning-catalog`, `reference-index`, `route-index`, `standard-index`, `workflow-index`, `prd-index`, `prd-tracking`, `decision-index`, `decision-tracking`, `design-document-index`, `design-tracking`, `initiative-index`, `initiative-tracking`, `task-index`, `task-tracking`, `github-tasks`, `traceability-index`, or `repository-paths`.
 - `-h`, `--help`: Show the command help text.
 - No group-level write flags exist; pass mutation or output flags to the selected leaf command.
 
@@ -51,6 +51,11 @@ uv run watchtower-core sync command-index
 ```sh
 cd core/python
 uv run watchtower-core sync foundation-index
+```
+
+```sh
+cd core/python
+uv run watchtower-core sync planning-catalog
 ```
 
 ```sh
@@ -151,7 +156,7 @@ uv run watchtower-core sync repository-paths --write
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints sync-specific help and exits successfully.
 - The command group explains the available sync surfaces without requiring engineers to inspect the implementation directly.
-- The current leaf commands are `all` for one-shot local rebuilds across all deterministic sync surfaces, `coordination` for the focused task-traceability-initiative-coordination rebuild slice plus the compact root coordination tracker, `command-index` for command-doc lookup rebuilds, `foundation-index` for the governed foundation intent corpus, `reference-index` for reference-corpus lookup rebuilds, `route-index` for routing-table lookup rebuilds, `standard-index` for standards and best-practice lookup rebuilds, `workflow-index` for workflow-module lookup rebuilds, `prd-index` and `prd-tracking` for PRD machine and human tracking refreshes, `decision-index` and `decision-tracking` for decision machine and human tracking refreshes, `design-document-index` and `design-tracking` for design machine and human tracking refreshes, `initiative-index` and `initiative-tracking` for the initiative-family coordination view, `task-index` for machine task lookup rebuilds, `task-tracking` for the human-readable task board, `github-tasks` for push-only local task sync to GitHub including bounded managed labels, `traceability-index` for joined planning and evidence rebuilds, and `repository-paths` for README inventory rebuilds.
+- The current leaf commands are `all` for one-shot local rebuilds across all deterministic sync surfaces, `coordination` for the focused task-traceability-initiative-planning-coordination rebuild slice plus the compact root coordination tracker, `command-index` for command-doc lookup rebuilds, `foundation-index` for the governed foundation intent corpus, `planning-catalog` for the canonical deep planning join, `reference-index` for reference-corpus lookup rebuilds, `route-index` for routing-table lookup rebuilds, `standard-index` for standards and best-practice lookup rebuilds, `workflow-index` for workflow-module lookup rebuilds, `prd-index` and `prd-tracking` for PRD machine and human tracking refreshes, `decision-index` and `decision-tracking` for decision machine and human tracking refreshes, `design-document-index` and `design-tracking` for design machine and human tracking refreshes, `initiative-index` and `initiative-tracking` for the initiative-family coordination view, `task-index` for machine task lookup rebuilds, `task-tracking` for the human-readable task board, `github-tasks` for push-only local task sync to GitHub including bounded managed labels, `traceability-index` for joined planning and evidence rebuilds, and `repository-paths` for README inventory rebuilds.
 - Individual leaf commands may be dry-run by default and should document their mutation flags explicitly.
 
 ## Related Commands
@@ -159,8 +164,9 @@ uv run watchtower-core sync repository-paths --write
 |---|---|
 | `watchtower-core sync command-index` | Rebuilds the command index from registry-backed CLI metadata while requiring companion command docs. |
 | `watchtower-core sync all` | Rebuilds all local deterministic indexes and trackers in dependency order. |
-| `watchtower-core sync coordination` | Rebuilds only the deterministic task, traceability, initiative, coordination-index, and compact coordination-tracker slice. |
+| `watchtower-core sync coordination` | Rebuilds only the deterministic task, traceability, initiative, planning-catalog, coordination-index, and compact coordination-tracker slice. |
 | `watchtower-core sync foundation-index` | Rebuilds the foundation index from governed foundation docs. |
+| `watchtower-core sync planning-catalog` | Rebuilds the canonical planning catalog from trace-linked planning, task, acceptance, and evidence sources. |
 | `watchtower-core sync reference-index` | Rebuilds the reference index from governed reference docs. |
 | `watchtower-core sync route-index` | Rebuilds the route index from the canonical routing table. |
 | `watchtower-core sync standard-index` | Rebuilds the standard index from governed standards docs. |
@@ -181,6 +187,7 @@ uv run watchtower-core sync repository-paths --write
 | `watchtower-core query commands` | Reads the command index that one of the current sync commands rebuilds. |
 | `watchtower-core query references` | Reads the reference index that one of the current sync commands rebuilds. |
 | `watchtower-core query tasks` | Reads the task index that one of the current sync commands rebuilds. |
+| `watchtower-core query planning` | Reads the planning catalog that one of the current sync commands rebuilds. |
 | `watchtower-core query trace` | Reads the traceability index that one of the current sync commands rebuilds. |
 | `watchtower-core query paths` | Reads the repository path index that the current sync command rebuilds. |
 | `watchtower-core` | Root command that dispatches to this command group. |
@@ -191,4 +198,4 @@ uv run watchtower-core sync repository-paths --write
 - `core/python/src/watchtower_core/repo_ops/sync/`
 
 ## Updated At
-- `2026-03-10T22:45:00Z`
+- `2026-03-11T02:15:00Z`

@@ -44,6 +44,17 @@ from watchtower_core.control_plane.models.planning import (
     WorkflowIndex,
     WorkflowIndexEntry,
 )
+from watchtower_core.control_plane.models.planning_catalog import (
+    PlanningAcceptanceContractSummary,
+    PlanningCatalog,
+    PlanningCatalogEntry,
+    PlanningCoordinationSection,
+    PlanningDecisionSummary,
+    PlanningDesignDocumentSummary,
+    PlanningPrdSummary,
+    PlanningTaskSummary,
+    PlanningValidationEvidenceSummary,
+)
 from watchtower_core.control_plane.models.validation import (
     AcceptanceContract,
     AcceptanceContractItem,
@@ -68,6 +79,15 @@ __all__ = [
     "InitiativeActiveTaskSummary",
     "InitiativeIndex",
     "InitiativeIndexEntry",
+    "PlanningAcceptanceContractSummary",
+    "PlanningCatalog",
+    "PlanningCatalogEntry",
+    "PlanningCoordinationSection",
+    "PlanningDecisionSummary",
+    "PlanningDesignDocumentSummary",
+    "PlanningPrdSummary",
+    "PlanningTaskSummary",
+    "PlanningValidationEvidenceSummary",
     "PrdIndex",
     "PrdIndexEntry",
     "ReferenceIndex",

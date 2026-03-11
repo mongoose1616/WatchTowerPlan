@@ -43,6 +43,10 @@ from watchtower_core.repo_ops.sync.initiative_index import (
     INITIATIVE_INDEX_ARTIFACT_PATH,
     InitiativeIndexSyncService,
 )
+from watchtower_core.repo_ops.sync.planning_catalog import (
+    PLANNING_CATALOG_ARTIFACT_PATH,
+    PlanningCatalogSyncService,
+)
 from watchtower_core.repo_ops.sync.initiative_tracking import (
     INITIATIVE_TRACKING_DOCUMENT_PATH,
     InitiativeTrackingSyncService,
@@ -187,6 +191,14 @@ SYNC_TARGET_SPECS: tuple[SyncTargetSpec, ...] = (
         artifact_kind="index",
         relative_output_path=INITIATIVE_INDEX_ARTIFACT_PATH,
         service_factory=InitiativeIndexSyncService,
+        groups=(COORDINATION_SYNC_GROUP,),
+    ),
+    SyncTargetSpec(
+        target="planning-catalog",
+        mode="document",
+        artifact_kind="index",
+        relative_output_path=PLANNING_CATALOG_ARTIFACT_PATH,
+        service_factory=PlanningCatalogSyncService,
         groups=(COORDINATION_SYNC_GROUP,),
     ),
     SyncTargetSpec(

@@ -5,6 +5,7 @@ from watchtower_core.cli.query_coordination_handlers import (
     _initiative_entry_payload,
     _run_query_coordination,
     _run_query_initiatives,
+    _run_query_planning,
     _run_query_tasks,
     _run_query_trace,
 )
@@ -37,6 +38,7 @@ __all__ = [
     "_run_query_evidence",
     "_run_query_foundations",
     "_run_query_initiatives",
+    "_run_query_planning",
     "_run_query_paths",
     "_run_query_prds",
     "_run_query_references",

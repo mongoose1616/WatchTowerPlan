@@ -9,6 +9,7 @@ from watchtower_core.cli.common import HelpFormatter, examples
 from watchtower_core.cli.query_coordination_handlers import (
     _run_query_coordination,
     _run_query_initiatives,
+    _run_query_planning,
     _run_query_tasks,
     _run_query_trace,
 )
@@ -169,6 +170,64 @@ def register_query_coordination_commands(
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     query_coordination_parser.set_defaults(handler=_run_query_coordination)
+
+    query_planning_parser = query_subparsers.add_parser(
+        "planning",
+        help="Search the canonical planning catalog.",
+        description=dedent(
+            """
+            Search the canonical planning catalog for deep trace-linked planning
+            context with explicit status semantics.
+
+            Use this after `coordination` identifies the active trace you want,
+            or when you need one machine-readable record that joins PRDs,
+            decisions, design docs, tasks, acceptance contracts, validation
+            evidence, and per-trace coordination state.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core query planning --trace-id trace.core_python_foundation",
+            "uv run watchtower-core query planning --initiative-status active --format json",
+            "uv run watchtower-core query planning --current-phase execution --owner repository_maintainer",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    query_planning_parser.add_argument(
+        "--query",
+        help=(
+            "Free-text query over planning-catalog fields such as trace ID, titles, "
+            "status fields, linked IDs, next action, and related paths."
+        ),
+    )
+    query_planning_parser.add_argument(
+        "--trace-id",
+        help="Exact trace filter such as trace.core_python_foundation.",
+    )
+    query_planning_parser.add_argument(
+        "--initiative-status",
+        help="Exact initiative-status filter such as active, completed, or superseded.",
+    )
+    query_planning_parser.add_argument(
+        "--current-phase",
+        help="Exact current-phase filter such as execution or closeout.",
+    )
+    query_planning_parser.add_argument(
+        "--owner",
+        help="Exact owner filter against the current active owners for the trace.",
+    )
+    query_planning_parser.add_argument(
+        "--limit",
+        type=int,
+        default=10,
+        help="Maximum number of results to return.",
+    )
+    query_planning_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    query_planning_parser.set_defaults(handler=_run_query_planning)
 
     query_initiatives_parser = query_subparsers.add_parser(
         "initiatives",

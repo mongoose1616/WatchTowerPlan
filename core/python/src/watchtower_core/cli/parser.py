@@ -31,6 +31,8 @@ def build_parser() -> argparse.ArgumentParser:
             "--summary \"Frames the example initiative.\" --format json",
             "uv run watchtower-core query commands --query doctor --format json",
             "uv run watchtower-core query coordination --format json",
+            "uv run watchtower-core query planning --trace-id trace.core_python_foundation "
+            "--format json",
             "uv run watchtower-core query foundations --query philosophy",
             "uv run watchtower-core query workflows --query validation",
             "uv run watchtower-core query references --query uv",
@@ -45,6 +47,7 @@ def build_parser() -> argparse.ArgumentParser:
             "uv run watchtower-core sync all",
             "uv run watchtower-core sync coordination",
             "uv run watchtower-core sync foundation-index",
+            "uv run watchtower-core sync planning-catalog",
             "uv run watchtower-core sync route-index",
             "uv run watchtower-core sync initiative-index",
             "uv run watchtower-core sync initiative-tracking",
