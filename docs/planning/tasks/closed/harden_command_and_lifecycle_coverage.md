@@ -6,11 +6,11 @@ summary: Add direct handler and service coverage for closeout, route, plan, task
   query, and lifecycle behavior that current CLI smoke tests do not cover deeply enough.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-10T23:36:31Z'
+updated_at: '2026-03-11T00:02:02Z'
 audience: shared
 authority: authoritative
 applies_to:

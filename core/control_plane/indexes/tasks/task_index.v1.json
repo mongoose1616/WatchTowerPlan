@@ -903,12 +903,12 @@
       "title": "Harden command and lifecycle coverage",
       "summary": "Add direct handler and service coverage for closeout, route, plan, task, query, and lifecycle behavior that current CLI smoke tests do not cover deeply enough.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/harden_command_and_lifecycle_coverage.md",
-      "updated_at": "2026-03-10T23:36:31Z",
+      "doc_path": "docs/planning/tasks/closed/harden_command_and_lifecycle_coverage.md",
+      "updated_at": "2026-03-11T00:02:02Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "depends_on": [
         "task.unit_test_hardening_and_rebalancing.bootstrap.001"
