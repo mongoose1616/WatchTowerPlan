@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "validation_evidence"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -98,6 +98,10 @@ This standard defines committed validation-evidence artifacts stored under `core
 - A schema-backed check can record the validator ID and the subject artifact path it validated.
 - A transient local smoke test output does not belong in this ledger unless it is being promoted to durable evidence.
 
+## Operationalization
+- `Modes`: `artifact`; `documentation`
+- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `docs/planning/prds/core_python_foundation.md`
+
 ## Validation
 - Validation-evidence artifacts should validate against their published schema.
 - `validator_id` values should exist in the validator registry when present.
@@ -118,4 +122,4 @@ This standard defines committed validation-evidence artifacts stored under `core
 - This family is intentionally narrower than a generic execution log. It should capture durable evidence only.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

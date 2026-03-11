@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_commit"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T04:28:34Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -165,6 +165,10 @@ workflow.
 }
 ```
 
+## Operationalization
+- `Modes`: `workflow`
+- `Operational Surfaces`: `workflows/modules/commit_closeout.md`; `docs/planning/tasks/task_tracking.md`
+
 ## Validation
 - One logical change per commit. Refactors, fixes, and docs should be separate when practical.
 - The subject line uses an allowed type, optional scope, imperative verb, 72 characters or fewer, and no trailing punctuation.
@@ -261,4 +265,4 @@ fi
 - The reference documents remain supporting context and should not override this standard.
 
 ## Updated At
-- `2026-03-10T04:28:34Z`
+- `2026-03-11T06:00:00Z`

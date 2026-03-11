@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "prd_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:11:26Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -87,6 +87,10 @@ Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boile
 | PRD tracker | `docs/planning/prds/prd_tracking.md` | Human-readable tracker for the current PRD corpus. |
 | PRD directory README | `docs/planning/prds/README.md` | Directory orientation and inventory only. |
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`
+- `Operational Surfaces`: `workflows/modules/prd_generation.md`; `docs/templates/prd_template.md`; `docs/planning/prds/`; `docs/planning/prds/README.md`
+
 ## Validation
 - The PRD should make the problem, scope, and intended outcomes understandable without verbal backfill.
 - The PRD should distinguish product requirements from implementation choices.
@@ -116,4 +120,4 @@ Keep PRDs reviewable, scoped, and decision-ready without forcing low-value boile
 - If implementation structure becomes the dominant content, the material should move into a feature design or implementation plan.
 
 ## Updated At
-- `2026-03-10T16:11:26Z`
+- `2026-03-11T06:00:00Z`

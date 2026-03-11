@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "github"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T04:28:34Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -97,6 +97,10 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 4. If GitHub task sync is in use, let the repo-local task record push the mirrored issue and project metadata outward.
 5. Keep repo-local status and GitHub-hosted state aligned instead of letting them drift independently.
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`; `sync`
+- `Operational Surfaces`: `.github/`; `docs/planning/tasks/`; `core/python/src/watchtower_core/sync/github_tasks.py`; `.github/README.md`
+
 ## Validation
 - GitHub issue forms should ask for enough information to create or link the corresponding repo-local artifact.
 - Pull requests should not merge without a clear `trace_id` and a summarized validation record when the change is non-trivial.
@@ -115,4 +119,4 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - [README.md](/home/j/WatchTowerPlan/.github/README.md)
 
 ## Updated At
-- `2026-03-10T04:28:34Z`
+- `2026-03-11T06:00:00Z`

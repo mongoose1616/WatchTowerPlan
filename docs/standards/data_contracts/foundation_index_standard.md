@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "foundation_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T05:00:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -84,6 +84,10 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
 
+## Operationalization
+- `Modes`: `schema`; `artifact`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`
+
 ## Validation
 - The foundation index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `docs/foundations/`.
@@ -103,4 +107,4 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-10T05:00:00Z`
+- `2026-03-11T06:00:00Z`

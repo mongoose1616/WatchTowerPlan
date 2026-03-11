@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T03:10:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -132,6 +132,10 @@ This standard defines the repository's baseline traceability model so product in
 - A feature design without a linked implementation plan is acceptable when planning has not started yet, but the absence should remain explicit rather than implied.
 - A validation-evidence artifact should link to the acceptance items and validators it covers rather than forcing later readers to reconstruct the relationship manually.
 
+## Operationalization
+- `Modes`: `documentation`; `sync`; `query`; `workflow`
+- `Operational Surfaces`: `docs/planning/coordination_tracking.md`; `core/python/src/watchtower_core/repo_ops/sync/traceability.py`; `core/python/src/watchtower_core/repo_ops/query/traceability.py`; `workflows/modules/traceability_reconciliation.md`
+
 ## Validation
 - Durable planning and trace artifacts should have stable IDs where this standard expects them.
 - Human trackers and machine indexes should agree on the set of current PRDs, decisions, designs, plans, contracts, and evidence artifacts they claim to cover.
@@ -151,4 +155,4 @@ This standard defines the repository's baseline traceability model so product in
 - [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
 
 ## Updated At
-- `2026-03-11T03:10:00Z`
+- `2026-03-11T06:00:00Z`

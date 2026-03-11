@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "foundation_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T05:00:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -64,6 +64,10 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 | `References` | Required | Record internal companion docs and any material external authority. |
 | `Updated At` | Required | Record the last meaningful content update as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`. |
 
+## Operationalization
+- `Modes`: `documentation`; `sync`; `query`
+- `Operational Surfaces`: `docs/foundations/`; `docs/templates/foundation_document_template.md`; `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`
+
 ## Validation
 - Foundation-doc front matter should validate against `foundation_front_matter.v1.schema.json`.
 - Foundation docs should publish `References` and `Updated At`.
@@ -80,4 +84,4 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
 
 ## Updated At
-- `2026-03-10T05:00:00Z`
+- `2026-03-11T06:00:00Z`

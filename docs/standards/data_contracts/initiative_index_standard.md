@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "initiative_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T19:06:55Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -105,6 +105,10 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short coordination notes carried forward from source surfaces. |
 
+## Operationalization
+- `Modes`: `schema`; `artifact`; `documentation`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/initiatives/`; `core/control_plane/indexes/initiatives/README.md`; `docs/planning/initiatives/initiative_tracking.md`
+
 ## Validation
 - The initiative index should validate against its published artifact schema.
 - Every initiative entry should correspond to one current traceability entry.
@@ -127,4 +131,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md)
 
 ## Updated At
-- `2026-03-10T19:06:55Z`
+- `2026-03-11T06:00:00Z`

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "traceability_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -111,6 +111,10 @@ This standard defines the unified machine-readable traceability index stored und
 - A future trace with no decision record can omit `decision_ids` while still joining PRD, design, plan, and evidence artifacts.
 - A generic folder README does not belong in the traceability index unless it is a high-signal related path for a traced initiative.
 
+## Operationalization
+- `Modes`: `artifact`
+- `Operational Surfaces`: `core/control_plane/indexes/traceability/`; `core/control_plane/indexes/traceability/README.md`
+
 ## Validation
 - The traceability index should validate against its published artifact schema.
 - Linked IDs should exist in the relevant family-specific indexes or artifacts.
@@ -131,4 +135,4 @@ This standard defines the unified machine-readable traceability index stored und
 - This index is the machine-readable join surface, not the sole authoritative source of the linked artifacts themselves.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

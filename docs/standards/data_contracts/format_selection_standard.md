@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "format_selection"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -98,6 +98,10 @@ Keep format choices small, predictable, and aligned with the repository's author
 - A future append-only validation-event log could use NDJSON if it is truly line-oriented and not canonical control-plane authority.
 - A future local retrieval index may justify SQLite if file-based indexes become too limited.
 
+## Operationalization
+- `Modes`: `artifact`; `workflow`; `documentation`
+- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/policies/`; `workflows/`; `docs/`
+
 ## Validation
 - Reviewers should challenge format choices that add complexity without a concrete benefit.
 - Governed machine-readable artifacts should default to JSON unless an explicit exception is justified.
@@ -126,4 +130,4 @@ Keep format choices small, predictable, and aligned with the repository's author
 - The goal is not to ban every alternative format. The goal is to make deviations from the defaults explicit and justified.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

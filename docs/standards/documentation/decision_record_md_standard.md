@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "decision_record_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:11:26Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -92,6 +92,10 @@ Keep decision records consistent enough that rationale, status, affected surface
 3. Update the decision tracker and the machine-readable decision index in the same change set.
 4. Propagate accepted decisions into canonical repository artifacts so the decision record does not become the only active policy surface.
 
+## Operationalization
+- `Modes`: `documentation`
+- `Operational Surfaces`: `docs/templates/decision_record_template.md`; `docs/planning/decisions/`; `docs/planning/decisions/README.md`; `docs/planning/decisions/decision_tracking.md`
+
 ## Validation
 - Decision records should contain the required sections in the documented order.
 - The decision boundary and current status should be easy to identify without reading the full document.
@@ -109,4 +113,4 @@ Keep decision records consistent enough that rationale, status, affected surface
 - [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md)
 
 ## Updated At
-- `2026-03-10T16:11:26Z`
+- `2026-03-11T06:00:00Z`

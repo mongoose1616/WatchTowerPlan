@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "feature_design_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:11:26Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -101,6 +101,10 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - `docs/planning/design/features/schema_resolution_and_index_search.md` is a feature design because it compares options and recommends an architecture before implementation work is broken down.
 - A commit checklist for one change set does not belong here; it belongs in an implementation plan, workflow, or task tracking surface.
 
+## Operationalization
+- `Modes`: `documentation`
+- `Operational Surfaces`: `docs/templates/feature_design_template.md`; `docs/planning/design/features/`; `docs/planning/design/features/README.md`; `docs/planning/design/features/core_python_workspace_and_harness.md`
+
 ## Validation
 - Feature designs should contain the required sections in the documented order.
 - Feature-design front matter should validate against `feature_design_front_matter.v1.schema.json`.
@@ -124,4 +128,4 @@ Keep feature designs consistent enough to review, compare, and hand off into imp
 - A good feature design reduces rework in implementation planning by making tradeoffs and guardrails explicit.
 
 ## Updated At
-- `2026-03-10T16:11:26Z`
+- `2026-03-11T06:00:00Z`

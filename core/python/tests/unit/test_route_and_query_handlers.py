@@ -141,7 +141,7 @@ def test_route_preview_prints_no_match_guidance(monkeypatch, capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "No route matched the request text exactly." in captured.out
+    assert "No route matched the request text strongly enough." in captured.out
 
 
 def test_route_preview_supports_human_route_output(monkeypatch, capsys) -> None:

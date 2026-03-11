@@ -47,8 +47,9 @@ uv run watchtower-core sync standard-index --output /tmp/standard_index.v1.json 
 
 ## Behavior and Outputs
 - The command reads the governed standards under `docs/standards/` and rebuilds the machine-readable standard index deterministically.
-- The rebuild validates standard front matter, enforces the required source sections, and captures whether each standard uses internal references, local governed reference docs, or transitive external authority.
+- The rebuild validates standard front matter, enforces the required source sections, and captures whether each standard uses internal references, local governed reference docs, transitive external authority, and authored operationalization metadata.
 - Standards that cite raw external URLs without also citing a governed local reference doc under `docs/references/` are rejected during rebuild.
+- Standards that omit the required `Operationalization` metadata bullets or point them at invalid repository paths are rejected during rebuild.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many standard entries were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.
@@ -68,4 +69,4 @@ uv run watchtower-core sync standard-index --output /tmp/standard_index.v1.json 
 - `core/control_plane/indexes/standards/standard_index.v1.json`
 
 ## Updated At
-- `2026-03-09T18:46:06Z`
+- `2026-03-11T05:35:00Z`

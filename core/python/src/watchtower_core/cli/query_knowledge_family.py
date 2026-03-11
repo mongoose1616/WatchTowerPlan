@@ -240,6 +240,7 @@ def register_query_knowledge_commands(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query standards --category governance",
+            "uv run watchtower-core query standards --operationalization-mode validation",
             "uv run watchtower-core query standards --reference-path "
             "docs/references/github_collaboration_reference.md --format json",
         ),
@@ -260,7 +261,15 @@ def register_query_knowledge_commands(
         "--category",
         help="Exact top-level standards category such as governance or engineering.",
     )
+    query_standards_parser.add_argument(
+        "--owner",
+        help="Exact owner filter such as repository_maintainer.",
+    )
     query_standards_parser.add_argument("--tag", help="Exact tag filter.")
+    query_standards_parser.add_argument(
+        "--applies-to",
+        help="Exact front-matter applies_to filter such as core/python/ or docs/standards/.",
+    )
     query_standards_parser.add_argument(
         "--related-path",
         help="Exact repository-path filter such as .github/ or core/python/.",
@@ -270,6 +279,17 @@ def register_query_knowledge_commands(
         help=(
             "Exact governed reference-doc filter such as "
             "docs/references/github_collaboration_reference.md."
+        ),
+    )
+    query_standards_parser.add_argument(
+        "--operationalization-mode",
+        help="Exact operationalization-mode filter such as validation, query, or workflow.",
+    )
+    query_standards_parser.add_argument(
+        "--operationalization-path",
+        help=(
+            "Exact repository-path filter for one operationalizing surface such as "
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py."
         ),
     )
     query_standards_parser.add_argument(

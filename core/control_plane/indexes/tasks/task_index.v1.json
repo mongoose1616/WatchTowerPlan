@@ -976,6 +976,105 @@
       ]
     },
     {
+      "task_id": "task.standard_runtime_and_route_explicitness.bootstrap.001",
+      "title": "Bootstrap Standard, Runtime, and Route Explicitness Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Standard, Runtime, and Route Explicitness Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/standard_runtime_and_route_explicitness_hardening_bootstrap.md",
+      "updated_at": "2026-03-11T04:16:28Z",
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "related_ids": [
+        "prd.standard_runtime_and_route_explicitness",
+        "design.features.standard_runtime_and_route_explicitness",
+        "design.implementation.standard_runtime_and_route_explicitness",
+        "decision.standard_runtime_and_route_explicitness_direction"
+      ],
+      "applies_to": [
+        "docs/standards/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "workflows/ROUTING_TABLE.md"
+      ]
+    },
+    {
+      "task_id": "task.standard_runtime_and_route_explicitness.route_preview_hardening.001",
+      "title": "Harden advisory route preview matching",
+      "summary": "Make route preview resilient to realistic free-form maintenance requests without changing its advisory authority model.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/harden_advisory_route_preview_matching.md",
+      "updated_at": "2026-03-11T04:46:44Z",
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "related_ids": [
+        "prd.standard_runtime_and_route_explicitness",
+        "design.features.standard_runtime_and_route_explicitness",
+        "design.implementation.standard_runtime_and_route_explicitness",
+        "decision.standard_runtime_and_route_explicitness_direction"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/python/tests/unit/test_route_index_sync.py"
+      ]
+    },
+    {
+      "task_id": "task.standard_runtime_and_route_explicitness.runtime_package_docs.001",
+      "title": "Document runtime package boundaries",
+      "summary": "Add package-level runtime README surfaces and workspace navigation that classify major watchtower_core packages.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/document_runtime_package_boundaries.md",
+      "updated_at": "2026-03-11T04:46:44Z",
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "related_ids": [
+        "prd.standard_runtime_and_route_explicitness",
+        "design.features.standard_runtime_and_route_explicitness",
+        "design.implementation.standard_runtime_and_route_explicitness",
+        "decision.standard_runtime_and_route_explicitness_direction"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/",
+        "core/python/README.md"
+      ]
+    },
+    {
+      "task_id": "task.standard_runtime_and_route_explicitness.standard_operationalization.001",
+      "title": "Add standard operationalization metadata",
+      "summary": "Make standard operationalization authored, indexed, queryable, and validated across the full standards corpus.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/add_standard_operationalization_metadata.md",
+      "updated_at": "2026-03-11T06:26:00Z",
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "related_ids": [
+        "prd.standard_runtime_and_route_explicitness",
+        "design.features.standard_runtime_and_route_explicitness",
+        "design.implementation.standard_runtime_and_route_explicitness",
+        "decision.standard_runtime_and_route_explicitness_direction"
+      ],
+      "applies_to": [
+        "docs/standards/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/schemas/artifacts/standard_index.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py"
+      ]
+    },
+    {
       "task_id": "task.template_and_output_efficiency.bootstrap.001",
       "title": "Bootstrap the template and output efficiency initiative",
       "summary": "Create the traced planning chain, acceptance baseline, and bounded task set for compact template and tracker work.",

@@ -10,10 +10,20 @@
       "title": "Acceptance Contract Standard",
       "summary": "This standard defines machine-readable acceptance contracts stored under `core/control_plane/contracts/acceptance/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/acceptance_contract_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/README.md",
+        "docs/planning/prds/core_python_foundation.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -43,10 +53,20 @@
       "title": "Authority Map Standard",
       "summary": "This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/authority_map/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/authority_map_standard.md",
-      "updated_at": "2026-03-11T03:10:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "schema",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/registries/authority_map/",
+        "core/control_plane/registries/authority_map/README.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_catalog_standard.md",
         "docs/standards/data_contracts/coordination_index_standard.md",
@@ -75,10 +95,22 @@
       "title": "Command Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable command indexes stored under `core/control_plane/indexes/commands/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/command_index_standard.md",
-      "updated_at": "2026-03-10T05:14:33Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "schema",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/commands/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/commands/README.md",
+        "docs/commands/"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/command_md_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
@@ -105,10 +137,20 @@
       "title": "Coordination Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable coordination indexes stored under `core/control_plane/indexes/coordination/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/coordination_index_standard.md",
-      "updated_at": "2026-03-10T19:29:01Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "schema",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/coordination/",
+        "core/control_plane/indexes/coordination/README.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
@@ -141,10 +183,22 @@
       "title": "Decision Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable decision indexes stored under `core/control_plane/indexes/decisions/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/decision_index_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "schema",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/decisions/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/decisions/README.md",
+        "docs/planning/decisions/"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/governance/decision_capture_standard.md",
@@ -173,10 +227,22 @@
       "title": "Design Document Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable design-document indexes stored under `core/control_plane/indexes/design_documents/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/design_document_index_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "schema",
+        "artifact",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/design_documents/",
+        "core/control_plane/indexes/design_documents/README.md",
+        "docs/planning/design/"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
@@ -207,10 +273,22 @@
       "title": "Format Selection Standard",
       "summary": "This standard defines how the repository chooses data and document formats for governed artifacts.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/format_selection_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "artifact",
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/",
+        "core/control_plane/policies/",
+        "workflows/",
+        "docs/"
+      ],
       "reference_doc_paths": [
         "docs/references/rfc_8259_json_reference.md",
         "docs/references/yaml_1_2_2_reference.md",
@@ -266,10 +344,19 @@
       "title": "Foundation Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable foundation indexes stored under `core/control_plane/indexes/foundations/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/foundation_index_standard.md",
-      "updated_at": "2026-03-10T05:00:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "schema",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/foundations/"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/data_contracts/reference_index_standard.md",
@@ -294,10 +381,22 @@
       "title": "Initiative Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable initiative indexes stored under `core/control_plane/indexes/initiatives/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/initiative_index_standard.md",
-      "updated_at": "2026-03-10T19:06:55Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "schema",
+        "artifact",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/initiatives/",
+        "core/control_plane/indexes/initiatives/README.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -332,10 +431,20 @@
       "title": "Planning Catalog Standard",
       "summary": "This standard defines the role, structure, and boundary rules for the canonical machine-readable planning catalog stored under `core/control_plane/indexes/planning/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/planning_catalog_standard.md",
-      "updated_at": "2026-03-11T02:15:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "schema"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/planning/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/planning/README.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
@@ -366,10 +475,22 @@
       "title": "PRD Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable PRD indexes stored under `core/control_plane/indexes/prds/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/prd_index_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "schema",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/prds/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/prds/README.md",
+        "docs/planning/prds/"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -398,10 +519,20 @@
       "title": "Reference Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable reference indexes stored under `core/control_plane/indexes/references/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/reference_index_standard.md",
-      "updated_at": "2026-03-10T00:55:31Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "schema",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/indexes/references/README.md"
+      ],
       "reference_doc_paths": [
         "docs/references/README.md"
       ],
@@ -433,10 +564,21 @@
       "title": "Repository Path Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for generated repository path indexes stored under `core/control_plane/indexes/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/repository_path_index_standard.md",
-      "updated_at": "2026-03-10T06:39:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "schema"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/README.md",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/indexes/repository_paths/"
+      ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/format_selection_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
@@ -463,10 +605,22 @@
       "title": "Route Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable route indexes stored under `core/control_plane/indexes/routes/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/route_index_standard.md",
-      "updated_at": "2026-03-10T22:45:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "schema",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/routes/",
+        "core/control_plane/schemas/artifacts/",
+        "workflows/modules/",
+        "workflows/ROUTING_TABLE.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/standards/data_contracts/workflow_index_standard.md",
@@ -491,10 +645,21 @@
       "title": "Schema Catalog Standard",
       "summary": "This standard defines the role, structure, and boundary rules for the authored schema catalog registry stored under `core/control_plane/registries/schema_catalog/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/schema_catalog_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "schema",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/",
+        "core/control_plane/schemas/common/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/registries/schema_catalog/"
+      ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/data_contracts/format_selection_standard.md",
@@ -525,10 +690,21 @@
       "title": "Schema Standard",
       "summary": "This standard defines how governed structured data is modeled with JSON Schema in this repository and how those schemas are organized under `core/control_plane/schemas/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/schema_standard.md",
-      "updated_at": "2026-03-10T21:55:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "artifact",
+        "schema"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/",
+        "core/control_plane/schemas/",
+        "core/control_plane/README.md",
+        "core/control_plane/examples/"
+      ],
       "reference_doc_paths": [
         "docs/references/json_schema_2020_12_reference.md",
         "docs/references/check_jsonschema_reference.md",
@@ -580,10 +756,23 @@
       "title": "Standard Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable standard indexes stored under `core/control_plane/indexes/standards/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/standard_index_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "sync",
+        "query",
+        "artifact",
+        "schema"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/control_plane/indexes/standards/",
+        "core/control_plane/schemas/artifacts/"
+      ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
@@ -612,10 +801,21 @@
       "title": "Status Tracking Standard",
       "summary": "This standard defines the lifecycle status vocabulary for governed repository artifacts.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/status_tracking_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json"
+      ],
       "internal_reference_paths": [
         "docs/foundations/repository_standards_posture.md",
         "docs/standards/metadata/front_matter_standard.md",
@@ -638,10 +838,24 @@
       "title": "Task Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable task indexes stored under core/control_plane/indexes/tasks/.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/task_index_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/tasks/",
+        "core/control_plane/indexes/tasks/README.md",
+        "docs/planning/tasks/"
+      ],
+      "applies_to": [
+        "core/control_plane/indexes/tasks/task_index.v1.json"
+      ],
       "related_paths": [
         "core/control_plane/indexes/tasks/task_index.v1.json"
       ],
@@ -673,10 +887,18 @@
       "title": "Traceability Index Standard",
       "summary": "This standard defines the unified machine-readable traceability index stored under `core/control_plane/indexes/traceability/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/traceability_index_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/traceability/",
+        "core/control_plane/indexes/traceability/README.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/prd_index_standard.md",
@@ -711,10 +933,20 @@
       "title": "Validation Evidence Standard",
       "summary": "This standard defines committed validation-evidence artifacts stored under `core/control_plane/ledgers/validation_evidence/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/validation_evidence_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/README.md",
+        "docs/planning/prds/core_python_foundation.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
@@ -746,10 +978,22 @@
       "title": "Workflow Index Standard",
       "summary": "This standard defines the role, structure, and boundary rules for machine-readable workflow indexes stored under `core/control_plane/indexes/workflows/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/workflow_index_standard.md",
-      "updated_at": "2026-03-10T22:45:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "artifact",
+        "schema",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/indexes/workflows/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/registries/workflows/",
+        "workflows/modules/"
+      ],
       "reference_doc_paths": [
         "docs/references/agent_workflow_authoring_reference.md"
       ],
@@ -795,10 +1039,20 @@
       "title": "AGENTS.md Standard",
       "summary": "This standard defines the role, scope, structure, and authoring rules for `AGENTS.md` files used at the repository root and within nested directory subtrees.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/agents_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "AGENTS.md",
+        "docs/AGENTS.md",
+        "core/python/AGENTS.md",
+        "docs/templates/agent_template.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/readme_md_standard.md",
         "docs/standards/documentation/routing_table_md_standard.md",
@@ -823,10 +1077,22 @@
       "title": "Command Document Standard",
       "summary": "This standard defines how repository-native command reference documents are written under `docs/commands/` so humans can discover available commands, scan usage quickly, and route from a command index to durable command pages.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/command_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact",
+        "runtime"
+      ],
+      "operationalization_paths": [
+        "docs/commands/",
+        "docs/templates/command_reference_template.md",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/src/watchtower_core/cli/"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/readme_md_standard.md",
         "docs/standards/data_contracts/command_index_standard.md",
@@ -855,10 +1121,19 @@
       "title": "Compact Document Authoring Standard",
       "summary": "This standard defines the repository rule that authored human-readable documents should default to the smallest useful shape that still preserves reviewability and machine-readable authority.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/compact_document_authoring_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "docs/templates/",
+        "docs/templates/README.md",
+        "docs/planning/"
+      ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/workflows/workflow_design_standard.md",
@@ -889,10 +1164,20 @@
       "title": "Decision Record Document Standard",
       "summary": "This standard defines the structure, placement, and document-shape rules for durable decision records stored under `docs/planning/decisions/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/decision_record_md_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "docs/templates/decision_record_template.md",
+        "docs/planning/decisions/",
+        "docs/planning/decisions/README.md",
+        "docs/planning/decisions/decision_tracking.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/governance/decision_capture_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -921,10 +1206,22 @@
       "title": "Documentation Semantics Standard",
       "summary": "This standard defines the cross-family semantic guardrails enforced for governed Markdown documents and workflow modules.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/documentation_semantics_standard.md",
-      "updated_at": "2026-03-10T20:33:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "validation",
+        "documentation",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "docs/commands/core_python/watchtower_core_validate_document_semantics.md",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "core/control_plane/registries/validators/validator_registry.v1.json"
+      ],
       "reference_doc_paths": [
         "docs/references/commonmark_reference.md"
       ],
@@ -960,10 +1257,20 @@
       "title": "Feature Design Document Standard",
       "summary": "This standard defines the structure, placement, and boundary rules for feature-level technical design documents stored under `docs/planning/design/features/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/feature_design_md_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "docs/templates/feature_design_template.md",
+        "docs/planning/design/features/",
+        "docs/planning/design/features/README.md",
+        "docs/planning/design/features/core_python_workspace_and_harness.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
@@ -992,10 +1299,22 @@
       "title": "Foundation Document Standard",
       "summary": "This standard defines the minimum governed shape for foundation documents stored under `docs/foundations/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/foundation_md_standard.md",
-      "updated_at": "2026-03-10T05:00:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "sync",
+        "query"
+      ],
+      "operationalization_paths": [
+        "docs/foundations/",
+        "docs/templates/foundation_document_template.md",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py"
+      ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/documentation/reference_md_standard.md",
@@ -1021,10 +1340,20 @@
       "title": "Implementation Plan Document Standard",
       "summary": "This standard defines the structure, placement, and boundary rules for implementation-plan documents stored under `docs/planning/design/implementation/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/implementation_plan_md_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "docs/templates/implementation_plan_template.md",
+        "docs/planning/design/implementation/",
+        "docs/planning/design/implementation/README.md",
+        "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
@@ -1053,10 +1382,21 @@
       "title": "PRD Document Standard",
       "summary": "This standard defines the role, structure, placement, and quality expectations for product requirements documents (PRDs) in this repository.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/prd_md_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/prd_generation.md",
+        "docs/templates/prd_template.md",
+        "docs/planning/prds/",
+        "docs/planning/prds/README.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/prd_index_standard.md",
@@ -1091,10 +1431,20 @@
       "title": "README.md Standard",
       "summary": "This standard defines the role, structure, and boundary rules for `README.md` files used as directory-level orientation documents in this repository.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/readme_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "README.md",
+        "docs/README.md",
+        "core/python/README.md",
+        "docs/templates/readme_template.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/agents_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
@@ -1117,10 +1467,20 @@
       "title": "Reference Document Standard",
       "summary": "This standard defines the role, structure, and quality expectations for reference documents, especially external reference documents under `docs/references/**`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/reference_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/documentation_generation.md",
+        "docs/templates/reference_template.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/data_contracts/reference_index_standard.md",
@@ -1147,10 +1507,19 @@
       "title": "ROUTING_TABLE.md Standard",
       "summary": "This standard defines the structure and expected content of `ROUTING_TABLE.md` as the canonical task-to-workflow routing surface for the repository.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/routing_table_md_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "docs/templates/routing_table_template.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/agents_md_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
@@ -1173,10 +1542,22 @@
       "title": "Standard Document Standard",
       "summary": "This standard defines the expected document shape for governed standard and best-practice documents stored under `docs/standards/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-10T20:33:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "validation",
+        "sync",
+        "query"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
@@ -1204,10 +1585,24 @@
       "title": "Task Document Standard",
       "summary": "This standard defines the role, structure, placement, and quality expectations for local-first task records under docs/planning/tasks/.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/task_md_standard.md",
-      "updated_at": "2026-03-10T16:11:26Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/closed/",
+        "docs/templates/task_template.md",
+        "docs/planning/tasks/"
+      ],
+      "applies_to": [
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/closed/"
+      ],
       "related_paths": [
         "docs/planning/tasks/open/",
         "docs/planning/tasks/closed/"
@@ -1242,10 +1637,21 @@
       "title": "Workflow Markdown Standard",
       "summary": "This standard defines the document-level structure and boundary rules for workflow Markdown files in this repository.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/workflow_md_standard.md",
-      "updated_at": "2026-03-10T20:33:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/",
+        "workflows/modules/core.md",
+        "workflows/ROUTING_TABLE.md",
+        "docs/templates/workflow_template.md"
+      ],
       "reference_doc_paths": [
         "docs/references/agent_workflow_authoring_reference.md"
       ],
@@ -1294,10 +1700,25 @@
       "title": "CLI Help Text Standard",
       "summary": "This standard defines the minimum detail, structure, and example quality for repository CLI help text so new engineers, operators, and agents can discover commands without reading implementation code first.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/cli_help_text_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "runtime"
+      ],
+      "operationalization_paths": [
+        "docs/commands",
+        "core/python/src/watchtower_core/cli",
+        "docs/commands/",
+        "docs/commands/core_python/watchtower_core.md"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli",
+        "docs/commands"
+      ],
       "related_paths": [
         "core/python/src/watchtower_core/cli",
         "docs/commands"
@@ -1329,10 +1750,22 @@
       "title": "Engineering Best Practices Standard",
       "summary": "This standard defines repository-specific engineering best practices for implementation, validation, and synchronized updates across human-readable and machine-readable surfaces.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/engineering_best_practices_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "workflows/modules/core.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/engineering/git_commit_standard.md",
@@ -1363,10 +1796,18 @@
       "title": "Git Commit Standard",
       "summary": "This standard defines the repository commit-message policy for human maintainers and assistant contributors. It combines Conventional Commits v1.0.0 with local commit-writing guidance so history remains human-auditable and machine-parseable.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/git_commit_standard.md",
-      "updated_at": "2026-03-10T04:28:34Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/commit_closeout.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
       "reference_doc_paths": [
         "docs/references/git_commit_message_guidance_reference.md",
         "docs/references/conventional_commits_reference.md",
@@ -1411,10 +1852,25 @@
       "title": "Git Workflow Standard",
       "summary": "This standard defines repository-standard local git workflow behavior, including branch naming, branch lifecycle, and local sync expectations for human and assistant contributors.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/git_workflow_standard.md",
-      "updated_at": "2026-03-10T04:28:34Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/commit_closeout.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "applies_to": [
+        "docs/standards/engineering/git_commit_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "workflows/modules/commit_closeout.md"
+      ],
       "related_paths": [
         "docs/standards/engineering/git_commit_standard.md",
         "docs/standards/governance/github_collaboration_standard.md",
@@ -1446,10 +1902,23 @@
       "title": "Python Workspace Standard",
       "summary": "This standard defines how Python code, tooling, environments, and tests are organized for the core helper and harness layer under `core/python/`.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "sync",
+        "query",
+        "artifact",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/query/",
+        "core/control_plane/",
+        "core/README.md"
+      ],
       "reference_doc_paths": [
         "docs/references/src_layout_reference.md",
         "docs/references/pyproject_toml_reference.md",
@@ -1536,10 +2005,27 @@
       "title": "Acceptance and Evidence Reconciliation Standard",
       "summary": "This standard defines how PRD acceptance IDs, acceptance contracts, validation evidence, validator references, and traceability should reconcile for one traced initiative.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/acceptance_evidence_reconciliation_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "docs/planning/prds/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "applies_to": [
+        "docs/planning/prds/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
       "related_paths": [
         "docs/planning/prds/",
         "core/control_plane/contracts/acceptance/",
@@ -1573,10 +2059,22 @@
       "title": "Coordination Tracking Standard",
       "summary": "This standard defines the repository's compact human coordination tracker so humans can start from one derived current-state view without replacing family-specific planning artifacts.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/coordination_tracking_standard.md",
-      "updated_at": "2026-03-11T03:10:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "applies_to": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/README.md"
+      ],
       "related_paths": [
         "docs/planning/coordination_tracking.md",
         "docs/planning/README.md"
@@ -1607,10 +2105,21 @@
       "title": "Decision Capture Standard",
       "summary": "This standard defines how durable repository decisions should be recorded so rationale, tradeoffs, status, and downstream impacts remain clear over time.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/decision_capture_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/decision_capture.md",
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/documentation_generation.md",
+        "docs/planning/decisions/"
+      ],
       "reference_doc_paths": [
         "docs/references/adr_guidance_reference.md"
       ],
@@ -1652,10 +2161,27 @@
       "title": "GitHub Collaboration Standard",
       "summary": "This standard defines how GitHub issue forms, pull requests, labels, and project fields complement the repo-local planning and task model.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/github_collaboration_standard.md",
-      "updated_at": "2026-03-10T04:28:34Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "workflow",
+        "documentation",
+        "sync"
+      ],
+      "operationalization_paths": [
+        ".github/",
+        "docs/planning/tasks/",
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        ".github/README.md"
+      ],
+      "applies_to": [
+        ".github/",
+        "docs/planning/tasks/",
+        "core/python/src/watchtower_core/sync/github_tasks.py"
+      ],
       "related_paths": [
         ".github/",
         "docs/planning/tasks/",
@@ -1707,10 +2233,24 @@
       "title": "GitHub Task Sync Standard",
       "summary": "This standard defines the repository's first GitHub task sync contract for pushing local task records to GitHub issues and optional project items without making GitHub the source of truth.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/github_task_sync_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "documentation",
+        "sync"
+      ],
+      "operationalization_paths": [
+        "docs/planning/tasks/",
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "docs/planning/design/features/local_task_tracking_and_github_sync.md"
+      ],
+      "applies_to": [
+        "docs/planning/tasks/",
+        "core/python/src/watchtower_core/sync/github_tasks.py"
+      ],
       "related_paths": [
         "docs/planning/tasks/",
         "core/python/src/watchtower_core/sync/github_tasks.py"
@@ -1764,10 +2304,30 @@
       "title": "Initiative Closeout Standard",
       "summary": "This standard defines how traced initiatives move to a terminal closeout state without overloading artifact lifecycle status.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/initiative_closeout_standard.md",
-      "updated_at": "2026-03-10T21:18:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "documentation",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/initiative_closeout.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "applies_to": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
       "related_paths": [
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
@@ -1803,10 +2363,25 @@
       "title": "Initiative Tracking Standard",
       "summary": "This standard defines the repository's cross-family initiative tracking model so one trace can be followed from PRD through design, planning, execution, validation, and closeout.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-11T03:10:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "docs/planning/initiatives/",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/initiatives/",
+        "docs/planning/prds/"
+      ],
+      "applies_to": [
+        "docs/planning/initiatives/",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+      ],
       "related_paths": [
         "docs/planning/initiatives/",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json"
@@ -1847,10 +2422,21 @@
       "title": "Reference Distillation Standard",
       "summary": "This standard defines how externally published source material is distilled into durable local reference guidance and, when needed, translated into explicit repository policy.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/reference_distillation_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/reference_distillation.md",
+        "workflows/modules/documentation_generation.md",
+        "docs/templates/reference_template.md"
+      ],
       "reference_doc_paths": [
         "docs/references/diataxis_local_reference.md"
       ],
@@ -1889,10 +2475,27 @@
       "title": "Task Handling Threshold Standard",
       "summary": "This standard defines when repository work must create, update, transition, or explicitly decline a durable local task record.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/task_handling_threshold_standard.md",
-      "updated_at": "2026-03-10T05:00:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "docs/planning/tasks/",
+        "workflows/modules/commit_closeout.md",
+        "workflows/modules/task_handoff_review.md",
+        "workflows/modules/task_scope_definition.md"
+      ],
+      "applies_to": [
+        "docs/planning/tasks/",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/task_handoff_review.md",
+        "workflows/modules/commit_closeout.md"
+      ],
       "related_paths": [
         "docs/planning/tasks/",
         "workflows/modules/task_scope_definition.md",
@@ -1930,10 +2533,25 @@
       "title": "Task Tracking Standard",
       "summary": "This standard defines the repository's local-first task tracking model so multiple engineers or agents can coordinate active work without turning planning trackers into a task board.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/task_tracking_standard.md",
-      "updated_at": "2026-03-10T16:19:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact"
+      ],
+      "operationalization_paths": [
+        "docs/planning/tasks/",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/closed/"
+      ],
+      "applies_to": [
+        "docs/planning/tasks/",
+        "core/control_plane/indexes/tasks/task_index.v1.json"
+      ],
       "related_paths": [
         "docs/planning/tasks/",
         "core/control_plane/indexes/tasks/task_index.v1.json"
@@ -1972,10 +2590,23 @@
       "title": "Traceability Standard",
       "summary": "This standard defines the repository's baseline traceability model so product intent, decisions, designs, implementation plans, and later executable or validation surfaces can be linked end to end.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/traceability_standard.md",
-      "updated_at": "2026-03-11T03:10:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "sync",
+        "query",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "docs/planning/coordination_tracking.md",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/src/watchtower_core/repo_ops/query/traceability.py",
+        "workflows/modules/traceability_reconciliation.md"
+      ],
       "internal_reference_paths": [
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/data_contracts/status_tracking_standard.md",
@@ -2015,10 +2646,21 @@
       "title": "Front Matter Standard",
       "summary": "This standard defines when repository documents should use front matter, which keys are canonical, and how parsed front matter is validated as structured metadata.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/metadata/front_matter_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "schema",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/interfaces/README.md",
+        "core/control_plane/schemas/interfaces/documentation/",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
       "reference_doc_paths": [
         "docs/references/front_matter_reference.md"
       ],
@@ -2062,10 +2704,22 @@
       "title": "Naming and IDs Standard",
       "summary": "This standard defines how governed repository artifacts are named and how stable machine-usable identifiers are assigned.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/metadata/naming_and_ids_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "schema",
+        "artifact",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/",
+        "core/control_plane/indexes/",
+        "core/control_plane/contracts/",
+        "docs/planning/"
+      ],
       "reference_doc_paths": [
         "docs/references/rfc_9562_uuid_reference.md",
         "docs/references/semantic_versioning_reference.md"
@@ -2106,10 +2760,19 @@
       "title": "Terminology Standard",
       "summary": "This standard defines how repository terminology is chosen, stabilized, and used so durable docs and governed artifacts do not drift into competing names for the same concept.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/metadata/terminology_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "artifact",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/",
+        "workflows/ROUTING_TABLE.md"
+      ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/product_direction.md",
@@ -2138,10 +2801,17 @@
       "title": "Timestamp Standard",
       "summary": "This standard defines the canonical timestamp field names and UTC timestamp format used by governed documents and machine-readable artifacts in this repository.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/metadata/timestamp_standard.md",
-      "updated_at": "2026-03-09T23:02:08Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "schema"
+      ],
+      "operationalization_paths": [
+        "core/control_plane/schemas/common/"
+      ],
       "reference_doc_paths": [
         "docs/references/rfc_3339_timestamp_reference.md",
         "docs/references/rfc_9557_timestamp_extensions_reference.md"
@@ -2182,10 +2852,28 @@
       "title": "Repository Maintenance Loop Standard",
       "summary": "This standard defines the recurring local repository-maintenance loop for keeping docs, workflows, governed artifacts, and derived surfaces aligned as the repo grows.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/operations/repository_maintenance_loop_standard.md",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "workflow",
+        "validation",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/repository_review.md",
+        "workflows/modules/documentation_refresh.md",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "applies_to": [
+        "docs/",
+        "workflows/",
+        "core/control_plane/",
+        "core/python/"
+      ],
       "related_paths": [
         "docs/",
         "workflows/",
@@ -2221,10 +2909,28 @@
       "title": "Repository Validation Standard",
       "summary": "This standard defines the baseline validation expectations for repository changes across governed documents, governed artifacts, and the Python helper workspace.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/validations/repository_validation_standard.md",
-      "updated_at": "2026-03-10T21:55:00Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
+      "operationalization_modes": [
+        "validation",
+        "documentation",
+        "sync"
+      ],
+      "operationalization_paths": [
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/commands/core_python/watchtower_core_sync_all.md"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
       "related_paths": [
         "core/python/",
         "core/control_plane/",
@@ -2261,10 +2967,19 @@
       "title": "Routing and Context Loading Standard",
       "summary": "This standard defines how repository instructions, routing surfaces, and workflow modules are loaded so task execution starts with the minimum correct context.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/workflows/routing_and_context_loading_standard.md",
-      "updated_at": "2026-03-10T23:21:57Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "workflows/",
+        "workflows/modules/core.md",
+        "workflows/ROUTING_TABLE.md"
+      ],
       "reference_doc_paths": [
         "docs/references/agent_workflow_authoring_reference.md"
       ],
@@ -2310,10 +3025,21 @@
       "title": "Workflow Design Standard",
       "summary": "This standard defines how workflow modules in this repository should be designed, structured, and bounded.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/workflows/workflow_design_standard.md",
-      "updated_at": "2026-03-10T16:31:28Z",
+      "updated_at": "2026-03-11T06:00:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "operationalization_modes": [
+        "workflow",
+        "documentation"
+      ],
+      "operationalization_paths": [
+        "workflows/modules/",
+        "workflows/ROUTING_TABLE.md",
+        "docs/templates/workflow_template.md",
+        "AGENTS.md"
+      ],
       "reference_doc_paths": [
         "docs/references/agent_workflow_authoring_reference.md"
       ],

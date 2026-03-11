@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "coordination_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T19:29:01Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -85,6 +85,10 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | `recent_closed_initiatives` | Publish only compact summaries needed for recent context and review handoff. |
 | Initiative entry status fields | Use `artifact_status` for lifecycle and `initiative_status` for initiative outcome. |
 
+## Operationalization
+- `Modes`: `schema`; `artifact`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/coordination/`; `core/control_plane/indexes/coordination/README.md`
+
 ## Validation
 - The coordination index should validate against its published artifact schema.
 - Every entry in the coordination index should correspond to one current initiative-index entry.
@@ -104,4 +108,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md)
 
 ## Updated At
-- `2026-03-10T19:29:01Z`
+- `2026-03-11T06:00:00Z`

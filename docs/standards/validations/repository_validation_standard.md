@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T21:55:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -73,6 +73,10 @@ This standard defines the baseline validation expectations for repository change
 | Broad | Pre-closeout validation for one non-trivial change set | `watchtower-core sync all --write`, `watchtower-core validate all`, plus Python workspace checks when code changed |
 | Evidence-writing | Validation flows that publish durable proof | Validator-specific commands that record validation evidence |
 
+## Operationalization
+- `Modes`: `validation`; `documentation`; `sync`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/validation/all.py`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_all.md`; `docs/commands/core_python/watchtower_core_sync_all.md`
+
 ## Validation
 - Reviewers should reject non-trivial changes that skip the broad validation tier without an explicit reason.
 - Generated trackers and indexes should not be validated against stale source state.
@@ -90,4 +94,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-10T21:55:00Z`
+- `2026-03-11T06:00:00Z`

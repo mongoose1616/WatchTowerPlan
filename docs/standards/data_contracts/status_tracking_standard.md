@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "status_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -79,6 +79,10 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - A governed artifact kept only while links, schemas, or consumers are being updated can use `deprecated`.
 - A short directory `README.md` should not carry lifecycle status at all.
 
+## Operationalization
+- `Modes`: `documentation`; `artifact`
+- `Operational Surfaces`: `docs/planning/coordination_tracking.md`; `docs/planning/tasks/task_tracking.md`; `core/control_plane/indexes/coordination/coordination_index.v1.json`; `core/control_plane/indexes/tasks/task_index.v1.json`
+
 ## Validation
 - Governed artifacts that expose lifecycle status should use only `draft`, `active`, or `deprecated`.
 - Reviewers should reject new status vocabularies unless a narrower governing standard explicitly introduces them.
@@ -100,4 +104,4 @@ Keep lifecycle state small, stable, and unambiguous so governed artifacts can si
 - If the repository later needs validation-result vocabularies or execution-state vocabularies, those should be separate standards.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

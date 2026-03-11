@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from jsonschema import ValidationError
+
 from watchtower_core.adapters import (
     extract_external_urls,
     extract_repo_path_references,
@@ -23,6 +25,10 @@ from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
+from watchtower_core.repo_ops.standards import (
+    STANDARD_OPERATIONALIZATION_SECTION,
+    parse_standard_operationalization,
+)
 from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 
 STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
@@ -36,7 +42,7 @@ STANDARD_EXCLUDED_NAMES = {"README.md"}
 def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, Any]]:
     try:
         document = loader.load_validated_document(STANDARD_INDEX_ARTIFACT_PATH)
-    except ArtifactLoadError:
+    except (ArtifactLoadError, ValidationError):
         return {}
     entries = document.get("entries")
     if not isinstance(entries, list):
@@ -97,7 +103,12 @@ class StandardIndexSyncService:
                 )
 
             sections = extract_sections(markdown)
-            required_sections = ("Related Standards and Sources", "References", "Updated At")
+            required_sections = (
+                "Related Standards and Sources",
+                STANDARD_OPERATIONALIZATION_SECTION,
+                "References",
+                "Updated At",
+            )
             missing_sections = [section for section in required_sections if section not in sections]
             if missing_sections:
                 joined = ", ".join(missing_sections)
@@ -114,6 +125,13 @@ class StandardIndexSyncService:
                 raise ValueError(
                     f"{relative_path} Updated At section does not match front matter updated_at."
                 )
+            operationalization_modes, operationalization_paths = (
+                parse_standard_operationalization(
+                    relative_path,
+                    sections.get(STANDARD_OPERATIONALIZATION_SECTION),
+                    self._repo_root,
+                )
+            )
 
             current = existing_entries.get(front_matter["id"], {})
             internal_reference_paths = ordered_unique(
@@ -178,6 +196,8 @@ class StandardIndexSyncService:
             )
             notes = _optional_string(current.get("notes"))
             category = Path(relative_path).parts[2]
+            owner = front_matter["owner"]
+            applies_to = _front_matter_list(front_matter, "applies_to")
 
             entry: dict[str, object] = {
                 "standard_id": front_matter["id"],
@@ -185,11 +205,16 @@ class StandardIndexSyncService:
                 "title": front_matter["title"],
                 "summary": front_matter["summary"],
                 "status": front_matter["status"],
+                "owner": owner,
                 "doc_path": relative_path,
                 "updated_at": updated_at,
                 "uses_internal_references": bool(internal_reference_paths),
                 "uses_external_references": bool(external_reference_urls),
+                "operationalization_modes": list(operationalization_modes),
+                "operationalization_paths": list(operationalization_paths),
             }
+            if applies_to:
+                entry["applies_to"] = list(applies_to)
             if related_paths:
                 entry["related_paths"] = list(related_paths)
             if reference_doc_paths:

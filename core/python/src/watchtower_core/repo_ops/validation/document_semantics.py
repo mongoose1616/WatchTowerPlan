@@ -30,6 +30,10 @@ from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
+from watchtower_core.repo_ops.standards import (
+    STANDARD_OPERATIONALIZATION_SECTION,
+    parse_standard_operationalization,
+)
 from watchtower_core.repo_ops.sync.decision_index import DECISION_FRONT_MATTER_SCHEMA_ID
 from watchtower_core.repo_ops.sync.design_document_index import (
     FEATURE_DESIGN_FRONT_MATTER_SCHEMA_ID,
@@ -259,6 +263,7 @@ class DocumentSemanticsValidationService:
             "Use When",
             "Related Standards and Sources",
             "Guidance",
+            STANDARD_OPERATIONALIZATION_SECTION,
             "Validation",
             "Change Control",
             "References",
@@ -275,6 +280,11 @@ class DocumentSemanticsValidationService:
             relative_path,
             "Related Standards and Sources",
             sections["Related Standards and Sources"],
+        )
+        parse_standard_operationalization(
+            relative_path,
+            sections.get(STANDARD_OPERATIONALIZATION_SECTION),
+            self._loader.repo_root,
         )
         if extract_updated_at_from_section(sections["Updated At"]) != front_matter["updated_at"]:
             raise ValueError(

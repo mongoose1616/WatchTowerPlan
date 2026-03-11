@@ -107,6 +107,27 @@ def test_route_preview_service_scores_request_text() -> None:
     assert "workflow.commit_closeout" in workflow_ids
 
 
+def test_route_preview_service_matches_realistic_maintenance_request() -> None:
+    service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.preview(
+        request_text="review the report, update tasks, validate the fixes, and commit closeout"
+    )
+
+    task_types = {match.task_type for match in result.selected_routes}
+    workflow_ids = {workflow.workflow_id for workflow in result.selected_workflows}
+    assert "Repository Review" in task_types
+    assert "Task Lifecycle Management" in task_types
+    assert "Code Validation" in task_types
+    assert "Commit Closeout" in task_types
+    assert "Code Review" not in task_types
+    assert "Task Phase Transition" not in task_types
+    assert "workflow.repository_review" in workflow_ids
+    assert "workflow.task_lifecycle_management" in workflow_ids
+    assert "workflow.code_validation" in workflow_ids
+    assert "workflow.commit_closeout" in workflow_ids
+
+
 def test_route_preview_service_supports_explicit_task_type() -> None:
     service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
 

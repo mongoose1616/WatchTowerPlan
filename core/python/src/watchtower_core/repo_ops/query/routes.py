@@ -9,6 +9,29 @@ from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import RouteIndexEntry, WorkflowIndexEntry
 from watchtower_core.repo_ops.query.common import normalize_text
 
+_TOKEN_PATTERN = re.compile(r"[a-z0-9]+")
+_IGNORED_TOKENS = {
+    "a",
+    "an",
+    "and",
+    "as",
+    "at",
+    "be",
+    "by",
+    "for",
+    "from",
+    "in",
+    "into",
+    "it",
+    "of",
+    "on",
+    "or",
+    "the",
+    "to",
+    "when",
+    "with",
+}
+
 
 @dataclass(frozen=True, slots=True)
 class RoutePreviewMatch:
@@ -99,30 +122,30 @@ class RoutePreviewService:
         request_text: str,
     ) -> tuple[RoutePreviewMatch, ...]:
         normalized_request = normalize_text(request_text)
-        request_tokens = set(re.findall(r"[a-z0-9]+", normalized_request))
+        request_tokens = _normalized_tokens(normalized_request)
         matches: list[RoutePreviewMatch] = []
 
         for entry in entries:
-            matched_keywords = tuple(
-                keyword
-                for keyword in entry.trigger_keywords
-                if normalize_text(keyword) in normalized_request
-            )
-            score = sum(10 + (3 * len(keyword.split())) for keyword in matched_keywords)
-            task_type_match = normalize_text(entry.task_type) in normalized_request
-            if task_type_match:
-                score += 12
+            matched_keyword_values: list[str] = []
+            score = 0
+
+            for keyword in entry.trigger_keywords:
+                keyword_score = _keyword_match_score(keyword, normalized_request, request_tokens)
+                if keyword_score == 0:
+                    continue
+                score += keyword_score
+                matched_keyword_values.append(keyword)
+
+            score += _task_type_match_score(entry.task_type, normalized_request, request_tokens)
             if score == 0:
                 continue
 
-            task_tokens = set(re.findall(r"[a-z0-9]+", normalize_text(entry.task_type)))
-            score += 2 * len(request_tokens.intersection(task_tokens))
             matches.append(
                 RoutePreviewMatch(
                     route_id=entry.route_id,
                     task_type=entry.task_type,
                     score=score,
-                    matched_keywords=matched_keywords,
+                    matched_keywords=tuple(matched_keyword_values),
                     required_workflow_ids=entry.required_workflow_ids,
                     required_workflow_paths=entry.required_workflow_paths,
                 )
@@ -153,3 +176,81 @@ class RoutePreviewService:
             joined = ", ".join(missing)
             raise ValueError(f"Route preview referenced missing workflow-index entries: {joined}")
         return tuple(workflows)
+
+
+def _task_type_match_score(
+    task_type: str,
+    normalized_request: str,
+    request_tokens: tuple[str, ...],
+) -> int:
+    normalized_task_type = normalize_text(task_type)
+    if normalized_task_type in normalized_request:
+        return 12
+
+    task_tokens = _normalized_tokens(normalized_task_type)
+    matched_count = _matched_token_count(request_tokens, task_tokens)
+    if task_tokens and matched_count == len(task_tokens) and len(task_tokens) >= 2:
+        return 8 + len(task_tokens)
+    if matched_count >= 2:
+        return 4 + matched_count
+    return 0
+
+
+def _keyword_match_score(
+    keyword: str,
+    normalized_request: str,
+    request_tokens: tuple[str, ...],
+) -> int:
+    normalized_keyword = normalize_text(keyword)
+    if normalized_keyword in normalized_request:
+        return 18 + (3 * len(normalized_keyword.split()))
+
+    keyword_tokens = _normalized_tokens(normalized_keyword)
+    if not keyword_tokens:
+        return 0
+
+    matched_count = _matched_token_count(request_tokens, keyword_tokens)
+    if len(keyword_tokens) == 1 and matched_count == 1:
+        return 8
+    if matched_count == len(keyword_tokens) and len(keyword_tokens) >= 2:
+        return 10 + (2 * len(keyword_tokens))
+    return 0
+
+
+def _matched_token_count(
+    request_tokens: tuple[str, ...],
+    candidate_tokens: tuple[str, ...],
+) -> int:
+    return sum(
+        1
+        for candidate in candidate_tokens
+        if any(_tokens_match(request, candidate) for request in request_tokens)
+    )
+
+
+def _tokens_match(request_token: str, candidate_token: str) -> bool:
+    if request_token == candidate_token:
+        return True
+    if min(len(request_token), len(candidate_token)) >= 4 and (
+        request_token.startswith(candidate_token) or candidate_token.startswith(request_token)
+    ):
+        return True
+    common_prefix = len(_common_prefix(request_token, candidate_token))
+    return common_prefix >= 4
+
+
+def _common_prefix(left: str, right: str) -> str:
+    prefix: list[str] = []
+    for left_char, right_char in zip(left, right, strict=False):
+        if left_char != right_char:
+            break
+        prefix.append(left_char)
+    return "".join(prefix)
+
+
+def _normalized_tokens(value: str) -> tuple[str, ...]:
+    return tuple(
+        token
+        for token in _TOKEN_PATTERN.findall(normalize_text(value))
+        if token not in _IGNORED_TOKENS
+    )

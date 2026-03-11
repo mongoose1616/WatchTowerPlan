@@ -20,7 +20,11 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
     assert isinstance(entries, list)
     assert any(
         entry["standard_id"] == "std.governance.github_collaboration"
+        and entry["owner"] == "repository_maintainer"
+        and ".github/" in entry.get("applies_to", [])
         and entry["uses_external_references"] is True
+        and "workflow" in entry.get("operationalization_modes", [])
+        and ".github/" in entry.get("operationalization_paths", [])
         and "docs/references/github_collaboration_reference.md"
         in entry.get("reference_doc_paths", [])
         for entry in entries

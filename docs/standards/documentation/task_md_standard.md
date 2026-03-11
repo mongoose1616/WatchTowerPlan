@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "task_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:11:26Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -79,6 +79,10 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 | Closed task | `docs/planning/tasks/closed/<task_name>.md` | Move the file when the task reaches a terminal state. |
 | Task tracker | `docs/planning/tasks/task_tracking.md` | Generated human-readable task board. |
 
+## Operationalization
+- `Modes`: `documentation`
+- `Operational Surfaces`: `docs/planning/tasks/open/`; `docs/planning/tasks/closed/`; `docs/templates/task_template.md`; `docs/planning/tasks/`
+
 ## Validation
 - The task should validate against the published task front-matter profile.
 - The H1 title should align with the front matter title.
@@ -99,4 +103,4 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-10T16:11:26Z`
+- `2026-03-11T06:00:00Z`

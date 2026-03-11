@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "workflow_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T20:33:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -89,6 +89,10 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - Optional `Additional Files to Load` may appear between `Inputs` and `Workflow`.
 - Optional supporting sections may appear after `Done When` only when they materially improve local usability and do not obscure the core workflow shape.
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`
+- `Operational Surfaces`: `workflows/modules/`; `workflows/modules/core.md`; `workflows/ROUTING_TABLE.md`; `docs/templates/workflow_template.md`
+
 ## Validation
 - The file should be recognizable as a workflow module from its title and required headings alone.
 - The required sections should appear in the standard order with the standard names.
@@ -121,4 +125,4 @@ Keep workflow files predictable, easy to scan, and easy to route to by standardi
 - The workflow design standard defines how workflow behavior should be bounded; this document defines how the Markdown file should be structured.
 
 ## Updated At
-- `2026-03-10T20:33:00Z`
+- `2026-03-11T06:00:00Z`

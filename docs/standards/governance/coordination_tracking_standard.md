@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "coordination_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T03:10:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -87,6 +87,10 @@ This standard defines the repository's compact human coordination tracker so hum
 3. Rebuild `coordination_tracking.md` from the coordination index in the same change set.
 4. Keep planning README and nearby agent or command entrypoint guidance aligned when the start-here experience changes.
 
+## Operationalization
+- `Modes`: `documentation`
+- `Operational Surfaces`: `docs/planning/README.md`; `docs/planning/coordination_tracking.md`
+
 ## Validation
 - `coordination_tracking.md` should be regenerated, not hand-authored.
 - The tracker should link to repo-local surfaces for deeper detail.
@@ -105,4 +109,4 @@ This standard defines the repository's compact human coordination tracker so hum
 - [README.md](/home/j/WatchTowerPlan/docs/planning/README.md)
 
 ## Updated At
-- `2026-03-11T03:10:00Z`
+- `2026-03-11T06:00:00Z`

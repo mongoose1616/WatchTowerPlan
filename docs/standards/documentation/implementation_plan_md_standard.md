@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "implementation_plan_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:11:26Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -95,6 +95,10 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` is an implementation plan because it turns approved design direction into concrete module boundaries, work breakdown, and validation steps.
 - A long-running operational runbook does not belong here; it belongs in a workflow or other operational documentation surface.
 
+## Operationalization
+- `Modes`: `documentation`
+- `Operational Surfaces`: `docs/templates/implementation_plan_template.md`; `docs/planning/design/implementation/`; `docs/planning/design/implementation/README.md`; `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md`
+
 ## Validation
 - Implementation plans should contain the required sections in the documented order.
 - Implementation-plan front matter should validate against `implementation_plan_front_matter.v1.schema.json`.
@@ -119,4 +123,4 @@ Keep implementation plans concrete enough to guide engineering work while preser
 - Plans should stay modular so later capability areas can reuse the same planning shape.
 
 ## Updated At
-- `2026-03-10T16:11:26Z`
+- `2026-03-11T06:00:00Z`

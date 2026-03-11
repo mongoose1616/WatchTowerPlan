@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_closeout"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T21:18:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -90,6 +90,10 @@ This standard defines how traced initiatives move to a terminal closeout state w
 6. Refresh the human planning trackers that mirror initiative status.
 7. Record any remaining open-task exception explicitly when closeout happens with unfinished task records.
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`; `artifact`
+- `Operational Surfaces`: `workflows/modules/initiative_closeout.md`; `docs/planning/initiatives/initiative_tracking.md`; `core/control_plane/indexes/initiatives/initiative_index.v1.json`; `core/control_plane/indexes/traceability/traceability_index.v1.json`
+
 ## Validation
 - Every traceability entry should publish `initiative_status`.
 - Terminal initiative states should also publish `closed_at` and `closure_reason`.
@@ -109,4 +113,4 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md)
 
 ## Updated At
-- `2026-03-10T21:18:00Z`
+- `2026-03-11T06:00:00Z`

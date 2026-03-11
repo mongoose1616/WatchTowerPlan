@@ -212,9 +212,13 @@ def _run_query_standards(args: argparse.Namespace) -> int:
             query=args.query,
             standard_id=args.standard_id,
             category=args.category,
+            owner=args.owner,
             tag=args.tag,
+            applies_to=args.applies_to,
             related_path=args.related_path,
             reference_path=args.reference_path,
+            operationalization_mode=args.operationalization_mode,
+            operationalization_path=args.operationalization_path,
             limit=args.limit,
         )
     )
@@ -229,10 +233,12 @@ def _run_query_standards(args: argparse.Namespace) -> int:
                 "title": entry.title,
                 "summary": entry.summary,
                 "status": entry.status,
+                "owner": entry.owner,
                 "doc_path": entry.doc_path,
                 "updated_at": entry.updated_at,
                 "uses_internal_references": entry.uses_internal_references,
                 "uses_external_references": entry.uses_external_references,
+                "applies_to": list(entry.applies_to),
                 "related_paths": list(entry.related_paths),
                 "reference_doc_paths": list(entry.reference_doc_paths),
                 "internal_reference_paths": list(entry.internal_reference_paths),
@@ -241,6 +247,8 @@ def _run_query_standards(args: argparse.Namespace) -> int:
                 "applied_external_reference_urls": list(
                     entry.applied_external_reference_urls
                 ),
+                "operationalization_modes": list(entry.operationalization_modes),
+                "operationalization_paths": list(entry.operationalization_paths),
                 "tags": list(entry.tags),
             }
             for entry in entries
@@ -255,12 +263,12 @@ def _run_query_standards(args: argparse.Namespace) -> int:
 
     print(f"Found {len(entries)} standard entr{'y' if len(entries) == 1 else 'ies'}:")
     for entry in entries:
-        print(f"- {entry.standard_id} [{entry.category}]")
+        print(f"- {entry.standard_id} [{entry.category}, owner={entry.owner}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
         print(
-            "  Reference use: "
-            f"internal={'yes' if entry.uses_internal_references else 'no'}, "
-            f"external={'yes' if entry.uses_external_references else 'no'}"
+            "  Operationalization: "
+            + ", ".join(entry.operationalization_modes)
+            + f" across {len(entry.operationalization_paths)} surface(s)"
         )
     return 0

@@ -19,16 +19,20 @@ This command searches the governed standard index so engineers and agents can fi
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core query standards [--query <text>] [--standard-id <standard_id>] [--category <category>] [--tag <tag>] [--related-path <path>] [--reference-path <doc_path>] [--limit <n>] [--format <human|json>]
+uv run watchtower-core query standards [--query <text>] [--standard-id <standard_id>] [--category <category>] [--owner <owner>] [--tag <tag>] [--applies-to <target>] [--related-path <path>] [--reference-path <doc_path>] [--operationalization-mode <mode>] [--operationalization-path <path>] [--limit <n>] [--format <human|json>]
 ```
 
 ## Arguments and Options
 - `--query <text>`: Free-text query over indexed standard fields such as ID, title, summary, category, references, and related paths.
 - `--standard-id <standard_id>`: Exact standard identifier such as `std.engineering.best_practices`.
 - `--category <category>`: Exact standards-category filter such as `governance` or `engineering`.
+- `--owner <owner>`: Exact owner filter such as `repository_maintainer`.
 - `--tag <tag>`: Exact tag filter.
+- `--applies-to <target>`: Exact authored `applies_to` filter such as `core/python/` or `docs/standards/`.
 - `--related-path <path>`: Exact repository-path filter such as `.github/` or `core/python/`.
 - `--reference-path <doc_path>`: Exact governed reference-doc filter such as `docs/references/github_collaboration_reference.md`.
+- `--operationalization-mode <mode>`: Exact operationalization-mode filter such as `validation`, `query`, or `workflow`.
+- `--operationalization-path <path>`: Exact repository-path filter for one operationalizing surface such as `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -37,6 +41,11 @@ uv run watchtower-core query standards [--query <text>] [--standard-id <standard
 ```sh
 cd core/python
 uv run watchtower-core query standards --category governance
+```
+
+```sh
+cd core/python
+uv run watchtower-core query standards --operationalization-mode validation
 ```
 
 ```sh
@@ -51,8 +60,8 @@ uv run watchtower-core query standards --related-path .github/
 
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
-- In `human` mode, the command prints matching standard IDs, categories, titles, summaries, and whether the indexed standard currently uses internal or external references.
-- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and reference-capture fields such as `reference_doc_paths`, `internal_reference_paths`, and `external_reference_urls`.
+- In `human` mode, the command prints matching standard IDs, categories, owners, titles, summaries, and compact operationalization metadata.
+- In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and indexed retrieval fields such as `owner`, `applies_to`, `reference_doc_paths`, `operationalization_modes`, and `operationalization_paths`.
 - If no entries match the requested filters, the command exits successfully and reports that no standard entries matched.
 
 ## Related Commands
@@ -64,8 +73,8 @@ uv run watchtower-core query standards --related-path .github/
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/query/standards.py`
+- `core/python/src/watchtower_core/repo_ops/query/standards.py`
 - `core/control_plane/indexes/standards/standard_index.v1.json`
 
 ## Updated At
-- `2026-03-09T18:46:06Z`
+- `2026-03-11T05:35:00Z`

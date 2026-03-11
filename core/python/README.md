@@ -16,6 +16,7 @@
 | `core/python/pyproject.toml` | Canonical Python project and tool configuration for the core helper and harness package. |
 | `core/python/uv.lock` | Locked dependency graph used for repeatable local onboarding. |
 | `core/python/src/` | Holds the `watchtower_core` package source tree, including CLI, repo-ops, and control-plane runtime code. |
+| `core/python/src/watchtower_core/**/README.md` | Package-level runtime boundary docs for the major `watchtower_core` namespaces. |
 | `core/python/tests/` | Holds Python tests and fixtures for package behavior, validation, and sync/query flows. |
 | `core/python/tools/` | Holds small workspace-local helper scripts such as `dev_shell.sh` when they are warranted. |
 
@@ -101,6 +102,22 @@
 - `./tools/dev_shell.sh` is for interactive use and does not require `uv` once the shell is active.
 - If you used `./tools/dev_shell.sh`, leave the activated shell with `exit`.
 - If you activated the environment manually, leave it with `deactivate`.
+
+## Runtime Architecture
+Start with `core/python/src/watchtower_core/README.md` when you need the runtime package map before reading code.
+
+| Package README | Classification | Notes |
+|---|---|---|
+| `core/python/src/watchtower_core/README.md` | `runtime_architecture_start_here` | Top-level package map and navigation. |
+| `core/python/src/watchtower_core/control_plane/README.md` | `reusable_core` | Workspace, loader, schema, and typed artifact boundary. |
+| `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services and namespace guardrails. |
+| `core/python/src/watchtower_core/query/README.md` | `boundary_layer` | Compatibility query namespace; authoritative query logic stays in `repo_ops/query/`. |
+| `core/python/src/watchtower_core/sync/README.md` | `boundary_layer` | Compatibility sync namespace; authoritative sync logic stays in `repo_ops/sync/`. |
+| `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
+| `core/python/src/watchtower_core/repo_ops/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific planning, query, sync, and validation behavior. |
+| `core/python/src/watchtower_core/cli/README.md` | `repo_local_orchestration` | CLI registration and command wiring. |
+
+Use the nested READMEs under `repo_ops/` and `integrations/github/` when you need the next layer of boundary detail.
 
 ## Agent Use
 - Read `core/python/AGENTS.md` before making changes under this workspace.

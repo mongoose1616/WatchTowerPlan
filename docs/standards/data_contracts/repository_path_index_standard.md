@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "repository_path_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T06:39:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -98,6 +98,10 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - A generated catalog that attempts to cover the whole governed repository tree is a `full_tree` path index.
 - A manually curated catalog of validator identities is not a path index; it belongs in a registry.
 
+## Operationalization
+- `Modes`: `artifact`; `schema`
+- `Operational Surfaces`: `core/control_plane/indexes/`; `core/control_plane/indexes/README.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/repository_paths/`
+
 ## Validation
 - The path index should validate against its published schema.
 - Every entry should use repository-relative paths that currently exist in the repository.
@@ -123,4 +127,4 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - The repository path index exists to improve machine retrieval and path lookup, not to become a second prose documentation system.
 
 ## Updated At
-- `2026-03-10T06:39:00Z`
+- `2026-03-11T06:00:00Z`

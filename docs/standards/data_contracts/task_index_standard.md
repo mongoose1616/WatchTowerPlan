@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "task_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -107,6 +107,10 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - A closed implementation task should remain in the task index with `task_status` set to `done` and a `doc_path` under `docs/planning/tasks/closed/`.
 - A task can carry a local `task_id` plus a future `github_issue_number` without changing its stable local identity.
 
+## Operationalization
+- `Modes`: `artifact`; `documentation`
+- `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `docs/planning/tasks/`
+
 ## Validation
 - The task index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a task document under `docs/planning/tasks/`.
@@ -124,4 +128,4 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

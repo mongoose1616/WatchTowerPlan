@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "cli_help"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 aliases:
@@ -88,6 +88,10 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - `watchtower-core query --help` should explain the difference between `paths`, `commands`, and `trace` instead of only listing them.
 - `watchtower-core sync repository-paths --help` should state that the command is dry-run by default and that `--write` updates the canonical artifact.
 
+## Operationalization
+- `Modes`: `documentation`; `runtime`
+- `Operational Surfaces`: `docs/commands`; `core/python/src/watchtower_core/cli`; `docs/commands/`; `docs/commands/core_python/watchtower_core.md`
+
 ## Validation
 - Root and command-group `--help` output should be understandable without opening the implementation file first.
 - Root help should include at least one onboarding-friendly example.
@@ -105,4 +109,4 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - [docs/templates/command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

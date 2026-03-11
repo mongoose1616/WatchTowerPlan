@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "git_workflow"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T04:28:34Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -101,6 +101,10 @@ This standard defines repository-standard local git workflow behavior, including
 5. Before review or closeout, verify the branch is still bounded, synced, and validated.
 6. Hand off to the hosted pull-request flow only after the local branch is ready for that transition.
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`
+- `Operational Surfaces`: `workflows/modules/commit_closeout.md`; `docs/planning/tasks/task_tracking.md`; `docs/planning/coordination_tracking.md`
+
 ## Validation
 - Reviewers should reject branch names that do not follow `<kind>/<slug>` or that encode mutable status or owner metadata.
 - Non-trivial work should not proceed indefinitely on `main` without a bounded branch.
@@ -119,4 +123,4 @@ This standard defines repository-standard local git workflow behavior, including
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
 
 ## Updated At
-- `2026-03-10T04:28:34Z`
+- `2026-03-11T06:00:00Z`

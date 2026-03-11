@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema_catalog"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -94,6 +94,10 @@ Provide deterministic local resolution from published schema `$id` values to can
 - The reference front matter schema belongs in the catalog as an `interface` schema with a canonical path under `core/control_plane/schemas/interfaces/documentation/`.
 - A generated repository path catalog does not belong in the schema catalog because it is an index, not a stable schema-identity registry.
 
+## Operationalization
+- `Modes`: `schema`; `artifact`
+- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/schemas/common/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/schema_catalog/`
+
 ## Validation
 - The schema catalog should validate against its published artifact schema.
 - Every `canonical_path` should exist and point to a published schema file.
@@ -119,4 +123,4 @@ Provide deterministic local resolution from published schema `$id` values to can
 - The repository path index remains the right place for broad repository navigation and retrieval. The schema catalog is narrower and authoritative for schema resolution only.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

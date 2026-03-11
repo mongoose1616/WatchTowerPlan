@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "compact_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:11:26Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -49,6 +49,10 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - Generated human-readable trackers should prefer dense tables and brief zero-state text over placeholder `None` rows or repeated footer prose.
 - Remove sections, bullets, or notes that restate obvious context without helping review, routing, or execution.
 
+## Operationalization
+- `Modes`: `documentation`
+- `Operational Surfaces`: `docs/templates/`; `docs/templates/README.md`; `docs/planning/`
+
 ## Validation
 - Reviewers should reject templates that normalize low-value optional sections into every new document.
 - Reviewers should reject workflow guidance that encourages meta drafting records in repository artifacts when those records do not materially help the project.
@@ -67,4 +71,4 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
 
 ## Updated At
-- `2026-03-10T16:11:26Z`
+- `2026-03-11T06:00:00Z`

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "decision_capture"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -98,6 +98,10 @@ This standard defines how durable repository decisions should be recorded so rat
 8. Propagate accepted policy into canonical standards, workflows, templates, plans, or design docs so the decision record does not become the sole source of truth.
 9. If later work changes the outcome materially, create or update the relevant decision record so supersession is explicit rather than implied.
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`
+- `Operational Surfaces`: `workflows/modules/decision_capture.md`; `workflows/modules/documentation_refresh.md`; `workflows/modules/documentation_generation.md`; `docs/planning/decisions/`
+
 ## Validation
 - The record captures one decision cleanly.
 - The decision statement and status are immediately understandable.
@@ -125,4 +129,4 @@ This standard defines how durable repository decisions should be recorded so rat
 - Not every local implementation choice needs durable decision capture. Use it when the rationale, alternatives, or downstream consequences are important enough to matter later.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

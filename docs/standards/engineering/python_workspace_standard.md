@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -108,6 +108,10 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - A query helper that searches the repository path index belongs in `core/python/src/watchtower_core/query/`.
 - A generated wheel file does not belong in `core/` or `core/python/`; it should remain ignored local output.
 
+## Operationalization
+- `Modes`: `sync`; `query`; `artifact`; `documentation`
+- `Operational Surfaces`: `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/query/`; `core/control_plane/`; `core/README.md`
+
 ## Validation
 - `core/python/pyproject.toml` should parse and support local lockfile generation.
 - `core/python/uv.lock` should stay current with the declared dependency set.
@@ -135,4 +139,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The workspace may grow additional modules over time, but it should not grow additional package roots unless a later standard explicitly allows that change.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

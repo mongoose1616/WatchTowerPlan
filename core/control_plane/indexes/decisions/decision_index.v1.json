@@ -312,6 +312,40 @@
       ]
     },
     {
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "decision_id": "decision.standard_runtime_and_route_explicitness_direction",
+      "title": "Standard, Runtime, and Route Explicitness Hardening Direction Decision",
+      "summary": "Records the initial direction decision for Standard, Runtime, and Route Explicitness Hardening.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md",
+      "updated_at": "2026-03-11T05:35:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.standard_runtime_and_route_explicitness"
+      ],
+      "linked_design_ids": [
+        "design.features.standard_runtime_and_route_explicitness"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.standard_runtime_and_route_explicitness"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/decisions/workflow_operationalization_direction.md",
+        "docs/planning/design/features/core_export_ready_architecture.md"
+      ]
+    },
+    {
       "trace_id": "trace.workflow_system_operationalization",
       "decision_id": "decision.workflow_operationalization_direction",
       "title": "Workflow Operationalization Direction",

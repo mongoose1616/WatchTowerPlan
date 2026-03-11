@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "planning_catalog"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T02:15:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -88,6 +88,10 @@ This standard defines the role, structure, and boundary rules for the canonical 
 | `notes` | Optional | Short carried-forward notes from the traceability source. |
 | `closed_at`, `closure_reason`, `superseded_by_trace_id` | Optional | Required when the initiative status is terminal and especially when superseded. |
 
+## Operationalization
+- `Modes`: `artifact`; `schema`
+- `Operational Surfaces`: `core/control_plane/indexes/planning/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/planning/README.md`
+
 ## Validation
 - The planning catalog should validate against its published artifact schema.
 - Every planning entry should correspond to one traceability entry and one initiative entry.
@@ -108,4 +112,4 @@ This standard defines the role, structure, and boundary rules for the canonical 
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/planning/README.md)
 
 ## Updated At
-- `2026-03-11T02:15:00Z`
+- `2026-03-11T06:00:00Z`

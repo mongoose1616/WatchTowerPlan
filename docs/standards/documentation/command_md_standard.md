@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "command_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -90,6 +90,10 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - A page for `watchtower-core doctor` belongs under `docs/commands/core_python/watchtower_core_doctor.md`.
 - A generic Python packaging guide does not belong in `docs/commands/`; it belongs in standards, design, or foundations depending on purpose.
 
+## Operationalization
+- `Modes`: `documentation`; `artifact`; `runtime`
+- `Operational Surfaces`: `docs/commands/`; `docs/templates/command_reference_template.md`; `core/control_plane/indexes/commands/command_index.v1.json`; `core/python/src/watchtower_core/cli/`
+
 ## Validation
 - Command pages should contain the required sections in the documented order.
 - The documented command should exist in the repository’s current command surface.
@@ -115,4 +119,4 @@ Provide one consistent command-document shape for CLI and operator-facing comman
 - CLI `--help` output should follow the command-help standard while these command pages remain the fuller human-readable reference layer.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

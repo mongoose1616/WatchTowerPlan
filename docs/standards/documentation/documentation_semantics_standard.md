@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "documentation_semantics"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T20:33:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -45,6 +45,10 @@ Keep document-level validation fail closed on the small set of semantic rules th
 - Leave one blank line between the last item in a list block and the next heading.
 - Keep cross-family semantic rules here and keep family-specific structure or content rules in the narrower document-family standards.
 
+## Operationalization
+- `Modes`: `validation`; `documentation`; `artifact`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_document_semantics.md`; `docs/commands/core_python/watchtower_core_validate_all.md`; `core/control_plane/registries/validators/validator_registry.v1.json`
+
 ## Validation
 - `watchtower-core validate document-semantics` should fail when a repo-local Markdown link target does not exist.
 - `watchtower-core validate document-semantics` should fail when a heading immediately follows a list block without a blank separator line.
@@ -61,4 +65,4 @@ Keep document-level validation fail closed on the small set of semantic rules th
 - [commonmark_reference.md](/home/j/WatchTowerPlan/docs/references/commonmark_reference.md)
 
 ## Updated At
-- `2026-03-10T20:33:00Z`
+- `2026-03-11T06:00:00Z`

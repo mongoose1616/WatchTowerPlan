@@ -513,7 +513,7 @@
       "status": "active",
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_standards.md",
-      "synopsis": "uv run watchtower-core query standards [-h] [--query QUERY] [--standard-id STANDARD_ID] [--category CATEGORY] [--tag TAG] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--limit LIMIT] [--format {human,json}]",
+      "synopsis": "uv run watchtower-core query standards [-h] [--query QUERY] [--standard-id STANDARD_ID] [--category CATEGORY] [--owner OWNER] [--tag TAG] [--applies-to APPLIES_TO] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--operationalization-mode OPERATIONALIZATION_MODE] [--operationalization-path OPERATIONALIZATION_PATH] [--limit LIMIT] [--format {human,json}]",
       "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",

@@ -397,16 +397,20 @@ class StandardIndexEntry:
     title: str
     summary: str
     status: str
+    owner: str
     doc_path: str
     updated_at: str
     uses_internal_references: bool
     uses_external_references: bool
+    applies_to: tuple[str, ...] = ()
     related_paths: tuple[str, ...] = ()
     reference_doc_paths: tuple[str, ...] = ()
     internal_reference_paths: tuple[str, ...] = ()
     applied_reference_paths: tuple[str, ...] = ()
     external_reference_urls: tuple[str, ...] = ()
     applied_external_reference_urls: tuple[str, ...] = ()
+    operationalization_modes: tuple[str, ...] = ()
+    operationalization_paths: tuple[str, ...] = ()
     tags: tuple[str, ...] = ()
     notes: str | None = None
 
@@ -418,10 +422,12 @@ class StandardIndexEntry:
             title=document["title"],
             summary=document["summary"],
             status=document["status"],
+            owner=document["owner"],
             doc_path=document["doc_path"],
             updated_at=document["updated_at"],
             uses_internal_references=document["uses_internal_references"],
             uses_external_references=document["uses_external_references"],
+            applies_to=tuple(document.get("applies_to", ())),
             related_paths=tuple(document.get("related_paths", ())),
             reference_doc_paths=tuple(document.get("reference_doc_paths", ())),
             internal_reference_paths=tuple(document.get("internal_reference_paths", ())),
@@ -430,6 +436,8 @@ class StandardIndexEntry:
             applied_external_reference_urls=tuple(
                 document.get("applied_external_reference_urls", ())
             ),
+            operationalization_modes=tuple(document.get("operationalization_modes", ())),
+            operationalization_paths=tuple(document.get("operationalization_paths", ())),
             tags=tuple(document.get("tags", ())),
             notes=document.get("notes"),
         )

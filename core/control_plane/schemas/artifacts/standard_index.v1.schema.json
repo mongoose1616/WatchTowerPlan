@@ -90,10 +90,13 @@
         "title",
         "summary",
         "status",
+        "owner",
         "doc_path",
         "updated_at",
         "uses_internal_references",
-        "uses_external_references"
+        "uses_external_references",
+        "operationalization_modes",
+        "operationalization_paths"
       ],
       "properties": {
         "standard_id": {
@@ -113,6 +116,10 @@
         "status": {
           "$ref": "#/$defs/lifecycleStatus"
         },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
         "doc_path": {
           "$ref": "#/$defs/docPath"
         },
@@ -124,6 +131,9 @@
         },
         "uses_external_references": {
           "type": "boolean"
+        },
+        "applies_to": {
+          "$ref": "#/$defs/stringList"
         },
         "related_paths": {
           "$ref": "#/$defs/stringList"
@@ -142,6 +152,12 @@
         },
         "applied_external_reference_urls": {
           "$ref": "#/$defs/urlList"
+        },
+        "operationalization_modes": {
+          "$ref": "#/$defs/stringList"
+        },
+        "operationalization_paths": {
+          "$ref": "#/$defs/stringList"
         },
         "tags": {
           "$ref": "#/$defs/stringList"

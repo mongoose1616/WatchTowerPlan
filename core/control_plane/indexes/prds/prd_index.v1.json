@@ -444,6 +444,54 @@
       ]
     },
     {
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "prd_id": "prd.standard_runtime_and_route_explicitness",
+      "title": "Standard, Runtime, and Route Explicitness Hardening PRD",
+      "summary": "Closes the still-valid report-set gaps around standards operationalization metadata, runtime package boundary documentation, and advisory route-preview matching.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+      "updated_at": "2026-03-11T06:25:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.standard_runtime_and_route_explicitness.001",
+        "req.standard_runtime_and_route_explicitness.002",
+        "req.standard_runtime_and_route_explicitness.003",
+        "req.standard_runtime_and_route_explicitness.004",
+        "req.standard_runtime_and_route_explicitness.005"
+      ],
+      "acceptance_ids": [
+        "ac.standard_runtime_and_route_explicitness.001",
+        "ac.standard_runtime_and_route_explicitness.002",
+        "ac.standard_runtime_and_route_explicitness.003",
+        "ac.standard_runtime_and_route_explicitness.004",
+        "ac.standard_runtime_and_route_explicitness.005"
+      ],
+      "linked_decision_ids": [
+        "decision.standard_runtime_and_route_explicitness_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.standard_runtime_and_route_explicitness"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.standard_runtime_and_route_explicitness"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/planning/decisions/workflow_operationalization_direction.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.template_and_output_efficiency",
       "prd_id": "prd.template_and_output_efficiency",
       "title": "Template and Output Efficiency PRD",

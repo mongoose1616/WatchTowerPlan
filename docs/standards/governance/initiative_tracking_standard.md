@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T03:10:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -128,6 +128,10 @@ This standard defines the repository's cross-family initiative tracking model so
 4. Rebuild the human initiative tracker from the initiative index in the same change set.
 5. Use the initiative tracker as the deeper initiative-family view beneath `coordination_tracking.md`.
 
+## Operationalization
+- `Modes`: `documentation`; `artifact`
+- `Operational Surfaces`: `docs/planning/initiatives/`; `core/control_plane/indexes/initiatives/initiative_index.v1.json`; `core/control_plane/indexes/initiatives/`; `docs/planning/prds/`
+
 ## Validation
 - Every initiative entry should correspond to one current traceability entry.
 - Every initiative entry should publish `current_phase`, `next_action`, and `next_surface_path`.
@@ -151,4 +155,4 @@ This standard defines the repository's cross-family initiative tracking model so
 - [README.md](/home/j/WatchTowerPlan/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-11T03:10:00Z`
+- `2026-03-11T06:00:00Z`

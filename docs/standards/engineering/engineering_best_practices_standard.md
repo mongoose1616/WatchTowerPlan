@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -81,6 +81,10 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - A new schema-backed artifact family should add the schema, examples, schema-catalog record, and any affected validators in the same change set.
 - A change to a traced PRD or acceptance contract should keep the matching indexes, evidence expectations, and linked planning surfaces aligned.
 
+## Operationalization
+- `Modes`: `documentation`; `artifact`; `workflow`
+- `Operational Surfaces`: `core/python/`; `core/control_plane/`; `docs/planning/`; `workflows/modules/core.md`
+
 ## Validation
 - Code changes should run the narrowest meaningful automated checks for the touched surfaces, such as targeted `pytest`, schema validation, command smoke tests, or index validation.
 - Reviewers should reject changes that hardcode values where a reusable argument-driven interface is expected.
@@ -105,4 +109,4 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

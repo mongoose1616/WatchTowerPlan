@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "naming_and_ids"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -134,6 +134,10 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - `reference_front_matter.v1.schema.json` is the corresponding schema filename.
 - A validation run ID may use a UUID, but the related PRD, decision, design, and plan IDs should remain readable deterministic IDs.
 
+## Operationalization
+- `Modes`: `schema`; `artifact`; `documentation`
+- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/indexes/`; `core/control_plane/contracts/`; `docs/planning/`
+
 ## Validation
 - Reviewers should reject identifier changes that do not reflect a real identity or compatibility change.
 - Governed document `id` values should follow the documented dotted pattern and approved family prefixes.
@@ -159,4 +163,4 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Future standards may define narrower rules for specific artifact families, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

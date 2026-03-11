@@ -16,9 +16,13 @@ class StandardSearchParams:
     query: str | None = None
     standard_id: str | None = None
     category: str | None = None
+    owner: str | None = None
     tag: str | None = None
+    applies_to: str | None = None
     related_path: str | None = None
     reference_path: str | None = None
+    operationalization_mode: str | None = None
+    operationalization_path: str | None = None
     limit: int | None = None
 
 
@@ -33,10 +37,22 @@ class StandardQueryService:
         index = self._loader.load_standard_index()
         standard_id = params.standard_id.casefold() if params.standard_id is not None else None
         category = params.category.casefold() if params.category is not None else None
+        owner = params.owner.casefold() if params.owner is not None else None
         tag = params.tag.casefold() if params.tag is not None else None
+        applies_to = params.applies_to.casefold() if params.applies_to is not None else None
         related_path = params.related_path.casefold() if params.related_path is not None else None
         reference_path = (
             params.reference_path.casefold() if params.reference_path is not None else None
+        )
+        operationalization_mode = (
+            params.operationalization_mode.casefold()
+            if params.operationalization_mode is not None
+            else None
+        )
+        operationalization_path = (
+            params.operationalization_path.casefold()
+            if params.operationalization_path is not None
+            else None
         )
 
         matches: list[tuple[int, StandardIndexEntry]] = []
@@ -45,7 +61,13 @@ class StandardQueryService:
                 continue
             if category is not None and entry.category.casefold() != category:
                 continue
+            if owner is not None and entry.owner.casefold() != owner:
+                continue
             if tag is not None and tag not in {value.casefold() for value in entry.tags}:
+                continue
+            if applies_to is not None and applies_to not in {
+                value.casefold() for value in entry.applies_to
+            }:
                 continue
             if related_path is not None and related_path not in {
                 value.casefold() for value in entry.related_paths
@@ -55,20 +77,32 @@ class StandardQueryService:
                 value.casefold() for value in entry.reference_doc_paths
             }:
                 continue
+            if operationalization_mode is not None and operationalization_mode not in {
+                value.casefold() for value in entry.operationalization_modes
+            }:
+                continue
+            if operationalization_path is not None and operationalization_path not in {
+                value.casefold() for value in entry.operationalization_paths
+            }:
+                continue
 
             score = query_score(
                 params.query,
                 (
                     entry.standard_id,
                     entry.category,
+                    entry.owner,
                     entry.title,
                     entry.summary,
+                    *entry.applies_to,
                     *entry.related_paths,
                     *entry.reference_doc_paths,
                     *entry.internal_reference_paths,
                     *entry.applied_reference_paths,
                     *entry.external_reference_urls,
                     *entry.applied_external_reference_urls,
+                    *entry.operationalization_modes,
+                    *entry.operationalization_paths,
                     *entry.tags,
                 ),
             )

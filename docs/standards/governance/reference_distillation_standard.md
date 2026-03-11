@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "reference_distillation"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -89,6 +89,10 @@ This standard defines how externally published source material is distilled into
 4. Record canonical upstream sources plus version, baseline, or date context when those details materially affect interpretation.
 5. Update affected standards, references, templates, or workflows in the same change set when the distillation changes effective local guidance.
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`
+- `Operational Surfaces`: `workflows/modules/documentation_refresh.md`; `workflows/modules/reference_distillation.md`; `workflows/modules/documentation_generation.md`; `docs/templates/reference_template.md`
+
 ## Validation
 - The distilled artifact points to the canonical upstream source when the topic depends on external authority.
 - Version-sensitive or time-sensitive topics include enough baseline information to keep the distillation interpretable later.
@@ -123,4 +127,4 @@ This standard defines how externally published source material is distilled into
 3. Re-read the distilled output to confirm that source facts, local interpretation, and normative repository policy are still clearly separated.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

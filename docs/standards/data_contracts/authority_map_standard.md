@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "authority_map"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T03:10:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -89,6 +89,10 @@ This standard defines the role, structure, and boundary rules for the authored a
 | `aliases` | Optional | Alternate search phrases that materially improve retrieval. |
 | `notes` | Optional | Short policy note clarifying when to use the entry. |
 
+## Operationalization
+- `Modes`: `schema`; `artifact`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/authority_map/`; `core/control_plane/registries/authority_map/README.md`
+
 ## Validation
 - The authority map should validate against its published schema.
 - Every entry should point to an existing repository-relative canonical path.
@@ -109,4 +113,4 @@ This standard defines the role, structure, and boundary rules for the authored a
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map/README.md)
 
 ## Updated At
-- `2026-03-11T03:10:00Z`
+- `2026-03-11T06:00:00Z`

@@ -82,6 +82,37 @@ def test_route_preview_supports_json_output(capsys) -> None:
     )
 
 
+def test_route_preview_matches_realistic_maintenance_request(capsys) -> None:
+    result = main(
+        [
+            "route",
+            "preview",
+            "--request",
+            "review the report, update tasks, validate the fixes, and commit closeout",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    task_types = {entry["task_type"] for entry in payload["selected_routes"]}
+    workflow_ids = {entry["workflow_id"] for entry in payload["selected_workflows"]}
+    assert result == 0
+    assert payload["command"] == "watchtower-core route preview"
+    assert payload["status"] == "ok"
+    assert payload["selected_route_count"] >= 4
+    assert "Repository Review" in task_types
+    assert "Task Lifecycle Management" in task_types
+    assert "Code Validation" in task_types
+    assert "Commit Closeout" in task_types
+    assert "Code Review" not in task_types
+    assert "workflow.repository_review" in workflow_ids
+    assert "workflow.task_lifecycle_management" in workflow_ids
+    assert "workflow.code_validation" in workflow_ids
+    assert "workflow.commit_closeout" in workflow_ids
+
+
 def test_task_create_supports_json_output(capsys) -> None:
     result = main(
         [
@@ -268,6 +299,36 @@ def test_query_standards_supports_json_output(capsys) -> None:
     assert payload["status"] == "ok"
     assert any(
         entry["standard_id"] == "std.governance.github_collaboration"
+        for entry in payload["results"]
+    )
+    assert all("owner" in entry for entry in payload["results"])
+    assert all("operationalization_modes" in entry for entry in payload["results"])
+
+
+def test_query_standards_supports_operationalization_filters(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "standards",
+            "--applies-to",
+            ".github/",
+            "--operationalization-path",
+            ".github/",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query standards"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["standard_id"] == "std.governance.github_collaboration"
+        and entry["owner"] == "repository_maintainer"
+        and ".github/" in entry["applies_to"]
+        and ".github/" in entry["operationalization_paths"]
         for entry in payload["results"]
     )
 

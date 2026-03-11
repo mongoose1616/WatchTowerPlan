@@ -339,8 +339,12 @@ def test_control_plane_loader_reads_planning_indexes() -> None:
     assert decision.uses_internal_references is True
     assert design.uses_internal_references is True
     assert standard.category == "governance"
+    assert standard.owner == "repository_maintainer"
+    assert ".github/" in standard.applies_to
     assert standard.uses_external_references is True
     assert "docs/references/github_collaboration_reference.md" in standard.reference_doc_paths
+    assert "workflow" in standard.operationalization_modes
+    assert ".github/" in standard.operationalization_paths
     assert workflow.doc_path == "workflows/modules/github_task_sync.md"
     assert workflow.phase_type == "execution"
     assert workflow.task_family == "github_integration"

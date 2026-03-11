@@ -1,0 +1,102 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.standard_runtime_and_route_explicitness",
+  "title": "Standard, Runtime, and Route Explicitness Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.standard_runtime_and_route_explicitness",
+  "source_prd_id": "prd.standard_runtime_and_route_explicitness",
+  "entries": [
+    {
+      "acceptance_id": "ac.standard_runtime_and_route_explicitness.001",
+      "summary": "The standard-index family rebuilds authored operationalization metadata for every live governed standard.",
+      "source_requirement_ids": [
+        "req.standard_runtime_and_route_explicitness.001",
+        "req.standard_runtime_and_route_explicitness.002"
+      ],
+      "validation_targets": [
+        "docs/standards/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/schemas/artifacts/standard_index.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_control_plane_loader.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standard_runtime_and_route_explicitness.002",
+      "summary": "The standard query surface and companion docs expose the new operationalization metadata clearly enough for machine lookup.",
+      "source_requirement_ids": [
+        "req.standard_runtime_and_route_explicitness.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/watchtower_core_sync_standard_index.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standard_runtime_and_route_explicitness.003",
+      "summary": "The runtime package tree publishes boundary READMEs for the major watchtower_core packages, and the workspace README routes maintainers to them.",
+      "source_requirement_ids": [
+        "req.standard_runtime_and_route_explicitness.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/README.md",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "core/python/README.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/sync/README.md",
+        "core/python/src/watchtower_core/validation/README.md",
+        "core/python/src/watchtower_core/integrations/github/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standard_runtime_and_route_explicitness.004",
+      "summary": "Route preview matches realistic report-driven maintenance requests without losing its advisory and deterministic behavior.",
+      "source_requirement_ids": [
+        "req.standard_runtime_and_route_explicitness.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/python/tests/unit/test_route_index_sync.py"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standard_runtime_and_route_explicitness.005",
+      "summary": "The trace closes with an aligned planning corpus, closed execution tasks, refreshed derived surfaces, and a passing repository validation baseline.",
+      "source_requirement_ids": [
+        "req.standard_runtime_and_route_explicitness.005"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md",
+        "docs/planning/tasks/",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    }
+  ]
+}

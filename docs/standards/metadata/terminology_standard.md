@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "terminology"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -68,6 +68,10 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 | `recorded_at` | The timestamp for when an evidence or event-style record was captured | Use RFC 3339 UTC in the form `YYYY-MM-DDTHH:MM:SSZ`. |
 | `generated_at` | A distinct generation or build timestamp for a derived artifact | Use only when it differs materially from `updated_at` or `recorded_at`. |
 
+## Operationalization
+- `Modes`: `artifact`; `workflow`
+- `Operational Surfaces`: `core/control_plane/`; `workflows/ROUTING_TABLE.md`
+
 ## Validation
 - Durable docs and governed artifacts should not use competing terms as if they were equal canonical names.
 - New recurring terms should be checked against the existing canonical term set before being introduced broadly.
@@ -91,4 +95,4 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - When a term is unstable or contested, resolve it in a standard or decision artifact before letting it spread through many documents.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

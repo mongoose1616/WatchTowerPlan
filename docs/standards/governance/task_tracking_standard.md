@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:19:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -125,6 +125,10 @@ This standard defines the repository's local-first task tracking model so multip
 - A task that belongs to a traced initiative should carry the matching `trace_id` and related design or PRD IDs.
 - A future GitHub-synced task can add GitHub issue metadata without changing its stable local `task_id`.
 
+## Operationalization
+- `Modes`: `documentation`; `artifact`
+- `Operational Surfaces`: `docs/planning/tasks/`; `core/control_plane/indexes/tasks/task_index.v1.json`; `docs/planning/tasks/open/`; `docs/planning/tasks/closed/`
+
 ## Validation
 - Task records should validate against the published task front-matter profile.
 - `task_tracking.md` and `task_index.v1.json` should agree with the current task-record corpus.
@@ -145,4 +149,4 @@ This standard defines the repository's local-first task tracking model so multip
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-10T16:19:08Z`
+- `2026-03-11T06:00:00Z`

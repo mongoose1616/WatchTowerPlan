@@ -10,10 +10,17 @@
       "title": "GitHub Collaboration Standard",
       "summary": "Defines how GitHub issue forms, pull requests, labels, and project fields complement the repo-local planning and task model.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/github_collaboration_standard.md",
       "updated_at": "2026-03-09T18:25:06Z",
       "uses_internal_references": true,
-      "uses_external_references": true
+      "uses_external_references": true,
+      "operationalization_modes": [
+        "workflow"
+      ],
+      "operationalization_paths": [
+        ".github/"
+      ]
     }
   ]
 }

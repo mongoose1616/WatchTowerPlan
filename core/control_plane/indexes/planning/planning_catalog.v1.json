@@ -3595,6 +3595,380 @@
       "closure_reason": "Delivered and validated pre-implementation repository review and hardening."
     },
     {
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "title": "Standard, Runtime, and Route Explicitness Hardening PRD",
+      "summary": "Closes the still-valid report-set gaps around standards operationalization metadata, runtime package boundary documentation, and advisory route-preview matching.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-11T06:45:00Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.standard_runtime_and_route_explicitness",
+          "title": "Standard, Runtime, and Route Explicitness Hardening PRD",
+          "summary": "Closes the still-valid report-set gaps around standards operationalization metadata, runtime package boundary documentation, and advisory route-preview matching.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+          "updated_at": "2026-03-11T06:25:00Z",
+          "requirement_ids": [
+            "req.standard_runtime_and_route_explicitness.001",
+            "req.standard_runtime_and_route_explicitness.002",
+            "req.standard_runtime_and_route_explicitness.003",
+            "req.standard_runtime_and_route_explicitness.004",
+            "req.standard_runtime_and_route_explicitness.005"
+          ],
+          "acceptance_ids": [
+            "ac.standard_runtime_and_route_explicitness.001",
+            "ac.standard_runtime_and_route_explicitness.002",
+            "ac.standard_runtime_and_route_explicitness.003",
+            "ac.standard_runtime_and_route_explicitness.004",
+            "ac.standard_runtime_and_route_explicitness.005"
+          ],
+          "linked_decision_ids": [
+            "decision.standard_runtime_and_route_explicitness_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.standard_runtime_and_route_explicitness"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.standard_runtime_and_route_explicitness"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.standard_runtime_and_route_explicitness_direction",
+          "title": "Standard, Runtime, and Route Explicitness Hardening Direction Decision",
+          "summary": "Records the initial direction decision for Standard, Runtime, and Route Explicitness Hardening.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md",
+          "updated_at": "2026-03-11T05:35:00Z",
+          "linked_prd_ids": [
+            "prd.standard_runtime_and_route_explicitness"
+          ],
+          "linked_design_ids": [
+            "design.features.standard_runtime_and_route_explicitness"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.standard_runtime_and_route_explicitness"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.standard_runtime_and_route_explicitness",
+          "family": "feature_design",
+          "title": "Standard, Runtime, and Route Explicitness Hardening Feature Design",
+          "summary": "Defines the technical design boundary for Standard, Runtime, and Route Explicitness Hardening.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+          "updated_at": "2026-03-11T04:13:49Z"
+        },
+        {
+          "document_id": "design.implementation.standard_runtime_and_route_explicitness",
+          "family": "implementation_plan",
+          "title": "Standard, Runtime, and Route Explicitness Hardening Implementation Plan",
+          "summary": "Breaks Standard, Runtime, and Route Explicitness Hardening into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
+          "updated_at": "2026-03-11T06:45:00Z",
+          "source_paths": [
+            "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.standard_runtime_and_route_explicitness.bootstrap.001",
+          "title": "Bootstrap Standard, Runtime, and Route Explicitness Hardening planning chain",
+          "summary": "Bootstraps the initial planning chain for Standard, Runtime, and Route Explicitness Hardening.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/standard_runtime_and_route_explicitness_hardening_bootstrap.md",
+          "updated_at": "2026-03-11T04:16:28Z",
+          "related_ids": [
+            "prd.standard_runtime_and_route_explicitness",
+            "design.features.standard_runtime_and_route_explicitness",
+            "design.implementation.standard_runtime_and_route_explicitness",
+            "decision.standard_runtime_and_route_explicitness_direction"
+          ],
+          "applies_to": [
+            "docs/standards/",
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/python/src/watchtower_core/",
+            "docs/commands/core_python/",
+            "workflows/ROUTING_TABLE.md"
+          ]
+        },
+        {
+          "task_id": "task.standard_runtime_and_route_explicitness.route_preview_hardening.001",
+          "title": "Harden advisory route preview matching",
+          "summary": "Make route preview resilient to realistic free-form maintenance requests without changing its advisory authority model.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/harden_advisory_route_preview_matching.md",
+          "updated_at": "2026-03-11T04:46:44Z",
+          "related_ids": [
+            "prd.standard_runtime_and_route_explicitness",
+            "design.features.standard_runtime_and_route_explicitness",
+            "design.implementation.standard_runtime_and_route_explicitness",
+            "decision.standard_runtime_and_route_explicitness_direction"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/repo_ops/query/routes.py",
+            "docs/commands/core_python/watchtower_core_route_preview.md",
+            "core/python/tests/unit/test_route_index_sync.py"
+          ]
+        },
+        {
+          "task_id": "task.standard_runtime_and_route_explicitness.runtime_package_docs.001",
+          "title": "Document runtime package boundaries",
+          "summary": "Add package-level runtime README surfaces and workspace navigation that classify major watchtower_core packages.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "documentation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/document_runtime_package_boundaries.md",
+          "updated_at": "2026-03-11T04:46:44Z",
+          "related_ids": [
+            "prd.standard_runtime_and_route_explicitness",
+            "design.features.standard_runtime_and_route_explicitness",
+            "design.implementation.standard_runtime_and_route_explicitness",
+            "decision.standard_runtime_and_route_explicitness_direction"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/",
+            "core/python/README.md"
+          ]
+        },
+        {
+          "task_id": "task.standard_runtime_and_route_explicitness.standard_operationalization.001",
+          "title": "Add standard operationalization metadata",
+          "summary": "Make standard operationalization authored, indexed, queryable, and validated across the full standards corpus.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/add_standard_operationalization_metadata.md",
+          "updated_at": "2026-03-11T06:26:00Z",
+          "related_ids": [
+            "prd.standard_runtime_and_route_explicitness",
+            "design.features.standard_runtime_and_route_explicitness",
+            "design.implementation.standard_runtime_and_route_explicitness",
+            "decision.standard_runtime_and_route_explicitness_direction"
+          ],
+          "applies_to": [
+            "docs/standards/",
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/control_plane/schemas/artifacts/standard_index.v1.schema.json",
+            "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+            "core/python/src/watchtower_core/repo_ops/query/standards.py"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.standard_runtime_and_route_explicitness",
+          "title": "Standard, Runtime, and Route Explicitness Hardening Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.standard_runtime_and_route_explicitness",
+          "doc_path": "core/control_plane/contracts/acceptance/standard_runtime_and_route_explicitness_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.standard_runtime_and_route_explicitness.001",
+            "ac.standard_runtime_and_route_explicitness.002",
+            "ac.standard_runtime_and_route_explicitness.003",
+            "ac.standard_runtime_and_route_explicitness.004",
+            "ac.standard_runtime_and_route_explicitness.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/control_plane/schemas/artifacts/standard_index.v1.schema.json",
+            "core/python/README.md",
+            "core/python/src/watchtower_core/README.md",
+            "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+            "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+            "core/python/src/watchtower_core/control_plane/README.md",
+            "core/python/src/watchtower_core/repo_ops/README.md",
+            "core/python/src/watchtower_core/repo_ops/query/routes.py",
+            "core/python/src/watchtower_core/repo_ops/query/standards.py",
+            "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+            "core/python/tests/unit/test_route_index_sync.py",
+            "docs/commands/core_python/watchtower_core_query_standards.md",
+            "docs/commands/core_python/watchtower_core_route_preview.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md",
+            "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+            "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+            "docs/planning/tasks/",
+            "docs/standards/"
+          ],
+          "related_paths": [
+            "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/",
+            "core/python/src/watchtower_core/integrations/github/README.md",
+            "core/python/src/watchtower_core/query/README.md",
+            "core/python/src/watchtower_core/sync/README.md",
+            "core/python/src/watchtower_core/validation/README.md",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_control_plane_loader.py",
+            "core/python/tests/unit/test_route_and_query_handlers.py",
+            "core/python/tests/unit/test_standard_index_sync.py",
+            "docs/commands/core_python/watchtower_core_sync_standard_index.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.standard_runtime_and_route_explicitness.validation_baseline",
+          "title": "Standard, Runtime, and Route Explicitness Hardening Validation Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-11T06:25:00Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/standard_runtime_and_route_explicitness_validation_baseline.v1.json",
+          "check_ids": [
+            "check.standard_runtime_and_route_explicitness.standard_operationalization",
+            "check.standard_runtime_and_route_explicitness.standard_query_surface",
+            "check.standard_runtime_and_route_explicitness.runtime_boundary_docs",
+            "check.standard_runtime_and_route_explicitness.route_preview_matching",
+            "check.standard_runtime_and_route_explicitness.closeout_chain"
+          ],
+          "acceptance_ids": [
+            "ac.standard_runtime_and_route_explicitness.001",
+            "ac.standard_runtime_and_route_explicitness.002",
+            "ac.standard_runtime_and_route_explicitness.003",
+            "ac.standard_runtime_and_route_explicitness.004",
+            "ac.standard_runtime_and_route_explicitness.005"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/standard_runtime_and_route_explicitness_acceptance.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.standard_runtime_and_route_explicitness"
+      ],
+      "decision_ids": [
+        "decision.standard_runtime_and_route_explicitness_direction"
+      ],
+      "design_ids": [
+        "design.features.standard_runtime_and_route_explicitness"
+      ],
+      "plan_ids": [
+        "design.implementation.standard_runtime_and_route_explicitness"
+      ],
+      "task_ids": [
+        "task.standard_runtime_and_route_explicitness.bootstrap.001",
+        "task.standard_runtime_and_route_explicitness.route_preview_hardening.001",
+        "task.standard_runtime_and_route_explicitness.runtime_package_docs.001",
+        "task.standard_runtime_and_route_explicitness.standard_operationalization.001"
+      ],
+      "requirement_ids": [
+        "req.standard_runtime_and_route_explicitness.001",
+        "req.standard_runtime_and_route_explicitness.002",
+        "req.standard_runtime_and_route_explicitness.003",
+        "req.standard_runtime_and_route_explicitness.004",
+        "req.standard_runtime_and_route_explicitness.005"
+      ],
+      "acceptance_ids": [
+        "ac.standard_runtime_and_route_explicitness.001",
+        "ac.standard_runtime_and_route_explicitness.002",
+        "ac.standard_runtime_and_route_explicitness.003",
+        "ac.standard_runtime_and_route_explicitness.004",
+        "ac.standard_runtime_and_route_explicitness.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.standard_runtime_and_route_explicitness"
+      ],
+      "evidence_ids": [
+        "evidence.standard_runtime_and_route_explicitness.validation_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/standard_runtime_and_route_explicitness_acceptance.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/standard_runtime_and_route_explicitness_validation_baseline.v1.json",
+        "core/control_plane/schemas/artifacts/standard_index.v1.schema.json",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/README.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "core/python/src/watchtower_core/integrations/github/README.md",
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/sync/README.md",
+        "core/python/src/watchtower_core/validation/README.md",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/commands/core_python/watchtower_core_sync_standard_index.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/add_standard_operationalization_metadata.md",
+        "docs/planning/tasks/closed/document_runtime_package_boundaries.md",
+        "docs/planning/tasks/closed/harden_advisory_route_preview_matching.md",
+        "docs/planning/tasks/closed/standard_runtime_and_route_explicitness_hardening_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "tags": [
+        "documentation",
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Validation evidence for the final closeout of the standard, runtime, and route explicitness remediation trace.",
+      "closed_at": "2026-03-11T06:27:00Z",
+      "closure_reason": "Validated the March 2026 report set, closed the remaining standard, runtime, and route explicitness gaps, published durable acceptance evidence, and revalidated the repository baseline."
+    },
+    {
       "trace_id": "trace.template_and_output_efficiency",
       "title": "Template and Output Efficiency PRD",
       "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",

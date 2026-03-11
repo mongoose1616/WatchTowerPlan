@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "acceptance_contract"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -94,6 +94,10 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - A validator-backed acceptance item can list the expected validator IDs instead of forcing downstream tooling to infer them from prose.
 - A temporary planning note with no durable acceptance IDs does not need an acceptance contract.
 
+## Operationalization
+- `Modes`: `artifact`; `documentation`
+- `Operational Surfaces`: `core/control_plane/contracts/acceptance/`; `core/control_plane/contracts/acceptance/README.md`; `docs/planning/prds/core_python_foundation.md`
+
 ## Validation
 - The acceptance contract should validate against its published artifact schema.
 - Every `acceptance_id` in the contract should exist in the source PRD.
@@ -115,4 +119,4 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - It should stay smaller and more structured than the source PRD.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

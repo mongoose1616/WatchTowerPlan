@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "design_document_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:11:26Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -101,6 +101,10 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - An implementation plan like `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` should appear as an `implementation_plan` entry and name the feature designs it depends on in `source_paths`.
 - A directory README does not belong in this index because it is orientation, not a design document.
 
+## Operationalization
+- `Modes`: `schema`; `artifact`; `documentation`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/design_documents/`; `core/control_plane/indexes/design_documents/README.md`; `docs/planning/design/`
+
 ## Validation
 - The design-document index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `docs/planning/design/`.
@@ -124,4 +128,4 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The machine index is for lookup, query, and future tooling. Neither surface replaces the design documents themselves.
 
 ## Updated At
-- `2026-03-10T16:11:26Z`
+- `2026-03-11T06:00:00Z`

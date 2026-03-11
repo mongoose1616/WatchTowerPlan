@@ -45,7 +45,7 @@ def _run_route_preview(args: argparse.Namespace) -> int:
         return 0
 
     if not result.selected_routes:
-        print("No route matched the request text exactly.")
+        print("No route matched the request text strongly enough.")
         print(
             "Use --task-type for an explicit route or refine the request "
             "using routing-table terms."

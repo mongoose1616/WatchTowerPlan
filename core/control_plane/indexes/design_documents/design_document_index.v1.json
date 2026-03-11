@@ -597,6 +597,32 @@
       ]
     },
     {
+      "document_id": "design.features.standard_runtime_and_route_explicitness",
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "family": "feature_design",
+      "title": "Standard, Runtime, and Route Explicitness Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Standard, Runtime, and Route Explicitness Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+      "updated_at": "2026-03-11T04:13:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/standards/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/decisions/workflow_operationalization_direction.md",
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/design/features/core_export_ready_architecture.md"
+      ]
+    },
+    {
       "document_id": "design.features.unit_test_hardening_and_rebalancing",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "family": "feature_design",
@@ -930,6 +956,34 @@
         "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
         "docs/planning/design/features/preimplementation_repo_readiness.md",
         "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.standard_runtime_and_route_explicitness",
+      "trace_id": "trace.standard_runtime_and_route_explicitness",
+      "family": "implementation_plan",
+      "title": "Standard, Runtime, and Route Explicitness Hardening Implementation Plan",
+      "summary": "Breaks Standard, Runtime, and Route Explicitness Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
+      "updated_at": "2026-03-11T06:45:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md"
       ]
     },
     {

@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "timestamp"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -68,6 +68,10 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - A validation-evidence artifact should use `recorded_at` rather than `updated_at` when the timestamp describes when the evidence was captured.
 - A future generated export could carry both `updated_at` and `generated_at` if those two meanings differ materially.
 
+## Operationalization
+- `Modes`: `schema`
+- `Operational Surfaces`: `core/control_plane/schemas/common/`
+
 ## Validation
 - Governed timestamp fields should validate as RFC 3339 date-time strings in UTC with a trailing `Z`.
 - Reviewers should reject alternate mutable timestamp field names when a canonical field already exists for the same meaning.
@@ -92,4 +96,4 @@ Keep time-bearing metadata predictable enough for validation, indexing, traceabi
 - `generated_at` is approved as a reserved field name even if it is not yet widely used.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

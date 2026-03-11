@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T20:33:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -48,7 +48,12 @@ Keep standards structured enough that internal and external authority is not onl
 - Leave one blank line between the last item in a bullet or numbered list and the next heading.
 - Keep `References` for companion docs, examples, and supporting material that help the reader navigate the repo or verify implementation.
 - When an external topic already has a governed local reference under `docs/references/**`, cite that local reference instead of scattering raw external URLs.
+- Publish an `Operationalization` section using compact metadata bullets so maintainers can see which modes and repository surfaces actively enforce or embody the standard.
 - Keep `Updated At` aligned with front matter `updated_at`.
+
+## Operationalization
+- `Modes`: `validation`; `sync`; `query`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `docs/commands/core_python/watchtower_core_query_standards.md`
 
 ## Structure or Data Model
 ### Required sections
@@ -60,6 +65,7 @@ Keep standards structured enough that internal and external authority is not onl
 | `Use When` | Required | Explain when maintainers should consult the standard. |
 | `Related Standards and Sources` | Required | Use `source: implication` bullets. Bare link lists are insufficient. |
 | `Guidance` | Required | Publish the actual normative or best-practice guidance. |
+| `Operationalization` | Required | Use metadata bullets for `Modes` and `Operational Surfaces` so operational enforcement is discoverable without code spelunking. |
 | `Validation` | Required | Describe how compliance is checked. |
 | `Change Control` | Required | Describe what companion surfaces change with the standard. |
 | `References` | Required | Link supporting companion docs, artifacts, or examples. |
@@ -68,6 +74,7 @@ Keep standards structured enough that internal and external authority is not onl
 ## Validation
 - Standard-doc front matter should validate against `standard_front_matter.v1.schema.json`.
 - `Related Standards and Sources` should use explained `source: implication` bullets rather than bare link lists.
+- `Operationalization` should include metadata bullets for `Modes` and `Operational Surfaces`, and each operational surface should resolve to a real repository path.
 - Repo-local Markdown links should resolve to existing files or directories under the repository root.
 - Headings should not appear immediately after a bullet or numbered list item without a blank separator line.
 - `References` should remain present and should not silently absorb the applied-implication role.
@@ -84,4 +91,4 @@ Keep standards structured enough that internal and external authority is not onl
 - [README.md](/home/j/WatchTowerPlan/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-10T20:33:00Z`
+- `2026-03-11T06:00:00Z`

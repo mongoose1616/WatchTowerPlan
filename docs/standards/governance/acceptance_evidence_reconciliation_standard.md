@@ -10,7 +10,7 @@ tags:
   - "acceptance"
   - "validation_evidence"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -82,6 +82,10 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 4. Verify evidence IDs and evidence acceptance coverage against the acceptance contract.
 5. Record explicit issues for missing joins, unknown validator references, or uncovered acceptance IDs.
 
+## Operationalization
+- `Modes`: `documentation`; `artifact`
+- `Operational Surfaces`: `docs/planning/prds/`; `core/control_plane/contracts/acceptance/`; `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/indexes/traceability/traceability_index.v1.json`
+
 ## Validation
 - PRD acceptance IDs, acceptance-contract acceptance IDs, and traceability acceptance IDs should match exactly.
 - Traceability should list the current acceptance-contract and evidence IDs for the same trace.
@@ -98,4 +102,4 @@ This standard defines how PRD acceptance IDs, acceptance contracts, validation e
 - [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/workflows/modules/acceptance_evidence_reconciliation.md)
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

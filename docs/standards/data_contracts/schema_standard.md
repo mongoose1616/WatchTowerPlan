@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T21:55:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -105,6 +105,10 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - A shared timestamp, identifier, or status fragment belongs in `core/control_plane/schemas/common/`.
 - The shared UTC timestamp fragment belongs in `core/control_plane/schemas/common/` and should be reused by artifact and interface schemas that carry governed mutable timestamps.
 
+## Operationalization
+- `Modes`: `artifact`; `schema`
+- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/schemas/`; `core/control_plane/README.md`; `core/control_plane/examples/`
+
 ## Validation
 - New or changed schemas should be validated locally with a JSON Schema validator before merge.
 - Canonical `valid/` and `invalid/` examples should prove the acceptance boundary for reusable schema families and external interfaces.
@@ -133,4 +137,4 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - If a future format standard introduces more specific serialization or naming rules for schema files, it should refine rather than weaken this standard.
 
 ## Updated At
-- `2026-03-10T21:55:00Z`
+- `2026-03-11T06:00:00Z`

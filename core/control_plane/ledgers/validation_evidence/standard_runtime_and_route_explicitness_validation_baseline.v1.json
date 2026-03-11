@@ -1,0 +1,144 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.standard_runtime_and_route_explicitness.validation_baseline",
+  "title": "Standard, Runtime, and Route Explicitness Hardening Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.standard_runtime_and_route_explicitness",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T06:25:00Z",
+  "source_prd_ids": [
+    "prd.standard_runtime_and_route_explicitness"
+  ],
+  "source_decision_ids": [
+    "decision.standard_runtime_and_route_explicitness_direction"
+  ],
+  "source_design_ids": [
+    "design.features.standard_runtime_and_route_explicitness"
+  ],
+  "source_plan_ids": [
+    "design.implementation.standard_runtime_and_route_explicitness"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.standard_runtime_and_route_explicitness"
+  ],
+  "checks": [
+    {
+      "check_id": "check.standard_runtime_and_route_explicitness.standard_operationalization",
+      "title": "Standards publish and rebuild operationalization metadata",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/schemas/artifacts/standard_index.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_control_plane_loader.py"
+      ],
+      "subject_ids": [
+        "task.standard_runtime_and_route_explicitness.standard_operationalization.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_runtime_and_route_explicitness.001"
+      ],
+      "notes": "The standards corpus now carries authored Operationalization metadata, sync standard-index rebuilds 61 schema-valid entries, and the loader plus standard-index unit tests pass."
+    },
+    {
+      "check_id": "check.standard_runtime_and_route_explicitness.standard_query_surface",
+      "title": "Standard query and command docs expose operationalization metadata",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/commands/core_python/watchtower_core_sync_standard_index.md",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "acceptance_ids": [
+        "ac.standard_runtime_and_route_explicitness.002"
+      ],
+      "notes": "watchtower-core query standards now filters and returns owner, applies_to, operationalization_modes, and operationalization_paths, and the command docs reflect the new retrieval surface."
+    },
+    {
+      "check_id": "check.standard_runtime_and_route_explicitness.runtime_boundary_docs",
+      "title": "Runtime package boundaries are documented for maintainers",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/README.md",
+        "core/python/src/watchtower_core/README.md",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/sync/README.md",
+        "core/python/src/watchtower_core/validation/README.md",
+        "core/python/src/watchtower_core/integrations/github/README.md"
+      ],
+      "subject_ids": [
+        "task.standard_runtime_and_route_explicitness.runtime_package_docs.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_runtime_and_route_explicitness.003"
+      ],
+      "notes": "The major watchtower_core packages now publish package-level README boundaries, classifications, supported imports, and non-goals, and the workspace README routes maintainers to them."
+    },
+    {
+      "check_id": "check.standard_runtime_and_route_explicitness.route_preview_matching",
+      "title": "Route preview matches realistic maintenance requests deterministically",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py"
+      ],
+      "subject_ids": [
+        "task.standard_runtime_and_route_explicitness.route_preview_hardening.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_runtime_and_route_explicitness.004"
+      ],
+      "notes": "watchtower-core route preview now returns Repository Review, Task Lifecycle Management, Code Validation, and Commit Closeout for the report-driven maintenance request instead of returning an empty advisory result."
+    },
+    {
+      "check_id": "check.standard_runtime_and_route_explicitness.closeout_chain",
+      "title": "Planning corpus, report disposition, and validation closeout stay aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md",
+        "docs/planning/tasks/closed/standard_runtime_and_route_explicitness_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/harden_advisory_route_preview_matching.md",
+        "docs/planning/tasks/closed/document_runtime_package_boundaries.md",
+        "docs/planning/tasks/closed/add_standard_operationalization_metadata.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.standard_runtime_and_route_explicitness",
+        "decision.standard_runtime_and_route_explicitness_direction",
+        "design.features.standard_runtime_and_route_explicitness",
+        "design.implementation.standard_runtime_and_route_explicitness",
+        "task.standard_runtime_and_route_explicitness.bootstrap.001",
+        "task.standard_runtime_and_route_explicitness.route_preview_hardening.001",
+        "task.standard_runtime_and_route_explicitness.runtime_package_docs.001",
+        "task.standard_runtime_and_route_explicitness.standard_operationalization.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_runtime_and_route_explicitness.005"
+      ],
+      "notes": "The PRD now records the disposition of every March 2026 report file, sync all, validate all --skip-acceptance, targeted unit tests, acceptance reconciliation, and initiative closeout complete without reopening already-closed remediation traces."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/standard_runtime_and_route_explicitness_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence for the final closeout of the standard, runtime, and route explicitness remediation trace."
+}

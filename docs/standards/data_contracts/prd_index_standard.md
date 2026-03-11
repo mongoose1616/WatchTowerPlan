@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "prd_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:11:26Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -86,6 +86,10 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
 
+## Operationalization
+- `Modes`: `artifact`; `schema`; `documentation`
+- `Operational Surfaces`: `core/control_plane/indexes/prds/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/prds/README.md`; `docs/planning/prds/`
+
 ## Validation
 - The PRD index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a file under `docs/planning/prds/`.
@@ -104,4 +108,4 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md)
 
 ## Updated At
-- `2026-03-10T16:11:26Z`
+- `2026-03-11T06:00:00Z`

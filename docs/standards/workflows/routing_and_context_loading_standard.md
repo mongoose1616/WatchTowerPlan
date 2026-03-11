@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T23:21:57Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -88,6 +88,10 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 12. If execution reveals a material governed-artifact coherence risk, add `modules/governed_artifact_reconciliation.md` or switch to the dedicated reconciliation route unless the artifact-family agreement has already been checked explicitly inside the active route.
 13. If routing is unclear or incomplete, request clarification or improve the routing surfaces rather than silently broadening context.
 
+## Operationalization
+- `Modes`: `workflow`
+- `Operational Surfaces`: `workflows/`; `workflows/modules/core.md`; `workflows/ROUTING_TABLE.md`
+
 ## Validation
 - A routed task should start with enough context to act correctly but not so much context that unrelated instructions compete.
 - The same request should route to the same module set under normal conditions.
@@ -111,4 +115,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-10T23:21:57Z`
+- `2026-03-11T06:00:00Z`

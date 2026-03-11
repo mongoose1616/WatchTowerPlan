@@ -10,10 +10,16 @@
       "title": "GitHub Collaboration Standard",
       "summary": "Defines how GitHub issue forms, pull requests, labels, and project fields complement the repo-local planning and task model.",
       "status": "active",
+      "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/github_collaboration_standard.md",
       "updated_at": "2026-03-09T18:25:06Z",
       "uses_internal_references": true,
       "uses_external_references": true,
+      "applies_to": [
+        ".github/",
+        "docs/planning/tasks/",
+        "core/python/src/watchtower_core/sync/github_tasks.py"
+      ],
       "related_paths": [
         ".github/",
         "docs/planning/tasks/",
@@ -36,6 +42,17 @@
         "https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields",
         "https://docs.github.com/en/rest/issues/issues",
         "https://docs.github.com/en/graphql/guides/using-the-api-to-manage-projects"
+      ],
+      "operationalization_modes": [
+        "workflow",
+        "documentation",
+        "sync"
+      ],
+      "operationalization_paths": [
+        ".github/",
+        "docs/planning/tasks/",
+        "core/python/src/watchtower_core/sync/github_tasks.py",
+        ".github/README.md"
       ],
       "tags": [
         "standard",

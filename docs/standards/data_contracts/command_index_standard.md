@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "command_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T05:14:33Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -101,6 +101,10 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - `watchtower-core doctor` should appear as a `subcommand` entry linked to the root command and its own command page.
 - A general Python workspace README is not a command-index entry because it is not a command surface.
 
+## Operationalization
+- `Modes`: `artifact`; `schema`; `documentation`
+- `Operational Surfaces`: `core/control_plane/indexes/commands/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/commands/README.md`; `docs/commands/`
+
 ## Validation
 - The command index should validate against its published artifact schema.
 - Every `doc_path` should exist and point to a command page under `docs/commands/`.
@@ -125,4 +129,4 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - The repository path index remains the broader navigation surface. The command index is the targeted command-lookup surface.
 
 ## Updated At
-- `2026-03-10T05:14:33Z`
+- `2026-03-11T06:00:00Z`

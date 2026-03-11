@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -140,6 +140,10 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - A front matter document can add `aliases` such as `yaml_header` and `document_metadata` when those terms are likely retrieval entrypoints.
 - A short `README.md` that only explains directory purpose should usually stay plain Markdown with no front matter.
 
+## Operationalization
+- `Modes`: `schema`; `documentation`
+- `Operational Surfaces`: `core/control_plane/schemas/interfaces/README.md`; `core/control_plane/schemas/interfaces/documentation/`; `docs/planning/prds/prd_tracking.md`; `docs/planning/tasks/task_tracking.md`
+
 ## Validation
 - Front matter should parse cleanly as YAML.
 - Documents that claim a governed front matter profile should validate against the matching schema under `core/control_plane/schemas/interfaces/documentation/`.
@@ -168,4 +172,4 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Document families that already have a dedicated machine-readable companion artifact, such as `docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

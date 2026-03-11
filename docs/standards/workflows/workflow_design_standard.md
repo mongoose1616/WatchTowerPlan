@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T16:31:28Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -109,6 +109,10 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - A routing rule does not belong in a workflow module because routing classification belongs in `ROUTING_TABLE.md`.
 - A repository-wide documentation policy does not belong in a workflow module because it belongs in `docs/standards/**`.
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`
+- `Operational Surfaces`: `workflows/modules/`; `workflows/ROUTING_TABLE.md`; `docs/templates/workflow_template.md`; `AGENTS.md`
+
 ## Validation
 - A reviewer should be able to identify the workflow's single objective quickly.
 - The module should be executable as written without broad unstated assumptions.
@@ -139,4 +143,4 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-10T16:31:28Z`
+- `2026-03-11T06:00:00Z`

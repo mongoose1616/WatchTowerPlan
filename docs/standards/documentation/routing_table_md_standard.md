@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "routing_table_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T23:02:08Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -59,6 +59,10 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Workflow paths should be written relative to the routing table location.
 - For this repo, workflow module entries should use `modules/<name>.md`.
 
+## Operationalization
+- `Modes`: `workflow`; `documentation`
+- `Operational Surfaces`: `workflows/ROUTING_TABLE.md`; `docs/templates/routing_table_template.md`
+
 ## Validation
 - Every listed workflow must exist at the referenced path.
 - New workflow modules that are intended for routing should be represented in the table.
@@ -80,4 +84,4 @@ Keep routing deterministic, minimal, and easy to maintain by giving the reposito
 - Detailed logic belongs in workflow modules, not in routing rows.
 
 ## Updated At
-- `2026-03-09T23:02:08Z`
+- `2026-03-11T06:00:00Z`

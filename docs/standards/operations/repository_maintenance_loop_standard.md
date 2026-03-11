@@ -9,7 +9,7 @@ tags:
   - "operations"
   - "maintenance"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T02:30:31Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -73,6 +73,10 @@ This standard defines the recurring local repository-maintenance loop for keepin
 | Validate | Run the baseline validation loop before closeout. |
 | Record | Preserve unresolved findings or follow-up work explicitly. |
 
+## Operationalization
+- `Modes`: `workflow`; `validation`; `documentation`
+- `Operational Surfaces`: `workflows/modules/repository_review.md`; `workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/repo_ops/validation/all.py`; `docs/planning/coordination_tracking.md`
+
 ## Validation
 - Maintenance work should not leave derived trackers or indexes stale after authoritative source changes.
 - Maintenance reviews should call out whether a family is active, reserved, or ambiguous in maturity.
@@ -89,4 +93,4 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [README.md](/home/j/WatchTowerPlan/docs/README.md)
 
 ## Updated At
-- `2026-03-10T02:30:31Z`
+- `2026-03-11T06:00:00Z`

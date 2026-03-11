@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "route_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T22:45:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -69,6 +69,10 @@ Provide a compact machine-readable projection of the routing table so route-prev
 | `required_workflow_ids` | Required | Stable workflow identifiers required by the route. |
 | `required_workflow_paths` | Required | Repository-relative workflow module paths required by the route. |
 
+## Operationalization
+- `Modes`: `artifact`; `schema`; `workflow`
+- `Operational Surfaces`: `core/control_plane/indexes/routes/`; `core/control_plane/schemas/artifacts/`; `workflows/modules/`; `workflows/ROUTING_TABLE.md`
+
 ## Validation
 - The route index should validate against its published artifact schema.
 - Every `required_workflow_path` should exist under `workflows/modules/`.
@@ -86,4 +90,4 @@ Provide a compact machine-readable projection of the routing table so route-prev
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
 
 ## Updated At
-- `2026-03-10T22:45:00Z`
+- `2026-03-11T06:00:00Z`

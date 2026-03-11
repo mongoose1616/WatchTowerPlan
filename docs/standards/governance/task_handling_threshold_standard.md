@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_threshold"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T05:00:00Z"
+updated_at: "2026-03-11T06:00:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -84,6 +84,10 @@ This standard defines when repository work must create, update, transition, or e
 | Non-trivial work with no durable task | `No-Task-Reason` |
 | Trivial one-shot work | No extra metadata beyond the normal commit shape unless a workflow or reviewer asks for it |
 
+## Operationalization
+- `Modes`: `documentation`; `workflow`
+- `Operational Surfaces`: `docs/planning/tasks/`; `workflows/modules/commit_closeout.md`; `workflows/modules/task_handoff_review.md`; `workflows/modules/task_scope_definition.md`
+
 ## Validation
 - Reviewers should reject non-trivial work whose task-handling outcome is implicit.
 - Handoff and closeout should make clear whether a durable task exists or why one was not needed.
@@ -101,4 +105,4 @@ This standard defines when repository work must create, update, transition, or e
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-10T05:00:00Z`
+- `2026-03-11T06:00:00Z`
