@@ -946,6 +946,101 @@
       "notes": "Validation evidence for the internal project review that hardened planning bootstrap outputs and canonicalized planning and coordination projection serialization."
     },
     {
+      "trace_id": "trace.internal_project_standards_review_and_hardening",
+      "title": "Internal Project Standards Review and Hardening PRD",
+      "summary": "Closes reproduced standards-enforcement drift around external-authority validation and document-relative repo-path extraction across governed Markdown sync surfaces.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-11T18:00:58Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/internal_project_standards_review_and_hardening.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/internal_project_standards_review_and_hardening.md",
+      "prd_ids": [
+        "prd.internal_project_standards_review_and_hardening"
+      ],
+      "decision_ids": [
+        "decision.internal_project_standards_review_and_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.internal_project_standards_review_and_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.internal_project_standards_review_and_hardening"
+      ],
+      "task_ids": [
+        "task.internal_project_standards_review_and_hardening.bootstrap.001",
+        "task.internal_project_standards_review_and_hardening.document_relative_reference_extraction.001",
+        "task.internal_project_standards_review_and_hardening.standard_reference_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_standards_review_and_hardening.001",
+        "ac.internal_project_standards_review_and_hardening.002",
+        "ac.internal_project_standards_review_and_hardening.003",
+        "ac.internal_project_standards_review_and_hardening.004",
+        "ac.internal_project_standards_review_and_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.internal_project_standards_review_and_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.internal_project_standards_review_and_hardening.planning_baseline"
+      ],
+      "closed_at": "2026-03-11T18:00:45Z",
+      "closure_reason": "Completed the internal standards review, aligned standard-reference enforcement, normalized remaining decision-index document-relative path projection, published durable evidence, and revalidated the repository baseline.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/internal_project_standards_review_and_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/internal_project_standards_review_and_hardening_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_governed_markdown_reference_resolution.py",
+        "core/python/tests/unit/test_reference_index_sync.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_workflow_index_sync.py",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/internal_project_standards_review_and_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/internal_project_standards_review_and_hardening.md",
+        "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/internal_project_standards_review_and_hardening.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
+        "docs/planning/tasks/closed/internal_project_standards_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-11T18:00:58Z for trace.internal_project_standards_review_and_hardening."
+    },
+    {
       "trace_id": "trace.local_task_tracking",
       "title": "GitHub Task Push Sync",
       "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",

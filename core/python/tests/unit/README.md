@@ -18,10 +18,11 @@
 | `core/python/tests/unit/test_cli_validate_commands.py` | Parser-level JSON and evidence-recording tests for the validation command family. |
 | `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs. |
 | `core/python/tests/unit/test_control_plane_loader.py` | Unit tests for the high-level governed artifact loaders. |
-| `core/python/tests/unit/test_decision_index_sync.py` | Unit tests for rebuilding the decision index from governed decision records. |
+| `core/python/tests/unit/test_decision_index_sync.py` | Unit tests for rebuilding the decision index from governed decision records, including normalized affected-surface path projection. |
 | `core/python/tests/unit/test_design_document_index_sync.py` | Unit tests for rebuilding the design-document index from governed design docs. |
 | `core/python/tests/unit/test_front_matter_validation.py` | Unit tests for registry-backed front-matter validation. |
 | `core/python/tests/unit/test_github_task_sync.py` | Unit tests for push-only GitHub task sync planning behavior. |
+| `core/python/tests/unit/test_governed_markdown_reference_resolution.py` | Unit tests for source-aware governed Markdown repo-path extraction across adapters, planning helpers, and derived sync services. |
 | `core/python/tests/unit/test_repo_ops_compatibility.py` | Unit tests for the explicit repo-ops boundary and its compatibility shims. |
 | `core/python/tests/unit/test_prd_index_sync.py` | Unit tests for rebuilding the PRD index from governed PRD documents. |
 | `core/python/tests/unit/test_reference_index_sync.py` | Unit tests for rebuilding the reference index from governed reference docs. |

@@ -72,3 +72,26 @@ def test_validate_workflow_additional_load_section_rejects_routing_baseline_file
             section,
             repo_root=REPO_ROOT,
         )
+
+
+def test_validate_workflow_additional_load_section_accepts_document_relative_files(
+    tmp_path: Path,
+) -> None:
+    workflow_path = tmp_path / "repo" / "workflows/modules/example_workflow.md"
+    load_target = tmp_path / "repo" / "docs/references/example_reference.md"
+    workflow_path.parent.mkdir(parents=True, exist_ok=True)
+    load_target.parent.mkdir(parents=True, exist_ok=True)
+    load_target.write_text("# Example reference\n", encoding="utf-8")
+    section = (
+        "- [example_reference.md](../../docs/references/example_reference.md): "
+        "task-specific governed reference.\n"
+    )
+
+    result = validate_workflow_additional_load_section(
+        "workflows/modules/example_workflow.md",
+        section,
+        repo_root=tmp_path / "repo",
+        source_path=workflow_path,
+    )
+
+    assert result == ("docs/references/example_reference.md",)

@@ -159,39 +159,72 @@ def extract_path_like_references(text: str) -> tuple[str, ...]:
     return tuple(ordered)
 
 
-def normalize_repo_path_reference(value: str, repo_root: Path) -> str | None:
+def normalize_repo_path_reference(
+    value: str,
+    repo_root: Path,
+    *,
+    source_path: Path | None = None,
+) -> str | None:
     """Normalize an internal path-like reference to a repo-relative path when possible."""
     stripped = value.strip()
     if not stripped or stripped.startswith(("http://", "https://", "mailto:")):
         return None
 
-    without_fragment = stripped.split("#", 1)[0].strip()
+    without_fragment = stripped.split("#", 1)[0].split("?", 1)[0].strip()
     if not without_fragment:
         return None
 
     repo_root = repo_root.resolve()
-    if without_fragment.startswith(str(repo_root)):
+    preserve_trailing_slash = without_fragment.endswith("/")
+    candidate = Path(without_fragment)
+    if candidate.is_absolute():
         try:
-            return Path(without_fragment).resolve().relative_to(repo_root).as_posix()
+            resolved = candidate.resolve()
+            if not resolved.exists():
+                return None
+            relative_path = resolved.relative_to(repo_root).as_posix()
+            if preserve_trailing_slash and not relative_path.endswith("/"):
+                return f"{relative_path}/"
+            return relative_path
         except ValueError:
             return None
 
-    candidate = without_fragment.lstrip("/")
-    if not candidate:
+    normalized_candidate = without_fragment.lstrip("/")
+    if not normalized_candidate:
         return None
 
-    path = repo_root / candidate
-    if path.exists():
-        return candidate
+    candidate_paths: list[Path] = []
+    if source_path is not None:
+        candidate_paths.append((source_path.parent / candidate).resolve())
+    candidate_paths.append((repo_root / normalized_candidate).resolve())
+
+    for path in candidate_paths:
+        try:
+            relative_path = path.relative_to(repo_root).as_posix()
+        except ValueError:
+            continue
+        if path.exists():
+            if preserve_trailing_slash and not relative_path.endswith("/"):
+                return f"{relative_path}/"
+            return relative_path
     return None
 
 
-def extract_repo_path_references(text: str, repo_root: Path) -> tuple[str, ...]:
+def extract_repo_path_references(
+    text: str,
+    repo_root: Path,
+    *,
+    source_path: Path | None = None,
+) -> tuple[str, ...]:
     """Return unique repo-relative paths referenced in one Markdown block."""
     seen: set[str] = set()
     ordered: list[str] = []
     for value in extract_path_like_references(text):
-        normalized = normalize_repo_path_reference(value, repo_root)
+        normalized = normalize_repo_path_reference(
+            value,
+            repo_root,
+            source_path=source_path,
+        )
         if normalized is None or normalized in seen:
             continue
         seen.add(normalized)

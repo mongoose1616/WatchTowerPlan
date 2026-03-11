@@ -880,6 +880,87 @@
       ]
     },
     {
+      "task_id": "task.internal_project_standards_review_and_hardening.bootstrap.001",
+      "title": "Bootstrap Internal Project Standards Review and Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Internal Project Standards Review and Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/internal_project_standards_review_and_hardening_bootstrap.md",
+      "updated_at": "2026-03-11T17:32:42Z",
+      "trace_id": "trace.internal_project_standards_review_and_hardening",
+      "related_ids": [
+        "prd.internal_project_standards_review_and_hardening",
+        "design.features.internal_project_standards_review_and_hardening",
+        "design.implementation.internal_project_standards_review_and_hardening",
+        "decision.internal_project_standards_review_and_hardening_direction",
+        "contract.acceptance.internal_project_standards_review_and_hardening"
+      ],
+      "applies_to": [
+        "docs/standards/",
+        "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.internal_project_standards_review_and_hardening.document_relative_reference_extraction.001",
+      "title": "Make governed repo-path extraction source-aware for document-relative links",
+      "summary": "Resolve document-relative repo-local Markdown links in governed sync and citation-audit extraction paths.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md",
+      "updated_at": "2026-03-11T18:00:40Z",
+      "trace_id": "trace.internal_project_standards_review_and_hardening",
+      "related_ids": [
+        "prd.internal_project_standards_review_and_hardening",
+        "design.features.internal_project_standards_review_and_hardening",
+        "design.implementation.internal_project_standards_review_and_hardening",
+        "decision.internal_project_standards_review_and_hardening_direction",
+        "contract.acceptance.internal_project_standards_review_and_hardening"
+      ],
+      "applies_to": [
+        "docs/standards/",
+        "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.internal_project_standards_review_and_hardening.standard_reference_alignment.001",
+      "title": "Align standard semantic validation with standard-index reference accounting",
+      "summary": "Make standard semantic validation and standard-index sync consume one shared external-authority and local-reference rule.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
+      "updated_at": "2026-03-11T18:00:36Z",
+      "trace_id": "trace.internal_project_standards_review_and_hardening",
+      "related_ids": [
+        "prd.internal_project_standards_review_and_hardening",
+        "design.features.internal_project_standards_review_and_hardening",
+        "design.implementation.internal_project_standards_review_and_hardening",
+        "decision.internal_project_standards_review_and_hardening_direction",
+        "contract.acceptance.internal_project_standards_review_and_hardening"
+      ],
+      "applies_to": [
+        "docs/standards/",
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/tests/"
+      ]
+    },
+    {
       "task_id": "task.local_task_tracking.github_sync.001",
       "title": "Add GitHub task sync support",
       "summary": "Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity.",

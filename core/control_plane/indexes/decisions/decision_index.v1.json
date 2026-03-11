@@ -315,6 +315,59 @@
       ]
     },
     {
+      "trace_id": "trace.internal_project_standards_review_and_hardening",
+      "decision_id": "decision.internal_project_standards_review_and_hardening_direction",
+      "title": "Internal Project Standards Review and Hardening Direction Decision",
+      "summary": "Records the accepted direction for Internal Project Standards Review and Hardening.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/internal_project_standards_review_and_hardening_direction.md",
+      "updated_at": "2026-03-11T17:51:15Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.internal_project_standards_review_and_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.internal_project_standards_review_and_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.internal_project_standards_review_and_hardening"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/",
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ]
+    },
+    {
       "trace_id": "trace.machine_first_coordination_surface",
       "decision_id": "decision.machine_first_coordination_entry_surface",
       "title": "Machine-First Coordination Entry Surface Decision",

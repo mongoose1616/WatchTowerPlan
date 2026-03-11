@@ -113,6 +113,7 @@ def validate_workflow_additional_load_section(
     section: str | None,
     *,
     repo_root: Path,
+    source_path: Path | None = None,
 ) -> tuple[str, ...]:
     """Validate and return task-specific extra files to load for one workflow."""
     if section is None:
@@ -138,7 +139,11 @@ def validate_workflow_additional_load_section(
 
     resolved_paths: list[str] = []
     for bullet in bullets:
-        bullet_paths = extract_repo_path_references(bullet, repo_root)
+        bullet_paths = extract_repo_path_references(
+            bullet,
+            repo_root,
+            source_path=source_path,
+        )
         if len(bullet_paths) != 1:
             raise ValueError(
                 f"{relative_path} section {WORKFLOW_ADDITIONAL_LOAD_SECTION!r} must give "
@@ -234,6 +239,7 @@ def load_workflow_document_with_reference_map(
         relative_path,
         sections.get(WORKFLOW_ADDITIONAL_LOAD_SECTION),
         repo_root=loader.repo_root,
+        source_path=path,
     )
     if not title.endswith(" Workflow"):
         raise ValueError(f"{relative_path} workflow title must end with ' Workflow'.")

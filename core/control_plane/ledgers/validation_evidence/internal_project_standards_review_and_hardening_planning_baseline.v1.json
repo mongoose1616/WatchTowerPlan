@@ -1,0 +1,153 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.internal_project_standards_review_and_hardening.planning_baseline",
+  "title": "Internal Project Standards Review and Hardening Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.internal_project_standards_review_and_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T18:00:58Z",
+  "source_prd_ids": [
+    "prd.internal_project_standards_review_and_hardening"
+  ],
+  "source_design_ids": [
+    "design.features.internal_project_standards_review_and_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.internal_project_standards_review_and_hardening"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.internal_project_standards_review_and_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.internal_project_standards_review_and_hardening.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/internal_project_standards_review_and_hardening.md",
+        "docs/planning/design/features/internal_project_standards_review_and_hardening.md",
+        "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
+        "docs/planning/decisions/internal_project_standards_review_and_hardening_direction.md",
+        "core/control_plane/contracts/acceptance/internal_project_standards_review_and_hardening_acceptance.v1.json",
+        "docs/planning/tasks/closed/internal_project_standards_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
+        "docs/planning/tasks/closed/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md"
+      ],
+      "subject_ids": [
+        "prd.internal_project_standards_review_and_hardening",
+        "design.features.internal_project_standards_review_and_hardening",
+        "design.implementation.internal_project_standards_review_and_hardening",
+        "task.internal_project_standards_review_and_hardening.bootstrap.001",
+        "contract.acceptance.internal_project_standards_review_and_hardening",
+        "decision.internal_project_standards_review_and_hardening_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.internal_project_standards_review_and_hardening.001"
+      ],
+      "notes": "Planning baseline refreshed after the accepted direction was recorded, the bootstrap task closed, both execution tasks closed, and the traced initiative reached terminal closeout."
+    },
+    {
+      "check_id": "check.internal_project_standards_review_and_hardening.standard_reference_alignment",
+      "title": "Standard semantic validation and standard-index sync share one external-authority rule",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py"
+      ],
+      "subject_ids": [
+        "task.internal_project_standards_review_and_hardening.standard_reference_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_standards_review_and_hardening.002"
+      ],
+      "notes": "Standard semantic validation and standard-index sync now consume one shared reference-accounting helper so governed local reference docs are required consistently for direct external authority across both standards source sections."
+    },
+    {
+      "check_id": "check.internal_project_standards_review_and_hardening.document_relative_reference_extraction",
+      "title": "Governed repo-path extraction resolves document-relative repo-local links across derived families",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_reference_index_sync.py",
+        "core/python/tests/unit/test_workflow_index_sync.py",
+        "core/python/tests/unit/test_governed_markdown_reference_resolution.py"
+      ],
+      "subject_ids": [
+        "task.internal_project_standards_review_and_hardening.document_relative_reference_extraction.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_standards_review_and_hardening.003"
+      ],
+      "notes": "The Markdown adapter now accepts source-document context for repo-path normalization, and the affected planning, decision, workflow, reference, foundation, and citation-audit call sites now preserve document-relative repo-local links in derived machine-readable surfaces, including normalized decision related paths."
+    },
+    {
+      "check_id": "check.internal_project_standards_review_and_hardening.governance_alignment",
+      "title": "Direction decision, planning docs, task records, and test inventory reflect the accepted standards-hardening direction",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/decisions/internal_project_standards_review_and_hardening_direction.md",
+        "docs/planning/design/features/internal_project_standards_review_and_hardening.md",
+        "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
+        "docs/planning/tasks/closed/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
+        "docs/planning/tasks/closed/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md",
+        "core/python/tests/unit/README.md"
+      ],
+      "subject_ids": [
+        "decision.internal_project_standards_review_and_hardening_direction",
+        "design.features.internal_project_standards_review_and_hardening",
+        "design.implementation.internal_project_standards_review_and_hardening",
+        "task.internal_project_standards_review_and_hardening.standard_reference_alignment.001",
+        "task.internal_project_standards_review_and_hardening.document_relative_reference_extraction.001"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_standards_review_and_hardening.004"
+      ],
+      "notes": "The accepted direction, the bounded task split, the closed task records, and the unit-test inventory now document the shared standards-enforcement direction instead of leaving the trace on bootstrap placeholders."
+    },
+    {
+      "check_id": "check.internal_project_standards_review_and_hardening.validation_baseline",
+      "title": "Repository validation baseline is green for the completed standards-hardening trace",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/internal_project_standards_review_and_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/internal_project_standards_review_and_hardening_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.internal_project_standards_review_and_hardening",
+        "decision.internal_project_standards_review_and_hardening_direction",
+        "design.features.internal_project_standards_review_and_hardening",
+        "design.implementation.internal_project_standards_review_and_hardening",
+        "task.internal_project_standards_review_and_hardening.standard_reference_alignment.001",
+        "task.internal_project_standards_review_and_hardening.document_relative_reference_extraction.001",
+        "contract.acceptance.internal_project_standards_review_and_hardening"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_standards_review_and_hardening.005"
+      ],
+      "notes": "watchtower-core sync all --write, watchtower-core validate acceptance --trace-id trace.internal_project_standards_review_and_hardening --format json, watchtower-core validate all --format json, pytest -q, python -m mypy src/watchtower_core, and ruff check all passed after the trace reached terminal closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/internal_project_standards_review_and_hardening_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-11T18:00:58Z for trace.internal_project_standards_review_and_hardening.",
+  "source_decision_ids": [
+    "decision.internal_project_standards_review_and_hardening_direction"
+  ]
+}

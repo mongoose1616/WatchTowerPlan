@@ -476,6 +476,37 @@
       ]
     },
     {
+      "document_id": "design.features.internal_project_standards_review_and_hardening",
+      "trace_id": "trace.internal_project_standards_review_and_hardening",
+      "family": "feature_design",
+      "title": "Internal Project Standards Review and Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Internal Project Standards Review and Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/internal_project_standards_review_and_hardening.md",
+      "updated_at": "2026-03-11T17:51:15Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
+        "docs/standards/",
+        "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.local_task_tracking_and_github_sync",
       "trace_id": "trace.local_task_tracking",
       "family": "feature_design",
@@ -1097,6 +1128,36 @@
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/standards/data_contracts/planning_catalog_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.internal_project_standards_review_and_hardening",
+      "trace_id": "trace.internal_project_standards_review_and_hardening",
+      "family": "implementation_plan",
+      "title": "Internal Project Standards Review and Hardening Implementation Plan",
+      "summary": "Breaks Internal Project Standards Review and Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
+      "updated_at": "2026-03-11T17:51:15Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/internal_project_standards_review_and_hardening.md"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/engineering/git_commit_standard.md"
       ]
     },
     {

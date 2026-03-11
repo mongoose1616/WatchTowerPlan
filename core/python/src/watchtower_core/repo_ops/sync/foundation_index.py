@@ -118,7 +118,11 @@ class FoundationIndexSyncService:
 
             current = existing_entries.get(front_matter["id"], {})
             internal_reference_paths = ordered_unique(
-                extract_repo_path_references(sections["References"], self._repo_root)
+                extract_repo_path_references(
+                    sections["References"],
+                    self._repo_root,
+                    source_path=path,
+                )
             )
             reference_doc_paths = tuple(
                 value for value in internal_reference_paths if value.startswith("docs/references/")

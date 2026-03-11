@@ -118,8 +118,13 @@ class ReferenceIndexSyncService:
                 extract_repo_path_references(
                     sections.get("Local Mapping in This Repository", ""),
                     self._repo_root,
+                    source_path=path,
                 ),
-                extract_repo_path_references(sections["References"], self._repo_root),
+                extract_repo_path_references(
+                    sections["References"],
+                    self._repo_root,
+                    source_path=path,
+                ),
                 _tuple_of_strings(current.get("related_paths")),
             )
             aliases = ordered_unique(
@@ -334,13 +339,25 @@ def iter_citation_audit_documents(
                 section = sections.get(title)
                 if section is None:
                     continue
-                cited_paths.update(extract_repo_path_references(section, repo_root))
+                cited_paths.update(
+                    extract_repo_path_references(
+                        section,
+                        repo_root,
+                        source_path=path,
+                    )
+                )
                 cited_urls.update(extract_external_urls(section))
             for title in applied_sections:
                 section = sections.get(title)
                 if section is None:
                     continue
-                applied_paths.update(extract_repo_path_references(section, repo_root))
+                applied_paths.update(
+                    extract_repo_path_references(
+                        section,
+                        repo_root,
+                        source_path=path,
+                    )
+                )
                 applied_urls.update(extract_external_urls(section))
             documents.append((relative_path, cited_paths, cited_urls, applied_paths, applied_urls))
     return tuple(documents)

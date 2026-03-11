@@ -126,6 +126,7 @@
       ],
       "related_paths": [
         "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/templates/",
         "docs/templates"
       ],
       "tags": [
@@ -450,6 +451,7 @@
       ],
       "related_paths": [
         "docs/standards/data_contracts/schema_standard.md",
+        "core/control_plane/schemas/",
         "core/control_plane/schemas"
       ],
       "tags": [
@@ -972,9 +974,10 @@
       "related_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
-        "core/python/tests",
+        "core/python/tests/",
         "docs/references/pyproject_toml_reference.md",
-        "docs/references/src_layout_reference.md"
+        "docs/references/src_layout_reference.md",
+        "core/python/tests"
       ],
       "tags": [
         "reference",
@@ -1128,6 +1131,7 @@
       ],
       "related_paths": [
         "docs/standards/data_contracts/format_selection_standard.md",
+        "core/control_plane/",
         "core/control_plane"
       ],
       "tags": [
@@ -1453,9 +1457,10 @@
       ],
       "related_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
-        "core/python/src",
+        "core/python/src/",
         "docs/references/pyproject_toml_reference.md",
-        "docs/references/pytest_reference.md"
+        "docs/references/pytest_reference.md",
+        "core/python/src"
       ],
       "tags": [
         "reference",

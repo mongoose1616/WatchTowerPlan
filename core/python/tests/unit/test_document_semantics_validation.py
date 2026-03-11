@@ -27,6 +27,45 @@ def _write_repo_file(path: Path, content: str = "# Placeholder\n") -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def _write_reference_fixture(path: Path, *, support_target: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        dedent(
+            f"""\
+            ---
+            id: "ref.example"
+            title: "Example Reference"
+            summary: "Provides governed local reference coverage for semantic tests."
+            type: "reference"
+            status: "active"
+            tags:
+              - "reference"
+              - "example"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-11T17:35:00Z"
+            audience: "shared"
+            authority: "supporting"
+            ---
+
+            # Example Reference
+
+            ## Canonical Upstream
+            - [Example upstream](https://example.com/reference)
+
+            ## Quick Reference or Distilled Reference
+            One compact reference fixture.
+
+            ## References
+            - [support_target.md]({support_target})
+
+            ## Updated At
+            - `2026-03-11T17:35:00Z`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+
 def _write_standard_fixture(
     path: Path,
     *,
@@ -94,6 +133,74 @@ def _write_standard_fixture(
         content,
         encoding="utf-8",
     )
+
+
+def _write_standard_reference_rule_fixture(
+    path: Path,
+    *,
+    related_lines: tuple[str, ...],
+    reference_lines: tuple[str, ...],
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    content = dedent(
+        """\
+        ---
+        id: "std.documentation.example"
+        title: "Example Standard"
+        summary: "Exercises standard reference-accounting semantics."
+        type: "standard"
+        status: "active"
+        tags:
+          - "standard"
+          - "documentation"
+          - "example"
+        owner: "repository_maintainer"
+        updated_at: "2026-03-11T17:35:00Z"
+        audience: "shared"
+        authority: "authoritative"
+        ---
+
+        # Example Standard
+
+        ## Summary
+        Exercises standard reference-accounting semantics.
+
+        ## Purpose
+        Keep the fixture focused on governed external-authority rules.
+
+        ## Scope
+        - Applies to one standard-semantics fixture.
+
+        ## Use When
+        - Validating governed local-reference enforcement.
+
+        ## Related Standards and Sources
+        __RELATED_LINES__
+
+        ## Guidance
+        - Keep standard reference-accounting deterministic.
+
+        ## Operationalization
+        - `Modes`: `documentation`
+        - `Operational Surfaces`: `docs/standards/documentation/example_standard.md`
+
+        ## Validation
+        - Standard semantic validation should stay aligned with standard-index sync.
+
+        ## Change Control
+        - Update validation and sync helpers together if this rule changes.
+
+        ## References
+        __REFERENCE_LINES__
+
+        ## Updated At
+        - `2026-03-11T17:35:00Z`
+        """
+    ).replace("__RELATED_LINES__", "\n".join(related_lines)).replace(
+        "__REFERENCE_LINES__",
+        "\n".join(reference_lines),
+    )
+    path.write_text(content, encoding="utf-8")
 
 
 def _write_decision_fixture(
@@ -306,6 +413,66 @@ def test_document_semantics_validation_rejects_missing_repo_local_markdown_link_
     assert result.issue_count == 1
     assert "repo-local Markdown link" in result.issues[0].message
     assert "missing_reference.md" in result.issues[0].message
+
+
+def test_document_semantics_validation_accepts_local_reference_doc_in_related_sources(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(reference_path, support_target=support_target)
+    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    _write_standard_reference_rule_fixture(
+        standard_path,
+        related_lines=(
+            (
+                "- [Example upstream](https://example.com/reference): external authority "
+                "drives the rule."
+            ),
+            (
+                f"- [example_reference.md]({reference_path}): governed local reference doc "
+                "captures the applied implication."
+            ),
+        ),
+        reference_lines=(
+            f"- [README.md]({support_target})",
+        ),
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/standards/documentation/example_standard.md")
+
+    assert result.passed is True
+    assert result.issue_count == 0
+
+
+def test_document_semantics_validation_rejects_external_authority_without_local_reference_doc(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    _write_standard_reference_rule_fixture(
+        standard_path,
+        related_lines=(
+            (
+                f"- [README.md]({support_target}): local repository context for the fixture."
+            ),
+        ),
+        reference_lines=(
+            "- [Example upstream](https://example.com/reference)",
+        ),
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/standards/documentation/example_standard.md")
+
+    assert result.passed is False
+    assert result.issue_count == 1
+    assert "governed local reference doc under docs/references/" in result.issues[0].message
 
 
 def test_document_semantics_validation_rejects_missing_decision_applied_references(

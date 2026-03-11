@@ -9,8 +9,6 @@ from typing import Any
 from jsonschema import ValidationError
 
 from watchtower_core.adapters import (
-    extract_external_urls,
-    extract_repo_path_references,
     extract_sections,
     extract_title,
     extract_updated_at_from_section,
@@ -27,6 +25,7 @@ from watchtower_core.repo_ops.planning_documents import (
 )
 from watchtower_core.repo_ops.standards import (
     STANDARD_OPERATIONALIZATION_SECTION,
+    collect_standard_reference_metadata,
     parse_standard_operationalization,
 )
 from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
@@ -134,57 +133,14 @@ class StandardIndexSyncService:
             )
 
             current = existing_entries.get(front_matter["id"], {})
-            internal_reference_paths = ordered_unique(
-                extract_repo_path_references(
-                    sections["Related Standards and Sources"],
-                    self._repo_root,
-                ),
-                extract_repo_path_references(sections["References"], self._repo_root),
+            reference_metadata = collect_standard_reference_metadata(
+                relative_path=relative_path,
+                repo_root=self._repo_root,
+                source_path=path,
+                related_section=sections["Related Standards and Sources"],
+                references_section=sections["References"],
+                reference_urls_by_path=reference_urls_by_path,
             )
-            applied_reference_paths = ordered_unique(
-                extract_repo_path_references(
-                    sections["Related Standards and Sources"],
-                    self._repo_root,
-                )
-            )
-            reference_doc_paths = tuple(
-                value for value in internal_reference_paths if value.startswith("docs/references/")
-            )
-            direct_external_urls = ordered_unique(
-                extract_external_urls(sections["Related Standards and Sources"]),
-                extract_external_urls(sections["References"]),
-            )
-            applied_direct_external_urls = ordered_unique(
-                extract_external_urls(sections["Related Standards and Sources"])
-            )
-            applied_reference_doc_paths = tuple(
-                value for value in applied_reference_paths if value.startswith("docs/references/")
-            )
-            transitive_external_urls = ordered_unique(
-                *(
-                    reference_urls_by_path.get(reference_path, ())
-                    for reference_path in reference_doc_paths
-                )
-            )
-            applied_transitive_external_urls = ordered_unique(
-                *(
-                    reference_urls_by_path.get(reference_path, ())
-                    for reference_path in applied_reference_doc_paths
-                )
-            )
-            external_reference_urls = ordered_unique(
-                direct_external_urls,
-                transitive_external_urls,
-            )
-            applied_external_reference_urls = ordered_unique(
-                applied_direct_external_urls,
-                applied_transitive_external_urls,
-            )
-            if direct_external_urls and not reference_doc_paths:
-                raise ValueError(
-                    f"{relative_path} cites external authority directly but does not cite a "
-                    "governed local reference doc under docs/references/."
-                )
 
             related_paths = ordered_unique(
                 _front_matter_path_values(front_matter, relative_path),
@@ -208,8 +164,8 @@ class StandardIndexSyncService:
                 "owner": owner,
                 "doc_path": relative_path,
                 "updated_at": updated_at,
-                "uses_internal_references": bool(internal_reference_paths),
-                "uses_external_references": bool(external_reference_urls),
+                "uses_internal_references": bool(reference_metadata.internal_reference_paths),
+                "uses_external_references": bool(reference_metadata.external_reference_urls),
                 "operationalization_modes": list(operationalization_modes),
                 "operationalization_paths": list(operationalization_paths),
             }
@@ -217,16 +173,20 @@ class StandardIndexSyncService:
                 entry["applies_to"] = list(applies_to)
             if related_paths:
                 entry["related_paths"] = list(related_paths)
-            if reference_doc_paths:
-                entry["reference_doc_paths"] = list(reference_doc_paths)
-            if internal_reference_paths:
-                entry["internal_reference_paths"] = list(internal_reference_paths)
-            if applied_reference_paths:
-                entry["applied_reference_paths"] = list(applied_reference_paths)
-            if external_reference_urls:
-                entry["external_reference_urls"] = list(external_reference_urls)
-            if applied_external_reference_urls:
-                entry["applied_external_reference_urls"] = list(applied_external_reference_urls)
+            if reference_metadata.reference_doc_paths:
+                entry["reference_doc_paths"] = list(reference_metadata.reference_doc_paths)
+            if reference_metadata.internal_reference_paths:
+                entry["internal_reference_paths"] = list(
+                    reference_metadata.internal_reference_paths
+                )
+            if reference_metadata.applied_reference_paths:
+                entry["applied_reference_paths"] = list(reference_metadata.applied_reference_paths)
+            if reference_metadata.external_reference_urls:
+                entry["external_reference_urls"] = list(reference_metadata.external_reference_urls)
+            if reference_metadata.applied_external_reference_urls:
+                entry["applied_external_reference_urls"] = list(
+                    reference_metadata.applied_external_reference_urls
+                )
             if tags:
                 entry["tags"] = list(tags)
             if notes is not None:

@@ -272,9 +272,14 @@ def collect_reference_indicators(
     external_sections: tuple[str, ...],
 ) -> tuple[bool, bool, tuple[str, ...], tuple[str, ...]]:
     """Collect reference indicators from the nominated sections of one planning document."""
+    source_path = repo_root / document.relative_path
     internal_paths = ordered_unique(
         *(
-            extract_repo_path_references(section, repo_root)
+            extract_repo_path_references(
+                section,
+                repo_root,
+                source_path=source_path,
+            )
             for title in internal_sections
             if (section := document.section(title)) is not None
         )

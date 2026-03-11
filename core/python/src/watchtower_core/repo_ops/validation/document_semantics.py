@@ -8,7 +8,6 @@ from pathlib import Path
 from watchtower_core.adapters import (
     extract_external_urls,
     extract_markdown_links,
-    extract_repo_path_references,
     extract_sections,
     extract_title,
     extract_updated_at_from_section,
@@ -33,6 +32,7 @@ from watchtower_core.repo_ops.planning_documents import (
 )
 from watchtower_core.repo_ops.standards import (
     STANDARD_OPERATIONALIZATION_SECTION,
+    collect_standard_reference_metadata,
     parse_standard_operationalization,
 )
 from watchtower_core.repo_ops.sync.decision_index import DECISION_FRONT_MATTER_SCHEMA_ID
@@ -291,18 +291,13 @@ class DocumentSemanticsValidationService:
             raise ValueError(
                 f"{relative_path} Updated At section does not match front matter updated_at."
             )
-        related_external_urls = extract_external_urls(sections["Related Standards and Sources"])
-        reference_paths = extract_repo_path_references(
-            sections["References"],
-            self._loader.repo_root,
+        collect_standard_reference_metadata(
+            relative_path=relative_path,
+            repo_root=self._loader.repo_root,
+            source_path=resolved_path,
+            related_section=sections["Related Standards and Sources"],
+            references_section=sections["References"],
         )
-        if related_external_urls and not any(
-            path.startswith("docs/references/") for path in reference_paths
-        ):
-            raise ValueError(
-                f"{relative_path} cites external authority directly but does not cite a "
-                "governed local reference doc under docs/references/."
-            )
 
     def _validate_prd_document(self, relative_path: str) -> None:
         load_governed_document(

@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from watchtower_core.adapters import extract_path_like_references
+from watchtower_core.adapters import extract_repo_path_references
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.planning_documents import (
@@ -106,7 +106,11 @@ class DecisionIndexSyncService:
 
             affected_paths = tuple(
                 value
-                for value in extract_path_like_references(document.sections["Affected Surfaces"])
+                for value in extract_repo_path_references(
+                    document.sections["Affected Surfaces"],
+                    self._repo_root,
+                    source_path=self._repo_root / relative_path,
+                )
                 if value != relative_path
             )
             related_paths = ordered_unique(

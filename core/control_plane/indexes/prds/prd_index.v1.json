@@ -427,6 +427,51 @@
       ]
     },
     {
+      "trace_id": "trace.internal_project_standards_review_and_hardening",
+      "prd_id": "prd.internal_project_standards_review_and_hardening",
+      "title": "Internal Project Standards Review and Hardening PRD",
+      "summary": "Closes reproduced standards-enforcement drift around external-authority validation and document-relative repo-path extraction across governed Markdown sync surfaces.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/internal_project_standards_review_and_hardening.md",
+      "updated_at": "2026-03-11T17:51:15Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.internal_project_standards_review_and_hardening.001",
+        "req.internal_project_standards_review_and_hardening.002",
+        "req.internal_project_standards_review_and_hardening.003",
+        "req.internal_project_standards_review_and_hardening.004",
+        "req.internal_project_standards_review_and_hardening.005"
+      ],
+      "acceptance_ids": [
+        "ac.internal_project_standards_review_and_hardening.001",
+        "ac.internal_project_standards_review_and_hardening.002",
+        "ac.internal_project_standards_review_and_hardening.003",
+        "ac.internal_project_standards_review_and_hardening.004",
+        "ac.internal_project_standards_review_and_hardening.005"
+      ],
+      "linked_decision_ids": [
+        "decision.internal_project_standards_review_and_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.internal_project_standards_review_and_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.internal_project_standards_review_and_hardening"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "core/python/src/watchtower_core/adapters/markdown.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md"
+      ]
+    },
+    {
       "trace_id": "trace.machine_first_coordination_surface",
       "prd_id": "prd.machine_first_coordination_surface",
       "title": "Machine-First Coordination Surface PRD",
