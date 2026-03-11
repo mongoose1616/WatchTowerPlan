@@ -73,6 +73,10 @@ def _write_standard_fixture(
         __GUIDANCE_HEADING__
         - Keep fixtures small and deterministic.
 
+        ## Operationalization
+        - `Modes`: `documentation`
+        - `Operational Surfaces`: `docs/standards/documentation/example_standard.md`
+
         ## Validation
         - Semantic validation should fail only for the targeted issue.
 

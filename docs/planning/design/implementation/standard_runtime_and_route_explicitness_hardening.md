@@ -7,7 +7,7 @@ summary: Breaks Standard, Runtime, and Route Explicitness Hardening into a bound
 type: implementation_plan
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-11T06:45:00Z'
+updated_at: '2026-03-11T06:44:04Z'
 audience: shared
 authority: supporting
 applies_to:
@@ -28,7 +28,7 @@ applies_to:
 - `Linked Decisions`: `decision.standard_runtime_and_route_explicitness_direction`
 - `Source Designs`: `design.features.standard_runtime_and_route_explicitness`
 - `Linked Acceptance Contracts`: `contract.acceptance.standard_runtime_and_route_explicitness`
-- `Updated At`: `2026-03-11T06:45:00Z`
+- `Updated At`: `2026-03-11T06:44:04Z`
 
 ## Summary
 Breaks Standard, Runtime, and Route Explicitness Hardening into a bounded implementation slice.
@@ -43,6 +43,12 @@ Breaks Standard, Runtime, and Route Explicitness Hardening into a bounded implem
   3. advisory route-preview scoring hardening, docs, and tests
 - Excludes the broader planning-document contract-unification workstream because no active drift is reproducing in the current runtime contract path.
 - Excludes already-closed health-reporting and maintenance-loop remediation work.
+
+## Internal Standards and Canonical References Applied
+- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): the first execution slice must update the governed standard shape and keep derived index behavior sourced from those documents.
+- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): each reproduced gap should close through an explicit bounded task rather than an untracked sweep.
+- [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): final verification for standards, runtime docs, and route-preview behavior needs a durable evidence record before closeout.
+- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): route-preview and standards-query docs must refresh in the same change set as the runtime behavior.
 
 ## Assumptions and Constraints
 - Standard docs remain the authored authority, so the operationalization fields must be captured in the documents themselves rather than in a new parallel registry.

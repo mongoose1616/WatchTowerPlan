@@ -7,7 +7,7 @@ summary: Defines the technical design boundary for Standard, Runtime, and Route 
 type: feature_design
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-11T04:13:49Z'
+updated_at: '2026-03-11T06:44:04Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -27,7 +27,7 @@ applies_to:
 - `Linked PRDs`: `prd.standard_runtime_and_route_explicitness`
 - `Linked Decisions`: `decision.standard_runtime_and_route_explicitness_direction`
 - `Linked Implementation Plans`: `design.implementation.standard_runtime_and_route_explicitness`
-- `Updated At`: `2026-03-11T04:13:49Z`
+- `Updated At`: `2026-03-11T06:44:04Z`
 
 ## Summary
 Defines the technical design boundary for Standard, Runtime, and Route Explicitness Hardening.
@@ -47,6 +47,17 @@ Defines the technical design boundary for Standard, Runtime, and Route Explicitn
 - `watchtower-core route preview --request "review /home/j/WatchTower/report and fix the valid issues with planning, tasks, validation, and commits"` currently returns no selected routes because the scoring model requires exact trigger-phrase matches before any token overlap matters.
 - The March 2026 review concerns around foundation alignment, maintenance freshness loops, and layered health reporting no longer reproduce as open defects in the live repo, so this initiative should stay tightly scoped to the remaining explicitness gaps.
 - `core/python/src/watchtower_core/repo_ops/planning_documents.py` already centralizes runtime planning-document validation, which means the earlier contract-duplication concern is not the bounded change target for this slice.
+
+## Foundations References Applied
+- [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): authored operationalization metadata and package-boundary docs should strengthen explicit seams instead of adding hidden side registries.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the remaining report findings should be closed with fail-closed validation and durable lookup alignment rather than informal guidance alone.
+- [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): route-preview hardening should improve maintainability workflows without changing the repo's human-governed routing authority.
+
+## Internal Standards and Canonical References Applied
+- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): standard documents stay the source of truth, so operationalization metadata belongs in the governed standard shape.
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): package-boundary docs and route-scoring work should preserve stable contracts while reducing ambiguity.
+- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the trace should join the planning chain, standards work, runtime docs, command docs, and acceptance evidence coherently.
+- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): query and route-preview behavior changes must be reflected in the governed command surfaces.
 
 ## Design Goals and Constraints
 - Make operationalization explicit in authored sources rather than inventing another hidden Python-only truth surface.

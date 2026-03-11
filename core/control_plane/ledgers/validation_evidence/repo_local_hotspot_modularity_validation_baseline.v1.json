@@ -1,0 +1,187 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.repo_local_hotspot_modularity.validation_baseline",
+  "title": "Repo-Local Hotspot Modularity Hardening Validation Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.repo_local_hotspot_modularity",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T06:48:23Z",
+  "source_prd_ids": [
+    "prd.repo_local_hotspot_modularity"
+  ],
+  "source_decision_ids": [
+    "decision.repo_local_hotspot_modularity_direction"
+  ],
+  "source_design_ids": [
+    "design.features.repo_local_hotspot_modularity"
+  ],
+  "source_plan_ids": [
+    "design.implementation.repo_local_hotspot_modularity"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.repo_local_hotspot_modularity"
+  ],
+  "checks": [
+    {
+      "check_id": "check.repo_local_hotspot_modularity.planning_chain",
+      "title": "Planning chain and execution-task closure stay aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/tasks/closed/repo_local_hotspot_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/split_planning_scaffolds_and_task_lifecycle_hotspots_into_helper_backed_modules.md",
+        "docs/planning/tasks/closed/split_sync_cli_and_traceability_hotspots_into_grouped_helper_modules.md",
+        "docs/planning/tasks/closed/split_github_sync_and_client_hotspots_into_helper_backed_modules.md"
+      ],
+      "subject_ids": [
+        "prd.repo_local_hotspot_modularity",
+        "decision.repo_local_hotspot_modularity_direction",
+        "design.features.repo_local_hotspot_modularity",
+        "design.implementation.repo_local_hotspot_modularity",
+        "task.repo_local_hotspot_modularity.bootstrap.001",
+        "task.repo_local_hotspot_modularity.scaffolds_lifecycle.001",
+        "task.repo_local_hotspot_modularity.sync_traceability.001",
+        "task.repo_local_hotspot_modularity.github_integration.001"
+      ],
+      "acceptance_ids": [
+        "ac.repo_local_hotspot_modularity.001"
+      ],
+      "notes": "The hotspot-modularity trace now publishes the full planning chain, the bootstrap task is closed, and the three bounded execution tasks are all closed before initiative closeout."
+    },
+    {
+      "check_id": "check.repo_local_hotspot_modularity.helper_backed_facades",
+      "title": "Oversized repo-local entry modules are reduced behind explicit helpers",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/src/watchtower_core/cli/sync_family.py",
+        "core/python/src/watchtower_core/cli/sync_family_documents.py",
+        "core/python/src/watchtower_core/cli/sync_family_tracking.py",
+        "core/python/src/watchtower_core/cli/sync_family_special.py",
+        "core/python/src/watchtower_core/cli/sync_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_document_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_tracking_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_orchestration_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_task_sync_support.py",
+        "core/python/src/watchtower_core/integrations/github/client.py",
+        "core/python/src/watchtower_core/integrations/github/client_project_support.py",
+        "core/python/src/watchtower_core/integrations/github/models.py"
+      ],
+      "subject_ids": [
+        "task.repo_local_hotspot_modularity.scaffolds_lifecycle.001",
+        "task.repo_local_hotspot_modularity.sync_traceability.001",
+        "task.repo_local_hotspot_modularity.github_integration.001"
+      ],
+      "acceptance_ids": [
+        "ac.repo_local_hotspot_modularity.002"
+      ],
+      "notes": "The planning, task, sync, traceability, GitHub sync, and GitHub client hotspots now keep their existing entrypoints while moving normalization, parser-building, orchestration, and transport details into focused helper modules."
+    },
+    {
+      "check_id": "check.repo_local_hotspot_modularity.targeted_regressions",
+      "title": "Targeted planning, sync, traceability, and GitHub regressions remain green",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "core/python/tests/unit/test_cli_sync_commands.py",
+        "core/python/tests/unit/test_all_sync.py",
+        "core/python/tests/unit/test_github_client.py",
+        "core/python/tests/unit/test_github_task_sync.py",
+        "core/python/tests/integration/test_task_workflow_end_to_end.py",
+        "core/python/tests/unit/test_initiative_index_sync.py"
+      ],
+      "subject_ids": [
+        "task.repo_local_hotspot_modularity.scaffolds_lifecycle.001",
+        "task.repo_local_hotspot_modularity.sync_traceability.001",
+        "task.repo_local_hotspot_modularity.github_integration.001"
+      ],
+      "acceptance_ids": [
+        "ac.repo_local_hotspot_modularity.003"
+      ],
+      "notes": "The helper-backed refactor keeps planning-scaffold, task-lifecycle, sync, traceability, initiative-index, and GitHub-facing behavior green under the targeted unit and integration suites that cover these services."
+    },
+    {
+      "check_id": "check.repo_local_hotspot_modularity.companion_alignment",
+      "title": "Companion trackers, indexes, and package docs stay aligned",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/repo_local_hotspot_modularity_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "core/python/src/watchtower_core/cli/README.md",
+        "core/python/src/watchtower_core/repo_ops/sync/README.md",
+        "core/python/src/watchtower_core/integrations/github/README.md"
+      ],
+      "subject_ids": [
+        "contract.acceptance.repo_local_hotspot_modularity",
+        "index.traceability"
+      ],
+      "validator_id": "validator.control_plane.traceability_index",
+      "acceptance_ids": [
+        "ac.repo_local_hotspot_modularity.004"
+      ],
+      "notes": "The acceptance contract, traceability join, planning catalog, initiative and coordination projections, task tracker, and code-adjacent package docs now move with the hotspot refactor in the same governed change set."
+    },
+    {
+      "check_id": "check.repo_local_hotspot_modularity.acceptance_contract",
+      "title": "Acceptance contract remains schema-valid for closeout",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/repo_local_hotspot_modularity_acceptance.v1.json"
+      ],
+      "subject_ids": [
+        "contract.acceptance.repo_local_hotspot_modularity"
+      ],
+      "validator_id": "validator.control_plane.acceptance_contract",
+      "acceptance_ids": [
+        "ac.repo_local_hotspot_modularity.005"
+      ],
+      "notes": "The bounded hotspot-modularity acceptance contract remains the durable closeout authority for planning, refactor, regression, and repository-baseline expectations."
+    },
+    {
+      "check_id": "check.repo_local_hotspot_modularity.closeout_baseline",
+      "title": "Repository closeout baseline is green on the refactored state",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/ledgers/validation_evidence/repo_local_hotspot_modularity_validation_baseline.v1.json",
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.repo_local_hotspot_modularity.005"
+      ],
+      "notes": "The closeout baseline for sync, non-acceptance validation, targeted acceptance validation, pytest, mypy, and ruff is recorded against the helper-backed repository state for this trace."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/repo_local_hotspot_modularity_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "core/control_plane/indexes/planning/planning_catalog.v1.json",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md",
+    "docs/planning/coordination_tracking.md"
+  ],
+  "notes": "Validation evidence for closing the remaining report-validated repo-local hotspot modularity issue cluster."
+}

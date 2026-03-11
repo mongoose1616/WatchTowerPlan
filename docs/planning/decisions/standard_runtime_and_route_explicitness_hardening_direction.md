@@ -7,7 +7,7 @@ summary: Records the initial direction decision for Standard, Runtime, and Route
 type: decision_record
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-11T05:35:00Z'
+updated_at: '2026-03-11T06:44:52Z'
 audience: shared
 authority: supporting
 applies_to:
@@ -28,7 +28,7 @@ applies_to:
 - `Linked PRDs`: `prd.standard_runtime_and_route_explicitness`
 - `Linked Designs`: `design.features.standard_runtime_and_route_explicitness`
 - `Linked Implementation Plans`: `design.implementation.standard_runtime_and_route_explicitness`
-- `Updated At`: `2026-03-11T05:35:00Z`
+- `Updated At`: `2026-03-11T06:44:52Z`
 
 ## Summary
 Records the initial direction decision for Standard, Runtime, and Route Explicitness Hardening.
@@ -44,6 +44,12 @@ Close the still-valid report-set gaps by adding authored operationalization meta
 - The `watchtower_core` package tree currently has no package-level README surfaces, even though the repo now expects contributors and agents to navigate export-safe versus repo-local boundaries accurately.
 - The route-preview command currently requires exact trigger phrases before token overlap can contribute to scoring, which makes it too brittle for realistic maintenance requests.
 - Foundation-scope drift, layered health reporting, and recurring maintenance-loop clarity are already addressed in the current repo, so this initiative should not reopen them.
+
+## Applied References and Implications
+- [standard_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/standard_md_standard.md): operationalization metadata should live in the governed standard documents themselves, not in a separate authored registry.
+- [engineering_best_practices_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/engineering_best_practices_standard.md): package-boundary docs and route-matching changes should improve clarity without widening the public runtime contract.
+- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): route preview remains advisory support for human routing rather than a replacement for workflow authority.
+- [command_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/command_md_standard.md): any route-preview or standards-query behavior change must ship with aligned command documentation.
 
 ## Affected Surfaces
 - docs/standards/

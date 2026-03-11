@@ -559,6 +559,35 @@
       ]
     },
     {
+      "document_id": "design.features.repo_local_hotspot_modularity",
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "family": "feature_design",
+      "title": "Repo-Local Hotspot Modularity Hardening Feature Design",
+      "summary": "Defines the technical design boundary for reducing the remaining report-validated repo-local hotspot modules without changing behavior.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+      "updated_at": "2026-03-11T06:43:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/integrations/github/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/documentation/documentation_semantics_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/design/features/core_export_hardening.md",
+        "docs/planning/design/features/end_to_end_repo_rationalization.md"
+      ]
+    },
+    {
       "document_id": "design.features.schema_resolution_and_index_search",
       "trace_id": "trace.core_python_foundation",
       "family": "feature_design",
@@ -604,7 +633,7 @@
       "summary": "Defines the technical design boundary for Standard, Runtime, and Route Explicitness Hardening.",
       "status": "active",
       "doc_path": "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
-      "updated_at": "2026-03-11T04:13:49Z",
+      "updated_at": "2026-03-11T06:44:04Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -616,6 +645,13 @@
         "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
         "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
         "docs/planning/decisions/workflow_operationalization_direction.md",
         "docs/planning/design/features/core_export_hardening.md",
@@ -959,6 +995,35 @@
       ]
     },
     {
+      "document_id": "design.implementation.repo_local_hotspot_modularity",
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "family": "implementation_plan",
+      "title": "Repo-Local Hotspot Modularity Hardening Implementation Plan",
+      "summary": "Breaks the remaining report-validated repo-local hotspot modularity work into bounded refactor slices.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+      "updated_at": "2026-03-11T06:43:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/integrations/github/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/implementation/core_export_hardening_execution.md",
+        "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md"
+      ]
+    },
+    {
       "document_id": "design.implementation.standard_runtime_and_route_explicitness",
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "family": "implementation_plan",
@@ -966,7 +1031,7 @@
       "summary": "Breaks Standard, Runtime, and Route Explicitness Hardening into a bounded implementation slice.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
-      "updated_at": "2026-03-11T06:45:00Z",
+      "updated_at": "2026-03-11T06:44:04Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -980,6 +1045,10 @@
         "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
         "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
         "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
         "docs/standards/validations/repository_validation_standard.md",

@@ -326,7 +326,10 @@
               },
               "current_phase": {
                 "not": {
-                  "const": "closeout"
+                  "enum": [
+                    "validation",
+                    "closeout"
+                  ]
                 }
               }
             },

@@ -312,6 +312,46 @@
       ]
     },
     {
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "decision_id": "decision.repo_local_hotspot_modularity_direction",
+      "title": "Repo-Local Hotspot Modularity Hardening Direction Decision",
+      "summary": "Records the direction decision to close the remaining report-validated repo-local hotspot modularity issue through bounded helper extraction instead of a broader redesign.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
+      "updated_at": "2026-03-11T06:44:52Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.repo_local_hotspot_modularity"
+      ],
+      "linked_design_ids": [
+        "design.features.repo_local_hotspot_modularity"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.repo_local_hotspot_modularity"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/integrations/github/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "decision_id": "decision.standard_runtime_and_route_explicitness_direction",
       "title": "Standard, Runtime, and Route Explicitness Hardening Direction Decision",
@@ -319,7 +359,7 @@
       "record_status": "active",
       "decision_status": "accepted",
       "doc_path": "docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md",
-      "updated_at": "2026-03-11T05:35:00Z",
+      "updated_at": "2026-03-11T06:44:52Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "linked_prd_ids": [
@@ -339,10 +379,20 @@
         "workflows/ROUTING_TABLE.md"
       ],
       "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
         "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
         "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
         "docs/planning/decisions/workflow_operationalization_direction.md",
         "docs/planning/design/features/core_export_ready_architecture.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/documentation/command_md_standard.md"
       ]
     },
     {

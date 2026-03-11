@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T06:21:01Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -74,7 +74,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Publish one initiative entry per shared `trace_id`.
 - Keep active initiatives explicitly task-backed; do not leave an initiative active without durable task linkage.
 - Active initiatives should usually be explicitly owned through non-terminal task records.
-- The one allowed exception is active `closeout` phase, where all linked tasks may already be terminal and initiative closeout is the only remaining step.
+- The allowed exceptions are active `validation` and `closeout` phase, where all linked tasks may already be terminal and validation or initiative closeout is the only remaining step.
 - Every initiative entry must make these questions easy to answer:
   - what this initiative is
   - whether it is active or closed
@@ -92,9 +92,9 @@ This standard defines the repository's cross-family initiative tracking model so
   - `closed`
 - Derive `primary_owner` only when exactly one active owner is present on non-terminal task records for the initiative.
 - Publish `active_owners` and `active_task_ids` when open task records exist.
-- Publish compact `active_task_summaries` for active initiatives outside `closeout` so machines can see task names and actionability without reparsing the task index first.
-- Allow active `closeout` entries to publish historical `task_ids` without `active_task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
-- Active initiatives outside `closeout` should carry linked task IDs and active-task projection instead of relying on implied execution ownership.
+- Publish compact `active_task_summaries` for active initiatives with non-terminal tasks so machines can see task names and actionability without reparsing the task index first.
+- Allow active `validation` and `closeout` entries to publish historical `task_ids` without `active_task_ids` when no non-terminal tasks remain and validation or initiative closeout is the only next action.
+- Active initiatives outside `validation` and `closeout` should carry linked task IDs and active-task projection instead of relying on implied execution ownership.
 - Use `closed` as the initiative phase for terminal initiative states rather than overloading `current_phase` with `completed`, `superseded`, `cancelled`, or `abandoned`.
 - For terminal initiatives, project entry `updated_at` from the later of traceability `updated_at` and `closed_at`.
 - Publish initiative-entry lifecycle as `artifact_status` and initiative outcome as `initiative_status`; do not collapse those meanings into one generic entry-level `status` field.
@@ -137,7 +137,7 @@ This standard defines the repository's cross-family initiative tracking model so
 - Every initiative entry should publish `current_phase`, `next_action`, and `next_surface_path`.
 - Active initiative owner and active-task projection should agree with the current open task corpus whenever non-terminal tasks exist.
 - Active initiatives should not remain in the index without linked task IDs.
-- Active initiatives outside `closeout` should not remain in the index without non-terminal task ownership.
+- Active initiatives outside `validation` and `closeout` should not remain in the index without non-terminal task ownership.
 - Initiative closeout state should agree with the traceability index rather than competing with it.
 - Terminal initiative entries should not publish `updated_at` earlier than `closed_at`.
 - Reviewers should reject initiative views that hide ambiguity by inventing owners, tasks, or progress that the source surfaces do not publish.
@@ -155,4 +155,4 @@ This standard defines the repository's cross-family initiative tracking model so
 - [README.md](/home/j/WatchTowerPlan/docs/planning/initiatives/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T06:21:01Z`

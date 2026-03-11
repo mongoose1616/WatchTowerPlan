@@ -9,7 +9,8 @@ GitHub API client support for task sync and other hosted collaboration flows.
 - `Non-Goals`: Repo-local task-mirror policy or planning-document authority rules.
 
 ## Key Surfaces
-- `client.py`: GitHub REST and GraphQL client helpers used by task sync.
+- `client.py`: GitHub REST and GraphQL client entry surface used by task sync.
+- `client_project_support.py` and `models.py`: Project-query parsing, response helpers, and shared GitHub integration types.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/repo_ops/sync/README.md`

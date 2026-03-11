@@ -444,6 +444,53 @@
       ]
     },
     {
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "prd_id": "prd.repo_local_hotspot_modularity",
+      "title": "Repo-Local Hotspot Modularity Hardening PRD",
+      "summary": "Reduce the remaining centralized repo-local hotspot modules that the March 2026 report set still identifies as maintenance pressure.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+      "updated_at": "2026-03-11T05:43:42Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.repo_local_hotspot_modularity.001",
+        "req.repo_local_hotspot_modularity.002",
+        "req.repo_local_hotspot_modularity.003",
+        "req.repo_local_hotspot_modularity.004",
+        "req.repo_local_hotspot_modularity.005"
+      ],
+      "acceptance_ids": [
+        "ac.repo_local_hotspot_modularity.001",
+        "ac.repo_local_hotspot_modularity.002",
+        "ac.repo_local_hotspot_modularity.003",
+        "ac.repo_local_hotspot_modularity.004",
+        "ac.repo_local_hotspot_modularity.005"
+      ],
+      "linked_decision_ids": [
+        "decision.repo_local_hotspot_modularity_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.repo_local_hotspot_modularity"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.repo_local_hotspot_modularity"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/integrations/github/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/planning/prds/end_to_end_repo_review_and_rationalization.md"
+      ]
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "prd_id": "prd.standard_runtime_and_route_explicitness",
       "title": "Standard, Runtime, and Route Explicitness Hardening PRD",

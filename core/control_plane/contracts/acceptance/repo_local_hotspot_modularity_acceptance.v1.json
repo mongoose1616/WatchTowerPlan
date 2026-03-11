@@ -1,0 +1,121 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.repo_local_hotspot_modularity",
+  "title": "Repo-Local Hotspot Modularity Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.repo_local_hotspot_modularity",
+  "source_prd_id": "prd.repo_local_hotspot_modularity",
+  "entries": [
+    {
+      "acceptance_id": "ac.repo_local_hotspot_modularity.001",
+      "summary": "The planning corpus publishes the active PRD, accepted direction decision, feature design, implementation plan, closed bootstrap task, and durable execution tasks for the hotspot-modularity trace.",
+      "source_requirement_ids": [
+        "req.repo_local_hotspot_modularity.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/tasks/closed/repo_local_hotspot_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.repo_local_hotspot_modularity.002",
+      "summary": "The formerly oversized planning, task, sync, traceability, GitHub sync, and GitHub client surfaces are materially smaller entry modules or thin facades backed by explicit helper modules.",
+      "source_requirement_ids": [
+        "req.repo_local_hotspot_modularity.002",
+        "req.repo_local_hotspot_modularity.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/src/watchtower_core/cli/sync_family.py",
+        "core/python/src/watchtower_core/cli/sync_family_documents.py",
+        "core/python/src/watchtower_core/cli/sync_family_tracking.py",
+        "core/python/src/watchtower_core/cli/sync_family_special.py",
+        "core/python/src/watchtower_core/cli/sync_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_document_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_tracking_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_orchestration_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_task_sync_support.py",
+        "core/python/src/watchtower_core/integrations/github/client.py",
+        "core/python/src/watchtower_core/integrations/github/client_project_support.py",
+        "core/python/src/watchtower_core/integrations/github/models.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.repo_local_hotspot_modularity.003",
+      "summary": "Planning, task lifecycle, sync, traceability, and GitHub-facing behavior stay stable under targeted regression coverage after the helper-backed refactor.",
+      "source_requirement_ids": [
+        "req.repo_local_hotspot_modularity.002",
+        "req.repo_local_hotspot_modularity.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "core/python/tests/unit/test_cli_sync_commands.py",
+        "core/python/tests/unit/test_all_sync.py",
+        "core/python/tests/unit/test_github_client.py",
+        "core/python/tests/unit/test_github_task_sync.py",
+        "core/python/tests/integration/test_task_workflow_end_to_end.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.repo_local_hotspot_modularity.004",
+      "summary": "Companion planning trackers, derived indexes, acceptance joins, and package-boundary docs stay aligned in the same change set as the hotspot refactor.",
+      "source_requirement_ids": [
+        "req.repo_local_hotspot_modularity.001",
+        "req.repo_local_hotspot_modularity.004"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.traceability_index"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/repo_local_hotspot_modularity_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "core/python/src/watchtower_core/cli/README.md",
+        "core/python/src/watchtower_core/repo_ops/sync/README.md",
+        "core/python/src/watchtower_core/integrations/github/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.repo_local_hotspot_modularity.005",
+      "summary": "The repository passes the final closeout baseline for sync, validation, pytest, mypy, and ruff after the modularity trace lands.",
+      "source_requirement_ids": [
+        "req.repo_local_hotspot_modularity.005"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

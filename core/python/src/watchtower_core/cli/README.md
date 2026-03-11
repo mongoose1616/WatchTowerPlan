@@ -11,7 +11,8 @@ CLI parser construction, command-family registration, and handler wiring for `wa
 ## Key Surfaces
 - `main.py`: Root CLI entrypoint.
 - `parser.py`: Registry-backed parser construction.
-- `*_family.py` and `*_handlers.py`: Command-group registration and runtime handlers.
+- `*_family.py`: Command-group registration entrypoints, including grouped sync-family helpers.
+- `*_handlers.py`: Runtime handler facades, including grouped sync document, tracking, and orchestration helpers.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/repo_ops/README.md`

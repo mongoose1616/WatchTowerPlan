@@ -383,7 +383,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/initiative_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-11T06:21:01Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2365,7 +2365,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/initiative_tracking_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-11T06:21:01Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

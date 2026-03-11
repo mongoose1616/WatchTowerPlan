@@ -976,6 +976,109 @@
       ]
     },
     {
+      "task_id": "task.repo_local_hotspot_modularity.bootstrap.001",
+      "title": "Bootstrap Repo-Local Hotspot Modularity Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Repo-Local Hotspot Modularity Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "chore",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/repo_local_hotspot_modularity_hardening_bootstrap.md",
+      "updated_at": "2026-03-11T05:46:23Z",
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "related_ids": [
+        "prd.repo_local_hotspot_modularity",
+        "design.features.repo_local_hotspot_modularity",
+        "design.implementation.repo_local_hotspot_modularity",
+        "decision.repo_local_hotspot_modularity_direction"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/integrations/github/"
+      ]
+    },
+    {
+      "task_id": "task.repo_local_hotspot_modularity.github_integration.001",
+      "title": "Split GitHub sync and client hotspots into helper-backed modules",
+      "summary": "Reduce centralization in GitHub task sync and client request handling while preserving the current WatchTowerPlan GitHub contract.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "chore",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/split_github_sync_and_client_hotspots_into_helper_backed_modules.md",
+      "updated_at": "2026-03-11T06:19:10Z",
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "depends_on": [
+        "task.repo_local_hotspot_modularity.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.repo_local_hotspot_modularity",
+        "design.features.repo_local_hotspot_modularity",
+        "design.implementation.repo_local_hotspot_modularity"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "core/python/src/watchtower_core/integrations/github/client.py",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.repo_local_hotspot_modularity.scaffolds_lifecycle.001",
+      "title": "Split planning scaffolds and task lifecycle hotspots into helper-backed modules",
+      "summary": "Reduce centralization in planning scaffold generation and task lifecycle mutation services without changing their current contracts.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "chore",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/split_planning_scaffolds_and_task_lifecycle_hotspots_into_helper_backed_modules.md",
+      "updated_at": "2026-03-11T06:19:00Z",
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "depends_on": [
+        "task.repo_local_hotspot_modularity.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.repo_local_hotspot_modularity",
+        "design.features.repo_local_hotspot_modularity",
+        "design.implementation.repo_local_hotspot_modularity"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.repo_local_hotspot_modularity.sync_traceability.001",
+      "title": "Split sync CLI and traceability hotspots into grouped helper modules",
+      "summary": "Reduce centralization in sync command registration, sync handlers, and traceability sync while preserving the durable sync command contract.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "chore",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/split_sync_cli_and_traceability_hotspots_into_grouped_helper_modules.md",
+      "updated_at": "2026-03-11T06:19:10Z",
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "depends_on": [
+        "task.repo_local_hotspot_modularity.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.repo_local_hotspot_modularity",
+        "design.features.repo_local_hotspot_modularity",
+        "design.implementation.repo_local_hotspot_modularity"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/sync_family.py",
+        "core/python/src/watchtower_core/cli/sync_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/tests/"
+      ]
+    },
+    {
       "task_id": "task.standard_runtime_and_route_explicitness.bootstrap.001",
       "title": "Bootstrap Standard, Runtime, and Route Explicitness Hardening planning chain",
       "summary": "Bootstraps the initial planning chain for Standard, Runtime, and Route Explicitness Hardening.",

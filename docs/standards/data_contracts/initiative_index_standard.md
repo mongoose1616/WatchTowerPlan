@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "initiative_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-11T06:21:01Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -55,8 +55,8 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Use JSON for the published initiative index artifact.
 - Build the initiative index from the traceability index plus current planning and task indexes rather than scanning human trackers.
 - Carry `current_phase`, `next_action`, and `next_surface_path` in every active initiative entry.
-- Carry active owner and open-task projection for every active initiative.
-- Carry compact `active_task_summaries` for active initiatives outside `closeout` so the first machine coordination pass can see task titles, status, priority, ownership, and actionability without reopening the task index immediately.
+- Carry active owner and open-task projection for every active initiative with non-terminal tasks.
+- Carry compact `active_task_summaries` for active initiatives with non-terminal tasks so the first machine coordination pass can see task titles, status, priority, ownership, and actionability without reopening the task index immediately.
 - Do not publish an active initiative entry without linked task IDs.
 - Mirror terminal initiative closeout state from traceability rather than inventing a second closeout authority.
 
@@ -87,8 +87,8 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | `next_surface_path` | Required | Repository-relative path to the next surface a contributor should open first. |
 | `primary_owner` | Conditionally required | Use when exactly one active owner is present. |
 | `active_owners` | Conditionally required | Current owners of open tasks when present and especially when more than one owner is active. |
-| `active_task_ids` | Conditionally required | Non-terminal local task IDs for active initiatives. Required for active initiatives outside `closeout`. |
-| `active_task_summaries` | Conditionally required | Compact active-task summaries for active initiatives outside `closeout`, including task title, status, priority, owner, doc path, and actionability. |
+| `active_task_ids` | Conditionally required | Non-terminal local task IDs for active initiatives. Required for active initiatives outside `validation` and `closeout`. |
+| `active_task_summaries` | Conditionally required | Compact active-task summaries for active initiatives outside `validation` and `closeout`, including task title, status, priority, owner, doc path, and actionability. |
 | `blocked_by_task_ids` | Optional | Blocking task IDs referenced by current active tasks when present. |
 | `prd_ids` | Optional | Linked PRD IDs for the initiative. |
 | `decision_ids` | Optional | Linked decision IDs for the initiative. |
@@ -114,8 +114,8 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Every initiative entry should correspond to one current traceability entry.
 - `current_phase` should agree with the current planning and task state implied by the authoritative source surfaces.
 - Active initiative `task_ids` should agree with the current linked task corpus.
-- Active initiatives outside `closeout` should also keep `primary_owner` or `active_owners` plus `active_task_ids` and `active_task_summaries` aligned with the current non-terminal task corpus.
-- Active `closeout` entries may have only historical `task_ids` when no non-terminal tasks remain and initiative closeout is the only next action.
+- Active initiatives outside `validation` and `closeout` should also keep `primary_owner` or `active_owners` plus `active_task_ids` and `active_task_summaries` aligned with the current non-terminal task corpus.
+- Active `validation` and `closeout` entries may have only historical `task_ids` when no non-terminal tasks remain and validation or initiative closeout is the only next action.
 - Terminal initiative entries should also publish the required closeout fields.
 - Entry payloads should use `artifact_status` rather than a generic `status` field so initiative outcome and artifact lifecycle remain distinct.
 
@@ -131,4 +131,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-11T06:21:01Z`

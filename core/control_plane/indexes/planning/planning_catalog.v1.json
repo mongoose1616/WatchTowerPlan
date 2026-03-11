@@ -3595,6 +3595,432 @@
       "closure_reason": "Delivered and validated pre-implementation repository review and hardening."
     },
     {
+      "trace_id": "trace.repo_local_hotspot_modularity",
+      "title": "Repo-Local Hotspot Modularity Hardening PRD",
+      "summary": "Reduce the remaining centralized repo-local hotspot modules that the March 2026 report set still identifies as maintenance pressure.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-11T06:48:23Z",
+      "coordination": {
+        "current_phase": "closeout",
+        "key_surface_path": "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+        "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.repo_local_hotspot_modularity",
+          "title": "Repo-Local Hotspot Modularity Hardening PRD",
+          "summary": "Reduce the remaining centralized repo-local hotspot modules that the March 2026 report set still identifies as maintenance pressure.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+          "updated_at": "2026-03-11T05:43:42Z",
+          "requirement_ids": [
+            "req.repo_local_hotspot_modularity.001",
+            "req.repo_local_hotspot_modularity.002",
+            "req.repo_local_hotspot_modularity.003",
+            "req.repo_local_hotspot_modularity.004",
+            "req.repo_local_hotspot_modularity.005"
+          ],
+          "acceptance_ids": [
+            "ac.repo_local_hotspot_modularity.001",
+            "ac.repo_local_hotspot_modularity.002",
+            "ac.repo_local_hotspot_modularity.003",
+            "ac.repo_local_hotspot_modularity.004",
+            "ac.repo_local_hotspot_modularity.005"
+          ],
+          "linked_decision_ids": [
+            "decision.repo_local_hotspot_modularity_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.repo_local_hotspot_modularity"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.repo_local_hotspot_modularity"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.repo_local_hotspot_modularity_direction",
+          "title": "Repo-Local Hotspot Modularity Hardening Direction Decision",
+          "summary": "Records the direction decision to close the remaining report-validated repo-local hotspot modularity issue through bounded helper extraction instead of a broader redesign.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
+          "updated_at": "2026-03-11T06:44:52Z",
+          "linked_prd_ids": [
+            "prd.repo_local_hotspot_modularity"
+          ],
+          "linked_design_ids": [
+            "design.features.repo_local_hotspot_modularity"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.repo_local_hotspot_modularity"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.repo_local_hotspot_modularity",
+          "family": "feature_design",
+          "title": "Repo-Local Hotspot Modularity Hardening Feature Design",
+          "summary": "Defines the technical design boundary for reducing the remaining report-validated repo-local hotspot modules without changing behavior.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+          "updated_at": "2026-03-11T06:43:01Z"
+        },
+        {
+          "document_id": "design.implementation.repo_local_hotspot_modularity",
+          "family": "implementation_plan",
+          "title": "Repo-Local Hotspot Modularity Hardening Implementation Plan",
+          "summary": "Breaks the remaining report-validated repo-local hotspot modularity work into bounded refactor slices.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+          "updated_at": "2026-03-11T06:43:01Z",
+          "source_paths": [
+            "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.repo_local_hotspot_modularity.bootstrap.001",
+          "title": "Bootstrap Repo-Local Hotspot Modularity Hardening planning chain",
+          "summary": "Bootstraps the initial planning chain for Repo-Local Hotspot Modularity Hardening.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "chore",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/repo_local_hotspot_modularity_hardening_bootstrap.md",
+          "updated_at": "2026-03-11T05:46:23Z",
+          "related_ids": [
+            "prd.repo_local_hotspot_modularity",
+            "design.features.repo_local_hotspot_modularity",
+            "design.implementation.repo_local_hotspot_modularity",
+            "decision.repo_local_hotspot_modularity_direction"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/",
+            "core/python/src/watchtower_core/repo_ops/",
+            "core/python/src/watchtower_core/integrations/github/"
+          ]
+        },
+        {
+          "task_id": "task.repo_local_hotspot_modularity.github_integration.001",
+          "title": "Split GitHub sync and client hotspots into helper-backed modules",
+          "summary": "Reduce centralization in GitHub task sync and client request handling while preserving the current WatchTowerPlan GitHub contract.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "chore",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/split_github_sync_and_client_hotspots_into_helper_backed_modules.md",
+          "updated_at": "2026-03-11T06:19:10Z",
+          "depends_on": [
+            "task.repo_local_hotspot_modularity.bootstrap.001"
+          ],
+          "related_ids": [
+            "prd.repo_local_hotspot_modularity",
+            "design.features.repo_local_hotspot_modularity",
+            "design.implementation.repo_local_hotspot_modularity"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+            "core/python/src/watchtower_core/integrations/github/client.py",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.repo_local_hotspot_modularity.scaffolds_lifecycle.001",
+          "title": "Split planning scaffolds and task lifecycle hotspots into helper-backed modules",
+          "summary": "Reduce centralization in planning scaffold generation and task lifecycle mutation services without changing their current contracts.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "chore",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/split_planning_scaffolds_and_task_lifecycle_hotspots_into_helper_backed_modules.md",
+          "updated_at": "2026-03-11T06:19:00Z",
+          "depends_on": [
+            "task.repo_local_hotspot_modularity.bootstrap.001"
+          ],
+          "related_ids": [
+            "prd.repo_local_hotspot_modularity",
+            "design.features.repo_local_hotspot_modularity",
+            "design.implementation.repo_local_hotspot_modularity"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+            "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.repo_local_hotspot_modularity.sync_traceability.001",
+          "title": "Split sync CLI and traceability hotspots into grouped helper modules",
+          "summary": "Reduce centralization in sync command registration, sync handlers, and traceability sync while preserving the durable sync command contract.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "chore",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/split_sync_cli_and_traceability_hotspots_into_grouped_helper_modules.md",
+          "updated_at": "2026-03-11T06:19:10Z",
+          "depends_on": [
+            "task.repo_local_hotspot_modularity.bootstrap.001"
+          ],
+          "related_ids": [
+            "prd.repo_local_hotspot_modularity",
+            "design.features.repo_local_hotspot_modularity",
+            "design.implementation.repo_local_hotspot_modularity"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/sync_family.py",
+            "core/python/src/watchtower_core/cli/sync_handlers.py",
+            "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+            "core/python/tests/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.repo_local_hotspot_modularity",
+          "title": "Repo-Local Hotspot Modularity Hardening Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.repo_local_hotspot_modularity",
+          "doc_path": "core/control_plane/contracts/acceptance/repo_local_hotspot_modularity_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.repo_local_hotspot_modularity.001",
+            "ac.repo_local_hotspot_modularity.002",
+            "ac.repo_local_hotspot_modularity.003",
+            "ac.repo_local_hotspot_modularity.004",
+            "ac.repo_local_hotspot_modularity.005"
+          ],
+          "required_validator_ids": [
+            "validator.control_plane.acceptance_contract",
+            "validator.control_plane.traceability_index",
+            "validator.control_plane.validation_evidence"
+          ],
+          "validation_targets": [
+            "core/control_plane/",
+            "core/control_plane/contracts/acceptance/repo_local_hotspot_modularity_acceptance.v1.json",
+            "core/control_plane/indexes/planning/planning_catalog.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/python/",
+            "core/python/src/watchtower_core/cli/README.md",
+            "core/python/src/watchtower_core/cli/sync_document_handlers.py",
+            "core/python/src/watchtower_core/cli/sync_family.py",
+            "core/python/src/watchtower_core/cli/sync_family_documents.py",
+            "core/python/src/watchtower_core/cli/sync_family_special.py",
+            "core/python/src/watchtower_core/cli/sync_family_tracking.py",
+            "core/python/src/watchtower_core/cli/sync_handlers.py",
+            "core/python/src/watchtower_core/cli/sync_orchestration_handlers.py",
+            "core/python/src/watchtower_core/cli/sync_tracking_handlers.py",
+            "core/python/src/watchtower_core/integrations/github/README.md",
+            "core/python/src/watchtower_core/integrations/github/client.py",
+            "core/python/src/watchtower_core/integrations/github/client_project_support.py",
+            "core/python/src/watchtower_core/integrations/github/models.py",
+            "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+            "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+            "core/python/src/watchtower_core/repo_ops/sync/README.md",
+            "core/python/src/watchtower_core/repo_ops/sync/github_task_sync_support.py",
+            "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+            "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+            "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
+            "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+            "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+            "core/python/tests/integration/test_planning_scaffolds_service.py",
+            "core/python/tests/integration/test_task_lifecycle_service.py",
+            "core/python/tests/integration/test_task_workflow_end_to_end.py",
+            "core/python/tests/unit/test_all_sync.py",
+            "core/python/tests/unit/test_cli_sync_commands.py",
+            "core/python/tests/unit/test_github_client.py",
+            "core/python/tests/unit/test_github_task_sync.py",
+            "core/python/tests/unit/test_planning_scaffolds.py",
+            "core/python/tests/unit/test_task_lifecycle.py",
+            "core/python/tests/unit/test_traceability_index_sync.py",
+            "docs/",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
+            "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+            "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+            "docs/planning/tasks/",
+            "docs/planning/tasks/closed/repo_local_hotspot_modularity_hardening_bootstrap.md",
+            "docs/planning/tasks/task_tracking.md",
+            "workflows/"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/decision_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.repo_local_hotspot_modularity.validation_baseline",
+          "title": "Repo-Local Hotspot Modularity Hardening Validation Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-11T06:48:23Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/repo_local_hotspot_modularity_validation_baseline.v1.json",
+          "check_ids": [
+            "check.repo_local_hotspot_modularity.planning_chain",
+            "check.repo_local_hotspot_modularity.helper_backed_facades",
+            "check.repo_local_hotspot_modularity.targeted_regressions",
+            "check.repo_local_hotspot_modularity.companion_alignment",
+            "check.repo_local_hotspot_modularity.acceptance_contract",
+            "check.repo_local_hotspot_modularity.closeout_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.repo_local_hotspot_modularity.001",
+            "ac.repo_local_hotspot_modularity.002",
+            "ac.repo_local_hotspot_modularity.003",
+            "ac.repo_local_hotspot_modularity.004",
+            "ac.repo_local_hotspot_modularity.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.acceptance_contract",
+            "validator.control_plane.traceability_index",
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/repo_local_hotspot_modularity_acceptance.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/control_plane/indexes/planning/planning_catalog.v1.json",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/planning/coordination_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.repo_local_hotspot_modularity"
+      ],
+      "decision_ids": [
+        "decision.repo_local_hotspot_modularity_direction"
+      ],
+      "design_ids": [
+        "design.features.repo_local_hotspot_modularity"
+      ],
+      "plan_ids": [
+        "design.implementation.repo_local_hotspot_modularity"
+      ],
+      "task_ids": [
+        "task.repo_local_hotspot_modularity.bootstrap.001",
+        "task.repo_local_hotspot_modularity.github_integration.001",
+        "task.repo_local_hotspot_modularity.scaffolds_lifecycle.001",
+        "task.repo_local_hotspot_modularity.sync_traceability.001"
+      ],
+      "requirement_ids": [
+        "req.repo_local_hotspot_modularity.001",
+        "req.repo_local_hotspot_modularity.002",
+        "req.repo_local_hotspot_modularity.003",
+        "req.repo_local_hotspot_modularity.004",
+        "req.repo_local_hotspot_modularity.005"
+      ],
+      "acceptance_ids": [
+        "ac.repo_local_hotspot_modularity.001",
+        "ac.repo_local_hotspot_modularity.002",
+        "ac.repo_local_hotspot_modularity.003",
+        "ac.repo_local_hotspot_modularity.004",
+        "ac.repo_local_hotspot_modularity.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.repo_local_hotspot_modularity"
+      ],
+      "evidence_ids": [
+        "evidence.repo_local_hotspot_modularity.validation_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.traceability_index",
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/repo_local_hotspot_modularity_acceptance.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/repo_local_hotspot_modularity_validation_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/README.md",
+        "core/python/src/watchtower_core/cli/sync_document_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_family.py",
+        "core/python/src/watchtower_core/cli/sync_family_documents.py",
+        "core/python/src/watchtower_core/cli/sync_family_special.py",
+        "core/python/src/watchtower_core/cli/sync_family_tracking.py",
+        "core/python/src/watchtower_core/cli/sync_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_orchestration_handlers.py",
+        "core/python/src/watchtower_core/cli/sync_tracking_handlers.py",
+        "core/python/src/watchtower_core/integrations/github/",
+        "core/python/src/watchtower_core/integrations/github/README.md",
+        "core/python/src/watchtower_core/integrations/github/client.py",
+        "core/python/src/watchtower_core/integrations/github/client_project_support.py",
+        "core/python/src/watchtower_core/integrations/github/models.py",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/sync/README.md",
+        "core/python/src/watchtower_core/repo_ops/sync/github_task_sync_support.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/tests/",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py",
+        "core/python/tests/integration/test_task_workflow_end_to_end.py",
+        "core/python/tests/unit/test_all_sync.py",
+        "core/python/tests/unit/test_cli_sync_commands.py",
+        "core/python/tests/unit/test_github_client.py",
+        "core/python/tests/unit/test_github_task_sync.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/repo_local_hotspot_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/split_github_sync_and_client_hotspots_into_helper_backed_modules.md",
+        "docs/planning/tasks/closed/split_planning_scaffolds_and_task_lifecycle_hotspots_into_helper_backed_modules.md",
+        "docs/planning/tasks/closed/split_sync_cli_and_traceability_hotspots_into_grouped_helper_modules.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/"
+      ],
+      "tags": [
+        "chore",
+        "feature_design",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Validation evidence for closing the remaining report-validated repo-local hotspot modularity issue cluster."
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "title": "Standard, Runtime, and Route Explicitness Hardening PRD",
       "summary": "Closes the still-valid report-set gaps around standards operationalization metadata, runtime package boundary documentation, and advisory route-preview matching.",
@@ -3650,7 +4076,7 @@
           "record_status": "active",
           "decision_status": "accepted",
           "doc_path": "docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md",
-          "updated_at": "2026-03-11T05:35:00Z",
+          "updated_at": "2026-03-11T06:44:52Z",
           "linked_prd_ids": [
             "prd.standard_runtime_and_route_explicitness"
           ],
@@ -3670,7 +4096,7 @@
           "summary": "Defines the technical design boundary for Standard, Runtime, and Route Explicitness Hardening.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
-          "updated_at": "2026-03-11T04:13:49Z"
+          "updated_at": "2026-03-11T06:44:04Z"
         },
         {
           "document_id": "design.implementation.standard_runtime_and_route_explicitness",
@@ -3679,7 +4105,7 @@
           "summary": "Breaks Standard, Runtime, and Route Explicitness Hardening into a bounded implementation slice.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/standard_runtime_and_route_explicitness_hardening.md",
-          "updated_at": "2026-03-11T06:45:00Z",
+          "updated_at": "2026-03-11T06:44:04Z",
           "source_paths": [
             "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md"
           ]

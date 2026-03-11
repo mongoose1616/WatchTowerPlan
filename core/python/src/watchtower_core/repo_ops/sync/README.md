@@ -11,7 +11,8 @@ Authoritative repository sync services for derived indexes, trackers, route data
 ## Key Surfaces
 - `all.py`: Aggregate sync orchestration.
 - `*_index.py` and `*_tracking.py`: Family-specific rebuild logic for governed indexes and trackers.
-- `github_tasks.py`: GitHub task mirror sync.
+- `traceability.py` and `traceability_support.py`: Traceability index orchestration and helper-backed merge logic.
+- `github_tasks.py` and `github_task_sync_support.py`: GitHub task mirror orchestration plus task-selection, rendering, and write-sync helpers.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/sync/README.md`
