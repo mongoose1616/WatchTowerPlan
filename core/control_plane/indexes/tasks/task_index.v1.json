@@ -494,6 +494,83 @@
       ]
     },
     {
+      "task_id": "task.foundation_scope_and_entrypoint_realignment.bootstrap.001",
+      "title": "Bootstrap the foundation scope and entrypoint realignment initiative",
+      "summary": "Create the traced planning chain, accepted direction, acceptance baseline, planning evidence, and bounded task set for the foundation-scope and root-entrypoint cleanup work.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
+      "updated_at": "2026-03-11T01:33:06Z",
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "related_ids": [
+        "prd.foundation_scope_and_entrypoint_realignment",
+        "design.features.foundation_scope_and_entrypoint_realignment",
+        "design.implementation.foundation_scope_and_entrypoint_realignment",
+        "decision.foundation_scope_boundary"
+      ],
+      "applies_to": [
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundation_scope_and_entrypoint_realignment_planning_baseline.v1.json",
+        "docs/planning/tasks/open/"
+      ]
+    },
+    {
+      "task_id": "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001",
+      "title": "Align foundation scope with current repository boundary",
+      "summary": "Add an explicit repository-scope foundation and realign the existing foundation layer so current repo truth and future WatchTower product narrative stop competing.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/foundation_scope_alignment.md",
+      "updated_at": "2026-03-11T01:26:55Z",
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "related_ids": [
+        "prd.foundation_scope_and_entrypoint_realignment",
+        "design.features.foundation_scope_and_entrypoint_realignment",
+        "design.implementation.foundation_scope_and_entrypoint_realignment",
+        "decision.foundation_scope_boundary"
+      ],
+      "applies_to": [
+        "docs/foundations/"
+      ]
+    },
+    {
+      "task_id": "task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001",
+      "title": "Tighten root and planning entrypoint contract",
+      "summary": "Keep the root as a thin router, point humans and agents at the updated scope guidance, and align top-level entrypoint docs with the clarified foundation boundary.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "documentation",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/root_entrypoint_contract.md",
+      "updated_at": "2026-03-11T01:26:55Z",
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "depends_on": [
+        "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001"
+      ],
+      "related_ids": [
+        "prd.foundation_scope_and_entrypoint_realignment",
+        "design.features.foundation_scope_and_entrypoint_realignment",
+        "design.implementation.foundation_scope_and_entrypoint_realignment",
+        "decision.foundation_scope_boundary"
+      ],
+      "applies_to": [
+        "README.md",
+        "docs/planning/README.md",
+        "docs/foundations/README.md"
+      ]
+    },
+    {
       "task_id": "task.github_collaboration.followup.001",
       "title": "Close remaining GitHub collaboration follow-up",
       "summary": "Tracks the remaining closeout and verification follow-up for the GitHub collaboration scaffolding initiative.",

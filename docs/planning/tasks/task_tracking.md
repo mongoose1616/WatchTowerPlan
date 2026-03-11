@@ -1,7 +1,10 @@
 # Task Tracking
 
 ## Open Tasks
-_No open tasks._
+| Task | Status | Priority | Owner | Trace ID | Summary |
+| --- | --- | --- | --- | --- | --- |
+| [task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/foundation_scope_alignment.md) | `backlog` | `high` | `repository_maintainer` | `trace.foundation_scope_and_entrypoint_realignment` | Add an explicit repository-scope foundation and realign the existing foundation layer so current repo truth and future WatchTower product narrative stop competing. |
+| [task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/root_entrypoint_contract.md) | `backlog` | `medium` | `repository_maintainer` | `trace.foundation_scope_and_entrypoint_realignment` | Keep the root as a thin router, point humans and agents at the updated scope guidance, and align top-level entrypoint docs with the clarified foundation boundary. |
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -19,6 +22,7 @@ _No open tasks._
 | [task.end_to_end_repo_review_and_rationalization.derived_metadata.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/end_to_end_derived_metadata.md) | `done` | `high` | `repository_maintainer` | `trace.end_to_end_repo_review_and_rationalization` | Make traceability-derived initiative and coordination surfaces keep timestamps aligned with closeout-driven state changes so current-state trackers remain trustworthy. |
 | [task.end_to_end_repo_review_and_rationalization.doc_guardrails.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/end_to_end_doc_guardrails.md) | `done` | `high` | `repository_maintainer` | `trace.end_to_end_repo_review_and_rationalization` | Extend document-semantics validation so repo-local markdown links fail closed and keep documentation-coherence drift from recurring silently. |
 | [task.end_to_end_repo_review_and_rationalization.external_pack_validation.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/end_to_end_external_pack_validation.md) | `done` | `high` | `repository_maintainer` | `trace.end_to_end_repo_review_and_rationalization` | Add file-system supplemental schema loading and CLI-level external artifact validation so future pack-owned artifacts can be validated without patching the canonical schema catalog. |
+| [task.foundation_scope_and_entrypoint_realignment.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.foundation_scope_and_entrypoint_realignment` | Create the traced planning chain, accepted direction, acceptance baseline, planning evidence, and bounded task set for the foundation-scope and root-entrypoint cleanup work. |
 | [task.local_task_tracking_foundation.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/local_task_tracking_foundation.md) | `done` | `high` | `repository_maintainer` | `trace.local_task_tracking` | Establishes governed local task records, a generated human tracker, a generated machine index, and Python query and sync commands for task coordination. |
 | [task.machine_first_coordination_surface.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/machine_first_coordination_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Creates the traced planning chain, decision record, acceptance baseline, and bounded execution task set for the coordination-surface follow-up work. |
 | [task.machine_first_coordination_surface.coordination_index.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/machine_first_coordination_index.md) | `done` | `high` | `repository_maintainer` | `trace.machine_first_coordination_surface` | Add the coordination-index artifact family, sync logic, loader support, and query integration so one machine-readable surface becomes the default planning current-state entrypoint. |
@@ -51,4 +55,4 @@ _No open tasks._
 | [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_planning_scaffolds.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates. |
 | [task.workflow_system_operationalization.reconciliation_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_reconciliation_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes. |
 
-_Updated At: `2026-03-11T00:40:05Z`_
+_Updated At: `2026-03-11T01:33:06Z`_

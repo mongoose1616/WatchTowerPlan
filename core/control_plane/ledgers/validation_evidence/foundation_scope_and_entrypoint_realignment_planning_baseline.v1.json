@@ -1,0 +1,106 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.foundation_scope_and_entrypoint_realignment.planning_baseline",
+  "title": "Foundation Scope and EntryPoint Realignment Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-11T01:27:13Z",
+  "source_prd_ids": [
+    "prd.foundation_scope_and_entrypoint_realignment"
+  ],
+  "source_design_ids": [
+    "design.features.foundation_scope_and_entrypoint_realignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.foundation_scope_and_entrypoint_realignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.foundation_scope_and_entrypoint_realignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.foundation_scope_and_entrypoint_realignment.planning_chain",
+      "title": "Planning corpus baseline",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "docs/planning/tasks/open/foundation_scope_and_entrypoint_realignment_bootstrap.md",
+        "docs/planning/tasks/open/foundation_scope_alignment.md",
+        "docs/planning/tasks/open/root_entrypoint_contract.md"
+      ],
+      "subject_ids": [
+        "prd.foundation_scope_and_entrypoint_realignment",
+        "design.features.foundation_scope_and_entrypoint_realignment",
+        "design.implementation.foundation_scope_and_entrypoint_realignment",
+        "decision.foundation_scope_boundary",
+        "task.foundation_scope_and_entrypoint_realignment.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_scope_and_entrypoint_realignment.001"
+      ],
+      "notes": "The initiative now has its traced planning chain, accepted direction, and two bounded documentation tasks."
+    },
+    {
+      "check_id": "check.foundation_scope_and_entrypoint_realignment.foundation_scope_task",
+      "title": "Foundation scope alignment slice defined",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/tasks/open/foundation_scope_alignment.md"
+      ],
+      "subject_ids": [
+        "design.features.foundation_scope_and_entrypoint_realignment",
+        "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_scope_and_entrypoint_realignment.002",
+        "ac.foundation_scope_and_entrypoint_realignment.003"
+      ],
+      "notes": "The first implementation slice is bounded to the foundation layer and does not reopen planning architecture or validator scope."
+    },
+    {
+      "check_id": "check.foundation_scope_and_entrypoint_realignment.entrypoint_task",
+      "title": "EntryPoint cleanup slice defined",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/tasks/open/root_entrypoint_contract.md"
+      ],
+      "subject_ids": [
+        "design.features.foundation_scope_and_entrypoint_realignment",
+        "task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_scope_and_entrypoint_realignment.004"
+      ],
+      "notes": "The second slice is bounded to root and nearby planning entrypoints after the foundation precedence model is in place."
+    },
+    {
+      "check_id": "check.foundation_scope_and_entrypoint_realignment.validation_baseline",
+      "title": "Current workspace validation baseline",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_scope_and_entrypoint_realignment.005"
+      ],
+      "notes": "The repo is green at bootstrap and ready for the documentation-only remediation slices."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning-baseline evidence for the foundation scope and entrypoint realignment initiative."
+}

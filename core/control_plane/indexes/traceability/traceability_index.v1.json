@@ -450,6 +450,89 @@
       "notes": "Planning-baseline evidence for the end-to-end repository review and rationalization initiative."
     },
     {
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "title": "Foundation Scope and EntryPoint Realignment PRD",
+      "summary": "Clarify current repository scope versus future WatchTower product narrative, tighten root entrypoints, and align foundation language with the export-ready core boundary.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-11T01:33:06Z",
+      "prd_ids": [
+        "prd.foundation_scope_and_entrypoint_realignment"
+      ],
+      "decision_ids": [
+        "decision.foundation_scope_boundary"
+      ],
+      "design_ids": [
+        "design.features.foundation_scope_and_entrypoint_realignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundation_scope_and_entrypoint_realignment"
+      ],
+      "task_ids": [
+        "task.foundation_scope_and_entrypoint_realignment.bootstrap.001",
+        "task.foundation_scope_and_entrypoint_realignment.repository_scope_alignment.001",
+        "task.foundation_scope_and_entrypoint_realignment.root_entrypoint_contract.001"
+      ],
+      "requirement_ids": [
+        "req.foundation_scope_and_entrypoint_realignment.001",
+        "req.foundation_scope_and_entrypoint_realignment.002",
+        "req.foundation_scope_and_entrypoint_realignment.003",
+        "req.foundation_scope_and_entrypoint_realignment.004",
+        "req.foundation_scope_and_entrypoint_realignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_scope_and_entrypoint_realignment.001",
+        "ac.foundation_scope_and_entrypoint_realignment.002",
+        "ac.foundation_scope_and_entrypoint_realignment.003",
+        "ac.foundation_scope_and_entrypoint_realignment.004",
+        "ac.foundation_scope_and_entrypoint_realignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundation_scope_and_entrypoint_realignment"
+      ],
+      "evidence_ids": [
+        "evidence.foundation_scope_and_entrypoint_realignment.planning_baseline"
+      ],
+      "related_paths": [
+        "README.md",
+        "SUMMARY.md",
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundation_scope_and_entrypoint_realignment_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/tests/",
+        "docs/",
+        "docs/foundations/",
+        "docs/foundations/README.md",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
+        "docs/planning/tasks/open/",
+        "docs/planning/tasks/open/foundation_scope_alignment.md",
+        "docs/planning/tasks/open/root_entrypoint_contract.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning-baseline evidence for the foundation scope and entrypoint realignment initiative."
+    },
+    {
       "trace_id": "trace.github_collaboration",
       "title": "GitHub Collaboration Scaffolding",
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",

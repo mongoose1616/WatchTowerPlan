@@ -208,6 +208,52 @@
       ]
     },
     {
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "prd_id": "prd.foundation_scope_and_entrypoint_realignment",
+      "title": "Foundation Scope and EntryPoint Realignment PRD",
+      "summary": "Clarify current repository scope versus future WatchTower product narrative, tighten root entrypoints, and align foundation language with the export-ready core boundary.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+      "updated_at": "2026-03-11T01:27:13Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.foundation_scope_and_entrypoint_realignment.001",
+        "req.foundation_scope_and_entrypoint_realignment.002",
+        "req.foundation_scope_and_entrypoint_realignment.003",
+        "req.foundation_scope_and_entrypoint_realignment.004",
+        "req.foundation_scope_and_entrypoint_realignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_scope_and_entrypoint_realignment.001",
+        "ac.foundation_scope_and_entrypoint_realignment.002",
+        "ac.foundation_scope_and_entrypoint_realignment.003",
+        "ac.foundation_scope_and_entrypoint_realignment.004",
+        "ac.foundation_scope_and_entrypoint_realignment.005"
+      ],
+      "linked_decision_ids": [
+        "decision.foundation_scope_boundary"
+      ],
+      "linked_design_ids": [
+        "design.features.foundation_scope_and_entrypoint_realignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundation_scope_and_entrypoint_realignment"
+      ],
+      "related_paths": [
+        "docs/foundations/",
+        "docs/planning/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "SUMMARY.md",
+        "README.md",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
       "trace_id": "trace.machine_first_coordination_surface",
       "prd_id": "prd.machine_first_coordination_surface",
       "title": "Machine-First Coordination Surface PRD",

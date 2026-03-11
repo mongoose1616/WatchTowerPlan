@@ -99,6 +99,36 @@
       ]
     },
     {
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "decision_id": "decision.foundation_scope_boundary",
+      "title": "Foundation Scope and EntryPoint Realignment Direction Decision",
+      "summary": "Records the decision to publish an explicit repository-scope foundation, keep future product narrative clearly secondary for current repo ownership questions, and preserve a thin-root entrypoint model.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+      "updated_at": "2026-03-11T01:27:13Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.foundation_scope_and_entrypoint_realignment"
+      ],
+      "linked_design_ids": [
+        "design.features.foundation_scope_and_entrypoint_realignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundation_scope_and_entrypoint_realignment"
+      ],
+      "related_paths": [
+        "docs/foundations/",
+        "docs/planning/README.md"
+      ],
+      "internal_reference_paths": [
+        "SUMMARY.md",
+        "README.md",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
       "trace_id": "trace.machine_first_coordination_surface",
       "decision_id": "decision.machine_first_coordination_entry_surface",
       "title": "Machine-First Coordination Entry Surface Decision",

@@ -243,6 +243,31 @@
       ]
     },
     {
+      "document_id": "design.features.foundation_scope_and_entrypoint_realignment",
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "family": "feature_design",
+      "title": "Foundation Scope and EntryPoint Realignment Feature Design",
+      "summary": "Defines the design for separating current repository scope from future product narrative and for keeping root entrypoints thin and explicit.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+      "updated_at": "2026-03-11T01:27:13Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
+        "docs/foundations/",
+        "docs/planning/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "SUMMARY.md",
+        "README.md",
+        "docs/foundations/README.md"
+      ]
+    },
+    {
       "document_id": "design.features.github_collaboration_scaffolding",
       "trace_id": "trace.github_collaboration",
       "family": "feature_design",
@@ -703,6 +728,30 @@
         "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
         "docs/planning/design/features/end_to_end_repo_rationalization.md",
         "docs/planning/decisions/end_to_end_repo_rationalization_direction.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.foundation_scope_and_entrypoint_realignment",
+      "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+      "family": "implementation_plan",
+      "title": "Foundation Scope and EntryPoint Realignment Implementation Plan",
+      "summary": "Breaks the foundation-scope and root-entrypoint cleanup into bounded documentation slices with one accepted scope decision and a traced acceptance baseline.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
+      "updated_at": "2026-03-11T01:27:13Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
+      ],
+      "related_paths": [
+        "docs/foundations/",
+        "docs/planning/README.md"
+      ],
+      "internal_reference_paths": [
+        "SUMMARY.md",
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
       ]
     },
     {

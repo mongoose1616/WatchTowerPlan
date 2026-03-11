@@ -1,0 +1,99 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.foundation_scope_and_entrypoint_realignment",
+  "title": "Foundation Scope and EntryPoint Realignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
+  "source_prd_id": "prd.foundation_scope_and_entrypoint_realignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.foundation_scope_and_entrypoint_realignment.001",
+      "summary": "The planning corpus publishes an active PRD, feature design, implementation plan, accepted decision, closed bootstrap task, and bounded task set for the initiative.",
+      "source_requirement_ids": [
+        "req.foundation_scope_and_entrypoint_realignment.005"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
+        "docs/planning/tasks/open/"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundation_scope_and_entrypoint_realignment.002",
+      "summary": "The foundations layer publishes an authoritative repository-scope statement and cleanly distinguishes current repository-operating truth from future WatchTower product direction and narrative.",
+      "source_requirement_ids": [
+        "req.foundation_scope_and_entrypoint_realignment.001",
+        "req.foundation_scope_and_entrypoint_realignment.002"
+      ],
+      "validation_targets": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/customer_story.md",
+        "docs/planning/tasks/open/foundation_scope_alignment.md"
+      ],
+      "related_paths": [
+        "SUMMARY.md",
+        "README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundation_scope_and_entrypoint_realignment.003",
+      "summary": "The design-principles, stack-direction, and standards-posture foundations reflect the current export-ready core boundary, compactness expectations, and current runtime/tooling reality.",
+      "source_requirement_ids": [
+        "req.foundation_scope_and_entrypoint_realignment.003"
+      ],
+      "validation_targets": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/tasks/open/foundation_scope_alignment.md"
+      ],
+      "related_paths": [
+        "core/python/README.md",
+        "docs/standards/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundation_scope_and_entrypoint_realignment.004",
+      "summary": "Root and nearby planning entrypoints stay thin and route humans and agents to repository scope, repo review, and coordination rather than broad root narrative.",
+      "source_requirement_ids": [
+        "req.foundation_scope_and_entrypoint_realignment.004"
+      ],
+      "validation_targets": [
+        "README.md",
+        "docs/planning/README.md",
+        "docs/foundations/README.md",
+        "docs/planning/tasks/open/root_entrypoint_contract.md"
+      ],
+      "related_paths": [
+        "SUMMARY.md",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundation_scope_and_entrypoint_realignment.005",
+      "summary": "The repository remains green on the current validation baseline while the initiative lands and closes.",
+      "source_requirement_ids": [
+        "req.foundation_scope_and_entrypoint_realignment.005"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/"
+      ],
+      "related_paths": [
+        "core/python/tests/"
+      ]
+    }
+  ]
+}
