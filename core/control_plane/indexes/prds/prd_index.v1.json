@@ -602,6 +602,44 @@
       ]
     },
     {
+      "trace_id": "trace.foundations_docs_boundary_alignment",
+      "prd_id": "prd.foundations_docs_boundary_alignment",
+      "title": "Foundations Documentation Boundary Alignment PRD",
+      "summary": "Align foundations-adjacent documentation coverage, command source-surface attribution, and workspace standards with the current repo_ops ownership model.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/foundations_docs_boundary_alignment.md",
+      "updated_at": "2026-03-12T22:05:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.foundations_docs_boundary_alignment.001",
+        "req.foundations_docs_boundary_alignment.002",
+        "req.foundations_docs_boundary_alignment.003",
+        "req.foundations_docs_boundary_alignment.004"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_docs_boundary_alignment.001",
+        "ac.foundations_docs_boundary_alignment.002",
+        "ac.foundations_docs_boundary_alignment.003",
+        "ac.foundations_docs_boundary_alignment.004"
+      ],
+      "linked_decision_ids": [
+        "decision.foundations_docs_boundary_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.foundations_docs_boundary_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundations_docs_boundary_alignment"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md"
+      ]
+    },
+    {
       "trace_id": "trace.foundations_documentation_completeness_alignment",
       "prd_id": "prd.foundations_documentation_completeness_alignment",
       "title": "Foundations Documentation Completeness Alignment PRD",

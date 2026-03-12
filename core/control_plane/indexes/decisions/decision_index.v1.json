@@ -462,6 +462,55 @@
       ]
     },
     {
+      "trace_id": "trace.foundations_docs_boundary_alignment",
+      "decision_id": "decision.foundations_docs_boundary_alignment_direction",
+      "title": "Foundations Documentation Boundary Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Foundations Documentation Boundary Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/foundations_docs_boundary_alignment_direction.md",
+      "updated_at": "2026-03-12T22:05:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.foundations_docs_boundary_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.foundations_docs_boundary_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundations_docs_boundary_alignment"
+      ],
+      "related_paths": [
+        "docs/planning/prds/foundations_docs_boundary_alignment.md",
+        "docs/planning/design/features/foundations_docs_boundary_alignment.md",
+        "docs/planning/design/implementation/foundations_docs_boundary_alignment.md",
+        "docs/commands/core_python/README.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.foundations_documentation_completeness_alignment",
       "decision_id": "decision.foundations_documentation_completeness_alignment_direction",
       "title": "Foundations Documentation Completeness Alignment Direction Decision",

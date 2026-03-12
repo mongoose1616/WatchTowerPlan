@@ -63,8 +63,8 @@ uv run watchtower-core sync prd-index --output /tmp/prd_index.v1.json --format j
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/prd_index.py`
+- `core/python/src/watchtower_core/repo_ops/sync/prd_index.py`
 - `core/control_plane/indexes/prds/prd_index.v1.json`
 
 ## Updated At
-- `2026-03-09T07:21:07Z`
+- `2026-03-12T22:05:00Z`

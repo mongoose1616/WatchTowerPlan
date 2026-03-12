@@ -1,0 +1,86 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.foundations_docs_boundary_alignment",
+  "title": "Foundations Documentation Boundary Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.foundations_docs_boundary_alignment",
+  "source_prd_id": "prd.foundations_docs_boundary_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.foundations_docs_boundary_alignment.001",
+      "summary": "The core Python command-doc README exposes the foundations-specific query and sync entrypoints and no longer acts like a misleading partial subcommand dump.",
+      "source_requirement_ids": [
+        "req.foundations_docs_boundary_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/commands/core_python/README.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "notes": "README inventory rows must stay on concrete repository paths so repository-path sync continues to project them."
+    },
+    {
+      "acceptance_id": "ac.foundations_docs_boundary_alignment.002",
+      "summary": "Current authoritative query and sync leaf command pages cite the repo_ops modules that actually own repo-local behavior instead of the compatibility wrapper namespaces.",
+      "source_requirement_ids": [
+        "req.foundations_docs_boundary_alignment.002"
+      ],
+      "validation_targets": [
+        "docs/commands/core_python/watchtower_core_query_commands.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "docs/commands/core_python/watchtower_core_sync_command_index.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "docs/commands/core_python/watchtower_core_sync_reference_index.md",
+        "docs/commands/core_python/watchtower_core_sync_standard_index.md",
+        "docs/commands/core_python/watchtower_core_sync_workflow_index.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/sync/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundations_docs_boundary_alignment.003",
+      "summary": "Active workspace, engineering, governance, and reference docs describe the same current query and sync ownership model as the package-boundary READMEs.",
+      "source_requirement_ids": [
+        "req.foundations_docs_boundary_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/repo_ops/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundations_docs_boundary_alignment.004",
+      "summary": "Regression coverage plus targeted and full validation stay green after the documentation-boundary alignment lands.",
+      "source_requirement_ids": [
+        "req.foundations_docs_boundary_alignment.004"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/prds/foundations_docs_boundary_alignment.md",
+        "docs/planning/design/features/foundations_docs_boundary_alignment.md",
+        "docs/planning/design/implementation/foundations_docs_boundary_alignment.md",
+        "docs/planning/decisions/foundations_docs_boundary_alignment_direction.md"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/validation_evidence/foundations_docs_boundary_alignment_planning_baseline.v1.json"
+      ]
+    }
+  ]
+}

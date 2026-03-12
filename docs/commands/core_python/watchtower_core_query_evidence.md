@@ -55,8 +55,8 @@ uv run watchtower-core query evidence --acceptance-id ac.core_python_foundation.
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/query/evidence.py`
+- `core/python/src/watchtower_core/repo_ops/query/evidence.py`
 - `core/control_plane/ledgers/validation_evidence/`
 
 ## Updated At
-- `2026-03-09T16:33:16Z`
+- `2026-03-12T22:05:00Z`

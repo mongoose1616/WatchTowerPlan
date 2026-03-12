@@ -54,8 +54,8 @@ uv run watchtower-core query acceptance --acceptance-id ac.core_python_foundatio
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/query/acceptance.py`
+- `core/python/src/watchtower_core/repo_ops/query/acceptance.py`
 - `core/control_plane/contracts/acceptance/`
 
 ## Updated At
-- `2026-03-09T16:33:16Z`
+- `2026-03-12T22:05:00Z`

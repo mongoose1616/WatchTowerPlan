@@ -9,12 +9,12 @@ tags:
   - "governance"
   - "github_sync"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T22:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/tasks/"
-  - "core/python/src/watchtower_core/sync/github_tasks.py"
+  - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github task sync"
   - "issue sync"
@@ -141,7 +141,7 @@ This standard defines the repository's first GitHub task sync contract for pushi
 
 ## Operationalization
 - `Modes`: `documentation`; `sync`
-- `Operational Surfaces`: `docs/planning/tasks/`; `core/python/src/watchtower_core/sync/github_tasks.py`; `docs/planning/design/features/local_task_tracking_and_github_sync.md`
+- `Operational Surfaces`: `docs/planning/tasks/`; `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`; `docs/planning/design/features/local_task_tracking_and_github_sync.md`
 
 ## Validation
 - Task records with `github_issue_number` should also carry `github_repository`.
@@ -163,4 +163,4 @@ This standard defines the repository's first GitHub task sync contract for pushi
 - [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T22:05:00Z`

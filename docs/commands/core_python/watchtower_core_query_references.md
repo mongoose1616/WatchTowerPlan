@@ -70,8 +70,8 @@ uv run watchtower-core query references --applied-by-path docs/standards/governa
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/query/references.py`
+- `core/python/src/watchtower_core/repo_ops/query/references.py`
 - `core/control_plane/indexes/references/reference_index.v1.json`
 
 ## Updated At
-- `2026-03-09T18:46:06Z`
+- `2026-03-12T22:05:00Z`

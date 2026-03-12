@@ -350,7 +350,7 @@
       "summary": "This document provides a working reference for the GitHub collaboration surfaces that this repository uses for issue intake, pull request templates, project fields, issue sync, and hosted execution visibility.",
       "status": "active",
       "doc_path": "docs/references/github_collaboration_reference.md",
-      "updated_at": "2026-03-09T18:25:06Z",
+      "updated_at": "2026-03-12T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -378,10 +378,11 @@
         ".github/",
         "docs/standards/governance/github_collaboration_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
-        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         ".github/README.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md"
+        "docs/planning/design/features/github_task_push_sync.md",
+        "core/python/src/watchtower_core/sync/github_tasks.py"
       ],
       "aliases": [
         "github collaboration",

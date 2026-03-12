@@ -3692,26 +3692,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/commands/core_python/watchtower_core_plan_bootstrap.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Scaffold a compact traced PRD, design, plan, and bootstrap-task chain.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_plan_scaffold.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Scaffold one compact governed planning document.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/commands/core_python/watchtower_core_query.md",
       "kind": "file",
       "surface_kind": "command_doc",
@@ -3735,7 +3715,7 @@
       "path": "docs/commands/core_python/watchtower_core_query_commands.md",
       "kind": "file",
       "surface_kind": "command_doc",
-      "summary": "Query surface for locating command metadata and exact subcommand pages without scanning this directory manually.",
+      "summary": "Machine-readable lookup page for finding any other current command page without scanning the directory manually.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3746,6 +3726,16 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Machine start-here command page for active traced initiative coordination and next-step lookup.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_query_foundations.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Query foundations by topic, related surface, authority, or downstream citation or application use.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3772,20 +3762,20 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/commands/core_python/watchtower_core_route_preview.md",
+      "path": "docs/commands/core_python/watchtower_core_sync.md",
       "kind": "file",
       "surface_kind": "command_doc",
-      "summary": "Preview surface for routed workflow modules by request text or explicit task type.",
+      "summary": "Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "shared"
     },
     {
-      "path": "docs/commands/core_python/watchtower_core_sync.md",
+      "path": "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
       "kind": "file",
       "surface_kind": "command_doc",
-      "summary": "Entry page for all sync commands, including full repo rebuilds and narrower index/tracking refreshes.",
+      "summary": "Rebuild surface for the machine-readable foundation index derived from governed foundation docs.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3802,50 +3792,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/commands/core_python/watchtower_core_sync_route_index.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Rebuild surface for the machine-readable route index derived from the routing table.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
       "path": "docs/commands/core_python/watchtower_core_task.md",
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Entry page for task lifecycle commands that mutate governed local task records in dry-run or write mode.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_task_create.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Create one governed task document from compact structured inputs.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_task_transition.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Apply a bounded handoff-style status or ownership transition to one task.",
-      "parent_path": "docs/commands/core_python/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "shared"
-    },
-    {
-      "path": "docs/commands/core_python/watchtower_core_task_update.md",
-      "kind": "file",
-      "surface_kind": "command_doc",
-      "summary": "Apply structured field and body updates to one governed task record.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",

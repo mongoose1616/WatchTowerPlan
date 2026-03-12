@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "best_practices"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T22:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -77,7 +77,7 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 5. Treat the change as incomplete if related indexes, schemas, examples, command docs, or planning trackers are left stale.
 
 ## Examples
-- A new query command should add a reusable query service under `core/python/src/watchtower_core/query/`, thin CLI wiring under `cli/`, command docs under `docs/commands/`, and a matching command-index entry under `core/control_plane/indexes/commands/`.
+- A new repo-local query command should add its reusable query service under `core/python/src/watchtower_core/repo_ops/query/`, thin CLI wiring under `cli/`, command docs under `docs/commands/`, and a matching command-index entry under `core/control_plane/indexes/commands/`.
 - A new schema-backed artifact family should add the schema, examples, schema-catalog record, and any affected validators in the same change set.
 - A change to a traced PRD or acceptance contract should keep the matching indexes, evidence expectations, and linked planning surfaces aligned.
 
@@ -109,4 +109,4 @@ Keep implementation work modular, deterministic, reviewable, and aligned with th
 - The goal is consistent engineering behavior, not maximum process weight.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T22:05:00Z`

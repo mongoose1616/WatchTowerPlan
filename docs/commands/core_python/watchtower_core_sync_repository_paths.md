@@ -62,8 +62,8 @@ uv run watchtower-core sync repository-paths --output /tmp/repository_path_index
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/repository_paths.py`
+- `core/python/src/watchtower_core/repo_ops/sync/repository_paths.py`
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json`
 
 ## Updated At
-- `2026-03-09T05:43:47Z`
+- `2026-03-12T22:05:00Z`

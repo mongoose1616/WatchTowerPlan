@@ -9,14 +9,14 @@ tags:
   - "github"
   - "collaboration"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-12T22:05:00Z"
 audience: "shared"
 authority: "reference"
 applies_to:
   - ".github/"
   - "docs/standards/governance/github_collaboration_standard.md"
   - "docs/standards/governance/github_task_sync_standard.md"
-  - "core/python/src/watchtower_core/sync/github_tasks.py"
+  - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github collaboration"
   - "github issue forms"
@@ -88,7 +88,7 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - [README.md](/home/j/WatchTowerPlan/.github/README.md)
 - [github_collaboration_scaffolding.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_collaboration_scaffolding.md)
 - [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md)
-- `core/python/src/watchtower_core/sync/github_tasks.py`
+- `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 
 ### Why It Matters Here
 - This reference is the repo-native lookup surface for GitHub collaboration assumptions that materially shape local standards and designs.
@@ -104,4 +104,4 @@ Provide one repo-native lookup surface for the GitHub capabilities that material
 - Canonical upstream sources were rechecked on `2026-03-09` while normalizing GitHub-facing repository guidance through local references.
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-12T22:05:00Z`

@@ -64,8 +64,8 @@ uv run watchtower-core sync initiative-tracking --output /tmp/initiative_trackin
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/initiative_tracking.py`
+- `core/python/src/watchtower_core/repo_ops/sync/initiative_tracking.py`
 - `docs/planning/initiatives/initiative_tracking.md`
 
 ## Updated At
-- `2026-03-10T01:48:35Z`
+- `2026-03-12T22:05:00Z`

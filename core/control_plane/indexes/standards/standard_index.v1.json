@@ -1798,7 +1798,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/engineering_best_practices_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1950,7 +1950,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1960,8 +1960,10 @@
         "documentation"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
         "core/control_plane/",
         "core/README.md"
       ],
@@ -2209,7 +2211,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/github_collaboration_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2220,17 +2222,18 @@
       "operationalization_paths": [
         ".github/",
         "docs/planning/tasks/",
-        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         ".github/README.md"
       ],
       "applies_to": [
         ".github/",
         "docs/planning/tasks/",
-        "core/python/src/watchtower_core/sync/github_tasks.py"
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
       ],
       "related_paths": [
         ".github/",
         "docs/planning/tasks/",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "core/python/src/watchtower_core/sync/github_tasks.py"
       ],
       "reference_doc_paths": [
@@ -2281,7 +2284,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/github_task_sync_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T22:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -2290,15 +2293,16 @@
       ],
       "operationalization_paths": [
         "docs/planning/tasks/",
-        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "docs/planning/design/features/local_task_tracking_and_github_sync.md"
       ],
       "applies_to": [
         "docs/planning/tasks/",
-        "core/python/src/watchtower_core/sync/github_tasks.py"
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
       ],
       "related_paths": [
         "docs/planning/tasks/",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "core/python/src/watchtower_core/sync/github_tasks.py"
       ],
       "reference_doc_paths": [

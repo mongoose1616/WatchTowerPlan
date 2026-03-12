@@ -60,8 +60,8 @@ uv run watchtower-core sync reference-index --output /tmp/reference_index.v1.jso
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/reference_index.py`
+- `core/python/src/watchtower_core/repo_ops/sync/reference_index.py`
 - `core/control_plane/indexes/references/reference_index.v1.json`
 
 ## Updated At
-- `2026-03-09T18:45:00Z`
+- `2026-03-12T22:05:00Z`

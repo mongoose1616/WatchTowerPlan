@@ -56,8 +56,8 @@ uv run watchtower-core sync decision-tracking --write
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/decision_tracking.py`
+- `core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py`
 - `docs/planning/decisions/decision_tracking.md`
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-12T22:05:00Z`

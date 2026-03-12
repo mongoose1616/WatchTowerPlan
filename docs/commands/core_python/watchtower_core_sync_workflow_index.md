@@ -65,8 +65,8 @@ uv run watchtower-core sync workflow-index --output /tmp/workflow_index.v1.json 
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/workflow_index.py`
+- `core/python/src/watchtower_core/repo_ops/sync/workflow_index.py`
 - `core/control_plane/indexes/workflows/workflow_index.v1.json`
 
 ## Updated At
-- `2026-03-10T00:55:31Z`
+- `2026-03-12T22:05:00Z`

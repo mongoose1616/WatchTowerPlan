@@ -9,13 +9,13 @@ tags:
   - "governance"
   - "github"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T22:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - ".github/"
   - "docs/planning/tasks/"
-  - "core/python/src/watchtower_core/sync/github_tasks.py"
+  - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github collaboration"
   - "github project field model"
@@ -99,7 +99,7 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`; `sync`
-- `Operational Surfaces`: `.github/`; `docs/planning/tasks/`; `core/python/src/watchtower_core/sync/github_tasks.py`; `.github/README.md`
+- `Operational Surfaces`: `.github/`; `docs/planning/tasks/`; `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`; `.github/README.md`
 
 ## Validation
 - GitHub issue forms should ask for enough information to create or link the corresponding repo-local artifact.
@@ -119,4 +119,4 @@ This standard defines how GitHub issue forms, pull requests, labels, and project
 - [README.md](/home/j/WatchTowerPlan/.github/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T22:05:00Z`

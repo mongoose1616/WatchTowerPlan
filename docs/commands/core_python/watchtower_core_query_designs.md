@@ -57,8 +57,8 @@ uv run watchtower-core query designs --trace-id trace.core_python_foundation --f
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/query/designs.py`
+- `core/python/src/watchtower_core/repo_ops/query/designs.py`
 - `core/control_plane/indexes/design_documents/design_document_index.v1.json`
 
 ## Updated At
-- `2026-03-09T18:45:00Z`
+- `2026-03-12T22:05:00Z`

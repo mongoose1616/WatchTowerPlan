@@ -61,8 +61,8 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/query/traceability.py`
+- `core/python/src/watchtower_core/repo_ops/query/traceability.py`
 - `core/control_plane/indexes/traceability/traceability_index.v1.json`
 
 ## Updated At
-- `2026-03-11T03:10:00Z`
+- `2026-03-12T22:05:00Z`

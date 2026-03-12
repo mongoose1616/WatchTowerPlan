@@ -64,8 +64,8 @@ uv run watchtower-core sync foundation-index --output /tmp/foundation_index.v1.j
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/foundation_index.py`
+- `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`
 - `core/control_plane/indexes/foundations/foundation_index.v1.json`
 
 ## Updated At
-- `2026-03-09T23:22:09Z`
+- `2026-03-12T22:05:00Z`

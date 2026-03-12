@@ -557,6 +557,39 @@
       ]
     },
     {
+      "document_id": "design.features.foundations_docs_boundary_alignment",
+      "trace_id": "trace.foundations_docs_boundary_alignment",
+      "family": "feature_design",
+      "title": "Foundations Documentation Boundary Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Foundations Documentation Boundary Alignment.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/foundations_docs_boundary_alignment.md",
+      "updated_at": "2026-03-12T22:05:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/foundations_docs_boundary_alignment.md",
+        "docs/commands/core_python/README.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.foundations_documentation_completeness_alignment",
       "trace_id": "trace.foundations_documentation_completeness_alignment",
       "family": "feature_design",
@@ -1992,6 +2025,32 @@
         "SUMMARY.md",
         "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.foundations_docs_boundary_alignment",
+      "trace_id": "trace.foundations_docs_boundary_alignment",
+      "family": "implementation_plan",
+      "title": "Foundations Documentation Boundary Alignment Implementation Plan",
+      "summary": "Breaks Foundations Documentation Boundary Alignment into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/foundations_docs_boundary_alignment.md",
+      "updated_at": "2026-03-12T22:05:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/foundations_docs_boundary_alignment.md",
+        "docs/planning/prds/foundations_docs_boundary_alignment.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md"
       ]
     },
     {

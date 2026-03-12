@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-12T21:31:46Z",
+  "updated_at": "2026-03-12T22:14:37Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -13,13 +13,130 @@
   "actionable_task_count": 0,
   "entries": [
     {
+      "trace_id": "trace.foundations_docs_boundary_alignment",
+      "title": "Foundations Documentation Boundary Alignment PRD",
+      "summary": "Align foundations-adjacent documentation coverage, command source-surface attribution, and workspace standards with the current repo_ops ownership model.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T22:14:37Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/foundations_docs_boundary_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/foundations_docs_boundary_alignment.md",
+      "prd_ids": [
+        "prd.foundations_docs_boundary_alignment"
+      ],
+      "decision_ids": [
+        "decision.foundations_docs_boundary_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.foundations_docs_boundary_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundations_docs_boundary_alignment"
+      ],
+      "task_ids": [
+        "task.foundations_docs_boundary_alignment.bootstrap.001",
+        "task.foundations_docs_boundary_alignment.documentation.001",
+        "task.foundations_docs_boundary_alignment.validation.001"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_docs_boundary_alignment.001",
+        "ac.foundations_docs_boundary_alignment.002",
+        "ac.foundations_docs_boundary_alignment.003",
+        "ac.foundations_docs_boundary_alignment.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundations_docs_boundary_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.foundations_docs_boundary_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T22:14:31Z",
+      "closure_reason": "Delivered foundations documentation boundary alignment: the core Python command-doc README now exposes the foundations entrypoints, command and standards/reference docs align on repo_ops ownership, full validation passed, and repeated review passes found no additional actionable issues.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/foundations_docs_boundary_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_docs_boundary_alignment_planning_baseline.v1.json",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/sync/README.md",
+        "core/python/tests/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/README.md",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "docs/commands/core_python/watchtower_core_query_commands.md",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/commands/core_python/watchtower_core_query_designs.md",
+        "docs/commands/core_python/watchtower_core_query_evidence.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_paths.md",
+        "docs/commands/core_python/watchtower_core_query_prds.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "docs/commands/core_python/watchtower_core_sync.md",
+        "docs/commands/core_python/watchtower_core_sync_command_index.md",
+        "docs/commands/core_python/watchtower_core_sync_decision_index.md",
+        "docs/commands/core_python/watchtower_core_sync_decision_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_design_document_index.md",
+        "docs/commands/core_python/watchtower_core_sync_design_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "docs/commands/core_python/watchtower_core_sync_initiative_index.md",
+        "docs/commands/core_python/watchtower_core_sync_initiative_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_prd_index.md",
+        "docs/commands/core_python/watchtower_core_sync_prd_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_reference_index.md",
+        "docs/commands/core_python/watchtower_core_sync_repository_paths.md",
+        "docs/commands/core_python/watchtower_core_sync_standard_index.md",
+        "docs/commands/core_python/watchtower_core_sync_task_index.md",
+        "docs/commands/core_python/watchtower_core_sync_task_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_traceability_index.md",
+        "docs/commands/core_python/watchtower_core_sync_workflow_index.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundations_docs_boundary_alignment_direction.md",
+        "docs/planning/design/features/foundations_docs_boundary_alignment.md",
+        "docs/planning/design/implementation/foundations_docs_boundary_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundations_docs_boundary_alignment.md",
+        "docs/planning/tasks/closed/align_foundations_adjacent_command_and_standards_docs.md",
+        "docs/planning/tasks/closed/foundations_docs_boundary_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_foundations_documentation_boundary_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/",
+        "docs/references/github_collaboration_reference.md",
+        "docs/standards/",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T22:14:37Z for trace.foundations_docs_boundary_alignment after implementation closeout, acceptance-inclusive validation, repeated themed review passes, and terminal initiative closeout."
+    },
+    {
       "trace_id": "trace.foundations_documentation_completeness_alignment",
       "title": "Foundations Documentation Completeness Alignment PRD",
       "summary": "Close documentation and workflow drift around the governed foundations corpus by restoring complete foundations-aware review context, aligning live query/help examples with the current foundation index, and making the engineering stack foundation cite the governed reference corpus it materially depends on so index and query surfaces remain cohesive.",
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-12T21:31:46Z",
+      "updated_at": "2026-03-12T21:36:00Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/foundations_documentation_completeness_alignment.md",
@@ -105,7 +222,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence prepared at 2026-03-12T21:21:38Z for trace.foundations_documentation_completeness_alignment. Follow-up evidence will record implementation, validation, and no-new-issues review closure."
+      "notes": "Evidence updated at 2026-03-12T21:36:00Z after implementation, validation, initiative closeout, two clean post-fix review passes, and a green terminal acceptance-inclusive validation baseline for trace.foundations_documentation_completeness_alignment."
     },
     {
       "trace_id": "trace.lazy_planning_query_payload_emission",
@@ -3594,6 +3711,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.foundations_docs_boundary_alignment",
+      "title": "Foundations Documentation Boundary Alignment PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-12T22:14:31Z",
+      "key_surface_path": "docs/planning/prds/foundations_docs_boundary_alignment.md",
+      "closure_reason": "Delivered foundations documentation boundary alignment: the core Python command-doc README now exposes the foundations entrypoints, command and standards/reference docs align on repo_ops ownership, full validation passed, and repeated review passes found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.foundations_documentation_completeness_alignment",
       "title": "Foundations Documentation Completeness Alignment PRD",
       "initiative_status": "completed",
@@ -3664,14 +3789,6 @@
       "closed_at": "2026-03-12T13:01:19Z",
       "key_surface_path": "docs/planning/prds/task_sync_disappearing_file_resilience.md",
       "closure_reason": "Closed after hardening task iteration against disappearing files, adding end-to-end regression coverage, and completing a clean follow-up orchestration review pass."
-    },
-    {
-      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
-      "title": "Workflow Routing Review Accuracy Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-12T03:52:21Z",
-      "key_surface_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
-      "closure_reason": "Delivered deterministic routing hardening, route-table alignment, and clean follow-up review coverage."
     }
   ]
 }

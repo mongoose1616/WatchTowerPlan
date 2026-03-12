@@ -58,8 +58,8 @@ uv run watchtower-core query decisions --linked-prd-id prd.core_python_foundatio
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/query/decisions.py`
+- `core/python/src/watchtower_core/repo_ops/query/decisions.py`
 - `core/control_plane/indexes/decisions/decision_index.v1.json`
 
 ## Updated At
-- `2026-03-09T18:45:00Z`
+- `2026-03-12T22:05:00Z`

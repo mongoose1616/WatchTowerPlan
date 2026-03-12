@@ -1,0 +1,151 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.foundations_docs_boundary_alignment.planning_baseline",
+  "title": "Foundations Documentation Boundary Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.foundations_docs_boundary_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T22:14:37Z",
+  "source_prd_ids": [
+    "prd.foundations_docs_boundary_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.foundations_docs_boundary_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.foundations_docs_boundary_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.foundations_docs_boundary_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.foundations_docs_boundary_alignment.command_readme_coverage",
+      "title": "Core Python command README exposes the foundations entrypoints",
+      "result": "passed",
+      "subject_paths": [
+        "docs/commands/core_python/README.md",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.foundations_docs_boundary_alignment.documentation.001"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_docs_boundary_alignment.001"
+      ],
+      "notes": "The command-doc README now lists the query and sync group entrypoints alongside the foundations-specific leaf docs, and the targeted integration regression confirmed the expected inventory rows are present."
+    },
+    {
+      "check_id": "check.foundations_docs_boundary_alignment.repo_ops_source_surfaces",
+      "title": "Current command docs cite repo_ops owners instead of compatibility wrappers",
+      "result": "passed",
+      "subject_paths": [
+        "docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "docs/commands/core_python/watchtower_core_query_commands.md",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/commands/core_python/watchtower_core_query_designs.md",
+        "docs/commands/core_python/watchtower_core_query_evidence.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_paths.md",
+        "docs/commands/core_python/watchtower_core_query_prds.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "docs/commands/core_python/watchtower_core_sync_command_index.md",
+        "docs/commands/core_python/watchtower_core_sync_decision_index.md",
+        "docs/commands/core_python/watchtower_core_sync_decision_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_design_document_index.md",
+        "docs/commands/core_python/watchtower_core_sync_design_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+        "docs/commands/core_python/watchtower_core_sync_initiative_index.md",
+        "docs/commands/core_python/watchtower_core_sync_initiative_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_prd_index.md",
+        "docs/commands/core_python/watchtower_core_sync_prd_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_reference_index.md",
+        "docs/commands/core_python/watchtower_core_sync_repository_paths.md",
+        "docs/commands/core_python/watchtower_core_sync_standard_index.md",
+        "docs/commands/core_python/watchtower_core_sync_task_index.md",
+        "docs/commands/core_python/watchtower_core_sync_task_tracking.md",
+        "docs/commands/core_python/watchtower_core_sync_traceability_index.md",
+        "docs/commands/core_python/watchtower_core_sync_workflow_index.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.foundations_docs_boundary_alignment.documentation.001"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_docs_boundary_alignment.002"
+      ],
+      "notes": "The affected query and sync leaf pages now point at the authoritative repo_ops query/sync owners, and a repo-local search across docs/commands/core_python found no remaining stale compatibility-wrapper Source Surface paths."
+    },
+    {
+      "check_id": "check.foundations_docs_boundary_alignment.standards_alignment",
+      "title": "Standards and reference docs match the current ownership model",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.foundations_docs_boundary_alignment.documentation.001"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_docs_boundary_alignment.003"
+      ],
+      "notes": "The workspace, engineering, governance, and GitHub collaboration docs now describe the same repo_ops ownership model as the package-boundary READMEs, and standard semantics validation for python_workspace_standard.md passed on the updated state."
+    },
+    {
+      "check_id": "check.foundations_docs_boundary_alignment.validation_closeout",
+      "title": "Validation and repeated review passes are green for the slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/open/validate_foundations_documentation_boundary_alignment.md",
+        "docs/planning/tasks/closed/validate_foundations_documentation_boundary_alignment.md",
+        "core/control_plane/contracts/acceptance/foundations_docs_boundary_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_docs_boundary_alignment_planning_baseline.v1.json",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "workflows/modules/foundations_context_review.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "task.foundations_docs_boundary_alignment.validation.001",
+        "contract.acceptance.foundations_docs_boundary_alignment"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_docs_boundary_alignment.004"
+      ],
+      "notes": "Targeted unit and integration regressions passed, sync all passed, validate all --skip-acceptance passed with 899/899, python -m mypy src passed for 182 source files, ruff check . passed, the post-fix ownership-and-discoverability review found no new issues, the foundations query/index coherence review found no new issues, the adversarial confirmation pass found no actionable drift under the same theme, validate acceptance for trace.foundations_docs_boundary_alignment passed, final validate all passed with 938/938, pytest -q passed with 347 passed, and the terminal coordination query returned ready_for_bootstrap with zero active initiatives and zero actionable tasks."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/foundations_docs_boundary_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T22:14:37Z for trace.foundations_docs_boundary_alignment after implementation closeout, acceptance-inclusive validation, repeated themed review passes, and terminal initiative closeout.",
+  "source_decision_ids": [
+    "decision.foundations_docs_boundary_alignment_direction"
+  ]
+}

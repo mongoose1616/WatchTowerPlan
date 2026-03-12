@@ -56,8 +56,8 @@ uv run watchtower-core sync prd-tracking --write
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/prd_tracking.py`
+- `core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py`
 - `docs/planning/prds/prd_tracking.md`
 
 ## Updated At
-- `2026-03-09T16:20:00Z`
+- `2026-03-12T22:05:00Z`

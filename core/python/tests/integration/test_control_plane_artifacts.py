@@ -104,6 +104,61 @@ def test_foundations_context_review_loads_authoritative_foundation_backbone() ->
     assert "docs/foundations/product_direction.md" in markdown
 
 
+def test_core_python_command_readme_exposes_foundations_entrypoints() -> None:
+    markdown = (REPO_ROOT / "docs/commands/core_python/README.md").read_text(encoding="utf-8")
+
+    assert "docs/commands/core_python/watchtower_core_query.md" in markdown
+    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
+    assert "docs/commands/core_python/watchtower_core_sync.md" in markdown
+    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
+
+
+def test_repo_local_query_and_sync_command_docs_point_to_repo_ops_owners() -> None:
+    query_docs = sorted(
+        (REPO_ROOT / "docs/commands/core_python").glob("watchtower_core_query_*.md")
+    )
+    for path in query_docs:
+        markdown = path.read_text(encoding="utf-8")
+        assert "core/python/src/watchtower_core/query/" not in markdown, path
+
+    sync_docs = sorted(
+        (REPO_ROOT / "docs/commands/core_python").glob("watchtower_core_sync_*.md")
+    )
+    for path in sync_docs:
+        markdown = path.read_text(encoding="utf-8")
+        assert "core/python/src/watchtower_core/sync/" not in markdown, path
+
+
+def test_workspace_and_github_docs_publish_current_repo_ops_ownership_model() -> None:
+    workspace_standard = (
+        REPO_ROOT / "docs/standards/engineering/python_workspace_standard.md"
+    ).read_text(encoding="utf-8")
+    best_practices_standard = (
+        REPO_ROOT / "docs/standards/engineering/engineering_best_practices_standard.md"
+    ).read_text(encoding="utf-8")
+
+    assert "core/python/src/watchtower_core/repo_ops/query/" in workspace_standard
+    assert "core/python/src/watchtower_core/repo_ops/sync/" in workspace_standard
+    assert "Compatibility query namespace" in workspace_standard
+    assert "Compatibility sync namespace" in workspace_standard
+    assert "A repo-local query helper" in workspace_standard
+    assert (
+        "core/python/src/watchtower_core/query/` | Index-backed retrieval and structured query "
+        "helpers."
+    ) not in workspace_standard
+    assert "core/python/src/watchtower_core/repo_ops/query/" in best_practices_standard
+
+    for relative_path in (
+        "docs/standards/governance/github_collaboration_standard.md",
+        "docs/standards/governance/github_task_sync_standard.md",
+        "docs/references/github_collaboration_reference.md",
+        "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
+    ):
+        markdown = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
+        assert "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py" in markdown
+        assert "core/python/src/watchtower_core/sync/github_tasks.py" not in markdown
+
+
 def test_control_plane_loader_validates_current_traceability_artifacts() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 

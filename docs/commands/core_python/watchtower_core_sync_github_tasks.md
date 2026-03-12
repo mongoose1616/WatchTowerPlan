@@ -82,9 +82,9 @@ uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --wri
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/main.py`
-- `core/python/src/watchtower_core/sync/github_tasks.py`
+- `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 - `core/python/src/watchtower_core/integrations/github/client.py`
 - `.github/`
 
 ## Updated At
-- `2026-03-09T16:33:16Z`
+- `2026-03-12T22:05:00Z`
