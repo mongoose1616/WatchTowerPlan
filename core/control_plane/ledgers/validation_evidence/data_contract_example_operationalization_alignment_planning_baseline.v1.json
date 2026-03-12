@@ -1,0 +1,143 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.data_contract_example_operationalization_alignment.planning_baseline",
+  "title": "Data Contract Example Operationalization Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.data_contract_example_operationalization_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T01:35:13Z",
+  "source_prd_ids": [
+    "prd.data_contract_example_operationalization_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.data_contract_example_operationalization_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.data_contract_example_operationalization_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.data_contract_example_operationalization_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.data_contract_example_operationalization_alignment.planning_baseline",
+      "title": "Planning baseline is aligned for the data-contract example operationalization slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/data_contract_example_operationalization_alignment.md",
+        "docs/planning/design/features/data_contract_example_operationalization_alignment.md",
+        "docs/planning/design/implementation/data_contract_example_operationalization_alignment.md",
+        "docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/data_contract_example_operationalization_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/publish_data_contract_example_operationalization_coverage.md",
+        "docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_data_contract_example_operationalization_alignment.md"
+      ],
+      "subject_ids": [
+        "prd.data_contract_example_operationalization_alignment",
+        "design.features.data_contract_example_operationalization_alignment",
+        "design.implementation.data_contract_example_operationalization_alignment",
+        "task.data_contract_example_operationalization_alignment.bootstrap.001",
+        "task.data_contract_example_operationalization_alignment.example_coverage.001",
+        "task.data_contract_example_operationalization_alignment.regression_hardening.001",
+        "task.data_contract_example_operationalization_alignment.validation_closeout.001",
+        "contract.acceptance.data_contract_example_operationalization_alignment",
+        "decision.data_contract_example_operationalization_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.data_contract_example_operationalization_alignment.001"
+      ],
+      "notes": "The trace now carries a real PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed evidence artifact, and a fully closed bounded task set."
+    },
+    {
+      "check_id": "check.data_contract_example_operationalization_alignment.example_coverage",
+      "title": "Affected data-contract standards publish family-specific example operationalization coverage",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/data_contracts/prd_index_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.data_contract_example_operationalization_alignment.example_coverage.001"
+      ],
+      "acceptance_ids": [
+        "ac.data_contract_example_operationalization_alignment.002"
+      ],
+      "notes": "The affected data-contract standards now publish bounded valid and invalid example glob patterns for their artifact families, and the live standard index carries those operationalization paths."
+    },
+    {
+      "check_id": "check.data_contract_example_operationalization_alignment.example_lookup_regressions",
+      "title": "Representative example files resolve to their governing family standards with regression coverage",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.data_contract_example_operationalization_alignment.regression_hardening.001"
+      ],
+      "acceptance_ids": [
+        "ac.data_contract_example_operationalization_alignment.003"
+      ],
+      "notes": "Representative example-file queries for acceptance-contract, authority-map, standard-index, validation-evidence, and workflow-index artifacts now return the corresponding data-contract standards, and targeted regressions passed."
+    },
+    {
+      "check_id": "check.data_contract_example_operationalization_alignment.validation_baseline",
+      "title": "Repository validation baseline is green for the example-coverage slice",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.data_contract_example_operationalization_alignment",
+        "decision.data_contract_example_operationalization_alignment_direction",
+        "design.features.data_contract_example_operationalization_alignment",
+        "design.implementation.data_contract_example_operationalization_alignment",
+        "task.data_contract_example_operationalization_alignment.example_coverage.001",
+        "task.data_contract_example_operationalization_alignment.regression_hardening.001",
+        "task.data_contract_example_operationalization_alignment.validation_closeout.001",
+        "contract.acceptance.data_contract_example_operationalization_alignment"
+      ],
+      "acceptance_ids": [
+        "ac.data_contract_example_operationalization_alignment.004"
+      ],
+      "notes": "watchtower-core sync all --write, watchtower-core validate acceptance --trace-id trace.data_contract_example_operationalization_alignment --format json, watchtower-core validate all --format json, pytest -q, .venv/bin/python -m mypy src/watchtower_core from core/python, ruff check ., and watchtower-core query coordination --format json passed after the validation task and initiative were closed."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T01:35:13Z for trace.data_contract_example_operationalization_alignment after the validation task and initiative closeout.",
+  "source_decision_ids": [
+    "decision.data_contract_example_operationalization_alignment_direction"
+  ]
+}

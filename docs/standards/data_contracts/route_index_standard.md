@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "route_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -71,7 +71,7 @@ Provide a compact machine-readable projection of the routing table so route-prev
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `workflow`
-- `Operational Surfaces`: `core/control_plane/indexes/routes/`; `core/control_plane/schemas/artifacts/`; `workflows/modules/`; `workflows/ROUTING_TABLE.md`
+- `Operational Surfaces`: `core/control_plane/indexes/routes/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/examples/valid/indexes/route_index*.example.json`; `core/control_plane/examples/invalid/indexes/route_index*.example.json`; `workflows/modules/`; `workflows/ROUTING_TABLE.md`
 
 ## Validation
 - The route index should validate against its published artifact schema.
@@ -90,4 +90,4 @@ Provide a compact machine-readable projection of the routing table so route-prev
 - [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

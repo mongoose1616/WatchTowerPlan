@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "command_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -103,7 +103,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/commands/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/commands/README.md`; `docs/commands/`
+- `Operational Surfaces`: `core/control_plane/indexes/commands/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/commands/README.md`; `core/control_plane/examples/valid/indexes/command_index*.example.json`; `core/control_plane/examples/invalid/indexes/command_index*.example.json`; `docs/commands/`
 
 ## Validation
 - The command index should validate against its published artifact schema.
@@ -129,4 +129,4 @@ Provide a compact lookup surface that maps available commands and subcommands to
 - The repository path index remains the broader navigation surface. The command index is the targeted command-lookup surface.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

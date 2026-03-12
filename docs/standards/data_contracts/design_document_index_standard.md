@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "design_document_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T23:35:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -106,7 +106,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/design_documents/`; `core/control_plane/indexes/design_documents/README.md`; `docs/planning/design/`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/design_documents/`; `core/control_plane/indexes/design_documents/README.md`; `core/control_plane/examples/valid/indexes/design_document_index*.example.json`; `core/control_plane/examples/invalid/indexes/design_document_index*.example.json`; `docs/planning/design/`
 
 ## Validation
 - The design-document index should validate against its published artifact schema.
@@ -133,4 +133,4 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The machine index is for lookup, query, and future tooling. Neither surface replaces the design documents themselves.
 
 ## Updated At
-- `2026-03-11T23:35:00Z`
+- `2026-03-12T01:22:49Z`

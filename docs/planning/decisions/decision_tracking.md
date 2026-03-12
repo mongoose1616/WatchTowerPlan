@@ -4,6 +4,7 @@
 | Trace ID | Decision | Status | Outcome | Summary |
 | --- | --- | --- | --- | --- |
 | `trace.core_python_foundation` | [decision.core_python_workspace_root](/home/j/WatchTowerPlan/docs/planning/decisions/core_python_workspace_root.md) | `completed` | `accepted` | Records the decision to use core/python as the single Python workspace root alongside the versioned control plane. |
+| `trace.data_contract_example_operationalization_alignment` | [decision.data_contract_example_operationalization_alignment_direction](/home/j/WatchTowerPlan/docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md) | `completed` | `accepted` | Records the initial direction decision for Data Contract Example Operationalization Alignment. |
 | `trace.derived_projection_status_semantics` | [decision.derived_projection_status_semantics_direction](/home/j/WatchTowerPlan/docs/planning/decisions/derived_projection_status_semantics_alignment_direction.md) | `completed` | `accepted` | Records the decision to use explicit artifact_status naming for derived initiative and coordination projection entries. |
 | `trace.design_document_index_relationship_alignment` | [decision.design_document_index_relationship_alignment_direction](/home/j/WatchTowerPlan/docs/planning/decisions/design_document_index_relationship_alignment_direction.md) | `completed` | `accepted` | Records the accepted direction for Design Document Index Relationship Alignment. |
 | `trace.documentation_family_lookup_and_readme_template_alignment` | [decision.documentation_family_lookup_and_readme_template_alignment_direction](/home/j/WatchTowerPlan/docs/planning/decisions/documentation_family_lookup_and_readme_template_alignment_direction.md) | `completed` | `accepted` | Records the initial direction decision for Documentation Family Lookup and README Template Alignment. |
@@ -25,4 +26,4 @@
 | `trace.standards_lookup_and_generic_template_alignment` | [decision.standards_lookup_and_generic_template_alignment_direction](/home/j/WatchTowerPlan/docs/planning/decisions/standards_lookup_and_generic_template_alignment_direction.md) | `completed` | `accepted` | Records the accepted direction for descendant-aware standards lookup and generic-template scope alignment. |
 | `trace.workflow_system_operationalization` | [decision.workflow_operationalization_direction](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_operationalization_direction.md) | `completed` | `accepted` | Records the decision to keep workflow documents authoritative while adding machine-readable route and metadata artifacts plus bounded authoring commands. |
 
-_Updated At: `2026-03-12T00:58:00Z`_
+_Updated At: `2026-03-12T01:19:10Z`_

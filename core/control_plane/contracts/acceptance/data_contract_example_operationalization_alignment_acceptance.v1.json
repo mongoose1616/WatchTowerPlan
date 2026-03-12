@@ -1,0 +1,116 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.data_contract_example_operationalization_alignment",
+  "title": "Data Contract Example Operationalization Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.data_contract_example_operationalization_alignment",
+  "source_prd_id": "prd.data_contract_example_operationalization_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.data_contract_example_operationalization_alignment.001",
+      "summary": "The planning baseline is aligned for the traced slice, including the accepted direction decision, supporting design and plan docs, acceptance contract, evidence artifact, and bounded task set.",
+      "source_requirement_ids": [
+        "req.data_contract_example_operationalization_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/data_contract_example_operationalization_alignment.md",
+        "docs/planning/design/features/data_contract_example_operationalization_alignment.md",
+        "docs/planning/design/implementation/data_contract_example_operationalization_alignment.md",
+        "docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/data_contract_example_operationalization_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/publish_data_contract_example_operationalization_coverage.md",
+        "docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md",
+        "docs/planning/tasks/open/validate_and_close_data_contract_example_operationalization_alignment.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline contract refreshed at 2026-03-12T01:29:41Z for trace.data_contract_example_operationalization_alignment."
+    },
+    {
+      "acceptance_id": "ac.data_contract_example_operationalization_alignment.002",
+      "summary": "The affected data-contract standards publish family-specific valid and invalid example operationalization coverage, and the live standard index carries the matching patterns.",
+      "source_requirement_ids": [
+        "req.data_contract_example_operationalization_alignment.001",
+        "req.data_contract_example_operationalization_alignment.002"
+      ],
+      "validation_targets": [
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/data_contracts/prd_index_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
+        "docs/standards/data_contracts/schema_catalog_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "related_paths": [
+        "core/control_plane/examples/valid/contracts/acceptance_contract.v1.example.json",
+        "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
+        "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
+        "core/control_plane/examples/valid/registries/authority_map.v1.example.json"
+      ],
+      "notes": "The affected data-contract standards now operationalize valid and invalid example families with bounded repo-relative glob patterns, and the live standard index preserves that coverage."
+    },
+    {
+      "acceptance_id": "ac.data_contract_example_operationalization_alignment.003",
+      "summary": "Representative example artifacts across contracts, indexes, ledgers, and registries resolve back to their governing family standards through standards lookup, with regression coverage protecting the behavior.",
+      "source_requirement_ids": [
+        "req.data_contract_example_operationalization_alignment.002",
+        "req.data_contract_example_operationalization_alignment.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "related_paths": [
+        "core/control_plane/examples/valid/contracts/acceptance_contract.v1.example.json",
+        "core/control_plane/examples/valid/indexes/workflow_index.v1.example.json",
+        "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
+        "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
+        "core/control_plane/examples/valid/registries/authority_map.v1.example.json"
+      ],
+      "notes": "Regression coverage protects representative example-file lookups across contract, index, ledger, and registry families."
+    },
+    {
+      "acceptance_id": "ac.data_contract_example_operationalization_alignment.004",
+      "summary": "The traced slice validates end to end and closes with synced planning, evidence, and coordination surfaces.",
+      "source_requirement_ids": [
+        "req.data_contract_example_operationalization_alignment.001",
+        "req.data_contract_example_operationalization_alignment.002",
+        "req.data_contract_example_operationalization_alignment.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_data_contract_example_operationalization_alignment.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "notes": "Final closeout must leave the repository ready for bootstrap with no active initiatives or actionable tasks for this trace."
+    }
+  ]
+}

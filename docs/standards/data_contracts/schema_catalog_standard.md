@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema_catalog"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -96,7 +96,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/schemas/common/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/schema_catalog/`
+- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/schemas/common/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/schema_catalog/`; `core/control_plane/examples/valid/registries/schema_catalog*.example.json`; `core/control_plane/examples/invalid/registries/schema_catalog*.example.json`
 
 ## Validation
 - The schema catalog should validate against its published artifact schema.
@@ -123,4 +123,4 @@ Provide deterministic local resolution from published schema `$id` values to can
 - The repository path index remains the right place for broad repository navigation and retrieval. The schema catalog is narrower and authoritative for schema resolution only.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

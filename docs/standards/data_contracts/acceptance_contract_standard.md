@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "acceptance_contract"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -96,7 +96,7 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/contracts/acceptance/`; `core/control_plane/contracts/acceptance/README.md`; `docs/planning/prds/core_python_foundation.md`
+- `Operational Surfaces`: `core/control_plane/contracts/acceptance/`; `core/control_plane/contracts/acceptance/README.md`; `core/control_plane/examples/valid/contracts/acceptance_contract*.example.json`; `core/control_plane/examples/invalid/contracts/acceptance_contract*.example.json`; `docs/planning/prds/core_python_foundation.md`
 
 ## Validation
 - The acceptance contract should validate against its published artifact schema.
@@ -119,4 +119,4 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - It should stay smaller and more structured than the source PRD.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

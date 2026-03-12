@@ -393,6 +393,26 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "docs/standards/documentation/readme_md_standard.md",
             "std.documentation.standard_md",
         ),
+        (
+            "core/control_plane/examples/valid/contracts/acceptance_contract.v1.example.json",
+            "std.data_contracts.acceptance_contract",
+        ),
+        (
+            "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
+            "std.data_contracts.authority_map",
+        ),
+        (
+            "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
+            "std.data_contracts.standard_index",
+        ),
+        (
+            "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
+            "std.data_contracts.validation_evidence",
+        ),
+        (
+            "core/control_plane/examples/valid/indexes/workflow_index.v1.example.json",
+            "std.data_contracts.workflow_index",
+        ),
     )
 
     for operationalization_path, expected_standard_id in cases:

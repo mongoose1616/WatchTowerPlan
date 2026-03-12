@@ -52,6 +52,37 @@
       ]
     },
     {
+      "trace_id": "trace.data_contract_example_operationalization_alignment",
+      "decision_id": "decision.data_contract_example_operationalization_alignment_direction",
+      "title": "Data Contract Example Operationalization Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Data Contract Example Operationalization Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md",
+      "updated_at": "2026-03-12T01:19:10Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.data_contract_example_operationalization_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.data_contract_example_operationalization_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.data_contract_example_operationalization_alignment"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.derived_projection_status_semantics",
       "decision_id": "decision.derived_projection_status_semantics_direction",
       "title": "Derived Projection Status Semantics Alignment Direction Decision",

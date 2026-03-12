@@ -12,7 +12,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/acceptance_contract_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -22,6 +22,8 @@
       "operationalization_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/README.md",
+        "core/control_plane/examples/valid/contracts/acceptance_contract*.example.json",
+        "core/control_plane/examples/invalid/contracts/acceptance_contract*.example.json",
         "docs/planning/prds/core_python_foundation.md"
       ],
       "internal_reference_paths": [
@@ -55,7 +57,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/authority_map_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -65,7 +67,9 @@
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/authority_map/",
-        "core/control_plane/registries/authority_map/README.md"
+        "core/control_plane/registries/authority_map/README.md",
+        "core/control_plane/examples/valid/registries/authority_map*.example.json",
+        "core/control_plane/examples/invalid/registries/authority_map*.example.json"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_catalog_standard.md",
@@ -97,7 +101,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/command_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -109,6 +113,8 @@
         "core/control_plane/indexes/commands/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/commands/README.md",
+        "core/control_plane/examples/valid/indexes/command_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/command_index*.example.json",
         "docs/commands/"
       ],
       "internal_reference_paths": [
@@ -139,7 +145,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/coordination_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -149,7 +155,9 @@
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/coordination/",
-        "core/control_plane/indexes/coordination/README.md"
+        "core/control_plane/indexes/coordination/README.md",
+        "core/control_plane/examples/valid/indexes/coordination_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/coordination_index*.example.json"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/initiative_index_standard.md",
@@ -185,7 +193,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/decision_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -197,6 +205,8 @@
         "core/control_plane/indexes/decisions/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/decisions/README.md",
+        "core/control_plane/examples/valid/indexes/decision_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/decision_index*.example.json",
         "docs/planning/decisions/"
       ],
       "internal_reference_paths": [
@@ -229,7 +239,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/design_document_index_standard.md",
-      "updated_at": "2026-03-11T23:35:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -241,6 +251,8 @@
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/design_documents/",
         "core/control_plane/indexes/design_documents/README.md",
+        "core/control_plane/examples/valid/indexes/design_document_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/design_document_index*.example.json",
         "docs/planning/design/"
       ],
       "internal_reference_paths": [
@@ -346,7 +358,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/foundation_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -355,7 +367,9 @@
       ],
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/foundations/"
+        "core/control_plane/indexes/foundations/",
+        "core/control_plane/examples/valid/indexes/foundation_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/foundation_index*.example.json"
       ],
       "internal_reference_paths": [
         "docs/standards/documentation/foundation_md_standard.md",
@@ -383,7 +397,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/initiative_index_standard.md",
-      "updated_at": "2026-03-11T06:21:01Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -395,6 +409,8 @@
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/initiatives/",
         "core/control_plane/indexes/initiatives/README.md",
+        "core/control_plane/examples/valid/indexes/initiative_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/initiative_index*.example.json",
         "docs/planning/initiatives/initiative_tracking.md"
       ],
       "internal_reference_paths": [
@@ -433,7 +449,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/planning_catalog_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -443,7 +459,9 @@
       "operationalization_paths": [
         "core/control_plane/indexes/planning/",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/planning/README.md"
+        "core/control_plane/indexes/planning/README.md",
+        "core/control_plane/examples/valid/indexes/planning_catalog*.example.json",
+        "core/control_plane/examples/invalid/indexes/planning_catalog*.example.json"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/initiative_index_standard.md",
@@ -477,7 +495,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/prd_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -489,6 +507,8 @@
         "core/control_plane/indexes/prds/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/prds/README.md",
+        "core/control_plane/examples/valid/indexes/prd_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/prd_index*.example.json",
         "docs/planning/prds/"
       ],
       "internal_reference_paths": [
@@ -521,7 +541,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/reference_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -531,7 +551,9 @@
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/references/",
-        "core/control_plane/indexes/references/README.md"
+        "core/control_plane/indexes/references/README.md",
+        "core/control_plane/examples/valid/indexes/reference_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/reference_index*.example.json"
       ],
       "reference_doc_paths": [
         "docs/references/README.md"
@@ -566,7 +588,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/repository_path_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -577,7 +599,9 @@
         "core/control_plane/indexes/",
         "core/control_plane/indexes/README.md",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/repository_paths/"
+        "core/control_plane/indexes/repository_paths/",
+        "core/control_plane/examples/valid/indexes/repository_path_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/repository_path_index*.example.json"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/format_selection_standard.md",
@@ -607,7 +631,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/route_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -618,6 +642,8 @@
       "operationalization_paths": [
         "core/control_plane/indexes/routes/",
         "core/control_plane/schemas/artifacts/",
+        "core/control_plane/examples/valid/indexes/route_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/route_index*.example.json",
         "workflows/modules/",
         "workflows/ROUTING_TABLE.md"
       ],
@@ -647,7 +673,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/schema_catalog_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -658,7 +684,9 @@
         "core/control_plane/schemas/",
         "core/control_plane/schemas/common/",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/registries/schema_catalog/"
+        "core/control_plane/registries/schema_catalog/",
+        "core/control_plane/examples/valid/registries/schema_catalog*.example.json",
+        "core/control_plane/examples/invalid/registries/schema_catalog*.example.json"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/schema_standard.md",
@@ -758,7 +786,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/standard_index_standard.md",
-      "updated_at": "2026-03-12T01:02:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -771,7 +799,9 @@
         "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/control_plane/indexes/standards/",
-        "core/control_plane/schemas/artifacts/"
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/examples/valid/indexes/standard_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/standard_index*.example.json"
       ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
@@ -840,7 +870,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/task_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -851,6 +881,8 @@
         "core/control_plane/indexes/tasks/task_index.v1.json",
         "core/control_plane/indexes/tasks/",
         "core/control_plane/indexes/tasks/README.md",
+        "core/control_plane/examples/valid/indexes/task_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/task_index*.example.json",
         "docs/planning/tasks/"
       ],
       "applies_to": [
@@ -889,7 +921,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/traceability_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -897,7 +929,9 @@
       ],
       "operationalization_paths": [
         "core/control_plane/indexes/traceability/",
-        "core/control_plane/indexes/traceability/README.md"
+        "core/control_plane/indexes/traceability/README.md",
+        "core/control_plane/examples/valid/indexes/traceability_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/traceability_index*.example.json"
       ],
       "internal_reference_paths": [
         "docs/standards/governance/traceability_standard.md",
@@ -935,7 +969,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/validation_evidence_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -945,6 +979,8 @@
       "operationalization_paths": [
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/README.md",
+        "core/control_plane/examples/valid/ledgers/validation_evidence*.example.json",
+        "core/control_plane/examples/invalid/ledgers/validation_evidence*.example.json",
         "docs/planning/prds/core_python_foundation.md"
       ],
       "internal_reference_paths": [
@@ -980,7 +1016,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/workflow_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:22:49Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -992,6 +1028,8 @@
         "core/control_plane/indexes/workflows/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/workflows/",
+        "core/control_plane/examples/valid/indexes/workflow_index*.example.json",
+        "core/control_plane/examples/invalid/indexes/workflow_index*.example.json",
         "workflows/modules/"
       ],
       "reference_doc_paths": [

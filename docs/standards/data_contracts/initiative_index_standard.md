@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "initiative_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:21:01Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -107,7 +107,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/initiatives/`; `core/control_plane/indexes/initiatives/README.md`; `docs/planning/initiatives/initiative_tracking.md`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/initiatives/`; `core/control_plane/indexes/initiatives/README.md`; `core/control_plane/examples/valid/indexes/initiative_index*.example.json`; `core/control_plane/examples/invalid/indexes/initiative_index*.example.json`; `docs/planning/initiatives/initiative_tracking.md`
 
 ## Validation
 - The initiative index should validate against its published artifact schema.
@@ -131,4 +131,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md)
 
 ## Updated At
-- `2026-03-11T06:21:01Z`
+- `2026-03-12T01:22:49Z`

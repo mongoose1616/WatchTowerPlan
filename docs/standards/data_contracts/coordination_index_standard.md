@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "coordination_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -87,7 +87,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/coordination/`; `core/control_plane/indexes/coordination/README.md`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/coordination/`; `core/control_plane/indexes/coordination/README.md`; `core/control_plane/examples/valid/indexes/coordination_index*.example.json`; `core/control_plane/examples/invalid/indexes/coordination_index*.example.json`
 
 ## Validation
 - The coordination index should validate against its published artifact schema.
@@ -108,4 +108,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

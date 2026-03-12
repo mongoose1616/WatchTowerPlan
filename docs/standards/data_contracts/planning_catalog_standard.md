@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "planning_catalog"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -90,7 +90,7 @@ This standard defines the role, structure, and boundary rules for the canonical 
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`
-- `Operational Surfaces`: `core/control_plane/indexes/planning/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/planning/README.md`
+- `Operational Surfaces`: `core/control_plane/indexes/planning/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/planning/README.md`; `core/control_plane/examples/valid/indexes/planning_catalog*.example.json`; `core/control_plane/examples/invalid/indexes/planning_catalog*.example.json`
 
 ## Validation
 - The planning catalog should validate against its published artifact schema.
@@ -112,4 +112,4 @@ This standard defines the role, structure, and boundary rules for the canonical 
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/planning/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "standard_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:02:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -59,7 +59,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `artifact`; `schema`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `core/control_plane/indexes/standards/`; `core/control_plane/schemas/artifacts/`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `core/control_plane/indexes/standards/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/examples/valid/indexes/standard_index*.example.json`; `core/control_plane/examples/invalid/indexes/standard_index*.example.json`
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -117,4 +117,4 @@ Provide a compact lookup and governance surface for repository standards and bes
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
 
 ## Updated At
-- `2026-03-12T01:02:00Z`
+- `2026-03-12T01:22:49Z`

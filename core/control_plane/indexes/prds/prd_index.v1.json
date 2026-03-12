@@ -156,6 +156,37 @@
       ]
     },
     {
+      "trace_id": "trace.data_contract_example_operationalization_alignment",
+      "prd_id": "prd.data_contract_example_operationalization_alignment",
+      "title": "Data Contract Example Operationalization Alignment PRD",
+      "summary": "Align data-contract standards with their concrete valid and invalid example artifacts so standards lookup resolves example files back to the governing contract family, then harden the repo with regression coverage and full closeout validation.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/data_contract_example_operationalization_alignment.md",
+      "updated_at": "2026-03-12T01:19:10Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.data_contract_example_operationalization_alignment.001",
+        "req.data_contract_example_operationalization_alignment.002",
+        "req.data_contract_example_operationalization_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.data_contract_example_operationalization_alignment.001",
+        "ac.data_contract_example_operationalization_alignment.002",
+        "ac.data_contract_example_operationalization_alignment.003",
+        "ac.data_contract_example_operationalization_alignment.004"
+      ],
+      "linked_decision_ids": [
+        "decision.data_contract_example_operationalization_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.data_contract_example_operationalization_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.data_contract_example_operationalization_alignment"
+      ]
+    },
+    {
       "trace_id": "trace.derived_projection_status_semantics",
       "prd_id": "prd.derived_projection_status_semantics",
       "title": "Derived Projection Status Semantics Alignment PRD",

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "decision_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -90,7 +90,7 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/decisions/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/decisions/README.md`; `docs/planning/decisions/`
+- `Operational Surfaces`: `core/control_plane/indexes/decisions/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/decisions/README.md`; `core/control_plane/examples/valid/indexes/decision_index*.example.json`; `core/control_plane/examples/invalid/indexes/decision_index*.example.json`; `docs/planning/decisions/`
 
 ## Validation
 - The decision index should validate against its published artifact schema.
@@ -111,4 +111,4 @@ Provide a compact lookup and tracking surface for durable decision records, thei
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "task_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -109,7 +109,7 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `docs/planning/tasks/`
+- `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `core/control_plane/examples/valid/indexes/task_index*.example.json`; `core/control_plane/examples/invalid/indexes/task_index*.example.json`; `docs/planning/tasks/`
 
 ## Validation
 - The task index should validate against its published artifact schema.
@@ -128,4 +128,4 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

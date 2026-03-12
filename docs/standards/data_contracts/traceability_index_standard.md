@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "traceability_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -113,7 +113,7 @@ This standard defines the unified machine-readable traceability index stored und
 
 ## Operationalization
 - `Modes`: `artifact`
-- `Operational Surfaces`: `core/control_plane/indexes/traceability/`; `core/control_plane/indexes/traceability/README.md`
+- `Operational Surfaces`: `core/control_plane/indexes/traceability/`; `core/control_plane/indexes/traceability/README.md`; `core/control_plane/examples/valid/indexes/traceability_index*.example.json`; `core/control_plane/examples/invalid/indexes/traceability_index*.example.json`
 
 ## Validation
 - The traceability index should validate against its published artifact schema.
@@ -135,4 +135,4 @@ This standard defines the unified machine-readable traceability index stored und
 - This index is the machine-readable join surface, not the sole authoritative source of the linked artifacts themselves.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

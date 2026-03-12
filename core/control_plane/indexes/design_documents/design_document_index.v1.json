@@ -250,6 +250,28 @@
       ]
     },
     {
+      "document_id": "design.features.data_contract_example_operationalization_alignment",
+      "trace_id": "trace.data_contract_example_operationalization_alignment",
+      "family": "feature_design",
+      "title": "Data Contract Example Operationalization Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Data Contract Example Operationalization Alignment.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/data_contract_example_operationalization_alignment.md",
+      "updated_at": "2026-03-12T01:19:10Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/data_contract_example_operationalization_alignment.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.derived_projection_status_semantics",
       "trace_id": "trace.derived_projection_status_semantics",
       "family": "feature_design",
@@ -1325,6 +1347,27 @@
         "docs/planning/prds/core_python_foundation.md",
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json"
+      ]
+    },
+    {
+      "document_id": "design.implementation.data_contract_example_operationalization_alignment",
+      "trace_id": "trace.data_contract_example_operationalization_alignment",
+      "family": "implementation_plan",
+      "title": "Data Contract Example Operationalization Alignment Implementation Plan",
+      "summary": "Breaks Data Contract Example Operationalization Alignment into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/data_contract_example_operationalization_alignment.md",
+      "updated_at": "2026-03-12T01:19:10Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/data_contract_example_operationalization_alignment.md",
+        "docs/planning/prds/data_contract_example_operationalization_alignment.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md"
       ]
     },
     {

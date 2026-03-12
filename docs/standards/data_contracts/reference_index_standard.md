@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "reference_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -83,7 +83,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/references/`; `core/control_plane/indexes/references/README.md`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/references/`; `core/control_plane/indexes/references/README.md`; `core/control_plane/examples/valid/indexes/reference_index*.example.json`; `core/control_plane/examples/invalid/indexes/reference_index*.example.json`
 
 ## Validation
 - The reference index should validate against its published artifact schema.
@@ -104,4 +104,4 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

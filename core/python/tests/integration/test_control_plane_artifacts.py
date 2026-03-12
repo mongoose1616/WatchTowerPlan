@@ -583,6 +583,158 @@ def test_document_family_standards_publish_precise_operationalization_coverage()
             )
 
 
+def test_data_contract_standards_publish_family_example_operationalization_coverage() -> None:
+    cases = (
+        (
+            REPO_ROOT / "docs/standards/data_contracts/acceptance_contract_standard.md",
+            (
+                "`core/control_plane/examples/valid/contracts/acceptance_contract*.example.json`",
+                "`core/control_plane/examples/invalid/contracts/acceptance_contract*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/authority_map_standard.md",
+            (
+                "`core/control_plane/examples/valid/registries/authority_map*.example.json`",
+                "`core/control_plane/examples/invalid/registries/authority_map*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/command_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/command_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/command_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/coordination_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/coordination_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/coordination_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/decision_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/decision_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/decision_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/design_document_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/design_document_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/design_document_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/foundation_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/foundation_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/foundation_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/initiative_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/initiative_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/initiative_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/planning_catalog_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/planning_catalog*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/planning_catalog*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/prd_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/prd_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/prd_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/reference_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/reference_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/reference_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/repository_path_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/repository_path_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/repository_path_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/route_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/route_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/route_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/schema_catalog_standard.md",
+            (
+                "`core/control_plane/examples/valid/registries/schema_catalog*.example.json`",
+                "`core/control_plane/examples/invalid/registries/schema_catalog*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/standard_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/standard_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/standard_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/task_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/task_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/task_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/traceability_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/traceability_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/traceability_index*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/validation_evidence_standard.md",
+            (
+                "`core/control_plane/examples/valid/ledgers/validation_evidence*.example.json`",
+                "`core/control_plane/examples/invalid/ledgers/validation_evidence*.example.json`",
+            ),
+        ),
+        (
+            REPO_ROOT / "docs/standards/data_contracts/workflow_index_standard.md",
+            (
+                "`core/control_plane/examples/valid/indexes/workflow_index*.example.json`",
+                "`core/control_plane/examples/invalid/indexes/workflow_index*.example.json`",
+            ),
+        ),
+    )
+
+    for path, expected_values in cases:
+        markdown = path.read_text(encoding="utf-8")
+        operationalization_match = re.search(
+            r"^## Operationalization\n(.*?)(?=^## |\Z)",
+            markdown,
+            flags=re.MULTILINE | re.DOTALL,
+        )
+        assert operationalization_match is not None, f"missing Operationalization section: {path}"
+        operationalization_section = operationalization_match.group(1)
+        for value in expected_values:
+            assert value in operationalization_section, (
+                f"missing operationalization surface {value} in {path}"
+            )
+
+
 def test_readme_template_stays_aligned_with_governed_contract() -> None:
     markdown = (REPO_ROOT / "docs/templates/readme_template.md").read_text(encoding="utf-8")
 

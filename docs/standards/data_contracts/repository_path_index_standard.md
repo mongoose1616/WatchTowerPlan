@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "repository_path_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -100,7 +100,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`
-- `Operational Surfaces`: `core/control_plane/indexes/`; `core/control_plane/indexes/README.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/repository_paths/`
+- `Operational Surfaces`: `core/control_plane/indexes/`; `core/control_plane/indexes/README.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/repository_paths/`; `core/control_plane/examples/valid/indexes/repository_path_index*.example.json`; `core/control_plane/examples/invalid/indexes/repository_path_index*.example.json`
 
 ## Validation
 - The path index should validate against its published schema.
@@ -127,4 +127,4 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 - The repository path index exists to improve machine retrieval and path lookup, not to become a second prose documentation system.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "validation_evidence"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -100,7 +100,7 @@ This standard defines committed validation-evidence artifacts stored under `core
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `docs/planning/prds/core_python_foundation.md`
+- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `core/control_plane/examples/valid/ledgers/validation_evidence*.example.json`; `core/control_plane/examples/invalid/ledgers/validation_evidence*.example.json`; `docs/planning/prds/core_python_foundation.md`
 
 ## Validation
 - Validation-evidence artifacts should validate against their published schema.
@@ -122,4 +122,4 @@ This standard defines committed validation-evidence artifacts stored under `core
 - This family is intentionally narrower than a generic execution log. It should capture durable evidence only.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`

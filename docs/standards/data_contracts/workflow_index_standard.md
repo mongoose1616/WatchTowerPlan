@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "workflow_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:22:49Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -92,7 +92,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `workflow`
-- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/workflows/`; `workflows/modules/`
+- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/workflows/`; `core/control_plane/examples/valid/indexes/workflow_index*.example.json`; `core/control_plane/examples/invalid/indexes/workflow_index*.example.json`; `workflows/modules/`
 
 ## Validation
 - The workflow index should validate against its published artifact schema.
@@ -118,4 +118,4 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:22:49Z`
