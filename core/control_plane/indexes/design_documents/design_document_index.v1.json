@@ -520,6 +520,33 @@
       ]
     },
     {
+      "document_id": "design.features.governed_front_matter_directory_canonicalization",
+      "trace_id": "trace.governed_front_matter_directory_canonicalization",
+      "family": "feature_design",
+      "title": "Governed Front Matter Directory Canonicalization Feature Design",
+      "summary": "Defines the technical design boundary for Governed Front Matter Directory Canonicalization.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
+      "updated_at": "2026-03-12T02:46:38Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/governed_front_matter_directory_canonicalization.md",
+        "docs/",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "core/python/",
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.initiative_closeout_and_planning_trackers",
       "trace_id": "trace.initiative_closeout",
       "family": "feature_design",
@@ -1205,11 +1232,15 @@
       "summary": "Defines the technical design boundary for Unit Test Hardening and Rebalancing.",
       "status": "draft",
       "doc_path": "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
-      "updated_at": "2026-03-11T00:44:30Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
+        "core/python/tests/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/planning/",
         "core/python/tests",
         "core/python/src/watchtower_core",
         "docs/commands/core_python",
@@ -1558,6 +1589,34 @@
         "SUMMARY.md",
         "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.governed_front_matter_directory_canonicalization",
+      "trace_id": "trace.governed_front_matter_directory_canonicalization",
+      "family": "implementation_plan",
+      "title": "Governed Front Matter Directory Canonicalization Implementation Plan",
+      "summary": "Breaks Governed Front Matter Directory Canonicalization into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/governed_front_matter_directory_canonicalization.md",
+      "updated_at": "2026-03-12T02:46:38Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
+        "docs/planning/prds/governed_front_matter_directory_canonicalization.md"
+      ],
+      "related_paths": [
+        "docs/",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/"
+      ],
+      "internal_reference_paths": [
+        "core/python/",
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/traceability_standard.md"
       ]
     },
     {
@@ -2042,7 +2101,7 @@
       "summary": "Breaks Unit Test Hardening and Rebalancing into a bounded implementation slice.",
       "status": "draft",
       "doc_path": "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
-      "updated_at": "2026-03-11T00:44:30Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -2050,6 +2109,10 @@
         "docs/planning/prds/unit_test_hardening_and_rebalancing.md"
       ],
       "related_paths": [
+        "core/python/tests/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/planning/",
         "core/python/tests",
         "core/python/src/watchtower_core",
         "docs/commands/core_python",

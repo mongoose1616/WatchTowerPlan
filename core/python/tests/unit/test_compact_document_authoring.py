@@ -4,6 +4,8 @@ from pathlib import Path
 from shutil import copytree
 from textwrap import dedent
 
+from fixture_repo_support import materialize_governed_applies_to_targets
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.planning_documents import (
     DECISION_REQUIRED_EXPLAINED_SECTIONS,
@@ -113,6 +115,8 @@ def test_load_governed_document_allows_lean_decision_records_with_applied_refere
         encoding="utf-8",
     )
 
+    materialize_governed_applies_to_targets(repo_root)
+
     document = load_governed_document(
         ControlPlaneLoader(repo_root),
         "docs/planning/decisions/lean_decision.md",
@@ -168,6 +172,8 @@ def test_load_task_document_allows_lean_task_body(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
+
+    materialize_governed_applies_to_targets(repo_root)
 
     document = load_task_document(
         ControlPlaneLoader(repo_root),

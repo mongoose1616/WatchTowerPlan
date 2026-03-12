@@ -18,6 +18,10 @@ from watchtower_core.adapters import (
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.front_matter_paths import (
+    applies_to_path_values,
+    normalize_front_matter_applies_to,
+)
 from watchtower_core.repo_ops.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
@@ -81,6 +85,13 @@ class ReferenceIndexSyncService:
                 front_matter,
                 schema_id=REFERENCE_FRONT_MATTER_SCHEMA_ID,
             )
+            applies_to = normalize_front_matter_applies_to(
+                front_matter,
+                relative_path=relative_path,
+                repo_root=self._repo_root,
+            )
+            if applies_to:
+                front_matter["applies_to"] = list(applies_to)
 
             markdown = load_markdown_body(path)
             validate_blank_line_before_heading_after_list(relative_path, markdown)
@@ -118,7 +129,7 @@ class ReferenceIndexSyncService:
 
             current = existing_entries.get(front_matter["id"], {})
             related_paths = ordered_unique(
-                _front_matter_path_values(front_matter, relative_path),
+                applies_to_path_values(applies_to, relative_path=relative_path),
                 extract_repo_path_references(
                     sections.get("Local Mapping in This Repository", ""),
                     self._repo_root,
@@ -243,14 +254,6 @@ def _front_matter_list(front_matter: dict[str, Any], key: str) -> tuple[str, ...
             raise ValueError(f"Reference front matter key {key} must contain only strings.")
         items.append(item.strip())
     return tuple(items)
-
-
-def _front_matter_path_values(front_matter: dict[str, Any], relative_path: str) -> tuple[str, ...]:
-    return tuple(
-        value
-        for value in _front_matter_list(front_matter, "applies_to")
-        if "/" in value and value != relative_path
-    )
 
 
 def _tuple_of_strings(value: Any) -> tuple[str, ...]:

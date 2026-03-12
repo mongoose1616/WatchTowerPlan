@@ -5,6 +5,7 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
+from fixture_repo_support import materialize_governed_applies_to_targets
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.task_lifecycle import (
@@ -21,6 +22,7 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "docs" / "planning", repo_root / "docs" / "planning")
     (repo_root / "core" / "python").mkdir(parents=True)
+    materialize_governed_applies_to_targets(repo_root)
     return repo_root
 
 
@@ -50,6 +52,34 @@ def test_task_create_can_recommend_closeout_for_terminal_single_trace(tmp_path: 
     assert result.wrote is False
     assert result.closeout_recommended is True
     assert result.doc_path == "docs/planning/tasks/closed/unit_test_trace_done.md"
+
+
+def test_task_create_canonicalizes_directory_applies_to_paths(tmp_path: Path) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    service = TaskLifecycleService(ControlPlaneLoader(repo_root))
+
+    result = service.create(
+        TaskCreateParams(
+            task_id="task.unit_test_trace.applies_to.001",
+            trace_id="trace.unit_test_trace_applies_to",
+            title="Canonicalize applies_to",
+            summary="Ensures task create writes canonical directory applies_to values.",
+            task_kind="feature",
+            priority="medium",
+            owner="repository_maintainer",
+            scope_items=("Create the task.",),
+            done_when_items=("The task exists.",),
+            applies_to=("core/python/tests/unit",),
+            file_stem="canonical_applies_to",
+            updated_at="2026-03-10T23:59:59Z",
+        ),
+        write=True,
+    )
+
+    assert result.wrote is True
+    written_text = (repo_root / result.doc_path).read_text(encoding="utf-8")
+    assert '- "core/python/tests/unit"' not in written_text
+    assert "- core/python/tests/unit/" in written_text
 
 
 def test_task_update_can_move_task_and_clear_optional_fields(tmp_path: Path) -> None:

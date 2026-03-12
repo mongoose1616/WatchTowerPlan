@@ -36,7 +36,7 @@
       "summary": "Working reference for writing workflow modules that are efficient, explicit, and load only the context an LLM or agent actually needs.",
       "status": "active",
       "doc_path": "docs/references/agent_workflow_authoring_reference.md",
-      "updated_at": "2026-03-10T23:21:57Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -63,8 +63,9 @@
         "docs/standards/workflows/workflow_design_standard.md",
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/templates/workflow_template.md",
-        "workflows/modules",
-        "core/control_plane/indexes/workflows/workflow_index.v1.json"
+        "workflows/modules/",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "workflows/modules"
       ],
       "aliases": [
         "llm_workflow_authoring",
@@ -281,7 +282,7 @@
       "summary": "Working reference for when and how to use front matter in repository documents.",
       "status": "active",
       "doc_path": "docs/references/front_matter_reference.md",
-      "updated_at": "2026-03-09T05:06:54Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -297,10 +298,11 @@
       ],
       "related_paths": [
         "docs/standards/metadata/front_matter_standard.md",
-        "core/control_plane/schemas/interfaces/documentation",
+        "core/control_plane/schemas/interfaces/documentation/",
         "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json",
         "docs/templates/documentation_template.md",
-        "docs/references/yaml_1_2_2_reference.md"
+        "docs/references/yaml_1_2_2_reference.md",
+        "core/control_plane/schemas/interfaces/documentation"
       ],
       "aliases": [
         "yaml_header",

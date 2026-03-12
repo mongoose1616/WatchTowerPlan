@@ -604,6 +604,88 @@ def test_document_semantics_validation_rejects_noncanonical_directory_operationa
     assert expected in result.issues[0].message
 
 
+def test_document_semantics_validation_rejects_noncanonical_directory_applies_to_path(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    related_target = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(related_target, support_target=support_target)
+    (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
+    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path.parent.mkdir(parents=True, exist_ok=True)
+    standard_path.write_text(
+        dedent(
+            f"""\
+            ---
+            id: "std.documentation.example"
+            title: "Example Standard"
+            summary: "Exercises canonical applies_to directory validation."
+            type: "standard"
+            status: "active"
+            tags:
+              - "standard"
+              - "documentation"
+              - "example"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-12T02:46:38Z"
+            audience: "shared"
+            authority: "authoritative"
+            applies_to:
+              - "docs/commands"
+            ---
+
+            # Example Standard
+
+            ## Summary
+            Exercises canonical applies_to directory validation.
+
+            ## Purpose
+            Keep the fixture focused on applies_to path semantics.
+
+            ## Scope
+            - Applies to one fixture.
+
+            ## Use When
+            - Running semantic validation tests.
+
+            ## Related Standards and Sources
+            - [example_reference.md]({related_target}): provides one governed local reference.
+
+            ## Guidance
+            - Keep applies_to directory paths canonical.
+
+            ## Operationalization
+            - `Modes`: `documentation`
+            - `Operational Surfaces`: `docs/standards/documentation/example_standard.md`
+
+            ## Validation
+            - Semantic validation should reject non-canonical directory applies_to values.
+
+            ## Change Control
+            - Update validation and sync together if the rule changes.
+
+            ## References
+            - [README.md]({support_target})
+
+            ## Updated At
+            - `2026-03-12T02:46:38Z`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/standards/documentation/example_standard.md")
+
+    assert result.passed is False
+    assert result.issue_count == 1
+    assert "directory applies_to paths must use repo-relative directory paths ending in '/'" in (
+        result.issues[0].message
+    )
+
+
 def test_document_semantics_validation_rejects_external_authority_without_local_reference_doc(
     tmp_path: Path,
 ) -> None:

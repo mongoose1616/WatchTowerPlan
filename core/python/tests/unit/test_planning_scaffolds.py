@@ -5,6 +5,7 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
+from fixture_repo_support import materialize_governed_applies_to_targets
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.planning_scaffolds import (
@@ -22,6 +23,7 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "docs" / "planning", repo_root / "docs" / "planning")
     (repo_root / "core" / "python").mkdir(parents=True)
+    materialize_governed_applies_to_targets(repo_root)
     return repo_root
 
 
@@ -182,6 +184,36 @@ def test_plan_scaffold_write_refreshes_coordination_for_existing_trace(tmp_path:
     assert any(
         entry.decision_id == decision_id for entry in planning_entry.decisions
     )
+
+
+def test_plan_bootstrap_canonicalizes_directory_applies_to_paths(tmp_path: Path) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    service = PlanningScaffoldService(ControlPlaneLoader(repo_root))
+
+    result = service.bootstrap(
+        PlanBootstrapParams(
+            trace_id="trace.unit_test_bootstrap_applies_to",
+            title="Unit Test Bootstrap Applies To",
+            summary="Bootstraps one trace with canonicalized applies_to directory paths.",
+            file_stem="unit_test_bootstrap_applies_to",
+            applies_to=("docs/planning",),
+            include_decision=True,
+            updated_at="2026-03-10T23:59:59Z",
+        ),
+        write=True,
+    )
+
+    assert result.wrote is True
+    for doc_path in (
+        "docs/planning/prds/unit_test_bootstrap_applies_to.md",
+        "docs/planning/design/features/unit_test_bootstrap_applies_to.md",
+        "docs/planning/design/implementation/unit_test_bootstrap_applies_to.md",
+        "docs/planning/decisions/unit_test_bootstrap_applies_to_direction.md",
+        "docs/planning/tasks/open/unit_test_bootstrap_applies_to_bootstrap.md",
+    ):
+        written_text = (repo_root / doc_path).read_text(encoding="utf-8")
+        assert "- docs/planning/" in written_text
+        assert '- "docs/planning"' not in written_text
 
 
 def test_plan_scaffold_rejects_duplicate_doc_path(tmp_path: Path) -> None:

@@ -179,6 +179,65 @@ def test_coordination_index_examples_validate_against_the_schema() -> None:
         store.validate_instance(invalid_example)
 
 
+def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
+    markdown_roots = (
+        REPO_ROOT / "docs/references",
+        REPO_ROOT / "docs/foundations",
+        REPO_ROOT / "docs/standards",
+        REPO_ROOT / "docs/planning/prds",
+        REPO_ROOT / "docs/planning/decisions",
+        REPO_ROOT / "docs/planning/design/features",
+        REPO_ROOT / "docs/planning/design/implementation",
+        REPO_ROOT / "docs/planning/tasks/open",
+        REPO_ROOT / "docs/planning/tasks/closed",
+    )
+
+    for root in markdown_roots:
+        for path in sorted(root.glob("*.md")):
+            if path.name in {"README.md", "AGENTS.md"}:
+                continue
+            if FRONT_MATTER_PATTERN.search(path.read_text(encoding="utf-8")) is None:
+                continue
+            front_matter = _load_front_matter(path)
+            applies_to = front_matter.get("applies_to")
+            if not isinstance(applies_to, list):
+                continue
+                for value in applies_to:
+                    assert isinstance(value, str)
+                    if "/" not in value or "*" in value or "<" in value:
+                        continue
+                    target = REPO_ROOT / value.rstrip("/")
+                assert target.exists(), f"{path} applies_to path does not exist: {value}"
+                if target.is_dir():
+                    assert value.endswith("/"), (
+                        f"{path} directory applies_to path must end in '/': {value}"
+                    )
+                else:
+                    assert not value.endswith("/"), (
+                        f"{path} file applies_to path must not end in '/': {value}"
+                    )
+
+    for path in sorted((REPO_ROOT / "core/control_plane/examples").rglob("*.json")):
+        payload = _load_json_object(path)
+        applies_to = payload.get("applies_to")
+        if not isinstance(applies_to, list):
+            continue
+        for value in applies_to:
+            assert isinstance(value, str)
+            if "/" not in value or "*" in value or "<" in value:
+                continue
+            target = REPO_ROOT / value.rstrip("/")
+            assert target.exists(), f"{path} applies_to path does not exist: {value}"
+            if target.is_dir():
+                assert value.endswith("/"), (
+                    f"{path} directory applies_to path must end in '/': {value}"
+                )
+            else:
+                assert not value.endswith("/"), (
+                    f"{path} file applies_to path must not end in '/': {value}"
+                )
+
+
 def test_planning_catalog_examples_validate_against_the_schema() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
 

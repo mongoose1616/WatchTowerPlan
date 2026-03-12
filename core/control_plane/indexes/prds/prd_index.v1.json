@@ -423,6 +423,42 @@
       ]
     },
     {
+      "trace_id": "trace.governed_front_matter_directory_canonicalization",
+      "prd_id": "prd.governed_front_matter_directory_canonicalization",
+      "title": "Governed Front Matter Directory Canonicalization PRD",
+      "summary": "Canonicalize directory-valued governed front-matter applies_to metadata so exact repo-path lookup stays consistent across standards, references, and planning documents.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/governed_front_matter_directory_canonicalization.md",
+      "updated_at": "2026-03-12T02:46:38Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.governed_front_matter_directory_canonicalization.001",
+        "req.governed_front_matter_directory_canonicalization.002",
+        "req.governed_front_matter_directory_canonicalization.003",
+        "req.governed_front_matter_directory_canonicalization.004"
+      ],
+      "acceptance_ids": [
+        "ac.governed_front_matter_directory_canonicalization.001",
+        "ac.governed_front_matter_directory_canonicalization.002",
+        "ac.governed_front_matter_directory_canonicalization.003"
+      ],
+      "linked_decision_ids": [
+        "decision.governed_front_matter_directory_canonicalization.direction"
+      ],
+      "linked_design_ids": [
+        "design.features.governed_front_matter_directory_canonicalization"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.governed_front_matter_directory_canonicalization"
+      ],
+      "related_paths": [
+        "docs/",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/"
+      ]
+    },
+    {
       "trace_id": "trace.internal_project_code_review_and_hardening",
       "prd_id": "prd.internal_project_code_review_and_hardening",
       "title": "Internal Project Code Review and Hardening PRD",
@@ -1149,7 +1185,7 @@
       "summary": "Harden under-covered executable test surfaces, rebalance the unit suite structure, and tighten unit-suite documentation so WatchTowerPlan has a more reliable and maintainable test foundation before WatchTower product implementation begins.",
       "status": "active",
       "doc_path": "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
-      "updated_at": "2026-03-10T23:34:10Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "uses_internal_references": false,
       "uses_external_references": false,
       "requirement_ids": [
@@ -1176,6 +1212,10 @@
         "design.implementation.unit_test_hardening_and_rebalancing"
       ],
       "related_paths": [
+        "core/python/tests/",
+        "core/python/src/watchtower_core/",
+        "docs/commands/core_python/",
+        "docs/planning/",
         "core/python/tests",
         "core/python/src/watchtower_core",
         "docs/commands/core_python",

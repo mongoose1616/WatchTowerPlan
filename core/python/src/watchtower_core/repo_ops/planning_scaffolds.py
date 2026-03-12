@@ -12,6 +12,7 @@ from watchtower_core.evidence.validation_evidence import (
     VALIDATION_EVIDENCE_DIRECTORY,
     VALIDATION_EVIDENCE_SCHEMA_ID,
 )
+from watchtower_core.repo_ops.front_matter_paths import normalize_governed_applies_to_values
 from watchtower_core.repo_ops.planning_scaffold_support import (
     PLAN_KIND_CHOICES as _PLAN_KIND_CHOICES,
 )
@@ -297,6 +298,11 @@ class PlanningScaffoldService:
     def _render_scaffold(self, params: PlanScaffoldParams) -> RenderedDocument:
         kind = normalize_plan_kind(params.kind)
         updated_at = params.updated_at or utc_timestamp_now()
+        applies_to = normalize_governed_applies_to_values(
+            params.applies_to,
+            origin=f"{kind} scaffold applies_to",
+            repo_root=self._loader.repo_root,
+        )
         front_matter = compact_front_matter(
             {
                 "trace_id": normalize_required_string(params.trace_id, label="trace_id"),
@@ -312,7 +318,7 @@ class PlanningScaffoldService:
                 "updated_at": updated_at,
                 "audience": "shared",
                 "authority": default_authority_for_kind(kind),
-                "applies_to": normalize_list(params.applies_to),
+                "applies_to": applies_to,
                 "aliases": normalize_list(params.aliases),
             }
         )

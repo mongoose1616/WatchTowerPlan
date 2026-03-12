@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.front_matter_paths import normalize_governed_applies_to_values
 from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
 from watchtower_core.repo_ops.task_documents import iter_task_documents, write_task_document
 from watchtower_core.repo_ops.task_lifecycle_support import (
@@ -280,10 +281,19 @@ class TaskLifecycleService:
                 trace_id = resolved_trace_id
                 changed = True
 
+        applies_to = (
+            normalize_governed_applies_to_values(
+                params.applies_to,
+                origin=f"task update {document.task_id} applies_to",
+                repo_root=self._loader.repo_root,
+            )
+            if params.applies_to is not None
+            else None
+        )
         changed |= apply_optional_list_field(
             front_matter,
             "applies_to",
-            values=params.applies_to,
+            values=applies_to,
             clear=params.clear_applies_to,
         )
         changed |= apply_optional_list_field(
@@ -407,6 +417,11 @@ class TaskLifecycleService:
         priority: str,
         updated_at: str,
     ) -> tuple[dict[str, object], dict[str, str], str]:
+        applies_to = normalize_governed_applies_to_values(
+            params.applies_to,
+            origin=f"task create {task_id} applies_to",
+            repo_root=self._loader.repo_root,
+        )
         front_matter = compact_front_matter(
             {
                 "id": task_id,
@@ -422,7 +437,7 @@ class TaskLifecycleService:
                 "updated_at": updated_at,
                 "audience": "shared",
                 "authority": "authoritative",
-                "applies_to": params.applies_to,
+                "applies_to": applies_to,
                 "related_ids": params.related_ids,
                 "depends_on": params.depends_on,
                 "blocked_by": params.blocked_by,

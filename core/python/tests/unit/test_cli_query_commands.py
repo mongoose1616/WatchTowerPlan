@@ -437,6 +437,33 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
         ), payload["results"]
 
 
+def test_query_standards_supports_canonical_directory_path_filters(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "standards",
+            "--applies-to",
+            "docs/commands/",
+            "--related-path",
+            "docs/commands/",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query standards"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["standard_id"] == "std.engineering.cli_help_text"
+        and "docs/commands/" in entry["applies_to"]
+        and "docs/commands/" in entry["related_paths"]
+        for entry in payload["results"]
+    )
+
+
 def test_query_prds_supports_json_output(capsys) -> None:
     result = main(
         [

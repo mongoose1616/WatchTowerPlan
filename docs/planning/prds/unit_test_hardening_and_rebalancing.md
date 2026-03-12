@@ -8,14 +8,14 @@ summary: Harden under-covered executable test surfaces, rebalance the unit suite
 type: prd
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-10T23:34:10Z'
+updated_at: '2026-03-12T02:46:38Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests
-- core/python/src/watchtower_core
-- docs/commands/core_python
-- docs/planning
+- core/python/tests/
+- core/python/src/watchtower_core/
+- docs/commands/core_python/
+- docs/planning/
 aliases:
 - unit_test_review_followup
 - test_suite_hardening
@@ -30,7 +30,7 @@ aliases:
 - `Linked Decisions`: `None`
 - `Linked Designs`: `design.features.unit_test_hardening_and_rebalancing`
 - `Linked Implementation Plans`: `design.implementation.unit_test_hardening_and_rebalancing`
-- `Updated At`: `2026-03-10T23:34:10Z`
+- `Updated At`: `2026-03-12T02:46:38Z`
 
 ## Summary
 Harden under-covered executable test surfaces, rebalance the unit suite structure, and tighten unit-suite documentation so WatchTowerPlan has a more reliable and maintainable test foundation before WatchTower product implementation begins.
@@ -93,4 +93,4 @@ The current unit suite is useful but uneven. Fresh verification on March 10, 202
 - User-supplied WatchTower unit-test review dated `2026-03-10`
 
 ## Updated At
-- `2026-03-10T23:34:10Z`
+- `2026-03-12T02:46:38Z`

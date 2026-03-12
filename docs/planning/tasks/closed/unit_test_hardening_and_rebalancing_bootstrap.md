@@ -9,14 +9,14 @@ task_status: done
 task_kind: governance
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-10T23:38:12Z'
+updated_at: '2026-03-12T02:46:38Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests
-- core/python/src/watchtower_core
-- docs/commands/core_python
-- docs/planning
+- core/python/tests/
+- core/python/src/watchtower_core/
+- docs/commands/core_python/
+- docs/planning/
 related_ids:
 - prd.unit_test_hardening_and_rebalancing
 - design.features.unit_test_hardening_and_rebalancing
@@ -44,4 +44,4 @@ Bootstraps the initial planning chain for Unit Test Hardening and Rebalancing.
 - [unit_test_hardening_and_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md)
 
 ## Updated At
-- `2026-03-10T23:38:12Z`
+- `2026-03-12T02:46:38Z`

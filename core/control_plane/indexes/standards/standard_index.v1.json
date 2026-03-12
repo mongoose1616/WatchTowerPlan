@@ -786,7 +786,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/standard_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1747,7 +1747,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/cli_help_text_standard.md",
-      "updated_at": "2026-03-12T02:06:54Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1760,10 +1760,12 @@
         "docs/commands/core_python/watchtower_core.md"
       ],
       "applies_to": [
-        "core/python/src/watchtower_core/cli",
-        "docs/commands"
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/"
       ],
       "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/",
         "core/python/src/watchtower_core/cli",
         "docs/commands"
       ],
@@ -2692,7 +2694,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/metadata/front_matter_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

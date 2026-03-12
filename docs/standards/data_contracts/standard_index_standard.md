@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "standard_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-12T02:46:38Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -51,6 +51,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Record the top-level standards category from the document path, such as `data_contracts`, `documentation`, `engineering`, `governance`, `metadata`, or `workflows`.
 - Capture whether the standard explicitly uses internal references or external authority.
 - Capture the standard owner and the authored `applies_to` targets from standard front matter instead of hiding that information behind generic related-path retrieval.
+- Keep path-valued `applies_to` entries and derived `related_paths` in canonical repo-relative file-versus-directory form so exact path lookup stays deterministic.
 - Capture the subset of references that materially shape the standard so applied source use is auditable instead of only cited.
 - Capture local reference-doc paths so repo tooling can distinguish raw internal citations from links into `docs/references/**`.
 - Capture compact operationalization metadata so tooling can answer which modes and repository surfaces currently enforce or embody a standard, using exact repo paths, directories, or bounded repo-relative glob patterns when a standard governs a repeating file family.
@@ -101,6 +102,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Every `doc_path` should exist and point to a file under `docs/standards/`.
 - Every entry should have a stable `standard_id`.
 - Every entry should carry the authored `owner` value and, when present, the full `applies_to` list from standard front matter.
+- Path-valued `applies_to` and derived `related_paths` should preserve canonical repo-relative file-versus-directory syntax.
 - `reference_doc_paths` should point only to governed reference docs under `docs/references/`.
 - `operationalization_modes` should be compact lower_snake_case values, and every `operationalization_path` should resolve to a real repository surface or be a bounded repo-relative glob pattern that matches one or more live repository surfaces.
 - Standards that rely on external authority should cite a governed local reference doc rather than only raw external URLs.
@@ -117,4 +119,4 @@ Provide a compact lookup and governance surface for repository standards and bes
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-12T02:46:38Z`

@@ -307,6 +307,42 @@
       ]
     },
     {
+      "trace_id": "trace.governed_front_matter_directory_canonicalization",
+      "decision_id": "decision.governed_front_matter_directory_canonicalization.direction",
+      "title": "Governed Front Matter Directory Canonicalization Direction Decision",
+      "summary": "Records the initial direction decision for Governed Front Matter Directory Canonicalization.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/governed_front_matter_directory_canonicalization_direction.md",
+      "updated_at": "2026-03-12T02:46:38Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.governed_front_matter_directory_canonicalization"
+      ],
+      "linked_design_ids": [
+        "design.features.governed_front_matter_directory_canonicalization"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.governed_front_matter_directory_canonicalization"
+      ],
+      "related_paths": [
+        "docs/",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.internal_project_code_review_and_hardening",
       "decision_id": "decision.internal_project_code_review_and_hardening_direction",
       "title": "Internal Project Code Review and Hardening Direction Decision",

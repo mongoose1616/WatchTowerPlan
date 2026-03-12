@@ -10,15 +10,15 @@ task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-11T00:02:02Z'
+updated_at: '2026-03-12T02:46:38Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/src/watchtower_core/cli
-- core/python/src/watchtower_core/closeout
+- core/python/src/watchtower_core/cli/
+- core/python/src/watchtower_core/closeout/
 - core/python/src/watchtower_core/repo_ops/task_lifecycle.py
 - core/python/src/watchtower_core/repo_ops/planning_scaffolds.py
-- core/python/tests/unit
+- core/python/tests/unit/
 related_ids:
 - prd.unit_test_hardening_and_rebalancing
 - design.features.unit_test_hardening_and_rebalancing

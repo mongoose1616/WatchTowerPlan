@@ -10,13 +10,13 @@ task_status: done
 task_kind: feature
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-11T00:40:05Z'
+updated_at: '2026-03-12T02:46:38Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/src/watchtower_core/repo_ops/sync
-- core/python/src/watchtower_core/closeout
-- core/python/tests/unit
+- core/python/src/watchtower_core/repo_ops/sync/
+- core/python/src/watchtower_core/closeout/
+- core/python/tests/unit/
 related_ids:
 - prd.unit_test_hardening_and_rebalancing
 - design.features.unit_test_hardening_and_rebalancing

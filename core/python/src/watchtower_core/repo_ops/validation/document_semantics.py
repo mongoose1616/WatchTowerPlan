@@ -15,6 +15,7 @@ from watchtower_core.adapters import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import ValidatorDefinition
+from watchtower_core.repo_ops.front_matter_paths import normalize_front_matter_applies_to
 from watchtower_core.repo_ops.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
@@ -206,6 +207,11 @@ class DocumentSemanticsValidationService:
             front_matter,
             schema_id=REFERENCE_FRONT_MATTER_SCHEMA_ID,
         )
+        normalize_front_matter_applies_to(
+            front_matter,
+            relative_path=relative_path,
+            repo_root=self._loader.repo_root,
+        )
         markdown = load_markdown_body(resolved_path)
         sections = extract_sections(markdown)
         required_sections = (
@@ -236,6 +242,11 @@ class DocumentSemanticsValidationService:
             front_matter,
             schema_id=FOUNDATION_FRONT_MATTER_SCHEMA_ID,
         )
+        normalize_front_matter_applies_to(
+            front_matter,
+            relative_path=relative_path,
+            repo_root=self._loader.repo_root,
+        )
         markdown = load_markdown_body(resolved_path)
         sections = extract_sections(markdown)
         required_sections = ("References", "Updated At")
@@ -256,6 +267,11 @@ class DocumentSemanticsValidationService:
         self._loader.schema_store.validate_instance(
             front_matter,
             schema_id=STANDARD_FRONT_MATTER_SCHEMA_ID,
+        )
+        normalize_front_matter_applies_to(
+            front_matter,
+            relative_path=relative_path,
+            repo_root=self._loader.repo_root,
         )
         markdown = load_markdown_body(resolved_path)
         sections = extract_sections(markdown)

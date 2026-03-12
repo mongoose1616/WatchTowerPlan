@@ -17,6 +17,7 @@ from watchtower_core.adapters import (
     replace_front_matter,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.front_matter_paths import normalize_front_matter_applies_to
 
 TASK_FRONT_MATTER_SCHEMA_ID = "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1"
 TASK_OPEN_ROOT = "docs/planning/tasks/open"
@@ -190,6 +191,13 @@ def load_task_document(loader: ControlPlaneLoader, relative_path: str) -> TaskDo
     path = loader.repo_root / relative_path
     front_matter = load_front_matter(path)
     loader.schema_store.validate_instance(front_matter, schema_id=TASK_FRONT_MATTER_SCHEMA_ID)
+    applies_to = normalize_front_matter_applies_to(
+        front_matter,
+        relative_path=relative_path,
+        repo_root=loader.repo_root,
+    )
+    if applies_to:
+        front_matter["applies_to"] = list(applies_to)
 
     markdown = load_markdown_body(path)
     visible_title = extract_title(markdown)

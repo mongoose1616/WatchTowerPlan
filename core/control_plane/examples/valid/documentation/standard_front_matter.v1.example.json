@@ -10,7 +10,7 @@
   "authority": "authoritative",
   "applies_to": [
     "docs/**",
-    "core/control_plane/schemas/interfaces/documentation"
+    "core/control_plane/schemas/interfaces/documentation/"
   ],
   "aliases": [
     "document_front_matter_policy"

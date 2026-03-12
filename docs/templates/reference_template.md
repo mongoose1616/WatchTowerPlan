@@ -21,6 +21,7 @@ aliases:
 > Use this template for repository reference documents that summarize a standard, framework, format, taxonomy, or working model.
 > Write the document as native guidance for this repository.
 > Governed references under `docs/references/**` should keep the front matter block and align it with [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md) and the reference front matter profile.
+> When `applies_to` uses repo paths, files should omit a trailing slash and directories should end in `/`.
 > Governed references under `docs/references/**` must include `## Canonical Upstream` and publish at least one official documentation, standards-body, vendor, RFC, or similar authoritative URL.
 > If the topic has no canonical upstream authority, it does not belong in the governed `docs/references/**` family and should be authored in a more appropriate repo-native document family instead.
 > Keep the document focused on durable lookup content. Reference lifecycle checks belong in the documentation-generation and documentation-refresh workflows rather than in each reference file.

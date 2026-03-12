@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.governed_front_matter_directory_canonicalization` | `completed` | [governed_front_matter_directory_canonicalization.md](/home/j/WatchTowerPlan/docs/planning/prds/governed_front_matter_directory_canonicalization.md) | `2026-03-12T03:18:19Z` | Closed after canonicalizing governed applies_to directory metadata, hardening compact-authoring fixture support, and revalidating the repository baseline. |
 | `trace.standard_operationalization_directory_canonicalization` | `completed` | [standard_operationalization_directory_canonicalization.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_operationalization_directory_canonicalization.md) | `2026-03-12T02:26:14Z` | Closed after enforcing canonical standard operationalization syntax, aligning the live standards corpus, validating the repository baseline, and confirming a final no-new-issues standards review pass. |
 | `trace.data_contract_example_operationalization_alignment` | `completed` | [data_contract_example_operationalization_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_example_operationalization_alignment.md) | `2026-03-12T01:35:09Z` | Closed after operationalizing data-contract example families in the governing standards, hardening lookup regressions, and revalidating the repository baseline. |
 | `trace.documentation_family_lookup_and_readme_template_alignment` | `completed` | [documentation_family_lookup_and_readme_template_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md) | `2026-03-12T01:07:10Z` | Closed after extending standards operationalization lookup for recurring documentation families, aligning README template authoring guidance, and revalidating the repository baseline. |
@@ -39,4 +40,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-12T02:26:14Z`_
+_Updated At: `2026-03-12T03:18:19Z`_

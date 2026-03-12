@@ -5,6 +5,7 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
+from fixture_repo_support import materialize_governed_applies_to_targets
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.sync import AllSyncService, CoordinationSyncService
@@ -22,6 +23,7 @@ def _build_coordination_fixture_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     copytree(REPO_ROOT / "docs" / "planning", repo_root / "docs" / "planning")
     (repo_root / "core" / "python").mkdir(parents=True)
+    materialize_governed_applies_to_targets(repo_root)
     return repo_root
 
 

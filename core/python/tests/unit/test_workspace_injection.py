@@ -3,6 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
+from fixture_repo_support import materialize_governed_applies_to_targets
+
 from watchtower_core.control_plane import ControlPlaneLoader, SchemaStore, WorkspaceConfig
 from watchtower_core.evidence import ValidationEvidenceRecorder
 from watchtower_core.validation import ArtifactValidationService, ValidationResult
@@ -18,6 +20,7 @@ def _build_custom_workspace(tmp_path: Path) -> WorkspaceConfig:
     copytree(REPO_ROOT / "core" / "control_plane", control_plane_root)
     copytree(REPO_ROOT / "docs", repo_root / "docs")
     python_workspace_root.mkdir(parents=True)
+    materialize_governed_applies_to_targets(repo_root)
 
     return WorkspaceConfig(
         repo_root=repo_root,

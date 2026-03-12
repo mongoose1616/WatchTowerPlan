@@ -1,0 +1,151 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.governed_front_matter_directory_canonicalization.planning_baseline",
+  "title": "Governed Front Matter Directory Canonicalization Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.governed_front_matter_directory_canonicalization",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T03:17:23Z",
+  "source_prd_ids": [
+    "prd.governed_front_matter_directory_canonicalization"
+  ],
+  "source_design_ids": [
+    "design.features.governed_front_matter_directory_canonicalization"
+  ],
+  "source_plan_ids": [
+    "design.implementation.governed_front_matter_directory_canonicalization"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.governed_front_matter_directory_canonicalization"
+  ],
+  "checks": [
+    {
+      "check_id": "check.governed_front_matter_directory_canonicalization.planning_baseline",
+      "title": "Planning baseline is aligned for the governed front-matter canonicalization slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/governed_front_matter_directory_canonicalization.md",
+        "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
+        "docs/planning/design/implementation/governed_front_matter_directory_canonicalization.md",
+        "docs/planning/decisions/governed_front_matter_directory_canonicalization_direction.md",
+        "core/control_plane/contracts/acceptance/governed_front_matter_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/governed_front_matter_directory_canonicalization_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/governed_front_matter_directory_canonicalization_bootstrap.md",
+        "docs/planning/tasks/closed/implement_governed_applies_to_directory_canonicalization.md",
+        "docs/planning/tasks/closed/normalize_live_governed_applies_to_directory_metadata.md",
+        "docs/planning/tasks/closed/harden_compact_authoring_fixture_support.md"
+      ],
+      "subject_ids": [
+        "prd.governed_front_matter_directory_canonicalization",
+        "design.features.governed_front_matter_directory_canonicalization",
+        "design.implementation.governed_front_matter_directory_canonicalization",
+        "task.governed_front_matter_directory_canonicalization.bootstrap.001",
+        "task.governed_front_matter_directory_canonicalization.enforcement.001",
+        "task.governed_front_matter_directory_canonicalization.normalization.002",
+        "task.governed_front_matter_directory_canonicalization.compact_fixture_hardening.003",
+        "contract.acceptance.governed_front_matter_directory_canonicalization",
+        "decision.governed_front_matter_directory_canonicalization.direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.governed_front_matter_directory_canonicalization.001"
+      ],
+      "notes": "The trace now carries a real PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed evidence artifact, and a fully closed bounded task set."
+    },
+    {
+      "check_id": "check.governed_front_matter_directory_canonicalization.shared_enforcement",
+      "title": "Shared governed authoring and validation paths enforce canonical directory applies_to values",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/front_matter_paths.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_compact_document_authoring.py"
+      ],
+      "subject_ids": [
+        "task.governed_front_matter_directory_canonicalization.enforcement.001",
+        "task.governed_front_matter_directory_canonicalization.compact_fixture_hardening.003"
+      ],
+      "acceptance_ids": [
+        "ac.governed_front_matter_directory_canonicalization.001"
+      ],
+      "notes": "A shared applies_to path helper now canonicalizes directory-valued governed metadata across planning/task authoring, sync projections, and semantic validation, with targeted regressions protecting the recurrence paths and the compact-authoring temp-repo loader path."
+    },
+    {
+      "check_id": "check.governed_front_matter_directory_canonicalization.corpus_normalization",
+      "title": "Live governed docs, valid examples, and directory-path lookup surfaces are normalized",
+      "result": "passed",
+      "subject_paths": [
+        "docs/references/front_matter_reference.md",
+        "docs/references/agent_workflow_authoring_reference.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md",
+        "docs/planning/tasks/closed/harden_command_and_lifecycle_coverage.md",
+        "docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md",
+        "docs/planning/tasks/closed/harden_github_integration_and_sync_coverage.md",
+        "docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md",
+        "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json",
+        "core/control_plane/examples/valid/documentation/standard_front_matter.v1.example.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.governed_front_matter_directory_canonicalization.normalization.002"
+      ],
+      "acceptance_ids": [
+        "ac.governed_front_matter_directory_canonicalization.002"
+      ],
+      "notes": "The affected governed corpus and valid front-matter examples now publish slash-terminated directory applies_to values, the rebuilt standard index reflects the canonical forms, and watchtower-core query standards --applies-to docs/commands/ --format json now resolves std.engineering.cli_help_text."
+    },
+    {
+      "check_id": "check.governed_front_matter_directory_canonicalization.validation_baseline",
+      "title": "Final expansive audit and repository validation baseline are green",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/governed_front_matter_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/governed_front_matter_directory_canonicalization_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.governed_front_matter_directory_canonicalization",
+        "design.features.governed_front_matter_directory_canonicalization",
+        "design.implementation.governed_front_matter_directory_canonicalization",
+        "decision.governed_front_matter_directory_canonicalization.direction",
+        "task.governed_front_matter_directory_canonicalization.bootstrap.001",
+        "task.governed_front_matter_directory_canonicalization.enforcement.001",
+        "task.governed_front_matter_directory_canonicalization.normalization.002",
+        "task.governed_front_matter_directory_canonicalization.compact_fixture_hardening.003",
+        "contract.acceptance.governed_front_matter_directory_canonicalization"
+      ],
+      "acceptance_ids": [
+        "ac.governed_front_matter_directory_canonicalization.003"
+      ],
+      "notes": "The expansive governed-front-matter audit now reports zero remaining non-canonical directory applies_to values in the live Markdown corpus and valid JSON examples, and watchtower-core validate acceptance --trace-id trace.governed_front_matter_directory_canonicalization --format json, watchtower-core validate all --format json, pytest -q, .venv/bin/python -m mypy src/watchtower_core from core/python, and .venv/bin/ruff check . all passed for the final validation baseline."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/governed_front_matter_directory_canonicalization_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T03:17:23Z for trace.governed_front_matter_directory_canonicalization after implementation, corpus normalization, compact-authoring regression hardening, and validation closeout.",
+  "source_decision_ids": [
+    "decision.governed_front_matter_directory_canonicalization.direction"
+  ]
+}

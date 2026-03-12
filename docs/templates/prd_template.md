@@ -10,7 +10,8 @@ updated_at: "YYYY-MM-DDTHH:MM:SSZ"
 audience: "shared"
 authority: "authoritative"
 applies_to:
-  - "<repo/path/or/concept>"
+  - "<repo/path/>"
+  - "<concept_id>"
 aliases:
   - "<helpful search alias>"
 ---
@@ -20,6 +21,7 @@ aliases:
 > Use this template for product requirements documents stored under `docs/planning/prds/`.
 > Keep the final document aligned with [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md).
 > Keep front matter aligned with the `Record Metadata` block below.
+> When `applies_to` uses repo paths, files should omit a trailing slash and directories should end in `/`.
 > Start with the required sections below and add optional sections only when they materially reduce ambiguity.
 
 ## Record Metadata

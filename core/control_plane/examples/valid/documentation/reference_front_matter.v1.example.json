@@ -14,7 +14,7 @@
   "authority": "reference",
   "applies_to": [
     "docs/standards/metadata/front_matter_standard.md",
-    "core/control_plane/schemas/interfaces/documentation"
+    "core/control_plane/schemas/interfaces/documentation/"
   ],
   "aliases": [
     "yaml_header",

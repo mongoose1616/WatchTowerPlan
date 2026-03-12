@@ -3480,6 +3480,397 @@
       "closure_reason": "Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative"
     },
     {
+      "trace_id": "trace.governed_front_matter_directory_canonicalization",
+      "title": "Governed Front Matter Directory Canonicalization PRD",
+      "summary": "Canonicalize directory-valued governed front-matter applies_to metadata so exact repo-path lookup stays consistent across standards, references, and planning documents.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T03:18:19Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/governed_front_matter_directory_canonicalization.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/governed_front_matter_directory_canonicalization.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.governed_front_matter_directory_canonicalization",
+          "title": "Governed Front Matter Directory Canonicalization PRD",
+          "summary": "Canonicalize directory-valued governed front-matter applies_to metadata so exact repo-path lookup stays consistent across standards, references, and planning documents.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/governed_front_matter_directory_canonicalization.md",
+          "updated_at": "2026-03-12T02:46:38Z",
+          "requirement_ids": [
+            "req.governed_front_matter_directory_canonicalization.001",
+            "req.governed_front_matter_directory_canonicalization.002",
+            "req.governed_front_matter_directory_canonicalization.003",
+            "req.governed_front_matter_directory_canonicalization.004"
+          ],
+          "acceptance_ids": [
+            "ac.governed_front_matter_directory_canonicalization.001",
+            "ac.governed_front_matter_directory_canonicalization.002",
+            "ac.governed_front_matter_directory_canonicalization.003"
+          ],
+          "linked_decision_ids": [
+            "decision.governed_front_matter_directory_canonicalization.direction"
+          ],
+          "linked_design_ids": [
+            "design.features.governed_front_matter_directory_canonicalization"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.governed_front_matter_directory_canonicalization"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.governed_front_matter_directory_canonicalization.direction",
+          "title": "Governed Front Matter Directory Canonicalization Direction Decision",
+          "summary": "Records the initial direction decision for Governed Front Matter Directory Canonicalization.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/governed_front_matter_directory_canonicalization_direction.md",
+          "updated_at": "2026-03-12T02:46:38Z",
+          "linked_prd_ids": [
+            "prd.governed_front_matter_directory_canonicalization"
+          ],
+          "linked_design_ids": [
+            "design.features.governed_front_matter_directory_canonicalization"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.governed_front_matter_directory_canonicalization"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.governed_front_matter_directory_canonicalization",
+          "family": "feature_design",
+          "title": "Governed Front Matter Directory Canonicalization Feature Design",
+          "summary": "Defines the technical design boundary for Governed Front Matter Directory Canonicalization.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
+          "updated_at": "2026-03-12T02:46:38Z"
+        },
+        {
+          "document_id": "design.implementation.governed_front_matter_directory_canonicalization",
+          "family": "implementation_plan",
+          "title": "Governed Front Matter Directory Canonicalization Implementation Plan",
+          "summary": "Breaks Governed Front Matter Directory Canonicalization into a bounded implementation slice.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/implementation/governed_front_matter_directory_canonicalization.md",
+          "updated_at": "2026-03-12T02:46:38Z",
+          "source_paths": [
+            "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
+            "docs/planning/prds/governed_front_matter_directory_canonicalization.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.governed_front_matter_directory_canonicalization.bootstrap.001",
+          "title": "Bootstrap Governed Front Matter Directory Canonicalization planning chain",
+          "summary": "Bootstraps the initial planning chain for Governed Front Matter Directory Canonicalization.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/governed_front_matter_directory_canonicalization_bootstrap.md",
+          "updated_at": "2026-03-12T03:09:28Z",
+          "related_ids": [
+            "prd.governed_front_matter_directory_canonicalization",
+            "design.features.governed_front_matter_directory_canonicalization",
+            "design.implementation.governed_front_matter_directory_canonicalization",
+            "decision.governed_front_matter_directory_canonicalization.direction",
+            "contract.acceptance.governed_front_matter_directory_canonicalization"
+          ],
+          "applies_to": [
+            "docs/",
+            "core/python/src/watchtower_core/",
+            "core/control_plane/"
+          ]
+        },
+        {
+          "task_id": "task.governed_front_matter_directory_canonicalization.compact_fixture_hardening.003",
+          "title": "Harden compact authoring fixture support",
+          "summary": "Materialize applies_to targets in compact-authoring temp-repo tests so governed document loading stays aligned with canonical path enforcement.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "bug",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/harden_compact_authoring_fixture_support.md",
+          "updated_at": "2026-03-12T03:17:13Z",
+          "related_ids": [
+            "prd.governed_front_matter_directory_canonicalization",
+            "design.features.governed_front_matter_directory_canonicalization",
+            "design.implementation.governed_front_matter_directory_canonicalization",
+            "decision.governed_front_matter_directory_canonicalization.direction",
+            "contract.acceptance.governed_front_matter_directory_canonicalization"
+          ],
+          "applies_to": [
+            "docs/",
+            "core/python/src/watchtower_core/"
+          ]
+        },
+        {
+          "task_id": "task.governed_front_matter_directory_canonicalization.enforcement.001",
+          "title": "Implement governed applies_to directory canonicalization",
+          "summary": "Add shared validation and normalization for directory-valued governed front-matter applies_to paths across governed document families and indexed lookup surfaces.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "bug",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/implement_governed_applies_to_directory_canonicalization.md",
+          "updated_at": "2026-03-12T03:09:28Z",
+          "related_ids": [
+            "prd.governed_front_matter_directory_canonicalization",
+            "design.features.governed_front_matter_directory_canonicalization",
+            "design.implementation.governed_front_matter_directory_canonicalization",
+            "decision.governed_front_matter_directory_canonicalization.direction",
+            "contract.acceptance.governed_front_matter_directory_canonicalization"
+          ],
+          "applies_to": [
+            "docs/",
+            "core/python/src/watchtower_core/",
+            "core/control_plane/"
+          ]
+        },
+        {
+          "task_id": "task.governed_front_matter_directory_canonicalization.normalization.002",
+          "title": "Normalize live governed applies_to directory metadata",
+          "summary": "Update the live governed documents with non-canonical directory-valued applies_to entries, regenerate derived artifacts, and prove the no-new-issues stop condition.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/normalize_live_governed_applies_to_directory_metadata.md",
+          "updated_at": "2026-03-12T03:09:38Z",
+          "depends_on": [
+            "task.governed_front_matter_directory_canonicalization.enforcement.001"
+          ],
+          "related_ids": [
+            "prd.governed_front_matter_directory_canonicalization",
+            "design.features.governed_front_matter_directory_canonicalization",
+            "design.implementation.governed_front_matter_directory_canonicalization",
+            "decision.governed_front_matter_directory_canonicalization.direction",
+            "contract.acceptance.governed_front_matter_directory_canonicalization"
+          ],
+          "applies_to": [
+            "docs/",
+            "core/control_plane/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.governed_front_matter_directory_canonicalization",
+          "title": "Governed Front Matter Directory Canonicalization Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.governed_front_matter_directory_canonicalization",
+          "doc_path": "core/control_plane/contracts/acceptance/governed_front_matter_directory_canonicalization_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.governed_front_matter_directory_canonicalization.001",
+            "ac.governed_front_matter_directory_canonicalization.002",
+            "ac.governed_front_matter_directory_canonicalization.003"
+          ],
+          "validation_targets": [
+            "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json",
+            "core/control_plane/examples/valid/documentation/standard_front_matter.v1.example.json",
+            "core/python/src/watchtower_core/repo_ops/front_matter_paths.py",
+            "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+            "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+            "core/python/src/watchtower_core/repo_ops/task_documents.py",
+            "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_compact_document_authoring.py",
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/test_planning_scaffolds.py",
+            "core/python/tests/unit/test_task_lifecycle.py",
+            "docs/planning/decisions/governed_front_matter_directory_canonicalization_direction.md",
+            "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
+            "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
+            "docs/planning/design/implementation/governed_front_matter_directory_canonicalization.md",
+            "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
+            "docs/planning/prds/governed_front_matter_directory_canonicalization.md",
+            "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
+            "docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md",
+            "docs/planning/tasks/closed/harden_command_and_lifecycle_coverage.md",
+            "docs/planning/tasks/closed/harden_github_integration_and_sync_coverage.md",
+            "docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md",
+            "docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md",
+            "docs/planning/tasks/open/implement_governed_applies_to_directory_canonicalization.md",
+            "docs/planning/tasks/open/normalize_live_governed_applies_to_directory_metadata.md",
+            "docs/references/agent_workflow_authoring_reference.md",
+            "docs/references/front_matter_reference.md",
+            "docs/standards/engineering/cli_help_text_standard.md"
+          ],
+          "related_paths": [
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/governed_front_matter_directory_canonicalization_planning_baseline.v1.json",
+            "docs/commands/core_python/watchtower_core_query_standards.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/data_contracts/standard_index_standard.md",
+            "docs/standards/metadata/front_matter_standard.md",
+            "docs/templates/decision_record_template.md",
+            "docs/templates/feature_design_template.md",
+            "docs/templates/implementation_plan_template.md",
+            "docs/templates/prd_template.md",
+            "docs/templates/reference_template.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.governed_front_matter_directory_canonicalization.planning_baseline",
+          "title": "Governed Front Matter Directory Canonicalization Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-12T03:17:23Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/governed_front_matter_directory_canonicalization_planning_baseline.v1.json",
+          "check_ids": [
+            "check.governed_front_matter_directory_canonicalization.planning_baseline",
+            "check.governed_front_matter_directory_canonicalization.shared_enforcement",
+            "check.governed_front_matter_directory_canonicalization.corpus_normalization",
+            "check.governed_front_matter_directory_canonicalization.validation_baseline"
+          ],
+          "acceptance_ids": [
+            "ac.governed_front_matter_directory_canonicalization.001",
+            "ac.governed_front_matter_directory_canonicalization.002",
+            "ac.governed_front_matter_directory_canonicalization.003"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/governed_front_matter_directory_canonicalization_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.governed_front_matter_directory_canonicalization"
+      ],
+      "decision_ids": [
+        "decision.governed_front_matter_directory_canonicalization.direction"
+      ],
+      "design_ids": [
+        "design.features.governed_front_matter_directory_canonicalization"
+      ],
+      "plan_ids": [
+        "design.implementation.governed_front_matter_directory_canonicalization"
+      ],
+      "task_ids": [
+        "task.governed_front_matter_directory_canonicalization.bootstrap.001",
+        "task.governed_front_matter_directory_canonicalization.compact_fixture_hardening.003",
+        "task.governed_front_matter_directory_canonicalization.enforcement.001",
+        "task.governed_front_matter_directory_canonicalization.normalization.002"
+      ],
+      "requirement_ids": [
+        "req.governed_front_matter_directory_canonicalization.001",
+        "req.governed_front_matter_directory_canonicalization.002",
+        "req.governed_front_matter_directory_canonicalization.003",
+        "req.governed_front_matter_directory_canonicalization.004"
+      ],
+      "acceptance_ids": [
+        "ac.governed_front_matter_directory_canonicalization.001",
+        "ac.governed_front_matter_directory_canonicalization.002",
+        "ac.governed_front_matter_directory_canonicalization.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.governed_front_matter_directory_canonicalization"
+      ],
+      "evidence_ids": [
+        "evidence.governed_front_matter_directory_canonicalization.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/governed_front_matter_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json",
+        "core/control_plane/examples/valid/documentation/standard_front_matter.v1.example.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/governed_front_matter_directory_canonicalization_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/repo_ops/front_matter_paths.py",
+        "core/python/src/watchtower_core/repo_ops/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_compact_document_authoring.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/governed_front_matter_directory_canonicalization_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
+        "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/design/implementation/governed_front_matter_directory_canonicalization.md",
+        "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/governed_front_matter_directory_canonicalization.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
+        "docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md",
+        "docs/planning/tasks/closed/governed_front_matter_directory_canonicalization_bootstrap.md",
+        "docs/planning/tasks/closed/harden_command_and_lifecycle_coverage.md",
+        "docs/planning/tasks/closed/harden_compact_authoring_fixture_support.md",
+        "docs/planning/tasks/closed/harden_github_integration_and_sync_coverage.md",
+        "docs/planning/tasks/closed/implement_governed_applies_to_directory_canonicalization.md",
+        "docs/planning/tasks/closed/normalize_live_governed_applies_to_directory_metadata.md",
+        "docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md",
+        "docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/agent_workflow_authoring_reference.md",
+        "docs/references/front_matter_reference.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/templates/feature_design_template.md",
+        "docs/templates/implementation_plan_template.md",
+        "docs/templates/prd_template.md",
+        "docs/templates/reference_template.md"
+      ],
+      "tags": [
+        "bug",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T03:17:23Z for trace.governed_front_matter_directory_canonicalization after implementation, corpus normalization, compact-authoring regression hardening, and validation closeout.",
+      "closed_at": "2026-03-12T03:18:19Z",
+      "closure_reason": "Closed after canonicalizing governed applies_to directory metadata, hardening compact-authoring fixture support, and revalidating the repository baseline."
+    },
+    {
       "trace_id": "trace.initiative_closeout",
       "title": "Initiative Closeout and Planning Trackers",
       "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
@@ -7956,7 +8347,7 @@
       "summary": "Canonicalize directory operationalization paths in governed standards, eliminate semantically duplicate directory entries from the standard index, and harden standards validation against future duplicate-path drift.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-12T02:26:14Z",
+      "updated_at": "2026-03-12T02:26:31Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
@@ -8139,6 +8530,7 @@
             "docs/planning/design/features/standard_operationalization_directory_canonicalization.md",
             "docs/planning/design/implementation/standard_operationalization_directory_canonicalization.md",
             "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+            "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md",
             "docs/planning/tasks/open/canonicalize_standard_operationalization_directory_paths.md",
             "docs/planning/tasks/open/standard_operationalization_directory_canonicalization_bootstrap.md",
             "docs/planning/tasks/open/validate_and_close_standard_operationalization_directory_canonicalization.md",
@@ -8168,7 +8560,7 @@
           "title": "Standard Operationalization Directory Canonicalization Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-12T02:06:54Z",
+          "recorded_at": "2026-03-12T02:26:31Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
           "check_ids": [
             "check.standard_operationalization_directory_canonicalization.planning_baseline",
@@ -8263,7 +8655,7 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-12T02:06:54Z for trace.standard_operationalization_directory_canonicalization.",
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T02:26:31Z for trace.standard_operationalization_directory_canonicalization after validation and initiative closeout.",
       "closed_at": "2026-03-12T02:26:14Z",
       "closure_reason": "Closed after enforcing canonical standard operationalization syntax, aligning the live standards corpus, validating the repository baseline, and confirming a final no-new-issues standards review pass."
     },
@@ -9351,7 +9743,7 @@
       "summary": "Harden under-covered executable test surfaces, rebalance the unit suite structure, and tighten unit-suite documentation so WatchTowerPlan has a more reliable and maintainable test foundation before WatchTower product implementation begins.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-11T00:44:30Z",
+      "updated_at": "2026-03-12T02:46:38Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
@@ -9367,7 +9759,7 @@
           "summary": "Harden under-covered executable test surfaces, rebalance the unit suite structure, and tighten unit-suite documentation so WatchTowerPlan has a more reliable and maintainable test foundation before WatchTower product implementation begins.",
           "artifact_status": "active",
           "doc_path": "docs/planning/prds/unit_test_hardening_and_rebalancing.md",
-          "updated_at": "2026-03-10T23:34:10Z",
+          "updated_at": "2026-03-12T02:46:38Z",
           "requirement_ids": [
             "req.unit_test_hardening_and_rebalancing.001",
             "req.unit_test_hardening_and_rebalancing.002",
@@ -9401,7 +9793,7 @@
           "summary": "Defines the technical design boundary for Unit Test Hardening and Rebalancing.",
           "artifact_status": "draft",
           "doc_path": "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
-          "updated_at": "2026-03-11T00:44:30Z"
+          "updated_at": "2026-03-12T02:46:38Z"
         },
         {
           "document_id": "design.implementation.unit_test_hardening_and_rebalancing",
@@ -9410,7 +9802,7 @@
           "summary": "Breaks Unit Test Hardening and Rebalancing into a bounded implementation slice.",
           "artifact_status": "draft",
           "doc_path": "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
-          "updated_at": "2026-03-11T00:44:30Z",
+          "updated_at": "2026-03-12T02:46:38Z",
           "source_paths": [
             "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
             "docs/planning/prds/unit_test_hardening_and_rebalancing.md"
@@ -9428,17 +9820,17 @@
           "priority": "medium",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md",
-          "updated_at": "2026-03-10T23:38:12Z",
+          "updated_at": "2026-03-12T02:46:38Z",
           "related_ids": [
             "prd.unit_test_hardening_and_rebalancing",
             "design.features.unit_test_hardening_and_rebalancing",
             "design.implementation.unit_test_hardening_and_rebalancing"
           ],
           "applies_to": [
-            "core/python/tests",
-            "core/python/src/watchtower_core",
-            "docs/commands/core_python",
-            "docs/planning"
+            "core/python/tests/",
+            "core/python/src/watchtower_core/",
+            "docs/commands/core_python/",
+            "docs/planning/"
           ]
         },
         {
@@ -9451,7 +9843,7 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/closed/harden_command_and_lifecycle_coverage.md",
-          "updated_at": "2026-03-11T00:02:02Z",
+          "updated_at": "2026-03-12T02:46:38Z",
           "depends_on": [
             "task.unit_test_hardening_and_rebalancing.bootstrap.001"
           ],
@@ -9461,11 +9853,11 @@
             "design.implementation.unit_test_hardening_and_rebalancing"
           ],
           "applies_to": [
-            "core/python/src/watchtower_core/cli",
-            "core/python/src/watchtower_core/closeout",
+            "core/python/src/watchtower_core/cli/",
+            "core/python/src/watchtower_core/closeout/",
             "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
             "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
-            "core/python/tests/unit"
+            "core/python/tests/unit/"
           ]
         },
         {
@@ -9478,7 +9870,7 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/closed/harden_github_integration_and_sync_coverage.md",
-          "updated_at": "2026-03-11T00:07:54Z",
+          "updated_at": "2026-03-12T02:46:38Z",
           "depends_on": [
             "task.unit_test_hardening_and_rebalancing.bootstrap.001"
           ],
@@ -9488,9 +9880,9 @@
             "design.implementation.unit_test_hardening_and_rebalancing"
           ],
           "applies_to": [
-            "core/python/src/watchtower_core/integrations/github",
+            "core/python/src/watchtower_core/integrations/github/",
             "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
-            "core/python/tests/unit"
+            "core/python/tests/unit/"
           ]
         },
         {
@@ -9503,7 +9895,7 @@
           "priority": "medium",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md",
-          "updated_at": "2026-03-11T00:40:05Z",
+          "updated_at": "2026-03-12T02:46:38Z",
           "depends_on": [
             "task.unit_test_hardening_and_rebalancing.bootstrap.001"
           ],
@@ -9513,9 +9905,9 @@
             "design.implementation.unit_test_hardening_and_rebalancing"
           ],
           "applies_to": [
-            "core/python/src/watchtower_core/repo_ops/sync",
-            "core/python/src/watchtower_core/closeout",
-            "core/python/tests/unit"
+            "core/python/src/watchtower_core/repo_ops/sync/",
+            "core/python/src/watchtower_core/closeout/",
+            "core/python/tests/unit/"
           ]
         },
         {
@@ -9528,7 +9920,7 @@
           "priority": "medium",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md",
-          "updated_at": "2026-03-11T00:15:24Z",
+          "updated_at": "2026-03-12T02:46:38Z",
           "depends_on": [
             "task.unit_test_hardening_and_rebalancing.bootstrap.001"
           ],
@@ -9538,9 +9930,9 @@
             "design.implementation.unit_test_hardening_and_rebalancing"
           ],
           "applies_to": [
-            "core/python/tests",
-            "core/python/tests/unit",
-            "core/python/tests/fixtures"
+            "core/python/tests/",
+            "core/python/tests/unit/",
+            "core/python/tests/fixtures/"
           ]
         }
       ],
@@ -9661,19 +10053,16 @@
         "core/control_plane/ledgers/validation_evidence/unit_test_hardening_and_rebalancing_planning_baseline.v1.json",
         "core/python/",
         "core/python/src/watchtower_core",
-        "core/python/src/watchtower_core/cli",
+        "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/closeout_handlers.py",
         "core/python/src/watchtower_core/cli/plan_handlers.py",
         "core/python/src/watchtower_core/cli/route_handlers.py",
         "core/python/src/watchtower_core/cli/task_handlers.py",
-        "core/python/src/watchtower_core/closeout",
         "core/python/src/watchtower_core/closeout/",
-        "core/python/src/watchtower_core/integrations/github",
         "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/integrations/github/client.py",
         "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
-        "core/python/src/watchtower_core/repo_ops/sync",
         "core/python/src/watchtower_core/repo_ops/sync/",
         "core/python/src/watchtower_core/repo_ops/sync/all.py",
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
@@ -9682,13 +10071,12 @@
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/tests",
         "core/python/tests/",
-        "core/python/tests/fixtures",
         "core/python/tests/fixtures/",
-        "core/python/tests/unit",
         "core/python/tests/unit/",
         "core/python/tests/unit/README.md",
         "core/python/tests/unit/test_cli.py",
         "docs/commands/core_python",
+        "docs/commands/core_python/",
         "docs/planning",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",

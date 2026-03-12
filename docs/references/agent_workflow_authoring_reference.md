@@ -10,7 +10,7 @@ tags:
   - "agents"
   - "prompt_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T23:21:57Z"
+updated_at: "2026-03-12T02:46:38Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -18,7 +18,7 @@ applies_to:
   - "docs/standards/workflows/workflow_design_standard.md"
   - "docs/standards/workflows/routing_and_context_loading_standard.md"
   - "docs/templates/workflow_template.md"
-  - "workflows/modules"
+  - "workflows/modules/"
 aliases:
   - "llm_workflow_authoring"
   - "agent_context_loading"
@@ -145,4 +145,4 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - The repository standards remain the authority; this document is the distilled working reference that informs them.
 
 ## Updated At
-- `2026-03-10T23:21:57Z`
+- `2026-03-12T02:46:38Z`

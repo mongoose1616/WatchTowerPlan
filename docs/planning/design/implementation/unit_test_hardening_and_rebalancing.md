@@ -7,14 +7,14 @@ summary: Breaks Unit Test Hardening and Rebalancing into a bounded implementatio
 type: implementation_plan
 status: draft
 owner: repository_maintainer
-updated_at: '2026-03-11T00:44:30Z'
+updated_at: '2026-03-12T02:46:38Z'
 audience: shared
 authority: supporting
 applies_to:
-- core/python/tests
-- core/python/src/watchtower_core
-- docs/commands/core_python
-- docs/planning
+- core/python/tests/
+- core/python/src/watchtower_core/
+- docs/commands/core_python/
+- docs/planning/
 aliases:
 - unit_test_review_followup
 - test_suite_hardening
@@ -30,7 +30,7 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.unit_test_hardening_and_rebalancing`
 - `Linked Acceptance Contracts`: `contract.acceptance.unit_test_hardening_and_rebalancing`
-- `Updated At`: `2026-03-11T00:44:30Z`
+- `Updated At`: `2026-03-12T02:46:38Z`
 
 ## Summary
 Breaks unit-test hardening and suite rebalancing into bounded slices for planning bootstrap, executable coverage, suite structure, and orchestration hardening.
@@ -79,4 +79,4 @@ Breaks unit-test hardening and suite rebalancing into bounded slices for plannin
 - User-supplied WatchTower unit-test review dated `2026-03-10`
 
 ## Updated At
-- `2026-03-11T00:44:30Z`
+- `2026-03-12T02:46:38Z`

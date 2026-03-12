@@ -6,14 +6,14 @@ summary: Defines the technical design boundary for Unit Test Hardening and Rebal
 type: feature_design
 status: draft
 owner: repository_maintainer
-updated_at: '2026-03-11T00:44:30Z'
+updated_at: '2026-03-12T02:46:38Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests
-- core/python/src/watchtower_core
-- docs/commands/core_python
-- docs/planning
+- core/python/tests/
+- core/python/src/watchtower_core/
+- docs/commands/core_python/
+- docs/planning/
 aliases:
 - unit_test_review_followup
 - test_suite_hardening
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `prd.unit_test_hardening_and_rebalancing`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `design.implementation.unit_test_hardening_and_rebalancing`
-- `Updated At`: `2026-03-11T00:44:30Z`
+- `Updated At`: `2026-03-12T02:46:38Z`
 
 ## Summary
 Defines the technical design boundary for strengthening low-coverage executable test surfaces, rebalancing the unit suite structure, and tightening suite-local testing guidance.
@@ -107,10 +107,10 @@ Defines the technical design boundary for strengthening low-coverage executable 
 - Failure-path tests must assert meaningful error conditions rather than only non-zero exit codes.
 
 ## Affected Surfaces
-- core/python/tests
-- core/python/src/watchtower_core
-- docs/commands/core_python
-- docs/planning
+- core/python/tests/
+- core/python/src/watchtower_core/
+- docs/commands/core_python/
+- docs/planning/
 
 ## Design Guardrails
 - Do not expand `test_cli.py` further; new family-specific CLI coverage belongs in smaller focused files.
@@ -125,4 +125,4 @@ Defines the technical design boundary for strengthening low-coverage executable 
 - User-supplied WatchTower unit-test review dated `2026-03-10`
 
 ## Updated At
-- `2026-03-11T00:44:30Z`
+- `2026-03-12T02:46:38Z`

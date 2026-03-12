@@ -10,13 +10,13 @@ task_status: done
 task_kind: documentation
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-11T00:15:24Z'
+updated_at: '2026-03-12T02:46:38Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests
-- core/python/tests/unit
-- core/python/tests/fixtures
+- core/python/tests/
+- core/python/tests/unit/
+- core/python/tests/fixtures/
 related_ids:
 - prd.unit_test_hardening_and_rebalancing
 - design.features.unit_test_hardening_and_rebalancing

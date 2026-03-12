@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T02:46:38Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -60,6 +60,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Use retrieval-oriented metadata when it materially improves ranking or disambiguation instead of forcing the retriever to infer everything from prose.
 - `authority` should indicate whether a document is the source of truth, a supporting explanation, a reference, or historical context.
 - `applies_to` should list the concrete repository surfaces or concepts the document governs or explains.
+- When `applies_to` uses repository paths, exact files should use canonical repo-relative file paths with no trailing slash and directories should use canonical repo-relative directory paths ending in `/`.
 - `aliases` should capture important alternate phrasings, abbreviations, or synonymous terms that users and agents are likely to search for.
 - `docs/references/**` documents that use repository-governed reference structure should include front matter and validate against the reference profile.
 - `docs/planning/prds/**` documents should include front matter and validate against the PRD profile.
@@ -90,7 +91,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 | `updated_at` | Last meaningful content update | quoted UTC timestamp | Use the repository timestamp baseline `YYYY-MM-DDTHH:MM:SSZ`. |
 | `audience` | Intended readership | quoted string | Keep values concise and reusable. |
 | `authority` | Retrieval and precedence signal | quoted string | Use controlled values such as `authoritative`, `supporting`, `reference`, or `historical`. |
-| `applies_to` | Concrete repository surfaces or governed concepts | YAML list | Prefer real paths or stable concept identifiers over vague prose. |
+| `applies_to` | Concrete repository surfaces or governed concepts | YAML list | Prefer real paths or stable concept identifiers over vague prose; path values should preserve canonical repo-relative file-versus-directory syntax. |
 | `aliases` | Important alternate search terms | YAML list | Use only terms that improve retrieval or disambiguation. |
 
 ### Current profile rules
@@ -148,6 +149,7 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Front matter should parse cleanly as YAML.
 - Documents that claim a governed front matter profile should validate against the matching schema under `core/control_plane/schemas/interfaces/documentation/`.
 - Reviewers should reject unexpected keys, conflicting title or type signals, and stale `updated_at` values when the metadata was materially changed.
+- Path-valued `applies_to` entries should resolve to live repo-relative paths, with directory values ending in `/` and file values omitting a trailing slash.
 - Front matter rules and schema profiles should be updated together when the permitted key set changes.
 
 ## Change Control
@@ -172,4 +174,4 @@ Keep document metadata predictable enough for indexing, ownership tracking, stat
 - Document families that already have a dedicated machine-readable companion artifact, such as `docs/commands/**` plus the command index, do not need duplicate front matter unless a later workflow or validation surface requires it.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T02:46:38Z`

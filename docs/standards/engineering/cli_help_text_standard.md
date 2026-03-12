@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "cli_help"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T02:06:54Z"
+updated_at: "2026-03-12T02:46:38Z"
 audience: "shared"
 authority: "authoritative"
 aliases:
@@ -17,8 +17,8 @@ aliases:
   - "cli usage help"
   - "argparse help guidance"
 applies_to:
-  - "core/python/src/watchtower_core/cli"
-  - "docs/commands"
+  - "core/python/src/watchtower_core/cli/"
+  - "docs/commands/"
 ---
 
 # CLI Help Text Standard
@@ -109,4 +109,4 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - [docs/templates/command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
 
 ## Updated At
-- `2026-03-12T02:06:54Z`
+- `2026-03-12T02:46:38Z`

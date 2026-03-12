@@ -18,6 +18,10 @@ from watchtower_core.adapters import (
     split_semicolon_list,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.front_matter_paths import (
+    applies_to_path_values,
+    normalize_front_matter_applies_to,
+)
 from watchtower_core.repo_ops.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
@@ -181,11 +185,9 @@ class PlanningDocument:
         return tuple(items)
 
     def front_matter_path_values(self) -> tuple[str, ...]:
-        values = self.front_matter_list("applies_to")
-        return tuple(
-            value
-            for value in values
-            if "/" in value and value != self.relative_path
+        return applies_to_path_values(
+            self.front_matter_list("applies_to"),
+            relative_path=self.relative_path,
         )
 
     def section(self, title: str) -> str | None:
@@ -217,6 +219,13 @@ def load_governed_document(
     path = loader.repo_root / relative_path
     front_matter = load_front_matter(path)
     loader.schema_store.validate_instance(front_matter, schema_id=schema_id)
+    applies_to = normalize_front_matter_applies_to(
+        front_matter,
+        relative_path=relative_path,
+        repo_root=loader.repo_root,
+    )
+    if applies_to:
+        front_matter["applies_to"] = list(applies_to)
 
     markdown = load_markdown_body(path)
     validate_blank_line_before_heading_after_list(relative_path, markdown)

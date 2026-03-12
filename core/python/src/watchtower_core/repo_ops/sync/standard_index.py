@@ -18,6 +18,10 @@ from watchtower_core.adapters import (
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.front_matter_paths import (
+    applies_to_path_values,
+    normalize_front_matter_applies_to,
+)
 from watchtower_core.repo_ops.markdown_semantics import (
     validate_blank_line_before_heading_after_list,
 )
@@ -95,6 +99,13 @@ class StandardIndexSyncService:
                 front_matter,
                 schema_id=STANDARD_FRONT_MATTER_SCHEMA_ID,
             )
+            applies_to = normalize_front_matter_applies_to(
+                front_matter,
+                relative_path=relative_path,
+                repo_root=self._repo_root,
+            )
+            if applies_to:
+                front_matter["applies_to"] = list(applies_to)
 
             markdown = load_markdown_body(path)
             validate_blank_line_before_heading_after_list(relative_path, markdown)
@@ -147,7 +158,7 @@ class StandardIndexSyncService:
             )
 
             related_paths = ordered_unique(
-                _front_matter_path_values(front_matter, relative_path),
+                applies_to_path_values(applies_to, relative_path=relative_path),
                 _tuple_of_strings(current.get("related_paths")),
             )
             tags = ordered_unique(
@@ -157,8 +168,6 @@ class StandardIndexSyncService:
             notes = _optional_string(current.get("notes"))
             category = Path(relative_path).parts[2]
             owner = front_matter["owner"]
-            applies_to = _front_matter_list(front_matter, "applies_to")
-
             entry: dict[str, object] = {
                 "standard_id": front_matter["id"],
                 "category": category,
@@ -227,14 +236,6 @@ def _front_matter_list(front_matter: dict[str, Any], key: str) -> tuple[str, ...
             raise ValueError(f"Standard front matter key {key} must contain only strings.")
         items.append(item.strip())
     return tuple(items)
-
-
-def _front_matter_path_values(front_matter: dict[str, Any], relative_path: str) -> tuple[str, ...]:
-    return tuple(
-        value
-        for value in _front_matter_list(front_matter, "applies_to")
-        if "/" in value and value != relative_path
-    )
 
 
 def _tuple_of_strings(value: Any) -> tuple[str, ...]:

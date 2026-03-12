@@ -8,12 +8,12 @@ tags:
   - "reference"
   - "front_matter"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T05:06:54Z"
+updated_at: "2026-03-12T02:46:38Z"
 audience: "shared"
 authority: "reference"
 applies_to:
   - "docs/standards/metadata/front_matter_standard.md"
-  - "core/control_plane/schemas/interfaces/documentation"
+  - "core/control_plane/schemas/interfaces/documentation/"
 aliases:
   - "yaml_header"
   - "document_metadata"
@@ -134,4 +134,4 @@ aliases:
 - Local policy and workflow behavior should stay in the linked repository artifacts rather than being inferred from this reference alone.
 
 ## Updated At
-- `2026-03-09T05:06:54Z`
+- `2026-03-12T02:46:38Z`

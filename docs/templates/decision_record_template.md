@@ -10,7 +10,8 @@ updated_at: "YYYY-MM-DDTHH:MM:SSZ"
 audience: "shared"
 authority: "supporting"
 applies_to:
-  - "<repo/path/or/concept>"
+  - "<repo/path/>"
+  - "<concept_id>"
 aliases:
   - "<helpful search alias>"
 ---
@@ -20,6 +21,7 @@ aliases:
 > Use this template for durable decision records stored under `docs/planning/decisions/`.
 > Keep the final document aligned with [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md) and [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md).
 > Keep front matter aligned with the `Record Metadata` block below.
+> When `applies_to` uses repo paths, files should omit a trailing slash and directories should end in `/`.
 > Keep one primary decision per file.
 
 ## Record Metadata
