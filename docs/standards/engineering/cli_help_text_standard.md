@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "cli_help"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T02:06:54Z"
 audience: "shared"
 authority: "authoritative"
 aliases:
@@ -90,7 +90,7 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 
 ## Operationalization
 - `Modes`: `documentation`; `runtime`
-- `Operational Surfaces`: `docs/commands`; `core/python/src/watchtower_core/cli`; `docs/commands/`; `docs/commands/core_python/watchtower_core.md`
+- `Operational Surfaces`: `docs/commands/`; `core/python/src/watchtower_core/cli/`; `docs/commands/core_python/watchtower_core.md`
 
 ## Validation
 - Root and command-group `--help` output should be understandable without opening the implementation file first.
@@ -109,4 +109,4 @@ Keep CLI help useful as the first-stop operator surface instead of treating `--h
 - [docs/templates/command_reference_template.md](/home/j/WatchTowerPlan/docs/templates/command_reference_template.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T02:06:54Z`

@@ -2166,6 +2166,83 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-11T20:10:00Z for trace.standard_authoring_surface_alignment."
     },
     {
+      "trace_id": "trace.standard_operationalization_directory_canonicalization",
+      "title": "Standard Operationalization Directory Canonicalization PRD",
+      "summary": "Canonicalize directory operationalization paths in governed standards, eliminate semantically duplicate directory entries from the standard index, and harden standards validation against future duplicate-path drift.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T02:26:14Z",
+      "prd_ids": [
+        "prd.standard_operationalization_directory_canonicalization"
+      ],
+      "decision_ids": [
+        "decision.standard_operationalization_directory_canonicalization_direction"
+      ],
+      "design_ids": [
+        "design.features.standard_operationalization_directory_canonicalization"
+      ],
+      "plan_ids": [
+        "design.implementation.standard_operationalization_directory_canonicalization"
+      ],
+      "task_ids": [
+        "task.standard_operationalization_directory_canonicalization.bootstrap.001",
+        "task.standard_operationalization_directory_canonicalization.implementation.001",
+        "task.standard_operationalization_directory_canonicalization.validation_closeout.001"
+      ],
+      "requirement_ids": [
+        "req.standard_operationalization_directory_canonicalization.001",
+        "req.standard_operationalization_directory_canonicalization.002",
+        "req.standard_operationalization_directory_canonicalization.003"
+      ],
+      "acceptance_ids": [
+        "ac.standard_operationalization_directory_canonicalization.001",
+        "ac.standard_operationalization_directory_canonicalization.002",
+        "ac.standard_operationalization_directory_canonicalization.003",
+        "ac.standard_operationalization_directory_canonicalization.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.standard_operationalization_directory_canonicalization"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.standard_operationalization_directory_canonicalization.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/standard_operationalization_directory_canonicalization_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/design/implementation/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/canonicalize_standard_operationalization_directory_paths.md",
+        "docs/planning/tasks/closed/standard_operationalization_directory_canonicalization_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/templates/standard_document_template.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T02:06:54Z for trace.standard_operationalization_directory_canonicalization.",
+      "closed_at": "2026-03-12T02:26:14Z",
+      "closure_reason": "Closed after enforcing canonical standard operationalization syntax, aligning the live standards corpus, validating the repository baseline, and confirming a final no-new-issues standards review pass."
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "title": "Standard, Runtime, and Route Explicitness Hardening PRD",
       "summary": "Closes the still-valid report-set gaps around standards operationalization metadata, runtime package boundary documentation, and advisory route-preview matching.",

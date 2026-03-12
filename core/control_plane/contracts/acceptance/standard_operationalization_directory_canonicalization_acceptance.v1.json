@@ -1,0 +1,98 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.standard_operationalization_directory_canonicalization",
+  "title": "Standard Operationalization Directory Canonicalization Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.standard_operationalization_directory_canonicalization",
+  "source_prd_id": "prd.standard_operationalization_directory_canonicalization",
+  "entries": [
+    {
+      "acceptance_id": "ac.standard_operationalization_directory_canonicalization.001",
+      "summary": "The traced planning baseline captures the issue, accepted direction, supporting design and plan docs, acceptance contract, evidence baseline, and bounded task set for the remediation slice.",
+      "source_requirement_ids": [
+        "req.standard_operationalization_directory_canonicalization.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/design/features/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/design/implementation/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/decisions/standard_operationalization_directory_canonicalization_direction.md",
+        "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
+        "docs/planning/tasks/open/standard_operationalization_directory_canonicalization_bootstrap.md",
+        "docs/planning/tasks/open/canonicalize_standard_operationalization_directory_paths.md",
+        "docs/planning/tasks/open/validate_and_close_standard_operationalization_directory_canonicalization.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline contract refreshed at 2026-03-12T02:26:31Z for trace.standard_operationalization_directory_canonicalization after the bounded task set was closed."
+    },
+    {
+      "acceptance_id": "ac.standard_operationalization_directory_canonicalization.002",
+      "summary": "The shared standards parser and the affected live standards enforce canonical file and directory operationalization syntax so non-canonical directory paths cannot reach the standard index.",
+      "source_requirement_ids": [
+        "req.standard_operationalization_directory_canonicalization.001",
+        "req.standard_operationalization_directory_canonicalization.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/templates/standard_document_template.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "notes": "The parser must fail closed on directory paths that omit `/`, and the live standards corpus must publish only canonical exact-file and directory forms for this slice."
+    },
+    {
+      "acceptance_id": "ac.standard_operationalization_directory_canonicalization.003",
+      "summary": "Regression coverage proves non-canonical directory operationalization paths fail validation and sync, and the live standards corpus remains free of semantically duplicate operationalization entries.",
+      "source_requirement_ids": [
+        "req.standard_operationalization_directory_canonicalization.002",
+        "req.standard_operationalization_directory_canonicalization.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/templates/standard_document_template.md"
+      ],
+      "notes": "Unit and integration regressions must cover both fixture-driven failure cases and a live-corpus canonicalization audit."
+    },
+    {
+      "acceptance_id": "ac.standard_operationalization_directory_canonicalization.004",
+      "summary": "The traced slice validates end to end, closes cleanly, and the follow-up expansive standards review pass finds no additional actionable issues.",
+      "source_requirement_ids": [
+        "req.standard_operationalization_directory_canonicalization.001",
+        "req.standard_operationalization_directory_canonicalization.002",
+        "req.standard_operationalization_directory_canonicalization.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "notes": "Final closeout leaves the repository ready for bootstrap with no active initiatives or actionable tasks for this trace."
+    }
+  ]
+}

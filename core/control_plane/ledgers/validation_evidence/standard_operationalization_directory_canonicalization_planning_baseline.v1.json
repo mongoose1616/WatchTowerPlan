@@ -1,0 +1,119 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.standard_operationalization_directory_canonicalization.planning_baseline",
+  "title": "Standard Operationalization Directory Canonicalization Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.standard_operationalization_directory_canonicalization",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T02:26:31Z",
+  "source_prd_ids": [
+    "prd.standard_operationalization_directory_canonicalization"
+  ],
+  "source_design_ids": [
+    "design.features.standard_operationalization_directory_canonicalization"
+  ],
+  "source_plan_ids": [
+    "design.implementation.standard_operationalization_directory_canonicalization"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.standard_operationalization_directory_canonicalization"
+  ],
+  "checks": [
+    {
+      "check_id": "check.standard_operationalization_directory_canonicalization.planning_baseline",
+      "title": "Planning baseline is aligned for the operationalization canonicalization slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/design/features/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/design/implementation/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/decisions/standard_operationalization_directory_canonicalization_direction.md",
+        "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/standard_operationalization_directory_canonicalization_bootstrap.md",
+        "docs/planning/tasks/closed/canonicalize_standard_operationalization_directory_paths.md",
+        "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md"
+      ],
+      "subject_ids": [
+        "prd.standard_operationalization_directory_canonicalization",
+        "design.features.standard_operationalization_directory_canonicalization",
+        "design.implementation.standard_operationalization_directory_canonicalization",
+        "task.standard_operationalization_directory_canonicalization.bootstrap.001",
+        "task.standard_operationalization_directory_canonicalization.implementation.001",
+        "task.standard_operationalization_directory_canonicalization.validation_closeout.001",
+        "contract.acceptance.standard_operationalization_directory_canonicalization",
+        "decision.standard_operationalization_directory_canonicalization_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.standard_operationalization_directory_canonicalization.001"
+      ],
+      "notes": "The trace now carries a real PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed evidence artifact, and a fully closed bounded task set."
+    },
+    {
+      "check_id": "check.standard_operationalization_directory_canonicalization.canonical_parser",
+      "title": "Shared standards parsing and live standards docs enforce canonical operationalization syntax",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/templates/standard_document_template.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.standard_operationalization_directory_canonicalization.implementation.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_operationalization_directory_canonicalization.002"
+      ],
+      "notes": "The shared standards parser now rejects non-canonical directory paths, the live CLI help standard publishes canonical directory syntax, and the rebuilt standard index carries only the canonical operationalization values for this slice."
+    },
+    {
+      "check_id": "check.standard_operationalization_directory_canonicalization.regression_hardening",
+      "title": "Regression coverage protects canonical operationalization-path behavior",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.standard_operationalization_directory_canonicalization.implementation.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_operationalization_directory_canonicalization.003"
+      ],
+      "notes": "Targeted regressions cover fixture-driven document-semantics failures, standard-index sync failures, and a live-corpus audit for canonical operationalization paths."
+    },
+    {
+      "check_id": "check.standard_operationalization_directory_canonicalization.validation_closeout",
+      "title": "Final validation and no-new-issues review pass are tracked for closeout",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
+        "docs/planning/tasks/open/validate_and_close_standard_operationalization_directory_canonicalization.md"
+      ],
+      "subject_ids": [
+        "task.standard_operationalization_directory_canonicalization.validation_closeout.001",
+        "contract.acceptance.standard_operationalization_directory_canonicalization"
+      ],
+      "acceptance_ids": [
+        "ac.standard_operationalization_directory_canonicalization.004"
+      ],
+      "notes": "watchtower-core validate acceptance --trace-id trace.standard_operationalization_directory_canonicalization --format json, watchtower-core validate all --format json, pytest -q, .venv/bin/python -m mypy src/watchtower_core from core/python, ruff check ., watchtower-core sync all --write --format json, watchtower-core query coordination --format json, and the final no-new-issues standards audit all passed before task and initiative closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T02:26:31Z for trace.standard_operationalization_directory_canonicalization after validation and initiative closeout.",
+  "source_decision_ids": [
+    "decision.standard_operationalization_directory_canonicalization_direction"
+  ]
+}

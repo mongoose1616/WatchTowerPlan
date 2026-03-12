@@ -8,8 +8,10 @@ import pytest
 import yaml
 from jsonschema import ValidationError
 
+from watchtower_core.adapters import extract_sections
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.schemas import SchemaStore
+from watchtower_core.repo_ops.standards import parse_standard_operationalization
 from watchtower_core.validation.artifact import ArtifactValidationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -515,6 +517,7 @@ def test_standard_document_template_stays_aligned_with_governed_contract() -> No
     operationalization_section = operationalization_section_match.group(1)
     assert "- `Modes`:" in operationalization_section
     assert "- `Operational Surfaces`:" in operationalization_section
+    assert "directory paths ending in `/`" in markdown
 
     optional_sections_match = re.search(
         r"^## Optional Sections\n(.*?)(?=^## |\Z)",
@@ -733,6 +736,38 @@ def test_data_contract_standards_publish_family_example_operationalization_cover
             assert value in operationalization_section, (
                 f"missing operationalization surface {value} in {path}"
             )
+
+
+def test_live_standard_operationalization_paths_are_canonical() -> None:
+    for path in sorted((REPO_ROOT / "docs/standards").rglob("*_standard.md")):
+        relative_path = path.relative_to(REPO_ROOT).as_posix()
+        markdown = FRONT_MATTER_PATTERN.sub("", path.read_text(encoding="utf-8"), count=1)
+        sections = extract_sections(markdown)
+        _, operationalization_paths = parse_standard_operationalization(
+            relative_path,
+            sections.get("Operationalization"),
+            REPO_ROOT,
+        )
+
+        canonical_forms = {value.casefold().rstrip("/") for value in operationalization_paths}
+        assert len(canonical_forms) == len(operationalization_paths), (
+            f"semantically duplicate operationalization paths published in {relative_path}"
+        )
+
+        for value in operationalization_paths:
+            if any(token in value for token in "*?["):
+                continue
+            candidate = REPO_ROOT / value.rstrip("/")
+            if candidate.is_dir():
+                assert value.endswith("/"), (
+                    "directory operationalization path must end with '/': "
+                    f"{relative_path} -> {value}"
+                )
+            else:
+                assert not value.endswith("/"), (
+                    "file operationalization path must not end with '/': "
+                    f"{relative_path} -> {value}"
+                )
 
 
 def test_readme_template_stays_aligned_with_governed_contract() -> None:

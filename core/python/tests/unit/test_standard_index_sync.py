@@ -5,6 +5,8 @@ from pathlib import Path
 from shutil import copytree
 from textwrap import dedent
 
+import pytest
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.sync import StandardIndexSyncService
 
@@ -205,3 +207,83 @@ def test_standard_index_sync_extracts_document_relative_reference_paths(
         "docs/references/example_reference.md",
         "docs/README.md",
     ]
+
+
+def test_standard_index_sync_rejects_noncanonical_directory_operationalization_paths(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    _write_repo_file(repo_root / "docs/README.md")
+    (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(reference_path)
+    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    standard_path.parent.mkdir(parents=True, exist_ok=True)
+    standard_path.write_text(
+        dedent(
+            """\
+            ---
+            id: "std.documentation.example"
+            title: "Example Standard"
+            summary: "Exercises canonical directory operationalization validation."
+            type: "standard"
+            status: "active"
+            tags:
+              - "standard"
+              - "documentation"
+              - "example"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-12T02:06:54Z"
+            audience: "shared"
+            authority: "authoritative"
+            ---
+
+            # Example Standard
+
+            ## Summary
+            Exercises canonical directory operationalization validation.
+
+            ## Purpose
+            Keep the fixture focused on duplicate directory-path drift.
+
+            ## Scope
+            - Applies to one standard-index fixture.
+
+            ## Use When
+            - Rebuilding the governed standard index.
+
+            ## Related Standards and Sources
+            - [example_reference.md](../../references/example_reference.md): governed local
+              reference doc drives the rule.
+
+            ## Guidance
+            - Keep operationalization directory syntax canonical.
+
+            ## Operationalization
+            - `Modes`: `documentation`
+            - `Operational Surfaces`: `docs/commands`; `docs/commands/`
+
+            ## Validation
+            - Standard-index sync should reject semantically duplicate directory paths.
+
+            ## Change Control
+            - Update validation and sync helpers together if this rule changes.
+
+            ## References
+            - [README.md](../../README.md)
+
+            ## Updated At
+            - `2026-03-12T02:06:54Z`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+
+    message = (
+        "directory operationalization surfaces must use repo-relative "
+        "directory paths ending in '/'"
+    )
+    with pytest.raises(ValueError, match=message):
+        StandardIndexSyncService(loader).build_document()

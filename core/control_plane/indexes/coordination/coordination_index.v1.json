@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-12T01:35:13Z",
+  "updated_at": "2026-03-12T02:26:14Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,81 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.standard_operationalization_directory_canonicalization",
+      "title": "Standard Operationalization Directory Canonicalization PRD",
+      "summary": "Canonicalize directory operationalization paths in governed standards, eliminate semantically duplicate directory entries from the standard index, and harden standards validation against future duplicate-path drift.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T02:26:14Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+      "prd_ids": [
+        "prd.standard_operationalization_directory_canonicalization"
+      ],
+      "decision_ids": [
+        "decision.standard_operationalization_directory_canonicalization_direction"
+      ],
+      "design_ids": [
+        "design.features.standard_operationalization_directory_canonicalization"
+      ],
+      "plan_ids": [
+        "design.implementation.standard_operationalization_directory_canonicalization"
+      ],
+      "task_ids": [
+        "task.standard_operationalization_directory_canonicalization.bootstrap.001",
+        "task.standard_operationalization_directory_canonicalization.implementation.001",
+        "task.standard_operationalization_directory_canonicalization.validation_closeout.001"
+      ],
+      "acceptance_ids": [
+        "ac.standard_operationalization_directory_canonicalization.001",
+        "ac.standard_operationalization_directory_canonicalization.002",
+        "ac.standard_operationalization_directory_canonicalization.003",
+        "ac.standard_operationalization_directory_canonicalization.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.standard_operationalization_directory_canonicalization"
+      ],
+      "evidence_ids": [
+        "evidence.standard_operationalization_directory_canonicalization.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T02:26:14Z",
+      "closure_reason": "Closed after enforcing canonical standard operationalization syntax, aligning the live standards corpus, validating the repository baseline, and confirming a final no-new-issues standards review pass.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/standard_operationalization_directory_canonicalization_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/design/implementation/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/canonicalize_standard_operationalization_directory_paths.md",
+        "docs/planning/tasks/closed/standard_operationalization_directory_canonicalization_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/templates/standard_document_template.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T02:06:54Z for trace.standard_operationalization_directory_canonicalization."
+    },
     {
       "trace_id": "trace.data_contract_example_operationalization_alignment",
       "title": "Data Contract Example Operationalization Alignment PRD",
@@ -2597,6 +2672,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.standard_operationalization_directory_canonicalization",
+      "title": "Standard Operationalization Directory Canonicalization PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-12T02:26:14Z",
+      "key_surface_path": "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+      "closure_reason": "Closed after enforcing canonical standard operationalization syntax, aligning the live standards corpus, validating the repository baseline, and confirming a final no-new-issues standards review pass."
+    },
+    {
       "trace_id": "trace.data_contract_example_operationalization_alignment",
       "title": "Data Contract Example Operationalization Alignment PRD",
       "initiative_status": "completed",
@@ -2667,14 +2750,6 @@
       "closed_at": "2026-03-11T17:13:35Z",
       "key_surface_path": "docs/planning/prds/internal_project_code_review_follow_up.md",
       "closure_reason": "Completed the follow-up internal code review, aligned decision scaffold and aggregate semantic validation rules, corrected bootstrap-only phase semantics, and revalidated the repository baseline."
-    },
-    {
-      "trace_id": "trace.internal_project_code_review_and_hardening",
-      "title": "Internal Project Code Review and Hardening PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-11T16:23:46Z",
-      "key_surface_path": "docs/planning/prds/internal_project_code_review_and_hardening.md",
-      "closure_reason": "Completed the internal code review, fixed the scaffold and closeout lifecycle sync defects, published durable evidence, and revalidated the repository baseline."
     }
   ]
 }

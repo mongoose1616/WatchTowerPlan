@@ -2027,6 +2027,82 @@
       ]
     },
     {
+      "task_id": "task.standard_operationalization_directory_canonicalization.bootstrap.001",
+      "title": "Bootstrap Standard Operationalization Directory Canonicalization planning chain",
+      "summary": "Bootstraps the initial planning chain for Standard Operationalization Directory Canonicalization.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/standard_operationalization_directory_canonicalization_bootstrap.md",
+      "updated_at": "2026-03-12T02:14:44Z",
+      "trace_id": "trace.standard_operationalization_directory_canonicalization",
+      "related_ids": [
+        "prd.standard_operationalization_directory_canonicalization",
+        "design.features.standard_operationalization_directory_canonicalization",
+        "design.implementation.standard_operationalization_directory_canonicalization",
+        "decision.standard_operationalization_directory_canonicalization_direction",
+        "contract.acceptance.standard_operationalization_directory_canonicalization"
+      ]
+    },
+    {
+      "task_id": "task.standard_operationalization_directory_canonicalization.implementation.001",
+      "title": "Canonicalize standard operationalization directory paths",
+      "summary": "Hardens standard operationalization parsing, aligns the CLI help standard with canonical directory syntax, and adds regression coverage for duplicate directory-path drift.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/canonicalize_standard_operationalization_directory_paths.md",
+      "updated_at": "2026-03-12T02:17:16Z",
+      "trace_id": "trace.standard_operationalization_directory_canonicalization",
+      "related_ids": [
+        "prd.standard_operationalization_directory_canonicalization",
+        "design.features.standard_operationalization_directory_canonicalization",
+        "design.implementation.standard_operationalization_directory_canonicalization",
+        "decision.standard_operationalization_directory_canonicalization_direction",
+        "contract.acceptance.standard_operationalization_directory_canonicalization"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ]
+    },
+    {
+      "task_id": "task.standard_operationalization_directory_canonicalization.validation_closeout.001",
+      "title": "Validate and close standard operationalization directory canonicalization",
+      "summary": "Runs targeted and end-to-end validation, refreshes derived surfaces, records evidence, and closes the initiative after the standards fix lands.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md",
+      "updated_at": "2026-03-12T02:26:01Z",
+      "trace_id": "trace.standard_operationalization_directory_canonicalization",
+      "depends_on": [
+        "task.standard_operationalization_directory_canonicalization.implementation.001"
+      ],
+      "related_ids": [
+        "prd.standard_operationalization_directory_canonicalization",
+        "design.features.standard_operationalization_directory_canonicalization",
+        "design.implementation.standard_operationalization_directory_canonicalization",
+        "decision.standard_operationalization_directory_canonicalization_direction",
+        "contract.acceptance.standard_operationalization_directory_canonicalization"
+      ],
+      "applies_to": [
+        "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
+        "docs/planning/tasks/"
+      ]
+    },
+    {
       "task_id": "task.standard_runtime_and_route_explicitness.bootstrap.001",
       "title": "Bootstrap Standard, Runtime, and Route Explicitness Hardening planning chain",
       "summary": "Bootstraps the initial planning chain for Standard, Runtime, and Route Explicitness Hardening.",

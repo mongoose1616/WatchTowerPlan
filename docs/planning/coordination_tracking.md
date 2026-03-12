@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.standard_operationalization_directory_canonicalization` | `completed` | `2026-03-12T02:26:14Z` | [standard_operationalization_directory_canonicalization.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_operationalization_directory_canonicalization.md) |
 | `trace.data_contract_example_operationalization_alignment` | `completed` | `2026-03-12T01:35:09Z` | [data_contract_example_operationalization_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_example_operationalization_alignment.md) |
 | `trace.documentation_family_lookup_and_readme_template_alignment` | `completed` | `2026-03-12T01:07:10Z` | [documentation_family_lookup_and_readme_template_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md) |
 | `trace.standards_lookup_and_generic_template_alignment` | `completed` | `2026-03-12T00:26:00Z` | [standards_lookup_and_generic_template_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/standards_lookup_and_generic_template_alignment.md) |
 | `trace.reference_and_workflow_standards_alignment` | `completed` | `2026-03-11T23:32:19Z` | [reference_and_workflow_standards_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_and_workflow_standards_alignment.md) |
-| `trace.planning_semantics_and_decision_contract_alignment` | `completed` | `2026-03-11T21:01:05Z` | [planning_semantics_and_decision_contract_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_semantics_and_decision_contract_alignment.md) |
 
-_Updated At: `2026-03-12T01:35:13Z`_
+_Updated At: `2026-03-12T02:26:14Z`_

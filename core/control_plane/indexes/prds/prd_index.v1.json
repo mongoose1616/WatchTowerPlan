@@ -965,6 +965,47 @@
       ]
     },
     {
+      "trace_id": "trace.standard_operationalization_directory_canonicalization",
+      "prd_id": "prd.standard_operationalization_directory_canonicalization",
+      "title": "Standard Operationalization Directory Canonicalization PRD",
+      "summary": "Canonicalize directory operationalization paths in governed standards, eliminate semantically duplicate directory entries from the standard index, and harden standards validation against future duplicate-path drift.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
+      "updated_at": "2026-03-12T02:06:54Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.standard_operationalization_directory_canonicalization.001",
+        "req.standard_operationalization_directory_canonicalization.002",
+        "req.standard_operationalization_directory_canonicalization.003"
+      ],
+      "acceptance_ids": [
+        "ac.standard_operationalization_directory_canonicalization.001",
+        "ac.standard_operationalization_directory_canonicalization.002",
+        "ac.standard_operationalization_directory_canonicalization.003",
+        "ac.standard_operationalization_directory_canonicalization.004"
+      ],
+      "linked_decision_ids": [
+        "decision.standard_operationalization_directory_canonicalization_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.standard_operationalization_directory_canonicalization"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.standard_operationalization_directory_canonicalization"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/templates/standard_document_template.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ]
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "prd_id": "prd.standard_runtime_and_route_explicitness",
       "title": "Standard, Runtime, and Route Explicitness Hardening PRD",

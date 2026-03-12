@@ -836,6 +836,47 @@
       ]
     },
     {
+      "trace_id": "trace.standard_operationalization_directory_canonicalization",
+      "decision_id": "decision.standard_operationalization_directory_canonicalization_direction",
+      "title": "Standard Operationalization Directory Canonicalization Direction Decision",
+      "summary": "Records the initial direction decision for Standard Operationalization Directory Canonicalization.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/standard_operationalization_directory_canonicalization_direction.md",
+      "updated_at": "2026-03-12T02:06:54Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.standard_operationalization_directory_canonicalization"
+      ],
+      "linked_design_ids": [
+        "design.features.standard_operationalization_directory_canonicalization"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.standard_operationalization_directory_canonicalization"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/engineering/cli_help_text_standard.md",
+        "docs/templates/standard_document_template.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ]
+    },
+    {
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "decision_id": "decision.standard_runtime_and_route_explicitness_direction",
       "title": "Standard, Runtime, and Route Explicitness Hardening Direction Decision",

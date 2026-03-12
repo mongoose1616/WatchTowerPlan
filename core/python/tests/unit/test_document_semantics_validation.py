@@ -575,6 +575,35 @@ def test_document_semantics_validation_accepts_local_reference_doc_in_related_so
     assert result.issue_count == 0
 
 
+def test_document_semantics_validation_rejects_noncanonical_directory_operationalization_path(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    related_target = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(related_target, support_target=support_target)
+    (repo_root / "docs/commands").mkdir(parents=True, exist_ok=True)
+    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    _write_standard_fixture(
+        standard_path,
+        related_target=related_target,
+        reference_target=support_target,
+        operationalization_surfaces=("docs/commands",),
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/standards/documentation/example_standard.md")
+
+    assert result.passed is False
+    assert result.issue_count == 1
+    expected = (
+        "directory operationalization surfaces must use repo-relative "
+        "directory paths ending in '/'"
+    )
+    assert expected in result.issues[0].message
+
+
 def test_document_semantics_validation_rejects_external_authority_without_local_reference_doc(
     tmp_path: Path,
 ) -> None:

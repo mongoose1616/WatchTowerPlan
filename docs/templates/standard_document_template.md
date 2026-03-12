@@ -21,6 +21,7 @@ authority: "authoritative"
 > Keep one primary standard concern per document.
 > Write `Related Standards and Sources` bullets in `source: implication` form so the local consequence of each authority is explicit.
 > Publish `Operationalization` with metadata bullets for `Modes` and `Operational Surfaces`.
+> Use repo-relative file paths for exact files, repo-relative directory paths ending in `/` for directories, and bounded repo-relative glob patterns for repeating families.
 > Keep `Updated At` aligned with front matter `updated_at`.
 > Leave one blank line between the last item in a bullet or numbered list and the next heading.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.
@@ -49,7 +50,7 @@ authority: "authoritative"
 
 ## Operationalization
 - `Modes`: `<mode>`; `<mode>`
-- `Operational Surfaces`: `<repo/path>`; `<repo/path>`
+- `Operational Surfaces`: `<repo/file.md>`; `<repo/directory/>`
 
 ## Validation
 - <How reviewers or automation should verify compliance.>

@@ -25,6 +25,11 @@ _STANDARD_GLOB_PATTERN_ERROR = (
     "operationalization surface glob patterns must be repo-relative and match at least "
     "one live repository surface"
 )
+_STANDARD_DIRECTORY_PATH_ERROR = (
+    "directory operationalization surfaces must use repo-relative directory paths "
+    "ending in '/'"
+)
+_STANDARD_FILE_PATH_ERROR = "file operationalization surfaces must not end with '/'"
 
 
 @dataclass(frozen=True, slots=True)
@@ -234,6 +239,13 @@ def _normalize_standard_operationalization_path(
             f"{relative_path} operationalization surface must be a valid repository path: "
             f"{value}"
         )
+    resolved = repo_root / Path(normalized.rstrip("/"))
+    if resolved.is_dir():
+        if not normalized.endswith("/"):
+            raise ValueError(f"{relative_path} {_STANDARD_DIRECTORY_PATH_ERROR}: {value}")
+        return normalized
+    if normalized.endswith("/"):
+        raise ValueError(f"{relative_path} {_STANDARD_FILE_PATH_ERROR}: {value}")
     return normalized
 
 
