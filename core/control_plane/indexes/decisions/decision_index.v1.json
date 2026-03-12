@@ -462,6 +462,56 @@
       ]
     },
     {
+      "trace_id": "trace.foundations_documentation_completeness_alignment",
+      "decision_id": "decision.foundations_documentation_completeness_alignment_direction",
+      "title": "Foundations Documentation Completeness Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Foundations Documentation Completeness Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
+      "updated_at": "2026-03-12T21:27:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.foundations_documentation_completeness_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.foundations_documentation_completeness_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundations_documentation_completeness_alignment"
+      ],
+      "related_paths": [
+        "docs/foundations/",
+        "workflows/modules/foundations_context_review.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/control_plane/indexes/foundations/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/foundations/README.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
       "decision_id": "decision.governed_front_matter_directory_canonicalization.direction",
       "title": "Governed Front Matter Directory Canonicalization Direction Decision",

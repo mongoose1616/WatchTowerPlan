@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "technology_stack"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T01:34:31Z"
+updated_at: "2026-03-12T21:26:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -87,6 +87,17 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
+- [json_schema_2020_12_reference.md](/home/j/WatchTowerPlan/docs/references/json_schema_2020_12_reference.md)
+- [uv_reference.md](/home/j/WatchTowerPlan/docs/references/uv_reference.md)
+- [pytest_reference.md](/home/j/WatchTowerPlan/docs/references/pytest_reference.md)
+- [ruff_reference.md](/home/j/WatchTowerPlan/docs/references/ruff_reference.md)
+- [mypy_reference.md](/home/j/WatchTowerPlan/docs/references/mypy_reference.md)
+- [pydantic_strict_mode_reference.md](/home/j/WatchTowerPlan/docs/references/pydantic_strict_mode_reference.md)
+- [opa_rego_reference.md](/home/j/WatchTowerPlan/docs/references/opa_rego_reference.md)
+- [cyclonedx_1_7_reference.md](/home/j/WatchTowerPlan/docs/references/cyclonedx_1_7_reference.md)
+- [sigstore_reference.md](/home/j/WatchTowerPlan/docs/references/sigstore_reference.md)
+- [slsa_1_1_reference.md](/home/j/WatchTowerPlan/docs/references/slsa_1_1_reference.md)
+- [in_toto_v1_0_reference.md](/home/j/WatchTowerPlan/docs/references/in_toto_v1_0_reference.md)
 
 ## Updated At
-- `2026-03-11T01:34:31Z`
+- `2026-03-12T21:26:00Z`

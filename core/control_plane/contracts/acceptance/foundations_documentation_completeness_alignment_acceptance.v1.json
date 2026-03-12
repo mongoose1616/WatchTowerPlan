@@ -1,0 +1,110 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.foundations_documentation_completeness_alignment",
+  "title": "Foundations Documentation Completeness Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.foundations_documentation_completeness_alignment",
+  "source_prd_id": "prd.foundations_documentation_completeness_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.foundations_documentation_completeness_alignment.001",
+      "summary": "The traced planning chain, accepted direction decision, acceptance contract, evidence ledger, and closed task set reconcile for the foundations documentation completeness alignment slice.",
+      "source_requirement_ids": [
+        "req.foundations_documentation_completeness_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/foundations_documentation_completeness_alignment.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
+        "docs/planning/design/implementation/foundations_documentation_completeness_alignment.md",
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
+        "docs/planning/tasks/closed/foundations_documentation_completeness_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/implement_foundations_documentation_completeness_alignment.md",
+        "docs/planning/tasks/closed/validate_foundations_documentation_completeness_alignment.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning, decision, task, and tracking surfaces must reconcile cleanly for trace.foundations_documentation_completeness_alignment."
+    },
+    {
+      "acceptance_id": "ac.foundations_documentation_completeness_alignment.002",
+      "summary": "The foundations-aware review workflow explicitly loads the authoritative current-scope, design-principles, standards-posture, stack-direction, and future-product context surfaces needed for foundations-alignment review.",
+      "source_requirement_ids": [
+        "req.foundations_documentation_completeness_alignment.001"
+      ],
+      "validation_targets": [
+        "workflows/modules/foundations_context_review.md",
+        "docs/foundations/README.md"
+      ],
+      "related_paths": [
+        "workflows/ROUTING_TABLE.md"
+      ],
+      "notes": "The workflow guidance should stay aligned with the foundations README and should not omit repository scope or standards posture for review tasks."
+    },
+    {
+      "acceptance_id": "ac.foundations_documentation_completeness_alignment.003",
+      "summary": "The engineering stack foundation cites governed local references for the external technologies and standards it materially names, and the synced foundation index exposes those relationships.",
+      "source_requirement_ids": [
+        "req.foundations_documentation_completeness_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/foundations/engineering_stack_direction.md",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/references/uv_reference.md",
+        "docs/references/pytest_reference.md",
+        "docs/references/ruff_reference.md",
+        "docs/references/mypy_reference.md",
+        "docs/references/json_schema_2020_12_reference.md",
+        "docs/references/pydantic_strict_mode_reference.md",
+        "docs/references/opa_rego_reference.md",
+        "docs/references/sqlite_fts5_reference.md",
+        "docs/references/cyclonedx_1_7_reference.md",
+        "docs/references/sigstore_reference.md",
+        "docs/references/slsa_1_1_reference.md",
+        "docs/references/in_toto_v1_0_reference.md"
+      ],
+      "notes": "The engineering stack foundation entry should project non-empty reference_doc_paths and external_reference_urls after sync."
+    },
+    {
+      "acceptance_id": "ac.foundations_documentation_completeness_alignment.004",
+      "summary": "The foundations query CLI help and command doc publish live examples and wording that match the current foundations corpus, with regression coverage for the refreshed lookup path.",
+      "source_requirement_ids": [
+        "req.foundations_documentation_completeness_alignment.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py"
+      ],
+      "notes": "The refreshed examples should return real results against the live foundation corpus and should expose a reference-path lookup path."
+    },
+    {
+      "acceptance_id": "ac.foundations_documentation_completeness_alignment.005",
+      "summary": "Targeted and full validation pass, and two post-fix review passes find no additional actionable issues in the touched foundations documentation/query area.",
+      "source_requirement_ids": [
+        "req.foundations_documentation_completeness_alignment.001",
+        "req.foundations_documentation_completeness_alignment.002",
+        "req.foundations_documentation_completeness_alignment.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/foundations_documentation_completeness_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_documentation_completeness_alignment_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Closeout requires targeted regressions, sync all, acceptance validation, full repository validation, and two clean follow-up review passes."
+    }
+  ]
+}

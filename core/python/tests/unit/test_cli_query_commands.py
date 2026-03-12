@@ -218,6 +218,29 @@ def test_query_foundations_supports_json_output(capsys) -> None:
     )
 
 
+def test_query_foundations_supports_reference_path_filter(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "foundations",
+            "--reference-path",
+            "docs/references/uv_reference.md",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query foundations"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["foundation_id"] == "foundation.engineering_stack_direction"
+        for entry in payload["results"]
+    )
+
+
 def test_query_workflows_supports_json_output(capsys) -> None:
     result = main(["query", "workflows", "--query", "validation", "--format", "json"])
 

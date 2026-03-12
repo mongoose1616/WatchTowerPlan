@@ -216,6 +216,9 @@
         "https://cyclonedx.org/",
         "https://cyclonedx.org/specification/overview/"
       ],
+      "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md"
+      ],
       "related_paths": [
         "docs/references/README.md"
       ],
@@ -425,6 +428,9 @@
         "https://in-toto.io/",
         "https://in-toto.io/docs/specs/"
       ],
+      "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md"
+      ],
       "related_paths": [
         "docs/references/README.md"
       ],
@@ -446,6 +452,7 @@
         "https://json-schema.org/draft/2020-12"
       ],
       "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_by_paths": [
@@ -498,6 +505,7 @@
         "https://mypy.readthedocs.io/en/stable/config_file.html"
       ],
       "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
@@ -678,6 +686,9 @@
       "canonical_upstream_urls": [
         "https://www.openpolicyagent.org/docs",
         "https://www.openpolicyagent.org/docs/policy-language"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md"
       ],
       "related_paths": [
         "docs/references/README.md"
@@ -909,6 +920,7 @@
         "https://docs.pydantic.dev/latest/"
       ],
       "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/schema_standard.md"
       ],
       "applied_by_paths": [
@@ -968,6 +980,7 @@
         "https://docs.pytest.org/en/stable/how-to/cache.html"
       ],
       "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
@@ -1228,6 +1241,7 @@
         "https://docs.astral.sh/ruff/settings/"
       ],
       "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [
@@ -1304,6 +1318,9 @@
       "canonical_upstream_urls": [
         "https://docs.sigstore.dev/"
       ],
+      "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md"
+      ],
       "related_paths": [
         "docs/references/README.md"
       ],
@@ -1324,6 +1341,9 @@
       "canonical_upstream_urls": [
         "https://slsa.dev/spec/",
         "https://slsa.dev/blog/2025/04/slsa-v1.1"
+      ],
+      "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md"
       ],
       "related_paths": [
         "docs/references/README.md"
@@ -1484,6 +1504,7 @@
         "https://docs.astral.sh/uv/reference/settings/#cache-dir"
       ],
       "cited_by_paths": [
+        "docs/foundations/engineering_stack_direction.md",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "applied_by_paths": [

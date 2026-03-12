@@ -654,19 +654,27 @@
         "technology",
         "direction",
         "docs",
+        "scope",
         "engineering",
         "principles",
+        "stack",
         "intent"
       ],
       "companion_workflow_ids": [
         "workflow.task_handoff_review"
       ],
       "related_paths": [
+        "docs/foundations/repository_scope.md",
         "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
         "docs/foundations/product_direction.md"
       ],
       "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
         "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
         "docs/foundations/product_direction.md"
       ]
     },

@@ -258,25 +258,79 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/engineering_stack_direction.md",
-      "updated_at": "2026-03-11T01:34:31Z",
+      "updated_at": "2026-03-12T21:26:00Z",
       "uses_internal_references": true,
-      "uses_external_references": false,
+      "uses_external_references": true,
       "related_paths": [
         "core/control_plane/",
         "core/python/",
         "docs/standards/"
       ],
+      "reference_doc_paths": [
+        "docs/references/json_schema_2020_12_reference.md",
+        "docs/references/uv_reference.md",
+        "docs/references/pytest_reference.md",
+        "docs/references/ruff_reference.md",
+        "docs/references/mypy_reference.md",
+        "docs/references/pydantic_strict_mode_reference.md",
+        "docs/references/opa_rego_reference.md",
+        "docs/references/cyclonedx_1_7_reference.md",
+        "docs/references/sigstore_reference.md",
+        "docs/references/slsa_1_1_reference.md",
+        "docs/references/in_toto_v1_0_reference.md"
+      ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/product_direction.md",
-        "docs/standards/data_contracts/format_selection_standard.md"
+        "docs/standards/data_contracts/format_selection_standard.md",
+        "docs/references/json_schema_2020_12_reference.md",
+        "docs/references/uv_reference.md",
+        "docs/references/pytest_reference.md",
+        "docs/references/ruff_reference.md",
+        "docs/references/mypy_reference.md",
+        "docs/references/pydantic_strict_mode_reference.md",
+        "docs/references/opa_rego_reference.md",
+        "docs/references/cyclonedx_1_7_reference.md",
+        "docs/references/sigstore_reference.md",
+        "docs/references/slsa_1_1_reference.md",
+        "docs/references/in_toto_v1_0_reference.md"
+      ],
+      "external_reference_urls": [
+        "https://json-schema.org/draft/2020-12",
+        "https://docs.astral.sh/uv/",
+        "https://docs.astral.sh/uv/concepts/projects/layout/",
+        "https://docs.astral.sh/uv/reference/settings/#cache-dir",
+        "https://docs.pytest.org/en/stable/",
+        "https://docs.pytest.org/en/stable/explanation/goodpractices.html",
+        "https://docs.pytest.org/en/stable/example/markers.html",
+        "https://docs.pytest.org/en/stable/how-to/cache.html",
+        "https://docs.astral.sh/ruff/",
+        "https://docs.astral.sh/ruff/configuration/",
+        "https://docs.astral.sh/ruff/settings/",
+        "https://www.mypy-lang.org/",
+        "https://mypy.readthedocs.io/en/stable/",
+        "https://mypy.readthedocs.io/en/stable/common_issues.html",
+        "https://mypy.readthedocs.io/en/stable/config_file.html",
+        "https://docs.pydantic.dev/latest/concepts/strict_mode/",
+        "https://docs.pydantic.dev/latest/",
+        "https://www.openpolicyagent.org/docs",
+        "https://www.openpolicyagent.org/docs/policy-language",
+        "https://cyclonedx.org/",
+        "https://cyclonedx.org/specification/overview/",
+        "https://docs.sigstore.dev/",
+        "https://slsa.dev/spec/",
+        "https://slsa.dev/blog/2025/04/slsa-v1.1",
+        "https://in-toto.io/",
+        "https://in-toto.io/docs/specs/"
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/repository_standards_posture.md",
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
@@ -284,11 +338,14 @@
         "docs/planning/design/features/reference_resolution_reuse_hardening.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
         "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/standards/data_contracts/schema_standard.md"
+        "docs/standards/data_contracts/schema_standard.md",
+        "workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
@@ -296,7 +353,8 @@
         "docs/planning/design/features/reference_resolution_reuse_hardening.md",
         "docs/planning/design/features/schema_resolution_and_index_search.md",
         "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/standards/data_contracts/schema_standard.md"
+        "docs/standards/data_contracts/schema_standard.md",
+        "workflows/modules/foundations_context_review.md"
       ],
       "aliases": [
         "technology stack",
@@ -345,6 +403,7 @@
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/end_to_end_repo_rationalization.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
@@ -386,6 +445,7 @@
         "docs/planning/design/features/core_python_workspace_and_harness.md",
         "docs/planning/design/features/end_to_end_repo_rationalization.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
@@ -454,14 +514,20 @@
         "docs/foundations/engineering_stack_direction.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/repository_standards_posture.md",
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
         "docs/planning/design/features/derived_projection_status_semantics_alignment.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
         "docs/planning/design/features/planning_authority_unification.md",
-        "docs/planning/prds/planning_authority_unification.md"
+        "docs/planning/prds/planning_authority_unification.md",
+        "workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
         "docs/planning/design/features/derived_projection_status_semantics_alignment.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
         "docs/planning/design/features/planning_authority_unification.md",
-        "docs/planning/prds/planning_authority_unification.md"
+        "docs/planning/prds/planning_authority_unification.md",
+        "workflows/modules/foundations_context_review.md"
       ],
       "aliases": [
         "repository scope",
@@ -503,6 +569,7 @@
         "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
         "docs/planning/decisions/coordination_projection_source_reuse_direction.md",
         "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
@@ -518,6 +585,7 @@
         "docs/planning/design/features/design_document_index_relationship_alignment.md",
         "docs/planning/design/features/end_to_end_repo_rationalization.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
@@ -569,13 +637,15 @@
         "docs/standards/data_contracts/status_tracking_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md",
-        "docs/standards/workflows/workflow_design_standard.md"
+        "docs/standards/workflows/workflow_design_standard.md",
+        "workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
         "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
         "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
         "docs/planning/decisions/coordination_projection_source_reuse_direction.md",
         "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
@@ -591,6 +661,7 @@
         "docs/planning/design/features/design_document_index_relationship_alignment.md",
         "docs/planning/design/features/end_to_end_repo_rationalization.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
@@ -642,7 +713,8 @@
         "docs/standards/data_contracts/status_tracking_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md",
-        "docs/standards/workflows/workflow_design_standard.md"
+        "docs/standards/workflows/workflow_design_standard.md",
+        "workflows/modules/foundations_context_review.md"
       ],
       "aliases": [
         "standards",

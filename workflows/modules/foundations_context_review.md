@@ -15,12 +15,18 @@ Use this workflow to load the repository foundation documents that materially sh
 - Known product, standards, or technology questions already surfaced by the task
 
 ## Additional Files to Load
+- [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): anchors current repository ownership so review work does not let future-product language redefine present repo scope.
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): identifies the design-philosophy constraints this workflow should surface for planning tasks.
+- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): identifies the governance and same-change-set alignment posture this workflow should preserve.
+- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): identifies the current technology-direction constraints this workflow should surface when implementation or tooling surfaces are in scope.
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): identifies the product-shape constraints this workflow should surface when planning depends on foundation context.
 
 ## Workflow
 1. Select the relevant foundation documents.
+   - Start with `repository_scope.md` for foundations-aware review and documentation-alignment tasks so current repository ownership stays explicit.
    - Choose only the foundation docs that materially affect the active planning, design, or review task.
+   - Add `repository_standards_posture.md` when the task can affect authority boundaries, synchronized updates, or governance expectations.
+   - Add `engineering_stack_direction.md` when the task affects implementation, tooling, validation, or storage choices.
    - Prefer direct repository foundations over inferred product assumptions.
 2. Extract the governing context.
    - Record the product boundaries, design principles, standards posture, or technology-direction guidance that should shape the task.

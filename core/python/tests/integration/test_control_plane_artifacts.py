@@ -81,6 +81,29 @@ def test_control_plane_loader_loads_current_governed_artifacts() -> None:
     assert task_index.artifact_id == "index.tasks"
 
 
+def test_foundation_index_exposes_engineering_stack_reference_metadata() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    foundation = loader.load_foundation_index().get("foundation.engineering_stack_direction")
+
+    assert foundation.uses_external_references is True
+    assert "docs/references/uv_reference.md" in foundation.reference_doc_paths
+    assert "docs/references/json_schema_2020_12_reference.md" in foundation.reference_doc_paths
+    assert "docs/references/pytest_reference.md" in foundation.reference_doc_paths
+    assert foundation.external_reference_urls
+
+
+def test_foundations_context_review_loads_authoritative_foundation_backbone() -> None:
+    workflow_path = REPO_ROOT / "workflows/modules/foundations_context_review.md"
+    markdown = workflow_path.read_text(encoding="utf-8")
+
+    assert "docs/foundations/repository_scope.md" in markdown
+    assert "docs/foundations/engineering_design_principles.md" in markdown
+    assert "docs/foundations/repository_standards_posture.md" in markdown
+    assert "docs/foundations/engineering_stack_direction.md" in markdown
+    assert "docs/foundations/product_direction.md" in markdown
+
+
 def test_control_plane_loader_validates_current_traceability_artifacts() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 

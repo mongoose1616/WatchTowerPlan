@@ -1,0 +1,139 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.foundations_documentation_completeness_alignment.planning_baseline",
+  "title": "Foundations Documentation Completeness Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.foundations_documentation_completeness_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T21:36:00Z",
+  "source_prd_ids": [
+    "prd.foundations_documentation_completeness_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.foundations_documentation_completeness_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.foundations_documentation_completeness_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.foundations_documentation_completeness_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.foundations_documentation_completeness_alignment.planning_baseline",
+      "title": "Planning baseline captures the confirmed foundations documentation findings",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/foundations_documentation_completeness_alignment.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
+        "docs/planning/design/implementation/foundations_documentation_completeness_alignment.md",
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/foundations_documentation_completeness_alignment_acceptance.v1.json",
+        "docs/planning/tasks/closed/foundations_documentation_completeness_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_foundations_documentation_and_query_surfaces.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_documentation_completeness_alignment.md"
+      ],
+      "subject_ids": [
+        "prd.foundations_documentation_completeness_alignment",
+        "design.features.foundations_documentation_completeness_alignment",
+        "design.implementation.foundations_documentation_completeness_alignment",
+        "task.foundations_documentation_completeness_alignment.bootstrap.001",
+        "task.foundations_documentation_completeness_alignment.implementation.002",
+        "task.foundations_documentation_completeness_alignment.validation.003",
+        "contract.acceptance.foundations_documentation_completeness_alignment",
+        "decision.foundations_documentation_completeness_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_documentation_completeness_alignment.001"
+      ],
+      "notes": "The planning baseline now records the confirmed workflow-context, foundations-query, and engineering-stack-reference completeness issues plus their bounded acceptance criteria."
+    },
+    {
+      "check_id": "check.foundations_documentation_completeness_alignment.workflow_backbone",
+      "title": "Foundations review workflow loads the authoritative backbone",
+      "result": "passed",
+      "subject_paths": [
+        "workflows/modules/foundations_context_review.md",
+        "docs/foundations/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.foundations_documentation_completeness_alignment.implementation.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_documentation_completeness_alignment.002"
+      ],
+      "notes": "The workflow now explicitly loads repository scope, engineering design principles, repository standards posture, engineering stack direction, and product direction, and the targeted integration regression passed."
+    },
+    {
+      "check_id": "check.foundations_documentation_completeness_alignment.stack_references",
+      "title": "Engineering stack foundation projects governed reference metadata",
+      "result": "passed",
+      "subject_paths": [
+        "docs/foundations/engineering_stack_direction.md",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.foundations_documentation_completeness_alignment.implementation.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_documentation_completeness_alignment.003"
+      ],
+      "notes": "The engineering stack foundation now cites 11 governed local reference docs, the synced foundation index entry exposes 11 reference_doc_paths and 26 external_reference_urls, and the refreshed reference-path query returns foundation.engineering_stack_direction."
+    },
+    {
+      "check_id": "check.foundations_documentation_completeness_alignment.query_docs",
+      "title": "Foundations query help and command docs use live corpus-backed examples",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.foundations_documentation_completeness_alignment.implementation.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_documentation_completeness_alignment.004"
+      ],
+      "notes": "The stale maintainers-audience example was removed, help/docs now advertise the live uv reference-path lookup, and the targeted CLI help/query regressions passed."
+    },
+    {
+      "check_id": "check.foundations_documentation_completeness_alignment.validation_closeout",
+      "title": "Validation and follow-up review closeout completed",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/validate_and_close_foundations_documentation_completeness_alignment.md",
+        "docs/planning/coordination_tracking.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.foundations_documentation_completeness_alignment.validation.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_documentation_completeness_alignment.005"
+      ],
+      "notes": "Targeted regressions passed, sync all passed, validate all --skip-acceptance passed with 886/886, mypy passed for 182 source files, ruff check passed, both post-fix review passes found no additional actionable issues, validate acceptance passed after durable evidence coverage was recorded, final validate all passed with 924/924, and pytest -q passed on the terminal closed state."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/foundations_documentation_completeness_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Evidence updated at 2026-03-12T21:36:00Z after implementation, validation, initiative closeout, two clean post-fix review passes, and a green terminal acceptance-inclusive validation baseline for trace.foundations_documentation_completeness_alignment.",
+  "source_decision_ids": [
+    "decision.foundations_documentation_completeness_alignment_direction"
+  ]
+}

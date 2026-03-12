@@ -33,7 +33,8 @@ def register_query_knowledge_commands(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query foundations --query philosophy",
-            "uv run watchtower-core query foundations --audience maintainers",
+            "uv run watchtower-core query foundations --reference-path "
+            "docs/references/uv_reference.md --format json",
             "uv run watchtower-core query foundations --applied-by-path "
             "docs/standards/engineering/engineering_best_practices_standard.md --format json",
         ),
@@ -52,7 +53,7 @@ def register_query_knowledge_commands(
     )
     query_foundations_parser.add_argument(
         "--audience",
-        help="Exact audience filter such as shared, maintainers, or contributors.",
+        help="Exact audience filter such as shared.",
     )
     query_foundations_parser.add_argument(
         "--authority",

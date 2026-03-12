@@ -25,7 +25,7 @@ uv run watchtower-core query foundations [--query <text>] [--foundation-id <foun
 ## Arguments and Options
 - `--query <text>`: Free-text query over indexed foundation fields such as ID, title, summary, aliases, and related paths.
 - `--foundation-id <foundation_id>`: Exact foundation identifier such as `foundation.engineering_design_principles`.
-- `--audience <audience>`: Exact audience filter such as `shared`, `maintainers`, or `contributors`.
+- `--audience <audience>`: Exact audience filter such as `shared`.
 - `--authority <authority>`: Exact authority filter such as `authoritative` or `supporting`.
 - `--tag <tag>`: Exact tag filter.
 - `--related-path <path>`: Exact repository-path filter such as `core/python/` or `workflows/modules/`.
@@ -49,7 +49,7 @@ uv run watchtower-core query foundations --related-path core/python/
 
 ```sh
 cd core/python
-uv run watchtower-core query foundations --audience maintainers --format json
+uv run watchtower-core query foundations --reference-path docs/references/uv_reference.md --format json
 ```
 
 ```sh
@@ -77,4 +77,4 @@ uv run watchtower-core query foundations --applied-by-path docs/standards/engine
 - `core/control_plane/indexes/foundations/foundation_index.v1.json`
 
 ## Updated At
-- `2026-03-10T05:00:00Z`
+- `2026-03-12T21:26:00Z`

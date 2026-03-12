@@ -557,6 +557,43 @@
       ]
     },
     {
+      "document_id": "design.features.foundations_documentation_completeness_alignment",
+      "trace_id": "trace.foundations_documentation_completeness_alignment",
+      "family": "feature_design",
+      "title": "Foundations Documentation Completeness Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Foundations Documentation Completeness Alignment.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
+      "updated_at": "2026-03-12T21:27:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/foundations_documentation_completeness_alignment.md",
+        "docs/foundations/",
+        "workflows/modules/foundations_context_review.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/control_plane/indexes/foundations/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/foundations/README.md",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json"
+      ]
+    },
+    {
       "document_id": "design.features.github_collaboration_scaffolding",
       "trace_id": "trace.github_collaboration",
       "family": "feature_design",
@@ -1955,6 +1992,42 @@
         "SUMMARY.md",
         "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.foundations_documentation_completeness_alignment",
+      "trace_id": "trace.foundations_documentation_completeness_alignment",
+      "family": "implementation_plan",
+      "title": "Foundations Documentation Completeness Alignment Implementation Plan",
+      "summary": "Breaks Foundations Documentation Completeness Alignment into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/foundations_documentation_completeness_alignment.md",
+      "updated_at": "2026-03-12T21:27:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
+        "docs/planning/prds/foundations_documentation_completeness_alignment.md"
+      ],
+      "related_paths": [
+        "docs/foundations/",
+        "workflows/modules/foundations_context_review.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/control_plane/indexes/foundations/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "workflows/modules/foundations_context_review.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md"
       ]
     },
     {

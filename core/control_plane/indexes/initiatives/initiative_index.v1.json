@@ -1253,6 +1253,101 @@
       "notes": "Planning-baseline evidence for the foundation scope and entrypoint realignment initiative."
     },
     {
+      "trace_id": "trace.foundations_documentation_completeness_alignment",
+      "title": "Foundations Documentation Completeness Alignment PRD",
+      "summary": "Close documentation and workflow drift around the governed foundations corpus by restoring complete foundations-aware review context, aligning live query/help examples with the current foundation index, and making the engineering stack foundation cite the governed reference corpus it materially depends on so index and query surfaces remain cohesive.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T21:31:46Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/foundations_documentation_completeness_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/foundations_documentation_completeness_alignment.md",
+      "prd_ids": [
+        "prd.foundations_documentation_completeness_alignment"
+      ],
+      "decision_ids": [
+        "decision.foundations_documentation_completeness_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.foundations_documentation_completeness_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundations_documentation_completeness_alignment"
+      ],
+      "task_ids": [
+        "task.foundations_documentation_completeness_alignment.bootstrap.001",
+        "task.foundations_documentation_completeness_alignment.implementation.002",
+        "task.foundations_documentation_completeness_alignment.validation.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_documentation_completeness_alignment.001",
+        "ac.foundations_documentation_completeness_alignment.002",
+        "ac.foundations_documentation_completeness_alignment.003",
+        "ac.foundations_documentation_completeness_alignment.004",
+        "ac.foundations_documentation_completeness_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundations_documentation_completeness_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.foundations_documentation_completeness_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T21:31:46Z",
+      "closure_reason": "Delivered foundations documentation completeness alignment: the engineering stack foundation now cites governed reference docs and projects external-authority metadata, foundations review guidance now loads scope and standards posture with stack direction, foundations query help/docs now use live examples, and both post-fix review passes found no additional actionable issues.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/foundations_documentation_completeness_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/foundations/",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/foundations_documentation_completeness_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/tests/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/foundations/",
+        "docs/foundations/README.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/foundations_documentation_completeness_alignment.md",
+        "docs/planning/design/implementation/foundations_documentation_completeness_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundations_documentation_completeness_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/align_foundations_documentation_and_query_surfaces.md",
+        "docs/planning/tasks/closed/foundations_documentation_completeness_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_documentation_completeness_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/cyclonedx_1_7_reference.md",
+        "docs/references/in_toto_v1_0_reference.md",
+        "docs/references/json_schema_2020_12_reference.md",
+        "docs/references/mypy_reference.md",
+        "docs/references/opa_rego_reference.md",
+        "docs/references/pydantic_strict_mode_reference.md",
+        "docs/references/pytest_reference.md",
+        "docs/references/ruff_reference.md",
+        "docs/references/sigstore_reference.md",
+        "docs/references/slsa_1_1_reference.md",
+        "docs/references/sqlite_fts5_reference.md",
+        "docs/references/uv_reference.md",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence prepared at 2026-03-12T21:21:38Z for trace.foundations_documentation_completeness_alignment. Follow-up evidence will record implementation, validation, and no-new-issues review closure."
+    },
+    {
       "trace_id": "trace.github_collaboration",
       "title": "GitHub Collaboration Scaffolding",
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
@@ -1791,7 +1886,7 @@
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-12T21:01:37Z",
+      "updated_at": "2026-03-12T21:02:38Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/lazy_planning_query_payload_emission.md",
@@ -1861,7 +1956,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-12T21:01:37Z for trace.lazy_planning_query_payload_emission with measured serializer-call reductions and a clean adjacent-surface follow-up review."
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T21:02:38Z for trace.lazy_planning_query_payload_emission with measured serializer-call reductions, final acceptance and full-baseline validation, and a clean adjacent-surface follow-up review."
     },
     {
       "trace_id": "trace.local_task_tracking",

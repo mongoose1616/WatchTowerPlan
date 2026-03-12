@@ -602,6 +602,56 @@
       ]
     },
     {
+      "trace_id": "trace.foundations_documentation_completeness_alignment",
+      "prd_id": "prd.foundations_documentation_completeness_alignment",
+      "title": "Foundations Documentation Completeness Alignment PRD",
+      "summary": "Close documentation and workflow drift around the governed foundations corpus by restoring complete foundations-aware review context, aligning live query/help examples with the current foundation index, and making the engineering stack foundation cite the governed reference corpus it materially depends on so index and query surfaces remain cohesive.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/foundations_documentation_completeness_alignment.md",
+      "updated_at": "2026-03-12T21:27:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.foundations_documentation_completeness_alignment.001",
+        "req.foundations_documentation_completeness_alignment.002",
+        "req.foundations_documentation_completeness_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_documentation_completeness_alignment.001",
+        "ac.foundations_documentation_completeness_alignment.002",
+        "ac.foundations_documentation_completeness_alignment.003",
+        "ac.foundations_documentation_completeness_alignment.004",
+        "ac.foundations_documentation_completeness_alignment.005"
+      ],
+      "linked_decision_ids": [
+        "decision.foundations_documentation_completeness_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.foundations_documentation_completeness_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundations_documentation_completeness_alignment"
+      ],
+      "related_paths": [
+        "docs/foundations/",
+        "workflows/modules/foundations_context_review.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/control_plane/indexes/foundations/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/README.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "workflows/modules/foundations_context_review.md"
+      ]
+    },
+    {
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
       "prd_id": "prd.governed_front_matter_directory_canonicalization",
       "title": "Governed Front Matter Directory Canonicalization PRD",

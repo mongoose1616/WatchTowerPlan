@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 
+import pytest
+
 from watchtower_core.cli import handlers
 from watchtower_core.cli.main import main
 from watchtower_core.cli.query_coordination_handlers import (
@@ -117,6 +119,19 @@ def test_query_group_prints_group_specific_help(capsys) -> None:
         "uv run watchtower-core query trace --trace-id trace.core_python_foundation"
         in captured.out
     )
+
+
+def test_query_foundations_help_uses_live_examples(capsys) -> None:
+    with pytest.raises(SystemExit) as excinfo:
+        main(["query", "foundations", "--help"])
+
+    captured = capsys.readouterr()
+    assert excinfo.value.code == 0
+    assert "uv run watchtower-core query foundations --query philosophy" in captured.out
+    assert (
+        "uv run watchtower-core query foundations --reference-path "
+        "docs/references/uv_reference.md --format json"
+    ) in captured.out
 
 
 def test_route_group_prints_group_specific_help(capsys) -> None:

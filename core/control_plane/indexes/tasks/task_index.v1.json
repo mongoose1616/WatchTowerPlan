@@ -1244,6 +1244,85 @@
       ]
     },
     {
+      "task_id": "task.foundations_documentation_completeness_alignment.bootstrap.001",
+      "title": "Bootstrap Foundations Documentation Completeness Alignment planning chain",
+      "summary": "Bootstraps the initial planning chain for Foundations Documentation Completeness Alignment.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/foundations_documentation_completeness_alignment_bootstrap.md",
+      "updated_at": "2026-03-12T21:24:55Z",
+      "trace_id": "trace.foundations_documentation_completeness_alignment",
+      "related_ids": [
+        "prd.foundations_documentation_completeness_alignment",
+        "design.features.foundations_documentation_completeness_alignment",
+        "design.implementation.foundations_documentation_completeness_alignment",
+        "decision.foundations_documentation_completeness_alignment_direction",
+        "contract.acceptance.foundations_documentation_completeness_alignment"
+      ],
+      "applies_to": [
+        "docs/foundations/",
+        "workflows/modules/foundations_context_review.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/control_plane/indexes/foundations/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
+      "task_id": "task.foundations_documentation_completeness_alignment.implementation.002",
+      "title": "Align foundations documentation and query surfaces",
+      "summary": "Repairs the engineering stack foundation references, the foundations-aware review workflow guidance, and the foundations query help/doc surfaces.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/align_foundations_documentation_and_query_surfaces.md",
+      "updated_at": "2026-03-12T21:28:39Z",
+      "trace_id": "trace.foundations_documentation_completeness_alignment",
+      "related_ids": [
+        "prd.foundations_documentation_completeness_alignment",
+        "design.features.foundations_documentation_completeness_alignment",
+        "decision.foundations_documentation_completeness_alignment_direction"
+      ],
+      "applies_to": [
+        "docs/foundations/engineering_stack_direction.md",
+        "workflows/modules/foundations_context_review.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.foundations_documentation_completeness_alignment.validation.003",
+      "title": "Validate and close foundations documentation completeness alignment",
+      "summary": "Runs targeted and repository-wide validation, records the clean follow-up reviews, and closes the traced slice.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_foundations_documentation_completeness_alignment.md",
+      "updated_at": "2026-03-12T21:31:36Z",
+      "trace_id": "trace.foundations_documentation_completeness_alignment",
+      "related_ids": [
+        "contract.acceptance.foundations_documentation_completeness_alignment",
+        "prd.foundations_documentation_completeness_alignment"
+      ],
+      "applies_to": [
+        "core/control_plane/contracts/acceptance/foundations_documentation_completeness_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_documentation_completeness_alignment_planning_baseline.v1.json",
+        "docs/planning/"
+      ]
+    },
+    {
       "task_id": "task.github_collaboration.followup.001",
       "title": "Close remaining GitHub collaboration follow-up",
       "summary": "Tracks the remaining closeout and verification follow-up for the GitHub collaboration scaffolding initiative.",
