@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "routing_and_context_loading"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T03:41:22Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -57,6 +57,7 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - Do not auto-load `modules/commit_closeout.md` merely because the active task may eventually be committed.
 - If multiple task types match, merge the smallest necessary set rather than loading the whole workflow library.
 - If a non-documentation workflow uncovers a documentation gap, merge the smallest necessary documentation route into the active task set, including any required shared phase modules not already loaded, rather than handling the gap ad hoc without a documentation workflow.
+- If a request explicitly asks to align documentation or workflow guidance with repository foundations, use the dedicated foundations-alignment review route or merge `modules/foundations_context_review.md` with `modules/documentation_refresh.md` rather than leaving foundations alignment implicit.
 - If a task's main risk is drift between implementation behavior and companion docs or lookup surfaces, load `modules/documentation_implementation_reconciliation.md` or use the dedicated reconciliation route rather than relying only on broad review or handoff steps.
 - If a task's main risk is drift between traced planning or governance artifacts and their companion trackers, family indexes, or unified traceability joins, load `modules/traceability_reconciliation.md` or use the dedicated reconciliation route rather than relying only on planning leaf modules or handoff review.
 - If a task's main risk is drift between schema-backed governed artifacts and their companion schemas, examples, indexes, registries, or loader and validator assumptions, load `modules/governed_artifact_reconciliation.md` or use the dedicated reconciliation route rather than relying only on generic validation.
@@ -115,4 +116,4 @@ Prevent instruction sprawl and overloading by separating root-level guidance, ro
 - The file-level shape of `AGENTS.md` and `ROUTING_TABLE.md` still belongs under `documentation/`.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T03:41:22Z`

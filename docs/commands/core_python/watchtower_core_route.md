@@ -35,12 +35,12 @@ uv run watchtower-core route --help
 
 ```sh
 cd core/python
-uv run watchtower-core route preview --request "review code and commit the change"
+uv run watchtower-core route preview --request "review the workflow docs against the current CLI behavior"
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core route preview --task-type "Repository Review" --format json
+uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json
 ```
 
 ## Behavior and Outputs
@@ -63,4 +63,4 @@ uv run watchtower-core route preview --task-type "Repository Review" --format js
 - `core/python/src/watchtower_core/repo_ops/query/routes.py`
 
 ## Updated At
-- `2026-03-10T22:45:00Z`
+- `2026-03-12T03:32:00Z`

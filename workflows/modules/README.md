@@ -22,7 +22,7 @@
 | `workflows/modules/external_guidance_research.md` | Shared workflow module for consulting authoritative external guidance only when needed. |
 | `workflows/modules/feature_design_planning.md` | Workflow module for turning a feature request or PRD into a review-ready technical design for implementation planning. |
 | `workflows/modules/governed_artifact_reconciliation.md` | Shared workflow module for reconciling schema-backed governed artifacts with their companion schemas, examples, indexes, registries, and implementation-facing lookup surfaces. |
-| `workflows/modules/foundations_context_review.md` | Shared workflow module for loading repository foundation documents during planning and design work. |
+| `workflows/modules/foundations_context_review.md` | Shared workflow module for loading repository foundation documents during planning, design, and foundations-aware review work. |
 | `workflows/modules/github_task_sync.md` | Workflow module for pushing local-first task records to GitHub issues and optional project items while preserving local task authority. |
 | `workflows/modules/implementation_planning.md` | Workflow module for turning a PRD into an implementation plan. |
 | `workflows/modules/initiative_closeout.md` | Workflow module for applying terminal closeout state to traced initiatives and their mirrored initiative and family tracking surfaces. |

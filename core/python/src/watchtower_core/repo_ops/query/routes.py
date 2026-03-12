@@ -184,15 +184,13 @@ def _task_type_match_score(
     request_tokens: tuple[str, ...],
 ) -> int:
     normalized_task_type = normalize_text(task_type)
-    if normalized_task_type in normalized_request:
+    if _phrase_in_request(normalized_task_type, normalized_request):
         return 12
 
     task_tokens = _normalized_tokens(normalized_task_type)
     matched_count = _matched_token_count(request_tokens, task_tokens)
     if task_tokens and matched_count == len(task_tokens) and len(task_tokens) >= 2:
         return 8 + len(task_tokens)
-    if matched_count >= 2:
-        return 4 + matched_count
     return 0
 
 
@@ -202,7 +200,7 @@ def _keyword_match_score(
     request_tokens: tuple[str, ...],
 ) -> int:
     normalized_keyword = normalize_text(keyword)
-    if normalized_keyword in normalized_request:
+    if _phrase_in_request(normalized_keyword, normalized_request):
         return 18 + (3 * len(normalized_keyword.split()))
 
     keyword_tokens = _normalized_tokens(normalized_keyword)
@@ -229,23 +227,19 @@ def _matched_token_count(
 
 
 def _tokens_match(request_token: str, candidate_token: str) -> bool:
-    if request_token == candidate_token:
-        return True
-    if min(len(request_token), len(candidate_token)) >= 4 and (
-        request_token.startswith(candidate_token) or candidate_token.startswith(request_token)
-    ):
-        return True
-    common_prefix = len(_common_prefix(request_token, candidate_token))
-    return common_prefix >= 4
+    return request_token == candidate_token
 
 
-def _common_prefix(left: str, right: str) -> str:
-    prefix: list[str] = []
-    for left_char, right_char in zip(left, right, strict=False):
-        if left_char != right_char:
-            break
-        prefix.append(left_char)
-    return "".join(prefix)
+def _phrase_in_request(phrase: str, request_text: str) -> bool:
+    normalized_phrase = _normalized_phrase_text(phrase)
+    normalized_request = _normalized_phrase_text(request_text)
+    if not normalized_phrase or not normalized_request:
+        return False
+    return f" {normalized_phrase} " in f" {normalized_request} "
+
+
+def _normalized_phrase_text(value: str) -> str:
+    return " ".join(_TOKEN_PATTERN.findall(normalize_text(value)))
 
 
 def _normalized_tokens(value: str) -> tuple[str, ...]:

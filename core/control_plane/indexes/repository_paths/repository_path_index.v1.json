@@ -5750,7 +5750,7 @@
       "path": "workflows/modules/foundations_context_review.md",
       "kind": "file",
       "surface_kind": "workflow_module",
-      "summary": "Shared workflow module for loading repository foundation documents during planning and design work.",
+      "summary": "Shared workflow module for loading repository foundation documents during planning, design, and foundations-aware review work.",
       "parent_path": "workflows/modules/",
       "maturity": "authoritative",
       "priority": "high",

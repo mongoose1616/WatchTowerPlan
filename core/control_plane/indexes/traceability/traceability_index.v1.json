@@ -967,6 +967,8 @@
       "status": "active",
       "initiative_status": "completed",
       "updated_at": "2026-03-12T03:18:19Z",
+      "closed_at": "2026-03-12T03:18:19Z",
+      "closure_reason": "Closed after canonicalizing governed applies_to directory metadata, hardening compact-authoring fixture support, and revalidating the repository baseline.",
       "prd_ids": [
         "prd.governed_front_matter_directory_canonicalization"
       ],
@@ -1065,9 +1067,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-12T03:17:23Z for trace.governed_front_matter_directory_canonicalization after implementation, corpus normalization, compact-authoring regression hardening, and validation closeout.",
-      "closed_at": "2026-03-12T03:18:19Z",
-      "closure_reason": "Closed after canonicalizing governed applies_to directory metadata, hardening compact-authoring fixture support, and revalidating the repository baseline."
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T03:17:23Z for trace.governed_front_matter_directory_canonicalization after implementation, corpus normalization, compact-authoring regression hardening, and validation closeout."
     },
     {
       "trace_id": "trace.initiative_closeout",
@@ -2720,6 +2720,88 @@
         "traceability"
       ],
       "notes": "Planning-baseline evidence for the unit-test hardening and rebalancing initiative."
+    },
+    {
+      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+      "title": "Workflow Routing Review Accuracy Alignment PRD",
+      "summary": "Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T03:52:21Z",
+      "closed_at": "2026-03-12T03:52:21Z",
+      "closure_reason": "Delivered deterministic routing hardening, route-table alignment, and clean follow-up review coverage.",
+      "prd_ids": [
+        "prd.workflow_routing_review_accuracy_alignment"
+      ],
+      "decision_ids": [
+        "decision.workflow_routing_review_accuracy_alignment.direction"
+      ],
+      "design_ids": [
+        "design.features.workflow_routing_review_accuracy_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.workflow_routing_review_accuracy_alignment"
+      ],
+      "task_ids": [
+        "task.workflow_routing_review_accuracy_alignment.bootstrap.001",
+        "task.workflow_routing_review_accuracy_alignment.implementation.001",
+        "task.workflow_routing_review_accuracy_alignment.validation_closeout.002"
+      ],
+      "requirement_ids": [
+        "req.workflow_routing_review_accuracy_alignment.001",
+        "req.workflow_routing_review_accuracy_alignment.002",
+        "req.workflow_routing_review_accuracy_alignment.003",
+        "req.workflow_routing_review_accuracy_alignment.004",
+        "req.workflow_routing_review_accuracy_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_routing_review_accuracy_alignment.001",
+        "ac.workflow_routing_review_accuracy_alignment.002",
+        "ac.workflow_routing_review_accuracy_alignment.003",
+        "ac.workflow_routing_review_accuracy_alignment.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.workflow_routing_review_accuracy_alignment"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.workflow_routing_review_accuracy_alignment.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/tasks/closed/harden_workflow_route_scoring_and_review_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_workflow_routing_review_alignment.md",
+        "docs/planning/tasks/closed/workflow_routing_review_accuracy_alignment_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "workflows/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T03:52:21Z for trace.workflow_routing_review_accuracy_alignment after route hardening, task closure, initiative closeout, and the final no-new-issues routing review pass."
     },
     {
       "trace_id": "trace.workflow_system_operationalization",

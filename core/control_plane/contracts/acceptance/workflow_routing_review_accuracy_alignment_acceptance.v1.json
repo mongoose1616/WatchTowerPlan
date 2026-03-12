@@ -1,0 +1,93 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.workflow_routing_review_accuracy_alignment",
+  "title": "Workflow Routing Review Accuracy Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+  "source_prd_id": "prd.workflow_routing_review_accuracy_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.workflow_routing_review_accuracy_alignment.001",
+      "summary": "The trace carries a fully authored planning chain, accepted decision, acceptance contract, evidence ledger, and bounded task set for the workflow-routing review slice.",
+      "source_requirement_ids": [
+        "req.workflow_routing_review_accuracy_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
+        "docs/planning/tasks/open/workflow_routing_review_accuracy_alignment_bootstrap.md"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Bootstrap baseline contract prepared at 2026-03-12T03:25:20Z for trace.workflow_routing_review_accuracy_alignment."
+    },
+    {
+      "acceptance_id": "ac.workflow_routing_review_accuracy_alignment.002",
+      "summary": "Route-preview scoring and curated trigger rows correctly route the reproduced audit-review prompts while eliminating the verified boundary false positives.",
+      "source_requirement_ids": [
+        "req.workflow_routing_review_accuracy_alignment.001",
+        "req.workflow_routing_review_accuracy_alignment.002",
+        "req.workflow_routing_review_accuracy_alignment.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/tests/unit/test_route_index_sync.py"
+      ],
+      "related_paths": [
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md"
+      ],
+      "notes": "Implementation acceptance covers the scorer hardening, the routed keyword cleanup, and the reproduced audit-style code-review, repository-review, documentation-versus-implementation, governed-artifact, and boundary prompts."
+    },
+    {
+      "acceptance_id": "ac.workflow_routing_review_accuracy_alignment.003",
+      "summary": "Foundations-aware documentation-alignment prompts route explicitly to a workflow set that combines foundations context review with documentation refresh, and companion workflow docs stay aligned.",
+      "source_requirement_ids": [
+        "req.workflow_routing_review_accuracy_alignment.003",
+        "req.workflow_routing_review_accuracy_alignment.005"
+      ],
+      "validation_targets": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/foundations_context_review.md",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/python/tests/unit/test_route_index_sync.py"
+      ],
+      "related_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md"
+      ],
+      "notes": "Foundations-aware review coverage is complete only when the new routed outcome and its workflow-module guidance are reflected coherently across the human and machine routing surfaces."
+    },
+    {
+      "acceptance_id": "ac.workflow_routing_review_accuracy_alignment.004",
+      "summary": "Final validation and a follow-up expansive workflow-routing review pass find no additional issues in the discussed audit and alignment areas.",
+      "source_requirement_ids": [
+        "req.workflow_routing_review_accuracy_alignment.004",
+        "req.workflow_routing_review_accuracy_alignment.005"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md"
+      ],
+      "notes": "Closeout acceptance is satisfied only when the full validation baseline and a second expansive routing review pass both finish without new findings."
+    }
+  ]
+}

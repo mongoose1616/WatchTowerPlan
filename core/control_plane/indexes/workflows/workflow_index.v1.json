@@ -615,7 +615,7 @@
     {
       "workflow_id": "workflow.foundations_context_review",
       "title": "Foundations Context Review Workflow",
-      "summary": "Use this workflow to load the repository foundation documents that materially shape planning and design work so the resulting artifact stays aligned with the repository's product model, design philosophy, standards posture, and technology direction.",
+      "summary": "Use this workflow to load the repository foundation documents that materially shape planning, design, or foundations-aware review work so the resulting artifact stays aligned with the repository's product model, design philosophy, standards posture, and technology direction.",
       "status": "active",
       "doc_path": "workflows/modules/foundations_context_review.md",
       "phase_type": "inspection",
@@ -639,6 +639,7 @@
         "shape",
         "planning",
         "design",
+        "aware",
         "work",
         "resulting",
         "artifact",

@@ -1045,6 +1045,45 @@
         "docs/standards/data_contracts/workflow_index_standard.md",
         "docs/standards/governance/task_tracking_standard.md"
       ]
+    },
+    {
+      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+      "decision_id": "decision.workflow_routing_review_accuracy_alignment.direction",
+      "title": "Workflow Routing Review Accuracy Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Workflow Routing Review Accuracy Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
+      "updated_at": "2026-03-12T03:41:22Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.workflow_routing_review_accuracy_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.workflow_routing_review_accuracy_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.workflow_routing_review_accuracy_alignment"
+      ],
+      "related_paths": [
+        "workflows/",
+        "docs/",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md"
+      ]
     }
   ]
 }

@@ -1223,6 +1223,45 @@
       ]
     },
     {
+      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+      "prd_id": "prd.workflow_routing_review_accuracy_alignment",
+      "title": "Workflow Routing Review Accuracy Alignment PRD",
+      "summary": "Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+      "updated_at": "2026-03-12T03:41:22Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.workflow_routing_review_accuracy_alignment.001",
+        "req.workflow_routing_review_accuracy_alignment.002",
+        "req.workflow_routing_review_accuracy_alignment.003",
+        "req.workflow_routing_review_accuracy_alignment.004",
+        "req.workflow_routing_review_accuracy_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_routing_review_accuracy_alignment.001",
+        "ac.workflow_routing_review_accuracy_alignment.002",
+        "ac.workflow_routing_review_accuracy_alignment.003",
+        "ac.workflow_routing_review_accuracy_alignment.004"
+      ],
+      "linked_decision_ids": [
+        "decision.workflow_routing_review_accuracy_alignment.direction"
+      ],
+      "linked_design_ids": [
+        "design.features.workflow_routing_review_accuracy_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.workflow_routing_review_accuracy_alignment"
+      ],
+      "related_paths": [
+        "workflows/",
+        "docs/",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/"
+      ]
+    },
+    {
       "trace_id": "trace.workflow_system_operationalization",
       "prd_id": "prd.workflow_system_operationalization",
       "title": "Workflow System Operationalization PRD",

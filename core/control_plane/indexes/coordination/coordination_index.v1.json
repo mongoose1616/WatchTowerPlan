@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-12T03:18:19Z",
+  "updated_at": "2026-03-12T03:52:21Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,84 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+      "title": "Workflow Routing Review Accuracy Alignment PRD",
+      "summary": "Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T03:52:21Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+      "prd_ids": [
+        "prd.workflow_routing_review_accuracy_alignment"
+      ],
+      "decision_ids": [
+        "decision.workflow_routing_review_accuracy_alignment.direction"
+      ],
+      "design_ids": [
+        "design.features.workflow_routing_review_accuracy_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.workflow_routing_review_accuracy_alignment"
+      ],
+      "task_ids": [
+        "task.workflow_routing_review_accuracy_alignment.bootstrap.001",
+        "task.workflow_routing_review_accuracy_alignment.implementation.001",
+        "task.workflow_routing_review_accuracy_alignment.validation_closeout.002"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_routing_review_accuracy_alignment.001",
+        "ac.workflow_routing_review_accuracy_alignment.002",
+        "ac.workflow_routing_review_accuracy_alignment.003",
+        "ac.workflow_routing_review_accuracy_alignment.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.workflow_routing_review_accuracy_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.workflow_routing_review_accuracy_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T03:52:21Z",
+      "closure_reason": "Delivered deterministic routing hardening, route-table alignment, and clean follow-up review coverage.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/tasks/closed/harden_workflow_route_scoring_and_review_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_workflow_routing_review_alignment.md",
+        "docs/planning/tasks/closed/workflow_routing_review_accuracy_alignment_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "workflows/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T03:52:21Z for trace.workflow_routing_review_accuracy_alignment after route hardening, task closure, initiative closeout, and the final no-new-issues routing review pass."
+    },
     {
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
       "title": "Governed Front Matter Directory Canonicalization PRD",
@@ -2774,6 +2852,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+      "title": "Workflow Routing Review Accuracy Alignment PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-12T03:52:21Z",
+      "key_surface_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+      "closure_reason": "Delivered deterministic routing hardening, route-table alignment, and clean follow-up review coverage."
+    },
+    {
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
       "title": "Governed Front Matter Directory Canonicalization PRD",
       "initiative_status": "completed",
@@ -2844,14 +2930,6 @@
       "closed_at": "2026-03-11T19:37:52Z",
       "key_surface_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
       "closure_reason": "Closed after aligning design-document relationship indexing with governed standards and validation."
-    },
-    {
-      "trace_id": "trace.internal_project_standards_review_and_hardening",
-      "title": "Internal Project Standards Review and Hardening PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-11T18:00:45Z",
-      "key_surface_path": "docs/planning/prds/internal_project_standards_review_and_hardening.md",
-      "closure_reason": "Completed the internal standards review, aligned standard-reference enforcement, normalized remaining decision-index document-relative path projection, published durable evidence, and revalidated the repository baseline."
     }
   ]
 }

@@ -9,7 +9,7 @@
       "task_type": "Code Implementation",
       "trigger_keywords": [
         "implement",
-        "build",
+        "build feature",
         "create feature",
         "add feature",
         "fix bug",
@@ -46,7 +46,13 @@
         "inspect diff",
         "inspect changes",
         "PR review",
-        "code review"
+        "code review",
+        "inspect patch",
+        "audit diff",
+        "regression review",
+        "maintainability review",
+        "release risk review",
+        "review report changes"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -72,8 +78,8 @@
       "task_type": "Code Validation",
       "trigger_keywords": [
         "validate",
+        "validation",
         "verification",
-        "verify",
         "test",
         "lint",
         "typecheck",
@@ -145,7 +151,7 @@
         "finalize commit",
         "commit",
         "commits",
-        "closeout",
+        "commit closeout",
         "close out change set"
       ],
       "required_workflow_ids": [
@@ -203,7 +209,11 @@
         "documentation parity",
         "implementation drift",
         "stale command docs",
-        "stale docs versus behavior"
+        "stale docs versus behavior",
+        "command docs against cli behavior",
+        "workflow docs against cli behavior",
+        "docs against implementation behavior",
+        "lookup surface alignment"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -262,7 +272,6 @@
       "trigger_keywords": [
         "refresh docs",
         "update docs",
-        "reconcile docs",
         "clean up docs",
         "fix stale docs",
         "doc maintenance"
@@ -280,6 +289,36 @@
         "workflows/modules/task_scope_definition.md",
         "workflows/modules/internal_context_review.md",
         "workflows/modules/external_guidance_research.md",
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
+      "route_id": "route.foundations_alignment_review",
+      "task_type": "Foundations Alignment Review",
+      "trigger_keywords": [
+        "foundations alignment",
+        "foundation alignment",
+        "docs cohesive with foundations",
+        "align docs with foundations",
+        "review against foundations",
+        "aligned with foundations docs"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.foundations_context_review",
+        "workflow.documentation_refresh",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/foundations_context_review.md",
         "workflows/modules/documentation_refresh.md",
         "workflows/modules/task_handoff_review.md"
       ]
@@ -328,7 +367,11 @@
         "schema drift",
         "registry drift",
         "index drift",
-        "contract drift"
+        "contract drift",
+        "workflow indexes schemas registry aligned",
+        "workflow index schema registry alignment",
+        "artifacts against schemas and indexes",
+        "schema registry alignment"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -541,9 +584,16 @@
         "repository review",
         "full audit",
         "health check",
+        "health assessment",
+        "repository health assessment",
         "coherence review",
         "standards review",
-        "best practices review"
+        "standards audit",
+        "best practices review",
+        "watchtower report",
+        "unused workflow modules",
+        "routing ambiguity review",
+        "workflow coverage review"
       ],
       "required_workflow_ids": [
         "workflow.core",
@@ -575,10 +625,10 @@
         "create tracked tasks",
         "update task",
         "update tasks",
-        "task",
         "tasks",
         "track task",
         "manage task",
+        "task cycle",
         "split task",
         "reopen task",
         "cancel task",

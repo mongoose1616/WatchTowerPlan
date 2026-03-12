@@ -38,7 +38,8 @@
 - `uv run mypy src`
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
-- `uv run watchtower-core route preview --request "review code and commit"`
+- `uv run watchtower-core route preview --request "review the workflow docs against the current CLI behavior"`
+- `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json`
 - `uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative." --format json`
 - `uv run watchtower-core query coordination --format json`
 - `uv run watchtower-core query planning --trace-id trace.core_python_foundation --format json`
@@ -94,6 +95,7 @@
 - `uv run ...` is the default workflow for this repository.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
+- `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json` is the explicit preview path when a task is about keeping docs or workflow guidance aligned with repository foundations.
 - `uv run watchtower-core query coordination --format json` is the default machine-readable current-state entrypoint and stays useful even when no initiative is active.
 - `uv run watchtower-core query planning --trace-id <trace_id> --format json` is the canonical deep planning read path after coordination identifies the active trace.
 - `uv run watchtower-core plan scaffold --write ...` refreshes the traced coordination slice only when the target trace already participates in coordination or already has traced task state.

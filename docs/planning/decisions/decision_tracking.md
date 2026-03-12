@@ -27,5 +27,6 @@
 | `trace.standard_runtime_and_route_explicitness` | [decision.standard_runtime_and_route_explicitness_direction](/home/j/WatchTowerPlan/docs/planning/decisions/standard_runtime_and_route_explicitness_hardening_direction.md) | `completed` | `accepted` | Records the initial direction decision for Standard, Runtime, and Route Explicitness Hardening. |
 | `trace.standards_lookup_and_generic_template_alignment` | [decision.standards_lookup_and_generic_template_alignment_direction](/home/j/WatchTowerPlan/docs/planning/decisions/standards_lookup_and_generic_template_alignment_direction.md) | `completed` | `accepted` | Records the accepted direction for descendant-aware standards lookup and generic-template scope alignment. |
 | `trace.workflow_system_operationalization` | [decision.workflow_operationalization_direction](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_operationalization_direction.md) | `completed` | `accepted` | Records the decision to keep workflow documents authoritative while adding machine-readable route and metadata artifacts plus bounded authoring commands. |
+| `trace.workflow_routing_review_accuracy_alignment` | [decision.workflow_routing_review_accuracy_alignment.direction](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md) | `completed` | `accepted` | Records the initial direction decision for Workflow Routing Review Accuracy Alignment. |
 
-_Updated At: `2026-03-12T02:46:38Z`_
+_Updated At: `2026-03-12T03:41:22Z`_

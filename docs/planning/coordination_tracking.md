@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.workflow_routing_review_accuracy_alignment` | `completed` | `2026-03-12T03:52:21Z` | [workflow_routing_review_accuracy_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_routing_review_accuracy_alignment.md) |
 | `trace.governed_front_matter_directory_canonicalization` | `completed` | `2026-03-12T03:18:19Z` | [governed_front_matter_directory_canonicalization.md](/home/j/WatchTowerPlan/docs/planning/prds/governed_front_matter_directory_canonicalization.md) |
 | `trace.standard_operationalization_directory_canonicalization` | `completed` | `2026-03-12T02:26:14Z` | [standard_operationalization_directory_canonicalization.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_operationalization_directory_canonicalization.md) |
 | `trace.data_contract_example_operationalization_alignment` | `completed` | `2026-03-12T01:35:09Z` | [data_contract_example_operationalization_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_example_operationalization_alignment.md) |
 | `trace.documentation_family_lookup_and_readme_template_alignment` | `completed` | `2026-03-12T01:07:10Z` | [documentation_family_lookup_and_readme_template_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md) |
-| `trace.standards_lookup_and_generic_template_alignment` | `completed` | `2026-03-12T00:26:00Z` | [standards_lookup_and_generic_template_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/standards_lookup_and_generic_template_alignment.md) |
 
-_Updated At: `2026-03-12T03:18:19Z`_
+_Updated At: `2026-03-12T03:52:21Z`_

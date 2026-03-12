@@ -26,6 +26,13 @@ def test_route_index_sync_builds_schema_valid_document() -> None:
         and "workflows/modules/repository_review.md" in entry["required_workflow_paths"]
         for entry in entries
     )
+    assert any(
+        entry["route_id"] == "route.foundations_alignment_review"
+        and entry["task_type"] == "Foundations Alignment Review"
+        and "workflow.foundations_context_review" in entry["required_workflow_ids"]
+        and "workflow.documentation_refresh" in entry["required_workflow_ids"]
+        for entry in entries
+    )
 
 
 def test_route_index_sync_writes_temp_output(tmp_path: Path) -> None:
@@ -129,6 +136,54 @@ def test_route_preview_service_matches_realistic_maintenance_request() -> None:
     assert "workflow.task_lifecycle_management" in workflow_ids
     assert "workflow.code_validation" in workflow_ids
     assert "workflow.commit_closeout" in workflow_ids
+
+
+def test_route_preview_service_matches_workflow_review_regression_requests() -> None:
+    service = RoutePreviewService(ControlPlaneLoader(REPO_ROOT))
+    expectations = {
+        "Inspect this patch for regressions, maintainability risks, and release issues.": {
+            "Code Review"
+        },
+        "Review report changes for release risk review.": {"Code Review"},
+        "Perform a whole-repository health assessment and standards audit.": {
+            "Repository Review"
+        },
+        "Review the workflow docs against the current CLI behavior and lookup surfaces.": {
+            "Documentation-Implementation Reconciliation"
+        },
+        "Verify that the workflow indexes, schemas, and registry stay aligned.": {
+            "Governed Artifact Reconciliation"
+        },
+        "Review workflow index schema registry alignment.": {
+            "Governed Artifact Reconciliation"
+        },
+        "Perform schema registry alignment review.": {
+            "Governed Artifact Reconciliation"
+        },
+        "Make the design and standards docs cohesive with the foundations documents.": {
+            "Foundations Alignment Review"
+        },
+        "Refresh the workflow guidance so it stays aligned with the foundations docs.": {
+            "Documentation Refresh",
+            "Foundations Alignment Review",
+        },
+        (
+            "Review one last time /home/j/WatchTower/report and the files inside for "
+            "final review. The loop will be: read one file, verify the issues that "
+            "are captured are accurate and still validate, if they are, start as "
+            "many initiative as needed to fix it, use the standard end to end task "
+            "cycle."
+        ): {"Repository Review", "Task Lifecycle Management", "Code Validation"},
+        "build check": {"Code Validation"},
+        "stale command docs": {"Documentation-Implementation Reconciliation"},
+        "implementation plan": {"Implementation Planning"},
+        "initiative closeout": {"Initiative Closeout"},
+        "hand off task": {"Task Phase Transition"},
+    }
+
+    for request_text, expected_task_types in expectations.items():
+        result = service.preview(request_text=request_text)
+        assert {match.task_type for match in result.selected_routes} == expected_task_types
 
 
 def test_route_preview_service_supports_explicit_task_type() -> None:

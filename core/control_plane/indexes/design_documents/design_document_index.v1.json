@@ -1300,6 +1300,32 @@
       ]
     },
     {
+      "document_id": "design.features.workflow_routing_review_accuracy_alignment",
+      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+      "family": "feature_design",
+      "title": "Workflow Routing Review Accuracy Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Workflow Routing Review Accuracy Alignment.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+      "updated_at": "2026-03-12T03:41:22Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+        "workflows/",
+        "docs/",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/prds/workflow_system_operationalization.md"
+      ]
+    },
+    {
       "document_id": "design.implementation.control_plane_loaders_and_schema_store",
       "trace_id": "trace.core_python_foundation",
       "family": "implementation_plan",
@@ -2124,6 +2150,33 @@
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.workflow_routing_review_accuracy_alignment",
+      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+      "family": "implementation_plan",
+      "title": "Workflow Routing Review Accuracy Alignment Implementation Plan",
+      "summary": "Breaks Workflow Routing Review Accuracy Alignment into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+      "updated_at": "2026-03-12T03:41:22Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/prds/workflow_routing_review_accuracy_alignment.md"
+      ],
+      "related_paths": [
+        "workflows/",
+        "docs/",
+        "core/python/src/watchtower_core/",
+        "core/control_plane/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/standards/data_contracts/route_index_standard.md"
       ]
     },
     {

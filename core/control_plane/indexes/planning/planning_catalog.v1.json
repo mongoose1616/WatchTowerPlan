@@ -10105,6 +10105,331 @@
       "closure_reason": "Expanded unit coverage, rebalanced the suite, and closed the planned hardening work."
     },
     {
+      "trace_id": "trace.workflow_routing_review_accuracy_alignment",
+      "title": "Workflow Routing Review Accuracy Alignment PRD",
+      "summary": "Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T03:52:21Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.workflow_routing_review_accuracy_alignment",
+          "title": "Workflow Routing Review Accuracy Alignment PRD",
+          "summary": "Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+          "updated_at": "2026-03-12T03:41:22Z",
+          "requirement_ids": [
+            "req.workflow_routing_review_accuracy_alignment.001",
+            "req.workflow_routing_review_accuracy_alignment.002",
+            "req.workflow_routing_review_accuracy_alignment.003",
+            "req.workflow_routing_review_accuracy_alignment.004",
+            "req.workflow_routing_review_accuracy_alignment.005"
+          ],
+          "acceptance_ids": [
+            "ac.workflow_routing_review_accuracy_alignment.001",
+            "ac.workflow_routing_review_accuracy_alignment.002",
+            "ac.workflow_routing_review_accuracy_alignment.003",
+            "ac.workflow_routing_review_accuracy_alignment.004"
+          ],
+          "linked_decision_ids": [
+            "decision.workflow_routing_review_accuracy_alignment.direction"
+          ],
+          "linked_design_ids": [
+            "design.features.workflow_routing_review_accuracy_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.workflow_routing_review_accuracy_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.workflow_routing_review_accuracy_alignment.direction",
+          "title": "Workflow Routing Review Accuracy Alignment Direction Decision",
+          "summary": "Records the initial direction decision for Workflow Routing Review Accuracy Alignment.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
+          "updated_at": "2026-03-12T03:41:22Z",
+          "linked_prd_ids": [
+            "prd.workflow_routing_review_accuracy_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.workflow_routing_review_accuracy_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.workflow_routing_review_accuracy_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.workflow_routing_review_accuracy_alignment",
+          "family": "feature_design",
+          "title": "Workflow Routing Review Accuracy Alignment Feature Design",
+          "summary": "Defines the technical design boundary for Workflow Routing Review Accuracy Alignment.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+          "updated_at": "2026-03-12T03:41:22Z"
+        },
+        {
+          "document_id": "design.implementation.workflow_routing_review_accuracy_alignment",
+          "family": "implementation_plan",
+          "title": "Workflow Routing Review Accuracy Alignment Implementation Plan",
+          "summary": "Breaks Workflow Routing Review Accuracy Alignment into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+          "updated_at": "2026-03-12T03:41:22Z",
+          "source_paths": [
+            "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+            "docs/planning/prds/workflow_routing_review_accuracy_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.workflow_routing_review_accuracy_alignment.bootstrap.001",
+          "title": "Bootstrap Workflow Routing Review Accuracy Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Workflow Routing Review Accuracy Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/workflow_routing_review_accuracy_alignment_bootstrap.md",
+          "updated_at": "2026-03-12T03:46:25Z",
+          "related_ids": [
+            "prd.workflow_routing_review_accuracy_alignment",
+            "design.features.workflow_routing_review_accuracy_alignment",
+            "design.implementation.workflow_routing_review_accuracy_alignment",
+            "decision.workflow_routing_review_accuracy_alignment.direction",
+            "contract.acceptance.workflow_routing_review_accuracy_alignment"
+          ],
+          "applies_to": [
+            "workflows/",
+            "docs/",
+            "core/python/src/watchtower_core/",
+            "core/control_plane/"
+          ]
+        },
+        {
+          "task_id": "task.workflow_routing_review_accuracy_alignment.implementation.001",
+          "title": "Harden workflow route scoring and review coverage",
+          "summary": "Tighten deterministic route-preview matching, curate the affected route rows, add explicit foundations-aware review coverage, and align the companion docs and tests.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "bug",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/harden_workflow_route_scoring_and_review_coverage.md",
+          "updated_at": "2026-03-12T03:46:25Z",
+          "related_ids": [
+            "prd.workflow_routing_review_accuracy_alignment",
+            "design.features.workflow_routing_review_accuracy_alignment",
+            "design.implementation.workflow_routing_review_accuracy_alignment",
+            "decision.workflow_routing_review_accuracy_alignment.direction",
+            "contract.acceptance.workflow_routing_review_accuracy_alignment"
+          ],
+          "applies_to": [
+            "workflows/",
+            "docs/",
+            "core/python/src/watchtower_core/",
+            "core/control_plane/"
+          ]
+        },
+        {
+          "task_id": "task.workflow_routing_review_accuracy_alignment.validation_closeout.002",
+          "title": "Validate and close workflow routing review alignment",
+          "summary": "Run the route-preview review sweep, repository validation baseline, and final no-new-issues pass before trace closeout.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_workflow_routing_review_alignment.md",
+          "updated_at": "2026-03-12T03:46:25Z",
+          "depends_on": [
+            "task.workflow_routing_review_accuracy_alignment.implementation.001"
+          ],
+          "related_ids": [
+            "prd.workflow_routing_review_accuracy_alignment",
+            "design.features.workflow_routing_review_accuracy_alignment",
+            "design.implementation.workflow_routing_review_accuracy_alignment",
+            "decision.workflow_routing_review_accuracy_alignment.direction",
+            "contract.acceptance.workflow_routing_review_accuracy_alignment"
+          ],
+          "applies_to": [
+            "workflows/",
+            "docs/",
+            "core/python/src/watchtower_core/",
+            "core/control_plane/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.workflow_routing_review_accuracy_alignment",
+          "title": "Workflow Routing Review Accuracy Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.workflow_routing_review_accuracy_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.workflow_routing_review_accuracy_alignment.001",
+            "ac.workflow_routing_review_accuracy_alignment.002",
+            "ac.workflow_routing_review_accuracy_alignment.003",
+            "ac.workflow_routing_review_accuracy_alignment.004"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+            "core/control_plane/indexes/routes/route_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/repo_ops/query/routes.py",
+            "core/python/tests/unit/test_route_index_sync.py",
+            "docs/commands/core_python/watchtower_core_route_preview.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
+            "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+            "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+            "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+            "docs/planning/tasks/open/workflow_routing_review_accuracy_alignment_bootstrap.md",
+            "docs/planning/tasks/task_tracking.md",
+            "workflows/ROUTING_TABLE.md",
+            "workflows/modules/foundations_context_review.md"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/prds/route_preview_natural_request_matching.md",
+            "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/workflows/routing_and_context_loading_standard.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.workflow_routing_review_accuracy_alignment.planning_baseline",
+          "title": "Workflow Routing Review Accuracy Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-12T03:52:21Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.workflow_routing_review_accuracy_alignment.planning_baseline",
+            "check.workflow_routing_review_accuracy_alignment.route_scoring_hardening",
+            "check.workflow_routing_review_accuracy_alignment.foundations_alignment_route",
+            "check.workflow_routing_review_accuracy_alignment.validation_closeout"
+          ],
+          "acceptance_ids": [
+            "ac.workflow_routing_review_accuracy_alignment.001",
+            "ac.workflow_routing_review_accuracy_alignment.002",
+            "ac.workflow_routing_review_accuracy_alignment.003",
+            "ac.workflow_routing_review_accuracy_alignment.004"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.workflow_routing_review_accuracy_alignment"
+      ],
+      "decision_ids": [
+        "decision.workflow_routing_review_accuracy_alignment.direction"
+      ],
+      "design_ids": [
+        "design.features.workflow_routing_review_accuracy_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.workflow_routing_review_accuracy_alignment"
+      ],
+      "task_ids": [
+        "task.workflow_routing_review_accuracy_alignment.bootstrap.001",
+        "task.workflow_routing_review_accuracy_alignment.implementation.001",
+        "task.workflow_routing_review_accuracy_alignment.validation_closeout.002"
+      ],
+      "requirement_ids": [
+        "req.workflow_routing_review_accuracy_alignment.001",
+        "req.workflow_routing_review_accuracy_alignment.002",
+        "req.workflow_routing_review_accuracy_alignment.003",
+        "req.workflow_routing_review_accuracy_alignment.004",
+        "req.workflow_routing_review_accuracy_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_routing_review_accuracy_alignment.001",
+        "ac.workflow_routing_review_accuracy_alignment.002",
+        "ac.workflow_routing_review_accuracy_alignment.003",
+        "ac.workflow_routing_review_accuracy_alignment.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.workflow_routing_review_accuracy_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.workflow_routing_review_accuracy_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/design/implementation/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
+        "docs/planning/tasks/closed/harden_workflow_route_scoring_and_review_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_workflow_routing_review_alignment.md",
+        "docs/planning/tasks/closed/workflow_routing_review_accuracy_alignment_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "workflows/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "tags": [
+        "bug",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T03:52:21Z for trace.workflow_routing_review_accuracy_alignment after route hardening, task closure, initiative closeout, and the final no-new-issues routing review pass.",
+      "closed_at": "2026-03-12T03:52:21Z",
+      "closure_reason": "Delivered deterministic routing hardening, route-table alignment, and clean follow-up review coverage."
+    },
+    {
       "trace_id": "trace.workflow_system_operationalization",
       "title": "Workflow System Operationalization PRD",
       "summary": "Defines the follow-up work needed to make workflow routing, planning scaffolding, and task lifecycle handling executable, machine-readable, and easier to use before WatchTower implementation begins.",
