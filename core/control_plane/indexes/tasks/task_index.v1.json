@@ -26,6 +26,87 @@
       ]
     },
     {
+      "task_id": "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001",
+      "title": "Bootstrap Acceptance Reconciliation Snapshot Reuse planning chain",
+      "summary": "Bootstraps the initial planning chain for Acceptance Reconciliation Snapshot Reuse.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+      "updated_at": "2026-03-12T17:03:15Z",
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "related_ids": [
+        "prd.acceptance_reconciliation_snapshot_reuse",
+        "design.features.acceptance_reconciliation_snapshot_reuse",
+        "design.implementation.acceptance_reconciliation_snapshot_reuse",
+        "decision.acceptance_reconciliation_snapshot_reuse_direction",
+        "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002",
+      "title": "Reuse acceptance reconciliation snapshots",
+      "summary": "Eliminate repeated acceptance-validation rereads by reusing command-scoped traceability, PRD, contract, evidence, and validator snapshots.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+      "updated_at": "2026-03-12T17:10:02Z",
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "depends_on": [
+        "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.acceptance_reconciliation_snapshot_reuse",
+        "design.features.acceptance_reconciliation_snapshot_reuse",
+        "design.implementation.acceptance_reconciliation_snapshot_reuse",
+        "decision.acceptance_reconciliation_snapshot_reuse_direction",
+        "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003",
+      "title": "Validate and close acceptance reconciliation snapshot reuse",
+      "summary": "Run targeted and full validation, refresh acceptance evidence, and close the trace once the acceptance snapshot-reuse change lands cleanly.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
+      "updated_at": "2026-03-12T17:17:13Z",
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "depends_on": [
+        "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002"
+      ],
+      "related_ids": [
+        "prd.acceptance_reconciliation_snapshot_reuse",
+        "design.implementation.acceptance_reconciliation_snapshot_reuse",
+        "decision.acceptance_reconciliation_snapshot_reuse_direction",
+        "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "applies_to": [
+        "core/python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
       "task_id": "task.command_documentation_and_lookup.followup.001",
       "title": "Close remaining command documentation and lookup follow-up",
       "summary": "Tracks the remaining closeout and verification follow-up for the command documentation and lookup initiative.",

@@ -5,6 +5,53 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "prd_id": "prd.acceptance_reconciliation_snapshot_reuse",
+      "title": "Acceptance Reconciliation Snapshot Reuse PRD",
+      "summary": "Eliminate repeated trace-level rereads inside acceptance reconciliation by reusing command-scoped validated planning and evidence snapshots without weakening validation fidelity.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+      "updated_at": "2026-03-12T17:02:50Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.acceptance_reconciliation_snapshot_reuse.001",
+        "req.acceptance_reconciliation_snapshot_reuse.002",
+        "req.acceptance_reconciliation_snapshot_reuse.003",
+        "req.acceptance_reconciliation_snapshot_reuse.004"
+      ],
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.001",
+        "ac.acceptance_reconciliation_snapshot_reuse.002",
+        "ac.acceptance_reconciliation_snapshot_reuse.003",
+        "ac.acceptance_reconciliation_snapshot_reuse.004",
+        "ac.acceptance_reconciliation_snapshot_reuse.005"
+      ],
+      "linked_decision_ids": [
+        "decision.acceptance_reconciliation_snapshot_reuse_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.control_plane_example_validation_hardening",
       "prd_id": "prd.control_plane_example_validation_hardening",
       "title": "Control Plane Example Validation Hardening PRD",

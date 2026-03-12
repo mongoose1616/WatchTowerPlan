@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.acceptance_reconciliation_snapshot_reuse` | `completed` | `2026-03-12T17:17:51Z` | [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md) |
 | `trace.coordination_projection_source_reuse` | `completed` | `2026-03-12T16:12:12Z` | [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/coordination_projection_source_reuse.md) |
 | `trace.reference_resolution_reuse_hardening` | `completed` | `2026-03-12T15:20:34Z` | [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_resolution_reuse_hardening.md) |
 | `trace.control_plane_example_validation_hardening` | `completed` | `2026-03-12T14:47:28Z` | [control_plane_example_validation_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/control_plane_example_validation_hardening.md) |
 | `trace.task_sync_disappearing_file_resilience` | `completed` | `2026-03-12T13:01:19Z` | [task_sync_disappearing_file_resilience.md](/home/j/WatchTowerPlan/docs/planning/prds/task_sync_disappearing_file_resilience.md) |
-| `trace.workflow_routing_review_accuracy_alignment` | `completed` | `2026-03-12T03:52:21Z` | [workflow_routing_review_accuracy_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_routing_review_accuracy_alignment.md) |
 
-_Updated At: `2026-03-12T16:22:53Z`_
+_Updated At: `2026-03-12T17:18:29Z`_

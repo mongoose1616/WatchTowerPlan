@@ -2,19 +2,25 @@
 
 from __future__ import annotations
 
+from typing import Protocol
+
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import TraceabilityEntry
-from watchtower_core.repo_ops.query import (
-    AcceptanceContractQueryService,
-    AcceptanceContractSearchParams,
-    PrdQueryService,
-    PrdSearchParams,
-    ValidationEvidenceQueryService,
-    ValidationEvidenceSearchParams,
+from watchtower_core.control_plane.models import (
+    AcceptanceContract,
+    PrdIndexEntry,
+    TraceabilityEntry,
+    ValidationEvidenceArtifact,
 )
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
 
 ACCEPTANCE_RECONCILIATION_VALIDATOR_ID = "validator.trace.acceptance_reconciliation"
+
+
+class _TraceLinked(Protocol):
+    """Protocol for artifacts that carry a shared trace identifier."""
+
+    @property
+    def trace_id(self) -> str: ...
 
 
 class AcceptanceReconciliationService:
@@ -22,22 +28,48 @@ class AcceptanceReconciliationService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        self._trace_entries_by_id: dict[str, TraceabilityEntry] | None = None
+        self._prd_entries_by_trace: dict[str, tuple[PrdIndexEntry, ...]] | None = None
+        self._contracts_by_trace: dict[str, tuple[AcceptanceContract, ...]] | None = None
+        self._evidence_by_trace: dict[str, tuple[ValidationEvidenceArtifact, ...]] | None = None
+        self._validator_ids: frozenset[str] | None = None
+
+    def acceptance_trace_ids(self) -> tuple[str, ...]:
+        """Return the trace IDs that require acceptance reconciliation."""
+
+        targets: list[str] = []
+        seen: set[str] = set()
+
+        def add(trace_id: str) -> None:
+            if trace_id in seen:
+                return
+            seen.add(trace_id)
+            targets.append(trace_id)
+
+        for trace_entry in self._trace_entries_by_id_snapshot().values():
+            if (
+                trace_entry.acceptance_ids
+                or trace_entry.acceptance_contract_ids
+                or trace_entry.evidence_ids
+            ):
+                add(trace_entry.trace_id)
+        for trace_id, prd_entries in self._prd_entries_by_trace_snapshot().items():
+            if any(entry.acceptance_ids for entry in prd_entries):
+                add(trace_id)
+        for trace_id in self._contracts_by_trace_snapshot():
+            add(trace_id)
+        for trace_id in self._evidence_by_trace_snapshot():
+            add(trace_id)
+        return tuple(targets)
 
     def validate(self, trace_id: str) -> ValidationResult:
         """Return semantic reconciliation results for one trace."""
         issues: list[ValidationIssue] = []
         trace_entry = self._load_trace_entry(trace_id, issues)
-        prds = PrdQueryService(self._loader).search(PrdSearchParams(trace_id=trace_id))
-        contracts = AcceptanceContractQueryService(self._loader).search(
-            AcceptanceContractSearchParams(trace_id=trace_id)
-        )
-        evidence_artifacts = ValidationEvidenceQueryService(self._loader).search(
-            ValidationEvidenceSearchParams(trace_id=trace_id)
-        )
-        validator_ids = {
-            definition.validator_id
-            for definition in self._loader.load_validator_registry().validators
-        }
+        prds = self._prd_entries_by_trace_snapshot().get(trace_id, ())
+        contracts = self._contracts_by_trace_snapshot().get(trace_id, ())
+        evidence_artifacts = self._evidence_by_trace_snapshot().get(trace_id, ())
+        validator_ids = self._validator_ids_snapshot()
 
         target_path = (
             contracts[0].doc_path
@@ -264,9 +296,8 @@ class AcceptanceReconciliationService:
         trace_id: str,
         issues: list[ValidationIssue],
     ) -> TraceabilityEntry | None:
-        try:
-            return self._loader.load_traceability_index().get(trace_id)
-        except KeyError:
+        trace_entry = self._trace_entries_by_id_snapshot().get(trace_id)
+        if trace_entry is None:
             issues.append(
                 ValidationIssue(
                     code="traceability_entry_missing",
@@ -275,6 +306,48 @@ class AcceptanceReconciliationService:
                 )
             )
             return None
+        return trace_entry
+
+    def _trace_entries_by_id_snapshot(self) -> dict[str, TraceabilityEntry]:
+        if self._trace_entries_by_id is None:
+            self._trace_entries_by_id = {
+                entry.trace_id: entry
+                for entry in self._loader.load_traceability_index().entries
+            }
+        return self._trace_entries_by_id
+
+    def _prd_entries_by_trace_snapshot(self) -> dict[str, tuple[PrdIndexEntry, ...]]:
+        if self._prd_entries_by_trace is None:
+            self._prd_entries_by_trace = _group_by_trace(
+                self._loader.load_prd_index().entries
+            )
+        return self._prd_entries_by_trace
+
+    def _contracts_by_trace_snapshot(
+        self,
+    ) -> dict[str, tuple[AcceptanceContract, ...]]:
+        if self._contracts_by_trace is None:
+            self._contracts_by_trace = _group_by_trace(
+                self._loader.load_acceptance_contracts()
+            )
+        return self._contracts_by_trace
+
+    def _evidence_by_trace_snapshot(
+        self,
+    ) -> dict[str, tuple[ValidationEvidenceArtifact, ...]]:
+        if self._evidence_by_trace is None:
+            self._evidence_by_trace = _group_by_trace(
+                self._loader.load_validation_evidence_artifacts()
+            )
+        return self._evidence_by_trace
+
+    def _validator_ids_snapshot(self) -> frozenset[str]:
+        if self._validator_ids is None:
+            self._validator_ids = frozenset(
+                definition.validator_id
+                for definition in self._loader.load_validator_registry().validators
+            )
+        return self._validator_ids
 
     @staticmethod
     def _compare_id_sets(
@@ -307,3 +380,15 @@ class AcceptanceReconciliationService:
                     location=extra_location,
                 )
             )
+
+
+def _group_by_trace[TTraceLinked: _TraceLinked](
+    entries: tuple[TTraceLinked, ...],
+) -> dict[str, tuple[TTraceLinked, ...]]:
+    grouped: dict[str, list[TTraceLinked]] = {}
+    for entry in entries:
+        grouped.setdefault(entry.trace_id, []).append(entry)
+    return {
+        trace_id: tuple(grouped_entries)
+        for trace_id, grouped_entries in grouped.items()
+    }

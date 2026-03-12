@@ -1,0 +1,107 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.acceptance_reconciliation_snapshot_reuse",
+  "title": "Acceptance Reconciliation Snapshot Reuse Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+  "source_prd_id": "prd.acceptance_reconciliation_snapshot_reuse",
+  "entries": [
+    {
+      "acceptance_id": "ac.acceptance_reconciliation_snapshot_reuse.001",
+      "summary": "The trace publishes a fully-authored planning chain, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded closed task set for the acceptance snapshot-reuse slice.",
+      "source_requirement_ids": [
+        "req.acceptance_reconciliation_snapshot_reuse.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
+        "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The final trace should preserve the authored planning chain, accepted decision, refreshed contract and evidence, and the closed execution task set."
+    },
+    {
+      "acceptance_id": "ac.acceptance_reconciliation_snapshot_reuse.002",
+      "summary": "Aggregate acceptance validation reuses stable traceability, PRD, contract, evidence, and validator snapshots instead of rereading them once per trace.",
+      "source_requirement_ids": [
+        "req.acceptance_reconciliation_snapshot_reuse.001"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md"
+      ],
+      "notes": "Direct instrumentation should show aggregate acceptance validation no longer rereads shared traceability, PRD, acceptance-contract, validation-evidence, and validator-registry inputs once per trace."
+    },
+    {
+      "acceptance_id": "ac.acceptance_reconciliation_snapshot_reuse.003",
+      "summary": "Single-trace and aggregate acceptance validation preserve the same reconciliation behavior and fail-closed issue reporting after snapshot reuse lands.",
+      "source_requirement_ids": [
+        "req.acceptance_reconciliation_snapshot_reuse.002",
+        "req.acceptance_reconciliation_snapshot_reuse.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json"
+      ],
+      "notes": "Targeted regressions should prove that direct and aggregate acceptance validation keep the same trace-level outcomes while reuse remains command-scoped."
+    },
+    {
+      "acceptance_id": "ac.acceptance_reconciliation_snapshot_reuse.004",
+      "summary": "The repository stays green on the normal validation baseline after the acceptance snapshot-reuse change lands.",
+      "source_requirement_ids": [
+        "req.acceptance_reconciliation_snapshot_reuse.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "notes": "Closeout should include sync all, validate acceptance, validate all, pytest, mypy, and ruff."
+    },
+    {
+      "acceptance_id": "ac.acceptance_reconciliation_snapshot_reuse.005",
+      "summary": "A follow-up review of adjacent acceptance-validation and aggregate-validation surfaces finds no additional actionable issues.",
+      "source_requirement_ids": [
+        "req.acceptance_reconciliation_snapshot_reuse.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The stop condition is a clean follow-up review pass with no new issues in the discussed area."
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from pathlib import Path
 from shutil import copytree
 from textwrap import dedent
@@ -251,3 +252,39 @@ def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
 
     assert result.passed is True
     assert reference_build_count == 1
+
+
+def test_validate_all_reuses_acceptance_reconciliation_snapshots(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    service = ValidationAllService(ControlPlaneLoader())
+    counts = Counter()
+
+    for name in (
+        "load_traceability_index",
+        "load_prd_index",
+        "load_acceptance_contracts",
+        "load_validation_evidence_artifacts",
+        "load_validator_registry",
+    ):
+        original = getattr(service._loader, name)
+
+        def make_wrapper(method_name, method):
+            def wrapped(*args, **kwargs):
+                counts[method_name] += 1
+                return method(*args, **kwargs)
+
+            return wrapped
+
+        monkeypatch.setattr(service._loader, name, make_wrapper(name, original))
+
+    result = service.run(included_families=("acceptance",))
+
+    assert result.passed is True
+    assert counts == {
+        "load_traceability_index": 1,
+        "load_prd_index": 1,
+        "load_acceptance_contracts": 1,
+        "load_validation_evidence_artifacts": 1,
+        "load_validator_registry": 1,
+    }

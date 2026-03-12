@@ -84,6 +84,331 @@
       "closure_reason": "Delivered and validated; future expansion belongs to a new bounded initiative"
     },
     {
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "title": "Acceptance Reconciliation Snapshot Reuse PRD",
+      "summary": "Eliminate repeated trace-level rereads inside acceptance reconciliation by reusing command-scoped validated planning and evidence snapshots without weakening validation fidelity.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T17:18:29Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.acceptance_reconciliation_snapshot_reuse",
+          "title": "Acceptance Reconciliation Snapshot Reuse PRD",
+          "summary": "Eliminate repeated trace-level rereads inside acceptance reconciliation by reusing command-scoped validated planning and evidence snapshots without weakening validation fidelity.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+          "updated_at": "2026-03-12T17:02:50Z",
+          "requirement_ids": [
+            "req.acceptance_reconciliation_snapshot_reuse.001",
+            "req.acceptance_reconciliation_snapshot_reuse.002",
+            "req.acceptance_reconciliation_snapshot_reuse.003",
+            "req.acceptance_reconciliation_snapshot_reuse.004"
+          ],
+          "acceptance_ids": [
+            "ac.acceptance_reconciliation_snapshot_reuse.001",
+            "ac.acceptance_reconciliation_snapshot_reuse.002",
+            "ac.acceptance_reconciliation_snapshot_reuse.003",
+            "ac.acceptance_reconciliation_snapshot_reuse.004",
+            "ac.acceptance_reconciliation_snapshot_reuse.005"
+          ],
+          "linked_decision_ids": [
+            "decision.acceptance_reconciliation_snapshot_reuse_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.acceptance_reconciliation_snapshot_reuse"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.acceptance_reconciliation_snapshot_reuse"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.acceptance_reconciliation_snapshot_reuse_direction",
+          "title": "Acceptance Reconciliation Snapshot Reuse Direction Decision",
+          "summary": "Accept service-scoped acceptance snapshot reuse and reject broader loader caching for Acceptance Reconciliation Snapshot Reuse.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
+          "updated_at": "2026-03-12T17:02:50Z",
+          "linked_prd_ids": [
+            "prd.acceptance_reconciliation_snapshot_reuse"
+          ],
+          "linked_design_ids": [
+            "design.features.acceptance_reconciliation_snapshot_reuse"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.acceptance_reconciliation_snapshot_reuse"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.acceptance_reconciliation_snapshot_reuse",
+          "family": "feature_design",
+          "title": "Acceptance Reconciliation Snapshot Reuse Feature Design",
+          "summary": "Defines the technical design boundary for Acceptance Reconciliation Snapshot Reuse.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+          "updated_at": "2026-03-12T17:02:50Z"
+        },
+        {
+          "document_id": "design.implementation.acceptance_reconciliation_snapshot_reuse",
+          "family": "implementation_plan",
+          "title": "Acceptance Reconciliation Snapshot Reuse Implementation Plan",
+          "summary": "Breaks Acceptance Reconciliation Snapshot Reuse into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+          "updated_at": "2026-03-12T17:02:50Z",
+          "source_paths": [
+            "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+            "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001",
+          "title": "Bootstrap Acceptance Reconciliation Snapshot Reuse planning chain",
+          "summary": "Bootstraps the initial planning chain for Acceptance Reconciliation Snapshot Reuse.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+          "updated_at": "2026-03-12T17:03:15Z",
+          "related_ids": [
+            "prd.acceptance_reconciliation_snapshot_reuse",
+            "design.features.acceptance_reconciliation_snapshot_reuse",
+            "design.implementation.acceptance_reconciliation_snapshot_reuse",
+            "decision.acceptance_reconciliation_snapshot_reuse_direction",
+            "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/validation/",
+            "core/python/src/watchtower_core/repo_ops/validation/",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002",
+          "title": "Reuse acceptance reconciliation snapshots",
+          "summary": "Eliminate repeated acceptance-validation rereads by reusing command-scoped traceability, PRD, contract, evidence, and validator snapshots.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+          "updated_at": "2026-03-12T17:10:02Z",
+          "depends_on": [
+            "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001"
+          ],
+          "related_ids": [
+            "prd.acceptance_reconciliation_snapshot_reuse",
+            "design.features.acceptance_reconciliation_snapshot_reuse",
+            "design.implementation.acceptance_reconciliation_snapshot_reuse",
+            "decision.acceptance_reconciliation_snapshot_reuse_direction",
+            "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/validation/",
+            "core/python/src/watchtower_core/repo_ops/validation/",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003",
+          "title": "Validate and close acceptance reconciliation snapshot reuse",
+          "summary": "Run targeted and full validation, refresh acceptance evidence, and close the trace once the acceptance snapshot-reuse change lands cleanly.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
+          "updated_at": "2026-03-12T17:17:13Z",
+          "depends_on": [
+            "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002"
+          ],
+          "related_ids": [
+            "prd.acceptance_reconciliation_snapshot_reuse",
+            "design.implementation.acceptance_reconciliation_snapshot_reuse",
+            "decision.acceptance_reconciliation_snapshot_reuse_direction",
+            "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+          ],
+          "applies_to": [
+            "core/python/",
+            "docs/planning/",
+            "core/control_plane/contracts/acceptance/",
+            "core/control_plane/ledgers/validation_evidence/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.acceptance_reconciliation_snapshot_reuse",
+          "title": "Acceptance Reconciliation Snapshot Reuse Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.acceptance_reconciliation_snapshot_reuse",
+          "doc_path": "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.acceptance_reconciliation_snapshot_reuse.001",
+            "ac.acceptance_reconciliation_snapshot_reuse.002",
+            "ac.acceptance_reconciliation_snapshot_reuse.003",
+            "ac.acceptance_reconciliation_snapshot_reuse.004",
+            "ac.acceptance_reconciliation_snapshot_reuse.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+            "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/src/watchtower_core/validation/acceptance.py",
+            "core/python/tests/unit/test_acceptance_reconciliation.py",
+            "core/python/tests/unit/test_all_validation.py",
+            "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
+            "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+            "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+            "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+            "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+            "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+            "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.acceptance_reconciliation_snapshot_reuse.planning_baseline",
+          "title": "Acceptance Reconciliation Snapshot Reuse Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-12T17:18:29Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json",
+          "check_ids": [
+            "check.acceptance_reconciliation_snapshot_reuse.planning_baseline",
+            "check.acceptance_reconciliation_snapshot_reuse.snapshot_reuse",
+            "check.acceptance_reconciliation_snapshot_reuse.behavior_preservation",
+            "check.acceptance_reconciliation_snapshot_reuse.validation_closeout",
+            "check.acceptance_reconciliation_snapshot_reuse.followup_review"
+          ],
+          "acceptance_ids": [
+            "ac.acceptance_reconciliation_snapshot_reuse.001",
+            "ac.acceptance_reconciliation_snapshot_reuse.002",
+            "ac.acceptance_reconciliation_snapshot_reuse.003",
+            "ac.acceptance_reconciliation_snapshot_reuse.004",
+            "ac.acceptance_reconciliation_snapshot_reuse.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "decision_ids": [
+        "decision.acceptance_reconciliation_snapshot_reuse_direction"
+      ],
+      "design_ids": [
+        "design.features.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "plan_ids": [
+        "design.implementation.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "task_ids": [
+        "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001",
+        "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002",
+        "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.acceptance_reconciliation_snapshot_reuse.001",
+        "req.acceptance_reconciliation_snapshot_reuse.002",
+        "req.acceptance_reconciliation_snapshot_reuse.003",
+        "req.acceptance_reconciliation_snapshot_reuse.004"
+      ],
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.001",
+        "ac.acceptance_reconciliation_snapshot_reuse.002",
+        "ac.acceptance_reconciliation_snapshot_reuse.003",
+        "ac.acceptance_reconciliation_snapshot_reuse.004",
+        "ac.acceptance_reconciliation_snapshot_reuse.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "evidence_ids": [
+        "evidence.acceptance_reconciliation_snapshot_reuse.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Closeout evidence refreshed at 2026-03-12T17:18:29Z for trace.acceptance_reconciliation_snapshot_reuse after the optimization landed, the execution tasks closed, and the follow-up review found no new issues.",
+      "closed_at": "2026-03-12T17:17:51Z",
+      "closure_reason": "Acceptance reconciliation now reuses command-scoped traceability, PRD, acceptance-contract, validation-evidence, and validator snapshots during aggregate validation; full validation passed and the follow-up review of adjacent acceptance surfaces found no additional issues."
+    },
+    {
       "trace_id": "trace.command_documentation_and_lookup",
       "title": "Command Documentation and Lookup Design",
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",

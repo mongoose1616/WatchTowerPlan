@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -62,3 +63,42 @@ def test_acceptance_reconciliation_reports_missing_traceability_entry() -> None:
 
     assert result.passed is False
     assert any(issue.code == "traceability_entry_missing" for issue in result.issues)
+
+
+def test_acceptance_reconciliation_reuses_snapshots_across_validate_calls(
+    monkeypatch,
+) -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = AcceptanceReconciliationService(loader)
+    counts = Counter()
+
+    for name in (
+        "load_traceability_index",
+        "load_prd_index",
+        "load_acceptance_contracts",
+        "load_validation_evidence_artifacts",
+        "load_validator_registry",
+    ):
+        original = getattr(loader, name)
+
+        def make_wrapper(method_name, method):
+            def wrapped(*args, **kwargs):
+                counts[method_name] += 1
+                return method(*args, **kwargs)
+
+            return wrapped
+
+        monkeypatch.setattr(loader, name, make_wrapper(name, original))
+
+    first = service.validate("trace.core_python_foundation")
+    second = service.validate("trace.core_python_foundation")
+
+    assert first.passed is True
+    assert second.passed is True
+    assert counts == {
+        "load_traceability_index": 1,
+        "load_prd_index": 1,
+        "load_acceptance_contracts": 1,
+        "load_validation_evidence_artifacts": 1,
+        "load_validator_registry": 1,
+    }

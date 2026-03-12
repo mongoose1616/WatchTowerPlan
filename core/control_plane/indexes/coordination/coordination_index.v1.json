@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-12T16:22:53Z",
+  "updated_at": "2026-03-12T17:18:29Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,85 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "title": "Acceptance Reconciliation Snapshot Reuse PRD",
+      "summary": "Eliminate repeated trace-level rereads inside acceptance reconciliation by reusing command-scoped validated planning and evidence snapshots without weakening validation fidelity.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T17:18:29Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+      "prd_ids": [
+        "prd.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "decision_ids": [
+        "decision.acceptance_reconciliation_snapshot_reuse_direction"
+      ],
+      "design_ids": [
+        "design.features.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "plan_ids": [
+        "design.implementation.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "task_ids": [
+        "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001",
+        "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002",
+        "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003"
+      ],
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.001",
+        "ac.acceptance_reconciliation_snapshot_reuse.002",
+        "ac.acceptance_reconciliation_snapshot_reuse.003",
+        "ac.acceptance_reconciliation_snapshot_reuse.004",
+        "ac.acceptance_reconciliation_snapshot_reuse.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "evidence_ids": [
+        "evidence.acceptance_reconciliation_snapshot_reuse.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T17:17:51Z",
+      "closure_reason": "Acceptance reconciliation now reuses command-scoped traceability, PRD, acceptance-contract, validation-evidence, and validator snapshots during aggregate validation; full validation passed and the follow-up review of adjacent acceptance surfaces found no additional issues.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Closeout evidence refreshed at 2026-03-12T17:18:29Z for trace.acceptance_reconciliation_snapshot_reuse after the optimization landed, the execution tasks closed, and the follow-up review found no new issues."
+    },
     {
       "trace_id": "trace.coordination_projection_source_reuse",
       "title": "Coordination Projection Source Reuse PRD",
@@ -3177,6 +3256,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "title": "Acceptance Reconciliation Snapshot Reuse PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-12T17:17:51Z",
+      "key_surface_path": "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+      "closure_reason": "Acceptance reconciliation now reuses command-scoped traceability, PRD, acceptance-contract, validation-evidence, and validator snapshots during aggregate validation; full validation passed and the follow-up review of adjacent acceptance surfaces found no additional issues."
+    },
+    {
       "trace_id": "trace.coordination_projection_source_reuse",
       "title": "Coordination Projection Source Reuse PRD",
       "initiative_status": "completed",
@@ -3247,14 +3334,6 @@
       "closed_at": "2026-03-12T01:07:10Z",
       "key_surface_path": "docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md",
       "closure_reason": "Closed after extending standards operationalization lookup for recurring documentation families, aligning README template authoring guidance, and revalidating the repository baseline."
-    },
-    {
-      "trace_id": "trace.standards_lookup_and_generic_template_alignment",
-      "title": "Standards Lookup and Generic Template Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-12T00:26:00Z",
-      "key_surface_path": "docs/planning/prds/standards_lookup_and_generic_template_alignment.md",
-      "closure_reason": "Closed after making standards lookup resolve directory-governed concrete files, narrowing the generic documentation template to fallback-only guidance, and revalidating the repository baseline."
     }
   ]
 }

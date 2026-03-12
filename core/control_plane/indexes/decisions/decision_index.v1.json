@@ -5,6 +5,45 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "decision_id": "decision.acceptance_reconciliation_snapshot_reuse_direction",
+      "title": "Acceptance Reconciliation Snapshot Reuse Direction Decision",
+      "summary": "Accept service-scoped acceptance snapshot reuse and reject broader loader caching for Acceptance Reconciliation Snapshot Reuse.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
+      "updated_at": "2026-03-12T17:02:50Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "linked_design_ids": [
+        "design.features.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.control_plane_example_validation_hardening",
       "decision_id": "decision.control_plane_example_validation_hardening_direction",
       "title": "Control Plane Example Validation Hardening Direction Decision",

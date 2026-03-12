@@ -377,30 +377,7 @@ class ValidationAllService:
         return ()
 
     def _acceptance_targets(self) -> tuple[str, ...]:
-        targets: list[str] = []
-        seen: set[str] = set()
-
-        def add(trace_id: str) -> None:
-            if trace_id in seen:
-                return
-            seen.add(trace_id)
-            targets.append(trace_id)
-
-        for trace_entry in self._loader.load_traceability_index().entries:
-            if (
-                trace_entry.acceptance_ids
-                or trace_entry.acceptance_contract_ids
-                or trace_entry.evidence_ids
-            ):
-                add(trace_entry.trace_id)
-        for prd_entry in self._loader.load_prd_index().entries:
-            if prd_entry.acceptance_ids:
-                add(prd_entry.trace_id)
-        for contract in self._loader.load_acceptance_contracts():
-            add(contract.trace_id)
-        for evidence in self._loader.load_validation_evidence_artifacts():
-            add(evidence.trace_id)
-        return tuple(targets)
+        return self._acceptance.acceptance_trace_ids()
 
     def _validate_valid_example_artifact(self, relative_path: str) -> ValidationResult:
         schema_id = schema_id_for_control_plane_example(

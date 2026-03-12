@@ -41,6 +41,88 @@
       ]
     },
     {
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "title": "Acceptance Reconciliation Snapshot Reuse PRD",
+      "summary": "Eliminate repeated trace-level rereads inside acceptance reconciliation by reusing command-scoped validated planning and evidence snapshots without weakening validation fidelity.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T17:18:29Z",
+      "closed_at": "2026-03-12T17:17:51Z",
+      "closure_reason": "Acceptance reconciliation now reuses command-scoped traceability, PRD, acceptance-contract, validation-evidence, and validator snapshots during aggregate validation; full validation passed and the follow-up review of adjacent acceptance surfaces found no additional issues.",
+      "prd_ids": [
+        "prd.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "decision_ids": [
+        "decision.acceptance_reconciliation_snapshot_reuse_direction"
+      ],
+      "design_ids": [
+        "design.features.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "plan_ids": [
+        "design.implementation.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "task_ids": [
+        "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001",
+        "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002",
+        "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.acceptance_reconciliation_snapshot_reuse.001",
+        "req.acceptance_reconciliation_snapshot_reuse.002",
+        "req.acceptance_reconciliation_snapshot_reuse.003",
+        "req.acceptance_reconciliation_snapshot_reuse.004"
+      ],
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.001",
+        "ac.acceptance_reconciliation_snapshot_reuse.002",
+        "ac.acceptance_reconciliation_snapshot_reuse.003",
+        "ac.acceptance_reconciliation_snapshot_reuse.004",
+        "ac.acceptance_reconciliation_snapshot_reuse.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.acceptance_reconciliation_snapshot_reuse.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Closeout evidence refreshed at 2026-03-12T17:18:29Z for trace.acceptance_reconciliation_snapshot_reuse after the optimization landed, the execution tasks closed, and the follow-up review found no new issues."
+    },
+    {
       "trace_id": "trace.command_documentation_and_lookup",
       "title": "Command Documentation and Lookup Design",
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",

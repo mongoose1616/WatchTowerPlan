@@ -48,6 +48,35 @@
       ]
     },
     {
+      "document_id": "design.features.acceptance_reconciliation_snapshot_reuse",
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "family": "feature_design",
+      "title": "Acceptance Reconciliation Snapshot Reuse Feature Design",
+      "summary": "Defines the technical design boundary for Acceptance Reconciliation Snapshot Reuse.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+      "updated_at": "2026-03-12T17:02:50Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+      ]
+    },
+    {
       "document_id": "design.features.command_documentation_and_lookup",
       "trace_id": "trace.command_documentation_and_lookup",
       "family": "feature_design",
@@ -1433,6 +1462,36 @@
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/planning/prds/route_preview_natural_request_matching.md",
         "docs/planning/prds/workflow_system_operationalization.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.acceptance_reconciliation_snapshot_reuse",
+      "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+      "family": "implementation_plan",
+      "title": "Acceptance Reconciliation Snapshot Reuse Implementation Plan",
+      "summary": "Breaks Acceptance Reconciliation Snapshot Reuse into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+      "updated_at": "2026-03-12T17:02:50Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "core/python/",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json"
       ]
     },
     {

@@ -1,0 +1,140 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.acceptance_reconciliation_snapshot_reuse.planning_baseline",
+  "title": "Acceptance Reconciliation Snapshot Reuse Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T17:18:29Z",
+  "source_prd_ids": [
+    "prd.acceptance_reconciliation_snapshot_reuse"
+  ],
+  "source_design_ids": [
+    "design.features.acceptance_reconciliation_snapshot_reuse"
+  ],
+  "source_plan_ids": [
+    "design.implementation.acceptance_reconciliation_snapshot_reuse"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+  ],
+  "checks": [
+    {
+      "check_id": "check.acceptance_reconciliation_snapshot_reuse.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+        "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md"
+      ],
+      "subject_ids": [
+        "prd.acceptance_reconciliation_snapshot_reuse",
+        "design.features.acceptance_reconciliation_snapshot_reuse",
+        "design.implementation.acceptance_reconciliation_snapshot_reuse",
+        "task.acceptance_reconciliation_snapshot_reuse.bootstrap.001",
+        "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002",
+        "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003",
+        "contract.acceptance.acceptance_reconciliation_snapshot_reuse",
+        "decision.acceptance_reconciliation_snapshot_reuse_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.001"
+      ],
+      "notes": "Bootstrap write mode published the initial planning chain, acceptance contract, evidence artifact, and bootstrap task in canonical repository paths."
+    },
+    {
+      "check_id": "check.acceptance_reconciliation_snapshot_reuse.snapshot_reuse",
+      "title": "Aggregate acceptance validation reuses shared snapshots",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "subject_ids": [
+        "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.002"
+      ],
+      "notes": "Direct instrumentation reduced aggregate acceptance-validation shared loader reads from 34/34/34/34/33 to 1/1/1/1/1 for traceability, PRD, acceptance-contract, validation-evidence, and validator-registry inputs."
+    },
+    {
+      "check_id": "check.acceptance_reconciliation_snapshot_reuse.behavior_preservation",
+      "title": "Acceptance reconciliation behavior is preserved",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "subject_ids": [
+        "task.acceptance_reconciliation_snapshot_reuse.snapshot_reuse.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.003"
+      ],
+      "notes": "Targeted regression coverage exercises repeated direct validation calls and aggregate acceptance validation without changing the expected reconciliation outcomes."
+    },
+    {
+      "check_id": "check.acceptance_reconciliation_snapshot_reuse.validation_closeout",
+      "title": "Acceptance snapshot reuse validation baseline is green",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md"
+      ],
+      "subject_ids": [
+        "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003",
+        "contract.acceptance.acceptance_reconciliation_snapshot_reuse"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.004"
+      ],
+      "notes": "Closeout validation runs completed cleanly for the landed change set, including sync all, targeted regressions, acceptance validation for trace.acceptance_reconciliation_snapshot_reuse, the full repository validation baseline, pytest, mypy, and ruff."
+    },
+    {
+      "check_id": "check.acceptance_reconciliation_snapshot_reuse.followup_review",
+      "title": "Follow-up review found no new issues in adjacent surfaces",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "subject_ids": [
+        "task.acceptance_reconciliation_snapshot_reuse.validation_closeout.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.acceptance_reconciliation_snapshot_reuse.005"
+      ],
+      "notes": "A final follow-up review of acceptance reconciliation, aggregate acceptance target discovery, adjacent acceptance/evidence query helpers, and the new regression coverage found no additional actionable issues."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Closeout evidence refreshed at 2026-03-12T17:18:29Z for trace.acceptance_reconciliation_snapshot_reuse after the optimization landed, the execution tasks closed, and the follow-up review found no new issues.",
+  "source_decision_ids": [
+    "decision.acceptance_reconciliation_snapshot_reuse_direction"
+  ]
+}
