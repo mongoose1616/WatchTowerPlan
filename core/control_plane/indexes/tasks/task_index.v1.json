@@ -1682,6 +1682,85 @@
       ]
     },
     {
+      "task_id": "task.lazy_planning_query_payload_emission.bootstrap.001",
+      "title": "Bootstrap Lazy Planning Query Payload Emission planning chain",
+      "summary": "Bootstraps the initial planning chain for Lazy Planning Query Payload Emission.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
+      "updated_at": "2026-03-12T20:54:44Z",
+      "trace_id": "trace.lazy_planning_query_payload_emission",
+      "related_ids": [
+        "prd.lazy_planning_query_payload_emission",
+        "design.features.lazy_planning_query_payload_emission",
+        "design.implementation.lazy_planning_query_payload_emission",
+        "decision.lazy_planning_query_payload_emission_direction",
+        "contract.acceptance.lazy_planning_query_payload_emission"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
+      "task_id": "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002",
+      "title": "Implement lazy planning query payload emission",
+      "summary": "Add bounded lazy JSON payload emission for the planning, initiatives, and coordination query handlers so human output paths stop invoking the heavy planning serializers.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+      "updated_at": "2026-03-12T20:58:20Z",
+      "trace_id": "trace.lazy_planning_query_payload_emission",
+      "related_ids": [
+        "prd.lazy_planning_query_payload_emission",
+        "design.implementation.lazy_planning_query_payload_emission",
+        "decision.lazy_planning_query_payload_emission_direction",
+        "contract.acceptance.lazy_planning_query_payload_emission"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.lazy_planning_query_payload_emission.validation_closeout.003",
+      "title": "Validate and close Lazy Planning Query Payload Emission",
+      "summary": "Run measured validation for the lazy payload-emission optimization, refresh evidence, complete the follow-up review, and close the trace cleanly.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md",
+      "updated_at": "2026-03-12T21:01:14Z",
+      "trace_id": "trace.lazy_planning_query_payload_emission",
+      "depends_on": [
+        "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002"
+      ],
+      "related_ids": [
+        "prd.lazy_planning_query_payload_emission",
+        "design.implementation.lazy_planning_query_payload_emission",
+        "decision.lazy_planning_query_payload_emission_direction",
+        "contract.acceptance.lazy_planning_query_payload_emission"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
       "task_id": "task.local_task_tracking.github_sync.001",
       "title": "Add GitHub task sync support",
       "summary": "Adds one-way GitHub sync support so local task records can publish to GitHub issues and project items without changing local task identity.",

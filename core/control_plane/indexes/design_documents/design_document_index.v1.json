@@ -842,6 +842,34 @@
       ]
     },
     {
+      "document_id": "design.features.lazy_planning_query_payload_emission",
+      "trace_id": "trace.lazy_planning_query_payload_emission",
+      "family": "feature_design",
+      "title": "Lazy Planning Query Payload Emission Feature Design",
+      "summary": "Defines the technical design boundary for Lazy Planning Query Payload Emission.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+      "updated_at": "2026-03-12T20:51:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py"
+      ]
+    },
+    {
       "document_id": "design.features.local_task_tracking_and_github_sync",
       "trace_id": "trace.local_task_tracking",
       "family": "feature_design",
@@ -2069,6 +2097,36 @@
         "docs/standards/documentation/documentation_semantics_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/engineering/git_commit_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.lazy_planning_query_payload_emission",
+      "trace_id": "trace.lazy_planning_query_payload_emission",
+      "family": "implementation_plan",
+      "title": "Lazy Planning Query Payload Emission Implementation Plan",
+      "summary": "Breaks Lazy Planning Query Payload Emission into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
+      "updated_at": "2026-03-12T20:51:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
+        "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py"
       ]
     },
     {

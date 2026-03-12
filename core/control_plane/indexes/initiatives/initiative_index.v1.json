@@ -1785,6 +1785,85 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-11T18:00:58Z for trace.internal_project_standards_review_and_hardening."
     },
     {
+      "trace_id": "trace.lazy_planning_query_payload_emission",
+      "title": "Lazy Planning Query Payload Emission PRD",
+      "summary": "Remove unnecessary full JSON payload construction from the human planning, initiative, and coordination query paths so large planning projections do not pay serialization cost unless JSON output is requested, without changing payload fidelity.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T21:01:37Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/lazy_planning_query_payload_emission.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/lazy_planning_query_payload_emission.md",
+      "prd_ids": [
+        "prd.lazy_planning_query_payload_emission"
+      ],
+      "decision_ids": [
+        "decision.lazy_planning_query_payload_emission_direction"
+      ],
+      "design_ids": [
+        "design.features.lazy_planning_query_payload_emission"
+      ],
+      "plan_ids": [
+        "design.implementation.lazy_planning_query_payload_emission"
+      ],
+      "task_ids": [
+        "task.lazy_planning_query_payload_emission.bootstrap.001",
+        "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002",
+        "task.lazy_planning_query_payload_emission.validation_closeout.003"
+      ],
+      "acceptance_ids": [
+        "ac.lazy_planning_query_payload_emission.001",
+        "ac.lazy_planning_query_payload_emission.002",
+        "ac.lazy_planning_query_payload_emission.003",
+        "ac.lazy_planning_query_payload_emission.004",
+        "ac.lazy_planning_query_payload_emission.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.lazy_planning_query_payload_emission"
+      ],
+      "evidence_ids": [
+        "evidence.lazy_planning_query_payload_emission.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T21:01:26Z",
+      "closure_reason": "Delivered lazy planning query payload emission: measured human query planning dropped from 3 serializer calls to 0, measured human query initiatives dropped from 3 serializer calls to 0, measured non-empty human query coordination dropped from 1 serializer call to 0, JSON output regressions stayed green, and the follow-up review found no additional actionable issues.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T21:01:37Z for trace.lazy_planning_query_payload_emission with measured serializer-call reductions and a clean adjacent-surface follow-up review."
+    },
+    {
       "trace_id": "trace.local_task_tracking",
       "title": "GitHub Task Push Sync",
       "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
@@ -2917,7 +2996,7 @@
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-12T20:24:47Z",
+      "updated_at": "2026-03-12T20:25:22Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
@@ -2987,7 +3066,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-12T20:23:18Z for trace.task_query_dependency_lookup_hardening with measured dependency-lookup results and a clean adjacent-surface follow-up review."
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T20:25:22Z for trace.task_query_dependency_lookup_hardening with measured dependency-lookup results, final acceptance/full-baseline validation, and a clean adjacent-surface follow-up review."
     },
     {
       "trace_id": "trace.task_sync_disappearing_file_resilience",

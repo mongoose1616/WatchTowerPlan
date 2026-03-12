@@ -126,6 +126,29 @@ def _initiative_entry(**overrides: object) -> SimpleNamespace:
     return SimpleNamespace(**defaults)
 
 
+def _planning_entry(**overrides: object) -> SimpleNamespace:
+    defaults: dict[str, object] = {
+        "trace_id": "trace.example",
+        "title": "Example Planning Entry",
+        "summary": "Planning summary.",
+        "artifact_status": "active",
+        "initiative_status": "active",
+        "current_phase": "execution",
+        "updated_at": "2026-03-10T23:59:59Z",
+        "primary_owner": "repository_maintainer",
+        "active_owners": ("repository_maintainer",),
+        "coordination": SimpleNamespace(next_action="Start execution."),
+        "prds": (SimpleNamespace(),),
+        "decisions": (),
+        "design_documents": (SimpleNamespace(),),
+        "tasks": (SimpleNamespace(),),
+        "acceptance_contracts": (),
+        "validation_evidence": (),
+    }
+    defaults.update(overrides)
+    return SimpleNamespace(**defaults)
+
+
 def test_route_preview_prints_no_match_guidance(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:
@@ -288,6 +311,13 @@ def test_query_initiatives_prints_human_summary(monkeypatch, capsys) -> None:
 
     monkeypatch.setattr(query_coordination_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(query_coordination_handlers, "InitiativeQueryService", FakeService)
+    monkeypatch.setattr(
+        query_coordination_handlers,
+        "serialize_initiative_entry",
+        lambda entry, *, compact=False: (_ for _ in ()).throw(
+            AssertionError("serialize_initiative_entry should not be called")
+        ),
+    )
 
     result = query_coordination_handlers._run_query_initiatives(_query_args())
 
@@ -296,6 +326,35 @@ def test_query_initiatives_prints_human_summary(monkeypatch, capsys) -> None:
     assert "Found 1 initiative entry:" in captured.out
     assert "Owners: repository_maintainer" in captured.out
     assert "Task:" not in captured.out
+
+
+def test_query_planning_prints_human_summary_without_serializing_json_payload(
+    monkeypatch,
+    capsys,
+) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def search(self, params: object) -> tuple[SimpleNamespace, ...]:
+            return (_planning_entry(),)
+
+    monkeypatch.setattr(query_coordination_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_coordination_handlers, "PlanningCatalogQueryService", FakeService)
+    monkeypatch.setattr(
+        query_coordination_handlers,
+        "serialize_planning_catalog_entry",
+        lambda entry, *, compact=False: (_ for _ in ()).throw(
+            AssertionError("serialize_planning_catalog_entry should not be called")
+        ),
+    )
+
+    result = query_coordination_handlers._run_query_planning(_query_args())
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Found 1 planning entry:" in captured.out
+    assert "Sections: prds=1 decisions=0 designs=1 tasks=1 contracts=0 evidence=0" in captured.out
 
 
 def test_query_initiatives_prints_empty_message(monkeypatch, capsys) -> None:
@@ -420,6 +479,13 @@ def test_query_coordination_prints_active_entry_summary(monkeypatch, capsys) -> 
 
     monkeypatch.setattr(query_coordination_handlers, "ControlPlaneLoader", lambda: object())
     monkeypatch.setattr(query_coordination_handlers, "CoordinationQueryService", FakeService)
+    monkeypatch.setattr(
+        query_coordination_handlers,
+        "serialize_initiative_entry",
+        lambda entry, *, compact=False: (_ for _ in ()).throw(
+            AssertionError("serialize_initiative_entry should not be called")
+        ),
+    )
 
     result = query_coordination_handlers._run_query_coordination(_query_args())
 

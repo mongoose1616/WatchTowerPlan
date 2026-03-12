@@ -6655,6 +6655,330 @@
       "closure_reason": "Completed the internal standards review, aligned standard-reference enforcement, normalized remaining decision-index document-relative path projection, published durable evidence, and revalidated the repository baseline."
     },
     {
+      "trace_id": "trace.lazy_planning_query_payload_emission",
+      "title": "Lazy Planning Query Payload Emission PRD",
+      "summary": "Remove unnecessary full JSON payload construction from the human planning, initiative, and coordination query paths so large planning projections do not pay serialization cost unless JSON output is requested, without changing payload fidelity.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T21:01:37Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.lazy_planning_query_payload_emission",
+          "title": "Lazy Planning Query Payload Emission PRD",
+          "summary": "Remove unnecessary full JSON payload construction from the human planning, initiative, and coordination query paths so large planning projections do not pay serialization cost unless JSON output is requested, without changing payload fidelity.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/lazy_planning_query_payload_emission.md",
+          "updated_at": "2026-03-12T20:51:21Z",
+          "requirement_ids": [
+            "req.lazy_planning_query_payload_emission.001",
+            "req.lazy_planning_query_payload_emission.002",
+            "req.lazy_planning_query_payload_emission.003",
+            "req.lazy_planning_query_payload_emission.004"
+          ],
+          "acceptance_ids": [
+            "ac.lazy_planning_query_payload_emission.001",
+            "ac.lazy_planning_query_payload_emission.002",
+            "ac.lazy_planning_query_payload_emission.003",
+            "ac.lazy_planning_query_payload_emission.004",
+            "ac.lazy_planning_query_payload_emission.005"
+          ],
+          "linked_decision_ids": [
+            "decision.lazy_planning_query_payload_emission_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.lazy_planning_query_payload_emission"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.lazy_planning_query_payload_emission"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.lazy_planning_query_payload_emission_direction",
+          "title": "Lazy Planning Query Payload Emission Direction Decision",
+          "summary": "Records the initial direction decision for Lazy Planning Query Payload Emission.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
+          "updated_at": "2026-03-12T20:51:21Z",
+          "linked_prd_ids": [
+            "prd.lazy_planning_query_payload_emission"
+          ],
+          "linked_design_ids": [
+            "design.features.lazy_planning_query_payload_emission"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.lazy_planning_query_payload_emission"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.lazy_planning_query_payload_emission",
+          "family": "feature_design",
+          "title": "Lazy Planning Query Payload Emission Feature Design",
+          "summary": "Defines the technical design boundary for Lazy Planning Query Payload Emission.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+          "updated_at": "2026-03-12T20:51:21Z"
+        },
+        {
+          "document_id": "design.implementation.lazy_planning_query_payload_emission",
+          "family": "implementation_plan",
+          "title": "Lazy Planning Query Payload Emission Implementation Plan",
+          "summary": "Breaks Lazy Planning Query Payload Emission into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
+          "updated_at": "2026-03-12T20:51:21Z",
+          "source_paths": [
+            "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+            "docs/planning/prds/lazy_planning_query_payload_emission.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.lazy_planning_query_payload_emission.bootstrap.001",
+          "title": "Bootstrap Lazy Planning Query Payload Emission planning chain",
+          "summary": "Bootstraps the initial planning chain for Lazy Planning Query Payload Emission.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
+          "updated_at": "2026-03-12T20:54:44Z",
+          "related_ids": [
+            "prd.lazy_planning_query_payload_emission",
+            "design.features.lazy_planning_query_payload_emission",
+            "design.implementation.lazy_planning_query_payload_emission",
+            "decision.lazy_planning_query_payload_emission_direction",
+            "contract.acceptance.lazy_planning_query_payload_emission"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/",
+            "core/python/tests/",
+            "docs/planning/",
+            "core/control_plane/contracts/acceptance/",
+            "core/control_plane/ledgers/validation_evidence/"
+          ]
+        },
+        {
+          "task_id": "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002",
+          "title": "Implement lazy planning query payload emission",
+          "summary": "Add bounded lazy JSON payload emission for the planning, initiatives, and coordination query handlers so human output paths stop invoking the heavy planning serializers.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+          "updated_at": "2026-03-12T20:58:20Z",
+          "related_ids": [
+            "prd.lazy_planning_query_payload_emission",
+            "design.implementation.lazy_planning_query_payload_emission",
+            "decision.lazy_planning_query_payload_emission_direction",
+            "contract.acceptance.lazy_planning_query_payload_emission"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.lazy_planning_query_payload_emission.validation_closeout.003",
+          "title": "Validate and close Lazy Planning Query Payload Emission",
+          "summary": "Run measured validation for the lazy payload-emission optimization, refresh evidence, complete the follow-up review, and close the trace cleanly.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md",
+          "updated_at": "2026-03-12T21:01:14Z",
+          "depends_on": [
+            "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002"
+          ],
+          "related_ids": [
+            "prd.lazy_planning_query_payload_emission",
+            "design.implementation.lazy_planning_query_payload_emission",
+            "decision.lazy_planning_query_payload_emission_direction",
+            "contract.acceptance.lazy_planning_query_payload_emission"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/",
+            "core/python/tests/",
+            "docs/planning/",
+            "core/control_plane/contracts/acceptance/",
+            "core/control_plane/ledgers/validation_evidence/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.lazy_planning_query_payload_emission",
+          "title": "Lazy Planning Query Payload Emission Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.lazy_planning_query_payload_emission",
+          "doc_path": "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.lazy_planning_query_payload_emission.001",
+            "ac.lazy_planning_query_payload_emission.002",
+            "ac.lazy_planning_query_payload_emission.003",
+            "ac.lazy_planning_query_payload_emission.004",
+            "ac.lazy_planning_query_payload_emission.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/cli/handler_common.py",
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+            "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+            "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+            "core/python/src/watchtower_core/repo_ops/query/planning.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_route_and_query_handlers.py",
+            "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
+            "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+            "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
+            "docs/planning/prds/lazy_planning_query_payload_emission.md",
+            "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+            "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
+            "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.lazy_planning_query_payload_emission.planning_baseline",
+          "title": "Lazy Planning Query Payload Emission Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-12T21:01:37Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
+          "check_ids": [
+            "check.lazy_planning_query_payload_emission.planning_baseline",
+            "check.lazy_planning_query_payload_emission.human_planning_path",
+            "check.lazy_planning_query_payload_emission.human_initiative_coordination_paths",
+            "check.lazy_planning_query_payload_emission.validation_closeout",
+            "check.lazy_planning_query_payload_emission.followup_review"
+          ],
+          "acceptance_ids": [
+            "ac.lazy_planning_query_payload_emission.001",
+            "ac.lazy_planning_query_payload_emission.002",
+            "ac.lazy_planning_query_payload_emission.003",
+            "ac.lazy_planning_query_payload_emission.004",
+            "ac.lazy_planning_query_payload_emission.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.lazy_planning_query_payload_emission"
+      ],
+      "decision_ids": [
+        "decision.lazy_planning_query_payload_emission_direction"
+      ],
+      "design_ids": [
+        "design.features.lazy_planning_query_payload_emission"
+      ],
+      "plan_ids": [
+        "design.implementation.lazy_planning_query_payload_emission"
+      ],
+      "task_ids": [
+        "task.lazy_planning_query_payload_emission.bootstrap.001",
+        "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002",
+        "task.lazy_planning_query_payload_emission.validation_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.lazy_planning_query_payload_emission.001",
+        "req.lazy_planning_query_payload_emission.002",
+        "req.lazy_planning_query_payload_emission.003",
+        "req.lazy_planning_query_payload_emission.004"
+      ],
+      "acceptance_ids": [
+        "ac.lazy_planning_query_payload_emission.001",
+        "ac.lazy_planning_query_payload_emission.002",
+        "ac.lazy_planning_query_payload_emission.003",
+        "ac.lazy_planning_query_payload_emission.004",
+        "ac.lazy_planning_query_payload_emission.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.lazy_planning_query_payload_emission"
+      ],
+      "evidence_ids": [
+        "evidence.lazy_planning_query_payload_emission.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T21:01:37Z for trace.lazy_planning_query_payload_emission with measured serializer-call reductions and a clean adjacent-surface follow-up review.",
+      "closed_at": "2026-03-12T21:01:26Z",
+      "closure_reason": "Delivered lazy planning query payload emission: measured human query planning dropped from 3 serializer calls to 0, measured human query initiatives dropped from 3 serializer calls to 0, measured non-empty human query coordination dropped from 1 serializer call to 0, JSON output regressions stayed green, and the follow-up review found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.local_task_tracking",
       "title": "GitHub Task Push Sync",
       "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
@@ -11075,7 +11399,7 @@
       "summary": "Eliminate unnecessary reverse-dependency recomputation in the task query surface by skipping dependency-graph work unless the caller requests dependency details and batching the detailed path without changing query fidelity.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-12T20:24:47Z",
+      "updated_at": "2026-03-12T20:25:22Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
@@ -11290,7 +11614,7 @@
           "title": "Task Query Dependency Lookup Hardening Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-12T20:23:18Z",
+          "recorded_at": "2026-03-12T20:25:22Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json",
           "check_ids": [
             "check.task_query_dependency_lookup_hardening.planning_baseline",
@@ -11392,7 +11716,7 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-12T20:23:18Z for trace.task_query_dependency_lookup_hardening with measured dependency-lookup results and a clean adjacent-surface follow-up review.",
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T20:25:22Z for trace.task_query_dependency_lookup_hardening with measured dependency-lookup results, final acceptance/full-baseline validation, and a clean adjacent-surface follow-up review.",
       "closed_at": "2026-03-12T20:24:47Z",
       "closure_reason": "Delivered task query dependency lookup hardening: measured 20-result default queries perform 0 reverse-dependency lookups, measured detailed queries perform 1 batched reverse-dependency lookup, targeted and repository validation passed, and the follow-up review found no additional actionable issues."
     },

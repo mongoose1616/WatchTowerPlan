@@ -1,0 +1,144 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.lazy_planning_query_payload_emission.planning_baseline",
+  "title": "Lazy Planning Query Payload Emission Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.lazy_planning_query_payload_emission",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T21:02:38Z",
+  "source_prd_ids": [
+    "prd.lazy_planning_query_payload_emission"
+  ],
+  "source_design_ids": [
+    "design.features.lazy_planning_query_payload_emission"
+  ],
+  "source_plan_ids": [
+    "design.implementation.lazy_planning_query_payload_emission"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.lazy_planning_query_payload_emission"
+  ],
+  "checks": [
+    {
+      "check_id": "check.lazy_planning_query_payload_emission.planning_baseline",
+      "title": "Planning chain and closed task set are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
+        "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
+        "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
+        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md"
+      ],
+      "subject_ids": [
+        "prd.lazy_planning_query_payload_emission",
+        "design.features.lazy_planning_query_payload_emission",
+        "design.implementation.lazy_planning_query_payload_emission",
+        "task.lazy_planning_query_payload_emission.bootstrap.001",
+        "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002",
+        "task.lazy_planning_query_payload_emission.validation_closeout.003",
+        "contract.acceptance.lazy_planning_query_payload_emission",
+        "decision.lazy_planning_query_payload_emission_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.lazy_planning_query_payload_emission.001"
+      ],
+      "notes": "The trace now publishes the authored planning chain, accepted direction, refreshed contract and evidence, and the full closed task set in canonical repository paths."
+    },
+    {
+      "check_id": "check.lazy_planning_query_payload_emission.human_planning_path",
+      "title": "Human planning query skips planning serializer work",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py"
+      ],
+      "subject_ids": [
+        "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.lazy_planning_query_payload_emission.002"
+      ],
+      "notes": "Measured handler instrumentation for a human query-planning run with limit=3 returned rc=0 and planning_serialize_calls=0."
+    },
+    {
+      "check_id": "check.lazy_planning_query_payload_emission.human_initiative_coordination_paths",
+      "title": "Human initiative and coordination queries skip initiative serializer work",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.lazy_planning_query_payload_emission.handler_lazy_payloads.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.lazy_planning_query_payload_emission.003"
+      ],
+      "notes": "Measured handler instrumentation for a human query-initiatives run with limit=3 returned rc=0 and initiative_serialize_calls=0. A non-empty human query-coordination run returned rc=0 and coordination_serialize_calls=0. Existing JSON query command regressions stayed green."
+    },
+    {
+      "check_id": "check.lazy_planning_query_payload_emission.validation_closeout",
+      "title": "Lazy payload-emission validation baseline is green",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md"
+      ],
+      "subject_ids": [
+        "task.lazy_planning_query_payload_emission.validation_closeout.003",
+        "contract.acceptance.lazy_planning_query_payload_emission"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.lazy_planning_query_payload_emission.004"
+      ],
+      "notes": "Targeted query-handler pytest regressions passed, validate all --skip-acceptance passed with 873/873, pytest -q passed, python -m mypy src/watchtower_core passed for 182 source files, ruff check . passed, validate acceptance for trace.lazy_planning_query_payload_emission passed, and final validate all passed with 910/910 after initiative closeout."
+    },
+    {
+      "check_id": "check.lazy_planning_query_payload_emission.followup_review",
+      "title": "Follow-up review found no new issues in adjacent planning query surfaces",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.lazy_planning_query_payload_emission.validation_closeout.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.lazy_planning_query_payload_emission.005"
+      ],
+      "notes": "A follow-up review across handler_common.py, query_coordination_handlers.py, planning_projection_serialization.py, repo_ops/query/planning.py, repo_ops/query/coordination.py, repo_ops/query/initiatives.py, and the touched query tests found no additional actionable issues after the lazy payload-emission change landed, and the terminal coordination query returned ready_for_bootstrap with zero active initiatives and zero actionable tasks."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T21:02:38Z for trace.lazy_planning_query_payload_emission with measured serializer-call reductions, final acceptance and full-baseline validation, and a clean adjacent-surface follow-up review.",
+  "source_decision_ids": [
+    "decision.lazy_planning_query_payload_emission_direction"
+  ]
+}

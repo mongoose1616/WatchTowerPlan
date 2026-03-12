@@ -7,6 +7,7 @@ import argparse
 from watchtower_core.cli.handler_common import (
     _emit_command_error,
     _print_payload,
+    _print_payload_factory,
     _task_dependency_payload,
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -22,6 +23,7 @@ from watchtower_core.repo_ops.planning_projection_serialization import (
 from watchtower_core.repo_ops.query import (
     AuthorityMapQueryService,
     AuthorityMapSearchParams,
+    CoordinationQueryResult,
     CoordinationQueryService,
     CoordinationSearchParams,
     InitiativeQueryService,
@@ -208,49 +210,14 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    payload = {
-        "command": "watchtower-core query coordination",
-        "status": "ok",
-        "coordination_mode": result.index.coordination_mode,
-        "summary": result.index.summary,
-        "recommended_next_action": result.index.recommended_next_action,
-        "recommended_surface_path": result.index.recommended_surface_path,
-        "active_initiative_count": result.index.active_initiative_count,
-        "blocked_task_count": result.index.blocked_task_count,
-        "actionable_task_count": result.index.actionable_task_count,
-        "recent_closed_initiatives": [
-            {
-                "trace_id": entry.trace_id,
-                "title": entry.title,
-                "initiative_status": entry.initiative_status,
-                "closed_at": entry.closed_at,
-                "key_surface_path": entry.key_surface_path,
-                "closure_reason": entry.closure_reason,
-            }
-            for entry in result.index.recent_closed_initiatives
-        ],
-        "actionable_tasks": [
-            {
-                "trace_id": entry.trace_id,
-                "initiative_title": entry.initiative_title,
-                "task_id": entry.task_id,
-                "title": entry.title,
-                "task_status": entry.task_status,
-                "priority": entry.priority,
-                "owner": entry.owner,
-                "doc_path": entry.doc_path,
-                "is_actionable": entry.is_actionable,
-                "blocked_by": list(entry.blocked_by),
-                "depends_on": list(entry.depends_on),
-            }
-            for entry in result.index.actionable_tasks
-        ],
-        "result_count": len(result.entries),
-        "results": [_initiative_entry_payload(entry) for entry in result.entries],
-    }
-    if args.initiative_status is None:
-        payload["default_initiative_status"] = initiative_status
-    if _print_payload(args, payload) == 0:
+    if _print_payload_factory(
+        args,
+        lambda: _coordination_payload(
+            result=result,
+            initiative_status=initiative_status,
+            include_default_status=(args.initiative_status is None),
+        ),
+    ) == 0:
         return 0
 
     print(f"Coordination mode: {result.index.coordination_mode}")
@@ -306,13 +273,15 @@ def _run_query_planning(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    payload = {
-        "command": "watchtower-core query planning",
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_planning_entry_payload(entry) for entry in entries],
-    }
-    if _print_payload(args, payload) == 0:
+    if _print_payload_factory(
+        args,
+        lambda: {
+            "command": "watchtower-core query planning",
+            "status": "ok",
+            "result_count": len(entries),
+            "results": [_planning_entry_payload(entry) for entry in entries],
+        },
+    ) == 0:
         return 0
 
     if not entries:
@@ -375,15 +344,14 @@ def _emit_initiative_query_results(
     show_task_summaries: bool,
     default_initiative_status: str | None = None,
 ) -> int:
-    payload = {
-        "command": command_name,
-        "status": "ok",
-        "result_count": len(entries),
-        "results": [_initiative_entry_payload(entry) for entry in entries],
-    }
-    if default_initiative_status is not None:
-        payload["default_initiative_status"] = default_initiative_status
-    if _print_payload(args, payload) == 0:
+    if _print_payload_factory(
+        args,
+        lambda: _initiative_query_payload(
+            command_name=command_name,
+            entries=entries,
+            default_initiative_status=default_initiative_status,
+        ),
+    ) == 0:
         return 0
 
     if not entries:
@@ -413,6 +381,74 @@ def _emit_initiative_query_results(
         print(f"  Next: {entry.next_action}")
         print(f"  Open first: {entry.next_surface_path}")
     return 0
+
+
+def _initiative_query_payload(
+    *,
+    command_name: str,
+    entries: tuple[InitiativeIndexEntry, ...],
+    default_initiative_status: str | None,
+) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "command": command_name,
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [_initiative_entry_payload(entry) for entry in entries],
+    }
+    if default_initiative_status is not None:
+        payload["default_initiative_status"] = default_initiative_status
+    return payload
+
+
+def _coordination_payload(
+    *,
+    result: CoordinationQueryResult,
+    initiative_status: str,
+    include_default_status: bool,
+) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "command": "watchtower-core query coordination",
+        "status": "ok",
+        "coordination_mode": result.index.coordination_mode,
+        "summary": result.index.summary,
+        "recommended_next_action": result.index.recommended_next_action,
+        "recommended_surface_path": result.index.recommended_surface_path,
+        "active_initiative_count": result.index.active_initiative_count,
+        "blocked_task_count": result.index.blocked_task_count,
+        "actionable_task_count": result.index.actionable_task_count,
+        "recent_closed_initiatives": [
+            {
+                "trace_id": entry.trace_id,
+                "title": entry.title,
+                "initiative_status": entry.initiative_status,
+                "closed_at": entry.closed_at,
+                "key_surface_path": entry.key_surface_path,
+                "closure_reason": entry.closure_reason,
+            }
+            for entry in result.index.recent_closed_initiatives
+        ],
+        "actionable_tasks": [
+            {
+                "trace_id": entry.trace_id,
+                "initiative_title": entry.initiative_title,
+                "task_id": entry.task_id,
+                "title": entry.title,
+                "task_status": entry.task_status,
+                "priority": entry.priority,
+                "owner": entry.owner,
+                "doc_path": entry.doc_path,
+                "is_actionable": entry.is_actionable,
+                "blocked_by": list(entry.blocked_by),
+                "depends_on": list(entry.depends_on),
+            }
+            for entry in result.index.actionable_tasks
+        ],
+        "result_count": len(result.entries),
+        "results": [_initiative_entry_payload(entry) for entry in result.entries],
+    }
+    if include_default_status:
+        payload["default_initiative_status"] = initiative_status
+    return payload
 
 
 def _run_query_trace(args: argparse.Namespace) -> int:

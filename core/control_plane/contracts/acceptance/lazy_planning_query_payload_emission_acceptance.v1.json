@@ -1,0 +1,110 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.lazy_planning_query_payload_emission",
+  "title": "Lazy Planning Query Payload Emission Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.lazy_planning_query_payload_emission",
+  "source_prd_id": "prd.lazy_planning_query_payload_emission",
+  "entries": [
+    {
+      "acceptance_id": "ac.lazy_planning_query_payload_emission.001",
+      "summary": "The trace publishes the authored planning chain, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded closed task set for the lazy payload-emission slice.",
+      "source_requirement_ids": [
+        "req.lazy_planning_query_payload_emission.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
+        "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
+        "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
+        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md",
+        "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The final trace should preserve the authored planning chain, accepted direction, refreshed contract and evidence, and the closed execution task set."
+    },
+    {
+      "acceptance_id": "ac.lazy_planning_query_payload_emission.002",
+      "summary": "Human query planning performs zero planning-entry serializer calls on the measured path.",
+      "source_requirement_ids": [
+        "req.lazy_planning_query_payload_emission.001"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md"
+      ],
+      "notes": "Measured handler instrumentation should show zero planning serializer calls on the human query planning path."
+    },
+    {
+      "acceptance_id": "ac.lazy_planning_query_payload_emission.003",
+      "summary": "Human query initiatives and non-empty human query coordination perform zero initiative-entry serializer calls, while JSON payloads remain unchanged.",
+      "source_requirement_ids": [
+        "req.lazy_planning_query_payload_emission.002",
+        "req.lazy_planning_query_payload_emission.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md"
+      ],
+      "notes": "Targeted regressions and measurement should show the human initiative and coordination paths skipping serializer work while JSON output still uses the existing serializer contract."
+    },
+    {
+      "acceptance_id": "ac.lazy_planning_query_payload_emission.004",
+      "summary": "The repository stays green on the normal validation baseline after the lazy payload-emission optimization lands.",
+      "source_requirement_ids": [
+        "req.lazy_planning_query_payload_emission.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "notes": "Closeout should include sync all, validate acceptance, validate all, pytest, mypy, and ruff."
+    },
+    {
+      "acceptance_id": "ac.lazy_planning_query_payload_emission.005",
+      "summary": "A follow-up review of adjacent query and planning-projection surfaces finds no additional actionable issues.",
+      "source_requirement_ids": [
+        "req.lazy_planning_query_payload_emission.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The stop condition is a clean follow-up review pass with no new issues in the adjacent planning query area."
+    }
+  ]
+}

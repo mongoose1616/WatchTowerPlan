@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-from collections.abc import Mapping
+from collections.abc import Callable, Mapping
 from pathlib import Path
 
 from watchtower_core.control_plane.models import TaskIndexEntry
@@ -23,6 +23,18 @@ def _print_payload(args: argparse.Namespace, payload: Mapping[str, object]) -> i
         print(json.dumps(payload, sort_keys=True))
         return 0
     return -1
+
+
+def _print_payload_factory(
+    args: argparse.Namespace,
+    payload_factory: Callable[[], Mapping[str, object]],
+) -> int:
+    """Print one lazily constructed JSON payload when the caller requested JSON."""
+
+    if args.format != "json":
+        return -1
+    print(json.dumps(payload_factory(), sort_keys=True))
+    return 0
 
 
 def _emit_command_error(

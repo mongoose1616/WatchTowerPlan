@@ -689,6 +689,46 @@
       ]
     },
     {
+      "trace_id": "trace.lazy_planning_query_payload_emission",
+      "decision_id": "decision.lazy_planning_query_payload_emission_direction",
+      "title": "Lazy Planning Query Payload Emission Direction Decision",
+      "summary": "Records the initial direction decision for Lazy Planning Query Payload Emission.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
+      "updated_at": "2026-03-12T20:51:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.lazy_planning_query_payload_emission"
+      ],
+      "linked_design_ids": [
+        "design.features.lazy_planning_query_payload_emission"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.lazy_planning_query_payload_emission"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/features/lazy_planning_query_payload_emission.md",
+        "core/python/src/watchtower_core/cli/handler_common.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.machine_first_coordination_surface",
       "decision_id": "decision.machine_first_coordination_entry_surface",
       "title": "Machine-First Coordination Entry Surface Decision",
