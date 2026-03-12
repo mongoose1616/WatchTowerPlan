@@ -89,10 +89,11 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
             limit=args.limit,
         )
     )
-    reverse_dependencies = {
-        entry.task_id: service.reverse_dependencies(entry.task_id)
-        for entry in entries
-    }
+    reverse_dependencies = (
+        service.reverse_dependencies_for(tuple(entry.task_id for entry in entries))
+        if args.include_dependency_details
+        else {}
+    )
     payload = {
         "command": "watchtower-core query tasks",
         "status": "ok",
@@ -135,7 +136,7 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
                         ],
                         "reverse_dependency_details": [
                             _task_dependency_payload(task)
-                            for task in reverse_dependencies[entry.task_id]
+                            for task in reverse_dependencies.get(entry.task_id, ())
                         ],
                     }
                     if args.include_dependency_details
@@ -162,7 +163,7 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
                 print(f"  Blocked by: {', '.join(entry.blocked_by)}")
             if entry.depends_on:
                 print(f"  Depends on: {', '.join(entry.depends_on)}")
-            reverse_links = reverse_dependencies[entry.task_id]
+            reverse_links = reverse_dependencies.get(entry.task_id, ())
             if reverse_links:
                 print(
                     "  Reverse dependencies: "

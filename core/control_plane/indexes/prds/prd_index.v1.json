@@ -1358,6 +1358,50 @@
       ]
     },
     {
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "prd_id": "prd.task_query_dependency_lookup_hardening",
+      "title": "Task Query Dependency Lookup Hardening PRD",
+      "summary": "Eliminate unnecessary reverse-dependency recomputation in the task query surface by skipping dependency-graph work unless the caller requests dependency details and batching the detailed path without changing query fidelity.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+      "updated_at": "2026-03-12T20:12:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.task_query_dependency_lookup_hardening.001",
+        "req.task_query_dependency_lookup_hardening.002",
+        "req.task_query_dependency_lookup_hardening.003",
+        "req.task_query_dependency_lookup_hardening.004"
+      ],
+      "acceptance_ids": [
+        "ac.task_query_dependency_lookup_hardening.001",
+        "ac.task_query_dependency_lookup_hardening.002",
+        "ac.task_query_dependency_lookup_hardening.003",
+        "ac.task_query_dependency_lookup_hardening.004",
+        "ac.task_query_dependency_lookup_hardening.005"
+      ],
+      "linked_decision_ids": [
+        "decision.task_query_dependency_lookup_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.task_query_dependency_lookup_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.task_query_dependency_lookup_hardening"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/tasks.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ]
+    },
+    {
       "trace_id": "trace.task_sync_disappearing_file_resilience",
       "prd_id": "prd.task_sync_disappearing_file_resilience",
       "title": "Task Sync Disappearing File Resilience PRD",

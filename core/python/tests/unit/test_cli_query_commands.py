@@ -601,6 +601,30 @@ def test_query_tasks_supports_json_output(capsys) -> None:
     )
 
 
+def test_query_tasks_supports_dependency_details_json_output(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "tasks",
+            "--task-id",
+            "task.local_task_tracking.github_sync.001",
+            "--include-dependency-details",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query tasks"
+    entry = payload["results"][0]
+    assert entry["task_id"] == "task.local_task_tracking.github_sync.001"
+    assert "blocked_by_details" in entry
+    assert "depends_on_details" in entry
+    assert "reverse_dependency_details" in entry
+
+
 def test_query_initiatives_supports_json_output(capsys) -> None:
     result = main(
         [

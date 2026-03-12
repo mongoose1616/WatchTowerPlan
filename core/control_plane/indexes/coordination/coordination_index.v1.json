@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-12T19:39:05Z",
+  "updated_at": "2026-03-12T20:24:47Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,85 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "title": "Task Query Dependency Lookup Hardening PRD",
+      "summary": "Eliminate unnecessary reverse-dependency recomputation in the task query surface by skipping dependency-graph work unless the caller requests dependency details and batching the detailed path without changing query fidelity.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T20:24:47Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+      "prd_ids": [
+        "prd.task_query_dependency_lookup_hardening"
+      ],
+      "decision_ids": [
+        "decision.task_query_dependency_lookup_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.task_query_dependency_lookup_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.task_query_dependency_lookup_hardening"
+      ],
+      "task_ids": [
+        "task.task_query_dependency_lookup_hardening.bootstrap.001",
+        "task.task_query_dependency_lookup_hardening.reverse_dependency_batching.002",
+        "task.task_query_dependency_lookup_hardening.validation_closeout.003"
+      ],
+      "acceptance_ids": [
+        "ac.task_query_dependency_lookup_hardening.001",
+        "ac.task_query_dependency_lookup_hardening.002",
+        "ac.task_query_dependency_lookup_hardening.003",
+        "ac.task_query_dependency_lookup_hardening.004",
+        "ac.task_query_dependency_lookup_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.task_query_dependency_lookup_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.task_query_dependency_lookup_hardening.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T20:24:47Z",
+      "closure_reason": "Delivered task query dependency lookup hardening: measured 20-result default queries perform 0 reverse-dependency lookups, measured detailed queries perform 1 batched reverse-dependency lookup, targeted and repository validation passed, and the follow-up review found no additional actionable issues.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/tasks.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+        "docs/planning/design/implementation/task_query_dependency_lookup_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+        "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
+        "docs/planning/tasks/closed/task_query_dependency_lookup_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T20:23:18Z for trace.task_query_dependency_lookup_hardening with measured dependency-lookup results and a clean adjacent-surface follow-up review."
+    },
     {
       "trace_id": "trace.control_plane_loader_cache_reuse",
       "title": "Control Plane Loader Cache Reuse PRD",
@@ -3341,6 +3420,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "title": "Task Query Dependency Lookup Hardening PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-12T20:24:47Z",
+      "key_surface_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+      "closure_reason": "Delivered task query dependency lookup hardening: measured 20-result default queries perform 0 reverse-dependency lookups, measured detailed queries perform 1 batched reverse-dependency lookup, targeted and repository validation passed, and the follow-up review found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.control_plane_loader_cache_reuse",
       "title": "Control Plane Loader Cache Reuse PRD",
       "initiative_status": "completed",
@@ -3411,14 +3498,6 @@
       "closed_at": "2026-03-12T02:26:14Z",
       "key_surface_path": "docs/planning/prds/standard_operationalization_directory_canonicalization.md",
       "closure_reason": "Closed after enforcing canonical standard operationalization syntax, aligning the live standards corpus, validating the repository baseline, and confirming a final no-new-issues standards review pass."
-    },
-    {
-      "trace_id": "trace.data_contract_example_operationalization_alignment",
-      "title": "Data Contract Example Operationalization Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-12T01:35:09Z",
-      "key_surface_path": "docs/planning/prds/data_contract_example_operationalization_alignment.md",
-      "closure_reason": "Closed after operationalizing data-contract example families in the governing standards, hardening lookup regressions, and revalidating the repository baseline."
     }
   ]
 }

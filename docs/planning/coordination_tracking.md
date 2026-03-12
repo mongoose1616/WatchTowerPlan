@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.task_query_dependency_lookup_hardening` | `completed` | `2026-03-12T20:24:47Z` | [task_query_dependency_lookup_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/task_query_dependency_lookup_hardening.md) |
 | `trace.control_plane_loader_cache_reuse` | `completed` | `2026-03-12T19:38:35Z` | [control_plane_loader_cache_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/control_plane_loader_cache_reuse.md) |
 | `trace.acceptance_reconciliation_snapshot_reuse` | `completed` | `2026-03-12T17:17:51Z` | [acceptance_reconciliation_snapshot_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md) |
 | `trace.coordination_projection_source_reuse` | `completed` | `2026-03-12T16:12:12Z` | [coordination_projection_source_reuse.md](/home/j/WatchTowerPlan/docs/planning/prds/coordination_projection_source_reuse.md) |
 | `trace.reference_resolution_reuse_hardening` | `completed` | `2026-03-12T15:20:34Z` | [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_resolution_reuse_hardening.md) |
-| `trace.control_plane_example_validation_hardening` | `completed` | `2026-03-12T14:47:28Z` | [control_plane_example_validation_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/control_plane_example_validation_hardening.md) |
 
-_Updated At: `2026-03-12T19:39:05Z`_
+_Updated At: `2026-03-12T20:24:47Z`_

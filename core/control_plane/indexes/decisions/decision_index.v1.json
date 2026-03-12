@@ -1195,6 +1195,46 @@
       ]
     },
     {
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "decision_id": "decision.task_query_dependency_lookup_hardening_direction",
+      "title": "Task Query Dependency Lookup Hardening Direction Decision",
+      "summary": "Records the initial direction decision for Task Query Dependency Lookup Hardening.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
+      "updated_at": "2026-03-12T20:12:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.task_query_dependency_lookup_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.task_query_dependency_lookup_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.task_query_dependency_lookup_hardening"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+        "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/tasks.py"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.task_sync_disappearing_file_resilience",
       "decision_id": "decision.task_sync_disappearing_file_resilience_direction",
       "title": "Task Sync Disappearing File Resilience Direction Decision",

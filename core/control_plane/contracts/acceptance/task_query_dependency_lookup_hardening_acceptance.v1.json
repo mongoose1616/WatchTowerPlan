@@ -1,0 +1,107 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.task_query_dependency_lookup_hardening",
+  "title": "Task Query Dependency Lookup Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.task_query_dependency_lookup_hardening",
+  "source_prd_id": "prd.task_query_dependency_lookup_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.task_query_dependency_lookup_hardening.001",
+      "summary": "The trace publishes a fully-authored planning chain, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded closed task set for the task-query optimization slice.",
+      "source_requirement_ids": [
+        "req.task_query_dependency_lookup_hardening.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+        "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+        "docs/planning/design/implementation/task_query_dependency_lookup_hardening.md",
+        "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
+        "docs/planning/tasks/closed/task_query_dependency_lookup_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
+        "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md",
+        "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The final trace should preserve the authored planning chain, accepted direction, refreshed contract and evidence, and the closed execution task set."
+    },
+    {
+      "acceptance_id": "ac.task_query_dependency_lookup_hardening.002",
+      "summary": "The default task-query path performs zero reverse-dependency lookups when dependency details are omitted.",
+      "source_requirement_ids": [
+        "req.task_query_dependency_lookup_hardening.001"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md"
+      ],
+      "notes": "Measured handler instrumentation should show zero reverse-dependency calls when include_dependency_details is false."
+    },
+    {
+      "acceptance_id": "ac.task_query_dependency_lookup_hardening.003",
+      "summary": "The dependency-detail task-query path computes reverse dependencies through one batched map while preserving the existing payload.",
+      "source_requirement_ids": [
+        "req.task_query_dependency_lookup_hardening.002",
+        "req.task_query_dependency_lookup_hardening.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/tasks.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json"
+      ],
+      "notes": "Targeted regressions and measurement should show the detailed path building reverse dependencies once per command without payload drift."
+    },
+    {
+      "acceptance_id": "ac.task_query_dependency_lookup_hardening.004",
+      "summary": "The repository stays green on the normal validation baseline after the task-query optimization lands.",
+      "source_requirement_ids": [
+        "req.task_query_dependency_lookup_hardening.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "notes": "Closeout should include sync all, validate acceptance, validate all, pytest, mypy, and ruff."
+    },
+    {
+      "acceptance_id": "ac.task_query_dependency_lookup_hardening.005",
+      "summary": "A follow-up review of adjacent task-query, coordination, and task-index surfaces finds no additional actionable issues.",
+      "source_requirement_ids": [
+        "req.task_query_dependency_lookup_hardening.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/tasks.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The stop condition is a clean follow-up review pass with no new issues in the adjacent query and coordination area."
+    }
+  ]
+}

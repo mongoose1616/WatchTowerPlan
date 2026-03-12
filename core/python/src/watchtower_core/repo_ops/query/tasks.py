@@ -31,6 +31,7 @@ class TaskQueryService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        self._reverse_dependency_map: dict[str, tuple[TaskIndexEntry, ...]] | None = None
 
     def search(self, params: TaskSearchParams) -> tuple[TaskIndexEntry, ...]:
         """Return task entries matching the requested filters."""
@@ -109,11 +110,34 @@ class TaskQueryService:
 
     def reverse_dependencies(self, task_id: str) -> tuple[TaskIndexEntry, ...]:
         """Return task entries that depend on or are blocked by the given task."""
-        needle = task_id.casefold()
-        matches = [
-            entry
-            for entry in self._loader.load_task_index().entries
-            if needle in {value.casefold() for value in (*entry.depends_on, *entry.blocked_by)}
-        ]
-        matches.sort(key=lambda entry: entry.task_id)
-        return tuple(matches)
+        return self.reverse_dependencies_for((task_id,)).get(task_id, ())
+
+    def reverse_dependencies_for(
+        self,
+        task_ids: tuple[str, ...],
+    ) -> dict[str, tuple[TaskIndexEntry, ...]]:
+        """Return reverse dependencies for each requested task identifier."""
+        reverse_dependency_map = self._load_reverse_dependency_map()
+        return {
+            task_id: reverse_dependency_map.get(task_id.casefold(), ())
+            for task_id in task_ids
+        }
+
+    def _load_reverse_dependency_map(self) -> dict[str, tuple[TaskIndexEntry, ...]]:
+        """Build one reverse-dependency map per service-backed query run."""
+        if self._reverse_dependency_map is not None:
+            return self._reverse_dependency_map
+
+        matches: dict[str, list[TaskIndexEntry]] = {}
+        for entry in self._loader.load_task_index().entries:
+            referenced_task_ids = {
+                value.casefold() for value in (*entry.depends_on, *entry.blocked_by)
+            }
+            for referenced_task_id in referenced_task_ids:
+                matches.setdefault(referenced_task_id, []).append(entry)
+
+        self._reverse_dependency_map = {
+            task_id: tuple(sorted(entries, key=lambda candidate: candidate.task_id))
+            for task_id, entries in matches.items()
+        }
+        return self._reverse_dependency_map

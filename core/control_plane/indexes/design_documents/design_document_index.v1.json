@@ -1366,6 +1366,35 @@
       ]
     },
     {
+      "document_id": "design.features.task_query_dependency_lookup_hardening",
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "family": "feature_design",
+      "title": "Task Query Dependency Lookup Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Task Query Dependency Lookup Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+      "updated_at": "2026-03-12T20:12:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/task_query_dependency_lookup_hardening.md",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+        "docs/planning/design/implementation/task_query_dependency_lookup_hardening.md",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/tasks.py"
+      ]
+    },
+    {
       "document_id": "design.features.task_sync_disappearing_file_resilience",
       "trace_id": "trace.task_sync_disappearing_file_resilience",
       "family": "feature_design",
@@ -2400,6 +2429,34 @@
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.task_query_dependency_lookup_hardening",
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "family": "implementation_plan",
+      "title": "Task Query Dependency Lookup Hardening Implementation Plan",
+      "summary": "Breaks Task Query Dependency Lookup Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/task_query_dependency_lookup_hardening.md",
+      "updated_at": "2026-03-12T20:12:31Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+        "docs/planning/prds/task_query_dependency_lookup_hardening.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+        "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json"
       ]
     },
     {

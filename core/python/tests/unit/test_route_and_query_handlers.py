@@ -197,9 +197,12 @@ def test_query_tasks_prints_dependency_details(monkeypatch, capsys) -> None:
         def search(self, params: object) -> tuple[SimpleNamespace, ...]:
             return (_task_entry(),)
 
-        def reverse_dependencies(self, task_id: str) -> tuple[SimpleNamespace, ...]:
-            assert task_id == "task.example.001"
-            return (reverse,)
+        def reverse_dependencies_for(
+            self,
+            task_ids: tuple[str, ...],
+        ) -> dict[str, tuple[SimpleNamespace, ...]]:
+            assert task_ids == ("task.example.001",)
+            return {"task.example.001": (reverse,)}
 
         def get(self, task_id: str) -> SimpleNamespace:
             if task_id == "task.blocker.001":
@@ -220,6 +223,34 @@ def test_query_tasks_prints_dependency_details(monkeypatch, capsys) -> None:
     assert "Reverse dependencies: task.reverse.001" in captured.out
 
 
+def test_query_tasks_skips_dependency_detail_work_when_not_requested(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def search(self, params: object) -> tuple[SimpleNamespace, ...]:
+            return (_task_entry(),)
+
+        def reverse_dependencies_for(
+            self,
+            task_ids: tuple[str, ...],
+        ) -> dict[str, tuple[SimpleNamespace, ...]]:
+            raise AssertionError("reverse_dependencies_for should not be called")
+
+        def get(self, task_id: str) -> SimpleNamespace:
+            raise AssertionError("get should not be called without dependency details")
+
+    monkeypatch.setattr(query_coordination_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(query_coordination_handlers, "TaskQueryService", FakeService)
+
+    result = query_coordination_handlers._run_query_tasks(_query_args())
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Found 1 task entry:" in captured.out
+    assert "Reverse dependencies:" not in captured.out
+
+
 def test_query_tasks_prints_empty_message(monkeypatch, capsys) -> None:
     class FakeService:
         def __init__(self, loader: object) -> None:
@@ -228,8 +259,11 @@ def test_query_tasks_prints_empty_message(monkeypatch, capsys) -> None:
         def search(self, params: object) -> tuple[SimpleNamespace, ...]:
             return ()
 
-        def reverse_dependencies(self, task_id: str) -> tuple[SimpleNamespace, ...]:
-            return ()
+        def reverse_dependencies_for(
+            self,
+            task_ids: tuple[str, ...],
+        ) -> dict[str, tuple[SimpleNamespace, ...]]:
+            return {}
 
         def get(self, task_id: str) -> SimpleNamespace:
             raise AssertionError("get should not be called for empty results")

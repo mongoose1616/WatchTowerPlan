@@ -11070,6 +11070,333 @@
       "closure_reason": "Closed after making standards lookup resolve directory-governed concrete files, narrowing the generic documentation template to fallback-only guidance, and revalidating the repository baseline."
     },
     {
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "title": "Task Query Dependency Lookup Hardening PRD",
+      "summary": "Eliminate unnecessary reverse-dependency recomputation in the task query surface by skipping dependency-graph work unless the caller requests dependency details and batching the detailed path without changing query fidelity.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T20:24:47Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.task_query_dependency_lookup_hardening",
+          "title": "Task Query Dependency Lookup Hardening PRD",
+          "summary": "Eliminate unnecessary reverse-dependency recomputation in the task query surface by skipping dependency-graph work unless the caller requests dependency details and batching the detailed path without changing query fidelity.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+          "updated_at": "2026-03-12T20:12:31Z",
+          "requirement_ids": [
+            "req.task_query_dependency_lookup_hardening.001",
+            "req.task_query_dependency_lookup_hardening.002",
+            "req.task_query_dependency_lookup_hardening.003",
+            "req.task_query_dependency_lookup_hardening.004"
+          ],
+          "acceptance_ids": [
+            "ac.task_query_dependency_lookup_hardening.001",
+            "ac.task_query_dependency_lookup_hardening.002",
+            "ac.task_query_dependency_lookup_hardening.003",
+            "ac.task_query_dependency_lookup_hardening.004",
+            "ac.task_query_dependency_lookup_hardening.005"
+          ],
+          "linked_decision_ids": [
+            "decision.task_query_dependency_lookup_hardening_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.task_query_dependency_lookup_hardening"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.task_query_dependency_lookup_hardening"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.task_query_dependency_lookup_hardening_direction",
+          "title": "Task Query Dependency Lookup Hardening Direction Decision",
+          "summary": "Records the initial direction decision for Task Query Dependency Lookup Hardening.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
+          "updated_at": "2026-03-12T20:12:31Z",
+          "linked_prd_ids": [
+            "prd.task_query_dependency_lookup_hardening"
+          ],
+          "linked_design_ids": [
+            "design.features.task_query_dependency_lookup_hardening"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.task_query_dependency_lookup_hardening"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.task_query_dependency_lookup_hardening",
+          "family": "feature_design",
+          "title": "Task Query Dependency Lookup Hardening Feature Design",
+          "summary": "Defines the technical design boundary for Task Query Dependency Lookup Hardening.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+          "updated_at": "2026-03-12T20:12:31Z"
+        },
+        {
+          "document_id": "design.implementation.task_query_dependency_lookup_hardening",
+          "family": "implementation_plan",
+          "title": "Task Query Dependency Lookup Hardening Implementation Plan",
+          "summary": "Breaks Task Query Dependency Lookup Hardening into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/task_query_dependency_lookup_hardening.md",
+          "updated_at": "2026-03-12T20:12:31Z",
+          "source_paths": [
+            "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+            "docs/planning/prds/task_query_dependency_lookup_hardening.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.task_query_dependency_lookup_hardening.bootstrap.001",
+          "title": "Bootstrap Task Query Dependency Lookup Hardening planning chain",
+          "summary": "Bootstraps the initial planning chain for Task Query Dependency Lookup Hardening.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/task_query_dependency_lookup_hardening_bootstrap.md",
+          "updated_at": "2026-03-12T20:12:31Z",
+          "related_ids": [
+            "prd.task_query_dependency_lookup_hardening",
+            "design.features.task_query_dependency_lookup_hardening",
+            "design.implementation.task_query_dependency_lookup_hardening",
+            "decision.task_query_dependency_lookup_hardening_direction",
+            "contract.acceptance.task_query_dependency_lookup_hardening"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/",
+            "core/python/src/watchtower_core/repo_ops/query/",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.task_query_dependency_lookup_hardening.reverse_dependency_batching.002",
+          "title": "Optimize task query dependency lookups",
+          "summary": "Skip reverse-dependency recomputation when dependency details are not requested and batch the detailed path through one precomputed reverse-dependency map.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
+          "updated_at": "2026-03-12T20:12:31Z",
+          "depends_on": [
+            "task.task_query_dependency_lookup_hardening.bootstrap.001"
+          ],
+          "related_ids": [
+            "prd.task_query_dependency_lookup_hardening",
+            "design.implementation.task_query_dependency_lookup_hardening",
+            "decision.task_query_dependency_lookup_hardening_direction",
+            "contract.acceptance.task_query_dependency_lookup_hardening"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/",
+            "core/python/src/watchtower_core/repo_ops/query/",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.task_query_dependency_lookup_hardening.validation_closeout.003",
+          "title": "Validate and close task query dependency lookup hardening",
+          "summary": "Run the measured validation baseline, refresh evidence, complete the stop-condition review, and close the trace once task-query dependency lookup hardening lands cleanly.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md",
+          "updated_at": "2026-03-12T20:22:54Z",
+          "depends_on": [
+            "task.task_query_dependency_lookup_hardening.reverse_dependency_batching.002"
+          ],
+          "related_ids": [
+            "prd.task_query_dependency_lookup_hardening",
+            "design.implementation.task_query_dependency_lookup_hardening",
+            "decision.task_query_dependency_lookup_hardening_direction",
+            "contract.acceptance.task_query_dependency_lookup_hardening"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/",
+            "core/python/src/watchtower_core/repo_ops/query/",
+            "core/python/tests/",
+            "docs/planning/",
+            "core/control_plane/contracts/acceptance/",
+            "core/control_plane/ledgers/validation_evidence/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.task_query_dependency_lookup_hardening",
+          "title": "Task Query Dependency Lookup Hardening Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.task_query_dependency_lookup_hardening",
+          "doc_path": "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.task_query_dependency_lookup_hardening.001",
+            "ac.task_query_dependency_lookup_hardening.002",
+            "ac.task_query_dependency_lookup_hardening.003",
+            "ac.task_query_dependency_lookup_hardening.004",
+            "ac.task_query_dependency_lookup_hardening.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/control_plane/loader.py",
+            "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+            "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+            "core/python/src/watchtower_core/repo_ops/query/tasks.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_route_and_query_handlers.py",
+            "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
+            "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+            "docs/planning/design/implementation/task_query_dependency_lookup_hardening.md",
+            "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+            "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
+            "docs/planning/tasks/closed/task_query_dependency_lookup_hardening_bootstrap.md",
+            "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.task_query_dependency_lookup_hardening.planning_baseline",
+          "title": "Task Query Dependency Lookup Hardening Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-12T20:23:18Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json",
+          "check_ids": [
+            "check.task_query_dependency_lookup_hardening.planning_baseline",
+            "check.task_query_dependency_lookup_hardening.default_path_measurement",
+            "check.task_query_dependency_lookup_hardening.batched_detail_lookup",
+            "check.task_query_dependency_lookup_hardening.validation_closeout",
+            "check.task_query_dependency_lookup_hardening.followup_review"
+          ],
+          "acceptance_ids": [
+            "ac.task_query_dependency_lookup_hardening.001",
+            "ac.task_query_dependency_lookup_hardening.002",
+            "ac.task_query_dependency_lookup_hardening.003",
+            "ac.task_query_dependency_lookup_hardening.004",
+            "ac.task_query_dependency_lookup_hardening.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.task_query_dependency_lookup_hardening"
+      ],
+      "decision_ids": [
+        "decision.task_query_dependency_lookup_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.task_query_dependency_lookup_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.task_query_dependency_lookup_hardening"
+      ],
+      "task_ids": [
+        "task.task_query_dependency_lookup_hardening.bootstrap.001",
+        "task.task_query_dependency_lookup_hardening.reverse_dependency_batching.002",
+        "task.task_query_dependency_lookup_hardening.validation_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.task_query_dependency_lookup_hardening.001",
+        "req.task_query_dependency_lookup_hardening.002",
+        "req.task_query_dependency_lookup_hardening.003",
+        "req.task_query_dependency_lookup_hardening.004"
+      ],
+      "acceptance_ids": [
+        "ac.task_query_dependency_lookup_hardening.001",
+        "ac.task_query_dependency_lookup_hardening.002",
+        "ac.task_query_dependency_lookup_hardening.003",
+        "ac.task_query_dependency_lookup_hardening.004",
+        "ac.task_query_dependency_lookup_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.task_query_dependency_lookup_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.task_query_dependency_lookup_hardening.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/tasks.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
+        "docs/planning/design/implementation/task_query_dependency_lookup_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/task_query_dependency_lookup_hardening.md",
+        "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
+        "docs/planning/tasks/closed/task_query_dependency_lookup_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T20:23:18Z for trace.task_query_dependency_lookup_hardening with measured dependency-lookup results and a clean adjacent-surface follow-up review.",
+      "closed_at": "2026-03-12T20:24:47Z",
+      "closure_reason": "Delivered task query dependency lookup hardening: measured 20-result default queries perform 0 reverse-dependency lookups, measured detailed queries perform 1 batched reverse-dependency lookup, targeted and repository validation passed, and the follow-up review found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.task_sync_disappearing_file_resilience",
       "title": "Task Sync Disappearing File Resilience PRD",
       "summary": "Harden task and coordination sync against task documents disappearing during live task moves or concurrent lifecycle updates.",

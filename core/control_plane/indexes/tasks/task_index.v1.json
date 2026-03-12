@@ -2825,6 +2825,88 @@
       ]
     },
     {
+      "task_id": "task.task_query_dependency_lookup_hardening.bootstrap.001",
+      "title": "Bootstrap Task Query Dependency Lookup Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Task Query Dependency Lookup Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/task_query_dependency_lookup_hardening_bootstrap.md",
+      "updated_at": "2026-03-12T20:12:31Z",
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "related_ids": [
+        "prd.task_query_dependency_lookup_hardening",
+        "design.features.task_query_dependency_lookup_hardening",
+        "design.implementation.task_query_dependency_lookup_hardening",
+        "decision.task_query_dependency_lookup_hardening_direction",
+        "contract.acceptance.task_query_dependency_lookup_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.task_query_dependency_lookup_hardening.reverse_dependency_batching.002",
+      "title": "Optimize task query dependency lookups",
+      "summary": "Skip reverse-dependency recomputation when dependency details are not requested and batch the detailed path through one precomputed reverse-dependency map.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
+      "updated_at": "2026-03-12T20:12:31Z",
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "depends_on": [
+        "task.task_query_dependency_lookup_hardening.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.task_query_dependency_lookup_hardening",
+        "design.implementation.task_query_dependency_lookup_hardening",
+        "decision.task_query_dependency_lookup_hardening_direction",
+        "contract.acceptance.task_query_dependency_lookup_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.task_query_dependency_lookup_hardening.validation_closeout.003",
+      "title": "Validate and close task query dependency lookup hardening",
+      "summary": "Run the measured validation baseline, refresh evidence, complete the stop-condition review, and close the trace once task-query dependency lookup hardening lands cleanly.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md",
+      "updated_at": "2026-03-12T20:22:54Z",
+      "trace_id": "trace.task_query_dependency_lookup_hardening",
+      "depends_on": [
+        "task.task_query_dependency_lookup_hardening.reverse_dependency_batching.002"
+      ],
+      "related_ids": [
+        "prd.task_query_dependency_lookup_hardening",
+        "design.implementation.task_query_dependency_lookup_hardening",
+        "decision.task_query_dependency_lookup_hardening_direction",
+        "contract.acceptance.task_query_dependency_lookup_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
       "task_id": "task.task_sync_disappearing_file_resilience.bootstrap.001",
       "title": "Bootstrap Task Sync Disappearing File Resilience planning chain",
       "summary": "Bootstraps the initial planning chain for Task Sync Disappearing File Resilience.",
