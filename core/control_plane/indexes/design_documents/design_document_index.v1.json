@@ -313,6 +313,42 @@
       ]
     },
     {
+      "document_id": "design.features.documentation_family_lookup_and_readme_template_alignment",
+      "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
+      "family": "feature_design",
+      "title": "Documentation Family Lookup and README Template Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Documentation Family Lookup and README Template Alignment.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/documentation_family_lookup_and_readme_template_alignment.md",
+      "updated_at": "2026-03-12T00:58:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/documentation_family_lookup_and_readme_template_alignment.md",
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/agents_md_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/readme_template.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/agents_md_standard.md",
+        "docs/standards/documentation/reference_md_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.end_to_end_repo_rationalization",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "family": "feature_design",
@@ -1353,6 +1389,43 @@
         "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.documentation_family_lookup_and_readme_template_alignment",
+      "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
+      "family": "implementation_plan",
+      "title": "Documentation Family Lookup and README Template Alignment Implementation Plan",
+      "summary": "Breaks Documentation Family Lookup and README Template Alignment into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/documentation_family_lookup_and_readme_template_alignment.md",
+      "updated_at": "2026-03-12T00:58:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/documentation_family_lookup_and_readme_template_alignment.md",
+        "docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/agents_md_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/readme_template.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md"
       ]
     },
     {

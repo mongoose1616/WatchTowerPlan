@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "standard_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:02:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -53,7 +53,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Capture the standard owner and the authored `applies_to` targets from standard front matter instead of hiding that information behind generic related-path retrieval.
 - Capture the subset of references that materially shape the standard so applied source use is auditable instead of only cited.
 - Capture local reference-doc paths so repo tooling can distinguish raw internal citations from links into `docs/references/**`.
-- Capture compact operationalization metadata so tooling can answer which modes and repository surfaces currently enforce or embody a standard.
+- Capture compact operationalization metadata so tooling can answer which modes and repository surfaces currently enforce or embody a standard, using exact repo paths, directories, or bounded repo-relative glob patterns when a standard governs a repeating file family.
 - When a standard materially depends on external authority, prefer citing a local governed reference doc in `docs/references/**` rather than only raw external URLs.
 - Keep the index aligned with the standards corpus in the same change set.
 
@@ -92,7 +92,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 | `external_reference_urls` | Optional | External URLs explicitly cited by the standard or transitively inherited from cited local reference docs. |
 | `applied_external_reference_urls` | Optional | External URLs explicitly used in `Related Standards and Sources`, directly or through cited local reference docs. |
 | `operationalization_modes` | Required | Compact lower_snake_case modes such as `validation`, `sync`, or `workflow`. |
-| `operationalization_paths` | Required | Repository paths for the operational surfaces named in the standard’s `Operationalization` section. |
+| `operationalization_paths` | Required | Repository paths or bounded repo-relative glob patterns for the operational surfaces named in the standard’s `Operationalization` section. |
 | `tags` | Optional | Retrieval-oriented tags when useful. |
 | `notes` | Optional | Short tracking notes. |
 
@@ -102,7 +102,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 - Every entry should have a stable `standard_id`.
 - Every entry should carry the authored `owner` value and, when present, the full `applies_to` list from standard front matter.
 - `reference_doc_paths` should point only to governed reference docs under `docs/references/`.
-- `operationalization_modes` should be compact lower_snake_case values, and every `operationalization_path` should resolve to a real repository surface.
+- `operationalization_modes` should be compact lower_snake_case values, and every `operationalization_path` should resolve to a real repository surface or be a bounded repo-relative glob pattern that matches one or more live repository surfaces.
 - Standards that rely on external authority should cite a governed local reference doc rather than only raw external URLs.
 - Applied reference fields should reflect the actual `Related Standards and Sources` section rather than inferred prose.
 - Reviewers should reject entries that point to stale standard docs or omit material reference usage already present in the source doc.
@@ -117,4 +117,4 @@ Provide a compact lookup and governance surface for repository standards and bes
 - [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:02:00Z`

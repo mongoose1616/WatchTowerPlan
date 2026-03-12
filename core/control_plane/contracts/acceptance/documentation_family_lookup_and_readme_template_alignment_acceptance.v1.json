@@ -1,0 +1,90 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.documentation_family_lookup_and_readme_template_alignment",
+  "title": "Documentation Family Lookup and README Template Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
+  "source_prd_id": "prd.documentation_family_lookup_and_readme_template_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.documentation_family_lookup_and_readme_template_alignment.001",
+      "summary": "Standard operationalization parsing and query behavior support bounded repo-relative glob patterns alongside exact files and directory descendants.",
+      "source_requirement_ids": [
+        "req.documentation_family_lookup_and_readme_template_alignment.001"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "notes": "Glob-pattern operationalization support must remain bounded to repo-relative patterns that match live repository surfaces."
+    },
+    {
+      "acceptance_id": "ac.documentation_family_lookup_and_readme_template_alignment.002",
+      "summary": "Representative concrete AGENTS, README, reference, and standard documents resolve back to their governing family standards through standards lookup.",
+      "source_requirement_ids": [
+        "req.documentation_family_lookup_and_readme_template_alignment.001",
+        "req.documentation_family_lookup_and_readme_template_alignment.002"
+      ],
+      "validation_targets": [
+        "docs/standards/documentation/agents_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/references/AGENTS.md",
+        "docs/planning/README.md",
+        "docs/references/commonmark_reference.md",
+        "docs/standards/documentation/readme_md_standard.md"
+      ],
+      "notes": "The live standards corpus should publish precise operationalization coverage for the governed document families it defines."
+    },
+    {
+      "acceptance_id": "ac.documentation_family_lookup_and_readme_template_alignment.003",
+      "summary": "The README template matches the governed repo-relative title and inventory-first authoring contract.",
+      "source_requirement_ids": [
+        "req.documentation_family_lookup_and_readme_template_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/templates/readme_template.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/templates/README.md"
+      ],
+      "notes": "The template should stop encouraging `<Directory Name>` titles or pre-inventory optional sections."
+    },
+    {
+      "acceptance_id": "ac.documentation_family_lookup_and_readme_template_alignment.004",
+      "summary": "The traced slice validates end to end and closes with synced planning, coordination, and evidence surfaces.",
+      "source_requirement_ids": [
+        "req.documentation_family_lookup_and_readme_template_alignment.001",
+        "req.documentation_family_lookup_and_readme_template_alignment.002",
+        "req.documentation_family_lookup_and_readme_template_alignment.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/documentation_family_lookup_and_readme_template_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/documentation_family_lookup_and_readme_template_alignment_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_documentation_family_lookup_and_readme_template_alignment.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "notes": "Final closeout must leave the repository ready for bootstrap with no actionable tasks for this trace."
+    }
+  ]
+}

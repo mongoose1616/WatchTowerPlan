@@ -248,6 +248,52 @@
       ]
     },
     {
+      "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
+      "prd_id": "prd.documentation_family_lookup_and_readme_template_alignment",
+      "title": "Documentation Family Lookup and README Template Alignment PRD",
+      "summary": "Allow standards operationalization metadata to cover repeating documentation filename families, repair missing family lookup coverage for AGENTS/README/reference/standard docs, and align the README template with the governed title contract.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md",
+      "updated_at": "2026-03-12T00:58:00Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.documentation_family_lookup_and_readme_template_alignment.001",
+        "req.documentation_family_lookup_and_readme_template_alignment.002",
+        "req.documentation_family_lookup_and_readme_template_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.documentation_family_lookup_and_readme_template_alignment.001",
+        "ac.documentation_family_lookup_and_readme_template_alignment.002",
+        "ac.documentation_family_lookup_and_readme_template_alignment.003",
+        "ac.documentation_family_lookup_and_readme_template_alignment.004"
+      ],
+      "linked_decision_ids": [
+        "decision.documentation_family_lookup_and_readme_template_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.documentation_family_lookup_and_readme_template_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.documentation_family_lookup_and_readme_template_alignment"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/agents_md_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/templates/readme_template.md"
+      ]
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "prd_id": "prd.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",

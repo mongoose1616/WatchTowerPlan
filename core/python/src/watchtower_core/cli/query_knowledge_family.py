@@ -290,8 +290,9 @@ def register_query_knowledge_commands(
         help=(
             "Repository-path filter for one operationalizing surface such as "
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py. "
-            "Exact file paths match directly, and indexed directory paths match "
-            "their concrete descendants."
+            "Exact file paths match directly, indexed directory paths match "
+            "their concrete descendants, and indexed glob patterns match "
+            "concrete files such as nested README.md or AGENTS.md surfaces."
         ),
     )
     query_standards_parser.add_argument(

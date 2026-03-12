@@ -5,7 +5,8 @@ from __future__ import annotations
 import re
 from collections.abc import Mapping
 from dataclasses import dataclass
-from pathlib import Path
+from glob import has_magic
+from pathlib import Path, PurePosixPath
 
 from watchtower_core.adapters import (
     extract_external_urls,
@@ -20,6 +21,10 @@ STANDARD_OPERATIONALIZATION_SECTION = "Operationalization"
 STANDARD_OPERATIONALIZATION_MODES_LABEL = "Modes"
 STANDARD_OPERATIONALIZATION_PATHS_LABEL = "Operational Surfaces"
 _STANDARD_MODE_PATTERN = re.compile(r"^[a-z][a-z0-9_]*$")
+_STANDARD_GLOB_PATTERN_ERROR = (
+    "operationalization surface glob patterns must be repo-relative and match at least "
+    "one live repository surface"
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -128,6 +133,40 @@ def collect_standard_reference_metadata(
     )
 
 
+def operationalization_path_matches(
+    requested_path: str,
+    indexed_path: str,
+    repo_root: Path,
+) -> bool:
+    """Return whether one concrete path matches one indexed operationalization entry."""
+    normalized_requested = requested_path.casefold()
+    normalized_indexed = indexed_path.casefold()
+    if normalized_requested == normalized_indexed:
+        return True
+    if operationalization_path_is_glob(indexed_path):
+        return PurePosixPath(normalized_requested).match(normalized_indexed)
+    if operationalization_path_is_directory(indexed_path, repo_root):
+        directory_prefix = (
+            normalized_indexed if normalized_indexed.endswith("/") else f"{normalized_indexed}/"
+        )
+        return normalized_requested.startswith(directory_prefix)
+    return False
+
+
+def operationalization_path_is_glob(indexed_path: str) -> bool:
+    """Return whether one indexed operationalization entry is a glob pattern."""
+    return has_magic(indexed_path)
+
+
+def operationalization_path_is_directory(indexed_path: str, repo_root: Path) -> bool:
+    """Return whether one indexed operationalization entry resolves to a directory."""
+    if operationalization_path_is_glob(indexed_path):
+        return False
+    candidate = indexed_path[:-1] if indexed_path.endswith("/") else indexed_path
+    resolved = repo_root / Path(candidate)
+    return indexed_path.endswith("/") or resolved.is_dir()
+
+
 def _parse_standard_modes(
     relative_path: str,
     metadata: dict[str, str],
@@ -159,14 +198,67 @@ def _parse_standard_paths(
     )
     paths: list[str] = []
     for value in raw_values:
-        normalized = normalize_repo_path_reference(value, repo_root)
-        if normalized is None:
-            raise ValueError(
-                f"{relative_path} operationalization surface must be a valid repository path: "
-                f"{value}"
-            )
+        normalized = _normalize_standard_operationalization_path(
+            relative_path,
+            value,
+            repo_root,
+        )
         paths.append(normalized)
     return ordered_unique(tuple(paths))
+
+
+def _normalize_standard_operationalization_path(
+    relative_path: str,
+    value: str,
+    repo_root: Path,
+) -> str:
+    stripped = value.strip()
+    without_fragment = stripped.split("#", 1)[0].split("?", 1)[0].strip()
+    if not without_fragment:
+        raise ValueError(
+            f"{relative_path} operationalization surface must be a valid repository path: "
+            f"{value}"
+        )
+    if operationalization_path_is_glob(without_fragment):
+        normalized_pattern = _normalize_repo_relative_glob_pattern(
+            relative_path,
+            without_fragment,
+            repo_root,
+        )
+        if normalized_pattern is None:
+            raise ValueError(f"{relative_path} {_STANDARD_GLOB_PATTERN_ERROR}: {value}")
+        return normalized_pattern
+    normalized = normalize_repo_path_reference(without_fragment, repo_root)
+    if normalized is None:
+        raise ValueError(
+            f"{relative_path} operationalization surface must be a valid repository path: "
+            f"{value}"
+        )
+    return normalized
+
+
+def _normalize_repo_relative_glob_pattern(
+    relative_path: str,
+    value: str,
+    repo_root: Path,
+) -> str | None:
+    normalized = value.replace("\\", "/").lstrip("/")
+    if (
+        not normalized
+        or value.startswith(("http://", "https://", "mailto:"))
+        or value.startswith("/")
+        or any(part == ".." for part in PurePosixPath(normalized).parts)
+    ):
+        return None
+    try:
+        matches = tuple(repo_root.glob(normalized))
+    except ValueError as exc:
+        raise ValueError(
+            f"{relative_path} {_STANDARD_GLOB_PATTERN_ERROR}: {value}"
+        ) from exc
+    if not matches:
+        return None
+    return normalized
 
 
 def _required_metadata_values(

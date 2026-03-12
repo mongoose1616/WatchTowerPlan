@@ -758,7 +758,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/standard_index_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:02:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1041,7 +1041,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/agents_md_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:02:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1049,8 +1049,7 @@
       ],
       "operationalization_paths": [
         "AGENTS.md",
-        "docs/AGENTS.md",
-        "core/python/AGENTS.md",
+        "**/AGENTS.md",
         "docs/templates/agent_template.md"
       ],
       "internal_reference_paths": [
@@ -1436,7 +1435,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/readme_md_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T01:02:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1444,8 +1443,7 @@
       ],
       "operationalization_paths": [
         "README.md",
-        "docs/README.md",
-        "core/python/README.md",
+        "**/README.md",
         "docs/templates/readme_template.md"
       ],
       "internal_reference_paths": [
@@ -1472,7 +1470,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/reference_md_standard.md",
-      "updated_at": "2026-03-11T23:19:00Z",
+      "updated_at": "2026-03-12T01:02:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1480,6 +1478,7 @@
         "documentation"
       ],
       "operationalization_paths": [
+        "docs/references/*_reference.md",
         "workflows/modules/documentation_refresh.md",
         "workflows/modules/documentation_generation.md",
         "docs/templates/reference_template.md"
@@ -1547,7 +1546,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-11T20:08:00Z",
+      "updated_at": "2026-03-12T01:02:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1557,6 +1556,7 @@
         "documentation"
       ],
       "operationalization_paths": [
+        "docs/standards/*/*_standard.md",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",

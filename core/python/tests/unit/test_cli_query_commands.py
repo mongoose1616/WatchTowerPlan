@@ -361,7 +361,9 @@ def test_query_standards_exposes_standard_template_operationalization_path(capsy
     )
 
 
-def test_query_standards_matches_descendant_operationalization_paths(capsys) -> None:
+def test_query_standards_matches_descendant_and_glob_operationalization_paths(
+    capsys,
+) -> None:
     cases = (
         (
             "docs/planning/prds/reference_and_workflow_standards_alignment.md",
@@ -374,6 +376,22 @@ def test_query_standards_matches_descendant_operationalization_paths(capsys) -> 
         (
             "docs/templates/documentation_template.md",
             "std.documentation.compact_document_authoring",
+        ),
+        (
+            "docs/references/AGENTS.md",
+            "std.documentation.agents_md",
+        ),
+        (
+            "docs/planning/README.md",
+            "std.documentation.readme_md",
+        ),
+        (
+            "docs/references/commonmark_reference.md",
+            "std.documentation.reference_md",
+        ),
+        (
+            "docs/standards/documentation/readme_md_standard.md",
+            "std.documentation.standard_md",
         ),
     )
 

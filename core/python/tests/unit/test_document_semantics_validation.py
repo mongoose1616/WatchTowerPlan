@@ -80,9 +80,15 @@ def _write_standard_fixture(
     related_target: Path,
     reference_target: Path,
     blank_line_before_guidance: bool = True,
+    operationalization_surfaces: tuple[str, ...] = (
+        "docs/standards/documentation/example_standard.md",
+    ),
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     guidance_heading = "\n## Guidance" if blank_line_before_guidance else "## Guidance"
+    operationalization_surface_list = "; ".join(
+        f"`{surface}`" for surface in operationalization_surfaces
+    )
     content = dedent(
         f"""\
         ---
@@ -122,7 +128,7 @@ def _write_standard_fixture(
 
         ## Operationalization
         - `Modes`: `documentation`
-        - `Operational Surfaces`: `docs/standards/documentation/example_standard.md`
+        - `Operational Surfaces`: {operationalization_surface_list}
 
         ## Validation
         - Semantic validation should fail only for the targeted issue.
@@ -432,6 +438,31 @@ def test_document_semantics_validation_accepts_existing_repo_local_markdown_link
         standard_path,
         related_target=related_target,
         reference_target=reference_target,
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/standards/documentation/example_standard.md")
+
+    assert result.passed is True
+    assert result.issue_count == 0
+
+
+def test_document_semantics_validation_accepts_repo_relative_operationalization_glob_patterns(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    _write_repo_file(repo_root / "README.md")
+    _write_repo_file(repo_root / "docs/README.md")
+    standard_path = repo_root / "docs/standards/documentation/example_standard.md"
+    related_target = repo_root / "docs/references/example_reference.md"
+    reference_target = repo_root / "docs/templates/supporting_template.md"
+    _write_repo_file(related_target)
+    _write_repo_file(reference_target)
+    _write_standard_fixture(
+        standard_path,
+        related_target=related_target,
+        reference_target=reference_target,
+        operationalization_surfaces=("README.md", "**/README.md"),
     )
 
     service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))

@@ -552,6 +552,94 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-11T23:37:00Z for trace.design_document_index_relationship_alignment."
     },
     {
+      "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
+      "title": "Documentation Family Lookup and README Template Alignment PRD",
+      "summary": "Allow standards operationalization metadata to cover repeating documentation filename families, repair missing family lookup coverage for AGENTS/README/reference/standard docs, and align the README template with the governed title contract.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T01:10:26Z",
+      "closed_at": "2026-03-12T01:07:10Z",
+      "closure_reason": "Closed after extending standards operationalization lookup for recurring documentation families, aligning README template authoring guidance, and revalidating the repository baseline.",
+      "prd_ids": [
+        "prd.documentation_family_lookup_and_readme_template_alignment"
+      ],
+      "decision_ids": [
+        "decision.documentation_family_lookup_and_readme_template_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.documentation_family_lookup_and_readme_template_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.documentation_family_lookup_and_readme_template_alignment"
+      ],
+      "task_ids": [
+        "task.documentation_family_lookup_and_readme_template_alignment.bootstrap.001",
+        "task.documentation_family_lookup_and_readme_template_alignment.operationalization_lookup.001",
+        "task.documentation_family_lookup_and_readme_template_alignment.readme_template_alignment.001",
+        "task.documentation_family_lookup_and_readme_template_alignment.validation_closeout.001"
+      ],
+      "requirement_ids": [
+        "req.documentation_family_lookup_and_readme_template_alignment.001",
+        "req.documentation_family_lookup_and_readme_template_alignment.002",
+        "req.documentation_family_lookup_and_readme_template_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.documentation_family_lookup_and_readme_template_alignment.001",
+        "ac.documentation_family_lookup_and_readme_template_alignment.002",
+        "ac.documentation_family_lookup_and_readme_template_alignment.003",
+        "ac.documentation_family_lookup_and_readme_template_alignment.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.documentation_family_lookup_and_readme_template_alignment"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.documentation_family_lookup_and_readme_template_alignment.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/documentation_family_lookup_and_readme_template_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/documentation_family_lookup_and_readme_template_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/repo_ops/standards.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/documentation_family_lookup_and_readme_template_alignment_direction.md",
+        "docs/planning/design/features/documentation_family_lookup_and_readme_template_alignment.md",
+        "docs/planning/design/implementation/documentation_family_lookup_and_readme_template_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/align_readme_template_with_governed_title_and_inventory_contract.md",
+        "docs/planning/tasks/closed/documentation_family_lookup_and_readme_template_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/extend_standards_operationalization_lookup_for_recurring_documentation_families.md",
+        "docs/planning/tasks/closed/validate_and_close_documentation_family_lookup_and_readme_template_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/AGENTS.md",
+        "docs/references/commonmark_reference.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/agents_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/templates/README.md",
+        "docs/templates/readme_template.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T01:10:26Z for trace.documentation_family_lookup_and_readme_template_alignment after the validation task and initiative closeout."
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",
       "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",

@@ -548,6 +548,53 @@ def test_generic_documentation_template_stays_narrowed_to_fallback_guidance() ->
     )
 
 
+def test_document_family_standards_publish_precise_operationalization_coverage() -> None:
+    cases = (
+        (
+            REPO_ROOT / "docs/standards/documentation/agents_md_standard.md",
+            ("`AGENTS.md`", "`**/AGENTS.md`"),
+        ),
+        (
+            REPO_ROOT / "docs/standards/documentation/readme_md_standard.md",
+            ("`README.md`", "`**/README.md`"),
+        ),
+        (
+            REPO_ROOT / "docs/standards/documentation/reference_md_standard.md",
+            ("`docs/references/*_reference.md`",),
+        ),
+        (
+            REPO_ROOT / "docs/standards/documentation/standard_md_standard.md",
+            ("`docs/standards/*/*_standard.md`",),
+        ),
+    )
+
+    for path, expected_values in cases:
+        markdown = path.read_text(encoding="utf-8")
+        operationalization_match = re.search(
+            r"^## Operationalization\n(.*?)(?=^## |\Z)",
+            markdown,
+            flags=re.MULTILINE | re.DOTALL,
+        )
+        assert operationalization_match is not None, f"missing Operationalization section: {path}"
+        operationalization_section = operationalization_match.group(1)
+        for value in expected_values:
+            assert value in operationalization_section, (
+                f"missing operationalization surface {value} in {path}"
+            )
+
+
+def test_readme_template_stays_aligned_with_governed_contract() -> None:
+    markdown = (REPO_ROOT / "docs/templates/readme_template.md").read_text(encoding="utf-8")
+
+    assert markdown.startswith("# `<repo-relative-directory-path>`\n")
+    assert "> Use `# \\`.\\`` when the template is instantiated at the repository root." in markdown
+    assert "<Directory Name>" not in markdown
+    assert "<current-directory>/README.md" not in markdown
+    assert "<repo-relative-path-to-this-readme>" in markdown
+    assert markdown.index("## Files") < markdown.index("## Boundaries")
+    assert markdown.index("## Files") < markdown.index("## Notes")
+
+
 def test_decision_record_authoring_surfaces_stay_aligned_with_governed_contract() -> None:
     standard_path = REPO_ROOT / "docs/standards/documentation/decision_record_md_standard.md"
     standard_markdown = standard_path.read_text(encoding="utf-8")

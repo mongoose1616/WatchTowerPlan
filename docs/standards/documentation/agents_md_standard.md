@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "agents_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:02:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -63,7 +63,7 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 
 ## Operationalization
 - `Modes`: `documentation`
-- `Operational Surfaces`: `AGENTS.md`; `docs/AGENTS.md`; `core/python/AGENTS.md`; `docs/templates/agent_template.md`
+- `Operational Surfaces`: `AGENTS.md`; `**/AGENTS.md`; `docs/templates/agent_template.md`
 
 ## Validation
 - The file should read as active instructions for the current scope, not as template guidance.
@@ -89,4 +89,4 @@ Keep `AGENTS.md` files concise, scoped, and trustworthy by making them thin inst
 - The best `AGENTS.md` files are short, scoped, and obviously tied to the directory they govern.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:02:00Z`

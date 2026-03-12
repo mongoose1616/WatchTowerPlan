@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "readme_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T01:02:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -78,7 +78,7 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 
 ## Operationalization
 - `Modes`: `documentation`
-- `Operational Surfaces`: `README.md`; `docs/README.md`; `core/python/README.md`; `docs/templates/readme_template.md`
+- `Operational Surfaces`: `README.md`; `**/README.md`; `docs/templates/readme_template.md`
 
 ## Validation
 - The directory purpose should be clear from the title and `Description`.
@@ -104,4 +104,4 @@ Keep `README.md` files compact, trustworthy, and useful as the first-stop refere
 - If a README needs long procedural content or repository-wide rules, that content probably belongs in a companion document instead.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T01:02:00Z`

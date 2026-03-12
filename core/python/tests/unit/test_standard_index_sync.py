@@ -31,6 +31,33 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         in entry.get("reference_doc_paths", [])
         for entry in entries
     )
+    readme_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.documentation.readme_md"
+    )
+    assert "README.md" in readme_entry.get("operationalization_paths", [])
+    assert "**/README.md" in readme_entry.get("operationalization_paths", [])
+
+    agents_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.documentation.agents_md"
+    )
+    assert "AGENTS.md" in agents_entry.get("operationalization_paths", [])
+    assert "**/AGENTS.md" in agents_entry.get("operationalization_paths", [])
+
+    reference_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.documentation.reference_md"
+    )
+    assert "docs/references/*_reference.md" in reference_entry.get(
+        "operationalization_paths",
+        [],
+    )
+
+    standard_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.documentation.standard_md"
+    )
+    assert "docs/standards/*/*_standard.md" in standard_entry.get(
+        "operationalization_paths",
+        [],
+    )
 
 
 def test_standard_index_sync_writes_temp_output(tmp_path: Path) -> None:

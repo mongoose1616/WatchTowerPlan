@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import StandardIndexEntry
 from watchtower_core.repo_ops.query.common import query_score
+from watchtower_core.repo_ops.standards import operationalization_path_matches
 
 
 @dataclass(frozen=True, slots=True)
@@ -123,23 +123,12 @@ class StandardQueryService:
         requested_path: str,
         indexed_paths: tuple[str, ...],
     ) -> bool:
-        """Match exact operationalization paths and descendants of indexed directories."""
+        """Match exact, directory-descendant, and glob operationalization paths."""
         for indexed_path in indexed_paths:
-            normalized_indexed = indexed_path.casefold()
-            if requested_path == normalized_indexed:
+            if operationalization_path_matches(
+                requested_path,
+                indexed_path,
+                self._loader.repo_root,
+            ):
                 return True
-            if self._indexed_path_is_directory(indexed_path):
-                directory_prefix = (
-                    normalized_indexed
-                    if normalized_indexed.endswith("/")
-                    else f"{normalized_indexed}/"
-                )
-                if requested_path.startswith(directory_prefix):
-                    return True
         return False
-
-    def _indexed_path_is_directory(self, indexed_path: str) -> bool:
-        """Return whether an indexed operationalization path resolves to a directory."""
-        candidate = indexed_path[:-1] if indexed_path.endswith("/") else indexed_path
-        resolved = self._loader.repo_root / Path(candidate)
-        return indexed_path.endswith("/") or resolved.is_dir()

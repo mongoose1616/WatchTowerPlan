@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T23:19:00Z"
+updated_at: "2026-03-12T01:02:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -83,7 +83,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 
 ## Operationalization
 - `Modes`: `workflow`; `documentation`
-- `Operational Surfaces`: `workflows/modules/documentation_refresh.md`; `workflows/modules/documentation_generation.md`; `docs/templates/reference_template.md`
+- `Operational Surfaces`: `docs/references/*_reference.md`; `workflows/modules/documentation_refresh.md`; `workflows/modules/documentation_generation.md`; `docs/templates/reference_template.md`
 
 ## Validation
 - The document should be easy to scan as a lookup artifact.
@@ -113,4 +113,4 @@ Keep reference documents focused on durable lookup content by separating reader-
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-11T23:19:00Z`
+- `2026-03-12T01:02:00Z`
