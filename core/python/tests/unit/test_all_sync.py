@@ -7,8 +7,19 @@ from shutil import copytree
 import pytest
 from fixture_repo_support import materialize_governed_applies_to_targets
 
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
+from watchtower_core.control_plane.loader import (
+    COORDINATION_INDEX_PATH,
+    DECISION_INDEX_PATH,
+    DESIGN_DOCUMENT_INDEX_PATH,
+    INITIATIVE_INDEX_PATH,
+    PRD_INDEX_PATH,
+    TASK_INDEX_PATH,
+    TRACEABILITY_INDEX_PATH,
+    ControlPlaneLoader,
+)
 from watchtower_core.repo_ops.sync import AllSyncService, CoordinationSyncService
+from watchtower_core.repo_ops.sync.coordination_tracking import CoordinationTrackingSyncService
 from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.repo_ops.sync.registry import (
     COORDINATION_SYNC_GROUP,
@@ -108,6 +119,98 @@ def test_coordination_sync_runs_in_dry_run_mode() -> None:
     )
 
 
+def test_coordination_sync_reuses_stable_projection_sources(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = CoordinationSyncService(loader)
+    source_read_counts: dict[str, int] = {
+        PRD_INDEX_PATH: 0,
+        DECISION_INDEX_PATH: 0,
+        DESIGN_DOCUMENT_INDEX_PATH: 0,
+        TASK_INDEX_PATH: 0,
+        TRACEABILITY_INDEX_PATH: 0,
+        INITIATIVE_INDEX_PATH: 0,
+        COORDINATION_INDEX_PATH: 0,
+    }
+    original_load_json_object = ControlPlaneLoader.load_json_object
+
+    def wrapped_load_json_object(
+        self: ControlPlaneLoader,
+        relative_path: str,
+    ) -> dict[str, object]:
+        if relative_path in source_read_counts:
+            source_read_counts[relative_path] += 1
+        return original_load_json_object(self, relative_path)
+
+    monkeypatch.setattr(
+        ControlPlaneLoader,
+        "load_json_object",
+        wrapped_load_json_object,
+    )
+
+    result = service.run()
+
+    assert result.wrote is False
+    assert source_read_counts == {
+        PRD_INDEX_PATH: 1,
+        DECISION_INDEX_PATH: 1,
+        DESIGN_DOCUMENT_INDEX_PATH: 1,
+        TASK_INDEX_PATH: 0,
+        TRACEABILITY_INDEX_PATH: 0,
+        INITIATIVE_INDEX_PATH: 0,
+        COORDINATION_INDEX_PATH: 0,
+    }
+
+
+def test_coordination_sync_dry_run_uses_generated_dependency_artifacts(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_coordination_fixture_repo(tmp_path)
+    initiative_index_path = repo_root / INITIATIVE_INDEX_PATH
+    initiative_index = json.loads(initiative_index_path.read_text(encoding="utf-8"))
+    for entry in initiative_index["entries"]:
+        if entry["trace_id"] == "trace.core_export_hardening_followup":
+            entry["next_action"] = "STALE SNAPSHOT MARKER"
+            break
+    initiative_index_path.write_text(
+        f"{json.dumps(initiative_index, indent=2)}\n",
+        encoding="utf-8",
+    )
+    coordination_index_path = repo_root / COORDINATION_INDEX_PATH
+    coordination_index = json.loads(coordination_index_path.read_text(encoding="utf-8"))
+    coordination_index["summary"] = "STALE SNAPSHOT MARKER"
+    coordination_index_path.write_text(
+        f"{json.dumps(coordination_index, indent=2)}\n",
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+    service = CoordinationSyncService(loader)
+    captured_content: dict[str, str] = {}
+    original_build_document = CoordinationTrackingSyncService.build_document
+
+    def wrapped_build_document(
+        self: CoordinationTrackingSyncService,
+    ):  # type: ignore[no-untyped-def]
+        result = original_build_document(self)
+        captured_content["content"] = result.content
+        return result
+
+    monkeypatch.setattr(
+        CoordinationTrackingSyncService,
+        "build_document",
+        wrapped_build_document,
+    )
+
+    result = service.run()
+
+    assert result.wrote is False
+    assert "content" in captured_content
+    assert "STALE SNAPSHOT MARKER" not in captured_content["content"]
+
+
 def test_all_sync_can_materialize_to_output_dir(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
     service = AllSyncService(loader)
@@ -203,6 +306,7 @@ def test_all_sync_rejects_document_targets_without_entries_list() -> None:
 
     with pytest.raises(RuntimeError, match="broken-index document is missing its entries list"):
         service._run_document_sync(
+            loader=loader,
             target="broken-index",
             artifact_kind="index",
             relative_output_path="core/control_plane/indexes/broken/broken_index.v1.json",
@@ -210,3 +314,37 @@ def test_all_sync_rejects_document_targets_without_entries_list() -> None:
             write=False,
             output_dir=None,
         )
+
+
+def test_all_sync_rejects_unvalidated_document_overrides() -> None:
+    class BrokenDocumentService:
+        def build_document(self) -> dict[str, object]:
+            return {"entries": []}
+
+        def write_document(
+            self,
+            document: dict[str, object],
+            destination: Path | None = None,
+        ) -> Path:
+            raise AssertionError("Broken document targets should fail before write_document runs.")
+
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = AllSyncService(loader)
+    broken_output_path = "core/control_plane/indexes/broken/broken_index.v1.json"
+
+    with pytest.raises(
+        SchemaResolutionError,
+        match="No published schema ID was provided for validation",
+    ):
+        service._run_document_sync(
+            loader=loader,
+            target="broken-index",
+            artifact_kind="index",
+            relative_output_path=broken_output_path,
+            service=BrokenDocumentService(),
+            write=False,
+            output_dir=None,
+        )
+
+    with pytest.raises(ArtifactLoadError, match=broken_output_path):
+        loader.load_json_object(broken_output_path)

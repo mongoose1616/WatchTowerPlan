@@ -166,6 +166,92 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-12T14:48:15Z for trace.control_plane_example_validation_hardening after repairing invalid valid examples, expanding aggregate valid-example coverage, closing the full task set, and completing the no-new-issues follow-up review pass."
     },
     {
+      "trace_id": "trace.coordination_projection_source_reuse",
+      "title": "Coordination Projection Source Reuse PRD",
+      "summary": "Eliminate repeated planning-index and evidence source reloads inside coordination sync while preserving deterministic projection outputs, validation boundaries, and dry-run fidelity.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T16:22:53Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/coordination_projection_source_reuse.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/coordination_projection_source_reuse.md",
+      "prd_ids": [
+        "prd.coordination_projection_source_reuse"
+      ],
+      "decision_ids": [
+        "decision.coordination_projection_source_reuse_direction"
+      ],
+      "design_ids": [
+        "design.features.coordination_projection_source_reuse"
+      ],
+      "plan_ids": [
+        "design.implementation.coordination_projection_source_reuse"
+      ],
+      "task_ids": [
+        "task.coordination_projection_source_reuse.bootstrap.001",
+        "task.coordination_projection_source_reuse.loader_override_reuse.002",
+        "task.coordination_projection_source_reuse.validation_closeout.003"
+      ],
+      "acceptance_ids": [
+        "ac.coordination_projection_source_reuse.001",
+        "ac.coordination_projection_source_reuse.002",
+        "ac.coordination_projection_source_reuse.003",
+        "ac.coordination_projection_source_reuse.004",
+        "ac.coordination_projection_source_reuse.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.coordination_projection_source_reuse"
+      ],
+      "evidence_ids": [
+        "evidence.coordination_projection_source_reuse.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T16:12:12Z",
+      "closure_reason": "Closed after eliminating repeated coordination-sync planning source rereads, hardening current-run artifact reuse for dry-run and write flows, validating the repository baseline, and completing a clean follow-up review pass.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/coordination_projection_source_reuse_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_all_sync.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/coordination_projection_source_reuse_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/coordination_projection_source_reuse.md",
+        "docs/planning/design/implementation/coordination_projection_source_reuse.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/coordination_projection_source_reuse.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/coordination_projection_source_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_coordination_projection_sources_in_sync_orchestration.md",
+        "docs/planning/tasks/closed/validate_and_close_coordination_projection_source_reuse.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence refreshed at 2026-03-12T16:22:53Z for trace.coordination_projection_source_reuse."
+    },
+    {
       "trace_id": "trace.core_export_hardening_followup",
       "title": "Core Export Hardening Follow-Up PRD",
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",

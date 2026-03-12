@@ -43,6 +43,45 @@
       ]
     },
     {
+      "trace_id": "trace.coordination_projection_source_reuse",
+      "decision_id": "decision.coordination_projection_source_reuse_direction",
+      "title": "Coordination Projection Source Reuse Direction Decision",
+      "summary": "Prefer explicit command-scoped validated artifact overrides in sync orchestration over broad passive loader caching.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/coordination_projection_source_reuse_direction.md",
+      "updated_at": "2026-03-12T15:55:07Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.coordination_projection_source_reuse"
+      ],
+      "linked_design_ids": [
+        "design.features.coordination_projection_source_reuse"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.coordination_projection_source_reuse"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/prds/coordination_projection_source_reuse.md",
+        "docs/planning/design/features/coordination_projection_source_reuse.md",
+        "docs/planning/design/implementation/coordination_projection_source_reuse.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.core_python_foundation",
       "decision_id": "decision.core_python_workspace_root",
       "title": "Core Python Workspace Root Decision",

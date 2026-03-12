@@ -1,0 +1,142 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.coordination_projection_source_reuse.planning_baseline",
+  "title": "Coordination Projection Source Reuse Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.coordination_projection_source_reuse",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T16:22:53Z",
+  "source_prd_ids": [
+    "prd.coordination_projection_source_reuse"
+  ],
+  "source_design_ids": [
+    "design.features.coordination_projection_source_reuse"
+  ],
+  "source_plan_ids": [
+    "design.implementation.coordination_projection_source_reuse"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.coordination_projection_source_reuse"
+  ],
+  "checks": [
+    {
+      "check_id": "check.coordination_projection_source_reuse.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/coordination_projection_source_reuse.md",
+        "docs/planning/design/features/coordination_projection_source_reuse.md",
+        "docs/planning/design/implementation/coordination_projection_source_reuse.md",
+        "docs/planning/decisions/coordination_projection_source_reuse_direction.md",
+        "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json",
+        "docs/planning/tasks/closed/coordination_projection_source_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_coordination_projection_sources_in_sync_orchestration.md",
+        "docs/planning/tasks/closed/validate_and_close_coordination_projection_source_reuse.md"
+      ],
+      "subject_ids": [
+        "prd.coordination_projection_source_reuse",
+        "design.features.coordination_projection_source_reuse",
+        "design.implementation.coordination_projection_source_reuse",
+        "task.coordination_projection_source_reuse.bootstrap.001",
+        "task.coordination_projection_source_reuse.loader_override_reuse.002",
+        "task.coordination_projection_source_reuse.validation_closeout.003",
+        "contract.acceptance.coordination_projection_source_reuse",
+        "decision.coordination_projection_source_reuse_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.coordination_projection_source_reuse.001"
+      ],
+      "notes": "Bootstrap write mode published the initial planning chain, refreshed acceptance contract, evidence artifact, and bounded task set in canonical repository paths."
+    },
+    {
+      "check_id": "check.coordination_projection_source_reuse.source_read_reuse",
+      "title": "Coordination sync reuses stable planning source reads",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/tests/unit/test_all_sync.py"
+      ],
+      "subject_ids": [
+        "task.coordination_projection_source_reuse.loader_override_reuse.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.coordination_projection_source_reuse.002"
+      ],
+      "notes": "Direct instrumentation dropped coordination sync planning-index source reads from 18 to 3: prd=1, decision=1, design=1, task=0, traceability=0, initiative=0, coordination=0."
+    },
+    {
+      "check_id": "check.coordination_projection_source_reuse.generated_dependency_reuse",
+      "title": "Coordination sync dry-run reuses generated dependency artifacts",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/tests/unit/test_all_sync.py"
+      ],
+      "subject_ids": [
+        "task.coordination_projection_source_reuse.loader_override_reuse.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.coordination_projection_source_reuse.003"
+      ],
+      "notes": "Targeted regressions proved downstream coordination tracking consumed current-run generated artifacts instead of stale disk snapshots, and invalid generated overrides are rejected before publication."
+    },
+    {
+      "check_id": "check.coordination_projection_source_reuse.validation_closeout",
+      "title": "Coordination projection reuse validation baseline is green",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/coordination_projection_source_reuse_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_coordination_projection_source_reuse.md"
+      ],
+      "subject_ids": [
+        "task.coordination_projection_source_reuse.validation_closeout.003",
+        "contract.acceptance.coordination_projection_source_reuse"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.coordination_projection_source_reuse.004"
+      ],
+      "notes": "Targeted sync regressions, sync all --write, validate acceptance, validate all --skip-acceptance, final validate all, pytest -q, mypy, and ruff passed for the coordination projection reuse slice after validation-boundary hardening."
+    },
+    {
+      "check_id": "check.coordination_projection_source_reuse.followup_review",
+      "title": "Follow-up loader and coordination sync review found no new issues",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py"
+      ],
+      "subject_ids": [
+        "task.coordination_projection_source_reuse.validation_closeout.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.coordination_projection_source_reuse.005"
+      ],
+      "notes": "Follow-up review of adjacent loader and coordination projection surfaces found no additional actionable issues after the override-boundary and validation-boundary hardening."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence refreshed at 2026-03-12T16:22:53Z for trace.coordination_projection_source_reuse.",
+  "source_decision_ids": [
+    "decision.coordination_projection_source_reuse_direction"
+  ]
+}

@@ -114,9 +114,46 @@ class ControlPlaneLoader:
             supplemental_schema_paths=supplemental_schema_paths,
         )
         self.supplemental_schema_ids = self.schema_store.supplemental_schema_ids
+        self._validated_document_overrides: dict[str, dict[str, Any]] = {}
+        self._validated_directory_overrides: dict[str, tuple[tuple[str, dict[str, Any]], ...]] = {}
+
+    def set_validated_document_override(
+        self,
+        relative_path: str,
+        document: dict[str, Any],
+    ) -> None:
+        """Publish one current-run validated document for later loader reuse."""
+
+        self._validated_document_overrides[relative_path] = document
+        self._invalidate_parent_directory_overrides(relative_path)
+
+    def set_validated_directory_override(
+        self,
+        relative_directory: str,
+        documents: tuple[tuple[str, dict[str, Any]], ...],
+    ) -> None:
+        """Publish one current-run validated governed directory for later reuse."""
+
+        self._validated_directory_overrides[relative_directory] = documents
+        for relative_path, document in documents:
+            self._validated_document_overrides[relative_path] = document
+
+    def _invalidate_parent_directory_overrides(self, relative_path: str) -> None:
+        """Drop directory overrides that would be stale after one document update."""
+
+        stale_directories = tuple(
+            relative_directory
+            for relative_directory in self._validated_directory_overrides
+            if relative_path.startswith(f"{relative_directory.rstrip('/')}/")
+        )
+        for relative_directory in stale_directories:
+            del self._validated_directory_overrides[relative_directory]
 
     def load_json_object(self, relative_path: str) -> dict[str, Any]:
         """Load a repository-relative JSON object."""
+        override = self._validated_document_overrides.get(relative_path)
+        if override is not None:
+            return override
         try:
             return self.artifact_source.load_json_object(relative_path)
         except ArtifactLoadError:
@@ -130,6 +167,9 @@ class ControlPlaneLoader:
 
     def load_validated_document(self, relative_path: str) -> dict[str, Any]:
         """Load and validate a governed artifact that declares its own $schema."""
+        override = self._validated_document_overrides.get(relative_path)
+        if override is not None:
+            return override
         document = self.load_json_object(relative_path)
         self.schema_store.validate_instance(document)
         return document
@@ -240,6 +280,9 @@ class ControlPlaneLoader:
         relative_directory: str,
     ) -> tuple[tuple[str, dict[str, Any]], ...]:
         """Load and validate every JSON document directly under one governed directory."""
+        override = self._validated_directory_overrides.get(relative_directory)
+        if override is not None:
+            return override
         documents: list[tuple[str, dict[str, Any]]] = []
         for relative_path, document in self.artifact_source.iter_json_objects(relative_directory):
             self.schema_store.validate_instance(document)

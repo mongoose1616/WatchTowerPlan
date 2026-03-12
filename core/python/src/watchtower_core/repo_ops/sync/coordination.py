@@ -28,6 +28,7 @@ class CoordinationSyncService(AllSyncService):
     ) -> AllSyncResult:
         runtime_loader = self._runtime_loader(output_dir)
         specs = sync_target_specs_for_group(COORDINATION_SYNC_GROUP)
+        self._prime_shared_coordination_sources(runtime_loader, specs)
         (
             shared_reference_index_document,
             shared_reference_urls_by_path,

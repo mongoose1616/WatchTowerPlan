@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.coordination_projection_source_reuse",
+  "title": "Coordination Projection Source Reuse Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.coordination_projection_source_reuse",
+  "source_prd_id": "prd.coordination_projection_source_reuse",
+  "entries": [
+    {
+      "acceptance_id": "ac.coordination_projection_source_reuse.001",
+      "summary": "The trace publishes a fully-authored planning chain, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded closed task set for the coordination projection reuse slice.",
+      "source_requirement_ids": [
+        "req.coordination_projection_source_reuse.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/coordination_projection_source_reuse.md",
+        "docs/planning/design/features/coordination_projection_source_reuse.md",
+        "docs/planning/design/implementation/coordination_projection_source_reuse.md",
+        "docs/planning/decisions/coordination_projection_source_reuse_direction.md",
+        "docs/planning/tasks/closed/coordination_projection_source_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_coordination_projection_sources_in_sync_orchestration.md",
+        "docs/planning/tasks/closed/validate_and_close_coordination_projection_source_reuse.md",
+        "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/coordination_projection_source_reuse_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The final trace should preserve the authored planning chain, accepted decision, refreshed contract and evidence, and the closed execution task set."
+    },
+    {
+      "acceptance_id": "ac.coordination_projection_source_reuse.002",
+      "summary": "Coordination sync reuses stable planning projection inputs and current-run generated documents instead of rereading the same governed planning index paths for each dependent service.",
+      "source_requirement_ids": [
+        "req.coordination_projection_source_reuse.001",
+        "req.coordination_projection_source_reuse.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/tests/unit/test_all_sync.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/reuse_coordination_projection_sources_in_sync_orchestration.md"
+      ],
+      "notes": "Direct instrumentation should show coordination sync rereads the stable planning index paths from source only once per command-scoped preload, while generated downstream documents are reused from current-run overrides."
+    },
+    {
+      "acceptance_id": "ac.coordination_projection_source_reuse.003",
+      "summary": "Coordination sync dry-run and write-mode dependency chaining both use the current-run generated projection artifacts instead of stale on-disk intermediates, and generated overrides stay schema-validated before reuse.",
+      "source_requirement_ids": [
+        "req.coordination_projection_source_reuse.002",
+        "req.coordination_projection_source_reuse.003",
+        "req.coordination_projection_source_reuse.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/tests/unit/test_all_sync.py"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+      ],
+      "notes": "Targeted regressions should prove downstream sync services consume generated dependency artifacts in the current run, including dry-run orchestration, without bypassing schema validation for published overrides."
+    },
+    {
+      "acceptance_id": "ac.coordination_projection_source_reuse.004",
+      "summary": "The repository stays green on the normal validation baseline after the coordination projection reuse change lands.",
+      "source_requirement_ids": [
+        "req.coordination_projection_source_reuse.005"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/coordination_projection_source_reuse_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_coordination_projection_source_reuse.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "notes": "Closeout should include sync all, validate acceptance, validate all, pytest, mypy, and ruff."
+    },
+    {
+      "acceptance_id": "ac.coordination_projection_source_reuse.005",
+      "summary": "A follow-up review of adjacent control-plane loader and coordination sync surfaces finds no additional actionable issues.",
+      "source_requirement_ids": [
+        "req.coordination_projection_source_reuse.005"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The stop condition is a clean follow-up review pass with no new issues in the discussed area."
+    }
+  ]
+}

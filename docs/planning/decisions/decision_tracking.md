@@ -4,6 +4,7 @@
 | Trace ID | Decision | Status | Outcome | Summary |
 | --- | --- | --- | --- | --- |
 | `trace.control_plane_example_validation_hardening` | [decision.control_plane_example_validation_hardening_direction](/home/j/WatchTowerPlan/docs/planning/decisions/control_plane_example_validation_hardening_direction.md) | `completed` | `accepted` | Records the initial direction decision for Control Plane Example Validation Hardening. |
+| `trace.coordination_projection_source_reuse` | [decision.coordination_projection_source_reuse_direction](/home/j/WatchTowerPlan/docs/planning/decisions/coordination_projection_source_reuse_direction.md) | `completed` | `accepted` | Prefer explicit command-scoped validated artifact overrides in sync orchestration over broad passive loader caching. |
 | `trace.core_python_foundation` | [decision.core_python_workspace_root](/home/j/WatchTowerPlan/docs/planning/decisions/core_python_workspace_root.md) | `completed` | `accepted` | Records the decision to use core/python as the single Python workspace root alongside the versioned control plane. |
 | `trace.data_contract_example_operationalization_alignment` | [decision.data_contract_example_operationalization_alignment_direction](/home/j/WatchTowerPlan/docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md) | `completed` | `accepted` | Records the initial direction decision for Data Contract Example Operationalization Alignment. |
 | `trace.derived_projection_status_semantics` | [decision.derived_projection_status_semantics_direction](/home/j/WatchTowerPlan/docs/planning/decisions/derived_projection_status_semantics_alignment_direction.md) | `completed` | `accepted` | Records the decision to use explicit artifact_status naming for derived initiative and coordination projection entries. |
@@ -32,4 +33,4 @@
 | `trace.workflow_system_operationalization` | [decision.workflow_operationalization_direction](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_operationalization_direction.md) | `completed` | `accepted` | Records the decision to keep workflow documents authoritative while adding machine-readable route and metadata artifacts plus bounded authoring commands. |
 | `trace.workflow_routing_review_accuracy_alignment` | [decision.workflow_routing_review_accuracy_alignment.direction](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md) | `completed` | `accepted` | Records the initial direction decision for Workflow Routing Review Accuracy Alignment. |
 
-_Updated At: `2026-03-12T15:09:05Z`_
+_Updated At: `2026-03-12T15:55:07Z`_

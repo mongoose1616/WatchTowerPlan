@@ -6,7 +6,14 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol, cast
 
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.loader import (
+    ACCEPTANCE_CONTRACTS_DIRECTORY,
+    DECISION_INDEX_PATH,
+    DESIGN_DOCUMENT_INDEX_PATH,
+    PRD_INDEX_PATH,
+    VALIDATION_EVIDENCE_DIRECTORY,
+    ControlPlaneLoader,
+)
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.control_plane.workspace import (
     FileSystemArtifactIO,
@@ -83,6 +90,27 @@ class ReferenceAwareSyncService(Protocol):
 REFERENCE_RESOLUTION_TARGETS = frozenset(
     {"reference-index", "foundation-index", "standard-index", "workflow-index"}
 )
+COORDINATION_REUSE_TARGETS = frozenset(
+    {
+        "task-index",
+        "traceability-index",
+        "initiative-index",
+        "planning-catalog",
+        "coordination-index",
+        "task-tracking",
+        "initiative-tracking",
+        "coordination-tracking",
+    }
+)
+COORDINATION_STABLE_SOURCE_DOCUMENT_PATHS = (
+    PRD_INDEX_PATH,
+    DECISION_INDEX_PATH,
+    DESIGN_DOCUMENT_INDEX_PATH,
+)
+COORDINATION_STABLE_SOURCE_DIRECTORIES = (
+    ACCEPTANCE_CONTRACTS_DIRECTORY,
+    VALIDATION_EVIDENCE_DIRECTORY,
+)
 
 
 class AllSyncService:
@@ -104,6 +132,7 @@ class AllSyncService:
     ) -> AllSyncResult:
         runtime_loader = self._runtime_loader(output_dir)
         specs = SYNC_TARGET_SPECS
+        self._prime_shared_coordination_sources(runtime_loader, specs)
         (
             shared_reference_index_document,
             shared_reference_urls_by_path,
@@ -141,6 +170,27 @@ class AllSyncService:
             reference_urls_by_path_from_index_document(shared_reference_index_document),
         )
 
+    def _prime_shared_coordination_sources(
+        self,
+        loader: ControlPlaneLoader,
+        specs: tuple[SyncTargetSpec, ...],
+    ) -> None:
+        """Preload stable coordination source artifacts for current-run reuse."""
+
+        if not any(spec.target in COORDINATION_REUSE_TARGETS for spec in specs):
+            return
+
+        for relative_path in COORDINATION_STABLE_SOURCE_DOCUMENT_PATHS:
+            loader.set_validated_document_override(
+                relative_path,
+                loader.load_validated_document(relative_path),
+            )
+        for relative_directory in COORDINATION_STABLE_SOURCE_DIRECTORIES:
+            loader.set_validated_directory_override(
+                relative_directory,
+                loader.iter_validated_documents_with_paths_under(relative_directory),
+            )
+
     def _run_registered_sync(
         self,
         *,
@@ -160,6 +210,7 @@ class AllSyncService:
             )
         if spec.mode == "document":
             return self._run_document_sync(
+                loader=loader,
                 target=spec.target,
                 artifact_kind=spec.artifact_kind,
                 relative_output_path=spec.relative_output_path,
@@ -185,6 +236,7 @@ class AllSyncService:
     def _run_document_sync(
         self,
         *,
+        loader: ControlPlaneLoader,
         target: str,
         artifact_kind: str,
         relative_output_path: str,
@@ -197,6 +249,8 @@ class AllSyncService:
         entries = document.get("entries")
         if not isinstance(entries, list):
             raise RuntimeError(f"{target} document is missing its entries list.")
+        loader.schema_store.validate_instance(document)
+        loader.set_validated_document_override(relative_output_path, document)
         destination = self._resolve_destination(relative_output_path, write, output_dir)
         wrote = destination is not None
         if destination is not None:
@@ -281,18 +335,17 @@ class AllSyncService:
         return details
 
     def _runtime_loader(self, output_dir: Path | None) -> ControlPlaneLoader:
-        if output_dir is None:
-            return self._loader
-
-        overlay_workspace = WorkspaceConfig(
-            repo_root=output_dir,
-            control_plane_root=output_dir / "core" / "control_plane",
-            python_workspace_root=output_dir / "core" / "python",
-        )
-        overlay_source = OverlayArtifactSource(
-            primary=FileSystemArtifactIO(overlay_workspace),
-            fallback=self._loader.artifact_source,
-        )
+        overlay_source = self._loader.artifact_source
+        if output_dir is not None:
+            overlay_workspace = WorkspaceConfig(
+                repo_root=output_dir,
+                control_plane_root=output_dir / "core" / "control_plane",
+                python_workspace_root=output_dir / "core" / "python",
+            )
+            overlay_source = OverlayArtifactSource(
+                primary=FileSystemArtifactIO(overlay_workspace),
+                fallback=self._loader.artifact_source,
+            )
         return ControlPlaneLoader(
             workspace_config=self._loader.workspace_config,
             schema_store=self._loader.schema_store,

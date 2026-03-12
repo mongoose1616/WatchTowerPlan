@@ -43,6 +43,55 @@
       ]
     },
     {
+      "trace_id": "trace.coordination_projection_source_reuse",
+      "prd_id": "prd.coordination_projection_source_reuse",
+      "title": "Coordination Projection Source Reuse PRD",
+      "summary": "Eliminate repeated planning-index and evidence source reloads inside coordination sync while preserving deterministic projection outputs, validation boundaries, and dry-run fidelity.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/coordination_projection_source_reuse.md",
+      "updated_at": "2026-03-12T16:16:44Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.coordination_projection_source_reuse.001",
+        "req.coordination_projection_source_reuse.002",
+        "req.coordination_projection_source_reuse.003",
+        "req.coordination_projection_source_reuse.004",
+        "req.coordination_projection_source_reuse.005"
+      ],
+      "acceptance_ids": [
+        "ac.coordination_projection_source_reuse.001",
+        "ac.coordination_projection_source_reuse.002",
+        "ac.coordination_projection_source_reuse.003",
+        "ac.coordination_projection_source_reuse.004",
+        "ac.coordination_projection_source_reuse.005"
+      ],
+      "linked_decision_ids": [
+        "decision.coordination_projection_source_reuse_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.coordination_projection_source_reuse"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.coordination_projection_source_reuse"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/design/features/coordination_projection_source_reuse.md",
+        "docs/planning/design/implementation/coordination_projection_source_reuse.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.core_export_hardening_followup",
       "prd_id": "prd.core_export_hardening_followup",
       "title": "Core Export Hardening Follow-Up PRD",
