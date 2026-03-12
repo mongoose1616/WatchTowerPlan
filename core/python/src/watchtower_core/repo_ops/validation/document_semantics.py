@@ -49,7 +49,11 @@ from watchtower_core.repo_ops.sync.foundation_index import FOUNDATION_FRONT_MATT
 from watchtower_core.repo_ops.sync.prd_index import PRD_FRONT_MATTER_SCHEMA_ID
 from watchtower_core.repo_ops.sync.reference_index import REFERENCE_FRONT_MATTER_SCHEMA_ID
 from watchtower_core.repo_ops.sync.standard_index import STANDARD_FRONT_MATTER_SCHEMA_ID
-from watchtower_core.repo_ops.sync.workflow_index import load_workflow_document
+from watchtower_core.repo_ops.sync.workflow_index import (
+    WorkflowDocumentContext,
+    build_workflow_document_context,
+    load_workflow_document,
+)
 from watchtower_core.validation.common import matches_applies_to, resolve_target_path
 from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
@@ -62,6 +66,7 @@ class DocumentSemanticsValidationService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        self._workflow_document_context: WorkflowDocumentContext | None = None
 
     def validate(self, path: str | Path, validator_id: str | None = None) -> ValidationResult:
         """Validate one Markdown document through registry-backed semantic rules."""
@@ -196,10 +201,21 @@ class DocumentSemanticsValidationService:
             self._validate_implementation_plan_document(relative_target_path)
             return
         if validator_id == "validator.documentation.workflow_semantics":
-            load_workflow_document(self._loader, relative_target_path)
+            load_workflow_document(
+                self._loader,
+                relative_target_path,
+                context=self._workflow_validation_context(),
+            )
             return
 
         raise ValidationExecutionError(f"Unsupported document-semantics validator: {validator_id}")
+
+    def _workflow_validation_context(self) -> WorkflowDocumentContext:
+        """Return the reusable workflow-loading context for this validation run."""
+
+        if self._workflow_document_context is None:
+            self._workflow_document_context = build_workflow_document_context(self._loader)
+        return self._workflow_document_context
 
     def _validate_reference_document(self, relative_path: str, resolved_path: Path) -> None:
         front_matter = load_front_matter(resolved_path)

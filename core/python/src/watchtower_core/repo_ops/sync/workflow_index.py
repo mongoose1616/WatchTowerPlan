@@ -28,7 +28,7 @@ from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
-from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
+from watchtower_core.repo_ops.reference_resolution import build_reference_urls_by_path
 
 WORKFLOW_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/workflows/workflow_index.v1.json"
 WORKFLOW_DOC_ROOT = "workflows/modules"
@@ -91,6 +91,14 @@ class WorkflowDocument:
     reference_doc_paths: tuple[str, ...]
     internal_reference_paths: tuple[str, ...]
     external_reference_urls: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class WorkflowDocumentContext:
+    """Precomputed metadata and reference-resolution context for workflow loading."""
+
+    metadata_by_workflow_id: dict[str, WorkflowMetadataDefinition]
+    reference_urls_by_path: dict[str, tuple[str, ...]]
 
 
 def _derive_trigger_tags(
@@ -196,26 +204,39 @@ def validate_workflow_section_order(
         )
 
 
-def load_workflow_document(loader: ControlPlaneLoader, relative_path: str) -> WorkflowDocument:
-    """Load and validate one workflow module from its repository-relative path."""
+def build_workflow_document_context(
+    loader: ControlPlaneLoader,
+    *,
+    reference_urls_by_path: dict[str, tuple[str, ...]] | None = None,
+) -> WorkflowDocumentContext:
+    """Build the reusable context needed to load workflow modules."""
+
     metadata_registry = loader.load_workflow_metadata_registry()
-    metadata_by_workflow_id = {
-        entry.workflow_id: entry for entry in metadata_registry.entries
-    }
-    reference_document = ReferenceIndexSyncService(loader).build_document()
-    reference_entries = reference_document.get("entries")
-    if not isinstance(reference_entries, list):
-        raise ValueError("Generated reference index is missing its entries list.")
-    reference_urls_by_path = {
-        entry["doc_path"]: tuple(entry.get("canonical_upstream_urls", ()))
-        for entry in reference_entries
-        if isinstance(entry, dict) and isinstance(entry.get("doc_path"), str)
-    }
+    return WorkflowDocumentContext(
+        metadata_by_workflow_id={
+            entry.workflow_id: entry for entry in metadata_registry.entries
+        },
+        reference_urls_by_path=(
+            build_reference_urls_by_path(loader)
+            if reference_urls_by_path is None
+            else reference_urls_by_path
+        ),
+    )
+
+
+def load_workflow_document(
+    loader: ControlPlaneLoader,
+    relative_path: str,
+    *,
+    context: WorkflowDocumentContext | None = None,
+) -> WorkflowDocument:
+    """Load and validate one workflow module from its repository-relative path."""
+    workflow_context = context or build_workflow_document_context(loader)
     return load_workflow_document_with_reference_map(
         loader,
         relative_path,
-        metadata_by_workflow_id=metadata_by_workflow_id,
-        reference_urls_by_path=reference_urls_by_path,
+        metadata_by_workflow_id=workflow_context.metadata_by_workflow_id,
+        reference_urls_by_path=workflow_context.reference_urls_by_path,
     )
 
 
@@ -320,26 +341,26 @@ class WorkflowIndexSyncService:
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
+        self._reference_urls_by_path: dict[str, tuple[str, ...]] | None = None
 
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> WorkflowIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
+    def set_reference_urls_by_path(
+        self,
+        reference_urls_by_path: dict[str, tuple[str, ...]],
+    ) -> None:
+        """Provide precomputed reference-resolution data for aggregate sync reuse."""
+
+        self._reference_urls_by_path = reference_urls_by_path
+
     def build_document(self) -> dict[str, object]:
         existing_entries = _load_existing_entries(self._loader)
-        metadata_registry = self._loader.load_workflow_metadata_registry()
-        metadata_by_workflow_id = {
-            entry.workflow_id: entry for entry in metadata_registry.entries
-        }
-        reference_document = ReferenceIndexSyncService(self._loader).build_document()
-        reference_entries = reference_document.get("entries")
-        if not isinstance(reference_entries, list):
-            raise ValueError("Generated reference index is missing its entries list.")
-        reference_urls_by_path = {
-            entry["doc_path"]: tuple(entry.get("canonical_upstream_urls", ()))
-            for entry in reference_entries
-            if isinstance(entry, dict) and isinstance(entry.get("doc_path"), str)
-        }
+        workflow_context = build_workflow_document_context(
+            self._loader,
+            reference_urls_by_path=self._reference_urls_by_path,
+        )
         entries: list[dict[str, object]] = []
 
         workflow_root = self._repo_root / WORKFLOW_DOC_ROOT
@@ -351,8 +372,8 @@ class WorkflowIndexSyncService:
             workflow = load_workflow_document_with_reference_map(
                 self._loader,
                 relative_path,
-                metadata_by_workflow_id=metadata_by_workflow_id,
-                reference_urls_by_path=reference_urls_by_path,
+                metadata_by_workflow_id=workflow_context.metadata_by_workflow_id,
+                reference_urls_by_path=workflow_context.reference_urls_by_path,
             )
             current = existing_entries.get(workflow.workflow_id, {})
             aliases = ordered_unique(_tuple_of_strings(current.get("aliases")))

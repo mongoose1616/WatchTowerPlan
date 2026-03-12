@@ -1,0 +1,116 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.reference_resolution_reuse_hardening",
+  "title": "Reference Resolution Reuse Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.reference_resolution_reuse_hardening",
+  "source_prd_id": "prd.reference_resolution_reuse_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.reference_resolution_reuse_hardening.001",
+      "summary": "The trace publishes a fully authored planning chain, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded closed task set for the reuse-hardening slice.",
+      "source_requirement_ids": [
+        "req.reference_resolution_reuse_hardening.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/features/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/implementation/reference_resolution_reuse_hardening.md",
+        "docs/planning/decisions/reference_resolution_reuse_hardening_direction.md",
+        "docs/planning/tasks/closed/reference_resolution_reuse_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md",
+        "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The final trace should preserve the authored planning chain, accepted decision, refreshed contract and evidence, and the closed execution task set."
+    },
+    {
+      "acceptance_id": "ac.reference_resolution_reuse_hardening.002",
+      "summary": "Workflow document-semantics validation reuses one shared reference-resolution context per validation-service run instead of rebuilding the full reference index per workflow file.",
+      "source_requirement_ids": [
+        "req.reference_resolution_reuse_hardening.001",
+        "req.reference_resolution_reuse_hardening.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/reference_resolution.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/reuse_shared_reference_resolution_context_in_validation_and_sync.md"
+      ],
+      "notes": "Direct instrumentation should show document-semantics aggregate validation rebuilding the reference index once instead of once per workflow module."
+    },
+    {
+      "acceptance_id": "ac.reference_resolution_reuse_hardening.003",
+      "summary": "Aggregate sync orchestration reuses one shared reference-resolution snapshot across the reference, foundation, standard, and workflow index slice without changing generated artifacts.",
+      "source_requirement_ids": [
+        "req.reference_resolution_reuse_hardening.001",
+        "req.reference_resolution_reuse_hardening.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/reference_resolution.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_all_sync.py"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/references/reference_index.v1.json",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json"
+      ],
+      "notes": "Direct instrumentation should show sync-all rebuilding the reference index once, and coordination-only sync should not rebuild it at all."
+    },
+    {
+      "acceptance_id": "ac.reference_resolution_reuse_hardening.004",
+      "summary": "The repository stays green on the normal validation baseline after the reuse hardening lands.",
+      "source_requirement_ids": [
+        "req.reference_resolution_reuse_hardening.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "notes": "Closeout should include sync all, validate acceptance, validate all, pytest, mypy, and ruff."
+    },
+    {
+      "acceptance_id": "ac.reference_resolution_reuse_hardening.005",
+      "summary": "A follow-up review of adjacent reference-resolution, validation, and sync orchestration surfaces finds no additional actionable issues.",
+      "source_requirement_ids": [
+        "req.reference_resolution_reuse_hardening.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/reference_resolution.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The stop condition is a clean follow-up review pass with no new issues in the discussed area."
+    }
+  ]
+}

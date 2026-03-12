@@ -27,14 +27,21 @@ class CoordinationSyncService(AllSyncService):
         output_dir: Path | None = None,
     ) -> AllSyncResult:
         runtime_loader = self._runtime_loader(output_dir)
+        specs = sync_target_specs_for_group(COORDINATION_SYNC_GROUP)
+        (
+            shared_reference_index_document,
+            shared_reference_urls_by_path,
+        ) = self._build_shared_reference_resolution(runtime_loader, specs)
         records = [
             self._run_registered_sync(
                 loader=runtime_loader,
                 spec=spec,
                 write=write,
                 output_dir=output_dir,
+                shared_reference_index_document=shared_reference_index_document,
+                shared_reference_urls_by_path=shared_reference_urls_by_path,
             )
-            for spec in sync_target_specs_for_group(COORDINATION_SYNC_GROUP)
+            for spec in specs
         ]
         return AllSyncResult(
             records=tuple(records),

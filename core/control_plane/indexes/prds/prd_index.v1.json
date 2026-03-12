@@ -902,6 +902,54 @@
       ]
     },
     {
+      "trace_id": "trace.reference_resolution_reuse_hardening",
+      "prd_id": "prd.reference_resolution_reuse_hardening",
+      "title": "Reference Resolution Reuse Hardening PRD",
+      "summary": "Eliminate repeated full reference-index rebuilds in workflow semantics validation and dependent sync families while preserving current validation, sync, and query behavior.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/reference_resolution_reuse_hardening.md",
+      "updated_at": "2026-03-12T15:09:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.reference_resolution_reuse_hardening.001",
+        "req.reference_resolution_reuse_hardening.002",
+        "req.reference_resolution_reuse_hardening.003",
+        "req.reference_resolution_reuse_hardening.004"
+      ],
+      "acceptance_ids": [
+        "ac.reference_resolution_reuse_hardening.001",
+        "ac.reference_resolution_reuse_hardening.002",
+        "ac.reference_resolution_reuse_hardening.003",
+        "ac.reference_resolution_reuse_hardening.004",
+        "ac.reference_resolution_reuse_hardening.005"
+      ],
+      "linked_decision_ids": [
+        "decision.reference_resolution_reuse_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.reference_resolution_reuse_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.reference_resolution_reuse_hardening"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/design/features/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/implementation/reference_resolution_reuse_hardening.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.repo_local_hotspot_modularity",
       "prd_id": "prd.repo_local_hotspot_modularity",
       "title": "Repo-Local Hotspot Modularity Hardening PRD",

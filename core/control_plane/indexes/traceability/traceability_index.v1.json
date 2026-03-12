@@ -2075,6 +2075,95 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-11T23:29:23Z for trace.reference_and_workflow_standards_alignment."
     },
     {
+      "trace_id": "trace.reference_resolution_reuse_hardening",
+      "title": "Reference Resolution Reuse Hardening PRD",
+      "summary": "Eliminate repeated full reference-index rebuilds in workflow semantics validation and dependent sync families while preserving current validation, sync, and query behavior.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T15:20:34Z",
+      "closed_at": "2026-03-12T15:20:34Z",
+      "closure_reason": "Closed after eliminating repeated reference-index rebuilds in workflow semantics validation and aggregate sync orchestration, validating the repository baseline, and completing a clean follow-up review pass.",
+      "prd_ids": [
+        "prd.reference_resolution_reuse_hardening"
+      ],
+      "decision_ids": [
+        "decision.reference_resolution_reuse_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.reference_resolution_reuse_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.reference_resolution_reuse_hardening"
+      ],
+      "task_ids": [
+        "task.reference_resolution_reuse_hardening.bootstrap.001",
+        "task.reference_resolution_reuse_hardening.shared_resolution_reuse.001",
+        "task.reference_resolution_reuse_hardening.validation_closeout.002"
+      ],
+      "requirement_ids": [
+        "req.reference_resolution_reuse_hardening.001",
+        "req.reference_resolution_reuse_hardening.002",
+        "req.reference_resolution_reuse_hardening.003",
+        "req.reference_resolution_reuse_hardening.004"
+      ],
+      "acceptance_ids": [
+        "ac.reference_resolution_reuse_hardening.001",
+        "ac.reference_resolution_reuse_hardening.002",
+        "ac.reference_resolution_reuse_hardening.003",
+        "ac.reference_resolution_reuse_hardening.004",
+        "ac.reference_resolution_reuse_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.reference_resolution_reuse_hardening"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.reference_resolution_reuse_hardening.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/indexes/references/reference_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/reference_resolution.py",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_all_sync.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/reference_resolution_reuse_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/implementation/reference_resolution_reuse_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/reference_resolution_reuse_hardening.md",
+        "docs/planning/tasks/closed/reference_resolution_reuse_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T15:15:34Z for trace.reference_resolution_reuse_hardening after shipping the shared reference-resolution reuse seam, closing the task set, and completing the adjacent follow-up review pass."
+    },
+    {
       "trace_id": "trace.repo_local_hotspot_modularity",
       "title": "Repo-Local Hotspot Modularity Hardening PRD",
       "summary": "Reduce the remaining centralized repo-local hotspot modules that the March 2026 report set still identifies as maintenance pressure.",

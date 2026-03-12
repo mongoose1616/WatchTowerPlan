@@ -7,6 +7,7 @@ from textwrap import dedent
 import pytest
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.repo_ops.validation import (
     VALIDATION_FAMILY_SPECS,
     ValidationAllService,
@@ -215,3 +216,38 @@ def test_validate_all_artifacts_include_valid_control_plane_examples() -> None:
         target_paths
     )
     assert result.passed is True
+
+
+def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    service = ValidationAllService(ControlPlaneLoader())
+    reference_build_count = 0
+    original_build_document = ReferenceIndexSyncService.build_document
+
+    monkeypatch.setattr(
+        service,
+        "_document_semantics_targets",
+        lambda: (
+            "workflows/modules/code_validation.md",
+            "workflows/modules/code_review.md",
+        ),
+    )
+
+    def wrapped_build_document(
+        self: ReferenceIndexSyncService,
+    ) -> dict[str, object]:
+        nonlocal reference_build_count
+        reference_build_count += 1
+        return original_build_document(self)
+
+    monkeypatch.setattr(
+        ReferenceIndexSyncService,
+        "build_document",
+        wrapped_build_document,
+    )
+
+    result = service.run(included_families=("document_semantics",))
+
+    assert result.passed is True
+    assert reference_build_count == 1

@@ -30,12 +30,12 @@ from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
+from watchtower_core.repo_ops.reference_resolution import build_reference_urls_by_path
 from watchtower_core.repo_ops.standards import (
     STANDARD_OPERATIONALIZATION_SECTION,
     collect_standard_reference_metadata,
     parse_standard_operationalization,
 )
-from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 
 STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
 STANDARD_FRONT_MATTER_SCHEMA_ID = (
@@ -70,22 +70,25 @@ class StandardIndexSyncService:
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
         self._repo_root = loader.repo_root
+        self._reference_urls_by_path: dict[str, tuple[str, ...]] | None = None
 
     @classmethod
     def from_repo_root(cls, repo_root: Path | None = None) -> StandardIndexSyncService:
         return cls(ControlPlaneLoader(discover_repo_root(repo_root)))
 
+    def set_reference_urls_by_path(
+        self,
+        reference_urls_by_path: dict[str, tuple[str, ...]],
+    ) -> None:
+        """Provide precomputed reference-resolution data for aggregate sync reuse."""
+
+        self._reference_urls_by_path = reference_urls_by_path
+
     def build_document(self) -> dict[str, object]:
         existing_entries = _load_existing_entries(self._loader)
-        reference_document = ReferenceIndexSyncService(self._loader).build_document()
-        reference_entries = reference_document.get("entries")
-        if not isinstance(reference_entries, list):
-            raise ValueError("Generated reference index is missing its entries list.")
-        reference_urls_by_path = {
-            entry["doc_path"]: tuple(entry.get("canonical_upstream_urls", ()))
-            for entry in reference_entries
-            if isinstance(entry, dict) and isinstance(entry.get("doc_path"), str)
-        }
+        reference_urls_by_path = self._reference_urls_by_path or build_reference_urls_by_path(
+            self._loader
+        )
         entries: list[dict[str, object]] = []
 
         standards_root = self._repo_root / STANDARD_DOC_ROOT

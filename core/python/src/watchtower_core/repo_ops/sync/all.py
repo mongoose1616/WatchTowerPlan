@@ -13,6 +13,10 @@ from watchtower_core.control_plane.workspace import (
     OverlayArtifactSource,
     WorkspaceConfig,
 )
+from watchtower_core.repo_ops.reference_resolution import (
+    reference_urls_by_path_from_index_document,
+)
+from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.repo_ops.sync.registry import SYNC_TARGET_SPECS, SyncTargetSpec
 
 
@@ -66,6 +70,21 @@ class TrackingSyncService(Protocol):
         """Write one tracker result object."""
 
 
+class ReferenceAwareSyncService(Protocol):
+    """Protocol for sync services that can reuse reference-resolution data."""
+
+    def set_reference_urls_by_path(
+        self,
+        reference_urls_by_path: dict[str, tuple[str, ...]],
+    ) -> None:
+        """Inject a precomputed reference-resolution map."""
+
+
+REFERENCE_RESOLUTION_TARGETS = frozenset(
+    {"reference-index", "foundation-index", "standard-index", "workflow-index"}
+)
+
+
 class AllSyncService:
     """Run all local deterministic sync operations in dependency order."""
 
@@ -84,19 +103,42 @@ class AllSyncService:
         output_dir: Path | None = None,
     ) -> AllSyncResult:
         runtime_loader = self._runtime_loader(output_dir)
+        specs = SYNC_TARGET_SPECS
+        (
+            shared_reference_index_document,
+            shared_reference_urls_by_path,
+        ) = self._build_shared_reference_resolution(runtime_loader, specs)
         records = [
             self._run_registered_sync(
                 loader=runtime_loader,
                 spec=spec,
                 write=write,
                 output_dir=output_dir,
+                shared_reference_index_document=shared_reference_index_document,
+                shared_reference_urls_by_path=shared_reference_urls_by_path,
             )
-            for spec in SYNC_TARGET_SPECS
+            for spec in specs
         ]
         return AllSyncResult(
             records=tuple(records),
             wrote=(write or output_dir is not None),
             output_dir=str(output_dir.resolve()) if output_dir is not None else None,
+        )
+
+    def _build_shared_reference_resolution(
+        self,
+        loader: ControlPlaneLoader,
+        specs: tuple[SyncTargetSpec, ...],
+    ) -> tuple[dict[str, object] | None, dict[str, tuple[str, ...]] | None]:
+        """Build one shared reference-resolution snapshot when the sync slice needs it."""
+
+        if not any(spec.target in REFERENCE_RESOLUTION_TARGETS for spec in specs):
+            return None, None
+
+        shared_reference_index_document = ReferenceIndexSyncService(loader).build_document()
+        return (
+            shared_reference_index_document,
+            reference_urls_by_path_from_index_document(shared_reference_index_document),
         )
 
     def _run_registered_sync(
@@ -106,8 +148,16 @@ class AllSyncService:
         spec: SyncTargetSpec,
         write: bool,
         output_dir: Path | None,
+        shared_reference_index_document: dict[str, object] | None,
+        shared_reference_urls_by_path: dict[str, tuple[str, ...]] | None,
     ) -> AllSyncRecord:
         service = spec.service_factory(loader)
+        if shared_reference_urls_by_path is not None and hasattr(
+            service, "set_reference_urls_by_path"
+        ):
+            cast(ReferenceAwareSyncService, service).set_reference_urls_by_path(
+                shared_reference_urls_by_path
+            )
         if spec.mode == "document":
             return self._run_document_sync(
                 target=spec.target,
@@ -116,6 +166,11 @@ class AllSyncService:
                 service=cast(DocumentSyncService, service),
                 write=write,
                 output_dir=output_dir,
+                document_override=(
+                    shared_reference_index_document
+                    if spec.target == "reference-index"
+                    else None
+                ),
             )
         return self._run_tracking_sync(
             target=spec.target,
@@ -136,8 +191,9 @@ class AllSyncService:
         service: DocumentSyncService,
         write: bool,
         output_dir: Path | None,
+        document_override: dict[str, object] | None = None,
     ) -> AllSyncRecord:
-        document = service.build_document()
+        document = document_override or service.build_document()
         entries = document.get("entries")
         if not isinstance(entries, list):
             raise RuntimeError(f"{target} document is missing its entries list.")

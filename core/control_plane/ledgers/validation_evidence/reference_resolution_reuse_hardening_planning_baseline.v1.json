@@ -1,0 +1,145 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.reference_resolution_reuse_hardening.planning_baseline",
+  "title": "Reference Resolution Reuse Hardening Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.reference_resolution_reuse_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T15:15:34Z",
+  "source_prd_ids": [
+    "prd.reference_resolution_reuse_hardening"
+  ],
+  "source_design_ids": [
+    "design.features.reference_resolution_reuse_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.reference_resolution_reuse_hardening"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.reference_resolution_reuse_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.reference_resolution_reuse_hardening.planning_baseline",
+      "title": "The planning chain and closed task set are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/features/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/implementation/reference_resolution_reuse_hardening.md",
+        "docs/planning/decisions/reference_resolution_reuse_hardening_direction.md",
+        "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/reference_resolution_reuse_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md"
+      ],
+      "subject_ids": [
+        "prd.reference_resolution_reuse_hardening",
+        "design.features.reference_resolution_reuse_hardening",
+        "design.implementation.reference_resolution_reuse_hardening",
+        "task.reference_resolution_reuse_hardening.bootstrap.001",
+        "task.reference_resolution_reuse_hardening.shared_resolution_reuse.001",
+        "task.reference_resolution_reuse_hardening.validation_closeout.002",
+        "contract.acceptance.reference_resolution_reuse_hardening",
+        "decision.reference_resolution_reuse_hardening_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.reference_resolution_reuse_hardening.001"
+      ],
+      "notes": "The trace now carries a fully authored PRD, active feature design, active implementation plan, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded closed task set."
+    },
+    {
+      "check_id": "check.reference_resolution_reuse_hardening.workflow_validation_reuse",
+      "title": "Workflow semantics validation reuses one reference-resolution build per run",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/reference_resolution.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "subject_ids": [
+        "task.reference_resolution_reuse_hardening.shared_resolution_reuse.001"
+      ],
+      "acceptance_ids": [
+        "ac.reference_resolution_reuse_hardening.002"
+      ],
+      "notes": "Targeted regressions pass, and direct instrumentation now reports document_semantics_reference_index_builds=1 for the aggregate workflow-semantic pass."
+    },
+    {
+      "check_id": "check.reference_resolution_reuse_hardening.sync_reuse",
+      "title": "Aggregate sync orchestration reuses one shared reference-resolution snapshot",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/reference_resolution.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/tests/unit/test_all_sync.py"
+      ],
+      "subject_ids": [
+        "task.reference_resolution_reuse_hardening.shared_resolution_reuse.001"
+      ],
+      "acceptance_ids": [
+        "ac.reference_resolution_reuse_hardening.003"
+      ],
+      "notes": "Targeted regressions pass, and direct instrumentation now reports sync_all_reference_index_builds=1 and coordination_sync_reference_index_builds=0."
+    },
+    {
+      "check_id": "check.reference_resolution_reuse_hardening.validation_closeout",
+      "title": "Final validation baseline is recorded for closeout",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "subject_ids": [
+        "task.reference_resolution_reuse_hardening.validation_closeout.002",
+        "contract.acceptance.reference_resolution_reuse_hardening"
+      ],
+      "acceptance_ids": [
+        "ac.reference_resolution_reuse_hardening.004"
+      ],
+      "notes": "The closeout baseline includes watchtower-core sync all --write --format json, watchtower-core validate all --skip-acceptance --format json, pytest -q, python -m mypy src/watchtower_core, and ruff check .."
+    },
+    {
+      "check_id": "check.reference_resolution_reuse_hardening.followup_review",
+      "title": "Follow-up review pass found no additional issues",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/reference_resolution.py",
+        "core/python/src/watchtower_core/repo_ops/sync/all.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ],
+      "subject_ids": [
+        "task.reference_resolution_reuse_hardening.validation_closeout.002"
+      ],
+      "acceptance_ids": [
+        "ac.reference_resolution_reuse_hardening.005"
+      ],
+      "notes": "The follow-up review pass rechecked the adjacent reference-resolution, validation, and sync-orchestration surfaces and found no additional actionable issues."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T15:15:34Z for trace.reference_resolution_reuse_hardening after shipping the shared reference-resolution reuse seam, closing the task set, and completing the adjacent follow-up review pass.",
+  "source_decision_ids": [
+    "decision.reference_resolution_reuse_hardening_direction"
+  ]
+}

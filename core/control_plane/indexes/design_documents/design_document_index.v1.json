@@ -1027,6 +1027,35 @@
       ]
     },
     {
+      "document_id": "design.features.reference_resolution_reuse_hardening",
+      "trace_id": "trace.reference_resolution_reuse_hardening",
+      "family": "feature_design",
+      "title": "Reference Resolution Reuse Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Reference Resolution Reuse Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/reference_resolution_reuse_hardening.md",
+      "updated_at": "2026-03-12T15:09:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/reference_resolution_reuse_hardening.md",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/planning/prds/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/implementation/reference_resolution_reuse_hardening.md"
+      ]
+    },
+    {
       "document_id": "design.features.repo_local_hotspot_modularity",
       "trace_id": "trace.repo_local_hotspot_modularity",
       "family": "feature_design",
@@ -1984,6 +2013,35 @@
       "internal_reference_paths": [
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/documentation/workflow_md_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.reference_resolution_reuse_hardening",
+      "trace_id": "trace.reference_resolution_reuse_hardening",
+      "family": "implementation_plan",
+      "title": "Reference Resolution Reuse Hardening Implementation Plan",
+      "summary": "Breaks Reference Resolution Reuse Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/reference_resolution_reuse_hardening.md",
+      "updated_at": "2026-03-12T15:09:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/reference_resolution_reuse_hardening.md",
+        "docs/planning/prds/reference_resolution_reuse_hardening.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/planning/prds/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/features/reference_resolution_reuse_hardening.md",
+        "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json"
       ]
     },
     {

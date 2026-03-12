@@ -790,6 +790,45 @@
       ]
     },
     {
+      "trace_id": "trace.reference_resolution_reuse_hardening",
+      "decision_id": "decision.reference_resolution_reuse_hardening_direction",
+      "title": "Reference Resolution Reuse Hardening Direction Decision",
+      "summary": "Records the initial direction decision for Reference Resolution Reuse Hardening.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/reference_resolution_reuse_hardening_direction.md",
+      "updated_at": "2026-03-12T15:09:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.reference_resolution_reuse_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.reference_resolution_reuse_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.reference_resolution_reuse_hardening"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/planning/prds/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/features/reference_resolution_reuse_hardening.md",
+        "docs/planning/design/implementation/reference_resolution_reuse_hardening.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.repo_local_hotspot_modularity",
       "decision_id": "decision.repo_local_hotspot_modularity_direction",
       "title": "Repo-Local Hotspot Modularity Hardening Direction Decision",

@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.reference_resolution_reuse_hardening` | `completed` | [reference_resolution_reuse_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_resolution_reuse_hardening.md) | `2026-03-12T15:20:34Z` | Closed after eliminating repeated reference-index rebuilds in workflow semantics validation and aggregate sync orchestration, validating the repository baseline, and completing a clean follow-up review pass. |
 | `trace.control_plane_example_validation_hardening` | `completed` | [control_plane_example_validation_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/control_plane_example_validation_hardening.md) | `2026-03-12T14:47:28Z` | Closed after repairing invalid valid examples, extending aggregate example validation coverage, restoring exhaustive example and canonicality regressions, and completing a clean follow-up review pass. |
 | `trace.task_sync_disappearing_file_resilience` | `completed` | [task_sync_disappearing_file_resilience.md](/home/j/WatchTowerPlan/docs/planning/prds/task_sync_disappearing_file_resilience.md) | `2026-03-12T13:01:19Z` | Closed after hardening task iteration against disappearing files, adding end-to-end regression coverage, and completing a clean follow-up orchestration review pass. |
 | `trace.workflow_routing_review_accuracy_alignment` | `completed` | [workflow_routing_review_accuracy_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_routing_review_accuracy_alignment.md) | `2026-03-12T03:52:21Z` | Delivered deterministic routing hardening, route-table alignment, and clean follow-up review coverage. |
@@ -43,4 +44,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-12T14:48:15Z`_
+_Updated At: `2026-03-12T15:20:34Z`_

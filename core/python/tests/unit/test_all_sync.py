@@ -9,6 +9,7 @@ from fixture_repo_support import materialize_governed_applies_to_targets
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.sync import AllSyncService, CoordinationSyncService
+from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.repo_ops.sync.registry import (
     COORDINATION_SYNC_GROUP,
     SYNC_TARGET_SPECS,
@@ -37,6 +38,33 @@ def test_all_sync_runs_in_dry_run_mode() -> None:
     assert tuple(record.target for record in result.records) == tuple(
         spec.target for spec in SYNC_TARGET_SPECS
     )
+
+
+def test_all_sync_reuses_reference_index_build_for_dependent_targets(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = AllSyncService(loader)
+    reference_build_count = 0
+    original_build_document = ReferenceIndexSyncService.build_document
+
+    def wrapped_build_document(
+        self: ReferenceIndexSyncService,
+    ) -> dict[str, object]:
+        nonlocal reference_build_count
+        reference_build_count += 1
+        return original_build_document(self)
+
+    monkeypatch.setattr(
+        ReferenceIndexSyncService,
+        "build_document",
+        wrapped_build_document,
+    )
+
+    result = service.run()
+
+    assert result.wrote is False
+    assert reference_build_count == 1
 
 
 def test_sync_target_registry_is_unique() -> None:
