@@ -429,6 +429,26 @@ def test_query_standards_matches_descendant_and_glob_operationalization_paths(
             "std.data_contracts.standard_index",
         ),
         (
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "std.data_contracts.foundation_index",
+        ),
+        (
+            "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+            "std.data_contracts.foundation_index",
+        ),
+        (
+            "docs/commands/core_python/watchtower_core_query_foundations.md",
+            "std.data_contracts.foundation_index",
+        ),
+        (
+            "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+            "std.data_contracts.foundation_index",
+        ),
+        (
+            "core/control_plane/indexes/foundations/README.md",
+            "std.data_contracts.foundation_index",
+        ),
+        (
             "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
             "std.data_contracts.validation_evidence",
         ),

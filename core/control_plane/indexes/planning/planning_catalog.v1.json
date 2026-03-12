@@ -4405,6 +4405,314 @@
       "closure_reason": "Delivered and validated final pre-implementation repository rationalization."
     },
     {
+      "trace_id": "trace.foundation_index_family_contract_alignment",
+      "title": "Foundation Index Family Contract Alignment PRD",
+      "summary": "Align the foundation-index standard and lookup coverage with the full foundations index family surfaces.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T23:22:45Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.foundation_index_family_contract_alignment",
+          "title": "Foundation Index Family Contract Alignment PRD",
+          "summary": "Align the foundation-index standard and lookup coverage with the full foundations index family surfaces.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
+          "updated_at": "2026-03-12T23:12:00Z",
+          "requirement_ids": [
+            "req.foundation_index_family_contract_alignment.001",
+            "req.foundation_index_family_contract_alignment.002",
+            "req.foundation_index_family_contract_alignment.003"
+          ],
+          "acceptance_ids": [
+            "ac.foundation_index_family_contract_alignment.001",
+            "ac.foundation_index_family_contract_alignment.002",
+            "ac.foundation_index_family_contract_alignment.003"
+          ],
+          "linked_decision_ids": [
+            "decision.foundation_index_family_contract_alignment_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.foundation_index_family_contract_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.foundation_index_family_contract_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.foundation_index_family_contract_alignment_direction",
+          "title": "Foundation Index Family Contract Alignment Direction Decision",
+          "summary": "Records the initial direction decision for Foundation Index Family Contract Alignment.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
+          "updated_at": "2026-03-12T23:12:00Z",
+          "linked_prd_ids": [
+            "prd.foundation_index_family_contract_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.foundation_index_family_contract_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.foundation_index_family_contract_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.foundation_index_family_contract_alignment",
+          "family": "feature_design",
+          "title": "Foundation Index Family Contract Alignment Feature Design",
+          "summary": "Defines the technical design boundary for Foundation Index Family Contract Alignment.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+          "updated_at": "2026-03-12T23:12:00Z"
+        },
+        {
+          "document_id": "design.implementation.foundation_index_family_contract_alignment",
+          "family": "implementation_plan",
+          "title": "Foundation Index Family Contract Alignment Implementation Plan",
+          "summary": "Breaks Foundation Index Family Contract Alignment into a bounded implementation slice.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+          "updated_at": "2026-03-12T23:12:00Z",
+          "source_paths": [
+            "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+            "docs/planning/prds/foundation_index_family_contract_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.foundation_index_family_contract_alignment.bootstrap.001",
+          "title": "Bootstrap Foundation Index Family Contract Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Foundation Index Family Contract Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/foundation_index_family_contract_alignment_bootstrap.md",
+          "updated_at": "2026-03-12T23:10:03Z",
+          "related_ids": [
+            "prd.foundation_index_family_contract_alignment",
+            "design.features.foundation_index_family_contract_alignment",
+            "design.implementation.foundation_index_family_contract_alignment",
+            "decision.foundation_index_family_contract_alignment_direction",
+            "contract.acceptance.foundation_index_family_contract_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/data_contracts/foundation_index_standard.md",
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+            "docs/commands/core_python/watchtower_core_query_foundations.md",
+            "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+            "core/control_plane/indexes/foundations/"
+          ]
+        },
+        {
+          "task_id": "task.foundation_index_family_contract_alignment.documentation.001",
+          "title": "Align foundation-index family standards and command surfaces",
+          "summary": "Update the foundation-index standard and adjacent family docs so standards lookup covers the full foundations index family.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "documentation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/align_foundation_index_family_standards_and_command_surfaces.md",
+          "updated_at": "2026-03-12T23:17:39Z",
+          "depends_on": [
+            "task.foundation_index_family_contract_alignment.bootstrap.001"
+          ],
+          "related_ids": [
+            "prd.foundation_index_family_contract_alignment",
+            "design.features.foundation_index_family_contract_alignment",
+            "decision.foundation_index_family_contract_alignment_direction"
+          ],
+          "applies_to": [
+            "docs/standards/data_contracts/foundation_index_standard.md",
+            "core/control_plane/indexes/foundations/README.md",
+            "docs/commands/core_python/watchtower_core_query_foundations.md",
+            "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+            "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py"
+          ]
+        },
+        {
+          "task_id": "task.foundation_index_family_contract_alignment.validation.001",
+          "title": "Validate and close foundation-index family contract alignment",
+          "summary": "Run targeted and full validation, refresh acceptance evidence, and close the bounded foundations index contract-alignment slice.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_foundation_index_family_contract_alignment.md",
+          "updated_at": "2026-03-12T23:22:32Z",
+          "depends_on": [
+            "task.foundation_index_family_contract_alignment.documentation.001"
+          ],
+          "related_ids": [
+            "prd.foundation_index_family_contract_alignment",
+            "design.implementation.foundation_index_family_contract_alignment",
+            "contract.acceptance.foundation_index_family_contract_alignment"
+          ],
+          "applies_to": [
+            "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
+            "docs/planning/coordination_tracking.md"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.foundation_index_family_contract_alignment",
+          "title": "Foundation Index Family Contract Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.foundation_index_family_contract_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.foundation_index_family_contract_alignment.001",
+            "ac.foundation_index_family_contract_alignment.002",
+            "ac.foundation_index_family_contract_alignment.003"
+          ],
+          "validation_targets": [
+            "core/control_plane/indexes/foundations/README.md",
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_standard_index_sync.py",
+            "docs/commands/core_python/watchtower_core_query_foundations.md",
+            "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+            "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
+            "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+            "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+            "docs/planning/prds/foundation_index_family_contract_alignment.md",
+            "docs/standards/data_contracts/foundation_index_standard.md"
+          ],
+          "related_paths": [
+            "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "core/python/tests/unit/test_cli_query_commands.py"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.foundation_index_family_contract_alignment.planning_baseline",
+          "title": "Foundation Index Family Contract Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-12T23:20:00Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.foundation_index_family_contract_alignment.contract_surface_alignment",
+            "check.foundation_index_family_contract_alignment.lookup_resolution",
+            "check.foundation_index_family_contract_alignment.validation_and_review_closeout"
+          ],
+          "acceptance_ids": [
+            "ac.foundation_index_family_contract_alignment.001",
+            "ac.foundation_index_family_contract_alignment.002",
+            "ac.foundation_index_family_contract_alignment.003"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.foundation_index_family_contract_alignment"
+      ],
+      "decision_ids": [
+        "decision.foundation_index_family_contract_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.foundation_index_family_contract_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundation_index_family_contract_alignment"
+      ],
+      "task_ids": [
+        "task.foundation_index_family_contract_alignment.bootstrap.001",
+        "task.foundation_index_family_contract_alignment.documentation.001",
+        "task.foundation_index_family_contract_alignment.validation.001"
+      ],
+      "requirement_ids": [
+        "req.foundation_index_family_contract_alignment.001",
+        "req.foundation_index_family_contract_alignment.002",
+        "req.foundation_index_family_contract_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_index_family_contract_alignment.001",
+        "ac.foundation_index_family_contract_alignment.002",
+        "ac.foundation_index_family_contract_alignment.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundation_index_family_contract_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.foundation_index_family_contract_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/foundations/",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
+        "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+        "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundation_index_family_contract_alignment.md",
+        "docs/planning/tasks/closed/align_foundation_index_family_standards_and_command_surfaces.md",
+        "docs/planning/tasks/closed/foundation_index_family_contract_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_foundation_index_family_contract_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/foundation_index_standard.md"
+      ],
+      "tags": [
+        "documentation",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T23:20:00Z for trace.foundation_index_family_contract_alignment after the foundation-index family contract repair, targeted validation, full pre-acceptance validation, and repeated themed no-new-issues review passes.",
+      "closed_at": "2026-03-12T23:22:45Z",
+      "closure_reason": "Delivered foundation-index family contract alignment: the governing standard now covers the authoritative sync/query and foundations command surfaces, targeted and full validation passed, and repeated themed review passes found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "title": "Foundation Scope and EntryPoint Realignment PRD",
       "summary": "Clarify current repository scope versus future WatchTower product narrative, tighten root entrypoints, and align foundation language with the export-ready core boundary.",

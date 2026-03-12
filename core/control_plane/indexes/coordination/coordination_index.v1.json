@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-12T22:14:37Z",
+  "updated_at": "2026-03-12T23:22:45Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,80 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.foundation_index_family_contract_alignment",
+      "title": "Foundation Index Family Contract Alignment PRD",
+      "summary": "Align the foundation-index standard and lookup coverage with the full foundations index family surfaces.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T23:22:45Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
+      "prd_ids": [
+        "prd.foundation_index_family_contract_alignment"
+      ],
+      "decision_ids": [
+        "decision.foundation_index_family_contract_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.foundation_index_family_contract_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundation_index_family_contract_alignment"
+      ],
+      "task_ids": [
+        "task.foundation_index_family_contract_alignment.bootstrap.001",
+        "task.foundation_index_family_contract_alignment.documentation.001",
+        "task.foundation_index_family_contract_alignment.validation.001"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_index_family_contract_alignment.001",
+        "ac.foundation_index_family_contract_alignment.002",
+        "ac.foundation_index_family_contract_alignment.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundation_index_family_contract_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.foundation_index_family_contract_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T23:22:45Z",
+      "closure_reason": "Delivered foundation-index family contract alignment: the governing standard now covers the authoritative sync/query and foundations command surfaces, targeted and full validation passed, and repeated themed review passes found no additional actionable issues.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/foundations/",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
+        "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+        "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundation_index_family_contract_alignment.md",
+        "docs/planning/tasks/closed/align_foundation_index_family_standards_and_command_surfaces.md",
+        "docs/planning/tasks/closed/foundation_index_family_contract_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_foundation_index_family_contract_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/foundation_index_standard.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T23:20:00Z for trace.foundation_index_family_contract_alignment after the foundation-index family contract repair, targeted validation, full pre-acceptance validation, and repeated themed no-new-issues review passes."
+    },
     {
       "trace_id": "trace.foundations_docs_boundary_alignment",
       "title": "Foundations Documentation Boundary Alignment PRD",
@@ -3711,6 +3785,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.foundation_index_family_contract_alignment",
+      "title": "Foundation Index Family Contract Alignment PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-12T23:22:45Z",
+      "key_surface_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
+      "closure_reason": "Delivered foundation-index family contract alignment: the governing standard now covers the authoritative sync/query and foundations command surfaces, targeted and full validation passed, and repeated themed review passes found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.foundations_docs_boundary_alignment",
       "title": "Foundations Documentation Boundary Alignment PRD",
       "initiative_status": "completed",
@@ -3781,14 +3863,6 @@
       "closed_at": "2026-03-12T14:47:28Z",
       "key_surface_path": "docs/planning/prds/control_plane_example_validation_hardening.md",
       "closure_reason": "Closed after repairing invalid valid examples, extending aggregate example validation coverage, restoring exhaustive example and canonicality regressions, and completing a clean follow-up review pass."
-    },
-    {
-      "trace_id": "trace.task_sync_disappearing_file_resilience",
-      "title": "Task Sync Disappearing File Resilience PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-12T13:01:19Z",
-      "key_surface_path": "docs/planning/prds/task_sync_disappearing_file_resilience.md",
-      "closure_reason": "Closed after hardening task iteration against disappearing files, adding end-to-end regression coverage, and completing a clean follow-up orchestration review pass."
     }
   ]
 }

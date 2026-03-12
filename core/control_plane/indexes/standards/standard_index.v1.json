@@ -358,16 +358,24 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/foundation_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-12T23:12:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
+        "sync",
+        "query",
+        "documentation",
         "schema",
         "artifact"
       ],
       "operationalization_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/foundations/",
+        "core/control_plane/indexes/foundations/README.md",
         "core/control_plane/examples/valid/indexes/foundation_index*.example.json",
         "core/control_plane/examples/invalid/indexes/foundation_index*.example.json"
       ],
@@ -375,13 +383,17 @@
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/data_contracts/reference_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
-        "docs/standards/metadata/timestamp_standard.md"
+        "docs/standards/metadata/timestamp_standard.md",
+        "docs/foundations/README.md",
+        "core/control_plane/indexes/foundations/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/data_contracts/reference_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
-        "docs/standards/metadata/timestamp_standard.md"
+        "docs/standards/metadata/timestamp_standard.md",
+        "docs/foundations/README.md",
+        "core/control_plane/indexes/foundations/README.md"
       ],
       "tags": [
         "standard",

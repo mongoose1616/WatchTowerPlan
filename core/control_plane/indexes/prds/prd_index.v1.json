@@ -556,6 +556,50 @@
       ]
     },
     {
+      "trace_id": "trace.foundation_index_family_contract_alignment",
+      "prd_id": "prd.foundation_index_family_contract_alignment",
+      "title": "Foundation Index Family Contract Alignment PRD",
+      "summary": "Align the foundation-index standard and lookup coverage with the full foundations index family surfaces.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
+      "updated_at": "2026-03-12T23:12:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.foundation_index_family_contract_alignment.001",
+        "req.foundation_index_family_contract_alignment.002",
+        "req.foundation_index_family_contract_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_index_family_contract_alignment.001",
+        "ac.foundation_index_family_contract_alignment.002",
+        "ac.foundation_index_family_contract_alignment.003"
+      ],
+      "linked_decision_ids": [
+        "decision.foundation_index_family_contract_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.foundation_index_family_contract_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundation_index_family_contract_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/control_plane/indexes/foundations/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md"
+      ]
+    },
+    {
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "prd_id": "prd.foundation_scope_and_entrypoint_realignment",
       "title": "Foundation Scope and EntryPoint Realignment PRD",

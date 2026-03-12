@@ -61,6 +61,28 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         [],
     )
 
+    foundation_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.data_contracts.foundation_index"
+    )
+    assert set(("sync", "query", "documentation", "schema", "artifact")).issubset(
+        set(foundation_entry.get("operationalization_modes", []))
+    )
+    assert "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py" in (
+        foundation_entry.get("operationalization_paths", [])
+    )
+    assert "core/python/src/watchtower_core/repo_ops/query/foundations.py" in (
+        foundation_entry.get("operationalization_paths", [])
+    )
+    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in (
+        foundation_entry.get("operationalization_paths", [])
+    )
+    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
+        foundation_entry.get("operationalization_paths", [])
+    )
+    assert "core/control_plane/indexes/foundations/README.md" in (
+        foundation_entry.get("operationalization_paths", [])
+    )
+
 
 def test_standard_index_sync_writes_temp_output(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)

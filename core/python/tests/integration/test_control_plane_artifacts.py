@@ -113,6 +113,18 @@ def test_core_python_command_readme_exposes_foundations_entrypoints() -> None:
     assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
 
 
+def test_foundation_index_standard_operationalizes_foundation_family_surfaces() -> None:
+    markdown = (
+        REPO_ROOT / "docs/standards/data_contracts/foundation_index_standard.md"
+    ).read_text(encoding="utf-8")
+
+    assert "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py" in markdown
+    assert "core/python/src/watchtower_core/repo_ops/query/foundations.py" in markdown
+    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in markdown
+    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in markdown
+    assert "core/control_plane/indexes/foundations/README.md" in markdown
+
+
 def test_repo_local_query_and_sync_command_docs_point_to_repo_ops_owners() -> None:
     query_docs = sorted(
         (REPO_ROOT / "docs/commands/core_python").glob("watchtower_core_query_*.md")

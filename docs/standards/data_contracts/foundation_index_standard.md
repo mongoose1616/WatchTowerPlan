@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "foundation_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-12T23:12:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -37,6 +37,8 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md): reverse-citation behavior should stay aligned with the broader reference-audit model.
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): the foundation index complements path lookup with intent-specific retrieval and audit signals.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): foundation index timestamps must use UTC RFC 3339 values.
+- [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md): family entrypoint and inventory surface for the governed foundation documents this index summarizes.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/README.md): family entrypoint and inventory surface for the published foundation-index artifacts.
 
 ## Guidance
 - Model foundation lookup as an index, not as a registry.
@@ -49,6 +51,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Carry front-matter `audience` into the index so intent-layer routing is queryable without reparsing Markdown.
 - Capture reverse citation and reverse application paths so repo tooling can answer which standards, workflows, and planning docs currently rely on a foundation doc.
 - When a foundation doc depends on external authority, prefer citing a local governed reference doc in `docs/references/**` rather than only raw external URLs.
+- Publish compact operationalization metadata that covers the authoritative sync, query, and bounded documentation surfaces for the foundation-index family so tooling can resolve the contract from the surfaces engineers actually touch.
 - Keep the index aligned with the foundations corpus in the same change set.
 
 ## Structure or Data Model
@@ -85,8 +88,8 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 | `notes` | Optional | Short tracking notes. |
 
 ## Operationalization
-- `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/examples/valid/indexes/foundation_index*.example.json`; `core/control_plane/examples/invalid/indexes/foundation_index*.example.json`
+- `Modes`: `sync`; `query`; `documentation`; `schema`; `artifact`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`; `docs/commands/core_python/watchtower_core_query_foundations.md`; `docs/commands/core_python/watchtower_core_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`; `core/control_plane/examples/valid/indexes/foundation_index*.example.json`; `core/control_plane/examples/invalid/indexes/foundation_index*.example.json`
 
 ## Validation
 - The foundation index should validate against its published artifact schema.
@@ -95,16 +98,19 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 - Every entry should preserve the governed front-matter `audience` value.
 - `reference_doc_paths` should point only to governed reference docs under `docs/references/`.
 - Reverse citation and application paths should point only to Markdown docs under `docs/**` or `workflows/**`.
+- Operationalization should explicitly cover the authoritative sync/query owners and the bounded family documentation surfaces that explain how to read or rebuild the foundation index.
 - Reviewers should reject entries that omit material citation or application usage already present in the source docs.
 
 ## Change Control
 - Update this standard when the repository changes how foundation documents are indexed, queried, or audited.
-- Update the companion artifact schema, examples, live foundation index, command docs, and query or sync surfaces in the same change set when the foundation-index family changes structurally.
+- Update the companion artifact schema, examples, live foundation index, family README, command docs, and query or sync surfaces in the same change set when the foundation-index family changes structurally.
 
 ## References
 - [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md)
 - [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
+- [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/README.md)
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-12T23:12:00Z`

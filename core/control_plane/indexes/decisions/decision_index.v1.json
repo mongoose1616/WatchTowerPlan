@@ -424,6 +424,49 @@
       ]
     },
     {
+      "trace_id": "trace.foundation_index_family_contract_alignment",
+      "decision_id": "decision.foundation_index_family_contract_alignment_direction",
+      "title": "Foundation Index Family Contract Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Foundation Index Family Contract Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
+      "updated_at": "2026-03-12T23:12:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.foundation_index_family_contract_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.foundation_index_family_contract_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundation_index_family_contract_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/control_plane/indexes/foundations/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/data_contracts/standard_index_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/data_contracts/standard_index_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "decision_id": "decision.foundation_scope_boundary",
       "title": "Foundation Scope and EntryPoint Realignment Direction Decision",

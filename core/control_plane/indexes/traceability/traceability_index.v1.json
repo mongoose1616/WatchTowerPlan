@@ -1190,6 +1190,82 @@
       "notes": "Planning-baseline evidence for the end-to-end repository review and rationalization initiative."
     },
     {
+      "trace_id": "trace.foundation_index_family_contract_alignment",
+      "title": "Foundation Index Family Contract Alignment PRD",
+      "summary": "Align the foundation-index standard and lookup coverage with the full foundations index family surfaces.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T23:22:45Z",
+      "prd_ids": [
+        "prd.foundation_index_family_contract_alignment"
+      ],
+      "decision_ids": [
+        "decision.foundation_index_family_contract_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.foundation_index_family_contract_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundation_index_family_contract_alignment"
+      ],
+      "task_ids": [
+        "task.foundation_index_family_contract_alignment.bootstrap.001",
+        "task.foundation_index_family_contract_alignment.documentation.001",
+        "task.foundation_index_family_contract_alignment.validation.001"
+      ],
+      "requirement_ids": [
+        "req.foundation_index_family_contract_alignment.001",
+        "req.foundation_index_family_contract_alignment.002",
+        "req.foundation_index_family_contract_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_index_family_contract_alignment.001",
+        "ac.foundation_index_family_contract_alignment.002",
+        "ac.foundation_index_family_contract_alignment.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundation_index_family_contract_alignment"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.foundation_index_family_contract_alignment.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/foundations/",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
+        "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+        "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundation_index_family_contract_alignment.md",
+        "docs/planning/tasks/closed/align_foundation_index_family_standards_and_command_surfaces.md",
+        "docs/planning/tasks/closed/foundation_index_family_contract_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_foundation_index_family_contract_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/foundation_index_standard.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T23:20:00Z for trace.foundation_index_family_contract_alignment after the foundation-index family contract repair, targeted validation, full pre-acceptance validation, and repeated themed no-new-issues review passes.",
+      "closed_at": "2026-03-12T23:22:45Z",
+      "closure_reason": "Delivered foundation-index family contract alignment: the governing standard now covers the authoritative sync/query and foundations command surfaces, targeted and full validation passed, and repeated themed review passes found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "title": "Foundation Scope and EntryPoint Realignment PRD",
       "summary": "Clarify current repository scope versus future WatchTower product narrative, tighten root entrypoints, and align foundation language with the export-ready core boundary.",

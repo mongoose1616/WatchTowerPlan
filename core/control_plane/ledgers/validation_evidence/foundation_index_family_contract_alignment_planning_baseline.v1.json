@@ -1,0 +1,106 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.foundation_index_family_contract_alignment.planning_baseline",
+  "title": "Foundation Index Family Contract Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.foundation_index_family_contract_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T23:23:30Z",
+  "source_prd_ids": [
+    "prd.foundation_index_family_contract_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.foundation_index_family_contract_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.foundation_index_family_contract_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.foundation_index_family_contract_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.foundation_index_family_contract_alignment.contract_surface_alignment",
+      "title": "Foundation-index family contract surfaces are explicitly aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "core/control_plane/indexes/foundations/README.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.foundation_index_family_contract_alignment.documentation.001"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundation_index_family_contract_alignment.001"
+      ],
+      "notes": "The foundation-index standard now explicitly publishes sync, query, documentation, schema, and artifact coverage for the bounded foundations index family, and the integration documentation regression confirms the family README and foundations command pages are present in the authored contract."
+    },
+    {
+      "check_id": "check.foundation_index_family_contract_alignment.lookup_resolution",
+      "title": "Standards lookup resolves the foundation-index contract from repaired family surfaces",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py"
+      ],
+      "subject_ids": [
+        "task.foundation_index_family_contract_alignment.documentation.001",
+        "contract.acceptance.foundation_index_family_contract_alignment"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundation_index_family_contract_alignment.002"
+      ],
+      "notes": "Targeted CLI-query and standard-index sync regressions passed, watchtower-core query standards resolved std.data_contracts.foundation_index from the authoritative foundations sync/query modules and both foundations command pages, and the machine-readable confirmation pass checked 8 bounded family surfaces with 0 missing matches and 9 unique operationalization paths."
+    },
+    {
+      "check_id": "check.foundation_index_family_contract_alignment.validation_and_review_closeout",
+      "title": "Validation stack and repeated themed review passes are green",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/foundation_index_family_contract_alignment.md",
+        "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+        "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+        "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
+        "docs/planning/tasks/closed/validate_and_close_foundation_index_family_contract_alignment.md",
+        "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "task.foundation_index_family_contract_alignment.validation.001",
+        "contract.acceptance.foundation_index_family_contract_alignment",
+        "decision.foundation_index_family_contract_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundation_index_family_contract_alignment.003"
+      ],
+      "notes": "watchtower-core sync all --write passed, watchtower-core validate document-semantics --path docs/standards/data_contracts/foundation_index_standard.md passed, targeted pytest for the touched CLI-query, standard-index sync, and integration artifact suites passed, watchtower-core validate all --skip-acceptance passed with 912/912, python -m mypy src passed for 182 source files, ruff check . passed, the documentation-and-contract review pass found no new actionable issues, the machine-readable and adversarial lookup confirmation passes checked 8 bounded family surfaces with 0 missing matches, watchtower-core validate acceptance --trace-id trace.foundation_index_family_contract_alignment passed, final watchtower-core validate all passed with 952/952, pytest -q passed, the validation task closed cleanly, and watchtower-core query coordination returned ready_for_bootstrap with zero active initiatives and zero actionable tasks after initiative closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T23:23:30Z for trace.foundation_index_family_contract_alignment after the contract repair, acceptance-inclusive validation, repeated themed no-new-issues review passes, validation-task closeout, and terminal initiative closeout.",
+  "source_decision_ids": [
+    "decision.foundation_index_family_contract_alignment_direction"
+  ]
+}

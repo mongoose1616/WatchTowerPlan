@@ -530,6 +530,37 @@
       ]
     },
     {
+      "document_id": "design.features.foundation_index_family_contract_alignment",
+      "trace_id": "trace.foundation_index_family_contract_alignment",
+      "family": "feature_design",
+      "title": "Foundation Index Family Contract Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Foundation Index Family Contract Alignment.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+      "updated_at": "2026-03-12T23:12:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/control_plane/indexes/foundations/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.foundation_scope_and_entrypoint_realignment",
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "family": "feature_design",
@@ -1997,6 +2028,40 @@
         "docs/planning/prds/end_to_end_repo_review_and_rationalization.md",
         "docs/planning/design/features/end_to_end_repo_rationalization.md",
         "docs/planning/decisions/end_to_end_repo_rationalization_direction.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.foundation_index_family_contract_alignment",
+      "trace_id": "trace.foundation_index_family_contract_alignment",
+      "family": "implementation_plan",
+      "title": "Foundation Index Family Contract Alignment Implementation Plan",
+      "summary": "Breaks Foundation Index Family Contract Alignment into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+      "updated_at": "2026-03-12T23:12:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+        "docs/planning/prds/foundation_index_family_contract_alignment.md"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/control_plane/indexes/foundations/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/engineering/engineering_best_practices_standard.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_stack_direction.md"
       ]
     },
     {

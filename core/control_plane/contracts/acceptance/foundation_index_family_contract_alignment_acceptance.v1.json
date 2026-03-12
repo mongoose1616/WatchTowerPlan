@@ -1,0 +1,64 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.foundation_index_family_contract_alignment",
+  "title": "Foundation Index Family Contract Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.foundation_index_family_contract_alignment",
+  "source_prd_id": "prd.foundation_index_family_contract_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.foundation_index_family_contract_alignment.001",
+      "summary": "The foundation-index standard publishes the authoritative foundations family operationalization surfaces needed for cohesive standards lookup and documentation coverage.",
+      "source_requirement_ids": [
+        "req.foundation_index_family_contract_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "core/control_plane/indexes/foundations/README.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py"
+      ],
+      "notes": "The repaired contract must explicitly cover the authoritative sync/query owners plus the bounded family documentation surfaces."
+    },
+    {
+      "acceptance_id": "ac.foundation_index_family_contract_alignment.002",
+      "summary": "The live standards query resolves std.data_contracts.foundation_index from the authoritative foundations code and command surfaces.",
+      "source_requirement_ids": [
+        "req.foundation_index_family_contract_alignment.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundation_index_family_contract_alignment.003",
+      "summary": "Targeted regressions, full validation, and repeated themed confirmation passes stay green after the family-contract repair.",
+      "source_requirement_ids": [
+        "req.foundation_index_family_contract_alignment.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/prds/foundation_index_family_contract_alignment.md",
+        "docs/planning/design/features/foundation_index_family_contract_alignment.md",
+        "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
+        "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json"
+      ]
+    }
+  ]
+}
