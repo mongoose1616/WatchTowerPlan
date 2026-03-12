@@ -12,6 +12,10 @@ from watchtower_core.adapters import extract_sections
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.schemas import SchemaStore
 from watchtower_core.repo_ops.standards import parse_standard_operationalization
+from watchtower_core.repo_ops.validation.example_artifacts import (
+    iter_control_plane_example_paths,
+    schema_id_for_control_plane_example,
+)
 from watchtower_core.validation.artifact import ArtifactValidationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -193,7 +197,7 @@ def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
     )
 
     for root in markdown_roots:
-        for path in sorted(root.glob("*.md")):
+        for path in sorted(root.rglob("*.md")):
             if path.name in {"README.md", "AGENTS.md"}:
                 continue
             if FRONT_MATTER_PATTERN.search(path.read_text(encoding="utf-8")) is None:
@@ -202,11 +206,11 @@ def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
             applies_to = front_matter.get("applies_to")
             if not isinstance(applies_to, list):
                 continue
-                for value in applies_to:
-                    assert isinstance(value, str)
-                    if "/" not in value or "*" in value or "<" in value:
-                        continue
-                    target = REPO_ROOT / value.rstrip("/")
+            for value in applies_to:
+                assert isinstance(value, str)
+                if "/" not in value or "*" in value or "<" in value:
+                    continue
+                target = REPO_ROOT / value.rstrip("/")
                 assert target.exists(), f"{path} applies_to path does not exist: {value}"
                 if target.is_dir():
                     assert value.endswith("/"), (
@@ -236,6 +240,29 @@ def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
                 assert not value.endswith("/"), (
                     f"{path} file applies_to path must not end in '/': {value}"
                 )
+
+
+def test_all_valid_control_plane_examples_validate_against_their_schemas() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    for relative_path in iter_control_plane_example_paths(REPO_ROOT, validity="valid"):
+        payload = _load_json_object(REPO_ROOT / relative_path)
+        store.validate_instance(
+            payload,
+            schema_id=schema_id_for_control_plane_example(REPO_ROOT, relative_path),
+        )
+
+
+def test_all_invalid_control_plane_examples_fail_against_their_schemas() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+
+    for relative_path in iter_control_plane_example_paths(REPO_ROOT, validity="invalid"):
+        payload = _load_json_object(REPO_ROOT / relative_path)
+        with pytest.raises(ValidationError):
+            store.validate_instance(
+                payload,
+                schema_id=schema_id_for_control_plane_example(REPO_ROOT, relative_path),
+            )
 
 
 def test_planning_catalog_examples_validate_against_the_schema() -> None:

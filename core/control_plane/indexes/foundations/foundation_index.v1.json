@@ -77,6 +77,7 @@
         "docs/foundations/product_direction.md",
         "docs/foundations/repository_scope.md",
         "docs/foundations/repository_standards_posture.md",
+        "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
         "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
         "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
         "docs/planning/decisions/internal_project_standards_review_and_hardening_direction.md",
@@ -87,6 +88,7 @@
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
         "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/design/features/control_plane_example_validation_hardening.md",
         "docs/planning/design/features/core_export_hardening.md",
         "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",
@@ -144,6 +146,7 @@
         "workflows/modules/foundations_context_review.md"
       ],
       "applied_by_paths": [
+        "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
         "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
         "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
         "docs/planning/decisions/internal_project_standards_review_and_hardening_direction.md",
@@ -154,6 +157,7 @@
         "docs/planning/design/features/acceptance_evidence_reconciliation.md",
         "docs/planning/design/features/command_documentation_and_lookup.md",
         "docs/planning/design/features/compact_document_authoring_and_tracking.md",
+        "docs/planning/design/features/control_plane_example_validation_hardening.md",
         "docs/planning/design/features/core_export_hardening.md",
         "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/features/core_python_workspace_and_harness.md",

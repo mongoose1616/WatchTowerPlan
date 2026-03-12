@@ -76,8 +76,9 @@ def register_validate_family(
             repository surfaces in deterministic order.
 
             This command is read-only. It aggregates front-matter validation,
-            document-semantic validation, schema-backed artifact validation,
-            and acceptance reconciliation so you can get one bounded validation
+            document-semantic validation, schema-backed artifact validation
+            across live governed artifacts and canonical valid examples, and
+            acceptance reconciliation so you can get one bounded validation
             summary without invoking each family manually.
             """
         ).strip(),

@@ -1,0 +1,121 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.control_plane_example_validation_hardening.planning_baseline",
+  "title": "Control Plane Example Validation Hardening Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.control_plane_example_validation_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T14:48:15Z",
+  "source_prd_ids": [
+    "prd.control_plane_example_validation_hardening"
+  ],
+  "source_design_ids": [
+    "design.features.control_plane_example_validation_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.control_plane_example_validation_hardening"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.control_plane_example_validation_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.control_plane_example_validation_hardening.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/control_plane_example_validation_hardening.md",
+        "docs/planning/design/features/control_plane_example_validation_hardening.md",
+        "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+        "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
+        "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md"
+      ],
+      "subject_ids": [
+        "prd.control_plane_example_validation_hardening",
+        "design.features.control_plane_example_validation_hardening",
+        "design.implementation.control_plane_example_validation_hardening",
+        "task.control_plane_example_validation_hardening.bootstrap.001",
+        "task.control_plane_example_validation_hardening.implementation.001",
+        "task.control_plane_example_validation_hardening.validation_closeout.002",
+        "contract.acceptance.control_plane_example_validation_hardening",
+        "decision.control_plane_example_validation_hardening_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.control_plane_example_validation_hardening.001"
+      ],
+      "notes": "The trace now carries a fully authored PRD, active feature design, active implementation plan, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded execution task set."
+    },
+    {
+      "check_id": "check.control_plane_example_validation_hardening.valid_example_repair",
+      "title": "The repaired valid examples and aggregate validator coverage stay aligned",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
+        "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ],
+      "subject_ids": [
+        "task.control_plane_example_validation_hardening.implementation.001"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_example_validation_hardening.002"
+      ],
+      "notes": "The canonical valid foundation-index and traceability-index examples are repaired, and aggregate artifact validation now covers the governed valid example corpus."
+    },
+    {
+      "check_id": "check.control_plane_example_validation_hardening.example_regressions",
+      "title": "Exhaustive example and canonicality regressions are in place",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "subject_ids": [
+        "task.control_plane_example_validation_hardening.implementation.001"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_example_validation_hardening.003"
+      ],
+      "notes": "Regression coverage now validates the full valid example corpus, the full invalid example corpus, and recursively audits governed markdown applies_to canonicality without dead code."
+    },
+    {
+      "check_id": "check.control_plane_example_validation_hardening.validation_closeout",
+      "title": "Final validation and the follow-up review pass are recorded for closeout",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "subject_ids": [
+        "task.control_plane_example_validation_hardening.validation_closeout.002",
+        "contract.acceptance.control_plane_example_validation_hardening"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_example_validation_hardening.004"
+      ],
+      "notes": "watchtower-core sync all --write --format json, watchtower-core validate acceptance --trace-id trace.control_plane_example_validation_hardening --format json, watchtower-core validate all --skip-acceptance --format json, targeted pytest for test_all_validation.py and test_control_plane_artifacts.py, final watchtower-core validate all --format json, pytest -q, .venv/bin/python -m mypy src/watchtower_core, .venv/bin/ruff check ., watchtower-core closeout initiative --trace-id trace.control_plane_example_validation_hardening --initiative-status completed --write --format json, the follow-up example audit pass (valid_checked=37 invalid_checked=36 issues=0), the follow-up markdown applies_to audit pass (checked=1162 issues=0), and watchtower-core query coordination --format json all passed with no additional issues remaining."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T14:48:15Z for trace.control_plane_example_validation_hardening after repairing invalid valid examples, expanding aggregate valid-example coverage, closing the full task set, and completing the no-new-issues follow-up review pass.",
+  "source_decision_ids": [
+    "decision.control_plane_example_validation_hardening_direction"
+  ]
+}

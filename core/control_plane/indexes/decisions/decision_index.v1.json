@@ -5,6 +5,44 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "decision_id": "decision.control_plane_example_validation_hardening_direction",
+      "title": "Control Plane Example Validation Hardening Direction Decision",
+      "summary": "Records the initial direction decision for Control Plane Example Validation Hardening.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
+      "updated_at": "2026-03-12T14:40:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.control_plane_example_validation_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.control_plane_example_validation_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.control_plane_example_validation_hardening"
+      ],
+      "related_paths": [
+        "core/control_plane/examples/valid/indexes/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/integration/",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ]
+    },
+    {
       "trace_id": "trace.core_python_foundation",
       "decision_id": "decision.core_python_workspace_root",
       "title": "Core Python Workspace Root Decision",

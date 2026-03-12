@@ -1,0 +1,88 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.control_plane_example_validation_hardening",
+  "title": "Control Plane Example Validation Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.control_plane_example_validation_hardening",
+  "source_prd_id": "prd.control_plane_example_validation_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.control_plane_example_validation_hardening.001",
+      "summary": "The trace publishes a fully authored planning chain, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded closed task set for the validation-hardening slice.",
+      "source_requirement_ids": [
+        "req.control_plane_example_validation_hardening.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/control_plane_example_validation_hardening.md",
+        "docs/planning/design/features/control_plane_example_validation_hardening.md",
+        "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+        "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
+        "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md",
+        "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The final trace should preserve the authored planning chain, decision, acceptance contract, evidence artifact, and closed execution tasks."
+    },
+    {
+      "acceptance_id": "ac.control_plane_example_validation_hardening.002",
+      "summary": "The canonical valid foundation-index and traceability-index examples satisfy their schemas, and aggregate artifact validation covers the governed valid example corpus.",
+      "source_requirement_ids": [
+        "req.control_plane_example_validation_hardening.001",
+        "req.control_plane_example_validation_hardening.002"
+      ],
+      "validation_targets": [
+        "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
+        "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ],
+      "notes": "Aggregate validation should now exercise the governed valid example corpus and the repaired canonical examples should satisfy their live schemas."
+    },
+    {
+      "acceptance_id": "ac.control_plane_example_validation_hardening.003",
+      "summary": "Repository regression coverage validates every governed valid example as passing, every governed invalid example as failing, and recursively audits markdown applies_to canonicality.",
+      "source_requirement_ids": [
+        "req.control_plane_example_validation_hardening.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/test_schema_store.py"
+      ],
+      "notes": "The regression suite should prove exhaustive valid/invalid example behavior and restore real recursive markdown canonicality coverage."
+    },
+    {
+      "acceptance_id": "ac.control_plane_example_validation_hardening.004",
+      "summary": "Final sync, validation, Python workspace checks, and a follow-up review pass complete without additional issues in the reviewed control-plane validation area.",
+      "source_requirement_ids": [
+        "req.control_plane_example_validation_hardening.002",
+        "req.control_plane_example_validation_hardening.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "notes": "Closeout should include the full validation suite and a no-new-issues follow-up review pass."
+    }
+  ]
+}

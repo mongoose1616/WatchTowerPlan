@@ -9,7 +9,7 @@ tags:
   - "validations"
   - "repository_validation"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T14:40:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -55,7 +55,7 @@ This standard defines the baseline validation expectations for repository change
 - Use the narrowest meaningful validation while working.
 - Before closeout for non-trivial changes, run the broadest meaningful validation for the touched surfaces.
 - When derived trackers or indexes changed, run `watchtower-core sync all --write` before the final broad validation pass.
-- Use `watchtower-core validate all` as the baseline aggregate validation for governed docs, governed artifacts, and acceptance reconciliation.
+- Use `watchtower-core validate all` as the baseline aggregate validation for governed docs, governed artifacts, canonical valid example artifacts, and acceptance reconciliation.
 - Treat broken repo-local Markdown links as validation failures, not reviewer-only cleanup.
 - Use `watchtower-core validate artifact --schema-id ... --supplemental-schema-path ...` when you need bounded validation of external artifacts or pack-owned interfaces without changing the canonical validator registry.
 - When `core/python/**` changes, the normal workspace validation baseline is:
@@ -94,4 +94,4 @@ This standard defines the baseline validation expectations for repository change
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T14:40:00Z`

@@ -5,7 +5,7 @@ This command runs the registry-backed validation families across the governed re
 
 ## Use When
 - You want one bounded validation pass instead of running each validation family manually.
-- You need a quick view of whether governed front matter, document semantics including repo-local link integrity, schema-backed artifacts, and acceptance reconciliation currently pass.
+- You need a quick view of whether governed front matter, document semantics including repo-local link integrity, schema-backed artifacts plus canonical valid examples, and acceptance reconciliation currently pass.
 - You want structured JSON output for workflows, agents, or higher-level automation.
 
 ## Command
@@ -48,7 +48,7 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 
 ## Behavior and Outputs
 - The command is read-only and aggregates the registry-backed validation families rather than writing evidence or mutating control-plane artifacts.
-- The current validation families are governed front matter, governed document semantics including repo-local link integrity, schema-backed governed artifacts, and acceptance reconciliation across traceability surfaces.
+- The current validation families are governed front matter, governed document semantics including repo-local link integrity, schema-backed governed artifacts plus canonical valid example artifacts, and acceptance reconciliation across traceability surfaces.
 - Acceptance reconciliation runs only for traces that currently publish governed acceptance state through PRDs, contracts, evidence, or traceability.
 - Use `--skip-acceptance` when you want a structural validation pass over documents and JSON artifacts only.
 - In `json` mode, the command returns per-family summary counts plus one structured result per validation target.
@@ -74,4 +74,4 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 - `core/python/src/watchtower_core/validation/acceptance.py`
 
 ## Updated At
-- `2026-03-10T20:33:00Z`
+- `2026-03-12T14:40:00Z`

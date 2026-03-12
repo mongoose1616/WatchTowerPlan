@@ -125,6 +125,33 @@
       ]
     },
     {
+      "document_id": "design.features.control_plane_example_validation_hardening",
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "family": "feature_design",
+      "title": "Control Plane Example Validation Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Control Plane Example Validation Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/control_plane_example_validation_hardening.md",
+      "updated_at": "2026-03-12T14:40:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+        "core/control_plane/examples/valid/indexes/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/integration/",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.core_export_hardening",
       "trace_id": "trace.core_export_hardening_followup",
       "family": "feature_design",
@@ -1348,6 +1375,34 @@
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/planning/prds/route_preview_natural_request_matching.md",
         "docs/planning/prds/workflow_system_operationalization.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.control_plane_example_validation_hardening",
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "family": "implementation_plan",
+      "title": "Control Plane Example Validation Hardening Implementation Plan",
+      "summary": "Breaks Control Plane Example Validation Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+      "updated_at": "2026-03-12T14:40:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/control_plane_example_validation_hardening.md",
+        "docs/planning/prds/control_plane_example_validation_hardening.md"
+      ],
+      "related_paths": [
+        "core/control_plane/examples/valid/indexes/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/integration/",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/commands/core_python/watchtower_core_validate_all.md"
       ]
     },
     {

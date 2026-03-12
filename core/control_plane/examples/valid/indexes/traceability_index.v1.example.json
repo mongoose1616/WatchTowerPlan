@@ -11,6 +11,9 @@
       "status": "active",
       "initiative_status": "active",
       "updated_at": "2026-03-09T04:55:49Z",
+      "task_ids": [
+        "task.example_trace.bootstrap.001"
+      ],
       "prd_ids": [
         "prd.example_trace"
       ],

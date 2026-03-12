@@ -47,6 +47,86 @@
       ]
     },
     {
+      "task_id": "task.control_plane_example_validation_hardening.bootstrap.001",
+      "title": "Bootstrap Control Plane Example Validation Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Control Plane Example Validation Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
+      "updated_at": "2026-03-12T14:42:55Z",
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "related_ids": [
+        "prd.control_plane_example_validation_hardening",
+        "design.features.control_plane_example_validation_hardening",
+        "design.implementation.control_plane_example_validation_hardening",
+        "decision.control_plane_example_validation_hardening_direction",
+        "contract.acceptance.control_plane_example_validation_hardening"
+      ],
+      "applies_to": [
+        "core/control_plane/examples/valid/indexes/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/integration/",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ]
+    },
+    {
+      "task_id": "task.control_plane_example_validation_hardening.implementation.001",
+      "title": "Repair governed example validation coverage",
+      "summary": "Fix invalid valid examples and expand repository validation coverage over the governed example corpus.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
+      "updated_at": "2026-03-12T14:46:57Z",
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "related_ids": [
+        "prd.control_plane_example_validation_hardening",
+        "design.features.control_plane_example_validation_hardening",
+        "design.implementation.control_plane_example_validation_hardening",
+        "decision.control_plane_example_validation_hardening_direction",
+        "contract.acceptance.control_plane_example_validation_hardening"
+      ],
+      "applies_to": [
+        "core/control_plane/examples/valid/indexes/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/"
+      ]
+    },
+    {
+      "task_id": "task.control_plane_example_validation_hardening.validation_closeout.002",
+      "title": "Validate and close example validation hardening",
+      "summary": "Run the final validation suite, refresh evidence, and close the trace after the example validation hardening changes land.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md",
+      "updated_at": "2026-03-12T14:47:21Z",
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "depends_on": [
+        "task.control_plane_example_validation_hardening.implementation.001"
+      ],
+      "related_ids": [
+        "prd.control_plane_example_validation_hardening",
+        "design.implementation.control_plane_example_validation_hardening",
+        "contract.acceptance.control_plane_example_validation_hardening"
+      ],
+      "applies_to": [
+        "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
+        "docs/planning/tasks/",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
       "task_id": "task.core_export_hardening_followup.bootstrap.001",
       "title": "Bootstrap the core export hardening follow-up initiative",
       "summary": "Create the traced planning chain, acceptance baseline, and bounded implementation task set for the export-hardening follow-up work.",

@@ -74,6 +74,88 @@
       ]
     },
     {
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "title": "Control Plane Example Validation Hardening PRD",
+      "summary": "Fix invalid canonical example artifacts and harden repository validation coverage over the governed control-plane example corpus and applies_to canonicality audits.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T14:48:15Z",
+      "closed_at": "2026-03-12T14:47:28Z",
+      "closure_reason": "Closed after repairing invalid valid examples, extending aggregate example validation coverage, restoring exhaustive example and canonicality regressions, and completing a clean follow-up review pass.",
+      "prd_ids": [
+        "prd.control_plane_example_validation_hardening"
+      ],
+      "decision_ids": [
+        "decision.control_plane_example_validation_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.control_plane_example_validation_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.control_plane_example_validation_hardening"
+      ],
+      "task_ids": [
+        "task.control_plane_example_validation_hardening.bootstrap.001",
+        "task.control_plane_example_validation_hardening.implementation.001",
+        "task.control_plane_example_validation_hardening.validation_closeout.002"
+      ],
+      "requirement_ids": [
+        "req.control_plane_example_validation_hardening.001",
+        "req.control_plane_example_validation_hardening.002",
+        "req.control_plane_example_validation_hardening.003"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_example_validation_hardening.001",
+        "ac.control_plane_example_validation_hardening.002",
+        "ac.control_plane_example_validation_hardening.003",
+        "ac.control_plane_example_validation_hardening.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.control_plane_example_validation_hardening"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.control_plane_example_validation_hardening.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+        "core/control_plane/examples/valid/indexes/",
+        "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
+        "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+        "core/python/tests/integration/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_all_validation.py",
+        "core/python/tests/unit/test_schema_store.py",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/control_plane_example_validation_hardening.md",
+        "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/control_plane_example_validation_hardening.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T14:48:15Z for trace.control_plane_example_validation_hardening after repairing invalid valid examples, expanding aggregate valid-example coverage, closing the full task set, and completing the no-new-issues follow-up review pass."
+    },
+    {
       "trace_id": "trace.core_export_hardening_followup",
       "title": "Core Export Hardening Follow-Up PRD",
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",

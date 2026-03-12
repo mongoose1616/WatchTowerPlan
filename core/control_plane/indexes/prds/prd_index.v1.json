@@ -5,6 +5,44 @@
   "status": "active",
   "entries": [
     {
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "prd_id": "prd.control_plane_example_validation_hardening",
+      "title": "Control Plane Example Validation Hardening PRD",
+      "summary": "Fix invalid canonical example artifacts and harden repository validation coverage over the governed control-plane example corpus and applies_to canonicality audits.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/control_plane_example_validation_hardening.md",
+      "updated_at": "2026-03-12T14:40:00Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.control_plane_example_validation_hardening.001",
+        "req.control_plane_example_validation_hardening.002",
+        "req.control_plane_example_validation_hardening.003"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_example_validation_hardening.001",
+        "ac.control_plane_example_validation_hardening.002",
+        "ac.control_plane_example_validation_hardening.003",
+        "ac.control_plane_example_validation_hardening.004"
+      ],
+      "linked_decision_ids": [
+        "decision.control_plane_example_validation_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.control_plane_example_validation_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.control_plane_example_validation_hardening"
+      ],
+      "related_paths": [
+        "core/control_plane/examples/valid/indexes/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/integration/",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.core_export_hardening_followup",
       "prd_id": "prd.core_export_hardening_followup",
       "title": "Core Export Hardening Follow-Up PRD",

@@ -200,3 +200,18 @@ def test_validate_all_reports_missing_decision_applied_reference_section(
     assert "missing required sections: Applied References and Implications" in (
         result.records[0].result.issues[0].message
     )
+
+
+def test_validate_all_artifacts_include_valid_control_plane_examples() -> None:
+    service = ValidationAllService(ControlPlaneLoader())
+
+    result = service.run(included_families=("artifacts",))
+
+    target_paths = {record.target for record in result.records}
+    assert "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json" in (
+        target_paths
+    )
+    assert "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json" in (
+        target_paths
+    )
+    assert result.passed is True

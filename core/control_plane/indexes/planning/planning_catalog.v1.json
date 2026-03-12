@@ -160,6 +160,329 @@
       "closure_reason": "Delivered and validated; future command-surface expansion belongs to a new bounded initiative"
     },
     {
+      "trace_id": "trace.control_plane_example_validation_hardening",
+      "title": "Control Plane Example Validation Hardening PRD",
+      "summary": "Fix invalid canonical example artifacts and harden repository validation coverage over the governed control-plane example corpus and applies_to canonicality audits.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T14:48:15Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/control_plane_example_validation_hardening.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/control_plane_example_validation_hardening.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.control_plane_example_validation_hardening",
+          "title": "Control Plane Example Validation Hardening PRD",
+          "summary": "Fix invalid canonical example artifacts and harden repository validation coverage over the governed control-plane example corpus and applies_to canonicality audits.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/control_plane_example_validation_hardening.md",
+          "updated_at": "2026-03-12T14:40:00Z",
+          "requirement_ids": [
+            "req.control_plane_example_validation_hardening.001",
+            "req.control_plane_example_validation_hardening.002",
+            "req.control_plane_example_validation_hardening.003"
+          ],
+          "acceptance_ids": [
+            "ac.control_plane_example_validation_hardening.001",
+            "ac.control_plane_example_validation_hardening.002",
+            "ac.control_plane_example_validation_hardening.003",
+            "ac.control_plane_example_validation_hardening.004"
+          ],
+          "linked_decision_ids": [
+            "decision.control_plane_example_validation_hardening_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.control_plane_example_validation_hardening"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.control_plane_example_validation_hardening"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.control_plane_example_validation_hardening_direction",
+          "title": "Control Plane Example Validation Hardening Direction Decision",
+          "summary": "Records the initial direction decision for Control Plane Example Validation Hardening.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
+          "updated_at": "2026-03-12T14:40:00Z",
+          "linked_prd_ids": [
+            "prd.control_plane_example_validation_hardening"
+          ],
+          "linked_design_ids": [
+            "design.features.control_plane_example_validation_hardening"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.control_plane_example_validation_hardening"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.control_plane_example_validation_hardening",
+          "family": "feature_design",
+          "title": "Control Plane Example Validation Hardening Feature Design",
+          "summary": "Defines the technical design boundary for Control Plane Example Validation Hardening.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/control_plane_example_validation_hardening.md",
+          "updated_at": "2026-03-12T14:40:00Z"
+        },
+        {
+          "document_id": "design.implementation.control_plane_example_validation_hardening",
+          "family": "implementation_plan",
+          "title": "Control Plane Example Validation Hardening Implementation Plan",
+          "summary": "Breaks Control Plane Example Validation Hardening into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+          "updated_at": "2026-03-12T14:40:00Z",
+          "source_paths": [
+            "docs/planning/design/features/control_plane_example_validation_hardening.md",
+            "docs/planning/prds/control_plane_example_validation_hardening.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.control_plane_example_validation_hardening.bootstrap.001",
+          "title": "Bootstrap Control Plane Example Validation Hardening planning chain",
+          "summary": "Bootstraps the initial planning chain for Control Plane Example Validation Hardening.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
+          "updated_at": "2026-03-12T14:42:55Z",
+          "related_ids": [
+            "prd.control_plane_example_validation_hardening",
+            "design.features.control_plane_example_validation_hardening",
+            "design.implementation.control_plane_example_validation_hardening",
+            "decision.control_plane_example_validation_hardening_direction",
+            "contract.acceptance.control_plane_example_validation_hardening"
+          ],
+          "applies_to": [
+            "core/control_plane/examples/valid/indexes/",
+            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/tests/integration/",
+            "docs/commands/core_python/watchtower_core_validate_all.md",
+            "docs/standards/validations/repository_validation_standard.md"
+          ]
+        },
+        {
+          "task_id": "task.control_plane_example_validation_hardening.implementation.001",
+          "title": "Repair governed example validation coverage",
+          "summary": "Fix invalid valid examples and expand repository validation coverage over the governed example corpus.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
+          "updated_at": "2026-03-12T14:46:57Z",
+          "related_ids": [
+            "prd.control_plane_example_validation_hardening",
+            "design.features.control_plane_example_validation_hardening",
+            "design.implementation.control_plane_example_validation_hardening",
+            "decision.control_plane_example_validation_hardening_direction",
+            "contract.acceptance.control_plane_example_validation_hardening"
+          ],
+          "applies_to": [
+            "core/control_plane/examples/valid/indexes/",
+            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/"
+          ]
+        },
+        {
+          "task_id": "task.control_plane_example_validation_hardening.validation_closeout.002",
+          "title": "Validate and close example validation hardening",
+          "summary": "Run the final validation suite, refresh evidence, and close the trace after the example validation hardening changes land.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md",
+          "updated_at": "2026-03-12T14:47:21Z",
+          "depends_on": [
+            "task.control_plane_example_validation_hardening.implementation.001"
+          ],
+          "related_ids": [
+            "prd.control_plane_example_validation_hardening",
+            "design.implementation.control_plane_example_validation_hardening",
+            "contract.acceptance.control_plane_example_validation_hardening"
+          ],
+          "applies_to": [
+            "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
+            "docs/planning/tasks/",
+            "docs/planning/coordination_tracking.md"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.control_plane_example_validation_hardening",
+          "title": "Control Plane Example Validation Hardening Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.control_plane_example_validation_hardening",
+          "doc_path": "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.control_plane_example_validation_hardening.001",
+            "ac.control_plane_example_validation_hardening.002",
+            "ac.control_plane_example_validation_hardening.003",
+            "ac.control_plane_example_validation_hardening.004"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+            "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
+            "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
+            "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_all_validation.py",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
+            "docs/planning/design/features/control_plane_example_validation_hardening.md",
+            "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+            "docs/planning/prds/control_plane_example_validation_hardening.md",
+            "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
+            "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
+            "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md"
+          ],
+          "related_paths": [
+            "core/python/tests/unit/test_schema_store.py",
+            "docs/commands/core_python/watchtower_core_validate_all.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/validations/repository_validation_standard.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.control_plane_example_validation_hardening.planning_baseline",
+          "title": "Control Plane Example Validation Hardening Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-12T14:48:15Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
+          "check_ids": [
+            "check.control_plane_example_validation_hardening.planning_baseline",
+            "check.control_plane_example_validation_hardening.valid_example_repair",
+            "check.control_plane_example_validation_hardening.example_regressions",
+            "check.control_plane_example_validation_hardening.validation_closeout"
+          ],
+          "acceptance_ids": [
+            "ac.control_plane_example_validation_hardening.001",
+            "ac.control_plane_example_validation_hardening.002",
+            "ac.control_plane_example_validation_hardening.003",
+            "ac.control_plane_example_validation_hardening.004"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.control_plane_example_validation_hardening"
+      ],
+      "decision_ids": [
+        "decision.control_plane_example_validation_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.control_plane_example_validation_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.control_plane_example_validation_hardening"
+      ],
+      "task_ids": [
+        "task.control_plane_example_validation_hardening.bootstrap.001",
+        "task.control_plane_example_validation_hardening.implementation.001",
+        "task.control_plane_example_validation_hardening.validation_closeout.002"
+      ],
+      "requirement_ids": [
+        "req.control_plane_example_validation_hardening.001",
+        "req.control_plane_example_validation_hardening.002",
+        "req.control_plane_example_validation_hardening.003"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_example_validation_hardening.001",
+        "ac.control_plane_example_validation_hardening.002",
+        "ac.control_plane_example_validation_hardening.003",
+        "ac.control_plane_example_validation_hardening.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.control_plane_example_validation_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.control_plane_example_validation_hardening.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
+        "core/control_plane/examples/valid/indexes/",
+        "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
+        "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+        "core/python/tests/integration/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_all_validation.py",
+        "core/python/tests/unit/test_schema_store.py",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/control_plane_example_validation_hardening.md",
+        "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/control_plane_example_validation_hardening.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T14:48:15Z for trace.control_plane_example_validation_hardening after repairing invalid valid examples, expanding aggregate valid-example coverage, closing the full task set, and completing the no-new-issues follow-up review pass.",
+      "closed_at": "2026-03-12T14:47:28Z",
+      "closure_reason": "Closed after repairing invalid valid examples, extending aggregate example validation coverage, restoring exhaustive example and canonicality regressions, and completing a clean follow-up review pass."
+    },
+    {
       "trace_id": "trace.core_export_hardening_followup",
       "title": "Core Export Hardening Follow-Up PRD",
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
