@@ -1,0 +1,120 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.task_sync_disappearing_file_resilience.planning_baseline",
+  "title": "Task Sync Disappearing File Resilience Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.task_sync_disappearing_file_resilience",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T13:06:11Z",
+  "source_prd_ids": [
+    "prd.task_sync_disappearing_file_resilience"
+  ],
+  "source_design_ids": [
+    "design.features.task_sync_disappearing_file_resilience"
+  ],
+  "source_plan_ids": [
+    "design.implementation.task_sync_disappearing_file_resilience"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.task_sync_disappearing_file_resilience"
+  ],
+  "checks": [
+    {
+      "check_id": "check.task_sync_disappearing_file_resilience.planning_baseline",
+      "title": "Planning baseline is aligned for the task-sync resilience slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/task_sync_disappearing_file_resilience.md",
+        "docs/planning/design/features/task_sync_disappearing_file_resilience.md",
+        "docs/planning/design/implementation/task_sync_disappearing_file_resilience.md",
+        "docs/planning/decisions/task_sync_disappearing_file_resilience_direction.md",
+        "core/control_plane/contracts/acceptance/task_sync_disappearing_file_resilience_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/task_sync_disappearing_file_resilience_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/task_sync_disappearing_file_resilience_bootstrap.md",
+        "docs/planning/tasks/closed/harden_task_sync_iteration_against_disappearing_files.md",
+        "docs/planning/tasks/closed/validate_and_close_task_sync_disappearing_file_resilience.md"
+      ],
+      "subject_ids": [
+        "prd.task_sync_disappearing_file_resilience",
+        "design.features.task_sync_disappearing_file_resilience",
+        "design.implementation.task_sync_disappearing_file_resilience",
+        "task.task_sync_disappearing_file_resilience.bootstrap.001",
+        "task.task_sync_disappearing_file_resilience.implementation.001",
+        "task.task_sync_disappearing_file_resilience.validation_closeout.002",
+        "contract.acceptance.task_sync_disappearing_file_resilience",
+        "decision.task_sync_disappearing_file_resilience_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.task_sync_disappearing_file_resilience.001"
+      ],
+      "notes": "The trace now carries a fully authored PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed evidence artifact, and a fully closed bounded task set."
+    },
+    {
+      "check_id": "check.task_sync_disappearing_file_resilience.iterator_hardening",
+      "title": "Task-document iteration tolerates a vanished path without weakening surviving-document validation",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_tracking.py"
+      ],
+      "subject_ids": [
+        "task.task_sync_disappearing_file_resilience.implementation.001"
+      ],
+      "acceptance_ids": [
+        "ac.task_sync_disappearing_file_resilience.002"
+      ],
+      "notes": "The shared iterator now skips only task paths that disappeared before load, while task-index, task-tracking, and coordination refresh continue to consume the surviving task set and still surface real validation failures."
+    },
+    {
+      "check_id": "check.task_sync_disappearing_file_resilience.regression_hardening",
+      "title": "Unit and service-path regressions cover the disappearing-file boundary end to end",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/unit/test_task_documents.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_documents.py"
+      ],
+      "subject_ids": [
+        "task.task_sync_disappearing_file_resilience.implementation.001"
+      ],
+      "acceptance_ids": [
+        "ac.task_sync_disappearing_file_resilience.003"
+      ],
+      "notes": "Regression coverage proves iter_task_documents skips a vanished path, still raises for non-missing load failures, and keeps task update write mode alive when another task disappears during coordination refresh."
+    },
+    {
+      "check_id": "check.task_sync_disappearing_file_resilience.validation_closeout",
+      "title": "Final validation and the follow-up no-new-issues review pass are tracked for closeout",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/task_sync_disappearing_file_resilience_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/task_sync_disappearing_file_resilience_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_task_sync_disappearing_file_resilience.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "subject_ids": [
+        "task.task_sync_disappearing_file_resilience.validation_closeout.002",
+        "contract.acceptance.task_sync_disappearing_file_resilience"
+      ],
+      "acceptance_ids": [
+        "ac.task_sync_disappearing_file_resilience.004"
+      ],
+      "notes": "watchtower-core sync all --write --format json, watchtower-core validate all --skip-acceptance --format json, targeted task-document and task-lifecycle regressions, live parallel task updates on this trace, an adjacent-area iterator review pass, watchtower-core validate acceptance --trace-id trace.task_sync_disappearing_file_resilience --format json, watchtower-core validate all --format json, pytest -q, .venv/bin/python -m mypy src/watchtower_core, ruff check ., watchtower-core closeout initiative --trace-id trace.task_sync_disappearing_file_resilience --initiative-status completed --write --format json, and watchtower-core query coordination --format json all passed with no additional issues remaining."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/task_sync_disappearing_file_resilience_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T13:06:11Z for trace.task_sync_disappearing_file_resilience after iterator hardening, regression coverage, initiative closeout, and the final no-new-issues orchestration review pass.",
+  "source_decision_ids": [
+    "decision.task_sync_disappearing_file_resilience_direction"
+  ]
+}

@@ -181,9 +181,12 @@ def iter_task_documents(
         for path in sorted(directory.glob("*.md")):
             if path.name in TASK_EXCLUDED_NAMES:
                 continue
-            documents.append(
-                load_task_document(loader, path.relative_to(loader.repo_root).as_posix())
-            )
+            relative_path = path.relative_to(loader.repo_root).as_posix()
+            try:
+                documents.append(load_task_document(loader, relative_path))
+            except FileNotFoundError:
+                # Task lifecycle moves can relocate a task between discovery and load.
+                continue
     return tuple(documents)
 
 

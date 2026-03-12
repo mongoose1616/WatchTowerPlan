@@ -8,6 +8,7 @@ import pytest
 from fixture_repo_support import materialize_governed_applies_to_targets
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops import task_documents as task_documents_module
 from watchtower_core.repo_ops.task_lifecycle import (
     TaskCreateParams,
     TaskLifecycleService,
@@ -142,6 +143,63 @@ def test_task_update_can_move_task_and_clear_optional_fields(tmp_path: Path) -> 
     )
     coordination_index = json.loads(coordination_index_path.read_text(encoding="utf-8"))
     assert coordination_index["status"] == "active"
+
+
+def test_task_update_write_tolerates_other_task_disappearing_during_sync(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    service = TaskLifecycleService(loader)
+
+    created = service.create(
+        TaskCreateParams(
+            task_id="task.unit_test_trace.disappearing_sync.001",
+            trace_id="trace.unit_test_trace_disappearing_sync",
+            title="Disappearing sync task",
+            summary="A task that will be updated while another task disappears.",
+            task_kind="feature",
+            priority="high",
+            owner="repository_maintainer",
+            scope_items=("Create the task.",),
+            done_when_items=("The task exists.",),
+            file_stem="disappearing_sync_task",
+            updated_at="2026-03-10T23:59:59Z",
+        ),
+        write=True,
+    )
+
+    missing_relative_path = next(
+        document.relative_path
+        for document in task_documents_module.iter_task_documents(loader)
+        if document.task_id != created.task_id
+    )
+    original_loader = task_documents_module.load_task_document
+    triggered = False
+
+    def _load_task_document(loader_arg: ControlPlaneLoader, relative_path: str):
+        nonlocal triggered
+        if relative_path == missing_relative_path and not triggered:
+            triggered = True
+            raise FileNotFoundError(relative_path)
+        return original_loader(loader_arg, relative_path)
+
+    monkeypatch.setattr(task_documents_module, "load_task_document", _load_task_document)
+
+    result = service.update(
+        TaskUpdateParams(
+            task_id=created.task_id,
+            task_status="done",
+            updated_at="2026-03-11T00:00:00Z",
+        ),
+        write=True,
+    )
+
+    assert triggered is True
+    assert result.wrote is True
+    assert result.doc_path == "docs/planning/tasks/closed/disappearing_sync_task.md"
+    assert (repo_root / result.doc_path).exists()
 
 
 def test_task_update_rejects_conflicting_clear_flags(tmp_path: Path) -> None:

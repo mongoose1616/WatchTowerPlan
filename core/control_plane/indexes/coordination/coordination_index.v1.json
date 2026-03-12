@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-12T03:52:21Z",
+  "updated_at": "2026-03-12T13:06:11Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -13,13 +13,86 @@
   "actionable_task_count": 0,
   "entries": [
     {
+      "trace_id": "trace.task_sync_disappearing_file_resilience",
+      "title": "Task Sync Disappearing File Resilience PRD",
+      "summary": "Harden task and coordination sync against task documents disappearing during live task moves or concurrent lifecycle updates.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T13:06:11Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/task_sync_disappearing_file_resilience.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/task_sync_disappearing_file_resilience.md",
+      "prd_ids": [
+        "prd.task_sync_disappearing_file_resilience"
+      ],
+      "decision_ids": [
+        "decision.task_sync_disappearing_file_resilience_direction"
+      ],
+      "design_ids": [
+        "design.features.task_sync_disappearing_file_resilience"
+      ],
+      "plan_ids": [
+        "design.implementation.task_sync_disappearing_file_resilience"
+      ],
+      "task_ids": [
+        "task.task_sync_disappearing_file_resilience.bootstrap.001",
+        "task.task_sync_disappearing_file_resilience.implementation.001",
+        "task.task_sync_disappearing_file_resilience.validation_closeout.002"
+      ],
+      "acceptance_ids": [
+        "ac.task_sync_disappearing_file_resilience.001",
+        "ac.task_sync_disappearing_file_resilience.002",
+        "ac.task_sync_disappearing_file_resilience.003",
+        "ac.task_sync_disappearing_file_resilience.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.task_sync_disappearing_file_resilience"
+      ],
+      "evidence_ids": [
+        "evidence.task_sync_disappearing_file_resilience.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T13:01:19Z",
+      "closure_reason": "Closed after hardening task iteration against disappearing files, adding end-to-end regression coverage, and completing a clean follow-up orchestration review pass.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/task_sync_disappearing_file_resilience_acceptance.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/task_sync_disappearing_file_resilience_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/sync/task_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_task_documents.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/task_sync_disappearing_file_resilience_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/task_sync_disappearing_file_resilience.md",
+        "docs/planning/design/implementation/task_sync_disappearing_file_resilience.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/task_sync_disappearing_file_resilience.md",
+        "docs/planning/tasks/closed/harden_task_sync_iteration_against_disappearing_files.md",
+        "docs/planning/tasks/closed/task_sync_disappearing_file_resilience_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_task_sync_disappearing_file_resilience.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T13:06:11Z for trace.task_sync_disappearing_file_resilience after iterator hardening, regression coverage, initiative closeout, and the final no-new-issues orchestration review pass."
+    },
+    {
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "title": "Workflow Routing Review Accuracy Alignment PRD",
       "summary": "Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries.",
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-12T03:52:21Z",
+      "updated_at": "2026-03-12T03:56:25Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/workflow_routing_review_accuracy_alignment.md",
@@ -88,7 +161,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-12T03:52:21Z for trace.workflow_routing_review_accuracy_alignment after route hardening, task closure, initiative closeout, and the final no-new-issues routing review pass."
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T03:56:25Z for trace.workflow_routing_review_accuracy_alignment after route hardening, task closure, initiative closeout, and the final no-new-issues routing review pass."
     },
     {
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
@@ -2852,6 +2925,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.task_sync_disappearing_file_resilience",
+      "title": "Task Sync Disappearing File Resilience PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-12T13:01:19Z",
+      "key_surface_path": "docs/planning/prds/task_sync_disappearing_file_resilience.md",
+      "closure_reason": "Closed after hardening task iteration against disappearing files, adding end-to-end regression coverage, and completing a clean follow-up orchestration review pass."
+    },
+    {
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "title": "Workflow Routing Review Accuracy Alignment PRD",
       "initiative_status": "completed",
@@ -2922,14 +3003,6 @@
       "closed_at": "2026-03-11T20:05:17Z",
       "key_surface_path": "docs/planning/prds/standard_authoring_surface_alignment.md",
       "closure_reason": "Closed after aligning the standard-authoring scaffold, standards lookup surfaces, and regression coverage with the governed standard-document contract."
-    },
-    {
-      "trace_id": "trace.design_document_index_relationship_alignment",
-      "title": "Design Document Index Relationship Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-11T19:37:52Z",
-      "key_surface_path": "docs/planning/prds/design_document_index_relationship_alignment.md",
-      "closure_reason": "Closed after aligning design-document relationship indexing with governed standards and validation."
     }
   ]
 }

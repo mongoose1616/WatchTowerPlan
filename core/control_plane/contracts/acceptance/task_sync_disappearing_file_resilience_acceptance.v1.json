@@ -1,0 +1,83 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.task_sync_disappearing_file_resilience",
+  "title": "Task Sync Disappearing File Resilience Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.task_sync_disappearing_file_resilience",
+  "source_prd_id": "prd.task_sync_disappearing_file_resilience",
+  "entries": [
+    {
+      "acceptance_id": "ac.task_sync_disappearing_file_resilience.001",
+      "summary": "The trace carries a fully authored planning chain, accepted decision, acceptance contract, planning-baseline evidence, and bounded task set for the disappearing-file resilience slice.",
+      "source_requirement_ids": [
+        "req.task_sync_disappearing_file_resilience.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/task_sync_disappearing_file_resilience.md",
+        "docs/planning/design/features/task_sync_disappearing_file_resilience.md",
+        "docs/planning/design/implementation/task_sync_disappearing_file_resilience.md",
+        "docs/planning/decisions/task_sync_disappearing_file_resilience_direction.md",
+        "docs/planning/tasks/open/task_sync_disappearing_file_resilience_bootstrap.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Bootstrap baseline contract prepared at 2026-03-12T12:53:02Z for trace.task_sync_disappearing_file_resilience."
+    },
+    {
+      "acceptance_id": "ac.task_sync_disappearing_file_resilience.002",
+      "summary": "Task-document iteration tolerates a discovered task file disappearing before load and the shared task sync surfaces continue on the surviving task set.",
+      "source_requirement_ids": [
+        "req.task_sync_disappearing_file_resilience.001",
+        "req.task_sync_disappearing_file_resilience.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_tracking.py"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py"
+      ],
+      "notes": "Implementation acceptance is satisfied only when the disappearing-file boundary is handled at the shared iterator layer without changing the task lifecycle contract."
+    },
+    {
+      "acceptance_id": "ac.task_sync_disappearing_file_resilience.003",
+      "summary": "Regression coverage proves the iterator skips only the vanished task path and keeps surviving task-document validation intact.",
+      "source_requirement_ids": [
+        "req.task_sync_disappearing_file_resilience.002",
+        "req.task_sync_disappearing_file_resilience.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/unit/test_task_documents.py"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/task_documents.py"
+      ],
+      "notes": "Regression acceptance covers the reproduced disappearing-file scenario and keeps stable task-document validation fail-closed."
+    },
+    {
+      "acceptance_id": "ac.task_sync_disappearing_file_resilience.004",
+      "summary": "Final validation and a follow-up expansive review pass find no further issues in the affected task-sync orchestration area.",
+      "source_requirement_ids": [
+        "req.task_sync_disappearing_file_resilience.003"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/task_sync_disappearing_file_resilience_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/task_sync_disappearing_file_resilience_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "docs/planning/initiatives/initiative_tracking.md",
+        "core/control_plane/indexes/tasks/task_index.v1.json"
+      ],
+      "notes": "Closeout acceptance is satisfied only when the full validation baseline and a second orchestration review pass both finish without new findings."
+    }
+  ]
+}

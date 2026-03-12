@@ -1001,6 +1001,42 @@
       ]
     },
     {
+      "trace_id": "trace.task_sync_disappearing_file_resilience",
+      "decision_id": "decision.task_sync_disappearing_file_resilience_direction",
+      "title": "Task Sync Disappearing File Resilience Direction Decision",
+      "summary": "Records the initial direction decision for Task Sync Disappearing File Resilience.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/task_sync_disappearing_file_resilience_direction.md",
+      "updated_at": "2026-03-12T12:53:02Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.task_sync_disappearing_file_resilience"
+      ],
+      "linked_design_ids": [
+        "design.features.task_sync_disappearing_file_resilience"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.task_sync_disappearing_file_resilience"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_tracking.py",
+        "core/python/tests/unit/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ]
+    },
+    {
       "trace_id": "trace.workflow_system_operationalization",
       "decision_id": "decision.workflow_operationalization_direction",
       "title": "Workflow Operationalization Direction",

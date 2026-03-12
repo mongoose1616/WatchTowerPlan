@@ -1131,6 +1131,44 @@
       ]
     },
     {
+      "trace_id": "trace.task_sync_disappearing_file_resilience",
+      "prd_id": "prd.task_sync_disappearing_file_resilience",
+      "title": "Task Sync Disappearing File Resilience PRD",
+      "summary": "Harden task and coordination sync against task documents disappearing during live task moves or concurrent lifecycle updates.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/task_sync_disappearing_file_resilience.md",
+      "updated_at": "2026-03-12T13:02:49Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.task_sync_disappearing_file_resilience.001",
+        "req.task_sync_disappearing_file_resilience.002",
+        "req.task_sync_disappearing_file_resilience.003"
+      ],
+      "acceptance_ids": [
+        "ac.task_sync_disappearing_file_resilience.001",
+        "ac.task_sync_disappearing_file_resilience.002",
+        "ac.task_sync_disappearing_file_resilience.003",
+        "ac.task_sync_disappearing_file_resilience.004"
+      ],
+      "linked_decision_ids": [
+        "decision.task_sync_disappearing_file_resilience_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.task_sync_disappearing_file_resilience"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.task_sync_disappearing_file_resilience"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/task_documents.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/task_tracking.py",
+        "core/python/tests/unit/"
+      ]
+    },
+    {
       "trace_id": "trace.template_and_output_efficiency",
       "prd_id": "prd.template_and_output_efficiency",
       "title": "Template and Output Efficiency PRD",
