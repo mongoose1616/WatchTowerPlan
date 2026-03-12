@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-12T17:18:29Z",
+  "updated_at": "2026-03-12T19:39:05Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -12,6 +12,91 @@
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "title": "Control Plane Loader Cache Reuse PRD",
+      "summary": "Eliminate repeated command-scoped rematerialization of stable governed artifacts, starting with the validator-registry hotspot in validate all, by adding override-aware loader caches without weakening validation fidelity or current-run override semantics.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T19:39:05Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/control_plane_loader_cache_reuse.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/control_plane_loader_cache_reuse.md",
+      "prd_ids": [
+        "prd.control_plane_loader_cache_reuse"
+      ],
+      "decision_ids": [
+        "decision.control_plane_loader_cache_reuse_direction"
+      ],
+      "design_ids": [
+        "design.features.control_plane_loader_cache_reuse"
+      ],
+      "plan_ids": [
+        "design.implementation.control_plane_loader_cache_reuse"
+      ],
+      "task_ids": [
+        "task.control_plane_loader_cache_reuse.bootstrap.001",
+        "task.control_plane_loader_cache_reuse.loader_cache.002",
+        "task.control_plane_loader_cache_reuse.validation_closeout.003"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_loader_cache_reuse.001",
+        "ac.control_plane_loader_cache_reuse.002",
+        "ac.control_plane_loader_cache_reuse.003",
+        "ac.control_plane_loader_cache_reuse.004",
+        "ac.control_plane_loader_cache_reuse.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.control_plane_loader_cache_reuse"
+      ],
+      "evidence_ids": [
+        "evidence.control_plane_loader_cache_reuse.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T19:38:35Z",
+      "closure_reason": "Completed command-scoped loader cache hardening: validator-registry materialization dropped from 799 to 1 per validate-all run, directory-backed document overrides now invalidate and rebuild correctly, ValidationEvidenceRecorder republishes canonical writes into loader state, full pre-closeout validation passed, and the final follow-up review found no additional actionable issues.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/validation/front_matter.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_all_validation.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_validation_evidence.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+        "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
+        "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T19:39:05Z for trace.control_plane_loader_cache_reuse after loader cache hardening, same-loader evidence coherence fixes, and pre-closeout validation."
+    },
     {
       "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
       "title": "Acceptance Reconciliation Snapshot Reuse PRD",
@@ -3256,6 +3341,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "title": "Control Plane Loader Cache Reuse PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-12T19:38:35Z",
+      "key_surface_path": "docs/planning/prds/control_plane_loader_cache_reuse.md",
+      "closure_reason": "Completed command-scoped loader cache hardening: validator-registry materialization dropped from 799 to 1 per validate-all run, directory-backed document overrides now invalidate and rebuild correctly, ValidationEvidenceRecorder republishes canonical writes into loader state, full pre-closeout validation passed, and the final follow-up review found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
       "title": "Acceptance Reconciliation Snapshot Reuse PRD",
       "initiative_status": "completed",
@@ -3326,14 +3419,6 @@
       "closed_at": "2026-03-12T01:35:09Z",
       "key_surface_path": "docs/planning/prds/data_contract_example_operationalization_alignment.md",
       "closure_reason": "Closed after operationalizing data-contract example families in the governing standards, hardening lookup regressions, and revalidating the repository baseline."
-    },
-    {
-      "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
-      "title": "Documentation Family Lookup and README Template Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-12T01:07:10Z",
-      "key_surface_path": "docs/planning/prds/documentation_family_lookup_and_readme_template_alignment.md",
-      "closure_reason": "Closed after extending standards operationalization lookup for recurring documentation families, aligning README template authoring guidance, and revalidating the repository baseline."
     }
   ]
 }

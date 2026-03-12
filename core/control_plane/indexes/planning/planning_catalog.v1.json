@@ -808,6 +808,345 @@
       "closure_reason": "Closed after repairing invalid valid examples, extending aggregate example validation coverage, restoring exhaustive example and canonicality regressions, and completing a clean follow-up review pass."
     },
     {
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "title": "Control Plane Loader Cache Reuse PRD",
+      "summary": "Eliminate repeated command-scoped rematerialization of stable governed artifacts, starting with the validator-registry hotspot in validate all, by adding override-aware loader caches without weakening validation fidelity or current-run override semantics.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-12T19:39:05Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.control_plane_loader_cache_reuse",
+          "title": "Control Plane Loader Cache Reuse PRD",
+          "summary": "Eliminate repeated command-scoped rematerialization of stable governed artifacts, starting with the validator-registry hotspot in validate all, by adding override-aware loader caches without weakening validation fidelity or current-run override semantics.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/control_plane_loader_cache_reuse.md",
+          "updated_at": "2026-03-12T19:33:27Z",
+          "requirement_ids": [
+            "req.control_plane_loader_cache_reuse.001",
+            "req.control_plane_loader_cache_reuse.002",
+            "req.control_plane_loader_cache_reuse.003",
+            "req.control_plane_loader_cache_reuse.004"
+          ],
+          "acceptance_ids": [
+            "ac.control_plane_loader_cache_reuse.001",
+            "ac.control_plane_loader_cache_reuse.002",
+            "ac.control_plane_loader_cache_reuse.003",
+            "ac.control_plane_loader_cache_reuse.004",
+            "ac.control_plane_loader_cache_reuse.005"
+          ],
+          "linked_decision_ids": [
+            "decision.control_plane_loader_cache_reuse_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.control_plane_loader_cache_reuse"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.control_plane_loader_cache_reuse"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.control_plane_loader_cache_reuse_direction",
+          "title": "Control Plane Loader Cache Reuse Direction Decision",
+          "summary": "Adopt command-scoped, override-aware loader caches instead of adding ad hoc reuse only inside validation services.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
+          "updated_at": "2026-03-12T19:33:27Z",
+          "linked_prd_ids": [
+            "prd.control_plane_loader_cache_reuse"
+          ],
+          "linked_design_ids": [
+            "design.features.control_plane_loader_cache_reuse"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.control_plane_loader_cache_reuse"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.control_plane_loader_cache_reuse",
+          "family": "feature_design",
+          "title": "Control Plane Loader Cache Reuse Feature Design",
+          "summary": "Defines the technical design boundary for Control Plane Loader Cache Reuse.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+          "updated_at": "2026-03-12T19:33:27Z"
+        },
+        {
+          "document_id": "design.implementation.control_plane_loader_cache_reuse",
+          "family": "implementation_plan",
+          "title": "Control Plane Loader Cache Reuse Implementation Plan",
+          "summary": "Breaks Control Plane Loader Cache Reuse into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+          "updated_at": "2026-03-12T19:33:27Z",
+          "source_paths": [
+            "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+            "docs/planning/prds/control_plane_loader_cache_reuse.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.control_plane_loader_cache_reuse.bootstrap.001",
+          "title": "Bootstrap Control Plane Loader Cache Reuse planning chain",
+          "summary": "Bootstraps the initial planning chain for Control Plane Loader Cache Reuse.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md",
+          "updated_at": "2026-03-12T19:13:21Z",
+          "related_ids": [
+            "prd.control_plane_loader_cache_reuse",
+            "design.features.control_plane_loader_cache_reuse",
+            "design.implementation.control_plane_loader_cache_reuse",
+            "decision.control_plane_loader_cache_reuse_direction",
+            "contract.acceptance.control_plane_loader_cache_reuse"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/control_plane/",
+            "core/python/src/watchtower_core/validation/",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.control_plane_loader_cache_reuse.loader_cache.002",
+          "title": "Implement command-scoped loader cache reuse",
+          "summary": "Add override-aware loader caches and regression coverage for repeated validator registry rematerialization and override invalidation.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
+          "updated_at": "2026-03-12T19:33:27Z",
+          "depends_on": [
+            "task.control_plane_loader_cache_reuse.bootstrap.001"
+          ],
+          "related_ids": [
+            "prd.control_plane_loader_cache_reuse",
+            "design.implementation.control_plane_loader_cache_reuse",
+            "decision.control_plane_loader_cache_reuse_direction",
+            "contract.acceptance.control_plane_loader_cache_reuse"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/control_plane/",
+            "core/python/src/watchtower_core/repo_ops/validation/",
+            "core/python/src/watchtower_core/validation/",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.control_plane_loader_cache_reuse.validation_closeout.003",
+          "title": "Validate and close control plane loader cache reuse",
+          "summary": "Run the final validation baseline, refresh evidence, and close the initiative once the loader cache change and follow-up review land cleanly.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md",
+          "updated_at": "2026-03-12T19:37:54Z",
+          "depends_on": [
+            "task.control_plane_loader_cache_reuse.loader_cache.002"
+          ],
+          "related_ids": [
+            "prd.control_plane_loader_cache_reuse",
+            "design.implementation.control_plane_loader_cache_reuse",
+            "decision.control_plane_loader_cache_reuse_direction",
+            "contract.acceptance.control_plane_loader_cache_reuse"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/control_plane/",
+            "core/python/src/watchtower_core/repo_ops/validation/",
+            "core/python/src/watchtower_core/validation/",
+            "core/python/tests/",
+            "docs/planning/",
+            "core/control_plane/contracts/acceptance/",
+            "core/control_plane/ledgers/validation_evidence/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.control_plane_loader_cache_reuse",
+          "title": "Control Plane Loader Cache Reuse Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.control_plane_loader_cache_reuse",
+          "doc_path": "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.control_plane_loader_cache_reuse.001",
+            "ac.control_plane_loader_cache_reuse.002",
+            "ac.control_plane_loader_cache_reuse.003",
+            "ac.control_plane_loader_cache_reuse.004",
+            "ac.control_plane_loader_cache_reuse.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/control_plane/loader.py",
+            "core/python/src/watchtower_core/evidence/validation_evidence.py",
+            "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+            "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+            "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/src/watchtower_core/validation/artifact.py",
+            "core/python/src/watchtower_core/validation/front_matter.py",
+            "core/python/tests/unit/test_all_validation.py",
+            "core/python/tests/unit/test_control_plane_loader.py",
+            "core/python/tests/unit/test_validation_evidence.py",
+            "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
+            "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+            "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+            "docs/planning/prds/control_plane_loader_cache_reuse.md",
+            "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md",
+            "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
+            "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.control_plane_loader_cache_reuse.planning_baseline",
+          "title": "Control Plane Loader Cache Reuse Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-12T19:39:05Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json",
+          "check_ids": [
+            "check.control_plane_loader_cache_reuse.planning_baseline",
+            "check.control_plane_loader_cache_reuse.validator_registry_reuse",
+            "check.control_plane_loader_cache_reuse.override_invalidation",
+            "check.control_plane_loader_cache_reuse.validation_closeout",
+            "check.control_plane_loader_cache_reuse.followup_review"
+          ],
+          "acceptance_ids": [
+            "ac.control_plane_loader_cache_reuse.001",
+            "ac.control_plane_loader_cache_reuse.002",
+            "ac.control_plane_loader_cache_reuse.003",
+            "ac.control_plane_loader_cache_reuse.004",
+            "ac.control_plane_loader_cache_reuse.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.control_plane_loader_cache_reuse"
+      ],
+      "decision_ids": [
+        "decision.control_plane_loader_cache_reuse_direction"
+      ],
+      "design_ids": [
+        "design.features.control_plane_loader_cache_reuse"
+      ],
+      "plan_ids": [
+        "design.implementation.control_plane_loader_cache_reuse"
+      ],
+      "task_ids": [
+        "task.control_plane_loader_cache_reuse.bootstrap.001",
+        "task.control_plane_loader_cache_reuse.loader_cache.002",
+        "task.control_plane_loader_cache_reuse.validation_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.control_plane_loader_cache_reuse.001",
+        "req.control_plane_loader_cache_reuse.002",
+        "req.control_plane_loader_cache_reuse.003",
+        "req.control_plane_loader_cache_reuse.004"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_loader_cache_reuse.001",
+        "ac.control_plane_loader_cache_reuse.002",
+        "ac.control_plane_loader_cache_reuse.003",
+        "ac.control_plane_loader_cache_reuse.004",
+        "ac.control_plane_loader_cache_reuse.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.control_plane_loader_cache_reuse"
+      ],
+      "evidence_ids": [
+        "evidence.control_plane_loader_cache_reuse.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/validation/front_matter.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_all_validation.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_validation_evidence.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+        "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
+        "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T19:39:05Z for trace.control_plane_loader_cache_reuse after loader cache hardening, same-loader evidence coherence fixes, and pre-closeout validation.",
+      "closed_at": "2026-03-12T19:38:35Z",
+      "closure_reason": "Completed command-scoped loader cache hardening: validator-registry materialization dropped from 799 to 1 per validate-all run, directory-backed document overrides now invalidate and rebuild correctly, ValidationEvidenceRecorder republishes canonical writes into loader state, full pre-closeout validation passed, and the final follow-up review found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.coordination_projection_source_reuse",
       "title": "Coordination Projection Source Reuse PRD",
       "summary": "Eliminate repeated planning-index and evidence source reloads inside coordination sync while preserving deterministic projection outputs, validation boundaries, and dry-run fidelity.",

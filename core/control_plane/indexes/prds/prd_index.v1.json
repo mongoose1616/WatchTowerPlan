@@ -90,6 +90,51 @@
       ]
     },
     {
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "prd_id": "prd.control_plane_loader_cache_reuse",
+      "title": "Control Plane Loader Cache Reuse PRD",
+      "summary": "Eliminate repeated command-scoped rematerialization of stable governed artifacts, starting with the validator-registry hotspot in validate all, by adding override-aware loader caches without weakening validation fidelity or current-run override semantics.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/control_plane_loader_cache_reuse.md",
+      "updated_at": "2026-03-12T19:33:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.control_plane_loader_cache_reuse.001",
+        "req.control_plane_loader_cache_reuse.002",
+        "req.control_plane_loader_cache_reuse.003",
+        "req.control_plane_loader_cache_reuse.004"
+      ],
+      "acceptance_ids": [
+        "ac.control_plane_loader_cache_reuse.001",
+        "ac.control_plane_loader_cache_reuse.002",
+        "ac.control_plane_loader_cache_reuse.003",
+        "ac.control_plane_loader_cache_reuse.004",
+        "ac.control_plane_loader_cache_reuse.005"
+      ],
+      "linked_decision_ids": [
+        "decision.control_plane_loader_cache_reuse_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.control_plane_loader_cache_reuse"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.control_plane_loader_cache_reuse"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/front_matter.py",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py"
+      ]
+    },
+    {
       "trace_id": "trace.coordination_projection_source_reuse",
       "prd_id": "prd.coordination_projection_source_reuse",
       "title": "Coordination Projection Source Reuse PRD",

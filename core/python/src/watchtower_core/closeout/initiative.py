@@ -114,6 +114,7 @@ class InitiativeCloseoutService:
                 document,
             )
             traceability_output_path = str(traceability_path)
+            self._loader.set_validated_document_override(TRACEABILITY_INDEX_PATH, document)
 
             initiative_index_service = InitiativeIndexSyncService(self._loader)
             initiative_index_output_path = str(

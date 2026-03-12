@@ -82,6 +82,45 @@
       ]
     },
     {
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "decision_id": "decision.control_plane_loader_cache_reuse_direction",
+      "title": "Control Plane Loader Cache Reuse Direction Decision",
+      "summary": "Adopt command-scoped, override-aware loader caches instead of adding ad hoc reuse only inside validation services.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
+      "updated_at": "2026-03-12T19:33:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.control_plane_loader_cache_reuse"
+      ],
+      "linked_design_ids": [
+        "design.features.control_plane_loader_cache_reuse"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.control_plane_loader_cache_reuse"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+        "core/python/src/watchtower_core/control_plane/loader.py"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.coordination_projection_source_reuse",
       "decision_id": "decision.coordination_projection_source_reuse_direction",
       "title": "Coordination Projection Source Reuse Direction Decision",

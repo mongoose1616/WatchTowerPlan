@@ -181,6 +181,33 @@
       ]
     },
     {
+      "document_id": "design.features.control_plane_loader_cache_reuse",
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "family": "feature_design",
+      "title": "Control Plane Loader Cache Reuse Feature Design",
+      "summary": "Defines the technical design boundary for Control Plane Loader Cache Reuse.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+      "updated_at": "2026-03-12T19:33:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+        "core/python/src/watchtower_core/control_plane/loader.py"
+      ]
+    },
+    {
       "document_id": "design.features.coordination_projection_source_reuse",
       "trace_id": "trace.coordination_projection_source_reuse",
       "family": "feature_design",
@@ -1520,6 +1547,35 @@
         "docs/standards/validations/repository_validation_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/commands/core_python/watchtower_core_validate_all.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.control_plane_loader_cache_reuse",
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "family": "implementation_plan",
+      "title": "Control Plane Loader Cache Reuse Implementation Plan",
+      "summary": "Breaks Control Plane Loader Cache Reuse into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+      "updated_at": "2026-03-12T19:33:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+        "docs/planning/prds/control_plane_loader_cache_reuse.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "core/python/",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json"
       ]
     },
     {

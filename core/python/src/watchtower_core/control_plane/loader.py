@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Any
+from collections.abc import Callable
+from pathlib import Path, PurePosixPath
+from typing import Any, TypeVar, cast
 
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
@@ -63,6 +64,7 @@ TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_
 PLANNING_CATALOG_PATH = "core/control_plane/indexes/planning/planning_catalog.v1.json"
 ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
+TArtifact = TypeVar("TArtifact")
 
 
 class ControlPlaneLoader:
@@ -116,6 +118,10 @@ class ControlPlaneLoader:
         self.supplemental_schema_ids = self.schema_store.supplemental_schema_ids
         self._validated_document_overrides: dict[str, dict[str, Any]] = {}
         self._validated_directory_overrides: dict[str, tuple[tuple[str, dict[str, Any]], ...]] = {}
+        self._validated_document_cache: dict[str, dict[str, Any]] = {}
+        self._validated_directory_cache: dict[str, tuple[tuple[str, dict[str, Any]], ...]] = {}
+        self._typed_document_cache: dict[str, object] = {}
+        self._typed_directory_cache: dict[str, object] = {}
 
     def set_validated_document_override(
         self,
@@ -125,7 +131,9 @@ class ControlPlaneLoader:
         """Publish one current-run validated document for later loader reuse."""
 
         self._validated_document_overrides[relative_path] = document
-        self._invalidate_parent_directory_overrides(relative_path)
+        self._validated_document_cache[relative_path] = document
+        self._typed_document_cache.pop(relative_path, None)
+        self._invalidate_parent_directory_state(relative_path)
 
     def set_validated_directory_override(
         self,
@@ -134,20 +142,39 @@ class ControlPlaneLoader:
     ) -> None:
         """Publish one current-run validated governed directory for later reuse."""
 
+        previous_override = self._validated_directory_overrides.get(relative_directory, ())
+        previous_paths = {relative_path for relative_path, _ in previous_override}
+        next_paths = {relative_path for relative_path, _ in documents}
+
         self._validated_directory_overrides[relative_directory] = documents
+        self._validated_directory_cache[relative_directory] = documents
+        self._typed_directory_cache.pop(relative_directory, None)
         for relative_path, document in documents:
             self._validated_document_overrides[relative_path] = document
+            self._validated_document_cache[relative_path] = document
+            self._typed_document_cache.pop(relative_path, None)
 
-    def _invalidate_parent_directory_overrides(self, relative_path: str) -> None:
-        """Drop directory overrides that would be stale after one document update."""
+        for stale_relative_path in previous_paths.difference(next_paths):
+            self._validated_document_overrides.pop(stale_relative_path, None)
+            self._validated_document_cache.pop(stale_relative_path, None)
+            self._typed_document_cache.pop(stale_relative_path, None)
+
+    def _invalidate_parent_directory_state(self, relative_path: str) -> None:
+        """Drop stale directory-level override and cache state after one document update."""
 
         stale_directories = tuple(
             relative_directory
-            for relative_directory in self._validated_directory_overrides
+            for relative_directory in {
+                *self._validated_directory_overrides,
+                *self._validated_directory_cache,
+                *self._typed_directory_cache,
+            }
             if relative_path.startswith(f"{relative_directory.rstrip('/')}/")
         )
         for relative_directory in stale_directories:
-            del self._validated_directory_overrides[relative_directory]
+            self._validated_directory_overrides.pop(relative_directory, None)
+            self._validated_directory_cache.pop(relative_directory, None)
+            self._typed_directory_cache.pop(relative_directory, None)
 
     def load_json_object(self, relative_path: str) -> dict[str, Any]:
         """Load a repository-relative JSON object."""
@@ -170,8 +197,12 @@ class ControlPlaneLoader:
         override = self._validated_document_overrides.get(relative_path)
         if override is not None:
             return override
+        cached = self._validated_document_cache.get(relative_path)
+        if cached is not None:
+            return cached
         document = self.load_json_object(relative_path)
         self.schema_store.validate_instance(document)
+        self._validated_document_cache[relative_path] = document
         return document
 
     def load_schema_catalog(self) -> SchemaCatalog:
@@ -180,90 +211,122 @@ class ControlPlaneLoader:
 
     def load_validator_registry(self) -> ValidatorRegistry:
         """Load the current validator registry."""
-        return ValidatorRegistry.from_document(
-            self.load_validated_document(VALIDATOR_REGISTRY_PATH)
+        return self._load_typed_document(
+            VALIDATOR_REGISTRY_PATH,
+            ValidatorRegistry.from_document,
         )
 
     def load_authority_map(self) -> AuthorityMap:
         """Load the current authority-map registry."""
-        return AuthorityMap.from_document(
-            self.load_validated_document(AUTHORITY_MAP_PATH)
+        return self._load_typed_document(
+            AUTHORITY_MAP_PATH,
+            AuthorityMap.from_document,
         )
 
     def load_workflow_metadata_registry(self) -> WorkflowMetadataRegistry:
         """Load the current workflow metadata registry."""
-        return WorkflowMetadataRegistry.from_document(
-            self.load_validated_document(WORKFLOW_METADATA_REGISTRY_PATH)
+        return self._load_typed_document(
+            WORKFLOW_METADATA_REGISTRY_PATH,
+            WorkflowMetadataRegistry.from_document,
         )
 
     def load_repository_path_index(self) -> RepositoryPathIndex:
         """Load the current repository path index."""
-        return RepositoryPathIndex.from_document(
-            self.load_validated_document(REPOSITORY_PATH_INDEX_PATH)
+        return self._load_typed_document(
+            REPOSITORY_PATH_INDEX_PATH,
+            RepositoryPathIndex.from_document,
         )
 
     def load_command_index(self) -> CommandIndex:
         """Load the current command index."""
-        return CommandIndex.from_document(self.load_validated_document(COMMAND_INDEX_PATH))
+        return self._load_typed_document(
+            COMMAND_INDEX_PATH,
+            CommandIndex.from_document,
+        )
 
     def load_route_index(self) -> RouteIndex:
         """Load the current route index."""
-        return RouteIndex.from_document(self.load_validated_document(ROUTE_INDEX_PATH))
+        return self._load_typed_document(
+            ROUTE_INDEX_PATH,
+            RouteIndex.from_document,
+        )
 
     def load_reference_index(self) -> ReferenceIndex:
         """Load the current reference index."""
-        return ReferenceIndex.from_document(self.load_validated_document(REFERENCE_INDEX_PATH))
+        return self._load_typed_document(
+            REFERENCE_INDEX_PATH,
+            ReferenceIndex.from_document,
+        )
 
     def load_foundation_index(self) -> FoundationIndex:
         """Load the current foundation index."""
-        return FoundationIndex.from_document(self.load_validated_document(FOUNDATION_INDEX_PATH))
+        return self._load_typed_document(
+            FOUNDATION_INDEX_PATH,
+            FoundationIndex.from_document,
+        )
 
     def load_initiative_index(self) -> InitiativeIndex:
         """Load the current initiative index."""
-        return InitiativeIndex.from_document(self.load_validated_document(INITIATIVE_INDEX_PATH))
+        return self._load_typed_document(
+            INITIATIVE_INDEX_PATH,
+            InitiativeIndex.from_document,
+        )
 
     def load_coordination_index(self) -> CoordinationIndex:
         """Load the current coordination index."""
-        return CoordinationIndex.from_document(
-            self.load_validated_document(COORDINATION_INDEX_PATH)
+        return self._load_typed_document(
+            COORDINATION_INDEX_PATH,
+            CoordinationIndex.from_document,
         )
 
     def load_standard_index(self) -> StandardIndex:
         """Load the current standard index."""
-        return StandardIndex.from_document(self.load_validated_document(STANDARD_INDEX_PATH))
+        return self._load_typed_document(
+            STANDARD_INDEX_PATH,
+            StandardIndex.from_document,
+        )
 
     def load_workflow_index(self) -> WorkflowIndex:
         """Load the current workflow index."""
-        return WorkflowIndex.from_document(self.load_validated_document(WORKFLOW_INDEX_PATH))
+        return self._load_typed_document(
+            WORKFLOW_INDEX_PATH,
+            WorkflowIndex.from_document,
+        )
 
     def load_prd_index(self) -> PrdIndex:
         """Load the current PRD index."""
-        return PrdIndex.from_document(self.load_validated_document(PRD_INDEX_PATH))
+        return self._load_typed_document(PRD_INDEX_PATH, PrdIndex.from_document)
 
     def load_decision_index(self) -> DecisionIndex:
         """Load the current decision index."""
-        return DecisionIndex.from_document(self.load_validated_document(DECISION_INDEX_PATH))
+        return self._load_typed_document(
+            DECISION_INDEX_PATH,
+            DecisionIndex.from_document,
+        )
 
     def load_design_document_index(self) -> DesignDocumentIndex:
         """Load the current design-document index."""
-        return DesignDocumentIndex.from_document(
-            self.load_validated_document(DESIGN_DOCUMENT_INDEX_PATH)
+        return self._load_typed_document(
+            DESIGN_DOCUMENT_INDEX_PATH,
+            DesignDocumentIndex.from_document,
         )
 
     def load_task_index(self) -> TaskIndex:
         """Load the current task index."""
-        return TaskIndex.from_document(self.load_validated_document(TASK_INDEX_PATH))
+        return self._load_typed_document(TASK_INDEX_PATH, TaskIndex.from_document)
 
     def load_traceability_index(self) -> TraceabilityIndex:
         """Load the current traceability index."""
-        return TraceabilityIndex.from_document(
-            self.load_validated_document(TRACEABILITY_INDEX_PATH)
+        return self._load_typed_document(
+            TRACEABILITY_INDEX_PATH,
+            TraceabilityIndex.from_document,
         )
 
     def load_planning_catalog(self) -> PlanningCatalog:
         """Load the current canonical planning catalog."""
-        return PlanningCatalog.from_document(
-            self.load_validated_document(PLANNING_CATALOG_PATH)
+        return self._load_typed_document(
+            PLANNING_CATALOG_PATH,
+            PlanningCatalog.from_document,
         )
 
     def iter_validated_documents_under(self, relative_directory: str) -> tuple[dict[str, Any], ...]:
@@ -283,26 +346,86 @@ class ControlPlaneLoader:
         override = self._validated_directory_overrides.get(relative_directory)
         if override is not None:
             return override
+        cached = self._validated_directory_cache.get(relative_directory)
+        if cached is not None:
+            return cached
+        documents_by_path: dict[str, dict[str, Any]] = {
+            relative_path: document
+            for relative_path, document in self.artifact_source.iter_json_objects(
+                relative_directory
+            )
+        }
+        for relative_path, document in self._validated_document_overrides.items():
+            if _is_direct_child_of_directory(relative_directory, relative_path):
+                documents_by_path[relative_path] = document
+
         documents: list[tuple[str, dict[str, Any]]] = []
-        for relative_path, document in self.artifact_source.iter_json_objects(relative_directory):
+        for relative_path in sorted(documents_by_path):
+            document = documents_by_path[relative_path]
             self.schema_store.validate_instance(document)
             documents.append((relative_path, document))
-        return tuple(documents)
+            self._validated_document_cache[relative_path] = document
+        cached_documents = tuple(documents)
+        self._validated_directory_cache[relative_directory] = cached_documents
+        return cached_documents
 
     def load_acceptance_contracts(self) -> tuple[AcceptanceContract, ...]:
         """Load all governed acceptance-contract artifacts."""
-        return tuple(
-            AcceptanceContract.from_document(document, doc_path=relative_path)
-            for relative_path, document in self.iter_validated_documents_with_paths_under(
-                ACCEPTANCE_CONTRACTS_DIRECTORY
-            )
+        return self._load_typed_directory(
+            ACCEPTANCE_CONTRACTS_DIRECTORY,
+            lambda relative_path, document: AcceptanceContract.from_document(
+                document,
+                doc_path=relative_path,
+            ),
         )
 
     def load_validation_evidence_artifacts(self) -> tuple[ValidationEvidenceArtifact, ...]:
         """Load all governed validation-evidence artifacts."""
-        return tuple(
-            ValidationEvidenceArtifact.from_document(document, doc_path=relative_path)
+        return self._load_typed_directory(
+            VALIDATION_EVIDENCE_DIRECTORY,
+            lambda relative_path, document: ValidationEvidenceArtifact.from_document(
+                document,
+                doc_path=relative_path,
+            ),
+        )
+
+    def _load_typed_document(
+        self,
+        relative_path: str,
+        builder: Callable[[dict[str, Any]], TArtifact],
+    ) -> TArtifact:
+        """Materialize one typed artifact once per loader-backed command run."""
+
+        cached = self._typed_document_cache.get(relative_path)
+        if cached is not None:
+            return cast(TArtifact, cached)
+        artifact = builder(self.load_validated_document(relative_path))
+        self._typed_document_cache[relative_path] = artifact
+        return artifact
+
+    def _load_typed_directory(
+        self,
+        relative_directory: str,
+        builder: Callable[[str, dict[str, Any]], TArtifact],
+    ) -> tuple[TArtifact, ...]:
+        """Materialize one typed directory-backed artifact tuple once per loader run."""
+
+        cached = self._typed_directory_cache.get(relative_directory)
+        if cached is not None:
+            return cast(tuple[TArtifact, ...], cached)
+        artifacts = tuple(
+            builder(relative_path, document)
             for relative_path, document in self.iter_validated_documents_with_paths_under(
-                VALIDATION_EVIDENCE_DIRECTORY
+                relative_directory
             )
         )
+        self._typed_directory_cache[relative_directory] = artifacts
+        return artifacts
+
+
+def _is_direct_child_of_directory(relative_directory: str, relative_path: str) -> bool:
+    """Return whether one logical path is a direct child of the governed directory."""
+
+    directory = PurePosixPath(relative_directory.rstrip("/"))
+    candidate = PurePosixPath(relative_path)
+    return candidate.parent == directory

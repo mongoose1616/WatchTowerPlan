@@ -1,0 +1,141 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.control_plane_loader_cache_reuse.planning_baseline",
+  "title": "Control Plane Loader Cache Reuse Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.control_plane_loader_cache_reuse",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T19:39:05Z",
+  "source_prd_ids": [
+    "prd.control_plane_loader_cache_reuse"
+  ],
+  "source_design_ids": [
+    "design.features.control_plane_loader_cache_reuse"
+  ],
+  "source_plan_ids": [
+    "design.implementation.control_plane_loader_cache_reuse"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.control_plane_loader_cache_reuse"
+  ],
+  "checks": [
+    {
+      "check_id": "check.control_plane_loader_cache_reuse.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+        "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+        "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
+        "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+        "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md"
+      ],
+      "subject_ids": [
+        "prd.control_plane_loader_cache_reuse",
+        "design.features.control_plane_loader_cache_reuse",
+        "design.implementation.control_plane_loader_cache_reuse",
+        "task.control_plane_loader_cache_reuse.bootstrap.001",
+        "contract.acceptance.control_plane_loader_cache_reuse",
+        "decision.control_plane_loader_cache_reuse_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.control_plane_loader_cache_reuse.001"
+      ],
+      "notes": "Bootstrap and closeout reconciliation confirm the authored planning chain, acceptance contract, baseline evidence artifact, and closed bootstrap task all exist in canonical repository paths."
+    },
+    {
+      "check_id": "check.control_plane_loader_cache_reuse.validator_registry_reuse",
+      "title": "Aggregate validation reuses one validator registry materialization",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "subject_ids": [
+        "task.control_plane_loader_cache_reuse.loader_cache.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.control_plane_loader_cache_reuse.002"
+      ],
+      "notes": "Direct instrumentation reduced validator-registry document loads during ValidationAllService(ControlPlaneLoader()).run() from 799 to 1 while keeping aggregate validation green."
+    },
+    {
+      "check_id": "check.control_plane_loader_cache_reuse.override_invalidation",
+      "title": "Loader override publication invalidates affected cache entries",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_validation_evidence.py"
+      ],
+      "subject_ids": [
+        "task.control_plane_loader_cache_reuse.loader_cache.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.control_plane_loader_cache_reuse.003"
+      ],
+      "notes": "Targeted regressions verify that document and directory overrides invalidate cached parent-directory state, rebuild directory-backed typed views from current-run overrides, and keep ValidationEvidenceRecorder writes coherent inside one loader-backed command."
+    },
+    {
+      "check_id": "check.control_plane_loader_cache_reuse.validation_closeout",
+      "title": "Loader cache reuse validation baseline is green",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md"
+      ],
+      "subject_ids": [
+        "task.control_plane_loader_cache_reuse.validation_closeout.003",
+        "contract.acceptance.control_plane_loader_cache_reuse"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.control_plane_loader_cache_reuse.004"
+      ],
+      "notes": "Closeout validation passed on sync all, validate all --skip-acceptance, pytest -q, python -m mypy src/watchtower_core, and ruff check ., and the terminal closed-state acceptance and full validation pass must remain green."
+    },
+    {
+      "check_id": "check.control_plane_loader_cache_reuse.followup_review",
+      "title": "Follow-up review found no new issues in adjacent surfaces",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/front_matter.py",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_validation_evidence.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "subject_ids": [
+        "task.control_plane_loader_cache_reuse.validation_closeout.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.control_plane_loader_cache_reuse.005"
+      ],
+      "notes": "The first follow-up review surfaced and fixed one additional stale-directory-cache issue in ValidationEvidenceRecorder and directory-backed loader rebuilds. A second pass across loader, validation, sync, and adjacent evidence/query surfaces found no further actionable issues."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T19:39:05Z for trace.control_plane_loader_cache_reuse after loader cache hardening, same-loader evidence coherence fixes, and pre-closeout validation.",
+  "source_decision_ids": [
+    "decision.control_plane_loader_cache_reuse_direction"
+  ]
+}

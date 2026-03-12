@@ -1,0 +1,113 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.control_plane_loader_cache_reuse",
+  "title": "Control Plane Loader Cache Reuse Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.control_plane_loader_cache_reuse",
+  "source_prd_id": "prd.control_plane_loader_cache_reuse",
+  "entries": [
+    {
+      "acceptance_id": "ac.control_plane_loader_cache_reuse.001",
+      "summary": "The trace publishes a fully-authored planning chain, accepted direction decision, refreshed acceptance contract, refreshed evidence artifact, and a bounded closed task set for the loader-cache slice.",
+      "source_requirement_ids": [
+        "req.control_plane_loader_cache_reuse.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/control_plane_loader_cache_reuse.md",
+        "docs/planning/design/features/control_plane_loader_cache_reuse.md",
+        "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
+        "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
+        "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
+        "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md",
+        "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The final trace should preserve the authored planning chain, accepted direction, refreshed contract and evidence, and the closed execution task set."
+    },
+    {
+      "acceptance_id": "ac.control_plane_loader_cache_reuse.002",
+      "summary": "Command-scoped loader reuse reduces validator-registry rematerialization from hundreds of loads to one materialization per loader-backed validation run.",
+      "source_requirement_ids": [
+        "req.control_plane_loader_cache_reuse.001"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md"
+      ],
+      "notes": "Direct instrumentation should show validator-registry rematerialization dropping from 799 to 1 during aggregate repository validation."
+    },
+    {
+      "acceptance_id": "ac.control_plane_loader_cache_reuse.003",
+      "summary": "Current-run validated document and directory overrides invalidate affected loader cache entries and rebuild directory-backed views so later consumers observe the newest in-memory artifacts.",
+      "source_requirement_ids": [
+        "req.control_plane_loader_cache_reuse.002",
+        "req.control_plane_loader_cache_reuse.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_validation_evidence.py"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json"
+      ],
+      "notes": "Targeted regressions should prove that publishing newer current-run artifacts displaces stale cached single-document and directory-backed typed state, including canonical validation-evidence writes."
+    },
+    {
+      "acceptance_id": "ac.control_plane_loader_cache_reuse.004",
+      "summary": "The repository stays green on the normal validation baseline after the loader cache change lands.",
+      "source_requirement_ids": [
+        "req.control_plane_loader_cache_reuse.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "notes": "Closeout should include sync all, validate acceptance, validate all, pytest, mypy, and ruff."
+    },
+    {
+      "acceptance_id": "ac.control_plane_loader_cache_reuse.005",
+      "summary": "A follow-up review of adjacent loader, validation, and sync surfaces finds no additional actionable issues.",
+      "source_requirement_ids": [
+        "req.control_plane_loader_cache_reuse.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/front_matter.py",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/query/evidence.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_validation_evidence.py",
+        "core/python/tests/unit/test_all_validation.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The stop condition is a clean follow-up review pass with no new issues in the discussed loader and validation area."
+    }
+  ]
+}

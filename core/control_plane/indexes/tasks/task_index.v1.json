@@ -208,6 +208,90 @@
       ]
     },
     {
+      "task_id": "task.control_plane_loader_cache_reuse.bootstrap.001",
+      "title": "Bootstrap Control Plane Loader Cache Reuse planning chain",
+      "summary": "Bootstraps the initial planning chain for Control Plane Loader Cache Reuse.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md",
+      "updated_at": "2026-03-12T19:13:21Z",
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "related_ids": [
+        "prd.control_plane_loader_cache_reuse",
+        "design.features.control_plane_loader_cache_reuse",
+        "design.implementation.control_plane_loader_cache_reuse",
+        "decision.control_plane_loader_cache_reuse_direction",
+        "contract.acceptance.control_plane_loader_cache_reuse"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.control_plane_loader_cache_reuse.loader_cache.002",
+      "title": "Implement command-scoped loader cache reuse",
+      "summary": "Add override-aware loader caches and regression coverage for repeated validator registry rematerialization and override invalidation.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
+      "updated_at": "2026-03-12T19:33:27Z",
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "depends_on": [
+        "task.control_plane_loader_cache_reuse.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.control_plane_loader_cache_reuse",
+        "design.implementation.control_plane_loader_cache_reuse",
+        "decision.control_plane_loader_cache_reuse_direction",
+        "contract.acceptance.control_plane_loader_cache_reuse"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.control_plane_loader_cache_reuse.validation_closeout.003",
+      "title": "Validate and close control plane loader cache reuse",
+      "summary": "Run the final validation baseline, refresh evidence, and close the initiative once the loader cache change and follow-up review land cleanly.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md",
+      "updated_at": "2026-03-12T19:37:54Z",
+      "trace_id": "trace.control_plane_loader_cache_reuse",
+      "depends_on": [
+        "task.control_plane_loader_cache_reuse.loader_cache.002"
+      ],
+      "related_ids": [
+        "prd.control_plane_loader_cache_reuse",
+        "design.implementation.control_plane_loader_cache_reuse",
+        "decision.control_plane_loader_cache_reuse_direction",
+        "contract.acceptance.control_plane_loader_cache_reuse"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
       "task_id": "task.coordination_projection_source_reuse.bootstrap.001",
       "title": "Bootstrap Coordination Projection Source Reuse planning chain",
       "summary": "Bootstraps the initial planning chain for Coordination Projection Source Reuse.",

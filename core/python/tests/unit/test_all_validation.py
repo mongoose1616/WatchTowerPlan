@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 from collections import Counter
+from collections.abc import Callable
 from pathlib import Path
 from shutil import copytree
 from textwrap import dedent
+from typing import Any
 
 import pytest
 
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.loader import (
+    VALIDATOR_REGISTRY_PATH,
+    ControlPlaneLoader,
+)
 from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
 from watchtower_core.repo_ops.validation import (
     VALIDATION_FAMILY_SPECS,
@@ -157,7 +162,9 @@ def test_validate_all_requires_at_least_one_selected_family() -> None:
         service.run(included_families=())
 
 
-def test_validate_all_records_selection_errors_as_failed_results(monkeypatch) -> None:
+def test_validate_all_records_selection_errors_as_failed_results(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     service = ValidationAllService(ControlPlaneLoader())
     target = "docs/references/example_reference.md"
 
@@ -254,11 +261,36 @@ def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
     assert reference_build_count == 1
 
 
+def test_validate_all_reuses_validator_registry_materialization(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    service = ValidationAllService(ControlPlaneLoader())
+    validator_registry_document_loads = 0
+    original_load_validated_document = service._loader.load_validated_document
+
+    def wrapped_load_validated_document(relative_path: str) -> dict[str, Any]:
+        nonlocal validator_registry_document_loads
+        if relative_path == VALIDATOR_REGISTRY_PATH:
+            validator_registry_document_loads += 1
+        return original_load_validated_document(relative_path)
+
+    monkeypatch.setattr(
+        service._loader,
+        "load_validated_document",
+        wrapped_load_validated_document,
+    )
+
+    result = service.run()
+
+    assert result.passed is True
+    assert validator_registry_document_loads == 1
+
+
 def test_validate_all_reuses_acceptance_reconciliation_snapshots(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     service = ValidationAllService(ControlPlaneLoader())
-    counts = Counter()
+    counts: Counter[str] = Counter()
 
     for name in (
         "load_traceability_index",
@@ -269,8 +301,11 @@ def test_validate_all_reuses_acceptance_reconciliation_snapshots(
     ):
         original = getattr(service._loader, name)
 
-        def make_wrapper(method_name, method):
-            def wrapped(*args, **kwargs):
+        def make_wrapper(
+            method_name: str,
+            method: Callable[..., object],
+        ) -> Callable[..., object]:
+            def wrapped(*args: object, **kwargs: object) -> object:
                 counts[method_name] += 1
                 return method(*args, **kwargs)
 

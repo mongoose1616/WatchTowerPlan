@@ -220,11 +220,19 @@ class ValidationEvidenceRecorder:
                 evidence_relative_path,
                 document,
             )
+            self._loader.set_validated_document_override(
+                evidence_relative_path,
+                document,
+            )
         else:
             evidence_path = self.write_document(document, destination=evidence_output)
 
         if traceability_output is None:
             traceability_path = self._loader.artifact_store.write_json_object(
+                TRACEABILITY_INDEX_PATH,
+                updated_traceability,
+            )
+            self._loader.set_validated_document_override(
                 TRACEABILITY_INDEX_PATH,
                 updated_traceability,
             )
