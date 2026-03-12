@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.standards_lookup_and_generic_template_alignment` | `completed` | [standards_lookup_and_generic_template_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/standards_lookup_and_generic_template_alignment.md) | `2026-03-12T00:26:00Z` | Closed after making standards lookup resolve directory-governed concrete files, narrowing the generic documentation template to fallback-only guidance, and revalidating the repository baseline. |
 | `trace.reference_and_workflow_standards_alignment` | `completed` | [reference_and_workflow_standards_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_and_workflow_standards_alignment.md) | `2026-03-11T23:32:19Z` | Reference authoring guidance and workflow additional-load enforcement are aligned with the governed standards and validated end to end. |
 | `trace.planning_semantics_and_decision_contract_alignment` | `completed` | [planning_semantics_and_decision_contract_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_semantics_and_decision_contract_alignment.md) | `2026-03-11T21:01:05Z` | Closed after aligning planning-document authoring contracts, extending shared markdown semantics enforcement, and reconciling stale regression fixtures discovered during full-suite validation. |
 | `trace.standard_authoring_surface_alignment` | `completed` | [standard_authoring_surface_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/standard_authoring_surface_alignment.md) | `2026-03-11T20:05:17Z` | Closed after aligning the standard-authoring scaffold, standards lookup surfaces, and regression coverage with the governed standard-document contract. |
@@ -35,4 +36,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-11T23:37:00Z`_
+_Updated At: `2026-03-12T00:26:00Z`_

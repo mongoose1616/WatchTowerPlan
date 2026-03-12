@@ -936,6 +936,47 @@
       ]
     },
     {
+      "trace_id": "trace.standards_lookup_and_generic_template_alignment",
+      "prd_id": "prd.standards_lookup_and_generic_template_alignment",
+      "title": "Standards Lookup and Generic Template Alignment PRD",
+      "summary": "Make standards path lookup resolve directory-governed concrete files and narrow the generic documentation template so it no longer advertises family-specific governed docs.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/standards_lookup_and_generic_template_alignment.md",
+      "updated_at": "2026-03-12T00:14:46Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.standards_lookup_and_generic_template_alignment.001",
+        "req.standards_lookup_and_generic_template_alignment.002",
+        "req.standards_lookup_and_generic_template_alignment.003",
+        "req.standards_lookup_and_generic_template_alignment.004"
+      ],
+      "acceptance_ids": [
+        "ac.standards_lookup_and_generic_template_alignment.001",
+        "ac.standards_lookup_and_generic_template_alignment.002",
+        "ac.standards_lookup_and_generic_template_alignment.003",
+        "ac.standards_lookup_and_generic_template_alignment.004"
+      ],
+      "linked_decision_ids": [
+        "decision.standards_lookup_and_generic_template_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.standards_lookup_and_generic_template_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.standards_lookup_and_generic_template_alignment"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/templates/documentation_template.md",
+        "docs/templates/README.md"
+      ]
+    },
+    {
       "trace_id": "trace.template_and_output_efficiency",
       "prd_id": "prd.template_and_output_efficiency",
       "title": "Template and Output Efficiency PRD",

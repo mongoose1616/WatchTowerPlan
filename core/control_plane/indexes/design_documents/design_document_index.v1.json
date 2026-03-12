@@ -1081,6 +1081,36 @@
       ]
     },
     {
+      "document_id": "design.features.standards_lookup_and_generic_template_alignment",
+      "trace_id": "trace.standards_lookup_and_generic_template_alignment",
+      "family": "feature_design",
+      "title": "Standards Lookup and Generic Template Alignment Feature Design",
+      "summary": "Defines the technical design boundary for descendant-aware standards lookup and generic-template scope alignment.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/standards_lookup_and_generic_template_alignment.md",
+      "updated_at": "2026-03-12T00:14:46Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/standards_lookup_and_generic_template_alignment.md",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/templates/documentation_template.md",
+        "docs/templates/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/metadata/front_matter_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.unit_test_hardening_and_rebalancing",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "family": "feature_design",
@@ -1765,6 +1795,38 @@
         "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
         "docs/standards/validations/repository_validation_standard.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.standards_lookup_and_generic_template_alignment",
+      "trace_id": "trace.standards_lookup_and_generic_template_alignment",
+      "family": "implementation_plan",
+      "title": "Standards Lookup and Generic Template Alignment Implementation Plan",
+      "summary": "Breaks the standards-query and generic-template alignment work into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/standards_lookup_and_generic_template_alignment.md",
+      "updated_at": "2026-03-12T00:14:46Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/prds/standards_lookup_and_generic_template_alignment.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/templates/documentation_template.md",
+        "docs/templates/README.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/metadata/front_matter_standard.md"
       ]
     },
     {

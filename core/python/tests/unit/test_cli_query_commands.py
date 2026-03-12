@@ -361,6 +361,44 @@ def test_query_standards_exposes_standard_template_operationalization_path(capsy
     )
 
 
+def test_query_standards_matches_descendant_operationalization_paths(capsys) -> None:
+    cases = (
+        (
+            "docs/planning/prds/reference_and_workflow_standards_alignment.md",
+            "std.documentation.prd_md",
+        ),
+        (
+            "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
+            "std.documentation.decision_record_md",
+        ),
+        (
+            "docs/templates/documentation_template.md",
+            "std.documentation.compact_document_authoring",
+        ),
+    )
+
+    for operationalization_path, expected_standard_id in cases:
+        result = main(
+            [
+                "query",
+                "standards",
+                "--operationalization-path",
+                operationalization_path,
+                "--format",
+                "json",
+            ]
+        )
+
+        captured = capsys.readouterr()
+        payload = json.loads(captured.out)
+        assert result == 0
+        assert payload["command"] == "watchtower-core query standards"
+        assert payload["status"] == "ok"
+        assert any(
+            entry["standard_id"] == expected_standard_id for entry in payload["results"]
+        ), payload["results"]
+
+
 def test_query_prds_supports_json_output(capsys) -> None:
     result = main(
         [

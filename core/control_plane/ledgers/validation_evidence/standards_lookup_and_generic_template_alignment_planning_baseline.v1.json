@@ -1,0 +1,126 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.standards_lookup_and_generic_template_alignment.planning_baseline",
+  "title": "Standards Lookup and Generic Template Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.standards_lookup_and_generic_template_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-12T00:26:00Z",
+  "source_prd_ids": [
+    "prd.standards_lookup_and_generic_template_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.standards_lookup_and_generic_template_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.standards_lookup_and_generic_template_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.standards_lookup_and_generic_template_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.standards_lookup_and_generic_template_alignment.planning_baseline",
+      "title": "Planning baseline is aligned for the completed standards-alignment slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/design/features/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/design/implementation/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/decisions/standards_lookup_and_generic_template_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.v1.json",
+        "docs/planning/tasks/closed/standards_lookup_and_generic_template_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/resolve_descendant_standard_lookup_for_directory_scoped_operationalization_paths.md",
+        "docs/planning/tasks/closed/narrow_generic_documentation_template_to_fallback_only_guidance.md",
+        "docs/planning/tasks/closed/validate_and_close_standards_lookup_and_generic_template_alignment.md"
+      ],
+      "subject_ids": [
+        "prd.standards_lookup_and_generic_template_alignment",
+        "design.features.standards_lookup_and_generic_template_alignment",
+        "design.implementation.standards_lookup_and_generic_template_alignment",
+        "task.standards_lookup_and_generic_template_alignment.bootstrap.001",
+        "task.standards_lookup_and_generic_template_alignment.lookup_resolution.001",
+        "task.standards_lookup_and_generic_template_alignment.generic_template_scope.001",
+        "task.standards_lookup_and_generic_template_alignment.validation_closeout.001",
+        "contract.acceptance.standards_lookup_and_generic_template_alignment",
+        "decision.standards_lookup_and_generic_template_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.standards_lookup_and_generic_template_alignment.001"
+      ],
+      "notes": "The trace now carries a real PRD, accepted direction decision, feature design, implementation plan, refreshed acceptance contract, refreshed planning-baseline evidence, and all four closed task records."
+    },
+    {
+      "check_id": "check.standards_lookup_and_generic_template_alignment.lookup_resolution",
+      "title": "Standards lookup resolves descendant files under directory-scoped operationalization surfaces",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md"
+      ],
+      "subject_ids": [
+        "task.standards_lookup_and_generic_template_alignment.lookup_resolution.001"
+      ],
+      "acceptance_ids": [
+        "ac.standards_lookup_and_generic_template_alignment.002"
+      ],
+      "notes": "Operationalization-path lookup now treats indexed directories as governing concrete descendants, and CLI regressions assert that concrete PRD, decision, and generic-template file lookups return their governing standards."
+    },
+    {
+      "check_id": "check.standards_lookup_and_generic_template_alignment.generic_template_scope",
+      "title": "Generic documentation template guidance is narrowed to fallback-only use",
+      "result": "passed",
+      "subject_paths": [
+        "docs/templates/documentation_template.md",
+        "docs/templates/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.standards_lookup_and_generic_template_alignment.generic_template_scope.001"
+      ],
+      "acceptance_ids": [
+        "ac.standards_lookup_and_generic_template_alignment.003"
+      ],
+      "notes": "The generic documentation template now routes governed families to their dedicated scaffolds first and reserves itself for repository docs that do not have a narrower family-specific template."
+    },
+    {
+      "check_id": "check.standards_lookup_and_generic_template_alignment.validation_baseline",
+      "title": "Repository validation baseline is green for the completed standards-alignment trace",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "subject_ids": [
+        "prd.standards_lookup_and_generic_template_alignment",
+        "decision.standards_lookup_and_generic_template_alignment_direction",
+        "design.features.standards_lookup_and_generic_template_alignment",
+        "design.implementation.standards_lookup_and_generic_template_alignment",
+        "task.standards_lookup_and_generic_template_alignment.lookup_resolution.001",
+        "task.standards_lookup_and_generic_template_alignment.generic_template_scope.001",
+        "task.standards_lookup_and_generic_template_alignment.validation_closeout.001",
+        "contract.acceptance.standards_lookup_and_generic_template_alignment"
+      ],
+      "acceptance_ids": [
+        "ac.standards_lookup_and_generic_template_alignment.004"
+      ],
+      "notes": "watchtower-core sync all --write, watchtower-core validate acceptance --trace-id trace.standards_lookup_and_generic_template_alignment --format json, watchtower-core validate all --format json, pytest -q, python -m mypy src/watchtower_core, ruff check, and watchtower-core query coordination --format json passed after the trace reached terminal closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-12T00:26:00Z for trace.standards_lookup_and_generic_template_alignment.",
+  "source_decision_ids": [
+    "decision.standards_lookup_and_generic_template_alignment_direction"
+  ]
+}

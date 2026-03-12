@@ -2046,6 +2046,91 @@
       "notes": "Validation evidence for the final closeout of the standard, runtime, and route explicitness remediation trace."
     },
     {
+      "trace_id": "trace.standards_lookup_and_generic_template_alignment",
+      "title": "Standards Lookup and Generic Template Alignment PRD",
+      "summary": "Make standards path lookup resolve directory-governed concrete files and narrow the generic documentation template so it no longer advertises family-specific governed docs.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-12T00:26:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/standards_lookup_and_generic_template_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/standards_lookup_and_generic_template_alignment.md",
+      "prd_ids": [
+        "prd.standards_lookup_and_generic_template_alignment"
+      ],
+      "decision_ids": [
+        "decision.standards_lookup_and_generic_template_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.standards_lookup_and_generic_template_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.standards_lookup_and_generic_template_alignment"
+      ],
+      "task_ids": [
+        "task.standards_lookup_and_generic_template_alignment.bootstrap.001",
+        "task.standards_lookup_and_generic_template_alignment.generic_template_scope.001",
+        "task.standards_lookup_and_generic_template_alignment.lookup_resolution.001",
+        "task.standards_lookup_and_generic_template_alignment.validation_closeout.001"
+      ],
+      "acceptance_ids": [
+        "ac.standards_lookup_and_generic_template_alignment.001",
+        "ac.standards_lookup_and_generic_template_alignment.002",
+        "ac.standards_lookup_and_generic_template_alignment.003",
+        "ac.standards_lookup_and_generic_template_alignment.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.standards_lookup_and_generic_template_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.standards_lookup_and_generic_template_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-12T00:26:00Z",
+      "closure_reason": "Closed after making standards lookup resolve directory-governed concrete files, narrowing the generic documentation template to fallback-only guidance, and revalidating the repository baseline.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/standards_lookup_and_generic_template_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/design/implementation/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/tasks/closed/narrow_generic_documentation_template_to_fallback_only_guidance.md",
+        "docs/planning/tasks/closed/resolve_descendant_standard_lookup_for_directory_scoped_operationalization_paths.md",
+        "docs/planning/tasks/closed/standards_lookup_and_generic_template_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/templates/README.md",
+        "docs/templates/documentation_template.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T00:26:00Z for trace.standards_lookup_and_generic_template_alignment."
+    },
+    {
       "trace_id": "trace.template_and_output_efficiency",
       "title": "Template and Output Efficiency PRD",
       "summary": "Defines the work needed to make repository templates and generated human-readable outputs compact, reviewable, and still machine-usable without low-value boilerplate.",

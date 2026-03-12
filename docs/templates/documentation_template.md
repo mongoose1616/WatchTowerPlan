@@ -18,7 +18,9 @@ aliases:
 
 # <Document Title>
 
-> Use this template for standards, guides, design docs, reference docs, local working references, and overview docs.
+> Use this template only when no narrower family-specific template applies.
+> For governed standards, references, foundations, PRDs, decision records, feature designs, implementation plans, tasks, workflows, routing tables, command pages, README files, and `AGENTS.md` files, use the dedicated family template instead.
+> Use this template for guides, overview docs, local working references outside governed reference families, and other repository docs that need light structure without a stricter family contract.
 > Prefer the smallest useful section set for the document's actual job.
 > Write the document as native to this repository rather than as a description of where the idea came from.
 > Keep the YAML front matter when the document family requires governed metadata or when metadata is operationally useful. Delete it otherwise.

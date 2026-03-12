@@ -1,7 +1,7 @@
 # `docs/templates`
 
 ## Description
-`This directory contains reusable document templates for the planning repository. Use these files as starting points when creating new standards, references, workflows, README files, routing tables, or other structured repository documents, and keep them aligned with the governed outputs they produce.`
+`This directory contains reusable document templates for the repository. Use the family-specific templates when a governed document family already has one, and treat the generic documentation template as the fallback scaffold when no narrower template applies.`
 
 ## Files
 | Path | Description |
@@ -10,7 +10,7 @@
 | `docs/templates/agent_template.md` | Template for an AGENTS.md file. |
 | `docs/templates/command_reference_template.md` | Template for a repository-native command page. |
 | `docs/templates/decision_record_template.md` | Template for a durable decision record under `docs/planning/decisions/`. |
-| `docs/templates/documentation_template.md` | Template for a flexible repository documentation document. |
+| `docs/templates/documentation_template.md` | Fallback template for repository docs without a narrower family-specific scaffold. |
 | `docs/templates/feature_design_template.md` | Template for a feature-level technical design document. |
 | `docs/templates/foundation_document_template.md` | Template for a governed foundation document under `docs/foundations/`. |
 | `docs/templates/implementation_plan_template.md` | Template for an implementation-plan document under `docs/planning/design/implementation/`. |

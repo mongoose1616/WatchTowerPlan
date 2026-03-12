@@ -5421,7 +5421,7 @@
       "path": "docs/templates/documentation_template.md",
       "kind": "file",
       "surface_kind": "template_doc",
-      "summary": "Template for a flexible repository documentation document.",
+      "summary": "Fallback template for repository docs without a narrower family-specific scaffold.",
       "parent_path": "docs/templates/",
       "maturity": "supporting",
       "priority": "medium",

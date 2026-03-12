@@ -1,0 +1,90 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.standards_lookup_and_generic_template_alignment",
+  "title": "Standards Lookup and Generic Template Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.standards_lookup_and_generic_template_alignment",
+  "source_prd_id": "prd.standards_lookup_and_generic_template_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.standards_lookup_and_generic_template_alignment.001",
+      "summary": "The trace publishes the full planning chain, the accepted direction decision, the refreshed acceptance contract, the refreshed planning-baseline evidence, and the bounded task set for the standards-alignment slice.",
+      "source_requirement_ids": [
+        "req.standards_lookup_and_generic_template_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/design/features/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/design/implementation/standards_lookup_and_generic_template_alignment.md",
+        "docs/planning/decisions/standards_lookup_and_generic_template_alignment_direction.md",
+        "docs/planning/tasks/closed/standards_lookup_and_generic_template_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/resolve_descendant_standard_lookup_for_directory_scoped_operationalization_paths.md",
+        "docs/planning/tasks/closed/narrow_generic_documentation_template_to_fallback_only_guidance.md",
+        "docs/planning/tasks/closed/validate_and_close_standards_lookup_and_generic_template_alignment.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline refreshed at 2026-03-12T00:26:00Z after the bootstrap task, both execution tasks, and the validation-closeout task reached terminal closeout."
+    },
+    {
+      "acceptance_id": "ac.standards_lookup_and_generic_template_alignment.002",
+      "summary": "Concrete descendant files now resolve directory-scoped operationalizing standards through query standards, and regression checks fail if operationalization-path lookup falls back to exact-match-only behavior.",
+      "source_requirement_ids": [
+        "req.standards_lookup_and_generic_template_alignment.001",
+        "req.standards_lookup_and_generic_template_alignment.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_standards.md"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/documentation/command_md_standard.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standards_lookup_and_generic_template_alignment.003",
+      "summary": "The generic documentation template and templates inventory now position that template as a fallback scaffold instead of a substitute for governed family-specific templates, and regression checks fail if the stale guidance returns.",
+      "source_requirement_ids": [
+        "req.standards_lookup_and_generic_template_alignment.002",
+        "req.standards_lookup_and_generic_template_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/templates/documentation_template.md",
+        "docs/templates/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/standards/metadata/front_matter_standard.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.standards_lookup_and_generic_template_alignment.004",
+      "summary": "The trace closes on a green repository baseline after acceptance validation, aggregate validation, tests, type checking, linting, sync refresh, and coordination reconciliation.",
+      "source_requirement_ids": [
+        "req.standards_lookup_and_generic_template_alignment.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    }
+  ]
+}

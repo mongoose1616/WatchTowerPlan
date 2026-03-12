@@ -529,6 +529,25 @@ def test_standard_document_template_stays_aligned_with_governed_contract() -> No
         )
 
 
+def test_generic_documentation_template_stays_narrowed_to_fallback_guidance() -> None:
+    template_markdown = (REPO_ROOT / "docs/templates/documentation_template.md").read_text(
+        encoding="utf-8"
+    )
+    templates_readme = (REPO_ROOT / "docs/templates/README.md").read_text(encoding="utf-8")
+
+    assert "Use this template only when no narrower family-specific template applies." in (
+        template_markdown
+    )
+    assert (
+        "Use this template for standards, guides, design docs, reference docs"
+        not in template_markdown
+    ), "generic documentation template must not advertise governed family docs"
+    assert (
+        "fallback template for repository docs without a narrower family-specific"
+        in templates_readme.casefold()
+    )
+
+
 def test_decision_record_authoring_surfaces_stay_aligned_with_governed_contract() -> None:
     standard_path = REPO_ROOT / "docs/standards/documentation/decision_record_md_standard.md"
     standard_markdown = standard_path.read_text(encoding="utf-8")

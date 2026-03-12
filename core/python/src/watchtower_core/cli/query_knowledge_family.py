@@ -288,8 +288,10 @@ def register_query_knowledge_commands(
     query_standards_parser.add_argument(
         "--operationalization-path",
         help=(
-            "Exact repository-path filter for one operationalizing surface such as "
-            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py."
+            "Repository-path filter for one operationalizing surface such as "
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py. "
+            "Exact file paths match directly, and indexed directory paths match "
+            "their concrete descendants."
         ),
     )
     query_standards_parser.add_argument(
