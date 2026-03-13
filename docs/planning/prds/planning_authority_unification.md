@@ -93,7 +93,6 @@ The repository's planning model is disciplined, but machine consumers still need
 - [repository_scope.md](/home/j/WatchTowerPlan/docs/foundations/repository_scope.md): the work belongs in `WatchTowerPlan` because it strengthens the reusable governed core and planning substrate, not product implementation.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
 - [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)
 - [initiative_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/initiatives/initiative_index.v1.json)

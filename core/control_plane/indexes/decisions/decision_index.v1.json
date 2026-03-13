@@ -304,7 +304,6 @@
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/coordination_index_standard.md",
         "docs/standards/data_contracts/planning_catalog_standard.md",
-        "SUMMARY.md",
         "docs/planning/decisions/planning_authority_unification_direction.md"
       ],
       "applied_reference_paths": [
@@ -573,7 +572,6 @@
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/standards/governance/traceability_standard.md",
-        "SUMMARY.md",
         "README.md",
         "docs/planning/coordination_tracking.md"
       ],
@@ -723,43 +721,6 @@
         "docs/foundations/customer_story.md",
         "docs/standards/data_contracts/foundation_index_standard.md",
         "docs/standards/documentation/workflow_md_standard.md"
-      ]
-    },
-    {
-      "trace_id": "trace.foundations_summary_entrypoint_continuity",
-      "decision_id": "decision.foundations_summary_entrypoint_continuity_direction",
-      "title": "Foundations Summary Entrypoint Continuity Direction Decision",
-      "summary": "Records the initial direction decision for Foundations Summary Entrypoint Continuity.",
-      "record_status": "active",
-      "decision_status": "accepted",
-      "doc_path": "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
-      "updated_at": "2026-03-12T23:50:46Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "linked_prd_ids": [
-        "prd.foundations_summary_entrypoint_continuity"
-      ],
-      "linked_design_ids": [
-        "design.features.foundations_summary_entrypoint_continuity"
-      ],
-      "linked_plan_ids": [
-        "design.implementation.foundations_summary_entrypoint_continuity"
-      ],
-      "related_paths": [
-        "docs/foundations/README.md",
-        "docs/foundations/repository_scope.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/standards/documentation/readme_md_standard.md",
-        "README.md"
-      ],
-      "applied_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/standards/documentation/readme_md_standard.md"
       ]
     },
     {
@@ -1109,7 +1070,6 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/foundations/repository_standards_posture.md",
-        "SUMMARY.md",
         "docs/planning/coordination_tracking.md",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
@@ -1533,6 +1493,62 @@
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/documentation/command_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md"
+      ]
+    },
+    {
+      "trace_id": "trace.summary_surface_retirement",
+      "decision_id": "decision.summary_surface_retirement_direction",
+      "title": "Summary Surface Retirement Direction Decision",
+      "summary": "Records the initial direction decision for Summary Surface Retirement.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/summary_surface_retirement_direction.md",
+      "updated_at": "2026-03-13T01:17:32Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.summary_surface_retirement"
+      ],
+      "linked_design_ids": [
+        "design.features.summary_surface_retirement"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.summary_surface_retirement"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "docs/planning/prds/",
+        "docs/planning/decisions/",
+        "docs/planning/design/",
+        "docs/planning/tasks/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
+        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
+        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/coordination_tracking.md",
+        "README.md",
+        "docs/foundations/README.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/coordination_tracking.md"
       ]
     },
     {

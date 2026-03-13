@@ -106,7 +106,7 @@ def test_traceability_index_sync_reopens_completed_initiative_when_active_task_r
     task_index_document = json.loads(task_index_path.read_text(encoding="utf-8"))
     task_entries = task_index_document["entries"]
     assert isinstance(task_entries, list)
-    target_task = next(entry for entry in task_entries if entry["trace_id"] == trace_id)
+    target_task = next(entry for entry in task_entries if entry.get("trace_id") == trace_id)
     target_task["status"] = "active"
     target_task["task_status"] = "ready"
     target_task["doc_path"] = "docs/planning/tasks/open/machine_first_coordination_surface.md"

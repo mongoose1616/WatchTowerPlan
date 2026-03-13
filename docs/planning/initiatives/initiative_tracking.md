@@ -1,15 +1,14 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.decision_supersession_and_regression_evidence_alignment` | `closeout` | unassigned | `0` | [decision_supersession_and_regression_evidence_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md) | [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md) | Run initiative closeout or create explicit follow-up tasks before marking the initiative complete. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.summary_surface_retirement` | `completed` | [summary_surface_retirement.md](/home/j/WatchTowerPlan/docs/planning/prds/summary_surface_retirement.md) | `2026-03-13T01:47:55Z` | Retired SUMMARY.md, removed the dedicated summary-restoration trace, rewrote surviving summary dependencies to coordination or generic historical wording, fixed the validation-exposed traceability-sync unit-test brittleness, and validated the final state with no additional actionable issues. |
+| `trace.decision_supersession_and_regression_evidence_alignment` | `cancelled` | [decision_supersession_and_regression_evidence_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md) | `2026-03-13T01:16:19Z` | Cancelled before execution after the user redirected work to remove SUMMARY.md and its active dependency surfaces instead of continuing the decision supersession and regression-evidence slice. |
 | `trace.foundations_entrypoint_coverage_alignment` | `completed` | [foundations_entrypoint_coverage_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundations_entrypoint_coverage_alignment.md) | `2026-03-13T00:37:03Z` | Aligned the foundations family entrypoints and review workflow with the machine foundations routes, added fail-closed coverage, and validated the foundations-themed review loop with no additional actionable issues. |
-| `trace.foundations_summary_entrypoint_continuity` | `completed` | [foundations_summary_entrypoint_continuity.md](/home/j/WatchTowerPlan/docs/planning/prds/foundations_summary_entrypoint_continuity.md) | `2026-03-13T00:09:25Z` | Restored the root SUMMARY.md entrypoint, repaired broken foundations and planning references, added fail-closed regression coverage, and validated the foundations-themed review loop with no additional actionable issues. |
 | `trace.foundation_document_standard_boundary_alignment` | `completed` | [foundation_document_standard_boundary_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_document_standard_boundary_alignment.md) | `2026-03-13T00:09:19Z` | Delivered foundation-document boundary alignment: the authored standard now scopes only the six governed foundation docs, standards lookup excludes the foundations README, validation passed, and themed review found no additional actionable issues. |
 | `trace.foundation_index_family_contract_alignment` | `completed` | [foundation_index_family_contract_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_index_family_contract_alignment.md) | `2026-03-12T23:22:45Z` | Delivered foundation-index family contract alignment: the governing standard now covers the authoritative sync/query and foundations command surfaces, targeted and full validation passed, and repeated themed review passes found no additional actionable issues. |
 | `trace.foundations_docs_boundary_alignment` | `completed` | [foundations_docs_boundary_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundations_docs_boundary_alignment.md) | `2026-03-12T22:14:31Z` | Delivered foundations documentation boundary alignment: the core Python command-doc README now exposes the foundations entrypoints, command and standards/reference docs align on repo_ops ownership, full validation passed, and repeated review passes found no additional actionable issues. |
@@ -57,4 +56,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-13T01:10:32Z`_
+_Updated At: `2026-03-13T01:47:55Z`_

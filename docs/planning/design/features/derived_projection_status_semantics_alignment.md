@@ -33,7 +33,7 @@ applies_to:
 Defines the technical design boundary for Derived Projection Status Semantics Alignment.
 
 ## Source Request
-- Follow-up from SUMMARY.md verification after planning-authority closeout.
+- Follow-up from whole-repo review verification after planning-authority closeout.
 
 ## Scope and Feature Boundary
 - Covers the initiative-index entry contract and the coordination-index embedded initiative-entry contract.
@@ -117,6 +117,5 @@ Defines the technical design boundary for Derived Projection Status Semantics Al
 - The coordination index depends on the initiative-entry schema shape, so the sync and validation updates must land together.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
 - [planning_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_catalog_standard.md)

@@ -66,8 +66,9 @@ Breaks Foundations Entrypoint Coverage Alignment into a bounded implementation s
    and [core/control_plane/indexes/foundations/README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/foundations/README.md)
    so the human and machine foundations entrypoints cross-reference correctly.
 2. Update [foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
-   so it loads `customer_story.md` and `SUMMARY.md` for the relevant review
-   contexts and points reviewers to `watchtower-core query foundations` for
+   so it loads `customer_story.md` and
+   `docs/planning/coordination_tracking.md` for the relevant review contexts
+   and points reviewers to `watchtower-core query foundations` for
    deterministic discovery.
 3. Extend [test_control_plane_artifacts.py](/home/j/WatchTowerPlan/core/python/tests/integration/test_control_plane_artifacts.py),
    run targeted validation, then run full repository validation and repeated

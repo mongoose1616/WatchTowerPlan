@@ -103,7 +103,8 @@ def test_foundations_context_review_loads_foundation_review_and_discovery_routes
     assert "docs/foundations/engineering_stack_direction.md" in markdown
     assert "docs/foundations/product_direction.md" in markdown
     assert "docs/foundations/customer_story.md" in markdown
-    assert "SUMMARY.md" in markdown
+    assert "docs/planning/coordination_tracking.md" in markdown
+    assert "SUMMARY.md" not in markdown
     assert "watchtower-core query foundations" in markdown
 
 
@@ -172,9 +173,7 @@ def test_foundation_document_standard_operationalizes_governed_docs_only() -> No
     assert "`docs/foundations/`" not in operationalization
 
 
-def test_root_summary_entrypoint_exists_for_foundations_review_routes() -> None:
-    assert (REPO_ROOT / "SUMMARY.md").exists()
-
+def test_root_review_entrypoints_route_to_current_tracking_surfaces() -> None:
     root_readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
     foundations_readme = (REPO_ROOT / "docs/foundations/README.md").read_text(
         encoding="utf-8"
@@ -183,9 +182,15 @@ def test_root_summary_entrypoint_exists_for_foundations_review_routes() -> None:
         REPO_ROOT / "docs/foundations/repository_scope.md"
     ).read_text(encoding="utf-8")
 
-    assert "SUMMARY.md" in root_readme
-    assert "SUMMARY.md" in foundations_readme
-    assert "[SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)" in repository_scope
+    assert "docs/planning/coordination_tracking.md" in root_readme
+    assert "docs/planning/coordination_tracking.md" in foundations_readme
+    assert (
+        "[coordination_tracking.md]"
+        "(/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)"
+    ) in repository_scope
+    assert "SUMMARY.md" not in root_readme
+    assert "SUMMARY.md" not in foundations_readme
+    assert "SUMMARY.md" not in repository_scope
 
 
 def test_repo_local_query_and_sync_command_docs_point_to_repo_ops_owners() -> None:

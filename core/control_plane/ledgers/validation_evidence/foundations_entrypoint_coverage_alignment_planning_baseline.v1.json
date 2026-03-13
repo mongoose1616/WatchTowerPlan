@@ -48,7 +48,7 @@
       "subject_paths": [
         "workflows/modules/foundations_context_review.md",
         "docs/foundations/customer_story.md",
-        "SUMMARY.md",
+        "docs/planning/coordination_tracking.md",
         "core/python/tests/integration/test_control_plane_artifacts.py"
       ],
       "subject_ids": [
@@ -59,7 +59,7 @@
       "acceptance_ids": [
         "ac.foundations_entrypoint_coverage_alignment.002"
       ],
-      "notes": "The workflow now names customer_story.md and SUMMARY.md for the review contexts already described by the foundations layer, and it surfaces watchtower-core query foundations as the deterministic discovery helper before reviewers fan out into the corpus."
+      "notes": "The workflow now names customer_story.md and coordination_tracking.md for the review contexts already described by the foundations layer, and it surfaces watchtower-core query foundations as the deterministic discovery helper before reviewers fan out into the corpus."
     },
     {
       "check_id": "check.foundations_entrypoint_coverage_alignment.validation_and_confirmation",

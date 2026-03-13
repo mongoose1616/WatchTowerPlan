@@ -43,7 +43,7 @@
         "docs/planning/tasks/closed/foundation_scope_alignment.md"
       ],
       "related_paths": [
-        "SUMMARY.md",
+        "docs/planning/coordination_tracking.md",
         "README.md"
       ]
     },
@@ -77,7 +77,7 @@
         "docs/planning/tasks/closed/root_entrypoint_contract.md"
       ],
       "related_paths": [
-        "SUMMARY.md",
+        "README.md",
         "docs/planning/coordination_tracking.md"
       ]
     },

@@ -45,7 +45,7 @@ Create the traced planning chain, accepted direction, acceptance baseline, plann
 - The initiative has an acceptance baseline and bounded open tasks ready for execution.
 
 ## Context
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) confirmed that the repo is healthy but still has foundation-layer scope drift and a weak current-scope entrypoint.
+- An earlier whole-repo review confirmed that the repo is healthy but still has foundation-layer scope drift and a weak current-scope entrypoint.
 - The work is documentation-only, but it still needs a bounded trace because it changes authoritative foundations and root entrypoints.
 
 ## Links

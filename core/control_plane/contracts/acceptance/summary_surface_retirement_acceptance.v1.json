@@ -1,0 +1,76 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.summary_surface_retirement",
+  "title": "Summary Surface Retirement Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.summary_surface_retirement",
+  "source_prd_id": "prd.summary_surface_retirement",
+  "entries": [
+    {
+      "acceptance_id": "ac.summary_surface_retirement.001",
+      "summary": "Live root, foundations, workflow, and regression-test entrypoints route repository review through current coordination surfaces instead of the retired summary surface.",
+      "source_requirement_ids": [
+        "req.summary_surface_retirement.001"
+      ],
+      "validation_targets": [
+        "README.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/foundations/repository_standards_posture.md"
+      ],
+      "notes": "The repaired live entrypoints should keep repository-review and next-step routing on the current coordination surface and fail closed through the integration regression."
+    },
+    {
+      "acceptance_id": "ac.summary_surface_retirement.002",
+      "summary": "The retired root summary artifact and its dedicated restoration trace are removed, and the surviving direct historical dependency chain no longer contains repo-local markdown links to the retired summary path.",
+      "source_requirement_ids": [
+        "req.summary_surface_retirement.002"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/prds/derived_projection_status_semantics_alignment.md",
+        "core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json",
+        "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/summary_surface_retirement.md",
+        "docs/planning/decisions/summary_surface_retirement_direction.md",
+        "docs/planning/design/features/summary_surface_retirement.md",
+        "docs/planning/design/implementation/summary_surface_retirement.md"
+      ],
+      "notes": "The deleted summary and continuity-trace artifacts should disappear from the synced planning corpus while the surviving historical records retain their rationale without linking to the retired root file."
+    },
+    {
+      "acceptance_id": "ac.summary_surface_retirement.003",
+      "summary": "Sync, targeted validation, full validation, and confirmation passes are green after the retirement, and the remaining SUMMARY.md mentions are bounded to the retirement slice or generated closeout metadata.",
+      "source_requirement_ids": [
+        "req.summary_surface_retirement.003"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/summary_surface_retirement.md",
+        "docs/planning/decisions/summary_surface_retirement_direction.md",
+        "docs/planning/design/features/summary_surface_retirement.md",
+        "docs/planning/design/implementation/summary_surface_retirement.md",
+        "docs/planning/tasks/open/retire_summary_md_and_direct_dependency_surfaces.md",
+        "docs/planning/tasks/open/validate_and_close_summary_surface_retirement.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_traceability_index_sync.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "notes": "The final confirmation audit should show no surviving repo-local markdown links to SUMMARY.md outside the retirement slice, while the generated planning history may still retain bounded textual mentions in closeout metadata."
+    }
+  ]
+}

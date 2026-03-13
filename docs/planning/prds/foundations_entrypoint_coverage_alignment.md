@@ -35,7 +35,8 @@ Align foundations family entrypoints and the foundations context review workflow
 
 ## Problem Statement
 - The foundations family currently routes human reviewers to
-  [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) and future-state readers to
+  [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
+  and future-state readers to
   [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md),
   but [foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
   does not load either surface for the review contexts where the family README
@@ -54,8 +55,8 @@ Align foundations family entrypoints and the foundations context review workflow
 ## Goals
 - Make the foundations family entrypoints expose both the human read order and
   the machine lookup and rebuild routes for the same family.
-- Make the foundations context review workflow load the summary and future-state
-  companion docs when those routes are relevant.
+- Make the foundations context review workflow load the coordination and
+  future-state companion docs when those routes are relevant.
 - Add fail-closed regression coverage for the repaired foundations entrypoint
   guidance.
 
@@ -71,8 +72,8 @@ Align foundations family entrypoints and the foundations context review workflow
   entrypoints must explicitly expose the machine lookup and rebuild routes that
   serve the governed foundations corpus.
 - `req.foundations_entrypoint_coverage_alignment.002`: The foundations context
-  review workflow must load the summary and customer-story companion docs when a
-  foundations-aware review or planning task depends on those routes.
+  review workflow must load the coordination and customer-story companion docs
+  when a foundations-aware review or planning task depends on those routes.
 - `req.foundations_entrypoint_coverage_alignment.003`: Regression coverage must
   fail closed if the repaired foundations entrypoint guidance drops those human
   or machine routes again.
@@ -87,9 +88,10 @@ Align foundations family entrypoints and the foundations context review workflow
 - `ac.foundations_entrypoint_coverage_alignment.002`:
   [foundations_context_review.md](/home/j/WatchTowerPlan/workflows/modules/foundations_context_review.md)
   loads [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md)
-  and [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) for the review contexts
-  already described by the foundations layer and surfaces `watchtower-core query foundations`
-  as the deterministic discovery helper.
+  and [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
+  for the review contexts already described by the foundations layer and
+  surfaces `watchtower-core query foundations` as the deterministic discovery
+  helper.
 - `ac.foundations_entrypoint_coverage_alignment.003`: Targeted integration
   regressions, full repository validation, and repeated foundations-themed
   confirmation passes stay green after the guidance repair lands.

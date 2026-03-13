@@ -444,7 +444,6 @@
         "docs/standards/"
       ],
       "internal_reference_paths": [
-        "SUMMARY.md",
         "docs/commands/core_python/watchtower_core_query_initiatives.md",
         "docs/planning/prds/planning_authority_unification.md"
       ]
@@ -724,7 +723,6 @@
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/foundations/product_direction.md",
-        "SUMMARY.md",
         "README.md",
         "docs/planning/coordination_tracking.md"
       ]
@@ -858,45 +856,6 @@
         "docs/foundations/repository_standards_posture.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/customer_story.md"
-      ]
-    },
-    {
-      "trace_id": "trace.foundations_summary_entrypoint_continuity",
-      "prd_id": "prd.foundations_summary_entrypoint_continuity",
-      "title": "Foundations Summary Entrypoint Continuity PRD",
-      "summary": "Restore the root SUMMARY.md surface referenced by foundations-adjacent docs and guard that entrypoint against future drift.",
-      "status": "active",
-      "doc_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
-      "updated_at": "2026-03-12T23:50:46Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "requirement_ids": [
-        "req.foundations_summary_entrypoint_continuity.001",
-        "req.foundations_summary_entrypoint_continuity.002",
-        "req.foundations_summary_entrypoint_continuity.003"
-      ],
-      "acceptance_ids": [
-        "ac.foundations_summary_entrypoint_continuity.001",
-        "ac.foundations_summary_entrypoint_continuity.002",
-        "ac.foundations_summary_entrypoint_continuity.003"
-      ],
-      "linked_decision_ids": [
-        "decision.foundations_summary_entrypoint_continuity_direction"
-      ],
-      "linked_design_ids": [
-        "design.features.foundations_summary_entrypoint_continuity"
-      ],
-      "linked_plan_ids": [
-        "design.implementation.foundations_summary_entrypoint_continuity"
-      ],
-      "related_paths": [
-        "docs/foundations/README.md",
-        "docs/foundations/repository_scope.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/repository_standards_posture.md"
       ]
     },
     {
@@ -1248,7 +1207,6 @@
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/foundations/repository_scope.md",
-        "SUMMARY.md",
         "docs/planning/coordination_tracking.md",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json"
@@ -1699,6 +1657,65 @@
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/templates/documentation_template.md",
         "docs/templates/README.md"
+      ]
+    },
+    {
+      "trace_id": "trace.summary_surface_retirement",
+      "prd_id": "prd.summary_surface_retirement",
+      "title": "Summary Surface Retirement PRD",
+      "summary": "Retire SUMMARY.md as a root surface, remove its dedicated restoration artifacts, and eliminate remaining repo-local dependencies on the retired summary entrypoint.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/summary_surface_retirement.md",
+      "updated_at": "2026-03-13T01:17:32Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.summary_surface_retirement.001",
+        "req.summary_surface_retirement.002",
+        "req.summary_surface_retirement.003"
+      ],
+      "acceptance_ids": [
+        "ac.summary_surface_retirement.001",
+        "ac.summary_surface_retirement.002",
+        "ac.summary_surface_retirement.003"
+      ],
+      "linked_decision_ids": [
+        "decision.summary_surface_retirement_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.summary_surface_retirement"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.summary_surface_retirement"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "docs/planning/prds/",
+        "docs/planning/decisions/",
+        "docs/planning/design/",
+        "docs/planning/tasks/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
+        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
+        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json"
+      ],
+      "internal_reference_paths": [
+        "README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md"
       ]
     },
     {

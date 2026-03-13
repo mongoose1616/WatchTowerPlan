@@ -34,7 +34,7 @@ aliases:
 Defines the technical design for a canonical planning catalog, a machine authority map, and explicit planning-status semantics.
 
 ## Source Request
-- User request to review [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md), verify the remaining issues, and complete the still-valid remediation initiatives end to end.
+- User request to review an earlier whole-repo assessment, verify the remaining issues, and complete the still-valid remediation initiatives end to end.
 
 ## Scope and Feature Boundary
 - Covers one new machine-readable planning catalog artifact family that joins trace-linked planning, task, acceptance, evidence, and initiative-coordination state.
@@ -155,7 +155,6 @@ Defines the technical design for a canonical planning catalog, a machine authori
 - Existing command consumers may rely on current JSON shapes, so compatibility notes and tests must be deliberate.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
 - [initiative_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/initiatives/initiative_index.v1.json)
 - [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)

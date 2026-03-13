@@ -436,8 +436,7 @@
         "docs/foundations/repository_scope.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/coordination_index_standard.md",
-        "docs/standards/data_contracts/planning_catalog_standard.md",
-        "SUMMARY.md"
+        "docs/standards/data_contracts/planning_catalog_standard.md"
       ]
     },
     {
@@ -641,7 +640,6 @@
         "docs/foundations/product_direction.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md",
-        "SUMMARY.md",
         "README.md",
         "docs/foundations/README.md"
       ]
@@ -743,32 +741,6 @@
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/data_contracts/foundation_index_standard.md",
         "docs/standards/documentation/workflow_md_standard.md"
-      ]
-    },
-    {
-      "document_id": "design.features.foundations_summary_entrypoint_continuity",
-      "trace_id": "trace.foundations_summary_entrypoint_continuity",
-      "family": "feature_design",
-      "title": "Foundations Summary Entrypoint Continuity Feature Design",
-      "summary": "Defines the technical design boundary for Foundations Summary Entrypoint Continuity.",
-      "status": "draft",
-      "doc_path": "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
-      "updated_at": "2026-03-12T23:50:46Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "related_paths": [
-        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
-        "docs/foundations/README.md",
-        "docs/foundations/repository_scope.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
-      ],
-      "internal_reference_paths": [
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/standards/documentation/readme_md_standard.md",
-        "workflows/modules/documentation_refresh.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "README.md"
       ]
     },
     {
@@ -1195,7 +1167,6 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
-        "SUMMARY.md",
         "docs/planning/coordination_tracking.md",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
@@ -1606,6 +1577,52 @@
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/documentation/command_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.features.summary_surface_retirement",
+      "trace_id": "trace.summary_surface_retirement",
+      "family": "feature_design",
+      "title": "Summary Surface Retirement Feature Design",
+      "summary": "Defines the technical design boundary for Summary Surface Retirement.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/summary_surface_retirement.md",
+      "updated_at": "2026-03-13T01:17:32Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/summary_surface_retirement.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "docs/planning/prds/",
+        "docs/planning/decisions/",
+        "docs/planning/design/",
+        "docs/planning/tasks/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
+        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
+        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/README.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/foundations/README.md",
+        "workflows/modules/foundations_context_review.md"
       ]
     },
     {
@@ -2068,7 +2085,6 @@
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/coordination_index_standard.md",
         "docs/standards/documentation/command_md_standard.md",
-        "SUMMARY.md",
         "docs/planning/prds/derived_projection_status_semantics_alignment.md"
       ]
     },
@@ -2267,7 +2283,6 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md",
-        "SUMMARY.md",
         "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md"
       ]
@@ -2364,35 +2379,6 @@
         "docs/foundations/repository_standards_posture.md",
         "docs/foundations/product_direction.md",
         "docs/foundations/customer_story.md"
-      ]
-    },
-    {
-      "document_id": "design.implementation.foundations_summary_entrypoint_continuity",
-      "trace_id": "trace.foundations_summary_entrypoint_continuity",
-      "family": "implementation_plan",
-      "title": "Foundations Summary Entrypoint Continuity Implementation Plan",
-      "summary": "Breaks Foundations Summary Entrypoint Continuity into a bounded implementation slice.",
-      "status": "draft",
-      "doc_path": "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
-      "updated_at": "2026-03-12T23:50:46Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "source_paths": [
-        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/prds/foundations_summary_entrypoint_continuity.md"
-      ],
-      "related_paths": [
-        "docs/foundations/README.md",
-        "docs/foundations/repository_scope.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/documentation/readme_md_standard.md",
-        "workflows/modules/documentation_refresh.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "docs/foundations/repository_scope.md",
-        "docs/foundations/repository_standards_posture.md",
-        "README.md"
       ]
     },
     {
@@ -2619,7 +2605,6 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/documentation/command_md_standard.md",
-        "SUMMARY.md",
         "docs/planning/prds/planning_authority_unification.md",
         "docs/planning/design/features/planning_authority_unification.md"
       ]
@@ -2925,6 +2910,54 @@
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.summary_surface_retirement",
+      "trace_id": "trace.summary_surface_retirement",
+      "family": "implementation_plan",
+      "title": "Summary Surface Retirement Implementation Plan",
+      "summary": "Breaks Summary Surface Retirement into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/summary_surface_retirement.md",
+      "updated_at": "2026-03-13T01:17:32Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/summary_surface_retirement.md",
+        "docs/planning/prds/summary_surface_retirement.md"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "docs/planning/prds/",
+        "docs/planning/decisions/",
+        "docs/planning/design/",
+        "docs/planning/tasks/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
+        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
+        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/README.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md"
       ]
     },
     {

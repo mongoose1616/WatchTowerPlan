@@ -33,7 +33,7 @@ aliases:
 Defines the design for separating current repository scope from future product narrative and for keeping root entrypoints thin and explicit.
 
 ## Source Request
-- User request to validate the issues captured in [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) and execute the necessary follow-up initiatives end to end.
+- User request to validate the issues captured in an earlier whole-repo review and execute the necessary follow-up initiatives end to end.
 
 ## Scope and Feature Boundary
 - Covers one new repository-scope foundation document.
@@ -42,7 +42,7 @@ Defines the design for separating current repository scope from future product n
 - Does not add a planning graph, root-document validator expansion, or external pack runtime support.
 
 ## Current-State Context
-- The whole-repo review in [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) confirmed that the repo is healthy but still blurs current repository scope and future product scope in the foundation layer.
+- An earlier whole-repo review confirmed that the repo is healthy but still blurs current repository scope and future product scope in the foundation layer.
 - The root [README.md](/home/j/WatchTowerPlan/README.md) is intentionally thin, but it does not currently route readers through one explicit repository charter document.
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md) and [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md) are useful, but they can read as current repository authority instead of future-product framing.
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md), [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md), and [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md) need small clarifications so they match the current export-ready boundary and repo scale.
@@ -55,7 +55,7 @@ Defines the design for separating current repository scope from future product n
 ## Internal Standards and Canonical References Applied
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the design keeps the new scope and entrypoint work explicitly linked to one trace, one decision, one acceptance contract, and bounded tasks.
 - [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): the fix should reduce ambiguity with minimal new prose and avoid replacing a thin root router with another large narrative document.
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md): the feature scope is constrained to issues evidenced in the durable whole-repo review rather than reopening unrelated review findings.
+- An earlier whole-repo review: the feature scope is constrained to issues already evidenced in repository review rather than reopening unrelated findings.
 
 ## Design Goals and Constraints
 - Publish one explicit repository-scope foundation instead of relying on inference across several documents.
@@ -108,7 +108,6 @@ Defines the design for separating current repository scope from future product n
 - `docs/foundations/`
 - `README.md`
 - `docs/planning/README.md`
-- `SUMMARY.md`
 
 ## Design Guardrails
 - Do not turn the new repository-scope document into a duplicate of the root README.
@@ -130,7 +129,6 @@ Defines the design for separating current repository scope from future product n
 - Adding a new foundation doc could backfire if the foundation README does not make the new precedence model obvious.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [README.md](/home/j/WatchTowerPlan/README.md)
 - [docs/foundations/README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
 

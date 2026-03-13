@@ -45,10 +45,10 @@ Defines the technical design boundary for Foundations Entrypoint Coverage Alignm
 
 ## Current-State Context
 - The foundations README already routes repo reviewers through
-  `repository_scope.md`, `SUMMARY.md`, and `repository_standards_posture.md`,
-  and routes future-state readers through `product_direction.md` and
+  `repository_scope.md`, `docs/planning/coordination_tracking.md`, and
+  `repository_standards_posture.md`, and routes future-state readers through `product_direction.md` and
   `customer_story.md`.
-- The foundations review workflow does not currently load `SUMMARY.md` or
+- The foundations review workflow does not currently load `docs/planning/coordination_tracking.md` or
   `customer_story.md`, and the family entrypoint docs do not coherently expose
   the machine query or rebuild routes for the same corpus.
 
@@ -89,9 +89,9 @@ Defines the technical design boundary for Foundations Entrypoint Coverage Alignm
 - Add an explicit machine-routes section to the foundations family README.
 - Add a machine foundation-query route to repository-scope entrypoint guidance.
 - Expand the foundations context review workflow to load `customer_story.md`
-  and `SUMMARY.md` for the contexts already described by the family README and
-  to mention `watchtower-core query foundations` as the deterministic discovery
-  helper.
+  and `docs/planning/coordination_tracking.md` for the contexts already
+  described by the family README and to mention `watchtower-core query
+  foundations` as the deterministic discovery helper.
 - Add short related-entrypoint notes to the machine foundation-index README so
   users opening the artifact family can reach the authoritative human and
   command-doc surfaces immediately.
@@ -115,9 +115,9 @@ Defines the technical design boundary for Foundations Entrypoint Coverage Alignm
 ### Invariants and Failure Cases
 - The foundations family must keep current human read order intact while adding
   the missing machine lookup and rebuild guidance.
-- If a future edit removes `SUMMARY.md`, `customer_story.md`, or the machine
-  foundations command-doc references from these repaired surfaces, the targeted
-  regression should fail.
+- If a future edit removes `docs/planning/coordination_tracking.md`,
+  `customer_story.md`, or the machine foundations command-doc references from
+  these repaired surfaces, the targeted regression should fail.
 
 ## Affected Surfaces
 - docs/foundations/README.md

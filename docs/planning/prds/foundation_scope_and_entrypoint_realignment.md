@@ -92,7 +92,6 @@ The foundation layer currently mixes two kinds of truth. Some foundation documen
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): future product structure remains important, but it should not blur the current repository boundary.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [README.md](/home/j/WatchTowerPlan/README.md)
 - [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
 

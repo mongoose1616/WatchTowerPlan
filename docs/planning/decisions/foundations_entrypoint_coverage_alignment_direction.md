@@ -36,7 +36,7 @@ Records the initial direction decision for Foundations Entrypoint Coverage Align
 ## Decision Statement
 Align the existing foundations family entrypoint docs and the foundations
 context review workflow so they explicitly route readers to the machine
-foundations lookup and rebuild surfaces and load the summary and customer-story
+foundations lookup and rebuild surfaces and load the coordination and customer-story
 companions for the review contexts the foundations layer already advertises.
 
 ## Trigger or Source Request
@@ -44,7 +44,8 @@ companions for the review contexts the foundations layer already advertises.
 
 ## Current Context and Constraints
 - The foundations family README already describes review paths that depend on
-  `SUMMARY.md` and future-state paths that depend on `customer_story.md`, but
+  `docs/planning/coordination_tracking.md` and future-state paths that depend on
+  `customer_story.md`, but
   the foundations context review workflow does not load those surfaces.
 - The family entrypoint docs and the machine foundations README do not
   currently expose a coherent machine route to `watchtower-core query foundations`

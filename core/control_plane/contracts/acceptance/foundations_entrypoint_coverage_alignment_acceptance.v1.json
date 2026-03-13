@@ -25,14 +25,14 @@
     },
     {
       "acceptance_id": "ac.foundations_entrypoint_coverage_alignment.002",
-      "summary": "The foundations context review workflow loads the summary and customer-story companion docs for the relevant review contexts and surfaces watchtower-core query foundations as the deterministic discovery helper.",
+      "summary": "The foundations context review workflow loads the coordination and customer-story companion docs for the relevant review contexts and surfaces watchtower-core query foundations as the deterministic discovery helper.",
       "source_requirement_ids": [
         "req.foundations_entrypoint_coverage_alignment.002"
       ],
       "validation_targets": [
         "workflows/modules/foundations_context_review.md",
         "docs/foundations/customer_story.md",
-        "SUMMARY.md"
+        "docs/planning/coordination_tracking.md"
       ],
       "related_paths": [
         "docs/foundations/README.md",

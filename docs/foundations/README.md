@@ -10,7 +10,7 @@
 | Engineers and maintainers | `repository_scope.md` | `engineering_design_principles.md`, `engineering_stack_direction.md`, `repository_standards_posture.md` | Use this route when deciding what belongs in this repo and how the governed core should evolve. |
 | Product owners and engineering leads | `repository_scope.md` | `product_direction.md`, `customer_story.md`, `engineering_design_principles.md` | Use this route when future product direction matters, but current repository scope still needs to stay explicit. |
 | Designers and future product reviewers | `product_direction.md` | `customer_story.md`, `repository_scope.md` | Use this route when shaping future product experience while staying grounded in what this repo does and does not own yet. |
-| Repo reviewers and auditors | `repository_scope.md` | `SUMMARY.md`, `repository_standards_posture.md` | Use this route when the main question is overall repository coherence, authority, and next remediation work. |
+| Repo reviewers and auditors | `repository_scope.md` | `docs/planning/coordination_tracking.md`, `repository_standards_posture.md` | Use this route when the main question is overall repository coherence, authority, and next remediation work. |
 
 ## Machine Routes
 

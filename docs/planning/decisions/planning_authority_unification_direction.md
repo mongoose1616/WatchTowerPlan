@@ -38,7 +38,7 @@ Records the decision to add a canonical planning catalog and machine authority m
 Add one canonical machine planning catalog and one machine-readable authority map, keep existing coordination and family views available as narrower projections or compatibility surfaces, and make the new canonical path the preferred machine route for deep planning lookup.
 
 ## Trigger or Source Request
-- Whole-repo review follow-up work requested from [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md), specifically the confirmed gaps around planning-authority scatter, missing machine authority discovery, and ambiguous planning status semantics.
+- Whole-repo review follow-up work requested from an earlier repository assessment, specifically the confirmed gaps around planning-authority scatter, missing machine authority discovery, and ambiguous planning status semantics.
 
 ## Current Context and Constraints
 - The existing planning model works and should not be destabilized by a ground-up rewrite.
@@ -96,7 +96,6 @@ Adopt option 2. The repo will add one planning catalog as the canonical machine 
 - Compatibility assumptions in current consumers may require keeping some legacy fields or notes during the transition.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
 - [initiative_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/initiatives/initiative_index.v1.json)
 - [traceability_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/traceability_index.v1.json)

@@ -51,7 +51,7 @@ Breaks the planning catalog, authority-map, and status-semantics work into bound
 - The authority map is authored governance policy, not a fully derived artifact.
 
 ## Current-State Context
-- `SUMMARY.md` already identified the lack of a canonical machine planning join and the absence of a machine-readable authority map as the highest-leverage remaining coherence issue.
+- An earlier whole-repo review already identified the lack of a canonical machine planning join and the absence of a machine-readable authority map as the highest-leverage remaining coherence issue.
 - The repo already has the raw data needed for a planning catalog in its existing indexes, acceptance contracts, and evidence ledgers.
 - The command surface can add one new planning query and one new authority query without reopening the broader CLI design.
 
@@ -91,6 +91,5 @@ Breaks the planning catalog, authority-map, and status-semantics work into bound
 - Close the initiative only after the canonical planning and authority surfaces are documented and validated.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md)
 - [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/design/features/planning_authority_unification.md)

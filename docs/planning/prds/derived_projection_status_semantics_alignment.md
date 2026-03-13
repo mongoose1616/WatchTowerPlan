@@ -33,7 +33,7 @@ applies_to:
 Make initiative and coordination projections publish explicit artifact-status fields so machine consumers do not misread closed initiatives as active.
 
 ## Problem Statement
-The repository now has a canonical planning catalog and authority map, but the derived initiative-family projections still expose one misleading contract detail. Initiative-index and coordination-index entries publish a generic `status` field copied from traceability artifact lifecycle state while also publishing `initiative_status` for initiative outcome. For closed initiatives, that yields payloads such as `status: active` and `initiative_status: completed`, which is correct internally but easy for machine consumers to misread as contradictory or stale. The review in [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) called out this exact ambiguity, and verification after the planning-authority closeout confirmed that it still reproduces on `watchtower-core query initiatives`.
+The repository now has a canonical planning catalog and authority map, but the derived initiative-family projections still expose one misleading contract detail. Initiative-index and coordination-index entries publish a generic `status` field copied from traceability artifact lifecycle state while also publishing `initiative_status` for initiative outcome. For closed initiatives, that yields payloads such as `status: active` and `initiative_status: completed`, which is correct internally but easy for machine consumers to misread as contradictory or stale. An earlier whole-repo review called out this exact ambiguity, and verification after the planning-authority closeout confirmed that it still reproduces on `watchtower-core query initiatives`.
 
 ## Goals
 - Replace ambiguous per-entry initiative-family `status` fields with explicit `artifact_status` naming in derived machine-readable initiative and coordination projections.
@@ -62,6 +62,5 @@ The repository now has a canonical planning catalog and authority map, but the d
 - The planning-authority work is a dependency because this follow-up assumes the planning catalog and authority map remain the canonical deep-planning path.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [watchtower_core_query_initiatives.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_initiatives.md)
 - [planning_authority_unification.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authority_unification.md)

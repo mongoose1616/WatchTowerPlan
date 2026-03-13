@@ -50,7 +50,7 @@ Breaks the foundation-scope and root-entrypoint cleanup into bounded documentati
 
 ## Current-State Context
 - The repo is validated and currently in `ready_for_bootstrap`, so the main need is coherence rather than new execution capability.
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) already captures the evidence and rationale for this cleanup.
+- An earlier whole-repo review already captured the evidence and rationale for this cleanup.
 
 ## Internal Standards and Canonical References Applied
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the plan must preserve explicit links from the initiative to the decision, acceptance contract, evidence, and bounded tasks through closeout.
@@ -92,7 +92,6 @@ Breaks the foundation-scope and root-entrypoint cleanup into bounded documentati
 - Land a final closeout commit after validation passes and the trace is terminal.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_scope_and_entrypoint_realignment.md)
 - [foundation_scope_and_entrypoint_realignment.md](/home/j/WatchTowerPlan/docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md)
 

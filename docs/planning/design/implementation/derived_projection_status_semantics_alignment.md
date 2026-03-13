@@ -34,7 +34,7 @@ applies_to:
 Breaks Derived Projection Status Semantics Alignment into a bounded implementation slice.
 
 ## Source Request or Design
-- Follow-up from SUMMARY.md verification after planning-authority closeout.
+- Follow-up from whole-repo review verification after planning-authority closeout.
 
 ## Scope Summary
 - Covers one bounded contract-alignment slice for derived initiative and coordination projections.
@@ -75,5 +75,4 @@ Breaks Derived Projection Status Semantics Alignment into a bounded implementati
 - Run `watchtower-core sync all --write --format json`, `watchtower-core validate all --format json`, `python -m mypy src`, `ruff check .`, and `pytest -q` before closeout.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [derived_projection_status_semantics_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/derived_projection_status_semantics_alignment.md)

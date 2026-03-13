@@ -806,14 +806,14 @@
       "title": "Decision Supersession and Regression Evidence Alignment PRD",
       "summary": "Operationalize explicit decision supersession and preserve the March 2026 regression audit as a governed repo-local reference so repeated-work conclusions remain queryable and durable.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "closeout",
-      "updated_at": "2026-03-13T01:10:32Z",
+      "initiative_status": "cancelled",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T01:16:19Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
-      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
-      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "next_action": "No further default action. Initiative is cancelled.",
+      "next_surface_path": "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
       "prd_ids": [
         "prd.decision_supersession_and_regression_evidence_alignment"
       ],
@@ -838,6 +838,8 @@
       "evidence_ids": [
         "evidence.decision_supersession_and_regression_evidence_alignment.planning_baseline"
       ],
+      "closed_at": "2026-03-13T01:16:19Z",
+      "closure_reason": "Cancelled before execution after the user redirected work to remove SUMMARY.md and its active dependency surfaces instead of continuing the decision supersession and regression-evidence slice.",
       "related_paths": [
         "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.v1.json",
@@ -1434,7 +1436,6 @@
       "closure_reason": "Clarified repository scope, realigned foundations, and tightened root entrypoints.",
       "related_paths": [
         "README.md",
-        "SUMMARY.md",
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
@@ -1728,7 +1729,6 @@
       "closed_at": "2026-03-13T00:37:03Z",
       "closure_reason": "Aligned the foundations family entrypoints and review workflow with the machine foundations routes, added fail-closed coverage, and validated the foundations-themed review loop with no additional actionable issues.",
       "related_paths": [
-        "SUMMARY.md",
         "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
         "core/control_plane/indexes/foundations/README.md",
         "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
@@ -1754,78 +1754,6 @@
         "traceability"
       ],
       "notes": "Planning baseline evidence refreshed at 2026-03-13T00:37:45Z for trace.foundations_entrypoint_coverage_alignment after the foundations entrypoint guidance repair, targeted validation, acceptance reconciliation, final acceptance-inclusive validation, initiative closeout, and repeated clean themed confirmation passes."
-    },
-    {
-      "trace_id": "trace.foundations_summary_entrypoint_continuity",
-      "title": "Foundations Summary Entrypoint Continuity PRD",
-      "summary": "Restore the root SUMMARY.md surface referenced by foundations-adjacent docs and guard that entrypoint against future drift.",
-      "artifact_status": "active",
-      "initiative_status": "completed",
-      "current_phase": "closed",
-      "updated_at": "2026-03-13T00:10:08Z",
-      "open_task_count": 0,
-      "blocked_task_count": 0,
-      "key_surface_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
-      "next_action": "No further default action. Initiative is completed.",
-      "next_surface_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
-      "prd_ids": [
-        "prd.foundations_summary_entrypoint_continuity"
-      ],
-      "decision_ids": [
-        "decision.foundations_summary_entrypoint_continuity_direction"
-      ],
-      "design_ids": [
-        "design.features.foundations_summary_entrypoint_continuity"
-      ],
-      "plan_ids": [
-        "design.implementation.foundations_summary_entrypoint_continuity"
-      ],
-      "task_ids": [
-        "task.foundations_summary_entrypoint_continuity.bootstrap.001",
-        "task.foundations_summary_entrypoint_continuity.restore.001",
-        "task.foundations_summary_entrypoint_continuity.validation.001"
-      ],
-      "acceptance_ids": [
-        "ac.foundations_summary_entrypoint_continuity.001",
-        "ac.foundations_summary_entrypoint_continuity.002",
-        "ac.foundations_summary_entrypoint_continuity.003"
-      ],
-      "acceptance_contract_ids": [
-        "contract.acceptance.foundations_summary_entrypoint_continuity"
-      ],
-      "evidence_ids": [
-        "evidence.foundations_summary_entrypoint_continuity.planning_baseline"
-      ],
-      "closed_at": "2026-03-13T00:09:25Z",
-      "closure_reason": "Restored the root SUMMARY.md entrypoint, repaired broken foundations and planning references, added fail-closed regression coverage, and validated the foundations-themed review loop with no additional actionable issues.",
-      "related_paths": [
-        "README.md",
-        "SUMMARY.md",
-        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
-        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
-        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "docs/foundations/README.md",
-        "docs/foundations/repository_scope.md",
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
-        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
-        "docs/planning/decisions/planning_authority_unification_direction.md",
-        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
-        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/prds/planning_authority_unification.md",
-        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
-        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
-        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
-        "docs/planning/tasks/task_tracking.md"
-      ],
-      "tags": [
-        "traceability"
-      ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:10:08Z for trace.foundations_summary_entrypoint_continuity after restoring SUMMARY.md, validating link resolution, running acceptance-inclusive validation, closing the initiative, and completing the post-closeout confirmation passes."
     },
     {
       "trace_id": "trace.github_collaboration",
@@ -3563,6 +3491,85 @@
         "traceability"
       ],
       "notes": "Planning baseline evidence refreshed at 2026-03-12T00:26:00Z for trace.standards_lookup_and_generic_template_alignment."
+    },
+    {
+      "trace_id": "trace.summary_surface_retirement",
+      "title": "Summary Surface Retirement PRD",
+      "summary": "Retire SUMMARY.md as a root surface, remove its dedicated restoration artifacts, and eliminate remaining repo-local dependencies on the retired summary entrypoint.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T01:47:55Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/summary_surface_retirement.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/summary_surface_retirement.md",
+      "prd_ids": [
+        "prd.summary_surface_retirement"
+      ],
+      "decision_ids": [
+        "decision.summary_surface_retirement_direction"
+      ],
+      "design_ids": [
+        "design.features.summary_surface_retirement"
+      ],
+      "plan_ids": [
+        "design.implementation.summary_surface_retirement"
+      ],
+      "task_ids": [
+        "task.summary_surface_retirement.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.summary_surface_retirement.001",
+        "ac.summary_surface_retirement.002",
+        "ac.summary_surface_retirement.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.summary_surface_retirement"
+      ],
+      "evidence_ids": [
+        "evidence.summary_surface_retirement.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T01:47:55Z",
+      "closure_reason": "Retired SUMMARY.md, removed the dedicated summary-restoration trace, rewrote surviving summary dependencies to coordination or generic historical wording, fixed the validation-exposed traceability-sync unit-test brittleness, and validated the final state with no additional actionable issues.",
+      "related_paths": [
+        "README.md",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json",
+        "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+        "core/control_plane/contracts/acceptance/summary_surface_retirement_acceptance.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
+        "core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/",
+        "docs/planning/decisions/summary_surface_retirement_direction.md",
+        "docs/planning/design/",
+        "docs/planning/design/features/summary_surface_retirement.md",
+        "docs/planning/design/implementation/summary_surface_retirement.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/",
+        "docs/planning/prds/derived_projection_status_semantics_alignment.md",
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/prds/summary_surface_retirement.md",
+        "docs/planning/tasks/",
+        "docs/planning/tasks/closed/summary_surface_retirement_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T01:39:24Z for trace.summary_surface_retirement after retiring the root summary surface, deleting the dedicated continuity trace, rewriting the direct dependency chain, syncing derived artifacts, and completing targeted validation plus the non-acceptance validation stack."
     },
     {
       "trace_id": "trace.task_query_dependency_lookup_hardening",

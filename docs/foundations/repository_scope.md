@@ -66,9 +66,8 @@ This document is authoritative for current repository ownership. It does not rep
 
 - Start here when the question is whether work belongs in `WatchTowerPlan`.
 - Start with [README.md](/home/j/WatchTowerPlan/README.md) when the main need is root routing.
-- Start with [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md) when the main need is current work state.
+- Start with [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md) when the main need is current work state, overall repository coherence, or next remediation work.
 - Start with [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md) when the main need is machine-readable lookup of the governing foundation document for one repo surface, citation path, or applied-reference path.
-- Start with [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) when the main need is whole-repo assessment and roadmap context.
 
 ## Boundaries That Must Hold
 
@@ -80,7 +79,6 @@ This document is authoritative for current repository ownership. It does not rep
 ## References
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 
 ## Updated At
 - `2026-03-11T01:34:31Z`

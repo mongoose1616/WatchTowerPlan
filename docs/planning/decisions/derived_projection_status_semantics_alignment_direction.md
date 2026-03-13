@@ -37,7 +37,7 @@ Records the decision to use explicit artifact_status naming for derived initiati
 Use explicit `artifact_status` naming for derived initiative and coordination projection entries while keeping root artifact lifecycle `status` and traceability contracts unchanged.
 
 ## Trigger or Source Request
-- Follow-up from SUMMARY.md verification after planning-authority closeout.
+- Follow-up from whole-repo review verification after planning-authority closeout.
 
 ## Current Context and Constraints
 - The canonical planning query path already uses explicit status semantics, but the derived initiative-family projections still expose an ambiguous per-entry `status` field.
@@ -85,5 +85,4 @@ Option 2 is accepted. Derived initiative-family entries will use `artifact_statu
 - The decision assumes the planning catalog remains the preferred deep-planning machine path and that derived initiative-family views should follow its explicit naming model where practical.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [planning_authority_unification_direction.md](/home/j/WatchTowerPlan/docs/planning/decisions/planning_authority_unification_direction.md)

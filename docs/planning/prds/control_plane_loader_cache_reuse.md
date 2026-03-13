@@ -111,4 +111,3 @@ traceability view if those caches had been primed earlier in the command.
 - `core/python/src/watchtower_core/validation/front_matter.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`
-- `SUMMARY.md`

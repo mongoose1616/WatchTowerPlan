@@ -37,7 +37,7 @@ Records the decision to publish an explicit repository-scope foundation, keep fu
 Publish one authoritative repository-scope foundation for current `WatchTowerPlan` ownership, keep future product direction and customer narrative in clearly marked future-state or supporting roles, and keep root entrypoints as thin routers that link to scope and coordination rather than duplicating deeper narrative context.
 
 ## Trigger or Source Request
-- User request to validate the issues captured in [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) and execute the required remediation initiatives end to end.
+- User request to validate the issues captured in an earlier whole-repo review and execute the required remediation initiatives end to end.
 
 ## Current Context and Constraints
 - The current foundation layer mixes present repository-operating truth and future WatchTower product framing.
@@ -53,7 +53,6 @@ Publish one authoritative repository-scope foundation for current `WatchTowerPla
 - `docs/foundations/`
 - `README.md`
 - `docs/planning/README.md`
-- `SUMMARY.md`
 
 ## Options Considered
 ### Option 1
@@ -89,7 +88,6 @@ Adopt option 2. The repository will add a `repository_scope.md` foundation as th
 - If the new repository-scope doc is vague, the ambiguity will persist despite the extra file.
 
 ## References
-- [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)
 - [README.md](/home/j/WatchTowerPlan/README.md)
 - [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
 

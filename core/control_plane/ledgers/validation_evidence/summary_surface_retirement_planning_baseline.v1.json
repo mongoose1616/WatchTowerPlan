@@ -1,0 +1,109 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.summary_surface_retirement.planning_baseline",
+  "title": "Summary Surface Retirement Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.summary_surface_retirement",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T01:48:55Z",
+  "source_prd_ids": [
+    "prd.summary_surface_retirement"
+  ],
+  "source_design_ids": [
+    "design.features.summary_surface_retirement"
+  ],
+  "source_plan_ids": [
+    "design.implementation.summary_surface_retirement"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.summary_surface_retirement"
+  ],
+  "checks": [
+    {
+      "check_id": "check.summary_surface_retirement.entrypoint_routes_repaired",
+      "title": "Live repository-review entrypoints route through coordination instead of the retired summary surface",
+      "result": "passed",
+      "subject_paths": [
+        "README.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "task.summary_surface_retirement.retire_summary.001",
+        "contract.acceptance.summary_surface_retirement",
+        "decision.summary_surface_retirement_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.summary_surface_retirement.001"
+      ],
+      "notes": "The root README, foundations README, repository scope, and foundations review workflow now route review and remediation work through coordination tracking, the targeted integration regression passed, and workflow document-semantics validation passed on workflows/modules/foundations_context_review.md."
+    },
+    {
+      "check_id": "check.summary_surface_retirement.summary_surface_removed",
+      "title": "The retired summary artifact and its dedicated restoration trace are removed while surviving history stays link-safe",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/prds/derived_projection_status_semantics_alignment.md",
+        "core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.v1.json",
+        "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.summary_surface_retirement.retire_summary.001",
+        "contract.acceptance.summary_surface_retirement"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.summary_surface_retirement.002"
+      ],
+      "notes": "SUMMARY.md and the dedicated trace.foundations_summary_entrypoint_continuity artifacts were deleted, sync all rebuilt the repository-path index without the retired root path, and the post-sync rg audit found remaining SUMMARY.md mentions only in the retirement slice, generated closeout metadata, and negative regression assertions."
+    },
+    {
+      "check_id": "check.summary_surface_retirement.validation_stack_green",
+      "title": "Targeted validation and the non-acceptance repository validation stack are green after the retirement",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/summary_surface_retirement.md",
+        "docs/planning/decisions/summary_surface_retirement_direction.md",
+        "docs/planning/design/features/summary_surface_retirement.md",
+        "docs/planning/design/implementation/summary_surface_retirement.md",
+        "docs/planning/tasks/closed/summary_surface_retirement_bootstrap.md",
+        "docs/planning/tasks/closed/retire_summary_md_and_direct_dependency_surfaces.md",
+        "docs/planning/tasks/closed/validate_and_close_summary_surface_retirement.md",
+        "core/control_plane/contracts/acceptance/summary_surface_retirement_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_traceability_index_sync.py",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "task.summary_surface_retirement.validation.002",
+        "contract.acceptance.summary_surface_retirement",
+        "decision.summary_surface_retirement_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.summary_surface_retirement.003"
+      ],
+      "notes": "Targeted pytest for test_control_plane_artifacts.py passed, watchtower-core validate document-semantics --path workflows/modules/foundations_context_review.md passed, watchtower-core sync all --write passed twice, watchtower-core validate all --skip-acceptance passed with 965/965, python -m mypy src passed for 182 source files, ruff check . passed, acceptance reconciliation passed for trace.summary_surface_retirement, full pytest -q exposed one brittle traceability-sync unit-test assumption and passed after updating test_traceability_index_sync.py to tolerate task-index entries without trace_id, final watchtower-core validate all passed with 1009/1009, and watchtower-core query coordination returned ready_for_bootstrap with zero active initiatives and zero actionable tasks after initiative closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/summary_surface_retirement_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-13T01:48:55Z for trace.summary_surface_retirement after retiring the root summary surface, deleting the dedicated continuity trace, rewriting the direct dependency chain, fixing the validation-exposed traceability-sync unit-test brittleness, syncing derived artifacts, completing acceptance-inclusive validation, closing the initiative, and confirming that no surviving repo-local markdown link or repository-path entry targets SUMMARY.md.",
+  "source_decision_ids": [
+    "decision.summary_surface_retirement_direction"
+  ]
+}
