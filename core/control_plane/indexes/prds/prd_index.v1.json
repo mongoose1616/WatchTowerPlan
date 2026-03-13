@@ -1445,6 +1445,45 @@
       ]
     },
     {
+      "trace_id": "trace.query_family_source_surface_alignment",
+      "prd_id": "prd.query_family_source_surface_alignment",
+      "title": "Query Family Source Surface Alignment PRD",
+      "summary": "Hardens query-family implementation-path authority so command docs and command index surfaces resolve to the correct split query families.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/query_family_source_surface_alignment.md",
+      "updated_at": "2026-03-13T22:02:13Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.query_family_source_surface_alignment.001",
+        "req.query_family_source_surface_alignment.002",
+        "req.query_family_source_surface_alignment.003",
+        "req.query_family_source_surface_alignment.004",
+        "req.query_family_source_surface_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.query_family_source_surface_alignment.001",
+        "ac.query_family_source_surface_alignment.002",
+        "ac.query_family_source_surface_alignment.003",
+        "ac.query_family_source_surface_alignment.004",
+        "ac.query_family_source_surface_alignment.005"
+      ],
+      "linked_decision_ids": [
+        "decision.query_family_source_surface_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.query_family_source_surface_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.query_family_source_surface_alignment"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/"
+      ]
+    },
+    {
       "trace_id": "trace.refactor_review_and_hardening",
       "prd_id": "prd.refactor_review_and_hardening",
       "title": "Refactor Review and Hardening PRD",

@@ -14,7 +14,7 @@ This command searches the governed design-document index so engineers and agents
 | Invocation | `watchtower-core query designs` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_records_family.py` |
 
 ## Synopsis
 ```sh
@@ -56,9 +56,10 @@ uv run watchtower-core query designs --trace-id trace.core_python_foundation --f
 | `watchtower-core query trace` | Resolves a joined trace record when you already know the trace ID and want linked planning surfaces. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/query_records_family.py`
+- `core/python/src/watchtower_core/cli/query_records_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/designs.py`
 - `core/control_plane/indexes/design_documents/design_document_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-13T21:57:29Z`

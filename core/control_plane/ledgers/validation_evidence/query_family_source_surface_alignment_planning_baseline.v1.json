@@ -1,0 +1,165 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.query_family_source_surface_alignment.planning_baseline",
+  "title": "Query Family Source Surface Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.query_family_source_surface_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T22:08:39Z",
+  "source_prd_ids": [
+    "prd.query_family_source_surface_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.query_family_source_surface_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.query_family_source_surface_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.query_family_source_surface_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.query_family_source_surface_alignment.planning_baseline",
+      "title": "Closeout planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/query_family_source_surface_alignment.md",
+        "docs/planning/design/features/query_family_source_surface_alignment.md",
+        "docs/planning/design/implementation/query_family_source_surface_alignment.md",
+        "docs/planning/decisions/query_family_source_surface_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/query_family_source_surface_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/query_family_source_surface_alignment_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/query_family_source_surface_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/harden_query_family_command_implementation_path_mapping.md",
+        "docs/planning/tasks/closed/reconcile_query_command_docs_and_command_index_source_surfaces.md",
+        "docs/planning/tasks/closed/validate_and_close_query_family_source_surface_alignment.md"
+      ],
+      "subject_ids": [
+        "prd.query_family_source_surface_alignment",
+        "design.features.query_family_source_surface_alignment",
+        "design.implementation.query_family_source_surface_alignment",
+        "task.query_family_source_surface_alignment.bootstrap.001",
+        "task.query_family_source_surface_alignment.introspection_mapping_hardening.001",
+        "task.query_family_source_surface_alignment.command_doc_and_index_reconciliation.002",
+        "task.query_family_source_surface_alignment.validation_and_confirmation.003",
+        "contract.acceptance.query_family_source_surface_alignment",
+        "evidence.query_family_source_surface_alignment.planning_baseline",
+        "decision.query_family_source_surface_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.query_family_source_surface_alignment.001"
+      ],
+      "notes": "The authored planning chain, refreshed acceptance contract and evidence ledger, and bounded closed task set now live in canonical repository paths for the query-family source-surface review loop."
+    },
+    {
+      "check_id": "check.query_family_source_surface_alignment.mapping_authority",
+      "title": "Registry-backed parser metadata publishes precise query leaf implementation paths",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/registry.py",
+        "core/python/src/watchtower_core/cli/introspection.py",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/tests/unit/test_command_index_sync.py",
+        "core/python/tests/unit/test_control_plane_loader.py"
+      ],
+      "subject_ids": [
+        "task.query_family_source_surface_alignment.introspection_mapping_hardening.001"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.query_family_source_surface_alignment.002"
+      ],
+      "notes": "The registry now declares query leaf-family ownership explicitly, parser-backed command specs consume that authority, and the rebuilt command index publishes the split discovery, knowledge, records, and coordination family paths while leaving the root query group unchanged."
+    },
+    {
+      "check_id": "check.query_family_source_surface_alignment.doc_and_discovery_alignment",
+      "title": "Query command docs and command discovery surfaces align to the split family model",
+      "result": "passed",
+      "subject_paths": [
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_commands.md",
+        "docs/commands/core_python/watchtower_core_query_paths.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/commands/core_python/watchtower_core_query_prds.md",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/commands/core_python/watchtower_core_query_designs.md",
+        "docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "docs/commands/core_python/watchtower_core_query_evidence.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.query_family_source_surface_alignment.command_doc_and_index_reconciliation.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.query_family_source_surface_alignment.003"
+      ],
+      "notes": "The affected query command pages no longer point at stale `main.py` surfaces, the stale-reference sweep leaves only the intentional root query-group `query_family.py` references, and representative `query commands` probes return the expected split family files."
+    },
+    {
+      "check_id": "check.query_family_source_surface_alignment.bounded_direction",
+      "title": "The slice records and preserves the accepted bounded handler-boundary recommendation",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/decisions/query_family_source_surface_alignment_direction.md",
+        "docs/planning/design/implementation/query_family_source_surface_alignment.md",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/tests/unit/test_command_index_sync.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.query_family_source_surface_alignment.introspection_mapping_hardening.001",
+        "task.query_family_source_surface_alignment.command_doc_and_index_reconciliation.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.query_family_source_surface_alignment.004"
+      ],
+      "notes": "The re-review concluded that `query_coordination_handlers.py` is still large but presently acts as an acceptable family boundary after the earlier serializer extraction, so this trace keeps the runtime split bounded and uses direct consumer regressions to guard the authoritative mapping instead."
+    },
+    {
+      "check_id": "check.query_family_source_surface_alignment.validation_closeout",
+      "title": "Validation and confirmation loop returned the query-family source-surface slice to a clean state",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/query_family_source_surface_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/query_family_source_surface_alignment_planning_baseline.v1.json",
+        "docs/planning/tasks/closed/validate_and_close_query_family_source_surface_alignment.md"
+      ],
+      "subject_ids": [
+        "task.query_family_source_surface_alignment.validation_and_confirmation.003",
+        "contract.acceptance.query_family_source_surface_alignment",
+        "evidence.query_family_source_surface_alignment.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.query_family_source_surface_alignment.005"
+      ],
+      "notes": "Covers the targeted command-index or loader or CLI regression suite, the stale-reference sweep, the second-angle command-discovery review, the adversarial acceptance-gate failure that reopened the loop, the closeout repair, and the final validation reruns on the closed task state."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/query_family_source_surface_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed after the query-family implementation-path authority hardening, command-doc and command-index reconciliation, acceptance-loop repair, and validation-closeout task completion.",
+  "source_decision_ids": [
+    "decision.query_family_source_surface_alignment_direction"
+  ]
+}

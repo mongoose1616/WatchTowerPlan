@@ -194,7 +194,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_acceptance.md",
       "synopsis": "uv run watchtower-core query acceptance [-h] [--trace-id TRACE_ID] [--source-prd-id SOURCE_PRD_ID] [--acceptance-id ACCEPTANCE_ID] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -218,7 +218,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_authority.md",
       "synopsis": "uv run watchtower-core query authority [-h] [--query QUERY] [--question-id QUESTION_ID] [--domain {planning,governance}] [--artifact-kind ARTIFACT_KIND] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -242,7 +242,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_commands.md",
       "synopsis": "uv run watchtower-core query commands [-h] [--query QUERY] [--kind KIND] [--tag TAG] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_discovery_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -270,7 +270,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_coordination.md",
       "synopsis": "uv run watchtower-core query coordination [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -294,7 +294,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_decisions.md",
       "synopsis": "uv run watchtower-core query decisions [-h] [--query QUERY] [--trace-id TRACE_ID] [--decision-status DECISION_STATUS] [--tag TAG] [--linked-prd-id LINKED_PRD_ID] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -318,7 +318,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_designs.md",
       "synopsis": "uv run watchtower-core query designs [-h] [--query QUERY] [--trace-id TRACE_ID] [--family FAMILY] [--tag TAG] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -342,7 +342,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_evidence.md",
       "synopsis": "uv run watchtower-core query evidence [-h] [--trace-id TRACE_ID] [--result RESULT] [--acceptance-id ACCEPTANCE_ID] [--validator-id VALIDATOR_ID] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -366,7 +366,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_foundations.md",
       "synopsis": "uv run watchtower-core query foundations [-h] [--query QUERY] [--foundation-id FOUNDATION_ID] [--audience AUDIENCE] [--authority AUTHORITY] [--tag TAG] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--cited-by-path CITED_BY_PATH] [--applied-by-path APPLIED_BY_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -390,7 +390,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_initiatives.md",
       "synopsis": "uv run watchtower-core query initiatives [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--blocked-only] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -414,7 +414,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_paths.md",
       "synopsis": "uv run watchtower-core query paths [-h] [--query QUERY] [--surface-kind SURFACE_KIND] [--maturity MATURITY] [--priority PRIORITY] [--audience-hint AUDIENCE_HINT] [--tag TAG] [--parent-path PARENT_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_discovery_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -442,7 +442,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_planning.md",
       "synopsis": "uv run watchtower-core query planning [-h] [--query QUERY] [--trace-id TRACE_ID] [--initiative-status INITIATIVE_STATUS] [--current-phase CURRENT_PHASE] [--owner OWNER] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -466,7 +466,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_prds.md",
       "synopsis": "uv run watchtower-core query prds [-h] [--query QUERY] [--trace-id TRACE_ID] [--tag TAG] [--requirement-id REQUIREMENT_ID] [--acceptance-id ACCEPTANCE_ID] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_records_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -490,7 +490,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_references.md",
       "synopsis": "uv run watchtower-core query references [-h] [--query QUERY] [--reference-id REFERENCE_ID] [--repository-status {candidate_future_guidance,supporting_authority,active_support}] [--tag TAG] [--related-path RELATED_PATH] [--upstream-url UPSTREAM_URL] [--cited-by-path CITED_BY_PATH] [--applied-by-path APPLIED_BY_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -514,7 +514,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_standards.md",
       "synopsis": "uv run watchtower-core query standards [-h] [--query QUERY] [--standard-id STANDARD_ID] [--category CATEGORY] [--owner OWNER] [--tag TAG] [--applies-to APPLIES_TO] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--operationalization-mode OPERATIONALIZATION_MODE] [--operationalization-path OPERATIONALIZATION_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -538,7 +538,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_tasks.md",
       "synopsis": "uv run watchtower-core query tasks [-h] [--query QUERY] [--task-id TASK_ID] [--trace-id TRACE_ID] [--task-status TASK_STATUS] [--priority PRIORITY] [--owner OWNER] [--task-kind TASK_KIND] [--blocked-only] [--blocked-by BLOCKED_BY] [--depends-on DEPENDS_ON] [--include-dependency-details] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -562,7 +562,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_trace.md",
       "synopsis": "uv run watchtower-core query trace [-h] --trace-id TRACE_ID [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [
@@ -590,7 +590,7 @@
       "workspace": "core_python",
       "doc_path": "docs/commands/core_python/watchtower_core_query_workflows.md",
       "synopsis": "uv run watchtower-core query workflows [-h] [--query QUERY] [--workflow-id WORKFLOW_ID] [--phase-type PHASE_TYPE] [--task-family TASK_FAMILY] [--trigger-tag TRIGGER_TAG] [--related-path RELATED_PATH] [--reference-path REFERENCE_PATH] [--limit LIMIT] [--format {human,json}]",
-      "implementation_path": "core/python/src/watchtower_core/cli/query_family.py",
+      "implementation_path": "core/python/src/watchtower_core/cli/query_knowledge_family.py",
       "package_entrypoint": "watchtower_core.cli.main:main",
       "parent_command_id": "command.watchtower_core.query",
       "output_formats": [

@@ -1,0 +1,127 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.query_family_source_surface_alignment",
+  "title": "Query Family Source Surface Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.query_family_source_surface_alignment",
+  "source_prd_id": "prd.query_family_source_surface_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.query_family_source_surface_alignment.001",
+      "summary": "The trace publishes the fully-authored PRD, accepted direction decision, active feature design, active implementation plan, refreshed acceptance contract, refreshed evidence ledger, and bounded closed task set with the explicit coverage map and findings ledger for the query-family source-surface slice.",
+      "source_requirement_ids": [
+        "req.query_family_source_surface_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/query_family_source_surface_alignment.md",
+        "docs/planning/design/features/query_family_source_surface_alignment.md",
+        "docs/planning/design/implementation/query_family_source_surface_alignment.md",
+        "docs/planning/decisions/query_family_source_surface_alignment_direction.md",
+        "docs/planning/tasks/closed/query_family_source_surface_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/harden_query_family_command_implementation_path_mapping.md",
+        "docs/planning/tasks/closed/reconcile_query_command_docs_and_command_index_source_surfaces.md",
+        "docs/planning/tasks/closed/validate_and_close_query_family_source_surface_alignment.md",
+        "core/control_plane/contracts/acceptance/query_family_source_surface_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/query_family_source_surface_alignment_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Closeout-aligned contract should preserve the authored planning chain, refreshed contract and evidence surfaces, and the bounded closed task set for the query-family source-surface review loop."
+    },
+    {
+      "acceptance_id": "ac.query_family_source_surface_alignment.002",
+      "summary": "Representative query command specs and the rebuilt command index resolve discovery, knowledge, records, and coordination leaf commands to the correct split family implementation paths while the root query group remains at `query_family.py`.",
+      "source_requirement_ids": [
+        "req.query_family_source_surface_alignment.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/registry.py",
+        "core/python/src/watchtower_core/cli/introspection.py",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/tests/unit/test_command_index_sync.py",
+        "core/python/tests/unit/test_control_plane_loader.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/harden_query_family_command_implementation_path_mapping.md",
+        "docs/commands/core_python/watchtower_core_query.md"
+      ],
+      "notes": "Covers the registry-backed per-subcommand implementation-path authority and the derived command-index rebuild that now keeps query leaf ownership precise."
+    },
+    {
+      "acceptance_id": "ac.query_family_source_surface_alignment.003",
+      "summary": "Affected query command pages and command discovery output now align to the split query family ownership model and no longer point to stale `main.py` or umbrella `query_family.py` paths except for the root query group.",
+      "source_requirement_ids": [
+        "req.query_family_source_surface_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_commands.md",
+        "docs/commands/core_python/watchtower_core_query_paths.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/commands/core_python/watchtower_core_query_prds.md",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/commands/core_python/watchtower_core_query_designs.md",
+        "docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "docs/commands/core_python/watchtower_core_query_evidence.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/reconcile_query_command_docs_and_command_index_source_surfaces.md"
+      ],
+      "notes": "Covers the human-readable command pages and the query-command discovery surface that now publish the same split family ownership model."
+    },
+    {
+      "acceptance_id": "ac.query_family_source_surface_alignment.004",
+      "summary": "The direct consumer regressions and the accepted direction decision keep the query-family source-surface fix bounded while recording the recommendation to treat `query_coordination_handlers.py` as an acceptable family boundary for this trace.",
+      "source_requirement_ids": [
+        "req.query_family_source_surface_alignment.004"
+      ],
+      "validation_targets": [
+        "docs/planning/decisions/query_family_source_surface_alignment_direction.md",
+        "docs/planning/design/implementation/query_family_source_surface_alignment.md",
+        "core/python/tests/unit/test_command_index_sync.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/harden_query_family_command_implementation_path_mapping.md",
+        "docs/planning/tasks/closed/reconcile_query_command_docs_and_command_index_source_surfaces.md"
+      ],
+      "notes": "Covers the accepted bounded recommendation and the regression surfaces that now guard the family-specific ownership model against future drift."
+    },
+    {
+      "acceptance_id": "ac.query_family_source_surface_alignment.005",
+      "summary": "Targeted validation, full repository validation, post-fix review, second-angle confirmation, and adversarial confirmation complete cleanly with no new actionable issue under the query-family source-surface theme.",
+      "source_requirement_ids": [
+        "req.query_family_source_surface_alignment.005"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/query_family_source_surface_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/query_family_source_surface_alignment_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "notes": "Covers the repeated validation and confirmation loop plus the final traced closeout gate."
+    }
+  ]
+}

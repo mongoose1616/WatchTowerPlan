@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-13T21:45:18Z",
+  "updated_at": "2026-03-13T22:13:22Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.query_family_source_surface_alignment",
+      "title": "Query Family Source Surface Alignment PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-13T22:13:22Z",
+      "key_surface_path": "docs/planning/prds/query_family_source_surface_alignment.md",
+      "closure_reason": "Delivered, reconciled, and validated query-family source-surface authority."
+    },
     {
       "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
       "title": "Workflow Route Boundary Discoverability Hardening PRD",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-13T03:46:44Z",
       "key_surface_path": "docs/planning/prds/regression_duplication_and_overstep_review.md",
       "closure_reason": "Closed the regression-and-duplication review after hardening task trace linkage, governed companion repair, stale-path validation, planning coherence, and repeated clean confirmation passes."
-    },
-    {
-      "trace_id": "trace.summary_surface_retirement",
-      "title": "Summary Surface Retirement PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-13T01:47:55Z",
-      "key_surface_path": "docs/planning/prds/summary_surface_retirement.md",
-      "closure_reason": "Retired SUMMARY.md, removed the dedicated summary-restoration trace, rewrote surviving summary dependencies to coordination or generic historical wording, fixed the validation-exposed traceability-sync unit-test brittleness, and validated the final state with no additional actionable issues."
     }
   ]
 }

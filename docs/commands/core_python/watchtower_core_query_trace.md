@@ -14,7 +14,7 @@ This command resolves one governed traceability record by trace ID so engineers 
 | Invocation | `watchtower-core query trace` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_coordination_family.py` |
 
 ## Synopsis
 ```sh
@@ -60,9 +60,10 @@ uv run watchtower-core query trace --trace-id trace.core_python_foundation --for
 | `watchtower-core query commands` | Helps discover other CLI surfaces once you know which workflow you want. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/query_coordination_family.py`
+- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/traceability.py`
 - `core/control_plane/indexes/traceability/traceability_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-13T21:57:29Z`

@@ -175,6 +175,8 @@ def test_control_plane_loader_reads_command_index() -> None:
 
     command_index = loader.load_command_index()
     doctor = command_index.get("command.watchtower_core.doctor")
+    query_group = command_index.get("command.watchtower_core.query")
+    query_commands = command_index.get("command.watchtower_core.query.commands")
     query_paths = command_index.get("command.watchtower_core.query.paths")
     query_foundations = command_index.get("command.watchtower_core.query.foundations")
     query_workflows = command_index.get("command.watchtower_core.query.workflows")
@@ -184,7 +186,11 @@ def test_control_plane_loader_reads_command_index() -> None:
     query_authority = command_index.get("command.watchtower_core.query.authority")
     query_evidence = command_index.get("command.watchtower_core.query.evidence")
     query_initiatives = command_index.get("command.watchtower_core.query.initiatives")
+    query_prds = command_index.get("command.watchtower_core.query.prds")
+    query_decisions = command_index.get("command.watchtower_core.query.decisions")
+    query_designs = command_index.get("command.watchtower_core.query.designs")
     query_trace = command_index.get("command.watchtower_core.query.trace")
+    query_references = command_index.get("command.watchtower_core.query.references")
     route_group = command_index.get("command.watchtower_core.route")
     route_preview = command_index.get("command.watchtower_core.route.preview")
     sync_initiative_index = command_index.get("command.watchtower_core.sync.initiative_index")
@@ -226,23 +232,50 @@ def test_control_plane_loader_reads_command_index() -> None:
         route_preview.implementation_path
         == "core/python/src/watchtower_core/cli/route_family.py"
     )
+    assert query_group.parent_command_id == "command.watchtower_core"
+    assert query_group.doc_path == "docs/commands/core_python/watchtower_core_query.md"
+    assert query_group.implementation_path == "core/python/src/watchtower_core/cli/query_family.py"
+    assert query_commands.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_commands.doc_path
+        == "docs/commands/core_python/watchtower_core_query_commands.md"
+    )
+    assert (
+        query_commands.implementation_path
+        == "core/python/src/watchtower_core/cli/query_discovery_family.py"
+    )
     assert query_paths.default_output_format == "human"
     assert query_paths.doc_path == "docs/commands/core_python/watchtower_core_query_paths.md"
-    assert query_paths.implementation_path == "core/python/src/watchtower_core/cli/query_family.py"
+    assert (
+        query_paths.implementation_path
+        == "core/python/src/watchtower_core/cli/query_discovery_family.py"
+    )
     assert query_foundations.parent_command_id == "command.watchtower_core.query"
     assert (
         query_foundations.doc_path
         == "docs/commands/core_python/watchtower_core_query_foundations.md"
+    )
+    assert (
+        query_foundations.implementation_path
+        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
     )
     assert query_workflows.parent_command_id == "command.watchtower_core.query"
     assert (
         query_workflows.doc_path
         == "docs/commands/core_python/watchtower_core_query_workflows.md"
     )
+    assert (
+        query_workflows.implementation_path
+        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+    )
     assert query_standards.parent_command_id == "command.watchtower_core.query"
     assert (
         query_standards.doc_path
         == "docs/commands/core_python/watchtower_core_query_standards.md"
+    )
+    assert (
+        query_standards.implementation_path
+        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
     )
     assert query_coordination.parent_command_id == "command.watchtower_core.query"
     assert (
@@ -251,34 +284,85 @@ def test_control_plane_loader_reads_command_index() -> None:
     )
     assert (
         query_coordination.implementation_path
-        == "core/python/src/watchtower_core/cli/query_family.py"
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
     )
     assert query_authority.parent_command_id == "command.watchtower_core.query"
     assert (
         query_authority.doc_path
         == "docs/commands/core_python/watchtower_core_query_authority.md"
     )
+    assert (
+        query_authority.implementation_path
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
     assert query_acceptance.parent_command_id == "command.watchtower_core.query"
     assert (
         query_acceptance.doc_path
         == "docs/commands/core_python/watchtower_core_query_acceptance.md"
+    )
+    assert (
+        query_acceptance.implementation_path
+        == "core/python/src/watchtower_core/cli/query_records_family.py"
     )
     assert query_evidence.parent_command_id == "command.watchtower_core.query"
     assert (
         query_evidence.doc_path
         == "docs/commands/core_python/watchtower_core_query_evidence.md"
     )
+    assert (
+        query_evidence.implementation_path
+        == "core/python/src/watchtower_core/cli/query_records_family.py"
+    )
     assert query_initiatives.parent_command_id == "command.watchtower_core.query"
     assert (
         query_initiatives.doc_path
         == "docs/commands/core_python/watchtower_core_query_initiatives.md"
     )
-    query_references = command_index.get("command.watchtower_core.query.references")
+    assert (
+        query_initiatives.implementation_path
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
+    assert query_prds.parent_command_id == "command.watchtower_core.query"
+    assert query_prds.doc_path == "docs/commands/core_python/watchtower_core_query_prds.md"
+    assert (
+        query_prds.implementation_path
+        == "core/python/src/watchtower_core/cli/query_records_family.py"
+    )
+    assert query_decisions.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_decisions.doc_path
+        == "docs/commands/core_python/watchtower_core_query_decisions.md"
+    )
+    assert (
+        query_decisions.implementation_path
+        == "core/python/src/watchtower_core/cli/query_records_family.py"
+    )
+    assert query_designs.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_designs.doc_path
+        == "docs/commands/core_python/watchtower_core_query_designs.md"
+    )
+    assert (
+        query_designs.implementation_path
+        == "core/python/src/watchtower_core/cli/query_records_family.py"
+    )
     assert query_trace.parent_command_id == "command.watchtower_core.query"
+    assert (
+        query_trace.doc_path
+        == "docs/commands/core_python/watchtower_core_query_trace.md"
+    )
+    assert (
+        query_trace.implementation_path
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
     assert query_references.parent_command_id == "command.watchtower_core.query"
     assert (
         query_references.doc_path
         == "docs/commands/core_python/watchtower_core_query_references.md"
+    )
+    assert (
+        query_references.implementation_path
+        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
     )
     assert sync_traceability.parent_command_id == "command.watchtower_core.sync"
     sync_reference_index = command_index.get("command.watchtower_core.sync.reference_index")

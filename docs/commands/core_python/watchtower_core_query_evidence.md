@@ -14,7 +14,7 @@ This command searches the governed validation-evidence ledger for one trace, acc
 | Invocation | `watchtower-core query evidence` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_records_family.py` |
 
 ## Synopsis
 ```sh
@@ -54,9 +54,10 @@ uv run watchtower-core query evidence --acceptance-id ac.core_python_foundation.
 | `watchtower-core query trace` | Shows the joined traceability record that should list the same evidence IDs. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/query_records_family.py`
+- `core/python/src/watchtower_core/cli/query_records_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/evidence.py`
 - `core/control_plane/ledgers/validation_evidence/`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-13T21:57:29Z`

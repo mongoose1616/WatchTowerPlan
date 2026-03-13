@@ -14,7 +14,7 @@ This command searches the governed task index so engineers and agents can find l
 | Invocation | `watchtower-core query tasks` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_coordination_family.py` |
 
 ## Synopsis
 ```sh
@@ -69,9 +69,10 @@ uv run watchtower-core query tasks --trace-id trace.local_task_tracking --format
 | `watchtower-core query trace` | Resolves a joined trace record when you already know the trace ID and want linked task IDs. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/query_coordination_family.py`
+- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/tasks.py`
 - `core/control_plane/indexes/tasks/task_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-13T21:57:29Z`

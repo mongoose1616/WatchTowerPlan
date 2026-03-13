@@ -101,8 +101,48 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_core/cli/task_family.py"
     )
     assert (
-        spec_by_id["command.watchtower_core.query.commands"].implementation_path
+        spec_by_id["command.watchtower_core.query"].implementation_path
         == "core/python/src/watchtower_core/cli/query_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.commands"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_discovery_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.paths"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_discovery_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.foundations"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.references"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.standards"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.prds"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_records_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.acceptance"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_records_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.coordination"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.planning"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
+    assert (
+        spec_by_id["command.watchtower_core.query.trace"].implementation_path
+        == "core/python/src/watchtower_core/cli/query_coordination_family.py"
     )
     assert (
         spec_by_id["command.watchtower_core.sync.command_index"].implementation_path

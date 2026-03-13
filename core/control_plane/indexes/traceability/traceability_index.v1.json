@@ -3160,6 +3160,108 @@
       "notes": "Planning-baseline evidence for the pre-implementation repository review and hardening initiative."
     },
     {
+      "trace_id": "trace.query_family_source_surface_alignment",
+      "title": "Query Family Source Surface Alignment PRD",
+      "summary": "Hardens query-family implementation-path authority so command docs and command index surfaces resolve to the correct split query families.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T22:13:22Z",
+      "closed_at": "2026-03-13T22:13:22Z",
+      "closure_reason": "Delivered, reconciled, and validated query-family source-surface authority.",
+      "prd_ids": [
+        "prd.query_family_source_surface_alignment"
+      ],
+      "decision_ids": [
+        "decision.query_family_source_surface_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.query_family_source_surface_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.query_family_source_surface_alignment"
+      ],
+      "task_ids": [
+        "task.query_family_source_surface_alignment.bootstrap.001",
+        "task.query_family_source_surface_alignment.command_doc_and_index_reconciliation.002",
+        "task.query_family_source_surface_alignment.introspection_mapping_hardening.001",
+        "task.query_family_source_surface_alignment.validation_and_confirmation.003"
+      ],
+      "requirement_ids": [
+        "req.query_family_source_surface_alignment.001",
+        "req.query_family_source_surface_alignment.002",
+        "req.query_family_source_surface_alignment.003",
+        "req.query_family_source_surface_alignment.004",
+        "req.query_family_source_surface_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.query_family_source_surface_alignment.001",
+        "ac.query_family_source_surface_alignment.002",
+        "ac.query_family_source_surface_alignment.003",
+        "ac.query_family_source_surface_alignment.004",
+        "ac.query_family_source_surface_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.query_family_source_surface_alignment"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.query_family_source_surface_alignment.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/query_family_source_surface_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/commands/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/query_family_source_surface_alignment_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/introspection.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/registry.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/tests/unit/test_command_index_sync.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_acceptance.md",
+        "docs/commands/core_python/watchtower_core_query_commands.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/commands/core_python/watchtower_core_query_designs.md",
+        "docs/commands/core_python/watchtower_core_query_evidence.md",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_paths.md",
+        "docs/commands/core_python/watchtower_core_query_prds.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/query_family_source_surface_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/query_family_source_surface_alignment.md",
+        "docs/planning/design/implementation/query_family_source_surface_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/query_family_source_surface_alignment.md",
+        "docs/planning/tasks/closed/harden_query_family_command_implementation_path_mapping.md",
+        "docs/planning/tasks/closed/query_family_source_surface_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/reconcile_query_command_docs_and_command_index_source_surfaces.md",
+        "docs/planning/tasks/closed/validate_and_close_query_family_source_surface_alignment.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed after the query-family implementation-path authority hardening, command-doc and command-index reconciliation, acceptance-loop repair, and validation-closeout task completion."
+    },
+    {
       "trace_id": "trace.refactor_review_and_hardening",
       "title": "Refactor Review and Hardening PRD",
       "summary": "Review and rationalize refactor opportunities across workflow routing, planning projections, command entrypoints, repo-local hotspots, reference signaling, and adjacent governed surfaces without weakening governance.",

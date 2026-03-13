@@ -14,7 +14,7 @@ This command searches the governed initiative index for broader initiative-famil
 | Invocation | `watchtower-core query initiatives` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_coordination_family.py` |
 
 ## Synopsis
 ```sh
@@ -82,9 +82,10 @@ uv run watchtower-core query initiatives --initiative-status completed --format 
 | `watchtower-core query tasks` | Inspects the active or blocked tasks that contribute to initiative phase and ownership. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
+- `core/python/src/watchtower_core/cli/query_coordination_family.py`
+- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/initiatives.py`
 - `core/control_plane/indexes/initiatives/initiative_index.v1.json`
 
 ## Updated At
-- `2026-03-13T20:36:00Z`
+- `2026-03-13T21:57:29Z`

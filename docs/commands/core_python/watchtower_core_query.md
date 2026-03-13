@@ -76,8 +76,11 @@ uv run watchtower-core query authority --domain planning --format json
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/query_discovery_family.py`
+- `core/python/src/watchtower_core/cli/query_knowledge_family.py`
+- `core/python/src/watchtower_core/cli/query_records_family.py`
+- `core/python/src/watchtower_core/cli/query_coordination_family.py`
 - `core/python/src/watchtower_core/repo_ops/query/`
 
 ## Updated At
-- `2026-03-13T20:36:00Z`
+- `2026-03-13T21:57:29Z`

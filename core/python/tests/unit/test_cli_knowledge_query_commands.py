@@ -15,6 +15,34 @@ def test_query_commands_supports_json_output(capsys) -> None:
     assert any(entry["command"] == "watchtower-core doctor" for entry in payload["results"])
 
 
+def test_query_commands_reports_split_query_family_implementation_paths(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        ["query", "commands", "--tag", "query", "--limit", "20"],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query commands"
+    implementation_paths = {
+        entry["command_id"]: entry["implementation_path"] for entry in payload["results"]
+    }
+    assert implementation_paths["command.watchtower_core.query"] == (
+        "core/python/src/watchtower_core/cli/query_family.py"
+    )
+    assert implementation_paths["command.watchtower_core.query.commands"] == (
+        "core/python/src/watchtower_core/cli/query_discovery_family.py"
+    )
+    assert implementation_paths["command.watchtower_core.query.foundations"] == (
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+    )
+    assert implementation_paths["command.watchtower_core.query.acceptance"] == (
+        "core/python/src/watchtower_core/cli/query_records_family.py"
+    )
+    assert implementation_paths["command.watchtower_core.query.planning"] == (
+        "core/python/src/watchtower_core/cli/query_coordination_family.py"
+    )
+
+
 def test_query_references_supports_json_output(capsys) -> None:
     result, payload = run_json_command(
         capsys,

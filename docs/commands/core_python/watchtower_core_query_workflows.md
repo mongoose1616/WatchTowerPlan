@@ -14,7 +14,7 @@ This command searches the governed workflow index so engineers and agents can fi
 | Invocation | `watchtower-core query workflows` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_knowledge_family.py` |
 
 ## Synopsis
 ```sh
@@ -82,9 +82,10 @@ uv run watchtower-core query workflows --reference-path docs/references/github_c
 | `watchtower-core query references` | Searches the reference index when you know the source authority topic but not the workflow module. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/query_knowledge_family.py`
+- `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/workflows.py`
 - `core/control_plane/indexes/workflows/workflow_index.v1.json`
 
 ## Updated At
-- `2026-03-13T21:17:49Z`
+- `2026-03-13T21:57:29Z`

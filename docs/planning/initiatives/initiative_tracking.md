@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.query_family_source_surface_alignment` | `completed` | [query_family_source_surface_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/query_family_source_surface_alignment.md) | `2026-03-13T22:13:22Z` | Delivered, reconciled, and validated query-family source-surface authority. |
 | `trace.workflow_route_boundary_discoverability_hardening` | `completed` | [workflow_route_boundary_discoverability_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_route_boundary_discoverability_hardening.md) | `2026-03-13T21:42:14Z` | Delivered, validated, and confirmed clean after repeated workflow-boundary review passes |
 | `trace.active_first_planning_query_history_alignment` | `completed` | [active_first_planning_query_history_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/active_first_planning_query_history_alignment.md) | `2026-03-13T20:54:01Z` | Closed after aligning filterless planning and initiative browse defaults with the active-first navigation model, refreshing companion docs and payload signaling, repairing acceptance and evidence coverage, and completing clean validation plus confirmation reruns. |
 | `trace.data_contract_index_family_baseline_alignment` | `completed` | [data_contract_index_family_baseline_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_index_family_baseline_alignment.md) | `2026-03-13T20:17:49Z` | Completed the bounded refactor review after adding the planning-index family baseline, refactoring the member standards, refreshing discoverability, repairing reopened validation-evidence drift, and rerunning clean confirmation passes. |
@@ -65,4 +66,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-13T21:45:18Z`_
+_Updated At: `2026-03-13T22:13:22Z`_

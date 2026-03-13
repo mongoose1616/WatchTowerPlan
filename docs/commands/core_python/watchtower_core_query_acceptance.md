@@ -14,7 +14,7 @@ This command searches the governed acceptance-contract artifacts for a trace, PR
 | Invocation | `watchtower-core query acceptance` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_records_family.py` |
 
 ## Synopsis
 ```sh
@@ -53,9 +53,10 @@ uv run watchtower-core query acceptance --acceptance-id ac.core_python_foundatio
 | `watchtower-core query trace` | Shows the joined traceability record that should mirror the same acceptance contract IDs. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/query_records_family.py`
+- `core/python/src/watchtower_core/cli/query_records_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/acceptance.py`
 - `core/control_plane/contracts/acceptance/`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-13T21:57:29Z`

@@ -14,7 +14,7 @@ This command searches the governed foundation index so engineers and agents can 
 | Invocation | `watchtower-core query foundations` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_knowledge_family.py` |
 
 ## Synopsis
 ```sh
@@ -72,9 +72,10 @@ uv run watchtower-core query foundations --applied-by-path docs/standards/engine
 | `watchtower-core query standards` | Searches the standard index when you want the downstream governed rules that apply one foundation doc. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/query_knowledge_family.py`
+- `core/python/src/watchtower_core/cli/query_knowledge_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/foundations.py`
 - `core/control_plane/indexes/foundations/foundation_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-13T21:57:29Z`

@@ -1297,6 +1297,42 @@
       ]
     },
     {
+      "trace_id": "trace.query_family_source_surface_alignment",
+      "decision_id": "decision.query_family_source_surface_alignment_direction",
+      "title": "Query Family Source Surface Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Query Family Source Surface Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/query_family_source_surface_alignment_direction.md",
+      "updated_at": "2026-03-13T22:02:13Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.query_family_source_surface_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.query_family_source_surface_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.query_family_source_surface_alignment"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ]
+    },
+    {
       "trace_id": "trace.refactor_review_and_hardening",
       "decision_id": "decision.refactor_review_and_hardening_direction",
       "title": "Refactor Review and Hardening Direction Decision",

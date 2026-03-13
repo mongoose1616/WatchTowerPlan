@@ -25,6 +25,15 @@ class CommandGroupSpec:
     name: str
     registrar: CommandRegistrar
     implementation_path: str
+    subcommand_implementation_paths: tuple[tuple[str, str], ...] = ()
+
+
+QUERY_DISCOVERY_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_discovery_family.py"
+QUERY_KNOWLEDGE_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_knowledge_family.py"
+QUERY_RECORDS_FAMILY_PATH = "core/python/src/watchtower_core/cli/query_records_family.py"
+QUERY_COORDINATION_FAMILY_PATH = (
+    "core/python/src/watchtower_core/cli/query_coordination_family.py"
+)
 
 
 COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
@@ -47,6 +56,25 @@ COMMAND_GROUP_SPECS: tuple[CommandGroupSpec, ...] = (
         name="query",
         registrar=register_query_family,
         implementation_path="core/python/src/watchtower_core/cli/query_family.py",
+        subcommand_implementation_paths=(
+            ("paths", QUERY_DISCOVERY_FAMILY_PATH),
+            ("commands", QUERY_DISCOVERY_FAMILY_PATH),
+            ("foundations", QUERY_KNOWLEDGE_FAMILY_PATH),
+            ("workflows", QUERY_KNOWLEDGE_FAMILY_PATH),
+            ("references", QUERY_KNOWLEDGE_FAMILY_PATH),
+            ("standards", QUERY_KNOWLEDGE_FAMILY_PATH),
+            ("prds", QUERY_RECORDS_FAMILY_PATH),
+            ("decisions", QUERY_RECORDS_FAMILY_PATH),
+            ("designs", QUERY_RECORDS_FAMILY_PATH),
+            ("acceptance", QUERY_RECORDS_FAMILY_PATH),
+            ("evidence", QUERY_RECORDS_FAMILY_PATH),
+            ("tasks", QUERY_COORDINATION_FAMILY_PATH),
+            ("coordination", QUERY_COORDINATION_FAMILY_PATH),
+            ("authority", QUERY_COORDINATION_FAMILY_PATH),
+            ("planning", QUERY_COORDINATION_FAMILY_PATH),
+            ("initiatives", QUERY_COORDINATION_FAMILY_PATH),
+            ("trace", QUERY_COORDINATION_FAMILY_PATH),
+        ),
     ),
     CommandGroupSpec(
         name="task",

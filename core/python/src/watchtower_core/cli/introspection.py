@@ -13,6 +13,11 @@ COMMAND_DOC_ROOT = "docs/commands/core_python"
 COMMAND_GROUP_IMPLEMENTATION_PATHS = {
     spec.name: spec.implementation_path for spec in COMMAND_GROUP_SPECS
 }
+COMMAND_GROUP_SUBCOMMAND_IMPLEMENTATION_PATHS = {
+    spec.name: dict(spec.subcommand_implementation_paths)
+    for spec in COMMAND_GROUP_SPECS
+    if spec.subcommand_implementation_paths
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -121,9 +126,16 @@ def _implementation_path(tokens: tuple[str, ...]) -> str:
 
     family = tokens[1]
     try:
-        return COMMAND_GROUP_IMPLEMENTATION_PATHS[family]
+        family_path = COMMAND_GROUP_IMPLEMENTATION_PATHS[family]
     except KeyError as exc:
         raise ValueError(f"Unknown CLI command family for parser metadata: {family}") from exc
+    if len(tokens) > 2:
+        subcommand_paths = COMMAND_GROUP_SUBCOMMAND_IMPLEMENTATION_PATHS.get(family)
+        if subcommand_paths is not None:
+            implementation_path = subcommand_paths.get(tokens[2])
+            if implementation_path is not None:
+                return implementation_path
+    return family_path
 
 
 def _normalize_command_token(token: str) -> str:

@@ -1389,6 +1389,31 @@
       ]
     },
     {
+      "document_id": "design.features.query_family_source_surface_alignment",
+      "trace_id": "trace.query_family_source_surface_alignment",
+      "family": "feature_design",
+      "title": "Query Family Source Surface Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Query Family Source Surface Alignment.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/query_family_source_surface_alignment.md",
+      "updated_at": "2026-03-13T22:02:13Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/query_family_source_surface_alignment.md",
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.refactor_review_and_hardening",
       "trace_id": "trace.refactor_review_and_hardening",
       "family": "feature_design",
@@ -3050,6 +3075,32 @@
         "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
         "docs/planning/design/features/preimplementation_repo_readiness.md",
         "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.query_family_source_surface_alignment",
+      "trace_id": "trace.query_family_source_surface_alignment",
+      "family": "implementation_plan",
+      "title": "Query Family Source Surface Alignment Implementation Plan",
+      "summary": "Breaks Query Family Source Surface Alignment into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/query_family_source_surface_alignment.md",
+      "updated_at": "2026-03-13T22:12:37Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/query_family_source_surface_alignment.md",
+        "docs/planning/prds/query_family_source_surface_alignment.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
       ]
     },
     {

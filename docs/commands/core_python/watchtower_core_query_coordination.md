@@ -14,7 +14,7 @@ This command is the explicit machine start-here path for current planning coordi
 | Invocation | `watchtower-core query coordination` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/query_family.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/query_coordination_family.py` |
 
 ## Synopsis
 ```sh
@@ -85,9 +85,10 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 | `watchtower-core query trace` | Resolves the underlying traceability record for one known trace ID. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/query_family.py`
+- `core/python/src/watchtower_core/cli/query_coordination_family.py`
+- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/coordination.py`
 - `core/control_plane/indexes/coordination/coordination_index.v1.json`
 
 ## Updated At
-- `2026-03-13T15:05:00Z`
+- `2026-03-13T21:57:29Z`
