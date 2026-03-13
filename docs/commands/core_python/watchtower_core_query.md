@@ -57,6 +57,7 @@ uv run watchtower-core query authority --domain planning --format json
 - With no leaf command, the group prints help and exits successfully.
 - Every leaf command is read-only and supports `--format human` or `--format json`.
 - Use `coordination` as the active-first machine start-here path for current planning state and next action.
+- Filterless `planning` and `initiatives` browse calls now default to `initiative_status=active`; pass explicit `--initiative-status` for terminal history and `--trace-id` when you already know the closed trace.
 - Use `planning` after coordination when you need the canonical deep machine-readable record for one trace.
 - Use `initiatives` when you need broader initiative-family browsing, filtered terminal history, or explicit non-active status lookup.
 - Use `authority` when the main question is which planning or governance surface is canonical.
@@ -79,4 +80,4 @@ uv run watchtower-core query authority --domain planning --format json
 - `core/python/src/watchtower_core/repo_ops/query/`
 
 ## Updated At
-- `2026-03-13T18:13:00Z`
+- `2026-03-13T20:36:00Z`

@@ -52,6 +52,7 @@ uv run watchtower-core query authority --artifact-kind route_index
 - In `human` mode, the command prints matching authority questions, canonical artifact paths, preferred commands, optional human companion paths, and any named status fields to trust.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, and authority-map entries.
 - The command is policy-oriented: it tells you which surface is canonical, not every surface that might contain related data.
+- For planning questions, the active-first navigation model still applies after authority resolution: filterless `query planning` and `query initiatives` browse calls default to active, while explicit historical lookup remains opt-in through `--initiative-status` or a known `--trace-id`.
 - If no entries match the requested filters, the command exits successfully and reports that no authority-map entries matched.
 
 ## Related Commands
@@ -71,4 +72,4 @@ uv run watchtower-core query authority --artifact-kind route_index
 - `core/control_plane/registries/authority_map/authority_map.v1.json`
 
 ## Updated At
-- `2026-03-11T03:10:00Z`
+- `2026-03-13T20:36:00Z`

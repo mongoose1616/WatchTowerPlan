@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.active_first_planning_query_history_alignment",
+  "title": "Active-First Planning Query History Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.active_first_planning_query_history_alignment",
+  "source_prd_id": "prd.active_first_planning_query_history_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.active_first_planning_query_history_alignment.001",
+      "summary": "The trace publishes the fully-authored PRD, accepted direction decision, active feature design, active implementation plan, refreshed acceptance contract, refreshed evidence ledger, and bounded task set with the explicit coverage map and findings ledger for this refactor slice.",
+      "source_requirement_ids": [
+        "req.active_first_planning_query_history_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/active_first_planning_query_history_alignment.md",
+        "docs/planning/design/features/active_first_planning_query_history_alignment.md",
+        "docs/planning/design/implementation/active_first_planning_query_history_alignment.md",
+        "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
+        "docs/planning/tasks/closed/active_first_planning_query_history_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+        "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
+        "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md",
+        "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Closeout-aligned contract should preserve the authored planning chain, the refreshed contract and evidence surfaces, and the bounded task set for the active-first planning-query review loop."
+    },
+    {
+      "acceptance_id": "ac.active_first_planning_query_history_alignment.002",
+      "summary": "Filterless planning and initiative browse commands now default to the active initiative slice, while explicit trace and historical lookups remain deterministic.",
+      "source_requirement_ids": [
+        "req.active_first_planning_query_history_alignment.002",
+        "req.active_first_planning_query_history_alignment.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/tests/unit/test_cli_planning_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+        "docs/planning/design/implementation/active_first_planning_query_history_alignment.md"
+      ],
+      "notes": "Covers the bounded query-entrypoint change and the preserved explicit-history path without widening the lower-level query-service or loader boundary."
+    },
+    {
+      "acceptance_id": "ac.active_first_planning_query_history_alignment.003",
+      "summary": "Structured query payloads and human-facing command behavior make the applied active-default initiative status explicit instead of leaving the browse filter implicit.",
+      "source_requirement_ids": [
+        "req.active_first_planning_query_history_alignment.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/tests/unit/test_cli_planning_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md"
+      ],
+      "notes": "Covers JSON payload signaling, command help text, and the empty-state guidance that now points operators to explicit history-browse options."
+    },
+    {
+      "acceptance_id": "ac.active_first_planning_query_history_alignment.004",
+      "summary": "Planning READMEs and query command pages describe the active-first routing model, explicit historical opt-in path, and the deep-planning versus initiative-family boundary consistently.",
+      "source_requirement_ids": [
+        "req.active_first_planning_query_history_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/planning/README.md",
+        "docs/planning/initiatives/README.md",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_authority.md",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md"
+      ],
+      "related_paths": [
+        "docs/planning/design/features/active_first_planning_query_history_alignment.md",
+        "docs/planning/design/implementation/active_first_planning_query_history_alignment.md"
+      ],
+      "notes": "Covers the human navigation hierarchy around coordination, planning, and initiative browsing after the active-default change."
+    },
+    {
+      "acceptance_id": "ac.active_first_planning_query_history_alignment.005",
+      "summary": "Targeted validation, full repository validation, post-fix review, second-angle confirmation, and adversarial confirmation complete cleanly with no new actionable issue in the active-vs-history planning-navigation theme.",
+      "source_requirement_ids": [
+        "req.active_first_planning_query_history_alignment.005"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "notes": "Covers the repeated validation and confirmation loop plus the final traced closeout gate."
+    }
+  ]
+}

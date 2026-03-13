@@ -52,6 +52,52 @@
       ]
     },
     {
+      "trace_id": "trace.active_first_planning_query_history_alignment",
+      "prd_id": "prd.active_first_planning_query_history_alignment",
+      "title": "Active-First Planning Query History Alignment PRD",
+      "summary": "Align planning and initiative query entrypoints with the active-first planning navigation model so unfiltered deep or initiative browse commands no longer default to terminal-history results while explicit trace and history lookup remain deterministic.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/active_first_planning_query_history_alignment.md",
+      "updated_at": "2026-03-13T20:42:11Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.active_first_planning_query_history_alignment.001",
+        "req.active_first_planning_query_history_alignment.002",
+        "req.active_first_planning_query_history_alignment.003",
+        "req.active_first_planning_query_history_alignment.004",
+        "req.active_first_planning_query_history_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.active_first_planning_query_history_alignment.001",
+        "ac.active_first_planning_query_history_alignment.002",
+        "ac.active_first_planning_query_history_alignment.003",
+        "ac.active_first_planning_query_history_alignment.004",
+        "ac.active_first_planning_query_history_alignment.005"
+      ],
+      "linked_decision_ids": [
+        "decision.active_first_planning_query_history_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.active_first_planning_query_history_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.active_first_planning_query_history_alignment"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "docs/commands/core_python/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.control_plane_example_validation_hardening",
       "prd_id": "prd.control_plane_example_validation_hardening",
       "title": "Control Plane Example Validation Hardening PRD",

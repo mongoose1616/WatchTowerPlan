@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-13T20:17:49Z",
+  "updated_at": "2026-03-13T21:01:42Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.active_first_planning_query_history_alignment",
+      "title": "Active-First Planning Query History Alignment PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-13T20:54:01Z",
+      "key_surface_path": "docs/planning/prds/active_first_planning_query_history_alignment.md",
+      "closure_reason": "Closed after aligning filterless planning and initiative browse defaults with the active-first navigation model, refreshing companion docs and payload signaling, repairing acceptance and evidence coverage, and completing clean validation plus confirmation reruns."
+    },
     {
       "trace_id": "trace.data_contract_index_family_baseline_alignment",
       "title": "Data-Contract Index Family Baseline Alignment PRD",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-13T01:16:19Z",
       "key_surface_path": "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
       "closure_reason": "Cancelled before execution after the user redirected work to remove SUMMARY.md and its active dependency surfaces instead of continuing the decision supersession and regression-evidence slice."
-    },
-    {
-      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
-      "title": "Foundations Entrypoint Coverage Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-13T00:37:03Z",
-      "key_surface_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
-      "closure_reason": "Aligned the foundations family entrypoints and review workflow with the machine foundations routes, added fail-closed coverage, and validated the foundations-themed review loop with no additional actionable issues."
     }
   ]
 }

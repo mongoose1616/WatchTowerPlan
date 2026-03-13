@@ -20,8 +20,9 @@
 - Start with `uv run watchtower-core query coordination --format json` when the main question is the machine-readable active current-state view and next action.
 - Use `./.venv/bin/watchtower-core query coordination --format json` from `core/python/` when you need the same machine-readable planning view without relying on `uv` on `PATH`.
 - Treat coordination as an active-first start-here projection plus compact recent-closeout context, not as the exhaustive historical planning view.
+- Filterless `uv run watchtower-core query initiatives --format json` and `uv run watchtower-core query planning --format json` now default to `initiative_status=active`; use explicit `--initiative-status <status>` for terminal history and `--trace-id <trace_id>` when you already know the closed trace you need.
 - Use `docs/planning/initiatives/initiative_tracking.md` or `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need filtered terminal history, broader initiative-family browsing, or explicit non-active status lookup.
-- Use `uv run watchtower-core query planning --trace-id <trace_id> --format json` when the main question is the canonical deep planning record for one known trace.
+- Use `uv run watchtower-core query planning --trace-id <trace_id> --format json` when the main question is the canonical deep planning record for one known trace rather than the filterless active browse.
 - Machine-readable planning projections use explicit status fields such as `artifact_status`, `initiative_status`, `record_status`, `decision_status`, and `task_status`; do not collapse them into one generic status concept.
 - Use `uv run watchtower-core query authority --domain planning --format json` when the main question is which planning or governance surface is canonical for a recurring lookup question.
 - Use `docs/planning/initiatives/initiative_tracking.md` when you need the deeper initiative-family view instead of the compact root tracker.

@@ -239,7 +239,10 @@ def register_query_coordination_commands(
             Use this after `coordination` identifies the active trace you want,
             or when you need one machine-readable record that joins PRDs,
             decisions, design docs, tasks, acceptance contracts, validation
-            evidence, and per-trace coordination state.
+            evidence, and per-trace coordination state. When invoked as a
+            filterless browse command, it defaults to active initiatives only;
+            use `--initiative-status` or a known `--trace-id` for explicit
+            history lookup.
             """
         ).strip(),
         epilog=examples(
@@ -263,7 +266,10 @@ def register_query_coordination_commands(
     )
     query_planning_parser.add_argument(
         "--initiative-status",
-        help="Exact initiative-status filter such as active, completed, or superseded.",
+        help=(
+            "Exact initiative-status filter such as active, completed, or superseded. "
+            "When omitted for filterless browse, the command defaults to active."
+        ),
     )
     query_planning_parser.add_argument(
         "--current-phase",
@@ -297,7 +303,9 @@ def register_query_coordination_commands(
 
             Use this when you need broader initiative-family lookup or
             historical closed-state inspection beyond the start-here
-            `coordination` path.
+            `coordination` path. When invoked with no explicit filters, it
+            defaults to active initiatives; use `--initiative-status` for
+            explicit history browsing.
             """
         ).strip(),
         epilog=examples(
@@ -320,7 +328,10 @@ def register_query_coordination_commands(
     )
     query_initiatives_parser.add_argument(
         "--initiative-status",
-        help="Exact initiative-status filter such as active or completed.",
+        help=(
+            "Exact initiative-status filter such as active or completed. "
+            "When omitted for filterless browse, the command defaults to active."
+        ),
     )
     query_initiatives_parser.add_argument(
         "--current-phase",

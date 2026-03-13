@@ -372,7 +372,11 @@ def test_query_initiatives_prints_empty_message(monkeypatch, capsys) -> None:
 
     captured = capsys.readouterr()
     assert result == 0
-    assert "No initiative entries matched the requested filters." in captured.out
+    assert "No active initiative entries matched the requested filters." in captured.out
+    assert (
+        "Pass --initiative-status completed|cancelled|superseded for history browsing."
+        in captured.out
+    )
 
 
 def test_query_coordination_supports_json_defaults(monkeypatch, capsys) -> None:

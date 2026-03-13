@@ -126,6 +126,90 @@
       "notes": "Closeout evidence refreshed at 2026-03-12T17:18:29Z for trace.acceptance_reconciliation_snapshot_reuse after the optimization landed, the execution tasks closed, and the follow-up review found no new issues."
     },
     {
+      "trace_id": "trace.active_first_planning_query_history_alignment",
+      "title": "Active-First Planning Query History Alignment PRD",
+      "summary": "Align planning and initiative query entrypoints with the active-first planning navigation model so unfiltered deep or initiative browse commands no longer default to terminal-history results while explicit trace and history lookup remain deterministic.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T21:01:42Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/active_first_planning_query_history_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/active_first_planning_query_history_alignment.md",
+      "prd_ids": [
+        "prd.active_first_planning_query_history_alignment"
+      ],
+      "decision_ids": [
+        "decision.active_first_planning_query_history_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.active_first_planning_query_history_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.active_first_planning_query_history_alignment"
+      ],
+      "task_ids": [
+        "task.active_first_planning_query_history_alignment.bootstrap.001",
+        "task.active_first_planning_query_history_alignment.navigation_docs_alignment.003",
+        "task.active_first_planning_query_history_alignment.query_default_behavior.002",
+        "task.active_first_planning_query_history_alignment.validation_closeout.004"
+      ],
+      "acceptance_ids": [
+        "ac.active_first_planning_query_history_alignment.001",
+        "ac.active_first_planning_query_history_alignment.002",
+        "ac.active_first_planning_query_history_alignment.003",
+        "ac.active_first_planning_query_history_alignment.004",
+        "ac.active_first_planning_query_history_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.active_first_planning_query_history_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.active_first_planning_query_history_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T20:54:01Z",
+      "closure_reason": "Closed after aligning filterless planning and initiative browse defaults with the active-first navigation model, refreshing companion docs and payload signaling, repairing acceptance and evidence coverage, and completing clean validation plus confirmation reruns.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/tests/unit/test_cli_planning_query_commands.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_authority.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/active_first_planning_query_history_alignment.md",
+        "docs/planning/design/implementation/active_first_planning_query_history_alignment.md",
+        "docs/planning/initiatives/README.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/active_first_planning_query_history_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/active_first_planning_query_history_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+        "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
+        "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed for the active-first planning-query review loop after the query-entrypoint change, documentation alignment, acceptance and evidence coverage repair, the stale adjacent empty-message regression fix, and final trace closeout."
+    },
+    {
       "trace_id": "trace.command_documentation_and_lookup",
       "title": "Command Documentation and Lookup Design",
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",

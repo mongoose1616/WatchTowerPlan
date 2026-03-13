@@ -44,6 +44,46 @@
       ]
     },
     {
+      "trace_id": "trace.active_first_planning_query_history_alignment",
+      "decision_id": "decision.active_first_planning_query_history_alignment_direction",
+      "title": "Active-First Planning Query History Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Active-First Planning Query History Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
+      "updated_at": "2026-03-13T20:42:11Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.active_first_planning_query_history_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.active_first_planning_query_history_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.active_first_planning_query_history_alignment"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "docs/commands/core_python/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/planning/prds/active_first_planning_query_history_alignment.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.control_plane_example_validation_hardening",
       "decision_id": "decision.control_plane_example_validation_hardening_direction",
       "title": "Control Plane Example Validation Hardening Direction Decision",

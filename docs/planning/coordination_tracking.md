@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.active_first_planning_query_history_alignment` | `completed` | `2026-03-13T20:54:01Z` | [active_first_planning_query_history_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/active_first_planning_query_history_alignment.md) |
 | `trace.data_contract_index_family_baseline_alignment` | `completed` | `2026-03-13T20:17:49Z` | [data_contract_index_family_baseline_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_index_family_baseline_alignment.md) |
 | `trace.validation_test_hotspot_rebalancing` | `completed` | `2026-03-13T19:19:06Z` | [validation_test_hotspot_rebalancing.md](/home/j/WatchTowerPlan/docs/planning/prds/validation_test_hotspot_rebalancing.md) |
 | `trace.typed_query_surface_modularity_hardening` | `completed` | `2026-03-13T18:26:14Z` | [typed_query_surface_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/typed_query_surface_modularity_hardening.md) |
 | `trace.planning_authoring_hotspot_regression_hardening` | `completed` | `2026-03-13T17:45:42Z` | [planning_authoring_hotspot_regression_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_authoring_hotspot_regression_hardening.md) |
-| `trace.reference_and_reserved_surface_maturity_signaling` | `completed` | `2026-03-13T16:13:43Z` | [reference_and_reserved_surface_maturity_signaling.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md) |
 
-_Updated At: `2026-03-13T20:17:49Z`_
+_Updated At: `2026-03-13T21:01:42Z`_

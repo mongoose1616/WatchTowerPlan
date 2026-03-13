@@ -175,12 +175,16 @@ def _run_query_tasks(args: argparse.Namespace) -> int:
 
 
 def _run_query_initiatives(args: argparse.Namespace) -> int:
+    default_initiative_status = (
+        "active" if _should_default_active_browse(args, include_blocked_only=True) else None
+    )
+    initiative_status = args.initiative_status or default_initiative_status
     service = InitiativeQueryService(ControlPlaneLoader())
     entries = service.search(
         InitiativeSearchParams(
             query=args.query,
             trace_id=args.trace_id,
-            initiative_status=args.initiative_status,
+            initiative_status=initiative_status,
             current_phase=args.current_phase,
             owner=args.owner,
             blocked_only=args.blocked_only,
@@ -191,8 +195,12 @@ def _run_query_initiatives(args: argparse.Namespace) -> int:
         args,
         command_name="watchtower-core query initiatives",
         entries=entries,
-        empty_message="No initiative entries matched the requested filters.",
+        empty_message=_history_browse_empty_message(
+            "initiative entries",
+            default_initiative_status=default_initiative_status,
+        ),
         show_task_summaries=False,
+        default_initiative_status=default_initiative_status,
     )
 
 
@@ -262,12 +270,16 @@ def _run_query_coordination(args: argparse.Namespace) -> int:
 
 
 def _run_query_planning(args: argparse.Namespace) -> int:
+    default_initiative_status = (
+        "active" if _should_default_active_browse(args, include_blocked_only=False) else None
+    )
+    initiative_status = args.initiative_status or default_initiative_status
     service = PlanningCatalogQueryService(ControlPlaneLoader())
     entries = service.search(
         PlanningCatalogSearchParams(
             query=args.query,
             trace_id=args.trace_id,
-            initiative_status=args.initiative_status,
+            initiative_status=initiative_status,
             current_phase=args.current_phase,
             owner=args.owner,
             limit=args.limit,
@@ -275,17 +287,21 @@ def _run_query_planning(args: argparse.Namespace) -> int:
     )
     if _print_payload_factory(
         args,
-        lambda: {
-            "command": "watchtower-core query planning",
-            "status": "ok",
-            "result_count": len(entries),
-            "results": [_planning_entry_payload(entry) for entry in entries],
-        },
+        lambda: _planning_query_payload(
+            entries=entries,
+            default_initiative_status=default_initiative_status,
+        ),
     ) == 0:
         return 0
 
     if not entries:
-        print("No planning-catalog entries matched the requested filters.")
+        print(
+            _history_browse_empty_message(
+                "planning-catalog entries",
+                default_initiative_status=default_initiative_status,
+                include_trace_hint=True,
+            )
+        )
         return 0
 
     print(f"Found {len(entries)} planning entr{'y' if len(entries) == 1 else 'ies'}:")
@@ -333,6 +349,62 @@ def _authority_entry_payload(entry: AuthorityMapEntry) -> dict[str, object]:
 
 def _planning_entry_payload(entry: PlanningCatalogEntry) -> dict[str, object]:
     return serialize_planning_catalog_entry(entry, compact=False)
+
+
+def _planning_query_payload(
+    *,
+    entries: tuple[PlanningCatalogEntry, ...],
+    default_initiative_status: str | None,
+) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "command": "watchtower-core query planning",
+        "status": "ok",
+        "result_count": len(entries),
+        "results": [_planning_entry_payload(entry) for entry in entries],
+    }
+    if default_initiative_status is not None:
+        payload["default_initiative_status"] = default_initiative_status
+    return payload
+
+
+def _should_default_active_browse(
+    args: argparse.Namespace,
+    *,
+    include_blocked_only: bool,
+) -> bool:
+    if args.initiative_status is not None:
+        return False
+    if args.query is not None:
+        return False
+    if args.trace_id is not None:
+        return False
+    if args.current_phase is not None:
+        return False
+    if args.owner is not None:
+        return False
+    if include_blocked_only and getattr(args, "blocked_only", False):
+        return False
+    return True
+
+
+def _history_browse_empty_message(
+    noun: str,
+    *,
+    default_initiative_status: str | None,
+    include_trace_hint: bool = False,
+) -> str:
+    if default_initiative_status is None:
+        return f"No {noun} matched the requested filters."
+    history_hint = " Pass --initiative-status completed|cancelled|superseded for history browsing."
+    if include_trace_hint:
+        history_hint = (
+            " Pass --initiative-status completed|cancelled|superseded for history "
+            "browsing or --trace-id <trace_id> for one known closed trace."
+        )
+    return (
+        f"No {default_initiative_status} {noun} matched the requested filters."
+        f"{history_hint}"
+    )
 
 
 def _emit_initiative_query_results(

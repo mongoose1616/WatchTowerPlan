@@ -4,6 +4,7 @@
 | Trace ID | Decision | Status | Outcome | Summary |
 | --- | --- | --- | --- | --- |
 | `trace.acceptance_reconciliation_snapshot_reuse` | [decision.acceptance_reconciliation_snapshot_reuse_direction](/home/j/WatchTowerPlan/docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md) | `completed` | `accepted` | Accept service-scoped acceptance snapshot reuse and reject broader loader caching for Acceptance Reconciliation Snapshot Reuse. |
+| `trace.active_first_planning_query_history_alignment` | [decision.active_first_planning_query_history_alignment_direction](/home/j/WatchTowerPlan/docs/planning/decisions/active_first_planning_query_history_alignment_direction.md) | `completed` | `accepted` | Records the initial direction decision for Active-First Planning Query History Alignment. |
 | `trace.control_plane_example_validation_hardening` | [decision.control_plane_example_validation_hardening_direction](/home/j/WatchTowerPlan/docs/planning/decisions/control_plane_example_validation_hardening_direction.md) | `completed` | `accepted` | Records the initial direction decision for Control Plane Example Validation Hardening. |
 | `trace.control_plane_loader_cache_reuse` | [decision.control_plane_loader_cache_reuse_direction](/home/j/WatchTowerPlan/docs/planning/decisions/control_plane_loader_cache_reuse_direction.md) | `completed` | `accepted` | Adopt command-scoped, override-aware loader caches instead of adding ad hoc reuse only inside validation services. |
 | `trace.coordination_projection_source_reuse` | [decision.coordination_projection_source_reuse_direction](/home/j/WatchTowerPlan/docs/planning/decisions/coordination_projection_source_reuse_direction.md) | `completed` | `accepted` | Prefer explicit command-scoped validated artifact overrides in sync orchestration over broad passive loader caching. |
@@ -51,4 +52,4 @@
 | `trace.workflow_system_operationalization` | [decision.workflow_operationalization_direction](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_operationalization_direction.md) | `completed` | `accepted` | Records the decision to keep workflow documents authoritative while adding machine-readable route and metadata artifacts plus bounded authoring commands. |
 | `trace.workflow_routing_review_accuracy_alignment` | [decision.workflow_routing_review_accuracy_alignment.direction](/home/j/WatchTowerPlan/docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md) | `completed` | `accepted` | Records the initial direction decision for Workflow Routing Review Accuracy Alignment. |
 
-_Updated At: `2026-03-13T19:55:04Z`_
+_Updated At: `2026-03-13T20:42:11Z`_

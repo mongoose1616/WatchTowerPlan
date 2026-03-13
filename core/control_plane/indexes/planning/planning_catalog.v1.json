@@ -409,6 +409,376 @@
       "closure_reason": "Acceptance reconciliation now reuses command-scoped traceability, PRD, acceptance-contract, validation-evidence, and validator snapshots during aggregate validation; full validation passed and the follow-up review of adjacent acceptance surfaces found no additional issues."
     },
     {
+      "trace_id": "trace.active_first_planning_query_history_alignment",
+      "title": "Active-First Planning Query History Alignment PRD",
+      "summary": "Align planning and initiative query entrypoints with the active-first planning navigation model so unfiltered deep or initiative browse commands no longer default to terminal-history results while explicit trace and history lookup remain deterministic.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T21:01:42Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/active_first_planning_query_history_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/active_first_planning_query_history_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.active_first_planning_query_history_alignment",
+          "title": "Active-First Planning Query History Alignment PRD",
+          "summary": "Align planning and initiative query entrypoints with the active-first planning navigation model so unfiltered deep or initiative browse commands no longer default to terminal-history results while explicit trace and history lookup remain deterministic.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/active_first_planning_query_history_alignment.md",
+          "updated_at": "2026-03-13T20:42:11Z",
+          "requirement_ids": [
+            "req.active_first_planning_query_history_alignment.001",
+            "req.active_first_planning_query_history_alignment.002",
+            "req.active_first_planning_query_history_alignment.003",
+            "req.active_first_planning_query_history_alignment.004",
+            "req.active_first_planning_query_history_alignment.005"
+          ],
+          "acceptance_ids": [
+            "ac.active_first_planning_query_history_alignment.001",
+            "ac.active_first_planning_query_history_alignment.002",
+            "ac.active_first_planning_query_history_alignment.003",
+            "ac.active_first_planning_query_history_alignment.004",
+            "ac.active_first_planning_query_history_alignment.005"
+          ],
+          "linked_decision_ids": [
+            "decision.active_first_planning_query_history_alignment_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.active_first_planning_query_history_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.active_first_planning_query_history_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.active_first_planning_query_history_alignment_direction",
+          "title": "Active-First Planning Query History Alignment Direction Decision",
+          "summary": "Records the initial direction decision for Active-First Planning Query History Alignment.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
+          "updated_at": "2026-03-13T20:42:11Z",
+          "linked_prd_ids": [
+            "prd.active_first_planning_query_history_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.active_first_planning_query_history_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.active_first_planning_query_history_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.active_first_planning_query_history_alignment",
+          "family": "feature_design",
+          "title": "Active-First Planning Query History Alignment Feature Design",
+          "summary": "Defines the technical design boundary for Active-First Planning Query History Alignment.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/active_first_planning_query_history_alignment.md",
+          "updated_at": "2026-03-13T20:42:11Z"
+        },
+        {
+          "document_id": "design.implementation.active_first_planning_query_history_alignment",
+          "family": "implementation_plan",
+          "title": "Active-First Planning Query History Alignment Implementation Plan",
+          "summary": "Breaks Active-First Planning Query History Alignment into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/active_first_planning_query_history_alignment.md",
+          "updated_at": "2026-03-13T21:01:42Z",
+          "source_paths": [
+            "docs/planning/design/features/active_first_planning_query_history_alignment.md",
+            "docs/planning/prds/active_first_planning_query_history_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.active_first_planning_query_history_alignment.bootstrap.001",
+          "title": "Bootstrap Active-First Planning Query History Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Active-First Planning Query History Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/active_first_planning_query_history_alignment_bootstrap.md",
+          "updated_at": "2026-03-13T20:35:02Z",
+          "related_ids": [
+            "prd.active_first_planning_query_history_alignment",
+            "design.features.active_first_planning_query_history_alignment",
+            "design.implementation.active_first_planning_query_history_alignment",
+            "decision.active_first_planning_query_history_alignment_direction",
+            "contract.acceptance.active_first_planning_query_history_alignment"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/repo_ops/query/",
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "docs/commands/core_python/",
+            "docs/planning/"
+          ]
+        },
+        {
+          "task_id": "task.active_first_planning_query_history_alignment.navigation_docs_alignment.003",
+          "title": "Align planning navigation docs with active-first query defaults",
+          "summary": "Refresh planning README and query command docs so the active-default browse behavior and explicit historical lookup path are documented consistently.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "documentation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
+          "updated_at": "2026-03-13T20:38:41Z",
+          "depends_on": [
+            "task.active_first_planning_query_history_alignment.query_default_behavior.002"
+          ],
+          "related_ids": [
+            "prd.active_first_planning_query_history_alignment",
+            "design.features.active_first_planning_query_history_alignment",
+            "design.implementation.active_first_planning_query_history_alignment",
+            "decision.active_first_planning_query_history_alignment_direction",
+            "contract.acceptance.active_first_planning_query_history_alignment"
+          ],
+          "applies_to": [
+            "docs/planning/README.md",
+            "docs/planning/initiatives/README.md",
+            "docs/commands/core_python/watchtower_core_query_planning.md",
+            "docs/commands/core_python/watchtower_core_query_initiatives.md",
+            "docs/commands/core_python/watchtower_core_query.md",
+            "docs/commands/core_python/watchtower_core_query_authority.md"
+          ]
+        },
+        {
+          "task_id": "task.active_first_planning_query_history_alignment.query_default_behavior.002",
+          "title": "Align filterless planning and initiative query defaults",
+          "summary": "Apply active-first default browse behavior and default-status payload signaling to the planning and initiative query entrypoints while preserving explicit historical lookup.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+          "updated_at": "2026-03-13T20:38:41Z",
+          "related_ids": [
+            "prd.active_first_planning_query_history_alignment",
+            "design.features.active_first_planning_query_history_alignment",
+            "design.implementation.active_first_planning_query_history_alignment",
+            "decision.active_first_planning_query_history_alignment_direction",
+            "contract.acceptance.active_first_planning_query_history_alignment"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/query_coordination_family.py",
+            "core/python/tests/unit/test_cli_planning_query_commands.py"
+          ]
+        },
+        {
+          "task_id": "task.active_first_planning_query_history_alignment.validation_closeout.004",
+          "title": "Validate and close active-first planning query history alignment",
+          "summary": "Run targeted validation, repeated confirmation passes, evidence refresh, and closeout for the active-first planning query history alignment trace.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md",
+          "updated_at": "2026-03-13T20:53:52Z",
+          "related_ids": [
+            "prd.active_first_planning_query_history_alignment",
+            "design.implementation.active_first_planning_query_history_alignment",
+            "decision.active_first_planning_query_history_alignment_direction",
+            "contract.acceptance.active_first_planning_query_history_alignment"
+          ],
+          "applies_to": [
+            "core/python/",
+            "docs/planning/",
+            "docs/commands/core_python/",
+            "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.active_first_planning_query_history_alignment",
+          "title": "Active-First Planning Query History Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.active_first_planning_query_history_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.active_first_planning_query_history_alignment.001",
+            "ac.active_first_planning_query_history_alignment.002",
+            "ac.active_first_planning_query_history_alignment.003",
+            "ac.active_first_planning_query_history_alignment.004",
+            "ac.active_first_planning_query_history_alignment.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json",
+            "core/python/",
+            "core/python/src/watchtower_core/cli/query_coordination_family.py",
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+            "core/python/src/watchtower_core/repo_ops/query/planning.py",
+            "core/python/tests/unit/test_cli_planning_query_commands.py",
+            "docs/commands/core_python/",
+            "docs/commands/core_python/watchtower_core_query.md",
+            "docs/commands/core_python/watchtower_core_query_authority.md",
+            "docs/commands/core_python/watchtower_core_query_initiatives.md",
+            "docs/commands/core_python/watchtower_core_query_planning.md",
+            "docs/planning/",
+            "docs/planning/README.md",
+            "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
+            "docs/planning/design/features/active_first_planning_query_history_alignment.md",
+            "docs/planning/design/implementation/active_first_planning_query_history_alignment.md",
+            "docs/planning/initiatives/README.md",
+            "docs/planning/prds/active_first_planning_query_history_alignment.md",
+            "docs/planning/tasks/closed/active_first_planning_query_history_alignment_bootstrap.md",
+            "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+            "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
+            "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/design/features/active_first_planning_query_history_alignment.md",
+            "docs/planning/design/implementation/active_first_planning_query_history_alignment.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+            "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.active_first_planning_query_history_alignment.planning_baseline",
+          "title": "Active-First Planning Query History Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-13T21:01:42Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.active_first_planning_query_history_alignment.planning_baseline",
+            "check.active_first_planning_query_history_alignment.active_default_behavior",
+            "check.active_first_planning_query_history_alignment.payload_and_human_signaling",
+            "check.active_first_planning_query_history_alignment.navigation_docs_alignment",
+            "check.active_first_planning_query_history_alignment.validation_closeout"
+          ],
+          "acceptance_ids": [
+            "ac.active_first_planning_query_history_alignment.001",
+            "ac.active_first_planning_query_history_alignment.002",
+            "ac.active_first_planning_query_history_alignment.003",
+            "ac.active_first_planning_query_history_alignment.004",
+            "ac.active_first_planning_query_history_alignment.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.active_first_planning_query_history_alignment"
+      ],
+      "decision_ids": [
+        "decision.active_first_planning_query_history_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.active_first_planning_query_history_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.active_first_planning_query_history_alignment"
+      ],
+      "task_ids": [
+        "task.active_first_planning_query_history_alignment.bootstrap.001",
+        "task.active_first_planning_query_history_alignment.navigation_docs_alignment.003",
+        "task.active_first_planning_query_history_alignment.query_default_behavior.002",
+        "task.active_first_planning_query_history_alignment.validation_closeout.004"
+      ],
+      "requirement_ids": [
+        "req.active_first_planning_query_history_alignment.001",
+        "req.active_first_planning_query_history_alignment.002",
+        "req.active_first_planning_query_history_alignment.003",
+        "req.active_first_planning_query_history_alignment.004",
+        "req.active_first_planning_query_history_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.active_first_planning_query_history_alignment.001",
+        "ac.active_first_planning_query_history_alignment.002",
+        "ac.active_first_planning_query_history_alignment.003",
+        "ac.active_first_planning_query_history_alignment.004",
+        "ac.active_first_planning_query_history_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.active_first_planning_query_history_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.active_first_planning_query_history_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/tests/unit/test_cli_planning_query_commands.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_authority.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/active_first_planning_query_history_alignment.md",
+        "docs/planning/design/implementation/active_first_planning_query_history_alignment.md",
+        "docs/planning/initiatives/README.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/active_first_planning_query_history_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/active_first_planning_query_history_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+        "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
+        "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "documentation",
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed for the active-first planning-query review loop after the query-entrypoint change, documentation alignment, acceptance and evidence coverage repair, the stale adjacent empty-message regression fix, and final trace closeout.",
+      "closed_at": "2026-03-13T20:54:01Z",
+      "closure_reason": "Closed after aligning filterless planning and initiative browse defaults with the active-first navigation model, refreshing companion docs and payload signaling, repairing acceptance and evidence coverage, and completing clean validation plus confirmation reruns."
+    },
+    {
       "trace_id": "trace.command_documentation_and_lookup",
       "title": "Command Documentation and Lookup Design",
       "summary": "Defines the feature-level design for a human-readable command-page family under docs/commands and a machine-readable command index under core/control_plane/indexes/commands.",
@@ -3048,7 +3418,7 @@
           "summary": "Breaks Data-Contract Index Family Baseline Alignment into a bounded implementation slice.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
-          "updated_at": "2026-03-13T19:55:04Z",
+          "updated_at": "2026-03-13T20:16:31Z",
           "source_paths": [
             "docs/planning/design/features/data_contract_index_family_baseline_alignment.md",
             "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
