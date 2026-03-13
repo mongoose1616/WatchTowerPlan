@@ -4,12 +4,18 @@ import json
 
 import pytest
 
-from watchtower_core.cli import handlers
+from watchtower_core.cli import handlers, query_coordination_handlers
 from watchtower_core.cli.main import main
-from watchtower_core.cli.query_coordination_handlers import (
+from watchtower_core.cli.query_coordination_lookup_handlers import (
+    _run_query_tasks as split_query_tasks,
+)
+from watchtower_core.cli.query_coordination_projection_handlers import (
     _run_query_coordination as split_query_coordination,
 )
-from watchtower_core.cli.query_handlers import _run_query_coordination
+from watchtower_core.cli.query_handlers import (
+    _run_query_coordination,
+    _run_query_tasks,
+)
 
 
 def test_doctor_command_returns_zero(capsys) -> None:
@@ -37,6 +43,12 @@ def test_legacy_handler_facade_reexports_split_handler_modules() -> None:
 
 def test_query_handler_facade_reexports_split_query_modules() -> None:
     assert _run_query_coordination is split_query_coordination
+    assert _run_query_tasks is split_query_tasks
+
+
+def test_legacy_coordination_handler_facade_reexports_split_modules() -> None:
+    assert query_coordination_handlers._run_query_coordination is split_query_coordination
+    assert query_coordination_handlers._run_query_tasks is split_query_tasks
 
 
 def test_root_command_prints_help(capsys) -> None:

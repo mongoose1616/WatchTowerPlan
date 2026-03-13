@@ -6,13 +6,15 @@ import argparse
 from textwrap import dedent
 
 from watchtower_core.cli.common import HelpFormatter, examples
-from watchtower_core.cli.query_coordination_handlers import (
+from watchtower_core.cli.query_coordination_lookup_handlers import (
     _run_query_authority,
+    _run_query_tasks,
+    _run_query_trace,
+)
+from watchtower_core.cli.query_coordination_projection_handlers import (
     _run_query_coordination,
     _run_query_initiatives,
     _run_query_planning,
-    _run_query_tasks,
-    _run_query_trace,
 )
 
 

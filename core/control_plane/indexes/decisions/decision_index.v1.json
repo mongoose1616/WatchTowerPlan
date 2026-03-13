@@ -1210,6 +1210,48 @@
       ]
     },
     {
+      "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
+      "decision_id": "decision.planning_query_efficiency_and_handler_modularity_direction",
+      "title": "Planning Query Efficiency and Coordination Handler Modularity Direction Decision",
+      "summary": "Records the initial direction decision for Planning Query Efficiency and Coordination Handler Modularity.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
+      "updated_at": "2026-03-13T23:32:17Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.planning_query_efficiency_and_handler_modularity"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_query_efficiency_and_handler_modularity"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_query_efficiency_and_handler_modularity"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/repo_ops/query/common.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/control_plane/models/planning_catalog.py",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/features/query_family_source_surface_alignment.md"
+      ],
+      "applied_reference_paths": [
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "docs/planning/design/features/query_family_source_surface_alignment.md"
+      ]
+    },
+    {
       "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
       "decision_id": "decision.planning_semantics_and_decision_contract_alignment_direction",
       "title": "Planning Semantics and Decision Contract Alignment Direction Decision",

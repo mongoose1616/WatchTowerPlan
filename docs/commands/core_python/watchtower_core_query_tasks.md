@@ -70,9 +70,9 @@ uv run watchtower-core query tasks --trace-id trace.local_task_tracking --format
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/tasks.py`
 - `core/control_plane/indexes/tasks/task_index.v1.json`
 
 ## Updated At
-- `2026-03-13T21:57:29Z`
+- `2026-03-13T23:21:33Z`

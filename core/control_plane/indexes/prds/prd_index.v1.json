@@ -1354,6 +1354,51 @@
       ]
     },
     {
+      "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
+      "prd_id": "prd.planning_query_efficiency_and_handler_modularity",
+      "title": "Planning Query Efficiency and Coordination Handler Modularity PRD",
+      "summary": "Reviews and hardens the planning query model and coordination-query handler family so planning lookup stays efficient without adding new disconnected refactor slices or weakening query fidelity.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+      "updated_at": "2026-03-13T23:32:17Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.planning_query_efficiency_and_handler_modularity.001",
+        "req.planning_query_efficiency_and_handler_modularity.002",
+        "req.planning_query_efficiency_and_handler_modularity.003",
+        "req.planning_query_efficiency_and_handler_modularity.004",
+        "req.planning_query_efficiency_and_handler_modularity.005"
+      ],
+      "acceptance_ids": [
+        "ac.planning_query_efficiency_and_handler_modularity.001",
+        "ac.planning_query_efficiency_and_handler_modularity.002",
+        "ac.planning_query_efficiency_and_handler_modularity.003",
+        "ac.planning_query_efficiency_and_handler_modularity.004",
+        "ac.planning_query_efficiency_and_handler_modularity.005"
+      ],
+      "linked_decision_ids": [
+        "decision.planning_query_efficiency_and_handler_modularity_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_query_efficiency_and_handler_modularity"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_query_efficiency_and_handler_modularity"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/repo_ops/query/common.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/control_plane/models/planning_catalog.py",
+        "docs/commands/core_python/"
+      ]
+    },
+    {
       "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
       "prd_id": "prd.planning_semantics_and_decision_contract_alignment",
       "title": "Planning Semantics and Decision Contract Alignment PRD",

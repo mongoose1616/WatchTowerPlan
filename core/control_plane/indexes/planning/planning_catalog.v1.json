@@ -10941,6 +10941,412 @@
       "closure_reason": "Published the canonical planning catalog and authority map, aligned navigation guidance, and validated the full repository baseline"
     },
     {
+      "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
+      "title": "Planning Query Efficiency and Coordination Handler Modularity PRD",
+      "summary": "Reviews and hardens the planning query model and coordination-query handler family so planning lookup stays efficient without adding new disconnected refactor slices or weakening query fidelity.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T23:40:35Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.planning_query_efficiency_and_handler_modularity",
+          "title": "Planning Query Efficiency and Coordination Handler Modularity PRD",
+          "summary": "Reviews and hardens the planning query model and coordination-query handler family so planning lookup stays efficient without adding new disconnected refactor slices or weakening query fidelity.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+          "updated_at": "2026-03-13T23:32:17Z",
+          "requirement_ids": [
+            "req.planning_query_efficiency_and_handler_modularity.001",
+            "req.planning_query_efficiency_and_handler_modularity.002",
+            "req.planning_query_efficiency_and_handler_modularity.003",
+            "req.planning_query_efficiency_and_handler_modularity.004",
+            "req.planning_query_efficiency_and_handler_modularity.005"
+          ],
+          "acceptance_ids": [
+            "ac.planning_query_efficiency_and_handler_modularity.001",
+            "ac.planning_query_efficiency_and_handler_modularity.002",
+            "ac.planning_query_efficiency_and_handler_modularity.003",
+            "ac.planning_query_efficiency_and_handler_modularity.004",
+            "ac.planning_query_efficiency_and_handler_modularity.005"
+          ],
+          "linked_decision_ids": [
+            "decision.planning_query_efficiency_and_handler_modularity_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.planning_query_efficiency_and_handler_modularity"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.planning_query_efficiency_and_handler_modularity"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.planning_query_efficiency_and_handler_modularity_direction",
+          "title": "Planning Query Efficiency and Coordination Handler Modularity Direction Decision",
+          "summary": "Records the initial direction decision for Planning Query Efficiency and Coordination Handler Modularity.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
+          "updated_at": "2026-03-13T23:32:17Z",
+          "linked_prd_ids": [
+            "prd.planning_query_efficiency_and_handler_modularity"
+          ],
+          "linked_design_ids": [
+            "design.features.planning_query_efficiency_and_handler_modularity"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.planning_query_efficiency_and_handler_modularity"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.planning_query_efficiency_and_handler_modularity",
+          "family": "feature_design",
+          "title": "Planning Query Efficiency and Coordination Handler Modularity Feature Design",
+          "summary": "Defines the technical design boundary for Planning Query Efficiency and Coordination Handler Modularity.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+          "updated_at": "2026-03-13T23:32:17Z"
+        },
+        {
+          "document_id": "design.implementation.planning_query_efficiency_and_handler_modularity",
+          "family": "implementation_plan",
+          "title": "Planning Query Efficiency and Coordination Handler Modularity Implementation Plan",
+          "summary": "Breaks Planning Query Efficiency and Coordination Handler Modularity into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+          "updated_at": "2026-03-13T23:40:35Z",
+          "source_paths": [
+            "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+            "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.planning_query_efficiency_and_handler_modularity.bootstrap.001",
+          "title": "Bootstrap Planning Query Efficiency and Coordination Handler Modularity planning chain",
+          "summary": "Bootstraps the initial planning chain for Planning Query Efficiency and Coordination Handler Modularity.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
+          "updated_at": "2026-03-13T23:07:33Z",
+          "related_ids": [
+            "prd.planning_query_efficiency_and_handler_modularity",
+            "design.features.planning_query_efficiency_and_handler_modularity",
+            "design.implementation.planning_query_efficiency_and_handler_modularity",
+            "decision.planning_query_efficiency_and_handler_modularity_direction",
+            "contract.acceptance.planning_query_efficiency_and_handler_modularity"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/query_coordination_family.py",
+            "core/python/src/watchtower_core/repo_ops/query/",
+            "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+            "core/python/src/watchtower_core/control_plane/models/planning_catalog.py",
+            "docs/commands/core_python/"
+          ]
+        },
+        {
+          "task_id": "task.planning_query_efficiency_and_handler_modularity.coordination_handler_split.002",
+          "title": "Split coordination-query handlers behind focused modules",
+          "summary": "Reduce the coordination-query handler hotspot by moving the current subcommand behaviors into focused modules behind a compatibility facade and aligned command docs.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+          "updated_at": "2026-03-13T23:24:35Z",
+          "depends_on": [
+            "task.planning_query_efficiency_and_handler_modularity.query_projection_search.001"
+          ],
+          "related_ids": [
+            "prd.planning_query_efficiency_and_handler_modularity",
+            "design.features.planning_query_efficiency_and_handler_modularity",
+            "design.implementation.planning_query_efficiency_and_handler_modularity",
+            "decision.planning_query_efficiency_and_handler_modularity_direction"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+            "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+            "core/python/src/watchtower_core/cli/query_coordination_family.py",
+            "core/python/src/watchtower_core/cli/query_handlers.py",
+            "docs/commands/core_python/"
+          ]
+        },
+        {
+          "task_id": "task.planning_query_efficiency_and_handler_modularity.query_projection_search.001",
+          "title": "Unify planning and initiative query projection search mechanics",
+          "summary": "Refactor the duplicated planning, initiative, and coordination query filter and ranking logic behind one shared runtime helper.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md",
+          "updated_at": "2026-03-13T23:24:35Z",
+          "related_ids": [
+            "prd.planning_query_efficiency_and_handler_modularity",
+            "design.features.planning_query_efficiency_and_handler_modularity",
+            "design.implementation.planning_query_efficiency_and_handler_modularity",
+            "decision.planning_query_efficiency_and_handler_modularity_direction"
+          ],
+          "applies_to": [
+            "core/python/src/watchtower_core/repo_ops/query/common.py",
+            "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+            "core/python/src/watchtower_core/repo_ops/query/planning.py",
+            "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+            "core/python/src/watchtower_core/repo_ops/query/",
+            "core/python/tests/unit/test_projection_search_common.py"
+          ]
+        },
+        {
+          "task_id": "task.planning_query_efficiency_and_handler_modularity.validation_and_closeout.003",
+          "title": "Validate and close planning query efficiency and handler modularity",
+          "summary": "Run targeted and full validation, repeated confirmation passes, final acceptance reconciliation, and initiative closeout for the planning query redesign trace.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_planning_query_efficiency_and_handler_modularity.md",
+          "updated_at": "2026-03-13T23:39:47Z",
+          "depends_on": [
+            "task.planning_query_efficiency_and_handler_modularity.coordination_handler_split.002"
+          ],
+          "related_ids": [
+            "prd.planning_query_efficiency_and_handler_modularity",
+            "design.features.planning_query_efficiency_and_handler_modularity",
+            "design.implementation.planning_query_efficiency_and_handler_modularity",
+            "decision.planning_query_efficiency_and_handler_modularity_direction"
+          ],
+          "applies_to": [
+            "core/python/tests/unit/",
+            "docs/commands/core_python/",
+            "docs/planning/",
+            "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.planning_query_efficiency_and_handler_modularity",
+          "title": "Planning Query Efficiency and Coordination Handler Modularity Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.planning_query_efficiency_and_handler_modularity",
+          "doc_path": "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.planning_query_efficiency_and_handler_modularity.001",
+            "ac.planning_query_efficiency_and_handler_modularity.002",
+            "ac.planning_query_efficiency_and_handler_modularity.003",
+            "ac.planning_query_efficiency_and_handler_modularity.004",
+            "ac.planning_query_efficiency_and_handler_modularity.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+            "core/control_plane/indexes/commands/command_index.v1.json",
+            "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json",
+            "core/python/",
+            "core/python/src/watchtower_core/cli/README.md",
+            "core/python/src/watchtower_core/cli/query_coordination_family.py",
+            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+            "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+            "core/python/src/watchtower_core/cli/query_handlers.py",
+            "core/python/src/watchtower_core/repo_ops/query/common.py",
+            "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+            "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+            "core/python/src/watchtower_core/repo_ops/query/planning.py",
+            "core/python/tests/unit/test_cli.py",
+            "core/python/tests/unit/test_coordination_index_sync.py",
+            "core/python/tests/unit/test_planning_catalog_sync.py",
+            "core/python/tests/unit/test_projection_search_common.py",
+            "core/python/tests/unit/test_route_and_query_handlers.py",
+            "docs/commands/core_python/",
+            "docs/commands/core_python/watchtower_core_query_authority.md",
+            "docs/commands/core_python/watchtower_core_query_coordination.md",
+            "docs/commands/core_python/watchtower_core_query_initiatives.md",
+            "docs/commands/core_python/watchtower_core_query_planning.md",
+            "docs/commands/core_python/watchtower_core_query_tasks.md",
+            "docs/commands/core_python/watchtower_core_query_trace.md",
+            "docs/planning/",
+            "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
+            "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+            "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+            "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+            "docs/planning/tasks/closed/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
+            "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+            "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md",
+            "docs/planning/tasks/closed/validate_and_close_planning_query_efficiency_and_handler_modularity.md"
+          ],
+          "related_paths": [
+            "core/python/tests/unit/README.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/lazy_planning_query_payload_emission.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+            "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.planning_query_efficiency_and_handler_modularity.planning_baseline",
+          "title": "Planning Query Efficiency and Coordination Handler Modularity Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-13T23:29:35Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json",
+          "check_ids": [
+            "check.planning_query_efficiency_and_handler_modularity.planning_trace_chain",
+            "check.planning_query_efficiency_and_handler_modularity.shared_query_helper",
+            "check.planning_query_efficiency_and_handler_modularity.handler_split_alignment",
+            "check.planning_query_efficiency_and_handler_modularity.runtime_only_direction",
+            "check.planning_query_efficiency_and_handler_modularity.validation_loop"
+          ],
+          "acceptance_ids": [
+            "ac.planning_query_efficiency_and_handler_modularity.001",
+            "ac.planning_query_efficiency_and_handler_modularity.002",
+            "ac.planning_query_efficiency_and_handler_modularity.003",
+            "ac.planning_query_efficiency_and_handler_modularity.004",
+            "ac.planning_query_efficiency_and_handler_modularity.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.planning_query_efficiency_and_handler_modularity"
+      ],
+      "decision_ids": [
+        "decision.planning_query_efficiency_and_handler_modularity_direction"
+      ],
+      "design_ids": [
+        "design.features.planning_query_efficiency_and_handler_modularity"
+      ],
+      "plan_ids": [
+        "design.implementation.planning_query_efficiency_and_handler_modularity"
+      ],
+      "task_ids": [
+        "task.planning_query_efficiency_and_handler_modularity.bootstrap.001",
+        "task.planning_query_efficiency_and_handler_modularity.coordination_handler_split.002",
+        "task.planning_query_efficiency_and_handler_modularity.query_projection_search.001",
+        "task.planning_query_efficiency_and_handler_modularity.validation_and_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.planning_query_efficiency_and_handler_modularity.001",
+        "req.planning_query_efficiency_and_handler_modularity.002",
+        "req.planning_query_efficiency_and_handler_modularity.003",
+        "req.planning_query_efficiency_and_handler_modularity.004",
+        "req.planning_query_efficiency_and_handler_modularity.005"
+      ],
+      "acceptance_ids": [
+        "ac.planning_query_efficiency_and_handler_modularity.001",
+        "ac.planning_query_efficiency_and_handler_modularity.002",
+        "ac.planning_query_efficiency_and_handler_modularity.003",
+        "ac.planning_query_efficiency_and_handler_modularity.004",
+        "ac.planning_query_efficiency_and_handler_modularity.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.planning_query_efficiency_and_handler_modularity"
+      ],
+      "evidence_ids": [
+        "evidence.planning_query_efficiency_and_handler_modularity.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/README.md",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+        "core/python/src/watchtower_core/cli/query_handlers.py",
+        "core/python/src/watchtower_core/control_plane/models/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/query/common.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_cli_planning_query_commands.py",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "core/python/tests/unit/test_projection_search_common.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query_authority.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md",
+        "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
+        "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+        "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_query_efficiency_and_handler_modularity.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning redesign evidence refreshed at 2026-03-13T23:29:35Z after the shared query-helper refactor, handler split, synced discovery surfaces, and reopened validation-loop repairs.",
+      "closed_at": "2026-03-13T23:40:00Z",
+      "closure_reason": "Completed the runtime-layer planning query redesign, split the coordination handler family, repaired the validation-loop drift, and reran clean confirmation passes."
+    },
+    {
       "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
       "title": "Planning Semantics and Decision Contract Alignment PRD",
       "summary": "Align decision-record standards and templates with the enforced governed contract and extend shared document-semantics enforcement across governed planning documents.",

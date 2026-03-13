@@ -83,9 +83,9 @@ uv run watchtower-core query initiatives --initiative-status completed --format 
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/initiatives.py`
 - `core/control_plane/indexes/initiatives/initiative_index.v1.json`
 
 ## Updated At
-- `2026-03-13T21:57:29Z`
+- `2026-03-13T23:21:33Z`

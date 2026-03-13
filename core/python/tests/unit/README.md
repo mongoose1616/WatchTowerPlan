@@ -33,6 +33,8 @@
 | `core/python/tests/unit/test_front_matter_validation.py` | Unit tests for registry-backed front-matter validation. |
 | `core/python/tests/unit/test_github_task_sync.py` | Unit tests for push-only GitHub task sync planning behavior. |
 | `core/python/tests/unit/test_governed_markdown_reference_resolution.py` | Unit tests for source-aware governed Markdown repo-path extraction across adapters, planning helpers, and derived sync services. |
+| `core/python/tests/unit/test_planning_catalog_sync.py` | Unit tests for rebuilding the planning catalog and validating the deep planning query behavior against the governed artifact. |
+| `core/python/tests/unit/test_projection_search_common.py` | Unit tests for the shared projection-search helper that planning, initiative, and coordination queries now share. |
 | `core/python/tests/unit/test_repo_ops_compatibility.py` | Unit tests for the explicit repo-ops boundary and its compatibility shims. |
 | `core/python/tests/unit/test_prd_index_sync.py` | Unit tests for rebuilding the PRD index from governed PRD documents. |
 | `core/python/tests/unit/test_reference_index_sync.py` | Unit tests for rebuilding the reference index from governed reference docs. |

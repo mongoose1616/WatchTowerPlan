@@ -78,9 +78,9 @@ uv run watchtower-core query planning --initiative-status completed --trace-id t
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py`
 - `core/python/src/watchtower_core/repo_ops/query/planning.py`
 - `core/control_plane/indexes/planning/planning_catalog.v1.json`
 
 ## Updated At
-- `2026-03-13T20:36:00Z`
+- `2026-03-13T23:21:33Z`

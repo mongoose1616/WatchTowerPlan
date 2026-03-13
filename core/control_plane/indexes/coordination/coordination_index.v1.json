@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-13T22:50:18Z",
+  "updated_at": "2026-03-13T23:40:35Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
+      "title": "Planning Query Efficiency and Coordination Handler Modularity PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-13T23:40:00Z",
+      "key_surface_path": "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+      "closure_reason": "Completed the runtime-layer planning query redesign, split the coordination handler family, repaired the validation-loop drift, and reran clean confirmation passes."
+    },
     {
       "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
       "title": "Refactor Umbrella Regression and Growth Control PRD",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-13T16:13:43Z",
       "key_surface_path": "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
       "closure_reason": "Completed the bounded refactor review after hardening reference maturity signaling, reserved-family maturity wording, traceability path repair, repeated clean confirmation passes, and full validation."
-    },
-    {
-      "trace_id": "trace.refactor_review_and_hardening",
-      "title": "Refactor Review and Hardening PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-13T15:02:17Z",
-      "key_surface_path": "docs/planning/prds/refactor_review_and_hardening.md",
-      "closure_reason": "Completed the bounded refactor review after workflow-route hardening, compact current-state coordination, route-first entrypoint simplification, evidence repair, coordination-tracking regression-test hardening, and repeated clean validation passes."
     }
   ]
 }

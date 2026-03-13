@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.planning_query_efficiency_and_handler_modularity` | `completed` | `2026-03-13T23:40:00Z` | [planning_query_efficiency_and_coordination_handler_modularity.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md) |
 | `trace.refactor_umbrella_regression_and_growth_control` | `completed` | `2026-03-13T22:49:56Z` | [refactor_umbrella_regression_and_growth_control.md](/home/j/WatchTowerPlan/docs/planning/prds/refactor_umbrella_regression_and_growth_control.md) |
 | `trace.query_family_source_surface_alignment` | `completed` | `2026-03-13T22:13:22Z` | [query_family_source_surface_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/query_family_source_surface_alignment.md) |
 | `trace.workflow_route_boundary_discoverability_hardening` | `completed` | `2026-03-13T21:42:14Z` | [workflow_route_boundary_discoverability_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_route_boundary_discoverability_hardening.md) |
 | `trace.active_first_planning_query_history_alignment` | `completed` | `2026-03-13T20:54:01Z` | [active_first_planning_query_history_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/active_first_planning_query_history_alignment.md) |
-| `trace.data_contract_index_family_baseline_alignment` | `completed` | `2026-03-13T20:17:49Z` | [data_contract_index_family_baseline_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/data_contract_index_family_baseline_alignment.md) |
 
-_Updated At: `2026-03-13T22:50:18Z`_
+_Updated At: `2026-03-13T23:40:35Z`_

@@ -1265,6 +1265,38 @@
       ]
     },
     {
+      "document_id": "design.features.planning_query_efficiency_and_handler_modularity",
+      "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
+      "family": "feature_design",
+      "title": "Planning Query Efficiency and Coordination Handler Modularity Feature Design",
+      "summary": "Defines the technical design boundary for Planning Query Efficiency and Coordination Handler Modularity.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+      "updated_at": "2026-03-13T23:32:17Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/repo_ops/query/common.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/control_plane/models/planning_catalog.py",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.planning_semantics_and_decision_contract_alignment",
       "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
       "family": "feature_design",
@@ -3045,6 +3077,39 @@
         "docs/standards/documentation/command_md_standard.md",
         "docs/planning/prds/planning_authority_unification.md",
         "docs/planning/design/features/planning_authority_unification.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.planning_query_efficiency_and_handler_modularity",
+      "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
+      "family": "implementation_plan",
+      "title": "Planning Query Efficiency and Coordination Handler Modularity Implementation Plan",
+      "summary": "Breaks Planning Query Efficiency and Coordination Handler Modularity into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+      "updated_at": "2026-03-13T23:40:35Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/repo_ops/query/common.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/control_plane/models/planning_catalog.py",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md"
       ]
     },
     {

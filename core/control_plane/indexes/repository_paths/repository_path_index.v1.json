@@ -3177,6 +3177,116 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/src/watchtower_core/cli/README.md",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Describes the CLI parser and handler boundary for `watchtower-core`.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/query_coordination_family.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Registers the planning-oriented query subcommands and their parser contracts.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Compatibility facade that preserves the legacy coordination-query handler import path.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Handles the authority, task, and trace lookup subcommands plus their direct payload formatting.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Handles the coordination, initiative, and planning projection query subcommands plus their shared payload formatting.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/cli/query_handlers.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Compatibility facade that re-exports the split query handler families for older imports.",
+      "parent_path": "core/python/src/watchtower_core/cli/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/repo_ops/query/README.md",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Describes the repository query-service boundary and adjacent command docs.",
+      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/repo_ops/query/common.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Shared projection-search helpers and deterministic query-term builders for trace-linked planning views.",
+      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Active-first coordination query service that layers the coordination snapshot over initiative history lookup.",
+      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Compact initiative-family query service over phase, owner, and blocker projections.",
+      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/src/watchtower_core/repo_ops/query/planning.py",
+      "kind": "file",
+      "surface_kind": "python_source_file",
+      "summary": "Deep planning-catalog query service over the canonical planning join.",
+      "parent_path": "core/python/src/watchtower_core/repo_ops/query/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/",
       "kind": "directory",
       "surface_kind": "python_tests",
@@ -3588,10 +3698,30 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/tests/unit/test_planning_catalog_sync.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for rebuilding the planning catalog and validating the deep planning query behavior against the governed artifact.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/unit/test_prd_index_sync.py",
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Unit tests for rebuilding the PRD index from governed PRD documents.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_projection_search_common.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for the shared projection-search helper that planning, initiative, and coordination queries now share.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",

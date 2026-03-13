@@ -1,0 +1,164 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.planning_query_efficiency_and_handler_modularity.planning_baseline",
+  "title": "Planning Query Efficiency and Coordination Handler Modularity Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T23:29:35Z",
+  "source_prd_ids": [
+    "prd.planning_query_efficiency_and_handler_modularity"
+  ],
+  "source_design_ids": [
+    "design.features.planning_query_efficiency_and_handler_modularity"
+  ],
+  "source_plan_ids": [
+    "design.implementation.planning_query_efficiency_and_handler_modularity"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.planning_query_efficiency_and_handler_modularity"
+  ],
+  "source_decision_ids": [
+    "decision.planning_query_efficiency_and_handler_modularity_direction"
+  ],
+  "checks": [
+    {
+      "check_id": "check.planning_query_efficiency_and_handler_modularity.planning_trace_chain",
+      "title": "The redesign trace publishes one aligned planning chain and bounded task set",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
+        "docs/planning/tasks/closed/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
+        "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md",
+        "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_query_efficiency_and_handler_modularity.md",
+        "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json"
+      ],
+      "subject_ids": [
+        "prd.planning_query_efficiency_and_handler_modularity",
+        "design.features.planning_query_efficiency_and_handler_modularity",
+        "design.implementation.planning_query_efficiency_and_handler_modularity",
+        "decision.planning_query_efficiency_and_handler_modularity_direction",
+        "task.planning_query_efficiency_and_handler_modularity.bootstrap.001",
+        "task.planning_query_efficiency_and_handler_modularity.query_projection_search.001",
+        "task.planning_query_efficiency_and_handler_modularity.coordination_handler_split.002",
+        "task.planning_query_efficiency_and_handler_modularity.validation_and_closeout.003",
+        "contract.acceptance.planning_query_efficiency_and_handler_modularity",
+        "evidence.planning_query_efficiency_and_handler_modularity.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_query_efficiency_and_handler_modularity.001"
+      ],
+      "notes": "The trace now has one authored planning chain, two closed implementation tasks, one active validation task, and synced planning trackers under a single redesign scope."
+    },
+    {
+      "check_id": "check.planning_query_efficiency_and_handler_modularity.shared_query_helper",
+      "title": "Shared projection-search mechanics preserve planning and coordination query semantics",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/common.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/tests/unit/test_projection_search_common.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "core/python/tests/unit/test_coordination_index_sync.py"
+      ],
+      "subject_ids": [
+        "task.planning_query_efficiency_and_handler_modularity.query_projection_search.001"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_query_efficiency_and_handler_modularity.002"
+      ],
+      "notes": "Focused query-service validation passed with `10 passed` across the new helper suite plus planning-catalog and coordination-query regressions."
+    },
+    {
+      "check_id": "check.planning_query_efficiency_and_handler_modularity.handler_split_alignment",
+      "title": "Focused handler modules, compatibility facades, docs, and inventories remain aligned",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/cli/query_handlers.py",
+        "core/python/src/watchtower_core/cli/README.md",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_cli_planning_query_commands.py",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_authority.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.planning_query_efficiency_and_handler_modularity.coordination_handler_split.002"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_query_efficiency_and_handler_modularity.003"
+      ],
+      "notes": "Focused handler and CLI validation passed with `54 passed`, `query paths` resolves both new handler modules and the new helper test, and `query commands --query \"query coordination\"` still resolves the family registrar deterministically."
+    },
+    {
+      "check_id": "check.planning_query_efficiency_and_handler_modularity.runtime_only_direction",
+      "title": "The redesign remains bounded to runtime and discovery surfaces without adding a new governed planning family",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "subject_ids": [
+        "decision.planning_query_efficiency_and_handler_modularity_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_query_efficiency_and_handler_modularity.004"
+      ],
+      "notes": "The redesign added runtime helper and handler modules only, reused the existing command and repository-path indexes, and repaired the reopened decision-record applied-reference formatting issue before the final reruns."
+    },
+    {
+      "check_id": "check.planning_query_efficiency_and_handler_modularity.validation_loop",
+      "title": "Targeted validation, full validation, and confirmation reruns close the redesign loop cleanly",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json"
+      ],
+      "subject_ids": [
+        "contract.acceptance.planning_query_efficiency_and_handler_modularity",
+        "evidence.planning_query_efficiency_and_handler_modularity.planning_baseline",
+        "task.planning_query_efficiency_and_handler_modularity.validation_and_closeout.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_query_efficiency_and_handler_modularity.005"
+      ],
+      "notes": "The pre-closeout loop passed `watchtower-core sync all --write --format json` with 21 rebuilt surfaces, `watchtower-core validate all --skip-acceptance --format json` with `1135` passed and `0` failed, `ruff check .`, and `python -m mypy src/watchtower_core`. The first full-stack rerun reopened on one decision-doc semantics issue and then on the bootstrap-only acceptance/evidence state; both were repaired in-trace before the acceptance-aware final reruns."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning redesign evidence refreshed at 2026-03-13T23:29:35Z after the shared query-helper refactor, handler split, synced discovery surfaces, and reopened validation-loop repairs."
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.planning_query_efficiency_and_handler_modularity",
+  "title": "Planning Query Efficiency and Coordination Handler Modularity Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
+  "source_prd_id": "prd.planning_query_efficiency_and_handler_modularity",
+  "entries": [
+    {
+      "acceptance_id": "ac.planning_query_efficiency_and_handler_modularity.001",
+      "summary": "The trace publishes the fully-authored PRD, accepted direction decision, active feature design, active implementation plan, refreshed acceptance contract, refreshed evidence ledger, bounded closed task set, and active validation task with one stable coverage map and findings ledger for this redesign boundary.",
+      "source_requirement_ids": [
+        "req.planning_query_efficiency_and_handler_modularity.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
+        "docs/planning/tasks/closed/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
+        "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md",
+        "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_query_efficiency_and_handler_modularity.md",
+        "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Closeout-aligned contract should preserve the one-scope redesign planning chain, refreshed contract and evidence surfaces, the two closed implementation tasks, and the active validation task until final initiative closeout."
+    },
+    {
+      "acceptance_id": "ac.planning_query_efficiency_and_handler_modularity.002",
+      "summary": "Planning, initiative, and coordination query services now share one explicit projection-search helper for the duplicated trace, status, phase, owner, and ranking mechanics while keeping service-specific query terms and ordering stable.",
+      "source_requirement_ids": [
+        "req.planning_query_efficiency_and_handler_modularity.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/common.py",
+        "core/python/src/watchtower_core/repo_ops/query/planning.py",
+        "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/tests/unit/test_projection_search_common.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "core/python/tests/unit/test_coordination_index_sync.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md"
+      ],
+      "notes": "Covers the shared runtime helper, the refactored query services, and the focused regressions that guard the preserved filtering and deterministic sort behavior."
+    },
+    {
+      "acceptance_id": "ac.planning_query_efficiency_and_handler_modularity.003",
+      "summary": "The coordination-query hotspot is reduced to a compatibility facade plus focused projection and lookup handler modules, and the command docs, README inventories, repository-path index, and direct consumer regressions remain aligned with that ownership model.",
+      "source_requirement_ids": [
+        "req.planning_query_efficiency_and_handler_modularity.003",
+        "req.planning_query_efficiency_and_handler_modularity.004"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/query_coordination_projection_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/query_coordination_family.py",
+        "core/python/src/watchtower_core/cli/query_handlers.py",
+        "core/python/src/watchtower_core/cli/README.md",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli.py",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md",
+        "docs/commands/core_python/watchtower_core_query_authority.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md",
+        "docs/commands/core_python/watchtower_core_query_trace.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+        "core/python/tests/unit/README.md"
+      ],
+      "notes": "Covers the handler-family split, compatibility facade preservation, command-doc updates, README inventory refresh, repository-path discoverability, and direct test alignment."
+    },
+    {
+      "acceptance_id": "ac.planning_query_efficiency_and_handler_modularity.004",
+      "summary": "The redesign remains bounded to the runtime/query layer, introduces no new governed planning artifact family, and records that direction explicitly in the PRD, feature design, implementation plan, and accepted decision while keeping existing command and repository-path indexes as the authoritative discovery surfaces.",
+      "source_requirement_ids": [
+        "req.planning_query_efficiency_and_handler_modularity.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
+        "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/prds/lazy_planning_query_payload_emission.md"
+      ],
+      "notes": "Covers the bounded redesign direction and guards against slipping into a new planning-schema or index-family expansion without fresh evidence."
+    },
+    {
+      "acceptance_id": "ac.planning_query_efficiency_and_handler_modularity.005",
+      "summary": "Targeted validation, full repository validation, repeated confirmation passes, and adversarial confirmation complete cleanly on the final tree with no new actionable issue under the planning-query efficiency and handler-modularity theme.",
+      "source_requirement_ids": [
+        "req.planning_query_efficiency_and_handler_modularity.005"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "notes": "Covers the targeted query-service and handler suites, the full validation stack, the post-fix review and second-angle confirmations, and the adversarial reruns required before initiative closeout."
+    }
+  ]
+}
