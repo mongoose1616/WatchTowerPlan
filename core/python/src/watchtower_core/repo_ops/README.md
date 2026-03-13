@@ -10,7 +10,9 @@ WatchTowerPlan-specific planning, task, query, sync, and validation behavior tha
 
 ## Key Surfaces
 - `planning_documents.py` and `task_documents.py`: Repo-native document parsing and validation helpers.
-- `planning_scaffolds.py` and `task_lifecycle.py`: Planning and task authoring or transition services.
+- `planning_scaffolds.py` and `task_lifecycle.py`: Stable planning and task authoring or transition service entrypoints.
+- `planning_scaffold_specs.py`, `planning_scaffold_rendering.py`, and `planning_bootstrap_support.py`: Declarative scaffold contracts, section rendering, bootstrap artifact builders, and planning-surface refresh helpers behind `planning_scaffolds.py`.
+- `task_companion_path_repair.py`: Governed acceptance-contract and validation-evidence task-path repair isolated from `task_lifecycle.py`.
 - `query/`, `sync/`, and `validation/`: Repo-local authoritative implementations behind the compatibility wrappers.
 
 ## Related Surfaces

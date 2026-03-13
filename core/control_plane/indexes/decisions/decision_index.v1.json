@@ -1048,6 +1048,41 @@
       ]
     },
     {
+      "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
+      "decision_id": "decision.planning_authoring_hotspot_regression_hardening_direction",
+      "title": "Planning Authoring Hotspot Regression Hardening Direction Decision",
+      "summary": "Records the initial direction decision for Planning Authoring Hotspot Regression Hardening.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md",
+      "updated_at": "2026-03-13T17:26:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.planning_authoring_hotspot_regression_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_authoring_hotspot_regression_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_authoring_hotspot_regression_hardening"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/prd_md_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.planning_authority_unification",
       "decision_id": "decision.planning_authority_unification_direction",
       "title": "Planning Authority Unification Direction Decision",

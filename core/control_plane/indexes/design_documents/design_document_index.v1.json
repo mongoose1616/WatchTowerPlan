@@ -1138,6 +1138,33 @@
       ]
     },
     {
+      "document_id": "design.features.planning_authoring_hotspot_regression_hardening",
+      "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
+      "family": "feature_design",
+      "title": "Planning Authoring Hotspot Regression Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Planning Authoring Hotspot Regression Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/planning_authoring_hotspot_regression_hardening.md",
+      "updated_at": "2026-03-13T17:26:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/planning_authoring_hotspot_regression_hardening.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md"
+      ]
+    },
+    {
       "document_id": "design.features.planning_authority_unification",
       "trace_id": "trace.planning_authority_unification",
       "family": "feature_design",
@@ -2689,6 +2716,33 @@
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/planning/prds/machine_first_coordination_surface.md",
         "docs/planning/design/features/machine_first_coordination_surface.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.planning_authoring_hotspot_regression_hardening",
+      "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
+      "family": "implementation_plan",
+      "title": "Planning Authoring Hotspot Regression Hardening Implementation Plan",
+      "summary": "Breaks Planning Authoring Hotspot Regression Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/planning_authoring_hotspot_regression_hardening.md",
+      "updated_at": "2026-03-13T17:44:44Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/documentation/prd_md_standard.md",
+        "docs/standards/documentation/feature_design_md_standard.md",
+        "docs/standards/documentation/implementation_plan_md_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md"
       ]
     },
     {

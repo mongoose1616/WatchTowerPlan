@@ -1,0 +1,110 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.planning_authoring_hotspot_regression_hardening",
+  "title": "Planning Authoring Hotspot Regression Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
+  "source_prd_id": "prd.planning_authoring_hotspot_regression_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.planning_authoring_hotspot_regression_hardening.001",
+      "summary": "The trace publishes the active PRD, accepted direction decision, active feature design, active implementation plan, aligned acceptance contract, planning-baseline evidence, closed bootstrap task, bounded execution tasks, and the explicit coverage map plus findings ledger for the hotspot-regression slice.",
+      "source_requirement_ids": [
+        "req.planning_authoring_hotspot_regression_hardening.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/design/features/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/design/implementation/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md",
+        "docs/planning/tasks/closed/planning_authoring_hotspot_regression_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/planning_scaffold_helper_seams.md",
+        "docs/planning/tasks/closed/isolate_task_companion_path_repair.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_authoring_hotspot_regression_hardening.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The initial scaffold placeholders were replaced with the explicit hotspot-regression scope, coverage map, findings ledger, and bounded task chain after the discovery pass confirmed the same theme had regrown after trace.repo_local_hotspot_modularity closed."
+    },
+    {
+      "acceptance_id": "ac.planning_authoring_hotspot_regression_hardening.002",
+      "summary": "Planning scaffold kind contracts, section rendering, bootstrap acceptance or evidence building, and planning-surface refresh are split into smaller helper-backed seams while plan command behavior and generated artifact shapes stay stable.",
+      "source_requirement_ids": [
+        "req.planning_authoring_hotspot_regression_hardening.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_models.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_rendering.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_specs.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
+        "core/python/tests/unit/test_planning_scaffold_specs.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "core/python/tests/unit/test_plan_and_task_handlers.py",
+        "docs/commands/core_python/watchtower_core_plan.md",
+        "core/python/src/watchtower_core/repo_ops/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_authoring_hotspot_regression_hardening.003",
+      "summary": "Governed task companion-path repair is isolated from TaskLifecycleService while canonical task mutation behavior, governed companion rewrites, and coordination refresh remain stable.",
+      "source_requirement_ids": [
+        "req.planning_authoring_hotspot_regression_hardening.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_companion_path_repair.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/tests/unit/test_task_companion_path_repair.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py",
+        "core/python/tests/unit/test_plan_and_task_handlers.py",
+        "docs/commands/core_python/watchtower_core_task.md",
+        "core/python/src/watchtower_core/repo_ops/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_authoring_hotspot_regression_hardening.004",
+      "summary": "Adjacent docs, runtime-boundary surfaces, trackers, indexes, acceptance metadata, and regression suites stay aligned with the touched planning-authoring seams without human-versus-machine drift.",
+      "source_requirement_ids": [
+        "req.planning_authoring_hotspot_regression_hardening.004"
+      ],
+      "validation_targets": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_authoring_hotspot_regression_hardening.005",
+      "summary": "Targeted validation, full repository validation, repeated confirmation passes, evidence refresh, task closeout, and initiative closeout complete in one clean committed state.",
+      "source_requirement_ids": [
+        "req.planning_authoring_hotspot_regression_hardening.005"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

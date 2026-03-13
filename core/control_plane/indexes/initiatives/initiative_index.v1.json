@@ -2523,6 +2523,105 @@
       "notes": "Planning-baseline evidence for the machine-first coordination surface initiative."
     },
     {
+      "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
+      "title": "Planning Authoring Hotspot Regression Hardening PRD",
+      "summary": "Review and refactor the regrown planning scaffold and task lifecycle hotspots so helper-backed seams stay explicit, governed companion repair is isolated, and the planning authoring path returns to a lower-blast-radius structure without changing behavior.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T17:45:42Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+      "prd_ids": [
+        "prd.planning_authoring_hotspot_regression_hardening"
+      ],
+      "decision_ids": [
+        "decision.planning_authoring_hotspot_regression_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.planning_authoring_hotspot_regression_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.planning_authoring_hotspot_regression_hardening"
+      ],
+      "task_ids": [
+        "task.planning_authoring_hotspot_regression_hardening.bootstrap.001",
+        "task.planning_authoring_hotspot_regression_hardening.scaffold_modularity.002",
+        "task.planning_authoring_hotspot_regression_hardening.task_companion_repair.003",
+        "task.planning_authoring_hotspot_regression_hardening.validation_closeout.004"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authoring_hotspot_regression_hardening.001",
+        "ac.planning_authoring_hotspot_regression_hardening.002",
+        "ac.planning_authoring_hotspot_regression_hardening.003",
+        "ac.planning_authoring_hotspot_regression_hardening.004",
+        "ac.planning_authoring_hotspot_regression_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.planning_authoring_hotspot_regression_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.planning_authoring_hotspot_regression_hardening.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T17:45:42Z",
+      "closure_reason": "Completed the bounded refactor review after extracting planning scaffold seams, isolating task companion-path repair, repairing evidence coverage, and rerunning clean validation and confirmation passes.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/planning_authoring_hotspot_regression_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_models.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_rendering.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_specs.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/task_companion_path_repair.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/tests/",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py",
+        "core/python/tests/unit/test_plan_and_task_handlers.py",
+        "core/python/tests/unit/test_planning_scaffold_specs.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/unit/test_task_companion_path_repair.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_plan.md",
+        "docs/commands/core_python/watchtower_core_task.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/design/implementation/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/isolate_task_companion_path_repair.md",
+        "docs/planning/tasks/closed/planning_authoring_hotspot_regression_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/planning_scaffold_helper_seams.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence refreshed for the planning-authoring hotspot regression trace after the scaffold seam split, the task companion-path repair extraction, the acceptance-target expansion, the reopened acceptance-evidence coverage fix, the final passing acceptance reconciliation check, and the repeated validation loop needed to return the bounded slice to a clean state."
+    },
+    {
       "trace_id": "trace.planning_authority_unification",
       "title": "Planning Authority Unification PRD",
       "summary": "Create one canonical machine planning catalog, publish a machine authority map, and normalize planning query status semantics for machine consumers.",

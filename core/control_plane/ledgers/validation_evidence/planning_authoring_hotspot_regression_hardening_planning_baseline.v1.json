@@ -1,0 +1,173 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.planning_authoring_hotspot_regression_hardening.planning_baseline",
+  "title": "Planning Authoring Hotspot Regression Hardening Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T17:44:44Z",
+  "source_prd_ids": [
+    "prd.planning_authoring_hotspot_regression_hardening"
+  ],
+  "source_design_ids": [
+    "design.features.planning_authoring_hotspot_regression_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.planning_authoring_hotspot_regression_hardening"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.planning_authoring_hotspot_regression_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.planning_authoring_hotspot_regression_hardening.planning_baseline",
+      "title": "Planning chain, findings ledger, and bounded tasks remain aligned through the reopened loop",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/design/features/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/design/implementation/planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md",
+        "core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.v1.json",
+        "docs/planning/tasks/closed/planning_authoring_hotspot_regression_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/planning_scaffold_helper_seams.md",
+        "docs/planning/tasks/closed/isolate_task_companion_path_repair.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_authoring_hotspot_regression_hardening.md"
+      ],
+      "subject_ids": [
+        "prd.planning_authoring_hotspot_regression_hardening",
+        "design.features.planning_authoring_hotspot_regression_hardening",
+        "design.implementation.planning_authoring_hotspot_regression_hardening",
+        "task.planning_authoring_hotspot_regression_hardening.bootstrap.001",
+        "task.planning_authoring_hotspot_regression_hardening.scaffold_modularity.002",
+        "task.planning_authoring_hotspot_regression_hardening.task_companion_repair.003",
+        "task.planning_authoring_hotspot_regression_hardening.validation_closeout.004",
+        "contract.acceptance.planning_authoring_hotspot_regression_hardening",
+        "decision.planning_authoring_hotspot_regression_hardening_direction",
+        "evidence.planning_authoring_hotspot_regression_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_authoring_hotspot_regression_hardening.001"
+      ],
+      "notes": "The discovery pass replaced the bootstrap placeholders with the bounded hotspot-regression scope, the implementation plan now records the reopened evidence-coverage finding, the two feature tasks are closed under canonical paths, and the closeout task remains active for the final validation loop."
+    },
+    {
+      "check_id": "check.planning_authoring_hotspot_regression_hardening.scaffold_modularity",
+      "title": "Planning scaffold seams are split into declarative specs, rendering helpers, and bootstrap collaborators",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_models.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_rendering.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_specs.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
+        "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/tests/unit/test_planning_scaffold_specs.py",
+        "core/python/tests/unit/test_planning_scaffolds.py",
+        "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "core/python/tests/unit/test_plan_and_task_handlers.py"
+      ],
+      "subject_ids": [
+        "task.planning_authoring_hotspot_regression_hardening.scaffold_modularity.002",
+        "contract.acceptance.planning_authoring_hotspot_regression_hardening",
+        "evidence.planning_authoring_hotspot_regression_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_authoring_hotspot_regression_hardening.002"
+      ],
+      "notes": "Targeted scaffold and handler regressions passed, the new scaffold-spec alignment test locks the declarative kind table to the planning-document requirements, and the service entrypoint now delegates bootstrap artifacts and surface refresh instead of owning all seams directly."
+    },
+    {
+      "check_id": "check.planning_authoring_hotspot_regression_hardening.task_companion_repair",
+      "title": "Task companion-path repair is isolated while lifecycle behavior stays stable",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_companion_path_repair.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/tests/unit/test_task_companion_path_repair.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py",
+        "core/python/tests/unit/test_plan_and_task_handlers.py"
+      ],
+      "subject_ids": [
+        "task.planning_authoring_hotspot_regression_hardening.task_companion_repair.003",
+        "contract.acceptance.planning_authoring_hotspot_regression_hardening",
+        "evidence.planning_authoring_hotspot_regression_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_authoring_hotspot_regression_hardening.003"
+      ],
+      "notes": "Targeted lifecycle and helper regressions passed, task moves still repair acceptance-contract and validation-evidence paths before removing the previous task document, and TaskLifecycleService now delegates governed companion traversal to the extracted repair helper."
+    },
+    {
+      "check_id": "check.planning_authoring_hotspot_regression_hardening.surface_alignment",
+      "title": "Adjacent planning, traceability, and runtime-boundary surfaces stay aligned with the seam split",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "core/python/src/watchtower_core/repo_ops/README.md"
+      ],
+      "subject_ids": [
+        "task.planning_authoring_hotspot_regression_hardening.validation_closeout.004",
+        "contract.acceptance.planning_authoring_hotspot_regression_hardening",
+        "evidence.planning_authoring_hotspot_regression_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_authoring_hotspot_regression_hardening.004"
+      ],
+      "notes": "A full `watchtower-core sync all --write --format json` rebuild refreshed the planning catalog, traceability index, coordination tracker, and task tracker after the task moves and acceptance-target expansion. The planning query now projects the new helper-module and seam-test paths while coordination shows only the validation closeout task as actionable."
+    },
+    {
+      "check_id": "check.planning_authoring_hotspot_regression_hardening.validation_closeout",
+      "title": "Targeted validation, full-repo checks, and the reopened evidence loop close in one bounded slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/validate_and_close_planning_authoring_hotspot_regression_hardening.md",
+        "core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_authoring_hotspot_regression_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "subject_ids": [
+        "task.planning_authoring_hotspot_regression_hardening.validation_closeout.004",
+        "contract.acceptance.planning_authoring_hotspot_regression_hardening",
+        "evidence.planning_authoring_hotspot_regression_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_authoring_hotspot_regression_hardening.005"
+      ],
+      "notes": "The focused seam suite passed, `ruff check .` passed, `python -m mypy src/watchtower_core` passed, `pytest -q` passed after the evidence refresh, and the final acceptance-aware `watchtower-core validate all --format json` rerun returned 1069 passed and 0 failed. The first acceptance-aware full validation reopened the loop by exposing missing evidence coverage for acceptance IDs 002 through 005, and the bounded evidence repair closed that gap before the final reruns."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence refreshed for the planning-authoring hotspot regression trace after the scaffold seam split, the task companion-path repair extraction, the acceptance-target expansion, the reopened acceptance-evidence coverage fix, the final passing acceptance reconciliation check, and the repeated validation loop needed to return the bounded slice to a clean state.",
+  "source_decision_ids": [
+    "decision.planning_authoring_hotspot_regression_hardening_direction"
+  ]
+}

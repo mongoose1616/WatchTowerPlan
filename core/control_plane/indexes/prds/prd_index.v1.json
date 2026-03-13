@@ -1174,6 +1174,45 @@
       ]
     },
     {
+      "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
+      "prd_id": "prd.planning_authoring_hotspot_regression_hardening",
+      "title": "Planning Authoring Hotspot Regression Hardening PRD",
+      "summary": "Review and refactor the regrown planning scaffold and task lifecycle hotspots so helper-backed seams stay explicit, governed companion repair is isolated, and the planning authoring path returns to a lower-blast-radius structure without changing behavior.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/planning_authoring_hotspot_regression_hardening.md",
+      "updated_at": "2026-03-13T17:26:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.planning_authoring_hotspot_regression_hardening.001",
+        "req.planning_authoring_hotspot_regression_hardening.002",
+        "req.planning_authoring_hotspot_regression_hardening.003",
+        "req.planning_authoring_hotspot_regression_hardening.004",
+        "req.planning_authoring_hotspot_regression_hardening.005"
+      ],
+      "acceptance_ids": [
+        "ac.planning_authoring_hotspot_regression_hardening.001",
+        "ac.planning_authoring_hotspot_regression_hardening.002",
+        "ac.planning_authoring_hotspot_regression_hardening.003",
+        "ac.planning_authoring_hotspot_regression_hardening.004",
+        "ac.planning_authoring_hotspot_regression_hardening.005"
+      ],
+      "linked_decision_ids": [
+        "decision.planning_authoring_hotspot_regression_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_authoring_hotspot_regression_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_authoring_hotspot_regression_hardening"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md"
+      ]
+    },
+    {
       "trace_id": "trace.planning_authority_unification",
       "prd_id": "prd.planning_authority_unification",
       "title": "Planning Authority Unification PRD",
