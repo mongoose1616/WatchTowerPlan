@@ -93,7 +93,15 @@ def test_reference_index_sync_extracts_document_relative_related_and_applied_pat
             One compact reference fixture.
 
             ## Local Mapping in This Repository
+            ### Current Repository Status
+            - Supporting authority for current repository docs, standards,
+              commands, or control-plane surfaces.
+
+            ### Current Touchpoints
             - [README.md](../README.md)
+
+            ### Why It Matters Here
+            - Keep one explicit repo-local touchpoint for the test fixture.
 
             ## References
             - [README.md](../README.md)
@@ -172,7 +180,69 @@ def test_reference_index_sync_extracts_document_relative_related_and_applied_pat
 
     entry = document["entries"][0]
     assert entry["reference_id"] == "ref.example"
+    assert entry["repository_status"] == "supporting_authority"
     assert entry["related_paths"] == ["docs/README.md"]
     assert entry["applied_by_paths"] == [
         "docs/standards/documentation/example_standard.md"
     ]
+
+
+def test_reference_index_sync_does_not_count_readme_only_backlinks_as_internal_support(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    _write_repo_file(repo_root / "docs/references/README.md")
+    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path.parent.mkdir(parents=True, exist_ok=True)
+    reference_path.write_text(
+        dedent(
+            """\
+            ---
+            id: "ref.example"
+            title: "Example Reference"
+            summary: "Exercises candidate-reference maturity signaling."
+            type: "reference"
+            status: "active"
+            tags:
+              - "reference"
+              - "example"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-13T17:30:00Z"
+            audience: "shared"
+            authority: "supporting"
+            ---
+
+            # Example Reference
+
+            ## Canonical Upstream
+            - [Example upstream](https://example.com/reference)
+
+            ## Quick Reference or Distilled Reference
+            One compact reference fixture.
+
+            ## Local Mapping in This Repository
+            ### Current Repository Status
+            - Candidate reference. No active standard or workflow in this
+              repository links this file directly yet.
+
+            ### Why It Matters Here
+            - Keep one candidate reference available for future work.
+
+            ## References
+            - [README.md](README.md)
+
+            ## Updated At
+            - `2026-03-13T17:30:00Z`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    loader = ControlPlaneLoader(repo_root)
+    document = ReferenceIndexSyncService(loader).build_document()
+
+    entry = document["entries"][0]
+    assert entry["reference_id"] == "ref.example"
+    assert entry["repository_status"] == "candidate_future_guidance"
+    assert "related_paths" not in entry
+    assert entry["uses_internal_references"] is False

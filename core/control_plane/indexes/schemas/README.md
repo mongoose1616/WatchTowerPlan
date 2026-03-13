@@ -1,9 +1,9 @@
 # `core/control_plane/indexes/schemas`
 
 ## Description
-`This directory holds lookup-oriented indexes over published schemas when schema discovery needs a simpler query surface than direct tree scans.`
+`This directory is a reserved placeholder for future lookup-oriented indexes over published schemas. It is intentionally README-only until schema discovery needs a published denormalized lookup surface beyond the live schema tree and schema catalog.`
 
 ## Files
 | Path | Description |
 |---|---|
-| `core/control_plane/indexes/schemas/README.md` | Describes the purpose of the schema index directory and its current boundaries. |
+| `core/control_plane/indexes/schemas/README.md` | Describes the reserved placeholder boundary for schema indexes until live artifacts exist here. |

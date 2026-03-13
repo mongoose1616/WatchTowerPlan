@@ -78,9 +78,23 @@ aliases:
 - <Concrete example, edge case, or common mistake.>
 
 ## Local Mapping in This Repository
+### Current Repository Status
+- Candidate reference. No active standard or workflow in this repository links this file directly yet.
+- Supporting authority for current repository docs, standards, commands, or control-plane surfaces.
+- Active support for current repository standards, design docs, commands, workflows, or other live repository behavior.
+
+<Keep exactly one status bullet and start it with one of the approved phrases above so the reference index can derive a deterministic `repository_status` value.>
+
+### Current Touchpoints
+- <Link the actual current repository files or directories that this reference directly supports today.>
+- <Omit this subsection only when the reference is still candidate future guidance with no active local touchpoints.>
+
+### Why It Matters Here
 - <Explain how this reference applies to current repository docs, workflows, standards, templates, or directories.>
-- <Link the concept to actual repository surfaces when useful.>
 - <State any local interpretation or usage boundary clearly.>
+
+### If Local Policy Tightens
+- <Describe what companion standards, workflows, commands, schemas, or indexes should change in the same slice if this topic becomes more prescriptive locally.>
 
 ## Process or Workflow
 1. <Describe how a contributor should apply this reference.>

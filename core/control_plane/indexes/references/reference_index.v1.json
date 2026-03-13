@@ -11,6 +11,7 @@
       "status": "active",
       "doc_path": "docs/references/adr_guidance_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -37,6 +38,7 @@
       "status": "active",
       "doc_path": "docs/references/agent_workflow_authoring_reference.md",
       "updated_at": "2026-03-12T02:46:38Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -64,8 +66,7 @@
         "docs/standards/workflows/routing_and_context_loading_standard.md",
         "docs/templates/workflow_template.md",
         "workflows/modules/",
-        "core/control_plane/indexes/workflows/workflow_index.v1.json",
-        "workflows/modules"
+        "core/control_plane/indexes/workflows/workflow_index.v1.json"
       ],
       "aliases": [
         "llm_workflow_authoring",
@@ -86,6 +87,7 @@
       "status": "active",
       "doc_path": "docs/references/check_jsonschema_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -112,6 +114,7 @@
       "status": "active",
       "doc_path": "docs/references/commonmark_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -127,8 +130,7 @@
       ],
       "related_paths": [
         "docs/standards/data_contracts/format_selection_standard.md",
-        "docs/templates/",
-        "docs/templates"
+        "docs/templates/"
       ],
       "tags": [
         "reference",
@@ -142,6 +144,7 @@
       "status": "active",
       "doc_path": "docs/references/conventional_commits_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -169,13 +172,11 @@
       "status": "active",
       "doc_path": "docs/references/coverage_py_config_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://coverage.readthedocs.io/en/latest/config.html"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -189,14 +190,12 @@
       "status": "active",
       "doc_path": "docs/references/cvss_v4_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.first.org/cvss/v4.0/",
         "https://www.first.org/cvss/v4.0/specification-document"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -210,7 +209,8 @@
       "status": "active",
       "doc_path": "docs/references/cyclonedx_1_7_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://cyclonedx.org/",
@@ -218,9 +218,6 @@
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_stack_direction.md"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -234,6 +231,7 @@
       "status": "active",
       "doc_path": "docs/references/diataxis_local_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -246,13 +244,7 @@
         "docs/standards/governance/reference_distillation_standard.md"
       ],
       "related_paths": [
-        "docs/standards/governance/reference_distillation_standard.md",
-        "docs/foundations/engineering_design_principles.md",
-        "docs/foundations/product_direction.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/templates/documentation_template.md",
-        "docs/templates/readme_template.md",
-        "docs/templates/workflow_template.md"
+        "docs/standards/governance/reference_distillation_standard.md"
       ],
       "tags": [
         "reference",
@@ -266,13 +258,11 @@
       "status": "active",
       "doc_path": "docs/references/first_tlp_2_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.first.org/tlp/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -286,6 +276,7 @@
       "status": "active",
       "doc_path": "docs/references/front_matter_reference.md",
       "updated_at": "2026-03-12T02:46:38Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -302,10 +293,7 @@
       "related_paths": [
         "docs/standards/metadata/front_matter_standard.md",
         "core/control_plane/schemas/interfaces/documentation/",
-        "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json",
-        "docs/templates/documentation_template.md",
-        "docs/references/yaml_1_2_2_reference.md",
-        "core/control_plane/schemas/interfaces/documentation"
+        "core/control_plane/schemas/interfaces/documentation/reference_front_matter.v1.schema.json"
       ],
       "aliases": [
         "yaml_header",
@@ -323,6 +311,7 @@
       "status": "active",
       "doc_path": "docs/references/git_commit_message_guidance_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -351,6 +340,7 @@
       "status": "active",
       "doc_path": "docs/references/github_collaboration_reference.md",
       "updated_at": "2026-03-12T22:05:00Z",
+      "repository_status": "active_support",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -381,8 +371,7 @@
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         ".github/README.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "docs/planning/design/features/github_task_push_sync.md",
-        "core/python/src/watchtower_core/sync/github_tasks.py"
+        "docs/planning/design/features/github_task_push_sync.md"
       ],
       "aliases": [
         "github collaboration",
@@ -403,13 +392,11 @@
       "status": "active",
       "doc_path": "docs/references/google_style_docstrings_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://google.github.io/styleguide/pyguide.html"
-      ],
-      "related_paths": [
-        "docs/references/pep257_reference.md"
       ],
       "tags": [
         "reference",
@@ -423,7 +410,8 @@
       "status": "active",
       "doc_path": "docs/references/in_toto_v1_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://in-toto.io/",
@@ -431,9 +419,6 @@
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_stack_direction.md"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -447,6 +432,7 @@
       "status": "active",
       "doc_path": "docs/references/json_schema_2020_12_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -461,8 +447,7 @@
       ],
       "related_paths": [
         "docs/standards/data_contracts/schema_standard.md",
-        "core/control_plane/schemas/",
-        "core/control_plane/schemas"
+        "core/control_plane/schemas/"
       ],
       "tags": [
         "reference",
@@ -476,14 +461,12 @@
       "status": "active",
       "doc_path": "docs/references/mitre_attack_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://attack.mitre.org/",
         "https://attack.mitre.org/resources/versions/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -497,6 +480,7 @@
       "status": "active",
       "doc_path": "docs/references/mypy_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -514,9 +498,7 @@
       ],
       "related_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
-        "core/python/pyproject.toml",
-        "docs/references/pep8_reference.md",
-        "docs/references/pyproject_toml_reference.md"
+        "core/python/pyproject.toml"
       ],
       "tags": [
         "reference",
@@ -530,6 +512,7 @@
       "status": "active",
       "doc_path": "docs/references/ndjson_spec_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -556,14 +539,12 @@
       "status": "active",
       "doc_path": "docs/references/nist_ai_600_1_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
         "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -577,15 +558,13 @@
       "status": "active",
       "doc_path": "docs/references/nist_ai_rmf_1_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10",
         "https://doi.org/10.6028/NIST.AI.100-1",
         "https://airc.nist.gov/AI_RMF_Knowledge_Base/Playbook"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -599,14 +578,12 @@
       "status": "active",
       "doc_path": "docs/references/nist_csf_2_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20",
         "https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -620,13 +597,11 @@
       "status": "active",
       "doc_path": "docs/references/nist_sp_800_115_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://csrc.nist.gov/pubs/sp/800/115/final"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -640,14 +615,12 @@
       "status": "active",
       "doc_path": "docs/references/nist_sp_800_61_rev_3_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
         "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -661,14 +634,12 @@
       "status": "active",
       "doc_path": "docs/references/nist_ssdf_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://csrc.nist.gov/pubs/sp/800/218/final",
         "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -682,7 +653,8 @@
       "status": "active",
       "doc_path": "docs/references/opa_rego_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.openpolicyagent.org/docs",
@@ -690,9 +662,6 @@
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_stack_direction.md"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -706,13 +675,11 @@
       "status": "active",
       "doc_path": "docs/references/openssf_scorecard_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://scorecard.dev/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -726,7 +693,8 @@
       "status": "active",
       "doc_path": "docs/references/opentelemetry_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://opentelemetry.io/docs/specs/otel/",
@@ -735,9 +703,6 @@
         "https://opentelemetry.io/docs/specs/otel/metrics/data-model/",
         "https://opentelemetry.io/docs/specs/otel/logs/sdk/",
         "https://opentelemetry.io/docs/specs/status/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -751,13 +716,11 @@
       "status": "active",
       "doc_path": "docs/references/owasp_asvs_5_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://owasp.org/www-project-application-security-verification-standard/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -771,14 +734,12 @@
       "status": "active",
       "doc_path": "docs/references/owasp_genai_security_project_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://genai.owasp.org/",
         "https://genai.owasp.org/introduction/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -792,13 +753,11 @@
       "status": "active",
       "doc_path": "docs/references/owasp_logging_cheat_sheet_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -812,13 +771,11 @@
       "status": "active",
       "doc_path": "docs/references/owasp_samm_2_0_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://owasp.org/www-project-samm/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -832,13 +789,11 @@
       "status": "active",
       "doc_path": "docs/references/owasp_wstg_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://owasp.org/www-project-web-security-testing-guide/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -852,14 +807,11 @@
       "status": "active",
       "doc_path": "docs/references/pep257_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://peps.python.org/pep-0257/"
-      ],
-      "related_paths": [
-        "docs/references/google_style_docstrings_reference.md",
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -873,13 +825,11 @@
       "status": "active",
       "doc_path": "docs/references/pep8_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://peps.python.org/pep-0008/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -893,14 +843,12 @@
       "status": "active",
       "doc_path": "docs/references/ptes_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.pentest-standard.org/index.php/Main_Page",
         "https://www.pentest-standard.org/index.php/PTES_Technical_Guidelines"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -914,6 +862,7 @@
       "status": "active",
       "doc_path": "docs/references/pydantic_strict_mode_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -942,6 +891,7 @@
       "status": "active",
       "doc_path": "docs/references/pyproject_toml_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -972,6 +922,7 @@
       "status": "active",
       "doc_path": "docs/references/pytest_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -990,10 +941,7 @@
       "related_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
         "core/python/pyproject.toml",
-        "core/python/tests/",
-        "docs/references/pyproject_toml_reference.md",
-        "docs/references/src_layout_reference.md",
-        "core/python/tests"
+        "core/python/tests/"
       ],
       "tags": [
         "reference",
@@ -1007,13 +955,11 @@
       "status": "active",
       "doc_path": "docs/references/python_json_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://docs.python.org/3/library/json.html"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1027,14 +973,12 @@
       "status": "active",
       "doc_path": "docs/references/python_logging_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://docs.python.org/3/library/logging.html",
         "https://docs.python.org/3/howto/logging-cookbook.html"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1048,13 +992,11 @@
       "status": "active",
       "doc_path": "docs/references/python_pycacheprefix_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPYCACHEPREFIX"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1068,13 +1010,11 @@
       "status": "active",
       "doc_path": "docs/references/regal_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.openpolicyagent.org/projects/regal"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1088,7 +1028,8 @@
       "status": "active",
       "doc_path": "docs/references/rfc_3339_timestamp_reference.md",
       "updated_at": "2026-03-09T05:06:54Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.rfc-editor.org/rfc/rfc3339"
@@ -1098,9 +1039,6 @@
       ],
       "applied_by_paths": [
         "docs/standards/metadata/timestamp_standard.md"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1114,13 +1052,11 @@
       "status": "active",
       "doc_path": "docs/references/rfc_7464_json_text_sequences_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.rfc-editor.org/info/rfc7464"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1134,6 +1070,7 @@
       "status": "active",
       "doc_path": "docs/references/rfc_8259_json_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -1147,8 +1084,7 @@
       ],
       "related_paths": [
         "docs/standards/data_contracts/format_selection_standard.md",
-        "core/control_plane/",
-        "core/control_plane"
+        "core/control_plane/"
       ],
       "tags": [
         "reference",
@@ -1162,13 +1098,11 @@
       "status": "active",
       "doc_path": "docs/references/rfc_8785_json_canonicalization_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.rfc-editor.org/info/rfc8785"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1182,7 +1116,8 @@
       "status": "active",
       "doc_path": "docs/references/rfc_9557_timestamp_extensions_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.rfc-editor.org/info/rfc9557"
@@ -1192,9 +1127,6 @@
       ],
       "applied_by_paths": [
         "docs/standards/metadata/timestamp_standard.md"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1208,6 +1140,7 @@
       "status": "active",
       "doc_path": "docs/references/rfc_9562_uuid_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -1234,6 +1167,7 @@
       "status": "active",
       "doc_path": "docs/references/ruff_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -1250,9 +1184,7 @@
       ],
       "related_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
-        "core/python/pyproject.toml",
-        "docs/references/pep8_reference.md",
-        "docs/references/pyproject_toml_reference.md"
+        "core/python/pyproject.toml"
       ],
       "tags": [
         "reference",
@@ -1266,6 +1198,7 @@
       "status": "active",
       "doc_path": "docs/references/semantic_versioning_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -1294,13 +1227,11 @@
       "status": "active",
       "doc_path": "docs/references/sha_256_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://csrc.nist.gov/pubs/fips/180-4/upd1/final"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1314,16 +1245,14 @@
       "status": "active",
       "doc_path": "docs/references/sigstore_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://docs.sigstore.dev/"
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_stack_direction.md"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1337,7 +1266,8 @@
       "status": "active",
       "doc_path": "docs/references/slsa_1_1_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://slsa.dev/spec/",
@@ -1345,9 +1275,6 @@
       ],
       "cited_by_paths": [
         "docs/foundations/engineering_stack_direction.md"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1361,13 +1288,11 @@
       "status": "active",
       "doc_path": "docs/references/sqlite_backup_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.sqlite.org/backup.html"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1381,13 +1306,11 @@
       "status": "active",
       "doc_path": "docs/references/sqlite_fts5_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.sqlite.org/fts5.html"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1401,13 +1324,11 @@
       "status": "active",
       "doc_path": "docs/references/sqlite_json1_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.sqlite.org/json1.html"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1421,13 +1342,11 @@
       "status": "active",
       "doc_path": "docs/references/sqlite_pragma_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.sqlite.org/pragma.html"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1441,6 +1360,7 @@
       "status": "active",
       "doc_path": "docs/references/sqlite_wal_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -1467,6 +1387,7 @@
       "status": "active",
       "doc_path": "docs/references/src_layout_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -1480,10 +1401,7 @@
       ],
       "related_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
-        "core/python/src/",
-        "docs/references/pyproject_toml_reference.md",
-        "docs/references/pytest_reference.md",
-        "core/python/src"
+        "core/python/src/"
       ],
       "tags": [
         "reference",
@@ -1497,6 +1415,7 @@
       "status": "active",
       "doc_path": "docs/references/uv_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [
@@ -1529,13 +1448,11 @@
       "status": "active",
       "doc_path": "docs/references/w3c_trace_context_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
-      "uses_internal_references": true,
+      "repository_status": "candidate_future_guidance",
+      "uses_internal_references": false,
       "uses_external_references": true,
       "canonical_upstream_urls": [
         "https://www.w3.org/TR/trace-context/"
-      ],
-      "related_paths": [
-        "docs/references/README.md"
       ],
       "tags": [
         "reference",
@@ -1549,6 +1466,7 @@
       "status": "active",
       "doc_path": "docs/references/yaml_1_2_2_reference.md",
       "updated_at": "2026-03-09T05:03:16Z",
+      "repository_status": "supporting_authority",
       "uses_internal_references": true,
       "uses_external_references": true,
       "canonical_upstream_urls": [

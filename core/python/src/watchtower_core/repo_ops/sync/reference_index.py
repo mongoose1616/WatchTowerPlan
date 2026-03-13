@@ -29,7 +29,10 @@ from watchtower_core.repo_ops.planning_documents import (
     ordered_unique,
     validate_required_section_order,
 )
-from watchtower_core.repo_ops.sync.traceability_support import existing_paths
+from watchtower_core.repo_ops.reference_semantics import (
+    REFERENCE_LOCAL_MAPPING_SECTION,
+    parse_reference_local_mapping,
+)
 
 REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference_index.v1.json"
 REFERENCE_FRONT_MATTER_SCHEMA_ID = (
@@ -41,7 +44,7 @@ REFERENCE_EXCLUDED_NAMES = {"README.md", "AGENTS.md"}
 
 def _load_existing_entries(loader: ControlPlaneLoader) -> dict[str, dict[str, Any]]:
     try:
-        document = loader.load_validated_document(REFERENCE_INDEX_ARTIFACT_PATH)
+        document = loader.load_json_object(REFERENCE_INDEX_ARTIFACT_PATH)
     except ArtifactLoadError:
         return {}
 
@@ -107,6 +110,7 @@ class ReferenceIndexSyncService:
             required_sections = (
                 "Canonical Upstream",
                 "Quick Reference or Distilled Reference",
+                REFERENCE_LOCAL_MAPPING_SECTION,
                 "References",
                 "Updated At",
             )
@@ -129,22 +133,15 @@ class ReferenceIndexSyncService:
                 )
 
             current = existing_entries.get(front_matter["id"], {})
+            local_mapping = parse_reference_local_mapping(
+                relative_path,
+                sections[REFERENCE_LOCAL_MAPPING_SECTION],
+                repo_root=self._repo_root,
+                source_path=path,
+            )
             related_paths = ordered_unique(
                 applies_to_path_values(applies_to, relative_path=relative_path),
-                extract_repo_path_references(
-                    sections.get("Local Mapping in This Repository", ""),
-                    self._repo_root,
-                    source_path=path,
-                ),
-                extract_repo_path_references(
-                    sections["References"],
-                    self._repo_root,
-                    source_path=path,
-                ),
-                existing_paths(
-                    self._repo_root,
-                    _tuple_of_strings(current.get("related_paths")),
-                ),
+                local_mapping.related_paths,
             )
             aliases = ordered_unique(
                 _front_matter_list(front_matter, "aliases"),
@@ -163,6 +160,7 @@ class ReferenceIndexSyncService:
                 "status": front_matter["status"],
                 "doc_path": relative_path,
                 "updated_at": updated_at,
+                "repository_status": local_mapping.repository_status,
                 "uses_internal_references": bool(related_paths),
                 "uses_external_references": True,
                 "canonical_upstream_urls": list(canonical_upstream_urls),

@@ -78,6 +78,7 @@
         "status",
         "doc_path",
         "updated_at",
+        "repository_status",
         "uses_internal_references",
         "uses_external_references",
         "canonical_upstream_urls"
@@ -102,6 +103,14 @@
         },
         "updated_at": {
           "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+        },
+        "repository_status": {
+          "type": "string",
+          "enum": [
+            "candidate_future_guidance",
+            "supporting_authority",
+            "active_support"
+          ]
         },
         "uses_internal_references": {
           "type": "boolean"

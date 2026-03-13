@@ -55,6 +55,17 @@ def _write_reference_fixture(path: Path) -> None:
             ## Quick Reference or Distilled Reference
             One compact reference fixture.
 
+            ## Local Mapping in This Repository
+            ### Current Repository Status
+            - Supporting authority for current repository docs, standards,
+              commands, or control-plane surfaces.
+
+            ### Current Touchpoints
+            - [README.md](../README.md)
+
+            ### Why It Matters Here
+            - Keep one explicit repo-local touchpoint for the reference fixture.
+
             ## References
             - [README.md](../README.md)
 

@@ -2819,6 +2819,146 @@
       ]
     },
     {
+      "task_id": "task.reference_and_reserved_surface_maturity_signaling.bootstrap.001",
+      "title": "Bootstrap Reference and Reserved Surface Maturity Signaling planning chain",
+      "summary": "Bootstraps the initial planning chain for Reference and Reserved Surface Maturity Signaling.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
+      "updated_at": "2026-03-13T15:43:04Z",
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "related_ids": [
+        "prd.reference_and_reserved_surface_maturity_signaling",
+        "design.features.reference_and_reserved_surface_maturity_signaling",
+        "design.implementation.reference_and_reserved_surface_maturity_signaling",
+        "decision.reference_and_reserved_surface_maturity_signaling_direction",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "applies_to": [
+        "docs/references/",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/indexes/registries/",
+        "core/control_plane/indexes/schemas/",
+        "core/control_plane/policies/",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/references.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "docs/commands/core_python/",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md"
+      ]
+    },
+    {
+      "task_id": "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+      "title": "Harden reference maturity signaling and query surfaces",
+      "summary": "Add deterministic reference maturity classification, meaningful touchpoint accounting, and aligned reference query/docs/test coverage across the governed reference family.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/harden_reference_maturity_signaling_and_query_surfaces.md",
+      "updated_at": "2026-03-13T16:08:13Z",
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "related_ids": [
+        "trace.reference_and_reserved_surface_maturity_signaling",
+        "prd.reference_and_reserved_surface_maturity_signaling",
+        "design.features.reference_and_reserved_surface_maturity_signaling",
+        "design.implementation.reference_and_reserved_surface_maturity_signaling",
+        "decision.reference_and_reserved_surface_maturity_signaling_direction",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "applies_to": [
+        "docs/references/",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
+        "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
+        "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/references.py",
+        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/tests/unit/test_reference_index_sync.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "docs/commands/core_python/watchtower_core_query_references.md"
+      ]
+    },
+    {
+      "task_id": "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003",
+      "title": "Mark README-only control-plane families as reserved placeholders",
+      "summary": "Clarify reserved maturity for README-only schema-index, registry-index, execution-policy, and validation-policy families across family entrypoints and adjacent guidance.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
+      "updated_at": "2026-03-13T16:08:13Z",
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "related_ids": [
+        "trace.reference_and_reserved_surface_maturity_signaling",
+        "prd.reference_and_reserved_surface_maturity_signaling",
+        "design.features.reference_and_reserved_surface_maturity_signaling",
+        "design.implementation.reference_and_reserved_surface_maturity_signaling",
+        "decision.reference_and_reserved_surface_maturity_signaling_direction",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "applies_to": [
+        "core/control_plane/indexes/README.md",
+        "core/control_plane/indexes/registries/README.md",
+        "core/control_plane/indexes/schemas/README.md",
+        "core/control_plane/policies/README.md",
+        "core/control_plane/policies/execution/README.md",
+        "core/control_plane/policies/validation/README.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.reference_and_reserved_surface_maturity_signaling.validation_closeout.004",
+      "title": "Validate and close reference/reserved-surface refactor",
+      "summary": "Run targeted and full validation, perform repeated no-new-issues review passes, refresh evidence, and close the initiative when the slice stays clean.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md",
+      "updated_at": "2026-03-13T16:13:27Z",
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "depends_on": [
+        "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+        "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003"
+      ],
+      "related_ids": [
+        "trace.reference_and_reserved_surface_maturity_signaling",
+        "prd.reference_and_reserved_surface_maturity_signaling",
+        "design.features.reference_and_reserved_surface_maturity_signaling",
+        "design.implementation.reference_and_reserved_surface_maturity_signaling",
+        "decision.reference_and_reserved_surface_maturity_signaling_direction",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "applies_to": [
+        "docs/references/",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/indexes/registries/README.md",
+        "core/control_plane/indexes/schemas/README.md",
+        "core/control_plane/policies/README.md",
+        "core/control_plane/policies/execution/README.md",
+        "core/control_plane/policies/validation/README.md",
+        "core/python/tests/",
+        "docs/planning/"
+      ]
+    },
+    {
       "task_id": "task.reference_and_workflow_standards_alignment.bootstrap.001",
       "title": "Bootstrap Reference and Workflow Standards Alignment planning chain",
       "summary": "Bootstraps the initial planning chain for Reference and Workflow Standards Alignment.",

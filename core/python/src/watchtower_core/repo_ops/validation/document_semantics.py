@@ -35,6 +35,11 @@ from watchtower_core.repo_ops.planning_documents import (
     validate_explained_bullet_section,
     validate_required_section_order,
 )
+from watchtower_core.repo_ops.reference_semantics import (
+    REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION,
+    REFERENCE_LOCAL_MAPPING_SECTION,
+    parse_reference_local_mapping,
+)
 from watchtower_core.repo_ops.standards import (
     STANDARD_OPERATIONALIZATION_SECTION,
     collect_standard_reference_metadata,
@@ -233,6 +238,7 @@ class DocumentSemanticsValidationService:
         required_sections = (
             "Canonical Upstream",
             "Quick Reference or Distilled Reference",
+            REFERENCE_LOCAL_MAPPING_SECTION,
             "References",
             "Updated At",
         )
@@ -250,6 +256,28 @@ class DocumentSemanticsValidationService:
         if not extract_external_urls(sections["Canonical Upstream"]):
             raise ValueError(
                 f"{relative_path} Canonical Upstream section does not publish any external URL."
+            )
+        local_mapping = parse_reference_local_mapping(
+            relative_path,
+            sections[REFERENCE_LOCAL_MAPPING_SECTION],
+            repo_root=self._loader.repo_root,
+            source_path=resolved_path,
+        )
+        if (
+            local_mapping.repository_status != "candidate_future_guidance"
+            and not local_mapping.current_touchpoints_present
+        ):
+            raise ValueError(
+                f"{relative_path} {REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION} is required "
+                "when the reference is current active support or supporting authority."
+            )
+        if (
+            local_mapping.repository_status != "candidate_future_guidance"
+            and not local_mapping.related_paths
+        ):
+            raise ValueError(
+                f"{relative_path} {REFERENCE_CURRENT_TOUCHPOINTS_SUBSECTION} must publish "
+                "at least one real repository touchpoint."
             )
 
     def _validate_foundation_document(self, relative_path: str, resolved_path: Path) -> None:

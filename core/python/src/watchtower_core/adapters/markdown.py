@@ -9,6 +9,7 @@ from watchtower_core.adapters.front_matter import FRONT_MATTER_PATTERN
 
 H1_PATTERN = re.compile(r"^# (?P<title>.+)$", re.MULTILINE)
 SECTION_HEADING_PATTERN = re.compile(r"^## (?P<title>.+)$", re.MULTILINE)
+SUBSECTION_HEADING_PATTERN = re.compile(r"^### (?P<title>.+)$", re.MULTILINE)
 CODE_SPAN_PATTERN = re.compile(r"`([^`]+)`")
 MARKDOWN_LINK_PATTERN = re.compile(r"\[[^\]]+\]\((?P<target>[^)]+)\)")
 METADATA_BULLET_PATTERN = re.compile(r"^- `(?P<label>[^`]+)`: (?P<value>.+)$")
@@ -41,6 +42,21 @@ def extract_sections(markdown: str) -> dict[str, str]:
         if current_title is not None:
             sections[current_title].append(line)
     return {title: "\n".join(lines).strip() for title, lines in sections.items()}
+
+
+def extract_subsections(section: str) -> dict[str, str]:
+    """Return a mapping of H3 subsection title to its raw body content."""
+    subsections: dict[str, list[str]] = {}
+    current_title: str | None = None
+    for line in section.splitlines():
+        match = SUBSECTION_HEADING_PATTERN.match(line)
+        if match is not None:
+            current_title = match.group("title").strip()
+            subsections[current_title] = []
+            continue
+        if current_title is not None:
+            subsections[current_title].append(line)
+    return {title: "\n".join(lines).strip() for title, lines in subsections.items()}
 
 
 def extract_first_paragraph(section: str) -> str:

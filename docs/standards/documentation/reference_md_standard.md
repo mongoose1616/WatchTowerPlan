@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:02:00Z"
+updated_at: "2026-03-13T18:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,7 +50,12 @@ Keep reference documents focused on durable lookup content by separating reader-
   URL.
 - Repo-native-only lookup content that has no canonical upstream authority
   should live in another governed document family instead of `docs/references/**`.
-- Include `Local Mapping in This Repository` when the external topic needs a concrete connection to repository surfaces.
+- Governed reference docs under `docs/references/**` must include `Local Mapping in This Repository`.
+- `Local Mapping in This Repository` must include `Current Repository Status`.
+- `Current Repository Status` must start with one of the approved maturity phrases: `Candidate reference.`, `Supporting authority`, or `Active support`.
+- Use `Current Touchpoints` for real current repo-local files or directories that the reference supports today.
+- If the reference is current supporting authority or active support, `Current Touchpoints` must be present and must point to real repository surfaces.
+- Generic backlinks in `References` are navigation only; they do not count as live local touchpoints.
 - Omit generic reader-orientation sections such as `Audience` and `Use When` unless a specific reference truly needs them to avoid ambiguity.
 - `Quick Reference or Distilled Reference` should be useful enough that the reader can answer the common practical questions without immediately leaving the repo for the upstream source.
 - `Quick Reference or Distilled Reference` is the core deliverable of a reference document, not filler between the summary and the link list.
@@ -74,6 +79,8 @@ Keep reference documents focused on durable lookup content by separating reader-
 - `Related Standards and Sources`
 - `Quick Reference or Distilled Reference`
 - `Local Mapping in This Repository`
+- `Current Repository Status` inside `Local Mapping in This Repository`
+- `Current Touchpoints` inside `Local Mapping in This Repository` when the reference is not only candidate future guidance
 - `Process or Workflow` when useful
 - `Examples`
 - `References`
@@ -90,7 +97,9 @@ Keep reference documents focused on durable lookup content by separating reader-
 - The document should stay focused on one topic and should not sprawl into a survey of loosely related subjects.
 - Governed reference docs under `docs/references/**` should publish canonical
   upstream links.
-- Local mappings should point to real repository surfaces when they are included.
+- `Current Repository Status` should use the approved maturity vocabulary so the machine-readable reference index can classify the reference deterministically.
+- `Current Touchpoints` should point only to real repository surfaces that the reference directly supports today.
+- Reviewers should reject references whose only repo-local links are generic README backlinks in `References` rather than explicit current touchpoints.
 - The quick-reference section should contain concrete lookup content rather than only high-level summary language.
 - The reader should be able to resolve the common local questions from the reference doc without needing the upstream source for every basic decision.
 - Reviewers should reject references whose quick-reference section could be replaced by a bare link list without meaningful loss of information.
@@ -113,4 +122,4 @@ Keep reference documents focused on durable lookup content by separating reader-
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-12T01:02:00Z`
+- `2026-03-13T18:05:00Z`

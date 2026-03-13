@@ -2935,6 +2935,117 @@
       "notes": "Validation evidence refreshed for the phase-one refactor slice after the workflow-routing repair, compact coordination implementation, route-first entrypoint updates, targeted validation, repeated review passes, the full-validation-discovered evidence-coverage gap, and the closed-state coordination-tracking pytest-fixture regression were folded back into the same trace."
     },
     {
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "title": "Reference and Reserved Surface Maturity Signaling PRD",
+      "summary": "Review and refactor reference-corpus maturity signaling and README-only reserved control-plane family signaling so query, sync, docs, and governed artifacts distinguish active support, supporting authority, candidate guidance, and reserved families deterministically.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T18:43:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+      "prd_ids": [
+        "prd.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "decision_ids": [
+        "decision.reference_and_reserved_surface_maturity_signaling_direction"
+      ],
+      "design_ids": [
+        "design.features.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "plan_ids": [
+        "design.implementation.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "task_ids": [
+        "task.reference_and_reserved_surface_maturity_signaling.bootstrap.001",
+        "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+        "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003",
+        "task.reference_and_reserved_surface_maturity_signaling.validation_closeout.004"
+      ],
+      "acceptance_ids": [
+        "ac.reference_and_reserved_surface_maturity_signaling.001",
+        "ac.reference_and_reserved_surface_maturity_signaling.002",
+        "ac.reference_and_reserved_surface_maturity_signaling.003",
+        "ac.reference_and_reserved_surface_maturity_signaling.004",
+        "ac.reference_and_reserved_surface_maturity_signaling.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "evidence_ids": [
+        "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T16:13:43Z",
+      "closure_reason": "Completed the bounded refactor review after hardening reference maturity signaling, reserved-family maturity wording, traceability path repair, repeated clean confirmation passes, and full validation.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
+        "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+        "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
+        "core/control_plane/indexes/README.md",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/indexes/references/README.md",
+        "core/control_plane/indexes/references/reference_index.v1.json",
+        "core/control_plane/indexes/registries/",
+        "core/control_plane/indexes/registries/README.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/schemas/",
+        "core/control_plane/indexes/schemas/README.md",
+        "core/control_plane/ledgers/validation_evidence/reference_and_reserved_surface_maturity_signaling_planning_baseline.v1.json",
+        "core/control_plane/policies/",
+        "core/control_plane/policies/README.md",
+        "core/control_plane/policies/execution/README.md",
+        "core/control_plane/policies/validation/README.md",
+        "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/repo_ops/query/references.py",
+        "core/python/src/watchtower_core/repo_ops/reference_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_reference_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/design/implementation/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/tasks/closed/harden_reference_maturity_signaling_and_query_surfaces.md",
+        "docs/planning/tasks/closed/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
+        "docs/planning/tasks/closed/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/",
+        "docs/references/README.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/templates/reference_template.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence refreshed for the reference and reserved-surface maturity-signaling trace after the reference-maturity implementation, reserved-family signaling pass, reopened task-path drift repair, the dependent reference-fixture repairs found by the final pytest reruns, repeated no-new-issues review passes, and initiative closeout."
+    },
+    {
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "title": "Reference and Workflow Standards Alignment PRD",
       "summary": "Align governed reference authoring guidance with live validator and index expectations, and tighten workflow additional-load enforcement so generic workflow standards stay implicit.",

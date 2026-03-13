@@ -49,6 +49,7 @@
 - `uv run watchtower-core query foundations --query philosophy`
 - `uv run watchtower-core query workflows --query validation`
 - `uv run watchtower-core query references --query uv`
+- `uv run watchtower-core query references --repository-status candidate_future_guidance --format json`
 - `uv run watchtower-core query standards --category governance --format json`
 - `uv run watchtower-core query tasks --task-status backlog`
 - `uv run watchtower-core query tasks --blocked-only --include-dependency-details`
@@ -106,6 +107,7 @@
 - `uv run watchtower-core closeout initiative --write ...` refreshes the planning catalog in the same closeout slice as the initiative and coordination outputs.
 - `uv run watchtower-core task create|update|transition --write ...` now requires `--trace-id` when traced `related_ids` are present and repairs governed acceptance/evidence task-path references when task moves change the canonical task document path.
 - `uv run watchtower-core query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
+- `uv run watchtower-core query references --related-path core/python/ --format json` now treats trailing-slash directory paths as descendant touchpoint filters and returns only references with real current touchpoints under that directory.
 - `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
 - `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.
 - `./tools/dev_shell.sh` is for interactive use and does not require `uv` once the shell is active.

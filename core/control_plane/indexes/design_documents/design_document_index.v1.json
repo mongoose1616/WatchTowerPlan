@@ -1339,6 +1339,43 @@
       ]
     },
     {
+      "document_id": "design.features.reference_and_reserved_surface_maturity_signaling",
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "family": "feature_design",
+      "title": "Reference and Reserved Surface Maturity Signaling Feature Design",
+      "summary": "Defines the technical design boundary for Reference and Reserved Surface Maturity Signaling.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
+      "updated_at": "2026-03-13T15:32:46Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/references/",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/indexes/registries/",
+        "core/control_plane/indexes/schemas/",
+        "core/control_plane/policies/",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/references.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "docs/commands/core_python/",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/repository_scope.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/standards/documentation/command_md_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.reference_and_workflow_standards_alignment",
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "family": "feature_design",
@@ -2775,6 +2812,44 @@
         "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/documentation/command_md_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.reference_and_reserved_surface_maturity_signaling",
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "family": "implementation_plan",
+      "title": "Reference and Reserved Surface Maturity Signaling Implementation Plan",
+      "summary": "Breaks Reference and Reserved Surface Maturity Signaling into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/reference_and_reserved_surface_maturity_signaling.md",
+      "updated_at": "2026-03-13T18:43:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md"
+      ],
+      "related_paths": [
+        "docs/references/",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/indexes/registries/",
+        "core/control_plane/indexes/schemas/",
+        "core/control_plane/policies/",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/references.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "docs/commands/core_python/",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/standards/documentation/command_md_standard.md"
       ]
     },
     {

@@ -1362,6 +1362,60 @@
       ]
     },
     {
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "prd_id": "prd.reference_and_reserved_surface_maturity_signaling",
+      "title": "Reference and Reserved Surface Maturity Signaling PRD",
+      "summary": "Review and refactor reference-corpus maturity signaling and README-only reserved control-plane family signaling so query, sync, docs, and governed artifacts distinguish active support, supporting authority, candidate guidance, and reserved families deterministically.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+      "updated_at": "2026-03-13T15:32:46Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.reference_and_reserved_surface_maturity_signaling.001",
+        "req.reference_and_reserved_surface_maturity_signaling.002",
+        "req.reference_and_reserved_surface_maturity_signaling.003",
+        "req.reference_and_reserved_surface_maturity_signaling.004",
+        "req.reference_and_reserved_surface_maturity_signaling.005"
+      ],
+      "acceptance_ids": [
+        "ac.reference_and_reserved_surface_maturity_signaling.001",
+        "ac.reference_and_reserved_surface_maturity_signaling.002",
+        "ac.reference_and_reserved_surface_maturity_signaling.003",
+        "ac.reference_and_reserved_surface_maturity_signaling.004",
+        "ac.reference_and_reserved_surface_maturity_signaling.005"
+      ],
+      "linked_decision_ids": [
+        "decision.reference_and_reserved_surface_maturity_signaling_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "related_paths": [
+        "docs/references/",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/indexes/registries/",
+        "core/control_plane/indexes/schemas/",
+        "core/control_plane/policies/",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/references.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "docs/commands/core_python/",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/repository_scope.md"
+      ]
+    },
+    {
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "prd_id": "prd.reference_and_workflow_standards_alignment",
       "title": "Reference and Workflow Standards Alignment PRD",

@@ -553,7 +553,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/reference_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T18:08:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1525,7 +1525,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/reference_md_standard.md",
-      "updated_at": "2026-03-12T01:02:00Z",
+      "updated_at": "2026-03-13T18:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2921,7 +2921,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/operations/repository_maintenance_loop_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-13T18:18:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

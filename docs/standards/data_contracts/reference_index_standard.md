@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "reference_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T18:08:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -48,9 +48,11 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Use JSON for the published reference index artifact.
 - Every reference index entry must point to an existing governed reference under `docs/references/`.
 - Carry stable `reference_id` values from the governed reference front matter.
+- Carry a deterministic `repository_status` value derived from the reference document's `Current Repository Status` subsection.
 - Capture whether the reference document publishes internal repository touchpoints and external canonical upstream sources.
 - Capture the canonical upstream URLs explicitly so tooling can trace the local reference corpus back to its source authority.
 - Capture reverse citation paths so tooling can answer where a governed reference is cited or applied across foundations, standards, workflows, and planning docs.
+- Populate `related_paths` only from explicit current touchpoints or governed `applies_to` mappings, not from generic navigation backlinks in the reference doc's `References` section.
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -71,6 +73,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 | `status` | Required | Use the governed lifecycle vocabulary. |
 | `doc_path` | Required | Repository-relative path to the reference document. |
 | `updated_at` | Required | RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`, matching the reference document’s `Updated At` value. |
+| `repository_status` | Required | Deterministic current-maturity classification such as `candidate_future_guidance`, `supporting_authority`, or `active_support`. |
 | `uses_internal_references` | Required | Whether the reference document explicitly maps to local repository surfaces. |
 | `uses_external_references` | Required | Whether the reference document explicitly publishes external canonical upstream URLs. |
 | `canonical_upstream_urls` | Required | External authority URLs from the `Canonical Upstream` section. |
@@ -90,7 +93,9 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - Every `doc_path` should exist and point to a file under `docs/references/`.
 - Every entry should have a stable `reference_id`.
 - Every entry should publish at least one canonical upstream URL.
+- Every entry should publish one approved `repository_status` value derived from the governed reference document.
 - The internal and external reference flags should reflect the actual reference document sections rather than inferred prose.
+- `related_paths` should point only to explicit current touchpoints or governed `applies_to` mappings, not to incidental navigation backlinks.
 - Reverse citation paths should point only to real governed documents or workflow modules that cite or apply the reference.
 
 ## Change Control
@@ -104,4 +109,4 @@ Provide a compact lookup and discovery surface for governed reference documents,
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T18:08:00Z`

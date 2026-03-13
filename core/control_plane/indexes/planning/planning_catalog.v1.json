@@ -10986,6 +10986,458 @@
       "closure_reason": "Completed the bounded refactor review after workflow-route hardening, compact current-state coordination, route-first entrypoint simplification, evidence repair, coordination-tracking regression-test hardening, and repeated clean validation passes."
     },
     {
+      "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+      "title": "Reference and Reserved Surface Maturity Signaling PRD",
+      "summary": "Review and refactor reference-corpus maturity signaling and README-only reserved control-plane family signaling so query, sync, docs, and governed artifacts distinguish active support, supporting authority, candidate guidance, and reserved families deterministically.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T18:43:00Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.reference_and_reserved_surface_maturity_signaling",
+          "title": "Reference and Reserved Surface Maturity Signaling PRD",
+          "summary": "Review and refactor reference-corpus maturity signaling and README-only reserved control-plane family signaling so query, sync, docs, and governed artifacts distinguish active support, supporting authority, candidate guidance, and reserved families deterministically.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+          "updated_at": "2026-03-13T15:32:46Z",
+          "requirement_ids": [
+            "req.reference_and_reserved_surface_maturity_signaling.001",
+            "req.reference_and_reserved_surface_maturity_signaling.002",
+            "req.reference_and_reserved_surface_maturity_signaling.003",
+            "req.reference_and_reserved_surface_maturity_signaling.004",
+            "req.reference_and_reserved_surface_maturity_signaling.005"
+          ],
+          "acceptance_ids": [
+            "ac.reference_and_reserved_surface_maturity_signaling.001",
+            "ac.reference_and_reserved_surface_maturity_signaling.002",
+            "ac.reference_and_reserved_surface_maturity_signaling.003",
+            "ac.reference_and_reserved_surface_maturity_signaling.004",
+            "ac.reference_and_reserved_surface_maturity_signaling.005"
+          ],
+          "linked_decision_ids": [
+            "decision.reference_and_reserved_surface_maturity_signaling_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.reference_and_reserved_surface_maturity_signaling"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.reference_and_reserved_surface_maturity_signaling"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.reference_and_reserved_surface_maturity_signaling_direction",
+          "title": "Reference and Reserved Surface Maturity Signaling Direction Decision",
+          "summary": "Records the initial direction decision for Reference and Reserved Surface Maturity Signaling.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md",
+          "updated_at": "2026-03-13T15:32:46Z",
+          "linked_prd_ids": [
+            "prd.reference_and_reserved_surface_maturity_signaling"
+          ],
+          "linked_design_ids": [
+            "design.features.reference_and_reserved_surface_maturity_signaling"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.reference_and_reserved_surface_maturity_signaling"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.reference_and_reserved_surface_maturity_signaling",
+          "family": "feature_design",
+          "title": "Reference and Reserved Surface Maturity Signaling Feature Design",
+          "summary": "Defines the technical design boundary for Reference and Reserved Surface Maturity Signaling.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
+          "updated_at": "2026-03-13T15:32:46Z"
+        },
+        {
+          "document_id": "design.implementation.reference_and_reserved_surface_maturity_signaling",
+          "family": "implementation_plan",
+          "title": "Reference and Reserved Surface Maturity Signaling Implementation Plan",
+          "summary": "Breaks Reference and Reserved Surface Maturity Signaling into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/reference_and_reserved_surface_maturity_signaling.md",
+          "updated_at": "2026-03-13T18:43:00Z",
+          "source_paths": [
+            "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
+            "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+            "docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.reference_and_reserved_surface_maturity_signaling.bootstrap.001",
+          "title": "Bootstrap Reference and Reserved Surface Maturity Signaling planning chain",
+          "summary": "Bootstraps the initial planning chain for Reference and Reserved Surface Maturity Signaling.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
+          "updated_at": "2026-03-13T15:43:04Z",
+          "related_ids": [
+            "prd.reference_and_reserved_surface_maturity_signaling",
+            "design.features.reference_and_reserved_surface_maturity_signaling",
+            "design.implementation.reference_and_reserved_surface_maturity_signaling",
+            "decision.reference_and_reserved_surface_maturity_signaling_direction",
+            "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+          ],
+          "applies_to": [
+            "docs/references/",
+            "core/control_plane/indexes/references/",
+            "core/control_plane/indexes/registries/",
+            "core/control_plane/indexes/schemas/",
+            "core/control_plane/policies/",
+            "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+            "core/python/src/watchtower_core/repo_ops/query/references.py",
+            "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+            "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+            "docs/commands/core_python/",
+            "docs/standards/data_contracts/reference_index_standard.md",
+            "docs/standards/documentation/reference_md_standard.md",
+            "docs/standards/operations/repository_maintenance_loop_standard.md"
+          ]
+        },
+        {
+          "task_id": "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+          "title": "Harden reference maturity signaling and query surfaces",
+          "summary": "Add deterministic reference maturity classification, meaningful touchpoint accounting, and aligned reference query/docs/test coverage across the governed reference family.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/harden_reference_maturity_signaling_and_query_surfaces.md",
+          "updated_at": "2026-03-13T16:08:13Z",
+          "related_ids": [
+            "trace.reference_and_reserved_surface_maturity_signaling",
+            "prd.reference_and_reserved_surface_maturity_signaling",
+            "design.features.reference_and_reserved_surface_maturity_signaling",
+            "design.implementation.reference_and_reserved_surface_maturity_signaling",
+            "decision.reference_and_reserved_surface_maturity_signaling_direction",
+            "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+          ],
+          "applies_to": [
+            "docs/references/",
+            "core/control_plane/indexes/references/",
+            "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
+            "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
+            "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+            "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+            "core/python/src/watchtower_core/repo_ops/query/references.py",
+            "core/python/src/watchtower_core/control_plane/models/planning.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+            "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+            "core/python/tests/unit/test_reference_index_sync.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "docs/commands/core_python/watchtower_core_query_references.md"
+          ]
+        },
+        {
+          "task_id": "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003",
+          "title": "Mark README-only control-plane families as reserved placeholders",
+          "summary": "Clarify reserved maturity for README-only schema-index, registry-index, execution-policy, and validation-policy families across family entrypoints and adjacent guidance.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
+          "updated_at": "2026-03-13T16:08:13Z",
+          "related_ids": [
+            "trace.reference_and_reserved_surface_maturity_signaling",
+            "prd.reference_and_reserved_surface_maturity_signaling",
+            "design.features.reference_and_reserved_surface_maturity_signaling",
+            "design.implementation.reference_and_reserved_surface_maturity_signaling",
+            "decision.reference_and_reserved_surface_maturity_signaling_direction",
+            "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+          ],
+          "applies_to": [
+            "core/control_plane/indexes/README.md",
+            "core/control_plane/indexes/registries/README.md",
+            "core/control_plane/indexes/schemas/README.md",
+            "core/control_plane/policies/README.md",
+            "core/control_plane/policies/execution/README.md",
+            "core/control_plane/policies/validation/README.md",
+            "docs/standards/operations/repository_maintenance_loop_standard.md",
+            "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+          ]
+        },
+        {
+          "task_id": "task.reference_and_reserved_surface_maturity_signaling.validation_closeout.004",
+          "title": "Validate and close reference/reserved-surface refactor",
+          "summary": "Run targeted and full validation, perform repeated no-new-issues review passes, refresh evidence, and close the initiative when the slice stays clean.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md",
+          "updated_at": "2026-03-13T16:13:27Z",
+          "depends_on": [
+            "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+            "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003"
+          ],
+          "related_ids": [
+            "trace.reference_and_reserved_surface_maturity_signaling",
+            "prd.reference_and_reserved_surface_maturity_signaling",
+            "design.features.reference_and_reserved_surface_maturity_signaling",
+            "design.implementation.reference_and_reserved_surface_maturity_signaling",
+            "decision.reference_and_reserved_surface_maturity_signaling_direction",
+            "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+          ],
+          "applies_to": [
+            "docs/references/",
+            "core/control_plane/indexes/references/",
+            "core/control_plane/indexes/registries/README.md",
+            "core/control_plane/indexes/schemas/README.md",
+            "core/control_plane/policies/README.md",
+            "core/control_plane/policies/execution/README.md",
+            "core/control_plane/policies/validation/README.md",
+            "core/python/tests/",
+            "docs/planning/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.reference_and_reserved_surface_maturity_signaling",
+          "title": "Reference and Reserved Surface Maturity Signaling Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.reference_and_reserved_surface_maturity_signaling",
+          "doc_path": "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.reference_and_reserved_surface_maturity_signaling.001",
+            "ac.reference_and_reserved_surface_maturity_signaling.002",
+            "ac.reference_and_reserved_surface_maturity_signaling.003",
+            "ac.reference_and_reserved_surface_maturity_signaling.004",
+            "ac.reference_and_reserved_surface_maturity_signaling.005"
+          ],
+          "required_validator_ids": [
+            "validator.control_plane.acceptance_contract",
+            "validator.control_plane.validation_evidence"
+          ],
+          "validation_targets": [
+            "core/control_plane/",
+            "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+            "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
+            "core/control_plane/indexes/README.md",
+            "core/control_plane/indexes/references/reference_index.v1.json",
+            "core/control_plane/indexes/registries/README.md",
+            "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+            "core/control_plane/indexes/schemas/README.md",
+            "core/control_plane/policies/README.md",
+            "core/control_plane/policies/execution/README.md",
+            "core/control_plane/policies/validation/README.md",
+            "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
+            "core/python/",
+            "core/python/README.md",
+            "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+            "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+            "core/python/src/watchtower_core/control_plane/models/planning.py",
+            "core/python/src/watchtower_core/repo_ops/query/references.py",
+            "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/test_reference_index_sync.py",
+            "docs/",
+            "docs/commands/core_python/watchtower_core_query.md",
+            "docs/commands/core_python/watchtower_core_query_references.md",
+            "docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md",
+            "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
+            "docs/planning/design/implementation/reference_and_reserved_surface_maturity_signaling.md",
+            "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+            "docs/planning/tasks/closed/harden_reference_maturity_signaling_and_query_surfaces.md",
+            "docs/planning/tasks/closed/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
+            "docs/planning/tasks/closed/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
+            "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md",
+            "docs/references/README.md",
+            "docs/standards/data_contracts/reference_index_standard.md",
+            "docs/standards/documentation/reference_md_standard.md",
+            "docs/standards/operations/repository_maintenance_loop_standard.md",
+            "docs/templates/reference_template.md",
+            "workflows/"
+          ],
+          "related_paths": [
+            "core/control_plane/indexes/references/README.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/decision_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/references/"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline",
+          "title": "Reference and Reserved Surface Maturity Signaling Validation Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-13T16:14:43Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/reference_and_reserved_surface_maturity_signaling_planning_baseline.v1.json",
+          "check_ids": [
+            "check.reference_and_reserved_surface_maturity_signaling.planning_baseline",
+            "check.reference_and_reserved_surface_maturity_signaling.reference_maturity",
+            "check.reference_and_reserved_surface_maturity_signaling.reference_query",
+            "check.reference_and_reserved_surface_maturity_signaling.reserved_families",
+            "check.reference_and_reserved_surface_maturity_signaling.validation_closeout"
+          ],
+          "acceptance_ids": [
+            "ac.reference_and_reserved_surface_maturity_signaling.001",
+            "ac.reference_and_reserved_surface_maturity_signaling.002",
+            "ac.reference_and_reserved_surface_maturity_signaling.003",
+            "ac.reference_and_reserved_surface_maturity_signaling.004",
+            "ac.reference_and_reserved_surface_maturity_signaling.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/decision_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "decision_ids": [
+        "decision.reference_and_reserved_surface_maturity_signaling_direction"
+      ],
+      "design_ids": [
+        "design.features.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "plan_ids": [
+        "design.implementation.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "task_ids": [
+        "task.reference_and_reserved_surface_maturity_signaling.bootstrap.001",
+        "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+        "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003",
+        "task.reference_and_reserved_surface_maturity_signaling.validation_closeout.004"
+      ],
+      "requirement_ids": [
+        "req.reference_and_reserved_surface_maturity_signaling.001",
+        "req.reference_and_reserved_surface_maturity_signaling.002",
+        "req.reference_and_reserved_surface_maturity_signaling.003",
+        "req.reference_and_reserved_surface_maturity_signaling.004",
+        "req.reference_and_reserved_surface_maturity_signaling.005"
+      ],
+      "acceptance_ids": [
+        "ac.reference_and_reserved_surface_maturity_signaling.001",
+        "ac.reference_and_reserved_surface_maturity_signaling.002",
+        "ac.reference_and_reserved_surface_maturity_signaling.003",
+        "ac.reference_and_reserved_surface_maturity_signaling.004",
+        "ac.reference_and_reserved_surface_maturity_signaling.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+      ],
+      "evidence_ids": [
+        "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
+        "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+        "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
+        "core/control_plane/indexes/README.md",
+        "core/control_plane/indexes/references/",
+        "core/control_plane/indexes/references/README.md",
+        "core/control_plane/indexes/references/reference_index.v1.json",
+        "core/control_plane/indexes/registries/",
+        "core/control_plane/indexes/registries/README.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/schemas/",
+        "core/control_plane/indexes/schemas/README.md",
+        "core/control_plane/ledgers/validation_evidence/reference_and_reserved_surface_maturity_signaling_planning_baseline.v1.json",
+        "core/control_plane/policies/",
+        "core/control_plane/policies/README.md",
+        "core/control_plane/policies/execution/README.md",
+        "core/control_plane/policies/validation/README.md",
+        "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/repo_ops/query/references.py",
+        "core/python/src/watchtower_core/repo_ops/reference_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_reference_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/design/implementation/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/tasks/closed/harden_reference_maturity_signaling_and_query_surfaces.md",
+        "docs/planning/tasks/closed/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
+        "docs/planning/tasks/closed/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/",
+        "docs/references/README.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/templates/reference_template.md",
+        "workflows/"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Validation evidence refreshed for the reference and reserved-surface maturity-signaling trace after the reference-maturity implementation, reserved-family signaling pass, reopened task-path drift repair, the dependent reference-fixture repairs found by the final pytest reruns, repeated no-new-issues review passes, and initiative closeout.",
+      "closed_at": "2026-03-13T16:13:43Z",
+      "closure_reason": "Completed the bounded refactor review after hardening reference maturity signaling, reserved-family maturity wording, traceability path repair, repeated clean confirmation passes, and full validation."
+    },
+    {
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "title": "Reference and Workflow Standards Alignment PRD",
       "summary": "Align governed reference authoring guidance with live validator and index expectations, and tighten workflow additional-load enforcement so generic workflow standards stay implicit.",

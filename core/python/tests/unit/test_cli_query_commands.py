@@ -202,6 +202,7 @@ def test_query_references_supports_json_output(capsys) -> None:
     assert payload["command"] == "watchtower-core query references"
     assert payload["status"] == "ok"
     assert any(entry["reference_id"] == "ref.uv" for entry in payload["results"])
+    assert all("repository_status" in entry for entry in payload["results"])
 
 
 def test_query_foundations_supports_json_output(capsys) -> None:
@@ -348,6 +349,52 @@ def test_query_references_supports_reverse_citation_filters(capsys) -> None:
     assert any(
         entry["reference_id"] == "ref.github_collaboration" for entry in payload["results"]
     )
+
+
+def test_query_references_supports_repository_status_filter(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "references",
+            "--repository-status",
+            "candidate_future_guidance",
+            "--query",
+            "telemetry",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query references"
+    assert payload["status"] == "ok"
+    assert any(entry["reference_id"] == "ref.opentelemetry" for entry in payload["results"])
+    assert all(
+        entry["repository_status"] == "candidate_future_guidance"
+        for entry in payload["results"]
+    )
+
+
+def test_query_references_supports_directory_descendant_related_path_filters(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "references",
+            "--related-path",
+            "core/python/",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query references"
+    assert payload["status"] == "ok"
+    assert any(entry["reference_id"] == "ref.uv" for entry in payload["results"])
 
 
 def test_query_standards_supports_json_output(capsys) -> None:

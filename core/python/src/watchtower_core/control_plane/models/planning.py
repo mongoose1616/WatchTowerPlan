@@ -250,6 +250,7 @@ class ReferenceIndexEntry:
     status: str
     doc_path: str
     updated_at: str
+    repository_status: str
     uses_internal_references: bool
     uses_external_references: bool
     canonical_upstream_urls: tuple[str, ...] = ()
@@ -269,6 +270,7 @@ class ReferenceIndexEntry:
             status=document["status"],
             doc_path=document["doc_path"],
             updated_at=document["updated_at"],
+            repository_status=document["repository_status"],
             uses_internal_references=document["uses_internal_references"],
             uses_external_references=document["uses_external_references"],
             canonical_upstream_urls=tuple(document.get("canonical_upstream_urls", ())),

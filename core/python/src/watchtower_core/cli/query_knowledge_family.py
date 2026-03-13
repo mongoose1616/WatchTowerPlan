@@ -12,6 +12,7 @@ from watchtower_core.cli.query_knowledge_handlers import (
     _run_query_standards,
     _run_query_workflows,
 )
+from watchtower_core.repo_ops.reference_semantics import REFERENCE_REPOSITORY_STATUS_VALUES
 
 
 def register_query_knowledge_commands(
@@ -178,6 +179,8 @@ def register_query_knowledge_commands(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core query references --query uv",
+            "uv run watchtower-core query references "
+            "--repository-status candidate_future_guidance --format json",
             "uv run watchtower-core query references --related-path core/python/ --format json",
         ),
         formatter_class=HelpFormatter,
@@ -193,10 +196,22 @@ def register_query_knowledge_commands(
         "--reference-id",
         help="Exact reference identifier such as ref.uv.",
     )
+    query_references_parser.add_argument(
+        "--repository-status",
+        choices=REFERENCE_REPOSITORY_STATUS_VALUES,
+        help=(
+            "Exact repository-status filter such as supporting_authority, "
+            "active_support, or candidate_future_guidance."
+        ),
+    )
     query_references_parser.add_argument("--tag", help="Exact tag filter.")
     query_references_parser.add_argument(
         "--related-path",
-        help="Exact repository-path filter such as core/python/ or docs/standards/engineering/.",
+        help=(
+            "Repository-path filter such as core/python/ or "
+            "docs/standards/engineering/. Directory paths ending in '/' "
+            "match descendant touchpoints."
+        ),
     )
     query_references_parser.add_argument(
         "--upstream-url",

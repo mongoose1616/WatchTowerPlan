@@ -1,0 +1,176 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline",
+  "title": "Reference and Reserved Surface Maturity Signaling Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T16:14:43Z",
+  "source_prd_ids": [
+    "prd.reference_and_reserved_surface_maturity_signaling"
+  ],
+  "source_decision_ids": [
+    "decision.reference_and_reserved_surface_maturity_signaling_direction"
+  ],
+  "source_design_ids": [
+    "design.features.reference_and_reserved_surface_maturity_signaling"
+  ],
+  "source_plan_ids": [
+    "design.implementation.reference_and_reserved_surface_maturity_signaling"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.reference_and_reserved_surface_maturity_signaling"
+  ],
+  "checks": [
+    {
+      "check_id": "check.reference_and_reserved_surface_maturity_signaling.planning_baseline",
+      "title": "Planning chain, findings ledger, and bounded tasks are aligned through closeout",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/decisions/reference_and_reserved_surface_maturity_signaling_direction.md",
+        "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
+        "docs/planning/design/implementation/reference_and_reserved_surface_maturity_signaling.md",
+        "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
+        "docs/planning/tasks/closed/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
+        "docs/planning/tasks/closed/harden_reference_maturity_signaling_and_query_surfaces.md",
+        "docs/planning/tasks/closed/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
+        "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md"
+      ],
+      "subject_ids": [
+        "prd.reference_and_reserved_surface_maturity_signaling",
+        "decision.reference_and_reserved_surface_maturity_signaling_direction",
+        "design.features.reference_and_reserved_surface_maturity_signaling",
+        "design.implementation.reference_and_reserved_surface_maturity_signaling",
+        "task.reference_and_reserved_surface_maturity_signaling.bootstrap.001",
+        "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+        "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003",
+        "task.reference_and_reserved_surface_maturity_signaling.validation_closeout.004",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling",
+        "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.reference_and_reserved_surface_maturity_signaling.001"
+      ],
+      "notes": "The bootstrap scaffolds were replaced with the bounded reference and reserved-surface scope, the implementation plan now records the full coverage map plus findings ledger including the reopened task-path drift repair, and all four traced tasks are closed in the same planning slice."
+    },
+    {
+      "check_id": "check.reference_and_reserved_surface_maturity_signaling.reference_maturity",
+      "title": "Reference maturity signaling is deterministic across docs, sync, schema, and semantic validation",
+      "result": "passed",
+      "subject_paths": [
+        "docs/references/README.md",
+        "docs/templates/reference_template.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/data_contracts/reference_index_standard.md",
+        "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
+        "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
+        "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+        "core/control_plane/indexes/references/reference_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/reference_semantics.py",
+        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/tests/unit/test_reference_index_sync.py",
+        "core/python/tests/unit/test_document_semantics_validation.py"
+      ],
+      "subject_ids": [
+        "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling",
+        "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.reference_and_reserved_surface_maturity_signaling.002"
+      ],
+      "notes": "Targeted reference-index sync and document-semantics tests passed, live document-semantics validation passed for both a candidate reference and a supporting reference, the rebuilt reference index now publishes repository_status on every entry, and repo-wide stats show zero README-only related_paths entries and zero candidate references still marked as internal support."
+    },
+    {
+      "check_id": "check.reference_and_reserved_surface_maturity_signaling.reference_query",
+      "title": "Reference query lookup exposes repository status and directory-descendant touchpoint matching",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/query/references.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+        "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_references.md",
+        "core/python/README.md",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.reference_and_reserved_surface_maturity_signaling.reference_maturity_signaling.002",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling",
+        "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.reference_and_reserved_surface_maturity_signaling.003"
+      ],
+      "notes": "CLI query regressions passed, `watchtower-core query references --query telemetry` now reports `ref.opentelemetry` as `candidate_future_guidance` with `internal=no`, `watchtower-core query references --related-path core/python/ --format json` now returns seven descendant touchpoint matches, and `watchtower-core query references --help` publishes the same repository-status and trailing-slash directory semantics as the command docs."
+    },
+    {
+      "check_id": "check.reference_and_reserved_surface_maturity_signaling.reserved_families",
+      "title": "README-only control-plane families are signaled as reserved placeholders across adjacent surfaces",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/indexes/README.md",
+        "core/control_plane/indexes/registries/README.md",
+        "core/control_plane/indexes/schemas/README.md",
+        "core/control_plane/policies/README.md",
+        "core/control_plane/policies/execution/README.md",
+        "core/control_plane/policies/validation/README.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling",
+        "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.reference_and_reserved_surface_maturity_signaling.004"
+      ],
+      "notes": "The parent and leaf control-plane entrypoints now use explicit reserved-placeholder wording, the maintenance standard tells reviewers to call that state out plainly, and the repository path index summaries for the README-only registry-index, schema-index, execution-policy, and validation-policy families project the same reserved maturity."
+    },
+    {
+      "check_id": "check.reference_and_reserved_surface_maturity_signaling.validation_closeout",
+      "title": "Validation, repeated review passes, evidence refresh, and closeout remain aligned in one clean slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md",
+        "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/reference_and_reserved_surface_maturity_signaling_planning_baseline.v1.json",
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "subject_ids": [
+        "task.reference_and_reserved_surface_maturity_signaling.validation_closeout.004",
+        "contract.acceptance.reference_and_reserved_surface_maturity_signaling",
+        "evidence.reference_and_reserved_surface_maturity_signaling.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.reference_and_reserved_surface_maturity_signaling.005"
+      ],
+      "notes": "Targeted unit tests, live semantic-validation probes, two `sync all --write` rebuilds, a full non-acceptance `validate all --skip-acceptance` pass, one post-fix index-and-query review, one authored-surface confirmation pass, and one adversarial falsification pass over reference-index stats plus reserved-family wording all completed cleanly. The first acceptance-enabled full validation exposed the expected evidence-coverage gap, the reopened loop repaired the stale task-path drift and refreshed the acceptance contract, and the final stop-condition `pytest -q` reruns surfaced two adjacent reference fixtures that still used the legacy shape in the governed-markdown reference-resolution and standard-index sync tests. Updating those dependent fixtures restored the same reference maturity contract before the final reruns."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence refreshed for the reference and reserved-surface maturity-signaling trace after the reference-maturity implementation, reserved-family signaling pass, reopened task-path drift repair, the dependent reference-fixture repairs found by the final pytest reruns, repeated no-new-issues review passes, and initiative closeout.",
+  "source_decision_ids": [
+    "decision.reference_and_reserved_surface_maturity_signaling_direction"
+  ]
+}

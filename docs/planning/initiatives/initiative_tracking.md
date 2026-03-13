@@ -6,6 +6,7 @@ _No active initiatives._
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.reference_and_reserved_surface_maturity_signaling` | `completed` | [reference_and_reserved_surface_maturity_signaling.md](/home/j/WatchTowerPlan/docs/planning/prds/reference_and_reserved_surface_maturity_signaling.md) | `2026-03-13T16:13:43Z` | Completed the bounded refactor review after hardening reference maturity signaling, reserved-family maturity wording, traceability path repair, repeated clean confirmation passes, and full validation. |
 | `trace.refactor_review_and_hardening` | `completed` | [refactor_review_and_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/refactor_review_and_hardening.md) | `2026-03-13T15:02:17Z` | Completed the bounded refactor review after workflow-route hardening, compact current-state coordination, route-first entrypoint simplification, evidence repair, coordination-tracking regression-test hardening, and repeated clean validation passes. |
 | `trace.regression_duplication_and_overstep_review` | `completed` | [regression_duplication_and_overstep_review.md](/home/j/WatchTowerPlan/docs/planning/prds/regression_duplication_and_overstep_review.md) | `2026-03-13T03:46:44Z` | Closed the regression-and-duplication review after hardening task trace linkage, governed companion repair, stale-path validation, planning coherence, and repeated clean confirmation passes. |
 | `trace.summary_surface_retirement` | `completed` | [summary_surface_retirement.md](/home/j/WatchTowerPlan/docs/planning/prds/summary_surface_retirement.md) | `2026-03-13T01:47:55Z` | Retired SUMMARY.md, removed the dedicated summary-restoration trace, rewrote surviving summary dependencies to coordination or generic historical wording, fixed the validation-exposed traceability-sync unit-test brittleness, and validated the final state with no additional actionable issues. |
@@ -58,4 +59,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-13T15:02:17Z`_
+_Updated At: `2026-03-13T18:43:00Z`_

@@ -149,6 +149,7 @@ def _run_query_references(args: argparse.Namespace) -> int:
         ReferenceSearchParams(
             query=args.query,
             reference_id=args.reference_id,
+            repository_status=args.repository_status,
             tag=args.tag,
             related_path=args.related_path,
             upstream_url=args.upstream_url,
@@ -169,6 +170,7 @@ def _run_query_references(args: argparse.Namespace) -> int:
                 "status": entry.status,
                 "doc_path": entry.doc_path,
                 "updated_at": entry.updated_at,
+                "repository_status": entry.repository_status,
                 "uses_internal_references": entry.uses_internal_references,
                 "uses_external_references": entry.uses_external_references,
                 "canonical_upstream_urls": list(entry.canonical_upstream_urls),
@@ -190,7 +192,7 @@ def _run_query_references(args: argparse.Namespace) -> int:
 
     print(f"Found {len(entries)} reference entr{'y' if len(entries) == 1 else 'ies'}:")
     for entry in entries:
-        print(f"- {entry.reference_id} [{entry.status}]")
+        print(f"- {entry.reference_id} [{entry.status}, {entry.repository_status}]")
         print(f"  {entry.title}")
         print(f"  {entry.summary}")
         print(

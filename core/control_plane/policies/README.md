@@ -7,6 +7,6 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/policies/README.md` | Describes the purpose of the policies directory and its main policy families. |
-| `core/control_plane/policies/validation/` | Validation gate policy and fail-closed requirements. |
-| `core/control_plane/policies/execution/` | Execution-safety and command-scope guardrails. |
+| `core/control_plane/policies/validation/` | Reserved placeholder for future validation-policy artifacts. The family is README-only until published policy documents are needed. |
+| `core/control_plane/policies/execution/` | Reserved placeholder for future execution-policy artifacts. The family is README-only until published policy documents are needed. |
 | `core/control_plane/policies/release/` | Release publication and evidence expectations. |

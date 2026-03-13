@@ -32,6 +32,11 @@ def _write_reference_fixture(
     *,
     support_target: Path,
     include_canonical_upstream: bool = True,
+    repository_status_line: str = (
+        "Supporting authority for current repository docs, standards, commands, "
+        "or control-plane surfaces."
+    ),
+    include_current_touchpoints: bool = True,
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     canonical_upstream = (
@@ -40,9 +45,14 @@ def _write_reference_fixture(
         if include_canonical_upstream
         else ""
     )
+    current_touchpoints = (
+        f"### Current Touchpoints\n- [support_target.md]({support_target})\n\n"
+        if include_current_touchpoints
+        else ""
+    )
     path.write_text(
         dedent(
-            f"""\
+            """\
             ---
             id: "ref.example"
             title: "Example Reference"
@@ -60,16 +70,27 @@ def _write_reference_fixture(
 
             # Example Reference
 
-            {canonical_upstream}## Quick Reference or Distilled Reference
+            __CANONICAL_UPSTREAM__## Quick Reference or Distilled Reference
             One compact reference fixture.
 
+            ## Local Mapping in This Repository
+            ### Current Repository Status
+            - __REPOSITORY_STATUS_LINE__
+
+            __CURRENT_TOUCHPOINTS__### Why It Matters Here
+            - Keep the fixture tied to one local repository surface.
+
             ## References
-            - [support_target.md]({support_target})
+            - [support_target.md](__SUPPORT_TARGET__)
 
             ## Updated At
             - `2026-03-11T17:35:00Z`
             """
-        ),
+        )
+        .replace("__CANONICAL_UPSTREAM__", canonical_upstream)
+        .replace("__REPOSITORY_STATUS_LINE__", repository_status_line)
+        .replace("__CURRENT_TOUCHPOINTS__", current_touchpoints)
+        .replace("__SUPPORT_TARGET__", str(support_target)),
         encoding="utf-8",
     )
 
@@ -491,6 +512,128 @@ def test_document_semantics_validation_rejects_reference_without_canonical_upstr
     assert result.passed is False
     assert result.issue_count == 1
     assert "missing required sections: Canonical Upstream" in result.issues[0].message
+
+
+def test_document_semantics_validation_rejects_reference_without_repository_status(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    reference_path.parent.mkdir(parents=True, exist_ok=True)
+    reference_path.write_text(
+        dedent(
+            f"""\
+            ---
+            id: "ref.example"
+            title: "Example Reference"
+            summary: "Provides governed local reference coverage for semantic tests."
+            type: "reference"
+            status: "active"
+            tags:
+              - "reference"
+              - "example"
+            owner: "repository_maintainer"
+            updated_at: "2026-03-11T17:35:00Z"
+            audience: "shared"
+            authority: "supporting"
+            ---
+
+            # Example Reference
+
+            ## Canonical Upstream
+            - [Example upstream](https://example.com/reference)
+
+            ## Quick Reference or Distilled Reference
+            One compact reference fixture.
+
+            ## Local Mapping in This Repository
+            ### Why It Matters Here
+            - Keep the fixture tied to one local repository surface.
+
+            ## References
+            - [support_target.md]({support_target})
+
+            ## Updated At
+            - `2026-03-11T17:35:00Z`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/references/example_reference.md")
+
+    assert result.passed is False
+    assert result.issue_count == 1
+    assert "missing required section: Current Repository Status" in result.issues[0].message
+
+
+def test_document_semantics_validation_rejects_supporting_reference_without_current_touchpoints(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(
+        reference_path,
+        support_target=support_target,
+        include_current_touchpoints=False,
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/references/example_reference.md")
+
+    assert result.passed is False
+    assert result.issue_count == 1
+    assert "Current Touchpoints is required" in result.issues[0].message
+
+
+def test_document_semantics_validation_accepts_candidate_reference_without_current_touchpoints(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(
+        reference_path,
+        support_target=support_target,
+        repository_status_line=(
+            "Candidate reference. No active standard or workflow in this repository "
+            "links this file directly yet."
+        ),
+        include_current_touchpoints=False,
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/references/example_reference.md")
+
+    assert result.passed is True
+    assert result.issue_count == 0
+
+
+def test_document_semantics_validation_rejects_unapproved_reference_status_vocabulary(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    support_target = repo_root / "docs" / "README.md"
+    _write_repo_file(support_target)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(
+        reference_path,
+        support_target=support_target,
+        repository_status_line="Experimental local use. This wording is not approved.",
+    )
+
+    service = DocumentSemanticsValidationService(ControlPlaneLoader(repo_root))
+    result = service.validate("docs/references/example_reference.md")
+
+    assert result.passed is False
+    assert result.issue_count == 1
+    assert "Current Repository Status must begin with one of" in result.issues[0].message
 
 
 def test_document_semantics_validation_rejects_missing_repo_local_markdown_link_in_workflow(

@@ -9,7 +9,7 @@ tags:
   - "operations"
   - "maintenance"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-13T18:18:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -61,6 +61,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
   - workflow and command docs that may lag behind implementation behavior
   - foundations alignment when new governance or runtime behavior lands
 - Treat README-only reserved families as future scope until they publish real governed artifacts.
+- If a README-only family is intentionally reserved, say so plainly in the family entrypoint and any parent start-here surface instead of describing it like a live artifact family.
 - Keep review findings durable when a maintenance pass exposes issues that are not resolved in the same change.
 
 ## Structure or Data Model
@@ -93,4 +94,4 @@ This standard defines the recurring local repository-maintenance loop for keepin
 - [README.md](/home/j/WatchTowerPlan/docs/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-13T18:18:00Z`

@@ -61,6 +61,7 @@ uv run watchtower-core query authority --domain planning --format json
 - Use `initiatives` when you need broader initiative-family browsing, filtered terminal history, or explicit non-active status lookup.
 - Use `authority` when the main question is which planning or governance surface is canonical.
 - Use `commands` or `paths` when the main task is discovery rather than planning-state inspection.
+- Use `references --repository-status <status>` when you need only active-support, supporting-authority, or candidate-future guidance from the governed reference corpus.
 - For exact filters and field behavior, open the leaf command page or CLI help for the selected query command.
 
 ## Related Commands
@@ -78,4 +79,4 @@ uv run watchtower-core query authority --domain planning --format json
 - `core/python/src/watchtower_core/repo_ops/query/`
 
 ## Updated At
-- `2026-03-13T15:05:00Z`
+- `2026-03-13T18:13:00Z`
