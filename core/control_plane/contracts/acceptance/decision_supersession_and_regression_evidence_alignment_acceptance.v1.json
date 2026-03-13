@@ -1,0 +1,32 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.decision_supersession_and_regression_evidence_alignment",
+  "title": "Decision Supersession and Regression Evidence Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+  "source_prd_id": "prd.decision_supersession_and_regression_evidence_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.decision_supersession_and_regression_evidence_alignment.001",
+      "summary": "The bootstrap flow publishes the initial PRD, feature design, implementation plan, acceptance contract, planning-baseline evidence, and bootstrap task for the trace.",
+      "source_requirement_ids": [
+        "req.decision_supersession_and_regression_evidence_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/tasks/open/decision_supersession_and_regression_evidence_alignment_bootstrap.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Bootstrap baseline contract prepared at 2026-03-13T01:09:48Z for trace.decision_supersession_and_regression_evidence_alignment."
+    }
+  ]
+}

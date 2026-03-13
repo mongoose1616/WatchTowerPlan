@@ -816,6 +816,75 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-12T01:35:13Z for trace.data_contract_example_operationalization_alignment after the validation task and initiative closeout."
     },
     {
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+      "title": "Decision Supersession and Regression Evidence Alignment PRD",
+      "summary": "Operationalize explicit decision supersession and preserve the March 2026 regression audit as a governed repo-local reference so repeated-work conclusions remain queryable and durable.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-13T01:10:32Z",
+      "prd_ids": [
+        "prd.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "decision_ids": [
+        "decision.decision_supersession_and_regression_evidence_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "task_ids": [
+        "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001"
+      ],
+      "requirement_ids": [
+        "req.decision_supersession_and_regression_evidence_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.decision_supersession_and_regression_evidence_alignment.001"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.decision_supersession_and_regression_evidence_alignment.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.v1.json",
+        "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+        "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/decisions.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/templates/decision_record_template.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence prepared at 2026-03-13T01:09:48Z for trace.decision_supersession_and_regression_evidence_alignment."
+    },
+    {
       "trace_id": "trace.derived_projection_status_semantics",
       "title": "Derived Projection Status Semantics Alignment PRD",
       "summary": "Make initiative and coordination projections publish explicit artifact-status fields so machine consumers do not misread closed initiatives as active.",
@@ -1653,7 +1722,9 @@
       "summary": "Align foundations family entrypoints and the foundations context review workflow with the machine lookup route and the companion review-context documents already advertised by the foundations layer.",
       "status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-13T00:37:03Z",
+      "updated_at": "2026-03-13T00:37:45Z",
+      "closed_at": "2026-03-13T00:37:03Z",
+      "closure_reason": "Aligned the foundations family entrypoints and review workflow with the machine foundations routes, added fail-closed coverage, and validated the foundations-themed review loop with no additional actionable issues.",
       "prd_ids": [
         "prd.foundations_entrypoint_coverage_alignment"
       ],
@@ -1716,9 +1787,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:33:52Z for trace.foundations_entrypoint_coverage_alignment after the foundations entrypoint guidance repair, targeted validation, full non-acceptance validation, and two clean themed confirmation passes.",
-      "closed_at": "2026-03-13T00:37:03Z",
-      "closure_reason": "Aligned the foundations family entrypoints and review workflow with the machine foundations routes, added fail-closed coverage, and validated the foundations-themed review loop with no additional actionable issues."
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:37:45Z for trace.foundations_entrypoint_coverage_alignment after the foundations entrypoint guidance repair, targeted validation, acceptance reconciliation, final acceptance-inclusive validation, initiative closeout, and repeated clean themed confirmation passes."
     },
     {
       "trace_id": "trace.foundations_summary_entrypoint_continuity",

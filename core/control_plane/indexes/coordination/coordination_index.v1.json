@@ -3,15 +3,84 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-13T00:37:03Z",
-  "coordination_mode": "ready_for_bootstrap",
-  "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
-  "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
-  "recommended_surface_path": "docs/planning/README.md",
-  "active_initiative_count": 0,
+  "updated_at": "2026-03-13T01:10:32Z",
+  "coordination_mode": "active_work",
+  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
+  "recommended_next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+  "recommended_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+  "active_initiative_count": 1,
   "blocked_task_count": 0,
   "actionable_task_count": 0,
   "entries": [
+    {
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+      "title": "Decision Supersession and Regression Evidence Alignment PRD",
+      "summary": "Operationalize explicit decision supersession and preserve the March 2026 regression audit as a governed repo-local reference so repeated-work conclusions remain queryable and durable.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "closeout",
+      "updated_at": "2026-03-13T01:10:32Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+      "next_action": "Run initiative closeout or create explicit follow-up tasks before marking the initiative complete.",
+      "next_surface_path": "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+      "prd_ids": [
+        "prd.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "decision_ids": [
+        "decision.decision_supersession_and_regression_evidence_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "task_ids": [
+        "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001"
+      ],
+      "acceptance_ids": [
+        "ac.decision_supersession_and_regression_evidence_alignment.001"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.decision_supersession_and_regression_evidence_alignment.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.v1.json",
+        "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+        "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/decisions.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/templates/decision_record_template.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence prepared at 2026-03-13T01:09:48Z for trace.decision_supersession_and_regression_evidence_alignment."
+    },
     {
       "trace_id": "trace.foundations_entrypoint_coverage_alignment",
       "title": "Foundations Entrypoint Coverage Alignment PRD",
@@ -19,7 +88,7 @@
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-13T00:37:03Z",
+      "updated_at": "2026-03-13T00:37:45Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
@@ -81,7 +150,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:33:52Z for trace.foundations_entrypoint_coverage_alignment after the foundations entrypoint guidance repair, targeted validation, full non-acceptance validation, and two clean themed confirmation passes."
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:37:45Z for trace.foundations_entrypoint_coverage_alignment after the foundations entrypoint guidance repair, targeted validation, acceptance reconciliation, final acceptance-inclusive validation, initiative closeout, and repeated clean themed confirmation passes."
     },
     {
       "trace_id": "trace.foundations_summary_entrypoint_continuity",

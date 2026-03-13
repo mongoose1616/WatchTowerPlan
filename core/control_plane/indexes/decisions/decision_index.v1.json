@@ -238,6 +238,42 @@
       ]
     },
     {
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+      "decision_id": "decision.decision_supersession_and_regression_evidence_alignment_direction",
+      "title": "Decision Supersession and Regression Evidence Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Decision Supersession and Regression Evidence Alignment.",
+      "record_status": "active",
+      "decision_status": "proposed",
+      "doc_path": "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+      "updated_at": "2026-03-13T01:09:48Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/decisions.py",
+        "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/references/"
+      ]
+    },
+    {
       "trace_id": "trace.derived_projection_status_semantics",
       "decision_id": "decision.derived_projection_status_semantics_direction",
       "title": "Derived Projection Status Semantics Alignment Direction Decision",

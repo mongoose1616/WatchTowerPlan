@@ -384,6 +384,34 @@
       ]
     },
     {
+      "document_id": "design.features.decision_supersession_and_regression_evidence_alignment",
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+      "family": "feature_design",
+      "title": "Decision Supersession and Regression Evidence Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Decision Supersession and Regression Evidence Alignment.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+      "updated_at": "2026-03-13T01:09:48Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/decisions.py",
+        "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/references/"
+      ]
+    },
+    {
       "document_id": "design.features.derived_projection_status_semantics",
       "trace_id": "trace.derived_projection_status_semantics",
       "family": "feature_design",
@@ -1981,6 +2009,37 @@
         "docs/standards/data_contracts/standard_index_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.decision_supersession_and_regression_evidence_alignment",
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+      "family": "implementation_plan",
+      "title": "Decision Supersession and Regression Evidence Alignment Implementation Plan",
+      "summary": "Breaks Decision Supersession and Regression Evidence Alignment into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+      "updated_at": "2026-03-13T01:09:48Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md"
+      ],
+      "related_paths": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/decisions.py",
+        "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/references/"
       ]
     },
     {

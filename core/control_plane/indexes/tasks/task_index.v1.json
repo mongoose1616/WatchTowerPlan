@@ -771,6 +771,119 @@
       ]
     },
     {
+      "task_id": "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001",
+      "title": "Bootstrap Decision Supersession and Regression Evidence Alignment planning chain",
+      "summary": "Bootstraps the initial planning chain for Decision Supersession and Regression Evidence Alignment.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md",
+      "updated_at": "2026-03-13T01:10:32Z",
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+      "related_ids": [
+        "prd.decision_supersession_and_regression_evidence_alignment",
+        "design.features.decision_supersession_and_regression_evidence_alignment",
+        "design.implementation.decision_supersession_and_regression_evidence_alignment",
+        "decision.decision_supersession_and_regression_evidence_alignment_direction",
+        "contract.acceptance.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "applies_to": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/decisions.py",
+        "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/references/"
+      ]
+    },
+    {
+      "task_id": "task.decision_supersession_and_regression_evidence_alignment.regression_reference.002",
+      "title": "Preserve regression audit evidence as a governed local reference",
+      "summary": "Add one repo-local governed reference for the March 2026 regression audit and replace durable raw external report citations on the touched planning surfaces.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
+      "updated_at": "2026-03-13T01:10:21Z",
+      "related_ids": [
+        "trace.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "applies_to": [
+        "docs/references/",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
+        "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+        "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md"
+      ]
+    },
+    {
+      "task_id": "task.decision_supersession_and_regression_evidence_alignment.supersession.001",
+      "title": "Add explicit decision supersession support",
+      "summary": "Extend decision governance, sync, query, and live decision records so superseded decisions link explicitly to replacement decisions.",
+      "status": "active",
+      "task_status": "in_progress",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/add_explicit_decision_supersession_support.md",
+      "updated_at": "2026-03-13T01:10:32Z",
+      "related_ids": [
+        "trace.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "applies_to": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/decisions.py",
+        "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md"
+      ]
+    },
+    {
+      "task_id": "task.decision_supersession_and_regression_evidence_alignment.validation.003",
+      "title": "Validate and close decision supersession and regression evidence alignment",
+      "summary": "Run targeted and full validation, refresh evidence, rerun confirmation passes, and close the bounded slice.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
+      "updated_at": "2026-03-13T01:10:21Z",
+      "related_ids": [
+        "trace.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "applies_to": [
+        "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.v1.json",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md"
+      ]
+    },
+    {
       "task_id": "task.derived_projection_status_semantics.bootstrap.001",
       "title": "Bootstrap Derived Projection Status Semantics Alignment planning chain",
       "summary": "Bootstraps the initial planning chain for Derived Projection Status Semantics Alignment.",

@@ -1,0 +1,59 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.decision_supersession_and_regression_evidence_alignment.planning_baseline",
+  "title": "Decision Supersession and Regression Evidence Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T01:09:48Z",
+  "source_prd_ids": [
+    "prd.decision_supersession_and_regression_evidence_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.decision_supersession_and_regression_evidence_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.decision_supersession_and_regression_evidence_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.decision_supersession_and_regression_evidence_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.decision_supersession_and_regression_evidence_alignment.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
+        "docs/planning/tasks/open/decision_supersession_and_regression_evidence_alignment_bootstrap.md"
+      ],
+      "subject_ids": [
+        "prd.decision_supersession_and_regression_evidence_alignment",
+        "design.features.decision_supersession_and_regression_evidence_alignment",
+        "design.implementation.decision_supersession_and_regression_evidence_alignment",
+        "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001",
+        "contract.acceptance.decision_supersession_and_regression_evidence_alignment",
+        "decision.decision_supersession_and_regression_evidence_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.decision_supersession_and_regression_evidence_alignment.001"
+      ],
+      "notes": "Bootstrap write mode published the initial planning chain, acceptance contract, evidence artifact, and bootstrap task in canonical repository paths."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence prepared at 2026-03-13T01:09:48Z for trace.decision_supersession_and_regression_evidence_alignment.",
+  "source_decision_ids": [
+    "decision.decision_supersession_and_regression_evidence_alignment_direction"
+  ]
+}

@@ -366,6 +366,47 @@
       ]
     },
     {
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
+      "prd_id": "prd.decision_supersession_and_regression_evidence_alignment",
+      "title": "Decision Supersession and Regression Evidence Alignment PRD",
+      "summary": "Operationalize explicit decision supersession and preserve the March 2026 regression audit as a governed repo-local reference so repeated-work conclusions remain queryable and durable.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+      "updated_at": "2026-03-13T01:09:48Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.decision_supersession_and_regression_evidence_alignment.001"
+      ],
+      "acceptance_ids": [
+        "ac.decision_supersession_and_regression_evidence_alignment.001"
+      ],
+      "linked_decision_ids": [
+        "decision.decision_supersession_and_regression_evidence_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.decision_supersession_and_regression_evidence_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/documentation/decision_record_md_standard.md",
+        "docs/templates/decision_record_template.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/decisions.py",
+        "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "docs/commands/core_python/watchtower_core_query_decisions.md",
+        "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/decisions/machine_first_coordination_entry_surface.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/references/"
+      ]
+    },
+    {
       "trace_id": "trace.derived_projection_status_semantics",
       "prd_id": "prd.derived_projection_status_semantics",
       "title": "Derived Projection Status Semantics Alignment PRD",

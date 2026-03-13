@@ -1,7 +1,11 @@
 # Task Tracking
 
 ## Open Tasks
-_No open tasks._
+| Task | Status | Priority | Owner | Trace ID | Summary |
+| --- | --- | --- | --- | --- | --- |
+| [task.decision_supersession_and_regression_evidence_alignment.supersession.001](/home/j/WatchTowerPlan/docs/planning/tasks/open/add_explicit_decision_supersession_support.md) | `in_progress` | `high` | `repository_maintainer` | - | Extend decision governance, sync, query, and live decision records so superseded decisions link explicitly to replacement decisions. |
+| [task.decision_supersession_and_regression_evidence_alignment.regression_reference.002](/home/j/WatchTowerPlan/docs/planning/tasks/open/preserve_regression_audit_evidence_as_a_governed_local_reference.md) | `backlog` | `high` | `repository_maintainer` | - | Add one repo-local governed reference for the March 2026 regression audit and replace durable raw external report citations on the touched planning surfaces. |
+| [task.decision_supersession_and_regression_evidence_alignment.validation.003](/home/j/WatchTowerPlan/docs/planning/tasks/open/validate_and_close_decision_supersession_and_regression_evidence_alignment.md) | `backlog` | `high` | `repository_maintainer` | - | Run targeted and full validation, refresh evidence, rerun confirmation passes, and close the bounded slice. |
 
 ## Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
@@ -29,6 +33,7 @@ _No open tasks._
 | [task.data_contract_example_operationalization_alignment.example_coverage.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/publish_data_contract_example_operationalization_coverage.md) | `done` | `high` | `repository_maintainer` | `trace.data_contract_example_operationalization_alignment` | Add family-specific valid and invalid example surfaces to the affected data-contract standards and sync the live standard index. |
 | [task.data_contract_example_operationalization_alignment.regression_hardening.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md) | `done` | `high` | `repository_maintainer` | `trace.data_contract_example_operationalization_alignment` | Protect example-surface standards lookup with regression tests against the authored standards corpus and live query behavior. |
 | [task.data_contract_example_operationalization_alignment.validation_closeout.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/validate_and_close_data_contract_example_operationalization_alignment.md) | `done` | `high` | `repository_maintainer` | `trace.data_contract_example_operationalization_alignment` | Run terminal validation, refresh acceptance and evidence surfaces, and close the traced initiative. |
+| [task.decision_supersession_and_regression_evidence_alignment.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.decision_supersession_and_regression_evidence_alignment` | Bootstraps the initial planning chain for Decision Supersession and Regression Evidence Alignment. |
 | [task.derived_projection_status_semantics.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/derived_projection_status_semantics_alignment_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.derived_projection_status_semantics` | Bootstraps the initial planning chain for Derived Projection Status Semantics Alignment. |
 | [task.derived_projection_status_semantics.projection_contracts.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/align_derived_initiative_projection_status_contracts.md) | `done` | `high` | `repository_maintainer` | `trace.derived_projection_status_semantics` | Rename the ambiguous per-entry initiative-family status field to artifact_status across schemas, sync, query, docs, and tests. |
 | [task.design_document_index_relationship_alignment.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.design_document_index_relationship_alignment` | Bootstraps the initial planning chain for Design Document Index Relationship Alignment. |
@@ -159,4 +164,4 @@ _No open tasks._
 | [task.workflow_system_operationalization.planning_scaffolds.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_planning_scaffolds.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Expose lean CLI scaffolds for PRDs, feature designs, implementation plans, decisions, and initiative bootstrap using the current repo templates. |
 | [task.workflow_system_operationalization.reconciliation_guidance.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/workflow_reconciliation_guidance.md) | `done` | `medium` | `repository_maintainer` | `trace.workflow_system_operationalization` | Add compact decision support that distinguishes documentation, traceability, governed-artifact, and acceptance-evidence reconciliation routes. |
 
-_Updated At: `2026-03-13T00:36:52Z`_
+_Updated At: `2026-03-13T01:10:32Z`_
