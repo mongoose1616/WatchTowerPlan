@@ -4410,7 +4410,7 @@
       "summary": "Align foundation-document lookup coverage with the governed foundations-doc boundary and exclude the family README from the foundation-doc standard.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-13T00:09:19Z",
+      "updated_at": "2026-03-13T00:10:08Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
@@ -4614,7 +4614,7 @@
           "title": "Foundation Document Standard Boundary Alignment Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-13T00:04:27Z",
+          "recorded_at": "2026-03-13T00:10:08Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.v1.json",
           "check_ids": [
             "check.foundation_document_standard_boundary_alignment.contract_boundary_alignment",
@@ -4708,7 +4708,7 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:04:27Z for trace.foundation_document_standard_boundary_alignment after the foundations boundary repair, targeted validation, full non-acceptance validation, and the first themed confirmation pass.",
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:10:08Z for trace.foundation_document_standard_boundary_alignment after targeted validation, acceptance reconciliation, final acceptance-inclusive validation, initiative closeout, and the post-closeout themed confirmation pass.",
       "closed_at": "2026-03-13T00:09:19Z",
       "closure_reason": "Delivered foundation-document boundary alignment: the authored standard now scopes only the six governed foundation docs, standards lookup excludes the foundations README, validation passed, and themed review found no additional actionable issues."
     },
@@ -6056,12 +6056,310 @@
       "closure_reason": "Delivered foundations documentation completeness alignment: the engineering stack foundation now cites governed reference docs and projects external-authority metadata, foundations review guidance now loads scope and standards posture with stack direction, foundations query help/docs now use live examples, and both post-fix review passes found no additional actionable issues."
     },
     {
+      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+      "title": "Foundations Entrypoint Coverage Alignment PRD",
+      "summary": "Align foundations family entrypoints and the foundations context review workflow with the machine lookup route and the companion review-context documents already advertised by the foundations layer.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T00:37:03Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.foundations_entrypoint_coverage_alignment",
+          "title": "Foundations Entrypoint Coverage Alignment PRD",
+          "summary": "Align foundations family entrypoints and the foundations context review workflow with the machine lookup route and the companion review-context documents already advertised by the foundations layer.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+          "updated_at": "2026-03-13T00:25:01Z",
+          "requirement_ids": [
+            "req.foundations_entrypoint_coverage_alignment.001",
+            "req.foundations_entrypoint_coverage_alignment.002",
+            "req.foundations_entrypoint_coverage_alignment.003"
+          ],
+          "acceptance_ids": [
+            "ac.foundations_entrypoint_coverage_alignment.001",
+            "ac.foundations_entrypoint_coverage_alignment.002",
+            "ac.foundations_entrypoint_coverage_alignment.003"
+          ],
+          "linked_decision_ids": [
+            "decision.foundations_entrypoint_coverage_alignment_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.foundations_entrypoint_coverage_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.foundations_entrypoint_coverage_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.foundations_entrypoint_coverage_alignment_direction",
+          "title": "Foundations Entrypoint Coverage Alignment Direction Decision",
+          "summary": "Records the initial direction decision for Foundations Entrypoint Coverage Alignment.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/foundations_entrypoint_coverage_alignment_direction.md",
+          "updated_at": "2026-03-13T00:26:44Z",
+          "linked_prd_ids": [
+            "prd.foundations_entrypoint_coverage_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.foundations_entrypoint_coverage_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.foundations_entrypoint_coverage_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.foundations_entrypoint_coverage_alignment",
+          "family": "feature_design",
+          "title": "Foundations Entrypoint Coverage Alignment Feature Design",
+          "summary": "Defines the technical design boundary for Foundations Entrypoint Coverage Alignment.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
+          "updated_at": "2026-03-13T00:26:44Z"
+        },
+        {
+          "document_id": "design.implementation.foundations_entrypoint_coverage_alignment",
+          "family": "implementation_plan",
+          "title": "Foundations Entrypoint Coverage Alignment Implementation Plan",
+          "summary": "Breaks Foundations Entrypoint Coverage Alignment into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
+          "updated_at": "2026-03-13T00:26:44Z",
+          "source_paths": [
+            "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
+            "docs/planning/prds/foundations_entrypoint_coverage_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.foundations_entrypoint_coverage_alignment.bootstrap.001",
+          "title": "Bootstrap Foundations Entrypoint Coverage Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Foundations Entrypoint Coverage Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/foundations_entrypoint_coverage_alignment_bootstrap.md",
+          "updated_at": "2026-03-13T00:25:46Z",
+          "related_ids": [
+            "prd.foundations_entrypoint_coverage_alignment",
+            "design.features.foundations_entrypoint_coverage_alignment",
+            "design.implementation.foundations_entrypoint_coverage_alignment",
+            "decision.foundations_entrypoint_coverage_alignment_direction",
+            "contract.acceptance.foundations_entrypoint_coverage_alignment"
+          ],
+          "applies_to": [
+            "docs/foundations/README.md",
+            "docs/foundations/repository_scope.md",
+            "workflows/modules/foundations_context_review.md",
+            "core/control_plane/indexes/foundations/README.md",
+            "core/python/tests/integration/test_control_plane_artifacts.py"
+          ]
+        },
+        {
+          "task_id": "task.foundations_entrypoint_coverage_alignment.documentation.001",
+          "title": "Align foundations family entrypoints and review workflow coverage",
+          "summary": "Update foundations family entrypoints and the foundations context review workflow to cover machine lookup plus the companion summary and customer-story routes.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "documentation",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/align_foundations_family_entrypoints_and_review_workflow_coverage.md",
+          "updated_at": "2026-03-13T00:33:01Z",
+          "related_ids": [
+            "prd.foundations_entrypoint_coverage_alignment",
+            "design.implementation.foundations_entrypoint_coverage_alignment",
+            "contract.acceptance.foundations_entrypoint_coverage_alignment"
+          ],
+          "applies_to": [
+            "docs/foundations/README.md",
+            "docs/foundations/repository_scope.md",
+            "workflows/modules/foundations_context_review.md",
+            "core/control_plane/indexes/foundations/README.md",
+            "core/python/tests/integration/test_control_plane_artifacts.py"
+          ]
+        },
+        {
+          "task_id": "task.foundations_entrypoint_coverage_alignment.validation.001",
+          "title": "Validate and close foundations entrypoint coverage alignment",
+          "summary": "Run targeted and full validation, refresh evidence, and close the foundations entrypoint coverage slice after post-fix review passes.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_foundations_entrypoint_coverage_alignment.md",
+          "updated_at": "2026-03-13T00:36:52Z",
+          "depends_on": [
+            "task.foundations_entrypoint_coverage_alignment.documentation.001"
+          ],
+          "related_ids": [
+            "prd.foundations_entrypoint_coverage_alignment",
+            "design.implementation.foundations_entrypoint_coverage_alignment",
+            "contract.acceptance.foundations_entrypoint_coverage_alignment"
+          ],
+          "applies_to": [
+            "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
+            "docs/planning/coordination_tracking.md"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.foundations_entrypoint_coverage_alignment",
+          "title": "Foundations Entrypoint Coverage Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.foundations_entrypoint_coverage_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.foundations_entrypoint_coverage_alignment.001",
+            "ac.foundations_entrypoint_coverage_alignment.002",
+            "ac.foundations_entrypoint_coverage_alignment.003"
+          ],
+          "validation_targets": [
+            "SUMMARY.md",
+            "core/control_plane/indexes/foundations/README.md",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "docs/foundations/README.md",
+            "docs/foundations/customer_story.md",
+            "docs/foundations/repository_scope.md",
+            "docs/planning/decisions/foundations_entrypoint_coverage_alignment_direction.md",
+            "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
+            "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
+            "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+            "workflows/modules/foundations_context_review.md"
+          ],
+          "related_paths": [
+            "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
+            "docs/commands/core_python/watchtower_core_query_foundations.md",
+            "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+            "docs/foundations/README.md",
+            "docs/foundations/repository_scope.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.foundations_entrypoint_coverage_alignment.planning_baseline",
+          "title": "Foundations Entrypoint Coverage Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-13T00:33:52Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.foundations_entrypoint_coverage_alignment.entrypoint_route_alignment",
+            "check.foundations_entrypoint_coverage_alignment.workflow_context_coverage",
+            "check.foundations_entrypoint_coverage_alignment.validation_and_confirmation"
+          ],
+          "acceptance_ids": [
+            "ac.foundations_entrypoint_coverage_alignment.001",
+            "ac.foundations_entrypoint_coverage_alignment.002",
+            "ac.foundations_entrypoint_coverage_alignment.003"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.foundations_entrypoint_coverage_alignment"
+      ],
+      "decision_ids": [
+        "decision.foundations_entrypoint_coverage_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.foundations_entrypoint_coverage_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundations_entrypoint_coverage_alignment"
+      ],
+      "task_ids": [
+        "task.foundations_entrypoint_coverage_alignment.bootstrap.001",
+        "task.foundations_entrypoint_coverage_alignment.documentation.001",
+        "task.foundations_entrypoint_coverage_alignment.validation.001"
+      ],
+      "requirement_ids": [
+        "req.foundations_entrypoint_coverage_alignment.001",
+        "req.foundations_entrypoint_coverage_alignment.002",
+        "req.foundations_entrypoint_coverage_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_entrypoint_coverage_alignment.001",
+        "ac.foundations_entrypoint_coverage_alignment.002",
+        "ac.foundations_entrypoint_coverage_alignment.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundations_entrypoint_coverage_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.foundations_entrypoint_coverage_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "SUMMARY.md",
+        "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "docs/foundations/README.md",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/repository_scope.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundations_entrypoint_coverage_alignment_direction.md",
+        "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/tasks/closed/align_foundations_family_entrypoints_and_review_workflow_coverage.md",
+        "docs/planning/tasks/closed/foundations_entrypoint_coverage_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "tags": [
+        "documentation",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:33:52Z for trace.foundations_entrypoint_coverage_alignment after the foundations entrypoint guidance repair, targeted validation, full non-acceptance validation, and two clean themed confirmation passes.",
+      "closed_at": "2026-03-13T00:37:03Z",
+      "closure_reason": "Aligned the foundations family entrypoints and review workflow with the machine foundations routes, added fail-closed coverage, and validated the foundations-themed review loop with no additional actionable issues."
+    },
+    {
       "trace_id": "trace.foundations_summary_entrypoint_continuity",
       "title": "Foundations Summary Entrypoint Continuity PRD",
       "summary": "Restore the root SUMMARY.md surface referenced by foundations-adjacent docs and guard that entrypoint against future drift.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-13T00:09:25Z",
+      "updated_at": "2026-03-13T00:10:08Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
@@ -6261,7 +6559,7 @@
           "title": "Foundations Summary Entrypoint Continuity Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-13T00:04:27Z",
+          "recorded_at": "2026-03-13T00:10:08Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json",
           "check_ids": [
             "check.foundations_summary_entrypoint_continuity.summary_entrypoint_restored",
@@ -6350,7 +6648,7 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:04:27Z for trace.foundations_summary_entrypoint_continuity after restoring SUMMARY.md, validating link resolution, and completing the first themed confirmation pass.",
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:10:08Z for trace.foundations_summary_entrypoint_continuity after restoring SUMMARY.md, validating link resolution, running acceptance-inclusive validation, closing the initiative, and completing the post-closeout confirmation passes.",
       "closed_at": "2026-03-13T00:09:25Z",
       "closure_reason": "Restored the root SUMMARY.md entrypoint, repaired broken foundations and planning references, added fail-closed regression coverage, and validated the foundations-themed review loop with no additional actionable issues."
     },

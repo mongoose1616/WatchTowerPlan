@@ -18,10 +18,10 @@ _No actionable tasks._
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
 | --- | --- | --- | --- |
+| `trace.foundations_entrypoint_coverage_alignment` | `completed` | `2026-03-13T00:37:03Z` | [foundations_entrypoint_coverage_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundations_entrypoint_coverage_alignment.md) |
 | `trace.foundations_summary_entrypoint_continuity` | `completed` | `2026-03-13T00:09:25Z` | [foundations_summary_entrypoint_continuity.md](/home/j/WatchTowerPlan/docs/planning/prds/foundations_summary_entrypoint_continuity.md) |
 | `trace.foundation_document_standard_boundary_alignment` | `completed` | `2026-03-13T00:09:19Z` | [foundation_document_standard_boundary_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_document_standard_boundary_alignment.md) |
 | `trace.foundation_index_family_contract_alignment` | `completed` | `2026-03-12T23:22:45Z` | [foundation_index_family_contract_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundation_index_family_contract_alignment.md) |
 | `trace.foundations_docs_boundary_alignment` | `completed` | `2026-03-12T22:14:31Z` | [foundations_docs_boundary_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundations_docs_boundary_alignment.md) |
-| `trace.foundations_documentation_completeness_alignment` | `completed` | `2026-03-12T21:31:46Z` | [foundations_documentation_completeness_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/foundations_documentation_completeness_alignment.md) |
 
-_Updated At: `2026-03-13T00:09:25Z`_
+_Updated At: `2026-03-13T00:37:03Z`_

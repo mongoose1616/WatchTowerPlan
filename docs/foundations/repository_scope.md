@@ -67,6 +67,7 @@ This document is authoritative for current repository ownership. It does not rep
 - Start here when the question is whether work belongs in `WatchTowerPlan`.
 - Start with [README.md](/home/j/WatchTowerPlan/README.md) when the main need is root routing.
 - Start with [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md) when the main need is current work state.
+- Start with [watchtower_core_query_foundations.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query_foundations.md) when the main need is machine-readable lookup of the governing foundation document for one repo surface, citation path, or applied-reference path.
 - Start with [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) when the main need is whole-repo assessment and roadmap context.
 
 ## Boundaries That Must Hold

@@ -689,6 +689,35 @@
       ]
     },
     {
+      "document_id": "design.features.foundations_entrypoint_coverage_alignment",
+      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+      "family": "feature_design",
+      "title": "Foundations Entrypoint Coverage Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Foundations Entrypoint Coverage Alignment.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
+      "updated_at": "2026-03-13T00:26:44Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/customer_story.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.foundations_summary_entrypoint_continuity",
       "trace_id": "trace.foundations_summary_entrypoint_continuity",
       "family": "feature_design",
@@ -2244,6 +2273,38 @@
         "core/control_plane/indexes/foundations/foundation_index.v1.json",
         "workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_query_foundations.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.foundations_entrypoint_coverage_alignment",
+      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+      "family": "implementation_plan",
+      "title": "Foundations Entrypoint Coverage Alignment Implementation Plan",
+      "summary": "Breaks Foundations Entrypoint Coverage Alignment into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
+      "updated_at": "2026-03-13T00:26:44Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/prds/foundations_entrypoint_coverage_alignment.md"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/data_contracts/foundation_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/customer_story.md"
       ]
     },
     {

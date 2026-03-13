@@ -3,6 +3,11 @@
 ## Description
 `This directory holds machine-readable foundation indexes for the governed foundation corpus under docs/foundations/. Use it for compact foundation lookup, reverse citation tracking, and alignment audits back into standards, workflows, and planning docs.`
 
+## Notes
+- Human family entrypoint: `docs/foundations/README.md`
+- Machine lookup entrypoint: `docs/commands/core_python/watchtower_core_query_foundations.md`
+- Rebuild entrypoint: `docs/commands/core_python/watchtower_core_sync_foundation_index.md`
+
 ## Files
 | Path | Description |
 |---|---|

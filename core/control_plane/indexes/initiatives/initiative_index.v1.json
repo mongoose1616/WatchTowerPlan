@@ -1174,7 +1174,7 @@
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-13T00:09:19Z",
+      "updated_at": "2026-03-13T00:10:08Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
@@ -1242,7 +1242,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:04:27Z for trace.foundation_document_standard_boundary_alignment after the foundations boundary repair, targeted validation, full non-acceptance validation, and the first themed confirmation pass."
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:10:08Z for trace.foundation_document_standard_boundary_alignment after targeted validation, acceptance reconciliation, final acceptance-inclusive validation, initiative closeout, and the post-closeout themed confirmation pass."
     },
     {
       "trace_id": "trace.foundation_index_family_contract_alignment",
@@ -1616,13 +1616,84 @@
       "notes": "Evidence updated at 2026-03-12T21:36:00Z after implementation, validation, initiative closeout, two clean post-fix review passes, and a green terminal acceptance-inclusive validation baseline for trace.foundations_documentation_completeness_alignment."
     },
     {
+      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+      "title": "Foundations Entrypoint Coverage Alignment PRD",
+      "summary": "Align foundations family entrypoints and the foundations context review workflow with the machine lookup route and the companion review-context documents already advertised by the foundations layer.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T00:37:03Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+      "prd_ids": [
+        "prd.foundations_entrypoint_coverage_alignment"
+      ],
+      "decision_ids": [
+        "decision.foundations_entrypoint_coverage_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.foundations_entrypoint_coverage_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundations_entrypoint_coverage_alignment"
+      ],
+      "task_ids": [
+        "task.foundations_entrypoint_coverage_alignment.bootstrap.001",
+        "task.foundations_entrypoint_coverage_alignment.documentation.001",
+        "task.foundations_entrypoint_coverage_alignment.validation.001"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_entrypoint_coverage_alignment.001",
+        "ac.foundations_entrypoint_coverage_alignment.002",
+        "ac.foundations_entrypoint_coverage_alignment.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundations_entrypoint_coverage_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.foundations_entrypoint_coverage_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T00:37:03Z",
+      "closure_reason": "Aligned the foundations family entrypoints and review workflow with the machine foundations routes, added fail-closed coverage, and validated the foundations-themed review loop with no additional actionable issues.",
+      "related_paths": [
+        "SUMMARY.md",
+        "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
+        "docs/foundations/README.md",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/repository_scope.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundations_entrypoint_coverage_alignment_direction.md",
+        "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/tasks/closed/align_foundations_family_entrypoints_and_review_workflow_coverage.md",
+        "docs/planning/tasks/closed/foundations_entrypoint_coverage_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/modules/foundations_context_review.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:33:52Z for trace.foundations_entrypoint_coverage_alignment after the foundations entrypoint guidance repair, targeted validation, full non-acceptance validation, and two clean themed confirmation passes."
+    },
+    {
       "trace_id": "trace.foundations_summary_entrypoint_continuity",
       "title": "Foundations Summary Entrypoint Continuity PRD",
       "summary": "Restore the root SUMMARY.md surface referenced by foundations-adjacent docs and guard that entrypoint against future drift.",
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-13T00:09:25Z",
+      "updated_at": "2026-03-13T00:10:08Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
@@ -1685,7 +1756,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:04:27Z for trace.foundations_summary_entrypoint_continuity after restoring SUMMARY.md, validating link resolution, and completing the first themed confirmation pass."
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:10:08Z for trace.foundations_summary_entrypoint_continuity after restoring SUMMARY.md, validating link resolution, running acceptance-inclusive validation, closing the initiative, and completing the post-closeout confirmation passes."
     },
     {
       "trace_id": "trace.github_collaboration",

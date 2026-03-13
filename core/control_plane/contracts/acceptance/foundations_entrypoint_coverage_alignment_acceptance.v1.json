@@ -1,0 +1,60 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.foundations_entrypoint_coverage_alignment",
+  "title": "Foundations Entrypoint Coverage Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+  "source_prd_id": "prd.foundations_entrypoint_coverage_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.foundations_entrypoint_coverage_alignment.001",
+      "summary": "The foundations family entrypoint docs explicitly expose the machine foundations lookup and rebuild routes where they are the right next step.",
+      "source_requirement_ids": [
+        "req.foundations_entrypoint_coverage_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "core/control_plane/indexes/foundations/README.md"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/watchtower_core_query_foundations.md",
+        "docs/commands/core_python/watchtower_core_sync_foundation_index.md"
+      ],
+      "notes": "The foundations family should route readers coherently between the human family docs and the machine query and rebuild surfaces."
+    },
+    {
+      "acceptance_id": "ac.foundations_entrypoint_coverage_alignment.002",
+      "summary": "The foundations context review workflow loads the summary and customer-story companion docs for the relevant review contexts and surfaces watchtower-core query foundations as the deterministic discovery helper.",
+      "source_requirement_ids": [
+        "req.foundations_entrypoint_coverage_alignment.002"
+      ],
+      "validation_targets": [
+        "workflows/modules/foundations_context_review.md",
+        "docs/foundations/customer_story.md",
+        "SUMMARY.md"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundations_entrypoint_coverage_alignment.003",
+      "summary": "Targeted regressions, full repository validation, and repeated foundations-themed confirmation passes stay green after the entrypoint coverage repair lands.",
+      "source_requirement_ids": [
+        "req.foundations_entrypoint_coverage_alignment.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/decisions/foundations_entrypoint_coverage_alignment_direction.md"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json"
+      ]
+    }
+  ]
+}

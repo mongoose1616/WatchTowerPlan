@@ -25,8 +25,11 @@ Use this workflow to load the repository foundation documents that materially sh
 1. Select the relevant foundation documents.
    - Start with `repository_scope.md` for foundations-aware review and documentation-alignment tasks so current repository ownership stays explicit.
    - Choose only the foundation docs that materially affect the active planning, design, or review task.
+   - Use `watchtower-core query foundations --related-path <path> --format json` when the task starts from one repo surface and you need deterministic machine lookup to narrow which foundation docs to read first.
    - Add `repository_standards_posture.md` when the task can affect authority boundaries, synchronized updates, or governance expectations.
    - Add `engineering_stack_direction.md` when the task affects implementation, tooling, validation, or storage choices.
+   - Add [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md) when product or design work depends on the intended future operator or user experience, not only on the future product boundary.
+   - Add [SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md) when the task is a review loop about overall repository coherence, authority, or next remediation work.
    - Prefer direct repository foundations over inferred product assumptions.
 2. Extract the governing context.
    - Record the product boundaries, design principles, standards posture, or technology-direction guidance that should shape the task.

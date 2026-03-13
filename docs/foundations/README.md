@@ -12,6 +12,13 @@
 | Designers and future product reviewers | `product_direction.md` | `customer_story.md`, `repository_scope.md` | Use this route when shaping future product experience while staying grounded in what this repo does and does not own yet. |
 | Repo reviewers and auditors | `repository_scope.md` | `SUMMARY.md`, `repository_standards_posture.md` | Use this route when the main question is overall repository coherence, authority, and next remediation work. |
 
+## Machine Routes
+
+| Need | Start Here | Why |
+|---|---|---|
+| Find the governing foundation document for one repo surface, citation path, or applied-reference path | `docs/commands/core_python/watchtower_core_query_foundations.md` | Uses the machine-readable foundation index for deterministic lookup instead of rescanning the full foundations corpus manually. |
+| Rebuild the machine-readable foundations corpus after a foundations-doc change | `docs/commands/core_python/watchtower_core_sync_foundation_index.md` | Keeps the published foundation index aligned with the human foundation documents in the same change set. |
+
 ## Authoritative Backbone
 
 | Path | Role |

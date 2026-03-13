@@ -777,6 +777,49 @@
       ]
     },
     {
+      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+      "prd_id": "prd.foundations_entrypoint_coverage_alignment",
+      "title": "Foundations Entrypoint Coverage Alignment PRD",
+      "summary": "Align foundations family entrypoints and the foundations context review workflow with the machine lookup route and the companion review-context documents already advertised by the foundations layer.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
+      "updated_at": "2026-03-13T00:25:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.foundations_entrypoint_coverage_alignment.001",
+        "req.foundations_entrypoint_coverage_alignment.002",
+        "req.foundations_entrypoint_coverage_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_entrypoint_coverage_alignment.001",
+        "ac.foundations_entrypoint_coverage_alignment.002",
+        "ac.foundations_entrypoint_coverage_alignment.003"
+      ],
+      "linked_decision_ids": [
+        "decision.foundations_entrypoint_coverage_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.foundations_entrypoint_coverage_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundations_entrypoint_coverage_alignment"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/customer_story.md"
+      ]
+    },
+    {
       "trace_id": "trace.foundations_summary_entrypoint_continuity",
       "prd_id": "prd.foundations_summary_entrypoint_continuity",
       "title": "Foundations Summary Entrypoint Continuity PRD",

@@ -93,7 +93,7 @@ def test_foundation_index_exposes_engineering_stack_reference_metadata() -> None
     assert foundation.external_reference_urls
 
 
-def test_foundations_context_review_loads_authoritative_foundation_backbone() -> None:
+def test_foundations_context_review_loads_foundation_review_and_discovery_routes() -> None:
     workflow_path = REPO_ROOT / "workflows/modules/foundations_context_review.md"
     markdown = workflow_path.read_text(encoding="utf-8")
 
@@ -102,6 +102,34 @@ def test_foundations_context_review_loads_authoritative_foundation_backbone() ->
     assert "docs/foundations/repository_standards_posture.md" in markdown
     assert "docs/foundations/engineering_stack_direction.md" in markdown
     assert "docs/foundations/product_direction.md" in markdown
+    assert "docs/foundations/customer_story.md" in markdown
+    assert "SUMMARY.md" in markdown
+    assert "watchtower-core query foundations" in markdown
+
+
+def test_foundations_family_entrypoints_expose_human_and_machine_routes() -> None:
+    foundations_readme = (REPO_ROOT / "docs/foundations/README.md").read_text(
+        encoding="utf-8"
+    )
+    repository_scope = (REPO_ROOT / "docs/foundations/repository_scope.md").read_text(
+        encoding="utf-8"
+    )
+    foundation_index_readme = (
+        REPO_ROOT / "core/control_plane/indexes/foundations/README.md"
+    ).read_text(encoding="utf-8")
+
+    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in foundations_readme
+    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
+        foundations_readme
+    )
+    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in repository_scope
+    assert "docs/foundations/README.md" in foundation_index_readme
+    assert "docs/commands/core_python/watchtower_core_query_foundations.md" in (
+        foundation_index_readme
+    )
+    assert "docs/commands/core_python/watchtower_core_sync_foundation_index.md" in (
+        foundation_index_readme
+    )
 
 
 def test_core_python_command_readme_exposes_foundations_entrypoints() -> None:

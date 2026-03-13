@@ -1549,6 +1549,84 @@
       ]
     },
     {
+      "task_id": "task.foundations_entrypoint_coverage_alignment.bootstrap.001",
+      "title": "Bootstrap Foundations Entrypoint Coverage Alignment planning chain",
+      "summary": "Bootstraps the initial planning chain for Foundations Entrypoint Coverage Alignment.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/foundations_entrypoint_coverage_alignment_bootstrap.md",
+      "updated_at": "2026-03-13T00:25:46Z",
+      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+      "related_ids": [
+        "prd.foundations_entrypoint_coverage_alignment",
+        "design.features.foundations_entrypoint_coverage_alignment",
+        "design.implementation.foundations_entrypoint_coverage_alignment",
+        "decision.foundations_entrypoint_coverage_alignment_direction",
+        "contract.acceptance.foundations_entrypoint_coverage_alignment"
+      ],
+      "applies_to": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ]
+    },
+    {
+      "task_id": "task.foundations_entrypoint_coverage_alignment.documentation.001",
+      "title": "Align foundations family entrypoints and review workflow coverage",
+      "summary": "Update foundations family entrypoints and the foundations context review workflow to cover machine lookup plus the companion summary and customer-story routes.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/align_foundations_family_entrypoints_and_review_workflow_coverage.md",
+      "updated_at": "2026-03-13T00:33:01Z",
+      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+      "related_ids": [
+        "prd.foundations_entrypoint_coverage_alignment",
+        "design.implementation.foundations_entrypoint_coverage_alignment",
+        "contract.acceptance.foundations_entrypoint_coverage_alignment"
+      ],
+      "applies_to": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "workflows/modules/foundations_context_review.md",
+        "core/control_plane/indexes/foundations/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ]
+    },
+    {
+      "task_id": "task.foundations_entrypoint_coverage_alignment.validation.001",
+      "title": "Validate and close foundations entrypoint coverage alignment",
+      "summary": "Run targeted and full validation, refresh evidence, and close the foundations entrypoint coverage slice after post-fix review passes.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_foundations_entrypoint_coverage_alignment.md",
+      "updated_at": "2026-03-13T00:36:52Z",
+      "trace_id": "trace.foundations_entrypoint_coverage_alignment",
+      "depends_on": [
+        "task.foundations_entrypoint_coverage_alignment.documentation.001"
+      ],
+      "related_ids": [
+        "prd.foundations_entrypoint_coverage_alignment",
+        "design.implementation.foundations_entrypoint_coverage_alignment",
+        "contract.acceptance.foundations_entrypoint_coverage_alignment"
+      ],
+      "applies_to": [
+        "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md"
+      ]
+    },
+    {
       "task_id": "task.foundations_summary_entrypoint_continuity.bootstrap.001",
       "title": "Bootstrap Foundations Summary Entrypoint Continuity planning chain",
       "summary": "Bootstraps the initial planning chain for Foundations Summary Entrypoint Continuity.",
