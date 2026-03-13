@@ -15,6 +15,14 @@
   "actionable_tasks": [],
   "recent_closed_initiatives": [
     {
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "title": "Typed Query Surface Modularity Hardening PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-13T18:26:14Z",
+      "key_surface_path": "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+      "closure_reason": "Completed the bounded refactor review after splitting typed retrieval models and CLI query regressions, repairing stale historical task paths and evidence coverage, and rerunning clean confirmation passes."
+    },
+    {
       "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
       "title": "Planning Authoring Hotspot Regression Hardening PRD",
       "initiative_status": "completed",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-12T23:22:45Z",
       "key_surface_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
       "closure_reason": "Delivered foundation-index family contract alignment: the governing standard now covers the authoritative sync/query and foundations command surfaces, targeted and full validation passed, and repeated themed review passes found no additional actionable issues."
-    },
-    {
-      "trace_id": "trace.foundations_docs_boundary_alignment",
-      "title": "Foundations Documentation Boundary Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-12T22:14:31Z",
-      "key_surface_path": "docs/planning/prds/foundations_docs_boundary_alignment.md",
-      "closure_reason": "Delivered foundations documentation boundary alignment: the core Python command-doc README now exposes the foundations entrypoints, command and standards/reference docs align on repo_ops ownership, full validation passed, and repeated review passes found no additional actionable issues."
     }
   ]
 }

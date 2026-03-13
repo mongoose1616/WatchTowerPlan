@@ -1,0 +1,156 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.typed_query_surface_modularity_hardening.planning_baseline",
+  "title": "Typed Query Surface Modularity Hardening Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.typed_query_surface_modularity_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T18:24:59Z",
+  "source_prd_ids": [
+    "prd.typed_query_surface_modularity_hardening"
+  ],
+  "source_design_ids": [
+    "design.features.typed_query_surface_modularity_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.typed_query_surface_modularity_hardening"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.typed_query_surface_modularity_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.typed_query_surface_modularity_hardening.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md",
+        "docs/planning/decisions/typed_query_surface_modularity_hardening_direction.md",
+        "core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.v1.json",
+        "docs/planning/tasks/closed/typed_query_surface_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/split_typed_retrieval_models_into_focused_modules.md",
+        "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
+        "docs/planning/tasks/closed/validate_and_close_typed_query_surface_modularity_hardening.md"
+      ],
+      "subject_ids": [
+        "prd.typed_query_surface_modularity_hardening",
+        "design.features.typed_query_surface_modularity_hardening",
+        "design.implementation.typed_query_surface_modularity_hardening",
+        "task.typed_query_surface_modularity_hardening.bootstrap.001",
+        "task.typed_query_surface_modularity_hardening.model_modularity.002",
+        "task.typed_query_surface_modularity_hardening.query_suite_modularity.003",
+        "task.typed_query_surface_modularity_hardening.validation_closeout.004",
+        "contract.acceptance.typed_query_surface_modularity_hardening",
+        "decision.typed_query_surface_modularity_hardening_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.typed_query_surface_modularity_hardening.001"
+      ],
+      "notes": "The planning chain, acceptance contract, evidence artifact, and full closed task set now live in canonical repository paths with the final coverage map and findings ledger aligned."
+    },
+    {
+      "check_id": "check.typed_query_surface_modularity_hardening.model_modularity",
+      "title": "Typed retrieval model hotspot is split into focused modules",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/models/_index_helpers.py",
+        "core/python/src/watchtower_core/control_plane/models/planning_documents.py",
+        "core/python/src/watchtower_core/control_plane/models/knowledge_indexes.py",
+        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "core/python/tests/unit/test_control_plane_model_exports.py"
+      ],
+      "subject_ids": [
+        "task.typed_query_surface_modularity_hardening.model_modularity.002",
+        "design.features.typed_query_surface_modularity_hardening",
+        "design.implementation.typed_query_surface_modularity_hardening"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.typed_query_surface_modularity_hardening.002"
+      ],
+      "notes": "The old 548-line mixed-domain hotspot is now a 37-line compatibility re-export over focused model modules plus a 48-line private helper, and targeted model or loader regressions passed."
+    },
+    {
+      "check_id": "check.typed_query_surface_modularity_hardening.consumer_alignment",
+      "title": "Loader and direct consumer alignment stayed stable",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/src/watchtower_core/control_plane/README.md"
+      ],
+      "subject_ids": [
+        "task.typed_query_surface_modularity_hardening.model_modularity.002",
+        "task.typed_query_surface_modularity_hardening.query_suite_modularity.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.typed_query_surface_modularity_hardening.003"
+      ],
+      "notes": "The stable re-export boundary stayed intact, targeted loader or initiative-sync regressions passed, and the synced planning or coordination projections stayed coherent throughout the closeout loop."
+    },
+    {
+      "check_id": "check.typed_query_surface_modularity_hardening.query_suite_modularity",
+      "title": "CLI query regressions are split into focused suites",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/unit/cli_command_helpers.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_cli_route_and_path_commands.py",
+        "core/python/tests/unit/test_cli_dry_run_authoring_commands.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/tests/unit/test_cli_planning_query_commands.py",
+        "core/python/tests/unit/README.md",
+        "docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md"
+      ],
+      "subject_ids": [
+        "task.typed_query_surface_modularity_hardening.query_suite_modularity.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.typed_query_surface_modularity_hardening.004"
+      ],
+      "notes": "The old 912-line CLI hotspot is now a focused suite family plus a small helper, the previously failing dry-run task-create probe succeeded after stale task-path repair, and the repository path query now resolves the compatibility marker for historical references."
+    },
+    {
+      "check_id": "check.typed_query_surface_modularity_hardening.validation_closeout",
+      "title": "Validation and confirmation loop returned the retrieval surface to a clean state",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/typed_query_surface_modularity_hardening_planning_baseline.v1.json"
+      ],
+      "subject_ids": [
+        "task.typed_query_surface_modularity_hardening.validation_closeout.004",
+        "contract.acceptance.typed_query_surface_modularity_hardening",
+        "evidence.typed_query_surface_modularity_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.typed_query_surface_modularity_hardening.005"
+      ],
+      "notes": "The targeted validation subset, sync-all rebuild, post-fix acceptance reconciliation, stale-reference sweep, query-paths compatibility check, adversarial task-create dry-run, full validate-all rerun, full pytest rerun, Ruff, and mypy all passed after the stale task-path repair and evidence-ledger expansion."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence refreshed for the typed retrieval modularity trace after the model split, CLI query suite split, compatibility-marker addition, stale task-path repair, evidence-ledger expansion, sync rebuild, and final validation or confirmation loop.",
+  "source_decision_ids": [
+    "decision.typed_query_surface_modularity_hardening_direction"
+  ]
+}

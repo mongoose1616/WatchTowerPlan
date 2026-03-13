@@ -3328,10 +3328,50 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/tests/unit/test_cli_dry_run_authoring_commands.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Parser-level JSON contract tests for dry-run `task create` and `plan scaffold` behavior.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Parser-level JSON contract tests for command, reference, foundation, standard, and workflow query families.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_cli_planning_query_commands.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Parser-level JSON contract tests for PRD, decision, design, task, initiative, coordination, authority, acceptance, evidence, and trace query families.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/unit/test_cli_query_commands.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Parser-level JSON contract tests for query, route, task-create, and plan-scaffold CLI families.",
+      "summary": "Compatibility marker that redirects historical references to the focused CLI family suites.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_cli_route_and_path_commands.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Parser-level JSON contract tests for the `query paths` and `route preview` CLI surfaces.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",

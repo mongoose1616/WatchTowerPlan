@@ -1808,6 +1808,52 @@
       ]
     },
     {
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "decision_id": "decision.typed_query_surface_modularity_hardening_direction",
+      "title": "Typed Query Surface Modularity Hardening Direction Decision",
+      "summary": "Records the initial direction decision for Typed Query Surface Modularity Hardening.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/typed_query_surface_modularity_hardening_direction.md",
+      "updated_at": "2026-03-13T17:56:36Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.typed_query_surface_modularity_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.typed_query_surface_modularity_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.typed_query_surface_modularity_hardening"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/unit/",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.workflow_system_operationalization",
       "decision_id": "decision.workflow_operationalization_direction",
       "title": "Workflow Operationalization Direction",

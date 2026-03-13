@@ -12,7 +12,7 @@ Workspace-aware artifact loading, schema validation, typed models, and filesyste
 - `loader.py`: High-level governed artifact loader.
 - `schemas.py`: Schema store and supplemental-schema registration.
 - `workspace.py`: Workspace configuration, artifact source, and artifact store abstractions.
-- `models/`: Typed artifact models for indexes, contracts, registries, and evidence.
+- `models/`: Typed artifact models grouped by artifact family, with a stable re-export surface in `models/__init__.py`.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/adapters/README.md`

@@ -27,7 +27,7 @@ applies_to:
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py
 - core/python/tests/unit/test_reference_index_sync.py
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_document_semantics_validation.py
 - docs/commands/core_python/watchtower_core_query_references.md
 related_ids:

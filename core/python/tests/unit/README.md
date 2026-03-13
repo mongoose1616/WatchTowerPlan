@@ -13,7 +13,11 @@
 | `core/python/tests/unit/test_acceptance_reconciliation.py` | Unit tests for acceptance-contract lookup, evidence lookup, and semantic acceptance reconciliation. |
 | `core/python/tests/unit/test_all_sync.py` | Unit tests for the registry-backed all-sync orchestration service. |
 | `core/python/tests/unit/test_cli.py` | Thin smoke tests for the watchtower-core entrypoint, help output, and compatibility facades. |
-| `core/python/tests/unit/test_cli_query_commands.py` | Parser-level JSON contract tests for query, route, task-create, and plan-scaffold CLI families. |
+| `core/python/tests/unit/test_cli_query_commands.py` | Compatibility marker that redirects historical references to the focused CLI family suites. |
+| `core/python/tests/unit/test_cli_route_and_path_commands.py` | Parser-level JSON contract tests for the `query paths` and `route preview` CLI surfaces. |
+| `core/python/tests/unit/test_cli_dry_run_authoring_commands.py` | Parser-level JSON contract tests for dry-run `task create` and `plan scaffold` behavior. |
+| `core/python/tests/unit/test_cli_knowledge_query_commands.py` | Parser-level JSON contract tests for command, reference, foundation, standard, and workflow query families. |
+| `core/python/tests/unit/test_cli_planning_query_commands.py` | Parser-level JSON contract tests for PRD, decision, design, task, initiative, coordination, authority, acceptance, evidence, and trace query families. |
 | `core/python/tests/unit/test_cli_sync_commands.py` | Parser-level JSON and output-path tests for the sync command family. |
 | `core/python/tests/unit/test_cli_validate_commands.py` | Parser-level JSON and evidence-recording tests for the validation command family. |
 | `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs. |

@@ -743,7 +743,7 @@
       ],
       "applies_to": [
         "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ]
     },
     {
@@ -1048,7 +1048,7 @@
       "applies_to": [
         "core/python/src/watchtower_core/repo_ops/standards.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
         "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/integration/test_control_plane_artifacts.py",
@@ -1083,7 +1083,7 @@
       "applies_to": [
         "core/python/src/watchtower_core/repo_ops/standards.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
         "core/python/tests/unit/test_document_semantics_validation.py",
         "docs/commands/core_python/watchtower_core_query_standards.md",
@@ -1305,7 +1305,7 @@
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/foundations/README.md",
         "core/control_plane/indexes/standards/standard_index.v1.json",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
         "core/python/tests/integration/test_control_plane_artifacts.py"
       ]
@@ -1332,7 +1332,7 @@
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/foundations/README.md",
         "core/control_plane/indexes/standards/standard_index.v1.json",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
         "core/python/tests/integration/test_control_plane_artifacts.py"
       ]
@@ -2996,7 +2996,7 @@
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
         "core/python/tests/unit/test_reference_index_sync.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_document_semantics_validation.py",
         "docs/commands/core_python/watchtower_core_query_references.md"
       ]
@@ -3531,7 +3531,7 @@
       "applies_to": [
         "docs/standards/documentation/standard_md_standard.md",
         "core/control_plane/indexes/standards/standard_index.v1.json",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/integration/test_control_plane_artifacts.py"
       ]
     },
@@ -3755,7 +3755,7 @@
       ],
       "applies_to": [
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/integration/test_control_plane_artifacts.py",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/templates/documentation_template.md",
@@ -3815,7 +3815,7 @@
       "applies_to": [
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "docs/commands/core_python/watchtower_core_query_standards.md"
       ]
     },
@@ -3848,7 +3848,7 @@
         "core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.v1.json",
         "core/control_plane/indexes/",
         "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ]
     },
     {
@@ -4202,6 +4202,111 @@
         "workflows/modules/",
         "docs/templates/",
         "docs/standards/workflows/"
+      ]
+    },
+    {
+      "task_id": "task.typed_query_surface_modularity_hardening.bootstrap.001",
+      "title": "Bootstrap Typed Query Surface Modularity Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Typed Query Surface Modularity Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/typed_query_surface_modularity_hardening_bootstrap.md",
+      "updated_at": "2026-03-13T18:02:54Z",
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "related_ids": [
+        "prd.typed_query_surface_modularity_hardening",
+        "design.features.typed_query_surface_modularity_hardening",
+        "design.implementation.typed_query_surface_modularity_hardening",
+        "decision.typed_query_surface_modularity_hardening_direction",
+        "contract.acceptance.typed_query_surface_modularity_hardening"
+      ]
+    },
+    {
+      "task_id": "task.typed_query_surface_modularity_hardening.model_modularity.002",
+      "title": "Split typed retrieval models into focused modules",
+      "summary": "Refactor the typed planning and documentation retrieval models into focused modules with explicit shared helpers while preserving stable public imports and loader or query behavior.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/split_typed_retrieval_models_into_focused_modules.md",
+      "updated_at": "2026-03-13T18:21:56Z",
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "related_ids": [
+        "prd.typed_query_surface_modularity_hardening",
+        "design.features.typed_query_surface_modularity_hardening",
+        "design.implementation.typed_query_surface_modularity_hardening",
+        "decision.typed_query_surface_modularity_hardening_direction",
+        "contract.acceptance.typed_query_surface_modularity_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/validation/acceptance.py"
+      ]
+    },
+    {
+      "task_id": "task.typed_query_surface_modularity_hardening.query_suite_modularity.003",
+      "title": "Split CLI query regressions into focused suites",
+      "summary": "Replace the broad CLI query regression hotspot with narrower family-specific suites and shared command helpers while preserving real command coverage and JSON assertions.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
+      "updated_at": "2026-03-13T18:21:56Z",
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "depends_on": [
+        "task.typed_query_surface_modularity_hardening.model_modularity.002"
+      ],
+      "related_ids": [
+        "prd.typed_query_surface_modularity_hardening",
+        "design.features.typed_query_surface_modularity_hardening",
+        "design.implementation.typed_query_surface_modularity_hardening",
+        "decision.typed_query_surface_modularity_hardening_direction",
+        "contract.acceptance.typed_query_surface_modularity_hardening"
+      ],
+      "applies_to": [
+        "core/python/tests/unit/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/README.md"
+      ]
+    },
+    {
+      "task_id": "task.typed_query_surface_modularity_hardening.validation_closeout.004",
+      "title": "Validate and close typed query surface modularity hardening",
+      "summary": "Run targeted and full validation, repeat same-theme confirmation passes, refresh evidence, and close the typed retrieval modularity trace once the hotspot stays clean.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_typed_query_surface_modularity_hardening.md",
+      "updated_at": "2026-03-13T18:23:59Z",
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "depends_on": [
+        "task.typed_query_surface_modularity_hardening.model_modularity.002",
+        "task.typed_query_surface_modularity_hardening.query_suite_modularity.003"
+      ],
+      "related_ids": [
+        "prd.typed_query_surface_modularity_hardening",
+        "design.implementation.typed_query_surface_modularity_hardening",
+        "decision.typed_query_surface_modularity_hardening_direction",
+        "contract.acceptance.typed_query_surface_modularity_hardening"
+      ],
+      "applies_to": [
+        "core/python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
       ]
     },
     {

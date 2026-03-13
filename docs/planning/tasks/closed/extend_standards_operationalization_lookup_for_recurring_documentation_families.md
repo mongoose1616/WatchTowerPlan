@@ -16,7 +16,7 @@ authority: authoritative
 applies_to:
 - core/python/src/watchtower_core/repo_ops/standards.py
 - core/python/src/watchtower_core/repo_ops/query/standards.py
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
 - core/python/tests/unit/test_document_semantics_validation.py
 - docs/commands/core_python/watchtower_core_query_standards.md

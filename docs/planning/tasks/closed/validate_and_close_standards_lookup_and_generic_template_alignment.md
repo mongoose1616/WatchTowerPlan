@@ -19,7 +19,7 @@ applies_to:
 - core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.v1.json
 - core/control_plane/indexes/
 - core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 depends_on:
 - task.standards_lookup_and_generic_template_alignment.lookup_resolution.001
 - task.standards_lookup_and_generic_template_alignment.generic_template_scope.001

@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 related_ids:
 - prd.data_contract_example_operationalization_alignment
 - design.features.data_contract_example_operationalization_alignment

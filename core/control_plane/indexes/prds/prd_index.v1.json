@@ -2044,6 +2044,54 @@
       ]
     },
     {
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "prd_id": "prd.typed_query_surface_modularity_hardening",
+      "title": "Typed Query Surface Modularity Hardening PRD",
+      "summary": "Review and refactor the typed planning and documentation retrieval surface so index models, loader consumers, and query test coverage become more modular without changing query behavior, validation fidelity, or governed authority boundaries.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+      "updated_at": "2026-03-13T17:56:36Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.typed_query_surface_modularity_hardening.001",
+        "req.typed_query_surface_modularity_hardening.002",
+        "req.typed_query_surface_modularity_hardening.003",
+        "req.typed_query_surface_modularity_hardening.004",
+        "req.typed_query_surface_modularity_hardening.005"
+      ],
+      "acceptance_ids": [
+        "ac.typed_query_surface_modularity_hardening.001",
+        "ac.typed_query_surface_modularity_hardening.002",
+        "ac.typed_query_surface_modularity_hardening.003",
+        "ac.typed_query_surface_modularity_hardening.004",
+        "ac.typed_query_surface_modularity_hardening.005"
+      ],
+      "linked_decision_ids": [
+        "decision.typed_query_surface_modularity_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.typed_query_surface_modularity_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.typed_query_surface_modularity_hardening"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/tests/unit/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "prd_id": "prd.unit_test_hardening_and_rebalancing",
       "title": "Unit Test Hardening and Rebalancing PRD",

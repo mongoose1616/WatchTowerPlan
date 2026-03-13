@@ -1,0 +1,115 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.typed_query_surface_modularity_hardening",
+  "title": "Typed Query Surface Modularity Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.typed_query_surface_modularity_hardening",
+  "source_prd_id": "prd.typed_query_surface_modularity_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.typed_query_surface_modularity_hardening.001",
+      "summary": "The planning corpus for the trace publishes the bounded PRD, decision, feature design, implementation plan, acceptance contract, evidence ledger, and closed task set with the discovery coverage map and findings ledger.",
+      "source_requirement_ids": [
+        "req.typed_query_surface_modularity_hardening.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md",
+        "docs/planning/decisions/typed_query_surface_modularity_hardening_direction.md",
+        "docs/planning/tasks/closed/typed_query_surface_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/split_typed_retrieval_models_into_focused_modules.md",
+        "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
+        "docs/planning/tasks/closed/validate_and_close_typed_query_surface_modularity_hardening.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Closeout-aligned contract refreshed at 2026-03-13T18:24:59Z for trace.typed_query_surface_modularity_hardening."
+    },
+    {
+      "acceptance_id": "ac.typed_query_surface_modularity_hardening.002",
+      "summary": "Typed planning and documentation retrieval models are split into smaller domain-focused modules with explicit helper-backed materialization or lookup seams while stable public imports and loader behavior are preserved.",
+      "source_requirement_ids": [
+        "req.typed_query_surface_modularity_hardening.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/unit/"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md"
+      ],
+      "notes": "Covers the typed-model hotspot and direct consumer boundary."
+    },
+    {
+      "acceptance_id": "ac.typed_query_surface_modularity_hardening.003",
+      "summary": "Direct loader, query, sync, and validation consumers plus runtime boundary docs stay aligned with the typed-model refactor and show no behavior drift.",
+      "source_requirement_ids": [
+        "req.typed_query_surface_modularity_hardening.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "core/python/tests/unit/"
+      ],
+      "related_paths": [
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md"
+      ],
+      "notes": "Covers the stable public import and runtime-boundary alignment requirement."
+    },
+    {
+      "acceptance_id": "ac.typed_query_surface_modularity_hardening.004",
+      "summary": "The oversized CLI query regression hotspot is replaced by narrower suites and shared helpers while preserving real command coverage and current JSON-payload assertions.",
+      "source_requirement_ids": [
+        "req.typed_query_surface_modularity_hardening.004"
+      ],
+      "validation_targets": [
+        "core/python/tests/unit/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/README.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md"
+      ],
+      "notes": "Covers the CLI query regression hotspot and its shared helper boundary."
+    },
+    {
+      "acceptance_id": "ac.typed_query_surface_modularity_hardening.005",
+      "summary": "Targeted validation, full repository validation, post-fix review, second-angle confirmation, and adversarial confirmation all complete with no new actionable issue in the typed retrieval modularity theme.",
+      "source_requirement_ids": [
+        "req.typed_query_surface_modularity_hardening.005"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/typed_query_surface_modularity_hardening_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "notes": "Covers the repeated confirmation loop and closeout gate."
+    }
+  ]
+}

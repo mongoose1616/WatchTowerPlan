@@ -760,6 +760,7 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.v1.json",
         "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md",
@@ -1121,6 +1122,7 @@
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/src/watchtower_core/repo_ops/standards.py",
         "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_standard_index_sync.py",
@@ -1309,6 +1311,7 @@
         "core/python/src/watchtower_core/repo_ops/query/foundations.py",
         "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
         "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_standard_index_sync.py",
         "docs/foundations/README.md",
@@ -3109,6 +3112,7 @@
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_reference_index_sync.py",
@@ -3667,6 +3671,7 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.v1.json",
         "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/planning/",
@@ -3921,6 +3926,7 @@
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/planning/",
@@ -4266,6 +4272,102 @@
         "traceability"
       ],
       "notes": "Planning-baseline evidence for the template and output efficiency initiative."
+    },
+    {
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "title": "Typed Query Surface Modularity Hardening PRD",
+      "summary": "Review and refactor the typed planning and documentation retrieval surface so index models, loader consumers, and query test coverage become more modular without changing query behavior, validation fidelity, or governed authority boundaries.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T18:26:14Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+      "prd_ids": [
+        "prd.typed_query_surface_modularity_hardening"
+      ],
+      "decision_ids": [
+        "decision.typed_query_surface_modularity_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.typed_query_surface_modularity_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.typed_query_surface_modularity_hardening"
+      ],
+      "task_ids": [
+        "task.typed_query_surface_modularity_hardening.bootstrap.001",
+        "task.typed_query_surface_modularity_hardening.model_modularity.002",
+        "task.typed_query_surface_modularity_hardening.query_suite_modularity.003",
+        "task.typed_query_surface_modularity_hardening.validation_closeout.004"
+      ],
+      "acceptance_ids": [
+        "ac.typed_query_surface_modularity_hardening.001",
+        "ac.typed_query_surface_modularity_hardening.002",
+        "ac.typed_query_surface_modularity_hardening.003",
+        "ac.typed_query_surface_modularity_hardening.004",
+        "ac.typed_query_surface_modularity_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.typed_query_surface_modularity_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.typed_query_surface_modularity_hardening.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T18:26:14Z",
+      "closure_reason": "Completed the bounded refactor review after splitting typed retrieval models and CLI query regressions, repairing stale historical task paths and evidence coverage, and rerunning clean confirmation passes.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/typed_query_surface_modularity_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/src/watchtower_core/control_plane/models/_index_helpers.py",
+        "core/python/src/watchtower_core/control_plane/models/knowledge_indexes.py",
+        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/control_plane/models/planning_documents.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/unit/cli_command_helpers.py",
+        "core/python/tests/unit/test_cli_dry_run_authoring_commands.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/tests/unit/test_cli_planning_query_commands.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_cli_route_and_path_commands.py",
+        "core/python/tests/unit/test_control_plane_loader.py",
+        "core/python/tests/unit/test_control_plane_model_exports.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/typed_query_surface_modularity_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+        "docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md",
+        "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
+        "docs/planning/tasks/closed/split_typed_retrieval_models_into_focused_modules.md",
+        "docs/planning/tasks/closed/typed_query_surface_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_typed_query_surface_modularity_hardening.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence refreshed for the typed retrieval modularity trace after the model split, CLI query suite split, compatibility-marker addition, stale task-path repair, evidence-ledger expansion, sync rebuild, and final validation or confirmation loop."
     },
     {
       "trace_id": "trace.unit_test_hardening_and_rebalancing",

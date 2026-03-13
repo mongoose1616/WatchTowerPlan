@@ -1810,6 +1810,42 @@
       ]
     },
     {
+      "document_id": "design.features.typed_query_surface_modularity_hardening",
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "family": "feature_design",
+      "title": "Typed Query Surface Modularity Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Typed Query Surface Modularity Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
+      "updated_at": "2026-03-13T17:56:36Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md",
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/unit/",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/typed_query_surface_modularity_hardening_planning_baseline.v1.json",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md"
+      ]
+    },
+    {
       "document_id": "design.features.unit_test_hardening_and_rebalancing",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "family": "feature_design",
@@ -3304,6 +3340,44 @@
         "docs/standards/governance/task_tracking_standard.md",
         "docs/planning/prds/template_and_output_efficiency.md",
         "docs/planning/design/features/compact_document_authoring_and_tracking.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.typed_query_surface_modularity_hardening",
+      "trace_id": "trace.typed_query_surface_modularity_hardening",
+      "family": "implementation_plan",
+      "title": "Typed Query Surface Modularity Hardening Implementation Plan",
+      "summary": "Breaks Typed Query Surface Modularity Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md",
+      "updated_at": "2026-03-13T18:24:59Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+        "docs/planning/decisions/typed_query_surface_modularity_hardening_direction.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/unit/",
+        "core/python/src/watchtower_core/control_plane/README.md",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/task_md_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/planning/prds/typed_query_surface_modularity_hardening.md",
+        "docs/planning/design/features/typed_query_surface_modularity_hardening.md"
       ]
     },
     {

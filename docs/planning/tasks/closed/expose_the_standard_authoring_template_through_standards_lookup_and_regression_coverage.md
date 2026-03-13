@@ -17,7 +17,7 @@ authority: authoritative
 applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - core/control_plane/indexes/standards/standard_index.v1.json
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/integration/test_control_plane_artifacts.py
 related_ids:
 - prd.standard_authoring_surface_alignment
