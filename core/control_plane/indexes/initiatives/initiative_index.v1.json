@@ -804,11 +804,11 @@
     {
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "title": "Decision Supersession and Regression Evidence Alignment PRD",
-      "summary": "Operationalize explicit decision supersession and preserve the March 2026 regression audit as a governed repo-local reference so repeated-work conclusions remain queryable and durable.",
+      "summary": "Historical record of a cancelled slice that proposed explicit decision supersession support and a dedicated repo-local regression-evidence summary.",
       "artifact_status": "active",
       "initiative_status": "cancelled",
       "current_phase": "closed",
-      "updated_at": "2026-03-13T01:16:19Z",
+      "updated_at": "2026-03-13T03:38:35Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
@@ -827,10 +827,15 @@
         "design.implementation.decision_supersession_and_regression_evidence_alignment"
       ],
       "task_ids": [
-        "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001"
+        "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001",
+        "task.decision_supersession_and_regression_evidence_alignment.regression_reference.002",
+        "task.decision_supersession_and_regression_evidence_alignment.supersession.001",
+        "task.decision_supersession_and_regression_evidence_alignment.validation.003"
       ],
       "acceptance_ids": [
-        "ac.decision_supersession_and_regression_evidence_alignment.001"
+        "ac.decision_supersession_and_regression_evidence_alignment.001",
+        "ac.decision_supersession_and_regression_evidence_alignment.002",
+        "ac.decision_supersession_and_regression_evidence_alignment.003"
       ],
       "acceptance_contract_ids": [
         "contract.acceptance.decision_supersession_and_regression_evidence_alignment"
@@ -845,21 +850,37 @@
         "core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.v1.json",
         "core/control_plane/schemas/artifacts/decision_index.v1.schema.json",
         "core/python/src/watchtower_core/cli/query_records_handlers.py",
+        "core/python/src/watchtower_core/control_plane/models/planning.py",
         "core/python/src/watchtower_core/repo_ops/query/decisions.py",
         "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
         "docs/commands/core_python/watchtower_core_query_decisions.md",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/decisions/decision_tracking.md",
         "docs/planning/decisions/machine_first_coordination_entry_surface.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md",
+        "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
+        "docs/planning/decisions/route_preview_natural_request_matching_direction.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/features/route_preview_natural_request_matching_design.md",
+        "docs/planning/design/features/standard_runtime_and_route_explicitness_hardening.md",
         "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/design/implementation/route_preview_natural_request_matching_implementation_plan.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/prds/repo_local_hotspot_modularity_hardening.md",
+        "docs/planning/prds/route_preview_natural_request_matching.md",
+        "docs/planning/prds/standard_runtime_and_route_explicitness_hardening.md",
+        "docs/planning/tasks/closed/add_explicit_decision_supersession_support.md",
         "docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
+        "docs/planning/tasks/closed/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/references/",
         "docs/standards/data_contracts/decision_index_standard.md",
@@ -870,7 +891,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence prepared at 2026-03-13T01:09:48Z for trace.decision_supersession_and_regression_evidence_alignment."
+      "notes": "Validation evidence for the historical normalization of the cancelled decision-supersession and regression-evidence trace after its remaining open tasks were cancelled and its planning chain was rewritten as historical context."
     },
     {
       "trace_id": "trace.derived_projection_status_semantics",
@@ -2757,6 +2778,7 @@
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/handlers.py",
         "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/control_plane/schemas.py",
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
@@ -2964,6 +2986,114 @@
         "traceability"
       ],
       "notes": "Planning baseline evidence refreshed at 2026-03-12T15:15:34Z for trace.reference_resolution_reuse_hardening after shipping the shared reference-resolution reuse seam, closing the task set, and completing the adjacent follow-up review pass."
+    },
+    {
+      "trace_id": "trace.regression_duplication_and_overstep_review",
+      "title": "Regression Duplication and Overstep Review PRD",
+      "summary": "Review and harden planning, sync, query, validation, and governed artifact surfaces against regression, duplicated effort, repeated work, and overstep.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T03:54:02Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/regression_duplication_and_overstep_review.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/regression_duplication_and_overstep_review.md",
+      "prd_ids": [
+        "prd.regression_duplication_and_overstep_review"
+      ],
+      "decision_ids": [
+        "decision.regression_duplication_and_overstep_review_direction"
+      ],
+      "design_ids": [
+        "design.features.regression_duplication_and_overstep_review"
+      ],
+      "plan_ids": [
+        "design.implementation.regression_duplication_and_overstep_review"
+      ],
+      "task_ids": [
+        "task.regression_duplication_and_overstep_review.bootstrap.001",
+        "task.regression_duplication_and_overstep_review.remediation.002",
+        "task.regression_duplication_and_overstep_review.validation.003"
+      ],
+      "acceptance_ids": [
+        "ac.regression_duplication_and_overstep_review.001",
+        "ac.regression_duplication_and_overstep_review.002",
+        "ac.regression_duplication_and_overstep_review.003",
+        "ac.regression_duplication_and_overstep_review.004",
+        "ac.regression_duplication_and_overstep_review.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.regression_duplication_and_overstep_review"
+      ],
+      "evidence_ids": [
+        "evidence.regression_duplication_and_overstep_review.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T03:46:44Z",
+      "closure_reason": "Closed the regression-and-duplication review after hardening task trace linkage, governed companion repair, stale-path validation, planning coherence, and repeated clean confirmation passes.",
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/regression_duplication_and_overstep_review_acceptance.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/regression_duplication_and_overstep_review_planning_baseline.v1.json",
+        "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_design_document_index_sync.py",
+        "core/python/tests/unit/test_prd_index_sync.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_task.md",
+        "docs/commands/core_python/watchtower_core_task_create.md",
+        "docs/commands/core_python/watchtower_core_task_transition.md",
+        "docs/commands/core_python/watchtower_core_task_update.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/features/regression_duplication_and_overstep_review.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/tasks/closed/regression_duplication_and_overstep_review_bootstrap.md",
+        "docs/planning/tasks/closed/remediate_confirmed_regression_and_duplication_findings.md",
+        "docs/planning/tasks/closed/validate_and_close_regression_duplication_review.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "workflows/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Final validation evidence for the regression-and-duplication review after lifecycle hardening, path validation, stale-path filtering, planning-corpus cleanup, bounded-task closeout, and repeated no-new-issues confirmation passes, including one reopened adversarial loop to normalize raw external-input literals in route-preview tests."
     },
     {
       "trace_id": "trace.repo_local_hotspot_modularity",
@@ -3499,7 +3629,7 @@
       "artifact_status": "active",
       "initiative_status": "completed",
       "current_phase": "closed",
-      "updated_at": "2026-03-13T01:47:55Z",
+      "updated_at": "2026-03-13T01:48:55Z",
       "open_task_count": 0,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/summary_surface_retirement.md",
@@ -3518,7 +3648,9 @@
         "design.implementation.summary_surface_retirement"
       ],
       "task_ids": [
-        "task.summary_surface_retirement.bootstrap.001"
+        "task.summary_surface_retirement.bootstrap.001",
+        "task.summary_surface_retirement.retire_summary.001",
+        "task.summary_surface_retirement.validation.002"
       ],
       "acceptance_ids": [
         "ac.summary_surface_retirement.001",
@@ -3562,14 +3694,16 @@
         "docs/planning/prds/planning_authority_unification.md",
         "docs/planning/prds/summary_surface_retirement.md",
         "docs/planning/tasks/",
+        "docs/planning/tasks/closed/retire_summary_md_and_direct_dependency_surfaces.md",
         "docs/planning/tasks/closed/summary_surface_retirement_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_summary_surface_retirement.md",
         "docs/planning/tasks/task_tracking.md",
         "workflows/modules/foundations_context_review.md"
       ],
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-13T01:39:24Z for trace.summary_surface_retirement after retiring the root summary surface, deleting the dedicated continuity trace, rewriting the direct dependency chain, syncing derived artifacts, and completing targeted validation plus the non-acceptance validation stack."
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T01:48:55Z for trace.summary_surface_retirement after retiring the root summary surface, deleting the dedicated continuity trace, rewriting the direct dependency chain, fixing the validation-exposed traceability-sync unit-test brittleness, syncing derived artifacts, completing acceptance-inclusive validation, closing the initiative, and confirming that no surviving repo-local markdown link or repository-path entry targets SUMMARY.md."
     },
     {
       "trace_id": "trace.task_query_dependency_lookup_hardening",

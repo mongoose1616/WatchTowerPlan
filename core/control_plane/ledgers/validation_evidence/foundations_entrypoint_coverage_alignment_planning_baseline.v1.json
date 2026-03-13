@@ -71,7 +71,7 @@
         "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",
         "docs/planning/decisions/foundations_entrypoint_coverage_alignment_direction.md",
         "docs/planning/tasks/closed/align_foundations_family_entrypoints_and_review_workflow_coverage.md",
-        "docs/planning/tasks/open/validate_and_close_foundations_entrypoint_coverage_alignment.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_entrypoint_coverage_alignment.md",
         "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.v1.json",
         "core/python/tests/integration/test_control_plane_artifacts.py",

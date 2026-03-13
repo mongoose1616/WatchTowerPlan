@@ -68,7 +68,9 @@ uv run watchtower-core task update --task-id task.example.001 --clear-blocked-by
 - By default the command runs in dry-run mode and does not mutate files.
 - Replacement list flags overwrite the current value set. Use the matching clear flag when you want to remove a list field or `trace_id`.
 - The command rejects path collisions, invalid task-state vocabulary, conflicting replacement and clear flags, and unresolved blocker or dependency task IDs.
+- If `related_ids` include any `trace.*` value, the resulting task must keep the matching `trace_id`.
 - If the resulting task status changes terminality, write mode moves the task document between `docs/planning/tasks/open/` and `docs/planning/tasks/closed/`.
+- When write mode moves the task document, the command also repairs matching repo-local task-path references in governed acceptance contracts and validation evidence before coordination refreshes.
 - In `json` mode, the command prints one JSON object with the resulting task metadata, path outcome, write state, and `closeout_recommended` hint.
 
 ## Related Commands
@@ -86,4 +88,4 @@ uv run watchtower-core task update --task-id task.example.001 --clear-blocked-by
 - `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`
 
 ## Updated At
-- `2026-03-10T22:54:30Z`
+- `2026-03-13T04:05:00Z`

@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-13T04:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -79,7 +79,8 @@ This standard defines the repository's local-first task tracking model so multip
   - `documentation`
   - `governance`
   - `research`
-- Prefer linking tasks to durable planning artifacts with `trace_id` and `related_ids` when those sources exist.
+- Traced tasks must publish the matching `trace_id` when they link to a traced initiative through `related_ids`.
+- Prefer linking tasks to durable planning artifacts with `related_ids` when those sources exist.
 - Use `blocked_by` and `depends_on` to express task-to-task coordination explicitly instead of burying blockers in prose.
 - Treat `docs/planning/tasks/task_tracking.md` as a derived human summary, not as the task source of truth.
 - Keep `task_tracking.md` scan-first and compact. Prefer short zero-state text and high-signal columns over placeholder rows or repeated footer prose.
@@ -95,6 +96,7 @@ This standard defines the repository's local-first task tracking model so multip
   - `github_synced_at`
 - Do not require GitHub metadata for local tasks before sync exists.
 - Keep GitHub sync push-only in the first phase. Local task records stay authoritative.
+- When a task move changes its canonical path, update governed acceptance and validation-evidence references in the same change set or use the task lifecycle command path that repairs those references automatically.
 
 ## Structure or Data Model
 ### Source-of-truth layers
@@ -122,7 +124,7 @@ This standard defines the repository's local-first task tracking model so multip
 ## Examples
 - A new implementation slice with one owner and one bounded outcome should be one task file under `open/`.
 - A closed task that is complete should move to `closed/` and keep its `task_status` as `done`.
-- A task that belongs to a traced initiative should carry the matching `trace_id` and related design or PRD IDs.
+- A task that belongs to a traced initiative should carry the matching `trace_id` and any related design, PRD, or trace IDs coherently.
 - A future GitHub-synced task can add GitHub issue metadata without changing its stable local `task_id`.
 
 ## Operationalization
@@ -135,6 +137,7 @@ This standard defines the repository's local-first task tracking model so multip
 - A task in `open/` should not use terminal task statuses.
 - A task in `closed/` should use only `done` or `cancelled`.
 - Task IDs referenced by `blocked_by` or `depends_on` should exist in the current task corpus.
+- A task that lists any `trace.*` value in `related_ids` should also publish the matching `trace_id`.
 
 ## Change Control
 - Update this standard when the repository changes task-state vocabulary, placement rules, or the local-versus-generated task authority model.
@@ -149,4 +152,4 @@ This standard defines the repository's local-first task tracking model so multip
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-13T04:05:00Z`

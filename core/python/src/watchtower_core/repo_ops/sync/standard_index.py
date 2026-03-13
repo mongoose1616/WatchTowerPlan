@@ -36,6 +36,7 @@ from watchtower_core.repo_ops.standards import (
     collect_standard_reference_metadata,
     parse_standard_operationalization,
 )
+from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
 STANDARD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/standards/standard_index.v1.json"
 STANDARD_FRONT_MATTER_SCHEMA_ID = (
@@ -162,7 +163,10 @@ class StandardIndexSyncService:
 
             related_paths = ordered_unique(
                 applies_to_path_values(applies_to, relative_path=relative_path),
-                _tuple_of_strings(current.get("related_paths")),
+                existing_paths(
+                    self._repo_root,
+                    _tuple_of_strings(current.get("related_paths")),
+                ),
             )
             tags = ordered_unique(
                 _front_matter_list(front_matter, "tags"),

@@ -89,7 +89,7 @@ def test_route_preview_matches_realistic_maintenance_request(capsys) -> None:
             "preview",
             "--request",
             (
-                "review /home/j/WatchTower/report and fix the valid issues with "
+                "review /external/repository/report and fix the valid issues with "
                 "planning, tasks, validation, and commits"
             ),
             "--format",

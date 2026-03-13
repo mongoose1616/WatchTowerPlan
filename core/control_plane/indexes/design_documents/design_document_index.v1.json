@@ -388,11 +388,11 @@
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "family": "feature_design",
       "title": "Decision Supersession and Regression Evidence Alignment Feature Design",
-      "summary": "Defines the technical design boundary for Decision Supersession and Regression Evidence Alignment.",
-      "status": "draft",
+      "summary": "Historical design record for a cancelled slice that would have mixed decision supersession work with a repo-local regression-summary proposal.",
+      "status": "deprecated",
       "doc_path": "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
-      "updated_at": "2026-03-13T01:09:48Z",
-      "uses_internal_references": false,
+      "updated_at": "2026-03-13T03:21:56Z",
+      "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
@@ -409,6 +409,15 @@
         "docs/planning/decisions/machine_first_coordination_entry_surface.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/references/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/references/AGENTS.md",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md"
       ]
     },
     {
@@ -1355,6 +1364,39 @@
       ]
     },
     {
+      "document_id": "design.features.regression_duplication_and_overstep_review",
+      "trace_id": "trace.regression_duplication_and_overstep_review",
+      "family": "feature_design",
+      "title": "Regression Duplication and Overstep Review Feature Design",
+      "summary": "Defines the review and remediation design for traceability joins, governed companion paths, stale-path filtering, and planning-surface coherence under the regression-and-duplication theme.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/regression_duplication_and_overstep_review.md",
+      "updated_at": "2026-03-13T03:21:56Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/standards/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/product_direction.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md"
+      ]
+    },
+    {
       "document_id": "design.features.repo_local_hotspot_modularity",
       "trace_id": "trace.repo_local_hotspot_modularity",
       "family": "feature_design",
@@ -1602,16 +1644,7 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_traceability_index_sync.py",
-        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
-        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
-        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
-        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
-        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
-        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json"
+        "core/python/tests/unit/test_traceability_index_sync.py"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -2033,15 +2066,16 @@
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "family": "implementation_plan",
       "title": "Decision Supersession and Regression Evidence Alignment Implementation Plan",
-      "summary": "Breaks Decision Supersession and Regression Evidence Alignment into a bounded implementation slice.",
-      "status": "draft",
+      "summary": "Historical implementation note for a cancelled slice that was normalized into a historical planning record instead of executed.",
+      "status": "deprecated",
       "doc_path": "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
-      "updated_at": "2026-03-13T01:09:48Z",
-      "uses_internal_references": false,
+      "updated_at": "2026-03-13T03:21:56Z",
+      "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
         "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
-        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md"
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md"
       ],
       "related_paths": [
         "docs/standards/governance/decision_capture_standard.md",
@@ -2057,6 +2091,13 @@
         "docs/planning/decisions/machine_first_coordination_entry_surface.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/references/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/references/AGENTS.md",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md"
       ]
     },
     {
@@ -2729,6 +2770,41 @@
       ]
     },
     {
+      "document_id": "design.implementation.regression_duplication_and_overstep_review",
+      "trace_id": "trace.regression_duplication_and_overstep_review",
+      "family": "implementation_plan",
+      "title": "Regression Duplication and Overstep Review Implementation Plan",
+      "summary": "Breaks the regression-and-duplication review into a coverage-led remediation, validation, and confirmation loop across planning, control-plane, and runtime surfaces.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
+      "updated_at": "2026-03-13T03:54:02Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/regression_duplication_and_overstep_review.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/standards/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md",
+        "docs/planning/design/features/regression_duplication_and_overstep_review.md"
+      ]
+    },
+    {
       "document_id": "design.implementation.repo_local_hotspot_modularity",
       "trace_id": "trace.repo_local_hotspot_modularity",
       "family": "implementation_plan",
@@ -2938,16 +3014,7 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_traceability_index_sync.py",
-        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
-        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
-        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
-        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
-        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
-        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json"
+        "core/python/tests/unit/test_traceability_index_sync.py"
       ],
       "internal_reference_paths": [
         "docs/planning/README.md",

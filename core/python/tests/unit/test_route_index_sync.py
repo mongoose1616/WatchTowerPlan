@@ -119,7 +119,7 @@ def test_route_preview_service_matches_realistic_maintenance_request() -> None:
 
     result = service.preview(
         request_text=(
-            "review /home/j/WatchTower/report and fix the valid issues with planning, "
+            "review /external/repository/report and fix the valid issues with planning, "
             "tasks, validation, and commits"
         )
     )
@@ -168,7 +168,7 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
             "Foundations Alignment Review",
         },
         (
-            "Review one last time /home/j/WatchTower/report and the files inside for "
+            "Review one last time /external/repository/report and the files inside for "
             "final review. The loop will be: read one file, verify the issues that "
             "are captured are accurate and still validate, if they are, start as "
             "many initiative as needed to fix it, use the standard end to end task "

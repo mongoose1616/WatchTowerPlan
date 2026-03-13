@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import json
 from collections import Counter
 from pathlib import Path
+from shutil import copytree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.query import (
@@ -13,6 +15,13 @@ from watchtower_core.repo_ops.query import (
 from watchtower_core.validation import AcceptanceReconciliationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+
+
+def _copy_control_plane_repo(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
+    (repo_root / "core/python").mkdir(parents=True)
+    return repo_root
 
 
 def test_query_acceptance_contracts_by_trace_id() -> None:
@@ -101,4 +110,43 @@ def test_acceptance_reconciliation_reuses_snapshots_across_validate_calls(
         "load_acceptance_contracts": 1,
         "load_validation_evidence_artifacts": 1,
         "load_validator_registry": 1,
+    }
+
+
+def test_acceptance_reconciliation_reports_missing_repo_local_paths(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    contract_path = (
+        repo_root
+        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+    )
+    evidence_path = (
+        repo_root
+        / "core/control_plane/ledgers/validation_evidence/"
+        "core_python_foundation_traceability_validation.v1.json"
+    )
+
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    contract["entries"][0]["validation_targets"].append("docs/planning/tasks/open/missing_task.md")
+    contract["entries"][0]["related_paths"] = ["docs/planning/tasks/open/missing_task.md"]
+    contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
+
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+    evidence["related_paths"] = ["docs/planning/tasks/open/missing_task.md"]
+    evidence["checks"][0]["subject_paths"].append("docs/planning/tasks/open/missing_task.md")
+    evidence_path.write_text(f"{json.dumps(evidence, indent=2)}\n", encoding="utf-8")
+
+    result = AcceptanceReconciliationService(ControlPlaneLoader(repo_root)).validate(
+        "trace.core_python_foundation"
+    )
+
+    assert result.passed is False
+    assert {
+        issue.code for issue in result.issues
+    } >= {
+        "acceptance_validation_target_missing",
+        "acceptance_related_path_missing",
+        "evidence_related_path_missing",
+        "evidence_subject_path_missing",
     }

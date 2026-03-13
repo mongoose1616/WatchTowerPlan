@@ -810,12 +810,13 @@
       "title": "Preserve regression audit evidence as a governed local reference",
       "summary": "Add one repo-local governed reference for the March 2026 regression audit and replace durable raw external report citations on the touched planning surfaces.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "cancelled",
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
-      "updated_at": "2026-03-13T01:10:21Z",
+      "doc_path": "docs/planning/tasks/closed/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
+      "updated_at": "2026-03-13T03:30:46Z",
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "related_ids": [
         "trace.decision_supersession_and_regression_evidence_alignment"
       ],
@@ -838,12 +839,13 @@
       "title": "Add explicit decision supersession support",
       "summary": "Extend decision governance, sync, query, and live decision records so superseded decisions link explicitly to replacement decisions.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "cancelled",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/add_explicit_decision_supersession_support.md",
-      "updated_at": "2026-03-13T01:10:32Z",
+      "doc_path": "docs/planning/tasks/closed/add_explicit_decision_supersession_support.md",
+      "updated_at": "2026-03-13T03:30:46Z",
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "related_ids": [
         "trace.decision_supersession_and_regression_evidence_alignment"
       ],
@@ -868,12 +870,13 @@
       "title": "Validate and close decision supersession and regression evidence alignment",
       "summary": "Run targeted and full validation, refresh evidence, rerun confirmation passes, and close the bounded slice.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "cancelled",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
-      "updated_at": "2026-03-13T01:10:21Z",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
+      "updated_at": "2026-03-13T03:30:46Z",
+      "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "related_ids": [
         "trace.decision_supersession_and_regression_evidence_alignment"
       ],
@@ -2892,6 +2895,84 @@
       ]
     },
     {
+      "task_id": "task.regression_duplication_and_overstep_review.bootstrap.001",
+      "title": "Bootstrap Regression Duplication and Overstep Review planning chain",
+      "summary": "Bootstraps the initial planning chain for Regression Duplication and Overstep Review.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/regression_duplication_and_overstep_review_bootstrap.md",
+      "updated_at": "2026-03-13T03:30:46Z",
+      "trace_id": "trace.regression_duplication_and_overstep_review",
+      "related_ids": [
+        "prd.regression_duplication_and_overstep_review",
+        "design.features.regression_duplication_and_overstep_review",
+        "design.implementation.regression_duplication_and_overstep_review",
+        "decision.regression_duplication_and_overstep_review_direction",
+        "contract.acceptance.regression_duplication_and_overstep_review"
+      ]
+    },
+    {
+      "task_id": "task.regression_duplication_and_overstep_review.remediation.002",
+      "title": "Remediate confirmed regression and duplication findings",
+      "summary": "Fix the confirmed traceability, governed-companion, validation, sync, and planning-surface defects from the regression-and-duplication review.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "bug",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/remediate_confirmed_regression_and_duplication_findings.md",
+      "updated_at": "2026-03-13T03:45:03Z",
+      "trace_id": "trace.regression_duplication_and_overstep_review",
+      "related_ids": [
+        "trace.regression_duplication_and_overstep_review",
+        "prd.regression_duplication_and_overstep_review",
+        "design.features.regression_duplication_and_overstep_review",
+        "design.implementation.regression_duplication_and_overstep_review",
+        "decision.regression_duplication_and_overstep_review_direction",
+        "contract.acceptance.regression_duplication_and_overstep_review"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/validation/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ]
+    },
+    {
+      "task_id": "task.regression_duplication_and_overstep_review.validation.003",
+      "title": "Validate and close regression duplication review",
+      "summary": "Run targeted and full validation, execute repeated confirmation passes, refresh evidence, and close the regression-and-duplication trace when no new actionable issues remain.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_regression_duplication_review.md",
+      "updated_at": "2026-03-13T03:46:37Z",
+      "trace_id": "trace.regression_duplication_and_overstep_review",
+      "related_ids": [
+        "trace.regression_duplication_and_overstep_review",
+        "prd.regression_duplication_and_overstep_review",
+        "design.features.regression_duplication_and_overstep_review",
+        "design.implementation.regression_duplication_and_overstep_review",
+        "decision.regression_duplication_and_overstep_review_direction",
+        "contract.acceptance.regression_duplication_and_overstep_review"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ]
+    },
+    {
       "task_id": "task.repo_local_hotspot_modularity.bootstrap.001",
       "title": "Bootstrap Repo-Local Hotspot Modularity Hardening planning chain",
       "summary": "Bootstraps the initial planning chain for Repo-Local Hotspot Modularity Hardening.",
@@ -3444,6 +3525,7 @@
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/closed/retire_summary_md_and_direct_dependency_surfaces.md",
       "updated_at": "2026-03-13T01:46:46Z",
+      "trace_id": "trace.summary_surface_retirement",
       "related_ids": [
         "trace.summary_surface_retirement"
       ],
@@ -3473,6 +3555,7 @@
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/closed/validate_and_close_summary_surface_retirement.md",
       "updated_at": "2026-03-13T01:47:55Z",
+      "trace_id": "trace.summary_surface_retirement",
       "related_ids": [
         "trace.summary_surface_retirement"
       ],

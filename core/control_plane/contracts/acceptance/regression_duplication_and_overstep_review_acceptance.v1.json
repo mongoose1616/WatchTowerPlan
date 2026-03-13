@@ -1,0 +1,120 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.regression_duplication_and_overstep_review",
+  "title": "Regression Duplication and Overstep Review Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.regression_duplication_and_overstep_review",
+  "source_prd_id": "prd.regression_duplication_and_overstep_review",
+  "entries": [
+    {
+      "acceptance_id": "ac.regression_duplication_and_overstep_review.001",
+      "summary": "The planning corpus publishes the active PRD, accepted decision, active design and implementation plan, closed bootstrap task, bounded execution tasks, and the companion trackers needed for the regression-and-duplication review loop.",
+      "source_requirement_ids": [
+        "req.regression_duplication_and_overstep_review.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md",
+        "docs/planning/design/features/regression_duplication_and_overstep_review.md",
+        "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
+        "docs/planning/tasks/closed/regression_duplication_and_overstep_review_bootstrap.md",
+        "docs/planning/tasks/closed/remediate_confirmed_regression_and_duplication_findings.md",
+        "docs/planning/tasks/closed/validate_and_close_regression_duplication_review.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The active review trace now includes a real execution task set instead of only the bootstrap scaffold, and the planning trackers must stay aligned with that task lifecycle."
+    },
+    {
+      "acceptance_id": "ac.regression_duplication_and_overstep_review.002",
+      "summary": "Traced task handling fails closed and task moves repair governed acceptance and evidence companion paths instead of leaving stale task-document references behind.",
+      "source_requirement_ids": [
+        "req.regression_duplication_and_overstep_review.002"
+      ],
+      "validation_targets": [
+        "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.regression_duplication_and_overstep_review.003",
+      "summary": "Acceptance reconciliation and the affected sync builders reject stale or missing repo-local paths instead of reusing drifted related-path state.",
+      "source_requirement_ids": [
+        "req.regression_duplication_and_overstep_review.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "core/python/tests/unit/test_prd_index_sync.py",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_design_document_index_sync.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.regression_duplication_and_overstep_review.004",
+      "summary": "The touched planning corpus, historical cancelled trace, command docs, and governance standards are coherent, placeholder-free, and aligned with the repaired review behavior.",
+      "source_requirement_ids": [
+        "req.regression_duplication_and_overstep_review.004"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md",
+        "docs/planning/design/features/regression_duplication_and_overstep_review.md",
+        "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/commands/core_python/watchtower_core_task.md",
+        "docs/commands/core_python/watchtower_core_task_create.md",
+        "docs/commands/core_python/watchtower_core_task_update.md",
+        "docs/commands/core_python/watchtower_core_task_transition.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.regression_duplication_and_overstep_review.005",
+      "summary": "The repository completes targeted validation, full-baseline validation, and repeated confirmation passes before trace closeout.",
+      "source_requirement_ids": [
+        "req.regression_duplication_and_overstep_review.005"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

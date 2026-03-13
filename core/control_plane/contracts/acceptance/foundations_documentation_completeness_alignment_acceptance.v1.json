@@ -18,8 +18,8 @@
         "docs/planning/design/implementation/foundations_documentation_completeness_alignment.md",
         "docs/planning/decisions/foundations_documentation_completeness_alignment_direction.md",
         "docs/planning/tasks/closed/foundations_documentation_completeness_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/implement_foundations_documentation_completeness_alignment.md",
-        "docs/planning/tasks/closed/validate_foundations_documentation_completeness_alignment.md"
+        "docs/planning/tasks/closed/align_foundations_documentation_and_query_surfaces.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_documentation_completeness_alignment.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",

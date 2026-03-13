@@ -28,9 +28,9 @@
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/design/implementation/foundation_scope_and_entrypoint_realignment.md",
         "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
-        "docs/planning/tasks/open/foundation_scope_and_entrypoint_realignment_bootstrap.md",
-        "docs/planning/tasks/open/foundation_scope_alignment.md",
-        "docs/planning/tasks/open/root_entrypoint_contract.md"
+        "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
+        "docs/planning/tasks/closed/foundation_scope_alignment.md",
+        "docs/planning/tasks/closed/root_entrypoint_contract.md"
       ],
       "subject_ids": [
         "prd.foundation_scope_and_entrypoint_realignment",
@@ -50,7 +50,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
-        "docs/planning/tasks/open/foundation_scope_alignment.md"
+        "docs/planning/tasks/closed/foundation_scope_alignment.md"
       ],
       "subject_ids": [
         "design.features.foundation_scope_and_entrypoint_realignment",
@@ -68,7 +68,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/foundation_scope_and_entrypoint_realignment.md",
-        "docs/planning/tasks/open/root_entrypoint_contract.md"
+        "docs/planning/tasks/closed/root_entrypoint_contract.md"
       ],
       "subject_ids": [
         "design.features.foundation_scope_and_entrypoint_realignment",

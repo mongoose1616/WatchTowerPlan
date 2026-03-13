@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import PurePosixPath
 from typing import Protocol
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -227,6 +228,18 @@ class AcceptanceReconciliationService:
                             location=f"validation_evidence.{artifact.evidence_id}.{check.check_id}",
                         )
                     )
+                self._check_repo_local_paths(
+                    issues,
+                    values=check.subject_paths,
+                    location=(
+                        f"validation_evidence.{artifact.evidence_id}.{check.check_id}.subject_paths"
+                    ),
+                    code="evidence_subject_path_missing",
+                    message_prefix=(
+                        f"Validation evidence check {check.check_id} references missing "
+                        "repo-local subject paths"
+                    ),
+                )
                 for acceptance_id in check.acceptance_ids:
                     if acceptance_id not in prd_acceptance_ids:
                         issues.append(
@@ -243,6 +256,38 @@ class AcceptanceReconciliationService:
                         )
                         continue
                     coverage.add(acceptance_id)
+            self._check_repo_local_paths(
+                issues,
+                values=artifact.related_paths,
+                location=f"validation_evidence.{artifact.evidence_id}.related_paths",
+                code="evidence_related_path_missing",
+                message_prefix=(
+                    f"Validation evidence {artifact.evidence_id} references missing "
+                    "repo-local related paths"
+                ),
+            )
+
+        for item in contract.entries:
+            self._check_repo_local_paths(
+                issues,
+                values=item.validation_targets,
+                location=f"acceptance_contract.entries[{item.acceptance_id}].validation_targets",
+                code="acceptance_validation_target_missing",
+                message_prefix=(
+                    f"Acceptance item {item.acceptance_id} references missing "
+                    "repo-local validation targets"
+                ),
+            )
+            self._check_repo_local_paths(
+                issues,
+                values=item.related_paths,
+                location=f"acceptance_contract.entries[{item.acceptance_id}].related_paths",
+                code="acceptance_related_path_missing",
+                message_prefix=(
+                    f"Acceptance item {item.acceptance_id} references missing "
+                    "repo-local related paths"
+                ),
+            )
 
         missing_trace_evidence_ids = trace_evidence_ids - evidence_ids
         if missing_trace_evidence_ids:
@@ -381,6 +426,28 @@ class AcceptanceReconciliationService:
                 )
             )
 
+    def _check_repo_local_paths(
+        self,
+        issues: list[ValidationIssue],
+        *,
+        values: tuple[str, ...],
+        location: str,
+        code: str,
+        message_prefix: str,
+    ) -> None:
+        missing = sorted(
+            value for value in values if not _repo_local_path_exists(self._loader, value)
+        )
+        if not missing:
+            return
+        issues.append(
+            ValidationIssue(
+                code=code,
+                message=f"{message_prefix}: {', '.join(missing)}.",
+                location=location,
+            )
+        )
+
 
 def _group_by_trace[TTraceLinked: _TraceLinked](
     entries: tuple[TTraceLinked, ...],
@@ -392,3 +459,13 @@ def _group_by_trace[TTraceLinked: _TraceLinked](
         trace_id: tuple(grouped_entries)
         for trace_id, grouped_entries in grouped.items()
     }
+
+
+def _repo_local_path_exists(loader: ControlPlaneLoader, value: str) -> bool:
+    candidate = value.rstrip("/")
+    if not candidate:
+        return False
+    normalized = PurePosixPath(candidate)
+    if normalized.is_absolute() or ".." in normalized.parts:
+        return False
+    return loader.resolve_path(normalized.as_posix()).exists()

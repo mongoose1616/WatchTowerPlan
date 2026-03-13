@@ -29,6 +29,7 @@ from watchtower_core.repo_ops.planning_documents import (
     ordered_unique,
     validate_required_section_order,
 )
+from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
 REFERENCE_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/references/reference_index.v1.json"
 REFERENCE_FRONT_MATTER_SCHEMA_ID = (
@@ -140,7 +141,10 @@ class ReferenceIndexSyncService:
                     self._repo_root,
                     source_path=path,
                 ),
-                _tuple_of_strings(current.get("related_paths")),
+                existing_paths(
+                    self._repo_root,
+                    _tuple_of_strings(current.get("related_paths")),
+                ),
             )
             aliases = ordered_unique(
                 _front_matter_list(front_matter, "aliases"),

@@ -31,6 +31,7 @@ from watchtower_core.repo_ops.planning_documents import (
 )
 from watchtower_core.repo_ops.reference_resolution import build_reference_urls_by_path
 from watchtower_core.repo_ops.sync.reference_index import iter_citation_audit_documents
+from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
 FOUNDATION_INDEX_ARTIFACT_PATH = (
     "core/control_plane/indexes/foundations/foundation_index.v1.json"
@@ -156,7 +157,10 @@ class FoundationIndexSyncService:
             )
             related_paths = ordered_unique(
                 applies_to_path_values(applies_to, relative_path=relative_path),
-                _tuple_of_strings(current.get("related_paths")),
+                existing_paths(
+                    self._repo_root,
+                    _tuple_of_strings(current.get("related_paths")),
+                ),
             )
             aliases = ordered_unique(
                 _front_matter_list(front_matter, "aliases"),

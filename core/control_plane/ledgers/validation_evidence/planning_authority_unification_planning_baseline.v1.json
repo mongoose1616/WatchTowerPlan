@@ -32,8 +32,8 @@
         "docs/planning/design/implementation/planning_authority_unification.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/planning/tasks/closed/planning_authority_unification_bootstrap.md",
-        "docs/planning/tasks/open/planning_catalog_and_query.md",
-        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+        "docs/planning/tasks/closed/planning_catalog_and_query.md",
+        "docs/planning/tasks/closed/machine_authority_map_and_navigation.md"
       ],
       "subject_ids": [
         "prd.planning_authority_unification",
@@ -55,7 +55,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/planning_authority_unification.md",
-        "docs/planning/tasks/open/planning_catalog_and_query.md"
+        "docs/planning/tasks/closed/planning_catalog_and_query.md"
       ],
       "subject_ids": [
         "design.features.planning_authority_unification",
@@ -73,7 +73,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/planning_authority_unification.md",
-        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+        "docs/planning/tasks/closed/machine_authority_map_and_navigation.md"
       ],
       "subject_ids": [
         "design.features.planning_authority_unification",

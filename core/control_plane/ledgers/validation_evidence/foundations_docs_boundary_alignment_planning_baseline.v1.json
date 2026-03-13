@@ -115,7 +115,6 @@
       "title": "Validation and repeated review passes are green for the slice",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/open/validate_foundations_documentation_boundary_alignment.md",
         "docs/planning/tasks/closed/validate_foundations_documentation_boundary_alignment.md",
         "core/control_plane/contracts/acceptance/foundations_docs_boundary_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/foundations_docs_boundary_alignment_planning_baseline.v1.json",

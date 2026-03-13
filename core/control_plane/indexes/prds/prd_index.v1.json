@@ -369,17 +369,21 @@
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "prd_id": "prd.decision_supersession_and_regression_evidence_alignment",
       "title": "Decision Supersession and Regression Evidence Alignment PRD",
-      "summary": "Operationalize explicit decision supersession and preserve the March 2026 regression audit as a governed repo-local reference so repeated-work conclusions remain queryable and durable.",
-      "status": "active",
+      "summary": "Historical record of a cancelled slice that proposed explicit decision supersession support and a dedicated repo-local regression-evidence summary.",
+      "status": "deprecated",
       "doc_path": "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
-      "updated_at": "2026-03-13T01:09:48Z",
-      "uses_internal_references": false,
+      "updated_at": "2026-03-13T03:21:56Z",
+      "uses_internal_references": true,
       "uses_external_references": false,
       "requirement_ids": [
-        "req.decision_supersession_and_regression_evidence_alignment.001"
+        "req.decision_supersession_and_regression_evidence_alignment.001",
+        "req.decision_supersession_and_regression_evidence_alignment.002",
+        "req.decision_supersession_and_regression_evidence_alignment.003"
       ],
       "acceptance_ids": [
-        "ac.decision_supersession_and_regression_evidence_alignment.001"
+        "ac.decision_supersession_and_regression_evidence_alignment.001",
+        "ac.decision_supersession_and_regression_evidence_alignment.002",
+        "ac.decision_supersession_and_regression_evidence_alignment.003"
       ],
       "linked_decision_ids": [
         "decision.decision_supersession_and_regression_evidence_alignment_direction"
@@ -404,6 +408,12 @@
         "docs/planning/decisions/machine_first_coordination_entry_surface.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/references/"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/references/AGENTS.md"
       ]
     },
     {
@@ -1393,6 +1403,59 @@
       ]
     },
     {
+      "trace_id": "trace.regression_duplication_and_overstep_review",
+      "prd_id": "prd.regression_duplication_and_overstep_review",
+      "title": "Regression Duplication and Overstep Review PRD",
+      "summary": "Review and harden planning, sync, query, validation, and governed artifact surfaces against regression, duplicated effort, repeated work, and overstep.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/regression_duplication_and_overstep_review.md",
+      "updated_at": "2026-03-13T03:21:56Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.regression_duplication_and_overstep_review.001",
+        "req.regression_duplication_and_overstep_review.002",
+        "req.regression_duplication_and_overstep_review.003",
+        "req.regression_duplication_and_overstep_review.004",
+        "req.regression_duplication_and_overstep_review.005"
+      ],
+      "acceptance_ids": [
+        "ac.regression_duplication_and_overstep_review.001",
+        "ac.regression_duplication_and_overstep_review.002",
+        "ac.regression_duplication_and_overstep_review.003",
+        "ac.regression_duplication_and_overstep_review.004",
+        "ac.regression_duplication_and_overstep_review.005"
+      ],
+      "linked_decision_ids": [
+        "decision.regression_duplication_and_overstep_review_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.regression_duplication_and_overstep_review"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.regression_duplication_and_overstep_review"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/standards/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md",
+        "docs/planning/design/features/regression_duplication_and_overstep_review.md",
+        "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.repo_local_hotspot_modularity",
       "prd_id": "prd.repo_local_hotspot_modularity",
       "title": "Repo-Local Hotspot Modularity Hardening PRD",
@@ -1699,16 +1762,7 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_traceability_index_sync.py",
-        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
-        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
-        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
-        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
-        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
-        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
-        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json"
+        "core/python/tests/unit/test_traceability_index_sync.py"
       ],
       "internal_reference_paths": [
         "README.md",

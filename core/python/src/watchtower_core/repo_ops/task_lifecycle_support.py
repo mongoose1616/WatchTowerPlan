@@ -226,6 +226,34 @@ def validate_references(
                 raise ValueError(f"{key} references unknown task ID: {value}")
 
 
+def validate_trace_linkage(front_matter: dict[str, object], *, relative_path: str) -> None:
+    """Reject traced related IDs that would fall out of trace joins."""
+
+    related_ids = front_matter.get("related_ids")
+    if not isinstance(related_ids, list):
+        return
+
+    traced_related_ids = tuple(
+        value
+        for value in related_ids
+        if isinstance(value, str) and value.startswith("trace.")
+    )
+    if not traced_related_ids:
+        return
+
+    trace_id = optional_front_matter_value(front_matter, "trace_id")
+    if trace_id is None:
+        raise ValueError(
+            f"{relative_path} links to traced related_ids but is missing trace_id."
+        )
+    if trace_id not in traced_related_ids:
+        joined = ", ".join(traced_related_ids)
+        raise ValueError(
+            f"{relative_path} trace_id {trace_id} must match one of its traced related_ids: "
+            f"{joined}."
+        )
+
+
 def validate_rendered_task(
     loader: ControlPlaneLoader,
     front_matter: dict[str, object],
@@ -267,6 +295,7 @@ def validate_rendered_task(
         raise ValueError(
             f"{relative_path} is under closed/ but uses non-terminal task status {task_status}."
         )
+    validate_trace_linkage(front_matter, relative_path=relative_path)
 
     if not isinstance(front_matter.get("title"), str):
         raise ValueError(f"{relative_path} front matter title must be present.")

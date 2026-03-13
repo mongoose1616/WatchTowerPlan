@@ -60,6 +60,11 @@ def test_schema_store_validates_documentation_and_pack_interface_examples() -> N
             "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1",
         ),
         (
+            "core/control_plane/examples/valid/documentation/task_front_matter.v1.example.json",
+            "core/control_plane/examples/invalid/documentation/task_front_matter_missing_trace_id_for_traced_related_ids.v1.example.json",
+            "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
+        ),
+        (
             "core/control_plane/examples/valid/interfaces/pack_work_item_note.v1.example.json",
             "core/control_plane/examples/invalid/interfaces/pack_work_item_note_missing_work_item_id.v1.example.json",
             "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from shutil import copytree
 
@@ -163,3 +164,107 @@ def test_task_create_rejects_unknown_dependency_ids(tmp_path: Path) -> None:
             ),
             write=False,
         )
+
+
+def test_task_update_write_repairs_governed_companion_paths_when_task_moves(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_repo_subset(tmp_path)
+    task_id = "task.task_lifecycle_service.path_repair.001"
+    trace_id = "trace.task_lifecycle_service_path_repair"
+    initial_service = TaskLifecycleService(ControlPlaneLoader(repo_root))
+
+    created = initial_service.create(
+        TaskCreateParams(
+            task_id=task_id,
+            trace_id=trace_id,
+            title="Repair companion task paths",
+            summary="Exercises companion-path repair when a task moves to closed.",
+            task_kind="governance",
+            priority="high",
+            owner="repository_maintainer",
+            scope_items=("Create the traced task.",),
+            done_when_items=("The traced task exists.",),
+        ),
+        write=True,
+    )
+
+    contract_relative_path = (
+        "core/control_plane/contracts/acceptance/"
+        "task_lifecycle_service_path_repair_acceptance.v1.json"
+    )
+    evidence_relative_path = (
+        "core/control_plane/ledgers/validation_evidence/"
+        "task_lifecycle_service_path_repair_planning_baseline.v1.json"
+    )
+    (repo_root / contract_relative_path).write_text(
+        json.dumps(
+            {
+                "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+                "id": "contract.acceptance.task_lifecycle_service_path_repair",
+                "title": "Task Lifecycle Service Path Repair Acceptance Contract",
+                "status": "active",
+                "trace_id": trace_id,
+                "source_prd_id": "prd.task_lifecycle_service_path_repair",
+                "entries": [
+                    {
+                        "acceptance_id": "ac.task_lifecycle_service_path_repair.001",
+                        "summary": "Moved task paths are repaired in governed companions.",
+                        "validation_targets": [created.doc_path],
+                        "related_paths": [created.doc_path],
+                    }
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    (repo_root / evidence_relative_path).write_text(
+        json.dumps(
+            {
+                "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+                "id": "evidence.task_lifecycle_service_path_repair.planning_baseline",
+                "title": "Task Lifecycle Service Path Repair Evidence",
+                "status": "active",
+                "trace_id": trace_id,
+                "overall_result": "passed",
+                "recorded_at": "2026-03-13T02:00:00Z",
+                "source_acceptance_contract_ids": [
+                    "contract.acceptance.task_lifecycle_service_path_repair"
+                ],
+                "checks": [
+                    {
+                        "check_id": "check.task_lifecycle_service_path_repair.001",
+                        "title": "Repair the moved task path in evidence.",
+                        "result": "passed",
+                        "subject_paths": [created.doc_path],
+                    }
+                ],
+                "related_paths": [created.doc_path],
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    service = TaskLifecycleService(ControlPlaneLoader(repo_root))
+    result = service.update(
+        TaskUpdateParams(
+            task_id=task_id,
+            task_status="done",
+        ),
+        write=True,
+    )
+
+    assert result.doc_path == "docs/planning/tasks/closed/repair_companion_task_paths.md"
+
+    contract = json.loads((repo_root / contract_relative_path).read_text(encoding="utf-8"))
+    targets = contract["entries"][0]["validation_targets"]
+    assert targets == [result.doc_path]
+    assert contract["entries"][0]["related_paths"] == [result.doc_path]
+
+    evidence = json.loads((repo_root / evidence_relative_path).read_text(encoding="utf-8"))
+    assert evidence["related_paths"] == [result.doc_path]
+    assert evidence["checks"][0]["subject_paths"] == [result.doc_path]

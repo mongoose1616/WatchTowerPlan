@@ -45,7 +45,7 @@ The foundation layer currently mixes two kinds of truth. Some foundation documen
 ## Non-Goals
 - Replacing the current planning model, family trackers, or traceability joins with a new planning graph in this initiative.
 - Adding root-document validators or changing root-document governance behavior in this initiative.
-- Starting product implementation work in `/home/j/WatchTower` or adding external pack runtime support in this initiative.
+- Starting product implementation work in a separate product repository or adding external pack runtime support in this initiative.
 - Expanding the root README into a large repository handbook.
 
 ## Target Users or Actors

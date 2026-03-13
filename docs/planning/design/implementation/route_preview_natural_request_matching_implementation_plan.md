@@ -33,7 +33,7 @@ Break the natural maintenance-request route matching fix into one bounded implem
 
 ## Source Request or Design
 - Feature design: [route_preview_natural_request_matching_design.md](/home/j/WatchTowerPlan/docs/planning/design/features/route_preview_natural_request_matching_design.md)
-- Final report-review request: `review /home/j/WatchTower/report and fix the valid issues with planning, tasks, validation, and commits`
+- Final review request: `review the regression findings and fix the valid issues with planning, tasks, validation, and commits`
 
 ## Scope Summary
 - Fix the live route-preview miss for the final report-review maintenance request.
@@ -66,12 +66,12 @@ Break the natural maintenance-request route matching fix into one bounded implem
 
 ## Validation Plan
 - Run `./core/python/.venv/bin/watchtower-core sync route-index --write --format json`.
-- Run `./core/python/.venv/bin/watchtower-core route preview --request "review /home/j/WatchTower/report and fix the valid issues with planning, tasks, validation, and commits" --format json`.
+- Run `./core/python/.venv/bin/watchtower-core route preview --request "review the regression findings and fix the valid issues with planning, tasks, validation, and commits" --format json`.
 - Run `./core/python/.venv/bin/pytest -q core/python/tests/unit/test_route_index_sync.py core/python/tests/unit/test_cli_query_commands.py`.
 - Run `./core/python/.venv/bin/watchtower-core validate all --skip-acceptance --format json`.
 - Run `./core/python/.venv/bin/watchtower-core validate acceptance --trace-id trace.route_preview_natural_request_matching --format json`.
 - Run `./core/python/.venv/bin/python -m mypy src` and `./core/python/.venv/bin/ruff check .`.
 
 ## References
-- report/04_workflows_and_governance.md
+- March 2026 workflow and governance review summary for the reproduced route-preview gap.
 - [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md)

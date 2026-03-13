@@ -247,3 +247,113 @@ def test_decision_index_sync_rejects_heading_after_list_without_blank_line(
 
     with pytest.raises(ValueError, match="separated from the preceding list by a blank line"):
         service.build_document()
+
+
+def test_decision_index_sync_filters_stale_related_paths_from_existing_index(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    (repo_root / "docs" / "templates").mkdir(parents=True, exist_ok=True)
+    decision_path = repo_root / "docs/planning/decisions/stale_related_paths.md"
+    decision_path.parent.mkdir(parents=True, exist_ok=True)
+    decision_path.write_text(
+        dedent(
+            """\
+            ---
+            trace_id: trace.stale_decision_index
+            id: decision.stale_decision_index
+            title: Stale Decision Index Coverage
+            summary: Exercises stale related-path filtering in decision index sync.
+            type: decision_record
+            status: active
+            owner: repository_maintainer
+            updated_at: '2026-03-13T02:00:00Z'
+            audience: shared
+            authority: supporting
+            ---
+
+            # Stale Decision Index Coverage
+
+            ## Record Metadata
+            - `Trace ID`: `trace.stale_decision_index`
+            - `Decision ID`: `decision.stale_decision_index`
+            - `Record Status`: `active`
+            - `Decision Status`: `accepted`
+            - `Linked PRDs`: `None`
+            - `Linked Designs`: `None`
+            - `Linked Implementation Plans`: `None`
+            - `Updated At`: `2026-03-13T02:00:00Z`
+
+            ## Summary
+            Exercises stale related-path filtering in decision index sync.
+
+            ## Decision Statement
+            Existing indexes should not preserve deleted related paths.
+
+            ## Trigger or Source Request
+            - Added for stale related-path regression coverage.
+
+            ## Current Context and Constraints
+            - The live fixture path must remain in the repository.
+
+            ## Applied References and Implications
+            - `docs/templates/`: live related path fixture.
+
+            ## Affected Surfaces
+            - docs/templates/
+
+            ## Options Considered
+            ### Option 1
+            - Keep stale related paths.
+            - Strength: no extra filtering.
+            - Tradeoff: rebuilt entries rehydrate deleted paths.
+
+            ### Option 2
+            - Keep only existing related paths.
+            - Strength: rebuild output stays deterministic.
+            - Tradeoff: current-entry carry-over becomes stricter.
+
+            ## Chosen Outcome
+            Filter stale related paths.
+
+            ## Rationale and Tradeoffs
+            - Rebuilt indexes should not revive deleted references.
+
+            ## Consequences and Follow-Up Impacts
+            - Existing-entry carry-over must stay path-aware.
+
+            ## Risks, Dependencies, and Assumptions
+            - The live fixture path must exist.
+
+            ## References
+            - docs/templates/
+            """
+        ),
+        encoding="utf-8",
+    )
+    index_path = repo_root / "core/control_plane/indexes/decisions/decision_index.v1.json"
+    document = json.loads(index_path.read_text(encoding="utf-8"))
+    document["entries"].append(
+        {
+            "trace_id": "trace.stale_decision_index",
+            "decision_id": "decision.stale_decision_index",
+            "title": "Stale Decision Index Coverage",
+            "summary": "Exercises stale related-path filtering in decision index sync.",
+            "record_status": "active",
+            "decision_status": "accepted",
+            "doc_path": "docs/planning/decisions/stale_related_paths.md",
+            "updated_at": "2026-03-13T02:00:00Z",
+            "uses_internal_references": False,
+            "uses_external_references": False,
+            "related_paths": ["docs/missing.md", "docs/templates/"],
+        }
+    )
+    index_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+    rebuilt = DecisionIndexSyncService(ControlPlaneLoader(repo_root)).build_document()
+    entry = next(
+        item
+        for item in rebuilt["entries"]
+        if item["decision_id"] == "decision.stale_decision_index"
+    )
+    assert entry["related_paths"] == ["docs/templates/"]

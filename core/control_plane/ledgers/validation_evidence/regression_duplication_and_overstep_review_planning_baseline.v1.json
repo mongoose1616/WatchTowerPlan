@@ -1,0 +1,157 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.regression_duplication_and_overstep_review.planning_baseline",
+  "title": "Regression Duplication and Overstep Review Planning Baseline Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.regression_duplication_and_overstep_review",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T03:54:02Z",
+  "source_prd_ids": [
+    "prd.regression_duplication_and_overstep_review"
+  ],
+  "source_decision_ids": [
+    "decision.regression_duplication_and_overstep_review_direction"
+  ],
+  "source_design_ids": [
+    "design.features.regression_duplication_and_overstep_review"
+  ],
+  "source_plan_ids": [
+    "design.implementation.regression_duplication_and_overstep_review"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.regression_duplication_and_overstep_review"
+  ],
+  "checks": [
+    {
+      "check_id": "check.regression_duplication_and_overstep_review.planning_chain",
+      "title": "Planning chain and bounded execution tasks are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md",
+        "docs/planning/design/features/regression_duplication_and_overstep_review.md",
+        "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
+        "core/control_plane/contracts/acceptance/regression_duplication_and_overstep_review_acceptance.v1.json",
+        "docs/planning/tasks/closed/regression_duplication_and_overstep_review_bootstrap.md",
+        "docs/planning/tasks/closed/remediate_confirmed_regression_and_duplication_findings.md",
+        "docs/planning/tasks/closed/validate_and_close_regression_duplication_review.md"
+      ],
+      "subject_ids": [
+        "prd.regression_duplication_and_overstep_review",
+        "decision.regression_duplication_and_overstep_review_direction",
+        "design.features.regression_duplication_and_overstep_review",
+        "design.implementation.regression_duplication_and_overstep_review",
+        "task.regression_duplication_and_overstep_review.bootstrap.001",
+        "task.regression_duplication_and_overstep_review.remediation.002",
+        "task.regression_duplication_and_overstep_review.validation.003",
+        "contract.acceptance.regression_duplication_and_overstep_review"
+      ],
+      "acceptance_ids": [
+        "ac.regression_duplication_and_overstep_review.001"
+      ],
+      "notes": "The final trace state publishes the complete planning chain plus the closed bootstrap, remediation, and validation tasks, and the initiative itself is now closed as completed."
+    },
+    {
+      "check_id": "check.regression_duplication_and_overstep_review.task_traceability_and_move_repair",
+      "title": "Traced tasks stay joined and governed companion paths repair on task moves",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle_support.py",
+        "core/python/tests/unit/test_task_lifecycle.py",
+        "core/python/tests/integration/test_task_lifecycle_service.py"
+      ],
+      "subject_ids": [
+        "task.regression_duplication_and_overstep_review.remediation.002"
+      ],
+      "acceptance_ids": [
+        "ac.regression_duplication_and_overstep_review.002"
+      ],
+      "notes": "The targeted task-lifecycle regression suite covers traced task linkage and governed acceptance/evidence companion-path repair when task documents move."
+    },
+    {
+      "check_id": "check.regression_duplication_and_overstep_review.acceptance_and_stale_path_guards",
+      "title": "Acceptance reconciliation and derived sync paths reject stale repo-local references",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/repo_ops/sync/traceability_support.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/tests/unit/test_acceptance_reconciliation.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "core/python/tests/unit/test_prd_index_sync.py",
+        "core/python/tests/unit/test_decision_index_sync.py",
+        "core/python/tests/unit/test_design_document_index_sync.py"
+      ],
+      "subject_ids": [
+        "task.regression_duplication_and_overstep_review.remediation.002"
+      ],
+      "acceptance_ids": [
+        "ac.regression_duplication_and_overstep_review.003"
+      ],
+      "notes": "The targeted validation and sync regression coverage now rejects missing repo-local acceptance/evidence paths and filters stale derived related-path reuse."
+    },
+    {
+      "check_id": "check.regression_duplication_and_overstep_review.planning_corpus_cleanup",
+      "title": "Current and cancelled planning surfaces are coherent and placeholder-free",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/regression_duplication_and_overstep_review.md",
+        "docs/planning/decisions/regression_duplication_and_overstep_review_direction.md",
+        "docs/planning/design/features/regression_duplication_and_overstep_review.md",
+        "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/commands/core_python/watchtower_core_task.md",
+        "docs/commands/core_python/watchtower_core_task_create.md",
+        "docs/commands/core_python/watchtower_core_task_update.md",
+        "docs/commands/core_python/watchtower_core_task_transition.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md"
+      ],
+      "subject_ids": [
+        "task.regression_duplication_and_overstep_review.remediation.002"
+      ],
+      "acceptance_ids": [
+        "ac.regression_duplication_and_overstep_review.004"
+      ],
+      "notes": "The touched planning and guidance surfaces were rewritten away from placeholder scaffolds and raw external-input paths, and the cancelled adjacent trace now reads as historical context instead of open work."
+    },
+    {
+      "check_id": "check.regression_duplication_and_overstep_review.closeout_baseline_confirmed",
+      "title": "Full repository baseline and repeated confirmation passes are recorded",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/ledgers/validation_evidence/regression_duplication_and_overstep_review_planning_baseline.v1.json",
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "acceptance_ids": [
+        "ac.regression_duplication_and_overstep_review.005"
+      ],
+      "notes": "Targeted validation passed with watchtower-core validate acceptance for the current trace, the focused 93-test regression suite, and the reopened 40-test route-preview suite after the adversarial pass exposed three raw external-input literals in routing tests. The full baseline passed with watchtower-core validate all (1023/1023), pytest (360 passed), python -m mypy src, and ruff check . The post-fix and adversarial text scans finished with no raw external-input or stale open-task-path matches, the independent acceptance/evidence/task/index audits reported zero missing paths, the coordination query after closeout reported zero actionable tasks and zero active initiatives, and the final confirmation passes found no new actionable issue in scope."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/regression_duplication_and_overstep_review_acceptance.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Final validation evidence for the regression-and-duplication review after lifecycle hardening, path validation, stale-path filtering, planning-corpus cleanup, bounded-task closeout, and repeated no-new-issues confirmation passes, including one reopened adversarial loop to normalize raw external-input literals in route-preview tests."
+}

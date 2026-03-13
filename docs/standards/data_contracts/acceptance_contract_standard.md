@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "acceptance_contract"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T04:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -58,6 +58,8 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - Prefer stable readable identifiers such as `contract.acceptance.core_python_foundation`.
 - Update the acceptance contract in the same change set when the source PRD changes acceptance IDs or materially changes acceptance meaning.
 - Keep acceptance contracts focused on what must be accepted, not on recording historical validation results.
+- Treat `validation_targets` and `related_paths` as repo-local paths that should resolve on disk after the same change set lands.
+- When governed task or planning paths move, update affected acceptance-contract path fields in the same change set so acceptance validation stays deterministic.
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -103,6 +105,7 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - Every `acceptance_id` in the contract should exist in the source PRD.
 - Reviewers should reject acceptance contracts that drift materially from the source PRD or invent acceptance IDs not present upstream.
 - `trace_id`, `source_prd_id`, and related validator references should stay aligned with the planning and registry surfaces.
+- Repo-local `validation_targets` and `related_paths` should resolve to live repository paths.
 
 ## Change Control
 - Update this standard when the repository changes how acceptance contracts are shaped or when acceptance becomes part of a broader contract family.
@@ -119,4 +122,4 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 - It should stay smaller and more structured than the source PRD.
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T04:05:00Z`

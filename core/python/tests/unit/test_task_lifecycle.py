@@ -243,3 +243,63 @@ def test_task_create_rejects_self_reference(tmp_path: Path) -> None:
             ),
             write=False,
         )
+
+
+def test_task_create_rejects_traced_related_ids_without_trace_id(tmp_path: Path) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    service = TaskLifecycleService(ControlPlaneLoader(repo_root))
+
+    with pytest.raises(
+        ValueError,
+        match="links to traced related_ids but is missing trace_id",
+    ):
+        service.create(
+            TaskCreateParams(
+                task_id="task.unit_test_trace.trace_linkage.001",
+                title="Reject missing traced linkage",
+                summary="Rejects traced related_ids without an explicit trace_id.",
+                task_kind="feature",
+                priority="medium",
+                owner="repository_maintainer",
+                scope_items=("Attempt invalid task creation.",),
+                done_when_items=("The command fails closed.",),
+                related_ids=("trace.unit_test_trace_trace_linkage",),
+            ),
+            write=False,
+        )
+
+
+def test_task_update_rejects_clearing_trace_id_while_traced_related_ids_remain(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    service = TaskLifecycleService(loader)
+    created = service.create(
+        TaskCreateParams(
+            task_id="task.unit_test_trace.trace_linkage.002",
+            trace_id="trace.unit_test_trace_trace_linkage",
+            title="Reject trace mismatch",
+            summary="Rejects removing trace_id while traced related_ids remain.",
+            task_kind="feature",
+            priority="medium",
+            owner="repository_maintainer",
+            scope_items=("Create the traced task.",),
+            done_when_items=("The task exists.",),
+            related_ids=("trace.unit_test_trace_trace_linkage",),
+            file_stem="trace_linkage_reject",
+        ),
+        write=True,
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="links to traced related_ids but is missing trace_id",
+    ):
+        service.update(
+            TaskUpdateParams(
+                task_id=created.task_id,
+                clear_trace_id=True,
+            ),
+            write=False,
+        )

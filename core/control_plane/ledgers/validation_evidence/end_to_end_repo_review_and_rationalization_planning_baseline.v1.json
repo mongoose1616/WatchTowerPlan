@@ -32,10 +32,10 @@
         "docs/planning/design/features/end_to_end_repo_rationalization.md",
         "docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md",
         "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
-        "docs/planning/tasks/open/end_to_end_doc_guardrails.md",
-        "docs/planning/tasks/open/end_to_end_derived_metadata.md",
-        "docs/planning/tasks/open/end_to_end_external_pack_validation.md",
-        "docs/planning/tasks/open/end_to_end_query_cli_modularity.md"
+        "docs/planning/tasks/closed/end_to_end_doc_guardrails.md",
+        "docs/planning/tasks/closed/end_to_end_derived_metadata.md",
+        "docs/planning/tasks/closed/end_to_end_external_pack_validation.md",
+        "docs/planning/tasks/closed/end_to_end_query_cli_modularity.md"
       ],
       "subject_ids": [
         "prd.end_to_end_repo_review_and_rationalization",
@@ -54,8 +54,8 @@
       "title": "Documentation guardrail and metadata-hardening scope",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/open/end_to_end_doc_guardrails.md",
-        "docs/planning/tasks/open/end_to_end_derived_metadata.md"
+        "docs/planning/tasks/closed/end_to_end_doc_guardrails.md",
+        "docs/planning/tasks/closed/end_to_end_derived_metadata.md"
       ],
       "subject_ids": [
         "task.end_to_end_repo_review_and_rationalization.doc_guardrails.001",
@@ -72,7 +72,7 @@
       "title": "External pack validation seam defined",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/open/end_to_end_external_pack_validation.md",
+        "docs/planning/tasks/closed/end_to_end_external_pack_validation.md",
         "core/control_plane/schemas/interfaces/packs/"
       ],
       "subject_ids": [
@@ -88,7 +88,7 @@
       "title": "Query CLI modularity scope",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/open/end_to_end_query_cli_modularity.md",
+        "docs/planning/tasks/closed/end_to_end_query_cli_modularity.md",
         "core/python/src/watchtower_core/cli/"
       ],
       "subject_ids": [

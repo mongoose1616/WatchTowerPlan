@@ -1,0 +1,17 @@
+{
+  "id": "task.local_task_tracking.trace_linkage.001",
+  "title": "Reject traced related IDs without trace_id",
+  "summary": "Exercises the conditional trace_id requirement for traced task related_ids.",
+  "type": "task",
+  "status": "active",
+  "task_status": "ready",
+  "task_kind": "feature",
+  "priority": "medium",
+  "owner": "repository_maintainer",
+  "updated_at": "2026-03-13T02:00:00Z",
+  "audience": "shared",
+  "authority": "authoritative",
+  "related_ids": [
+    "trace.local_task_tracking"
+  ]
+}

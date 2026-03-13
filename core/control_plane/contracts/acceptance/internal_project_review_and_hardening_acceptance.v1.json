@@ -17,9 +17,9 @@
         "docs/planning/decisions/internal_project_review_and_hardening_direction.md",
         "docs/planning/design/features/internal_project_review_and_hardening.md",
         "docs/planning/design/implementation/internal_project_review_and_hardening.md",
-        "docs/planning/tasks/open/internal_project_review_and_hardening_bootstrap.md",
-        "docs/planning/tasks/open/internal_project_review_bootstrap_hardening.md",
-        "docs/planning/tasks/open/internal_project_review_projection_canonicalization.md"
+        "docs/planning/tasks/closed/internal_project_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/internal_project_review_bootstrap_hardening.md",
+        "docs/planning/tasks/closed/internal_project_review_projection_canonicalization.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",

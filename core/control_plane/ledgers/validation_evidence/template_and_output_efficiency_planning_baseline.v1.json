@@ -28,9 +28,9 @@
         "docs/planning/design/features/compact_document_authoring_and_tracking.md",
         "docs/planning/design/implementation/template_and_output_efficiency_execution.md",
         "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
-        "docs/planning/tasks/open/template_output_efficiency_compact_authoring.md",
-        "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md",
-        "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md"
+        "docs/planning/tasks/closed/template_output_efficiency_compact_authoring.md",
+        "docs/planning/tasks/closed/template_output_efficiency_tracker_compaction.md",
+        "docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md"
       ],
       "subject_ids": [
         "prd.template_and_output_efficiency",
@@ -49,7 +49,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/compact_document_authoring_and_tracking.md",
-        "docs/planning/tasks/open/template_output_efficiency_compact_authoring.md"
+        "docs/planning/tasks/closed/template_output_efficiency_compact_authoring.md"
       ],
       "subject_ids": [
         "design.features.compact_document_authoring_and_tracking",
@@ -66,7 +66,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/compact_document_authoring_and_tracking.md",
-        "docs/planning/tasks/open/template_output_efficiency_tracker_compaction.md"
+        "docs/planning/tasks/closed/template_output_efficiency_tracker_compaction.md"
       ],
       "subject_ids": [
         "design.features.compact_document_authoring_and_tracking",
@@ -83,7 +83,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/compact_document_authoring_and_tracking.md",
-        "docs/planning/tasks/open/template_output_efficiency_workflow_guidance.md"
+        "docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md"
       ],
       "subject_ids": [
         "design.features.compact_document_authoring_and_tracking",

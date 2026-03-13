@@ -379,3 +379,117 @@ def test_design_document_index_sync_rejects_implementation_plan_without_traceabl
         assert "missing traceable source paths" in str(exc)
     else:
         raise AssertionError("Expected design-document index sync to fail without source paths.")
+
+
+def test_design_document_index_sync_filters_stale_related_paths_from_existing_index(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    (repo_root / "docs" / "commands" / "core_python").mkdir(parents=True, exist_ok=True)
+    (repo_root / "docs" / "commands" / "core_python" / "README.md").write_text(
+        "# Commands\n",
+        encoding="utf-8",
+    )
+    feature_path = repo_root / "docs/planning/design/features/stale_related_paths.md"
+    feature_path.parent.mkdir(parents=True, exist_ok=True)
+    feature_path.write_text(
+        dedent(
+            f"""\
+            ---
+            trace_id: trace.design_index_stale_related_paths
+            id: design.features.design_index_stale_related_paths
+            title: Design Index Stale Related Paths
+            summary: Exercises stale related-path filtering in design index sync.
+            type: feature_design
+            status: active
+            owner: repository_maintainer
+            updated_at: '2026-03-13T02:00:00Z'
+            audience: shared
+            authority: authoritative
+            ---
+
+            # Design Index Stale Related Paths
+
+            ## Record Metadata
+            - `Trace ID`: `trace.design_index_stale_related_paths`
+            - `Design ID`: `design.features.design_index_stale_related_paths`
+            - `Design Status`: `active`
+            - `Linked PRDs`: `None`
+            - `Linked Decisions`: `None`
+            - `Linked Implementation Plans`: `None`
+            - `Updated At`: `2026-03-13T02:00:00Z`
+
+            ## Summary
+            Exercises stale related-path filtering in design index sync.
+
+            ## Source Request
+            - Added for stale related-path regression coverage.
+
+            ## Scope and Feature Boundary
+            - Keep the fixture focused on existing-entry carry-over.
+
+            ## Current-State Context
+            - The live fixture path must remain in the repository.
+
+            ## Design Goals and Constraints
+            - Rebuilt related paths should keep only existing entries.
+
+            {FEATURE_DESIGN_REQUIRED_REFERENCE_SECTIONS}
+            ## Options Considered
+            ### Option 1
+            - Keep stale current related paths.
+            - Strength: no filtering.
+            - Tradeoff: deleted references reappear.
+
+            ### Option 2
+            - Filter stale current related paths.
+            - Strength: rebuild output stays truthful.
+            - Tradeoff: carry-over becomes stricter.
+
+            ## Recommended Design
+            Keep only existing current related paths.
+
+            ## Affected Surfaces
+            - docs/commands/core_python/README.md
+
+            ## Design Guardrails
+            - Do not reintroduce deleted paths.
+
+            ## Risks
+            - The live fixture path must exist.
+
+            ## References
+            - `docs/standards/documentation/feature_design_md_standard.md`
+            """
+        ),
+        encoding="utf-8",
+    )
+
+    index_path = (
+        repo_root / "core/control_plane/indexes/design_documents/design_document_index.v1.json"
+    )
+    document = json.loads(index_path.read_text(encoding="utf-8"))
+    document["entries"].append(
+        {
+            "document_id": "design.features.design_index_stale_related_paths",
+            "trace_id": "trace.design_index_stale_related_paths",
+            "family": "feature_design",
+            "title": "Design Index Stale Related Paths",
+            "summary": "Exercises stale related-path filtering in design index sync.",
+            "status": "active",
+            "doc_path": "docs/planning/design/features/stale_related_paths.md",
+            "updated_at": "2026-03-13T02:00:00Z",
+            "uses_internal_references": False,
+            "uses_external_references": False,
+            "related_paths": ["docs/missing.md", "docs/commands/core_python/README.md"],
+        }
+    )
+    index_path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+    rebuilt = DesignDocumentIndexSyncService(ControlPlaneLoader(repo_root)).build_document()
+    entry = next(
+        item
+        for item in rebuilt["entries"]
+        if item["document_id"] == "design.features.design_index_stale_related_paths"
+    )
+    assert entry["related_paths"] == ["docs/commands/core_python/README.md"]

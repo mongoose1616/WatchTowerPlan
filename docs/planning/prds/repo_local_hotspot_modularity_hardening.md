@@ -83,9 +83,9 @@ Those modules still carry too much registration, builder, and orchestration resp
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md): keep the work inside the shared repository-maintenance substrate rather than expanding into future pack behavior.
 
 ## References
-- report/01_overview_and_method.md
-- report/06_core_python_architecture_and_exportability.md
-- report/09_remediation_program.md
+- March 2026 review overview and method summary for the remaining modularity hotspots.
+- March 2026 core Python architecture review summary for the still-centralized repo-local orchestration surfaces.
+- March 2026 remediation-program summary for the final bounded modularity follow-up.
 - [core_export_readiness_and_optimization.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_readiness_and_optimization.md)
 - [core_export_hardening_followup.md](/home/j/WatchTowerPlan/docs/planning/prds/core_export_hardening_followup.md)
 - [end_to_end_repo_review_and_rationalization.md](/home/j/WatchTowerPlan/docs/planning/prds/end_to_end_repo_review_and_rationalization.md)

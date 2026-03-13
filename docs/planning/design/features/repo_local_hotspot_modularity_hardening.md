@@ -30,7 +30,7 @@ applies_to:
 Defines the technical design boundary for reducing the remaining report-validated repo-local hotspot modules without changing behavior.
 
 ## Source Request
-- Review /home/j/WatchTower/report again, verify each issue, and take every still-valid issue through the standard end-to-end task cycle.
+- Review the March 2026 maintenance findings again, verify each issue, and take every still-valid issue through the standard end-to-end task cycle.
 
 ## Scope and Feature Boundary
 - Covers the remaining centralized repo-local orchestration surfaces still called out by the report examples: planning scaffolds, task lifecycle, sync CLI registration and handlers, traceability sync, GitHub task sync, and the GitHub client.
@@ -113,8 +113,8 @@ Defines the technical design boundary for reducing the remaining report-validate
 - GitHub client helper extraction can accidentally change request-shape behavior if it mixes formatting cleanup with transport logic changes.
 
 ## References
-- report/01_overview_and_method.md
-- report/06_core_python_architecture_and_exportability.md
-- report/09_remediation_program.md
+- March 2026 review overview and method summary for the remaining modularity hotspots.
+- March 2026 core Python architecture review summary for the still-centralized repo-local orchestration surfaces.
+- March 2026 remediation-program summary for the final bounded modularity follow-up.
 - [core_export_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_hardening.md)
 - [end_to_end_repo_rationalization.md](/home/j/WatchTowerPlan/docs/planning/design/features/end_to_end_repo_rationalization.md)

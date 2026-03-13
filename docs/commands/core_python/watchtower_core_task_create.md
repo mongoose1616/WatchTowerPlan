@@ -57,6 +57,7 @@ uv run watchtower-core task create --task-id task.traceable.example.001 --trace-
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not create or modify files.
 - The command rejects duplicate task IDs, path collisions, invalid task-state vocabulary, and unresolved blocker or dependency task IDs.
+- If any `--related-id` value is a `trace.*` identifier, `--trace-id` becomes required and must match that traced linkage.
 - In write mode, the command writes one Markdown task record under `docs/planning/tasks/open/` or `docs/planning/tasks/closed/` based on the requested task status and refreshes the deterministic coordination slice.
 - In `human` mode, the command prints the target task path, resulting task status, owner, and whether write mode refreshed coordination.
 - In `json` mode, the command prints one JSON object with the task metadata, path outcome, write state, and a `closeout_recommended` hint when the resulting traced task set is fully terminal.
@@ -76,4 +77,4 @@ uv run watchtower-core task create --task-id task.traceable.example.001 --trace-
 - `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`
 
 ## Updated At
-- `2026-03-10T22:54:30Z`
+- `2026-03-13T04:05:00Z`

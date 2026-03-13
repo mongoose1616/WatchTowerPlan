@@ -59,8 +59,8 @@
         "docs/planning/decisions/summary_surface_retirement_direction.md",
         "docs/planning/design/features/summary_surface_retirement.md",
         "docs/planning/design/implementation/summary_surface_retirement.md",
-        "docs/planning/tasks/open/retire_summary_md_and_direct_dependency_surfaces.md",
-        "docs/planning/tasks/open/validate_and_close_summary_surface_retirement.md",
+        "docs/planning/tasks/closed/retire_summary_md_and_direct_dependency_surfaces.md",
+        "docs/planning/tasks/closed/validate_and_close_summary_surface_retirement.md",
         "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/unit/test_traceability_index_sync.py"
       ],

@@ -32,8 +32,8 @@
         "docs/planning/design/features/machine_first_coordination_surface.md",
         "docs/planning/design/implementation/machine_first_coordination_execution.md",
         "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
-        "docs/planning/tasks/open/machine_first_coordination_index.md",
-        "docs/planning/tasks/open/machine_first_coordination_entrypoints.md"
+        "docs/planning/tasks/closed/machine_first_coordination_index.md",
+        "docs/planning/tasks/closed/machine_first_coordination_entrypoints.md"
       ],
       "subject_ids": [
         "prd.machine_first_coordination_surface",
@@ -53,7 +53,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/machine_first_coordination_surface.md",
-        "docs/planning/tasks/open/machine_first_coordination_index.md"
+        "docs/planning/tasks/closed/machine_first_coordination_index.md"
       ],
       "subject_ids": [
         "design.features.machine_first_coordination_surface",
@@ -71,7 +71,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/features/machine_first_coordination_surface.md",
-        "docs/planning/tasks/open/machine_first_coordination_entrypoints.md"
+        "docs/planning/tasks/closed/machine_first_coordination_entrypoints.md"
       ],
       "subject_ids": [
         "design.features.machine_first_coordination_surface",

@@ -1,15 +1,16 @@
 ---
 id: task.decision_supersession_and_regression_evidence_alignment.supersession.001
+trace_id: trace.decision_supersession_and_regression_evidence_alignment
 title: Add explicit decision supersession support
 summary: Extend decision governance, sync, query, and live decision records so superseded
   decisions link explicitly to replacement decisions.
 type: task
 status: active
-task_status: in_progress
+task_status: cancelled
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-13T01:10:32Z'
+updated_at: '2026-03-13T03:30:46Z'
 audience: shared
 authority: authoritative
 applies_to:

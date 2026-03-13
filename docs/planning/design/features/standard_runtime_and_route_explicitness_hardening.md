@@ -44,7 +44,7 @@ Defines the technical design boundary for Standard, Runtime, and Route Explicitn
 ## Current-State Context
 - `core/control_plane/indexes/standards/standard_index.v1.json` currently captures citation and reference usage, but it still has no owner or operationalization fields beyond what can be inferred from prose.
 - `core/python/src/watchtower_core/` currently has no package-level README files, so runtime ownership and supported import expectations have to be inferred from code and older planning docs.
-- `watchtower-core route preview --request "review /home/j/WatchTower/report and fix the valid issues with planning, tasks, validation, and commits"` currently returns no selected routes because the scoring model requires exact trigger-phrase matches before any token overlap matters.
+- `watchtower-core route preview --request "review the regression findings and fix the valid issues with planning, tasks, validation, and commits"` currently returns no selected routes because the scoring model requires exact trigger-phrase matches before any token overlap matters.
 - The March 2026 review concerns around foundation alignment, maintenance freshness loops, and layered health reporting no longer reproduce as open defects in the live repo, so this initiative should stay tightly scoped to the remaining explicitness gaps.
 - `core/python/src/watchtower_core/repo_ops/planning_documents.py` already centralizes runtime planning-document validation, which means the earlier contract-duplication concern is not the bounded change target for this slice.
 

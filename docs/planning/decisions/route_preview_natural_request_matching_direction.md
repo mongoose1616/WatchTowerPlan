@@ -34,7 +34,7 @@ Record the bounded direction for fixing natural maintenance-request route previe
 Fix the reproduced route-preview miss by expanding governed route keywords for explicit task and commit intent, then refresh the derived route index, route-preview docs, and regression tests in the same bounded trace.
 
 ## Trigger or Source Request
-- Review /home/j/WatchTower/report one last time, verify each issue, and fix every still-valid issue through the standard end-to-end task cycle.
+- Review the regression findings one last time, verify each issue, and fix every still-valid issue through the standard end-to-end task cycle.
 
 ## Current Context and Constraints
 - The exact final report-review request still misses `Task Lifecycle Management` and `Commit Closeout`.
@@ -74,7 +74,7 @@ Option 1 is accepted. The repository should fix this regression through explicit
 
 ## Consequences and Follow-Up Impacts
 - The routing table, derived route index, route-preview docs, and route-preview tests all need to update together.
-- Acceptance evidence should record the exact report-review maintenance request so the regression stays covered.
+- Acceptance evidence should record the exact final review maintenance request so the regression stays covered.
 - Broader routing changes remain future work only if later evidence shows governed lexical routing is no longer sufficient.
 
 ## Risks, Dependencies, and Assumptions
@@ -83,5 +83,5 @@ Option 1 is accepted. The repository should fix this regression through explicit
 - Assumption: natural maintenance requests that mention `tasks` and `commits` express explicit enough intent to justify bounded route matches.
 
 ## References
-- report/04_workflows_and_governance.md
+- March 2026 workflow and governance review summary for the reproduced route-preview gap.
 - [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md)

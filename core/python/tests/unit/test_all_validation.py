@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from collections import Counter
 from collections.abc import Callable
 from pathlib import Path
@@ -323,3 +324,33 @@ def test_validate_all_reuses_acceptance_reconciliation_snapshots(
         "load_validation_evidence_artifacts": 1,
         "load_validator_registry": 1,
     }
+
+
+def test_validate_all_reports_missing_repo_local_acceptance_paths(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    contract_path = (
+        repo_root
+        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+    )
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    contract["entries"][0]["validation_targets"].append("docs/planning/tasks/open/missing_task.md")
+    contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
+
+    service = ValidationAllService(ControlPlaneLoader(repo_root))
+    monkeypatch.setattr(
+        service,
+        "_acceptance_targets",
+        lambda: ("trace.core_python_foundation",),
+    )
+    result = service.run(included_families=("acceptance",))
+
+    assert result.passed is False
+    assert result.failed_count == 1
+    assert result.records[0].family == "acceptance"
+    assert any(
+        issue.code == "acceptance_validation_target_missing"
+        for issue in result.records[0].result.issues
+    )

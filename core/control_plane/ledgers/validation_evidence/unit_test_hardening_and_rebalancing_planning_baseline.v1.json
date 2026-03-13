@@ -28,10 +28,10 @@
         "docs/planning/design/features/unit_test_hardening_and_rebalancing.md",
         "docs/planning/design/implementation/unit_test_hardening_and_rebalancing.md",
         "docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md",
-        "docs/planning/tasks/open/harden_github_integration_and_sync_coverage.md",
-        "docs/planning/tasks/open/harden_command_and_lifecycle_coverage.md",
-        "docs/planning/tasks/open/rebalance_unit_suite_structure_and_docs.md",
-        "docs/planning/tasks/open/expand_orchestration_and_derivation_failure_coverage.md"
+        "docs/planning/tasks/closed/harden_github_integration_and_sync_coverage.md",
+        "docs/planning/tasks/closed/harden_command_and_lifecycle_coverage.md",
+        "docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md",
+        "docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md"
       ],
       "subject_ids": [
         "prd.unit_test_hardening_and_rebalancing",

@@ -1,13 +1,16 @@
 {
   "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
   "id": "evidence.decision_supersession_and_regression_evidence_alignment.planning_baseline",
-  "title": "Decision Supersession and Regression Evidence Alignment Planning Baseline Evidence",
+  "title": "Decision Supersession and Regression Evidence Alignment Planning Baseline Validation Evidence",
   "status": "active",
   "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
   "overall_result": "passed",
-  "recorded_at": "2026-03-13T01:09:48Z",
+  "recorded_at": "2026-03-13T03:38:35Z",
   "source_prd_ids": [
     "prd.decision_supersession_and_regression_evidence_alignment"
+  ],
+  "source_decision_ids": [
+    "decision.decision_supersession_and_regression_evidence_alignment_direction"
   ],
   "source_design_ids": [
     "design.features.decision_supersession_and_regression_evidence_alignment"
@@ -20,40 +23,77 @@
   ],
   "checks": [
     {
-      "check_id": "check.decision_supersession_and_regression_evidence_alignment.planning_baseline",
-      "title": "Bootstrap planning baseline is aligned",
+      "check_id": "check.decision_supersession_and_regression_evidence_alignment.historical_planning_chain",
+      "title": "Cancelled planning chain is preserved as historical context",
       "result": "passed",
       "subject_paths": [
         "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
         "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
         "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
-        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
         "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
-        "docs/planning/tasks/open/decision_supersession_and_regression_evidence_alignment_bootstrap.md"
+        "docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md"
       ],
       "subject_ids": [
         "prd.decision_supersession_and_regression_evidence_alignment",
+        "decision.decision_supersession_and_regression_evidence_alignment_direction",
         "design.features.decision_supersession_and_regression_evidence_alignment",
         "design.implementation.decision_supersession_and_regression_evidence_alignment",
         "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001",
-        "contract.acceptance.decision_supersession_and_regression_evidence_alignment",
-        "decision.decision_supersession_and_regression_evidence_alignment_direction"
+        "contract.acceptance.decision_supersession_and_regression_evidence_alignment"
       ],
-      "validator_id": "validator.control_plane.validation_evidence",
       "acceptance_ids": [
         "ac.decision_supersession_and_regression_evidence_alignment.001"
       ],
-      "notes": "Bootstrap write mode published the initial planning chain, acceptance contract, evidence artifact, and bootstrap task in canonical repository paths."
+      "notes": "The cancelled trace now preserves the PRD, decision, design, implementation plan, acceptance contract, and closed bootstrap task as historical context instead of active-looking placeholder state."
+    },
+    {
+      "check_id": "check.decision_supersession_and_regression_evidence_alignment.cancelled_task_set",
+      "title": "All remaining execution tasks are closed as cancelled",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/add_explicit_decision_supersession_support.md",
+        "docs/planning/tasks/closed/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
+        "docs/planning/tasks/closed/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "subject_ids": [
+        "task.decision_supersession_and_regression_evidence_alignment.supersession.001",
+        "task.decision_supersession_and_regression_evidence_alignment.regression_reference.002",
+        "task.decision_supersession_and_regression_evidence_alignment.validation.003"
+      ],
+      "acceptance_ids": [
+        "ac.decision_supersession_and_regression_evidence_alignment.002"
+      ],
+      "notes": "The stale open tasks on the cancelled trace were transitioned to terminal cancelled state and the planning trackers now show the trace with no open execution work."
+    },
+    {
+      "check_id": "check.decision_supersession_and_regression_evidence_alignment.redirect_to_active_trace",
+      "title": "Historical planning docs point future maintenance back to the active review trace",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md"
+      ],
+      "acceptance_ids": [
+        "ac.decision_supersession_and_regression_evidence_alignment.003"
+      ],
+      "notes": "The cancelled trace now explains that still-live regression-and-duplication hardening belongs to trace.regression_duplication_and_overstep_review and does not keep a parallel local-reference proposal alive."
     }
   ],
   "related_paths": [
     "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
     "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
     "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
     "docs/planning/tasks/task_tracking.md"
   ],
-  "notes": "Planning baseline evidence prepared at 2026-03-13T01:09:48Z for trace.decision_supersession_and_regression_evidence_alignment.",
-  "source_decision_ids": [
-    "decision.decision_supersession_and_regression_evidence_alignment_direction"
-  ]
+  "notes": "Validation evidence for the historical normalization of the cancelled decision-supersession and regression-evidence trace after its remaining open tasks were cancelled and its planning chain was rewritten as historical context."
 }

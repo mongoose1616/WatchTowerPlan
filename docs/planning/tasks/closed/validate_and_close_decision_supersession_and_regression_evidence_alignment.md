@@ -1,15 +1,16 @@
 ---
 id: task.decision_supersession_and_regression_evidence_alignment.validation.003
+trace_id: trace.decision_supersession_and_regression_evidence_alignment
 title: Validate and close decision supersession and regression evidence alignment
 summary: Run targeted and full validation, refresh evidence, rerun confirmation passes,
   and close the bounded slice.
 type: task
 status: active
-task_status: backlog
+task_status: cancelled
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-13T01:10:21Z'
+updated_at: '2026-03-13T03:30:46Z'
 audience: shared
 authority: authoritative
 applies_to:

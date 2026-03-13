@@ -17,7 +17,7 @@
         "docs/planning/design/features/task_sync_disappearing_file_resilience.md",
         "docs/planning/design/implementation/task_sync_disappearing_file_resilience.md",
         "docs/planning/decisions/task_sync_disappearing_file_resilience_direction.md",
-        "docs/planning/tasks/open/task_sync_disappearing_file_resilience_bootstrap.md"
+        "docs/planning/tasks/closed/task_sync_disappearing_file_resilience_bootstrap.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",

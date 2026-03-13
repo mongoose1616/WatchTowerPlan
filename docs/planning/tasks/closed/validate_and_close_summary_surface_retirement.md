@@ -1,5 +1,6 @@
 ---
 id: task.summary_surface_retirement.validation.002
+trace_id: trace.summary_surface_retirement
 title: Validate and close summary surface retirement
 summary: Run targeted and full validation, refresh evidence, rerun confirmation passes,
   and close the summary-retirement slice.

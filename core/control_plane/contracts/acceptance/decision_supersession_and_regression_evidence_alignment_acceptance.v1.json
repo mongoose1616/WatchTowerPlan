@@ -8,25 +8,55 @@
   "entries": [
     {
       "acceptance_id": "ac.decision_supersession_and_regression_evidence_alignment.001",
-      "summary": "The bootstrap flow publishes the initial PRD, feature design, implementation plan, acceptance contract, planning-baseline evidence, and bootstrap task for the trace.",
+      "summary": "The cancelled trace remains a coherent historical planning record instead of an active-looking bootstrap scaffold.",
       "source_requirement_ids": [
         "req.decision_supersession_and_regression_evidence_alignment.001"
       ],
       "validation_targets": [
         "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
         "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
         "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
-        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
-        "docs/planning/tasks/open/decision_supersession_and_regression_evidence_alignment_bootstrap.md"
+        "docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/coordination_tracking.md"
       ],
-      "notes": "Bootstrap baseline contract prepared at 2026-03-13T01:09:48Z for trace.decision_supersession_and_regression_evidence_alignment."
+      "notes": "The cancelled trace now reads as a historical planning record and remains joined to the closed bootstrap task and the derived planning trackers."
+    },
+    {
+      "acceptance_id": "ac.decision_supersession_and_regression_evidence_alignment.002",
+      "summary": "The cancelled trace has no remaining open tasks and stays queryable as cancelled through the planning and coordination surfaces.",
+      "source_requirement_ids": [
+        "req.decision_supersession_and_regression_evidence_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/planning/tasks/closed/add_explicit_decision_supersession_support.md",
+        "docs/planning/tasks/closed/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
+        "docs/planning/tasks/closed/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.decision_supersession_and_regression_evidence_alignment.003",
+      "summary": "The cancelled planning docs redirect contributors toward the active regression-and-duplication trace for any still-live maintenance work.",
+      "source_requirement_ids": [
+        "req.decision_supersession_and_regression_evidence_alignment.002"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md",
+        "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/prds/regression_duplication_and_overstep_review.md"
+      ]
     }
   ]
 }

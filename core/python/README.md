@@ -101,6 +101,7 @@
 - `uv run watchtower-core plan scaffold --write ...` refreshes the traced coordination slice only when the target trace already participates in coordination or already has traced task state.
 - `uv run watchtower-core plan bootstrap --include-decision --write ...` now emits a governed-valid decision scaffold with `Applied References and Implications`, and bootstrap-only traces stay in `implementation_planning` until non-bootstrap active work exists.
 - `uv run watchtower-core closeout initiative --write ...` refreshes the planning catalog in the same closeout slice as the initiative and coordination outputs.
+- `uv run watchtower-core task create|update|transition --write ...` now requires `--trace-id` when traced `related_ids` are present and repairs governed acceptance/evidence task-path references when task moves change the canonical task document path.
 - `uv run watchtower-core query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
 - `uv run watchtower-core sync coordination` now refreshes the derived coordination index in the same deterministic slice as task, traceability, and initiative surfaces.
 - `source .venv/bin/activate` is optional and mainly useful for interactive shell sessions.

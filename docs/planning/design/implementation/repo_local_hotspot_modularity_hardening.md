@@ -31,7 +31,7 @@ applies_to:
 Breaks the remaining report-validated repo-local hotspot modularity work into bounded refactor slices.
 
 ## Source Request or Design
-- Review /home/j/WatchTower/report again, verify each issue, and take every still-valid issue through the standard end-to-end task cycle.
+- Review the March 2026 maintenance findings again, verify each issue, and take every still-valid issue through the standard end-to-end task cycle.
 - Feature design: [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)
 
 ## Scope Summary
@@ -73,9 +73,9 @@ Breaks the remaining report-validated repo-local hotspot modularity work into bo
 - Run the final closeout baseline with `./.venv/bin/pytest -q`, `./.venv/bin/python -m mypy src`, `./.venv/bin/ruff check .`, and `./.venv/bin/watchtower-core validate acceptance --trace-id trace.repo_local_hotspot_modularity --format json`.
 
 ## References
-- report/01_overview_and_method.md
-- report/06_core_python_architecture_and_exportability.md
-- report/09_remediation_program.md
+- March 2026 review overview and method summary for the remaining modularity hotspots.
+- March 2026 core Python architecture review summary for the still-centralized repo-local orchestration surfaces.
+- March 2026 remediation-program summary for the final bounded modularity follow-up.
 - [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
 - [core_export_hardening_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/core_export_hardening_execution.md)
 - [end_to_end_repo_rationalization_execution.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/end_to_end_repo_rationalization_execution.md)

@@ -160,6 +160,28 @@
           "github_project_number"
         ]
       }
+    },
+    {
+      "if": {
+        "type": "object",
+        "required": [
+          "related_ids"
+        ],
+        "properties": {
+          "related_ids": {
+            "type": "array",
+            "contains": {
+              "type": "string",
+              "pattern": "^trace\\.[a-z0-9]+(?:_[a-z0-9]+)*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+            }
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "trace_id"
+        ]
+      }
     }
   ],
   "unevaluatedProperties": false

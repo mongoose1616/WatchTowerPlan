@@ -32,9 +32,9 @@
         "docs/planning/design/features/preimplementation_repo_readiness.md",
         "docs/planning/design/implementation/preimplementation_repo_hardening_execution.md",
         "docs/planning/tasks/closed/preimplementation_repo_review_bootstrap.md",
-        "docs/planning/tasks/open/preimplementation_readme_entrypoints.md",
-        "docs/planning/tasks/open/preimplementation_machine_coordination.md",
-        "docs/planning/tasks/open/preimplementation_core_modularity.md"
+        "docs/planning/tasks/closed/preimplementation_readme_entrypoints.md",
+        "docs/planning/tasks/closed/preimplementation_machine_coordination.md",
+        "docs/planning/tasks/closed/preimplementation_core_modularity.md"
       ],
       "subject_ids": [
         "prd.preimplementation_repo_review_and_hardening",
@@ -58,7 +58,7 @@
         "core/python/README.md",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/python/src/watchtower_core/cli/handlers.py",
-        "core/python/src/watchtower_core/control_plane/models.py",
+        "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/control_plane/schemas.py"
       ],
       "acceptance_ids": [

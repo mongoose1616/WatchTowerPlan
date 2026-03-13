@@ -51,6 +51,7 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 - By default the command runs in dry-run mode and does not mutate files.
 - The command is a narrower handoff wrapper over the same governed task lifecycle service that powers `task update`.
 - Write mode moves the task document between `open/` and `closed/` automatically when the new task status changes terminality.
+- When write mode moves the task document, the command also repairs matching repo-local task-path references in governed acceptance contracts and validation evidence before coordination refreshes.
 - In `human` mode, the command prints the resulting task path, status, owner, and write outcome.
 - In `json` mode, the command prints one JSON object with the resulting task metadata, path outcome, write state, and `closeout_recommended` hint.
 
@@ -69,4 +70,4 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 - `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`
 
 ## Updated At
-- `2026-03-10T22:54:30Z`
+- `2026-03-13T04:05:00Z`

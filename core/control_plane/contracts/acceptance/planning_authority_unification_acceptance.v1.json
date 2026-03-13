@@ -18,8 +18,8 @@
         "docs/planning/design/implementation/planning_authority_unification.md",
         "docs/planning/decisions/planning_authority_unification_direction.md",
         "docs/planning/tasks/closed/planning_authority_unification_bootstrap.md",
-        "docs/planning/tasks/open/planning_catalog_and_query.md",
-        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+        "docs/planning/tasks/closed/planning_catalog_and_query.md",
+        "docs/planning/tasks/closed/machine_authority_map_and_navigation.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -42,7 +42,7 @@
         "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
         "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
         "core/control_plane/registries/validators/validator_registry.v1.json",
-        "docs/planning/tasks/open/planning_catalog_and_query.md"
+        "docs/planning/tasks/closed/planning_catalog_and_query.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/control_plane/loader.py",
@@ -60,7 +60,7 @@
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/cli/",
         "docs/commands/core_python/watchtower_core_query_planning.md",
-        "docs/planning/tasks/open/planning_catalog_and_query.md"
+        "docs/planning/tasks/closed/planning_catalog_and_query.md"
       ],
       "related_paths": [
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
@@ -79,7 +79,7 @@
         "core/control_plane/registries/authority_map/authority_map.v1.json",
         "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
         "docs/commands/core_python/watchtower_core_query_authority.md",
-        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+        "docs/planning/tasks/closed/machine_authority_map_and_navigation.md"
       ],
       "related_paths": [
         "README.md",
@@ -102,7 +102,7 @@
         "docs/commands/core_python/watchtower_core_query_trace.md",
         "docs/commands/core_python/watchtower_core_query_planning.md",
         "docs/commands/core_python/watchtower_core_query_authority.md",
-        "docs/planning/tasks/open/machine_authority_map_and_navigation.md"
+        "docs/planning/tasks/closed/machine_authority_map_and_navigation.md"
       ],
       "related_paths": [
         "docs/standards/data_contracts/",

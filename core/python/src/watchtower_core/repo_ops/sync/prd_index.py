@@ -17,6 +17,7 @@ from watchtower_core.repo_ops.planning_documents import (
     load_governed_document,
     ordered_unique,
 )
+from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
 PRD_INDEX_ARTIFACT_PATH = "core/control_plane/indexes/prds/prd_index.v1.json"
 PRD_FRONT_MATTER_SCHEMA_ID = "urn:watchtower:schema:interfaces:documentation:prd-front-matter:v1"
@@ -113,7 +114,10 @@ class PrdIndexSyncService:
             )
             related_paths = ordered_unique(
                 document.front_matter_path_values(),
-                _tuple_of_strings(current.get("related_paths")),
+                existing_paths(
+                    self._repo_root,
+                    _tuple_of_strings(current.get("related_paths")),
+                ),
             )
             tags = ordered_unique(
                 document.front_matter_list("tags"),

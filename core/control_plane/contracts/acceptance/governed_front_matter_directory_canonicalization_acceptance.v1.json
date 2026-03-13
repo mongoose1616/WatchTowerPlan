@@ -80,8 +80,8 @@
         "docs/planning/design/features/governed_front_matter_directory_canonicalization.md",
         "docs/planning/design/implementation/governed_front_matter_directory_canonicalization.md",
         "docs/planning/decisions/governed_front_matter_directory_canonicalization_direction.md",
-        "docs/planning/tasks/open/implement_governed_applies_to_directory_canonicalization.md",
-        "docs/planning/tasks/open/normalize_live_governed_applies_to_directory_metadata.md"
+        "docs/planning/tasks/closed/implement_governed_applies_to_directory_canonicalization.md",
+        "docs/planning/tasks/closed/normalize_live_governed_applies_to_directory_metadata.md"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md",

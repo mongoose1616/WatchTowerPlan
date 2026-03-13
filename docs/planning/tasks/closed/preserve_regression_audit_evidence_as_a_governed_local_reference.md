@@ -1,15 +1,16 @@
 ---
 id: task.decision_supersession_and_regression_evidence_alignment.regression_reference.002
+trace_id: trace.decision_supersession_and_regression_evidence_alignment
 title: Preserve regression audit evidence as a governed local reference
 summary: Add one repo-local governed reference for the March 2026 regression audit
   and replace durable raw external report citations on the touched planning surfaces.
 type: task
 status: active
-task_status: backlog
+task_status: cancelled
 task_kind: documentation
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-13T01:10:21Z'
+updated_at: '2026-03-13T03:30:46Z'
 audience: shared
 authority: authoritative
 applies_to:

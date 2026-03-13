@@ -34,7 +34,7 @@ Records the direction decision to close the remaining report-validated repo-loca
 Close the remaining report-validated hotspot modularity issue by splitting the oversized repo-local orchestration modules behind helper-backed facades while preserving current behavior and import surfaces.
 
 ## Trigger or Source Request
-- Review /home/j/WatchTower/report again, verify each issue, and take every still-valid issue through the standard end-to-end task cycle.
+- Review the March 2026 maintenance findings again, verify each issue, and take every still-valid issue through the standard end-to-end task cycle.
 
 ## Current Context and Constraints
 - The report re-review showed that earlier explicitness, workflow, validation, and query-modularity gaps are already closed, leaving centralized repo-local orchestration hotspots as the only still-live issue cluster.
@@ -84,8 +84,8 @@ Option 2 is accepted. The repository should close the remaining report-validated
 - Assumption: the remaining report issue can be closed without changing durable runtime contracts.
 
 ## References
-- report/01_overview_and_method.md
-- report/06_core_python_architecture_and_exportability.md
-- report/09_remediation_program.md
+- March 2026 review overview and method summary for the remaining modularity hotspots.
+- March 2026 core Python architecture review summary for the still-centralized repo-local orchestration surfaces.
+- March 2026 remediation-program summary for the final bounded modularity follow-up.
 - [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/repo_local_hotspot_modularity_hardening.md)
 - [repo_local_hotspot_modularity_hardening.md](/home/j/WatchTowerPlan/docs/planning/design/features/repo_local_hotspot_modularity_hardening.md)

@@ -31,7 +31,7 @@ applies_to:
 Define the bounded governed-keyword and regression-coverage changes needed for natural maintenance-request route matching.
 
 ## Source Request
-- Review /home/j/WatchTower/report one last time, verify each issue, and fix every still-valid issue through the standard end-to-end task cycle.
+- Review the regression findings one last time, verify each issue, and fix every still-valid issue through the standard end-to-end task cycle.
 
 ## Scope and Feature Boundary
 - Covers the reproduced route-preview miss for the final report-review maintenance request.
@@ -39,8 +39,8 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 - Excludes semantic routing, workflow-inventory redesign, and any change to the advisory nature of route preview.
 
 ## Current-State Context
-- The current route-preview scorer already returns `Repository Review` and `Code Validation` for the live report-review request, which means the engine is functioning but the governed route metadata is incomplete for task and commit intent.
-- The route-preview command docs and tests currently protect a different maintenance-request phrase, so the exact live request that reproduced the report issue is not yet covered by regression validation.
+- The current route-preview scorer already returns `Repository Review` and `Code Validation` for the live final-review request, which means the engine is functioning but the governed route metadata is incomplete for task and commit intent.
+- The route-preview command docs and tests currently protect a different maintenance-request phrase, so the exact live request that reproduced the review issue is not yet covered by regression validation.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): prefer one explicit metadata seam over a larger routing redesign.
@@ -106,5 +106,5 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 - Single-token route cues could overmatch if they expand beyond explicit maintenance intent, so the added keywords must stay tightly bounded.
 
 ## References
-- report/04_workflows_and_governance.md
+- March 2026 workflow and governance review summary for the reproduced route-preview gap.
 - [route_preview_natural_request_matching.md](/home/j/WatchTowerPlan/docs/planning/prds/route_preview_natural_request_matching.md)

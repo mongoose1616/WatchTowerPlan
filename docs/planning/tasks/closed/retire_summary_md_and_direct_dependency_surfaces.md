@@ -1,5 +1,6 @@
 ---
 id: task.summary_surface_retirement.retire_summary.001
+trace_id: trace.summary_surface_retirement
 title: Retire SUMMARY.md and direct dependency surfaces
 summary: Delete SUMMARY.md, remove the dedicated summary-continuity trace, and rewrite
   remaining repo-local references so no active surface depends on the retired summary

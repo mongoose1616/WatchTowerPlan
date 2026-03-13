@@ -30,6 +30,7 @@ from watchtower_core.repo_ops.sync.prd_index import (
     PRD_EXCLUDED_NAMES,
     PRD_FRONT_MATTER_SCHEMA_ID,
 )
+from watchtower_core.repo_ops.sync.traceability_support import existing_paths
 
 DESIGN_DOCUMENT_INDEX_ARTIFACT_PATH = (
     "core/control_plane/indexes/design_documents/design_document_index.v1.json"
@@ -113,7 +114,10 @@ class DesignDocumentIndexSyncService:
                 family=source.family,
                 repo_root=self._repo_root,
                 design_id_to_path=id_to_path,
-                current_related_paths=_tuple_of_strings(current.get("related_paths")),
+                current_related_paths=existing_paths(
+                    self._repo_root,
+                    _tuple_of_strings(current.get("related_paths")),
+                ),
             )
             tags = ordered_unique(
                 document.front_matter_list("tags"),

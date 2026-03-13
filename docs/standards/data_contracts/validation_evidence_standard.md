@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "validation_evidence"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T04:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -60,6 +60,8 @@ This standard defines committed validation-evidence artifacts stored under `core
 - Do not reuse lifecycle-status fields to describe validation outcomes.
 - Prefer readable deterministic evidence IDs for durable committed evidence artifacts.
 - Use UUIDs only later if the repository starts storing high-volume generated run instances rather than a curated evidence ledger.
+- Treat `related_paths` and check-level `subject_paths` as repo-local paths that should resolve on disk after the same change set lands.
+- When governed task or planning paths move, update affected evidence path fields in the same change set so durable evidence does not retain stale targets.
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -107,6 +109,7 @@ This standard defines committed validation-evidence artifacts stored under `core
 - `validator_id` values should exist in the validator registry when present.
 - `acceptance_ids` should exist in the linked source acceptance contract or PRD when present.
 - Reviewers should reject evidence artifacts that act like mutable logs, omit trace links, or blur validation outcome with lifecycle status.
+- Repo-local `related_paths` and `subject_paths` should resolve to live repository paths.
 
 ## Change Control
 - Update this standard when the repository changes the durable evidence shape or result vocabulary materially.
@@ -122,4 +125,4 @@ This standard defines committed validation-evidence artifacts stored under `core
 - This family is intentionally narrower than a generic execution log. It should capture durable evidence only.
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T04:05:00Z`

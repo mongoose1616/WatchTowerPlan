@@ -22,7 +22,7 @@
         "docs/planning/tasks/closed/data_contract_example_operationalization_alignment_bootstrap.md",
         "docs/planning/tasks/closed/publish_data_contract_example_operationalization_coverage.md",
         "docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md",
-        "docs/planning/tasks/open/validate_and_close_data_contract_example_operationalization_alignment.md"
+        "docs/planning/tasks/closed/validate_and_close_data_contract_example_operationalization_alignment.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
