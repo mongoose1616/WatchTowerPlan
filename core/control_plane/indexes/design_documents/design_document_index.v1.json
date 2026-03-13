@@ -1878,6 +1878,38 @@
       ]
     },
     {
+      "document_id": "design.features.validation_test_hotspot_rebalancing",
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "family": "feature_design",
+      "title": "Validation Test Hotspot Rebalancing Feature Design",
+      "summary": "Defines the technical design boundary for Validation Test Hotspot Rebalancing.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+      "updated_at": "2026-03-13T18:46:53Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/cli/validation_handlers.py",
+        "docs/commands/core_python/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/planning/prds/validation_test_hotspot_rebalancing.md"
+      ]
+    },
+    {
       "document_id": "design.features.workflow_routing_and_authoring",
       "trace_id": "trace.workflow_system_operationalization",
       "family": "feature_design",
@@ -3411,6 +3443,39 @@
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.validation_test_hotspot_rebalancing",
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "family": "implementation_plan",
+      "title": "Validation Test Hotspot Rebalancing Implementation Plan",
+      "summary": "Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
+      "updated_at": "2026-03-13T19:19:06Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+        "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+        "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md"
+      ],
+      "related_paths": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/cli/validation_handlers.py",
+        "docs/commands/core_python/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/planning/prds/validation_test_hotspot_rebalancing.md"
       ]
     },
     {

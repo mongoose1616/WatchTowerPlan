@@ -17100,6 +17100,399 @@
       "closure_reason": "Expanded unit coverage, rebalanced the suite, and closed the planned hardening work."
     },
     {
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "title": "Validation Test Hotspot Rebalancing PRD",
+      "summary": "Review and refactor the remaining governed validation test hotspots so artifact and document-semantics coverage become more modular without reducing live repository contract validation.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T19:19:06Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.validation_test_hotspot_rebalancing",
+          "title": "Validation Test Hotspot Rebalancing PRD",
+          "summary": "Review and refactor the remaining governed validation test hotspots so artifact and document-semantics coverage become more modular without reducing live repository contract validation.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+          "updated_at": "2026-03-13T18:46:53Z",
+          "requirement_ids": [
+            "req.validation_test_hotspot_rebalancing.001",
+            "req.validation_test_hotspot_rebalancing.002",
+            "req.validation_test_hotspot_rebalancing.003",
+            "req.validation_test_hotspot_rebalancing.004",
+            "req.validation_test_hotspot_rebalancing.005"
+          ],
+          "acceptance_ids": [
+            "ac.validation_test_hotspot_rebalancing.001",
+            "ac.validation_test_hotspot_rebalancing.002",
+            "ac.validation_test_hotspot_rebalancing.003",
+            "ac.validation_test_hotspot_rebalancing.004",
+            "ac.validation_test_hotspot_rebalancing.005"
+          ],
+          "linked_decision_ids": [
+            "decision.validation_test_hotspot_rebalancing_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.validation_test_hotspot_rebalancing"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.validation_test_hotspot_rebalancing"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.validation_test_hotspot_rebalancing_direction",
+          "title": "Validation Test Hotspot Rebalancing Direction Decision",
+          "summary": "Records the initial direction decision for Validation Test Hotspot Rebalancing.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md",
+          "updated_at": "2026-03-13T18:46:53Z",
+          "linked_prd_ids": [
+            "prd.validation_test_hotspot_rebalancing"
+          ],
+          "linked_design_ids": [
+            "design.features.validation_test_hotspot_rebalancing"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.validation_test_hotspot_rebalancing"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.validation_test_hotspot_rebalancing",
+          "family": "feature_design",
+          "title": "Validation Test Hotspot Rebalancing Feature Design",
+          "summary": "Defines the technical design boundary for Validation Test Hotspot Rebalancing.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+          "updated_at": "2026-03-13T18:46:53Z"
+        },
+        {
+          "document_id": "design.implementation.validation_test_hotspot_rebalancing",
+          "family": "implementation_plan",
+          "title": "Validation Test Hotspot Rebalancing Implementation Plan",
+          "summary": "Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
+          "updated_at": "2026-03-13T19:19:06Z",
+          "source_paths": [
+            "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+            "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+            "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.validation_test_hotspot_rebalancing.bootstrap.001",
+          "title": "Bootstrap Validation Test Hotspot Rebalancing planning chain",
+          "summary": "Bootstraps the initial planning chain for Validation Test Hotspot Rebalancing.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "medium",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md",
+          "updated_at": "2026-03-13T18:51:07Z",
+          "related_ids": [
+            "prd.validation_test_hotspot_rebalancing",
+            "design.features.validation_test_hotspot_rebalancing",
+            "design.implementation.validation_test_hotspot_rebalancing",
+            "decision.validation_test_hotspot_rebalancing_direction",
+            "contract.acceptance.validation_test_hotspot_rebalancing"
+          ],
+          "applies_to": [
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/src/watchtower_core/repo_ops/validation/",
+            "core/python/src/watchtower_core/validation/",
+            "core/python/src/watchtower_core/cli/validation_handlers.py",
+            "docs/commands/core_python/",
+            "docs/planning/"
+          ]
+        },
+        {
+          "task_id": "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003",
+          "title": "Split document-semantics hotspot into focused suites",
+          "summary": "Replace the remaining mixed-family document-semantics hotspot with focused suites, reusable fixture writers, and aligned unit-suite inventory coverage.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
+          "updated_at": "2026-03-13T19:10:03Z",
+          "related_ids": [
+            "prd.validation_test_hotspot_rebalancing",
+            "design.features.validation_test_hotspot_rebalancing",
+            "design.implementation.validation_test_hotspot_rebalancing",
+            "decision.validation_test_hotspot_rebalancing_direction",
+            "contract.acceptance.validation_test_hotspot_rebalancing"
+          ],
+          "applies_to": [
+            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/README.md",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/src/watchtower_core/validation/document_semantics.py",
+            "core/python/src/watchtower_core/repo_ops/validation/all.py"
+          ]
+        },
+        {
+          "task_id": "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
+          "title": "Split integration validation hotspot into focused suites",
+          "summary": "Replace the remaining mixed-family integration validation hotspot with focused suites, small helpers, and aligned integration-suite inventory coverage.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+          "updated_at": "2026-03-13T19:10:03Z",
+          "related_ids": [
+            "prd.validation_test_hotspot_rebalancing",
+            "design.features.validation_test_hotspot_rebalancing",
+            "design.implementation.validation_test_hotspot_rebalancing",
+            "decision.validation_test_hotspot_rebalancing_direction",
+            "contract.acceptance.validation_test_hotspot_rebalancing"
+          ],
+          "applies_to": [
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/README.md",
+            "core/python/src/watchtower_core/control_plane/loader.py",
+            "core/python/src/watchtower_core/validation/artifact.py",
+            "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+            "core/python/src/watchtower_core/repo_ops/validation/all.py"
+          ]
+        },
+        {
+          "task_id": "task.validation_test_hotspot_rebalancing.validation_closeout.004",
+          "title": "Validate and close validation test hotspot rebalancing",
+          "summary": "Run targeted and full validation, repeat same-theme confirmation passes, refresh evidence, and close the validation-hotspot trace once the split stays clean.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md",
+          "updated_at": "2026-03-13T19:18:52Z",
+          "depends_on": [
+            "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
+            "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003"
+          ],
+          "related_ids": [
+            "prd.validation_test_hotspot_rebalancing",
+            "design.implementation.validation_test_hotspot_rebalancing",
+            "decision.validation_test_hotspot_rebalancing_direction",
+            "contract.acceptance.validation_test_hotspot_rebalancing"
+          ],
+          "applies_to": [
+            "core/python/",
+            "core/control_plane/contracts/acceptance/",
+            "core/control_plane/ledgers/validation_evidence/",
+            "docs/planning/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.validation_test_hotspot_rebalancing",
+          "title": "Validation Test Hotspot Rebalancing Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.validation_test_hotspot_rebalancing",
+          "doc_path": "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.validation_test_hotspot_rebalancing.001",
+            "ac.validation_test_hotspot_rebalancing.002",
+            "ac.validation_test_hotspot_rebalancing.003",
+            "ac.validation_test_hotspot_rebalancing.004",
+            "ac.validation_test_hotspot_rebalancing.005"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
+            "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.v1.json",
+            "core/python/",
+            "core/python/src/watchtower_core/control_plane/loader.py",
+            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+            "core/python/src/watchtower_core/validation/artifact.py",
+            "core/python/src/watchtower_core/validation/document_semantics.py",
+            "core/python/tests/integration/",
+            "core/python/tests/integration/README.md",
+            "core/python/tests/unit/",
+            "core/python/tests/unit/README.md",
+            "docs/commands/core_python/watchtower_core_validate.md",
+            "docs/planning/",
+            "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md",
+            "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+            "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
+            "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+            "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
+            "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+            "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md",
+            "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md"
+          ],
+          "related_paths": [
+            "core/python/tests/integration/README.md",
+            "core/python/tests/unit/README.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+            "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
+            "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.validation_test_hotspot_rebalancing.planning_baseline",
+          "title": "Validation Test Hotspot Rebalancing Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-13T19:19:06Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.v1.json",
+          "check_ids": [
+            "check.validation_test_hotspot_rebalancing.planning_baseline",
+            "check.validation_test_hotspot_rebalancing.integration_suite_split",
+            "check.validation_test_hotspot_rebalancing.document_semantics_suite_split",
+            "check.validation_test_hotspot_rebalancing.path_discoverability",
+            "check.validation_test_hotspot_rebalancing.validation_closeout_loop"
+          ],
+          "acceptance_ids": [
+            "ac.validation_test_hotspot_rebalancing.001",
+            "ac.validation_test_hotspot_rebalancing.002",
+            "ac.validation_test_hotspot_rebalancing.003",
+            "ac.validation_test_hotspot_rebalancing.004",
+            "ac.validation_test_hotspot_rebalancing.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.validation_test_hotspot_rebalancing"
+      ],
+      "decision_ids": [
+        "decision.validation_test_hotspot_rebalancing_direction"
+      ],
+      "design_ids": [
+        "design.features.validation_test_hotspot_rebalancing"
+      ],
+      "plan_ids": [
+        "design.implementation.validation_test_hotspot_rebalancing"
+      ],
+      "task_ids": [
+        "task.validation_test_hotspot_rebalancing.bootstrap.001",
+        "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003",
+        "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
+        "task.validation_test_hotspot_rebalancing.validation_closeout.004"
+      ],
+      "requirement_ids": [
+        "req.validation_test_hotspot_rebalancing.001",
+        "req.validation_test_hotspot_rebalancing.002",
+        "req.validation_test_hotspot_rebalancing.003",
+        "req.validation_test_hotspot_rebalancing.004",
+        "req.validation_test_hotspot_rebalancing.005"
+      ],
+      "acceptance_ids": [
+        "ac.validation_test_hotspot_rebalancing.001",
+        "ac.validation_test_hotspot_rebalancing.002",
+        "ac.validation_test_hotspot_rebalancing.003",
+        "ac.validation_test_hotspot_rebalancing.004",
+        "ac.validation_test_hotspot_rebalancing.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.validation_test_hotspot_rebalancing"
+      ],
+      "evidence_ids": [
+        "evidence.validation_test_hotspot_rebalancing.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/cli/validation_handlers.py",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/validation/document_semantics.py",
+        "core/python/tests/integration/",
+        "core/python/tests/integration/README.md",
+        "core/python/tests/integration/control_plane_artifact_helpers.py",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
+        "core/python/tests/integration/test_planning_and_workflow_authoring_contracts.py",
+        "core/python/tests/integration/test_standard_and_template_authoring_contracts.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/unit/document_semantics_fixtures.py",
+        "core/python/tests/unit/test_document_semantics_planning_rules.py",
+        "core/python/tests/unit/test_document_semantics_reference_rules.py",
+        "core/python/tests/unit/test_document_semantics_standard_rules.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_document_semantics_validator_selection.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_validate.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+        "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md",
+        "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Validation evidence refreshed at 2026-03-13T19:19:06Z after the integration and document-semantics hotspot splits, README-driven repository-path rebuild, the reopened loop that repaired the adjacent `fixture_repo_support` import regression, the acceptance-evidence reconciliation repair, and the final clean validation or confirmation reruns on the closed trace.",
+      "closed_at": "2026-03-13T19:19:06Z",
+      "closure_reason": "Completed the bounded refactor review after splitting the remaining validation hotspots, restoring repository-path discoverability, repairing the adjacent integration import regression, and rerunning clean confirmation passes."
+    },
+    {
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "title": "Workflow Routing Review Accuracy Alignment PRD",
       "summary": "Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries.",

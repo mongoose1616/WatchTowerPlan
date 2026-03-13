@@ -3,8 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from shutil import copytree
 
-from fixture_repo_support import materialize_governed_applies_to_targets
-
+from tests.integration.fixture_repo_support import materialize_governed_applies_to_targets
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.planning_scaffolds import (
     PlanBootstrapParams,

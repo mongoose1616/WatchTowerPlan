@@ -23,6 +23,12 @@
 | `core/python/tests/unit/test_command_index_sync.py` | Unit tests for rebuilding the command index from registry-backed CLI metadata with companion command docs. |
 | `core/python/tests/unit/test_control_plane_loader.py` | Unit tests for the high-level governed artifact loaders. |
 | `core/python/tests/unit/test_decision_index_sync.py` | Unit tests for rebuilding the decision index from governed decision records, including normalized affected-surface path projection. |
+| `core/python/tests/unit/document_semantics_fixtures.py` | Shared temporary-repo and fixture writers for the focused document-semantics validation suites. |
+| `core/python/tests/unit/test_document_semantics_validation.py` | Compatibility marker that preserves the historical document-semantics hotspot path and points to the focused suites. |
+| `core/python/tests/unit/test_document_semantics_validator_selection.py` | Unit tests for semantic validator selection plus workflow and standard heading/link entrypoint rules. |
+| `core/python/tests/unit/test_document_semantics_reference_rules.py` | Unit tests for governed reference-document semantic requirements and allowed maturity wording. |
+| `core/python/tests/unit/test_document_semantics_standard_rules.py` | Unit tests for standard-document link accounting and canonical path semantics. |
+| `core/python/tests/unit/test_document_semantics_planning_rules.py` | Unit tests for planning-document semantic requirements around applied references and heading spacing. |
 | `core/python/tests/unit/test_design_document_index_sync.py` | Unit tests for rebuilding the design-document index from governed design docs, including affected-surface and source-path relationship derivation. |
 | `core/python/tests/unit/test_front_matter_validation.py` | Unit tests for registry-backed front-matter validation. |
 | `core/python/tests/unit/test_github_task_sync.py` | Unit tests for push-only GitHub task sync planning behavior. |

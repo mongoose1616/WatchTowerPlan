@@ -3248,6 +3248,66 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/python/tests/integration/control_plane_artifact_helpers.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Shared JSON and front-matter helpers for the focused integration artifact suites.",
+      "parent_path": "core/python/tests/integration/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Integration tests for schema-backed governed artifacts, examples, front-matter profiles, and canonical path contracts.",
+      "parent_path": "core/python/tests/integration/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/integration/test_control_plane_artifacts.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Compatibility marker that preserves the historical hotspot path and points to the focused integration suites.",
+      "parent_path": "core/python/tests/integration/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Integration tests for loader-backed artifact materialization plus foundation and entrypoint contract coverage.",
+      "parent_path": "core/python/tests/integration/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/integration/test_planning_and_workflow_authoring_contracts.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Integration tests for planning-document authoring contracts and workflow additional-load semantics.",
+      "parent_path": "core/python/tests/integration/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/integration/test_standard_and_template_authoring_contracts.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Integration tests for standards, templates, and authored operationalization contract coverage.",
+      "parent_path": "core/python/tests/integration/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/python/tests/unit/",
       "kind": "directory",
       "surface_kind": "python_tests",
@@ -3272,6 +3332,16 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Shared pytest fixtures for common JSON-writing and future unit-suite helpers.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/document_semantics_fixtures.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Shared temporary-repo and fixture writers for the focused document-semantics validation suites.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -3432,6 +3502,56 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Unit tests for rebuilding the design-document index from governed design docs, including affected-surface and source-path relationship derivation.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_document_semantics_planning_rules.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for planning-document semantic requirements around applied references and heading spacing.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_document_semantics_reference_rules.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for governed reference-document semantic requirements and allowed maturity wording.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_document_semantics_standard_rules.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for standard-document link accounting and canonical path semantics.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_document_semantics_validation.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Compatibility marker that preserves the historical document-semantics hotspot path and points to the focused suites.",
+      "parent_path": "core/python/tests/unit/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/unit/test_document_semantics_validator_selection.py",
+      "kind": "file",
+      "surface_kind": "python_test_file",
+      "summary": "Unit tests for semantic validator selection plus workflow and standard heading/link entrypoint rules.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",

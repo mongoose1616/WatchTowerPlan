@@ -1,0 +1,111 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.validation_test_hotspot_rebalancing",
+  "title": "Validation Test Hotspot Rebalancing Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.validation_test_hotspot_rebalancing",
+  "source_prd_id": "prd.validation_test_hotspot_rebalancing",
+  "entries": [
+    {
+      "acceptance_id": "ac.validation_test_hotspot_rebalancing.001",
+      "summary": "The planning corpus for the trace publishes the bounded PRD, decision, feature design, implementation plan, acceptance contract, evidence ledger, closed bootstrap task, bounded execution tasks, and the explicit coverage map plus findings ledger.",
+      "source_requirement_ids": [
+        "req.validation_test_hotspot_rebalancing.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+        "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+        "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
+        "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md",
+        "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md",
+        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Bootstrap baseline contract expanded at 2026-03-13T18:46:53Z for trace.validation_test_hotspot_rebalancing."
+    },
+    {
+      "acceptance_id": "ac.validation_test_hotspot_rebalancing.002",
+      "summary": "The old integration artifact-validation hotspot is replaced by focused suites and small shared helpers while loader, schema, example, front-matter, and authored-contract coverage remain live.",
+      "source_requirement_ids": [
+        "req.validation_test_hotspot_rebalancing.002"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+      ],
+      "related_paths": [
+        "core/python/tests/integration/README.md",
+        "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+        "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md"
+      ],
+      "notes": "Covers the remaining integration hotspot and its direct artifact-validation adjacency."
+    },
+    {
+      "acceptance_id": "ac.validation_test_hotspot_rebalancing.003",
+      "summary": "The old document-semantics hotspot is replaced by focused suites and small shared fixture helpers while validator-selection, semantic-rule, and canonical-path coverage remain fail-closed.",
+      "source_requirement_ids": [
+        "req.validation_test_hotspot_rebalancing.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/unit/",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/README.md",
+        "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+        "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md"
+      ],
+      "notes": "Covers the remaining unit hotspot and its direct document-semantics validator boundary."
+    },
+    {
+      "acceptance_id": "ac.validation_test_hotspot_rebalancing.004",
+      "summary": "Compatibility markers, README inventories, repository-path indexing, and query-path lookup stay aligned with the split suite layout so historical references and new discovery paths both work.",
+      "source_requirement_ids": [
+        "req.validation_test_hotspot_rebalancing.004"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/README.md",
+        "core/python/tests/unit/README.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "docs/commands/core_python/watchtower_core_validate.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md"
+      ],
+      "notes": "Covers historical path compatibility and README-driven repository-path discoverability."
+    },
+    {
+      "acceptance_id": "ac.validation_test_hotspot_rebalancing.005",
+      "summary": "Targeted validation, full repository validation, post-fix review, second-angle confirmation, and adversarial confirmation all complete with no new actionable issue in the validation-hotspot theme.",
+      "source_requirement_ids": [
+        "req.validation_test_hotspot_rebalancing.005"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "notes": "Covers the repeated confirmation loop and closeout gate."
+    }
+  ]
+}

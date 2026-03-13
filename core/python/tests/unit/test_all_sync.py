@@ -5,8 +5,8 @@ from pathlib import Path
 from shutil import copytree
 
 import pytest
-from fixture_repo_support import materialize_governed_applies_to_targets
 
+from tests.integration.fixture_repo_support import materialize_governed_applies_to_targets
 from watchtower_core.control_plane.errors import ArtifactLoadError, SchemaResolutionError
 from watchtower_core.control_plane.loader import (
     COORDINATION_INDEX_PATH,

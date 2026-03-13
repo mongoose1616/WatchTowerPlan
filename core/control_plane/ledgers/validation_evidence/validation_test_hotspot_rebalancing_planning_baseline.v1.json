@@ -1,0 +1,157 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.validation_test_hotspot_rebalancing.planning_baseline",
+  "title": "Validation Test Hotspot Rebalancing Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.validation_test_hotspot_rebalancing",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T19:19:06Z",
+  "source_prd_ids": [
+    "prd.validation_test_hotspot_rebalancing"
+  ],
+  "source_design_ids": [
+    "design.features.validation_test_hotspot_rebalancing"
+  ],
+  "source_plan_ids": [
+    "design.implementation.validation_test_hotspot_rebalancing"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.validation_test_hotspot_rebalancing"
+  ],
+  "checks": [
+    {
+      "check_id": "check.validation_test_hotspot_rebalancing.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+        "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
+        "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
+        "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md",
+        "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
+        "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md",
+        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md"
+      ],
+      "subject_ids": [
+        "prd.validation_test_hotspot_rebalancing",
+        "design.features.validation_test_hotspot_rebalancing",
+        "design.implementation.validation_test_hotspot_rebalancing",
+        "task.validation_test_hotspot_rebalancing.bootstrap.001",
+        "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
+        "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003",
+        "task.validation_test_hotspot_rebalancing.validation_closeout.004",
+        "contract.acceptance.validation_test_hotspot_rebalancing",
+        "decision.validation_test_hotspot_rebalancing_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.validation_test_hotspot_rebalancing.001"
+      ],
+      "notes": "The final planning chain, acceptance contract, evidence artifact, and full closed task set now live in canonical repository paths with the bounded coverage map and findings ledger aligned to the terminal closeout state."
+    },
+    {
+      "check_id": "check.validation_test_hotspot_rebalancing.integration_suite_split",
+      "title": "Integration validation hotspot is split into focused suites",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/integration/control_plane_artifact_helpers.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
+        "core/python/tests/integration/test_standard_and_template_authoring_contracts.py",
+        "core/python/tests/integration/test_planning_and_workflow_authoring_contracts.py",
+        "core/python/tests/integration/README.md",
+        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md"
+      ],
+      "subject_ids": [
+        "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
+        "design.features.validation_test_hotspot_rebalancing",
+        "design.implementation.validation_test_hotspot_rebalancing"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.validation_test_hotspot_rebalancing.002"
+      ],
+      "notes": "The old 1171-line mixed-family integration hotspot now survives only as an 8-line compatibility marker over four focused suites and a 30-line helper, and both the focused integration pytest subset and the final full `pytest -q` rerun passed after the split."
+    },
+    {
+      "check_id": "check.validation_test_hotspot_rebalancing.document_semantics_suite_split",
+      "title": "Document-semantics hotspot is split into focused suites",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/unit/document_semantics_fixtures.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/test_document_semantics_validator_selection.py",
+        "core/python/tests/unit/test_document_semantics_reference_rules.py",
+        "core/python/tests/unit/test_document_semantics_standard_rules.py",
+        "core/python/tests/unit/test_document_semantics_planning_rules.py",
+        "core/python/tests/unit/README.md",
+        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md"
+      ],
+      "subject_ids": [
+        "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003",
+        "design.features.validation_test_hotspot_rebalancing",
+        "design.implementation.validation_test_hotspot_rebalancing"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.validation_test_hotspot_rebalancing.003"
+      ],
+      "notes": "The old 1053-line document-semantics hotspot now survives only as an 8-line compatibility marker over four focused suites plus a shared fixture-writer helper, and both the focused semantic-rule pytest subset and the final full `pytest -q` rerun passed after the split."
+    },
+    {
+      "check_id": "check.validation_test_hotspot_rebalancing.path_discoverability",
+      "title": "Compatibility markers and repository-path discovery stay aligned",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/integration/README.md",
+        "core/python/tests/unit/README.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md"
+      ],
+      "subject_ids": [
+        "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
+        "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.validation_test_hotspot_rebalancing.004"
+      ],
+      "notes": "After the README inventory refresh and sync-all rebuild, `watchtower-core query paths --query test_control_plane_artifacts --format json` and `--query test_document_semantics_validation --format json` both returned the preserved compatibility-marker paths, and new focused-suite lookups also resolved."
+    },
+    {
+      "check_id": "check.validation_test_hotspot_rebalancing.validation_closeout_loop",
+      "title": "Validation and confirmation loop returned the hotspot area to a clean state",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.v1.json"
+      ],
+      "subject_ids": [
+        "task.validation_test_hotspot_rebalancing.validation_closeout.004",
+        "contract.acceptance.validation_test_hotspot_rebalancing",
+        "evidence.validation_test_hotspot_rebalancing.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.validation_test_hotspot_rebalancing.005"
+      ],
+      "notes": "The targeted integration and unit validation subset passed, sync-all rebuilt governed derived surfaces, full pytest exposed and the loop fixed the adjacent `fixture_repo_support` import regression caused by the new integration package boundary, `watchtower-core validate acceptance --trace-id trace.validation_test_hotspot_rebalancing --format json` passed with `issue_count: 0`, `watchtower-core validate all --format json` passed with `1099` passed and `0` failed, `pytest -q` passed, `ruff check .` passed after deterministic import-order normalization, `python -m mypy src/watchtower_core` passed, query-path lookups resolved both historical hotspot markers, the stale bare-import sweep found no remaining matches, and the adversarial dry-run task-create probe accepted both preserved hotspot paths."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence refreshed at 2026-03-13T19:19:06Z after the integration and document-semantics hotspot splits, README-driven repository-path rebuild, the reopened loop that repaired the adjacent `fixture_repo_support` import regression, the acceptance-evidence reconciliation repair, and the final clean validation or confirmation reruns on the closed trace.",
+  "source_decision_ids": [
+    "decision.validation_test_hotspot_rebalancing_direction"
+  ]
+}

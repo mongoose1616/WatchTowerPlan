@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-13T18:43:00Z",
+  "updated_at": "2026-03-13T19:19:06Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "title": "Validation Test Hotspot Rebalancing PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-13T19:19:06Z",
+      "key_surface_path": "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+      "closure_reason": "Completed the bounded refactor review after splitting the remaining validation hotspots, restoring repository-path discoverability, repairing the adjacent integration import regression, and rerunning clean confirmation passes."
+    },
     {
       "trace_id": "trace.typed_query_surface_modularity_hardening",
       "title": "Typed Query Surface Modularity Hardening PRD",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-13T00:09:19Z",
       "key_surface_path": "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
       "closure_reason": "Delivered foundation-document boundary alignment: the authored standard now scopes only the six governed foundation docs, standards lookup excludes the foundations README, validation passed, and themed review found no additional actionable issues."
-    },
-    {
-      "trace_id": "trace.foundation_index_family_contract_alignment",
-      "title": "Foundation Index Family Contract Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-12T23:22:45Z",
-      "key_surface_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
-      "closure_reason": "Delivered foundation-index family contract alignment: the governing standard now covers the authoritative sync/query and foundations command surfaces, targeted and full validation passed, and repeated themed review passes found no additional actionable issues."
     }
   ]
 }

@@ -4440,6 +4440,119 @@
       ]
     },
     {
+      "task_id": "task.validation_test_hotspot_rebalancing.bootstrap.001",
+      "title": "Bootstrap Validation Test Hotspot Rebalancing planning chain",
+      "summary": "Bootstraps the initial planning chain for Validation Test Hotspot Rebalancing.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md",
+      "updated_at": "2026-03-13T18:51:07Z",
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "related_ids": [
+        "prd.validation_test_hotspot_rebalancing",
+        "design.features.validation_test_hotspot_rebalancing",
+        "design.implementation.validation_test_hotspot_rebalancing",
+        "decision.validation_test_hotspot_rebalancing_direction",
+        "contract.acceptance.validation_test_hotspot_rebalancing"
+      ],
+      "applies_to": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/cli/validation_handlers.py",
+        "docs/commands/core_python/",
+        "docs/planning/"
+      ]
+    },
+    {
+      "task_id": "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003",
+      "title": "Split document-semantics hotspot into focused suites",
+      "summary": "Replace the remaining mixed-family document-semantics hotspot with focused suites, reusable fixture writers, and aligned unit-suite inventory coverage.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
+      "updated_at": "2026-03-13T19:10:03Z",
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "related_ids": [
+        "prd.validation_test_hotspot_rebalancing",
+        "design.features.validation_test_hotspot_rebalancing",
+        "design.implementation.validation_test_hotspot_rebalancing",
+        "decision.validation_test_hotspot_rebalancing_direction",
+        "contract.acceptance.validation_test_hotspot_rebalancing"
+      ],
+      "applies_to": [
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/README.md",
+        "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+        "core/python/src/watchtower_core/validation/document_semantics.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+      ]
+    },
+    {
+      "task_id": "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
+      "title": "Split integration validation hotspot into focused suites",
+      "summary": "Replace the remaining mixed-family integration validation hotspot with focused suites, small helpers, and aligned integration-suite inventory coverage.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+      "updated_at": "2026-03-13T19:10:03Z",
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "related_ids": [
+        "prd.validation_test_hotspot_rebalancing",
+        "design.features.validation_test_hotspot_rebalancing",
+        "design.implementation.validation_test_hotspot_rebalancing",
+        "decision.validation_test_hotspot_rebalancing_direction",
+        "contract.acceptance.validation_test_hotspot_rebalancing"
+      ],
+      "applies_to": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/README.md",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/validation/artifact.py",
+        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+      ]
+    },
+    {
+      "task_id": "task.validation_test_hotspot_rebalancing.validation_closeout.004",
+      "title": "Validate and close validation test hotspot rebalancing",
+      "summary": "Run targeted and full validation, repeat same-theme confirmation passes, refresh evidence, and close the validation-hotspot trace once the split stays clean.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md",
+      "updated_at": "2026-03-13T19:18:52Z",
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "depends_on": [
+        "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
+        "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003"
+      ],
+      "related_ids": [
+        "prd.validation_test_hotspot_rebalancing",
+        "design.implementation.validation_test_hotspot_rebalancing",
+        "decision.validation_test_hotspot_rebalancing_direction",
+        "contract.acceptance.validation_test_hotspot_rebalancing"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "docs/planning/"
+      ]
+    },
+    {
       "task_id": "task.workflow_routing_review_accuracy_alignment.bootstrap.001",
       "title": "Bootstrap Workflow Routing Review Accuracy Alignment planning chain",
       "summary": "Bootstraps the initial planning chain for Workflow Routing Review Accuracy Alignment.",

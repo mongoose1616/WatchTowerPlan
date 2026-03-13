@@ -2136,6 +2136,54 @@
       ]
     },
     {
+      "trace_id": "trace.validation_test_hotspot_rebalancing",
+      "prd_id": "prd.validation_test_hotspot_rebalancing",
+      "title": "Validation Test Hotspot Rebalancing PRD",
+      "summary": "Review and refactor the remaining governed validation test hotspots so artifact and document-semantics coverage become more modular without reducing live repository contract validation.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/validation_test_hotspot_rebalancing.md",
+      "updated_at": "2026-03-13T18:46:53Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.validation_test_hotspot_rebalancing.001",
+        "req.validation_test_hotspot_rebalancing.002",
+        "req.validation_test_hotspot_rebalancing.003",
+        "req.validation_test_hotspot_rebalancing.004",
+        "req.validation_test_hotspot_rebalancing.005"
+      ],
+      "acceptance_ids": [
+        "ac.validation_test_hotspot_rebalancing.001",
+        "ac.validation_test_hotspot_rebalancing.002",
+        "ac.validation_test_hotspot_rebalancing.003",
+        "ac.validation_test_hotspot_rebalancing.004",
+        "ac.validation_test_hotspot_rebalancing.005"
+      ],
+      "linked_decision_ids": [
+        "decision.validation_test_hotspot_rebalancing_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.validation_test_hotspot_rebalancing"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.validation_test_hotspot_rebalancing"
+      ],
+      "related_paths": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/cli/validation_handlers.py",
+        "docs/commands/core_python/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/repository_standards_posture.md"
+      ]
+    },
+    {
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "prd_id": "prd.workflow_routing_review_accuracy_alignment",
       "title": "Workflow Routing Review Accuracy Alignment PRD",
