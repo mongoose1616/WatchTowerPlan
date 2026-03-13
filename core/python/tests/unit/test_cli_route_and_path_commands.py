@@ -95,3 +95,71 @@ def test_route_preview_matches_realistic_maintenance_request(capsys) -> None:
     assert "workflow.task_lifecycle_management" in workflow_ids
     assert "workflow.code_validation" in workflow_ids
     assert "workflow.commit_closeout" in workflow_ids
+
+
+def test_route_preview_matches_adjacent_boundary_prompts(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "reconcile command docs with current cli behavior",
+        ],
+    )
+
+    assert result == 0
+    assert {entry["task_type"] for entry in payload["selected_routes"]} == {
+        "Documentation-Implementation Reconciliation"
+    }
+
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "reconcile schema-backed indexes examples and validators for one artifact family",
+        ],
+    )
+
+    assert result == 0
+    assert {entry["task_type"] for entry in payload["selected_routes"]} == {
+        "Governed Artifact Reconciliation"
+    }
+
+
+def test_route_preview_filters_low_signal_route_leakage_for_phase_handoffs(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "hand off this task from implementation to validation and create successor tasks",
+        ],
+    )
+
+    task_types = {entry["task_type"] for entry in payload["selected_routes"]}
+    assert result == 0
+    assert task_types == {"Task Phase Transition"}
+    assert "Code Validation" not in task_types
+
+
+def test_route_preview_prefers_phase_transition_for_successor_task_boundaries(
+    capsys,
+) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "route",
+            "preview",
+            "--request",
+            "move task to validation and create successor tasks",
+        ],
+    )
+
+    task_types = {entry["task_type"] for entry in payload["selected_routes"]}
+    assert result == 0
+    assert task_types == {"Task Phase Transition"}
+    assert "Task Lifecycle Management" not in task_types

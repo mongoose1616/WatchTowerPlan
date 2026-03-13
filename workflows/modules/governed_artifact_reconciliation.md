@@ -8,6 +8,7 @@ Use this workflow to reconcile schema-backed governed artifacts with their compa
 - A review or maintenance pass needs an explicit control-plane coherence check rather than relying only on generic code validation.
 - A task's main risk is stale schema IDs, stale canonical paths, broken examples, or hidden loader and validator assumptions about governed artifacts.
 - Choose this route when the primary disagreement is inside one schema-backed artifact family, even if companion docs or trace surfaces also need follow-up.
+- Use this route for schema, example, index, registry, or validator coherence inside one artifact family; use documentation-implementation reconciliation for behavior docs and traceability reconciliation for traced planning links.
 
 ## Inputs
 - Scoped governed-artifact reconciliation brief

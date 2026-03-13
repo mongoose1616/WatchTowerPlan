@@ -52,6 +52,20 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
         in entry.get("internal_reference_paths", [])
         for entry in entries
     )
+    assert any(
+        entry["workflow_id"] == "workflow.documentation_implementation_reconciliation"
+        and "current" in entry["trigger_tags"]
+        and "cli" in entry["trigger_tags"]
+        and "behavior" in entry["trigger_tags"]
+        for entry in entries
+    )
+    assert any(
+        entry["workflow_id"] == "workflow.task_phase_transition"
+        and "successor" in entry["trigger_tags"]
+        and "task" in entry["trigger_tags"]
+        and "owner" in entry["trigger_tags"]
+        for entry in entries
+    )
 
 
 def test_workflow_index_sync_writes_temp_output(tmp_path: Path) -> None:

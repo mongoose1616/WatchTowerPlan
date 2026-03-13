@@ -9,6 +9,7 @@ Use this workflow to reconcile traced planning and governance artifacts with the
 - A task's main risk is stale identifiers, missing upstream or downstream links, or disagreement between human-readable and machine-readable planning surfaces.
 - The new initiative layer may have drifted from the family-specific planning surfaces or the traceability join.
 - Choose this route when the disagreement is mainly about traced IDs, links, or tracker or index projection rather than raw implementation behavior or schema shape.
+- Use this route for trace links, initiative trackers, and planning-index drift; use documentation-implementation reconciliation for behavior docs and governed-artifact reconciliation for schema-backed family coherence.
 
 ## Inputs
 - Scoped traceability reconciliation brief

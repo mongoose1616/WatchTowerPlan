@@ -1966,6 +1966,38 @@
       ]
     },
     {
+      "document_id": "design.features.workflow_route_boundary_discoverability_hardening",
+      "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+      "family": "feature_design",
+      "title": "Workflow Route Boundary Discoverability Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Workflow Route Boundary Discoverability Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/workflow_route_boundary_discoverability_hardening.md",
+      "updated_at": "2026-03-13T21:17:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/workflow_route_boundary_discoverability_hardening.md",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/control_plane/registries/workflows/",
+        "core/control_plane/indexes/routes/",
+        "core/control_plane/indexes/workflows/",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md"
+      ]
+    },
+    {
       "document_id": "design.features.workflow_routing_and_authoring",
       "trace_id": "trace.workflow_system_operationalization",
       "family": "feature_design",
@@ -3593,6 +3625,40 @@
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/planning/prds/validation_test_hotspot_rebalancing.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.workflow_route_boundary_discoverability_hardening",
+      "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+      "family": "implementation_plan",
+      "title": "Workflow Route Boundary Discoverability Hardening Implementation Plan",
+      "summary": "Breaks Workflow Route Boundary Discoverability Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/workflow_route_boundary_discoverability_hardening.md",
+      "updated_at": "2026-03-13T21:40:13Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md"
+      ],
+      "related_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/control_plane/registries/workflows/",
+        "core/control_plane/indexes/routes/",
+        "core/control_plane/indexes/workflows/",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/design/features/workflow_route_boundary_discoverability_hardening.md"
       ]
     },
     {

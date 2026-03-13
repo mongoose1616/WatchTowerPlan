@@ -518,7 +518,9 @@
       "extra_trigger_tags": [
         "handoff",
         "phase",
-        "transition"
+        "transition",
+        "successor",
+        "owner"
       ],
       "companion_workflow_ids": [
         "workflow.task_lifecycle_management",

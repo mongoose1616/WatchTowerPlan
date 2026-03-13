@@ -42,6 +42,16 @@ uv run watchtower-core query workflows --query validation
 
 ```sh
 cd core/python
+uv run watchtower-core query workflows --query "current cli behavior"
+```
+
+```sh
+cd core/python
+uv run watchtower-core query workflows --query "successor tasks"
+```
+
+```sh
+cd core/python
 uv run watchtower-core query workflows --phase-type reconciliation
 ```
 
@@ -59,6 +69,8 @@ uv run watchtower-core query workflows --reference-path docs/references/github_c
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints matching workflow IDs, retrieval metadata, summaries, and any indexed task-specific files to load.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and workflow lookup fields such as `phase_type`, `task_family`, `trigger_tags`, `reference_doc_paths`, `internal_reference_paths`, and `external_reference_urls`.
+- Trigger terms come from workflow titles, purpose summaries, retrieval metadata, and task-specific additional-load files, so adjacent route lookups such as `current cli behavior` and `successor tasks` can resolve without exact module names.
+- Use workflow lookup to distinguish adjacent boundaries before opening the raw module docs: behavior docs versus implementation drift, schema-family coherence, traced planning drift, task-record lifecycle work, and task-phase handoff work.
 - If no entries match the requested filters, the command exits successfully and reports that no workflow entries matched.
 
 ## Related Commands
@@ -75,4 +87,4 @@ uv run watchtower-core query workflows --reference-path docs/references/github_c
 - `core/control_plane/indexes/workflows/workflow_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-13T21:17:49Z`

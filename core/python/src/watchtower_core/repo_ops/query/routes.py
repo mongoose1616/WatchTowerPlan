@@ -31,6 +31,35 @@ _IGNORED_TOKENS = {
     "when",
     "with",
 }
+_TOKEN_ALIASES = {
+    "artifacts": "artifact",
+    "behaviors": "behavior",
+    "commands": "command",
+    "commits": "commit",
+    "docs": "doc",
+    "documentation": "doc",
+    "examples": "example",
+    "families": "family",
+    "indices": "index",
+    "indexes": "index",
+    "links": "link",
+    "paths": "path",
+    "queries": "query",
+    "references": "reference",
+    "registries": "registry",
+    "schemas": "schema",
+    "surfaces": "surface",
+    "tasks": "task",
+    "trackers": "tracker",
+    "validators": "validator",
+    "workflows": "workflow",
+}
+_TASK_LIFECYCLE_GENERIC_KEYWORDS = {
+    "create task",
+    "create tasks",
+    "create tracked tasks",
+    "tasks",
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -151,7 +180,10 @@ class RoutePreviewService:
                 )
             )
 
-        return tuple(sorted(matches, key=lambda item: (-item.score, item.task_type)))
+        matches = _apply_boundary_filters(matches, request_tokens)
+
+        sorted_matches = tuple(sorted(matches, key=lambda item: (-item.score, item.task_type)))
+        return _filter_selected_routes(sorted_matches)
 
     def _selected_workflows(
         self,
@@ -212,6 +244,8 @@ def _keyword_match_score(
         return 8
     if matched_count == len(keyword_tokens) and len(keyword_tokens) >= 2:
         return 10 + (2 * len(keyword_tokens))
+    if len(keyword_tokens) >= 4 and matched_count >= len(keyword_tokens) - 1:
+        return 6 + (2 * matched_count)
     return 0
 
 
@@ -230,6 +264,39 @@ def _tokens_match(request_token: str, candidate_token: str) -> bool:
     return request_token == candidate_token
 
 
+def _filter_selected_routes(
+    matches: tuple[RoutePreviewMatch, ...],
+) -> tuple[RoutePreviewMatch, ...]:
+    if len(matches) <= 1:
+        return matches
+
+    top_match = matches[0]
+    minimum_secondary_score = max(12, _ceil_fraction(top_match.score, 1, 2))
+    filtered = [top_match]
+    filtered.extend(
+        match for match in matches[1:] if match.score >= minimum_secondary_score
+    )
+    return tuple(filtered)
+
+
+def _apply_boundary_filters(
+    matches: list[RoutePreviewMatch],
+    request_tokens: tuple[str, ...],
+) -> list[RoutePreviewMatch]:
+    if "successor" not in request_tokens:
+        return matches
+
+    filtered: list[RoutePreviewMatch] = []
+    for match in matches:
+        if (
+            match.task_type == "Task Lifecycle Management"
+            and set(match.matched_keywords).issubset(_TASK_LIFECYCLE_GENERIC_KEYWORDS)
+        ):
+            continue
+        filtered.append(match)
+    return filtered
+
+
 def _phrase_in_request(phrase: str, request_text: str) -> bool:
     normalized_phrase = _normalized_phrase_text(phrase)
     normalized_request = _normalized_phrase_text(request_text)
@@ -244,7 +311,22 @@ def _normalized_phrase_text(value: str) -> str:
 
 def _normalized_tokens(value: str) -> tuple[str, ...]:
     return tuple(
-        token
+        canonical
         for token in _TOKEN_PATTERN.findall(normalize_text(value))
-        if token not in _IGNORED_TOKENS
+        if (canonical := _canonical_token(token)) not in _IGNORED_TOKENS
     )
+
+
+def _canonical_token(token: str) -> str:
+    canonical = _TOKEN_ALIASES.get(token, token)
+    if len(canonical) <= 4:
+        return canonical
+    if canonical.endswith("ies"):
+        return canonical[:-3] + "y"
+    if canonical.endswith("s") and not canonical.endswith(("ss", "us")):
+        return canonical[:-1]
+    return canonical
+
+
+def _ceil_fraction(value: int, numerator: int, denominator: int) -> int:
+    return (value * numerator + denominator - 1) // denominator

@@ -2276,6 +2276,57 @@
       ]
     },
     {
+      "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+      "prd_id": "prd.workflow_route_boundary_discoverability_hardening",
+      "title": "Workflow Route Boundary Discoverability Hardening PRD",
+      "summary": "Harden workflow route preview and workflow lookup so realistic reconciliation and handoff requests resolve to the right adjacent workflow boundaries without low-signal route leakage.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md",
+      "updated_at": "2026-03-13T21:17:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.workflow_route_boundary_discoverability_hardening.001",
+        "req.workflow_route_boundary_discoverability_hardening.002",
+        "req.workflow_route_boundary_discoverability_hardening.003",
+        "req.workflow_route_boundary_discoverability_hardening.004",
+        "req.workflow_route_boundary_discoverability_hardening.005",
+        "req.workflow_route_boundary_discoverability_hardening.006"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_route_boundary_discoverability_hardening.001",
+        "ac.workflow_route_boundary_discoverability_hardening.002",
+        "ac.workflow_route_boundary_discoverability_hardening.003",
+        "ac.workflow_route_boundary_discoverability_hardening.004",
+        "ac.workflow_route_boundary_discoverability_hardening.005"
+      ],
+      "linked_decision_ids": [
+        "decision.workflow_route_boundary_discoverability_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.workflow_route_boundary_discoverability_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.workflow_route_boundary_discoverability_hardening"
+      ],
+      "related_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/control_plane/registries/workflows/",
+        "core/control_plane/indexes/routes/",
+        "core/control_plane/indexes/workflows/",
+        "docs/commands/core_python/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/documentation/workflow_md_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "prd_id": "prd.workflow_routing_review_accuracy_alignment",
       "title": "Workflow Routing Review Accuracy Alignment PRD",

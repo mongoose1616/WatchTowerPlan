@@ -142,6 +142,34 @@ def test_query_workflows_supports_retrieval_filters(capsys) -> None:
     assert all("trace" in entry["trigger_tags"] for entry in payload["results"])
 
 
+def test_query_workflows_supports_boundary_discovery_terms(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        ["query", "workflows", "--query", "current cli behavior"],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query workflows"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["workflow_id"] == "workflow.documentation_implementation_reconciliation"
+        for entry in payload["results"]
+    )
+
+    result, payload = run_json_command(
+        capsys,
+        ["query", "workflows", "--query", "successor tasks"],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query workflows"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["workflow_id"] == "workflow.task_phase_transition"
+        for entry in payload["results"]
+    )
+
+
 def test_query_references_supports_reverse_citation_filters(capsys) -> None:
     result, payload = run_json_command(
         capsys,

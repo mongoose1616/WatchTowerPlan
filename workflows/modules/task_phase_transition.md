@@ -1,12 +1,13 @@
 # Task Phase Transition Workflow
 
 ## Purpose
-Use this workflow to hand a task from one owner, phase, or execution stage to the next without losing context, dependencies, or trace links.
+Use this workflow to hand a task from one owner, phase, or execution stage to the next, including explicit successor tasks, without losing context, dependencies, or trace links.
 
 ## Use When
 - Work is moving from planning to design, design to implementation, implementation to review, review to validation, or any similar bounded phase change.
 - Ownership of a task is changing and the next responsible person or phase must be explicit.
 - A task should hand off into one or more successor tasks instead of continuing as one long-lived ambiguous record.
+- Use this route when the main action is a handoff or successor-task boundary; use `task_lifecycle_management.md` when the work is mainly editing task state without a phase or owner transition.
 
 ## Inputs
 - Source task or task set that is changing phase

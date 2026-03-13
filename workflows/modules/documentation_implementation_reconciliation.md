@@ -1,13 +1,14 @@
 # Documentation-Implementation Reconciliation Workflow
 
 ## Purpose
-Use this workflow to compare implementation behavior against companion documentation and machine-readable lookup surfaces so drift is found, classified, and resolved explicitly.
+Use this workflow to compare current CLI or implementation behavior against companion documentation and machine-readable lookup surfaces so drift is found, classified, and resolved explicitly.
 
 ## Use When
 - A code, command, schema, or governed artifact change may have invalidated README files, command pages, examples, or machine-readable lookup surfaces.
 - A review or maintenance pass needs an explicit docs-versus-implementation reconciliation step rather than relying on broad repository review alone.
 - A task's main risk is stale or contradictory behavior documentation rather than missing implementation.
 - Choose this route when the disagreement is mainly about behavior claims, not traced planning links or schema-family coherence.
+- Use this route for command docs, README, example, or lookup-surface drift around live behavior; use the adjacent governed-artifact or traceability routes when the issue is mainly about schema families or traced planning links instead.
 
 ## Inputs
 - Scoped reconciliation brief

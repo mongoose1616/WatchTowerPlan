@@ -4746,6 +4746,101 @@
       "notes": "Validation evidence refreshed at 2026-03-13T19:19:06Z after the integration and document-semantics hotspot splits, README-driven repository-path rebuild, the reopened loop that repaired the adjacent `fixture_repo_support` import regression, the acceptance-evidence reconciliation repair, and the final clean validation or confirmation reruns on the closed trace."
     },
     {
+      "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+      "title": "Workflow Route Boundary Discoverability Hardening PRD",
+      "summary": "Harden workflow route preview and workflow lookup so realistic reconciliation and handoff requests resolve to the right adjacent workflow boundaries without low-signal route leakage.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T21:45:18Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md",
+      "prd_ids": [
+        "prd.workflow_route_boundary_discoverability_hardening"
+      ],
+      "decision_ids": [
+        "decision.workflow_route_boundary_discoverability_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.workflow_route_boundary_discoverability_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.workflow_route_boundary_discoverability_hardening"
+      ],
+      "task_ids": [
+        "task.workflow_route_boundary_discoverability_hardening.bootstrap.001",
+        "task.workflow_route_boundary_discoverability_hardening.route_preview_discrimination.002",
+        "task.workflow_route_boundary_discoverability_hardening.validation_closeout.004",
+        "task.workflow_route_boundary_discoverability_hardening.workflow_lookup_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.workflow_route_boundary_discoverability_hardening.001",
+        "ac.workflow_route_boundary_discoverability_hardening.002",
+        "ac.workflow_route_boundary_discoverability_hardening.003",
+        "ac.workflow_route_boundary_discoverability_hardening.004",
+        "ac.workflow_route_boundary_discoverability_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.workflow_route_boundary_discoverability_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.workflow_route_boundary_discoverability_hardening.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T21:42:14Z",
+      "closure_reason": "Delivered, validated, and confirmed clean after repeated workflow-boundary review passes",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/routes/",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/indexes/workflows/",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/workflow_route_boundary_discoverability_hardening_planning_baseline.v1.json",
+        "core/control_plane/registries/workflows/",
+        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/tests/unit/test_cli_route_and_path_commands.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "core/python/tests/unit/test_workflow_index_sync.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/workflow_route_boundary_discoverability_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/design/implementation/workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/tasks/closed/align_workflow_lookup_metadata_and_boundary_guidance.md",
+        "docs/planning/tasks/closed/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
+        "docs/planning/tasks/closed/validate_and_close_workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/tasks/closed/workflow_route_boundary_discoverability_hardening_bootstrap.md",
+        "docs/planning/tasks/task_tracking.md",
+        "workflows/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "workflows/modules/documentation_implementation_reconciliation.md",
+        "workflows/modules/governed_artifact_reconciliation.md",
+        "workflows/modules/task_lifecycle_management.md",
+        "workflows/modules/task_phase_transition.md",
+        "workflows/modules/traceability_reconciliation.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed for the workflow-route boundary review loop after the route-preview scorer hardening, workflow-lookup cue refresh, acceptance or evidence coverage repair, validation-closeout task completion, and final initiative closeout."
+    },
+    {
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "title": "Workflow Routing Review Accuracy Alignment PRD",
       "summary": "Harden advisory route preview for audit-style, documentation-alignment, governed-artifact, and foundations-aware review requests while preserving deterministic routing boundaries.",

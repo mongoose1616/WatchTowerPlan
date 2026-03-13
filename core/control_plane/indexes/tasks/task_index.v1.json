@@ -4770,6 +4770,127 @@
       ]
     },
     {
+      "task_id": "task.workflow_route_boundary_discoverability_hardening.bootstrap.001",
+      "title": "Bootstrap Workflow Route Boundary Discoverability Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Workflow Route Boundary Discoverability Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/workflow_route_boundary_discoverability_hardening_bootstrap.md",
+      "updated_at": "2026-03-13T21:21:00Z",
+      "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+      "related_ids": [
+        "prd.workflow_route_boundary_discoverability_hardening",
+        "design.features.workflow_route_boundary_discoverability_hardening",
+        "design.implementation.workflow_route_boundary_discoverability_hardening",
+        "decision.workflow_route_boundary_discoverability_hardening_direction",
+        "contract.acceptance.workflow_route_boundary_discoverability_hardening"
+      ],
+      "applies_to": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/control_plane/registries/workflows/",
+        "core/control_plane/indexes/routes/",
+        "core/control_plane/indexes/workflows/",
+        "docs/commands/core_python/"
+      ]
+    },
+    {
+      "task_id": "task.workflow_route_boundary_discoverability_hardening.route_preview_discrimination.002",
+      "title": "Harden workflow route preview discrimination for adjacent routes",
+      "summary": "Improve route-preview matching and selection so realistic reconciliation prompts resolve correctly and low-signal route leakage is filtered without hiding intentional multi-route requests.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
+      "updated_at": "2026-03-13T21:37:07Z",
+      "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+      "depends_on": [
+        "task.workflow_route_boundary_discoverability_hardening.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.workflow_route_boundary_discoverability_hardening",
+        "design.features.workflow_route_boundary_discoverability_hardening",
+        "design.implementation.workflow_route_boundary_discoverability_hardening",
+        "decision.workflow_route_boundary_discoverability_hardening_direction",
+        "contract.acceptance.workflow_route_boundary_discoverability_hardening"
+      ],
+      "applies_to": [
+        "workflows/ROUTING_TABLE.md",
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "core/control_plane/indexes/routes/route_index.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.workflow_route_boundary_discoverability_hardening.validation_closeout.004",
+      "title": "Validate and close workflow route boundary discoverability hardening",
+      "summary": "Run targeted validation, full validation, repeated confirmation passes, evidence refresh, and terminal closeout once the workflow-boundary slice stays clean.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_workflow_route_boundary_discoverability_hardening.md",
+      "updated_at": "2026-03-13T21:40:07Z",
+      "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+      "depends_on": [
+        "task.workflow_route_boundary_discoverability_hardening.route_preview_discrimination.002",
+        "task.workflow_route_boundary_discoverability_hardening.workflow_lookup_alignment.003"
+      ],
+      "related_ids": [
+        "prd.workflow_route_boundary_discoverability_hardening",
+        "design.features.workflow_route_boundary_discoverability_hardening",
+        "design.implementation.workflow_route_boundary_discoverability_hardening",
+        "decision.workflow_route_boundary_discoverability_hardening_direction",
+        "contract.acceptance.workflow_route_boundary_discoverability_hardening"
+      ],
+      "applies_to": [
+        "core/python/",
+        "workflows/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ]
+    },
+    {
+      "task_id": "task.workflow_route_boundary_discoverability_hardening.workflow_lookup_alignment.003",
+      "title": "Align workflow lookup metadata and boundary guidance",
+      "summary": "Refresh workflow trigger metadata, adjacent workflow guidance, command docs, and derived workflow-index surfaces so workflow lookup reinforces the same route boundaries as route preview.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/align_workflow_lookup_metadata_and_boundary_guidance.md",
+      "updated_at": "2026-03-13T21:37:07Z",
+      "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+      "depends_on": [
+        "task.workflow_route_boundary_discoverability_hardening.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.workflow_route_boundary_discoverability_hardening",
+        "design.features.workflow_route_boundary_discoverability_hardening",
+        "design.implementation.workflow_route_boundary_discoverability_hardening",
+        "decision.workflow_route_boundary_discoverability_hardening_direction",
+        "contract.acceptance.workflow_route_boundary_discoverability_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/query/workflows.py",
+        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "workflows/modules/"
+      ]
+    },
+    {
       "task_id": "task.workflow_routing_review_accuracy_alignment.bootstrap.001",
       "title": "Bootstrap Workflow Routing Review Accuracy Alignment planning chain",
       "summary": "Bootstraps the initial planning chain for Workflow Routing Review Accuracy Alignment.",

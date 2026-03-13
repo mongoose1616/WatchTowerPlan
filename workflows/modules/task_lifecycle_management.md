@@ -7,6 +7,7 @@ Use this workflow to create, update, split, unblock, or close local task records
 - Engineer-sized execution work needs a new tracked task or an existing task needs a material state change.
 - A task owner, task status, priority, blockers, dependencies, or linked planning surfaces need to be updated explicitly.
 - A task should move between `docs/planning/tasks/open/` and `docs/planning/tasks/closed/`.
+- Use this route when the main action is creating, updating, splitting, blocking, unblocking, or closing task records; use `task_phase_transition.md` when the main action is handing work to the next owner or phase.
 
 ## Inputs
 - Scoped task-management request or active work item

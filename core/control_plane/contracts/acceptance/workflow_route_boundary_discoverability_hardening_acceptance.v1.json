@@ -1,0 +1,124 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.workflow_route_boundary_discoverability_hardening",
+  "title": "Workflow Route Boundary Discoverability Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
+  "source_prd_id": "prd.workflow_route_boundary_discoverability_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.workflow_route_boundary_discoverability_hardening.001",
+      "summary": "The trace publishes the fully-authored PRD, accepted direction decision, active feature design, active implementation plan, refreshed acceptance contract, refreshed evidence ledger, and bounded closed task set with the explicit coverage map and findings ledger for the workflow-boundary slice.",
+      "source_requirement_ids": [
+        "req.workflow_route_boundary_discoverability_hardening.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/design/features/workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/design/implementation/workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/decisions/workflow_route_boundary_discoverability_hardening_direction.md",
+        "docs/planning/tasks/closed/workflow_route_boundary_discoverability_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
+        "docs/planning/tasks/closed/align_workflow_lookup_metadata_and_boundary_guidance.md",
+        "docs/planning/tasks/closed/validate_and_close_workflow_route_boundary_discoverability_hardening.md",
+        "core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_route_boundary_discoverability_hardening_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Closeout-aligned contract should preserve the authored planning chain, refreshed contract and evidence surfaces, and the bounded closed task set for the workflow-route review loop."
+    },
+    {
+      "acceptance_id": "ac.workflow_route_boundary_discoverability_hardening.002",
+      "summary": "Route preview now resolves realistic documentation-implementation and governed-artifact reconciliation prompts to the intended routes, and successor-task handoff prompts no longer leak low-signal task-lifecycle or code-validation matches.",
+      "source_requirement_ids": [
+        "req.workflow_route_boundary_discoverability_hardening.002",
+        "req.workflow_route_boundary_discoverability_hardening.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/query/routes.py",
+        "workflows/ROUTING_TABLE.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/python/tests/unit/test_cli_route_and_path_commands.py",
+        "core/python/tests/unit/test_route_index_sync.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
+        "workflows/modules/task_lifecycle_management.md",
+        "workflows/modules/task_phase_transition.md"
+      ],
+      "notes": "Covers the deterministic scorer hardening, the authored route-trigger expansion, and the successor-boundary filter that keeps phase-transition handoff prompts on the intended route."
+    },
+    {
+      "acceptance_id": "ac.workflow_route_boundary_discoverability_hardening.003",
+      "summary": "Workflow lookup surfaces and companion guidance now expose the adjacent reconciliation and task-route boundaries through realistic lookup terms such as `current cli behavior` and `successor tasks`.",
+      "source_requirement_ids": [
+        "req.workflow_route_boundary_discoverability_hardening.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_workflows.md",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/tests/unit/test_workflow_index_sync.py"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/align_workflow_lookup_metadata_and_boundary_guidance.md",
+        "workflows/modules/documentation_implementation_reconciliation.md",
+        "workflows/modules/task_phase_transition.md"
+      ],
+      "notes": "Covers the workflow metadata trigger-term refresh and the workflow-query guidance that now reinforce the same boundaries exposed by route preview."
+    },
+    {
+      "acceptance_id": "ac.workflow_route_boundary_discoverability_hardening.004",
+      "summary": "The authored routing guidance, workflow modules, workflow metadata registry, derived route and workflow indexes, and command docs stay aligned in one change set while preserving explicit workflow-family boundaries.",
+      "source_requirement_ids": [
+        "req.workflow_route_boundary_discoverability_hardening.005"
+      ],
+      "validation_targets": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/documentation_implementation_reconciliation.md",
+        "workflows/modules/governed_artifact_reconciliation.md",
+        "workflows/modules/traceability_reconciliation.md",
+        "workflows/modules/task_lifecycle_management.md",
+        "workflows/modules/task_phase_transition.md",
+        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/commands/core_python/watchtower_core_query_workflows.md"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/workflow_route_boundary_discoverability_hardening.md"
+      ],
+      "notes": "Covers the human-readable and machine-readable companion surfaces that publish and explain the adjacent workflow boundaries without collapsing the workflow family."
+    },
+    {
+      "acceptance_id": "ac.workflow_route_boundary_discoverability_hardening.005",
+      "summary": "Targeted validation, full repository validation, post-fix review, second-angle confirmation, and adversarial confirmation complete cleanly with no new actionable issue under the workflow-route boundary theme.",
+      "source_requirement_ids": [
+        "req.workflow_route_boundary_discoverability_hardening.006"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "workflows/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/workflow_route_boundary_discoverability_hardening_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "notes": "Covers the repeated validation and confirmation loop plus the final traced closeout gate."
+    }
+  ]
+}

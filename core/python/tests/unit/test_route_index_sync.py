@@ -41,6 +41,25 @@ def test_route_index_sync_builds_schema_valid_document() -> None:
         for entry in entries
     )
     assert any(
+        entry["route_id"] == "route.documentation_implementation_reconciliation"
+        and "reconcile command docs with current cli behavior" in entry["trigger_keywords"]
+        and "reconcile workflow docs with current cli behavior" in entry["trigger_keywords"]
+        for entry in entries
+    )
+    assert any(
+        entry["route_id"] == "route.governed_artifact_reconciliation"
+        and "reconcile schema backed indexes examples and validators"
+        in entry["trigger_keywords"]
+        for entry in entries
+    )
+    assert any(
+        entry["route_id"] == "route.task_phase_transition"
+        and "create successor tasks" in entry["trigger_keywords"]
+        and "successor tasks" in entry["trigger_keywords"]
+        and "create successor tasks during handoff" in entry["trigger_keywords"]
+        for entry in entries
+    )
+    assert any(
         entry["route_id"] == "route.foundations_alignment_review"
         and entry["task_type"] == "Foundations Alignment Review"
         and "workflow.foundations_context_review" in entry["required_workflow_ids"]
@@ -165,9 +184,15 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
         "Review the workflow docs against the current CLI behavior and lookup surfaces.": {
             "Documentation-Implementation Reconciliation"
         },
+        "Reconcile command docs with current cli behavior.": {
+            "Documentation-Implementation Reconciliation"
+        },
         "Do a documentation review of the command docs.": {"Documentation Review"},
         "Do a standards review of the workflow standards.": {"Documentation Review"},
         "Verify that the workflow indexes, schemas, and registry stay aligned.": {
+            "Governed Artifact Reconciliation"
+        },
+        "Reconcile schema-backed indexes examples and validators for one artifact family.": {
             "Governed Artifact Reconciliation"
         },
         "Review workflow index schema registry alignment.": {
@@ -195,6 +220,10 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
         "implementation plan": {"Implementation Planning"},
         "initiative closeout": {"Initiative Closeout"},
         "hand off task": {"Task Phase Transition"},
+        "Hand off this task from implementation to validation and create successor tasks.": {
+            "Task Phase Transition",
+        },
+        "Move task to validation and create successor tasks.": {"Task Phase Transition"},
     }
 
     for request_text, expected_task_types in expectations.items():

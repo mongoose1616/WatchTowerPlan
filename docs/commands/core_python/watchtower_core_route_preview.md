@@ -51,7 +51,22 @@ uv run watchtower-core route preview --request "review the workflow docs against
 
 ```sh
 cd core/python
+uv run watchtower-core route preview --request "reconcile command docs with current cli behavior" --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core route preview --request "reconcile schema-backed indexes examples and validators for one artifact family" --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json
+```
+
+```sh
+cd core/python
+uv run watchtower-core route preview --request "hand off this task from implementation to validation and create successor tasks" --format json
 ```
 
 ```sh
@@ -64,9 +79,15 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - Exactly one route selector is required: either `--request` or `--task-type`.
 - In `human` mode, the command prints the selected routed task types, matched trigger keywords, and the merged active workflow-module set.
 - In `json` mode, the command prints one JSON object with the command name, selected routes, selected workflows, and any advisory warnings.
-- Free-form request matching is deterministic and advisory. It scores exact phrases first, then falls back to exact normalized trigger-keyword token coverage plus full authored task-type token-set matches so realistic maintenance requests and audit prompts do not require verbatim routing-table phrasing while generic partial title overlap does not leak across routes.
+- Free-form request matching is deterministic and advisory. It scores exact phrases first, then falls back to canonicalized trigger-keyword coverage so realistic maintenance requests and adjacent-route prompts do not require verbatim routing-table phrasing.
+- When one route is materially stronger than the others, the preview keeps only the dominant route plus any materially strong secondary matches instead of leaking in low-signal single-word matches. Successor-task handoff prompts stay on `Task Phase Transition` even though that workflow later opens the lifecycle rules as supporting context.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of falling through to no match or a broad repository review.
 - Foundations-aware documentation-alignment prompts can now select the explicit `Foundations Alignment Review` task type, which combines foundations context loading with documentation refresh.
+- Adjacent route boundaries worth remembering:
+  - Use `Documentation-Implementation Reconciliation` for command docs, README, example, or lookup-surface drift around live behavior.
+  - Use `Governed Artifact Reconciliation` for schema, example, index, registry, or validator coherence inside one artifact family.
+  - Use `Traceability Reconciliation` for traced planning links, trackers, and family-index drift.
+  - Use `Task Lifecycle Management` for creating or editing task records; use `Task Phase Transition` when the main action is a handoff or successor-task boundary, including creating successor tasks for the next phase.
 - The authored routing surfaces remain authoritative when a human or agent executes the task.
 - If no route matches the request text strongly enough, the command exits successfully with an empty selection plus a warning to refine the request or use `--task-type`.
 
@@ -84,4 +105,4 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - `core/control_plane/indexes/routes/route_index.v1.json`
 
 ## Updated At
-- `2026-03-13T04:30:15Z`
+- `2026-03-13T21:40:13Z`
