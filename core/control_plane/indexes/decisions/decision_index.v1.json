@@ -1182,6 +1182,50 @@
       ]
     },
     {
+      "trace_id": "trace.refactor_review_and_hardening",
+      "decision_id": "decision.refactor_review_and_hardening_direction",
+      "title": "Refactor Review and Hardening Direction Decision",
+      "summary": "Records the initial direction decision for Refactor Review and Hardening.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/refactor_review_and_hardening_direction.md",
+      "updated_at": "2026-03-13T14:13:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.refactor_review_and_hardening"
+      ],
+      "linked_design_ids": [
+        "design.features.refactor_review_and_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.refactor_review_and_hardening"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/references/",
+        "docs/standards/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "decision_id": "decision.reference_and_workflow_standards_alignment_direction",
       "title": "Reference and Workflow Standards Alignment Direction Decision",

@@ -145,7 +145,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/coordination_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T15:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2126,7 +2126,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/coordination_tracking_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-13T15:05:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

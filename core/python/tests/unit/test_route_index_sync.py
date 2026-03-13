@@ -27,6 +27,20 @@ def test_route_index_sync_builds_schema_valid_document() -> None:
         for entry in entries
     )
     assert any(
+        entry["route_id"] == "route.documentation_review"
+        and entry["task_type"] == "Documentation Review"
+        and "workflow.current_state_inspection" in entry["required_workflow_ids"]
+        and "workflow.documentation_review" in entry["required_workflow_ids"]
+        for entry in entries
+    )
+    assert any(
+        entry["route_id"] == "route.documentation_refresh"
+        and entry["task_type"] == "Documentation Refresh"
+        and "workflow.current_state_inspection" in entry["required_workflow_ids"]
+        and "workflow.documentation_refresh" in entry["required_workflow_ids"]
+        for entry in entries
+    )
+    assert any(
         entry["route_id"] == "route.foundations_alignment_review"
         and entry["task_type"] == "Foundations Alignment Review"
         and "workflow.foundations_context_review" in entry["required_workflow_ids"]
@@ -151,6 +165,8 @@ def test_route_preview_service_matches_workflow_review_regression_requests() -> 
         "Review the workflow docs against the current CLI behavior and lookup surfaces.": {
             "Documentation-Implementation Reconciliation"
         },
+        "Do a documentation review of the command docs.": {"Documentation Review"},
+        "Do a standards review of the workflow standards.": {"Documentation Review"},
         "Verify that the workflow indexes, schemas, and registry stay aligned.": {
             "Governed Artifact Reconciliation"
         },

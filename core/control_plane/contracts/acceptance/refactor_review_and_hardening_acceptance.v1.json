@@ -1,0 +1,120 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.refactor_review_and_hardening",
+  "title": "Refactor Review and Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.refactor_review_and_hardening",
+  "source_prd_id": "prd.refactor_review_and_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.refactor_review_and_hardening.001",
+      "summary": "The trace publishes the phase-one PRD, accepted decision, active design and implementation plan, planning-baseline evidence, closed bootstrap task, bounded execution tasks, and the explicit coverage map plus findings ledger for the slice.",
+      "source_requirement_ids": [
+        "req.refactor_review_and_hardening.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/refactor_review_and_hardening.md",
+        "docs/planning/decisions/refactor_review_and_hardening_direction.md",
+        "docs/planning/design/features/refactor_review_and_hardening.md",
+        "docs/planning/design/implementation/refactor_review_and_hardening.md",
+        "docs/planning/tasks/closed/refactor_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/clarify_workflow_route_discrimination_and_documentation_review_routing.md",
+        "docs/planning/tasks/closed/slim_coordination_current_state_payload_and_thin_route_first_entrypoints.md",
+        "docs/planning/tasks/closed/validate_and_close_phase_one_refactor_simplification.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The phase-one refactor slice keeps the broader audit as comparative input while publishing the bounded local coverage map, findings ledger, and task chain inside the traced planning corpus."
+    },
+    {
+      "acceptance_id": "ac.refactor_review_and_hardening.002",
+      "summary": "Workflow routing distinguishes bounded documentation review from adjacent refresh, repository-review, and reconciliation routes across authored workflow surfaces, route metadata, command docs, and regression coverage.",
+      "source_requirement_ids": [
+        "req.refactor_review_and_hardening.002"
+      ],
+      "validation_targets": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/documentation_review.md",
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/repository_inventory_review.md",
+        "workflows/modules/repository_assessment.md",
+        "workflows/modules/code_review.md",
+        "workflows/modules/task_handoff_review.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "core/python/tests/unit/test_workflow_index_sync.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.refactor_review_and_hardening.003",
+      "summary": "The coordination index and coordination query path stay compact current-state surfaces by default while preserving explicit terminal-status lookup behavior through the intended derived initiative data.",
+      "source_requirement_ids": [
+        "req.refactor_review_and_hardening.003"
+      ],
+      "validation_targets": [
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "core/python/tests/unit/test_coordination_tracking_sync.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.refactor_review_and_hardening.004",
+      "summary": "Planning and command umbrella entrypoints stay route-first and stop carrying low-value duplicated catalog and example content already covered by deeper planning or command surfaces.",
+      "source_requirement_ids": [
+        "req.refactor_review_and_hardening.004"
+      ],
+      "validation_targets": [
+        "docs/planning/README.md",
+        "docs/planning/initiatives/README.md",
+        "docs/commands/core_python/watchtower_core.md",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_sync.md",
+        "core/python/README.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/commands/core_python/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.refactor_review_and_hardening.005",
+      "summary": "The phase-one slice completes targeted validation, full repository validation, repeated confirmation passes, evidence refresh, task closeout, and initiative closeout in one clean committed state.",
+      "source_requirement_ids": [
+        "req.refactor_review_and_hardening.005"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ]
+    }
+  ]
+}

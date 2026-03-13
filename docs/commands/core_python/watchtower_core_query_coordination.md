@@ -36,6 +36,7 @@ uv run watchtower-core query coordination [--query <text>] [--trace-id <trace_id
 ## Notes
 - This command defaults to active initiatives because it is the coordination start-here path.
 - The JSON output also carries top-level coordination state, recommended next action, actionable-task summaries, and recent closeout context.
+- Explicit non-active `--initiative-status` lookups resolve result rows from initiative-family data while the top-level coordination snapshot remains the current repo state.
 - `docs/planning/coordination_tracking.md` is the compact human companion view built from the same coordination state.
 - Use `watchtower-core query planning` after this command when you need the canonical deep planning record for one trace.
 - Use `watchtower-core query authority` when you need to confirm whether coordination is canonical for the question you are asking.
@@ -57,11 +58,18 @@ cd core/python
 uv run watchtower-core query coordination --initiative-status completed --trace-id trace.core_python_foundation
 ```
 
+```sh
+cd core/python
+uv run watchtower-core query coordination --initiative-status completed --trace-id trace.core_python_foundation --format json
+```
+
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
 - With no explicit `--initiative-status`, the command defaults to `active`.
+- The default coordination snapshot stays compact by carrying only active initiative entries plus recent closeout context.
 - In `human` mode, the command prints the top-level coordination mode, recommended next action, matching initiatives, and recent closeout context when useful.
 - In `json` mode, the command prints one JSON object with the command name, coordination mode, recommended next action, result records, actionable tasks, recent closeouts, and the active-only default when it was applied. Embedded initiative entries use `artifact_status` plus `initiative_status`.
+- When `--initiative-status` is explicitly set to a non-active value, the command keeps the same top-level coordination snapshot but serves matching result rows from the initiative-family view so historical lookup remains available without bloating the default coordination artifact.
 - If no entries match the requested filters, the command still returns the current coordination mode and the default next step.
 
 ## Related Commands
@@ -82,4 +90,4 @@ uv run watchtower-core query coordination --initiative-status completed --trace-
 - `core/control_plane/indexes/coordination/coordination_index.v1.json`
 
 ## Updated At
-- `2026-03-11T03:10:00Z`
+- `2026-03-13T15:05:00Z`

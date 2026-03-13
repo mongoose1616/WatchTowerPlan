@@ -5667,6 +5667,16 @@
       "audience_hint": "automation"
     },
     {
+      "path": "workflows/modules/documentation_review.md",
+      "kind": "file",
+      "surface_kind": "workflow_module",
+      "summary": "Workflow module for reviewing documentation or standards before refresh or remediation work.",
+      "parent_path": "workflows/modules/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "automation"
+    },
+    {
       "path": "workflows/modules/external_guidance_research.md",
       "kind": "file",
       "surface_kind": "workflow_module",

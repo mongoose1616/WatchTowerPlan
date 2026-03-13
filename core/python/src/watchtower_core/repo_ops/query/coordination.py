@@ -7,7 +7,10 @@ from dataclasses import dataclass
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.models import CoordinationIndex, InitiativeIndexEntry
 from watchtower_core.repo_ops.query.common import query_score
-from watchtower_core.repo_ops.query.initiatives import InitiativeSearchParams
+from watchtower_core.repo_ops.query.initiatives import (
+    InitiativeQueryService,
+    InitiativeSearchParams,
+)
 
 CoordinationSearchParams = InitiativeSearchParams
 
@@ -25,10 +28,16 @@ class CoordinationQueryService:
 
     def __init__(self, loader: ControlPlaneLoader) -> None:
         self._loader = loader
+        self._initiative_service = InitiativeQueryService(loader)
 
     def search(self, params: CoordinationSearchParams) -> CoordinationQueryResult:
         """Return coordination entries matching the requested filters."""
         index = self._loader.load_coordination_index()
+        if _delegates_to_initiative_history(params):
+            return CoordinationQueryResult(
+                index=index,
+                entries=self._initiative_service.search(params),
+            )
         entry_rank = {entry.trace_id: idx for idx, entry in enumerate(index.entries)}
         trace_id = params.trace_id.casefold() if params.trace_id is not None else None
         initiative_status = (
@@ -110,3 +119,10 @@ class CoordinationQueryService:
         if params.limit is not None:
             entries = entries[: params.limit]
         return CoordinationQueryResult(index=index, entries=tuple(entries))
+
+
+def _delegates_to_initiative_history(params: CoordinationSearchParams) -> bool:
+    """Keep the coordination snapshot compact by delegating explicit history lookups."""
+    if params.initiative_status is None:
+        return False
+    return params.initiative_status.casefold() != "active"

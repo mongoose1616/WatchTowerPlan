@@ -1306,6 +1306,39 @@
       ]
     },
     {
+      "document_id": "design.features.refactor_review_and_hardening",
+      "trace_id": "trace.refactor_review_and_hardening",
+      "family": "feature_design",
+      "title": "Refactor Review and Hardening Feature Design",
+      "summary": "Defines the phase-one refactor design for workflow route discrimination, compact coordination payloads, and route-first planning and command entrypoints.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/refactor_review_and_hardening.md",
+      "updated_at": "2026-03-13T14:13:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/refactor_review_and_hardening.md",
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/references/",
+        "docs/standards/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/repository_scope.md",
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/route_index_standard.md",
+        "docs/standards/data_contracts/workflow_index_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "docs/standards/documentation/command_md_standard.md"
+      ]
+    },
+    {
       "document_id": "design.features.reference_and_workflow_standards_alignment",
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "family": "feature_design",
@@ -2709,6 +2742,39 @@
         "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
         "docs/planning/design/features/preimplementation_repo_readiness.md",
         "docs/planning/decisions/preimplementation_machine_coordination_entrypoint.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.refactor_review_and_hardening",
+      "trace_id": "trace.refactor_review_and_hardening",
+      "family": "implementation_plan",
+      "title": "Refactor Review and Hardening Implementation Plan",
+      "summary": "Breaks the phase-one refactor slice into workflow-route discrimination, compact coordination payloads, route-first entrypoint updates, and closeout.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/refactor_review_and_hardening.md",
+      "updated_at": "2026-03-13T15:00:41Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/refactor_review_and_hardening.md",
+        "docs/planning/prds/refactor_review_and_hardening.md",
+        "docs/planning/decisions/refactor_review_and_hardening_direction.md"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/references/",
+        "docs/standards/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/workflows/routing_and_context_loading_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md"
       ]
     },
     {

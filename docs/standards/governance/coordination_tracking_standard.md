@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "coordination_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-13T15:05:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -59,6 +59,7 @@ This standard defines the repository's compact human coordination tracker so hum
   - small actionable-task preview
   - small recent-closeout preview
 - Link to family-specific trackers instead of duplicating their full content.
+- Treat the `Active Initiatives` section as an active-only preview and route broader historical browsing to the initiative-family tracker or machine initiative query.
 - Keep zero-state text short and explicit.
 - Do not hand-edit `coordination_tracking.md` as an authored planning record.
 - Keep the tracker smaller than the combined trackers it summarizes.
@@ -95,6 +96,7 @@ This standard defines the repository's compact human coordination tracker so hum
 - `coordination_tracking.md` should be regenerated, not hand-authored.
 - The tracker should link to repo-local surfaces for deeper detail.
 - The tracker should stay compact and should not grow into a second full tracker family.
+- The `Active Initiatives` section should remain an active-only current-state preview while `Recent Closeouts` stays compact context.
 - The tracker should remain useful even when no initiative is active.
 - The tracker `_Updated At` value should not trail a later initiative closeout timestamp.
 
@@ -109,4 +111,4 @@ This standard defines the repository's compact human coordination tracker so hum
 - [README.md](/home/j/WatchTowerPlan/docs/planning/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-13T15:05:00Z`

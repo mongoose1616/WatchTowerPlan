@@ -5,6 +5,10 @@ from pathlib import Path
 from shutil import copytree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.query.coordination import (
+    CoordinationQueryService,
+    CoordinationSearchParams,
+)
 from watchtower_core.repo_ops.sync.coordination_index import CoordinationIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -90,6 +94,10 @@ def test_coordination_index_reports_active_work_when_actionable_tasks_exist(
     assert document["active_initiative_count"] == 1
     assert document["actionable_task_count"] == 1
     assert document["recommended_surface_path"] == "docs/planning/tasks/open/example_active.md"
+    assert len(document["entries"]) == 1
+    assert document["entries"][0]["trace_id"] == "trace.example_active"
+    assert all(entry["initiative_status"] == "active" for entry in document["entries"])
+    assert document["recent_closed_initiatives"]
 
 
 def test_coordination_index_reports_ready_for_bootstrap_when_no_active_initiatives(
@@ -121,6 +129,8 @@ def test_coordination_index_reports_ready_for_bootstrap_when_no_active_initiativ
     assert document["active_initiative_count"] == 0
     assert document["actionable_task_count"] == 0
     assert document["recommended_surface_path"] == "docs/planning/README.md"
+    assert document["entries"] == []
+    assert document["recent_closed_initiatives"]
 
 
 def test_coordination_index_reports_blocked_work_when_execution_has_only_blocked_tasks(
@@ -180,3 +190,85 @@ def test_coordination_index_reports_blocked_work_when_execution_has_only_blocked
     assert document["actionable_task_count"] == 0
     assert document["blocked_task_count"] == 1
     assert document["recommended_surface_path"] == "docs/planning/tasks/open/example_blocked.md"
+    assert len(document["entries"]) == 1
+    assert all(entry["initiative_status"] == "active" for entry in document["entries"])
+
+
+def test_coordination_query_uses_initiative_index_for_explicit_historical_lookup(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_control_plane_fixture_repo(tmp_path)
+    initiative_index = _load_initiative_index(repo_root)
+    entries = initiative_index["entries"]
+    assert isinstance(entries, list)
+
+    active_entry = entries[0]
+    assert isinstance(active_entry, dict)
+    active_entry["trace_id"] = "trace.example_active"
+    active_entry["title"] = "Example Active Initiative"
+    active_entry["initiative_status"] = "active"
+    active_entry["current_phase"] = "execution"
+    active_entry["updated_at"] = "2026-03-10T19:06:55Z"
+    active_entry["open_task_count"] = 1
+    active_entry["blocked_task_count"] = 0
+    active_entry["next_action"] = "Continue the active task."
+    active_entry["next_surface_path"] = "docs/planning/tasks/open/example_active.md"
+    active_entry["primary_owner"] = "repository_maintainer"
+    active_entry["active_owners"] = ["repository_maintainer"]
+    active_entry["active_task_ids"] = ["task.example_active.execution.001"]
+    active_entry["active_task_summaries"] = [
+        {
+            "task_id": "task.example_active.execution.001",
+            "title": "Do the active work",
+            "task_status": "in_progress",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "docs/planning/tasks/open/example_active.md",
+            "is_actionable": True,
+        }
+    ]
+    active_entry["task_ids"] = ["task.example_active.execution.001"]
+
+    completed_entry = entries[1]
+    assert isinstance(completed_entry, dict)
+    completed_entry["trace_id"] = "trace.example_completed"
+    completed_entry["title"] = "Example Completed Initiative"
+    completed_entry["initiative_status"] = "completed"
+    completed_entry["current_phase"] = "closed"
+    completed_entry["closed_at"] = "2026-03-10T20:00:00Z"
+    completed_entry["closure_reason"] = "Closed for historical lookup coverage."
+    completed_entry["open_task_count"] = 0
+    completed_entry["blocked_task_count"] = 0
+    completed_entry.pop("active_task_ids", None)
+    completed_entry.pop("active_task_summaries", None)
+
+    for entry in entries[2:]:
+        assert isinstance(entry, dict)
+        entry["initiative_status"] = "completed"
+        entry["current_phase"] = "closed"
+        entry["closed_at"] = "2026-03-10T18:00:00Z"
+        entry["closure_reason"] = "Closed for fixture setup."
+        entry["open_task_count"] = 0
+        entry["blocked_task_count"] = 0
+        entry.pop("active_task_ids", None)
+        entry.pop("active_task_summaries", None)
+
+    _write_initiative_index(repo_root, initiative_index)
+
+    loader = ControlPlaneLoader(repo_root)
+    sync_service = CoordinationIndexSyncService(loader)
+    sync_service.write_document(sync_service.build_document())
+
+    result = CoordinationQueryService(loader).search(
+        CoordinationSearchParams(
+            initiative_status="completed",
+            trace_id="trace.example_completed",
+        )
+    )
+
+    assert len(result.index.entries) == 1
+    assert result.index.entries[0].trace_id == "trace.example_active"
+    assert all(entry.initiative_status == "active" for entry in result.index.entries)
+    assert len(result.entries) == 1
+    assert result.entries[0].trace_id == "trace.example_completed"
+    assert result.entries[0].initiative_status == "completed"

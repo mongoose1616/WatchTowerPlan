@@ -1314,6 +1314,54 @@
       ]
     },
     {
+      "trace_id": "trace.refactor_review_and_hardening",
+      "prd_id": "prd.refactor_review_and_hardening",
+      "title": "Refactor Review and Hardening PRD",
+      "summary": "Review and rationalize refactor opportunities across workflow routing, planning projections, command entrypoints, repo-local hotspots, reference signaling, and adjacent governed surfaces without weakening governance.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/refactor_review_and_hardening.md",
+      "updated_at": "2026-03-13T14:13:18Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.refactor_review_and_hardening.001",
+        "req.refactor_review_and_hardening.002",
+        "req.refactor_review_and_hardening.003",
+        "req.refactor_review_and_hardening.004",
+        "req.refactor_review_and_hardening.005"
+      ],
+      "acceptance_ids": [
+        "ac.refactor_review_and_hardening.001",
+        "ac.refactor_review_and_hardening.002",
+        "ac.refactor_review_and_hardening.003",
+        "ac.refactor_review_and_hardening.004",
+        "ac.refactor_review_and_hardening.005"
+      ],
+      "linked_decision_ids": [
+        "decision.refactor_review_and_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.refactor_review_and_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.refactor_review_and_hardening"
+      ],
+      "related_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/references/",
+        "docs/standards/",
+        "workflows/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/repository_scope.md"
+      ]
+    },
+    {
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "prd_id": "prd.reference_and_workflow_standards_alignment",
       "title": "Reference and Workflow Standards Alignment PRD",

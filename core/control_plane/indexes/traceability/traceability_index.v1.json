@@ -2864,6 +2864,129 @@
       "notes": "Planning-baseline evidence for the pre-implementation repository review and hardening initiative."
     },
     {
+      "trace_id": "trace.refactor_review_and_hardening",
+      "title": "Refactor Review and Hardening PRD",
+      "summary": "Review and rationalize refactor opportunities across workflow routing, planning projections, command entrypoints, repo-local hotspots, reference signaling, and adjacent governed surfaces without weakening governance.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T15:02:17Z",
+      "closed_at": "2026-03-13T15:02:17Z",
+      "closure_reason": "Completed the bounded refactor review after workflow-route hardening, compact current-state coordination, route-first entrypoint simplification, evidence repair, coordination-tracking regression-test hardening, and repeated clean validation passes.",
+      "prd_ids": [
+        "prd.refactor_review_and_hardening"
+      ],
+      "decision_ids": [
+        "decision.refactor_review_and_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.refactor_review_and_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.refactor_review_and_hardening"
+      ],
+      "task_ids": [
+        "task.refactor_review_and_hardening.bootstrap.001",
+        "task.refactor_review_and_hardening.current_state_surface_simplification.003",
+        "task.refactor_review_and_hardening.validation_closeout.004",
+        "task.refactor_review_and_hardening.workflow_route_discrimination.002"
+      ],
+      "requirement_ids": [
+        "req.refactor_review_and_hardening.001",
+        "req.refactor_review_and_hardening.002",
+        "req.refactor_review_and_hardening.003",
+        "req.refactor_review_and_hardening.004",
+        "req.refactor_review_and_hardening.005"
+      ],
+      "acceptance_ids": [
+        "ac.refactor_review_and_hardening.001",
+        "ac.refactor_review_and_hardening.002",
+        "ac.refactor_review_and_hardening.003",
+        "ac.refactor_review_and_hardening.004",
+        "ac.refactor_review_and_hardening.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.refactor_review_and_hardening"
+      ],
+      "validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.refactor_review_and_hardening.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/refactor_review_and_hardening_acceptance.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/indexes/coordination/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/routes/",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/indexes/workflows/",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/refactor_review_and_hardening_planning_baseline.v1.json",
+        "core/control_plane/registries/workflows/",
+        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
+        "core/python/tests/",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "core/python/tests/unit/test_coordination_tracking_sync.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "core/python/tests/unit/test_workflow_index_sync.py",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/README.md",
+        "docs/commands/core_python/watchtower_core.md",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "docs/commands/core_python/watchtower_core_sync.md",
+        "docs/planning/",
+        "docs/planning/README.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/refactor_review_and_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/refactor_review_and_hardening.md",
+        "docs/planning/design/implementation/refactor_review_and_hardening.md",
+        "docs/planning/initiatives/README.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/refactor_review_and_hardening.md",
+        "docs/planning/tasks/closed/clarify_workflow_route_discrimination_and_documentation_review_routing.md",
+        "docs/planning/tasks/closed/refactor_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/slim_coordination_current_state_payload_and_thin_route_first_entrypoints.md",
+        "docs/planning/tasks/closed/validate_and_close_phase_one_refactor_simplification.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/references/",
+        "docs/standards/",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "workflows/",
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "workflows/modules/code_review.md",
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/documentation_review.md",
+        "workflows/modules/repository_assessment.md",
+        "workflows/modules/repository_inventory_review.md",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/task_handoff_review.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence refreshed for the phase-one refactor slice after the workflow-routing repair, compact coordination implementation, route-first entrypoint updates, targeted validation, repeated review passes, the full-validation-discovered evidence-coverage gap, and the closed-state coordination-tracking pytest-fixture regression were folded back into the same trace."
+    },
+    {
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "title": "Reference and Workflow Standards Alignment PRD",
       "summary": "Align governed reference authoring guidance with live validator and index expectations, and tighten workflow additional-load enforcement so generic workflow standards stay implicit.",

@@ -109,7 +109,7 @@ class CoordinationIndexSyncService:
             "actionable_task_count": len(actionable_tasks),
             "entries": [
                 _serialize_dataclass(entry)
-                for entry in (*active_entries, *closed_entries)
+                for entry in active_entries
             ],
             "actionable_tasks": [
                 _serialize_dataclass(entry)

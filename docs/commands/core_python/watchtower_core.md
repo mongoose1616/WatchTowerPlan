@@ -1,12 +1,12 @@
 # `watchtower-core`
 
 ## Summary
-This command is the root CLI entrypoint for the core Python workspace and dispatches to the available `watchtower-core` command groups and subcommands.
+This is the root CLI entrypoint for the core Python workspace. It dispatches to the current `watchtower-core` command groups and provides the fastest top-level route into help, routing, planning, query, sync, validation, and closeout flows.
 
 ## Use When
-- You want to discover the current core helper and harness commands.
-- You need a stable CLI entrypoint for workspace checks, route preview, planning scaffolds, governed validation, index queries, task lifecycle operations, derived-artifact sync tasks, or initiative closeout.
-- You want the built-in help output for the current command surface.
+- You need the top-level command map before choosing a narrower command group.
+- You want stable root help for the current CLI surface.
+- You need one consistent entrypoint for workspace-local automation or operator use.
 
 ## Command
 | Field | Value |
@@ -23,9 +23,9 @@ uv run watchtower-core <command> [args]
 ```
 
 ## Arguments and Options
-- `<command>`: Dispatch to an available subcommand such as `doctor`, `route`, `plan`, `query`, `task`, `sync`, `closeout`, or `validate`.
-- `-h`, `--help`: Show the command help text.
-- No root-command-specific options exist yet beyond help and subcommand selection.
+- `<command>`: Dispatch to a command group such as `doctor`, `route`, `plan`, `query`, `task`, `sync`, `closeout`, or `validate`.
+- `-h`, `--help`: Show the root command help text.
+- No root-only flags exist beyond help and subcommand selection.
 
 ## Examples
 ```sh
@@ -35,57 +35,7 @@ uv run watchtower-core --help
 
 ```sh
 cd core/python
-uv run watchtower-core doctor
-```
-
-```sh
-cd core/python
-uv run watchtower-core route preview --request "review code and commit"
-```
-
-```sh
-cd core/python
-uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative." --format json
-```
-
-```sh
-cd core/python
-uv run watchtower-core query commands --query doctor --format json
-```
-
-```sh
-cd core/python
-uv run watchtower-core query foundations --query philosophy
-```
-
-```sh
-cd core/python
-uv run watchtower-core query workflows --query validation
-```
-
-```sh
-cd core/python
-uv run watchtower-core query references --query uv
-```
-
-```sh
-cd core/python
-uv run watchtower-core query standards --category governance --format json
-```
-
-```sh
-cd core/python
-uv run watchtower-core query prds --trace-id trace.core_python_foundation
-```
-
-```sh
-cd core/python
-uv run watchtower-core query acceptance --trace-id trace.core_python_foundation
-```
-
-```sh
-cd core/python
-uv run watchtower-core query tasks --task-status backlog
+uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json
 ```
 
 ```sh
@@ -95,149 +45,33 @@ uv run watchtower-core query coordination --format json
 
 ```sh
 cd core/python
-uv run watchtower-core task transition --task-id task.example.001 --task-status done --format json
+uv run watchtower-core sync all --format json
 ```
 
 ```sh
 cd core/python
-uv run watchtower-core sync command-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync all
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync coordination
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync foundation-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync route-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync reference-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync standard-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync workflow-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync prd-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync initiative-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync initiative-tracking
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync task-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync task-tracking
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync github-tasks --repo owner/repo
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync traceability-index
-```
-
-```sh
-cd core/python
-uv run watchtower-core sync repository-paths
-```
-
-```sh
-cd core/python
-uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"
-```
-
-```sh
-cd core/python
-uv run watchtower-core validate all --skip-acceptance
-```
-
-```sh
-cd core/python
-uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md
-```
-
-```sh
-cd core/python
-uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json
-```
-
-```sh
-cd core/python
-uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json --format json
+uv run watchtower-core validate all --format json
 ```
 
 ## Behavior and Outputs
-- With no subcommand, the current implementation prints the root CLI help text, including onboarding-friendly examples, and exits successfully.
-- With a valid subcommand, the root command dispatches to that subcommand handler.
-- The current top-level command families are `doctor`, `route`, `plan`, `query`, `task`, `sync`, `closeout`, and `validate`.
-- `route` now provides deterministic advisory preview over the current routing surfaces for a free-form request or explicit task type.
-- `plan` scaffolds compact PRDs, feature designs, implementation plans, decision records, and traced bootstrap chains while keeping authored Markdown files authoritative.
-- `query` now covers repository navigation, command discovery, the explicit coordination start-here path, governed foundations lookup, workflow-module lookup, curated reference lookup, standards and best-practice lookup, planning lookup, acceptance contracts, validation evidence, task lookup, initiative-family lookup, and trace lookup.
-- `task` creates, updates, and transitions governed local task records while keeping task documents authoritative and refreshing the coordination slice in write mode.
-- The `sync` family now covers one-shot local rebuilds through `sync all`, a focused task-traceability-initiative-coordination rebuild through `sync coordination`, plus command lookup, foundation lookup, reference lookup, route lookup, standard lookup, workflow lookup, PRD tracking, decision tracking, design tracking, initiative tracking, task tracking, GitHub task sync with managed labels, traceability, and repository-path rebuilds.
-- `validate` now covers aggregate repo validation, document front matter, governed document semantics, schema-backed governed artifacts, and semantic acceptance reconciliation.
-- Unknown subcommands are rejected by the underlying CLI parser.
-- The current command surface is intentionally small and acts as the operator entrypoint for the growing core workspace.
+- With no subcommand, the root command prints help and exits successfully.
+- With a valid subcommand, it dispatches to that group's handler and returns the group's exit status.
+- Use the group pages and leaf command pages for exact flags and behavior instead of treating this root page as the exhaustive command catalog.
+- Use `watchtower-core query commands --query <term> --format json` when you need machine-readable command discovery instead of browsing docs manually.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
-| `watchtower-core doctor` | Lightweight workspace health snapshot exposed through the root CLI. |
-| `watchtower-core route` | Namespace command for advisory routed-workflow preview. |
-| `watchtower-core plan` | Namespace command for compact planning scaffolds and traced bootstrap chains. |
-| `watchtower-core query` | Namespace command for governed index lookups over paths, commands, coordination, planning docs, acceptance contracts, evidence, tasks, and traces. |
-| `watchtower-core task` | Namespace command for governed local task creation, updates, and handoff-style transitions. |
-| `watchtower-core sync` | Namespace command for rebuilding derived governed artifacts and hosted task mirrors. |
-| `watchtower-core closeout` | Namespace command for initiative-level closeout operations over traced planning surfaces. |
-| `watchtower-core validate` | Namespace command for governed validation operations such as document, artifact, and acceptance checks. |
-| `docs/commands/core_python/README.md` | Local command-family inventory for the core Python workspace. |
+| `watchtower-core route` | Advisory route preview for turning a request into workflow modules. |
+| `watchtower-core query` | Read-only lookup surface for commands, planning, coordination, standards, and other governed indexes. |
+| `watchtower-core sync` | Rebuilds derived governed artifacts and tracking surfaces. |
+| `watchtower-core validate` | Runs repo-wide, artifact, document, and acceptance validation flows. |
+| `docs/commands/core_python/README.md` | Command-family entrypoint for the core Python workspace. |
 
 ## Source Surface
+- `core/python/src/watchtower_core/cli/main.py`
 - `core/python/src/watchtower_core/cli/parser.py`
 - `core/python/src/watchtower_core/cli/registry.py`
-- `core/python/README.md`
 
 ## Updated At
-- `2026-03-10T23:01:32Z`
+- `2026-03-13T15:05:00Z`

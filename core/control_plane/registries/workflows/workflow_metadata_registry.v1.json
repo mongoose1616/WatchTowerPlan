@@ -201,6 +201,27 @@
       ]
     },
     {
+      "workflow_id": "workflow.documentation_review",
+      "phase_type": "review",
+      "task_family": "documentation_review",
+      "primary_risks": [
+        "unprioritized_findings",
+        "authority_conflict"
+      ],
+      "extra_trigger_tags": [
+        "docs",
+        "review",
+        "audit",
+        "standards"
+      ],
+      "companion_workflow_ids": [
+        "workflow.documentation_refresh",
+        "workflow.documentation_implementation_reconciliation",
+        "workflow.governed_artifact_reconciliation",
+        "workflow.task_handoff_review"
+      ]
+    },
+    {
       "workflow_id": "workflow.documentation_refresh",
       "phase_type": "execution",
       "task_family": "documentation",
@@ -214,6 +235,7 @@
         "update"
       ],
       "companion_workflow_ids": [
+        "workflow.documentation_review",
         "workflow.task_handoff_review"
       ]
     },

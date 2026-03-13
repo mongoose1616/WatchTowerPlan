@@ -11,11 +11,13 @@
 
 ## Notes
 - Use `docs/planning/coordination_tracking.md` as the root planning start-here surface.
-- Use this directory for the deeper initiative-family view beneath the root coordination tracker.
-- Use `uv run watchtower-core query coordination --format json` as the machine start-here path for current planning state.
+- Use this directory for the deeper initiative-family view beneath the root coordination tracker, including broader active context and terminal-history browsing.
+- Use `uv run watchtower-core query coordination --format json` as the machine start-here path for active current planning state.
+- Use `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need completed, cancelled, or superseded initiative lookup without opening the full deep planning record.
 - Treat the family directories under `docs/planning/prds/`, `docs/planning/design/`, `docs/planning/decisions/`, and `docs/planning/tasks/` as the authored source surfaces.
 - Treat `initiative_tracking.md` as a derived projection, not as the source of truth for PRD, design, task, or closeout content.
 - Keep the machine-readable companion index aligned under `core/control_plane/indexes/initiatives/`.
+- Initiative-family projections use explicit lifecycle and outcome fields; read `artifact_status` separately from `initiative_status` when a trace is already terminal.
 - Use the current initiative phase model when reading the tracker:
   - `prd`
   - `design`

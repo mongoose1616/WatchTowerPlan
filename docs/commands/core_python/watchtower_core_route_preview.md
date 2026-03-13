@@ -51,6 +51,11 @@ uv run watchtower-core route preview --request "review the workflow docs against
 
 ```sh
 cd core/python
+uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 ```
 
@@ -60,6 +65,7 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - In `human` mode, the command prints the selected routed task types, matched trigger keywords, and the merged active workflow-module set.
 - In `json` mode, the command prints one JSON object with the command name, selected routes, selected workflows, and any advisory warnings.
 - Free-form request matching is deterministic and advisory. It scores exact phrases first, then falls back to exact normalized trigger-keyword token coverage plus full authored task-type token-set matches so realistic maintenance requests and audit prompts do not require verbatim routing-table phrasing while generic partial title overlap does not leak across routes.
+- Bounded documentation and standards review prompts now route to `Documentation Review` instead of falling through to no match or a broad repository review.
 - Foundations-aware documentation-alignment prompts can now select the explicit `Foundations Alignment Review` task type, which combines foundations context loading with documentation refresh.
 - The authored routing surfaces remain authoritative when a human or agent executes the task.
 - If no route matches the request text strongly enough, the command exits successfully with an empty selection plus a warning to refine the request or use `--task-type`.
@@ -78,4 +84,4 @@ uv run watchtower-core route preview --task-type "Foundations Alignment Review"
 - `core/control_plane/indexes/routes/route_index.v1.json`
 
 ## Updated At
-- `2026-03-12T03:50:56Z`
+- `2026-03-13T04:30:15Z`

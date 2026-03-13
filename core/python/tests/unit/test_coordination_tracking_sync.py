@@ -27,6 +27,43 @@ def _load_coordination_index(repo_root: Path) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _active_entry_template(document: dict[str, object]) -> dict[str, object]:
+    entries = document.get("entries")
+    if isinstance(entries, list) and entries:
+        return dict(entries[0])
+    return {
+        "trace_id": "trace.example",
+        "title": "Example Initiative",
+        "summary": "Example summary.",
+        "artifact_status": "active",
+        "initiative_status": "active",
+        "current_phase": "execution",
+        "updated_at": "2026-03-10T19:00:00Z",
+        "open_task_count": 1,
+        "blocked_task_count": 0,
+        "key_surface_path": "docs/planning/prds/example.md",
+        "next_action": "Continue the example task set.",
+        "next_surface_path": "docs/planning/tasks/open/example.md",
+        "primary_owner": "repository_maintainer",
+        "active_owners": ["repository_maintainer"],
+        "active_task_ids": ["task.example.001"],
+        "active_task_summaries": [
+            {
+                "task_id": "task.example.001",
+                "title": "Example Task",
+                "task_status": "ready",
+                "priority": "high",
+                "owner": "repository_maintainer",
+                "doc_path": "docs/planning/tasks/open/example.md",
+                "is_actionable": True,
+            }
+        ],
+        "prd_ids": ["prd.example"],
+        "task_ids": ["task.example.001"],
+        "notes": "Synthetic active-entry template for coordination tracking tests.",
+    }
+
+
 def _write_coordination_index(repo_root: Path, document: dict[str, object]) -> None:
     path = repo_root / "core/control_plane/indexes/coordination/coordination_index.v1.json"
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
@@ -57,7 +94,7 @@ def test_coordination_tracking_caps_preview_sections_and_reports_full_counts(
     repo_root = _build_control_plane_fixture_repo(tmp_path)
     document = _load_coordination_index(repo_root)
 
-    entry_template = dict(document["entries"][0])
+    entry_template = _active_entry_template(document)
     closeout_template = dict(document["recent_closed_initiatives"][0])
 
     active_entries = []

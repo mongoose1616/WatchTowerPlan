@@ -2698,6 +2698,127 @@
       ]
     },
     {
+      "task_id": "task.refactor_review_and_hardening.bootstrap.001",
+      "title": "Bootstrap Refactor Review and Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Refactor Review and Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/refactor_review_and_hardening_bootstrap.md",
+      "updated_at": "2026-03-13T14:25:08Z",
+      "trace_id": "trace.refactor_review_and_hardening",
+      "related_ids": [
+        "prd.refactor_review_and_hardening",
+        "design.features.refactor_review_and_hardening",
+        "design.implementation.refactor_review_and_hardening",
+        "decision.refactor_review_and_hardening_direction",
+        "contract.acceptance.refactor_review_and_hardening"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/references/",
+        "docs/standards/",
+        "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.refactor_review_and_hardening.current_state_surface_simplification.003",
+      "title": "Slim coordination current-state payload and thin route-first entrypoints",
+      "summary": "Keep coordination current-state projections compact and route planning and command entrypoints through the smallest useful surfaces instead of handbook-style repetition.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/slim_coordination_current_state_payload_and_thin_route_first_entrypoints.md",
+      "updated_at": "2026-03-13T14:42:27Z",
+      "trace_id": "trace.refactor_review_and_hardening",
+      "related_ids": [
+        "trace.refactor_review_and_hardening",
+        "prd.refactor_review_and_hardening",
+        "design.features.refactor_review_and_hardening",
+        "design.implementation.refactor_review_and_hardening",
+        "decision.refactor_review_and_hardening_direction",
+        "contract.acceptance.refactor_review_and_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
+        "core/control_plane/indexes/coordination/",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "docs/planning/README.md",
+        "docs/planning/initiatives/README.md",
+        "docs/commands/core_python/watchtower_core.md",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_sync.md",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.refactor_review_and_hardening.validation_closeout.004",
+      "title": "Validate and close phase-one refactor simplification",
+      "summary": "Run targeted and full validation, perform repeated no-new-issues review passes across the phase-one refactor slice, refresh evidence, and close the initiative when the slice stays clean.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_phase_one_refactor_simplification.md",
+      "updated_at": "2026-03-13T14:53:51Z",
+      "trace_id": "trace.refactor_review_and_hardening",
+      "related_ids": [
+        "trace.refactor_review_and_hardening",
+        "prd.refactor_review_and_hardening",
+        "design.features.refactor_review_and_hardening",
+        "design.implementation.refactor_review_and_hardening",
+        "decision.refactor_review_and_hardening_direction",
+        "contract.acceptance.refactor_review_and_hardening"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/",
+        "docs/commands/core_python/",
+        "docs/standards/",
+        "workflows/"
+      ]
+    },
+    {
+      "task_id": "task.refactor_review_and_hardening.workflow_route_discrimination.002",
+      "title": "Clarify workflow route discrimination and documentation review routing",
+      "summary": "Distinguish adjacent workflow routes in authored workflow surfaces, route-preview metadata, and regression coverage so bounded documentation audits stop falling through to broader review routes.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/clarify_workflow_route_discrimination_and_documentation_review_routing.md",
+      "updated_at": "2026-03-13T14:38:36Z",
+      "trace_id": "trace.refactor_review_and_hardening",
+      "related_ids": [
+        "trace.refactor_review_and_hardening",
+        "prd.refactor_review_and_hardening",
+        "design.features.refactor_review_and_hardening",
+        "design.implementation.refactor_review_and_hardening",
+        "decision.refactor_review_and_hardening_direction",
+        "contract.acceptance.refactor_review_and_hardening"
+      ],
+      "applies_to": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/",
+        "core/control_plane/indexes/routes/",
+        "core/control_plane/indexes/workflows/",
+        "core/control_plane/registries/workflows/",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/python/tests/unit/"
+      ]
+    },
+    {
       "task_id": "task.reference_and_workflow_standards_alignment.bootstrap.001",
       "title": "Bootstrap Reference and Workflow Standards Alignment planning chain",
       "summary": "Bootstraps the initial planning chain for Reference and Workflow Standards Alignment.",

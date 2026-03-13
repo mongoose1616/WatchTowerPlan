@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "coordination_index"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T15:05:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -50,8 +50,10 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Build the coordination index from the initiative index and its task-backed active-task projection rather than reparsing human trackers.
 - Publish one repo-level coordination mode and one recommended next action plus next surface path at the root of the artifact.
+- Keep `entries` limited to the active current-state initiative set that the coordination start-here experience is summarizing.
 - Carry actionable-task summaries only when they improve the first machine coordination pass.
 - Carry recent closeout summaries as compact context rather than reproducing the full closed-history corpus.
+- Preserve explicit historical lookup through initiative-family query paths instead of expanding the default coordination payload.
 - Keep the coordination index smaller than the combined family indexes it summarizes.
 - Do not invent owners, blockers, or status beyond what the initiative and task surfaces already publish.
 - Keep embedded initiative summaries aligned with initiative-index explicit field naming, including `artifact_status` for lifecycle and `initiative_status` for outcome.
@@ -72,7 +74,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | `active_initiative_count` | Required | Number of active initiative entries currently projected. |
 | `blocked_task_count` | Required | Number of blocked active tasks across active initiatives. |
 | `actionable_task_count` | Required | Number of actionable active tasks across active initiatives. |
-| `entries` | Required | Initiative summaries used by the coordination query path. |
+| `entries` | Required | Active initiative summaries used by the default coordination query path. |
 | `actionable_tasks` | Required | Compact actionable-task summaries when present. Use an empty array when none are actionable. |
 | `recent_closed_initiatives` | Required | Compact closeout context. Use an empty array when none are available. |
 
@@ -80,9 +82,9 @@ This standard defines the role, structure, and boundary rules for machine-readab
 | Field | Expectation |
 |---|---|
 | `coordination_mode` | `active_work` means active work exists, `blocked_work` means active execution exists but no actionable task is available, `ready_for_bootstrap` means no active initiatives remain. |
-| `entries` | Keep initiative-shaped summaries compact and derived from the initiative index. |
+| `entries` | Keep initiative-shaped summaries compact, derived from the initiative index, and limited to active current-state initiatives. |
 | `actionable_tasks` | Include trace context so a caller can jump directly to the right initiative and task surface. |
-| `recent_closed_initiatives` | Publish only compact summaries needed for recent context and review handoff. |
+| `recent_closed_initiatives` | Publish only compact summaries needed for recent context and review handoff. Do not duplicate full closed-history initiative entries here. |
 | Initiative entry status fields | Use `artifact_status` for lifecycle and `initiative_status` for initiative outcome. |
 
 ## Operationalization
@@ -91,7 +93,8 @@ This standard defines the role, structure, and boundary rules for machine-readab
 
 ## Validation
 - The coordination index should validate against its published artifact schema.
-- Every entry in the coordination index should correspond to one current initiative-index entry.
+- Every entry in the coordination index should correspond to one active initiative-index entry.
+- `active_initiative_count` should equal the number of `entries`.
 - Root counts should agree with the projected active initiatives and actionable-task summaries.
 - `recommended_next_action` and `recommended_surface_path` should stay useful when the repo has no active initiative.
 - The coordination index should remain compact enough that it improves machine navigation instead of recreating family-authority detail.
@@ -99,7 +102,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 ## Change Control
 - Update this standard when the repository changes the coordination-mode model or the projected coordination root fields.
 - Update the companion artifact schema, examples, live coordination index, and query/sync behavior in the same change set when this artifact family changes structurally.
-- Update the coordination-tracking companion surface and nearby planning guidance when the coordination start-here experience changes materially.
+- Update the coordination query docs, coordination-tracking companion surface, and nearby planning guidance when the coordination start-here experience changes materially.
 
 ## References
 - [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md)
@@ -108,4 +111,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md)
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T15:05:00Z`

@@ -1,0 +1,177 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.refactor_review_and_hardening.planning_baseline",
+  "title": "Refactor Review and Hardening Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.refactor_review_and_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T15:00:41Z",
+  "source_prd_ids": [
+    "prd.refactor_review_and_hardening"
+  ],
+  "source_design_ids": [
+    "design.features.refactor_review_and_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.refactor_review_and_hardening"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.refactor_review_and_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.refactor_review_and_hardening.planning_baseline",
+      "title": "Phase-one planning baseline, findings ledger, and bounded tasks are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/refactor_review_and_hardening.md",
+        "docs/planning/decisions/refactor_review_and_hardening_direction.md",
+        "docs/planning/design/features/refactor_review_and_hardening.md",
+        "docs/planning/design/implementation/refactor_review_and_hardening.md",
+        "core/control_plane/contracts/acceptance/refactor_review_and_hardening_acceptance.v1.json",
+        "docs/planning/tasks/closed/refactor_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/clarify_workflow_route_discrimination_and_documentation_review_routing.md",
+        "docs/planning/tasks/closed/slim_coordination_current_state_payload_and_thin_route_first_entrypoints.md",
+        "docs/planning/tasks/closed/validate_and_close_phase_one_refactor_simplification.md"
+      ],
+      "subject_ids": [
+        "prd.refactor_review_and_hardening",
+        "decision.refactor_review_and_hardening_direction",
+        "design.features.refactor_review_and_hardening",
+        "design.implementation.refactor_review_and_hardening",
+        "task.refactor_review_and_hardening.bootstrap.001",
+        "task.refactor_review_and_hardening.workflow_route_discrimination.002",
+        "task.refactor_review_and_hardening.current_state_surface_simplification.003",
+        "task.refactor_review_and_hardening.validation_closeout.004",
+        "contract.acceptance.refactor_review_and_hardening",
+        "evidence.refactor_review_and_hardening.planning_baseline"
+      ],
+      "acceptance_ids": [
+        "ac.refactor_review_and_hardening.001"
+      ],
+      "notes": "The bootstrap scaffolds have been replaced with the accepted phase-one scope, the coverage map and findings ledger are recorded in the implementation plan, and the initiative now carries one closed bootstrap task plus the bounded workflow, simplification, and closeout tasks needed to execute the slice."
+    },
+    {
+      "check_id": "check.refactor_review_and_hardening.workflow_route_discrimination",
+      "title": "Documentation-review routing stays distinct across workflow docs, route metadata, and live route preview behavior",
+      "result": "passed",
+      "subject_paths": [
+        "workflows/ROUTING_TABLE.md",
+        "workflows/modules/documentation_review.md",
+        "workflows/modules/documentation_refresh.md",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/repository_inventory_review.md",
+        "workflows/modules/repository_assessment.md",
+        "workflows/modules/code_review.md",
+        "workflows/modules/task_handoff_review.md",
+        "core/control_plane/indexes/routes/route_index.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "docs/commands/core_python/watchtower_core_route_preview.md",
+        "core/python/tests/unit/test_route_index_sync.py",
+        "core/python/tests/unit/test_workflow_index_sync.py"
+      ],
+      "subject_ids": [
+        "task.refactor_review_and_hardening.workflow_route_discrimination.002",
+        "contract.acceptance.refactor_review_and_hardening",
+        "evidence.refactor_review_and_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.refactor_review_and_hardening.002"
+      ],
+      "notes": "Targeted pytest for route and workflow index sync passed, live route-preview probes for both documentation-review and standards-review prompts selected Documentation Review, and the closed workflow-routing task now captures the bounded route-discrimination repair."
+    },
+    {
+      "check_id": "check.refactor_review_and_hardening.compact_coordination",
+      "title": "Coordination stays compact by default while explicit historical lookup remains available",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/governance/coordination_tracking_standard.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/coordination.py",
+        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "core/python/tests/unit/test_coordination_tracking_sync.py",
+        "core/python/tests/unit/test_route_and_query_handlers.py",
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.refactor_review_and_hardening.current_state_surface_simplification.003",
+        "contract.acceptance.refactor_review_and_hardening",
+        "evidence.refactor_review_and_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.refactor_review_and_hardening.003"
+      ],
+      "notes": "Targeted coordination and query regressions passed, sync all rebuilt the live coordination index with one active entry and compact recent closeouts, default query coordination now stays active-first, and explicit completed lookup still resolves trace.core_python_foundation through initiative-family data."
+    },
+    {
+      "check_id": "check.refactor_review_and_hardening.route_first_entrypoints",
+      "title": "Planning and umbrella command entrypoints are thinned to route-first guidance",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/README.md",
+        "docs/planning/initiatives/README.md",
+        "docs/commands/core_python/watchtower_core.md",
+        "docs/commands/core_python/watchtower_core_query.md",
+        "docs/commands/core_python/watchtower_core_sync.md",
+        "core/python/README.md",
+        "core/control_plane/indexes/commands/command_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.refactor_review_and_hardening.current_state_surface_simplification.003",
+        "contract.acceptance.refactor_review_and_hardening",
+        "evidence.refactor_review_and_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.refactor_review_and_hardening.004"
+      ],
+      "notes": "The planning READMEs now distinguish active coordination from deeper historical initiative lookup, the root, query, and sync command pages route readers to help and leaf surfaces instead of acting like handbook catalogs, and sync all refreshed the command index against the updated docs."
+    },
+    {
+      "check_id": "check.refactor_review_and_hardening.validation_closeout",
+      "title": "Validation, repeated review passes, and closeout surfaces are tracked together under the final validation task",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/validate_and_close_phase_one_refactor_simplification.md",
+        "core/control_plane/contracts/acceptance/refactor_review_and_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/refactor_review_and_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/control_plane/",
+        "docs/",
+        "workflows/"
+      ],
+      "subject_ids": [
+        "task.refactor_review_and_hardening.validation_closeout.004",
+        "contract.acceptance.refactor_review_and_hardening",
+        "evidence.refactor_review_and_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.refactor_review_and_hardening.005"
+      ],
+      "notes": "The trace now records the targeted validation stack, full validation stack, post-fix review pass, second-angle review, adversarial route and query probes, evidence refresh, the reopened-loop repair for the closed-state coordination-tracking pytest fixture assumption, and bounded closeout work under the dedicated validation task so the final reruns and initiative closeout stay inside one governed slice."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/refactor_review_and_hardening_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence refreshed for the phase-one refactor slice after the workflow-routing repair, compact coordination implementation, route-first entrypoint updates, targeted validation, repeated review passes, the full-validation-discovered evidence-coverage gap, and the closed-state coordination-tracking pytest-fixture regression were folded back into the same trace.",
+  "source_decision_ids": [
+    "decision.refactor_review_and_hardening_direction"
+  ]
+}

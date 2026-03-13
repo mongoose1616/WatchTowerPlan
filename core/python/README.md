@@ -39,6 +39,7 @@
 - `uv run watchtower-core --help`
 - `uv run watchtower-core doctor`
 - `uv run watchtower-core route preview --request "review the workflow docs against the current CLI behavior"`
+- `uv run watchtower-core route preview --request "do a documentation review of the command docs" --format json`
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json`
 - `uv run watchtower-core plan scaffold --kind prd --trace-id trace.example --document-id prd.example --title "Example PRD" --summary "Frames the example initiative." --format json`
 - `uv run watchtower-core query coordination --format json`
@@ -95,8 +96,10 @@
 - `uv run ...` is the default workflow for this repository.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
+- Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json` is the explicit preview path when a task is about keeping docs or workflow guidance aligned with repository foundations.
 - `uv run watchtower-core query coordination --format json` is the default machine-readable current-state entrypoint and stays useful even when no initiative is active.
+- Use `uv run watchtower-core query coordination --initiative-status <status> --format json` or `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need explicit non-active initiative lookup without treating the default coordination payload as a full history surface.
 - `uv run watchtower-core query planning --trace-id <trace_id> --format json` is the canonical deep planning read path after coordination identifies the active trace.
 - `uv run watchtower-core plan scaffold --write ...` refreshes the traced coordination slice only when the target trace already participates in coordination or already has traced task state.
 - `uv run watchtower-core plan bootstrap --include-decision --write ...` now emits a governed-valid decision scaffold with `Applied References and Implications`, and bootstrap-only traces stay in `implementation_planning` until non-bootstrap active work exists.

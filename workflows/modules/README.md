@@ -18,6 +18,7 @@
 | `workflows/modules/decision_capture.md` | Workflow module for recording durable decisions and their rationale. |
 | `workflows/modules/documentation_implementation_reconciliation.md` | Shared workflow module for reconciling companion documentation and machine-readable lookup surfaces with the actual implementation. |
 | `workflows/modules/documentation_generation.md` | Workflow module for generating new documentation. |
+| `workflows/modules/documentation_review.md` | Workflow module for reviewing documentation or standards before refresh or remediation work. |
 | `workflows/modules/documentation_refresh.md` | Workflow module for refreshing and updating existing documentation. |
 | `workflows/modules/external_guidance_research.md` | Shared workflow module for consulting authoritative external guidance only when needed. |
 | `workflows/modules/feature_design_planning.md` | Workflow module for turning a feature request or PRD into a review-ready technical design for implementation planning. |

@@ -267,6 +267,35 @@
       ]
     },
     {
+      "route_id": "route.documentation_review",
+      "task_type": "Documentation Review",
+      "trigger_keywords": [
+        "documentation review",
+        "document review",
+        "documentation audit",
+        "docs audit",
+        "standards review"
+      ],
+      "required_workflow_ids": [
+        "workflow.core",
+        "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
+        "workflow.internal_context_review",
+        "workflow.external_guidance_research",
+        "workflow.documentation_review",
+        "workflow.task_handoff_review"
+      ],
+      "required_workflow_paths": [
+        "workflows/modules/core.md",
+        "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
+        "workflows/modules/internal_context_review.md",
+        "workflows/modules/external_guidance_research.md",
+        "workflows/modules/documentation_review.md",
+        "workflows/modules/task_handoff_review.md"
+      ]
+    },
+    {
       "route_id": "route.documentation_refresh",
       "task_type": "Documentation Refresh",
       "trigger_keywords": [
@@ -279,6 +308,7 @@
       "required_workflow_ids": [
         "workflow.core",
         "workflow.task_scope_definition",
+        "workflow.current_state_inspection",
         "workflow.internal_context_review",
         "workflow.external_guidance_research",
         "workflow.documentation_refresh",
@@ -287,6 +317,7 @@
       "required_workflow_paths": [
         "workflows/modules/core.md",
         "workflows/modules/task_scope_definition.md",
+        "workflows/modules/current_state_inspection.md",
         "workflows/modules/internal_context_review.md",
         "workflows/modules/external_guidance_research.md",
         "workflows/modules/documentation_refresh.md",
@@ -587,13 +618,13 @@
         "health assessment",
         "repository health assessment",
         "coherence review",
-        "standards review",
-        "standards audit",
         "best practices review",
         "watchtower report",
         "unused workflow modules",
         "routing ambiguity review",
-        "workflow coverage review"
+        "workflow coverage review",
+        "full repository standards review",
+        "repository-wide standards audit"
       ],
       "required_workflow_ids": [
         "workflow.core",

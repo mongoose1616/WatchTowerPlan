@@ -19,17 +19,20 @@ Use this workflow to confirm that the active task output is coherent, handoff-re
 1. Review the output for handoff readiness.
    - Confirm the task output is clear enough for the next contributor, reviewer, or workflow to use without major verbal context filling gaps.
    - Check that the result matches the scoped objective and current repository state.
+   - If the output is a review or audit, confirm that the scope boundary, evidence basis, and any confirmation-pass result are explicit.
 2. Identify related-surface impacts.
    - Note any adjacent standards, workflows, templates, docs, tests, schemas, initiative surfaces, or machine-readable artifacts that should be updated in the same change set.
    - When the task belongs to a traced initiative, check whether the current result changes initiative phase, ownership, blockers, next-step projection, or closeout readiness.
    - Distinguish same-change updates from explicit deferred follow-up work.
 3. Record follow-up and closeout needs.
    - Surface unresolved questions, risks, blockers, and recommended next steps explicitly.
+   - If the task was a review loop, record whether repeated passes found no new actionable issues or which gaps remain open.
    - Confirm the task-handling outcome is explicit for non-trivial work: durable task present, task transition recorded, or explicit no-task reason.
    - If the change is ready to be committed, add the commit-closeout workflow rather than improvising commit behavior here.
 
 ## Data Structure
 - Handoff-ready output summary
+- Review scope and confirmation status when applicable
 - Related surfaces to update
 - Initiative or trace follow-up when the task belongs to a traced initiative
 - Deferred follow-up work

@@ -31,6 +31,16 @@ def test_workflow_index_sync_builds_schema_valid_document() -> None:
     entries = document["entries"]
     assert isinstance(entries, list)
     assert any(
+        entry["workflow_id"] == "workflow.documentation_review"
+        and entry["phase_type"] == "review"
+        and entry["task_family"] == "documentation_review"
+        and "review" in entry["trigger_tags"]
+        and "workflow.documentation_refresh" in entry.get("companion_workflow_ids", [])
+        and "workflow.documentation_implementation_reconciliation"
+        in entry.get("companion_workflow_ids", [])
+        for entry in entries
+    )
+    assert any(
         entry["workflow_id"] == "workflow.github_task_sync"
         and entry["phase_type"] == "execution"
         and entry["task_family"] == "github_integration"
