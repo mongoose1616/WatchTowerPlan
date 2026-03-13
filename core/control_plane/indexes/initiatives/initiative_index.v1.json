@@ -803,6 +803,103 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-12T01:35:13Z for trace.data_contract_example_operationalization_alignment after the validation task and initiative closeout."
     },
     {
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "title": "Data-Contract Index Family Baseline Alignment PRD",
+      "summary": "Review and refactor the repeated planning-related data-contract index standards so shared boilerplate becomes a governed family baseline with better discoverability and no loss of explicit artifact contracts.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-13T20:17:49Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
+      "key_surface_path": "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
+      "prd_ids": [
+        "prd.data_contract_index_family_baseline_alignment"
+      ],
+      "decision_ids": [
+        "decision.data_contract_index_family_baseline_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.data_contract_index_family_baseline_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.data_contract_index_family_baseline_alignment"
+      ],
+      "task_ids": [
+        "task.data_contract_index_family_baseline_alignment.bootstrap.001",
+        "task.data_contract_index_family_baseline_alignment.family_baseline.002",
+        "task.data_contract_index_family_baseline_alignment.standard_index_discoverability.003",
+        "task.data_contract_index_family_baseline_alignment.validation_closeout.004"
+      ],
+      "acceptance_ids": [
+        "ac.data_contract_index_family_baseline_alignment.001",
+        "ac.data_contract_index_family_baseline_alignment.002",
+        "ac.data_contract_index_family_baseline_alignment.003",
+        "ac.data_contract_index_family_baseline_alignment.004",
+        "ac.data_contract_index_family_baseline_alignment.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.data_contract_index_family_baseline_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.data_contract_index_family_baseline_alignment.planning_baseline"
+      ],
+      "closed_at": "2026-03-13T20:17:49Z",
+      "closure_reason": "Completed the bounded refactor review after adding the planning-index family baseline, refactoring the member standards, refreshing discoverability, repairing reopened validation-evidence drift, and rerunning clean confirmation passes.",
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/indexes/standards/",
+        "core/control_plane/indexes/standards/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/data_contract_index_family_baseline_alignment_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/data_contract_index_family_baseline_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/publish_planning_index_family_baseline_and_refactor_member_standards.md",
+        "docs/planning/tasks/closed/refresh_standard_index_discoverability_and_query_validation.md",
+        "docs/planning/tasks/closed/validate_and_close_data_contract_index_family_baseline_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "docs/standards/README.md",
+        "docs/standards/data_contracts/",
+        "docs/standards/data_contracts/README.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/data_contracts/planning_index_family_standard.md",
+        "docs/standards/data_contracts/prd_index_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Validation evidence refreshed at 2026-03-13T20:16:31Z after the planning-index family baseline refactor, discoverability rebuild, the reopened lint or acceptance-evidence repairs found by the first full-suite pass, and the final rerun of validation or confirmation checks on the same-theme closed state."
+    },
+    {
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "title": "Decision Supersession and Regression Evidence Alignment PRD",
       "summary": "Historical record of a cancelled slice that proposed explicit decision supersession support and a dedicated repo-local regression-evidence summary.",

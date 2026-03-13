@@ -1,0 +1,129 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.data_contract_index_family_baseline_alignment",
+  "title": "Data-Contract Index Family Baseline Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.data_contract_index_family_baseline_alignment",
+  "source_prd_id": "prd.data_contract_index_family_baseline_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.data_contract_index_family_baseline_alignment.001",
+      "summary": "The planning corpus for the trace publishes the active PRD, accepted direction decision, active feature design, active implementation plan, bounded execution tasks, and the explicit coverage map plus findings ledger for the standards-family slice.",
+      "source_requirement_ids": [
+        "req.data_contract_index_family_baseline_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/design/features/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/decisions/data_contract_index_family_baseline_alignment_direction.md",
+        "docs/planning/tasks/closed/data_contract_index_family_baseline_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/publish_planning_index_family_baseline_and_refactor_member_standards.md",
+        "docs/planning/tasks/closed/refresh_standard_index_discoverability_and_query_validation.md",
+        "docs/planning/tasks/closed/validate_and_close_data_contract_index_family_baseline_alignment.md"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.v1.json",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning-chain coverage must remain explicit before remediation and closeout for trace.data_contract_index_family_baseline_alignment."
+    },
+    {
+      "acceptance_id": "ac.data_contract_index_family_baseline_alignment.002",
+      "summary": "A shared planning-index-family baseline standard exists, and the targeted planning-related data-contract index standards now express only their family-specific deltas after applying that baseline.",
+      "source_requirement_ids": [
+        "req.data_contract_index_family_baseline_alignment.002"
+      ],
+      "validation_targets": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/data_contracts/prd_index_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md"
+      ],
+      "notes": "The shared baseline must reduce repeated family boilerplate without hiding family-specific invariants or governance contracts."
+    },
+    {
+      "acceptance_id": "ac.data_contract_index_family_baseline_alignment.003",
+      "summary": "The standards navigation READMEs, governed standard index, query command docs, and direct regression tests all expose the planning-index family as one stable discoverable subfamily.",
+      "source_requirement_ids": [
+        "req.data_contract_index_family_baseline_alignment.003"
+      ],
+      "validation_targets": [
+        "docs/standards/README.md",
+        "docs/standards/data_contracts/README.md",
+        "core/control_plane/indexes/standards/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "core/control_plane/indexes/standards/",
+        "docs/commands/core_python/",
+        "core/python/tests/unit/"
+      ],
+      "notes": "Human navigation and machine lookup must expose the planning-index family through the shared tag and grouped navigation surfaces."
+    },
+    {
+      "acceptance_id": "ac.data_contract_index_family_baseline_alignment.004",
+      "summary": "Targeted validation and full repository validation pass on the refactored standards-family state without reducing capability, fidelity, correctness, determinism, or performance in the standards sync or query surfaces.",
+      "source_requirement_ids": [
+        "req.data_contract_index_family_baseline_alignment.004"
+      ],
+      "validation_targets": [
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/standards.py",
+        "core/python/"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/",
+        "core/control_plane/indexes/standards/",
+        "core/python/tests/unit/"
+      ],
+      "notes": "Validation evidence must cover both the focused standards-family tests and the final full repository checks."
+    },
+    {
+      "acceptance_id": "ac.data_contract_index_family_baseline_alignment.005",
+      "summary": "Post-fix review, second-angle confirmation, adversarial confirmation, and traced closeout all complete with no new actionable issue remaining under the same standards-family theme.",
+      "source_requirement_ids": [
+        "req.data_contract_index_family_baseline_alignment.005"
+      ],
+      "validation_targets": [
+        "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/tasks/closed/validate_and_close_data_contract_index_family_baseline_alignment.md",
+        "core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "notes": "The standards-family loop stops only after repeated confirmation passes and final closeout state both remain clean."
+    }
+  ]
+}

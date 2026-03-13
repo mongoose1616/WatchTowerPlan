@@ -8,8 +8,9 @@ tags:
   - "standard"
   - "data_contracts"
   - "design_document_index"
+  - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T20:01:23Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,6 +34,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - Building query or routing tools that need a compact machine-readable view over the design corpus.
 
 ## Related Standards and Sources
+- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this design-document family standard narrows.
 - [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -42,12 +44,8 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/design_documents/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Model design-document tracking as an index, not as a registry.
-- Treat the design-document index as a machine-readable lookup and relationship surface rather than the authority for design content.
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep design semantics in the documents under `docs/planning/design/**`.
-- Store published design-document indexes under `core/control_plane/indexes/design_documents/`.
-- Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
-- Use JSON for the published design-document index artifact.
 - Catalog only durable feature designs and implementation plans that live under `docs/planning/design/features/` or `docs/planning/design/implementation/`.
 - Source stable identity and summary fields from the governed design-document front matter rather than reconstructing them from body prose.
 - Every index entry must point to an existing design document under `docs/planning/design/`.
@@ -109,7 +107,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/design_documents/`; `core/control_plane/indexes/design_documents/README.md`; `core/control_plane/examples/valid/indexes/design_document_index*.example.json`; `core/control_plane/examples/invalid/indexes/design_document_index*.example.json`; `docs/planning/design/`
 
 ## Validation
-- The design-document index should validate against its published artifact schema.
+- In addition to the shared planning-index-family validation contract:
 - Every `doc_path` should exist and point to a file under `docs/planning/design/`.
 - Every implementation-plan entry should include `source_paths`.
 - Feature-design `related_paths` should retain repo-local `Affected Surfaces` so downstream planning and query surfaces can see the design footprint without reparsing Markdown.
@@ -118,8 +116,8 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - Reviewers should reject index entries that point to stale design docs or leave plan-to-design relationships implicit.
 
 ## Change Control
+- In addition to the shared planning-index-family change-control contract:
 - Update this standard when the repository changes how design documents are tracked or looked up.
-- Update the companion artifact schema, examples, and live design-document index in the same change set when the index family changes structurally.
 - Update the human-readable design tracker in the same change set when indexed design documents change materially.
 
 ## References
@@ -133,4 +131,4 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 - The machine index is for lookup, query, and future tooling. Neither surface replaces the design documents themselves.
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T20:01:23Z`

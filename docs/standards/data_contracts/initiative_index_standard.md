@@ -8,8 +8,9 @@ tags:
   - "standard"
   - "data_contracts"
   - "initiative_index"
+  - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T20:01:23Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +37,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Reviewing whether the current initiative phase and ownership are explicit enough for another contributor to continue the work.
 
 ## Related Standards and Sources
+- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this initiative-family standard narrows.
 - [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the coordination boundary, phase vocabulary, and authority model this index must preserve.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): defines the traced artifact relationships the initiative index projects from.
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): defines initiative closeout state that this index must mirror.
@@ -47,12 +49,8 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/initiatives/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Model initiative coordination as an index, not as a registry.
-- Treat the initiative index as a derived machine-readable projection over traced planning and task surfaces.
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep the initiative index focused on initiative-family detail rather than repo-level bootstrap or recent-closeout summary state.
-- Store published initiative indexes under `core/control_plane/indexes/initiatives/`.
-- Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
-- Use JSON for the published initiative index artifact.
 - Build the initiative index from the traceability index plus current planning and task indexes rather than scanning human trackers.
 - Carry `current_phase`, `next_action`, and `next_surface_path` in every active initiative entry.
 - Carry active owner and open-task projection for every active initiative with non-terminal tasks.
@@ -110,7 +108,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/initiatives/`; `core/control_plane/indexes/initiatives/README.md`; `core/control_plane/examples/valid/indexes/initiative_index*.example.json`; `core/control_plane/examples/invalid/indexes/initiative_index*.example.json`; `docs/planning/initiatives/initiative_tracking.md`
 
 ## Validation
-- The initiative index should validate against its published artifact schema.
+- In addition to the shared planning-index-family validation contract:
 - Every initiative entry should correspond to one current traceability entry.
 - `current_phase` should agree with the current planning and task state implied by the authoritative source surfaces.
 - Active initiative `task_ids` should agree with the current linked task corpus.
@@ -120,8 +118,8 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Entry payloads should use `artifact_status` rather than a generic `status` field so initiative outcome and artifact lifecycle remain distinct.
 
 ## Change Control
+- In addition to the shared planning-index-family change-control contract:
 - Update this standard when the repository changes the initiative-phase projection model or initiative-index entry shape.
-- Update the companion artifact schema, examples, and live initiative index in the same change set when the initiative-index family changes structurally.
 - Update the human-readable initiative tracker in the same change set when indexed initiative coordination changes materially.
 
 ## References
@@ -131,4 +129,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md)
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T20:01:23Z`

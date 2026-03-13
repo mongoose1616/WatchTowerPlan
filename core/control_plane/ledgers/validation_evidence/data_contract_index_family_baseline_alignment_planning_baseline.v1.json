@@ -1,0 +1,165 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.data_contract_index_family_baseline_alignment.planning_baseline",
+  "title": "Data-Contract Index Family Baseline Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.data_contract_index_family_baseline_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T20:16:31Z",
+  "source_prd_ids": [
+    "prd.data_contract_index_family_baseline_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.data_contract_index_family_baseline_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.data_contract_index_family_baseline_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.data_contract_index_family_baseline_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.data_contract_index_family_baseline_alignment.planning_baseline",
+      "title": "Planning chain, coverage map, and bounded task set are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/design/features/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/decisions/data_contract_index_family_baseline_alignment_direction.md",
+        "core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json",
+        "docs/planning/tasks/closed/data_contract_index_family_baseline_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/publish_planning_index_family_baseline_and_refactor_member_standards.md",
+        "docs/planning/tasks/closed/refresh_standard_index_discoverability_and_query_validation.md",
+        "docs/planning/tasks/closed/validate_and_close_data_contract_index_family_baseline_alignment.md"
+      ],
+      "subject_ids": [
+        "prd.data_contract_index_family_baseline_alignment",
+        "design.features.data_contract_index_family_baseline_alignment",
+        "design.implementation.data_contract_index_family_baseline_alignment",
+        "task.data_contract_index_family_baseline_alignment.bootstrap.001",
+        "task.data_contract_index_family_baseline_alignment.family_baseline.002",
+        "task.data_contract_index_family_baseline_alignment.standard_index_discoverability.003",
+        "task.data_contract_index_family_baseline_alignment.validation_closeout.004",
+        "contract.acceptance.data_contract_index_family_baseline_alignment",
+        "decision.data_contract_index_family_baseline_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.data_contract_index_family_baseline_alignment.001"
+      ],
+      "notes": "The planning corpus now carries the active PRD, accepted direction decision, active feature design, active implementation plan, the explicit coverage map and findings ledger, the closed bootstrap task, the two closed implementation tasks, and the active closeout task in canonical repository paths."
+    },
+    {
+      "check_id": "check.data_contract_index_family_baseline_alignment.family_baseline_refactor",
+      "title": "Shared planning-index baseline and member-standard deltas are published",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/data_contracts/prd_index_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/documentation/standard_md_standard.md"
+      ],
+      "subject_ids": [
+        "task.data_contract_index_family_baseline_alignment.family_baseline.002",
+        "design.features.data_contract_index_family_baseline_alignment",
+        "design.implementation.data_contract_index_family_baseline_alignment"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.data_contract_index_family_baseline_alignment.002"
+      ],
+      "notes": "The repo now has one narrow `planning_index_family_standard.md` baseline, the eight planning-related member standards explicitly cite it, each member keeps the shared tag `planning_index_family`, and `standard_md_standard.md` now documents the narrow shared-baseline pattern so the boilerplate reduction stays governed."
+    },
+    {
+      "check_id": "check.data_contract_index_family_baseline_alignment.discoverability_alignment",
+      "title": "Human and machine discoverability expose the planning-index family",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/README.md",
+        "docs/standards/data_contracts/README.md",
+        "core/control_plane/indexes/standards/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py"
+      ],
+      "subject_ids": [
+        "task.data_contract_index_family_baseline_alignment.standard_index_discoverability.003",
+        "design.features.data_contract_index_family_baseline_alignment",
+        "design.implementation.data_contract_index_family_baseline_alignment"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.data_contract_index_family_baseline_alignment.003"
+      ],
+      "notes": "The standards READMEs now group the planning-index family explicitly, the standard index rebuilt to 62 entries with the nine-entry planning-index family set, `watchtower-core query standards --category data_contracts --tag planning_index_family --limit 20 --format json` returned `result_count: 9`, and the exact-set verification plus the focused standard-index or CLI-query pytest suites both passed."
+    },
+    {
+      "check_id": "check.data_contract_index_family_baseline_alignment.validation_suite",
+      "title": "Targeted and full validation suites return the standards-family area to a clean state",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
+        "docs/standards/data_contracts/prd_index_standard.md",
+        "core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py",
+        "core/python/"
+      ],
+      "subject_ids": [
+        "task.data_contract_index_family_baseline_alignment.validation_closeout.004",
+        "contract.acceptance.data_contract_index_family_baseline_alignment",
+        "evidence.data_contract_index_family_baseline_alignment.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.data_contract_index_family_baseline_alignment.004"
+      ],
+      "notes": "Targeted validation passed with zero issues on `watchtower-core validate document-semantics --path docs/standards/data_contracts/planning_index_family_standard.md --format json`, zero issues on the same command for `docs/standards/data_contracts/prd_index_standard.md`, a clean `sync all --write --format json` rebuild to 62 standard-index records and 558 repository-path records, focused pytest for `tests/unit/test_standard_index_sync.py` plus `tests/unit/test_cli_knowledge_query_commands.py`, `ruff check .`, `python -m mypy src/watchtower_core`, `watchtower-core validate all --format json` with `1116` passed and `0` failed, and `pytest -q` on the repaired closeout state."
+    },
+    {
+      "check_id": "check.data_contract_index_family_baseline_alignment.confirmation_loop",
+      "title": "Post-fix review and adversarial confirmation found no remaining same-theme issue",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/data_contract_index_family_baseline_alignment_planning_baseline.v1.json"
+      ],
+      "subject_ids": [
+        "task.data_contract_index_family_baseline_alignment.validation_closeout.004",
+        "contract.acceptance.data_contract_index_family_baseline_alignment",
+        "evidence.data_contract_index_family_baseline_alignment.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.data_contract_index_family_baseline_alignment.005"
+      ],
+      "notes": "The second-angle review confirmed the planning-index family tag resolves to exactly the expected nine standards with no extras or misses, every targeted member standard still cites `planning_index_family_standard.md`, the command-doc operationalization query still returns the new family baseline, and the reopened loop repairs were limited to the line-length regression in `test_standard_index_sync.py` plus the bootstrap-only acceptance or evidence coverage drift exposed by the first full-suite pass."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json",
+    "core/control_plane/indexes/standards/standard_index.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Validation evidence refreshed at 2026-03-13T20:16:31Z after the planning-index family baseline refactor, discoverability rebuild, the reopened lint or acceptance-evidence repairs found by the first full-suite pass, and the final rerun of validation or confirmation checks on the same-theme closed state.",
+  "source_decision_ids": [
+    "decision.data_contract_index_family_baseline_alignment_direction"
+  ]
+}

@@ -238,6 +238,46 @@
       ]
     },
     {
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "decision_id": "decision.data_contract_index_family_baseline_alignment_direction",
+      "title": "Data-Contract Index Family Baseline Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Data-Contract Index Family Baseline Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/data_contract_index_family_baseline_alignment_direction.md",
+      "updated_at": "2026-03-13T19:55:04Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.data_contract_index_family_baseline_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.data_contract_index_family_baseline_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.data_contract_index_family_baseline_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/planning/prds/data_contract_index_family_baseline_alignment.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "decision_id": "decision.decision_supersession_and_regression_evidence_alignment_direction",
       "title": "Decision Supersession and Regression Evidence Alignment Direction Decision",

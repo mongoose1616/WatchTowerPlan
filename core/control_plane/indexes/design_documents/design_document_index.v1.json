@@ -384,6 +384,34 @@
       ]
     },
     {
+      "document_id": "design.features.data_contract_index_family_baseline_alignment",
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "family": "feature_design",
+      "title": "Data-Contract Index Family Baseline Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Data-Contract Index Family Baseline Alignment.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/data_contract_index_family_baseline_alignment.md",
+      "updated_at": "2026-03-13T19:55:04Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
+        "docs/standards/data_contracts/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/standards/data_contracts/repository_path_index_standard.md",
+        "docs/planning/prds/data_contract_index_family_baseline_alignment.md"
+      ]
+    },
+    {
       "document_id": "design.features.decision_supersession_and_regression_evidence_alignment",
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "family": "feature_design",
@@ -2224,6 +2252,36 @@
         "docs/standards/data_contracts/standard_index_standard.md",
         "docs/standards/data_contracts/schema_standard.md",
         "docs/standards/engineering/engineering_best_practices_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.data_contract_index_family_baseline_alignment",
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "family": "implementation_plan",
+      "title": "Data-Contract Index Family Baseline Alignment Implementation Plan",
+      "summary": "Breaks Data-Contract Index Family Baseline Alignment into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
+      "updated_at": "2026-03-13T19:55:04Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
+        "docs/planning/decisions/data_contract_index_family_baseline_alignment_direction.md"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/planning/prds/data_contract_index_family_baseline_alignment.md"
       ]
     },
     {

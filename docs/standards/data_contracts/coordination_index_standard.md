@@ -8,8 +8,9 @@ tags:
   - "standard"
   - "data_contracts"
   - "coordination_index"
+  - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T15:05:00Z"
+updated_at: "2026-03-13T20:01:23Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -35,6 +36,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - Reviewing whether the repository is actively executing work, blocked, or ready for one new initiative.
 
 ## Related Standards and Sources
+- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this family-specific standard narrows.
 - [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): defines the initiative-family projection that this coordination layer reads from.
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): defines the task authority layer behind actionable work and blockers.
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace join that initiative state still mirrors.
@@ -45,9 +47,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/coordination/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Model the coordination surface as a derived index, not as an authored planning document.
-- Store published coordination indexes under `core/control_plane/indexes/coordination/`.
-- Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
 - Build the coordination index from the initiative index and its task-backed active-task projection rather than reparsing human trackers.
 - Publish one repo-level coordination mode and one recommended next action plus next surface path at the root of the artifact.
 - Keep `entries` limited to the active current-state initiative set that the coordination start-here experience is summarizing.
@@ -92,7 +92,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/coordination/`; `core/control_plane/indexes/coordination/README.md`; `core/control_plane/examples/valid/indexes/coordination_index*.example.json`; `core/control_plane/examples/invalid/indexes/coordination_index*.example.json`
 
 ## Validation
-- The coordination index should validate against its published artifact schema.
+- In addition to the shared planning-index-family validation contract:
 - Every entry in the coordination index should correspond to one active initiative-index entry.
 - `active_initiative_count` should equal the number of `entries`.
 - Root counts should agree with the projected active initiatives and actionable-task summaries.
@@ -100,8 +100,8 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - The coordination index should remain compact enough that it improves machine navigation instead of recreating family-authority detail.
 
 ## Change Control
+- In addition to the shared planning-index-family change-control contract:
 - Update this standard when the repository changes the coordination-mode model or the projected coordination root fields.
-- Update the companion artifact schema, examples, live coordination index, and query/sync behavior in the same change set when this artifact family changes structurally.
 - Update the coordination query docs, coordination-tracking companion surface, and nearby planning guidance when the coordination start-here experience changes materially.
 
 ## References
@@ -111,4 +111,4 @@ This standard defines the role, structure, and boundary rules for machine-readab
 - [coordination_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/coordination_tracking_standard.md)
 
 ## Updated At
-- `2026-03-13T15:05:00Z`
+- `2026-03-13T20:01:23Z`

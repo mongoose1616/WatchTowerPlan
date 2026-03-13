@@ -380,3 +380,25 @@ def test_query_standards_supports_canonical_directory_path_filters(capsys) -> No
         and "docs/commands/" in entry["related_paths"]
         for entry in payload["results"]
     )
+
+
+def test_query_standards_supports_shared_family_tag_filters(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "query",
+            "standards",
+            "--category",
+            "data_contracts",
+            "--tag",
+            "planning_index_family",
+        ],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query standards"
+    assert payload["status"] == "ok"
+    standard_ids = {entry["standard_id"] for entry in payload["results"]}
+    assert "std.data_contracts.planning_index_family" in standard_ids
+    assert "std.data_contracts.prd_index" in standard_ids
+    assert "std.data_contracts.decision_index" in standard_ids

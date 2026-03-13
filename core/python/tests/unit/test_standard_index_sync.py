@@ -106,6 +106,30 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         [],
     )
 
+    planning_family_entry = next(
+        entry
+        for entry in entries
+        if entry["standard_id"] == "std.data_contracts.planning_index_family"
+    )
+    assert "planning_index_family" in planning_family_entry.get("tags", [])
+    assert "docs/commands/core_python/watchtower_core_query_standards.md" in (
+        planning_family_entry.get("operationalization_paths", [])
+    )
+
+    planning_family_member_ids = {
+        "std.data_contracts.coordination_index",
+        "std.data_contracts.initiative_index",
+        "std.data_contracts.planning_catalog",
+        "std.data_contracts.prd_index",
+        "std.data_contracts.decision_index",
+        "std.data_contracts.design_document_index",
+        "std.data_contracts.task_index",
+        "std.data_contracts.traceability_index",
+    }
+    for standard_id in planning_family_member_ids:
+        entry = next(entry for entry in entries if entry["standard_id"] == standard_id)
+        assert "planning_index_family" in entry.get("tags", [])
+
 
 def test_standard_index_sync_writes_temp_output(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)

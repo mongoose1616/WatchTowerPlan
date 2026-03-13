@@ -8,8 +8,9 @@ tags:
   - "standard"
   - "data_contracts"
   - "traceability_index"
+  - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T20:01:23Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -36,6 +37,7 @@ This standard defines the unified machine-readable traceability index stored und
 - Adding a new durable artifact family that should participate in end-to-end traceability.
 
 ## Related Standards and Sources
+- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this traceability-family standard narrows.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [prd_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/prd_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [decision_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/decision_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -47,9 +49,7 @@ This standard defines the unified machine-readable traceability index stored und
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/traceability/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Model end-to-end trace lookup as an index, not a registry.
-- Store published traceability indexes under `core/control_plane/indexes/traceability/`.
-- Use JSON for the published traceability index artifact.
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep family-specific indexes as their local lookup surfaces and use the unified traceability index as the cross-family join layer.
 - Treat the governed PRD index, decision index, design-document index, task index, acceptance-contract artifacts, and validation-evidence artifacts as the canonical source surfaces for rebuilding the unified traceability index.
 - Every traceability entry should publish:
@@ -116,14 +116,14 @@ This standard defines the unified machine-readable traceability index stored und
 - `Operational Surfaces`: `core/control_plane/indexes/traceability/`; `core/control_plane/indexes/traceability/README.md`; `core/control_plane/examples/valid/indexes/traceability_index*.example.json`; `core/control_plane/examples/invalid/indexes/traceability_index*.example.json`
 
 ## Validation
-- The traceability index should validate against its published artifact schema.
+- In addition to the shared planning-index-family validation contract:
 - Linked IDs should exist in the relevant family-specific indexes or artifacts.
 - `related_paths` should exist in the repository.
 - Reviewers should reject traceability entries that point to stale IDs or that duplicate detailed artifact semantics better kept in the family-specific surfaces.
 
 ## Change Control
+- In addition to the shared planning-index-family change-control contract:
 - Update this standard when the repository changes the joined trace model materially or adds a new first-class traced family that belongs in the unified index.
-- Update the companion schema, examples, and live traceability index in the same change set when this family changes structurally.
 - Update related family-specific indexes and evidence artifacts in the same change set when a trace entry changes materially.
 
 ## References
@@ -135,4 +135,4 @@ This standard defines the unified machine-readable traceability index stored und
 - This index is the machine-readable join surface, not the sole authoritative source of the linked artifacts themselves.
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T20:01:23Z`

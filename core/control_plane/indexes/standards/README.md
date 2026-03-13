@@ -1,7 +1,7 @@
 # `core/control_plane/indexes/standards`
 
 ## Description
-`This directory holds machine-readable standard indexes for the governed standards corpus under docs/standards/. Use it for compact standard lookup, category-aware governance queries, and reference-usage audits.`
+`This directory holds machine-readable standard indexes for the governed standards corpus under docs/standards/. Use it for compact standard lookup, category-aware and tag-aware governance queries, family discovery, and reference-usage audits.`
 
 ## Files
 | Path | Description |

@@ -7,7 +7,7 @@
 | Path | Description |
 |---|---|
 | `docs/standards/README.md` | Describes the purpose of the standards directory and its main standard families. |
-| `docs/standards/data_contracts/` | Holds standards for schemas, structured artifacts, statuses, and format selection. |
+| `docs/standards/data_contracts/` | Holds standards for schemas, structured artifacts, statuses, format selection, and the shared planning-index family baseline. |
 | `docs/standards/documentation/` | Holds standards for repository document families and Markdown surfaces. |
 | `docs/standards/engineering/` | Holds standards for engineering practice and commit behavior. |
 | `docs/standards/governance/` | Holds standards for long-lived governance and reference distillation behavior. |
@@ -15,3 +15,7 @@
 | `docs/standards/operations/` | Holds operations standards used by the repository. |
 | `docs/standards/validations/` | Holds validation-related standards used by the repository. |
 | `docs/standards/workflows/` | Holds standards for routing and workflow design behavior. |
+
+## Notes
+- Use `docs/standards/data_contracts/README.md` when the question is about governed structured artifacts or the planning-related derived index family.
+- Use `cd core/python && ./.venv/bin/watchtower-core query standards --category data_contracts --tag planning_index_family --format json` when you want the shared planning-index family baseline plus its member standards.

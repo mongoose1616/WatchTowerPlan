@@ -771,6 +771,115 @@
       ]
     },
     {
+      "task_id": "task.data_contract_index_family_baseline_alignment.bootstrap.001",
+      "title": "Bootstrap Data-Contract Index Family Baseline Alignment planning chain",
+      "summary": "Bootstraps the initial planning chain for Data-Contract Index Family Baseline Alignment.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/data_contract_index_family_baseline_alignment_bootstrap.md",
+      "updated_at": "2026-03-13T20:00:55Z",
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "related_ids": [
+        "prd.data_contract_index_family_baseline_alignment",
+        "design.features.data_contract_index_family_baseline_alignment",
+        "design.implementation.data_contract_index_family_baseline_alignment",
+        "decision.data_contract_index_family_baseline_alignment_direction",
+        "contract.acceptance.data_contract_index_family_baseline_alignment"
+      ],
+      "applies_to": [
+        "docs/standards/data_contracts/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/"
+      ]
+    },
+    {
+      "task_id": "task.data_contract_index_family_baseline_alignment.family_baseline.002",
+      "title": "Publish planning-index family baseline and refactor member standards",
+      "summary": "Add the shared planning-index-family baseline standard and refactor the targeted member standards plus adjacent authoring guidance and README navigation around it.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/publish_planning_index_family_baseline_and_refactor_member_standards.md",
+      "updated_at": "2026-03-13T20:07:34Z",
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "related_ids": [
+        "prd.data_contract_index_family_baseline_alignment",
+        "design.features.data_contract_index_family_baseline_alignment",
+        "design.implementation.data_contract_index_family_baseline_alignment",
+        "decision.data_contract_index_family_baseline_alignment_direction",
+        "contract.acceptance.data_contract_index_family_baseline_alignment"
+      ],
+      "applies_to": [
+        "docs/standards/data_contracts/",
+        "docs/standards/README.md"
+      ]
+    },
+    {
+      "task_id": "task.data_contract_index_family_baseline_alignment.standard_index_discoverability.003",
+      "title": "Refresh standard-index discoverability and query validation",
+      "summary": "Refresh the governed standard index, query-standards command docs, and regression tests around the planning-index family tag and discoverability path.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/refresh_standard_index_discoverability_and_query_validation.md",
+      "updated_at": "2026-03-13T20:07:34Z",
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "depends_on": [
+        "task.data_contract_index_family_baseline_alignment.family_baseline.002"
+      ],
+      "related_ids": [
+        "prd.data_contract_index_family_baseline_alignment",
+        "design.features.data_contract_index_family_baseline_alignment",
+        "design.implementation.data_contract_index_family_baseline_alignment",
+        "decision.data_contract_index_family_baseline_alignment_direction",
+        "contract.acceptance.data_contract_index_family_baseline_alignment"
+      ],
+      "applies_to": [
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/unit/test_cli_knowledge_query_commands.py"
+      ]
+    },
+    {
+      "task_id": "task.data_contract_index_family_baseline_alignment.validation_closeout.004",
+      "title": "Validate and close data-contract index family baseline alignment",
+      "summary": "Run targeted validation, full validation, repeated same-theme confirmation passes, evidence refresh, and closeout once the planning-index family refactor stays clean.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_data_contract_index_family_baseline_alignment.md",
+      "updated_at": "2026-03-13T20:17:38Z",
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "depends_on": [
+        "task.data_contract_index_family_baseline_alignment.family_baseline.002",
+        "task.data_contract_index_family_baseline_alignment.standard_index_discoverability.003"
+      ],
+      "related_ids": [
+        "prd.data_contract_index_family_baseline_alignment",
+        "design.implementation.data_contract_index_family_baseline_alignment",
+        "decision.data_contract_index_family_baseline_alignment_direction",
+        "contract.acceptance.data_contract_index_family_baseline_alignment"
+      ],
+      "applies_to": [
+        "docs/standards/data_contracts/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/",
+        "docs/planning/"
+      ]
+    },
+    {
       "task_id": "task.decision_supersession_and_regression_evidence_alignment.bootstrap.001",
       "title": "Bootstrap Decision Supersession and Regression Evidence Alignment planning chain",
       "summary": "Bootstraps the initial planning chain for Decision Supersession and Regression Evidence Alignment.",

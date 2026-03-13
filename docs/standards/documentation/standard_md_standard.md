@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "standard_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T02:06:54Z"
+updated_at: "2026-03-13T20:01:23Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -44,6 +44,7 @@ Keep standards structured enough that internal and external authority is not onl
 - Use governed front matter on standards and validate it against the standard front matter profile.
 - Keep one primary standard concern per document.
 - Use the standard-document template when creating or materially refreshing a governed standard unless a narrower family scaffold is intentionally more specific.
+- When multiple standards in one narrow governed family share the same baseline operationalization, validation, or change-control contract, capture that shared contract in one companion standard and let each member standard publish only its family-specific deltas after explicitly citing the shared baseline.
 - Use `Related Standards and Sources` for the authorities that materially shape the standard, not for loose “nice to read” links.
 - Every bullet in `Related Standards and Sources` should use `source: implication` form so the repo-local consequence of the cited authority is explicit.
 - Repo-local Markdown links should resolve to existing repository targets and should fail validation when they drift.
@@ -81,6 +82,7 @@ Keep standards structured enough that internal and external authority is not onl
 - Exact file surfaces should use repo-relative file paths without a trailing slash, and directory surfaces should use repo-relative directory paths ending in `/`.
 - Repo-local Markdown links should resolve to existing files or directories under the repository root.
 - Headings should not appear immediately after a bullet or numbered list item without a blank separator line.
+- Standards that rely on a narrower shared family baseline should keep their family-specific deltas explicit in `Guidance`, `Validation`, and `Change Control` rather than replacing those sections with vague placeholders.
 - `References` should remain present and should not silently absorb the applied-implication role.
 - `updated_at` in front matter and the `Updated At` body section should match.
 
@@ -96,4 +98,4 @@ Keep standards structured enough that internal and external authority is not onl
 - [README.md](/home/j/WatchTowerPlan/docs/standards/README.md)
 
 ## Updated At
-- `2026-03-12T02:06:54Z`
+- `2026-03-13T20:01:23Z`

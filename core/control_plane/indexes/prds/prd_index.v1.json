@@ -366,6 +366,52 @@
       ]
     },
     {
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "prd_id": "prd.data_contract_index_family_baseline_alignment",
+      "title": "Data-Contract Index Family Baseline Alignment PRD",
+      "summary": "Review and refactor the repeated planning-related data-contract index standards so shared boilerplate becomes a governed family baseline with better discoverability and no loss of explicit artifact contracts.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
+      "updated_at": "2026-03-13T19:55:04Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.data_contract_index_family_baseline_alignment.001",
+        "req.data_contract_index_family_baseline_alignment.002",
+        "req.data_contract_index_family_baseline_alignment.003",
+        "req.data_contract_index_family_baseline_alignment.004",
+        "req.data_contract_index_family_baseline_alignment.005"
+      ],
+      "acceptance_ids": [
+        "ac.data_contract_index_family_baseline_alignment.001",
+        "ac.data_contract_index_family_baseline_alignment.002",
+        "ac.data_contract_index_family_baseline_alignment.003",
+        "ac.data_contract_index_family_baseline_alignment.004",
+        "ac.data_contract_index_family_baseline_alignment.005"
+      ],
+      "linked_decision_ids": [
+        "decision.data_contract_index_family_baseline_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.data_contract_index_family_baseline_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.data_contract_index_family_baseline_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/data_contracts/",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "core/python/tests/unit/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "prd_id": "prd.decision_supersession_and_regression_evidence_alignment",
       "title": "Decision Supersession and Regression Evidence Alignment PRD",

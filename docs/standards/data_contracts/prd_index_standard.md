@@ -8,8 +8,9 @@ tags:
   - "standard"
   - "data_contracts"
   - "prd_index"
+  - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T20:01:23Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,6 +34,7 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - Building lookup or traceability tooling that needs a compact machine-readable view over the PRD corpus.
 
 ## Related Standards and Sources
+- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this PRD-family standard narrows.
 - [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -41,11 +43,7 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/prds/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Model PRD tracking as an index, not as a registry.
-- Treat the PRD index as a machine-readable lookup and trace surface rather than the authority for PRD content.
-- Store published PRD indexes under `core/control_plane/indexes/prds/`.
-- Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
-- Use JSON for the published PRD index artifact.
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
 - Every PRD index entry must point to an existing PRD under `docs/planning/prds/`.
 - Carry a shared `trace_id` in every entry so PRDs can join to decisions, designs, and plans.
 - Carry stable `prd_id` values in every entry.
@@ -91,15 +89,15 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - `Operational Surfaces`: `core/control_plane/indexes/prds/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/prds/README.md`; `core/control_plane/examples/valid/indexes/prd_index*.example.json`; `core/control_plane/examples/invalid/indexes/prd_index*.example.json`; `docs/planning/prds/`
 
 ## Validation
-- The PRD index should validate against its published artifact schema.
+- In addition to the shared planning-index-family validation contract:
 - Every `doc_path` should exist and point to a file under `docs/planning/prds/`.
 - Every entry should have both `trace_id` and `prd_id`.
 - The reference-presence flags should reflect the actual PRD sections that cite internal or external sources.
 - Reviewers should reject entries that point to stale PRDs or omit durable IDs that exist in the PRD itself.
 
 ## Change Control
+- In addition to the shared planning-index-family change-control contract:
 - Update this standard when the repository changes how PRDs are indexed or traced.
-- Update the companion artifact schema, examples, and live PRD index in the same change set when the PRD-index family changes structurally.
 - Update the human-readable PRD tracker in the same change set when indexed PRDs change materially.
 
 ## References
@@ -108,4 +106,4 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 - [prd_tracking.md](/home/j/WatchTowerPlan/docs/planning/prds/prd_tracking.md)
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T20:01:23Z`

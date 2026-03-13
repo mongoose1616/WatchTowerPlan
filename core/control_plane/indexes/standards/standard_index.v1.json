@@ -145,7 +145,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/coordination_index_standard.md",
-      "updated_at": "2026-03-13T15:05:00Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -160,6 +160,7 @@
         "core/control_plane/examples/invalid/indexes/coordination_index*.example.json"
       ],
       "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
@@ -170,6 +171,7 @@
         "core/control_plane/indexes/coordination/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/task_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
@@ -182,7 +184,8 @@
       "tags": [
         "standard",
         "data_contracts",
-        "coordination_index"
+        "coordination_index",
+        "planning_index_family"
       ]
     },
     {
@@ -193,7 +196,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/decision_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -210,6 +213,7 @@
         "docs/planning/decisions/"
       ],
       "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/governance/decision_capture_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -218,6 +222,7 @@
         "core/control_plane/indexes/decisions/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/governance/decision_capture_standard.md",
         "docs/standards/governance/traceability_standard.md",
@@ -228,7 +233,8 @@
       "tags": [
         "standard",
         "data_contracts",
-        "decision_index"
+        "decision_index",
+        "planning_index_family"
       ]
     },
     {
@@ -239,7 +245,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/design_document_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -256,6 +262,7 @@
         "docs/planning/design/"
       ],
       "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
@@ -265,6 +272,7 @@
         "core/control_plane/indexes/design_documents/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
@@ -276,7 +284,8 @@
       "tags": [
         "standard",
         "data_contracts",
-        "design_document_index"
+        "design_document_index",
+        "planning_index_family"
       ]
     },
     {
@@ -409,7 +418,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/initiative_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -426,6 +435,7 @@
         "docs/planning/initiatives/initiative_tracking.md"
       ],
       "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
@@ -437,6 +447,7 @@
         "core/control_plane/indexes/initiatives/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/governance/initiative_closeout_standard.md",
@@ -450,7 +461,8 @@
       "tags": [
         "standard",
         "data_contracts",
-        "initiative_index"
+        "initiative_index",
+        "planning_index_family"
       ]
     },
     {
@@ -461,7 +473,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/planning_catalog_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -476,6 +488,7 @@
         "core/control_plane/examples/invalid/indexes/planning_catalog*.example.json"
       ],
       "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
@@ -485,6 +498,7 @@
         "core/control_plane/indexes/planning/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/data_contracts/initiative_index_standard.md",
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
@@ -496,7 +510,58 @@
       "tags": [
         "standard",
         "data_contracts",
-        "planning_catalog"
+        "planning_catalog",
+        "planning_index_family"
+      ]
+    },
+    {
+      "standard_id": "std.data_contracts.planning_index_family",
+      "category": "data_contracts",
+      "title": "Planning Index Family Standard",
+      "summary": "This standard defines the shared baseline for planning-related derived index standards stored under `core/control_plane/indexes/`.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/standards/data_contracts/planning_index_family_standard.md",
+      "updated_at": "2026-03-13T20:01:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact",
+        "query"
+      ],
+      "operationalization_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
+        "docs/standards/data_contracts/coordination_index_standard.md",
+        "docs/standards/data_contracts/initiative_index_standard.md",
+        "docs/standards/data_contracts/planning_catalog_standard.md",
+        "docs/standards/data_contracts/prd_index_standard.md",
+        "docs/standards/data_contracts/decision_index_standard.md",
+        "docs/standards/data_contracts/design_document_index_standard.md",
+        "docs/standards/data_contracts/task_index_standard.md",
+        "docs/standards/data_contracts/traceability_index_standard.md",
+        "docs/standards/data_contracts/README.md",
+        "core/control_plane/indexes/standards/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "docs/commands/core_python/watchtower_core_query_standards.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/data_contracts/README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/foundations/repository_standards_posture.md"
+      ],
+      "tags": [
+        "standard",
+        "data_contracts",
+        "planning_index_family"
       ]
     },
     {
@@ -507,7 +572,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/prd_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -524,6 +589,7 @@
         "docs/planning/prds/"
       ],
       "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
@@ -532,6 +598,7 @@
         "core/control_plane/indexes/prds/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
@@ -542,7 +609,8 @@
       "tags": [
         "standard",
         "data_contracts",
-        "prd_index"
+        "prd_index",
+        "planning_index_family"
       ]
     },
     {
@@ -882,7 +950,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/task_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -904,6 +972,7 @@
         "core/control_plane/indexes/tasks/task_index.v1.json"
       ],
       "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
@@ -912,6 +981,7 @@
         "core/control_plane/indexes/tasks/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/documentation/task_md_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
@@ -922,7 +992,8 @@
       "tags": [
         "standard",
         "data_contracts",
-        "task_index"
+        "task_index",
+        "planning_index_family"
       ]
     },
     {
@@ -933,7 +1004,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/traceability_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -946,6 +1017,7 @@
         "core/control_plane/examples/invalid/indexes/traceability_index*.example.json"
       ],
       "internal_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/prd_index_standard.md",
         "docs/standards/data_contracts/decision_index_standard.md",
@@ -957,6 +1029,7 @@
         "core/control_plane/indexes/traceability/README.md"
       ],
       "applied_reference_paths": [
+        "docs/standards/data_contracts/planning_index_family_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/data_contracts/prd_index_standard.md",
         "docs/standards/data_contracts/decision_index_standard.md",
@@ -970,7 +1043,8 @@
       "tags": [
         "standard",
         "data_contracts",
-        "traceability_index"
+        "traceability_index",
+        "planning_index_family"
       ]
     },
     {
@@ -1601,7 +1675,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/standard_md_standard.md",
-      "updated_at": "2026-03-12T02:06:54Z",
+      "updated_at": "2026-03-13T20:01:23Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

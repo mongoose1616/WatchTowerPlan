@@ -8,8 +8,9 @@ tags:
   - "standard"
   - "data_contracts"
   - "task_index"
+  - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T01:22:49Z"
+updated_at: "2026-03-13T20:01:23Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -38,6 +39,7 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - Reviewing whether task metadata belongs in the task index or only in task prose.
 
 ## Related Standards and Sources
+- [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md): defines the shared derived-index baseline and discoverability contract this task-family standard narrows.
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -46,11 +48,9 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
-- Model task lookup as an index, not as a registry.
+- Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep the authoritative task content in the task Markdown records under `docs/planning/tasks/`.
 - Keep the task tracker and task index derived from those records.
-- Store published task indexes under `core/control_plane/indexes/tasks/`.
-- Use JSON for the published task index artifact.
 - Every task-index entry must point to an existing task document.
 - Keep optional GitHub identifiers as foreign-key metadata only; do not make them the local task identity.
 - Keep task execution state in `task_status` and artifact lifecycle state in `status`.
@@ -112,15 +112,16 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `core/control_plane/examples/valid/indexes/task_index*.example.json`; `core/control_plane/examples/invalid/indexes/task_index*.example.json`; `docs/planning/tasks/`
 
 ## Validation
-- The task index should validate against its published artifact schema.
+- In addition to the shared planning-index-family validation contract:
 - Every `doc_path` should exist and point to a task document under `docs/planning/tasks/`.
 - A task-index entry under `docs/planning/tasks/open/` should not use `done` or `cancelled`.
 - A task-index entry under `docs/planning/tasks/closed/` should use only `done` or `cancelled`.
 - `blocked_by` and `depends_on` references should point to existing task IDs in the current index.
 
 ## Change Control
+- In addition to the shared planning-index-family change-control contract:
 - Update this standard when the repository changes how tasks are indexed or queried.
-- Update the companion artifact schema, examples, live task index, and task sync logic in the same change set when the task-index family changes structurally.
+- Update the task tracker, traceability projection, and coordination projection in the same change set when task-index changes alter execution visibility materially.
 
 ## References
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
@@ -128,4 +129,4 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md)
 
 ## Updated At
-- `2026-03-12T01:22:49Z`
+- `2026-03-13T20:01:23Z`

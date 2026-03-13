@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-13T19:19:06Z",
+  "updated_at": "2026-03-13T20:17:49Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.data_contract_index_family_baseline_alignment",
+      "title": "Data-Contract Index Family Baseline Alignment PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-13T20:17:49Z",
+      "key_surface_path": "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
+      "closure_reason": "Completed the bounded refactor review after adding the planning-index family baseline, refactoring the member standards, refreshing discoverability, repairing reopened validation-evidence drift, and rerunning clean confirmation passes."
+    },
     {
       "trace_id": "trace.validation_test_hotspot_rebalancing",
       "title": "Validation Test Hotspot Rebalancing PRD",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-13T00:37:03Z",
       "key_surface_path": "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
       "closure_reason": "Aligned the foundations family entrypoints and review workflow with the machine foundations routes, added fail-closed coverage, and validated the foundations-themed review loop with no additional actionable issues."
-    },
-    {
-      "trace_id": "trace.foundation_document_standard_boundary_alignment",
-      "title": "Foundation Document Standard Boundary Alignment PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-13T00:09:19Z",
-      "key_surface_path": "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
-      "closure_reason": "Delivered foundation-document boundary alignment: the authored standard now scopes only the six governed foundation docs, standards lookup excludes the foundations README, validation passed, and themed review found no additional actionable issues."
     }
   ]
 }

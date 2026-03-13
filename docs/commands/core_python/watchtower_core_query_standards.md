@@ -1,10 +1,11 @@
 # `watchtower-core query standards`
 
 ## Summary
-This command searches the governed standard index so engineers and agents can find standards and best-practice docs by category, related repo surface, reference doc, or free-text governance context.
+This command searches the governed standard index so engineers and agents can find standards and best-practice docs by category, tag, related repo surface, reference doc, or free-text governance context.
 
 ## Use When
 - You need to find the governing standard for a repo surface without browsing `docs/standards/` manually.
+- You want one machine-readable result set for a narrow standards subfamily such as the planning-index family.
 - You want to know which standards currently rely on a given local reference doc under `docs/references/`.
 - You want machine-readable standard lookup results for workflows, scripts, or agent calls.
 
@@ -60,6 +61,11 @@ uv run watchtower-core query standards --related-path .github/
 
 ```sh
 cd core/python
+uv run watchtower-core query standards --category data_contracts --tag planning_index_family --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core query standards --operationalization-path docs/planning/prds/reference_and_workflow_standards_alignment.md --format json
 ```
 
@@ -71,6 +77,7 @@ uv run watchtower-core query standards --operationalization-path docs/references
 ## Behavior and Outputs
 - The command is read-only and does not mutate repository state.
 - `--operationalization-path` matches exact indexed files, concrete descendant files when a standard operationalizes a directory path such as `docs/planning/prds/`, and concrete files matched by indexed glob patterns such as `**/README.md` or `**/AGENTS.md`.
+- `--tag` can retrieve authored shared family tags such as `planning_index_family` when several standards intentionally form one governed subfamily.
 - In `human` mode, the command prints matching standard IDs, categories, owners, titles, summaries, and compact operationalization metadata.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, result records, and indexed retrieval fields such as `owner`, `applies_to`, `reference_doc_paths`, `operationalization_modes`, and `operationalization_paths`.
 - If no entries match the requested filters, the command exits successfully and reports that no standard entries matched.
@@ -88,4 +95,4 @@ uv run watchtower-core query standards --operationalization-path docs/references
 - `core/control_plane/indexes/standards/standard_index.v1.json`
 
 ## Updated At
-- `2026-03-12T01:02:00Z`
+- `2026-03-13T20:01:23Z`
