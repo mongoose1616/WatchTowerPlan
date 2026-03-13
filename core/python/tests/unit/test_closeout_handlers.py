@@ -16,6 +16,7 @@ def _args(**overrides: object) -> argparse.Namespace:
         "closed_at": "2026-03-10T23:59:59Z",
         "write": True,
         "allow_open_tasks": False,
+        "allow_acceptance_issues": False,
         "format": "text",
     }
     defaults.update(overrides)
@@ -30,6 +31,7 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
         def close(self, **kwargs: object) -> SimpleNamespace:
             assert kwargs["trace_id"] == "trace.example"
             assert kwargs["write"] is True
+            assert kwargs["allow_acceptance_issues"] is False
             return SimpleNamespace(
                 trace_id="trace.example",
                 initiative_status="completed",
@@ -37,6 +39,8 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
                 closure_reason="Closed for tests.",
                 superseded_by_trace_id="trace.next",
                 open_task_ids=("task.example.001",),
+                acceptance_issue_count=2,
+                acceptance_issues_allowed=True,
                 wrote=True,
                 traceability_output_path="core/control_plane/indexes/traceability/traceability_index.v1.json",
                 initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.v1.json",
@@ -61,6 +65,7 @@ def test_closeout_initiative_prints_human_summary(monkeypatch, capsys) -> None:
     assert "Closed initiative trace.example as completed." in captured.out
     assert "Superseded By: trace.next" in captured.out
     assert "Open Tasks Left In Place: task.example.001" in captured.out
+    assert "Acceptance Issues Left In Place: 2" in captured.out
     assert (
         "Canonical traceability, initiative, planning catalog, coordination, "
         "and planning trackers were updated."
@@ -104,6 +109,8 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
                 closure_reason="Closed for tests.",
                 superseded_by_trace_id=None,
                 open_task_ids=(),
+                acceptance_issue_count=0,
+                acceptance_issues_allowed=False,
                 wrote=True,
                 traceability_output_path="core/control_plane/indexes/traceability/traceability_index.v1.json",
                 initiative_index_output_path="core/control_plane/indexes/initiatives/initiative_index.v1.json",
@@ -125,6 +132,8 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
     payload = json.loads(captured.out)
     assert result == 0
     assert payload["command"] == "watchtower-core closeout initiative"
+    assert payload["acceptance_issue_count"] == 0
+    assert payload["acceptance_issues_allowed"] is False
     assert (
         payload["planning_catalog_output_path"]
         == "core/control_plane/indexes/planning/planning_catalog.v1.json"

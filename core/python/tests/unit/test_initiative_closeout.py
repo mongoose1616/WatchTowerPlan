@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from shutil import copytree
 
+from tests.integration.fixture_repo_support import materialize_acceptance_and_evidence_paths
 from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import (
     COORDINATION_INDEX_PATH,
@@ -29,6 +30,7 @@ def _build_closeout_fixture_repo(tmp_path: Path) -> Path:
         "docs/planning/initiatives",
     ):
         (repo_root / relative_path).mkdir(parents=True, exist_ok=True)
+    materialize_acceptance_and_evidence_paths(repo_root)
     return repo_root
 
 
@@ -220,3 +222,83 @@ def test_initiative_closeout_rejects_missing_linked_tasks_in_task_index(tmp_path
 
     assert missing_task_id in message
     assert "Rebuild traceability and task surfaces before closeout" in message
+
+
+def test_initiative_closeout_rejects_acceptance_issues_without_override(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_closeout_fixture_repo(tmp_path)
+    traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
+    entries = traceability_document["entries"]
+    assert isinstance(entries, list)
+    target = next(entry for entry in entries if entry["trace_id"] == "trace.core_python_foundation")
+    target["initiative_status"] = "active"
+    target["updated_at"] = "2026-03-10T23:10:00Z"
+    target.pop("closed_at", None)
+    target.pop("closure_reason", None)
+    _write_json(repo_root, TRACEABILITY_INDEX_PATH, traceability_document)
+
+    contract_path = (
+        repo_root
+        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+    )
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    contract["entries"] = contract["entries"][:1]
+    contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
+
+    service = InitiativeCloseoutService(ControlPlaneLoader(repo_root))
+
+    try:
+        service.close(
+            trace_id="trace.core_python_foundation",
+            initiative_status="completed",
+            closure_reason="Attempted closeout with unresolved acceptance drift.",
+            write=False,
+            allow_open_tasks=True,
+        )
+    except ValueError as exc:
+        message = str(exc)
+    else:
+        raise AssertionError("Expected initiative closeout to reject acceptance drift.")
+
+    assert "acceptance reconciliation issue" in message
+    assert "validate acceptance" in message
+    assert "--allow-acceptance-issues" in message
+
+
+def test_initiative_closeout_allows_explicit_acceptance_issue_override(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_closeout_fixture_repo(tmp_path)
+    traceability_document = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
+    entries = traceability_document["entries"]
+    assert isinstance(entries, list)
+    target = next(entry for entry in entries if entry["trace_id"] == "trace.core_python_foundation")
+    target["initiative_status"] = "active"
+    target["updated_at"] = "2026-03-10T23:10:00Z"
+    target.pop("closed_at", None)
+    target.pop("closure_reason", None)
+    _write_json(repo_root, TRACEABILITY_INDEX_PATH, traceability_document)
+
+    contract_path = (
+        repo_root
+        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+    )
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    contract["entries"] = contract["entries"][:1]
+    contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
+
+    result = InitiativeCloseoutService(ControlPlaneLoader(repo_root)).close(
+        trace_id="trace.core_python_foundation",
+        initiative_status="completed",
+        closure_reason=(
+            "Explicitly allowed acceptance drift for cancellation-style "
+            "closeout testing."
+        ),
+        write=False,
+        allow_open_tasks=True,
+        allow_acceptance_issues=True,
+    )
+
+    assert result.acceptance_issue_count > 0
+    assert result.acceptance_issues_allowed is True

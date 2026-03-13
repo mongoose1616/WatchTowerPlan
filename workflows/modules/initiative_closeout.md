@@ -28,7 +28,9 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
    - Confirm which PRDs, decisions, designs, plans, tasks, contracts, or evidence surfaces belong to that trace.
 2. Check readiness for terminal closeout.
    - Inspect linked task state and any known downstream validation or acceptance gaps.
+   - Run or review `watchtower-core validate acceptance --trace-id <trace_id>` when the trace publishes acceptance or evidence surfaces.
    - Decide whether any remaining open work blocks closeout or must be explicitly allowed as an exception.
+   - Use an explicit acceptance-exception override only when the validation gap is intentional and should remain visible at closeout.
 3. Record the initiative outcome.
    - Set the terminal initiative status.
    - Record `closed_at`, `closure_reason`, and `superseded_by_trace_id` when required.
@@ -59,4 +61,4 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
 ## Done When
 - The target trace has a terminal initiative status recorded explicitly.
 - The traceability index, initiative view, and mirrored family trackers agree on the current initiative outcome.
-- Any remaining open-task or validation exception is explicit rather than implied.
+- Any remaining open-task or acceptance-validation exception is explicit rather than implied.

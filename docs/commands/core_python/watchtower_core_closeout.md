@@ -1,7 +1,9 @@
 # `watchtower-core closeout`
 
 ## Summary
-This command group applies initiative-level closeout state to traced planning surfaces and refreshes the derived coordination mirrors that depend on that state.
+This command group applies initiative-level closeout state to traced planning surfaces and
+refreshes the derived coordination mirrors that depend on that state. The current leaf command
+also enforces trace-level acceptance reconciliation by default before terminal closeout.
 
 ## Use When
 - You want help for one of the closeout operations without opening the implementation code first.
@@ -14,7 +16,7 @@ This command group applies initiative-level closeout state to traced planning su
 | Invocation | `watchtower-core closeout` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/closeout_family.py` |
 
 ## Synopsis
 ```sh
@@ -39,12 +41,13 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 
 ## Behavior and Outputs
 - With no leaf command, the current implementation prints closeout-specific help and exits successfully.
-- The current leaf command is `initiative`, which applies terminal initiative state to the traceability index and regenerates the mirrored initiative, coordination, and family tracking surfaces in write mode.
+- The current leaf command is `initiative`, which validates acceptance reconciliation by default, applies terminal initiative state to the traceability index, and regenerates the mirrored initiative, coordination, and family tracking surfaces in write mode.
 
 ## Related Commands
 | Command | Relationship |
 |---|---|
 | `watchtower-core closeout initiative` | Applies terminal closeout state for one traced initiative. |
+| `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that closeout now enforces by default. |
 | `watchtower-core query initiatives` | Reads the initiative view that the closeout command also refreshes in write mode. |
 | `watchtower-core query trace` | Reads the traceability entry that the closeout command updates. |
 | `watchtower-core sync initiative-index` | Rebuilds one of the initiative coordination surfaces the closeout command also updates in write mode. |
@@ -54,8 +57,8 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | `watchtower-core sync design-tracking` | Rebuilds one of the human trackers the closeout command also updates in write mode. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/closeout_family.py`
 - `core/python/src/watchtower_core/closeout/`
 
 ## Updated At
-- `2026-03-10T21:18:00Z`
+- `2026-03-13T22:37:14Z`

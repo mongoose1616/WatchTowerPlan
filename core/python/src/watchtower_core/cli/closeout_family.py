@@ -89,6 +89,14 @@ def register_closeout_family(
         help="Allow terminal closeout even if linked tasks are still open.",
     )
     closeout_initiative_parser.add_argument(
+        "--allow-acceptance-issues",
+        action="store_true",
+        help=(
+            "Allow terminal closeout even when acceptance reconciliation reports issues. "
+            "Use only when the validation exception is intentional and explicit."
+        ),
+    )
+    closeout_initiative_parser.add_argument(
         "--write",
         action="store_true",
         help="Write the updated closeout state and regenerated trackers to their canonical paths.",

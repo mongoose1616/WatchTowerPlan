@@ -1532,6 +1532,49 @@
       ]
     },
     {
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "prd_id": "prd.refactor_umbrella_regression_and_growth_control",
+      "title": "Refactor Umbrella Regression and Growth Control PRD",
+      "summary": "Audits the March 13, 2026 refactor program across the external audit, completed refactor traces, and commit history, then hardens closeout and review-loop behavior to stop repeated acceptance-drift regressions and unnecessary trace-sprawl growth.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/refactor_umbrella_regression_and_growth_control.md",
+      "updated_at": "2026-03-13T22:30:01Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.refactor_umbrella_regression_and_growth_control.001",
+        "req.refactor_umbrella_regression_and_growth_control.002",
+        "req.refactor_umbrella_regression_and_growth_control.003",
+        "req.refactor_umbrella_regression_and_growth_control.004",
+        "req.refactor_umbrella_regression_and_growth_control.005"
+      ],
+      "acceptance_ids": [
+        "ac.refactor_umbrella_regression_and_growth_control.001",
+        "ac.refactor_umbrella_regression_and_growth_control.002",
+        "ac.refactor_umbrella_regression_and_growth_control.003",
+        "ac.refactor_umbrella_regression_and_growth_control.004",
+        "ac.refactor_umbrella_regression_and_growth_control.005"
+      ],
+      "linked_decision_ids": [
+        "decision.refactor_umbrella_regression_and_growth_control_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.refactor_umbrella_regression_and_growth_control"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.refactor_umbrella_regression_and_growth_control"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/planning/"
+      ]
+    },
+    {
       "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
       "prd_id": "prd.reference_and_reserved_surface_maturity_signaling",
       "title": "Reference and Reserved Surface Maturity Signaling PRD",

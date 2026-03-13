@@ -1,0 +1,105 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.refactor_umbrella_regression_and_growth_control",
+  "title": "Refactor Umbrella Regression and Growth Control Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+  "source_prd_id": "prd.refactor_umbrella_regression_and_growth_control",
+  "entries": [
+    {
+      "acceptance_id": "ac.refactor_umbrella_regression_and_growth_control.001",
+      "summary": "The umbrella refactor trace publishes the PRD, feature design, implementation plan, direction decision, acceptance contract, evidence ledger, and bounded task chain plus the master audit matrix for the continuing refactor theme.",
+      "source_requirement_ids": [
+        "req.refactor_umbrella_regression_and_growth_control.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/design/features/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/decisions/refactor_umbrella_regression_and_growth_control_direction.md",
+        "docs/planning/tasks/closed/refactor_umbrella_regression_and_growth_control_bootstrap.md",
+        "docs/planning/tasks/closed/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md",
+        "core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/refactor_umbrella_regression_and_growth_control_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Umbrella refactor planning baseline published at 2026-03-13T22:40:13Z for trace.refactor_umbrella_regression_and_growth_control."
+    },
+    {
+      "acceptance_id": "ac.refactor_umbrella_regression_and_growth_control.002",
+      "summary": "Initiative closeout fails closed when trace-level acceptance reconciliation reports issues and the operator did not pass the explicit acceptance-drift override.",
+      "source_requirement_ids": [
+        "req.refactor_umbrella_regression_and_growth_control.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/tests/unit/test_initiative_closeout.py"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
+      ],
+      "notes": "The closeout service now runs acceptance reconciliation before terminal closeout and rejects unresolved trace drift by default."
+    },
+    {
+      "acceptance_id": "ac.refactor_umbrella_regression_and_growth_control.003",
+      "summary": "An explicit acceptance-drift override allows terminal closeout to proceed while keeping the validation exception visible in runtime output and operator guidance.",
+      "source_requirement_ids": [
+        "req.refactor_umbrella_regression_and_growth_control.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/closeout_family.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/tests/unit/test_closeout_handlers.py"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
+      ],
+      "notes": "The override remains explicit through the CLI flag plus the human and JSON closeout outputs."
+    },
+    {
+      "acceptance_id": "ac.refactor_umbrella_regression_and_growth_control.004",
+      "summary": "The repository-review workflow and initiative-closeout guidance keep same-theme review work under one continuing trace and document the acceptance-reconciliation gate consistently.",
+      "source_requirement_ids": [
+        "req.refactor_umbrella_regression_and_growth_control.004"
+      ],
+      "validation_targets": [
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md",
+        "docs/standards/governance/initiative_closeout_standard.md"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/decisions/refactor_umbrella_regression_and_growth_control_direction.md"
+      ],
+      "notes": "The themed review loop and the initiative-closeout workflow now share the same umbrella-trace and explicit-exception guidance."
+    },
+    {
+      "acceptance_id": "ac.refactor_umbrella_regression_and_growth_control.005",
+      "summary": "Targeted validation, full validation, repeated confirmation passes, and final closeout complete without a new actionable issue inside the refactor pass-trace regression and surface-growth boundary.",
+      "source_requirement_ids": [
+        "req.refactor_umbrella_regression_and_growth_control.005"
+      ],
+      "validation_targets": [
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "core/python/tests/integration/test_task_workflow_end_to_end.py",
+        "core/control_plane/ledgers/validation_evidence/refactor_umbrella_regression_and_growth_control_planning_baseline.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "notes": "The final validation stack and confirmation passes must prove the root-cause hardening slice is clean before initiative closeout."
+    }
+  ]
+}

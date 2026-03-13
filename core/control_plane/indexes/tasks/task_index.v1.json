@@ -3251,6 +3251,121 @@
       ]
     },
     {
+      "task_id": "task.refactor_umbrella_regression_and_growth_control.audit_matrix.001",
+      "title": "Publish umbrella refactor audit matrix and master findings ledger",
+      "summary": "Record the external audit finding matrix, pass-trace review, and commit-history conclusions in one umbrella refactor ledger.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md",
+      "updated_at": "2026-03-13T22:33:28Z",
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "related_ids": [
+        "prd.refactor_umbrella_regression_and_growth_control",
+        "design.features.refactor_umbrella_regression_and_growth_control",
+        "design.implementation.refactor_umbrella_regression_and_growth_control",
+        "decision.refactor_umbrella_regression_and_growth_control_direction"
+      ],
+      "applies_to": [
+        "docs/planning/prds/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/design/features/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/decisions/refactor_umbrella_regression_and_growth_control_direction.md"
+      ]
+    },
+    {
+      "task_id": "task.refactor_umbrella_regression_and_growth_control.bootstrap.001",
+      "title": "Bootstrap Refactor Umbrella Regression and Growth Control planning chain",
+      "summary": "Bootstraps the initial planning chain for Refactor Umbrella Regression and Growth Control.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/refactor_umbrella_regression_and_growth_control_bootstrap.md",
+      "updated_at": "2026-03-13T22:34:01Z",
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "related_ids": [
+        "prd.refactor_umbrella_regression_and_growth_control",
+        "design.features.refactor_umbrella_regression_and_growth_control",
+        "design.implementation.refactor_umbrella_regression_and_growth_control",
+        "decision.refactor_umbrella_regression_and_growth_control_direction",
+        "contract.acceptance.refactor_umbrella_regression_and_growth_control"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/planning/"
+      ]
+    },
+    {
+      "task_id": "task.refactor_umbrella_regression_and_growth_control.closeout_acceptance_gate.002",
+      "title": "Harden initiative closeout with acceptance reconciliation gate",
+      "summary": "Make initiative closeout fail closed on acceptance-reconciliation issues unless an explicit override records the exception.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/harden_initiative_closeout_with_acceptance_reconciliation_gate.md",
+      "updated_at": "2026-03-13T22:39:40Z",
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "depends_on": [
+        "task.refactor_umbrella_regression_and_growth_control.audit_matrix.001"
+      ],
+      "related_ids": [
+        "prd.refactor_umbrella_regression_and_growth_control",
+        "design.features.refactor_umbrella_regression_and_growth_control",
+        "design.implementation.refactor_umbrella_regression_and_growth_control",
+        "decision.refactor_umbrella_regression_and_growth_control_direction"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "core/python/tests/integration/test_task_workflow_end_to_end.py",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "workflows/modules/initiative_closeout.md",
+        "docs/standards/governance/initiative_closeout_standard.md"
+      ]
+    },
+    {
+      "task_id": "task.refactor_umbrella_regression_and_growth_control.validation_and_closeout.003",
+      "title": "Validate and close refactor umbrella regression and growth control",
+      "summary": "Run targeted and full validation, repeated confirmation passes, and final initiative closeout for the umbrella refactor root-cause hardening trace.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/validate_and_close_refactor_umbrella_regression_and_growth_control.md",
+      "updated_at": "2026-03-13T22:49:36Z",
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "depends_on": [
+        "task.refactor_umbrella_regression_and_growth_control.closeout_acceptance_gate.002"
+      ],
+      "related_ids": [
+        "prd.refactor_umbrella_regression_and_growth_control",
+        "design.features.refactor_umbrella_regression_and_growth_control",
+        "design.implementation.refactor_umbrella_regression_and_growth_control",
+        "decision.refactor_umbrella_regression_and_growth_control_direction"
+      ],
+      "applies_to": [
+        "core/python/tests/unit/",
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/refactor_umbrella_regression_and_growth_control_planning_baseline.v1.json"
+      ]
+    },
+    {
       "task_id": "task.reference_and_reserved_surface_maturity_signaling.bootstrap.001",
       "title": "Bootstrap Reference and Reserved Surface Maturity Signaling planning chain",
       "summary": "Bootstraps the initial planning chain for Reference and Reserved Surface Maturity Signaling.",

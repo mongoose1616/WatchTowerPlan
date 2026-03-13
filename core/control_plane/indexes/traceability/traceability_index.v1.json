@@ -3385,6 +3385,94 @@
       "notes": "Validation evidence refreshed for the phase-one refactor slice after the workflow-routing repair, compact coordination implementation, route-first entrypoint updates, targeted validation, repeated review passes, the full-validation-discovered evidence-coverage gap, and the closed-state coordination-tracking pytest-fixture regression were folded back into the same trace."
     },
     {
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "title": "Refactor Umbrella Regression and Growth Control PRD",
+      "summary": "Audits the March 13, 2026 refactor program across the external audit, completed refactor traces, and commit history, then hardens closeout and review-loop behavior to stop repeated acceptance-drift regressions and unnecessary trace-sprawl growth.",
+      "status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T22:50:18Z",
+      "closed_at": "2026-03-13T22:49:56Z",
+      "closure_reason": "Closed the umbrella refactor review after publishing the master audit matrix, hardening initiative closeout with acceptance reconciliation, aligning review guidance, and confirming the root-cause boundary clean.",
+      "prd_ids": [
+        "prd.refactor_umbrella_regression_and_growth_control"
+      ],
+      "decision_ids": [
+        "decision.refactor_umbrella_regression_and_growth_control_direction"
+      ],
+      "design_ids": [
+        "design.features.refactor_umbrella_regression_and_growth_control"
+      ],
+      "plan_ids": [
+        "design.implementation.refactor_umbrella_regression_and_growth_control"
+      ],
+      "task_ids": [
+        "task.refactor_umbrella_regression_and_growth_control.audit_matrix.001",
+        "task.refactor_umbrella_regression_and_growth_control.bootstrap.001",
+        "task.refactor_umbrella_regression_and_growth_control.closeout_acceptance_gate.002",
+        "task.refactor_umbrella_regression_and_growth_control.validation_and_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.refactor_umbrella_regression_and_growth_control.001",
+        "req.refactor_umbrella_regression_and_growth_control.002",
+        "req.refactor_umbrella_regression_and_growth_control.003",
+        "req.refactor_umbrella_regression_and_growth_control.004",
+        "req.refactor_umbrella_regression_and_growth_control.005"
+      ],
+      "acceptance_ids": [
+        "ac.refactor_umbrella_regression_and_growth_control.001",
+        "ac.refactor_umbrella_regression_and_growth_control.002",
+        "ac.refactor_umbrella_regression_and_growth_control.003",
+        "ac.refactor_umbrella_regression_and_growth_control.004",
+        "ac.refactor_umbrella_regression_and_growth_control.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.refactor_umbrella_regression_and_growth_control"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence",
+        "validator.trace.acceptance_reconciliation"
+      ],
+      "evidence_ids": [
+        "evidence.refactor_umbrella_regression_and_growth_control.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/refactor_umbrella_regression_and_growth_control_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/cli/closeout_family.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/tests/integration/test_task_workflow_end_to_end.py",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/refactor_umbrella_regression_and_growth_control_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/tasks/closed/harden_initiative_closeout_with_acceptance_reconciliation_gate.md",
+        "docs/planning/tasks/closed/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md",
+        "docs/planning/tasks/closed/refactor_umbrella_regression_and_growth_control_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "workflows/modules/initiative_closeout.md",
+        "workflows/modules/repository_review.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "The umbrella refactor evidence now records the audit matrix, closeout acceptance gate, workflow and standards alignment, targeted and full validation results, the adversarial pre-closeout probe, and the final closed-state initiative evidence."
+    },
+    {
       "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
       "title": "Reference and Reserved Surface Maturity Signaling PRD",
       "summary": "Review and refactor reference-corpus maturity signaling and README-only reserved control-plane family signaling so query, sync, docs, and governed artifacts distinguish active support, supporting authority, candidate guidance, and reserved families deterministically.",

@@ -1,0 +1,137 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.refactor_umbrella_regression_and_growth_control.planning_baseline",
+  "title": "Refactor Umbrella Regression and Growth Control Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T22:50:18Z",
+  "source_prd_ids": [
+    "prd.refactor_umbrella_regression_and_growth_control"
+  ],
+  "source_design_ids": [
+    "design.features.refactor_umbrella_regression_and_growth_control"
+  ],
+  "source_plan_ids": [
+    "design.implementation.refactor_umbrella_regression_and_growth_control"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.refactor_umbrella_regression_and_growth_control"
+  ],
+  "checks": [
+    {
+      "check_id": "check.refactor_umbrella_regression_and_growth_control.planning_baseline",
+      "title": "Umbrella refactor planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/design/features/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/decisions/refactor_umbrella_regression_and_growth_control_direction.md",
+        "core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.v1.json",
+        "docs/planning/tasks/closed/refactor_umbrella_regression_and_growth_control_bootstrap.md",
+        "docs/planning/tasks/closed/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md"
+      ],
+      "subject_ids": [
+        "prd.refactor_umbrella_regression_and_growth_control",
+        "design.features.refactor_umbrella_regression_and_growth_control",
+        "design.implementation.refactor_umbrella_regression_and_growth_control",
+        "task.refactor_umbrella_regression_and_growth_control.bootstrap.001",
+        "task.refactor_umbrella_regression_and_growth_control.audit_matrix.001",
+        "contract.acceptance.refactor_umbrella_regression_and_growth_control",
+        "decision.refactor_umbrella_regression_and_growth_control_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.refactor_umbrella_regression_and_growth_control.001"
+      ],
+      "notes": "Bootstrap write mode published the initial planning chain, acceptance contract, evidence artifact, and bootstrap task in canonical repository paths."
+    },
+    {
+      "check_id": "check.refactor_umbrella_regression_and_growth_control.closeout_gate",
+      "title": "Initiative closeout rejects unresolved acceptance drift by default",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/tests/unit/test_initiative_closeout.py"
+      ],
+      "subject_ids": [
+        "task.refactor_umbrella_regression_and_growth_control.closeout_acceptance_gate.002",
+        "ac.refactor_umbrella_regression_and_growth_control.002"
+      ],
+      "validator_id": "validator.trace.acceptance_reconciliation",
+      "acceptance_ids": [
+        "ac.refactor_umbrella_regression_and_growth_control.002"
+      ],
+      "notes": "The targeted closeout service tests now prove that terminal closeout fails when acceptance reconciliation reports unresolved issues and no explicit override is present."
+    },
+    {
+      "check_id": "check.refactor_umbrella_regression_and_growth_control.override_visibility",
+      "title": "Explicit acceptance-drift override remains visible in runtime output",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/closeout_family.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/tests/unit/test_closeout_handlers.py"
+      ],
+      "subject_ids": [
+        "task.refactor_umbrella_regression_and_growth_control.closeout_acceptance_gate.002",
+        "ac.refactor_umbrella_regression_and_growth_control.003"
+      ],
+      "acceptance_ids": [
+        "ac.refactor_umbrella_regression_and_growth_control.003"
+      ],
+      "notes": "The closeout CLI now exposes an explicit `--allow-acceptance-issues` flag and surfaces the exception through the human and JSON result payloads."
+    },
+    {
+      "check_id": "check.refactor_umbrella_regression_and_growth_control.workflow_guidance",
+      "title": "Workflow and standards guidance align on umbrella review discipline and closeout gating",
+      "result": "passed",
+      "subject_paths": [
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
+      ],
+      "subject_ids": [
+        "ac.refactor_umbrella_regression_and_growth_control.004"
+      ],
+      "acceptance_ids": [
+        "ac.refactor_umbrella_regression_and_growth_control.004"
+      ],
+      "notes": "The authored workflow, standards, and command-reference surfaces now all describe one continuing same-theme trace plus the explicit acceptance-closeout exception path."
+    },
+    {
+      "check_id": "check.refactor_umbrella_regression_and_growth_control.validation_closeout",
+      "title": "Validation and confirmation close the umbrella refactor root-cause slice cleanly",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/validate_and_close_refactor_umbrella_regression_and_growth_control.md",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "core/python/tests/integration/test_task_workflow_end_to_end.py",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "subject_ids": [
+        "task.refactor_umbrella_regression_and_growth_control.validation_and_closeout.003",
+        "ac.refactor_umbrella_regression_and_growth_control.005"
+      ],
+      "acceptance_ids": [
+        "ac.refactor_umbrella_regression_and_growth_control.005"
+      ],
+      "notes": "Targeted closeout pytest, acceptance validation, full validate-all, full pytest, Ruff, and mypy all passed before the validation task moved to docs/planning/tasks/closed/validate_and_close_refactor_umbrella_regression_and_growth_control.md. A live dry-run closeout probe failed while the task was still open, and the final write-mode closeout completed at 2026-03-13T22:49:56Z with zero acceptance issues and zero open tasks."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "The umbrella refactor evidence now records the audit matrix, closeout acceptance gate, workflow and standards alignment, targeted and full validation results, the adversarial pre-closeout probe, and the final closed-state initiative evidence.",
+  "source_decision_ids": [
+    "decision.refactor_umbrella_regression_and_growth_control_direction"
+  ]
+}

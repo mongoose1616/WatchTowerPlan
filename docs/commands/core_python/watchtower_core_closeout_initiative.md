@@ -1,7 +1,10 @@
 # `watchtower-core closeout initiative`
 
 ## Summary
-This command records terminal closeout state for one traced initiative and, in write mode, refreshes the initiative, planning-catalog, and coordination views plus the mirrored family trackers that reflect that state.
+This command records terminal closeout state for one traced initiative and, in write mode,
+refreshes the initiative, planning-catalog, and coordination views plus the mirrored family
+trackers that reflect that state. It also validates trace-level acceptance reconciliation by
+default before terminal closeout.
 
 ## Use When
 - A traced initiative is complete, superseded, cancelled, or abandoned.
@@ -14,12 +17,12 @@ This command records terminal closeout state for one traced initiative and, in w
 | Invocation | `watchtower-core closeout initiative` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/closeout_family.py` |
 
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core closeout initiative --trace-id <trace_id> --initiative-status <completed|superseded|cancelled|abandoned> --closure-reason <reason> [--superseded-by-trace-id <trace_id>] [--closed-at <timestamp>] [--allow-open-tasks] [--write] [--format <human|json>]
+uv run watchtower-core closeout initiative --trace-id <trace_id> --initiative-status <completed|superseded|cancelled|abandoned> --closure-reason <reason> [--superseded-by-trace-id <trace_id>] [--closed-at <timestamp>] [--allow-open-tasks] [--allow-acceptance-issues] [--write] [--format <human|json>]
 ```
 
 ## Arguments and Options
@@ -29,6 +32,7 @@ uv run watchtower-core closeout initiative --trace-id <trace_id> --initiative-st
 - `--superseded-by-trace-id <trace_id>`: Replacement trace identifier. Required when initiative status is `superseded`.
 - `--closed-at <timestamp>`: Explicit RFC 3339 UTC closeout timestamp. Defaults to the current UTC time.
 - `--allow-open-tasks`: Allow terminal closeout even if linked tasks are still open.
+- `--allow-acceptance-issues`: Allow terminal closeout even when acceptance reconciliation reports issues. Use only when the validation exception must remain explicit at closeout.
 - `--write`: Persist the updated closeout state and regenerated trackers to their canonical paths.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
@@ -46,10 +50,11 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not mutate canonical planning surfaces.
+- By default the command validates PRD acceptance IDs, acceptance contracts, validation evidence, and traceability for the target trace before terminal closeout. If that reconciliation fails, closeout is blocked unless `--allow-acceptance-issues` is passed explicitly.
 - In write mode, the command updates the traceability index first, advances effective `updated_at` to the closeout timestamp, and then regenerates the initiative index, planning catalog, coordination index, initiative tracker, coordination tracker, and PRD, decision, and design trackers that mirror initiative status.
 - The command blocks closeout by default when linked tasks are still open, unless `--allow-open-tasks` is used explicitly.
-- In `human` mode, the command prints the chosen initiative status, timestamp, and write outcome.
-- In `json` mode, the command prints one JSON object with the trace ID, closeout metadata, open-task exception list, and output paths for the traceability, initiative, planning-catalog, coordination, and family tracking surfaces when it wrote them.
+- In `human` mode, the command prints the chosen initiative status, timestamp, and write outcome, plus any explicit open-task or acceptance-validation exception that was allowed.
+- In `json` mode, the command prints one JSON object with the trace ID, closeout metadata, open-task exception list, acceptance-issue count, acceptance-exception flag, and output paths for the traceability, initiative, planning-catalog, coordination, and family tracking surfaces when it wrote them.
 
 ## Related Commands
 | Command | Relationship |
@@ -59,6 +64,7 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | `watchtower-core query initiatives` | Reads the initiative view this command refreshes in write mode. |
 | `watchtower-core query coordination` | Reads the coordination view this command refreshes in write mode. |
 | `watchtower-core query trace` | Reads the traceability entry this command updates. |
+| `watchtower-core validate acceptance` | Performs the trace-level acceptance reconciliation that this closeout command now enforces by default. |
 | `watchtower-core sync initiative-index` | Rebuilds the machine-readable initiative index that this command also refreshes in write mode. |
 | `watchtower-core sync planning-catalog` | Rebuilds the planning catalog that this command now refreshes in write mode. |
 | `watchtower-core sync coordination` | Rebuilds the coordination slice this command now refreshes in write mode. |
@@ -68,8 +74,9 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | `watchtower-core sync design-tracking` | Rebuilds one tracker that this command updates in write mode. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/closeout_family.py`
+- `core/python/src/watchtower_core/cli/closeout_handlers.py`
 - `core/python/src/watchtower_core/closeout/initiative.py`
 
 ## Updated At
-- `2026-03-11T16:10:47Z`
+- `2026-03-13T22:37:14Z`

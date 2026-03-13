@@ -3,7 +3,7 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-13T22:13:22Z",
+  "updated_at": "2026-03-13T22:50:18Z",
   "coordination_mode": "ready_for_bootstrap",
   "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
   "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
@@ -14,6 +14,14 @@
   "entries": [],
   "actionable_tasks": [],
   "recent_closed_initiatives": [
+    {
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "title": "Refactor Umbrella Regression and Growth Control PRD",
+      "initiative_status": "completed",
+      "closed_at": "2026-03-13T22:49:56Z",
+      "key_surface_path": "docs/planning/prds/refactor_umbrella_regression_and_growth_control.md",
+      "closure_reason": "Closed the umbrella refactor review after publishing the master audit matrix, hardening initiative closeout with acceptance reconciliation, aligning review guidance, and confirming the root-cause boundary clean."
+    },
     {
       "trace_id": "trace.query_family_source_surface_alignment",
       "title": "Query Family Source Surface Alignment PRD",
@@ -85,14 +93,6 @@
       "closed_at": "2026-03-13T15:02:17Z",
       "key_surface_path": "docs/planning/prds/refactor_review_and_hardening.md",
       "closure_reason": "Completed the bounded refactor review after workflow-route hardening, compact current-state coordination, route-first entrypoint simplification, evidence repair, coordination-tracking regression-test hardening, and repeated clean validation passes."
-    },
-    {
-      "trace_id": "trace.regression_duplication_and_overstep_review",
-      "title": "Regression Duplication and Overstep Review PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-13T03:46:44Z",
-      "key_surface_path": "docs/planning/prds/regression_duplication_and_overstep_review.md",
-      "closure_reason": "Closed the regression-and-duplication review after hardening task trace linkage, governed companion repair, stale-path validation, planning coherence, and repeated clean confirmation passes."
     }
   ]
 }

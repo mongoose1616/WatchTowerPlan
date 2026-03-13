@@ -20,6 +20,7 @@ Use this workflow to synthesize an existing repository review into evidence-back
 ## Workflow
 1. Establish the review boundary and evidence basis.
    - Confirm the scope, coverage map, standards applied, and any remaining blind spots before synthesizing findings.
+   - When the review continues a stable theme from earlier passes, keep one trace, one master findings ledger, and one closeout boundary instead of starting a new trace for each adjacent same-theme issue.
    - Separate confirmed facts, strong inferences, tentative concerns, and unresolved unknowns.
 2. Build the findings ledger.
    - Consolidate the inventory and assessment results into distinct findings by category, severity, confidence, and affected surfaces.

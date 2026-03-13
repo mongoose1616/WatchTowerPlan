@@ -20,6 +20,7 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
             closed_at=args.closed_at,
             write=args.write,
             allow_open_tasks=args.allow_open_tasks,
+            allow_acceptance_issues=args.allow_acceptance_issues,
         )
     except ValueError as exc:
         return _emit_command_error(
@@ -38,6 +39,8 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
         "closure_reason": result.closure_reason,
         "superseded_by_trace_id": result.superseded_by_trace_id,
         "open_task_ids": list(result.open_task_ids),
+        "acceptance_issue_count": result.acceptance_issue_count,
+        "acceptance_issues_allowed": result.acceptance_issues_allowed,
         "wrote": result.wrote,
         "traceability_output_path": result.traceability_output_path,
         "initiative_index_output_path": result.initiative_index_output_path,
@@ -59,6 +62,8 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
         print(f"Superseded By: {result.superseded_by_trace_id}")
     if result.open_task_ids:
         print(f"Open Tasks Left In Place: {', '.join(result.open_task_ids)}")
+    if result.acceptance_issues_allowed:
+        print(f"Acceptance Issues Left In Place: {result.acceptance_issue_count}")
     if result.wrote:
         print(
             "Canonical traceability, initiative, planning catalog, coordination, "

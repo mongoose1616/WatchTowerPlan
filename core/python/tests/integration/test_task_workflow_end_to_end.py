@@ -6,7 +6,10 @@ from textwrap import dedent
 
 import pytest
 
-from tests.integration.fixture_repo_support import materialize_governed_applies_to_targets
+from tests.integration.fixture_repo_support import (
+    materialize_acceptance_and_evidence_paths,
+    materialize_governed_applies_to_targets,
+)
 from watchtower_core.closeout import InitiativeCloseoutService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.query import (
@@ -30,6 +33,7 @@ def _copy_repo_subset(tmp_path: Path) -> Path:
     (repo_root / "core" / "python").mkdir(parents=True)
     copytree(REPO_ROOT / "docs", repo_root / "docs")
     materialize_governed_applies_to_targets(repo_root)
+    materialize_acceptance_and_evidence_paths(repo_root)
     return repo_root
 
 

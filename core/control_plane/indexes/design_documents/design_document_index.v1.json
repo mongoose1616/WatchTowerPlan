@@ -1447,6 +1447,37 @@
       ]
     },
     {
+      "document_id": "design.features.refactor_umbrella_regression_and_growth_control",
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "family": "feature_design",
+      "title": "Refactor Umbrella Regression and Growth Control Feature Design",
+      "summary": "Defines the technical design boundary for Refactor Umbrella Regression and Growth Control.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/refactor_umbrella_regression_and_growth_control.md",
+      "updated_at": "2026-03-13T22:30:01Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "workflows/modules/repository_review.md"
+      ]
+    },
+    {
       "document_id": "design.features.reference_and_reserved_surface_maturity_signaling",
       "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
       "family": "feature_design",
@@ -3134,6 +3165,37 @@
         "docs/standards/governance/coordination_tracking_standard.md",
         "docs/standards/documentation/command_md_standard.md",
         "docs/standards/governance/initiative_tracking_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.refactor_umbrella_regression_and_growth_control",
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "family": "implementation_plan",
+      "title": "Refactor Umbrella Regression and Growth Control Implementation Plan",
+      "summary": "Breaks Refactor Umbrella Regression and Growth Control into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
+      "updated_at": "2026-03-13T22:47:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/prds/refactor_umbrella_regression_and_growth_control.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md"
       ]
     },
     {

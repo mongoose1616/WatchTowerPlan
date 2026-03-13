@@ -1377,6 +1377,44 @@
       ]
     },
     {
+      "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
+      "decision_id": "decision.refactor_umbrella_regression_and_growth_control_direction",
+      "title": "Refactor Umbrella Regression and Growth Control Direction Decision",
+      "summary": "Records the initial direction decision for Refactor Umbrella Regression and Growth Control.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/refactor_umbrella_regression_and_growth_control_direction.md",
+      "updated_at": "2026-03-13T22:47:49Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.refactor_umbrella_regression_and_growth_control"
+      ],
+      "linked_design_ids": [
+        "design.features.refactor_umbrella_regression_and_growth_control"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.refactor_umbrella_regression_and_growth_control"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "workflows/modules/repository_review.md",
+        "workflows/modules/initiative_closeout.md",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md",
+        "docs/commands/core_python/watchtower_core_closeout.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
       "decision_id": "decision.reference_and_reserved_surface_maturity_signaling_direction",
       "title": "Reference and Reserved Surface Maturity Signaling Direction Decision",

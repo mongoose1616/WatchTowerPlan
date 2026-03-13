@@ -18,6 +18,7 @@ from watchtower_core.repo_ops.sync.initiative_tracking import InitiativeTracking
 from watchtower_core.repo_ops.sync.planning_catalog import PlanningCatalogSyncService
 from watchtower_core.repo_ops.sync.prd_tracking import PrdTrackingSyncService
 from watchtower_core.utils import utc_timestamp_now
+from watchtower_core.validation import AcceptanceReconciliationService
 
 TERMINAL_INITIATIVE_STATUSES = {"completed", "superseded", "cancelled", "abandoned"}
 TERMINAL_TASK_STATUSES = {"done", "cancelled"}
@@ -33,6 +34,8 @@ class InitiativeCloseoutResult:
     closure_reason: str
     superseded_by_trace_id: str | None
     open_task_ids: tuple[str, ...]
+    acceptance_issue_count: int
+    acceptance_issues_allowed: bool
     wrote: bool
     traceability_output_path: str | None
     initiative_index_output_path: str | None
@@ -61,6 +64,7 @@ class InitiativeCloseoutService:
         closed_at: str | None = None,
         write: bool,
         allow_open_tasks: bool = False,
+        allow_acceptance_issues: bool = False,
     ) -> InitiativeCloseoutResult:
         if initiative_status not in TERMINAL_INITIATIVE_STATUSES:
             allowed = ", ".join(sorted(TERMINAL_INITIATIVE_STATUSES))
@@ -85,6 +89,22 @@ class InitiativeCloseoutService:
             raise ValueError(
                 f"Trace {trace_id} still has open linked tasks: {joined}. "
                 "Use --allow-open-tasks only when the initiative truly closes with open work."
+            )
+
+        acceptance_service = AcceptanceReconciliationService(self._loader)
+        acceptance_issue_count = 0
+        if trace_id in acceptance_service.acceptance_trace_ids():
+            acceptance_result = acceptance_service.validate(trace_id)
+            acceptance_issue_count = acceptance_result.issue_count
+        acceptance_issues_allowed = bool(
+            allow_acceptance_issues and acceptance_issue_count > 0
+        )
+        if acceptance_issue_count and not allow_acceptance_issues:
+            raise ValueError(
+                f"Trace {trace_id} has {acceptance_issue_count} acceptance reconciliation "
+                "issue(s). Run `watchtower-core validate acceptance --trace-id "
+                f"{trace_id} --format json` and reconcile the trace before closeout, or pass "
+                "`--allow-acceptance-issues` to record an explicit validation exception."
             )
 
         resolved_closed_at = closed_at or utc_timestamp_now()
@@ -170,6 +190,8 @@ class InitiativeCloseoutService:
             closure_reason=closure_reason,
             superseded_by_trace_id=superseded_by_trace_id,
             open_task_ids=open_task_ids,
+            acceptance_issue_count=acceptance_issue_count,
+            acceptance_issues_allowed=acceptance_issues_allowed,
             wrote=write,
             traceability_output_path=traceability_output_path,
             initiative_index_output_path=initiative_index_output_path,
