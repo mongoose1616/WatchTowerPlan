@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "foundation_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-12T23:43:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -47,6 +47,9 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - When external guidance materially shapes a foundation doc, prefer citing a governed local reference under `docs/references/**` instead of only raw external URLs.
 - Publish a `References` section so internal and external source use remains explicit.
 - Publish an `Updated At` section and keep it aligned with front matter `updated_at`.
+- Operationalization for this standard should publish only governed foundation
+  documents, not the family `README.md`, so standards lookup stays aligned with
+  the documented scope boundary.
 - Foundation documents may remain narrative and do not need a rigid shared body-heading set beyond the minimum governed sections.
 
 ## Structure or Data Model
@@ -66,16 +69,22 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 
 ## Operationalization
 - `Modes`: `documentation`; `sync`; `query`
-- `Operational Surfaces`: `docs/foundations/`; `docs/templates/foundation_document_template.md`; `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`
+- `Operational Surfaces`: `docs/foundations/customer_story.md`; `docs/foundations/engineering_design_principles.md`; `docs/foundations/engineering_stack_direction.md`; `docs/foundations/product_direction.md`; `docs/foundations/repository_scope.md`; `docs/foundations/repository_standards_posture.md`; `docs/templates/foundation_document_template.md`; `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`
 
 ## Validation
 - Foundation-doc front matter should validate against `foundation_front_matter.v1.schema.json`.
 - Foundation docs should publish `References` and `Updated At`.
 - `updated_at` in front matter and the `Updated At` body section should match.
+- Standards lookup should resolve this standard for the governed foundation
+  documents but not for `docs/foundations/README.md`, which is governed by the
+  README standard instead.
 - Reviewers should reject foundation docs that materially govern the repo but remain structurally invisible to indexes and retrieval.
 
 ## Change Control
 - Update this standard when the repository changes how foundation documents are governed or indexed.
+- Update the operationalization list in this standard when the governed
+  foundation-document corpus gains, renames, or removes a foundation doc so
+  standards lookup stays fail-closed on family-boundary drift.
 - Update the foundation front matter schema, templates, and foundation index surfaces in the same change set when this document family changes structurally.
 
 ## References
@@ -84,4 +93,4 @@ Keep the repository's product, philosophy, standards-posture, and technology-dir
 - [README.md](/home/j/WatchTowerPlan/docs/foundations/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-12T23:43:00Z`

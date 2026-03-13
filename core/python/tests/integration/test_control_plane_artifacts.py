@@ -125,6 +125,41 @@ def test_foundation_index_standard_operationalizes_foundation_family_surfaces() 
     assert "core/control_plane/indexes/foundations/README.md" in markdown
 
 
+def test_foundation_document_standard_operationalizes_governed_docs_only() -> None:
+    markdown = (
+        REPO_ROOT / "docs/standards/documentation/foundation_md_standard.md"
+    ).read_text(encoding="utf-8")
+    operationalization = extract_sections(markdown)["Operationalization"]
+
+    expected_paths = sorted(
+        path.relative_to(REPO_ROOT).as_posix()
+        for path in (REPO_ROOT / "docs" / "foundations").glob("*.md")
+        if path.name != "README.md"
+    )
+
+    for value in expected_paths:
+        assert value in operationalization
+
+    assert "docs/foundations/README.md" not in operationalization
+    assert "`docs/foundations/`" not in operationalization
+
+
+def test_root_summary_entrypoint_exists_for_foundations_review_routes() -> None:
+    assert (REPO_ROOT / "SUMMARY.md").exists()
+
+    root_readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+    foundations_readme = (REPO_ROOT / "docs/foundations/README.md").read_text(
+        encoding="utf-8"
+    )
+    repository_scope = (
+        REPO_ROOT / "docs/foundations/repository_scope.md"
+    ).read_text(encoding="utf-8")
+
+    assert "SUMMARY.md" in root_readme
+    assert "SUMMARY.md" in foundations_readme
+    assert "[SUMMARY.md](/home/j/WatchTowerPlan/SUMMARY.md)" in repository_scope
+
+
 def test_repo_local_query_and_sync_command_docs_point_to_repo_ops_owners() -> None:
     query_docs = sorted(
         (REPO_ROOT / "docs/commands/core_python").glob("watchtower_core_query_*.md")

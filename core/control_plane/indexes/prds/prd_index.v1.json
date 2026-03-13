@@ -556,6 +556,49 @@
       ]
     },
     {
+      "trace_id": "trace.foundation_document_standard_boundary_alignment",
+      "prd_id": "prd.foundation_document_standard_boundary_alignment",
+      "title": "Foundation Document Standard Boundary Alignment PRD",
+      "summary": "Align foundation-document lookup coverage with the governed foundations-doc boundary and exclude the family README from the foundation-doc standard.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
+      "updated_at": "2026-03-12T23:43:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.foundation_document_standard_boundary_alignment.001",
+        "req.foundation_document_standard_boundary_alignment.002",
+        "req.foundation_document_standard_boundary_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_document_standard_boundary_alignment.001",
+        "ac.foundation_document_standard_boundary_alignment.002",
+        "ac.foundation_document_standard_boundary_alignment.003"
+      ],
+      "linked_decision_ids": [
+        "decision.foundation_document_standard_boundary_alignment_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.foundation_document_standard_boundary_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundation_document_standard_boundary_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/foundations/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md"
+      ]
+    },
+    {
       "trace_id": "trace.foundation_index_family_contract_alignment",
       "prd_id": "prd.foundation_index_family_contract_alignment",
       "title": "Foundation Index Family Contract Alignment PRD",
@@ -731,6 +774,45 @@
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/standards/data_contracts/foundation_index_standard.md",
         "workflows/modules/foundations_context_review.md"
+      ]
+    },
+    {
+      "trace_id": "trace.foundations_summary_entrypoint_continuity",
+      "prd_id": "prd.foundations_summary_entrypoint_continuity",
+      "title": "Foundations Summary Entrypoint Continuity PRD",
+      "summary": "Restore the root SUMMARY.md surface referenced by foundations-adjacent docs and guard that entrypoint against future drift.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+      "updated_at": "2026-03-12T23:50:46Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.foundations_summary_entrypoint_continuity.001",
+        "req.foundations_summary_entrypoint_continuity.002",
+        "req.foundations_summary_entrypoint_continuity.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_summary_entrypoint_continuity.001",
+        "ac.foundations_summary_entrypoint_continuity.002",
+        "ac.foundations_summary_entrypoint_continuity.003"
+      ],
+      "linked_decision_ids": [
+        "decision.foundations_summary_entrypoint_continuity_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.foundations_summary_entrypoint_continuity"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundations_summary_entrypoint_continuity"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md"
       ]
     },
     {

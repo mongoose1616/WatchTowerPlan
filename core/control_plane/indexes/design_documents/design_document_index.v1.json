@@ -530,6 +530,37 @@
       ]
     },
     {
+      "document_id": "design.features.foundation_document_standard_boundary_alignment",
+      "trace_id": "trace.foundation_document_standard_boundary_alignment",
+      "family": "feature_design",
+      "title": "Foundation Document Standard Boundary Alignment Feature Design",
+      "summary": "Defines the technical design boundary for Foundation Document Standard Boundary Alignment.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
+      "updated_at": "2026-03-12T23:43:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/foundation_document_standard_boundary_alignment.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/foundations/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/README.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/commands/core_python/watchtower_core_query_standards.md"
+      ]
+    },
+    {
       "document_id": "design.features.foundation_index_family_contract_alignment",
       "trace_id": "trace.foundation_index_family_contract_alignment",
       "family": "feature_design",
@@ -655,6 +686,32 @@
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/foundations/README.md",
         "core/control_plane/indexes/foundations/foundation_index.v1.json"
+      ]
+    },
+    {
+      "document_id": "design.features.foundations_summary_entrypoint_continuity",
+      "trace_id": "trace.foundations_summary_entrypoint_continuity",
+      "family": "feature_design",
+      "title": "Foundations Summary Entrypoint Continuity Feature Design",
+      "summary": "Defines the technical design boundary for Foundations Summary Entrypoint Continuity.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+      "updated_at": "2026-03-12T23:50:46Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "workflows/modules/documentation_refresh.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "README.md"
       ]
     },
     {
@@ -2031,6 +2088,41 @@
       ]
     },
     {
+      "document_id": "design.implementation.foundation_document_standard_boundary_alignment",
+      "trace_id": "trace.foundation_document_standard_boundary_alignment",
+      "family": "implementation_plan",
+      "title": "Foundation Document Standard Boundary Alignment Implementation Plan",
+      "summary": "Breaks Foundation Document Standard Boundary Alignment into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/foundation_document_standard_boundary_alignment.md",
+      "updated_at": "2026-03-12T23:43:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/prds/foundation_document_standard_boundary_alignment.md"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/foundations/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/README.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "docs/standards/documentation/standard_md_standard.md",
+        "docs/commands/core_python/watchtower_core_query_standards.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/design/features/foundation_document_standard_boundary_alignment.md"
+      ]
+    },
+    {
       "document_id": "design.implementation.foundation_index_family_contract_alignment",
       "trace_id": "trace.foundation_index_family_contract_alignment",
       "family": "implementation_plan",
@@ -2152,6 +2244,35 @@
         "core/control_plane/indexes/foundations/foundation_index.v1.json",
         "workflows/modules/foundations_context_review.md",
         "docs/commands/core_python/watchtower_core_query_foundations.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.foundations_summary_entrypoint_continuity",
+      "trace_id": "trace.foundations_summary_entrypoint_continuity",
+      "family": "implementation_plan",
+      "title": "Foundations Summary Entrypoint Continuity Implementation Plan",
+      "summary": "Breaks Foundations Summary Entrypoint Continuity into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+      "updated_at": "2026-03-12T23:50:46Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/prds/foundations_summary_entrypoint_continuity.md"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/documentation/readme_md_standard.md",
+        "workflows/modules/documentation_refresh.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "README.md"
       ]
     },
     {

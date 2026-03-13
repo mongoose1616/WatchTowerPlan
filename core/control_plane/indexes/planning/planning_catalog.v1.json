@@ -4405,12 +4405,320 @@
       "closure_reason": "Delivered and validated final pre-implementation repository rationalization."
     },
     {
+      "trace_id": "trace.foundation_document_standard_boundary_alignment",
+      "title": "Foundation Document Standard Boundary Alignment PRD",
+      "summary": "Align foundation-document lookup coverage with the governed foundations-doc boundary and exclude the family README from the foundation-doc standard.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T00:09:19Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.foundation_document_standard_boundary_alignment",
+          "title": "Foundation Document Standard Boundary Alignment PRD",
+          "summary": "Align foundation-document lookup coverage with the governed foundations-doc boundary and exclude the family README from the foundation-doc standard.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
+          "updated_at": "2026-03-12T23:43:00Z",
+          "requirement_ids": [
+            "req.foundation_document_standard_boundary_alignment.001",
+            "req.foundation_document_standard_boundary_alignment.002",
+            "req.foundation_document_standard_boundary_alignment.003"
+          ],
+          "acceptance_ids": [
+            "ac.foundation_document_standard_boundary_alignment.001",
+            "ac.foundation_document_standard_boundary_alignment.002",
+            "ac.foundation_document_standard_boundary_alignment.003"
+          ],
+          "linked_decision_ids": [
+            "decision.foundation_document_standard_boundary_alignment_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.foundation_document_standard_boundary_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.foundation_document_standard_boundary_alignment"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.foundation_document_standard_boundary_alignment_direction",
+          "title": "Foundation Document Standard Boundary Alignment Direction Decision",
+          "summary": "Records the initial direction decision for Foundation Document Standard Boundary Alignment.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/foundation_document_standard_boundary_alignment_direction.md",
+          "updated_at": "2026-03-12T23:43:00Z",
+          "linked_prd_ids": [
+            "prd.foundation_document_standard_boundary_alignment"
+          ],
+          "linked_design_ids": [
+            "design.features.foundation_document_standard_boundary_alignment"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.foundation_document_standard_boundary_alignment"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.foundation_document_standard_boundary_alignment",
+          "family": "feature_design",
+          "title": "Foundation Document Standard Boundary Alignment Feature Design",
+          "summary": "Defines the technical design boundary for Foundation Document Standard Boundary Alignment.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
+          "updated_at": "2026-03-12T23:43:00Z"
+        },
+        {
+          "document_id": "design.implementation.foundation_document_standard_boundary_alignment",
+          "family": "implementation_plan",
+          "title": "Foundation Document Standard Boundary Alignment Implementation Plan",
+          "summary": "Breaks Foundation Document Standard Boundary Alignment into a bounded implementation slice.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/implementation/foundation_document_standard_boundary_alignment.md",
+          "updated_at": "2026-03-12T23:43:00Z",
+          "source_paths": [
+            "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
+            "docs/planning/prds/foundation_document_standard_boundary_alignment.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.foundation_document_standard_boundary_alignment.bootstrap.001",
+          "title": "Bootstrap Foundation Document Standard Boundary Alignment planning chain",
+          "summary": "Bootstraps the initial planning chain for Foundation Document Standard Boundary Alignment.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/foundation_document_standard_boundary_alignment_bootstrap.md",
+          "updated_at": "2026-03-12T23:40:27Z",
+          "related_ids": [
+            "prd.foundation_document_standard_boundary_alignment",
+            "design.features.foundation_document_standard_boundary_alignment",
+            "design.implementation.foundation_document_standard_boundary_alignment",
+            "decision.foundation_document_standard_boundary_alignment_direction",
+            "contract.acceptance.foundation_document_standard_boundary_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/foundation_md_standard.md",
+            "docs/foundations/README.md",
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_standard_index_sync.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py"
+          ]
+        },
+        {
+          "task_id": "task.foundation_document_standard_boundary_alignment.contract.001",
+          "title": "Align foundation document standard boundary and lookup coverage",
+          "summary": "Narrow the foundation document standard to governed foundation docs only and add fail-closed lookup coverage for the foundations family boundary.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/align_foundation_document_standard_boundary_and_lookup_coverage.md",
+          "updated_at": "2026-03-12T23:48:07Z",
+          "related_ids": [
+            "prd.foundation_document_standard_boundary_alignment",
+            "design.features.foundation_document_standard_boundary_alignment",
+            "decision.foundation_document_standard_boundary_alignment_direction",
+            "contract.acceptance.foundation_document_standard_boundary_alignment"
+          ],
+          "applies_to": [
+            "docs/standards/documentation/foundation_md_standard.md",
+            "docs/foundations/README.md",
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_standard_index_sync.py",
+            "core/python/tests/integration/test_control_plane_artifacts.py"
+          ]
+        },
+        {
+          "task_id": "task.foundation_document_standard_boundary_alignment.validation.001",
+          "title": "Validate and close foundation-document standard boundary alignment",
+          "summary": "Run targeted and full validation, refresh acceptance evidence, rerun foundations-themed confirmation passes, and close the bounded slice.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_foundation_document_standard_boundary_alignment.md",
+          "updated_at": "2026-03-13T00:04:27Z",
+          "related_ids": [
+            "prd.foundation_document_standard_boundary_alignment",
+            "design.implementation.foundation_document_standard_boundary_alignment",
+            "contract.acceptance.foundation_document_standard_boundary_alignment"
+          ],
+          "applies_to": [
+            "core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.v1.json",
+            "docs/planning/coordination_tracking.md"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.foundation_document_standard_boundary_alignment",
+          "title": "Foundation Document Standard Boundary Alignment Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.foundation_document_standard_boundary_alignment",
+          "doc_path": "core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.foundation_document_standard_boundary_alignment.001",
+            "ac.foundation_document_standard_boundary_alignment.002",
+            "ac.foundation_document_standard_boundary_alignment.003"
+          ],
+          "validation_targets": [
+            "core/control_plane/indexes/standards/standard_index.v1.json",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/test_standard_index_sync.py",
+            "docs/foundations/README.md",
+            "docs/foundations/customer_story.md",
+            "docs/foundations/engineering_design_principles.md",
+            "docs/foundations/engineering_stack_direction.md",
+            "docs/foundations/product_direction.md",
+            "docs/foundations/repository_scope.md",
+            "docs/foundations/repository_standards_posture.md",
+            "docs/planning/decisions/foundation_document_standard_boundary_alignment_direction.md",
+            "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
+            "docs/planning/design/implementation/foundation_document_standard_boundary_alignment.md",
+            "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
+            "docs/standards/documentation/foundation_md_standard.md"
+          ],
+          "related_paths": [
+            "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.v1.json",
+            "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+            "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+            "core/python/tests/unit/test_cli_query_commands.py",
+            "docs/templates/foundation_document_template.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.foundation_document_standard_boundary_alignment.planning_baseline",
+          "title": "Foundation Document Standard Boundary Alignment Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-13T00:04:27Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.v1.json",
+          "check_ids": [
+            "check.foundation_document_standard_boundary_alignment.contract_boundary_alignment",
+            "check.foundation_document_standard_boundary_alignment.lookup_resolution",
+            "check.foundation_document_standard_boundary_alignment.validation_and_review_closeout"
+          ],
+          "acceptance_ids": [
+            "ac.foundation_document_standard_boundary_alignment.001",
+            "ac.foundation_document_standard_boundary_alignment.002",
+            "ac.foundation_document_standard_boundary_alignment.003"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.foundation_document_standard_boundary_alignment"
+      ],
+      "decision_ids": [
+        "decision.foundation_document_standard_boundary_alignment_direction"
+      ],
+      "design_ids": [
+        "design.features.foundation_document_standard_boundary_alignment"
+      ],
+      "plan_ids": [
+        "design.implementation.foundation_document_standard_boundary_alignment"
+      ],
+      "task_ids": [
+        "task.foundation_document_standard_boundary_alignment.bootstrap.001",
+        "task.foundation_document_standard_boundary_alignment.contract.001",
+        "task.foundation_document_standard_boundary_alignment.validation.001"
+      ],
+      "requirement_ids": [
+        "req.foundation_document_standard_boundary_alignment.001",
+        "req.foundation_document_standard_boundary_alignment.002",
+        "req.foundation_document_standard_boundary_alignment.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundation_document_standard_boundary_alignment.001",
+        "ac.foundation_document_standard_boundary_alignment.002",
+        "ac.foundation_document_standard_boundary_alignment.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundation_document_standard_boundary_alignment"
+      ],
+      "evidence_ids": [
+        "evidence.foundation_document_standard_boundary_alignment.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/foundations/README.md",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundation_document_standard_boundary_alignment_direction.md",
+        "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/design/implementation/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/tasks/closed/align_foundation_document_standard_boundary_and_lookup_coverage.md",
+        "docs/planning/tasks/closed/foundation_document_standard_boundary_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/validate_and_close_foundation_document_standard_boundary_alignment.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/templates/foundation_document_template.md"
+      ],
+      "tags": [
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:04:27Z for trace.foundation_document_standard_boundary_alignment after the foundations boundary repair, targeted validation, full non-acceptance validation, and the first themed confirmation pass.",
+      "closed_at": "2026-03-13T00:09:19Z",
+      "closure_reason": "Delivered foundation-document boundary alignment: the authored standard now scopes only the six governed foundation docs, standards lookup excludes the foundations README, validation passed, and themed review found no additional actionable issues."
+    },
+    {
       "trace_id": "trace.foundation_index_family_contract_alignment",
       "title": "Foundation Index Family Contract Alignment PRD",
       "summary": "Align the foundation-index standard and lookup coverage with the full foundations index family surfaces.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-12T23:22:45Z",
+      "updated_at": "2026-03-12T23:23:30Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/foundation_index_family_contract_alignment.md",
@@ -4616,7 +4924,7 @@
           "title": "Foundation Index Family Contract Alignment Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-12T23:20:00Z",
+          "recorded_at": "2026-03-12T23:23:30Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
           "check_ids": [
             "check.foundation_index_family_contract_alignment.contract_surface_alignment",
@@ -4708,7 +5016,7 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-12T23:20:00Z for trace.foundation_index_family_contract_alignment after the foundation-index family contract repair, targeted validation, full pre-acceptance validation, and repeated themed no-new-issues review passes.",
+      "notes": "Planning baseline evidence refreshed at 2026-03-12T23:23:30Z for trace.foundation_index_family_contract_alignment after the contract repair, acceptance-inclusive validation, repeated themed no-new-issues review passes, validation-task closeout, and terminal initiative closeout.",
       "closed_at": "2026-03-12T23:22:45Z",
       "closure_reason": "Delivered foundation-index family contract alignment: the governing standard now covers the authoritative sync/query and foundations command surfaces, targeted and full validation passed, and repeated themed review passes found no additional actionable issues."
     },
@@ -5746,6 +6054,305 @@
       "notes": "Evidence updated at 2026-03-12T21:36:00Z after implementation, validation, initiative closeout, two clean post-fix review passes, and a green terminal acceptance-inclusive validation baseline for trace.foundations_documentation_completeness_alignment.",
       "closed_at": "2026-03-12T21:31:46Z",
       "closure_reason": "Delivered foundations documentation completeness alignment: the engineering stack foundation now cites governed reference docs and projects external-authority metadata, foundations review guidance now loads scope and standards posture with stack direction, foundations query help/docs now use live examples, and both post-fix review passes found no additional actionable issues."
+    },
+    {
+      "trace_id": "trace.foundations_summary_entrypoint_continuity",
+      "title": "Foundations Summary Entrypoint Continuity PRD",
+      "summary": "Restore the root SUMMARY.md surface referenced by foundations-adjacent docs and guard that entrypoint against future drift.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-13T00:09:25Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.foundations_summary_entrypoint_continuity",
+          "title": "Foundations Summary Entrypoint Continuity PRD",
+          "summary": "Restore the root SUMMARY.md surface referenced by foundations-adjacent docs and guard that entrypoint against future drift.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+          "updated_at": "2026-03-12T23:50:46Z",
+          "requirement_ids": [
+            "req.foundations_summary_entrypoint_continuity.001",
+            "req.foundations_summary_entrypoint_continuity.002",
+            "req.foundations_summary_entrypoint_continuity.003"
+          ],
+          "acceptance_ids": [
+            "ac.foundations_summary_entrypoint_continuity.001",
+            "ac.foundations_summary_entrypoint_continuity.002",
+            "ac.foundations_summary_entrypoint_continuity.003"
+          ],
+          "linked_decision_ids": [
+            "decision.foundations_summary_entrypoint_continuity_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.foundations_summary_entrypoint_continuity"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.foundations_summary_entrypoint_continuity"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.foundations_summary_entrypoint_continuity_direction",
+          "title": "Foundations Summary Entrypoint Continuity Direction Decision",
+          "summary": "Records the initial direction decision for Foundations Summary Entrypoint Continuity.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+          "updated_at": "2026-03-12T23:50:46Z",
+          "linked_prd_ids": [
+            "prd.foundations_summary_entrypoint_continuity"
+          ],
+          "linked_design_ids": [
+            "design.features.foundations_summary_entrypoint_continuity"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.foundations_summary_entrypoint_continuity"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.foundations_summary_entrypoint_continuity",
+          "family": "feature_design",
+          "title": "Foundations Summary Entrypoint Continuity Feature Design",
+          "summary": "Defines the technical design boundary for Foundations Summary Entrypoint Continuity.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+          "updated_at": "2026-03-12T23:50:46Z"
+        },
+        {
+          "document_id": "design.implementation.foundations_summary_entrypoint_continuity",
+          "family": "implementation_plan",
+          "title": "Foundations Summary Entrypoint Continuity Implementation Plan",
+          "summary": "Breaks Foundations Summary Entrypoint Continuity into a bounded implementation slice.",
+          "artifact_status": "draft",
+          "doc_path": "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+          "updated_at": "2026-03-12T23:50:46Z",
+          "source_paths": [
+            "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+            "docs/planning/prds/foundations_summary_entrypoint_continuity.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.foundations_summary_entrypoint_continuity.bootstrap.001",
+          "title": "Bootstrap Foundations Summary Entrypoint Continuity planning chain",
+          "summary": "Bootstraps the initial planning chain for Foundations Summary Entrypoint Continuity.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
+          "updated_at": "2026-03-12T23:54:37Z",
+          "related_ids": [
+            "prd.foundations_summary_entrypoint_continuity",
+            "design.features.foundations_summary_entrypoint_continuity",
+            "design.implementation.foundations_summary_entrypoint_continuity",
+            "decision.foundations_summary_entrypoint_continuity_direction",
+            "contract.acceptance.foundations_summary_entrypoint_continuity"
+          ],
+          "applies_to": [
+            "SUMMARY.md",
+            "README.md",
+            "docs/foundations/README.md",
+            "docs/foundations/repository_scope.md",
+            "core/python/tests/integration/test_control_plane_artifacts.py"
+          ]
+        },
+        {
+          "task_id": "task.foundations_summary_entrypoint_continuity.restore.001",
+          "title": "Restore root summary entrypoint continuity",
+          "summary": "Recreate the missing root SUMMARY.md document and add fail-closed coverage for the foundations-adjacent summary entrypoint.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
+          "updated_at": "2026-03-13T00:04:27Z",
+          "related_ids": [
+            "prd.foundations_summary_entrypoint_continuity",
+            "decision.foundations_summary_entrypoint_continuity_direction",
+            "contract.acceptance.foundations_summary_entrypoint_continuity"
+          ],
+          "applies_to": [
+            "SUMMARY.md",
+            "README.md",
+            "docs/foundations/README.md",
+            "docs/foundations/repository_scope.md",
+            "core/python/tests/integration/test_control_plane_artifacts.py"
+          ]
+        },
+        {
+          "task_id": "task.foundations_summary_entrypoint_continuity.validation.001",
+          "title": "Validate and close foundations summary entrypoint continuity",
+          "summary": "Run targeted and full validation, refresh evidence, and close the summary-entrypoint continuity slice.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
+          "updated_at": "2026-03-13T00:04:27Z",
+          "depends_on": [
+            "task.foundations_summary_entrypoint_continuity.restore.001"
+          ],
+          "related_ids": [
+            "prd.foundations_summary_entrypoint_continuity",
+            "design.implementation.foundations_summary_entrypoint_continuity",
+            "contract.acceptance.foundations_summary_entrypoint_continuity"
+          ],
+          "applies_to": [
+            "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+            "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json",
+            "docs/planning/coordination_tracking.md"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.foundations_summary_entrypoint_continuity",
+          "title": "Foundations Summary Entrypoint Continuity Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.foundations_summary_entrypoint_continuity",
+          "doc_path": "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+          "acceptance_ids": [
+            "ac.foundations_summary_entrypoint_continuity.001",
+            "ac.foundations_summary_entrypoint_continuity.002",
+            "ac.foundations_summary_entrypoint_continuity.003"
+          ],
+          "validation_targets": [
+            "README.md",
+            "SUMMARY.md",
+            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "docs/foundations/README.md",
+            "docs/foundations/repository_scope.md",
+            "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+            "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+            "docs/planning/decisions/planning_authority_unification_direction.md",
+            "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+            "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+            "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+            "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+            "docs/planning/prds/planning_authority_unification.md"
+          ],
+          "related_paths": [
+            "README.md",
+            "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json",
+            "docs/foundations/README.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.foundations_summary_entrypoint_continuity.planning_baseline",
+          "title": "Foundations Summary Entrypoint Continuity Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-13T00:04:27Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json",
+          "check_ids": [
+            "check.foundations_summary_entrypoint_continuity.summary_entrypoint_restored",
+            "check.foundations_summary_entrypoint_continuity.link_resolution",
+            "check.foundations_summary_entrypoint_continuity.validation_and_review_closeout"
+          ],
+          "acceptance_ids": [
+            "ac.foundations_summary_entrypoint_continuity.001",
+            "ac.foundations_summary_entrypoint_continuity.002",
+            "ac.foundations_summary_entrypoint_continuity.003"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.foundations_summary_entrypoint_continuity"
+      ],
+      "decision_ids": [
+        "decision.foundations_summary_entrypoint_continuity_direction"
+      ],
+      "design_ids": [
+        "design.features.foundations_summary_entrypoint_continuity"
+      ],
+      "plan_ids": [
+        "design.implementation.foundations_summary_entrypoint_continuity"
+      ],
+      "task_ids": [
+        "task.foundations_summary_entrypoint_continuity.bootstrap.001",
+        "task.foundations_summary_entrypoint_continuity.restore.001",
+        "task.foundations_summary_entrypoint_continuity.validation.001"
+      ],
+      "requirement_ids": [
+        "req.foundations_summary_entrypoint_continuity.001",
+        "req.foundations_summary_entrypoint_continuity.002",
+        "req.foundations_summary_entrypoint_continuity.003"
+      ],
+      "acceptance_ids": [
+        "ac.foundations_summary_entrypoint_continuity.001",
+        "ac.foundations_summary_entrypoint_continuity.002",
+        "ac.foundations_summary_entrypoint_continuity.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.foundations_summary_entrypoint_continuity"
+      ],
+      "evidence_ids": [
+        "evidence.foundations_summary_entrypoint_continuity.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "README.md",
+        "SUMMARY.md",
+        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md",
+        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/tasks/closed/foundations_summary_entrypoint_continuity_bootstrap.md",
+        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-13T00:04:27Z for trace.foundations_summary_entrypoint_continuity after restoring SUMMARY.md, validating link resolution, and completing the first themed confirmation pass.",
+      "closed_at": "2026-03-13T00:09:25Z",
+      "closure_reason": "Restored the root SUMMARY.md entrypoint, repaired broken foundations and planning references, added fail-closed regression coverage, and validated the foundations-themed review loop with no additional actionable issues."
     },
     {
       "trace_id": "trace.github_collaboration",

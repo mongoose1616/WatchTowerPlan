@@ -1,0 +1,63 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.foundations_summary_entrypoint_continuity",
+  "title": "Foundations Summary Entrypoint Continuity Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.foundations_summary_entrypoint_continuity",
+  "source_prd_id": "prd.foundations_summary_entrypoint_continuity",
+  "entries": [
+    {
+      "acceptance_id": "ac.foundations_summary_entrypoint_continuity.001",
+      "summary": "A durable root SUMMARY.md exists again and supports the foundations-adjacent review entrypoints that cite it.",
+      "source_requirement_ids": [
+        "req.foundations_summary_entrypoint_continuity.001"
+      ],
+      "validation_targets": [
+        "SUMMARY.md",
+        "README.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md"
+      ],
+      "related_paths": [
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "notes": "The repaired summary must preserve the historical whole-repo review context that current foundations and planning docs already cite."
+    },
+    {
+      "acceptance_id": "ac.foundations_summary_entrypoint_continuity.002",
+      "summary": "Document-semantics validation no longer reports broken SUMMARY.md links from the foundations layer or the historical planning slices that cite the root summary.",
+      "source_requirement_ids": [
+        "req.foundations_summary_entrypoint_continuity.002"
+      ],
+      "validation_targets": [
+        "SUMMARY.md",
+        "docs/foundations/repository_scope.md",
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md"
+      ],
+      "related_paths": [
+        "README.md",
+        "docs/foundations/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundations_summary_entrypoint_continuity.003",
+      "summary": "Targeted integration coverage and full repository validation stay green after the root summary entrypoint is restored.",
+      "source_requirement_ids": [
+        "req.foundations_summary_entrypoint_continuity.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json"
+      ]
+    }
+  ]
+}

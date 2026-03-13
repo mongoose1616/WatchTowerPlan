@@ -1353,7 +1353,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/foundation_md_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-12T23:43:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1362,7 +1362,12 @@
         "query"
       ],
       "operationalization_paths": [
-        "docs/foundations/",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
         "docs/templates/foundation_document_template.md",
         "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
         "core/python/src/watchtower_core/repo_ops/query/foundations.py"

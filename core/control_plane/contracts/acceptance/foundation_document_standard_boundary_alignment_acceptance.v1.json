@@ -1,0 +1,72 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.foundation_document_standard_boundary_alignment",
+  "title": "Foundation Document Standard Boundary Alignment Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.foundation_document_standard_boundary_alignment",
+  "source_prd_id": "prd.foundation_document_standard_boundary_alignment",
+  "entries": [
+    {
+      "acceptance_id": "ac.foundation_document_standard_boundary_alignment.001",
+      "summary": "The foundation-document standard publishes the governed foundations-doc boundary explicitly and excludes the family README from that contract.",
+      "source_requirement_ids": [
+        "req.foundation_document_standard_boundary_alignment.001"
+      ],
+      "validation_targets": [
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/README.md"
+      ],
+      "related_paths": [
+        "docs/templates/foundation_document_template.md",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py"
+      ],
+      "notes": "The repaired contract must keep the README boundary explicit while preserving positive coverage for every governed foundation document."
+    },
+    {
+      "acceptance_id": "ac.foundation_document_standard_boundary_alignment.002",
+      "summary": "The live standards query resolves std.documentation.foundation_md for governed foundation docs and excludes docs/foundations/README.md.",
+      "source_requirement_ids": [
+        "req.foundation_document_standard_boundary_alignment.002"
+      ],
+      "validation_targets": [
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json"
+      ],
+      "related_paths": [
+        "core/python/tests/unit/test_cli_query_commands.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.foundation_document_standard_boundary_alignment.003",
+      "summary": "Targeted regressions, full validation, and repeated themed confirmation passes stay green after the foundations boundary repair.",
+      "source_requirement_ids": [
+        "req.foundation_document_standard_boundary_alignment.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/design/implementation/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/decisions/foundation_document_standard_boundary_alignment_direction.md"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.v1.json"
+      ]
+    }
+  ]
+}

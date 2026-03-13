@@ -83,6 +83,29 @@ def test_standard_index_sync_builds_schema_valid_document() -> None:
         foundation_entry.get("operationalization_paths", [])
     )
 
+    foundation_doc_entry = next(
+        entry for entry in entries if entry["standard_id"] == "std.documentation.foundation_md"
+    )
+    foundation_doc_paths = sorted(
+        path.relative_to(REPO_ROOT).as_posix()
+        for path in (REPO_ROOT / "docs" / "foundations").glob("*.md")
+        if path.name != "README.md"
+    )
+    published_foundation_doc_paths = sorted(
+        path
+        for path in foundation_doc_entry.get("operationalization_paths", [])
+        if path.startswith("docs/foundations/") and path.endswith(".md")
+    )
+    assert published_foundation_doc_paths == foundation_doc_paths
+    assert "docs/foundations/" not in foundation_doc_entry.get(
+        "operationalization_paths",
+        [],
+    )
+    assert "docs/foundations/README.md" not in foundation_doc_entry.get(
+        "operationalization_paths",
+        [],
+    )
+
 
 def test_standard_index_sync_writes_temp_output(tmp_path: Path) -> None:
     loader = ControlPlaneLoader(REPO_ROOT)

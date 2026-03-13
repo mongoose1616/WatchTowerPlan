@@ -1,0 +1,116 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.foundation_document_standard_boundary_alignment.planning_baseline",
+  "title": "Foundation Document Standard Boundary Alignment Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.foundation_document_standard_boundary_alignment",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T00:10:08Z",
+  "source_prd_ids": [
+    "prd.foundation_document_standard_boundary_alignment"
+  ],
+  "source_design_ids": [
+    "design.features.foundation_document_standard_boundary_alignment"
+  ],
+  "source_plan_ids": [
+    "design.implementation.foundation_document_standard_boundary_alignment"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.foundation_document_standard_boundary_alignment"
+  ],
+  "checks": [
+    {
+      "check_id": "check.foundation_document_standard_boundary_alignment.contract_boundary_alignment",
+      "title": "Foundation-document standard publishes the governed boundary explicitly",
+      "result": "passed",
+      "subject_paths": [
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/README.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "subject_ids": [
+        "task.foundation_document_standard_boundary_alignment.contract.001",
+        "contract.acceptance.foundation_document_standard_boundary_alignment",
+        "decision.foundation_document_standard_boundary_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundation_document_standard_boundary_alignment.001"
+      ],
+      "notes": "The authored foundation-document standard now lists the six governed foundation documents as operationalization paths, excludes docs/foundations/README.md from that contract, and the integration artifact regression fails closed if the family boundary widens again."
+    },
+    {
+      "check_id": "check.foundation_document_standard_boundary_alignment.lookup_resolution",
+      "title": "Standards lookup resolves governed foundation docs and excludes the family README",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/query/foundations.py",
+        "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "docs/foundations/customer_story.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/engineering_stack_direction.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/README.md"
+      ],
+      "subject_ids": [
+        "task.foundation_document_standard_boundary_alignment.contract.001",
+        "contract.acceptance.foundation_document_standard_boundary_alignment"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundation_document_standard_boundary_alignment.002"
+      ],
+      "notes": "watchtower-core query standards --operationalization-path resolves std.documentation.foundation_md for the six governed foundation docs, while docs/foundations/README.md resolves std.documentation.readme_md instead; the standard-index sync regression locks in the same machine-readable boundary."
+    },
+    {
+      "check_id": "check.foundation_document_standard_boundary_alignment.validation_and_review_closeout",
+      "title": "Validation stack and repeated themed review passes are green for the boundary repair",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/design/implementation/foundation_document_standard_boundary_alignment.md",
+        "docs/planning/decisions/foundation_document_standard_boundary_alignment_direction.md",
+        "docs/planning/tasks/closed/align_foundation_document_standard_boundary_and_lookup_coverage.md",
+        "docs/planning/tasks/closed/validate_and_close_foundation_document_standard_boundary_alignment.md",
+        "core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "task.foundation_document_standard_boundary_alignment.validation.001",
+        "contract.acceptance.foundation_document_standard_boundary_alignment",
+        "decision.foundation_document_standard_boundary_alignment_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundation_document_standard_boundary_alignment.003"
+      ],
+      "notes": "watchtower-core sync all --write passed, watchtower-core validate document-semantics --path docs/standards/documentation/foundation_md_standard.md passed, targeted pytest for the touched CLI-query, standard-index sync, and integration suites passed, watchtower-core validate all --skip-acceptance passed with 938/938, python -m mypy src passed for 182 source files, ruff check . passed, acceptance reconciliation passed for trace.foundation_document_standard_boundary_alignment, final watchtower-core validate all passed with 980/980, pytest -q passed, the post-closeout machine-readable confirmation pass checked 7 foundation-family surfaces with 0 boundary mismatches, and watchtower-core query coordination returned ready_for_bootstrap with zero active initiatives and zero actionable tasks."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-13T00:10:08Z for trace.foundation_document_standard_boundary_alignment after targeted validation, acceptance reconciliation, final acceptance-inclusive validation, initiative closeout, and the post-closeout themed confirmation pass.",
+  "source_decision_ids": [
+    "decision.foundation_document_standard_boundary_alignment_direction"
+  ]
+}

@@ -424,6 +424,49 @@
       ]
     },
     {
+      "trace_id": "trace.foundation_document_standard_boundary_alignment",
+      "decision_id": "decision.foundation_document_standard_boundary_alignment_direction",
+      "title": "Foundation Document Standard Boundary Alignment Direction Decision",
+      "summary": "Records the initial direction decision for Foundation Document Standard Boundary Alignment.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/foundation_document_standard_boundary_alignment_direction.md",
+      "updated_at": "2026-03-12T23:43:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.foundation_document_standard_boundary_alignment"
+      ],
+      "linked_design_ids": [
+        "design.features.foundation_document_standard_boundary_alignment"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundation_document_standard_boundary_alignment"
+      ],
+      "related_paths": [
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/foundations/README.md",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/test_standard_index_sync.py",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/foundation_md_standard.md",
+        "docs/standards/documentation/readme_md_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.foundation_index_family_contract_alignment",
       "decision_id": "decision.foundation_index_family_contract_alignment_direction",
       "title": "Foundation Index Family Contract Alignment Direction Decision",
@@ -601,6 +644,43 @@
         "docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/foundation_index_standard.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md"
+      ]
+    },
+    {
+      "trace_id": "trace.foundations_summary_entrypoint_continuity",
+      "decision_id": "decision.foundations_summary_entrypoint_continuity_direction",
+      "title": "Foundations Summary Entrypoint Continuity Direction Decision",
+      "summary": "Records the initial direction decision for Foundations Summary Entrypoint Continuity.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+      "updated_at": "2026-03-12T23:50:46Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.foundations_summary_entrypoint_continuity"
+      ],
+      "linked_design_ids": [
+        "design.features.foundations_summary_entrypoint_continuity"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.foundations_summary_entrypoint_continuity"
+      ],
+      "related_paths": [
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "core/python/tests/integration/test_control_plane_artifacts.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/readme_md_standard.md",
+        "README.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/readme_md_standard.md"
       ]
     },
     {

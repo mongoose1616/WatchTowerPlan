@@ -241,6 +241,50 @@ def test_query_foundations_supports_reference_path_filter(capsys) -> None:
     )
 
 
+def test_query_standards_respects_foundation_document_family_boundary(capsys) -> None:
+    result = main(
+        [
+            "query",
+            "standards",
+            "--operationalization-path",
+            "docs/foundations/repository_scope.md",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query standards"
+    assert payload["status"] == "ok"
+    assert any(
+        entry["standard_id"] == "std.documentation.foundation_md"
+        for entry in payload["results"]
+    )
+
+    result = main(
+        [
+            "query",
+            "standards",
+            "--operationalization-path",
+            "docs/foundations/README.md",
+            "--format",
+            "json",
+        ]
+    )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core query standards"
+    assert payload["status"] == "ok"
+    assert all(
+        entry["standard_id"] != "std.documentation.foundation_md"
+        for entry in payload["results"]
+    )
+
+
 def test_query_workflows_supports_json_output(capsys) -> None:
     result = main(["query", "workflows", "--query", "validation", "--format", "json"])
 

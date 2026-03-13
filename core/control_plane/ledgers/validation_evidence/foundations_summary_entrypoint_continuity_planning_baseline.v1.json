@@ -1,0 +1,104 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.foundations_summary_entrypoint_continuity.planning_baseline",
+  "title": "Foundations Summary Entrypoint Continuity Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.foundations_summary_entrypoint_continuity",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-13T00:10:08Z",
+  "source_prd_ids": [
+    "prd.foundations_summary_entrypoint_continuity"
+  ],
+  "source_design_ids": [
+    "design.features.foundations_summary_entrypoint_continuity"
+  ],
+  "source_plan_ids": [
+    "design.implementation.foundations_summary_entrypoint_continuity"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.foundations_summary_entrypoint_continuity"
+  ],
+  "checks": [
+    {
+      "check_id": "check.foundations_summary_entrypoint_continuity.summary_entrypoint_restored",
+      "title": "The root summary entrypoint is restored and discoverable again",
+      "result": "passed",
+      "subject_paths": [
+        "SUMMARY.md",
+        "README.md",
+        "docs/foundations/README.md",
+        "docs/foundations/repository_scope.md",
+        "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
+      ],
+      "subject_ids": [
+        "task.foundations_summary_entrypoint_continuity.restore.001",
+        "contract.acceptance.foundations_summary_entrypoint_continuity",
+        "decision.foundations_summary_entrypoint_continuity_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_summary_entrypoint_continuity.001"
+      ],
+      "notes": "SUMMARY.md exists again at the repository root, the root and foundations entrypoints continue to advertise it, and the repository-path index now includes the restored path within 541 indexed repository surfaces."
+    },
+    {
+      "check_id": "check.foundations_summary_entrypoint_continuity.link_resolution",
+      "title": "Document-semantics no longer reports broken SUMMARY.md links",
+      "result": "passed",
+      "subject_paths": [
+        "SUMMARY.md",
+        "docs/foundations/repository_scope.md",
+        "docs/planning/prds/foundation_scope_and_entrypoint_realignment.md",
+        "docs/planning/prds/planning_authority_unification.md",
+        "docs/planning/decisions/foundation_scope_and_entrypoint_realignment_direction.md",
+        "docs/planning/decisions/planning_authority_unification_direction.md"
+      ],
+      "subject_ids": [
+        "task.foundations_summary_entrypoint_continuity.restore.001",
+        "contract.acceptance.foundations_summary_entrypoint_continuity"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_summary_entrypoint_continuity.002"
+      ],
+      "notes": "watchtower-core validate all --skip-acceptance passed with 938/938 after the restore, eliminating the earlier broken SUMMARY.md link failures, and the documentation-entrypoint confirmation pass found the restored root summary still referenced from the root README, the foundations README, repository_scope.md, and 18 current planning documents."
+    },
+    {
+      "check_id": "check.foundations_summary_entrypoint_continuity.validation_and_review_closeout",
+      "title": "Targeted regression coverage and themed review passes are green after the summary restore",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/features/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/design/implementation/foundations_summary_entrypoint_continuity.md",
+        "docs/planning/decisions/foundations_summary_entrypoint_continuity_direction.md",
+        "docs/planning/tasks/closed/restore_root_summary_entrypoint_continuity.md",
+        "docs/planning/tasks/closed/validate_and_close_foundations_summary_entrypoint_continuity.md",
+        "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/foundations_summary_entrypoint_continuity_planning_baseline.v1.json",
+        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "task.foundations_summary_entrypoint_continuity.validation.001",
+        "contract.acceptance.foundations_summary_entrypoint_continuity",
+        "decision.foundations_summary_entrypoint_continuity_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.foundations_summary_entrypoint_continuity.003"
+      ],
+      "notes": "watchtower-core sync all --write passed, the new integration regression for the root summary entrypoint passed in the targeted suite, watchtower-core validate all --skip-acceptance passed with 938/938, python -m mypy src passed for 182 source files, ruff check . passed, acceptance reconciliation passed for trace.foundations_summary_entrypoint_continuity, final watchtower-core validate all passed with 980/980, pytest -q passed, and the post-closeout adversarial summary-entrypoint confirmation confirmed SUMMARY.md exists, remains inventoried by the root and foundations entrypoints, and is still present in the repository-path index."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/foundations_summary_entrypoint_continuity_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-13T00:10:08Z for trace.foundations_summary_entrypoint_continuity after restoring SUMMARY.md, validating link resolution, running acceptance-inclusive validation, closing the initiative, and completing the post-closeout confirmation passes.",
+  "source_decision_ids": [
+    "decision.foundations_summary_entrypoint_continuity_direction"
+  ]
+}
