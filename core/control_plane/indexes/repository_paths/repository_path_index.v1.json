@@ -1945,6 +1945,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the closed Phase 3 outcome review that opens the bounded Phase 4 shared-projection entry checkpoint.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
       "kind": "file",
       "surface_kind": "control_plane_ledger",
@@ -2162,6 +2172,16 @@
       "kind": "file",
       "surface_kind": "control_plane_ledger",
       "summary": "Validation evidence for the approved Phase 3 entry outcome and the first bounded command companion source-surface normalization slice.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the closed Phase 3 outcome review and the bounded Phase 4 shared-projection entry checkpoint.",
       "parent_path": "core/control_plane/ledgers/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
@@ -4599,7 +4619,7 @@
       "path": "docs/planning/design/features/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "feature_design",
-      "summary": "Feature design for executing the guarded structural rewrite program through the first bounded Phase 3 command companion normalization slice and its outcome review.",
+      "summary": "Feature design for executing the guarded structural rewrite program through the Phase 4 shared-projection entry package and review gate.",
       "parent_path": "docs/planning/design/features/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4677,10 +4697,20 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+      "kind": "file",
+      "surface_kind": "implementation_plan",
+      "summary": "Entry package for the bounded Phase 4 shared-projection and private internal-planning-graph checkpoint.",
+      "parent_path": "docs/planning/design/implementation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/design/implementation/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the structural rewrite program through the first bounded Phase 3 command companion normalization slice and handoff into its outcome review.",
+      "summary": "Implementation plan for the structural rewrite program through the closed Phase 3 outcome review and handoff into the Phase 4 entry review.",
       "parent_path": "docs/planning/design/implementation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4793,7 +4823,7 @@
       "path": "docs/planning/prds/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "prd",
-      "summary": "PRD for the guarded structural rewrite program through the first bounded Phase 3 command companion normalization slice and its outcome review.",
+      "summary": "PRD for the guarded structural rewrite program through the Phase 4 shared-projection entry package and review gate.",
       "parent_path": "docs/planning/prds/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4890,6 +4920,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed review task for the bounded Phase 3 command companion source-surface normalization outcome.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
       "kind": "file",
       "surface_kind": "planning_doc",
@@ -4920,10 +4960,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+      "path": "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
       "kind": "file",
       "surface_kind": "planning_doc",
-      "summary": "Active review task for the bounded Phase 3 command companion source-surface normalization slice.",
+      "summary": "Active review task for the bounded Phase 4 shared-projection entry package.",
       "parent_path": "docs/planning/tasks/open/",
       "maturity": "supporting",
       "priority": "medium",

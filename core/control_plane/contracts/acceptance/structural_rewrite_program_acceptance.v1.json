@@ -233,7 +233,7 @@
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
         "docs/commands/core_python/watchtower_core.md",
@@ -251,6 +251,50 @@
         "core/control_plane/registries/authority_map/authority_map.v1.json"
       ],
       "notes": "The bounded slice aligns the root command page's primary Source Surface section and the 23 family-owned doctor, sync, and validate command docs with the existing command-index implementation paths. It does not authorize broader command-authority rollout."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.013",
+      "summary": "The Phase 3 outcome review records an explicit pass or block decision for the bounded command companion slice and, if it passes, names one bounded successor checkpoint instead of implying broader Phase 3 or Phase 4 rollout.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.011"
+      ],
+      "validation_targets": [
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "notes": "A clean Phase 3 slice does not authorize unnamed broader continuation. The outcome review must either keep the rewrite blocked or hand off to one explicit successor checkpoint."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.014",
+      "summary": "If the Phase 3 outcome review passes, the trace publishes one dedicated Phase 4 shared-projection entry package, its machine-readable ready records, and one explicit Phase 4 review task while keeping Phase 4 implementation blocked.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.012"
+      ],
+      "validation_targets": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md"
+      ],
+      "notes": "The bounded Phase 4 entry package preserves the five planning-authority answers, keeps any internal planning graph private by default, and records the projection-family classification addendum needed before later implementation."
     }
   ]
 }

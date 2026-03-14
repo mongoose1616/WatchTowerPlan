@@ -158,6 +158,7 @@ class TraceAccumulator:
     superseded_by_trace_id: str | None = None
     _primary_rank: int = 999
     _note_rank: int = 999
+    _note_updated_at: str | None = None
     _statuses: set[str] = field(default_factory=set)
     _timestamps: set[str] = field(default_factory=set)
     _has_active_tasks: bool = False
@@ -191,14 +192,28 @@ class TraceAccumulator:
         self._statuses.add(status)
         if updated_at is not None:
             self._timestamps.add(updated_at)
-        self.merge_note(rank=rank, note=note)
+        self.merge_note(rank=rank, note=note, updated_at=updated_at)
 
-    def merge_note(self, *, rank: int, note: str | None) -> None:
+    def merge_note(
+        self,
+        *,
+        rank: int,
+        note: str | None,
+        updated_at: str | None = None,
+    ) -> None:
         if not note:
             return
         if rank < self._note_rank or self.note is None:
             self.note = note
             self._note_rank = rank
+            self._note_updated_at = updated_at
+            return
+        if rank == self._note_rank:
+            if self._note_updated_at is None or (
+                updated_at is not None and updated_at >= self._note_updated_at
+            ):
+                self.note = note
+                self._note_updated_at = updated_at
 
     def build_document(self) -> dict[str, object]:
         if self.title is None:

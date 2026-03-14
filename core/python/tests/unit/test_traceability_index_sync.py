@@ -126,3 +126,35 @@ def test_traceability_index_sync_reopens_completed_initiative_when_active_task_r
     assert rebuilt_target["updated_at"] == "2026-03-10T23:59:59Z"
     assert "closed_at" not in rebuilt_target
     assert "closure_reason" not in rebuilt_target
+
+
+def test_traceability_index_sync_prefers_latest_same_rank_note(tmp_path: Path) -> None:
+    repo_root = _build_control_plane_fixture_repo(tmp_path)
+    evidence_root = repo_root / "core/control_plane/ledgers/validation_evidence"
+
+    for path in evidence_root.glob("*.json"):
+        document = json.loads(path.read_text(encoding="utf-8"))
+        if document.get("trace_id") != "trace.structural_rewrite_program":
+            continue
+        if path.name == "structural_rewrite_artifact_role_registry_pilot.v1.json":
+            document["notes"] = "Earlier checkpoint note."
+            document["recorded_at"] = "2026-03-14T03:56:23Z"
+        elif path.name == "structural_rewrite_phase4_shared_projection_entry_ready.v1.json":
+            document["notes"] = "Latest checkpoint note."
+            document["recorded_at"] = "2026-03-14T23:59:59Z"
+        else:
+            document.pop("notes", None)
+            document["recorded_at"] = "2026-03-14T12:00:00Z"
+        path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+    loader = ControlPlaneLoader(repo_root)
+    rebuilt = TraceabilityIndexSyncService(loader).build_document()
+
+    rebuilt_entries = rebuilt["entries"]
+    assert isinstance(rebuilt_entries, list)
+    rebuilt_target = next(
+        entry
+        for entry in rebuilt_entries
+        if entry["trace_id"] == "trace.structural_rewrite_program"
+    )
+    assert rebuilt_target["notes"] == "Latest checkpoint note."

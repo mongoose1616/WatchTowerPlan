@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase4_shared_projection_entry_ready.v1",
+  "title": "Structural Rewrite Phase 4 Shared Projection Entry Ready",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-14T06:44:15Z",
+  "from_state": "phase3_command_companion_source_surface_normalization_review_passed",
+  "to_state": "phase4_shared_projection_entry_ready",
+  "summary": "Records the closed Phase 3 outcome review by naming the bounded Phase 4 shared-projection entry package as the next rewrite checkpoint.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+    "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/indexes/coordination/coordination_index.v1.json",
+    "core/control_plane/indexes/planning/planning_catalog.v1.json"
+  ],
+  "notes": "This transition closes the bounded Phase 3 slice review, opens the bounded Phase 4 shared-projection entry checkpoint, and does not authorize Phase 4 implementation."
+}

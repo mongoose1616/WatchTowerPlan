@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.implementation.structural_rewrite_program"
 title: "Structural Rewrite Program Implementation Plan"
-summary: "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 entry review outcome, the first bounded Phase 3 slice, and the handoff into the slice outcome review."
+summary: "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, and the handoff into the Phase 4 shared-projection entry review."
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T05:41:11Z"
+updated_at: "2026-03-14T06:44:15Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -30,10 +30,10 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-14T05:41:11Z`
+- `Updated At`: `2026-03-14T06:44:15Z`
 
 ## Summary
-Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 entry gate explicitly, records the bounded artifact-role registry pilot outcome, closes the Phase 3 entry review explicitly, records the first bounded Phase 3 command companion normalization slice, and hands the trace to the slice outcome review.
+Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 entry gate explicitly, records the bounded artifact-role registry pilot outcome, closes the Phase 3 entry review explicitly, records the first bounded Phase 3 command companion normalization slice and its outcome review, and hands the trace to the Phase 4 shared-projection entry review.
 
 ## Source Request or Design
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -46,6 +46,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - Hand the approved Phase 2 slice to [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md).
 - Stop broader implementation after the pilot review and open one explicit Phase 3 entry package instead of a second Phase 2 slice.
 - After the Phase 3 entry review closes, hand the trace to one bounded command companion normalization slice instead of broader Phase 3 rollout.
+- After the Phase 3 slice outcome review closes cleanly, hand the trace to one bounded Phase 4 shared-projection entry package instead of direct Phase 4 implementation.
 - Exclude broader Phase 2 rollout, history relocation, compatibility retirement, runtime behavior changes, and command-authority or planning-authority rewrites.
 
 ## Assumptions and Constraints
@@ -54,31 +55,14 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - Any later pilot family must declare its authored truth, derived outputs, and rollback path before implementation begins.
 - The Phase 2 gate approval authorizes only one additive, read-only artifact-role metadata slice backed by a dedicated registry family.
 - The Phase 3 entry review may authorize only one rollback-safe command companion normalization slice and may not be treated as standing approval for broader command-authority rewrites.
+- A passing Phase 3 outcome review may authorize only one bounded later-phase entry package and may not be treated as standing approval for Phase 4 implementation.
 
 ## Current-State Context
-- Current checkpoint command results before the bounded slice:
-  - `./.venv/bin/watchtower-core doctor --format json`: `status: ok` with `60` commands, `47` schemas, `54` validators, `64` standards, `31` workflows, `62` initiatives, `206` tasks, and `62` traces.
-  - `./.venv/bin/watchtower-core validate all`: `1208/1208` targets passed.
-  - `./.venv/bin/watchtower-core query authority --domain planning --format json`: `5` active planning-authority answers.
-  - `./.venv/bin/watchtower-core query coordination --format json`: `coordination_mode: active_work`, with `task.structural_rewrite_program.phase2_entry_review.003` as the only actionable rewrite task.
-- Live hotspot inventory from `core/python/src/watchtower_core/` at the Phase 2 entry checkpoint:
-  - `repo_ops/sync/initiative_index.py`: `540` lines
-  - `repo_ops/validation/document_semantics.py`: `494`
-  - `repo_ops/task_lifecycle.py`: `492`
-  - `validation/acceptance.py`: `471`
-  - `repo_ops/sync/workflow_index.py`: `463`
-  - `repo_ops/planning_scaffold_specs.py`: `431`
-  - `control_plane/loader.py`: `431`
-  - `control_plane/models/coordination.py`: `426`
-  - `repo_ops/planning_projection_serialization.py`: `419`
-  - `repo_ops/planning_documents.py`: `410`
-  - `repo_ops/sync/planning_catalog.py`: `409`
-  - `repo_ops/sync/github_task_sync_support.py`: `406`
-  - `cli/query_coordination_family.py`: `394`
-- Rewrite-relevant hotspot interpretation:
-  - `task_lifecycle.py`, `loader.py`, and `planning_projection_serialization.py` remain live structural simplification candidates.
-  - Planning authoring is no longer best described by one regrown `planning_scaffolds.py` monolith. The pressure now sits across `planning_scaffold_specs.py` (`431`), `planning_bootstrap_support.py` (`392`), `planning_documents.py` (`410`), and `task_lifecycle.py` (`492`).
-  - `query_coordination_handlers.py` no longer belongs on the active hotspot shortlist because it is already a thin compatibility facade at `25` lines after the same-day handler split.
+- The live rewrite checkpoint remains healthy under `./.venv/bin/watchtower-core doctor --format json` and `./.venv/bin/watchtower-core validate all`.
+- `./.venv/bin/watchtower-core query authority --domain planning --format json` still resolves the same five public planning questions to the same canonical machine surfaces.
+- The first bounded Phase 3 slice has already reconciled the root command page plus the bounded `doctor`, `sync`, and `validate` command docs to the existing command-index implementation paths, and `./.venv/bin/watchtower-core sync command-index --format json` plus `./.venv/bin/python -m pytest tests/unit/test_command_index_sync.py` keep that boundary green.
+- The Phase 3 outcome review has now passed and named the Phase 4 shared-projection entry package as the next bounded checkpoint rather than implying broader Phase 3 or direct Phase 4 implementation.
+- The rewrite-relevant hotspot picture still centers on `initiative_index.py`, `document_semantics.py`, `task_lifecycle.py`, `workflow_index.py`, `planning_scaffold_specs.py`, `loader.py`, `planning_projection_serialization.py`, `planning_documents.py`, `planning_bootstrap_support.py`, and `github_task_sync_support.py`.
 
 ## Internal Standards and Canonical References Applied
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md): Phase 1 classifications, support levels, and retention reasons must use one controlled model.
@@ -235,7 +219,11 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Phase 3 Slice Migration`: [structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json)
 - `Phase 3 Slice Evidence`: [structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json)
 - `Closed Phase 3 Implementation Task`: [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
-- `Current Review Task`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- `Closed Phase 3 Outcome Review Task`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- `Phase 4 Entry Package`: [structural_rewrite_phase4_shared_projection_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
+- `Phase 4 Entry Migration`: [structural_rewrite_phase4_shared_projection_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json)
+- `Phase 4 Entry Evidence`: [structural_rewrite_phase4_shared_projection_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json)
+- `Current Review Task`: [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md)
 
 ## Pilot Review Outcome
 - `Decision`: passed.
@@ -253,7 +241,14 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Decision`: implemented as one bounded companion-only slice.
 - `Bounded doc set`: the root command page's primary Source Surface section plus the `23` affected `doctor`, `sync`, and `validate` command docs now align with the parser-owned or family-owned implementation paths already published in the command index.
 - `Drift guard`: `core/python/src/watchtower_core/repo_ops/sync/command_index.py` now fails closed when a companion command doc Command table or primary Source Surface entry drifts from the registry-backed implementation path, and `core/python/tests/unit/test_command_index_sync.py` covers that guard directly.
-- `Current hard stop`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- `Outcome-review handoff`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+
+## Phase 3 Outcome Review Outcome
+- `Decision`: passed.
+- `Docs-plus-index parity`: held through the closed review, with the root command page plus the bounded `doctor`, `sync`, and `validate` command docs still aligned to the command-index implementation paths.
+- `Command-authority boundary`: unchanged. `registry.py` plus `parser.py` remain the only accepted machine authority for command presence and hierarchy.
+- `Public planning parity`: unchanged. The five planning-authority answers remain the same after the bounded Phase 3 slice.
+- `Next boundary`: do not open broader Phase 3 rollout. Open the bounded Phase 4 shared-projection entry package and keep Phase 4 implementation blocked until its entry review closes explicitly.
 
 ## Risks
 - The implementation plan can still overstate readiness if later readers treat the bounded pilot as general authorization for broader Phase 2 rollout.
@@ -273,14 +268,14 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
   - `./.venv/bin/watchtower-core query authority --domain planning --format json`
   - `./.venv/bin/watchtower-core query coordination --format json`
   - `./.venv/bin/watchtower-core query planning --trace-id trace.structural_rewrite_program --format json`
-- Confirm that the bounded Phase 3 outcome-review task, not broader rewrite rollout, becomes the next controlling surface after the slice lands.
+- Confirm that the bounded Phase 4 entry-review task, not broader rewrite rollout or direct Phase 4 implementation, becomes the next controlling surface after the Phase 3 outcome review closes.
 
 ## Rollout or Migration Plan
-- Land the traced rewrite package, close the Phase 2 gate explicitly, publish one additive dedicated-registry slice, sync and validate, close the pilot review explicitly, close the Phase 3 entry review explicitly, implement one bounded Phase 3 command companion slice, and stop with one outcome-review task open.
-- Do not expand the approved first Phase 3 slice into broader command-authority, compatibility, or later rewrite phases without a new explicit review outcome.
+- Land the traced rewrite package, close the Phase 2 gate explicitly, publish one additive dedicated-registry slice, sync and validate, close the pilot review explicitly, close the Phase 3 entry review explicitly, implement one bounded Phase 3 command companion slice, close that slice through explicit outcome review, and stop with one Phase 4 entry-review task open.
+- Do not expand the approved first Phase 3 slice or the clean Phase 3 outcome review into broader command-authority, Phase 4 implementation, compatibility, or later rewrite phases without a new explicit review outcome.
 
 ## Open Questions
-- None that block the current checkpoint. The remaining execution work belongs to the bounded outcome review rather than to still-open implementation.
+- None that block the current checkpoint. The remaining execution work belongs to the bounded Phase 4 entry review rather than to implied Phase 4 implementation.
 
 ## References
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -290,4 +285,4 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Updated At
-- `2026-03-14T05:41:11Z`
+- `2026-03-14T06:44:15Z`

@@ -1,0 +1,105 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.structural_rewrite_program.phase4_shared_projection_entry_ready",
+  "title": "Structural Rewrite Phase 4 Shared Projection Entry Evidence",
+  "status": "active",
+  "trace_id": "trace.structural_rewrite_program",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-14T06:44:15Z",
+  "source_prd_ids": [
+    "prd.structural_rewrite_program"
+  ],
+  "source_design_ids": [
+    "design.features.structural_rewrite_program"
+  ],
+  "source_plan_ids": [
+    "design.implementation.structural_rewrite_program",
+    "design.implementation.structural_rewrite_phase4_shared_projection_entry"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.structural_rewrite_program"
+  ],
+  "checks": [
+    {
+      "check_id": "check.structural_rewrite_program.phase3_outcome_review_approval",
+      "title": "Phase 3 outcome review recorded an explicit pass outcome and named the next checkpoint",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md"
+      ],
+      "subject_ids": [
+        "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008",
+        "design.implementation.structural_rewrite_phase4_shared_projection_entry",
+        "task.structural_rewrite_program.phase4_entry_review.009"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.013"
+      ],
+      "notes": "The clean Phase 3 slice does not authorize unnamed broader rollout; it hands the trace to one bounded Phase 4 entry review."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase3_parity_held_through_outcome_review",
+      "title": "Command-authority and public-planning parity remain unchanged after the closed Phase 3 review",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/registry.py",
+        "core/python/src/watchtower_core/cli/parser.py",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.004",
+        "ac.structural_rewrite_program.012",
+        "ac.structural_rewrite_program.013"
+      ],
+      "notes": "The closed Phase 3 outcome review reaffirmed the current command-authority boundary and unchanged public planning answers."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_entry_package_published",
+      "title": "Phase 4 entry package publishes the bounded shared-projection checkpoint",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md"
+      ],
+      "subject_ids": [
+        "design.implementation.structural_rewrite_phase4_shared_projection_entry"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.014"
+      ],
+      "notes": "The next checkpoint is a bounded Phase 4 entry package, not direct shared-projection or internal planning-graph implementation."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_private_graph_and_classification_addendum_recorded",
+      "title": "Phase 4 entry package keeps the internal graph private and records the projection-family classification addendum",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.004",
+        "ac.structural_rewrite_program.014"
+      ],
+      "notes": "The package preserves the five public planning answers and publishes the projection, sync, and validator-adjacent classification detail needed for the Phase 4 entry question."
+    }
+  ],
+  "related_paths": [
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md"
+  ],
+  "notes": "Validation evidence for the closed Phase 3 outcome review and the bounded Phase 4 shared-projection entry checkpoint."
+}

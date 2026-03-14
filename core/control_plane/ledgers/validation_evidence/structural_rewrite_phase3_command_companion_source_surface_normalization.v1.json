@@ -76,7 +76,7 @@
       "subject_paths": [
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json"
       ],
       "subject_ids": [

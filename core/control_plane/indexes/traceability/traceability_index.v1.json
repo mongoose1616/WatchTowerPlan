@@ -4538,10 +4538,10 @@
     {
       "trace_id": "trace.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, closes the Phase 3 entry review, delivers one bounded command companion normalization slice, and stops at the outcome review.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes its outcome review, and hands the trace to a bounded Phase 4 shared-projection entry review.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-14T06:29:32Z",
+      "updated_at": "2026-03-14T06:44:15Z",
       "prd_ids": [
         "prd.structural_rewrite_program"
       ],
@@ -4552,6 +4552,7 @@
         "design.implementation.structural_rewrite_artifact_role_registry_pilot",
         "design.implementation.structural_rewrite_phase3_command_authority_entry",
         "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
+        "design.implementation.structural_rewrite_phase4_shared_projection_entry",
         "design.implementation.structural_rewrite_program"
       ],
       "task_ids": [
@@ -4562,7 +4563,8 @@
         "task.structural_rewrite_program.phase2_entry_review.003",
         "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization.007",
         "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008",
-        "task.structural_rewrite_program.phase3_entry_review.006"
+        "task.structural_rewrite_program.phase3_entry_review.006",
+        "task.structural_rewrite_program.phase4_entry_review.009"
       ],
       "requirement_ids": [
         "req.structural_rewrite_program.001",
@@ -4574,7 +4576,9 @@
         "req.structural_rewrite_program.007",
         "req.structural_rewrite_program.008",
         "req.structural_rewrite_program.009",
-        "req.structural_rewrite_program.010"
+        "req.structural_rewrite_program.010",
+        "req.structural_rewrite_program.011",
+        "req.structural_rewrite_program.012"
       ],
       "acceptance_ids": [
         "ac.structural_rewrite_program.001",
@@ -4588,7 +4592,9 @@
         "ac.structural_rewrite_program.009",
         "ac.structural_rewrite_program.010",
         "ac.structural_rewrite_program.011",
-        "ac.structural_rewrite_program.012"
+        "ac.structural_rewrite_program.012",
+        "ac.structural_rewrite_program.013",
+        "ac.structural_rewrite_program.014"
       ],
       "acceptance_contract_ids": [
         "contract.acceptance.structural_rewrite_program"
@@ -4597,7 +4603,8 @@
         "evidence.structural_rewrite_program.artifact_role_registry_pilot",
         "evidence.structural_rewrite_program.phase0_phase1_baseline",
         "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization",
-        "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization_ready"
+        "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization_ready",
+        "evidence.structural_rewrite_program.phase4_shared_projection_entry_ready"
       ],
       "related_paths": [
         "core/control_plane/",
@@ -4607,6 +4614,7 @@
         "core/control_plane/examples/",
         "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
         "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
+        "core/control_plane/indexes/",
         "core/control_plane/indexes/commands/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
@@ -4618,11 +4626,13 @@
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
         "core/control_plane/registries/",
         "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
@@ -4639,6 +4649,7 @@
         "core/python/src/watchtower_core/cli/registry.py",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/repo_ops/",
         "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
         "core/python/src/watchtower_core/repo_ops/planning_scaffold_specs.py",
         "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
@@ -4665,6 +4676,7 @@
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/",
@@ -4675,10 +4687,11 @@
         "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
         "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/governance/",
@@ -4689,7 +4702,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Validation evidence for the first bounded structural rewrite Phase 2 slice."
+      "notes": "Validation evidence for the closed Phase 3 outcome review and the bounded Phase 4 shared-projection entry checkpoint."
     },
     {
       "trace_id": "trace.summary_surface_retirement",
