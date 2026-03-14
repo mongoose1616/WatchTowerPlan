@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase3_command_companion_source_surface_normalization.v1",
+  "title": "Structural Rewrite Phase 3 Command Companion Source Surface Normalization Migration",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-14T05:41:11Z",
+  "from_state": "phase3_command_companion_source_surface_normalization_ready",
+  "to_state": "phase3_command_companion_source_surface_normalization_published",
+  "summary": "Records the completed first bounded Phase 3 slice by reconciling root, doctor, sync, and validate command companion source surfaces to the registry-backed implementation paths and publishing a sync-time drift guard.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+    "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+    "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+    "docs/commands/core_python/",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/indexes/commands/command_index.v1.json",
+    "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+    "core/python/tests/unit/test_command_index_sync.py",
+    "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json"
+  ],
+  "notes": "This transition remains companion-only. Command presence and hierarchy authority stay in registry.py plus parser.py, and the trace stops at an explicit outcome review task."
+}

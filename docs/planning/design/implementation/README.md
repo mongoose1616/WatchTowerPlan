@@ -10,7 +10,8 @@
 | `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` | Implementation plan for the first control-plane loader and SchemaStore slice in the core Python workspace. |
 | `docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md` | Implementation plan for the bounded artifact-role registry pilot that opens Phase 2 with one additive read-only slice. |
 | `docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md` | Entry package for the bounded Phase 3 command-authority normalization checkpoint. |
-| `docs/planning/design/implementation/structural_rewrite_program.md` | Implementation plan for the structural rewrite program through the Phase 2 gate outcome and handoff into the bounded artifact-role pilot. |
+| `docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md` | Implementation plan for the first bounded Phase 3 slice that reconciles command-doc source surfaces to the current family-owned command authority model. |
+| `docs/planning/design/implementation/structural_rewrite_program.md` | Implementation plan for the structural rewrite program through the first bounded Phase 3 command companion normalization slice and handoff into its outcome review. |
 | `docs/planning/design/implementation/template_and_output_efficiency_execution.md` | Implementation plan for compact authoring rules, tracker compaction, and workflow-guidance tightening. |
 
 ## Notes

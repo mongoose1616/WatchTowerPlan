@@ -14,7 +14,7 @@ This command pushes local-first task records to GitHub issues and optional proje
 | Invocation | `watchtower-core sync github-tasks` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -81,10 +81,10 @@ uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync --wri
 | `watchtower-core query tasks` | Lets you inspect the local task selection before syncing it to GitHub. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 - `core/python/src/watchtower_core/integrations/github/client.py`
 - `.github/`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

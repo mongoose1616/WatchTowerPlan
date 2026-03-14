@@ -14,7 +14,7 @@ This command rebuilds the human-readable decision tracker from the governed deci
 | Invocation | `watchtower-core sync decision-tracking` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -55,9 +55,9 @@ uv run watchtower-core sync decision-tracking --write
 | `watchtower-core query decisions` | Reads the decision index directly when you need machine-readable lookup rather than the human tracker. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py`
 - `docs/planning/decisions/decision_tracking.md`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

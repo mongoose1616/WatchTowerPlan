@@ -1867,14 +1867,15 @@
       "trace_id": "trace.structural_rewrite_program",
       "family": "feature_design",
       "title": "Structural Rewrite Program Feature Design",
-      "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, delivering one bounded artifact-role metadata slice, and handing the trace to a Phase 3 entry package.",
+      "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, landing one bounded artifact-role metadata slice, closing one bounded Phase 3 entry review, delivering one command companion normalization slice, and stopping at the Phase 3 outcome review.",
       "status": "active",
       "doc_path": "docs/planning/design/features/structural_rewrite_program.md",
-      "updated_at": "2026-03-14T04:31:59Z",
+      "updated_at": "2026-03-14T06:29:32Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/standards/governance/",
         "docs/planning/prds/",
         "docs/planning/design/features/",
@@ -3665,10 +3666,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "family": "implementation_plan",
       "title": "Structural Rewrite Phase 3 Command Authority Entry Package",
-      "summary": "Defines the bounded Phase 3 entry checkpoint for command authority normalization after the artifact-role registry pilot proved additive metadata can land without authority drift.",
+      "summary": "Defines the bounded Phase 3 entry checkpoint for command authority normalization and records the approved first command companion normalization slice.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
-      "updated_at": "2026-03-14T04:31:59Z",
+      "updated_at": "2026-03-14T05:41:11Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -3690,7 +3691,44 @@
         "docs/standards/data_contracts/authority_map_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md"
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
+      "trace_id": "trace.structural_rewrite_program",
+      "family": "implementation_plan",
+      "title": "Structural Rewrite Phase 3 Command Companion Source Surface Normalization",
+      "summary": "Implements the first bounded Phase 3 slice by reconciling command-doc source surfaces to the existing registry-backed command authority model.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+      "updated_at": "2026-03-14T05:41:11Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/structural_rewrite_program.md",
+        "docs/planning/prds/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/planning/tasks/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/rewrite_execution_control_standard.md",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/data_contracts/command_index_standard.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/planning/design/features/command_documentation_and_lookup.md",
+        "docs/planning/design/implementation/query_family_source_surface_alignment.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md"
       ]
     },
     {
@@ -3698,10 +3736,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "family": "implementation_plan",
       "title": "Structural Rewrite Program Implementation Plan",
-      "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, and the handoff into the Phase 3 entry package.",
+      "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 entry review outcome, the first bounded Phase 3 slice, and the handoff into the slice outcome review.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_program.md",
-      "updated_at": "2026-03-14T04:31:59Z",
+      "updated_at": "2026-03-14T05:41:11Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [

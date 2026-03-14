@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "prd.structural_rewrite_program"
 title: "Structural Rewrite Program PRD"
-summary: "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, and records the pilot follow-up review outcome before any later phase-entry work begins."
+summary: "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, closes the Phase 3 entry review, delivers one bounded command companion normalization slice, and stops at the outcome review."
 type: "prd"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T04:31:59Z"
+updated_at: "2026-03-14T06:29:32Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,18 +28,19 @@ aliases:
 - `Status`: `active`
 - `Linked Decisions`: `None`
 - `Linked Designs`: `design.features.structural_rewrite_program`
-- `Linked Implementation Plans`: `design.implementation.structural_rewrite_program`
-- `Bounded Slice Plan`: `design.implementation.structural_rewrite_artifact_role_registry_pilot`
-- `Next Entry Package`: `design.implementation.structural_rewrite_phase3_command_authority_entry`
-- `Updated At`: `2026-03-14T04:31:59Z`
+- `Linked Implementation Plans`: `design.implementation.structural_rewrite_program`; `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`
+- `Historical Phase 2 Slice Plan`: `design.implementation.structural_rewrite_artifact_role_registry_pilot`
+- `Phase 3 Entry Package`: `design.implementation.structural_rewrite_phase3_command_authority_entry`
+- `Current Bounded Slice Plan`: `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`
+- `Updated At`: `2026-03-14T06:29:32Z`
 
 ## Summary
-Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate explicitly, delivers one bounded artifact-role metadata slice, and records the pilot follow-up review outcome before any later phase-entry work begins.
+Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate explicitly, delivers one bounded artifact-role metadata slice, closes the Phase 3 entry review explicitly, lands one bounded command companion source-surface normalization slice, and stops at an explicit outcome review before any broader later-phase work begins.
 
 ## Problem Statement
 The live repository is healthy and validated, but the rewrite program originally existed only as external prose until it was anchored in repo-native planning, standards, contracts, and ledger surfaces. That gap created two risks. First, later rewrite work could start from stale hotspot examples or generalized cleanup language instead of the current repo state. Second, high-blast-radius work such as descriptor rollout, projection changes, history cleanup, or compatibility retirement could start without a local parity contract, consumer maps, rollback expectations, and a bounded pilot family.
 
-Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bounded Phase 2 pilot has proved the low-blast-radius metadata pattern cleanly. The remaining risk is procedural: later rewrite work cannot continue safely unless the repository records an explicit outcome for that pilot and opens a new bounded phase-entry package before any command-authority normalization work begins.
+Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bounded Phase 2 pilot has proved the low-blast-radius metadata pattern cleanly. The next remaining risk sat at the command companion boundary: several command docs still pointed at `main.py` even though the registry-backed command index already recorded more specific family ownership. The first bounded Phase 3 slice now addresses that drift by aligning the root, doctor, sync, and validate command companion surfaces to the parser-owned or family-owned implementation paths while keeping command authority in the current registry plus parser tree and stopping at an explicit outcome review.
 
 ## Goals
 - Refresh the live baseline and hotspot inventory from current repository commands and source files.
@@ -48,22 +49,27 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - Fix exactly one low-blast-radius Phase 2 pilot family and justify it against the live repo.
 - Close the Phase 2 entry review gate with an explicit approval or block outcome.
 - Deliver exactly one bounded, additive, read-only Phase 2 slice for the artifact-role metadata pilot family if and only if the gate is approved cleanly.
+- Close the Phase 3 entry review gate with an explicit approval or block outcome.
+- If the Phase 3 gate is approved, implement exactly one rollback-safe command companion normalization slice and stop at an explicit outcome review before any broader command-authority work begins.
 
 ## Non-Goals
 - Reopening accepted planning-authority, command-authority, or repository-scope decisions.
 - Inventing a new archive directory, new lifecycle vocabulary, or parallel rewrite-specific storage tree.
 - Performing runtime code changes, history relocation, compatibility retirement, or public authority rewrites beyond the first bounded artifact-role metadata slice.
 - Letting the first Phase 2 slice drive live query routing, sync selection, validator dispatch, command presence, or planning-boundary changes.
+- Expanding the implemented Phase 3 slice into broader command-authority, workflow, route, compatibility, or public-planning rollout without a new explicit checkpoint.
 
 ## Requirements
 - `req.structural_rewrite_program.001`: The rewrite trace must re-run the required baseline commands from `core/python/` and publish the resulting live baseline and hotspot inventory in repo-native planning surfaces.
 - `req.structural_rewrite_program.002`: The rewrite must publish repo-native guidance for four-axis surface classification, compatibility support-level classification, retention reasons, and rewrite execution control before later implementation phases begin.
 - `req.structural_rewrite_program.003`: The rewrite must publish a machine-readable public planning-authority parity contract that preserves the five current planning questions and their current canonical machine answers.
-- `req.structural_rewrite_program.004`: Phase 1 work must classify the critical planning, command, workflow, runtime-boundary, and history or compatibility surfaces and must map current consumers for candidate cleanup surfaces.
+- `req.structural_rewrite_program.004`: Phase 1 work must classify the approved critical-surface gate scope for public planning, command-boundary, compatibility, and historical-retention candidate surfaces, must map current consumers for candidate cleanup surfaces, and must require a later family-specific classification or parity package before untouched workflow, route, sync, validator, projection, history, or compatibility families are implemented.
 - `req.structural_rewrite_program.005`: The rewrite must choose exactly one low-blast-radius Phase 2 pilot family with clear authored truth, derived outputs, and rollback expectations, and it must reject higher-blast-radius pilot options for now.
 - `req.structural_rewrite_program.006`: The trace must prepare a durable Phase 2 entry review package, keep an explicit review task for that checkpoint, and record an explicit approval or block outcome before any Phase 2 implementation work begins.
 - `req.structural_rewrite_program.007`: If the Phase 2 gate is approved, the first slice must stay bounded to the artifact-role metadata family, use one declared authored-truth surface, and remain additive and read-only.
 - `req.structural_rewrite_program.008`: The first approved Phase 2 slice must publish a dedicated checkpoint document, migration record, validation-evidence artifact, and follow-up review task that capture storage shape, parity method, current consumers, and rollback expectations.
+- `req.structural_rewrite_program.009`: Before any Phase 3 implementation begins, the trace must record an explicit Phase 3 entry review outcome that reaffirms the current CLI registry plus parser tree as command authority, names the first rollback-safe slice, and records whether any additional command-adjacent classification addendum is required for that slice.
+- `req.structural_rewrite_program.010`: The first implemented Phase 3 slice must reconcile the root, doctor, sync, and validate command companion source surfaces to the parser-owned or family-owned implementation paths already published in the command index and must publish a bounded drift guard plus successor review task without changing command authority or public planning parity.
 
 ## Acceptance Criteria
 - `ac.structural_rewrite_program.001`: The planning corpus for `trace.structural_rewrite_program` contains the active PRD, active feature design, the Phase 0 or Phase 1 implementation package, the bounded Phase 2 slice plan, the aligned acceptance contract, the companion migration and validation-evidence artifacts, the closed bootstrap and Phase 0 or Phase 1 package tasks, and traced review or execution tasks for the Phase 2 gate and first slice.
@@ -76,12 +82,16 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - `ac.structural_rewrite_program.008`: If the gate is approved, the first slice publishes one dedicated artifact-role metadata family, its schema and validator companions, and the dedicated checkpoint package without changing the five public planning-authority answers.
 - `ac.structural_rewrite_program.009`: The first slice remains additive and read-only, with no live query-routing, sync-selection, validator-dispatch, command-authority, or planning-boundary behavior changes.
 - `ac.structural_rewrite_program.010`: After the first slice lands, the trace records an explicit pilot follow-up review outcome and opens a new bounded checkpoint instead of expanding automatically into broader Phase 2 or Phase 3 implementation.
+- `ac.structural_rewrite_program.011`: Before any Phase 3 implementation begins, the trace records the explicit Phase 3 entry review outcome, names the first rollback-safe command companion normalization slice, reaffirms the current command-authority boundary, and records whether any additional classification addendum is required for that slice.
+- `ac.structural_rewrite_program.012`: If the first Phase 3 slice lands, the root, doctor, sync, and validate command companion surfaces plus the command-index sync guard converge on the registry-backed implementation paths, command authority remains unchanged, public planning parity remains unchanged, and the trace stops at an explicit outcome review task.
 
 ## Risks and Dependencies
 - The rewrite can create accidental authority drift if its parity contract is weaker than the live authority map and query behavior.
 - Historical or compatibility cleanup can become unsafe quickly if consumer maps and discoverability checks are incomplete.
 - The Phase 2 pilot can stop being low blast radius if it touches live command authority, planning queries, or repo-wide sync selection instead of an additive metadata family.
 - The first artifact-role metadata slice can still become misleading if it overstates current coverage or begins classifying broader compatibility and workflow families that the Phase 1 evidence package did not yet table explicitly.
+- The first Phase 3 slice can still widen unsafely if command companion cleanup is allowed to act like a second command-authority definition instead of staying a companion-surface normalization pass.
+- Supporting trace documents can still create execution ambiguity if stale current-state narration is left in place after the live checkpoint advances.
 - The trace depends on the existing authority map, planning indexes, traceability projections, task tracking model, and acceptance or evidence ledgers remaining authoritative.
 
 ## Foundations References Applied
@@ -97,4 +107,4 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Updated At
-- `2026-03-14T04:31:59Z`
+- `2026-03-14T06:29:32Z`

@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.features.structural_rewrite_program"
 title: "Structural Rewrite Program Feature Design"
-summary: "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, delivering one bounded artifact-role metadata slice, and handing the trace to a Phase 3 entry package."
+summary: "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, landing one bounded artifact-role metadata slice, closing one bounded Phase 3 entry review, delivering one command companion normalization slice, and stopping at the Phase 3 outcome review."
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T04:31:59Z"
+updated_at: "2026-03-14T06:29:32Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,29 +28,32 @@ aliases:
 - `Design Status`: `active`
 - `Linked PRDs`: `prd.structural_rewrite_program`
 - `Linked Decisions`: `None`
-- `Linked Implementation Plans`: `design.implementation.structural_rewrite_program`
-- `Bounded Slice Plan`: `design.implementation.structural_rewrite_artifact_role_registry_pilot`
-- `Next Entry Package`: `design.implementation.structural_rewrite_phase3_command_authority_entry`
-- `Updated At`: `2026-03-14T04:31:59Z`
+- `Linked Implementation Plans`: `design.implementation.structural_rewrite_program`; `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`
+- `Historical Phase 2 Slice Plan`: `design.implementation.structural_rewrite_artifact_role_registry_pilot`
+- `Phase 3 Entry Package`: `design.implementation.structural_rewrite_phase3_command_authority_entry`
+- `Current Bounded Slice Plan`: `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`
+- `Updated At`: `2026-03-14T06:29:32Z`
 
 ## Summary
-Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate explicitly, delivering one bounded artifact-role metadata slice, and carrying the trace to the next explicit phase-entry checkpoint without starting Phase 3 implementation.
+Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate explicitly, delivering one bounded artifact-role metadata slice, closing the Phase 3 entry review explicitly, implementing one bounded Phase 3 command companion normalization slice, and stopping at the Phase 3 outcome review rather than broader rollout.
 
 ## Source Request
-- Execute the approved structural rewrite program against the live repository, close the remaining pre-Phase-2 gate work, and if the gate is approved cleanly deliver exactly one bounded artifact-role metadata slice before stopping for review.
+- Execute the approved structural rewrite program against the live repository, preserve the current public planning and command-authority boundaries, land the bounded artifact-role metadata and command-companion slices recorded in the trace, and stop broader rewrite implementation at the explicit Phase 3 outcome review.
 
 ## Scope and Feature Boundary
 - Covers the traced planning chain, rewrite-specific governance standards, machine-readable parity and evidence artifacts, migration records, and task chain needed to execute Phase 0 and Phase 1 safely.
 - Covers current-state baseline refresh, hotspot inventory refresh, critical-surface classification, history and compatibility consumer mapping, support-level classification, no-go conditions, rollback expectations, and Phase 2 pilot-family selection.
 - Covers the Phase 2 entry review outcome, the dedicated first-slice checkpoint package, and one additive, read-only artifact-role metadata implementation slice.
+- Covers the Phase 3 entry review outcome, the first rollback-safe command companion normalization slice, and the successor outcome-review task for that slice.
 - Does not start Phase 2 runtime, loader, sync, query, or validator-dispatch behavior changes.
 - Does not move or delete historical or compatibility surfaces.
 - Does not create a second public planning authority or a second command-authority source.
 
 ## Current-State Context
-- The current live checkpoint is healthy: `watchtower-core doctor --format json` reports `status: ok` with `60` commands, `48` schemas, `55` validators, `64` standards, `31` workflows, `62` initiatives, `209` tasks, and `62` traces loaded.
-- `watchtower-core validate all` passes `1219/1219` targets, and `watchtower-core query authority --domain planning --format json` still resolves the same five public planning questions to coordination, planning catalog, initiatives, tasks, and traceability.
-- `watchtower-core query coordination --format json` reports `active_work`, and the rewrite trace's current actionable task after the pilot review is `task.structural_rewrite_program.phase3_entry_review.006`.
+- The current live checkpoint is healthy: `watchtower-core doctor --format json` reports `status: ok` with `60` commands, `48` schemas, `55` validators, `64` standards, `31` workflows, `62` initiatives, `211` tasks, and `62` traces loaded.
+- `watchtower-core validate all` passes `1227/1227` targets, and `watchtower-core query authority --domain planning --format json` still resolves the same five public planning questions to coordination, planning catalog, initiatives, tasks, and traceability.
+- `watchtower-core query coordination --format json` reports `active_work`, and the rewrite trace's only actionable task at this checkpoint is `task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008`.
+- `watchtower-core sync command-index --format json` stays green with `60` entries and no write, and `python -m pytest tests/unit/test_command_index_sync.py` passes `4/4` tests for the new fail-closed command-companion drift guard.
 - The hotspot picture has shifted since earlier rewrite prose. The current largest Python files include `initiative_index.py` (`540` lines), `document_semantics.py` (`494`), `task_lifecycle.py` (`492`), `acceptance.py` (`471`), `workflow_index.py` (`463`), `planning_scaffold_specs.py` (`431`), `loader.py` (`431`), and `planning_projection_serialization.py` (`419`). The older `planning_scaffolds.py` hotspot has already fallen to `307` lines, so later rewrite work must use fresh live counts instead of stale hotspot examples.
 - The repo still carries mixed compatibility surfaces on purpose: `watchtower_core.query/` and `watchtower_core.sync/` are current boundary-layer namespaces, `watchtower_core.validation.all` is still a compatibility wrapper for aggregate validation, `query_coordination_handlers.py` is now a thin compatibility facade, and several test-marker files remain in place for repository-path continuity.
 
@@ -61,7 +64,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 
 ## Internal Standards and Canonical References Applied
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the rewrite needs one traced PRD, design, plan, evidence, and task chain rather than prose-only execution.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the rewrite must keep one active task-backed initiative while the Phase 3 entry review remains open.
+- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the rewrite must keep one active task-backed initiative while the Phase 3 outcome review remains open.
 - [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): the rewrite crosses the durable-task threshold and cannot stay as no-task work.
 - [authority_map_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/authority_map_standard.md): the rewrite parity contract must preserve the current authority answers rather than reconstructing them informally.
 - [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): the public planning-authority parity contract should be machine-readable and acceptance-oriented.
@@ -74,7 +77,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - Preserve the five live public planning-authority answers and their current query surfaces.
 - Keep the Phase 2 pilot limited to one additive family with clear authored truth, explicit storage shape, and no public behavior change requirement.
 - Reuse existing standards, acceptance, migration, evidence, planning, and task families instead of creating parallel rewrite-only homes.
-- Stop after the pilot review closes with one explicit Phase 3 entry-review task open so the repository does not imply automatic authorization for broader rollout.
+- Stop after the first bounded Phase 3 slice lands with one explicit outcome-review task open so the repository does not imply automatic authorization for broader rollout.
 
 ## Options Considered
 ### Option 1
@@ -98,14 +101,15 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - Publish one rewrite classification standard for the four-axis model, compatibility support levels, and retention reasons.
 - Publish one rewrite execution-control standard that defines the machine and human checkpoint package, the public planning parity boundary, authored-versus-derived declaration requirements, no-go conditions, and rollback expectations.
 - Use the implementation plan as the human Phase 0 and Phase 1 package: baseline evidence, hotspot inventory, critical-surface classification, consumer maps, compatibility classifications, pilot selection, and the Phase 2 entry-review question all live there.
-- Use the Phase 2 review task to decide the storage shape explicitly, then route implementation through one dedicated slice plan, one dedicated migration record, one dedicated validation-evidence artifact, one explicit pilot review outcome, and a successor Phase 3 entry-review task.
+- Use the Phase 2 review task to decide the storage shape explicitly, then route implementation through one dedicated slice plan, one dedicated migration record, one dedicated validation-evidence artifact, one explicit pilot review outcome, a successor Phase 3 entry-review task, and one bounded Phase 3 slice plan plus implementation task.
 - Choose a small dedicated registry for the first artifact-role metadata slice rather than embedding additive metadata inside an existing governed family. That keeps the pilot additive, keeps family boundaries explicit, and avoids prematurely binding metadata rollout to any one existing authority source.
 
 ### Data and Interface Impacts
-- New governed docs under `docs/planning/design/implementation/` and `docs/planning/tasks/` capture the gate outcome, the bounded slice, and the successor review checkpoint.
-- New machine-readable control artifacts under `core/control_plane/ledgers/migrations/` and `core/control_plane/ledgers/validation_evidence/` record the approved slice and its validation outcome.
+- New governed docs under `docs/planning/design/implementation/` and `docs/planning/tasks/` capture the gate outcomes, the bounded slices, and the successor review or implementation checkpoints.
+- New machine-readable control artifacts under `core/control_plane/ledgers/migrations/` and `core/control_plane/ledgers/validation_evidence/` record the approved slice boundaries and their validation outcomes.
 - New control-plane schema, registry, validator, and example surfaces publish the dedicated artifact-role metadata family.
-- No runtime code, command behavior, authority-map answers, query outputs, or planning-index schemas change in this slice.
+- The landed Phase 3 slice adds a bounded sync-guard implementation change in `core/python/src/watchtower_core/repo_ops/sync/command_index.py` plus direct unit coverage in `core/python/tests/unit/test_command_index_sync.py` so command companion metadata fails closed on future drift.
+- Command behavior, authority-map answers, query outputs, and planning-index schemas remain unchanged across the bounded slices.
 
 ### Execution Flow
 1. Re-run the required baseline commands from `core/python/` and refresh the live hotspot inventory from the current source tree.
@@ -113,7 +117,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 3. Publish the implementation-plan review package with critical-surface classification, consumer maps, compatibility classifications, and one fixed Phase 2 pilot family.
 4. Review the Phase 2 entry package, choose the dedicated-registry storage shape, and record the bounded approval outcome.
 5. Publish the dedicated slice plan, migration record, validation-evidence artifact, schema, registry, validator, and example companions for the approved dedicated-registry slice.
-6. Sync the derived planning surfaces, validate the repo, close the pilot review explicitly, and stop with one Phase 3 entry-review task still open.
+6. Sync the derived planning surfaces, validate the repo, close the pilot review explicitly, review the Phase 3 entry package, implement the first bounded Phase 3 slice with its migration and evidence companions, and stop with one Phase 3 outcome-review task still open.
 
 ### Invariants and Failure Cases
 - `watchtower-core query authority --domain planning --format json` must keep the same five planning answers through this slice.
@@ -155,7 +159,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Open Questions
-- None that block the first bounded slice. The storage-shape decision is fixed to a small dedicated registry for the approved pilot.
+- None that block the current checkpoint. The current next question belongs to the explicit Phase 3 outcome review rather than to a still-open entry review or an implied broader successor checkpoint.
 
 ## Updated At
-- `2026-03-14T04:31:59Z`
+- `2026-03-14T06:29:32Z`

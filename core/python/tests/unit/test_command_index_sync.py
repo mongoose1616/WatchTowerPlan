@@ -3,12 +3,28 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from watchtower_core.adapters.markdown import (
+    extract_code_spans,
+    extract_sections,
+    load_markdown_body,
+    parse_markdown_table,
+)
 from watchtower_core.cli.introspection import iter_command_parser_specs
 from watchtower_core.cli.parser import build_parser
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.sync import CommandIndexSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
+
+
+def _command_doc_source_surfaces(doc_path: Path) -> tuple[str, str]:
+    sections = extract_sections(load_markdown_body(doc_path))
+    command_rows = parse_markdown_table(sections["Command"])
+    table_source_surface = next(
+        row["Value"] for row in command_rows if row.get("Field") == "Source Surface"
+    )
+    primary_source_surface = extract_code_spans(sections["Source Surface"])[0]
+    return table_source_surface, primary_source_surface
 
 
 def test_command_index_sync_builds_schema_valid_document() -> None:
@@ -163,3 +179,39 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
     for spec in specs:
         assert (REPO_ROOT / spec.doc_path).exists()
         assert (REPO_ROOT / spec.implementation_path).exists()
+
+
+def test_registry_backed_parser_specs_require_matching_command_doc_source_surfaces() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+    service = CommandIndexSyncService(loader)
+
+    document = service.build_document()
+    implementation_by_doc = {
+        entry["doc_path"]: entry["implementation_path"]
+        for entry in document["entries"]
+        if "implementation_path" in entry
+    }
+
+    assert (
+        implementation_by_doc["docs/commands/core_python/watchtower_core.md"]
+        == "core/python/src/watchtower_core/cli/parser.py"
+    )
+    assert (
+        implementation_by_doc["docs/commands/core_python/watchtower_core_doctor.md"]
+        == "core/python/src/watchtower_core/cli/doctor_family.py"
+    )
+    assert (
+        implementation_by_doc["docs/commands/core_python/watchtower_core_sync_command_index.md"]
+        == "core/python/src/watchtower_core/cli/sync_family.py"
+    )
+    assert (
+        implementation_by_doc["docs/commands/core_python/watchtower_core_validate_all.md"]
+        == "core/python/src/watchtower_core/cli/validate_family.py"
+    )
+
+    for doc_path, implementation_path in implementation_by_doc.items():
+        table_source_surface, primary_source_surface = _command_doc_source_surfaces(
+            REPO_ROOT / doc_path
+        )
+        assert table_source_surface == implementation_path
+        assert primary_source_surface == implementation_path

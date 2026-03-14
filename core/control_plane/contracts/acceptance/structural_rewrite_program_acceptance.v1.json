@@ -191,7 +191,7 @@
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ],
       "related_paths": [
@@ -199,6 +199,58 @@
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ],
       "notes": "The pilot review outcome must be explicit, and any broader rewrite work must reopen through a new bounded checkpoint rather than implied continuation."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.011",
+      "summary": "Before any Phase 3 implementation begins, the trace records the explicit Phase 3 entry review outcome, names the first rollback-safe command companion normalization slice, and reaffirms the current command-authority boundary plus classification sufficiency for that slice.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.009"
+      ],
+      "validation_targets": [
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/src/watchtower_core/cli/registry.py",
+        "core/python/src/watchtower_core/cli/parser.py"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/commands/core_python/",
+        "core/control_plane/registries/authority_map/authority_map.v1.json"
+      ],
+      "notes": "The Phase 3 gate authorizes one bounded command companion normalization slice only. It does not authorize broader command-authority rollout."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.012",
+      "summary": "The first implemented Phase 3 slice reconciles the root, doctor, sync, and validate command companion source surfaces to parser-owned or family-owned implementation paths, publishes a bounded sync-time drift guard, preserves command authority and public planning parity, and stops at an explicit outcome review task.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.010"
+      ],
+      "validation_targets": [
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+        "docs/commands/core_python/watchtower_core.md",
+        "docs/commands/core_python/watchtower_core_doctor.md",
+        "docs/commands/core_python/watchtower_core_sync_command_index.md",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+        "core/python/tests/unit/test_command_index_sync.py"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/",
+        "core/python/src/watchtower_core/cli/registry.py",
+        "core/python/src/watchtower_core/cli/parser.py",
+        "core/control_plane/registries/authority_map/authority_map.v1.json"
+      ],
+      "notes": "The bounded slice aligns the root command page's primary Source Surface section and the 23 family-owned doctor, sync, and validate command docs with the existing command-index implementation paths. It does not authorize broader command-authority rollout."
     }
   ]
 }

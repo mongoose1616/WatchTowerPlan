@@ -14,7 +14,7 @@ This command rebuilds the governed command index from the registry-backed CLI pa
 | Invocation | `watchtower-core sync command-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -47,7 +47,7 @@ uv run watchtower-core sync command-index --output /tmp/command_index.v1.json --
 
 ## Behavior and Outputs
 - The command reads the registry-backed CLI parser metadata and rebuilds the machine-readable command index deterministically.
-- The command fails closed when a registry-backed command is missing its companion command page under `docs/commands/`.
+- The command fails closed when a registry-backed command is missing its companion command page under `docs/commands/` or when that page's `Source Surface` metadata drifts from the registry-backed implementation path.
 - By default the command runs in dry-run mode and does not mutate the canonical artifact.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many command entries were rebuilt.
 - In `json` mode, the command prints one JSON object with the command name, status, entry count, write flag, and output path when one was written.
@@ -62,11 +62,11 @@ uv run watchtower-core sync command-index --output /tmp/command_index.v1.json --
 | `watchtower-core sync repository-paths` | Rebuilds the broader repository path index from README inventories. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/cli/parser.py`
 - `core/python/src/watchtower_core/cli/introspection.py`
 - `core/python/src/watchtower_core/repo_ops/sync/command_index.py`
 - `core/control_plane/indexes/commands/command_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

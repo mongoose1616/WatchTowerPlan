@@ -16999,15 +16999,15 @@
     {
       "trace_id": "trace.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, and records the pilot follow-up review outcome before any later phase-entry work begins.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, closes the Phase 3 entry review, delivers one bounded command companion normalization slice, and stops at the outcome review.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-14T04:31:59Z",
+      "updated_at": "2026-03-14T06:29:32Z",
       "coordination": {
         "current_phase": "execution",
         "key_surface_path": "docs/planning/prds/structural_rewrite_program.md",
         "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-        "next_surface_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
+        "next_surface_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "open_task_count": 1,
         "blocked_task_count": 0,
         "primary_owner": "repository_maintainer",
@@ -17015,19 +17015,19 @@
           "repository_maintainer"
         ],
         "active_task_ids": [
-          "task.structural_rewrite_program.phase3_entry_review.006"
+          "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008"
         ],
         "active_task_summaries": [
           {
-            "task_id": "task.structural_rewrite_program.phase3_entry_review.006",
-            "title": "Review structural rewrite Phase 3 entry package",
+            "task_id": "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008",
+            "title": "Review structural rewrite Phase 3 command companion source surface normalization outcome",
             "task_status": "ready",
             "priority": "high",
             "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
+            "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
             "is_actionable": true,
             "depends_on": [
-              "task.structural_rewrite_program.artifact_role_registry_pilot_review.005"
+              "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization.007"
             ]
           }
         ]
@@ -17036,10 +17036,10 @@
         {
           "prd_id": "prd.structural_rewrite_program",
           "title": "Structural Rewrite Program PRD",
-          "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, and records the pilot follow-up review outcome before any later phase-entry work begins.",
+          "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, closes the Phase 3 entry review, delivers one bounded command companion normalization slice, and stops at the outcome review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/prds/structural_rewrite_program.md",
-          "updated_at": "2026-03-14T04:31:59Z",
+          "updated_at": "2026-03-14T06:29:32Z",
           "requirement_ids": [
             "req.structural_rewrite_program.001",
             "req.structural_rewrite_program.002",
@@ -17048,7 +17048,9 @@
             "req.structural_rewrite_program.005",
             "req.structural_rewrite_program.006",
             "req.structural_rewrite_program.007",
-            "req.structural_rewrite_program.008"
+            "req.structural_rewrite_program.008",
+            "req.structural_rewrite_program.009",
+            "req.structural_rewrite_program.010"
           ],
           "acceptance_ids": [
             "ac.structural_rewrite_program.001",
@@ -17060,13 +17062,16 @@
             "ac.structural_rewrite_program.007",
             "ac.structural_rewrite_program.008",
             "ac.structural_rewrite_program.009",
-            "ac.structural_rewrite_program.010"
+            "ac.structural_rewrite_program.010",
+            "ac.structural_rewrite_program.011",
+            "ac.structural_rewrite_program.012"
           ],
           "linked_design_ids": [
             "design.features.structural_rewrite_program"
           ],
           "linked_plan_ids": [
-            "design.implementation.structural_rewrite_program"
+            "design.implementation.structural_rewrite_program",
+            "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization"
           ]
         }
       ],
@@ -17075,10 +17080,10 @@
           "document_id": "design.features.structural_rewrite_program",
           "family": "feature_design",
           "title": "Structural Rewrite Program Feature Design",
-          "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, delivering one bounded artifact-role metadata slice, and handing the trace to a Phase 3 entry package.",
+          "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, landing one bounded artifact-role metadata slice, closing one bounded Phase 3 entry review, delivering one command companion normalization slice, and stopping at the Phase 3 outcome review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/structural_rewrite_program.md",
-          "updated_at": "2026-03-14T04:31:59Z"
+          "updated_at": "2026-03-14T06:29:32Z"
         },
         {
           "document_id": "design.implementation.structural_rewrite_artifact_role_registry_pilot",
@@ -17099,10 +17104,10 @@
           "document_id": "design.implementation.structural_rewrite_phase3_command_authority_entry",
           "family": "implementation_plan",
           "title": "Structural Rewrite Phase 3 Command Authority Entry Package",
-          "summary": "Defines the bounded Phase 3 entry checkpoint for command authority normalization after the artifact-role registry pilot proved additive metadata can land without authority drift.",
+          "summary": "Defines the bounded Phase 3 entry checkpoint for command authority normalization and records the approved first command companion normalization slice.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
-          "updated_at": "2026-03-14T04:31:59Z",
+          "updated_at": "2026-03-14T05:41:11Z",
           "source_paths": [
             "docs/planning/design/features/structural_rewrite_program.md",
             "docs/planning/prds/structural_rewrite_program.md",
@@ -17111,13 +17116,29 @@
           ]
         },
         {
+          "document_id": "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
+          "family": "implementation_plan",
+          "title": "Structural Rewrite Phase 3 Command Companion Source Surface Normalization",
+          "summary": "Implements the first bounded Phase 3 slice by reconciling command-doc source surfaces to the existing registry-backed command authority model.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+          "updated_at": "2026-03-14T05:41:11Z",
+          "source_paths": [
+            "docs/planning/design/features/structural_rewrite_program.md",
+            "docs/planning/prds/structural_rewrite_program.md",
+            "docs/planning/design/implementation/structural_rewrite_program.md",
+            "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+            "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md"
+          ]
+        },
+        {
           "document_id": "design.implementation.structural_rewrite_program",
           "family": "implementation_plan",
           "title": "Structural Rewrite Program Implementation Plan",
-          "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, and the handoff into the Phase 3 entry package.",
+          "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 entry review outcome, the first bounded Phase 3 slice, and the handoff into the slice outcome review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/structural_rewrite_program.md",
-          "updated_at": "2026-03-14T04:31:59Z",
+          "updated_at": "2026-03-14T05:41:11Z",
           "source_paths": [
             "docs/planning/design/features/structural_rewrite_program.md",
             "docs/planning/prds/structural_rewrite_program.md"
@@ -17169,7 +17190,7 @@
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
-          "updated_at": "2026-03-14T04:31:59Z",
+          "updated_at": "2026-03-14T05:41:11Z",
           "depends_on": [
             "task.structural_rewrite_program.artifact_role_registry_pilot.004"
           ],
@@ -17276,16 +17297,83 @@
           ]
         },
         {
-          "task_id": "task.structural_rewrite_program.phase3_entry_review.006",
-          "title": "Review structural rewrite Phase 3 entry package",
-          "summary": "Review the command-authority normalization entry package, confirm the current command-authority boundary and rollback model, and decide whether bounded Phase 3 work may begin.",
+          "task_id": "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization.007",
+          "title": "Implement structural rewrite Phase 3 command companion source surface normalization",
+          "summary": "Normalize command-doc source-surface metadata for the first bounded Phase 3 slice so the human command companions agree with the registry-backed command index without changing command authority.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+          "updated_at": "2026-03-14T05:41:11Z",
+          "depends_on": [
+            "task.structural_rewrite_program.phase3_entry_review.006"
+          ],
+          "related_ids": [
+            "prd.structural_rewrite_program",
+            "design.features.structural_rewrite_program",
+            "design.implementation.structural_rewrite_program",
+            "design.implementation.structural_rewrite_phase3_command_authority_entry",
+            "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
+            "contract.acceptance.structural_rewrite_program"
+          ],
+          "applies_to": [
+            "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+            "docs/commands/core_python/",
+            "core/control_plane/indexes/commands/command_index.v1.json",
+            "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+            "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+            "core/python/src/watchtower_core/cli/registry.py",
+            "core/python/src/watchtower_core/cli/parser.py",
+            "core/python/src/watchtower_core/cli/introspection.py",
+            "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+            "core/python/tests/"
+          ]
+        },
+        {
+          "task_id": "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008",
+          "title": "Review structural rewrite Phase 3 command companion source surface normalization outcome",
+          "summary": "Review the bounded Phase 3 command companion source-surface normalization slice, confirm docs-plus-index parity held, and decide whether broader rewrite work remains blocked or may proceed to a new bounded checkpoint.",
           "artifact_status": "active",
           "task_status": "ready",
           "task_kind": "governance",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
-          "updated_at": "2026-03-14T04:31:59Z",
+          "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+          "updated_at": "2026-03-14T05:41:11Z",
+          "depends_on": [
+            "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization.007"
+          ],
+          "related_ids": [
+            "prd.structural_rewrite_program",
+            "design.features.structural_rewrite_program",
+            "design.implementation.structural_rewrite_program",
+            "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
+            "contract.acceptance.structural_rewrite_program"
+          ],
+          "applies_to": [
+            "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+            "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+            "docs/commands/core_python/",
+            "core/control_plane/indexes/commands/command_index.v1.json",
+            "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+            "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+            "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+            "core/python/tests/unit/test_command_index_sync.py"
+          ]
+        },
+        {
+          "task_id": "task.structural_rewrite_program.phase3_entry_review.006",
+          "title": "Review structural rewrite Phase 3 entry package",
+          "summary": "Review the command-authority normalization entry package, confirm the current command-authority boundary and rollback model, and decide whether bounded Phase 3 work may begin.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+          "updated_at": "2026-03-14T05:41:11Z",
           "depends_on": [
             "task.structural_rewrite_program.artifact_role_registry_pilot_review.005"
           ],
@@ -17294,11 +17382,13 @@
             "design.features.structural_rewrite_program",
             "design.implementation.structural_rewrite_program",
             "design.implementation.structural_rewrite_phase3_command_authority_entry",
+            "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
             "contract.acceptance.structural_rewrite_program"
           ],
           "applies_to": [
             "docs/planning/design/implementation/structural_rewrite_program.md",
             "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+            "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
             "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
             "core/control_plane/indexes/commands/command_index.v1.json",
             "core/python/src/watchtower_core/cli/registry.py",
@@ -17323,20 +17413,27 @@
             "ac.structural_rewrite_program.007",
             "ac.structural_rewrite_program.008",
             "ac.structural_rewrite_program.009",
-            "ac.structural_rewrite_program.010"
+            "ac.structural_rewrite_program.010",
+            "ac.structural_rewrite_program.011",
+            "ac.structural_rewrite_program.012"
           ],
           "validation_targets": [
             "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
             "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
             "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
+            "core/control_plane/indexes/commands/command_index.v1.json",
             "core/control_plane/indexes/coordination/coordination_index.v1.json",
             "core/control_plane/indexes/initiatives/initiative_index.v1.json",
             "core/control_plane/indexes/planning/planning_catalog.v1.json",
             "core/control_plane/indexes/tasks/task_index.v1.json",
             "core/control_plane/indexes/traceability/traceability_index.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
+            "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+            "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
+            "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+            "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
             "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
             "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
@@ -17345,17 +17442,28 @@
             "core/control_plane/registries/validators/validator_registry.v1.json",
             "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
             "core/python/",
+            "core/python/src/watchtower_core/cli/parser.py",
+            "core/python/src/watchtower_core/cli/registry.py",
+            "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+            "core/python/tests/unit/test_command_index_sync.py",
+            "docs/commands/core_python/watchtower_core.md",
+            "docs/commands/core_python/watchtower_core_doctor.md",
+            "docs/commands/core_python/watchtower_core_sync_command_index.md",
+            "docs/commands/core_python/watchtower_core_validate_all.md",
             "docs/planning/design/features/structural_rewrite_program.md",
             "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
             "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+            "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
             "docs/planning/design/implementation/structural_rewrite_program.md",
             "docs/planning/prds/structural_rewrite_program.md",
             "docs/planning/tasks/closed/complete_structural_rewrite_program_phase0_and_phase1_package.md",
             "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
+            "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
             "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+            "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
             "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
             "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-            "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
+            "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
             "docs/standards/governance/rewrite_execution_control_standard.md",
             "docs/standards/governance/rewrite_surface_classification_standard.md"
           ],
@@ -17364,6 +17472,9 @@
             "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
+            "core/control_plane/registries/authority_map/authority_map.v1.json",
+            "core/python/src/watchtower_core/cli/parser.py",
+            "core/python/src/watchtower_core/cli/registry.py",
             "core/python/src/watchtower_core/control_plane/loader.py",
             "core/python/src/watchtower_core/query/README.md",
             "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
@@ -17372,6 +17483,7 @@
             "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
             "core/python/src/watchtower_core/sync/README.md",
             "core/python/src/watchtower_core/validation/README.md",
+            "docs/commands/core_python/",
             "docs/commands/core_python/watchtower_core_query_authority.md",
             "docs/commands/core_python/watchtower_core_query_coordination.md",
             "docs/commands/core_python/watchtower_core_query_planning.md",
@@ -17406,6 +17518,56 @@
             "ac.structural_rewrite_program.008",
             "ac.structural_rewrite_program.009",
             "ac.structural_rewrite_program.010"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md"
+          ]
+        },
+        {
+          "evidence_id": "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization",
+          "title": "Structural Rewrite Phase 3 Command Companion Source Surface Normalization Validation Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-14T05:41:11Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+          "check_ids": [
+            "check.structural_rewrite_program.phase3_command_docs_reconciled",
+            "check.structural_rewrite_program.phase3_command_doc_guard_published",
+            "check.structural_rewrite_program.phase3_command_authority_and_planning_parity_unchanged",
+            "check.structural_rewrite_program.phase3_slice_stopped_at_review"
+          ],
+          "acceptance_ids": [
+            "ac.structural_rewrite_program.004",
+            "ac.structural_rewrite_program.011",
+            "ac.structural_rewrite_program.012"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md"
+          ]
+        },
+        {
+          "evidence_id": "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization_ready",
+          "title": "Structural Rewrite Phase 3 Command Companion Source Surface Normalization Entry Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-14T05:20:12Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
+          "check_ids": [
+            "check.structural_rewrite_program.phase3_entry_review_approval",
+            "check.structural_rewrite_program.phase3_command_authority_boundary_reaffirmed",
+            "check.structural_rewrite_program.phase3_first_slice_named",
+            "check.structural_rewrite_program.phase3_classification_sufficiency_recorded"
+          ],
+          "acceptance_ids": [
+            "ac.structural_rewrite_program.004",
+            "ac.structural_rewrite_program.010",
+            "ac.structural_rewrite_program.011"
           ],
           "related_paths": [
             "docs/planning/coordination_tracking.md",
@@ -17454,6 +17616,7 @@
       "plan_ids": [
         "design.implementation.structural_rewrite_artifact_role_registry_pilot",
         "design.implementation.structural_rewrite_phase3_command_authority_entry",
+        "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
         "design.implementation.structural_rewrite_program"
       ],
       "task_ids": [
@@ -17462,6 +17625,8 @@
         "task.structural_rewrite_program.bootstrap.001",
         "task.structural_rewrite_program.phase0_phase1_package.002",
         "task.structural_rewrite_program.phase2_entry_review.003",
+        "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization.007",
+        "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008",
         "task.structural_rewrite_program.phase3_entry_review.006"
       ],
       "requirement_ids": [
@@ -17472,7 +17637,9 @@
         "req.structural_rewrite_program.005",
         "req.structural_rewrite_program.006",
         "req.structural_rewrite_program.007",
-        "req.structural_rewrite_program.008"
+        "req.structural_rewrite_program.008",
+        "req.structural_rewrite_program.009",
+        "req.structural_rewrite_program.010"
       ],
       "acceptance_ids": [
         "ac.structural_rewrite_program.001",
@@ -17484,14 +17651,18 @@
         "ac.structural_rewrite_program.007",
         "ac.structural_rewrite_program.008",
         "ac.structural_rewrite_program.009",
-        "ac.structural_rewrite_program.010"
+        "ac.structural_rewrite_program.010",
+        "ac.structural_rewrite_program.011",
+        "ac.structural_rewrite_program.012"
       ],
       "acceptance_contract_ids": [
         "contract.acceptance.structural_rewrite_program"
       ],
       "evidence_ids": [
         "evidence.structural_rewrite_program.artifact_role_registry_pilot",
-        "evidence.structural_rewrite_program.phase0_phase1_baseline"
+        "evidence.structural_rewrite_program.phase0_phase1_baseline",
+        "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization",
+        "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization_ready"
       ],
       "related_paths": [
         "core/control_plane/",
@@ -17510,9 +17681,13 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/migrations/",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
         "core/control_plane/registries/",
         "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
@@ -17524,20 +17699,28 @@
         "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
         "core/python/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/introspection.py",
         "core/python/src/watchtower_core/cli/parser.py",
         "core/python/src/watchtower_core/cli/registry.py",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/query/README.md",
         "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
         "core/python/src/watchtower_core/repo_ops/planning_scaffold_specs.py",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
         "core/python/src/watchtower_core/sync/README.md",
         "core/python/src/watchtower_core/validation/README.md",
+        "core/python/tests/",
+        "core/python/tests/unit/test_command_index_sync.py",
         "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core.md",
+        "docs/commands/core_python/watchtower_core_doctor.md",
         "docs/commands/core_python/watchtower_core_query_authority.md",
         "docs/commands/core_python/watchtower_core_query_coordination.md",
         "docs/commands/core_python/watchtower_core_query_planning.md",
+        "docs/commands/core_python/watchtower_core_sync_command_index.md",
+        "docs/commands/core_python/watchtower_core_validate_all.md",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/design/design_tracking.md",
@@ -17546,6 +17729,7 @@
         "docs/planning/design/implementation/",
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/",
@@ -17554,10 +17738,12 @@
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/complete_structural_rewrite_program_phase0_and_phase1_package.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
         "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/governance/",

@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.implementation.structural_rewrite_phase3_command_authority_entry"
 title: "Structural Rewrite Phase 3 Command Authority Entry Package"
-summary: "Defines the bounded Phase 3 entry checkpoint for command authority normalization after the artifact-role registry pilot proved additive metadata can land without authority drift."
+summary: "Defines the bounded Phase 3 entry checkpoint for command authority normalization and records the approved first command companion normalization slice."
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T04:31:59Z"
+updated_at: "2026-03-14T05:41:11Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -31,10 +31,10 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-14T04:31:59Z`
+- `Updated At`: `2026-03-14T05:41:11Z`
 
 ## Summary
-Define the bounded Phase 3 entry checkpoint for command authority normalization without starting Phase 3 implementation.
+Define the bounded Phase 3 entry checkpoint for command authority normalization and record the approved first rollback-safe command companion normalization slice without starting Phase 3 implementation in this change set.
 
 ## Source Request or Design
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -112,6 +112,11 @@ Define the bounded Phase 3 entry checkpoint for command authority normalization 
 - Which command-adjacent workflow, route, and compatibility surfaces need explicit Phase 3 classification before implementation starts?
 - What is the smallest rollback-safe normalization slice that can improve command companion drift without creating a second durable command-existence authority?
 
+## Review-Resolved Entry Questions
+- `Current command-authority boundary`: yes. `core/python/src/watchtower_core/cli/registry.py` plus `core/python/src/watchtower_core/cli/parser.py` remain the only accepted command-authority source for the next phase.
+- `First rollback-safe slice`: [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- `Classification sufficiency`: no additional command-adjacent workflow, route, or compatibility classification addendum is required for the first slice because it stays inside the already-classified command index plus command docs companion surfaces and the existing CLI registry plus parser authority boundary.
+
 ## Parity Method
 - Re-run:
   - `./.venv/bin/watchtower-core validate all`
@@ -144,14 +149,16 @@ Define the bounded Phase 3 entry checkpoint for command authority normalization 
 - Keep Phase 3 blocked unless the review task records an explicit approval outcome for the entry package.
 
 ## Stop Condition
-- Stop at the Phase 3 entry review task.
-- Do not start command-authority normalization implementation from this package alone.
+- Stop at the explicit Phase 3 review outcome and hand off to the bounded implementation task.
+- Do not widen the approved first slice into broader command-authority, workflow, route, compatibility, or public-planning changes from this package alone.
 
 ## References
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
-- [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md)
+- [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md)
+- [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Updated At
-- `2026-03-14T04:31:59Z`
+- `2026-03-14T05:41:11Z`

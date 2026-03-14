@@ -14,7 +14,7 @@ This command rebuilds the governed initiative index from traceability plus the c
 | Invocation | `watchtower-core sync initiative-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -63,9 +63,9 @@ uv run watchtower-core sync initiative-index --output /tmp/initiative_index.v1.j
 | `watchtower-core query initiatives` | Reads the initiative index that this command rebuilds. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`
 - `core/control_plane/indexes/initiatives/initiative_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

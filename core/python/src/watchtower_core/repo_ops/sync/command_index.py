@@ -5,6 +5,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from watchtower_core.adapters.markdown import (
+    extract_code_spans,
+    extract_sections,
+    load_markdown_body,
+    parse_markdown_table,
+)
 from watchtower_core.cli.introspection import iter_command_parser_specs
 from watchtower_core.cli.parser import build_parser
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -61,6 +67,41 @@ def _entry_to_document(entry: CommandIndexEntry) -> dict[str, object]:
     return document
 
 
+def _load_command_doc_source_surfaces(doc_path: Path) -> tuple[str, str]:
+    """Return the command-table and primary source-surface values from one command doc."""
+
+    sections = extract_sections(load_markdown_body(doc_path))
+    try:
+        command_section = sections["Command"]
+        source_surface_section = sections["Source Surface"]
+    except KeyError as exc:
+        raise ValueError(f"Command doc is missing a required section: {doc_path}") from exc
+
+    command_rows = parse_markdown_table(command_section)
+    table_source_surface = next(
+        (
+            row["Value"]
+            for row in command_rows
+            if row.get("Field") == "Source Surface"
+        ),
+        None,
+    )
+    if table_source_surface is None:
+        raise ValueError(
+            "Command doc Command table is missing its Source Surface row: "
+            f"{doc_path}"
+        )
+
+    source_surfaces = extract_code_spans(source_surface_section)
+    if not source_surfaces:
+        raise ValueError(
+            "Command doc Source Surface section is missing its primary code path: "
+            f"{doc_path}"
+        )
+
+    return table_source_surface, source_surfaces[0]
+
+
 class CommandIndexSyncService:
     """Build and write the command index from registry-backed CLI metadata."""
 
@@ -80,7 +121,8 @@ class CommandIndexSyncService:
         }
         derived_entries: dict[str, CommandIndexEntry] = {}
         for spec in iter_command_parser_specs(build_parser()):
-            if not (self._repo_root / spec.doc_path).exists():
+            doc_path = self._repo_root / spec.doc_path
+            if not doc_path.exists():
                 raise ValueError(
                     "Registry-backed CLI command is missing its companion command doc: "
                     f"{spec.command} -> {spec.doc_path}"
@@ -89,6 +131,23 @@ class CommandIndexSyncService:
                 raise ValueError(
                     "Registry-backed CLI command points to a missing implementation path: "
                     f"{spec.command} -> {spec.implementation_path}"
+                )
+            table_source_surface, primary_source_surface = _load_command_doc_source_surfaces(
+                doc_path
+            )
+            if table_source_surface != spec.implementation_path:
+                raise ValueError(
+                    "Companion command doc Command table Source Surface drifted from the "
+                    "registry-backed implementation path: "
+                    f"{spec.command} -> {spec.doc_path} "
+                    f"(doc={table_source_surface}, expected={spec.implementation_path})"
+                )
+            if primary_source_surface != spec.implementation_path:
+                raise ValueError(
+                    "Companion command doc Source Surface section drifted from the "
+                    "registry-backed implementation path: "
+                    f"{spec.command} -> {spec.doc_path} "
+                    f"(doc={primary_source_surface}, expected={spec.implementation_path})"
                 )
 
             current = existing_entries.get(spec.command_id)

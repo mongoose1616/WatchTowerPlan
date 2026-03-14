@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.implementation.structural_rewrite_program"
 title: "Structural Rewrite Program Implementation Plan"
-summary: "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, and the handoff into the Phase 3 entry package."
+summary: "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 entry review outcome, the first bounded Phase 3 slice, and the handoff into the slice outcome review."
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T04:31:59Z"
+updated_at: "2026-03-14T05:41:11Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -30,10 +30,10 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-14T04:31:59Z`
+- `Updated At`: `2026-03-14T05:41:11Z`
 
 ## Summary
-Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 entry gate explicitly, records the bounded artifact-role registry pilot outcome, and hands the trace to the Phase 3 entry package.
+Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 entry gate explicitly, records the bounded artifact-role registry pilot outcome, closes the Phase 3 entry review explicitly, records the first bounded Phase 3 command companion normalization slice, and hands the trace to the slice outcome review.
 
 ## Source Request or Design
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -45,6 +45,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - Record the Phase 2 entry review outcome, the chosen storage shape, and the bounded first-slice boundary.
 - Hand the approved Phase 2 slice to [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md).
 - Stop broader implementation after the pilot review and open one explicit Phase 3 entry package instead of a second Phase 2 slice.
+- After the Phase 3 entry review closes, hand the trace to one bounded command companion normalization slice instead of broader Phase 3 rollout.
 - Exclude broader Phase 2 rollout, history relocation, compatibility retirement, runtime behavior changes, and command-authority or planning-authority rewrites.
 
 ## Assumptions and Constraints
@@ -52,6 +53,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - The five current planning-authority answers remain the public machine boundary unless a separate accepted decision changes them.
 - Any later pilot family must declare its authored truth, derived outputs, and rollback path before implementation begins.
 - The Phase 2 gate approval authorizes only one additive, read-only artifact-role metadata slice backed by a dedicated registry family.
+- The Phase 3 entry review may authorize only one rollback-safe command companion normalization slice and may not be treated as standing approval for broader command-authority rewrites.
 
 ## Current-State Context
 - Current checkpoint command results before the bounded slice:
@@ -225,19 +227,39 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Slice Migration`: [structural_rewrite_artifact_role_registry_pilot.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json)
 - `Slice Evidence`: [structural_rewrite_artifact_role_registry_pilot.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json)
 - `Pilot Review Task`: [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
-- `Next Entry Package`: [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
-- `Next Review Task`: [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md)
+- `Phase 3 Entry Package`: [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
+- `Phase 3 Slice Plan`: [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- `Phase 3 Entry Migration`: [structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json)
+- `Phase 3 Entry Evidence`: [structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json)
+- `Closed Phase 3 Review Task`: [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md)
+- `Phase 3 Slice Migration`: [structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json)
+- `Phase 3 Slice Evidence`: [structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json)
+- `Closed Phase 3 Implementation Task`: [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- `Current Review Task`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Pilot Review Outcome
 - `Decision`: passed.
 - `Phase 2 conclusion`: the first bounded slice proved the additive metadata-family pattern cleanly enough that broader rewrite work no longer needs to stay blocked at the pilot-review checkpoint.
 - `Next boundary`: do not open a second broader Phase 2 slice. The next safe step is the Phase 3 entry package for command-authority normalization.
-- `Current hard stop`: [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md)
+
+## Phase 3 Entry Review Outcome
+- `Decision`: passed for one bounded Phase 3 slice only.
+- `Current command-authority boundary`: unchanged. `registry.py` plus `parser.py` remain the only accepted machine authority for command presence and hierarchy.
+- `Approved first slice`: [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- `Classification sufficiency`: no additional command-adjacent workflow, route, or compatibility classification addendum is required for the first slice because it stays inside already-classified command companion surfaces.
+- `Entry checkpoint hard stop`: [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+
+## Phase 3 Slice Outcome
+- `Decision`: implemented as one bounded companion-only slice.
+- `Bounded doc set`: the root command page's primary Source Surface section plus the `23` affected `doctor`, `sync`, and `validate` command docs now align with the parser-owned or family-owned implementation paths already published in the command index.
+- `Drift guard`: `core/python/src/watchtower_core/repo_ops/sync/command_index.py` now fails closed when a companion command doc Command table or primary Source Surface entry drifts from the registry-backed implementation path, and `core/python/tests/unit/test_command_index_sync.py` covers that guard directly.
+- `Current hard stop`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Risks
 - The implementation plan can still overstate readiness if later readers treat the bounded pilot as general authorization for broader Phase 2 rollout.
 - Compatibility markers may look cheap to retire even when repository-path continuity still depends on them.
 - The artifact-role metadata pilot can drift upward in blast radius if it starts to drive live query or sync behavior before its additive read-only model is proven.
+- The approved Phase 3 slice can still widen unsafely if command companion cleanup starts acting like a new command-authority source instead of remaining a bounded docs-plus-index normalization pass.
 
 ## Validation Plan
 - Re-run the required baseline commands:
@@ -251,14 +273,14 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
   - `./.venv/bin/watchtower-core query authority --domain planning --format json`
   - `./.venv/bin/watchtower-core query coordination --format json`
   - `./.venv/bin/watchtower-core query planning --trace-id trace.structural_rewrite_program --format json`
-- Confirm that the Phase 3 entry-review task, not broader implementation, becomes the next controlling surface after the pilot review closes.
+- Confirm that the bounded Phase 3 outcome-review task, not broader rewrite rollout, becomes the next controlling surface after the slice lands.
 
 ## Rollout or Migration Plan
-- Land the traced rewrite package, close the Phase 2 gate explicitly, publish one additive dedicated-registry slice, sync and validate, close the pilot review explicitly, and stop with the Phase 3 entry-review task open.
-- Do not expand the first slice into broader metadata rollout, compatibility cleanup, or later rewrite phases without the new explicit Phase 3 review outcome.
+- Land the traced rewrite package, close the Phase 2 gate explicitly, publish one additive dedicated-registry slice, sync and validate, close the pilot review explicitly, close the Phase 3 entry review explicitly, implement one bounded Phase 3 command companion slice, and stop with one outcome-review task open.
+- Do not expand the approved first Phase 3 slice into broader command-authority, compatibility, or later rewrite phases without a new explicit review outcome.
 
 ## Open Questions
-- None that block the current checkpoint. The remaining question belongs to the Phase 3 entry review: whether command-authority normalization may begin through one bounded checkpoint.
+- None that block the current checkpoint. The remaining execution work belongs to the bounded outcome review rather than to still-open implementation.
 
 ## References
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -268,4 +290,4 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Updated At
-- `2026-03-14T04:31:59Z`
+- `2026-03-14T05:41:11Z`

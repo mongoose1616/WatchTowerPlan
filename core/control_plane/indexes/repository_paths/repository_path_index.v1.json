@@ -1925,6 +1925,26 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the completed first bounded Phase 3 slice that reconciles command companion source surfaces and publishes the sync-time drift guard.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the Phase 3 entry outcome that approves the first bounded command companion source-surface normalization slice.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
       "kind": "file",
       "surface_kind": "control_plane_ledger",
@@ -2122,6 +2142,26 @@
       "kind": "file",
       "surface_kind": "control_plane_ledger",
       "summary": "Validation evidence for the first bounded structural rewrite Phase 2 slice.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the completed first bounded Phase 3 command companion source-surface normalization slice.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the approved Phase 3 entry outcome and the first bounded command companion source-surface normalization slice.",
       "parent_path": "core/control_plane/ledgers/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
@@ -4559,7 +4599,7 @@
       "path": "docs/planning/design/features/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "feature_design",
-      "summary": "Feature design for executing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, and delivering one bounded artifact-role metadata slice.",
+      "summary": "Feature design for executing the guarded structural rewrite program through the first bounded Phase 3 command companion normalization slice and its outcome review.",
       "parent_path": "docs/planning/design/features/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4627,10 +4667,20 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+      "kind": "file",
+      "surface_kind": "implementation_plan",
+      "summary": "Implementation plan for the first bounded Phase 3 slice that reconciles command-doc source surfaces to the current family-owned command authority model.",
+      "parent_path": "docs/planning/design/implementation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/design/implementation/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the structural rewrite program through the Phase 2 gate outcome and handoff into the bounded artifact-role pilot.",
+      "summary": "Implementation plan for the structural rewrite program through the first bounded Phase 3 command companion normalization slice and handoff into its outcome review.",
       "parent_path": "docs/planning/design/implementation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4743,7 +4793,7 @@
       "path": "docs/planning/prds/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "prd",
-      "summary": "PRD for the guarded structural rewrite program through the first bounded artifact-role metadata pilot slice.",
+      "summary": "PRD for the guarded structural rewrite program through the first bounded Phase 3 command companion normalization slice and its outcome review.",
       "parent_path": "docs/planning/prds/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4810,6 +4860,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed task for the first bounded Phase 3 command companion source-surface normalization slice.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/tasks/closed/local_task_tracking_foundation.md",
       "kind": "file",
       "surface_kind": "planning_doc",
@@ -4824,6 +4884,16 @@
       "kind": "file",
       "surface_kind": "planning_doc",
       "summary": "Completed review task for the bounded artifact-role registry pilot outcome.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed review task that approved one bounded Phase 3 command companion normalization slice.",
       "parent_path": "docs/planning/tasks/closed/",
       "maturity": "supporting",
       "priority": "medium",
@@ -4850,10 +4920,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
+      "path": "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
       "kind": "file",
       "surface_kind": "planning_doc",
-      "summary": "Active review task for the bounded Phase 3 command-authority entry package.",
+      "summary": "Active review task for the bounded Phase 3 command companion source-surface normalization slice.",
       "parent_path": "docs/planning/tasks/open/",
       "maturity": "supporting",
       "priority": "medium",

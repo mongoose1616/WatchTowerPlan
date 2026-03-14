@@ -69,9 +69,8 @@ uv run watchtower-core validate all --format json
 | `docs/commands/core_python/README.md` | Command-family entrypoint for the core Python workspace. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
 - `core/python/src/watchtower_core/cli/parser.py`
 - `core/python/src/watchtower_core/cli/registry.py`
 
 ## Updated At
-- `2026-03-13T15:05:00Z`
+- `2026-03-14T05:37:06Z`

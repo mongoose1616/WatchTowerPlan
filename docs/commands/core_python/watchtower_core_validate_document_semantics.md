@@ -15,7 +15,7 @@ This command validates one governed Markdown document against repo-native semant
 | Invocation | `watchtower-core validate document-semantics` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/validate_family.py` |
 
 ## Synopsis
 ```sh
@@ -71,9 +71,9 @@ uv run watchtower-core validate document-semantics --path /tmp/example.md --vali
 | `watchtower-core query standards` | Helps find the governing standards that define the semantic rules being enforced. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/document_semantics.py`
 - `core/control_plane/registries/validators/validator_registry.v1.json`
 
 ## Updated At
-- `2026-03-10T20:33:00Z`
+- `2026-03-14T05:37:06Z`

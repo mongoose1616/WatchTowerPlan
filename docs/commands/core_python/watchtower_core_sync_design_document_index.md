@@ -14,7 +14,7 @@ This command rebuilds the governed design-document index from the governed featu
 | Invocation | `watchtower-core sync design-document-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -62,9 +62,9 @@ uv run watchtower-core sync design-document-index --output /tmp/design_document_
 | `watchtower-core validate front-matter` | Validates the governed design-document front matter that this command depends on. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/design_document_index.py`
 - `core/control_plane/indexes/design_documents/design_document_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

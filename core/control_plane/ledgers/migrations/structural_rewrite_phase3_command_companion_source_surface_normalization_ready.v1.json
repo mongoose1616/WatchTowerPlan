@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase3_command_companion_source_surface_normalization_ready.v1",
+  "title": "Structural Rewrite Phase 3 Command Companion Source Surface Normalization Ready",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-14T05:20:12Z",
+  "from_state": "phase3_entry_review_ready",
+  "to_state": "phase3_command_companion_source_surface_normalization_ready",
+  "summary": "Records the approved first bounded Phase 3 slice by naming command companion source-surface normalization as the next rollback-safe command-authority normalization step.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+    "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+    "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/indexes/commands/command_index.v1.json"
+  ],
+  "notes": "This transition reaffirms registry.py plus parser.py as the only accepted command-authority source. It approves one bounded companion-surface normalization slice only and does not start implementation."
+}

@@ -14,7 +14,7 @@ This command rebuilds the human-readable task tracker from the governed local ta
 | Invocation | `watchtower-core sync task-tracking` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -63,9 +63,9 @@ uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --forma
 | `docs/planning/tasks/task_tracking.md` | Canonical tracker path that this command refreshes in write mode. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/task_tracking.py`
 - `docs/planning/tasks/task_tracking.md`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

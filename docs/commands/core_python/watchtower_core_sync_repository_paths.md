@@ -14,7 +14,7 @@ This command rebuilds the repository path index from README inventory tables and
 | Invocation | `watchtower-core sync repository-paths` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -61,9 +61,9 @@ uv run watchtower-core sync repository-paths --output /tmp/repository_path_index
 | `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` | Canonical governed artifact written by this command when `--write` is used. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/repository_paths.py`
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

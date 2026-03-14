@@ -14,7 +14,7 @@ This command runs the registry-backed validation families across the governed re
 | Invocation | `watchtower-core validate all` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/validate_family.py` |
 
 ## Synopsis
 ```sh
@@ -65,7 +65,7 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 | `watchtower-core sync all` | Useful after validation when you want to rebuild the full local derived state. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/all.py`
 - `core/python/src/watchtower_core/validation/registry.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
@@ -74,4 +74,4 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 - `core/python/src/watchtower_core/validation/acceptance.py`
 
 ## Updated At
-- `2026-03-12T14:40:00Z`
+- `2026-03-14T05:37:06Z`

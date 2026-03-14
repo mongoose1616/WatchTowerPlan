@@ -4447,7 +4447,7 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
-      "updated_at": "2026-03-14T04:31:59Z",
+      "updated_at": "2026-03-14T05:41:11Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.artifact_role_registry_pilot.004"
@@ -4558,16 +4558,85 @@
       ]
     },
     {
-      "task_id": "task.structural_rewrite_program.phase3_entry_review.006",
-      "title": "Review structural rewrite Phase 3 entry package",
-      "summary": "Review the command-authority normalization entry package, confirm the current command-authority boundary and rollback model, and decide whether bounded Phase 3 work may begin.",
+      "task_id": "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization.007",
+      "title": "Implement structural rewrite Phase 3 command companion source surface normalization",
+      "summary": "Normalize command-doc source-surface metadata for the first bounded Phase 3 slice so the human command companions agree with the registry-backed command index without changing command authority.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+      "updated_at": "2026-03-14T05:41:11Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.phase3_entry_review.006"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "design.implementation.structural_rewrite_phase3_command_authority_entry",
+        "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+        "core/python/src/watchtower_core/cli/registry.py",
+        "core/python/src/watchtower_core/cli/parser.py",
+        "core/python/src/watchtower_core/cli/introspection.py",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+        "core/python/tests/"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008",
+      "title": "Review structural rewrite Phase 3 command companion source surface normalization outcome",
+      "summary": "Review the bounded Phase 3 command companion source-surface normalization slice, confirm docs-plus-index parity held, and decide whether broader rewrite work remains blocked or may proceed to a new bounded checkpoint.",
       "status": "active",
       "task_status": "ready",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
-      "updated_at": "2026-03-14T04:31:59Z",
+      "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+      "updated_at": "2026-03-14T05:41:11Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization.007"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/commands/core_python/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
+        "core/python/tests/unit/test_command_index_sync.py"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.phase3_entry_review.006",
+      "title": "Review structural rewrite Phase 3 entry package",
+      "summary": "Review the command-authority normalization entry package, confirm the current command-authority boundary and rollback model, and decide whether bounded Phase 3 work may begin.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+      "updated_at": "2026-03-14T05:41:11Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.artifact_role_registry_pilot_review.005"
@@ -4577,11 +4646,13 @@
         "design.features.structural_rewrite_program",
         "design.implementation.structural_rewrite_program",
         "design.implementation.structural_rewrite_phase3_command_authority_entry",
+        "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
         "contract.acceptance.structural_rewrite_program"
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/python/src/watchtower_core/cli/registry.py",

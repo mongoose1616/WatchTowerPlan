@@ -14,7 +14,7 @@ This command rebuilds the governed standard index from the governed standards an
 | Invocation | `watchtower-core sync standard-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -64,9 +64,9 @@ uv run watchtower-core sync standard-index --output /tmp/standard_index.v1.json 
 | `watchtower-core sync reference-index` | Rebuilds the companion reference index used to derive transitive external authority. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`
 - `core/control_plane/indexes/standards/standard_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

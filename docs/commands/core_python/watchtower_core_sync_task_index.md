@@ -14,7 +14,7 @@ This command rebuilds the governed task index from the governed local task docum
 | Invocation | `watchtower-core sync task-index` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -63,9 +63,9 @@ uv run watchtower-core sync task-index --output /tmp/task_index.v1.json --format
 | `watchtower-core sync traceability-index` | Reads the task index as one of its governed source surfaces. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/task_index.py`
 - `core/control_plane/indexes/tasks/task_index.v1.json`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`

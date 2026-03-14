@@ -14,7 +14,7 @@ This command rebuilds the human-readable PRD tracker from the governed PRD index
 | Invocation | `watchtower-core sync prd-tracking` |
 | Kind | `subcommand` |
 | Workspace | `core_python` |
-| Source Surface | `core/python/src/watchtower_core/cli/main.py` |
+| Source Surface | `core/python/src/watchtower_core/cli/sync_family.py` |
 
 ## Synopsis
 ```sh
@@ -55,9 +55,9 @@ uv run watchtower-core sync prd-tracking --write
 | `watchtower-core query prds` | Reads the PRD index directly when you need machine-readable lookup rather than the human tracker. |
 
 ## Source Surface
-- `core/python/src/watchtower_core/cli/main.py`
+- `core/python/src/watchtower_core/cli/sync_family.py`
 - `core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py`
 - `docs/planning/prds/prd_tracking.md`
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-14T05:37:06Z`
