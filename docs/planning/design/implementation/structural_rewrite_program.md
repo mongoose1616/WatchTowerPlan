@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.implementation.structural_rewrite_program"
 title: "Structural Rewrite Program Implementation Plan"
-summary: "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, and the handoff into one bounded artifact-role registry pilot."
+summary: "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, and the handoff into the Phase 3 entry package."
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T03:56:23Z"
+updated_at: "2026-03-14T04:31:59Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -30,10 +30,10 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-14T03:56:23Z`
+- `Updated At`: `2026-03-14T04:31:59Z`
 
 ## Summary
-Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 entry gate explicitly, and hands the bounded artifact-role registry pilot to its dedicated slice plan.
+Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 entry gate explicitly, records the bounded artifact-role registry pilot outcome, and hands the trace to the Phase 3 entry package.
 
 ## Source Request or Design
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -44,6 +44,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - Complete Phase 1 by classifying critical surfaces, mapping history and compatibility consumers, classifying compatibility surfaces by support level and retention reason, and publishing no-go conditions, rollback expectations, and Phase 2 entry conditions.
 - Record the Phase 2 entry review outcome, the chosen storage shape, and the bounded first-slice boundary.
 - Hand the approved Phase 2 slice to [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md).
+- Stop broader implementation after the pilot review and open one explicit Phase 3 entry package instead of a second Phase 2 slice.
 - Exclude broader Phase 2 rollout, history relocation, compatibility retirement, runtime behavior changes, and command-authority or planning-authority rewrites.
 
 ## Assumptions and Constraints
@@ -187,7 +188,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 4. Review the Phase 2 entry package, choose the dedicated-registry storage shape, and record the bounded approval outcome.
 5. Publish the dedicated slice plan, dedicated migration record, and dedicated validation-evidence artifact for the first slice.
 6. Publish the additive artifact-role registry family and its schema, validator, artifact-type, schema-catalog, and example companions.
-7. Sync the derived planning surfaces, validate the repo, and stop with one follow-up review task still open.
+7. Sync the derived planning surfaces, validate the repo, close the pilot follow-up review explicitly, and hand control to the Phase 3 entry-review task.
 
 ## No-Go Conditions
 - Do not start Phase 2 implementation before `task.structural_rewrite_program.phase2_entry_review.003` records an explicit approval outcome.
@@ -223,7 +224,15 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Historical Gate Evidence`: [structural_rewrite_program_phase0_phase1_baseline.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json)
 - `Slice Migration`: [structural_rewrite_artifact_role_registry_pilot.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json)
 - `Slice Evidence`: [structural_rewrite_artifact_role_registry_pilot.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json)
-- `Successor Review Task`: [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
+- `Pilot Review Task`: [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
+- `Next Entry Package`: [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
+- `Next Review Task`: [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md)
+
+## Pilot Review Outcome
+- `Decision`: passed.
+- `Phase 2 conclusion`: the first bounded slice proved the additive metadata-family pattern cleanly enough that broader rewrite work no longer needs to stay blocked at the pilot-review checkpoint.
+- `Next boundary`: do not open a second broader Phase 2 slice. The next safe step is the Phase 3 entry package for command-authority normalization.
+- `Current hard stop`: [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md)
 
 ## Risks
 - The implementation plan can still overstate readiness if later readers treat the bounded pilot as general authorization for broader Phase 2 rollout.
@@ -242,14 +251,14 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
   - `./.venv/bin/watchtower-core query authority --domain planning --format json`
   - `./.venv/bin/watchtower-core query coordination --format json`
   - `./.venv/bin/watchtower-core query planning --trace-id trace.structural_rewrite_program --format json`
-- Confirm that the successor review task, not broader rewrite execution, becomes the next controlling surface after the slice lands.
+- Confirm that the Phase 3 entry-review task, not broader implementation, becomes the next controlling surface after the pilot review closes.
 
 ## Rollout or Migration Plan
-- Land the traced rewrite package, close the Phase 2 gate explicitly, publish one additive dedicated-registry slice, sync and validate, and stop with the follow-up review task still open.
-- Do not expand the first slice into broader metadata rollout, compatibility cleanup, or later rewrite phases without a new explicit review outcome.
+- Land the traced rewrite package, close the Phase 2 gate explicitly, publish one additive dedicated-registry slice, sync and validate, close the pilot review explicitly, and stop with the Phase 3 entry-review task open.
+- Do not expand the first slice into broader metadata rollout, compatibility cleanup, or later rewrite phases without the new explicit Phase 3 review outcome.
 
 ## Open Questions
-- None that block the first bounded slice. The remaining question belongs to the follow-up review: whether later Phase 2 work should stay blocked or proceed into a second bounded slice.
+- None that block the current checkpoint. The remaining question belongs to the Phase 3 entry review: whether command-authority normalization may begin through one bounded checkpoint.
 
 ## References
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -259,4 +268,4 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Updated At
-- `2026-03-14T03:56:23Z`
+- `2026-03-14T04:31:59Z`

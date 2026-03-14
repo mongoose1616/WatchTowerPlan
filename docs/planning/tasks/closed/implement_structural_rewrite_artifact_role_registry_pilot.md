@@ -9,7 +9,7 @@ task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-14T03:56:23Z'
+updated_at: '2026-03-14T04:31:59Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -55,7 +55,7 @@ Publish the bounded artifact-role registry family and its checkpoint companions 
 
 ## Links
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
-- [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
+- [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
 
 ## Updated At
-- `2026-03-14T03:56:23Z`
+- `2026-03-14T04:31:59Z`

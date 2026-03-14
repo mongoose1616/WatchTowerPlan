@@ -4412,7 +4412,7 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
-      "updated_at": "2026-03-14T03:56:23Z",
+      "updated_at": "2026-03-14T04:31:59Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.phase2_entry_review.003"
@@ -4442,12 +4442,12 @@
       "title": "Review structural rewrite artifact role registry pilot outcome",
       "summary": "Review the bounded artifact-role registry pilot, confirm parity held, and decide whether broader rewrite work remains blocked or may proceed to a new bounded checkpoint.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
-      "updated_at": "2026-03-14T03:56:23Z",
+      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+      "updated_at": "2026-03-14T04:31:59Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.artifact_role_registry_pilot.004"
@@ -4457,11 +4457,13 @@
         "design.features.structural_rewrite_program",
         "design.implementation.structural_rewrite_program",
         "design.implementation.structural_rewrite_artifact_role_registry_pilot",
+        "design.implementation.structural_rewrite_phase3_command_authority_entry",
         "contract.acceptance.structural_rewrite_program"
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
@@ -4553,6 +4555,37 @@
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.phase3_entry_review.006",
+      "title": "Review structural rewrite Phase 3 entry package",
+      "summary": "Review the command-authority normalization entry package, confirm the current command-authority boundary and rollback model, and decide whether bounded Phase 3 work may begin.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
+      "updated_at": "2026-03-14T04:31:59Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.artifact_role_registry_pilot_review.005"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "design.implementation.structural_rewrite_phase3_command_authority_entry",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/indexes/commands/command_index.v1.json",
+        "core/python/src/watchtower_core/cli/registry.py",
+        "core/python/src/watchtower_core/cli/parser.py"
       ]
     },
     {

@@ -13,7 +13,7 @@
     "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
     "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
     "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
-    "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
     "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
     "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
     "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",

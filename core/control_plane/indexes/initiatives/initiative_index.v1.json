@@ -4423,34 +4423,34 @@
     {
       "trace_id": "trace.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, and delivers one bounded artifact-role metadata slice.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, and records the pilot follow-up review outcome before any later phase-entry work begins.",
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-14T03:56:23Z",
+      "updated_at": "2026-03-14T04:31:59Z",
       "open_task_count": 1,
       "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/structural_rewrite_program.md",
       "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-      "next_surface_path": "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+      "next_surface_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
       "primary_owner": "repository_maintainer",
       "active_owners": [
         "repository_maintainer"
       ],
       "active_task_ids": [
-        "task.structural_rewrite_program.artifact_role_registry_pilot_review.005"
+        "task.structural_rewrite_program.phase3_entry_review.006"
       ],
       "active_task_summaries": [
         {
-          "task_id": "task.structural_rewrite_program.artifact_role_registry_pilot_review.005",
-          "title": "Review structural rewrite artifact role registry pilot outcome",
+          "task_id": "task.structural_rewrite_program.phase3_entry_review.006",
+          "title": "Review structural rewrite Phase 3 entry package",
           "task_status": "ready",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+          "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
           "is_actionable": true,
           "depends_on": [
-            "task.structural_rewrite_program.artifact_role_registry_pilot.004"
+            "task.structural_rewrite_program.artifact_role_registry_pilot_review.005"
           ]
         }
       ],
@@ -4462,6 +4462,7 @@
       ],
       "plan_ids": [
         "design.implementation.structural_rewrite_artifact_role_registry_pilot",
+        "design.implementation.structural_rewrite_phase3_command_authority_entry",
         "design.implementation.structural_rewrite_program"
       ],
       "task_ids": [
@@ -4469,7 +4470,8 @@
         "task.structural_rewrite_program.artifact_role_registry_pilot_review.005",
         "task.structural_rewrite_program.bootstrap.001",
         "task.structural_rewrite_program.phase0_phase1_package.002",
-        "task.structural_rewrite_program.phase2_entry_review.003"
+        "task.structural_rewrite_program.phase2_entry_review.003",
+        "task.structural_rewrite_program.phase3_entry_review.006"
       ],
       "acceptance_ids": [
         "ac.structural_rewrite_program.001",
@@ -4498,6 +4500,8 @@
         "core/control_plane/examples/",
         "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
         "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
+        "core/control_plane/indexes/commands/",
+        "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
@@ -4518,6 +4522,9 @@
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
         "core/python/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/parser.py",
+        "core/python/src/watchtower_core/cli/registry.py",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/query/README.md",
         "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
@@ -4526,6 +4533,7 @@
         "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
         "core/python/src/watchtower_core/sync/README.md",
         "core/python/src/watchtower_core/validation/README.md",
+        "docs/commands/core_python/",
         "docs/commands/core_python/watchtower_core_query_authority.md",
         "docs/commands/core_python/watchtower_core_query_coordination.md",
         "docs/commands/core_python/watchtower_core_query_planning.md",
@@ -4536,6 +4544,7 @@
         "docs/planning/design/features/structural_rewrite_program.md",
         "docs/planning/design/implementation/",
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/",
@@ -4544,9 +4553,10 @@
         "docs/planning/tasks/",
         "docs/planning/tasks/closed/complete_structural_rewrite_program_phase0_and_phase1_package.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
         "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-        "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/governance/",

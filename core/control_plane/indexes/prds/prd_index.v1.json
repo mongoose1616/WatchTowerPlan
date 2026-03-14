@@ -2086,10 +2086,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "prd_id": "prd.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, and delivers one bounded artifact-role metadata slice.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, delivers one bounded artifact-role metadata slice, and records the pilot follow-up review outcome before any later phase-entry work begins.",
       "status": "active",
       "doc_path": "docs/planning/prds/structural_rewrite_program.md",
-      "updated_at": "2026-03-14T03:56:23Z",
+      "updated_at": "2026-03-14T04:31:59Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "requirement_ids": [

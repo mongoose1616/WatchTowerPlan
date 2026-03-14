@@ -4617,6 +4617,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+      "kind": "file",
+      "surface_kind": "implementation_plan",
+      "summary": "Entry package for the bounded Phase 3 command-authority normalization checkpoint.",
+      "parent_path": "docs/planning/design/implementation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/design/implementation/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
@@ -4810,6 +4820,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed review task for the bounded artifact-role registry pilot outcome.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/tasks/open/",
       "kind": "directory",
       "surface_kind": "planning_root",
@@ -4824,6 +4844,16 @@
       "kind": "file",
       "surface_kind": "planning_doc",
       "summary": "Describes the purpose of the open-task directory.",
+      "parent_path": "docs/planning/tasks/open/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Active review task for the bounded Phase 3 command-authority entry package.",
       "parent_path": "docs/planning/tasks/open/",
       "maturity": "supporting",
       "priority": "medium",

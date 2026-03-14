@@ -145,7 +145,7 @@
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
-        "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ],
@@ -182,21 +182,23 @@
     },
     {
       "acceptance_id": "ac.structural_rewrite_program.010",
-      "summary": "The first approved Phase 2 slice remains additive and read-only, and the trace stops with one open follow-up review task instead of broader rollout.",
+      "summary": "The first approved Phase 2 slice remains additive and read-only, and the trace records an explicit pilot follow-up review outcome plus a new bounded checkpoint instead of broader rollout.",
       "source_requirement_ids": [
         "req.structural_rewrite_program.007",
         "req.structural_rewrite_program.008"
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
-        "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ],
       "related_paths": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ],
-      "notes": "The successor review task is the next controlling surface after the bounded pilot lands."
+      "notes": "The pilot review outcome must be explicit, and any broader rewrite work must reopen through a new bounded checkpoint rather than implied continuation."
     }
   ]
 }

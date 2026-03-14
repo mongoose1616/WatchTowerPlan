@@ -10,7 +10,7 @@ tags:
   - "rewrite"
   - "phase_control"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T03:56:23Z"
+updated_at: "2026-03-14T04:31:59Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -131,7 +131,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 
 ## Operationalization
 - `Modes`: `documentation`; `artifact`; `workflow`
-- `Operational Surfaces`: `docs/planning/design/implementation/structural_rewrite_program.md`; `docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md`; `docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md`; `docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md`; `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json`; `core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json`; `core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json`; `core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json`; `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json`
+- `Operational Surfaces`: `docs/planning/design/implementation/structural_rewrite_program.md`; `docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md`; `docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md`; `docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md`; `docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md`; `docs/planning/tasks/open/review_structural_rewrite_phase3_entry_package.md`; `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json`; `core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json`; `core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json`; `core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json`; `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json`
 
 ## Validation
 - Rewrite checkpoints should not rely on prose-only approval.
@@ -150,4 +150,4 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 - [authority_map.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map/authority_map.v1.json)
 
 ## Updated At
-- `2026-03-14T03:56:23Z`
+- `2026-03-14T04:31:59Z`

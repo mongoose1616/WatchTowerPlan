@@ -84,7 +84,7 @@
       "subject_paths": [
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
-        "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ],
       "subject_ids": [
@@ -94,7 +94,7 @@
       "acceptance_ids": [
         "ac.structural_rewrite_program.010"
       ],
-      "notes": "The trace stops with a successor review task after one bounded metadata slice and does not expand into broader rewrite phases."
+      "notes": "The trace stopped at an explicit pilot review checkpoint after one bounded metadata slice and did not expand automatically into broader rewrite phases."
     }
   ],
   "related_paths": [
