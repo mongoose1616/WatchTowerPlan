@@ -1,0 +1,107 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.structural_rewrite_program.artifact_role_registry_pilot",
+  "title": "Structural Rewrite Artifact Role Registry Pilot Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.structural_rewrite_program",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-14T03:56:23Z",
+  "source_prd_ids": [
+    "prd.structural_rewrite_program"
+  ],
+  "source_design_ids": [
+    "design.features.structural_rewrite_program"
+  ],
+  "source_plan_ids": [
+    "design.implementation.structural_rewrite_program",
+    "design.implementation.structural_rewrite_artifact_role_registry_pilot"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.structural_rewrite_program"
+  ],
+  "checks": [
+    {
+      "check_id": "check.structural_rewrite_program.phase2_gate_approval",
+      "title": "Phase 2 gate approval recorded before implementation",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md"
+      ],
+      "subject_ids": [
+        "task.structural_rewrite_program.phase2_entry_review.003",
+        "design.implementation.structural_rewrite_program",
+        "design.implementation.structural_rewrite_artifact_role_registry_pilot"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.007",
+        "ac.structural_rewrite_program.008"
+      ],
+      "notes": "The gate records explicit approval for one bounded slice only and fixes the storage shape to a small dedicated registry."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.artifact_role_registry_family",
+      "title": "Dedicated artifact-role registry family published",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
+        "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
+        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
+        "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.008",
+        "ac.structural_rewrite_program.009"
+      ],
+      "notes": "The first slice publishes the schema-backed family and its required companions without introducing runtime consumers."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.public_planning_parity_unchanged",
+      "title": "Public planning parity remained unchanged",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.004",
+        "ac.structural_rewrite_program.009"
+      ],
+      "notes": "Post-slice authority, coordination, and planning queries preserve the same public planning-authority answers as the pre-slice gate checkpoint."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.slice_remained_bounded",
+      "title": "First slice remained additive and read-only",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
+        "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json"
+      ],
+      "subject_ids": [
+        "task.structural_rewrite_program.artifact_role_registry_pilot.004",
+        "task.structural_rewrite_program.artifact_role_registry_pilot_review.005"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.010"
+      ],
+      "notes": "The trace stops with a successor review task after one bounded metadata slice and does not expand into broader rewrite phases."
+    }
+  ],
+  "related_paths": [
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md"
+  ],
+  "notes": "Validation evidence for the first bounded structural rewrite Phase 2 slice."
+}

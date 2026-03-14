@@ -19,6 +19,8 @@
 | `core/control_plane/ledgers/validation_evidence/repo_local_hotspot_modularity_validation_baseline.v1.json` | Validation-baseline evidence for the repo-local hotspot modularity hardening trace. |
 | `core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.v1.json` | Validation-baseline evidence for the natural maintenance-request route-preview hardening trace. |
 | `core/control_plane/ledgers/validation_evidence/standard_runtime_and_route_explicitness_validation_baseline.v1.json` | Validation-baseline evidence for the standard, runtime, and route explicitness hardening trace. |
+| `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json` | Validation evidence for the first bounded structural rewrite Phase 2 slice. |
+| `core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json` | Planning-baseline evidence for the structural rewrite program after completing Phase 0 and Phase 1 and preparing the Phase 2 review gate. |
 | `core/control_plane/ledgers/validation_evidence/template_and_output_efficiency_planning_baseline.v1.json` | Planning-baseline validation evidence for the template and output efficiency trace. |
 | `core/control_plane/ledgers/validation_evidence/unit_test_hardening_and_rebalancing_planning_baseline.v1.json` | Planning-baseline validation evidence for the unit test hardening and rebalancing trace. |
 | `core/control_plane/ledgers/validation_evidence/workflow_system_operationalization_planning_baseline.v1.json` | Planning-baseline validation evidence for the workflow-system operationalization trace. |

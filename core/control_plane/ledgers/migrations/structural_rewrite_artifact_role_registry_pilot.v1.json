@@ -1,0 +1,23 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.artifact_role_registry_pilot.v1",
+  "title": "Structural Rewrite Artifact Role Registry Pilot Migration",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-14T03:56:23Z",
+  "from_state": "phase0_phase1_complete_phase2_entry_review_ready",
+  "to_state": "phase2_artifact_role_registry_pilot_published",
+  "summary": "Records the approved first Phase 2 slice for the structural rewrite program by publishing the additive read-only artifact-role registry family and its checkpoint companions.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
+    "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
+    "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
+    "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
+    "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
+  ],
+  "notes": "This transition is additive and read-only. It does not change public planning authority answers or runtime routing behavior."
+}

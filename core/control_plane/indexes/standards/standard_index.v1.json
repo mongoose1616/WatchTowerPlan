@@ -2611,6 +2611,132 @@
       ]
     },
     {
+      "standard_id": "std.governance.rewrite_execution_control",
+      "category": "governance",
+      "title": "Rewrite Execution Control Standard",
+      "summary": "This standard defines the parity contract, slice-control package, checkpoint workflow, and phase-entry guardrails for the structural rewrite program.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/standards/governance/rewrite_execution_control_standard.md",
+      "updated_at": "2026-03-14T03:56:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
+        "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/",
+        "docs/planning/tasks/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/migrations/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/",
+        "docs/planning/tasks/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/migrations/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/registries/authority_map/authority_map.v1.json"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/foundations/engineering_design_principles.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "rewrite",
+        "phase_control"
+      ]
+    },
+    {
+      "standard_id": "std.governance.rewrite_surface_classification",
+      "category": "governance",
+      "title": "Rewrite Surface Classification Standard",
+      "summary": "This standard defines the four-axis classification and retention-reason model that the structural rewrite program must use before any surface is moved, retired, or reclassified.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/standards/governance/rewrite_surface_classification_standard.md",
+      "updated_at": "2026-03-14T02:37:25Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/control_plane/contracts/compatibility/",
+        "docs/planning/tasks/",
+        "core/control_plane/registries/authority_map/authority_map.v1.json"
+      ],
+      "applies_to": [
+        "docs/planning/",
+        "docs/standards/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "related_paths": [
+        "docs/planning/",
+        "docs/standards/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/data_contracts/status_tracking_standard.md",
+        "docs/standards/metadata/front_matter_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "rewrite",
+        "surface_classification"
+      ]
+    },
+    {
       "standard_id": "std.governance.task_handling_threshold",
       "category": "governance",
       "title": "Task Handling Threshold Standard",

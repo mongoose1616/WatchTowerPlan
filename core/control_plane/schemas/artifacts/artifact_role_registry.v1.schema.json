@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1",
+  "title": "Artifact Role Registry",
+  "description": "Authored registry that records rewrite-phase role classification for governed repository surfaces.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.artifact_roles"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authorityRole": {
+      "type": "string",
+      "enum": [
+        "authored_authority",
+        "canonical_machine_answer",
+        "discovery_index",
+        "generated_projection",
+        "historical_record",
+        "compatibility_surface"
+      ]
+    },
+    "storageClass": {
+      "type": "string",
+      "enum": [
+        "active_family_location",
+        "family_native_closed_or_historical_location",
+        "compatibility_namespace_or_marker",
+        "deleted_after_proof",
+        "future_standardized_history_store"
+      ]
+    },
+    "compatibilitySupportLevel": {
+      "type": "string",
+      "enum": [
+        "supported",
+        "transitional",
+        "deprecated",
+        "n/a"
+      ]
+    },
+    "retentionReason": {
+      "type": "string",
+      "enum": [
+        "public_contract_preservation",
+        "import_stability",
+        "boundary_clarity",
+        "repository_path_continuity",
+        "discoverability",
+        "historical_context",
+        "migration_window"
+      ]
+    },
+    "retentionReasonList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/retentionReason"
+      }
+    },
+    "entry": {
+      "type": "object",
+      "required": [
+        "surface_id",
+        "title",
+        "status",
+        "authority_role",
+        "storage_class",
+        "compatibility_support_level",
+        "canonical_paths"
+      ],
+      "properties": {
+        "surface_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/lifecycleStatus"
+        },
+        "authority_role": {
+          "$ref": "#/$defs/authorityRole"
+        },
+        "storage_class": {
+          "$ref": "#/$defs/storageClass"
+        },
+        "compatibility_support_level": {
+          "$ref": "#/$defs/compatibilitySupportLevel"
+        },
+        "canonical_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "related_paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "retention_reasons": {
+          "$ref": "#/$defs/retentionReasonList"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "authority_role": {
+                "const": "compatibility_surface"
+              }
+            },
+            "required": [
+              "authority_role"
+            ]
+          },
+          "then": {
+            "required": [
+              "retention_reasons"
+            ],
+            "properties": {
+              "compatibility_support_level": {
+                "enum": [
+                  "supported",
+                  "transitional",
+                  "deprecated"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "authority_role": {
+                "const": "historical_record"
+              }
+            },
+            "required": [
+              "authority_role"
+            ]
+          },
+          "then": {
+            "required": [
+              "retention_reasons"
+            ],
+            "properties": {
+              "compatibility_support_level": {
+                "const": "n/a"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "compatibility_support_level": {
+                "enum": [
+                  "supported",
+                  "transitional",
+                  "deprecated"
+                ]
+              }
+            },
+            "required": [
+              "compatibility_support_level"
+            ]
+          },
+          "then": {
+            "required": [
+              "retention_reasons"
+            ],
+            "properties": {
+              "authority_role": {
+                "const": "compatibility_surface"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

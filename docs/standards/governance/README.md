@@ -15,6 +15,8 @@
 | `docs/standards/governance/initiative_closeout_standard.md` | Defines initiative-level closeout state and its human and machine mirror surfaces. |
 | `docs/standards/governance/initiative_tracking_standard.md` | Defines the cross-family initiative coordination view and phase model built on top of traceability and task data. |
 | `docs/standards/governance/reference_distillation_standard.md` | Defines how external source material should be distilled into local references. |
+| `docs/standards/governance/rewrite_execution_control_standard.md` | Defines the parity contract, slice-control package, and checkpoint workflow for the structural rewrite program. |
+| `docs/standards/governance/rewrite_surface_classification_standard.md` | Defines the four-axis classification and retention-reason model for rewrite-controlled surfaces. |
 | `docs/standards/governance/task_handling_threshold_standard.md` | Defines when repository work must create, update, transition, or explicitly decline a durable local task record. |
 | `docs/standards/governance/task_tracking_standard.md` | Defines the repository's local-first task tracking model and generated task companion surfaces. |
 | `docs/standards/governance/traceability_standard.md` | Defines the repository baseline traceability model across PRDs, decisions, designs, and implementation plans. |

@@ -2083,6 +2083,61 @@
       ]
     },
     {
+      "trace_id": "trace.structural_rewrite_program",
+      "prd_id": "prd.structural_rewrite_program",
+      "title": "Structural Rewrite Program PRD",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, and delivers one bounded artifact-role metadata slice.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/structural_rewrite_program.md",
+      "updated_at": "2026-03-14T03:56:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.structural_rewrite_program.001",
+        "req.structural_rewrite_program.002",
+        "req.structural_rewrite_program.003",
+        "req.structural_rewrite_program.004",
+        "req.structural_rewrite_program.005",
+        "req.structural_rewrite_program.006",
+        "req.structural_rewrite_program.007",
+        "req.structural_rewrite_program.008"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.001",
+        "ac.structural_rewrite_program.002",
+        "ac.structural_rewrite_program.003",
+        "ac.structural_rewrite_program.004",
+        "ac.structural_rewrite_program.005",
+        "ac.structural_rewrite_program.006",
+        "ac.structural_rewrite_program.007",
+        "ac.structural_rewrite_program.008",
+        "ac.structural_rewrite_program.009",
+        "ac.structural_rewrite_program.010"
+      ],
+      "linked_design_ids": [
+        "design.features.structural_rewrite_program"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.structural_rewrite_program"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "docs/planning/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md"
+      ]
+    },
+    {
       "trace_id": "trace.summary_surface_retirement",
       "prd_id": "prd.summary_surface_retirement",
       "title": "Summary Surface Retirement PRD",

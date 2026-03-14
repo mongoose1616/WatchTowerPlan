@@ -3,17 +3,21 @@
 ## Current State
 | Field | Value |
 | --- | --- |
-| Mode | `ready_for_bootstrap` |
-| Summary | No active initiatives are open. The repository is ready for one new bounded initiative. |
-| Next | Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work. |
-| Open First | [docs/planning/README.md](/home/j/WatchTowerPlan/docs/planning/README.md) |
+| Mode | `active_work` |
+| Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
+| Next | Start or continue the active task set and keep the current task records aligned with execution progress. |
+| Open First | [docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Next | Action |
+| --- | --- | --- | --- | --- |
+| `trace.structural_rewrite_program` | `execution` | repository_maintainer | [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Actionable Tasks
-_No actionable tasks._
+| Task | Initiative | Status | Priority | Owner |
+| --- | --- | --- | --- | --- |
+| [task.structural_rewrite_program.artifact_role_registry_pilot_review.005](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md) | `trace.structural_rewrite_program` | `ready` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -24,4 +28,4 @@ _No actionable tasks._
 | `trace.workflow_route_boundary_discoverability_hardening` | `completed` | `2026-03-13T21:42:14Z` | [workflow_route_boundary_discoverability_hardening.md](/home/j/WatchTowerPlan/docs/planning/prds/workflow_route_boundary_discoverability_hardening.md) |
 | `trace.active_first_planning_query_history_alignment` | `completed` | `2026-03-13T20:54:01Z` | [active_first_planning_query_history_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/active_first_planning_query_history_alignment.md) |
 
-_Updated At: `2026-03-13T23:40:35Z`_
+_Updated At: `2026-03-14T03:56:23Z`_

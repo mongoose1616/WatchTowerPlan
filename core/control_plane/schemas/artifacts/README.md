@@ -8,6 +8,7 @@
 |---|---|
 | `core/control_plane/schemas/artifacts/README.md` | Describes the purpose of the artifact schema directory and its current contents. |
 | `core/control_plane/schemas/artifacts/acceptance_contract.v1.schema.json` | Schema for the machine-readable acceptance-contract artifact family. |
+| `core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json` | Schema for the bounded artifact-role registry artifact family. |
 | `core/control_plane/schemas/artifacts/artifact_type_registry.v1.schema.json` | Schema for the machine-readable artifact-type registry artifact family. |
 | `core/control_plane/schemas/artifacts/authority_map.v1.schema.json` | Schema for the authored authority-map registry artifact family. |
 | `core/control_plane/schemas/artifacts/compatibility_contract.v1.schema.json` | Schema for the machine-readable compatibility-contract artifact family. |

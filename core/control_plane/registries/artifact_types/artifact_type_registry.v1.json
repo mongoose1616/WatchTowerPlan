@@ -17,6 +17,18 @@
       ]
     },
     {
+      "kind": "artifact_role_registry",
+      "title": "Artifact Role Registry",
+      "status": "active",
+      "family": "registry",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json"
+      ]
+    },
+    {
       "kind": "artifact_type_registry",
       "title": "Artifact Type Registry",
       "status": "active",

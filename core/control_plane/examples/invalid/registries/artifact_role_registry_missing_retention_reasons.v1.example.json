@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1",
+  "id": "registry.artifact_roles",
+  "title": "Artifact Role Registry",
+  "status": "active",
+  "entries": [
+    {
+      "surface_id": "surface.compatibility.example",
+      "title": "Compatibility Example",
+      "status": "active",
+      "authority_role": "compatibility_surface",
+      "storage_class": "compatibility_namespace_or_marker",
+      "compatibility_support_level": "transitional",
+      "canonical_paths": [
+        "core/python/src/watchtower_core/query/"
+      ]
+    }
+  ]
+}

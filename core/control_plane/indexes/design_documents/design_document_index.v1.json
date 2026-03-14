@@ -1863,6 +1863,52 @@
       ]
     },
     {
+      "document_id": "design.features.structural_rewrite_program",
+      "trace_id": "trace.structural_rewrite_program",
+      "family": "feature_design",
+      "title": "Structural Rewrite Program Feature Design",
+      "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, and delivering one bounded artifact-role metadata slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/structural_rewrite_program.md",
+      "updated_at": "2026-03-14T03:56:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/standards/governance/",
+        "docs/planning/prds/",
+        "docs/planning/design/features/",
+        "docs/planning/design/implementation/",
+        "docs/planning/tasks/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/migrations/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/registries/",
+        "core/control_plane/examples/",
+        "docs/standards/",
+        "docs/planning/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_handling_threshold_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md",
+        "docs/planning/prds/structural_rewrite_program.md",
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md"
+      ]
+    },
+    {
       "document_id": "design.features.summary_surface_retirement",
       "trace_id": "trace.summary_surface_retirement",
       "family": "feature_design",
@@ -3576,6 +3622,77 @@
         "docs/standards/documentation/prd_md_standard.md",
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/metadata/front_matter_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.structural_rewrite_artifact_role_registry_pilot",
+      "trace_id": "trace.structural_rewrite_program",
+      "family": "implementation_plan",
+      "title": "Structural Rewrite Artifact Role Registry Pilot",
+      "summary": "Implements the first bounded Phase 2 slice by publishing an additive, read-only artifact-role registry for the public planning-authority surfaces.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+      "updated_at": "2026-03-14T03:56:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/structural_rewrite_program.md",
+        "docs/planning/prds/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/",
+        "docs/planning/tasks/",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/registries/",
+        "core/control_plane/examples/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/migrations/",
+        "core/control_plane/ledgers/validation_evidence/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json"
+      ]
+    },
+    {
+      "document_id": "design.implementation.structural_rewrite_program",
+      "trace_id": "trace.structural_rewrite_program",
+      "family": "implementation_plan",
+      "title": "Structural Rewrite Program Implementation Plan",
+      "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, and the handoff into one bounded artifact-role registry pilot.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/structural_rewrite_program.md",
+      "updated_at": "2026-03-14T03:56:23Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/structural_rewrite_program.md",
+        "docs/planning/prds/structural_rewrite_program.md"
+      ],
+      "related_paths": [
+        "docs/standards/",
+        "docs/planning/",
+        "core/control_plane/",
+        "core/python/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/data_contracts/acceptance_contract_standard.md",
+        "docs/standards/data_contracts/validation_evidence_standard.md",
+        "docs/standards/operations/repository_maintenance_loop_standard.md",
+        "docs/planning/prds/structural_rewrite_program.md",
+        "docs/planning/design/features/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md"
       ]
     },
     {

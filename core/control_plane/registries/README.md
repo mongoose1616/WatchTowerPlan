@@ -7,6 +7,7 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/registries/README.md` | Describes the purpose of the registries directory and its main registry families. |
+| `core/control_plane/registries/artifact_roles/` | Publishes bounded rewrite metadata for artifact-role classification without changing runtime authority. |
 | `core/control_plane/registries/schema_catalog/` | Maps schema identifiers, versions, and canonical paths. |
 | `core/control_plane/registries/artifact_types/` | Defines machine-recognized artifact kinds and their identifiers. |
 | `core/control_plane/registries/authority_map/` | Defines canonical planning and governance lookup answers, preferred commands, and fallback surfaces. |

@@ -208,6 +208,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_contract",
+      "summary": "Acceptance contract for the guarded structural rewrite program through the first bounded artifact-role registry pilot.",
+      "parent_path": "core/control_plane/contracts/acceptance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/contracts/compatibility/",
       "kind": "directory",
       "surface_kind": "control_plane_contracts",
@@ -728,6 +738,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Invalid artifact-role registry example with required retention reasons omitted for a compatibility surface.",
+      "parent_path": "core/control_plane/examples/invalid/registries/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/examples/invalid/registries/schema_catalog_missing_canonical_path.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -1202,6 +1222,16 @@
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Describes the purpose of the valid registry examples directory.",
+      "parent_path": "core/control_plane/examples/valid/registries/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid artifact-role registry example aligned with the published artifact schema.",
       "parent_path": "core/control_plane/examples/valid/registries/",
       "maturity": "supporting",
       "priority": "medium",
@@ -1885,6 +1915,26 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the first bounded Phase 2 slice that publishes the additive artifact-role registry pilot.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for moving the structural rewrite from external prose into a traced Phase 0 and Phase 1 package with the Phase 2 review gate prepared.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/ledgers/releases/",
       "kind": "directory",
       "surface_kind": "control_plane_ledgers",
@@ -2062,6 +2112,26 @@
       "kind": "file",
       "surface_kind": "control_plane_ledger",
       "summary": "Validation-baseline evidence for the standard, runtime, and route explicitness hardening trace.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the first bounded structural rewrite Phase 2 slice.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Planning-baseline evidence for the structural rewrite program after completing Phase 0 and Phase 1 and preparing the Phase 2 review gate.",
       "parent_path": "core/control_plane/ledgers/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2249,6 +2319,36 @@
       "surface_kind": "control_plane_registry",
       "summary": "Describes the purpose of the registries directory and its main registry families.",
       "parent_path": "core/control_plane/registries/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/artifact_roles/",
+      "kind": "directory",
+      "surface_kind": "control_plane_registries",
+      "summary": "Publishes bounded rewrite metadata for artifact-role classification without changing runtime authority.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/artifact_roles/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Describes the purpose of the artifact-role registry directory and its current contents.",
+      "parent_path": "core/control_plane/registries/artifact_roles/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Canonical artifact-role registry for the first bounded structural rewrite pilot.",
+      "parent_path": "core/control_plane/registries/artifact_roles/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -2486,6 +2586,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable acceptance-contract artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the bounded artifact-role registry artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4446,6 +4556,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/design/features/structural_rewrite_program.md",
+      "kind": "file",
+      "surface_kind": "feature_design",
+      "summary": "Feature design for executing rewrite Phase 0 and Phase 1, closing the Phase 2 gate, and delivering one bounded artifact-role metadata slice.",
+      "parent_path": "docs/planning/design/features/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/design/implementation/",
       "kind": "directory",
       "surface_kind": "design_docs",
@@ -4481,6 +4601,26 @@
       "kind": "file",
       "surface_kind": "implementation_plan",
       "summary": "Implementation plan for the first control-plane loader and SchemaStore slice in the core Python workspace.",
+      "parent_path": "docs/planning/design/implementation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+      "kind": "file",
+      "surface_kind": "implementation_plan",
+      "summary": "Implementation plan for the bounded artifact-role registry pilot that opens Phase 2 with one additive read-only slice.",
+      "parent_path": "docs/planning/design/implementation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/planning/design/implementation/structural_rewrite_program.md",
+      "kind": "file",
+      "surface_kind": "implementation_plan",
+      "summary": "Implementation plan for the structural rewrite program through the Phase 2 gate outcome and handoff into the bounded artifact-role pilot.",
       "parent_path": "docs/planning/design/implementation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4588,6 +4728,16 @@
         "docs/planning/prds/",
         "core/control_plane/indexes/prds/prd_index.v1.json"
       ]
+    },
+    {
+      "path": "docs/planning/prds/structural_rewrite_program.md",
+      "kind": "file",
+      "surface_kind": "prd",
+      "summary": "PRD for the guarded structural rewrite program through the first bounded artifact-role metadata pilot slice.",
+      "parent_path": "docs/planning/prds/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
     },
     {
       "path": "docs/planning/prds/template_and_output_efficiency.md",
@@ -5406,6 +5556,26 @@
       "kind": "file",
       "surface_kind": "standard_doc",
       "summary": "Defines how external source material should be distilled into local references.",
+      "parent_path": "docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/standards/governance/rewrite_execution_control_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the parity contract, slice-control package, and checkpoint workflow for the structural rewrite program.",
+      "parent_path": "docs/standards/governance/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/standards/governance/rewrite_surface_classification_standard.md",
+      "kind": "file",
+      "surface_kind": "standard_doc",
+      "summary": "Defines the four-axis classification and retention-reason model for rewrite-controlled surfaces.",
       "parent_path": "docs/standards/governance/",
       "maturity": "authoritative",
       "priority": "high",

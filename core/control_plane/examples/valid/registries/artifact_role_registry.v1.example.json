@@ -1,0 +1,19 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1",
+  "id": "registry.artifact_roles",
+  "title": "Artifact Role Registry",
+  "status": "active",
+  "entries": [
+    {
+      "surface_id": "surface.planning.current_state",
+      "title": "Current Planning State",
+      "status": "active",
+      "authority_role": "canonical_machine_answer",
+      "storage_class": "active_family_location",
+      "compatibility_support_level": "n/a",
+      "canonical_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+      ]
+    }
+  ]
+}

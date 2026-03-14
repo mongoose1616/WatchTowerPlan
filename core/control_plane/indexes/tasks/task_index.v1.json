@@ -4403,6 +4403,159 @@
       ]
     },
     {
+      "task_id": "task.structural_rewrite_program.artifact_role_registry_pilot.004",
+      "title": "Implement structural rewrite artifact role registry pilot",
+      "summary": "Publish the bounded artifact-role registry family and its checkpoint companions without changing live planning authority behavior.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
+      "updated_at": "2026-03-14T03:56:23Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.phase2_entry_review.003"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "design.implementation.structural_rewrite_artifact_role_registry_pilot",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+        "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
+        "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
+        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
+        "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.artifact_role_registry_pilot_review.005",
+      "title": "Review structural rewrite artifact role registry pilot outcome",
+      "summary": "Review the bounded artifact-role registry pilot, confirm parity held, and decide whether broader rewrite work remains blocked or may proceed to a new bounded checkpoint.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+      "updated_at": "2026-03-14T03:56:23Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.artifact_role_registry_pilot.004"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "design.implementation.structural_rewrite_artifact_role_registry_pilot",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
+        "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.bootstrap.001",
+      "title": "Bootstrap structural rewrite program planning chain",
+      "summary": "Bootstraps the traced planning, contract, evidence, migration, and task chain for the structural rewrite program.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
+      "updated_at": "2026-03-14T02:37:25Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/prds/structural_rewrite_program.md",
+        "docs/planning/design/features/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.phase0_phase1_package.002",
+      "title": "Complete structural rewrite program Phase 0 and Phase 1 package",
+      "summary": "Refresh the live rewrite baseline, publish the rewrite governance surfaces, classify critical and compatibility surfaces, and prepare the Phase 2 entry review package.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/complete_structural_rewrite_program_phase0_and_phase1_package.md",
+      "updated_at": "2026-03-14T02:37:25Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.phase2_entry_review.003",
+      "title": "Review structural rewrite program Phase 2 entry package",
+      "summary": "Review the Phase 0 and Phase 1 rewrite package, confirm the artifact-role metadata pilot boundary, and decide whether Phase 2 may begin.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
+      "updated_at": "2026-03-14T03:56:23Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.phase0_phase1_package.002"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json"
+      ]
+    },
+    {
       "task_id": "task.summary_surface_retirement.bootstrap.001",
       "title": "Bootstrap Summary Surface Retirement planning chain",
       "summary": "Bootstraps the initial planning chain for Summary Surface Retirement.",

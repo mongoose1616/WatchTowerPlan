@@ -8,6 +8,8 @@
 |---|---|
 | `docs/planning/design/implementation/README.md` | Describes the purpose of the implementation-plan directory, its current plans, and the standards that govern them. |
 | `docs/planning/design/implementation/control_plane_loaders_and_schema_store.md` | Implementation plan for the first control-plane loader and SchemaStore slice in the core Python workspace. |
+| `docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md` | Implementation plan for the bounded artifact-role registry pilot that opens Phase 2 with one additive read-only slice. |
+| `docs/planning/design/implementation/structural_rewrite_program.md` | Implementation plan for the structural rewrite program through the Phase 2 gate outcome and handoff into the bounded artifact-role pilot. |
 | `docs/planning/design/implementation/template_and_output_efficiency_execution.md` | Implementation plan for compact authoring rules, tracker compaction, and workflow-guidance tightening. |
 
 ## Notes
@@ -16,3 +18,4 @@
 - Governed implementation plans in this directory should use the implementation-plan front matter profile.
 - Human-readable tracking for this family lives in [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md).
 - Use this directory when the main deliverable is engineering execution breakdown. If the main deliverable is architectural recommendation and tradeoff analysis, use `docs/planning/design/features/` instead.
+- Rewrite-specific phase plans, checkpoints, and entry-review packages should live here rather than in a separate rewrite-only directory.

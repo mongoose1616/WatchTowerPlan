@@ -9,4 +9,4 @@
 | `docs/planning/tasks/open/README.md` | Describes the purpose of the open-task directory. |
 
 ## Notes
-- No non-terminal task records are currently open in this directory.
+- Use [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) or `watchtower-core query tasks --format json` for the current non-terminal task inventory.

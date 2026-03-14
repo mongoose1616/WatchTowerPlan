@@ -1,0 +1,22 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase0_phase1_ready.v1",
+  "title": "Structural Rewrite Program Phase 0 and Phase 1 Ready Migration",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-14T02:37:25Z",
+  "from_state": "external_rewrite_program_only",
+  "to_state": "phase0_phase1_complete_phase2_entry_review_ready",
+  "summary": "Records the transition from an external rewrite program to a traced repo-native rewrite package with Phase 0 and Phase 1 completed and the Phase 2 entry review prepared.",
+  "related_paths": [
+    "docs/planning/prds/structural_rewrite_program.md",
+    "docs/planning/design/features/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/standards/governance/rewrite_surface_classification_standard.md",
+    "docs/standards/governance/rewrite_execution_control_standard.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
+    "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md"
+  ],
+  "notes": "This transition records governance and gate-readiness only. The later bounded Phase 2 implementation slice is recorded separately."
+}

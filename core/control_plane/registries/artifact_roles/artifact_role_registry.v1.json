@@ -1,0 +1,101 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1",
+  "id": "registry.artifact_roles",
+  "title": "Artifact Role Registry",
+  "status": "active",
+  "entries": [
+    {
+      "surface_id": "surface.planning.current_state",
+      "title": "Current Planning State",
+      "status": "active",
+      "authority_role": "canonical_machine_answer",
+      "storage_class": "active_family_location",
+      "compatibility_support_level": "n/a",
+      "canonical_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/commands/core_python/watchtower_core_query_coordination.md"
+      ],
+      "notes": "Current planning start-here answer preserved by the public parity contract."
+    },
+    {
+      "surface_id": "surface.planning.trace_catalog",
+      "title": "Trace-Linked Planning Catalog",
+      "status": "active",
+      "authority_role": "canonical_machine_answer",
+      "storage_class": "active_family_location",
+      "compatibility_support_level": "n/a",
+      "canonical_paths": [
+        "core/control_plane/indexes/planning/planning_catalog.v1.json"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/watchtower_core_query_planning.md"
+      ],
+      "notes": "Deep trace-linked planning answer preserved by the public parity contract."
+    },
+    {
+      "surface_id": "surface.planning.initiative_family_view",
+      "title": "Initiative Family View",
+      "status": "active",
+      "authority_role": "canonical_machine_answer",
+      "storage_class": "active_family_location",
+      "compatibility_support_level": "n/a",
+      "canonical_paths": [
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/commands/core_python/watchtower_core_query_initiatives.md"
+      ],
+      "notes": "Compact initiative-family answer preserved by the public parity contract."
+    },
+    {
+      "surface_id": "surface.planning.task_execution_state",
+      "title": "Task Execution State",
+      "status": "active",
+      "authority_role": "canonical_machine_answer",
+      "storage_class": "active_family_location",
+      "compatibility_support_level": "n/a",
+      "canonical_paths": [
+        "core/control_plane/indexes/tasks/task_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/task_tracking.md",
+        "docs/commands/core_python/watchtower_core_query_tasks.md"
+      ],
+      "notes": "Authoritative task execution answer preserved by the public parity contract."
+    },
+    {
+      "surface_id": "surface.planning.traceability_join",
+      "title": "Traceability Join",
+      "status": "active",
+      "authority_role": "canonical_machine_answer",
+      "storage_class": "active_family_location",
+      "compatibility_support_level": "n/a",
+      "canonical_paths": [
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/watchtower_core_query_trace.md"
+      ],
+      "notes": "Trace-linked source join answer preserved by the public parity contract."
+    },
+    {
+      "surface_id": "surface.planning.authority_lookup",
+      "title": "Planning Authority Lookup",
+      "status": "active",
+      "authority_role": "discovery_index",
+      "storage_class": "active_family_location",
+      "compatibility_support_level": "n/a",
+      "canonical_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json"
+      ],
+      "related_paths": [
+        "docs/commands/core_python/watchtower_core_query_authority.md"
+      ],
+      "notes": "Canonical discovery surface for the public planning-authority questions."
+    }
+  ]
+}
