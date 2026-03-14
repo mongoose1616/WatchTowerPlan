@@ -1,0 +1,108 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.structural_rewrite_program.phase4_planning_projection_snapshot_ready",
+  "title": "Structural Rewrite Phase 4 Planning Projection Snapshot Ready Evidence",
+  "status": "active",
+  "trace_id": "trace.structural_rewrite_program",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-14T17:57:37Z",
+  "source_prd_ids": [
+    "prd.structural_rewrite_program"
+  ],
+  "source_design_ids": [
+    "design.features.structural_rewrite_program"
+  ],
+  "source_plan_ids": [
+    "design.implementation.structural_rewrite_program",
+    "design.implementation.structural_rewrite_phase4_shared_projection_entry",
+    "design.implementation.structural_rewrite_phase4_planning_projection_snapshot"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.structural_rewrite_program"
+  ],
+  "checks": [
+    {
+      "check_id": "check.structural_rewrite_program.phase4_entry_review_approval",
+      "title": "Phase 4 entry review recorded an explicit approval outcome and opened one bounded implementation slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md"
+      ],
+      "subject_ids": [
+        "task.structural_rewrite_program.phase4_entry_review.009",
+        "design.implementation.structural_rewrite_phase4_shared_projection_entry",
+        "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
+        "task.structural_rewrite_program.phase4_planning_projection_snapshot.010"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.015",
+        "ac.structural_rewrite_program.016"
+      ],
+      "notes": "The review closes with one approved private planning projection snapshot slice only and does not authorize broader Phase 4 rollout."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_public_planning_boundary_reaffirmed",
+      "title": "Phase 4 approval keeps the five public planning-authority answers unchanged",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.004",
+        "ac.structural_rewrite_program.015"
+      ],
+      "notes": "The approved slice remains behind the current public planning query boundary and does not introduce a new governed public graph family."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_consumer_boundary_named",
+      "title": "Phase 4 approval names the full coordination-sync and mutation-path consumer boundary",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "core/python/src/watchtower_core/repo_ops/sync/registry.py",
+        "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
+        "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
+        "core/python/src/watchtower_core/closeout/initiative.py"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.015"
+      ],
+      "notes": "The reviewed boundary explicitly names the coordination-sync ordering, write-side mutation callers, direct initiative-closeout rebuild path, and touched tracker emitters."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_first_slice_named_and_bounded",
+      "title": "The first Phase 4 slice is limited to one private trace-scoped planning projection snapshot seam",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py"
+      ],
+      "subject_ids": [
+        "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
+        "task.structural_rewrite_program.phase4_planning_projection_snapshot.010"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.015"
+      ],
+      "notes": "The exact seam is one private trace-scoped planning projection snapshot consumed by InitiativeIndexSyncService and PlanningCatalogSyncService while coordination ordering, mutation callers, and downstream public outputs remain unchanged."
+    }
+  ],
+  "related_paths": [
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md"
+  ],
+  "notes": "Validation evidence for the approved bounded Phase 4 entry outcome and the first private planning projection snapshot slice."
+}

@@ -4665,12 +4665,12 @@
       "title": "Review structural rewrite Phase 4 shared projection entry package",
       "summary": "Review the bounded Phase 4 shared-projection entry package, confirm the public planning parity and private-graph guardrails, and decide whether bounded Phase 4 work may begin.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
-      "updated_at": "2026-03-14T06:44:15Z",
+      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+      "updated_at": "2026-03-14T17:49:25Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.phase3_command_companion_source_surface_normalization_review.008"
@@ -4680,19 +4680,59 @@
         "design.features.structural_rewrite_program",
         "design.implementation.structural_rewrite_program",
         "design.implementation.structural_rewrite_phase4_shared_projection_entry",
+        "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
         "contract.acceptance.structural_rewrite_program"
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
         "core/control_plane/indexes/tasks/task_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
-        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
-        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json"
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.phase4_planning_projection_snapshot.010",
+      "title": "Implement structural rewrite Phase 4 planning projection snapshot",
+      "summary": "Introduce one private trace-scoped planning projection snapshot behind initiative-index and planning-catalog sync without changing the public planning-authority boundary.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+      "updated_at": "2026-03-14T17:49:25Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.phase4_entry_review.009"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "design.implementation.structural_rewrite_phase4_shared_projection_entry",
+        "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "core/python/tests/unit/test_initiative_closeout.py"
       ]
     },
     {

@@ -13,6 +13,7 @@
 | `docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md` | Completed review task for the bounded artifact-role registry pilot outcome. |
 | `docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md` | Completed review task for the bounded Phase 3 command companion source-surface normalization outcome. |
 | `docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md` | Completed review task that approved one bounded Phase 3 command companion normalization slice. |
+| `docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md` | Completed review task that approved one bounded Phase 4 planning projection snapshot slice. |
 
 ## Notes
 - This directory contains many terminal task records. Use [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) or `watchtower-core query tasks --task-status done --format json` for the current inventory.

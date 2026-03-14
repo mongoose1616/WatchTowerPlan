@@ -261,7 +261,7 @@
       "validation_targets": [
         "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json"
       ],
@@ -280,7 +280,7 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
@@ -295,6 +295,60 @@
         "docs/standards/governance/rewrite_execution_control_standard.md"
       ],
       "notes": "The bounded Phase 4 entry package preserves the five planning-authority answers, keeps any internal planning graph private by default, and records the projection-family classification addendum needed before later implementation."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.015",
+      "summary": "Before any Phase 4 implementation begins, the trace records the explicit Phase 4 entry review outcome, names the full coordination-sync and mutation-path consumer boundary, names one exact rollback-safe seam, and opens one bounded implementation task plus ready ledgers for the approved first slice.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.013"
+      ],
+      "validation_targets": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md"
+      ],
+      "notes": "The positive Phase 4 entry review must name the coordination-sync ordering, write-side callers, direct initiative-closeout rebuild path, touched tracker emitters, and one exact private planning projection snapshot seam."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.016",
+      "summary": "If the Phase 4 entry review passes, the approved first Phase 4 slice plan and implementation task stay limited to one private trace-scoped planning projection snapshot behind initiative_index and planning_catalog while the five public planning-authority answers, coordination-sync ordering, mutation callers, and downstream coordination behavior remain unchanged.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.014"
+      ],
+      "validation_targets": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md"
+      ],
+      "notes": "The first approved Phase 4 slice stays behind initiative-index and planning-catalog sync. The approved plan and task do not authorize public planning-boundary change or broader shared-projection rollout."
     }
   ]
 }

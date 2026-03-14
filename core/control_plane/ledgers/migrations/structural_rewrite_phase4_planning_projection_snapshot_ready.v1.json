@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase4_planning_projection_snapshot_ready.v1",
+  "title": "Structural Rewrite Phase 4 Planning Projection Snapshot Ready",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-14T17:57:37Z",
+  "from_state": "phase4_shared_projection_entry_ready",
+  "to_state": "phase4_planning_projection_snapshot_ready",
+  "summary": "Records the approved first bounded Phase 4 slice by naming the private planning projection snapshot as the next rollback-safe shared-projection step.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+    "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+    "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+    "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+    "core/python/src/watchtower_core/closeout/initiative.py"
+  ],
+  "notes": "This transition reaffirms the five planning-authority answers, records the full coordination-sync and mutation-path consumer boundary, and approves one bounded private planning projection snapshot slice only."
+}

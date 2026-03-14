@@ -1867,16 +1867,17 @@
       "trace_id": "trace.structural_rewrite_program",
       "family": "feature_design",
       "title": "Structural Rewrite Program Feature Design",
-      "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, landing one bounded Phase 3 command companion normalization slice, closing that slice through outcome review, and handing the trace to a bounded Phase 4 shared-projection entry review.",
+      "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, landing one bounded Phase 3 command companion normalization slice, closing the Phase 4 entry review explicitly, and handing the trace to one bounded Phase 4 planning projection snapshot slice.",
       "status": "active",
       "doc_path": "docs/planning/design/features/structural_rewrite_program.md",
-      "updated_at": "2026-03-14T06:44:15Z",
+      "updated_at": "2026-03-14T17:57:37Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
         "docs/standards/governance/",
         "docs/planning/prds/",
         "docs/planning/design/features/",
@@ -3733,14 +3734,51 @@
       ]
     },
     {
+      "document_id": "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
+      "trace_id": "trace.structural_rewrite_program",
+      "family": "implementation_plan",
+      "title": "Structural Rewrite Phase 4 Planning Projection Snapshot",
+      "summary": "Implements the first bounded Phase 4 slice by introducing a private trace-scoped planning projection snapshot behind initiative-index and planning-catalog sync.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+      "updated_at": "2026-03-14T17:49:25Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/structural_rewrite_program.md",
+        "docs/planning/prds/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/closeout/",
+        "core/python/tests/",
+        "docs/planning/tasks/"
+      ],
+      "internal_reference_paths": [
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/tests/",
+        "docs/standards/governance/rewrite_execution_control_standard.md",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md"
+      ]
+    },
+    {
       "document_id": "design.implementation.structural_rewrite_phase4_shared_projection_entry",
       "trace_id": "trace.structural_rewrite_program",
       "family": "implementation_plan",
       "title": "Structural Rewrite Phase 4 Shared Projection Entry Package",
-      "summary": "Defines the bounded Phase 4 entry checkpoint for shared projection mechanics and a private internal planning graph after the first bounded Phase 3 slice passed outcome review.",
+      "summary": "Defines the bounded Phase 4 entry checkpoint for shared projection mechanics, records the approved first planning projection snapshot slice, and keeps the internal planning graph private.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
-      "updated_at": "2026-03-14T06:44:15Z",
+      "updated_at": "2026-03-14T17:49:25Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -3762,6 +3800,8 @@
         "docs/standards/data_contracts/authority_map_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md"
       ]
     },
@@ -3770,10 +3810,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "family": "implementation_plan",
       "title": "Structural Rewrite Program Implementation Plan",
-      "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, and the handoff into the Phase 4 shared-projection entry review.",
+      "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, the closed Phase 4 entry review, and the handoff into the first bounded Phase 4 planning projection snapshot slice.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_program.md",
-      "updated_at": "2026-03-14T06:44:15Z",
+      "updated_at": "2026-03-14T17:57:37Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [

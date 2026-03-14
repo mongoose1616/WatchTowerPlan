@@ -2086,10 +2086,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "prd_id": "prd.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes its outcome review, and hands the trace to a bounded Phase 4 shared-projection entry review.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the Phase 4 entry review explicitly, and hands the trace to one bounded Phase 4 planning projection snapshot slice.",
       "status": "active",
       "doc_path": "docs/planning/prds/structural_rewrite_program.md",
-      "updated_at": "2026-03-14T06:44:15Z",
+      "updated_at": "2026-03-14T17:57:37Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "requirement_ids": [
@@ -2104,7 +2104,9 @@
         "req.structural_rewrite_program.009",
         "req.structural_rewrite_program.010",
         "req.structural_rewrite_program.011",
-        "req.structural_rewrite_program.012"
+        "req.structural_rewrite_program.012",
+        "req.structural_rewrite_program.013",
+        "req.structural_rewrite_program.014"
       ],
       "acceptance_ids": [
         "ac.structural_rewrite_program.001",
@@ -2120,7 +2122,9 @@
         "ac.structural_rewrite_program.011",
         "ac.structural_rewrite_program.012",
         "ac.structural_rewrite_program.013",
-        "ac.structural_rewrite_program.014"
+        "ac.structural_rewrite_program.014",
+        "ac.structural_rewrite_program.015",
+        "ac.structural_rewrite_program.016"
       ],
       "linked_design_ids": [
         "design.features.structural_rewrite_program"
@@ -2128,7 +2132,8 @@
       "linked_plan_ids": [
         "design.implementation.structural_rewrite_program",
         "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
-        "design.implementation.structural_rewrite_phase4_shared_projection_entry"
+        "design.implementation.structural_rewrite_phase4_shared_projection_entry",
+        "design.implementation.structural_rewrite_phase4_planning_projection_snapshot"
       ],
       "related_paths": [
         "docs/standards/",

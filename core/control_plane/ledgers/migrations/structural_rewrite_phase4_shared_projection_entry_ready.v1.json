@@ -12,7 +12,7 @@
     "docs/planning/design/implementation/structural_rewrite_program.md",
     "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
     "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
-    "docs/planning/tasks/open/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
     "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
     "core/control_plane/indexes/coordination/coordination_index.v1.json",
     "core/control_plane/indexes/planning/planning_catalog.v1.json"

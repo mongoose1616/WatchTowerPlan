@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.features.structural_rewrite_program"
 title: "Structural Rewrite Program Feature Design"
-summary: "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, landing one bounded Phase 3 command companion normalization slice, closing that slice through outcome review, and handing the trace to a bounded Phase 4 shared-projection entry review."
+summary: "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, landing one bounded Phase 3 command companion normalization slice, closing the Phase 4 entry review explicitly, and handing the trace to one bounded Phase 4 planning projection snapshot slice."
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T06:44:15Z"
+updated_at: "2026-03-14T17:57:37Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,34 +28,35 @@ aliases:
 - `Design Status`: `active`
 - `Linked PRDs`: `prd.structural_rewrite_program`
 - `Linked Decisions`: `None`
-- `Linked Implementation Plans`: `design.implementation.structural_rewrite_program`; `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`; `design.implementation.structural_rewrite_phase4_shared_projection_entry`
+- `Linked Implementation Plans`: `design.implementation.structural_rewrite_program`; `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`; `design.implementation.structural_rewrite_phase4_shared_projection_entry`; `design.implementation.structural_rewrite_phase4_planning_projection_snapshot`
 - `Historical Phase 2 Slice Plan`: `design.implementation.structural_rewrite_artifact_role_registry_pilot`
 - `Phase 3 Entry Package`: `design.implementation.structural_rewrite_phase3_command_authority_entry`
 - `Historical Phase 3 Slice Plan`: `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`
 - `Current Entry Package`: `design.implementation.structural_rewrite_phase4_shared_projection_entry`
-- `Updated At`: `2026-03-14T06:44:15Z`
+- `Current Phase 4 Slice Plan`: `design.implementation.structural_rewrite_phase4_planning_projection_snapshot`
+- `Updated At`: `2026-03-14T17:57:37Z`
 
 ## Summary
-Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate explicitly, delivering one bounded artifact-role metadata slice, closing the Phase 3 entry review explicitly, implementing one bounded Phase 3 command companion normalization slice, closing that slice through explicit outcome review, and handing the trace to a bounded Phase 4 shared-projection entry review rather than broader rollout.
+Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, closing the Phase 2 gate explicitly, delivering one bounded artifact-role metadata slice, closing the Phase 3 entry review explicitly, implementing one bounded Phase 3 command companion normalization slice, closing that slice through explicit outcome review, closing the Phase 4 entry review explicitly, and handing the trace to one bounded Phase 4 planning projection snapshot slice rather than broader rollout.
 
 ## Source Request
-- Execute the approved structural rewrite program against the live repository, preserve the current public planning and command-authority boundaries, land the bounded artifact-role metadata and command-companion slices recorded in the trace, close the command-companion slice through explicit outcome review, and stop broader rewrite implementation at the Phase 4 shared-projection entry review.
+- Execute the approved structural rewrite program against the live repository, preserve the current public planning and command-authority boundaries, land the bounded artifact-role metadata and command-companion slices recorded in the trace, close the command-companion slice through explicit outcome review, close the bounded Phase 4 entry review explicitly, and continue only through one approved Phase 4 planning projection snapshot slice.
 
 ## Scope and Feature Boundary
 - Covers the traced planning chain, rewrite-specific governance standards, machine-readable parity and evidence artifacts, migration records, and task chain needed to execute Phase 0 and Phase 1 safely.
 - Covers current-state baseline refresh, hotspot inventory refresh, critical-surface classification, history and compatibility consumer mapping, support-level classification, no-go conditions, rollback expectations, and Phase 2 pilot-family selection.
 - Covers the Phase 2 entry review outcome, the dedicated first-slice checkpoint package, and one additive, read-only artifact-role metadata implementation slice.
 - Covers the Phase 3 entry review outcome, the first rollback-safe command companion normalization slice, and the closed outcome review that handed the trace to the next bounded checkpoint.
-- Covers the Phase 3 outcome-review outcome, the dedicated Phase 4 shared-projection entry package, and the successor review task for that package.
+- Covers the Phase 3 outcome-review outcome, the dedicated Phase 4 shared-projection entry package, the explicit Phase 4 entry-review outcome, and the approved first Phase 4 planning projection snapshot slice plus its implementation task.
 - Does not start Phase 2 runtime, loader, sync, query, or validator-dispatch behavior changes.
 - Does not move or delete historical or compatibility surfaces.
 - Does not create a second public planning authority or a second command-authority source.
 
 ## Current-State Context
 - The current live checkpoint remains healthy under `watchtower-core doctor --format json` and `watchtower-core validate all`, and `watchtower-core query authority --domain planning --format json` still resolves the same five public planning questions to coordination, planning catalog, initiatives, tasks, and traceability.
-- `watchtower-core query coordination --format json` reports `active_work`, and the rewrite trace's only actionable task at this checkpoint is `task.structural_rewrite_program.phase4_entry_review.009`.
+- `watchtower-core query coordination --format json` reports `active_work`, and the rewrite trace's only actionable task at this checkpoint is `task.structural_rewrite_program.phase4_planning_projection_snapshot.010`.
 - `watchtower-core sync command-index --format json` stays green with `60` entries and no write, and `python -m pytest tests/unit/test_command_index_sync.py` passes `4/4` tests for the new fail-closed command-companion drift guard.
-- The Phase 3 outcome review has already passed for the bounded command companion slice and named the Phase 4 shared-projection entry package as the next bounded checkpoint instead of implying broader Phase 3 or direct Phase 4 implementation.
+- The Phase 4 entry review has now passed for the bounded shared-projection checkpoint, reaffirmed the public planning parity and private-graph guardrails, and approved one private trace-scoped planning projection snapshot slice instead of broader Phase 4 rollout.
 - The hotspot picture has shifted since earlier rewrite prose. The current largest Python files include `initiative_index.py` (`540` lines), `document_semantics.py` (`494`), `task_lifecycle.py` (`492`), `acceptance.py` (`471`), `workflow_index.py` (`463`), `planning_scaffold_specs.py` (`431`), `loader.py` (`431`), and `planning_projection_serialization.py` (`419`). The older `planning_scaffolds.py` hotspot has already fallen to `307` lines, so later rewrite work must use fresh live counts instead of stale hotspot examples.
 - The repo still carries mixed compatibility surfaces on purpose: `watchtower_core.query/` and `watchtower_core.sync/` are current boundary-layer namespaces, `watchtower_core.validation.all` is still a compatibility wrapper for aggregate validation, `query_coordination_handlers.py` is now a thin compatibility facade, and several test-marker files remain in place for repository-path continuity.
 
@@ -66,7 +67,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 
 ## Internal Standards and Canonical References Applied
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): the rewrite needs one traced PRD, design, plan, evidence, and task chain rather than prose-only execution.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the rewrite must keep one active task-backed initiative while the bounded Phase 4 entry review remains open.
+- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): the rewrite must keep one active task-backed initiative while the bounded Phase 4 planning projection snapshot task remains open.
 - [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): the rewrite crosses the durable-task threshold and cannot stay as no-task work.
 - [authority_map_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/authority_map_standard.md): the rewrite parity contract must preserve the current authority answers rather than reconstructing them informally.
 - [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): the public planning-authority parity contract should be machine-readable and acceptance-oriented.
@@ -79,7 +80,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - Preserve the five live public planning-authority answers and their current query surfaces.
 - Keep the Phase 2 pilot limited to one additive family with clear authored truth, explicit storage shape, and no public behavior change requirement.
 - Reuse existing standards, acceptance, migration, evidence, planning, and task families instead of creating parallel rewrite-only homes.
-- Stop after the Phase 3 outcome review names one bounded Phase 4 entry package and keep Phase 4 implementation blocked until that entry review closes explicitly.
+- Stop after the Phase 4 entry review approves one bounded Phase 4 planning projection snapshot slice and keep broader Phase 4 rollout blocked until that slice lands and passes its own outcome review.
 
 ## Options Considered
 ### Option 1
@@ -103,7 +104,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - Publish one rewrite classification standard for the four-axis model, compatibility support levels, and retention reasons.
 - Publish one rewrite execution-control standard that defines the machine and human checkpoint package, the public planning parity boundary, authored-versus-derived declaration requirements, no-go conditions, and rollback expectations.
 - Use the implementation plan as the human Phase 0 and Phase 1 package: baseline evidence, hotspot inventory, critical-surface classification, consumer maps, compatibility classifications, pilot selection, and the Phase 2 entry-review question all live there.
-- Use the Phase 2 review task to decide the storage shape explicitly, then route implementation through one dedicated slice plan, one dedicated migration record, one dedicated validation-evidence artifact, one explicit pilot review outcome, a successor Phase 3 entry-review task, one bounded Phase 3 slice plan plus implementation task, one explicit Phase 3 outcome-review task, and a successor Phase 4 entry package plus review task if that outcome passes.
+- Use the Phase 2 review task to decide the storage shape explicitly, then route implementation through one dedicated slice plan, one dedicated migration record, one dedicated validation-evidence artifact, one explicit pilot review outcome, a successor Phase 3 entry-review task, one bounded Phase 3 slice plan plus implementation task, one explicit Phase 3 outcome-review task, and a successor Phase 4 entry package plus review task that, if approved, hands work to one bounded Phase 4 planning projection snapshot slice.
 - Choose a small dedicated registry for the first artifact-role metadata slice rather than embedding additive metadata inside an existing governed family. That keeps the pilot additive, keeps family boundaries explicit, and avoids prematurely binding metadata rollout to any one existing authority source.
 
 ### Data and Interface Impacts
@@ -120,7 +121,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 4. Review the Phase 2 entry package, choose the dedicated-registry storage shape, and record the bounded approval outcome.
 5. Publish the dedicated slice plan, migration record, validation-evidence artifact, schema, registry, validator, and example companions for the approved dedicated-registry slice.
 6. Sync the derived planning surfaces, validate the repo, close the pilot review explicitly, review the Phase 3 entry package, implement the first bounded Phase 3 slice with its migration and evidence companions, and stop with one Phase 3 outcome-review task open.
-7. If the Phase 3 outcome review passes, publish the bounded Phase 4 shared-projection entry package, its ready ledgers, and the dedicated Phase 4 review task without starting Phase 4 implementation.
+7. If the Phase 3 outcome review passes, publish the bounded Phase 4 shared-projection entry package, its ready ledgers, and the dedicated Phase 4 review task; if that review passes, publish one private planning projection snapshot slice, its ready ledgers, and the dedicated implementation task without starting broader Phase 4 rollout.
 
 ### Invariants and Failure Cases
 - `watchtower-core query authority --domain planning --format json` must keep the same five planning answers through this slice.
@@ -162,7 +163,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Open Questions
-- None that block the current checkpoint. The current next question belongs to the explicit Phase 4 entry review rather than to implied broader Phase 4 implementation.
+- None that block the current checkpoint. The current next question belongs to the bounded Phase 4 planning projection snapshot implementation slice rather than to implied broader Phase 4 rollout.
 
 ## Updated At
-- `2026-03-14T06:44:15Z`
+- `2026-03-14T17:57:37Z`
