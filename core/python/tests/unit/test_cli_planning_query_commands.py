@@ -234,6 +234,25 @@ def test_query_initiatives_defaults_to_active_status_when_filterless(capsys) -> 
     assert all(entry["initiative_status"] == "active" for entry in payload["results"])
 
 
+def test_query_initiatives_supports_closed_current_phase_history_lookup(capsys) -> None:
+    result, payload = run_json_command(
+        capsys,
+        [
+            "query",
+            "initiatives",
+            "--initiative-status",
+            "completed",
+            "--current-phase",
+            "closed",
+        ],
+    )
+
+    assert result == 0
+    assert payload["command"] == "watchtower-core query initiatives"
+    assert payload["result_count"] > 0
+    assert all(entry["current_phase"] == "closed" for entry in payload["results"])
+
+
 def test_query_planning_supports_explicit_historical_lookup(capsys) -> None:
     result, payload = run_json_command(
         capsys,

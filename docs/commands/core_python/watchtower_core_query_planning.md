@@ -27,7 +27,7 @@ uv run watchtower-core query planning [--query <text>] [--trace-id <trace_id>] [
 - `--query <text>`: Free-text query over planning-catalog fields such as trace ID, titles, explicit status fields, next action, linked IDs, and related paths.
 - `--trace-id <trace_id>`: Exact trace filter such as `trace.core_python_foundation`.
 - `--initiative-status <status>`: Exact initiative-status filter such as `active`, `completed`, or `superseded`. When omitted for filterless browse, the command defaults to `active`.
-- `--current-phase <phase>`: Exact current-phase filter such as `execution` or `closeout`.
+- `--current-phase <phase>`: Exact current-phase filter such as `execution` or `closed`.
 - `--owner <owner>`: Exact owner filter against the current active owners for the trace.
 - `--limit <n>`: Maximum number of results to return. Defaults to `10`.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
@@ -83,4 +83,4 @@ uv run watchtower-core query planning --initiative-status completed --trace-id t
 - `core/control_plane/indexes/planning/planning_catalog.v1.json`
 
 ## Updated At
-- `2026-03-13T23:21:33Z`
+- `2026-03-14T00:04:17Z`

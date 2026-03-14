@@ -149,7 +149,7 @@ def register_query_coordination_commands(
     )
     query_coordination_parser.add_argument(
         "--current-phase",
-        help="Exact current-phase filter such as prd, execution, or closeout.",
+        help="Exact current-phase filter such as prd, execution, or closed.",
     )
     query_coordination_parser.add_argument(
         "--owner",
@@ -275,7 +275,7 @@ def register_query_coordination_commands(
     )
     query_planning_parser.add_argument(
         "--current-phase",
-        help="Exact current-phase filter such as execution or closeout.",
+        help="Exact current-phase filter such as execution or closed.",
     )
     query_planning_parser.add_argument(
         "--owner",
@@ -337,7 +337,7 @@ def register_query_coordination_commands(
     )
     query_initiatives_parser.add_argument(
         "--current-phase",
-        help="Exact current-phase filter such as prd, execution, or closeout.",
+        help="Exact current-phase filter such as prd, execution, or closed.",
     )
     query_initiatives_parser.add_argument(
         "--owner",

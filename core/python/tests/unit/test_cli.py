@@ -146,6 +146,27 @@ def test_query_foundations_help_uses_live_examples(capsys) -> None:
     ) in captured.out
 
 
+@pytest.mark.parametrize(
+    "command",
+    (
+        ["query", "coordination", "--help"],
+        ["query", "planning", "--help"],
+        ["query", "initiatives", "--help"],
+    ),
+)
+def test_query_planning_family_help_uses_closed_terminal_phase(
+    command: list[str],
+    capsys,
+) -> None:
+    with pytest.raises(SystemExit) as excinfo:
+        main(command)
+
+    captured = capsys.readouterr()
+    assert excinfo.value.code == 0
+    assert "closed" in captured.out
+    assert "closeout" not in captured.out
+
+
 def test_route_group_prints_group_specific_help(capsys) -> None:
     result = main(["route"])
 
