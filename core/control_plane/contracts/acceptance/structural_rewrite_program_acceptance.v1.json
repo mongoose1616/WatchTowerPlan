@@ -437,7 +437,7 @@
       "validation_targets": [
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json"
       ],
@@ -451,6 +451,56 @@
         "docs/standards/governance/rewrite_execution_control_standard.md"
       ],
       "notes": "A clean closeout coordination sync-reuse review does not authorize unnamed broader continuation. The next checkpoint remains one bounded entry package around the remaining direct closeout tracker refresh step."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.021",
+      "summary": "Before any closeout-tracking implementation begins, the trace records the explicit closeout-tracking entry review outcome, preserves the approved shared closeout seam and explicit closeout result contract boundary, and opens one bounded implementation task plus ready ledgers for the approved slice.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.019"
+      ],
+      "validation_targets": [
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "docs/standards/governance/rewrite_execution_control_standard.md"
+      ],
+      "notes": "The closeout-tracking entry review approves one bounded implementation slice only and does not authorize broader tracker-family convergence or later-phase work."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.022",
+      "summary": "If the closeout-tracking entry review passes, the approved Phase 4 closeout-tracking slice plan and implementation task stay limited to one private closeout-local refresh boundary for `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` while the five public planning-authority answers, stable closeout result-contract fields, public tracker sync family names, current mutation callers, and private planning-graph boundary remain unchanged.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.020"
+      ],
+      "validation_targets": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "docs/commands/core_python/watchtower_core_closeout_initiative.md"
+      ],
+      "notes": "The bounded slice isolates the remaining closeout-local tracker refresh step only. It does not authorize changing the approved shared closeout seam, tracker sync family names, or broader mutation callers."
     }
   ]
 }

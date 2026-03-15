@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.implementation.structural_rewrite_program"
 title: "Structural Rewrite Program Implementation Plan"
-summary: "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, the closed first Phase 4 slice and outcome review, the approved closeout-coordination entry review, the landed bounded Phase 4 closeout coordination sync-reuse slice, the closed outcome review for that slice, and the handoff into the bounded closeout-tracking entry review."
+summary: "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, the closed first Phase 4 slice and outcome review, the approved closeout-coordination entry review, the landed bounded Phase 4 closeout coordination sync-reuse slice, the closed outcome review for that slice, the approved closeout-tracking entry review, and the handoff into the bounded closeout-tracking refresh-boundary slice."
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T07:14:50Z"
+updated_at: "2026-03-15T08:14:01Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -30,10 +30,10 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-15T07:14:50Z`
+- `Updated At`: `2026-03-15T08:14:01Z`
 
 ## Summary
-Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 entry gate explicitly, records the bounded artifact-role registry pilot outcome, closes the Phase 3 entry review explicitly, records the first bounded Phase 3 command companion normalization slice and its outcome review, closes the Phase 4 shared-projection entry review explicitly, records the implemented first bounded Phase 4 planning projection snapshot slice and its closed outcome review, closes the Phase 4 closeout-coordination entry review explicitly, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, and hands the trace to the bounded closeout-tracking entry review.
+Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 entry gate explicitly, records the bounded artifact-role registry pilot outcome, closes the Phase 3 entry review explicitly, records the first bounded Phase 3 command companion normalization slice and its outcome review, closes the Phase 4 shared-projection entry review explicitly, records the implemented first bounded Phase 4 planning projection snapshot slice and its closed outcome review, closes the Phase 4 closeout-coordination entry review explicitly, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, closes the Phase 4 closeout-tracking entry review explicitly, and hands the trace to the bounded closeout-tracking refresh-boundary slice.
 
 ## Source Request or Design
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -47,7 +47,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - Stop broader implementation after the pilot review and open one explicit Phase 3 entry package instead of a second Phase 2 slice.
 - After the Phase 3 entry review closes, hand the trace to one bounded command companion normalization slice instead of broader Phase 3 rollout.
 - After the Phase 3 slice outcome review closes cleanly, hand the trace to one bounded Phase 4 shared-projection entry package instead of direct Phase 4 implementation.
-- After the Phase 4 entry review closes cleanly, implement one bounded Phase 4 planning projection snapshot slice, close that slice through an explicit outcome review, close the successor closeout-coordination entry review explicitly, implement one bounded closeout coordination sync-reuse slice, close that slice through explicit outcome review, and then hand the trace only to one bounded closeout-tracking entry review instead of broader rollout.
+- After the Phase 4 entry review closes cleanly, implement one bounded Phase 4 planning projection snapshot slice, close that slice through an explicit outcome review, close the successor closeout-coordination entry review explicitly, implement one bounded closeout coordination sync-reuse slice, close that slice through explicit outcome review, close the successor closeout-tracking entry review explicitly, and then hand the trace only to one bounded closeout-tracking refresh-boundary slice instead of broader rollout.
 - Exclude broader Phase 2 rollout, history relocation, compatibility retirement, runtime behavior changes, and command-authority or planning-authority rewrites.
 
 ## Assumptions and Constraints
@@ -69,7 +69,8 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - The closed outcome review for that slice kept the shared helper private, reaffirmed unchanged public planning parity, and named the next bounded checkpoint as a closeout-coordination entry package around the remaining direct `InitiativeCloseoutService` rebuild outlier.
 - That closeout-coordination entry review then passed. The approved post-traceability closeout seam landed by reusing `CoordinationSyncService` for the five shared planning and coordination outputs while keeping the PRD, decision, and design tracking outputs direct for that slice.
 - The closeout coordination sync-reuse outcome review has now also passed, reaffirmed that shared seam and result-contract boundary, and named the remaining direct PRD, decision, and design tracking refresh step as the next bounded entry question.
-- The current controlling surface is [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md), not broader Phase 4 rollout or later-phase work.
+- The closeout-tracking entry review has now also passed, reaffirmed the approved shared closeout seam and explicit result-contract fields, and opened one private closeout-local refresh boundary slice for the remaining tracker step only.
+- The current controlling surface is [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md), not broader Phase 4 rollout or later-phase work.
 - The rewrite-relevant hotspot picture now centers on `planning_projection_snapshot.py` (`513`), `document_semantics.py` (`494`), `task_lifecycle.py` (`492`), `acceptance.py` (`471`), `workflow_index.py` (`463`), `planning_scaffold_specs.py` (`431`), `loader.py` (`431`), and `planning_projection_serialization.py` (`419`) rather than the older hotspot examples from earlier rewrite prose.
 
 ## Internal Standards and Canonical References Applied
@@ -250,10 +251,14 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Historical Phase 4 Closeout Slice Evidence`: [structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json)
 - `Closed Historical Phase 4 Closeout Implementation Task`: [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 - `Closed Historical Phase 4 Closeout Outcome Review Task`: [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
-- `Current Phase 4 Tracking Entry Package`: [structural_rewrite_phase4_closeout_tracking_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md)
-- `Current Phase 4 Tracking Entry Migration`: [structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json)
-- `Current Phase 4 Tracking Entry Evidence`: [structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json)
-- `Open Current Phase 4 Tracking Review Task`: [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
+- `Historical Phase 4 Tracking Entry Package`: [structural_rewrite_phase4_closeout_tracking_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md)
+- `Historical Phase 4 Tracking Entry Migration`: [structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json)
+- `Historical Phase 4 Tracking Entry Evidence`: [structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json)
+- `Closed Historical Phase 4 Tracking Review Task`: [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
+- `Current Phase 4 Tracking Slice Plan`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- `Current Phase 4 Tracking Slice Ready Migration`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json)
+- `Current Phase 4 Tracking Slice Ready Evidence`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json)
+- `Open Current Phase 4 Tracking Implementation Task`: [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
 
 ## Pilot Review Outcome
 - `Decision`: passed.
@@ -323,6 +328,15 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Boundary result`: unchanged. `traceability_output_path` remains pre-seam, the approved shared coordination outputs remain fixed to `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking`, and `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain direct and explicit.
 - `Next boundary`: do not broaden Phase 4 rollout. Open the bounded Phase 4 closeout-tracking entry package and keep further Phase 4 plus later-phase implementation blocked until that entry review closes explicitly.
 
+## Phase 4 Closeout Tracking Entry Review Outcome
+- `Decision`: approved for one bounded Phase 4 slice only.
+- `Public planning boundary`: unchanged. The five planning-authority answers remain the same after the closeout-tracking entry review closes.
+- `Approved shared closeout seam`: unchanged. `traceability_output_path` remains pre-seam, the approved shared coordination outputs remain fixed, and the review does not authorize adding the tracker targets to `CoordinationSyncService`.
+- `Closeout result contract boundary`: explicit. `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain individually reported result fields and CLI payload fields for the approved slice.
+- `Approved first slice`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- `Exact seam`: one private closeout-local refresh boundary for the three remaining tracker outputs after the approved shared closeout seam completes, while the public tracker sync family names and current mutation callers remain unchanged.
+- `Next boundary`: do not broaden Phase 4 rollout. Land the bounded Phase 4 closeout-tracking refresh-boundary task, then keep later rewrite phases blocked until its explicit outcome review closes.
+
 ## Risks
 - The implementation plan can still overstate readiness if later readers treat the bounded pilot as general authorization for broader Phase 2 rollout.
 - Compatibility markers may look cheap to retire even when repository-path continuity still depends on them.
@@ -341,14 +355,14 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
   - `./core/python/.venv/bin/watchtower-core query authority --domain planning --format json`
   - `./core/python/.venv/bin/watchtower-core query coordination --format json`
   - `./core/python/.venv/bin/watchtower-core query planning --trace-id trace.structural_rewrite_program --format json`
-- Confirm that the bounded Phase 4 closeout-tracking entry review task, not broader rewrite rollout or later rewrite phases, becomes the next controlling surface after the closeout sync-reuse review closes.
+- Confirm that the bounded Phase 4 closeout-tracking refresh-boundary implementation task, not broader rewrite rollout or later rewrite phases, becomes the next controlling surface after the closeout-tracking entry review closes.
 
 ## Rollout or Migration Plan
-- Land the traced rewrite package, close the Phase 2 gate explicitly, publish one additive dedicated-registry slice, sync and validate, close the pilot review explicitly, close the Phase 3 entry review explicitly, implement one bounded Phase 3 command companion slice, close that slice through explicit outcome review, close the Phase 4 entry review explicitly, implement one bounded Phase 4 planning projection snapshot slice, close that slice through explicit outcome review, close the Phase 4 closeout-coordination entry review explicitly, land one bounded Phase 4 closeout coordination sync-reuse slice, close that slice through explicit outcome review, and stop with the bounded closeout-tracking entry review task open.
+- Land the traced rewrite package, close the Phase 2 gate explicitly, publish one additive dedicated-registry slice, sync and validate, close the pilot review explicitly, close the Phase 3 entry review explicitly, implement one bounded Phase 3 command companion slice, close that slice through explicit outcome review, close the Phase 4 entry review explicitly, implement one bounded Phase 4 planning projection snapshot slice, close that slice through explicit outcome review, close the Phase 4 closeout-coordination entry review explicitly, land one bounded Phase 4 closeout coordination sync-reuse slice, close that slice through explicit outcome review, close the Phase 4 closeout-tracking entry review explicitly, and stop with the bounded closeout-tracking refresh-boundary implementation task open.
 - Do not expand the approved Phase 4 seams into broader shared-projection rollout, public-planning-boundary changes, broader mutation-path convergence, broader tracker-family convergence, compatibility retirement, or later rewrite phases without a new explicit review outcome.
 
 ## Open Questions
-- None that block the current checkpoint. The current next question belongs to the bounded Phase 4 closeout-tracking entry review rather than to implied broader Phase 4 rollout or Phase 5 work.
+- None that block the current checkpoint. The current next question belongs to the bounded Phase 4 closeout-tracking refresh-boundary slice rather than to implied broader Phase 4 rollout or Phase 5 work.
 
 ## References
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -358,4 +372,4 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Updated At
-- `2026-03-15T07:14:50Z`
+- `2026-03-15T08:14:01Z`

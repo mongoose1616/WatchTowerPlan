@@ -1,0 +1,27 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary_ready.v1",
+  "title": "Structural Rewrite Phase 4 Closeout Tracking Refresh Boundary Ready",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-15T08:14:01Z",
+  "from_state": "phase4_closeout_tracking_entry_review_passed",
+  "to_state": "phase4_closeout_tracking_refresh_boundary_ready",
+  "summary": "Records the approved closeout-tracking entry review by naming one bounded private closeout-local refresh boundary slice as the next rewrite checkpoint.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+    "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
+    "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
+    "core/python/src/watchtower_core/closeout/initiative.py",
+    "core/python/src/watchtower_core/cli/closeout_handlers.py",
+    "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
+    "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+    "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py"
+  ],
+  "notes": "This transition keeps the approved shared closeout seam unchanged, preserves the stable closeout result-contract fields, and limits the next slice to one private closeout-local refresh boundary for the remaining PRD, decision, and design tracker outputs."
+}

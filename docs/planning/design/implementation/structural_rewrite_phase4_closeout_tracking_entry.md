@@ -6,7 +6,7 @@ summary: "Defines the bounded next Phase 4 checkpoint for reviewing the remainin
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T07:14:50Z"
+updated_at: "2026-03-15T08:14:01Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -31,7 +31,7 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-15T07:14:50Z`
+- `Updated At`: `2026-03-15T08:14:01Z`
 
 ## Summary
 Define the bounded next Phase 4 checkpoint for reviewing whether the remaining direct `prd`, `decision`, and `design` tracking refresh step inside `InitiativeCloseoutService.close` may converge through one later bounded seam after the closeout coordination sync-reuse slice passed review, and keep broader Phase 4 and later-phase implementation blocked in this change set.
@@ -59,7 +59,7 @@ Define the bounded next Phase 4 checkpoint for reviewing whether the remaining d
 - The bounded closeout coordination sync-reuse slice has now passed its explicit outcome review after proving that `InitiativeCloseoutService.close` can reuse `CoordinationSyncService` for the approved five shared post-traceability outputs without changing the five public planning-authority answers or the current closeout result contract boundary.
 - `InitiativeCloseoutService.close` now writes traceability first, then refreshes `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking` through `CoordinationSyncService.run_closeout_shared_outputs(write=True)`, but it still writes `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` directly afterward.
 - The closeout command still publishes an explicit result contract with individual output-path fields for the traceability write, the approved shared coordination outputs, and the remaining direct PRD, decision, and design tracking outputs.
-- The next active checkpoint is [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md), not broader Phase 4 rollout.
+- The `.015` review then passed for one bounded successor slice, that slice is now defined by [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md), and the next active checkpoint is [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md), not broader Phase 4 rollout.
 
 ## Internal Standards and Canonical References Applied
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): the next Phase 4 checkpoint still needs a bounded package, explicit authored-truth and rollback declarations, and an explicit review outcome before any later implementation begins.
@@ -109,6 +109,13 @@ Define the bounded next Phase 4 checkpoint for reviewing whether the remaining d
 - Reconfirm the current public planning-authority boundary, the approved shared closeout coordination seam, and the remaining direct tracker refresh step directly from the live authority map, planning indexes, query surfaces, and closeout behavior.
 - Publish the write-path classification and parity addendum for the exact closeout, tracker, and public planning surfaces that a bounded later tracker-refresh slice could touch.
 - Hand the package to a dedicated review task and stop until that review records an explicit approval or block outcome for one exact remaining tracker seam.
+
+## Review-Resolved Entry Questions
+- `Public planning boundary`: reaffirmed. The five current planning-authority answers remain the explicit public machine boundary for the approved closeout-tracking slice.
+- `Approved shared closeout seam`: reaffirmed. `traceability_output_path` remains pre-seam, the approved shared coordination outputs remain fixed, and the review does not authorize adding the tracker targets to `CoordinationSyncService`.
+- `Closeout result contract boundary`: explicit. `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain individually reported output-path fields in both `InitiativeCloseoutResult` and the closeout CLI payload.
+- `Approved first slice`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- `Exact seam`: one private closeout-local refresh boundary for the three remaining tracker outputs after the approved shared closeout seam completes, while `watchtower-core sync prd-tracking`, `decision-tracking`, and `design-tracking` remain the canonical public sync families.
 
 ## Work Breakdown
 1. Re-verify the public planning-authority boundary and the approved shared closeout seam after the closed closeout coordination sync-reuse outcome review.
@@ -164,16 +171,18 @@ Define the bounded next Phase 4 checkpoint for reviewing whether the remaining d
 - Keep broader Phase 4 blocked unless the review task records an explicit approval outcome for one exact remaining closeout tracker seam.
 
 ## Stop Condition
-- Stop at the explicit Phase 4 closeout-tracking entry review outcome and hand off only to the approved next task if that review passes.
+- Stop at the bounded Phase 4 closeout-tracking refresh-boundary implementation task and hand off only to its explicit outcome review after that slice lands.
 - Do not widen this package into broader tracker-family rollout, changes to the approved shared coordination seam, task-lifecycle or scaffold mutation changes, public-planning-boundary changes, or later phases.
 
 ## References
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
 - [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 - [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
+- [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
+- [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
 - [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md)
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
 
 ## Updated At
-- `2026-03-15T07:14:50Z`
+- `2026-03-15T08:14:01Z`

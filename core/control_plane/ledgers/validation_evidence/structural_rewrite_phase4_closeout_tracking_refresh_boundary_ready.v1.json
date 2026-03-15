@@ -1,0 +1,111 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary_ready",
+  "title": "Structural Rewrite Phase 4 Closeout Tracking Refresh Boundary Ready Evidence",
+  "status": "active",
+  "trace_id": "trace.structural_rewrite_program",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-15T08:14:01Z",
+  "source_prd_ids": [
+    "prd.structural_rewrite_program"
+  ],
+  "source_design_ids": [
+    "design.features.structural_rewrite_program"
+  ],
+  "source_plan_ids": [
+    "design.implementation.structural_rewrite_program",
+    "design.implementation.structural_rewrite_phase4_closeout_tracking_entry",
+    "design.implementation.structural_rewrite_phase4_closeout_tracking_refresh_boundary"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.structural_rewrite_program"
+  ],
+  "checks": [
+    {
+      "check_id": "check.structural_rewrite_program.phase4_closeout_tracking_entry_review_approval",
+      "title": "The closeout-tracking entry review records an explicit approval outcome and opens one bounded implementation slice",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md"
+      ],
+      "subject_ids": [
+        "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015",
+        "design.implementation.structural_rewrite_phase4_closeout_tracking_entry",
+        "design.implementation.structural_rewrite_phase4_closeout_tracking_refresh_boundary",
+        "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary.016"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.021"
+      ],
+      "notes": "The review approves one bounded private closeout-local refresh boundary slice only and does not authorize broader tracker-family continuation."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_closeout_tracking_public_boundary_reaffirmed",
+      "title": "The approved closeout-tracking slice keeps the five public planning-authority answers and the approved shared closeout seam unchanged",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/python/src/watchtower_core/closeout/initiative.py"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.004",
+        "ac.structural_rewrite_program.020",
+        "ac.structural_rewrite_program.021",
+        "ac.structural_rewrite_program.022"
+      ],
+      "notes": "The approved slice remains behind the current planning query boundary, leaves the shared closeout coordination outputs unchanged, and does not authorize a new public tracker-family abstraction."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_closeout_tracking_result_contract_boundary_named",
+      "title": "The review preserves the explicit closeout result-contract fields for the approved tracker seam",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.021"
+      ],
+      "notes": "The review keeps `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` explicit even though the implementation may stop using three direct inline refresh calls."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_closeout_tracking_first_slice_named_and_bounded",
+      "title": "The approved closeout-tracking slice stays limited to one private closeout-local refresh boundary",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py"
+      ],
+      "subject_ids": [
+        "design.implementation.structural_rewrite_phase4_closeout_tracking_refresh_boundary",
+        "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary.016"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.022"
+      ],
+      "notes": "The approved slice is fixed to the three remaining tracker outputs only, while the public tracker sync family names, current mutation callers, and private planning-graph boundary remain unchanged."
+    }
+  ],
+  "related_paths": [
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md"
+  ],
+  "notes": "Validation evidence for the approved closeout-tracking entry review and the bounded closeout-tracking refresh-boundary slice."
+}
