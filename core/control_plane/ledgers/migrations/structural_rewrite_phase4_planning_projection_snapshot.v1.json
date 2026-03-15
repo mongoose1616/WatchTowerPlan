@@ -1,0 +1,30 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase4_planning_projection_snapshot.v1",
+  "title": "Structural Rewrite Phase 4 Planning Projection Snapshot Migration",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-14T18:27:09Z",
+  "from_state": "phase4_planning_projection_snapshot_ready",
+  "to_state": "phase4_planning_projection_snapshot_published",
+  "summary": "Records the completed first bounded Phase 4 slice by publishing one private trace-scoped planning projection snapshot behind initiative-index and planning-catalog sync while keeping the public planning boundary unchanged.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+    "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/indexes/coordination/coordination_index.v1.json",
+    "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+    "core/control_plane/indexes/planning/planning_catalog.v1.json",
+    "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+    "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+    "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+    "core/python/tests/unit/test_initiative_index_sync.py",
+    "core/python/tests/unit/test_planning_catalog_sync.py",
+    "core/python/tests/unit/test_coordination_index_sync.py",
+    "core/python/tests/unit/test_initiative_closeout.py",
+    "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json"
+  ],
+  "notes": "This transition keeps the five planning-authority answers, coordination-sync ordering, mutation callers, and downstream coordination behavior stable at the public boundary and stops at a dedicated outcome review task before the next bounded entry package opens."
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.structural_rewrite_program.phase4_planning_projection_snapshot",
+  "title": "Structural Rewrite Phase 4 Planning Projection Snapshot Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.structural_rewrite_program",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-14T18:27:09Z",
+  "source_prd_ids": [
+    "prd.structural_rewrite_program"
+  ],
+  "source_design_ids": [
+    "design.features.structural_rewrite_program"
+  ],
+  "source_plan_ids": [
+    "design.implementation.structural_rewrite_program",
+    "design.implementation.structural_rewrite_phase4_planning_projection_snapshot"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.structural_rewrite_program"
+  ],
+  "checks": [
+    {
+      "check_id": "check.structural_rewrite_program.phase4_shared_snapshot_helper_published",
+      "title": "A private shared planning projection snapshot is published behind initiative and planning sync",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.016"
+      ],
+      "notes": "The new helper owns the shared trace-scoped planning source assembly and coordination derivation while remaining a private runtime detail behind the existing sync services."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_initiative_and_planning_coordination_parity_held",
+      "title": "Initiative and planning projections continue to agree on the shared coordination view",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.004",
+        "ac.structural_rewrite_program.016"
+      ],
+      "notes": "Direct unit coverage now asserts that the planning-catalog coordination section matches the initiative projection, and the live authority and planning queries continue to return the same public answers."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_downstream_public_boundary_unchanged",
+      "title": "Coordination ordering, mutation callers, and closeout-adjacent public behavior remain unchanged",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/repo_ops/sync/registry.py",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.016"
+      ],
+      "notes": "The slice leaves the coordination-sync ordering and the mutation or closeout callers unchanged at the public boundary while downstream coordination outputs remain green under direct coverage."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_slice_stopped_at_outcome_review",
+      "title": "The first Phase 4 slice stops at an explicit outcome review task",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json"
+      ],
+      "subject_ids": [
+        "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
+        "task.structural_rewrite_program.phase4_planning_projection_snapshot.010",
+        "task.structural_rewrite_program.phase4_planning_projection_snapshot_review.011"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.016"
+      ],
+      "notes": "The bounded slice lands with a dedicated review task that closes before any new bounded successor checkpoint opens and does not imply broader Phase 4 or later-phase rewrite authorization."
+    }
+  ],
+  "related_paths": [
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md"
+  ],
+  "notes": "Validation evidence for the completed first bounded structural rewrite Phase 4 planning projection snapshot slice."
+}

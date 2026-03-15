@@ -8,6 +8,7 @@ from watchtower_core.repo_ops.query.planning import (
     PlanningCatalogQueryService,
     PlanningCatalogSearchParams,
 )
+from watchtower_core.repo_ops.sync.initiative_index import InitiativeIndexSyncService
 from watchtower_core.repo_ops.sync.planning_catalog import PlanningCatalogSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -95,3 +96,47 @@ def test_planning_catalog_sync_embeds_acceptance_and_evidence_sections(
     assert entry["validation_evidence"]
     assert entry["acceptance_contract_ids"]
     assert entry["evidence_ids"]
+
+
+def test_planning_catalog_coordination_matches_initiative_projection(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_control_plane_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+
+    initiative_document = InitiativeIndexSyncService(loader).build_document()
+    planning_document = PlanningCatalogSyncService(loader).build_document()
+
+    initiative_entries = initiative_document["entries"]
+    planning_entries = planning_document["entries"]
+    assert isinstance(initiative_entries, list)
+    assert isinstance(planning_entries, list)
+
+    initiative_by_trace = {
+        entry["trace_id"]: entry
+        for entry in initiative_entries
+        if isinstance(entry, dict)
+    }
+    coordination_keys = (
+        "current_phase",
+        "key_surface_path",
+        "next_action",
+        "next_surface_path",
+        "open_task_count",
+        "blocked_task_count",
+        "primary_owner",
+        "active_owners",
+        "active_task_ids",
+        "active_task_summaries",
+        "blocked_by_task_ids",
+    )
+
+    for planning_entry in planning_entries:
+        assert isinstance(planning_entry, dict)
+        initiative_entry = initiative_by_trace[planning_entry["trace_id"]]
+        expected_coordination = {
+            key: initiative_entry[key]
+            for key in coordination_keys
+            if key in initiative_entry
+        }
+        assert planning_entry["coordination"] == expected_coordination

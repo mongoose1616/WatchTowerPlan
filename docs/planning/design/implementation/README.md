@@ -13,7 +13,9 @@
 | `docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md` | Implementation plan for the first bounded Phase 3 slice that reconciles command-doc source surfaces to the current family-owned command authority model. |
 | `docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md` | Entry package for the bounded Phase 4 shared-projection and private internal-planning-graph checkpoint. |
 | `docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md` | Implementation plan for the first bounded Phase 4 slice that introduces one private planning projection snapshot behind initiative-index and planning-catalog sync. |
-| `docs/planning/design/implementation/structural_rewrite_program.md` | Implementation plan for the structural rewrite program through the closed Phase 4 entry review and handoff into the first bounded Phase 4 slice. |
+| `docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md` | Entry package for the bounded next Phase 4 checkpoint around the remaining direct initiative-closeout write-path outlier. |
+| `docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md` | Implementation plan for the bounded Phase 4 slice that reuses coordination sync for the shared closeout outputs after the traceability write. |
+| `docs/planning/design/implementation/structural_rewrite_program.md` | Implementation plan for the structural rewrite program through the approved closeout-coordination entry review and handoff into the bounded sync-reuse slice. |
 | `docs/planning/design/implementation/template_and_output_efficiency_execution.md` | Implementation plan for compact authoring rules, tracker compaction, and workflow-guidance tightening. |
 
 ## Notes

@@ -1,0 +1,25 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_ready.v1",
+  "title": "Structural Rewrite Phase 4 Closeout Coordination Sync Reuse Ready",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-15T04:48:34Z",
+  "from_state": "phase4_closeout_coordination_entry_review_passed",
+  "to_state": "phase4_closeout_coordination_sync_reuse_ready",
+  "summary": "Records the approved closeout-coordination entry review by naming one bounded post-traceability coordination-sync reuse slice as the next rewrite checkpoint.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+    "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
+    "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
+    "core/python/src/watchtower_core/closeout/initiative.py",
+    "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+    "core/python/src/watchtower_core/repo_ops/sync/registry.py"
+  ],
+  "notes": "This transition keeps traceability as the pre-seam canonical write, limits the approved shared-output seam to initiative-index, planning-catalog, coordination-index, initiative-tracking, and coordination-tracking, and keeps PRD, decision, and design tracking direct and outside the seam for this slice."
+}

@@ -16,7 +16,7 @@
 | `docs/planning/design/features/initiative_closeout_and_planning_trackers.md` | Feature design for initiative closeout state and the generated planning trackers that mirror it. |
 | `docs/planning/design/features/python_validator_execution.md` | Feature design for the Python validator execution layer driven by the control-plane validator registry. |
 | `docs/planning/design/features/schema_resolution_and_index_search.md` | Feature design for deterministic local schema resolution and index-backed repository search. |
-| `docs/planning/design/features/structural_rewrite_program.md` | Feature design for executing the guarded structural rewrite program through the approved Phase 4 entry review and the first bounded Phase 4 planning projection snapshot slice. |
+| `docs/planning/design/features/structural_rewrite_program.md` | Feature design for executing the guarded structural rewrite program through the approved Phase 4 closeout-coordination entry review and the bounded next sync-reuse slice. |
 
 ## Notes
 - Documents in this directory should follow [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md).

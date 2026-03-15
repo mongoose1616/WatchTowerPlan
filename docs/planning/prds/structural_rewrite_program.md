@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "prd.structural_rewrite_program"
 title: "Structural Rewrite Program PRD"
-summary: "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the Phase 4 entry review explicitly, and hands the trace to one bounded Phase 4 planning projection snapshot slice."
+summary: "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, and hands the trace to one bounded Phase 4 closeout coordination sync-reuse slice."
 type: "prd"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T17:57:37Z"
+updated_at: "2026-03-15T04:48:34Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,21 +28,24 @@ aliases:
 - `Status`: `active`
 - `Linked Decisions`: `None`
 - `Linked Designs`: `design.features.structural_rewrite_program`
-- `Linked Implementation Plans`: `design.implementation.structural_rewrite_program`; `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`; `design.implementation.structural_rewrite_phase4_shared_projection_entry`; `design.implementation.structural_rewrite_phase4_planning_projection_snapshot`
+- `Linked Implementation Plans`: `design.implementation.structural_rewrite_program`; `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`; `design.implementation.structural_rewrite_phase4_shared_projection_entry`; `design.implementation.structural_rewrite_phase4_planning_projection_snapshot`; `design.implementation.structural_rewrite_phase4_closeout_coordination_entry`; `design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse`
 - `Historical Phase 2 Slice Plan`: `design.implementation.structural_rewrite_artifact_role_registry_pilot`
 - `Historical Phase 3 Slice Plan`: `design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization`
 - `Phase 3 Entry Package`: `design.implementation.structural_rewrite_phase3_command_authority_entry`
-- `Current Entry Package`: `design.implementation.structural_rewrite_phase4_shared_projection_entry`
-- `Current Phase 4 Slice Plan`: `design.implementation.structural_rewrite_phase4_planning_projection_snapshot`
-- `Updated At`: `2026-03-14T17:57:37Z`
+- `Historical Phase 4 Entry Package`: `design.implementation.structural_rewrite_phase4_shared_projection_entry`
+- `Historical Phase 4 Slice Plan`: `design.implementation.structural_rewrite_phase4_planning_projection_snapshot`
+- `Historical Phase 4 Closeout Entry Package`: `design.implementation.structural_rewrite_phase4_closeout_coordination_entry`
+- `Current Phase 4 Slice Plan`: `design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse`
+- `Current Phase 4 Implementation Task`: `task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.013`
+- `Updated At`: `2026-03-15T04:48:34Z`
 
 ## Summary
-Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate explicitly, delivers one bounded artifact-role metadata slice, closes the Phase 3 entry review explicitly, lands one bounded command companion source-surface normalization slice, closes that slice through an explicit outcome review, closes the Phase 4 shared-projection entry review explicitly, and hands the trace to one bounded Phase 4 planning projection snapshot slice.
+Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate explicitly, delivers one bounded artifact-role metadata slice, closes the Phase 3 entry review explicitly, lands one bounded command companion source-surface normalization slice, closes that slice through an explicit outcome review, closes the Phase 4 shared-projection entry review explicitly, implements one bounded Phase 4 planning projection snapshot slice, closes that slice through an explicit outcome review, approves the bounded Phase 4 closeout-coordination entry review explicitly, and hands the trace to one bounded Phase 4 closeout coordination sync-reuse slice.
 
 ## Problem Statement
 The live repository is healthy and validated, but the rewrite program originally existed only as external prose until it was anchored in repo-native planning, standards, contracts, and ledger surfaces. That gap created two risks. First, later rewrite work could start from stale hotspot examples or generalized cleanup language instead of the current repo state. Second, high-blast-radius work such as descriptor rollout, projection changes, history cleanup, or compatibility retirement could start without a local parity contract, consumer maps, rollback expectations, and a bounded pilot family.
 
-Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bounded Phase 2 pilot proved the low-blast-radius metadata pattern cleanly. The first bounded Phase 3 slice then resolved the immediate command companion drift by aligning the root, doctor, sync, and validate command companion surfaces to the parser-owned or family-owned implementation paths while keeping command authority in the current registry plus parser tree. That slice passed its explicit outcome review, and the later Phase 4 entry review has now closed by naming the full coordination-sync and mutation-path consumer boundary plus one exact rollback-safe seam. The next remaining rewrite risk is executing that first bounded shared-projection slice without widening the five public planning answers or turning a private runtime graph into a new public authority surface.
+Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bounded Phase 2 pilot proved the low-blast-radius metadata pattern cleanly. The first bounded Phase 3 slice then resolved the immediate command companion drift by aligning the root, doctor, sync, and validate command companion surfaces to the parser-owned or family-owned implementation paths while keeping command authority in the current registry plus parser tree. That slice passed its explicit outcome review, the later Phase 4 entry review named the full coordination-sync and mutation-path consumer boundary plus one exact rollback-safe seam, and the approved first Phase 4 slice landed as one private shared planning projection helper. Its outcome review has now also passed cleanly, and the successor closeout-coordination entry review has now approved one exact next slice. The next remaining rewrite risk is the post-traceability closeout convergence seam where `InitiativeCloseoutService` still rebuilds the shared planning and coordination outputs directly instead of reusing the existing coordination-sync orchestration.
 
 ## Goals
 - Refresh the live baseline and hotspot inventory from current repository commands and source files.
@@ -54,7 +57,9 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - Close the Phase 3 entry review gate with an explicit approval or block outcome.
 - If the Phase 3 gate is approved, implement exactly one rollback-safe command companion normalization slice, close that slice through an explicit outcome review, and stop broader rewrite implementation at a later-phase entry review rather than implied continuation.
 - If the Phase 3 outcome review passes, open one bounded Phase 4 shared-projection entry package and review gate before any Phase 4 implementation begins.
-- If the Phase 4 entry review passes, open one bounded Phase 4 planning projection snapshot slice and keep broader Phase 4, Phase 5, Phase 6, and Phase 7 work blocked.
+- If the Phase 4 entry review passes, implement one bounded Phase 4 planning projection snapshot slice, record its outcome explicitly, and keep broader Phase 4, Phase 5, Phase 6, and Phase 7 work blocked.
+- If the first Phase 4 slice outcome review passes, open one bounded Phase 4 closeout-coordination entry package and review gate before any further Phase 4 implementation begins.
+- If the closeout-coordination entry review passes, open one bounded Phase 4 closeout coordination sync-reuse slice, its ready ledgers, and one explicit implementation task while keeping broader mutation-path convergence and later-phase work blocked.
 
 ## Non-Goals
 - Reopening accepted planning-authority, command-authority, or repository-scope decisions.
@@ -63,6 +68,7 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - Letting the first Phase 2 slice drive live query routing, sync selection, validator dispatch, command presence, or planning-boundary changes.
 - Expanding the implemented Phase 3 slice into broader command-authority, workflow, route, compatibility, or public-planning rollout without a new explicit checkpoint.
 - Starting broader Phase 4 implementation directly from a clean Phase 3 outcome review or a clean Phase 4 entry review without one named rollback-safe first slice.
+- Starting broader mutation-path convergence or Phase 5 work directly from a clean first Phase 4 slice outcome review or a clean closeout-coordination entry review without one named successor slice.
 
 ## Requirements
 - `req.structural_rewrite_program.001`: The rewrite trace must re-run the required baseline commands from `core/python/` and publish the resulting live baseline and hotspot inventory in repo-native planning surfaces.
@@ -79,6 +85,9 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - `req.structural_rewrite_program.012`: If the Phase 3 outcome review passes, the next checkpoint must be a dedicated Phase 4 shared-projection entry package that preserves the five public planning answers, keeps any internal planning graph private by default, publishes the projection-family classification addendum for the touched surfaces, and keeps Phase 4 implementation blocked until its own review closes.
 - `req.structural_rewrite_program.013`: Before any Phase 4 implementation begins, the trace must record an explicit Phase 4 entry review outcome that reaffirms the private internal-graph boundary, names the full coordination-sync and mutation-path consumer boundary, and names one exact rollback-safe first slice.
 - `req.structural_rewrite_program.014`: If the Phase 4 entry review passes, the approved first Phase 4 slice must stay fixed to one private trace-scoped planning projection snapshot behind `initiative_index` and `planning_catalog` while preserving the five public planning-authority answers, the current coordination-sync ordering, the current mutation-path callers, and downstream coordination behavior.
+- `req.structural_rewrite_program.015`: If the first Phase 4 slice outcome review passes, the next checkpoint must be a dedicated Phase 4 closeout-coordination entry package that preserves the five public planning answers, keeps the private planning graph private, names `InitiativeCloseoutService` as the exact remaining direct write-path outlier, and keeps further Phase 4 implementation blocked until its own review closes.
+- `req.structural_rewrite_program.016`: Before any closeout-coordination implementation begins, the trace must record an explicit closeout-coordination entry review outcome that enumerates the closeout result contract boundary, names the exact in-seam shared outputs and the exact out-of-seam direct tracker outputs, and opens one bounded implementation task plus ready ledgers for the approved slice.
+- `req.structural_rewrite_program.017`: If the closeout-coordination entry review passes, the approved first Phase 4 closeout slice must stay fixed to one post-traceability coordination-sync reuse seam for `initiative_index`, `planning_catalog`, `coordination_index`, `initiative_tracking`, and `coordination_tracking` while preserving `traceability_output_path`, `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path`, the five public planning-authority answers, the private planning-graph boundary, and the current `TaskLifecycleService` and `PlanningScaffoldService` behavior.
 
 ## Acceptance Criteria
 - `ac.structural_rewrite_program.001`: The planning corpus for `trace.structural_rewrite_program` contains the active PRD, active feature design, the Phase 0 or Phase 1 implementation package, the bounded Phase 2 slice plan, the aligned acceptance contract, the companion migration and validation-evidence artifacts, the closed bootstrap and Phase 0 or Phase 1 package tasks, and traced review or execution tasks for the Phase 2 gate and first slice.
@@ -97,6 +106,9 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - `ac.structural_rewrite_program.014`: If the Phase 3 outcome review passes, the trace publishes one dedicated Phase 4 shared-projection entry package, its machine-readable ready records, and one explicit Phase 4 review task while keeping shared projection and internal planning-graph implementation blocked.
 - `ac.structural_rewrite_program.015`: Before any Phase 4 implementation begins, the trace records the explicit Phase 4 entry review outcome, names the full coordination-sync and mutation-path consumer boundary, names one exact rollback-safe seam, and opens one bounded implementation task plus ready ledgers for the approved first slice.
 - `ac.structural_rewrite_program.016`: If the Phase 4 entry review passes, the approved first Phase 4 slice plan and implementation task stay limited to one private trace-scoped planning projection snapshot behind `initiative_index` and `planning_catalog` while the five public planning-authority answers, coordination-sync ordering, mutation callers, and downstream coordination behavior remain unchanged.
+- `ac.structural_rewrite_program.017`: If the first Phase 4 slice outcome review passes, the trace publishes one dedicated Phase 4 closeout-coordination entry package, its machine-readable ready records, and one explicit review task while keeping further shared-projection, mutation-path, and later-phase implementation blocked.
+- `ac.structural_rewrite_program.018`: Before any closeout-coordination implementation begins, the trace records the explicit closeout-coordination entry review outcome, names the closeout result contract boundary, names the exact in-seam and out-of-seam outputs, and opens one bounded implementation task plus ready ledgers for the approved slice.
+- `ac.structural_rewrite_program.019`: If the closeout-coordination entry review passes, the approved first Phase 4 closeout slice plan and implementation task stay limited to one post-traceability coordination-sync reuse seam for `initiative_index`, `planning_catalog`, `coordination_index`, `initiative_tracking`, and `coordination_tracking` while `traceability_output_path`, `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain explicit and the five public planning-authority answers, current mutation callers, and private planning-graph boundary remain unchanged.
 
 ## Risks and Dependencies
 - The rewrite can create accidental authority drift if its parity contract is weaker than the live authority map and query behavior.
@@ -121,4 +133,4 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - [structural_rewrite_artifact_role_registry_pilot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md)
 
 ## Updated At
-- `2026-03-14T17:57:37Z`
+- `2026-03-15T04:48:34Z`

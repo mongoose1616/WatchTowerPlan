@@ -1945,6 +1945,36 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the closed first Phase 4 slice outcome review that opens the bounded closeout-coordination entry checkpoint.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the approved closeout-coordination entry review that opens the bounded post-traceability coordination-sync reuse slice.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the completed first bounded Phase 4 planning projection snapshot slice.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
       "kind": "file",
       "surface_kind": "control_plane_ledger",
@@ -2182,6 +2212,36 @@
       "kind": "file",
       "surface_kind": "control_plane_ledger",
       "summary": "Validation evidence for the approved Phase 3 entry outcome and the first bounded command companion source-surface normalization slice.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the closed first Phase 4 slice outcome review and the bounded closeout-coordination entry checkpoint.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the approved closeout-coordination entry review and the bounded post-traceability coordination-sync reuse slice.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the completed first bounded Phase 4 planning projection snapshot slice.",
       "parent_path": "core/control_plane/ledgers/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
@@ -4639,7 +4699,7 @@
       "path": "docs/planning/design/features/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "feature_design",
-      "summary": "Feature design for executing the guarded structural rewrite program through the approved Phase 4 entry review and the first bounded Phase 4 planning projection snapshot slice.",
+      "summary": "Feature design for executing the guarded structural rewrite program through the approved Phase 4 closeout-coordination entry review and the bounded next sync-reuse slice.",
       "parent_path": "docs/planning/design/features/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4717,6 +4777,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
+      "kind": "file",
+      "surface_kind": "implementation_plan",
+      "summary": "Entry package for the bounded next Phase 4 checkpoint around the remaining direct initiative-closeout write-path outlier.",
+      "parent_path": "docs/planning/design/implementation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+      "kind": "file",
+      "surface_kind": "implementation_plan",
+      "summary": "Implementation plan for the bounded Phase 4 slice that reuses coordination sync for the shared closeout outputs after the traceability write.",
+      "parent_path": "docs/planning/design/implementation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
@@ -4740,7 +4820,7 @@
       "path": "docs/planning/design/implementation/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the structural rewrite program through the closed Phase 4 entry review and handoff into the first bounded Phase 4 slice.",
+      "summary": "Implementation plan for the structural rewrite program through the approved closeout-coordination entry review and handoff into the bounded sync-reuse slice.",
       "parent_path": "docs/planning/design/implementation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4853,7 +4933,7 @@
       "path": "docs/planning/prds/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "prd",
-      "summary": "PRD for the guarded structural rewrite program through the approved Phase 4 entry review and the first bounded Phase 4 planning projection snapshot slice.",
+      "summary": "PRD for the guarded structural rewrite program through the approved Phase 4 closeout-coordination entry review and the bounded next sync-reuse slice.",
       "parent_path": "docs/planning/prds/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4930,6 +5010,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed task for the first bounded Phase 4 private planning projection snapshot slice.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/tasks/closed/local_task_tracking_foundation.md",
       "kind": "file",
       "surface_kind": "planning_doc",
@@ -4970,6 +5060,26 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed review task that approved one bounded Phase 4 closeout coordination sync-reuse slice.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed review task for the first bounded Phase 4 planning projection snapshot outcome.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
       "kind": "file",
       "surface_kind": "planning_doc",
@@ -5000,10 +5110,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+      "path": "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
       "kind": "file",
       "surface_kind": "planning_doc",
-      "summary": "Active implementation task for the first bounded Phase 4 private planning projection snapshot slice.",
+      "summary": "Active implementation task for the bounded Phase 4 closeout coordination sync-reuse slice.",
       "parent_path": "docs/planning/tasks/open/",
       "maturity": "supporting",
       "priority": "medium",

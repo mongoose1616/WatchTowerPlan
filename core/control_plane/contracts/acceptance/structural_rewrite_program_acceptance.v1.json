@@ -306,7 +306,7 @@
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
@@ -330,10 +330,13 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
-        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
         "core/python/src/watchtower_core/closeout/initiative.py",
         "core/python/tests/unit/test_initiative_index_sync.py",
         "core/python/tests/unit/test_planning_catalog_sync.py",
@@ -349,6 +352,72 @@
         "docs/planning/initiatives/initiative_tracking.md"
       ],
       "notes": "The first approved Phase 4 slice stays behind initiative-index and planning-catalog sync. The approved plan and task do not authorize public planning-boundary change or broader shared-projection rollout."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.017",
+      "summary": "If the first Phase 4 slice outcome review passes, the trace publishes one dedicated Phase 4 closeout-coordination entry package, its machine-readable ready records, and one explicit review task while keeping further shared-projection, mutation-path, and later-phase implementation blocked.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.015"
+      ],
+      "validation_targets": [
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/registry.py",
+        "docs/standards/governance/rewrite_execution_control_standard.md"
+      ],
+      "notes": "A clean first Phase 4 slice does not authorize unnamed broader continuation. The next checkpoint remains one bounded entry package around the direct initiative-closeout write-path outlier."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.018",
+      "summary": "Before any closeout-coordination implementation begins, the trace records the explicit closeout-coordination entry review outcome, names the closeout result contract boundary, names the exact in-seam and out-of-seam outputs, and opens one bounded implementation task plus ready ledgers for the approved slice.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.016"
+      ],
+      "validation_targets": [
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json"
+      ],
+      "related_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "docs/standards/governance/rewrite_execution_control_standard.md"
+      ],
+      "notes": "The closeout-coordination entry review must enumerate the full closeout result contract, open one bounded implementation task, and stop broader rewrite continuation until that task finishes through its own outcome review."
+    },
+    {
+      "acceptance_id": "ac.structural_rewrite_program.019",
+      "summary": "If the closeout-coordination entry review passes, the approved first Phase 4 closeout slice plan and implementation task stay limited to one post-traceability coordination-sync reuse seam for initiative_index, planning_catalog, coordination_index, initiative_tracking, and coordination_tracking while traceability_output_path, prd_tracking_output_path, decision_tracking_output_path, and design_tracking_output_path remain explicit and the five public planning-authority answers, current mutation callers, and private planning-graph boundary remain unchanged.",
+      "source_requirement_ids": [
+        "req.structural_rewrite_program.017"
+      ],
+      "validation_targets": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json"
+      ],
+      "related_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/registry.py"
+      ],
+      "notes": "The approved first closeout-coordination slice stays fixed to the five shared coordination outputs only and does not authorize tracker-family convergence, task-lifecycle changes, planning-scaffold changes, or broader Phase 4 rollout."
     }
   ]
 }

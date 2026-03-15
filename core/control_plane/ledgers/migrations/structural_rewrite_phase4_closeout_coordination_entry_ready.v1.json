@@ -1,0 +1,24 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase4_closeout_coordination_entry_ready.v1",
+  "title": "Structural Rewrite Phase 4 Closeout Coordination Entry Ready",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-15T03:11:32Z",
+  "from_state": "phase4_planning_projection_snapshot_review_passed",
+  "to_state": "phase4_closeout_coordination_entry_ready",
+  "summary": "Records the closed first Phase 4 slice outcome review by naming the bounded closeout-coordination entry package as the next rewrite checkpoint.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+    "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/indexes/coordination/coordination_index.v1.json",
+    "core/control_plane/indexes/planning/planning_catalog.v1.json",
+    "core/python/src/watchtower_core/closeout/initiative.py",
+    "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+    "core/python/src/watchtower_core/repo_ops/sync/registry.py"
+  ],
+  "notes": "This transition closes the first bounded Phase 4 slice review, names InitiativeCloseoutService as the only remaining direct write-path outlier in the reviewed consumer boundary, and does not authorize further Phase 4 implementation."
+}

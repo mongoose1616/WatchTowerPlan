@@ -1,0 +1,513 @@
+"""Private shared helpers for trace-scoped planning projection snapshots."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Protocol
+
+from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.models import (
+    AcceptanceContract,
+    DecisionIndexEntry,
+    DesignDocumentIndexEntry,
+    InitiativeActiveTaskSummary,
+    PlanningCoordinationSection,
+    PrdIndexEntry,
+    TaskIndexEntry,
+    TraceabilityEntry,
+    ValidationEvidenceArtifact,
+)
+
+VALIDATE_ACCEPTANCE_COMMAND_DOC = (
+    "docs/commands/core_python/watchtower_core_validate_acceptance.md"
+)
+CLOSEOUT_INITIATIVE_COMMAND_DOC = (
+    "docs/commands/core_python/watchtower_core_closeout_initiative.md"
+)
+DESIGN_DIRECTORY = "docs/planning/design/features/"
+IMPLEMENTATION_PLAN_DIRECTORY = "docs/planning/design/implementation/"
+TASK_OPEN_DIRECTORY = "docs/planning/tasks/open/"
+
+TERMINAL_TASK_STATUSES = {"done", "cancelled"}
+TASK_STATUS_ORDER = {
+    "ready": 0,
+    "in_progress": 1,
+    "in_review": 2,
+    "backlog": 3,
+    "blocked": 4,
+}
+PRIORITY_ORDER = {
+    "critical": 0,
+    "high": 1,
+    "medium": 2,
+    "low": 3,
+}
+
+
+class _TraceLinkedEntry(Protocol):
+    """Protocol for index entries that carry a shared trace identifier."""
+
+    @property
+    def trace_id(self) -> str | None: ...
+
+
+@dataclass(frozen=True, slots=True)
+class TracePlanningProjectionSnapshot:
+    """Trace-scoped planning sources shared by initiative and catalog projections."""
+
+    trace_entry: TraceabilityEntry
+    prd_entries: tuple[PrdIndexEntry, ...] = ()
+    decision_entries: tuple[DecisionIndexEntry, ...] = ()
+    design_entries: tuple[DesignDocumentIndexEntry, ...] = ()
+    task_entries: tuple[TaskIndexEntry, ...] = ()
+    acceptance_contracts: tuple[AcceptanceContract, ...] = ()
+    validation_evidence: tuple[ValidationEvidenceArtifact, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class TracePlanningCoordinationSnapshot:
+    """Private coordination projection derived from one trace snapshot."""
+
+    current_phase: str
+    key_surface_path: str
+    next_action: str
+    next_surface_path: str
+    open_task_count: int
+    blocked_task_count: int
+    primary_owner: str | None = None
+    active_owners: tuple[str, ...] = ()
+    active_task_ids: tuple[str, ...] = ()
+    active_task_summaries: tuple[InitiativeActiveTaskSummary, ...] = ()
+    blocked_by_task_ids: tuple[str, ...] = ()
+
+    def to_planning_coordination_section(self) -> PlanningCoordinationSection:
+        """Render the coordination snapshot into the public planning-catalog model."""
+
+        return PlanningCoordinationSection(
+            current_phase=self.current_phase,
+            key_surface_path=self.key_surface_path,
+            next_action=self.next_action,
+            next_surface_path=self.next_surface_path,
+            open_task_count=self.open_task_count,
+            blocked_task_count=self.blocked_task_count,
+            primary_owner=self.primary_owner,
+            active_owners=self.active_owners,
+            active_task_ids=self.active_task_ids,
+            active_task_summaries=self.active_task_summaries,
+            blocked_by_task_ids=self.blocked_by_task_ids,
+        )
+
+
+def build_trace_planning_projection_snapshots(
+    loader: ControlPlaneLoader,
+) -> tuple[TracePlanningProjectionSnapshot, ...]:
+    """Load all trace-scoped planning snapshots in traceability index order."""
+
+    traceability_index = loader.load_traceability_index()
+    prd_entries = _group_by_trace(loader.load_prd_index().entries)
+    decision_entries = _group_by_trace(loader.load_decision_index().entries)
+    design_entries = _group_by_trace(loader.load_design_document_index().entries)
+    task_entries = _group_by_trace(loader.load_task_index().entries)
+    acceptance_contracts = _group_by_trace(loader.load_acceptance_contracts())
+    validation_evidence = _group_by_trace(loader.load_validation_evidence_artifacts())
+
+    return tuple(
+        TracePlanningProjectionSnapshot(
+            trace_entry=trace_entry,
+            prd_entries=prd_entries.get(trace_entry.trace_id, ()),
+            decision_entries=decision_entries.get(trace_entry.trace_id, ()),
+            design_entries=design_entries.get(trace_entry.trace_id, ()),
+            task_entries=task_entries.get(trace_entry.trace_id, ()),
+            acceptance_contracts=acceptance_contracts.get(trace_entry.trace_id, ()),
+            validation_evidence=validation_evidence.get(trace_entry.trace_id, ()),
+        )
+        for trace_entry in traceability_index.entries
+    )
+
+
+def build_trace_planning_coordination_snapshot(
+    snapshot: TracePlanningProjectionSnapshot,
+) -> TracePlanningCoordinationSnapshot:
+    """Derive the shared coordination projection for one trace snapshot."""
+
+    active_tasks = tuple(
+        entry
+        for entry in snapshot.task_entries
+        if entry.task_status not in TERMINAL_TASK_STATUSES
+    )
+    task_lookup = {entry.task_id: entry for entry in snapshot.task_entries}
+    active_owners = tuple(sorted({entry.owner for entry in active_tasks}))
+    primary_owner = active_owners[0] if len(active_owners) == 1 else None
+    blocked_by_task_ids = tuple(
+        sorted(
+            {
+                task_id
+                for entry in active_tasks
+                for task_id in (
+                    *entry.blocked_by,
+                    *_unresolved_dependency_ids(entry, task_lookup),
+                )
+            }
+        )
+    )
+    blocked_task_count = sum(1 for entry in active_tasks if _task_is_blocked(entry, task_lookup))
+    active_task_summaries = tuple(
+        InitiativeActiveTaskSummary.from_document(item)
+        for item in _build_active_task_summaries(active_tasks, task_lookup)
+    )
+    current_phase = _determine_current_phase(
+        trace_entry=snapshot.trace_entry,
+        prd_entries=snapshot.prd_entries,
+        design_entries=snapshot.design_entries,
+        active_tasks=active_tasks,
+    )
+    key_surface_path = _key_surface_path(
+        trace_entry=snapshot.trace_entry,
+        prd_entries=snapshot.prd_entries,
+        design_entries=snapshot.design_entries,
+        decision_entries=snapshot.decision_entries,
+        task_entries=snapshot.task_entries,
+    )
+    next_action, next_surface_path = _next_step(
+        current_phase=current_phase,
+        initiative_status=snapshot.trace_entry.initiative_status,
+        active_tasks=active_tasks,
+        task_lookup=task_lookup,
+        blocked_task_count=blocked_task_count,
+        key_surface_path=key_surface_path,
+    )
+    return TracePlanningCoordinationSnapshot(
+        current_phase=current_phase,
+        key_surface_path=key_surface_path,
+        next_action=next_action,
+        next_surface_path=next_surface_path,
+        open_task_count=len(active_tasks),
+        blocked_task_count=blocked_task_count,
+        primary_owner=primary_owner,
+        active_owners=active_owners,
+        active_task_ids=tuple(entry.task_id for entry in active_tasks),
+        active_task_summaries=active_task_summaries,
+        blocked_by_task_ids=blocked_by_task_ids,
+    )
+
+
+def _group_by_trace[T: _TraceLinkedEntry](entries: tuple[T, ...]) -> dict[str, tuple[T, ...]]:
+    grouped: dict[str, list[T]] = {}
+    for entry in entries:
+        trace_id = entry.trace_id
+        if not trace_id:
+            continue
+        grouped.setdefault(trace_id, []).append(entry)
+    return {trace_id: tuple(values) for trace_id, values in grouped.items()}
+
+
+def _feature_designs(
+    entries: tuple[DesignDocumentIndexEntry, ...],
+) -> tuple[DesignDocumentIndexEntry, ...]:
+    return tuple(entry for entry in entries if entry.family == "feature_design")
+
+
+def _implementation_plans(
+    entries: tuple[DesignDocumentIndexEntry, ...],
+) -> tuple[DesignDocumentIndexEntry, ...]:
+    return tuple(entry for entry in entries if entry.family == "implementation_plan")
+
+
+def _determine_current_phase(
+    *,
+    trace_entry: TraceabilityEntry,
+    prd_entries: tuple[PrdIndexEntry, ...],
+    design_entries: tuple[DesignDocumentIndexEntry, ...],
+    active_tasks: tuple[TaskIndexEntry, ...],
+) -> str:
+    if trace_entry.initiative_status != "active":
+        return "closed"
+
+    feature_designs = _feature_designs(design_entries)
+    implementation_plans = _implementation_plans(design_entries)
+    if active_tasks and _has_non_bootstrap_active_tasks(active_tasks):
+        return "execution"
+    if active_tasks and _has_only_bootstrap_active_tasks(active_tasks):
+        return _determine_pre_execution_phase(
+            prd_entries=prd_entries,
+            feature_designs=feature_designs,
+            implementation_plans=implementation_plans,
+        )
+
+    has_validation_inputs = bool(
+        trace_entry.acceptance_ids or trace_entry.acceptance_contract_ids
+    )
+    has_evidence = bool(trace_entry.evidence_ids)
+
+    pre_execution_phase = _determine_pre_execution_phase(
+        prd_entries=prd_entries,
+        feature_designs=feature_designs,
+        implementation_plans=implementation_plans,
+    )
+    if pre_execution_phase == "prd":
+        return "prd"
+    if pre_execution_phase == "design":
+        return "design"
+    if (
+        pre_execution_phase == "implementation_planning"
+        and not has_validation_inputs
+        and not has_evidence
+    ):
+        return "implementation_planning"
+    if implementation_plans and has_validation_inputs and not has_evidence:
+        return "validation"
+    if has_evidence:
+        return "closeout"
+    return pre_execution_phase
+
+
+def _determine_pre_execution_phase(
+    *,
+    prd_entries: tuple[PrdIndexEntry, ...],
+    feature_designs: tuple[DesignDocumentIndexEntry, ...],
+    implementation_plans: tuple[DesignDocumentIndexEntry, ...],
+) -> str:
+    if prd_entries and not feature_designs:
+        return "prd"
+    if feature_designs and not implementation_plans:
+        return "design"
+    if implementation_plans:
+        return "implementation_planning"
+    if feature_designs:
+        return "design"
+    if prd_entries:
+        return "prd"
+    return "closeout"
+
+
+def _has_non_bootstrap_active_tasks(active_tasks: tuple[TaskIndexEntry, ...]) -> bool:
+    return any(not _task_is_bootstrap(entry) for entry in active_tasks)
+
+
+def _has_only_bootstrap_active_tasks(active_tasks: tuple[TaskIndexEntry, ...]) -> bool:
+    return bool(active_tasks) and all(_task_is_bootstrap(entry) for entry in active_tasks)
+
+
+def _task_is_bootstrap(entry: TaskIndexEntry) -> bool:
+    """Bootstrap tasks keep a trace owned during planning but do not imply execution."""
+
+    return ".bootstrap." in entry.task_id
+
+
+def _key_surface_path(
+    *,
+    trace_entry: TraceabilityEntry,
+    prd_entries: tuple[PrdIndexEntry, ...],
+    design_entries: tuple[DesignDocumentIndexEntry, ...],
+    decision_entries: tuple[DecisionIndexEntry, ...],
+    task_entries: tuple[TaskIndexEntry, ...],
+) -> str:
+    if prd_entries:
+        return sorted(entry.doc_path for entry in prd_entries)[0]
+    feature_designs = _feature_designs(design_entries)
+    if feature_designs:
+        return sorted(entry.doc_path for entry in feature_designs)[0]
+    implementation_plans = _implementation_plans(design_entries)
+    if implementation_plans:
+        return sorted(entry.doc_path for entry in implementation_plans)[0]
+    if decision_entries:
+        return sorted(entry.doc_path for entry in decision_entries)[0]
+    if task_entries:
+        return sorted(entry.doc_path for entry in task_entries)[0]
+    if trace_entry.related_paths:
+        return sorted(trace_entry.related_paths)[0]
+    return "docs/planning/initiatives/initiative_tracking.md"
+
+
+def _next_step(
+    *,
+    current_phase: str,
+    initiative_status: str,
+    active_tasks: tuple[TaskIndexEntry, ...],
+    task_lookup: dict[str, TaskIndexEntry],
+    blocked_task_count: int,
+    key_surface_path: str,
+) -> tuple[str, str]:
+    if initiative_status != "active":
+        return (
+            f"No further default action. Initiative is {initiative_status}.",
+            key_surface_path,
+        )
+    if current_phase == "prd":
+        return (
+            (
+                "Create or update a feature design so the initiative has a "
+                "reviewed technical direction."
+            ),
+            DESIGN_DIRECTORY,
+        )
+    if current_phase == "design":
+        return (
+            (
+                "Create or update an implementation plan so the approved "
+                "design becomes executable work."
+            ),
+            IMPLEMENTATION_PLAN_DIRECTORY,
+        )
+    if current_phase == "implementation_planning":
+        return (
+            (
+                "Create execution tasks and assign an owner so work can move "
+                "from planning into execution."
+            ),
+            TASK_OPEN_DIRECTORY,
+        )
+    if current_phase == "execution":
+        focus_task = _select_coordination_task(active_tasks, task_lookup)
+        next_task_path = focus_task.doc_path if focus_task is not None else TASK_OPEN_DIRECTORY
+        if blocked_task_count > 0:
+            return (
+                (
+                    "Resolve blockers on the active task set and keep task "
+                    "state current before opening new follow-up work."
+                ),
+                next_task_path,
+            )
+        if any(entry.task_status in {"backlog", "ready"} for entry in active_tasks):
+            return (
+                (
+                    "Start or continue the active task set and keep the "
+                    "current task records aligned with execution progress."
+                ),
+                next_task_path,
+            )
+        if any(entry.task_status == "in_review" for entry in active_tasks):
+            return (
+                (
+                    "Review the active task set, land any follow-up changes, "
+                    "and close completed tasks explicitly."
+                ),
+                next_task_path,
+            )
+        return (
+            (
+                "Continue the active task set and keep planning, traceability, "
+                "and derived surfaces aligned as work lands."
+            ),
+            next_task_path,
+        )
+    if current_phase == "validation":
+        return (
+            (
+                "Run initiative validation and record durable evidence before "
+                "moving the initiative into closeout."
+            ),
+            VALIDATE_ACCEPTANCE_COMMAND_DOC,
+        )
+    if current_phase == "closeout":
+        return (
+            (
+                "Run initiative closeout or create explicit follow-up tasks "
+                "before marking the initiative complete."
+            ),
+            CLOSEOUT_INITIATIVE_COMMAND_DOC,
+        )
+    return (
+        "Inspect the initiative source surfaces and decide the next bounded planning step.",
+        key_surface_path,
+    )
+
+
+def _build_active_task_summaries(
+    active_tasks: tuple[TaskIndexEntry, ...],
+    task_lookup: dict[str, TaskIndexEntry],
+) -> list[dict[str, object]]:
+    summaries: list[dict[str, object]] = []
+    for entry in sorted(
+        active_tasks,
+        key=lambda item: _coordination_task_sort_key(item, task_lookup),
+    ):
+        summary: dict[str, object] = {
+            "task_id": entry.task_id,
+            "title": entry.title,
+            "task_status": entry.task_status,
+            "priority": entry.priority,
+            "owner": entry.owner,
+            "doc_path": entry.doc_path,
+            "is_actionable": _task_is_actionable(entry, task_lookup),
+        }
+        if entry.blocked_by:
+            summary["blocked_by"] = list(entry.blocked_by)
+        if entry.depends_on:
+            summary["depends_on"] = list(entry.depends_on)
+        summaries.append(summary)
+    return summaries
+
+
+def _select_coordination_task(
+    active_tasks: tuple[TaskIndexEntry, ...],
+    task_lookup: dict[str, TaskIndexEntry],
+) -> TaskIndexEntry | None:
+    actionable_tasks = [
+        entry for entry in active_tasks if _task_is_actionable(entry, task_lookup)
+    ]
+    if actionable_tasks:
+        return sorted(
+            actionable_tasks,
+            key=lambda item: _coordination_task_sort_key(item, task_lookup),
+        )[0]
+    if not active_tasks:
+        return None
+    return sorted(
+        active_tasks,
+        key=lambda item: _blocked_task_sort_key(item, task_lookup),
+    )[0]
+
+
+def _coordination_task_sort_key(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> tuple[int, int, int, str]:
+    return (
+        0 if _task_is_actionable(entry, task_lookup) else 1,
+        TASK_STATUS_ORDER.get(entry.task_status, 99),
+        PRIORITY_ORDER.get(entry.priority, 99),
+        entry.task_id,
+    )
+
+
+def _blocked_task_sort_key(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> tuple[int, int, int, str]:
+    return (
+        0 if _task_is_blocked(entry, task_lookup) else 1,
+        PRIORITY_ORDER.get(entry.priority, 99),
+        TASK_STATUS_ORDER.get(entry.task_status, 99),
+        entry.task_id,
+    )
+
+
+def _task_is_actionable(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> bool:
+    return not _task_is_blocked(entry, task_lookup)
+
+
+def _task_is_blocked(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> bool:
+    return (
+        entry.task_status == "blocked"
+        or bool(entry.blocked_by)
+        or bool(_unresolved_dependency_ids(entry, task_lookup))
+    )
+
+
+def _unresolved_dependency_ids(
+    entry: TaskIndexEntry,
+    task_lookup: dict[str, TaskIndexEntry],
+) -> tuple[str, ...]:
+    unresolved: list[str] = []
+    for dependency_id in entry.depends_on:
+        dependency = task_lookup.get(dependency_id)
+        if dependency is None or dependency.task_status not in TERMINAL_TASK_STATUSES:
+            unresolved.append(dependency_id)
+    return tuple(unresolved)

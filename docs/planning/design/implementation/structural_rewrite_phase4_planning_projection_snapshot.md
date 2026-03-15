@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.implementation.structural_rewrite_phase4_planning_projection_snapshot"
 title: "Structural Rewrite Phase 4 Planning Projection Snapshot"
-summary: "Implements the first bounded Phase 4 slice by introducing a private trace-scoped planning projection snapshot behind initiative-index and planning-catalog sync."
+summary: "Implements the first bounded Phase 4 slice by introducing a private trace-scoped planning projection snapshot behind initiative-index and planning-catalog sync, then closes cleanly through an explicit outcome review."
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-14T17:49:25Z"
+updated_at: "2026-03-15T04:48:34Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -31,10 +31,10 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-14T17:49:25Z`
+- `Updated At`: `2026-03-15T04:48:34Z`
 
 ## Summary
-Implement the first bounded Phase 4 slice by introducing one private trace-scoped planning projection snapshot behind `InitiativeIndexSyncService` and `PlanningCatalogSyncService` without changing the five public planning-authority answers, the coordination-sync ordering, or the current mutation-path callers.
+Implement the first bounded Phase 4 slice by introducing one private trace-scoped planning projection snapshot behind `InitiativeIndexSyncService` and `PlanningCatalogSyncService` without changing the five public planning-authority answers, the coordination-sync ordering, or the current mutation-path callers, then close that slice through an explicit outcome review.
 
 ## Source Request or Design
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -57,11 +57,11 @@ Implement the first bounded Phase 4 slice by introducing one private trace-scope
 - If the private snapshot does not preserve parity cleanly, rollback restores the current per-family builders in `initiative_index.py` and `planning_catalog.py`.
 
 ## Current-State Context
-- `InitiativeIndexSyncService` currently groups PRD, decision, design, and task entries by trace and derives the current coordination section that downstream coordination and initiative trackers consume.
-- `PlanningCatalogSyncService` currently groups traceability, PRD, decision, design, task, acceptance-contract, and validation-evidence inputs by trace and rebuilds a second trace-scoped projection path for the deep planning read model.
-- `planning_projection_serialization.py` already centralizes payload rendering for initiative and planning projections, but it does not yet provide a shared trace-scoped source assembly or private runtime graph.
-- `CoordinationSyncService` rebuilds the coordination slice in this order: `task-index`, `traceability-index`, `initiative-index`, `planning-catalog`, `coordination-index`, `task-tracking`, `initiative-tracking`, and `coordination-tracking`.
-- `TaskLifecycleService.create`, `update`, and `transition` plus `PlanningScaffoldService.scaffold` and `bootstrap` already depend on that coordination rebuild path, and `InitiativeCloseoutService.close` separately rebuilds the same planning-projection chain plus adjacent trackers directly.
+- `core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py` now owns the shared trace-scoped planning source assembly and coordination projection needed by `initiative_index` and `planning_catalog`.
+- `InitiativeIndexSyncService` and `PlanningCatalogSyncService` now consume the same private snapshot and coordination derivation path, and direct unit coverage asserts that the planning-catalog coordination section matches the initiative projection.
+- `CoordinationSyncService` still rebuilds the coordination slice in this order: `task-index`, `traceability-index`, `initiative-index`, `planning-catalog`, `coordination-index`, `task-tracking`, `initiative-tracking`, and `coordination-tracking`.
+- `TaskLifecycleService`, `PlanningScaffoldService`, and `InitiativeCloseoutService` still consume that same public projection boundary, and the bounded sync plus closeout suite, `watchtower-core doctor --format json`, `watchtower-core validate all`, and the planning authority or coordination queries all pass after the slice lands.
+- The bounded slice outcome review has now passed, the closeout-coordination entry review has now approved one bounded successor slice, and the trace has moved to [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md) plus [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md) instead of broader Phase 4 rollout.
 
 ## Internal Standards and Canonical References Applied
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): the slice must name one exact builder seam, publish authored truth and rollback notes, and stop at an explicit successor review.
@@ -84,6 +84,12 @@ Implement the first bounded Phase 4 slice by introducing one private trace-scope
 4. Extend direct sync coverage for `initiative_index`, `planning_catalog`, and coordination or closeout-adjacent parity expectations touched by the new private snapshot.
 5. Rebuild the affected planning surfaces, validate the repo, and stop with one explicit Phase 4 outcome-review task instead of broadening the rewrite.
 
+## Implementation Outcome
+- The slice now publishes `core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py` as the single private trace-scoped planning projection helper and keeps the shared graph behind the existing public planning answers.
+- `PlanningCatalogSyncService` no longer depends on a separately loaded initiative index to build its coordination section; both sync services now derive that shared coordination view from the same trace snapshot.
+- `core/python/tests/unit/test_planning_catalog_sync.py` now includes direct parity coverage for the initiative-versus-planning coordination projection, and the bounded sync plus closeout suite passed `18` tests before the repo-wide sync and validation reruns.
+- The slice closed cleanly through [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md), the successor closeout-coordination entry review passed through [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md), and the trace now points to one bounded closeout coordination sync-reuse slice rather than broader rollout.
+
 ## Risks
 - The private snapshot can become an accidental shadow authority if the slice starts treating it as public truth instead of a runtime composition helper.
 - `initiative_index` and `planning_catalog` can drift apart if the shared snapshot does not preserve the same phase, owner, task, and related-path semantics the current per-family builders emit.
@@ -105,8 +111,13 @@ Implement the first bounded Phase 4 slice by introducing one private trace-scope
 ## References
 - [structural_rewrite_phase4_shared_projection_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
+- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
+- [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
+- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
+- [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
 
 ## Updated At
-- `2026-03-14T17:49:25Z`
+- `2026-03-15T04:48:34Z`
