@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse"
 title: "Structural Rewrite Phase 4 Closeout Coordination Sync Reuse"
-summary: "Implements one bounded Phase 4 slice by routing InitiativeCloseoutService through CoordinationSyncService for the shared planning and coordination outputs after the traceability write while keeping the closeout result contract explicit, then stops at an explicit outcome review."
+summary: "Implements one bounded Phase 4 slice by routing InitiativeCloseoutService through CoordinationSyncService for the shared planning and coordination outputs after the traceability write while keeping the closeout result contract explicit, then closes through an explicit outcome review that hands the trace to the next bounded entry checkpoint."
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T06:18:27Z"
+updated_at: "2026-03-15T07:14:50Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -31,10 +31,10 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-15T06:18:27Z`
+- `Updated At`: `2026-03-15T07:14:50Z`
 
 ## Summary
-Implement one bounded Phase 4 slice by routing `InitiativeCloseoutService.close` through `CoordinationSyncService` for the shared planning and coordination outputs after the traceability write while preserving the five public planning-authority answers, the current closeout command result contract, and the current `TaskLifecycleService` and `PlanningScaffoldService` write behavior, then stop at an explicit outcome review.
+Implement one bounded Phase 4 slice by routing `InitiativeCloseoutService.close` through `CoordinationSyncService` for the shared planning and coordination outputs after the traceability write while preserving the five public planning-authority answers, the current closeout command result contract, and the current `TaskLifecycleService` and `PlanningScaffoldService` write behavior, then close through an explicit outcome review that names the next bounded checkpoint.
 
 ## Source Request or Design
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md)
@@ -61,7 +61,7 @@ Implement one bounded Phase 4 slice by routing `InitiativeCloseoutService.close`
 - `InitiativeCloseoutService.close` now writes traceability first, then reuses `CoordinationSyncService.run_closeout_shared_outputs` for exactly `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking` before refreshing the direct PRD, decision, and design tracking outputs.
 - The closeout CLI payload still publishes explicit output-path fields for all shared and direct outputs, so the stable closeout result contract remains broader than the shared coordination seam alone.
 - `TaskLifecycleService` and `PlanningScaffoldService` still converge on `CoordinationSyncService.run(write=True)` for the full coordination slice, and the bounded closeout helper leaves those callers unchanged while isolating the closeout path as the only touched outlier.
-- The implementation slice has landed and now hands the trace to [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md) instead of broader Phase 4 rollout.
+- The implementation slice has landed and now closes through [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md), which keeps broader Phase 4 rollout blocked and hands the trace to [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md).
 
 ## Approved Seam and Result-Contract Boundary
 ### In-seam outputs for this slice
@@ -102,7 +102,7 @@ Implement one bounded Phase 4 slice by routing `InitiativeCloseoutService.close`
 - `InitiativeCloseoutService.close` now records the traceability write as the authored-truth step, then delegates the approved five shared outputs to `CoordinationSyncService.run_closeout_shared_outputs` so the closeout path reuses the same coordination rebuild machinery without widening into `task-index`, `traceability-index`, or `task-tracking`.
 - `InitiativeCloseoutResult` and the closeout CLI payload still expose `traceability_output_path`, the five shared coordination output paths, and the direct `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` fields without contract drift.
 - `core/python/tests/unit/test_initiative_closeout.py` now asserts the exact shared coordination target subset and the preserved direct tracker outputs, and the closeout-plus-sync regression suite passed `17` tests before the repo-wide reruns.
-- The slice stops at [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md), keeping broader mutation-path convergence, tracker-family convergence, and later-phase rewrite work blocked pending explicit review.
+- The slice closes through [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md), keeping broader mutation-path convergence, tracker-family convergence, and later-phase rewrite work blocked pending explicit review of the new closeout-tracking entry package.
 
 ## Risks
 - Reusing `CoordinationSyncService` can create hidden behavior drift if the closeout path stops matching the current coordination ordering or output-path contract.
@@ -131,9 +131,11 @@ Implement one bounded Phase 4 slice by routing `InitiativeCloseoutService.close`
 - [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
 - [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
+- [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
+- [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
 - [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md)
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
 
 ## Updated At
-- `2026-03-15T06:18:27Z`
+- `2026-03-15T07:14:50Z`

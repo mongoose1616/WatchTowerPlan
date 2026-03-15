@@ -2086,10 +2086,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "prd_id": "prd.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, and stops at its explicit outcome review.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, and hands the trace to one bounded Phase 4 closeout-tracking entry review.",
       "status": "active",
       "doc_path": "docs/planning/prds/structural_rewrite_program.md",
-      "updated_at": "2026-03-15T06:18:27Z",
+      "updated_at": "2026-03-15T07:35:59Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "requirement_ids": [
@@ -2109,7 +2109,8 @@
         "req.structural_rewrite_program.014",
         "req.structural_rewrite_program.015",
         "req.structural_rewrite_program.016",
-        "req.structural_rewrite_program.017"
+        "req.structural_rewrite_program.017",
+        "req.structural_rewrite_program.018"
       ],
       "acceptance_ids": [
         "ac.structural_rewrite_program.001",
@@ -2130,7 +2131,8 @@
         "ac.structural_rewrite_program.016",
         "ac.structural_rewrite_program.017",
         "ac.structural_rewrite_program.018",
-        "ac.structural_rewrite_program.019"
+        "ac.structural_rewrite_program.019",
+        "ac.structural_rewrite_program.020"
       ],
       "linked_design_ids": [
         "design.features.structural_rewrite_program"
@@ -2141,7 +2143,8 @@
         "design.implementation.structural_rewrite_phase4_shared_projection_entry",
         "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
         "design.implementation.structural_rewrite_phase4_closeout_coordination_entry",
-        "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse"
+        "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse",
+        "design.implementation.structural_rewrite_phase4_closeout_tracking_entry"
       ],
       "related_paths": [
         "docs/standards/",

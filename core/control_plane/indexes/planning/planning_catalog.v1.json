@@ -16999,15 +16999,15 @@
     {
       "trace_id": "trace.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, and stops at its explicit outcome review.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, and hands the trace to one bounded Phase 4 closeout-tracking entry review.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-15T06:18:27Z",
+      "updated_at": "2026-03-15T07:35:59Z",
       "coordination": {
         "current_phase": "execution",
         "key_surface_path": "docs/planning/prds/structural_rewrite_program.md",
         "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-        "next_surface_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "next_surface_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "open_task_count": 1,
         "blocked_task_count": 0,
         "primary_owner": "repository_maintainer",
@@ -17015,19 +17015,19 @@
           "repository_maintainer"
         ],
         "active_task_ids": [
-          "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014"
+          "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015"
         ],
         "active_task_summaries": [
           {
-            "task_id": "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014",
-            "title": "Review structural rewrite Phase 4 closeout coordination sync reuse outcome",
+            "task_id": "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015",
+            "title": "Review structural rewrite Phase 4 closeout tracking entry package",
             "task_status": "ready",
             "priority": "high",
             "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+            "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
             "is_actionable": true,
             "depends_on": [
-              "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.013"
+              "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014"
             ]
           }
         ]
@@ -17036,10 +17036,10 @@
         {
           "prd_id": "prd.structural_rewrite_program",
           "title": "Structural Rewrite Program PRD",
-          "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, and stops at its explicit outcome review.",
+          "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, and hands the trace to one bounded Phase 4 closeout-tracking entry review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/prds/structural_rewrite_program.md",
-          "updated_at": "2026-03-15T06:18:27Z",
+          "updated_at": "2026-03-15T07:35:59Z",
           "requirement_ids": [
             "req.structural_rewrite_program.001",
             "req.structural_rewrite_program.002",
@@ -17057,7 +17057,8 @@
             "req.structural_rewrite_program.014",
             "req.structural_rewrite_program.015",
             "req.structural_rewrite_program.016",
-            "req.structural_rewrite_program.017"
+            "req.structural_rewrite_program.017",
+            "req.structural_rewrite_program.018"
           ],
           "acceptance_ids": [
             "ac.structural_rewrite_program.001",
@@ -17078,7 +17079,8 @@
             "ac.structural_rewrite_program.016",
             "ac.structural_rewrite_program.017",
             "ac.structural_rewrite_program.018",
-            "ac.structural_rewrite_program.019"
+            "ac.structural_rewrite_program.019",
+            "ac.structural_rewrite_program.020"
           ],
           "linked_design_ids": [
             "design.features.structural_rewrite_program"
@@ -17089,7 +17091,8 @@
             "design.implementation.structural_rewrite_phase4_shared_projection_entry",
             "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
             "design.implementation.structural_rewrite_phase4_closeout_coordination_entry",
-            "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse"
+            "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse",
+            "design.implementation.structural_rewrite_phase4_closeout_tracking_entry"
           ]
         }
       ],
@@ -17098,10 +17101,10 @@
           "document_id": "design.features.structural_rewrite_program",
           "family": "feature_design",
           "title": "Structural Rewrite Program Feature Design",
-          "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, landing one bounded Phase 3 command companion normalization slice, closing the first Phase 4 slice and outcome review explicitly, approving the closeout-coordination entry review, landing one bounded Phase 4 closeout coordination sync-reuse slice, and stopping at its explicit outcome review.",
+          "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, landing one bounded Phase 3 command companion normalization slice, closing the first Phase 4 slice and outcome review explicitly, approving the closeout-coordination entry review, landing one bounded Phase 4 closeout coordination sync-reuse slice, closing that slice through explicit outcome review, and handing the trace to one bounded Phase 4 closeout-tracking entry review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/structural_rewrite_program.md",
-          "updated_at": "2026-03-15T06:18:27Z"
+          "updated_at": "2026-03-15T07:14:50Z"
         },
         {
           "document_id": "design.implementation.structural_rewrite_artifact_role_registry_pilot",
@@ -17156,7 +17159,7 @@
           "summary": "Defines the bounded Phase 4 checkpoint for aligning the initiative-closeout write path with the existing coordination-sync orchestration after the first private planning projection snapshot slice passed review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
-          "updated_at": "2026-03-15T06:18:27Z",
+          "updated_at": "2026-03-15T07:14:50Z",
           "source_paths": [
             "docs/planning/design/features/structural_rewrite_program.md",
             "docs/planning/prds/structural_rewrite_program.md",
@@ -17168,10 +17171,10 @@
           "document_id": "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse",
           "family": "implementation_plan",
           "title": "Structural Rewrite Phase 4 Closeout Coordination Sync Reuse",
-          "summary": "Implements one bounded Phase 4 slice by routing InitiativeCloseoutService through CoordinationSyncService for the shared planning and coordination outputs after the traceability write while keeping the closeout result contract explicit, then stops at an explicit outcome review.",
+          "summary": "Implements one bounded Phase 4 slice by routing InitiativeCloseoutService through CoordinationSyncService for the shared planning and coordination outputs after the traceability write while keeping the closeout result contract explicit, then closes through an explicit outcome review that hands the trace to the next bounded entry checkpoint.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-          "updated_at": "2026-03-15T06:18:27Z",
+          "updated_at": "2026-03-15T07:14:50Z",
           "source_paths": [
             "docs/planning/design/features/structural_rewrite_program.md",
             "docs/planning/prds/structural_rewrite_program.md",
@@ -17181,13 +17184,28 @@
           ]
         },
         {
+          "document_id": "design.implementation.structural_rewrite_phase4_closeout_tracking_entry",
+          "family": "implementation_plan",
+          "title": "Structural Rewrite Phase 4 Closeout Tracking Entry Package",
+          "summary": "Defines the bounded next Phase 4 checkpoint for reviewing the remaining direct PRD, decision, and design tracking refresh step in InitiativeCloseoutService after the closeout coordination sync-reuse slice passed review.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
+          "updated_at": "2026-03-15T07:14:50Z",
+          "source_paths": [
+            "docs/planning/design/features/structural_rewrite_program.md",
+            "docs/planning/prds/structural_rewrite_program.md",
+            "docs/planning/design/implementation/structural_rewrite_program.md",
+            "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md"
+          ]
+        },
+        {
           "document_id": "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
           "family": "implementation_plan",
           "title": "Structural Rewrite Phase 4 Planning Projection Snapshot",
           "summary": "Implements the first bounded Phase 4 slice by introducing a private trace-scoped planning projection snapshot behind initiative-index and planning-catalog sync, then closes cleanly through an explicit outcome review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-          "updated_at": "2026-03-15T06:18:27Z",
+          "updated_at": "2026-03-15T07:14:50Z",
           "source_paths": [
             "docs/planning/design/features/structural_rewrite_program.md",
             "docs/planning/prds/structural_rewrite_program.md",
@@ -17215,10 +17233,10 @@
           "document_id": "design.implementation.structural_rewrite_program",
           "family": "implementation_plan",
           "title": "Structural Rewrite Program Implementation Plan",
-          "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, the closed first Phase 4 slice and outcome review, the approved closeout-coordination entry review, the landed bounded Phase 4 closeout coordination sync-reuse slice, and the handoff into its explicit outcome review.",
+          "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, the closed first Phase 4 slice and outcome review, the approved closeout-coordination entry review, the landed bounded Phase 4 closeout coordination sync-reuse slice, the closed outcome review for that slice, and the handoff into the bounded closeout-tracking entry review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/structural_rewrite_program.md",
-          "updated_at": "2026-03-15T06:18:27Z",
+          "updated_at": "2026-03-15T07:14:50Z",
           "source_paths": [
             "docs/planning/design/features/structural_rewrite_program.md",
             "docs/planning/prds/structural_rewrite_program.md"
@@ -17546,7 +17564,7 @@
           ],
           "applies_to": [
             "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-            "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+            "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
             "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
@@ -17565,12 +17583,12 @@
           "title": "Review structural rewrite Phase 4 closeout coordination sync reuse outcome",
           "summary": "Review the bounded Phase 4 closeout coordination sync-reuse slice, confirm the approved post-traceability seam held parity and result-contract boundaries, and decide whether broader rewrite work remains blocked or may proceed to one new bounded checkpoint.",
           "artifact_status": "active",
-          "task_status": "ready",
+          "task_status": "done",
           "task_kind": "governance",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
-          "updated_at": "2026-03-15T06:18:27Z",
+          "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+          "updated_at": "2026-03-15T07:14:50Z",
           "depends_on": [
             "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.013"
           ],
@@ -17584,10 +17602,13 @@
           "applies_to": [
             "docs/planning/design/implementation/structural_rewrite_program.md",
             "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+            "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
             "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
             "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
+            "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
+            "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
             "core/control_plane/indexes/coordination/coordination_index.v1.json",
             "core/control_plane/indexes/initiatives/initiative_index.v1.json",
             "core/control_plane/indexes/planning/planning_catalog.v1.json",
@@ -17600,6 +17621,47 @@
             "core/python/tests/unit/test_initiative_index_sync.py",
             "core/python/tests/unit/test_planning_catalog_sync.py",
             "core/python/tests/unit/test_coordination_index_sync.py"
+          ]
+        },
+        {
+          "task_id": "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015",
+          "title": "Review structural rewrite Phase 4 closeout tracking entry package",
+          "summary": "Review the bounded Phase 4 closeout-tracking entry package, confirm the public planning parity and closeout result-contract guardrails, and decide whether one bounded closeout tracker-refresh slice may begin.",
+          "artifact_status": "active",
+          "task_status": "ready",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+          "updated_at": "2026-03-15T07:14:50Z",
+          "depends_on": [
+            "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014"
+          ],
+          "related_ids": [
+            "prd.structural_rewrite_program",
+            "design.features.structural_rewrite_program",
+            "design.implementation.structural_rewrite_program",
+            "design.implementation.structural_rewrite_phase4_closeout_tracking_entry",
+            "contract.acceptance.structural_rewrite_program"
+          ],
+          "applies_to": [
+            "docs/planning/design/implementation/structural_rewrite_program.md",
+            "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+            "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
+            "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+            "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+            "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
+            "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
+            "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+            "core/control_plane/indexes/planning/planning_catalog.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/python/src/watchtower_core/closeout/initiative.py",
+            "core/python/src/watchtower_core/cli/closeout_handlers.py",
+            "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
+            "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+            "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+            "core/python/tests/unit/test_initiative_closeout.py"
           ]
         },
         {
@@ -17744,7 +17806,8 @@
             "ac.structural_rewrite_program.016",
             "ac.structural_rewrite_program.017",
             "ac.structural_rewrite_program.018",
-            "ac.structural_rewrite_program.019"
+            "ac.structural_rewrite_program.019",
+            "ac.structural_rewrite_program.020"
           ],
           "validation_targets": [
             "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
@@ -17762,6 +17825,7 @@
             "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
+            "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
@@ -17772,6 +17836,7 @@
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
+            "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
@@ -17807,6 +17872,7 @@
             "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
             "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
             "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+            "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
             "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
             "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
             "docs/planning/design/implementation/structural_rewrite_program.md",
@@ -17820,11 +17886,12 @@
             "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
             "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
             "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+            "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
             "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
             "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
             "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
             "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-            "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+            "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
             "docs/standards/governance/rewrite_execution_control_standard.md",
             "docs/standards/governance/rewrite_surface_classification_standard.md"
           ],
@@ -17843,7 +17910,10 @@
             "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
             "core/python/src/watchtower_core/repo_ops/planning_scaffold_specs.py",
             "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+            "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+            "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
             "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
             "core/python/src/watchtower_core/repo_ops/sync/registry.py",
             "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
             "core/python/src/watchtower_core/sync/README.md",
@@ -18016,6 +18086,31 @@
           ]
         },
         {
+          "evidence_id": "evidence.structural_rewrite_program.phase4_closeout_tracking_entry_ready",
+          "title": "Structural Rewrite Phase 4 Closeout Tracking Entry Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-15T07:14:50Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
+          "check_ids": [
+            "check.structural_rewrite_program.phase4_closeout_sync_reuse_outcome_review_approval",
+            "check.structural_rewrite_program.phase4_closeout_shared_seam_reaffirmed",
+            "check.structural_rewrite_program.phase4_closeout_tracking_entry_package_published",
+            "check.structural_rewrite_program.phase4_closeout_tracking_outlier_named"
+          ],
+          "acceptance_ids": [
+            "ac.structural_rewrite_program.004",
+            "ac.structural_rewrite_program.019",
+            "ac.structural_rewrite_program.020"
+          ],
+          "related_paths": [
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md"
+          ]
+        },
+        {
           "evidence_id": "evidence.structural_rewrite_program.phase4_planning_projection_snapshot",
           "title": "Structural Rewrite Phase 4 Planning Projection Snapshot Validation Evidence",
           "artifact_status": "active",
@@ -18133,6 +18228,7 @@
         "design.implementation.structural_rewrite_phase3_command_companion_source_surface_normalization",
         "design.implementation.structural_rewrite_phase4_closeout_coordination_entry",
         "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse",
+        "design.implementation.structural_rewrite_phase4_closeout_tracking_entry",
         "design.implementation.structural_rewrite_phase4_planning_projection_snapshot",
         "design.implementation.structural_rewrite_phase4_shared_projection_entry",
         "design.implementation.structural_rewrite_program"
@@ -18149,6 +18245,7 @@
         "task.structural_rewrite_program.phase4_closeout_coordination_entry_review.012",
         "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.013",
         "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014",
+        "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015",
         "task.structural_rewrite_program.phase4_entry_review.009",
         "task.structural_rewrite_program.phase4_planning_projection_snapshot.010",
         "task.structural_rewrite_program.phase4_planning_projection_snapshot_review.011"
@@ -18170,7 +18267,8 @@
         "req.structural_rewrite_program.014",
         "req.structural_rewrite_program.015",
         "req.structural_rewrite_program.016",
-        "req.structural_rewrite_program.017"
+        "req.structural_rewrite_program.017",
+        "req.structural_rewrite_program.018"
       ],
       "acceptance_ids": [
         "ac.structural_rewrite_program.001",
@@ -18191,7 +18289,8 @@
         "ac.structural_rewrite_program.016",
         "ac.structural_rewrite_program.017",
         "ac.structural_rewrite_program.018",
-        "ac.structural_rewrite_program.019"
+        "ac.structural_rewrite_program.019",
+        "ac.structural_rewrite_program.020"
       ],
       "acceptance_contract_ids": [
         "contract.acceptance.structural_rewrite_program"
@@ -18204,6 +18303,7 @@
         "evidence.structural_rewrite_program.phase4_closeout_coordination_entry_ready",
         "evidence.structural_rewrite_program.phase4_closeout_coordination_sync_reuse",
         "evidence.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_ready",
+        "evidence.structural_rewrite_program.phase4_closeout_tracking_entry_ready",
         "evidence.structural_rewrite_program.phase4_planning_projection_snapshot",
         "evidence.structural_rewrite_program.phase4_planning_projection_snapshot_ready",
         "evidence.structural_rewrite_program.phase4_shared_projection_entry_ready"
@@ -18231,6 +18331,7 @@
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
@@ -18242,6 +18343,7 @@
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
@@ -18272,8 +18374,11 @@
         "core/python/src/watchtower_core/repo_ops/sync/",
         "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
         "core/python/src/watchtower_core/repo_ops/sync/registry.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
         "core/python/src/watchtower_core/sync/README.md",
@@ -18303,6 +18408,7 @@
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
@@ -18320,11 +18426,12 @@
         "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
         "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/governance/",
@@ -18338,7 +18445,7 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Validation evidence for the completed bounded structural rewrite Phase 4 closeout coordination sync-reuse slice."
+      "notes": "Validation evidence for the closed closeout coordination sync-reuse outcome review and the bounded closeout-tracking entry checkpoint."
     },
     {
       "trace_id": "trace.summary_surface_retirement",

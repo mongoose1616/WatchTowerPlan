@@ -4817,6 +4817,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
+      "kind": "file",
+      "surface_kind": "implementation_plan",
+      "summary": "Entry package for the bounded next Phase 4 checkpoint around the remaining direct closeout planning-tracker refresh step.",
+      "parent_path": "docs/planning/design/implementation/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
@@ -4840,7 +4850,7 @@
       "path": "docs/planning/design/implementation/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the structural rewrite program through the approved closeout-coordination entry review and handoff into the bounded sync-reuse slice.",
+      "summary": "Implementation plan for the structural rewrite program through the closed closeout sync-reuse outcome review and handoff into the bounded closeout-tracking entry review.",
       "parent_path": "docs/planning/design/implementation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -5100,6 +5110,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed review task for the bounded Phase 4 closeout coordination sync-reuse outcome.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
       "kind": "file",
       "surface_kind": "planning_doc",
@@ -5140,10 +5160,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+      "path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
       "kind": "file",
       "surface_kind": "planning_doc",
-      "summary": "Active review task for the bounded Phase 4 closeout coordination sync-reuse slice outcome.",
+      "summary": "Active review task for the bounded Phase 4 closeout-tracking entry package.",
       "parent_path": "docs/planning/tasks/open/",
       "maturity": "supporting",
       "priority": "medium",
