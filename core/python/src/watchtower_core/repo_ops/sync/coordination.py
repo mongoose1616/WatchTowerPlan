@@ -9,7 +9,18 @@ from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.sync.all import AllSyncResult, AllSyncService
 from watchtower_core.repo_ops.sync.registry import (
     COORDINATION_SYNC_GROUP,
+    SyncTargetSpec,
     sync_target_specs_for_group,
+)
+
+CLOSEOUT_SHARED_OUTPUT_TARGETS = frozenset(
+    {
+        "initiative-index",
+        "planning-catalog",
+        "coordination-index",
+        "initiative-tracking",
+        "coordination-tracking",
+    }
 )
 
 
@@ -26,8 +37,32 @@ class CoordinationSyncService(AllSyncService):
         write: bool = False,
         output_dir: Path | None = None,
     ) -> AllSyncResult:
-        runtime_loader = self._runtime_loader(output_dir)
         specs = sync_target_specs_for_group(COORDINATION_SYNC_GROUP)
+        return self._run_specs(specs=specs, write=write, output_dir=output_dir)
+
+    def run_closeout_shared_outputs(
+        self,
+        *,
+        write: bool = False,
+        output_dir: Path | None = None,
+    ) -> AllSyncResult:
+        """Run only the bounded shared closeout outputs approved for sync reuse."""
+
+        specs = tuple(
+            spec
+            for spec in sync_target_specs_for_group(COORDINATION_SYNC_GROUP)
+            if spec.target in CLOSEOUT_SHARED_OUTPUT_TARGETS
+        )
+        return self._run_specs(specs=specs, write=write, output_dir=output_dir)
+
+    def _run_specs(
+        self,
+        *,
+        specs: tuple[SyncTargetSpec, ...],
+        write: bool,
+        output_dir: Path | None,
+    ) -> AllSyncResult:
+        runtime_loader = self._runtime_loader(output_dir)
         self._prime_shared_coordination_sources(runtime_loader, specs)
         (
             shared_reference_index_document,

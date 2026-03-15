@@ -9,13 +9,10 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import TaskIndexEntry
-from watchtower_core.repo_ops.sync.coordination_index import CoordinationIndexSyncService
-from watchtower_core.repo_ops.sync.coordination_tracking import CoordinationTrackingSyncService
+from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
+from watchtower_core.repo_ops.sync.all import AllSyncRecord
 from watchtower_core.repo_ops.sync.decision_tracking import DecisionTrackingSyncService
 from watchtower_core.repo_ops.sync.design_tracking import DesignTrackingSyncService
-from watchtower_core.repo_ops.sync.initiative_index import InitiativeIndexSyncService
-from watchtower_core.repo_ops.sync.initiative_tracking import InitiativeTrackingSyncService
-from watchtower_core.repo_ops.sync.planning_catalog import PlanningCatalogSyncService
 from watchtower_core.repo_ops.sync.prd_tracking import PrdTrackingSyncService
 from watchtower_core.utils import utc_timestamp_now
 from watchtower_core.validation import AcceptanceReconciliationService
@@ -136,35 +133,31 @@ class InitiativeCloseoutService:
             traceability_output_path = str(traceability_path)
             self._loader.set_validated_document_override(TRACEABILITY_INDEX_PATH, document)
 
-            initiative_index_service = InitiativeIndexSyncService(self._loader)
-            initiative_index_output_path = str(
-                initiative_index_service.write_document(
-                    initiative_index_service.build_document()
-                )
+            coordination_records = {
+                record.target: record
+                for record in CoordinationSyncService(self._loader)
+                .run_closeout_shared_outputs(write=True)
+                .records
+            }
+            initiative_index_output_path = _required_output_path(
+                coordination_records,
+                "initiative-index",
             )
-            planning_catalog_service = PlanningCatalogSyncService(self._loader)
-            planning_catalog_output_path = str(
-                planning_catalog_service.write_document(
-                    planning_catalog_service.build_document()
-                )
+            planning_catalog_output_path = _required_output_path(
+                coordination_records,
+                "planning-catalog",
             )
-            coordination_index_service = CoordinationIndexSyncService(self._loader)
-            coordination_index_output_path = str(
-                coordination_index_service.write_document(
-                    coordination_index_service.build_document()
-                )
+            coordination_index_output_path = _required_output_path(
+                coordination_records,
+                "coordination-index",
             )
-            initiative_tracking_service = InitiativeTrackingSyncService(self._loader)
-            initiative_tracking_output_path = str(
-                initiative_tracking_service.write_document(
-                    initiative_tracking_service.build_document()
-                )
+            initiative_tracking_output_path = _required_output_path(
+                coordination_records,
+                "initiative-tracking",
             )
-            coordination_tracking_service = CoordinationTrackingSyncService(self._loader)
-            coordination_tracking_output_path = str(
-                coordination_tracking_service.write_document(
-                    coordination_tracking_service.build_document()
-                )
+            coordination_tracking_output_path = _required_output_path(
+                coordination_records,
+                "coordination-tracking",
             )
             prd_tracking_service = PrdTrackingSyncService(self._loader)
             prd_tracking_output_path = str(
@@ -257,3 +250,18 @@ class InitiativeCloseoutService:
             if task_entry.task_status not in TERMINAL_TASK_STATUSES
         )
         return tuple(open_task_ids)
+
+
+def _required_output_path(
+    records_by_target: dict[str, AllSyncRecord],
+    target: str,
+) -> str:
+    record = records_by_target.get(target)
+    if record is None:
+        raise RuntimeError(f"Closeout coordination sync did not run target: {target}")
+    output_path = getattr(record, "output_path", None)
+    if not isinstance(output_path, str) or not output_path:
+        raise RuntimeError(
+            f"Closeout coordination sync target {target} did not produce an output path."
+        )
+    return output_path

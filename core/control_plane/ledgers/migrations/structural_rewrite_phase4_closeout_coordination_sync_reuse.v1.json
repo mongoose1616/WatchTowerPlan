@@ -1,0 +1,28 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:migration-record:v1",
+  "id": "migration.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.v1",
+  "title": "Structural Rewrite Phase 4 Closeout Coordination Sync Reuse Migration",
+  "status": "active",
+  "subject": "planning.structural_rewrite_program",
+  "recorded_at": "2026-03-15T06:18:27Z",
+  "from_state": "phase4_closeout_coordination_sync_reuse_ready",
+  "to_state": "phase4_closeout_coordination_sync_reuse_published",
+  "summary": "Records the completed bounded Phase 4 closeout coordination sync-reuse slice by routing InitiativeCloseoutService through CoordinationSyncService for the five approved shared outputs after the traceability write while preserving the explicit closeout result contract.",
+  "related_paths": [
+    "docs/planning/design/implementation/structural_rewrite_program.md",
+    "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+    "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+    "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+    "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+    "core/control_plane/indexes/coordination/coordination_index.v1.json",
+    "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+    "core/control_plane/indexes/planning/planning_catalog.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
+    "core/python/src/watchtower_core/closeout/initiative.py",
+    "core/python/src/watchtower_core/cli/closeout_handlers.py",
+    "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+    "core/python/tests/unit/test_initiative_closeout.py",
+    "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json"
+  ],
+  "notes": "This transition preserves traceability as the pre-seam canonical write, limits the reused seam to initiative-index, planning-catalog, coordination-index, initiative-tracking, and coordination-tracking, keeps PRD, decision, and design tracking direct and explicit, and stops at a dedicated outcome-review task before any later bounded checkpoint opens."
+}

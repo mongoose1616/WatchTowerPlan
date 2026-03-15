@@ -29,7 +29,7 @@
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md"
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md"
       ],
       "subject_ids": [
         "task.structural_rewrite_program.phase4_closeout_coordination_entry_review.012",
@@ -83,7 +83,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "core/python/src/watchtower_core/closeout/initiative.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
         "core/python/src/watchtower_core/repo_ops/sync/registry.py"

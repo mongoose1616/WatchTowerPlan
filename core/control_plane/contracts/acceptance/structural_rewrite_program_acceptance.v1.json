@@ -385,7 +385,7 @@
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json"
       ],
@@ -406,9 +406,18 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
-        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json"
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/tests/unit/test_initiative_closeout.py",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "related_paths": [
         "core/control_plane/registries/authority_map/authority_map.v1.json",
@@ -417,7 +426,7 @@
         "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
         "core/python/src/watchtower_core/repo_ops/sync/registry.py"
       ],
-      "notes": "The approved first closeout-coordination slice stays fixed to the five shared coordination outputs only and does not authorize tracker-family convergence, task-lifecycle changes, planning-scaffold changes, or broader Phase 4 rollout."
+      "notes": "The approved first closeout-coordination slice stays fixed to the five shared coordination outputs only, stops at an explicit outcome-review task, and does not authorize tracker-family convergence, task-lifecycle changes, planning-scaffold changes, or broader Phase 4 rollout."
     }
   ]
 }

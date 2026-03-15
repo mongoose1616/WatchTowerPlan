@@ -16,4 +16,5 @@
 | `core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json` | Migration record for the completed first bounded Phase 4 planning projection snapshot slice. |
 | `core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json` | Migration record for the closed first Phase 4 slice outcome review that opens the bounded closeout-coordination entry checkpoint. |
 | `core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json` | Migration record for the approved closeout-coordination entry review that opens the bounded post-traceability coordination-sync reuse slice. |
+| `core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json` | Migration record for the completed bounded Phase 4 closeout coordination sync-reuse slice. |
 | `core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json` | Migration record for moving the structural rewrite from external prose into a traced Phase 0 and Phase 1 package with the Phase 2 review gate prepared. |

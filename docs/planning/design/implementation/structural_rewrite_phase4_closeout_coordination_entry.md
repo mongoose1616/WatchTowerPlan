@@ -6,7 +6,7 @@ summary: "Defines the bounded Phase 4 checkpoint for aligning the initiative-clo
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T05:06:58Z"
+updated_at: "2026-03-15T06:18:27Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -31,7 +31,7 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-15T05:06:58Z`
+- `Updated At`: `2026-03-15T06:18:27Z`
 
 ## Summary
 Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutService` write path with the existing coordination-sync orchestration after the first bounded private planning projection snapshot slice passed review, and keep broader Phase 4 and later-phase implementation blocked in this change set.
@@ -60,7 +60,7 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 - `TaskLifecycleService.create`, `update`, and `transition` plus `PlanningScaffoldService.scaffold` and `bootstrap` already rebuild the planning and coordination slice through `CoordinationSyncService.run(write=True)` when they mutate traced planning state.
 - `InitiativeCloseoutService.close` still writes traceability and then rebuilds the adjacent `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking` surfaces directly instead of flowing through the existing coordination-sync orchestration.
 - The closeout command also publishes a result contract with individual output-path fields for the traceability, initiative, planning-catalog, coordination, and tracker surfaces it rebuilds.
-- The `.012` review has now passed for one bounded successor slice, and the next active checkpoint is [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md) plus [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md), not broader Phase 4 rollout.
+- The `.012` review has now passed for one bounded successor slice, that slice has now landed through [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md), and the next active checkpoint is [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md), not broader Phase 4 rollout.
 
 ## Internal Standards and Canonical References Applied
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): the next Phase 4 checkpoint still needs a bounded package, explicit authored-truth and rollback declarations, and an explicit review outcome before any later implementation begins.
@@ -191,4 +191,4 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
 
 ## Updated At
-- `2026-03-15T05:06:58Z`
+- `2026-03-15T06:18:27Z`

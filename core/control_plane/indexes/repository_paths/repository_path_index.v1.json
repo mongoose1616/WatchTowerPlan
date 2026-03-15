@@ -1955,6 +1955,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the completed bounded Phase 4 closeout coordination sync-reuse slice.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
       "kind": "file",
       "surface_kind": "control_plane_ledger",
@@ -2222,6 +2232,16 @@
       "kind": "file",
       "surface_kind": "control_plane_ledger",
       "summary": "Validation evidence for the closed first Phase 4 slice outcome review and the bounded closeout-coordination entry checkpoint.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the completed bounded Phase 4 closeout coordination sync-reuse slice.",
       "parent_path": "core/control_plane/ledgers/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
@@ -5010,6 +5030,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed task for the bounded Phase 4 closeout coordination sync-reuse slice.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
       "kind": "file",
       "surface_kind": "planning_doc",
@@ -5110,10 +5140,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+      "path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
       "kind": "file",
       "surface_kind": "planning_doc",
-      "summary": "Active implementation task for the bounded Phase 4 closeout coordination sync-reuse slice.",
+      "summary": "Active review task for the bounded Phase 4 closeout coordination sync-reuse slice outcome.",
       "parent_path": "docs/planning/tasks/open/",
       "maturity": "supporting",
       "priority": "medium",

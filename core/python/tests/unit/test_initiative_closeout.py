@@ -14,6 +14,7 @@ from watchtower_core.control_plane.loader import (
     TRACEABILITY_INDEX_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -46,6 +47,7 @@ def _write_json(repo_root: Path, relative_path: str, document: dict[str, object]
 
 
 def test_initiative_closeout_updates_effective_timestamps_and_coordination_outputs(
+    monkeypatch,
     tmp_path: Path,
 ) -> None:
     repo_root = _build_closeout_fixture_repo(tmp_path)
@@ -68,6 +70,30 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
 
     closed_at = "2026-03-10T23:59:59Z"
     service = InitiativeCloseoutService(ControlPlaneLoader(repo_root))
+    shared_targets: dict[str, tuple[str, ...]] = {}
+    original_run_closeout_shared_outputs = (
+        CoordinationSyncService.run_closeout_shared_outputs
+    )
+
+    def wrapped_run_closeout_shared_outputs(
+        self: CoordinationSyncService,
+        *,
+        write: bool = False,
+        output_dir: Path | None = None,
+    ):
+        result = original_run_closeout_shared_outputs(
+            self,
+            write=write,
+            output_dir=output_dir,
+        )
+        shared_targets["targets"] = tuple(record.target for record in result.records)
+        return result
+
+    monkeypatch.setattr(
+        CoordinationSyncService,
+        "run_closeout_shared_outputs",
+        wrapped_run_closeout_shared_outputs,
+    )
     result = service.close(
         trace_id="trace.end_to_end_repo_review_and_rationalization",
         initiative_status="completed",
@@ -83,6 +109,16 @@ def test_initiative_closeout_updates_effective_timestamps_and_coordination_outpu
     assert result.coordination_index_output_path is not None
     assert result.initiative_tracking_output_path is not None
     assert result.coordination_tracking_output_path is not None
+    assert result.prd_tracking_output_path is not None
+    assert result.decision_tracking_output_path is not None
+    assert result.design_tracking_output_path is not None
+    assert shared_targets["targets"] == (
+        "initiative-index",
+        "planning-catalog",
+        "coordination-index",
+        "initiative-tracking",
+        "coordination-tracking",
+    )
 
     written_traceability = _load_json(repo_root, TRACEABILITY_INDEX_PATH)
     written_trace_entry = next(

@@ -1,0 +1,99 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.structural_rewrite_program.phase4_closeout_coordination_sync_reuse",
+  "title": "Structural Rewrite Phase 4 Closeout Coordination Sync Reuse Validation Evidence",
+  "status": "active",
+  "trace_id": "trace.structural_rewrite_program",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-15T06:18:27Z",
+  "source_prd_ids": [
+    "prd.structural_rewrite_program"
+  ],
+  "source_design_ids": [
+    "design.features.structural_rewrite_program"
+  ],
+  "source_plan_ids": [
+    "design.implementation.structural_rewrite_program",
+    "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.structural_rewrite_program"
+  ],
+  "checks": [
+    {
+      "check_id": "check.structural_rewrite_program.phase4_closeout_shared_outputs_reuse_coordination_sync",
+      "title": "Initiative closeout reuses coordination sync for the approved five shared outputs only",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
+        "core/python/tests/unit/test_initiative_closeout.py"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.019"
+      ],
+      "notes": "The closeout path now delegates initiative-index, planning-catalog, coordination-index, initiative-tracking, and coordination-tracking to CoordinationSyncService through one bounded helper while leaving task-index, traceability-index, and task-tracking outside the seam."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_closeout_result_contract_held",
+      "title": "The closeout result contract keeps traceability pre-seam and PRD, decision, and design tracking explicit",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/tests/unit/test_initiative_closeout.py"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.019"
+      ],
+      "notes": "traceability_output_path remains the authored-truth write, and prd_tracking_output_path, decision_tracking_output_path, and design_tracking_output_path remain direct post-sync outputs outside the approved seam."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_closeout_public_planning_boundary_unchanged",
+      "title": "The bounded closeout slice preserves the five public planning-authority answers and downstream coordination outputs",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/python/tests/unit/test_coordination_index_sync.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.004",
+        "ac.structural_rewrite_program.019"
+      ],
+      "notes": "The slice keeps the private planning snapshot boundary private and does not change the public planning-authority map, downstream coordination projections, or current mutation callers outside the approved closeout seam."
+    },
+    {
+      "check_id": "check.structural_rewrite_program.phase4_closeout_slice_stopped_at_outcome_review",
+      "title": "The bounded closeout slice stops at an explicit outcome-review task",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json"
+      ],
+      "subject_ids": [
+        "design.implementation.structural_rewrite_phase4_closeout_coordination_sync_reuse",
+        "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.013",
+        "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014"
+      ],
+      "acceptance_ids": [
+        "ac.structural_rewrite_program.019"
+      ],
+      "notes": "The slice lands with a dedicated outcome-review task that becomes the next controlling surface and does not imply broader Phase 4, later mutation-path convergence, or later-phase rewrite authorization."
+    }
+  ],
+  "related_paths": [
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/tasks/task_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md"
+  ],
+  "notes": "Validation evidence for the completed bounded structural rewrite Phase 4 closeout coordination sync-reuse slice."
+}

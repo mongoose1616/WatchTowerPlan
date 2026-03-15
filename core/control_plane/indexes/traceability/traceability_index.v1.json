@@ -4538,10 +4538,10 @@
     {
       "trace_id": "trace.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, and hands the trace to one bounded Phase 4 closeout coordination sync-reuse slice.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, and stops at its explicit outcome review.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-15T05:06:58Z",
+      "updated_at": "2026-03-15T06:18:27Z",
       "prd_ids": [
         "prd.structural_rewrite_program"
       ],
@@ -4569,6 +4569,7 @@
         "task.structural_rewrite_program.phase3_entry_review.006",
         "task.structural_rewrite_program.phase4_closeout_coordination_entry_review.012",
         "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.013",
+        "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014",
         "task.structural_rewrite_program.phase4_entry_review.009",
         "task.structural_rewrite_program.phase4_planning_projection_snapshot.010",
         "task.structural_rewrite_program.phase4_planning_projection_snapshot_review.011"
@@ -4622,6 +4623,7 @@
         "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization",
         "evidence.structural_rewrite_program.phase3_command_companion_source_surface_normalization_ready",
         "evidence.structural_rewrite_program.phase4_closeout_coordination_entry_ready",
+        "evidence.structural_rewrite_program.phase4_closeout_coordination_sync_reuse",
         "evidence.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_ready",
         "evidence.structural_rewrite_program.phase4_planning_projection_snapshot",
         "evidence.structural_rewrite_program.phase4_planning_projection_snapshot_ready",
@@ -4648,6 +4650,7 @@
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
@@ -4658,6 +4661,7 @@
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
@@ -4731,6 +4735,7 @@
         "docs/planning/tasks/closed/complete_structural_rewrite_program_phase0_and_phase1_package.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
         "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
@@ -4740,7 +4745,7 @@
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
         "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/governance/",
@@ -4751,7 +4756,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Validation evidence for the approved closeout-coordination entry review and the bounded post-traceability coordination-sync reuse slice."
+      "notes": "Validation evidence for the completed bounded structural rewrite Phase 4 closeout coordination sync-reuse slice."
     },
     {
       "trace_id": "trace.summary_surface_retirement",

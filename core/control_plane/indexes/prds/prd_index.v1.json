@@ -2086,10 +2086,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "prd_id": "prd.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, and hands the trace to one bounded Phase 4 closeout coordination sync-reuse slice.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, and stops at its explicit outcome review.",
       "status": "active",
       "doc_path": "docs/planning/prds/structural_rewrite_program.md",
-      "updated_at": "2026-03-15T04:48:34Z",
+      "updated_at": "2026-03-15T06:18:27Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "requirement_ids": [

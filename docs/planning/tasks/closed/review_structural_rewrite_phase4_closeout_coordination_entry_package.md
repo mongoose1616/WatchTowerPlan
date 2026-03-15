@@ -9,7 +9,7 @@ task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-15T04:48:34Z'
+updated_at: '2026-03-15T06:18:27Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -78,9 +78,10 @@ Review the bounded Phase 4 closeout-coordination entry package, confirm the publ
 ## Links
 - [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
 - [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
-- [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
 - [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
 
 ## Updated At
-- `2026-03-15T04:48:34Z`
+- `2026-03-15T06:18:27Z`
