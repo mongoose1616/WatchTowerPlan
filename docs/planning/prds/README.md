@@ -8,7 +8,7 @@
 |---|---|
 | `docs/planning/prds/README.md` | Describes the purpose of the PRD directory, its current contents, and the standards that govern it. |
 | `docs/planning/prds/core_python_foundation.md` | PRD for the core Python workspace, control-plane loading, validation, query, and traceability foundation. |
-| `docs/planning/prds/structural_rewrite_program.md` | PRD for the guarded structural rewrite program through the approved Phase 4 closeout-coordination entry review and the bounded next sync-reuse slice. |
+| `docs/planning/prds/structural_rewrite_program.md` | PRD for the guarded structural rewrite program through the closed final Phase 4 outcome review and explicit program closeout decision. |
 | `docs/planning/prds/template_and_output_efficiency.md` | PRD for compact template defaults, compact tracker outputs, and proportional workflow guidance. |
 | `docs/planning/prds/prd_tracking.md` | Human-readable tracker for the current PRD corpus. |
 

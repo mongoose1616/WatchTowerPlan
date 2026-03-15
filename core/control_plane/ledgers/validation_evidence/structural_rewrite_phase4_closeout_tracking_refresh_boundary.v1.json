@@ -79,7 +79,7 @@
       "subject_paths": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json"
       ],
       "subject_ids": [

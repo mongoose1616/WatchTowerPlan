@@ -4538,10 +4538,10 @@
     {
       "trace_id": "trace.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, approves the closeout-tracking entry review, lands one bounded Phase 4 closeout-tracking refresh-boundary slice, and hands the trace to one explicit outcome review.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, approves the closeout-tracking entry review, lands one bounded Phase 4 closeout-tracking refresh-boundary slice, closes that slice through one explicit outcome review, and ends the trace with one explicit program-closeout decision.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-15T09:04:41Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-15T09:55:03Z",
       "prd_ids": [
         "prd.structural_rewrite_program"
       ],
@@ -4774,11 +4774,11 @@
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
         "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/governance/",
@@ -4789,7 +4789,9 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Validation evidence for the completed bounded structural rewrite Phase 4 closeout-tracking refresh-boundary slice."
+      "notes": "Validation evidence for the completed bounded structural rewrite Phase 4 closeout-tracking refresh-boundary slice.",
+      "closed_at": "2026-03-15T09:55:03Z",
+      "closure_reason": "Final closeout-tracking outcome review passed after the last approved private seam landed, and no further named rewrite checkpoint remains."
     },
     {
       "trace_id": "trace.summary_surface_retirement",

@@ -13,6 +13,7 @@
 | `docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md` | Completed task for the first bounded Phase 4 private planning projection snapshot slice. |
 | `docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md` | Completed task for the bounded Phase 4 closeout coordination sync-reuse slice. |
 | `docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md` | Completed task for the bounded Phase 4 closeout-tracking refresh-boundary slice. |
+| `docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md` | Completed review task for the bounded Phase 4 closeout-tracking refresh-boundary outcome and explicit structural-rewrite program closeout decision. |
 | `docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md` | Completed review task that approved one bounded Phase 4 closeout-tracking refresh-boundary slice. |
 | `docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md` | Completed review task for the bounded Phase 4 closeout coordination sync-reuse outcome. |
 | `docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md` | Completed review task that approved one bounded Phase 4 closeout coordination sync-reuse slice. |

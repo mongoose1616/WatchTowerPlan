@@ -7,7 +7,7 @@
 | Path | Description |
 |---|---|
 | `docs/planning/tasks/open/README.md` | Describes the purpose of the open-task directory. |
-| `docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md` | Active review task for the landed bounded Phase 4 closeout-tracking refresh-boundary slice. |
 
 ## Notes
+- This directory is currently empty.
 - Use [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) or `watchtower-core query tasks --format json` for the current non-terminal task inventory.

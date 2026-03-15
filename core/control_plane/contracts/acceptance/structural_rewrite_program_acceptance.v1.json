@@ -513,7 +513,7 @@
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
@@ -534,7 +534,7 @@
         "req.structural_rewrite_program.022"
       ],
       "validation_targets": [
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json"

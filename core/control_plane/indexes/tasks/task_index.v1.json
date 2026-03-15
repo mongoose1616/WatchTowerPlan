@@ -4849,7 +4849,7 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-      "updated_at": "2026-03-15T08:58:21Z",
+      "updated_at": "2026-03-15T09:55:03Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015"
@@ -4864,7 +4864,7 @@
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
@@ -4880,14 +4880,14 @@
     {
       "task_id": "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary_review.017",
       "title": "Review structural rewrite Phase 4 closeout tracking refresh boundary outcome",
-      "summary": "Review the bounded Phase 4 closeout-tracking refresh-boundary slice, confirm the approved private tracker seam held parity and result-contract boundaries, and decide whether broader rewrite work remains blocked or may proceed only through one new explicit checkpoint.",
+      "summary": "Review the bounded Phase 4 closeout-tracking refresh-boundary slice, confirm the approved private tracker seam held parity and result-contract boundaries, and record whether broader rewrite work remains blocked or closes through one explicit program-closeout decision.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
-      "updated_at": "2026-03-15T08:58:21Z",
+      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+      "updated_at": "2026-03-15T09:55:03Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary.016"

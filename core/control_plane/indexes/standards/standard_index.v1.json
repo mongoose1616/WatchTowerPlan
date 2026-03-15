@@ -2650,7 +2650,7 @@
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",

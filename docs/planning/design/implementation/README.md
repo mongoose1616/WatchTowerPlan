@@ -16,8 +16,8 @@
 | `docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md` | Entry package for the bounded next Phase 4 checkpoint around the remaining direct initiative-closeout write-path outlier. |
 | `docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md` | Implementation plan for the bounded Phase 4 slice that reuses coordination sync for the shared closeout outputs after the traceability write. |
 | `docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md` | Entry package for the bounded next Phase 4 checkpoint around the remaining direct closeout planning-tracker refresh step. |
-| `docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md` | Implementation plan for the bounded Phase 4 slice that routes the remaining closeout tracker refresh step through one private closeout-local boundary and closes through one explicit outcome review. |
-| `docs/planning/design/implementation/structural_rewrite_program.md` | Implementation plan for the structural rewrite program through the landed closeout-tracking refresh-boundary slice and handoff into its explicit outcome review. |
+| `docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md` | Implementation plan for the bounded Phase 4 slice that routes the remaining closeout tracker refresh step through one private closeout-local boundary and closes through one explicit outcome review plus program closeout decision. |
+| `docs/planning/design/implementation/structural_rewrite_program.md` | Implementation plan for the structural rewrite program through the landed closeout-tracking refresh-boundary slice, the closed final outcome review, and the explicit program closeout decision. |
 | `docs/planning/design/implementation/template_and_output_efficiency_execution.md` | Implementation plan for compact authoring rules, tracker compaction, and workflow-guidance tightening. |
 
 ## Notes
