@@ -6,21 +6,13 @@ import json
 from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
-from watchtower_core.control_plane.models import (
-    InitiativeIndexEntry,
-)
+from watchtower_core.control_plane.models import InitiativeIndexEntry
 from watchtower_core.control_plane.paths import discover_repo_root
+from watchtower_core.repo_ops.planning_projection_serialization import serialize_initiative_entry
 from watchtower_core.repo_ops.planning_projection_snapshot import (
     TracePlanningProjectionSnapshot,
-    _build_active_task_summaries,
-    _determine_current_phase,
-    _select_coordination_task,
-    _task_is_blocked,
     build_trace_planning_coordination_snapshot,
     build_trace_planning_projection_snapshots,
-)
-from watchtower_core.repo_ops.planning_projection_serialization import (
-    serialize_initiative_entry,
 )
 from watchtower_core.repo_ops.sync.tracking_common import effective_updated_at
 

@@ -11,12 +11,16 @@ from watchtower_core.control_plane.models import (
     TaskIndexEntry,
     TraceabilityEntry,
 )
-from watchtower_core.repo_ops.sync.initiative_index import (
-    InitiativeIndexSyncService,
-    _build_active_task_summaries,
+from watchtower_core.repo_ops.planning_projection_policy import (
     _determine_current_phase,
+)
+from watchtower_core.repo_ops.planning_projection_task_selection import (
+    _build_active_task_summaries,
     _select_coordination_task,
     _task_is_blocked,
+)
+from watchtower_core.repo_ops.sync.initiative_index import (
+    InitiativeIndexSyncService,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[4]

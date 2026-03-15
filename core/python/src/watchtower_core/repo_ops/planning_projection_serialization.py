@@ -14,41 +14,11 @@ from watchtower_core.control_plane.models import (
     PlanningTaskSummary,
     PlanningValidationEvidenceSummary,
 )
-
-
-def _sequence_payload(
-    values: tuple[str, ...],
-    *,
-    compact: bool,
-) -> list[str] | None:
-    if compact and not values:
-        return None
-    return list(values)
-
-
-def _assign_sequence(
-    payload: dict[str, object],
-    key: str,
-    values: tuple[str, ...],
-    *,
-    compact: bool,
-) -> None:
-    rendered = _sequence_payload(values, compact=compact)
-    if rendered is None:
-        return
-    payload[key] = rendered
-
-
-def _assign_scalar(
-    payload: dict[str, object],
-    key: str,
-    value: object,
-    *,
-    compact: bool,
-) -> None:
-    if compact and value is None:
-        return
-    payload[key] = value
+from watchtower_core.repo_ops.planning_projection_serialization_helpers import (
+    _assign_scalar,
+    _assign_sequence,
+    _assign_serialized_collection,
+)
 
 
 def serialize_active_task_summary(
@@ -86,17 +56,13 @@ def serialize_coordination_section(
     _assign_scalar(payload, "primary_owner", entry.primary_owner, compact=compact)
     _assign_sequence(payload, "active_owners", entry.active_owners, compact=compact)
     _assign_sequence(payload, "active_task_ids", entry.active_task_ids, compact=compact)
-    if compact:
-        if entry.active_task_summaries:
-            payload["active_task_summaries"] = [
-                serialize_active_task_summary(task, compact=True)
-                for task in entry.active_task_summaries
-            ]
-    else:
-        payload["active_task_summaries"] = [
-            serialize_active_task_summary(task, compact=False)
-            for task in entry.active_task_summaries
-        ]
+    _assign_serialized_collection(
+        payload,
+        "active_task_summaries",
+        entry.active_task_summaries,
+        compact=compact,
+        serializer=lambda task: serialize_active_task_summary(task, compact=compact),
+    )
     _assign_sequence(
         payload,
         "blocked_by_task_ids",
@@ -128,17 +94,13 @@ def serialize_initiative_entry(
     _assign_scalar(payload, "primary_owner", entry.primary_owner, compact=compact)
     _assign_sequence(payload, "active_owners", entry.active_owners, compact=compact)
     _assign_sequence(payload, "active_task_ids", entry.active_task_ids, compact=compact)
-    if compact:
-        if entry.active_task_summaries:
-            payload["active_task_summaries"] = [
-                serialize_active_task_summary(task, compact=True)
-                for task in entry.active_task_summaries
-            ]
-    else:
-        payload["active_task_summaries"] = [
-            serialize_active_task_summary(task, compact=False)
-            for task in entry.active_task_summaries
-        ]
+    _assign_serialized_collection(
+        payload,
+        "active_task_summaries",
+        entry.active_task_summaries,
+        compact=compact,
+        serializer=lambda task: serialize_active_task_summary(task, compact=compact),
+    )
     _assign_sequence(
         payload,
         "blocked_by_task_ids",
@@ -336,60 +298,57 @@ def serialize_planning_catalog_entry(
             compact=compact,
         ),
     }
-    if compact:
-        if entry.prds:
-            payload["prds"] = [
-                serialize_planning_prd_summary(item, compact=True)
-                for item in entry.prds
-            ]
-        if entry.decisions:
-            payload["decisions"] = [
-                serialize_planning_decision_summary(item, compact=True)
-                for item in entry.decisions
-            ]
-        if entry.design_documents:
-            payload["design_documents"] = [
-                serialize_planning_design_document_summary(item, compact=True)
-                for item in entry.design_documents
-            ]
-        if entry.tasks:
-            payload["tasks"] = [
-                serialize_planning_task_summary(item, compact=True)
-                for item in entry.tasks
-            ]
-        if entry.acceptance_contracts:
-            payload["acceptance_contracts"] = [
-                serialize_planning_acceptance_contract_summary(item, compact=True)
-                for item in entry.acceptance_contracts
-            ]
-        if entry.validation_evidence:
-            payload["validation_evidence"] = [
-                serialize_planning_validation_evidence_summary(item, compact=True)
-                for item in entry.validation_evidence
-            ]
-    else:
-        payload["prds"] = [
-            serialize_planning_prd_summary(item, compact=False) for item in entry.prds
-        ]
-        payload["decisions"] = [
-            serialize_planning_decision_summary(item, compact=False)
-            for item in entry.decisions
-        ]
-        payload["design_documents"] = [
-            serialize_planning_design_document_summary(item, compact=False)
-            for item in entry.design_documents
-        ]
-        payload["tasks"] = [
-            serialize_planning_task_summary(item, compact=False) for item in entry.tasks
-        ]
-        payload["acceptance_contracts"] = [
-            serialize_planning_acceptance_contract_summary(item, compact=False)
-            for item in entry.acceptance_contracts
-        ]
-        payload["validation_evidence"] = [
-            serialize_planning_validation_evidence_summary(item, compact=False)
-            for item in entry.validation_evidence
-        ]
+    _assign_serialized_collection(
+        payload,
+        "prds",
+        entry.prds,
+        compact=compact,
+        serializer=lambda item: serialize_planning_prd_summary(item, compact=compact),
+    )
+    _assign_serialized_collection(
+        payload,
+        "decisions",
+        entry.decisions,
+        compact=compact,
+        serializer=lambda item: serialize_planning_decision_summary(item, compact=compact),
+    )
+    _assign_serialized_collection(
+        payload,
+        "design_documents",
+        entry.design_documents,
+        compact=compact,
+        serializer=lambda item: serialize_planning_design_document_summary(
+            item,
+            compact=compact,
+        ),
+    )
+    _assign_serialized_collection(
+        payload,
+        "tasks",
+        entry.tasks,
+        compact=compact,
+        serializer=lambda item: serialize_planning_task_summary(item, compact=compact),
+    )
+    _assign_serialized_collection(
+        payload,
+        "acceptance_contracts",
+        entry.acceptance_contracts,
+        compact=compact,
+        serializer=lambda item: serialize_planning_acceptance_contract_summary(
+            item,
+            compact=compact,
+        ),
+    )
+    _assign_serialized_collection(
+        payload,
+        "validation_evidence",
+        entry.validation_evidence,
+        compact=compact,
+        serializer=lambda item: serialize_planning_validation_evidence_summary(
+            item,
+            compact=compact,
+        ),
+    )
     _assign_sequence(payload, "prd_ids", entry.prd_ids, compact=compact)
     _assign_sequence(payload, "decision_ids", entry.decision_ids, compact=compact)
     _assign_sequence(payload, "design_ids", entry.design_ids, compact=compact)
