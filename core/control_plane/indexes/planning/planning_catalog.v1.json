@@ -18248,7 +18248,8 @@
           "acceptance_ids": [
             "ac.structural_rewrite_program.004",
             "ac.structural_rewrite_program.022",
-            "ac.structural_rewrite_program.023"
+            "ac.structural_rewrite_program.023",
+            "ac.structural_rewrite_program.024"
           ],
           "related_paths": [
             "docs/planning/coordination_tracking.md",
