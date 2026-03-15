@@ -4756,7 +4756,7 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse.013"
@@ -4802,7 +4802,7 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014"
@@ -4821,7 +4821,7 @@
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
@@ -4844,12 +4844,12 @@
       "title": "Implement structural rewrite Phase 4 closeout tracking refresh boundary",
       "summary": "Route the remaining PRD, decision, and design tracking refresh step in InitiativeCloseoutService through one private closeout-local boundary after the approved shared closeout seam while keeping the closeout result contract explicit.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+      "updated_at": "2026-03-15T08:58:21Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
         "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015"
@@ -4864,10 +4864,52 @@
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
-        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json",
-        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
+        "core/python/src/watchtower_core/closeout/initiative.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/tests/unit/test_initiative_closeout.py"
+      ]
+    },
+    {
+      "task_id": "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary_review.017",
+      "title": "Review structural rewrite Phase 4 closeout tracking refresh boundary outcome",
+      "summary": "Review the bounded Phase 4 closeout-tracking refresh-boundary slice, confirm the approved private tracker seam held parity and result-contract boundaries, and decide whether broader rewrite work remains blocked or may proceed only through one new explicit checkpoint.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+      "updated_at": "2026-03-15T08:58:21Z",
+      "trace_id": "trace.structural_rewrite_program",
+      "depends_on": [
+        "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary.016"
+      ],
+      "related_ids": [
+        "prd.structural_rewrite_program",
+        "design.features.structural_rewrite_program",
+        "design.implementation.structural_rewrite_program",
+        "design.implementation.structural_rewrite_phase4_closeout_tracking_refresh_boundary",
+        "contract.acceptance.structural_rewrite_program"
+      ],
+      "applies_to": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/planning/planning_catalog.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
         "core/python/src/watchtower_core/cli/closeout_handlers.py",
         "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",

@@ -1985,6 +1985,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Migration record for the completed bounded Phase 4 closeout-tracking refresh-boundary slice.",
+      "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json",
       "kind": "file",
       "surface_kind": "control_plane_ledger",
@@ -2282,6 +2292,16 @@
       "kind": "file",
       "surface_kind": "control_plane_ledger",
       "summary": "Validation evidence for the closed closeout coordination sync-reuse outcome review and the bounded closeout-tracking entry checkpoint.",
+      "parent_path": "core/control_plane/ledgers/validation_evidence/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Validation evidence for the completed bounded Phase 4 closeout-tracking refresh-boundary slice.",
       "parent_path": "core/control_plane/ledgers/validation_evidence/",
       "maturity": "supporting",
       "priority": "medium",
@@ -4870,7 +4890,7 @@
       "path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the bounded Phase 4 slice that routes the remaining closeout tracker refresh step through one private closeout-local boundary.",
+      "summary": "Implementation plan for the bounded Phase 4 slice that routes the remaining closeout tracker refresh step through one private closeout-local boundary and closes through one explicit outcome review.",
       "parent_path": "docs/planning/design/implementation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4900,7 +4920,7 @@
       "path": "docs/planning/design/implementation/structural_rewrite_program.md",
       "kind": "file",
       "surface_kind": "implementation_plan",
-      "summary": "Implementation plan for the structural rewrite program through the closed closeout-tracking entry review and handoff into the bounded closeout-tracking refresh-boundary slice.",
+      "summary": "Implementation plan for the structural rewrite program through the landed closeout-tracking refresh-boundary slice and handoff into its explicit outcome review.",
       "parent_path": "docs/planning/design/implementation/",
       "maturity": "authoritative",
       "priority": "high",
@@ -5100,6 +5120,16 @@
       "audience_hint": "shared"
     },
     {
+      "path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+      "kind": "file",
+      "surface_kind": "planning_doc",
+      "summary": "Completed task for the bounded Phase 4 closeout-tracking refresh-boundary slice.",
+      "parent_path": "docs/planning/tasks/closed/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "shared"
+    },
+    {
       "path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
       "kind": "file",
       "surface_kind": "planning_doc",
@@ -5220,10 +5250,10 @@
       "audience_hint": "shared"
     },
     {
-      "path": "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+      "path": "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
       "kind": "file",
       "surface_kind": "planning_doc",
-      "summary": "Active implementation task for the bounded Phase 4 closeout-tracking refresh-boundary slice.",
+      "summary": "Active review task for the landed bounded Phase 4 closeout-tracking refresh-boundary slice.",
       "parent_path": "docs/planning/tasks/open/",
       "maturity": "supporting",
       "priority": "medium",

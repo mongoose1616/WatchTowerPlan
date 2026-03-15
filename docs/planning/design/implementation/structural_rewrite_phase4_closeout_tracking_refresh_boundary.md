@@ -2,11 +2,11 @@
 trace_id: "trace.structural_rewrite_program"
 id: "design.implementation.structural_rewrite_phase4_closeout_tracking_refresh_boundary"
 title: "Structural Rewrite Phase 4 Closeout Tracking Refresh Boundary"
-summary: "Implements one bounded Phase 4 slice by routing the remaining PRD, decision, and design tracker refresh step in InitiativeCloseoutService through one private closeout-local refresh boundary after the approved shared closeout seam while preserving the closeout result contract."
+summary: "Implements one bounded Phase 4 slice by routing the remaining PRD, decision, and design tracker refresh step in InitiativeCloseoutService through one private closeout-local refresh boundary after the approved shared closeout seam while preserving the closeout result contract, then closes through one explicit outcome review."
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T08:14:01Z"
+updated_at: "2026-03-15T09:04:41Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -31,7 +31,7 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-15T08:14:01Z`
+- `Updated At`: `2026-03-15T09:04:41Z`
 
 ## Summary
 Implement one bounded Phase 4 slice by routing the remaining `prd-tracking`, `decision-tracking`, and `design-tracking` refresh step in `InitiativeCloseoutService.close` through one private closeout-local refresh boundary after the approved shared closeout seam while preserving the five public planning-authority answers, the stable closeout command result contract, the current tracker sync family names, and the current `TaskLifecycleService` and `PlanningScaffoldService` behavior.
@@ -60,7 +60,7 @@ Implement one bounded Phase 4 slice by routing the remaining `prd-tracking`, `de
 - The closed `.015` review approved one exact remaining seam only: the post-shared-seam refresh step for `prd-tracking`, `decision-tracking`, and `design-tracking`.
 - `InitiativeCloseoutService.close` currently writes traceability first, then reuses `CoordinationSyncService.run_closeout_shared_outputs` for the approved shared outputs, and then still instantiates `PrdTrackingSyncService`, `DecisionTrackingSyncService`, and `DesignTrackingSyncService` inline to write the remaining tracker documents directly.
 - The closeout CLI payload still publishes explicit output-path fields for the traceability write, the approved shared coordination outputs, and the remaining direct PRD, decision, and design tracker outputs.
-- The next active checkpoint is [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md), not broader tracker-family convergence or later-phase work.
+- The bounded implementation slice has now landed through [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md), and the next active checkpoint is [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md), not broader tracker-family convergence or later-phase work.
 
 ## Approved Seam and Result-Contract Boundary
 ### In-seam outputs for this slice
@@ -95,6 +95,11 @@ Implement one bounded Phase 4 slice by routing the remaining `prd-tracking`, `de
 3. Keep the tracker sync service implementations and public sync command family names unchanged while adjusting only the internal closeout orchestration for the remaining tracker step.
 4. Extend direct closeout coverage to assert the preserved explicit tracker output fields and the unchanged shared closeout seam.
 5. Rebuild the affected planning surfaces, validate the repo, and stop with one explicit Phase 4 outcome-review task instead of broader rollout.
+
+## Implementation Outcome
+- `InitiativeCloseoutService.close` now routes the remaining `prd-tracking`, `decision-tracking`, and `design-tracking` refresh step through `_run_closeout_tracking_refresh_boundary()` after `CoordinationSyncService.run_closeout_shared_outputs(write=True)` completes, so the last direct tracker outlier is isolated behind one private closeout-local helper without widening the approved shared seam.
+- `_CloseoutTrackingOutputs` groups the three tracker output paths privately inside `core/python/src/watchtower_core/closeout/initiative.py`, while `InitiativeCloseoutResult` and the closeout CLI payload still expose `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` individually with no contract drift.
+- `core/python/tests/unit/test_initiative_closeout.py` still pins the exact shared coordination target subset plus the preserved explicit tracker outputs, and the landed slice now closes through [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md) instead of broader Phase 4 rollout.
 
 ## Risks
 - The private boundary can still create hidden behavioral drift if the closeout path stops matching the current tracker document outputs or silently weakens the explicit result-contract fields.
@@ -132,4 +137,4 @@ Implement one bounded Phase 4 slice by routing the remaining `prd-tracking`, `de
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
 
 ## Updated At
-- `2026-03-15T08:14:01Z`
+- `2026-03-15T09:04:41Z`

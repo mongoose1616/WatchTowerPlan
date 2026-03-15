@@ -6,7 +6,7 @@ summary: "Implements the first bounded Phase 4 slice by introducing a private tr
 type: "implementation_plan"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T08:14:01Z"
+updated_at: "2026-03-15T09:04:41Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -31,7 +31,7 @@ aliases:
 - `Linked Decisions`: `None`
 - `Source Designs`: `design.features.structural_rewrite_program`
 - `Linked Acceptance Contracts`: `contract.acceptance.structural_rewrite_program`
-- `Updated At`: `2026-03-15T08:14:01Z`
+- `Updated At`: `2026-03-15T09:04:41Z`
 
 ## Summary
 Implement the first bounded Phase 4 slice by introducing one private trace-scoped planning projection snapshot behind `InitiativeIndexSyncService` and `PlanningCatalogSyncService` without changing the five public planning-authority answers, the coordination-sync ordering, or the current mutation-path callers, then close that slice through an explicit outcome review.
@@ -61,7 +61,7 @@ Implement the first bounded Phase 4 slice by introducing one private trace-scope
 - `InitiativeIndexSyncService` and `PlanningCatalogSyncService` now consume the same private snapshot and coordination derivation path, and direct unit coverage asserts that the planning-catalog coordination section matches the initiative projection.
 - `CoordinationSyncService` still rebuilds the coordination slice in this order: `task-index`, `traceability-index`, `initiative-index`, `planning-catalog`, `coordination-index`, `task-tracking`, `initiative-tracking`, and `coordination-tracking`.
 - `TaskLifecycleService`, `PlanningScaffoldService`, and `InitiativeCloseoutService` still consume that same public projection boundary, and the bounded sync plus closeout suite, `watchtower-core doctor --format json`, `watchtower-core validate all`, and the planning authority or coordination queries all pass after the slice lands.
-- The bounded slice outcome review passed, the closeout-coordination entry review approved one bounded successor slice, that successor slice landed through [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md), that slice then passed its own explicit outcome review through [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md), the closeout-tracking entry review then passed through [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md), and the trace now points to [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md) instead of broader Phase 4 rollout.
+- The bounded slice outcome review passed, the closeout-coordination entry review approved one bounded successor slice, that successor slice landed through [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md), that slice then passed its own explicit outcome review through [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md), the closeout-tracking entry review then passed through [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md), the approved closeout-tracking refresh-boundary slice landed through [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md), and the trace now points to [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md) instead of broader Phase 4 rollout.
 
 ## Internal Standards and Canonical References Applied
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md): the slice must name one exact builder seam, publish authored truth and rollback notes, and stop at an explicit successor review.
@@ -118,9 +118,10 @@ Implement the first bounded Phase 4 slice by introducing one private trace-scope
 - [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 - [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
 - [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
-- [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md)
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
 
 ## Updated At
-- `2026-03-15T08:14:01Z`
+- `2026-03-15T09:04:41Z`

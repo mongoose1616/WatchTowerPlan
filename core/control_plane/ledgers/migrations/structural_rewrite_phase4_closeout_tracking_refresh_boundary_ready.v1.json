@@ -13,7 +13,7 @@
     "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
     "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
     "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
-    "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+    "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
     "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
     "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
     "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",

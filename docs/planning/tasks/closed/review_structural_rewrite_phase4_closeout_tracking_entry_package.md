@@ -9,7 +9,7 @@ task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-15T08:14:01Z'
+updated_at: '2026-03-15T09:04:41Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -18,7 +18,7 @@ applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md
 - docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md
 - docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md
-- docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md
+- docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md
 - core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
 - core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json
 - core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json
@@ -78,10 +78,10 @@ Review the bounded Phase 4 closeout-tracking entry package, confirm the public p
 ## Links
 - [structural_rewrite_phase4_closeout_tracking_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md)
 - [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
-- [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
 - [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
 - [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
 
 ## Updated At
-- `2026-03-15T08:14:01Z`
+- `2026-03-15T09:04:41Z`

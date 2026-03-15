@@ -1867,10 +1867,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "family": "feature_design",
       "title": "Structural Rewrite Program Feature Design",
-      "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, landing one bounded Phase 3 command companion normalization slice, closing the first Phase 4 slice and outcome review explicitly, approving the closeout-coordination entry review, landing one bounded Phase 4 closeout coordination sync-reuse slice, closing that slice through explicit outcome review, and handing the trace to one bounded Phase 4 closeout-tracking refresh-boundary slice.",
+      "summary": "Defines the repo-native execution design for completing rewrite Phase 0 and Phase 1, landing one bounded Phase 3 command companion normalization slice, closing the first Phase 4 slice and outcome review explicitly, approving the closeout-coordination entry review, landing one bounded Phase 4 closeout coordination sync-reuse slice, closing that slice through explicit outcome review, landing one bounded Phase 4 closeout-tracking refresh-boundary slice, and handing the trace to one explicit outcome review.",
       "status": "active",
       "doc_path": "docs/planning/design/features/structural_rewrite_program.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -3745,7 +3745,7 @@
       "summary": "Defines the bounded Phase 4 checkpoint for aligning the initiative-closeout write path with the existing coordination-sync orchestration after the first private planning projection snapshot slice passed review.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -3781,7 +3781,7 @@
       "summary": "Implements one bounded Phase 4 slice by routing InitiativeCloseoutService through CoordinationSyncService for the shared planning and coordination outputs after the traceability write while keeping the closeout result contract explicit, then closes through an explicit outcome review that hands the trace to the next bounded entry checkpoint.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -3810,7 +3810,8 @@
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md"
       ]
     },
@@ -3822,7 +3823,7 @@
       "summary": "Defines the bounded next Phase 4 checkpoint for reviewing the remaining direct PRD, decision, and design tracking refresh step in InitiativeCloseoutService after the closeout coordination sync-reuse slice passed review.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -3856,10 +3857,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "family": "implementation_plan",
       "title": "Structural Rewrite Phase 4 Closeout Tracking Refresh Boundary",
-      "summary": "Implements one bounded Phase 4 slice by routing the remaining PRD, decision, and design tracker refresh step in InitiativeCloseoutService through one private closeout-local refresh boundary after the approved shared closeout seam while preserving the closeout result contract.",
+      "summary": "Implements one bounded Phase 4 slice by routing the remaining PRD, decision, and design tracker refresh step in InitiativeCloseoutService through one private closeout-local refresh boundary after the approved shared closeout seam while preserving the closeout result contract, then closes through one explicit outcome review.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -3897,7 +3898,7 @@
       "summary": "Implements the first bounded Phase 4 slice by introducing a private trace-scoped planning projection snapshot behind initiative-index and planning-catalog sync, then closes cleanly through an explicit outcome review.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -3931,7 +3932,8 @@
         "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md"
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md"
       ]
     },
     {
@@ -3974,10 +3976,10 @@
       "trace_id": "trace.structural_rewrite_program",
       "family": "implementation_plan",
       "title": "Structural Rewrite Program Implementation Plan",
-      "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, the closed first Phase 4 slice and outcome review, the approved closeout-coordination entry review, the landed bounded Phase 4 closeout coordination sync-reuse slice, the closed outcome review for that slice, the approved closeout-tracking entry review, and the handoff into the bounded closeout-tracking refresh-boundary slice.",
+      "summary": "Records the completed Phase 0 and Phase 1 package, the Phase 2 gate outcome, the bounded artifact-role registry pilot, the Phase 3 command companion slice and outcome review, the closed first Phase 4 slice and outcome review, the approved closeout-coordination entry review, the landed bounded Phase 4 closeout coordination sync-reuse slice, the closed outcome review for that slice, the approved closeout-tracking entry review, the landed bounded closeout-tracking refresh-boundary slice, and the handoff into its explicit outcome review.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/structural_rewrite_program.md",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [

@@ -4538,10 +4538,10 @@
     {
       "trace_id": "trace.structural_rewrite_program",
       "title": "Structural Rewrite Program PRD",
-      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, approves the closeout-tracking entry review, and hands the trace to one bounded Phase 4 closeout-tracking refresh-boundary slice.",
+      "summary": "Execute the structural rewrite as a guarded phased program that refreshes live baseline evidence, publishes rewrite control surfaces, closes the Phase 2 gate, lands one bounded Phase 3 command companion normalization slice, closes the first Phase 4 slice and outcome review explicitly, approves the closeout-coordination entry review, lands one bounded Phase 4 closeout coordination sync-reuse slice, closes that slice through explicit outcome review, approves the closeout-tracking entry review, lands one bounded Phase 4 closeout-tracking refresh-boundary slice, and hands the trace to one explicit outcome review.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-15T08:14:01Z",
+      "updated_at": "2026-03-15T09:04:41Z",
       "prd_ids": [
         "prd.structural_rewrite_program"
       ],
@@ -4574,6 +4574,7 @@
         "task.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_review.014",
         "task.structural_rewrite_program.phase4_closeout_tracking_entry_review.015",
         "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary.016",
+        "task.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary_review.017",
         "task.structural_rewrite_program.phase4_entry_review.009",
         "task.structural_rewrite_program.phase4_planning_projection_snapshot.010",
         "task.structural_rewrite_program.phase4_planning_projection_snapshot_review.011"
@@ -4598,7 +4599,9 @@
         "req.structural_rewrite_program.017",
         "req.structural_rewrite_program.018",
         "req.structural_rewrite_program.019",
-        "req.structural_rewrite_program.020"
+        "req.structural_rewrite_program.020",
+        "req.structural_rewrite_program.021",
+        "req.structural_rewrite_program.022"
       ],
       "acceptance_ids": [
         "ac.structural_rewrite_program.001",
@@ -4622,7 +4625,9 @@
         "ac.structural_rewrite_program.019",
         "ac.structural_rewrite_program.020",
         "ac.structural_rewrite_program.021",
-        "ac.structural_rewrite_program.022"
+        "ac.structural_rewrite_program.022",
+        "ac.structural_rewrite_program.023",
+        "ac.structural_rewrite_program.024"
       ],
       "acceptance_contract_ids": [
         "contract.acceptance.structural_rewrite_program"
@@ -4636,6 +4641,7 @@
         "evidence.structural_rewrite_program.phase4_closeout_coordination_sync_reuse",
         "evidence.structural_rewrite_program.phase4_closeout_coordination_sync_reuse_ready",
         "evidence.structural_rewrite_program.phase4_closeout_tracking_entry_ready",
+        "evidence.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary",
         "evidence.structural_rewrite_program.phase4_closeout_tracking_refresh_boundary_ready",
         "evidence.structural_rewrite_program.phase4_planning_projection_snapshot",
         "evidence.structural_rewrite_program.phase4_planning_projection_snapshot_ready",
@@ -4665,6 +4671,7 @@
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
+        "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
@@ -4678,6 +4685,7 @@
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
@@ -4758,6 +4766,7 @@
         "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
         "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
         "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
@@ -4769,7 +4778,7 @@
         "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
         "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-        "docs/planning/tasks/open/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/open/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/governance/",
@@ -4780,7 +4789,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Validation evidence for the approved closeout-tracking entry review and the bounded closeout-tracking refresh-boundary slice."
+      "notes": "Validation evidence for the completed bounded structural rewrite Phase 4 closeout-tracking refresh-boundary slice."
     },
     {
       "trace_id": "trace.summary_surface_retirement",
