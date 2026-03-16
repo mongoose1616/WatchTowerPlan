@@ -1588,7 +1588,7 @@
       "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
       "status": "active",
       "doc_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
-      "updated_at": "2026-03-16T06:28:27Z",
+      "updated_at": "2026-03-16T07:00:01Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "requirement_ids": [
@@ -1596,7 +1596,8 @@
         "req.post_rewrite_core_cleanup_and_surface_reduction.002",
         "req.post_rewrite_core_cleanup_and_surface_reduction.003",
         "req.post_rewrite_core_cleanup_and_surface_reduction.004",
-        "req.post_rewrite_core_cleanup_and_surface_reduction.005"
+        "req.post_rewrite_core_cleanup_and_surface_reduction.005",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.006"
       ],
       "acceptance_ids": [
         "ac.post_rewrite_core_cleanup_and_surface_reduction.001"

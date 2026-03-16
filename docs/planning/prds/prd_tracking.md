@@ -11,4 +11,4 @@
 
 Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse and `watchtower-core query planning --trace-id <trace_id> --format json` for the deep planning record behind one known PRD.
 
-_Updated At: `2026-03-16T06:28:27Z`_
+_Updated At: `2026-03-16T07:00:01Z`_

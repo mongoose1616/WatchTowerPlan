@@ -2759,7 +2759,6 @@
       ],
       "operationalization_paths": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
-        "core/control_plane/contracts/compatibility/",
         "docs/planning/tasks/",
         "core/control_plane/registries/authority_map.json"
       ],

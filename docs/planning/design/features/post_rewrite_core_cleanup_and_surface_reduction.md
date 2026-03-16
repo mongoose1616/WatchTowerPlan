@@ -7,7 +7,7 @@ summary: Defines the technical design boundary for Post-Rewrite Core Cleanup and
 type: feature_design
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-16T06:28:27Z'
+updated_at: '2026-03-16T07:00:01Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -25,7 +25,7 @@ applies_to:
 - `Linked PRDs`: `prd.post_rewrite_core_cleanup_and_surface_reduction`
 - `Linked Decisions`: `decision.post_rewrite_core_cleanup_and_surface_reduction_direction`
 - `Linked Implementation Plans`: `design.implementation.post_rewrite_core_cleanup_and_surface_reduction`
-- `Updated At`: `2026-03-16T06:28:27Z`
+- `Updated At`: `2026-03-16T07:00:01Z`
 
 ## Summary
 Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface Reduction.
@@ -34,12 +34,13 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 - Full repository review focused on code and rewrite leftovers after the core-pack restructuring.
 
 ## Scope and Feature Boundary
-- Covers the broken workspace-standard integration contract, the declaration-driven `PackContext` startup defect, and the first proven-unused inventory-only governed family found in the current review loop.
+- Covers the broken workspace-standard integration contract, the declaration-driven `PackContext` startup defect, retirement of proven-unused inventory-only governed families, and removal of rewrite-era example-driven validation burden from the active baseline.
 - Excludes a wholesale planning-system replacement, broader ledger removal beyond the first proven-unused family, and terminology changes made only to match STEP1 naming.
 
 ## Current-State Context
 - The current repository review confirmed that full `pytest` fails on a stale documentation assertion and that the new pack startup path is only generic for repository-default surface paths.
 - The cleanup must preserve the current default repository behavior while reducing maintenance on no-value retained surfaces rather than adding more compatibility scaffolding.
+- The external gap review against `STEP1_FINAL.md` reinforces that current example fixtures, compatibility or intake contracts, and retained repo-local catalogs should not become long-lived reusable-core contracts unless a live pack consumer depends on them.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): temporary migration aids should retire once the intended boundary is clear.
@@ -54,6 +55,7 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 - Keep the current default repository behavior green while repairing the rewrite regressions.
 - Retire only surfaces that a code-and-consumer audit proves unused; do not delete broader retained families opportunistically.
 - Preserve fail-closed startup and validation behavior when declared pack surfaces are missing, wrong-typed, or otherwise invalid.
+- Prefer live governed artifacts and direct schema checks over example-fixture directories when the fixture corpus no longer adds unique enforcement value.
 
 ## Options Considered
 ### Option 1
@@ -70,17 +72,21 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 ### Architecture
 - Reconcile the workspace-standard wording and the integration test so the current guardrail boundary is asserted consistently.
 - Route required `PackContext` surfaces through one typed resolution path keyed by declaration metadata instead of by repository-default path alone.
-- Audit the repository-manifest family for runtime consumers and retire it when the audit stays empty, repairing validator, schema-catalog, documentation, and derived-surface references in the same slice.
+- Audit inventory-only contract or registry families for runtime consumers and retire them when the audit stays empty, repairing validator, schema-catalog, documentation, and derived-surface references in the same slice.
+- Remove example-fixture validation from `validate all` and supporting regression suites once the same schema boundaries are covered by live artifacts or direct validator-driven checks.
 
 ### Data and Interface Impacts
 - `core/python/src/watchtower_core/control_plane/loader.py` and `pack_context.py` gain the generic typed-surface loading path.
 - `core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py` and `core/python/tests/unit/test_pack_context.py` become the primary regression guards for the repaired boundary.
-- `core/control_plane/manifests/`, `core/control_plane/registries/`, and companion docs or indexes change if the inventory-only manifest family is retired.
+- `core/control_plane/contracts/`, `core/control_plane/registries/`, and companion docs or indexes change as inventory-only families are retired.
+- `core/python/src/watchtower_core/repo_ops/validation/` and the related integration or unit suites change when the example-driven validation path is removed from the active baseline.
 
 ### Execution Flow
 1. Repair the stale workspace-standard integration contract and re-establish a green `pytest` baseline.
 2. Generalize required pack-surface loading and add a regression that proves relocated declared paths still materialize typed artifacts.
-3. Audit, retire, and repair the first proven-unused inventory-only governed family, then rerun full validation and a confirmation-pass review.
+3. Audit, retire, and repair the next proven-unused inventory-only governed families, starting with compatibility and intake contracts.
+4. Remove example-driven validation from the active baseline and reconcile the standards, acceptance contracts, and tests that still point at fixtures.
+5. Retire retained repo-local artifact type or role catalogs if the consumer audit remains empty after the earlier slices.
 
 ### Invariants and Failure Cases
 - The current default `pack_settings.json` must continue to load successfully without changing its declared paths.
@@ -96,8 +102,9 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 - Do not retire a governed family unless the slice also removes or repairs every live validator, doc, schema, index, and test reference to it.
 
 ## Risks
-- A hidden consumer could still depend on the repository-manifest family even if no in-repo code path currently references it.
+- A hidden consumer could still depend on a retained contract or registry family even if no in-repo code path currently references it.
 - A typed-surface resolution refactor could accidentally bypass existing loader caches or validation steps if it is implemented too narrowly.
+- Historical acceptance contracts and standards can fail closed if example or inventory surfaces are removed without same-slice reconciliation.
 
 ## References
 - [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md)

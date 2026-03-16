@@ -12823,22 +12823,48 @@
       "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-16T06:53:48Z",
+      "updated_at": "2026-03-16T07:07:33Z",
       "coordination": {
         "current_phase": "execution",
         "key_surface_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
-        "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
-        "next_surface_path": "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
-        "open_task_count": 1,
-        "blocked_task_count": 0,
+        "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
+        "next_surface_path": "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
+        "open_task_count": 3,
+        "blocked_task_count": 2,
         "primary_owner": "repository_maintainer",
         "active_owners": [
           "repository_maintainer"
         ],
         "active_task_ids": [
+          "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
+          "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
           "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005"
         ],
         "active_task_summaries": [
+          {
+            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
+            "title": "Retire example-driven validation and fixture corpus",
+            "task_status": "ready",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
+            "is_actionable": true,
+            "depends_on": [
+              "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006"
+            ]
+          },
+          {
+            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
+            "title": "Retire inventory-only artifact type and role registries",
+            "task_status": "backlog",
+            "priority": "high",
+            "owner": "repository_maintainer",
+            "doc_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
+            "is_actionable": false,
+            "depends_on": [
+              "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
+            ]
+          },
           {
             "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005",
             "title": "Validate and close post-rewrite core cleanup",
@@ -12846,11 +12872,15 @@
             "priority": "high",
             "owner": "repository_maintainer",
             "doc_path": "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
-            "is_actionable": true,
+            "is_actionable": false,
             "depends_on": [
-              "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
+              "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008"
             ]
           }
+        ],
+        "blocked_by_task_ids": [
+          "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
+          "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
         ]
       },
       "prds": [
@@ -12860,13 +12890,14 @@
           "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
           "artifact_status": "active",
           "doc_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
-          "updated_at": "2026-03-16T06:28:27Z",
+          "updated_at": "2026-03-16T07:00:01Z",
           "requirement_ids": [
             "req.post_rewrite_core_cleanup_and_surface_reduction.001",
             "req.post_rewrite_core_cleanup_and_surface_reduction.002",
             "req.post_rewrite_core_cleanup_and_surface_reduction.003",
             "req.post_rewrite_core_cleanup_and_surface_reduction.004",
-            "req.post_rewrite_core_cleanup_and_surface_reduction.005"
+            "req.post_rewrite_core_cleanup_and_surface_reduction.005",
+            "req.post_rewrite_core_cleanup_and_surface_reduction.006"
           ],
           "acceptance_ids": [
             "ac.post_rewrite_core_cleanup_and_surface_reduction.001"
@@ -12890,7 +12921,7 @@
           "record_status": "active",
           "decision_status": "proposed",
           "doc_path": "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
-          "updated_at": "2026-03-16T06:28:27Z",
+          "updated_at": "2026-03-16T07:00:01Z",
           "linked_prd_ids": [
             "prd.post_rewrite_core_cleanup_and_surface_reduction"
           ],
@@ -12910,7 +12941,7 @@
           "summary": "Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface Reduction.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
-          "updated_at": "2026-03-16T06:28:27Z"
+          "updated_at": "2026-03-16T07:00:01Z"
         },
         {
           "document_id": "design.implementation.post_rewrite_core_cleanup_and_surface_reduction",
@@ -12919,7 +12950,7 @@
           "summary": "Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementation slice.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
-          "updated_at": "2026-03-16T06:28:27Z",
+          "updated_at": "2026-03-16T07:00:01Z",
           "source_paths": [
             "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
             "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md"
@@ -12927,6 +12958,34 @@
         }
       ],
       "tasks": [
+        {
+          "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
+          "title": "Retire inventory-only artifact type and role registries",
+          "summary": "Remove the retained artifact type and artifact role registries if no live reusable-core or pack consumer still reads them and reconcile their historical references.",
+          "artifact_status": "active",
+          "task_status": "backlog",
+          "task_kind": "chore",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
+          "updated_at": "2026-03-16T07:00:01Z",
+          "depends_on": [
+            "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
+          ],
+          "related_ids": [
+            "prd.post_rewrite_core_cleanup_and_surface_reduction",
+            "design.features.post_rewrite_core_cleanup_and_surface_reduction",
+            "design.implementation.post_rewrite_core_cleanup_and_surface_reduction",
+            "decision.post_rewrite_core_cleanup_and_surface_reduction_direction",
+            "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
+          ],
+          "applies_to": [
+            "core/control_plane/registries/",
+            "core/control_plane/schemas/artifacts/",
+            "core/control_plane/contracts/acceptance/",
+            "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md"
+          ]
+        },
         {
           "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.bootstrap.001",
           "title": "Bootstrap Post-Rewrite Core Cleanup and Surface Reduction planning chain",
@@ -12952,6 +13011,35 @@
           ]
         },
         {
+          "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
+          "title": "Retire example-driven validation and fixture corpus",
+          "summary": "Remove rewrite-era example-fixture validation from the active baseline and reconcile standards, tests, and historical references that still treat the corpus as authoritative.",
+          "artifact_status": "active",
+          "task_status": "ready",
+          "task_kind": "chore",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
+          "updated_at": "2026-03-16T07:07:33Z",
+          "depends_on": [
+            "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006"
+          ],
+          "related_ids": [
+            "prd.post_rewrite_core_cleanup_and_surface_reduction",
+            "design.features.post_rewrite_core_cleanup_and_surface_reduction",
+            "design.implementation.post_rewrite_core_cleanup_and_surface_reduction",
+            "decision.post_rewrite_core_cleanup_and_surface_reduction_direction",
+            "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
+          ],
+          "applies_to": [
+            "core/control_plane/examples/",
+            "core/python/src/watchtower_core/repo_ops/validation/",
+            "core/python/tests/",
+            "docs/standards/data_contracts/",
+            "core/control_plane/contracts/acceptance/"
+          ]
+        },
+        {
           "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
           "title": "Generalize pack context surface loading",
           "summary": "Make pack-context startup resolve typed required surfaces from declared paths instead of repo-specific loader constants.",
@@ -12973,6 +13061,34 @@
             "core/python/src/watchtower_core/control_plane/loader.py",
             "core/python/src/watchtower_core/control_plane/pack_context.py",
             "core/python/tests/unit/test_pack_context.py"
+          ]
+        },
+        {
+          "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006",
+          "title": "Retire inventory-only compatibility and intake contract families",
+          "summary": "Remove the retained compatibility and intake contract families if they have no live runtime or workflow consumer and reconcile their remaining references.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "chore",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_compatibility_and_intake_contract_families.md",
+          "updated_at": "2026-03-16T07:07:33Z",
+          "depends_on": [
+            "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
+          ],
+          "related_ids": [
+            "prd.post_rewrite_core_cleanup_and_surface_reduction",
+            "design.features.post_rewrite_core_cleanup_and_surface_reduction",
+            "design.implementation.post_rewrite_core_cleanup_and_surface_reduction",
+            "decision.post_rewrite_core_cleanup_and_surface_reduction_direction",
+            "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
+          ],
+          "applies_to": [
+            "core/control_plane/contracts/",
+            "core/control_plane/registries/",
+            "core/control_plane/schemas/artifacts/",
+            "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py"
           ]
         },
         {
@@ -13002,16 +13118,16 @@
         {
           "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005",
           "title": "Validate and close post-rewrite core cleanup",
-          "summary": "Run full validation, perform one more review loop, and close the trace when no new concrete issue remains in scope.",
+          "summary": "Run full validation, perform one more review loop, and close the trace when the added cleanup slices land and no new concrete issue remains in scope.",
           "artifact_status": "active",
           "task_status": "backlog",
           "task_kind": "governance",
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
-          "updated_at": "2026-03-16T06:33:26Z",
+          "updated_at": "2026-03-16T07:00:01Z",
           "depends_on": [
-            "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
+            "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008"
           ],
           "related_ids": [
             "prd.post_rewrite_core_cleanup_and_surface_reduction",
@@ -13069,6 +13185,9 @@
             "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
             "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
             "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
+            "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
+            "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
+            "docs/planning/tasks/open/retire_inventory_only_compatibility_and_intake_contract_families.md",
             "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md"
           ],
           "related_paths": [
@@ -13118,8 +13237,11 @@
         "design.implementation.post_rewrite_core_cleanup_and_surface_reduction"
       ],
       "task_ids": [
+        "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
         "task.post_rewrite_core_cleanup_and_surface_reduction.bootstrap.001",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
         "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006",
         "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
         "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005",
         "task.post_rewrite_core_cleanup_and_surface_reduction.workspace_validation_contract.002"
@@ -13129,7 +13251,8 @@
         "req.post_rewrite_core_cleanup_and_surface_reduction.002",
         "req.post_rewrite_core_cleanup_and_surface_reduction.003",
         "req.post_rewrite_core_cleanup_and_surface_reduction.004",
-        "req.post_rewrite_core_cleanup_and_surface_reduction.005"
+        "req.post_rewrite_core_cleanup_and_surface_reduction.005",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.006"
       ],
       "acceptance_ids": [
         "ac.post_rewrite_core_cleanup_and_surface_reduction.001"
@@ -13145,9 +13268,13 @@
       ],
       "related_paths": [
         "core/control_plane/",
+        "core/control_plane/contracts/",
+        "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
+        "core/control_plane/examples/",
         "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
         "core/control_plane/manifests/",
+        "core/control_plane/registries/",
         "core/control_plane/registries/validator_registry.json",
         "core/control_plane/schemas/artifacts/",
         "core/python/",
@@ -13155,6 +13282,8 @@
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/control_plane/pack_context.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
         "core/python/tests/unit/test_pack_context.py",
         "docs/planning/",
@@ -13163,15 +13292,20 @@
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_compatibility_and_intake_contract_families.md",
         "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
+        "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
+        "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
         "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
         "docs/planning/tasks/task_tracking.md",
+        "docs/standards/data_contracts/",
         "docs/standards/engineering/python_workspace_standard.md"
       ],
       "tags": [
@@ -19417,7 +19551,6 @@
             "docs/standards/governance/rewrite_surface_classification_standard.md"
           ],
           "related_paths": [
-            "core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
@@ -19899,7 +20032,6 @@
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
-        "core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json",
         "core/control_plane/examples/",
         "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
         "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",

@@ -11,14 +11,12 @@
 | `core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json` | Schema for the bounded artifact-role registry artifact family. |
 | `core/control_plane/schemas/artifacts/artifact_type_registry.v1.schema.json` | Schema for the machine-readable artifact-type registry artifact family. |
 | `core/control_plane/schemas/artifacts/authority_map.v1.schema.json` | Schema for the authored authority-map registry artifact family. |
-| `core/control_plane/schemas/artifacts/compatibility_contract.v1.schema.json` | Schema for the machine-readable compatibility-contract artifact family. |
 | `core/control_plane/schemas/artifacts/command_index.v1.schema.json` | Schema for the machine-readable command-index artifact family. |
 | `core/control_plane/schemas/artifacts/coordination_index.v1.schema.json` | Schema for the machine-readable coordination-index artifact family. |
 | `core/control_plane/schemas/artifacts/decision_index.v1.schema.json` | Schema for the machine-readable decision-index artifact family. |
 | `core/control_plane/schemas/artifacts/design_document_index.v1.schema.json` | Schema for the machine-readable design-document index artifact family. |
 | `core/control_plane/schemas/artifacts/foundation_index.v1.schema.json` | Schema for the machine-readable foundation-index artifact family. |
 | `core/control_plane/schemas/artifacts/initiative_index.v1.schema.json` | Schema for the machine-readable initiative-index artifact family. |
-| `core/control_plane/schemas/artifacts/intake_contract.v1.schema.json` | Schema for the machine-readable intake-contract artifact family. |
 | `core/control_plane/schemas/artifacts/migration_record.v1.schema.json` | Schema for the machine-readable migration-record artifact family. |
 | `core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json` | Schema for the canonical machine-readable planning-catalog artifact family. |
 | `core/control_plane/schemas/artifacts/prd_index.v1.schema.json` | Schema for the machine-readable PRD-index artifact family. |

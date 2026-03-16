@@ -100,8 +100,7 @@
       "related_paths": [
         "core/python/src/watchtower_core/query/README.md",
         "core/python/src/watchtower_core/sync/README.md",
-        "core/python/src/watchtower_core/validation/README.md",
-        "core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json"
+        "core/python/src/watchtower_core/validation/README.md"
       ]
     },
     {

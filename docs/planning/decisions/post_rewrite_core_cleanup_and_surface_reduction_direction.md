@@ -7,7 +7,7 @@ summary: Records the accepted cleanup direction for the confirmed post-rewrite
 type: decision_record
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-16T06:28:27Z'
+updated_at: '2026-03-16T07:00:01Z'
 audience: shared
 authority: supporting
 applies_to:
@@ -26,7 +26,7 @@ applies_to:
 - `Linked PRDs`: `prd.post_rewrite_core_cleanup_and_surface_reduction`
 - `Linked Designs`: `design.features.post_rewrite_core_cleanup_and_surface_reduction`
 - `Linked Implementation Plans`: `design.implementation.post_rewrite_core_cleanup_and_surface_reduction`
-- `Updated At`: `2026-03-16T06:28:27Z`
+- `Updated At`: `2026-03-16T07:00:01Z`
 
 ## Summary
 Records the accepted cleanup direction for the confirmed post-rewrite review findings.
@@ -41,6 +41,7 @@ Prefer direct cleanup of confirmed rewrite regressions and proven-unused control
 - `core/python/.venv/bin/pytest -q` currently fails because the workspace-standard integration test still expects retired compatibility wording.
 - `PackContext` startup fails when a required declared surface moves away from the repository-default path because `load_known_surface()` only returns typed artifacts for hard-coded locations.
 - The control-plane can validate and document inventory-only surfaces such as `repository_manifest.v1.json`, so rewrite leftovers can remain governed even when they no longer participate in runtime behavior.
+- The current validation and standards baseline still treats the rewrite-era example corpus as active enforcement even though those fixtures are not part of the reusable-core load root or a live pack boundary.
 
 ## Applied References and Implications
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): compatibility aids should be temporary and cleanup should prefer explicit boundaries once migration help is no longer needed.
@@ -59,22 +60,24 @@ Prefer direct cleanup of confirmed rewrite regressions and proven-unused control
 - Leaves the pack startup defect and the inventory-only governed surfaces untouched, so the reusable-core claim and maintenance burden both remain weak.
 
 ### Option 2
-- Treat the review as a bounded cleanup trace: repair the failing validation contract, generalize pack startup, and retire one proven-unused governed family.
+- Treat the review as a bounded cleanup trace: repair the failing validation contract, generalize pack startup, and retire proven-unused governed families plus the example-driven validation path.
 - Aligns code, docs, validation, and the control-plane boundary with the rewrite direction in one trace.
 - Requires multiple focused slices and a confirmation-pass review instead of one narrow patch.
 
 ## Chosen Outcome
-Option 2 is accepted. The trace will first repair the failing workspace-standard contract, then generalize pack-surface loading so declared required paths stay typed, then remove the first proven-unused inventory-only governed family and repair the remaining references before closeout.
+Option 2 is accepted. The trace will first repair the failing workspace-standard contract, then generalize pack-surface loading so declared required paths stay typed, then remove proven-unused inventory-only governed families and the example-driven validation path, repairing the remaining references before closeout.
 
 ## Rationale and Tradeoffs
 - A green test suite alone is not enough if the new reusable-core startup surface still only works for this repository's path layout.
 - Removing proven-unused governed families is preferable to keeping them as documentation-only inventory because they still cost validation time, docs upkeep, and mental overhead.
+- Removing example-driven validation is preferable once live artifact validation and direct schema checks already cover the same contracts, because fixtures otherwise create drift-heavy maintenance without affecting the real startup boundary.
 - The cleanup stays bounded by requiring concrete evidence before retiring any family and by running a confirmation-pass review before closeout.
 
 ## Consequences and Follow-Up Impacts
 - Planning docs, task records, acceptance contracts, and evidence will track the bounded cleanup sequence.
 - Control-plane loader code and tests will change to make required-surface loading declaration-driven.
 - The repository-manifest family is the first retired family in this trace, and later retirement candidates should use the same consumer-audit standard before removal.
+- Compatibility or intake contracts, example-fixture coverage, and retained repo-local artifact catalogs are the next review targets because the current code audit shows no live reusable-core consumer for them.
 
 ## Risks, Dependencies, and Assumptions
 - Assumption confirmed in this trace: `repository_manifest.v1.json` was inventory-only and not required by a live runtime or external consumer.

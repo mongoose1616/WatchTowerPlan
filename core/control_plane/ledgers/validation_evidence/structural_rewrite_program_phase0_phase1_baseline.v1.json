@@ -61,8 +61,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/standards/governance/rewrite_surface_classification_standard.md",
-        "docs/planning/design/implementation/structural_rewrite_program.md",
-        "core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json"
+        "docs/planning/design/implementation/structural_rewrite_program.md"
       ],
       "subject_ids": [
         "design.implementation.structural_rewrite_program"

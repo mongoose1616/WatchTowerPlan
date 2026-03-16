@@ -1424,7 +1424,7 @@
       "record_status": "active",
       "decision_status": "proposed",
       "doc_path": "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
-      "updated_at": "2026-03-16T06:28:27Z",
+      "updated_at": "2026-03-16T07:00:01Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "linked_prd_ids": [

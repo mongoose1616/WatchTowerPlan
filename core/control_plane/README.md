@@ -16,7 +16,7 @@
 | `core/control_plane/schemas/` | JSON Schemas for governed core artifacts and external validation interfaces. |
 | `core/control_plane/manifests/` | Authored startup and descriptive declarations owned by core. |
 | `core/control_plane/registries/` | Canonical lookup data and pack-startup registries owned by core. |
-| `core/control_plane/contracts/` | Versioned acceptance and compatibility boundaries. |
+| `core/control_plane/contracts/` | Versioned machine-readable contract families, currently the acceptance-contract set. |
 | `core/control_plane/examples/` | Supporting valid and invalid fixtures for schema and validator coverage. |
 | `core/control_plane/indexes/` | Deliberate derived lookup files when a concrete consumer exists. |
 | `core/control_plane/ledgers/` | Retained governed record families for migrations, releases, purge records, and validation evidence. |

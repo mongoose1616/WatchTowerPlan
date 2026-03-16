@@ -1,12 +1,10 @@
 # `core/control_plane/contracts`
 
 ## Description
-`This directory holds versioned acceptance and compatibility boundaries. Use contracts to state what inputs core accepts and which artifact or schema versions are considered compatible.`
+`This directory holds versioned machine-readable contract families owned by core. The active contract family is acceptance, and additional contract families should exist only when a live consumer depends on them.`
 
 ## Paths
 | Path | Description |
 |---|---|
 | `core/control_plane/contracts/README.md` | Describes the purpose of the contracts directory and its main contract families. |
 | `core/control_plane/contracts/acceptance/` | Defines machine-readable acceptance contracts derived from durable PRD acceptance criteria. |
-| `core/control_plane/contracts/intake/` | Defines required shapes and artifact sets for accepted inputs. |
-| `core/control_plane/contracts/compatibility/` | Defines supported version ranges, migration boundaries, and break rules. |

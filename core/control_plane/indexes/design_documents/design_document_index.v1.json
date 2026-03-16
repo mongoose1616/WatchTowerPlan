@@ -1428,7 +1428,7 @@
       "summary": "Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface Reduction.",
       "status": "active",
       "doc_path": "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
-      "updated_at": "2026-03-16T06:28:27Z",
+      "updated_at": "2026-03-16T07:00:01Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -1513,9 +1513,9 @@
         "core/python/src/watchtower_core/validation/",
         "core/python/tests/unit/",
         "core/python/tests/integration/",
-        "core/control_plane/contracts/intake/",
         "core/control_plane/registries/validator_registry.json",
-        "core/control_plane/ledgers/validation_evidence/"
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/contracts/intake/"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -3433,7 +3433,7 @@
       "summary": "Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementation slice.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
-      "updated_at": "2026-03-16T06:28:27Z",
+      "updated_at": "2026-03-16T07:00:01Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [

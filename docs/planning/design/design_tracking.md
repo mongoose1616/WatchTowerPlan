@@ -16,4 +16,4 @@
 
 Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse and `watchtower-core query designs --trace-id <trace_id>` for one known design trace.
 
-_Updated At: `2026-03-16T06:28:27Z`_
+_Updated At: `2026-03-16T07:00:01Z`_

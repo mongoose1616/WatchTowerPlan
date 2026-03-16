@@ -21,6 +21,9 @@
         "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
         "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
+        "docs/planning/tasks/open/retire_inventory_only_compatibility_and_intake_contract_families.md",
+        "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
+        "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
         "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md"
       ],
       "related_paths": [
@@ -30,7 +33,7 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/coordination_tracking.md"
       ],
-      "notes": "Planning chain and execution tasks captured for trace.post_rewrite_core_cleanup_and_surface_reduction."
+      "notes": "Planning chain and execution tasks captured for trace.post_rewrite_core_cleanup_and_surface_reduction, including the additional review-confirmed cleanup slices."
     }
   ]
 }

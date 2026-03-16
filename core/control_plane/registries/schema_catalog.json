@@ -18,32 +18,6 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1",
-      "title": "Compatibility Contract",
-      "description": "Schema for machine-readable compatibility contract artifacts.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "compatibility_contract",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/compatibility_contract.v1.schema.json",
-      "aliases": [
-        "compatibility boundary schema"
-      ]
-    },
-    {
-      "schema_id": "urn:watchtower:schema:artifacts:contracts:intake-contract:v1",
-      "title": "Intake Contract",
-      "description": "Schema for machine-readable intake contract artifacts.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "intake_contract",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/intake_contract.v1.schema.json",
-      "aliases": [
-        "input boundary schema"
-      ]
-    },
-    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:command-index:v1",
       "title": "Command Index",
       "description": "Schema for machine-readable command index artifacts.",

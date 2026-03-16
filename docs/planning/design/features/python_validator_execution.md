@@ -131,7 +131,7 @@ This document defines the feature-level technical design for a Python validation
 - `core/python/src/watchtower_core/models/` if typed models are introduced for registry entries and result objects.
 - `core/python/tests/unit/` for loader, dispatch, and runner tests.
 - `core/python/tests/integration/` for validation runs against authored control-plane artifacts and example documents.
-- Future `core/control_plane/contracts/intake/` artifacts that choose validator IDs declaratively.
+- Future pack-governance declarations that choose validator IDs declaratively.
 
 ## Design Guardrails
 - Control-plane artifacts remain the canonical source of validator identity and applicability.
@@ -142,7 +142,7 @@ This document defines the feature-level technical design for a Python validation
 ## Implementation-Planning Handoff Notes
 - First implementation planning should break the work into registry loading, runner dispatch, front matter extraction, JSON Schema execution, and result modeling.
 - Implementation planning should also account for test fixtures that exercise both valid and invalid front matter examples.
-- Intake contracts and validation policy should be planned as later features that consume validator IDs rather than prerequisites for the first execution path.
+- Future pack-governance declarations and validation policy should be planned as later features that consume validator IDs rather than prerequisites for the first execution path.
 
 ## Dependencies
 - `jsonschema` for Draft 2020-12 validation.

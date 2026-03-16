@@ -129,7 +129,7 @@
       "path": "core/control_plane/contracts/",
       "kind": "directory",
       "surface_kind": "control_plane_contracts",
-      "summary": "Versioned acceptance and compatibility boundaries.",
+      "summary": "Versioned machine-readable contract families, currently the acceptance-contract set.",
       "parent_path": "core/control_plane/",
       "maturity": "supporting",
       "priority": "medium",
@@ -213,66 +213,6 @@
       "surface_kind": "control_plane_contract",
       "summary": "Acceptance contract for the guarded structural rewrite program through the approved closeout-tracking refresh-boundary checkpoint.",
       "parent_path": "core/control_plane/contracts/acceptance/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/contracts/compatibility/",
-      "kind": "directory",
-      "surface_kind": "control_plane_contracts",
-      "summary": "Defines supported version ranges, migration boundaries, and break rules.",
-      "parent_path": "core/control_plane/contracts/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/contracts/compatibility/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_contract",
-      "summary": "Describes the purpose of the compatibility contracts directory and its current contents.",
-      "parent_path": "core/control_plane/contracts/compatibility/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_contract",
-      "summary": "Compatibility contract for the governed local Python workspace and its helper-runtime boundaries.",
-      "parent_path": "core/control_plane/contracts/compatibility/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/contracts/intake/",
-      "kind": "directory",
-      "surface_kind": "control_plane_contracts",
-      "summary": "Defines required shapes and artifact sets for accepted inputs.",
-      "parent_path": "core/control_plane/contracts/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/contracts/intake/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_contract",
-      "summary": "Describes the purpose of the intake contracts directory and its current contents.",
-      "parent_path": "core/control_plane/contracts/intake/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/contracts/intake/core_python_workspace_intake.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_contract",
-      "summary": "Intake contract for governed Markdown, governed JSON artifacts, and Python-workspace changes accepted by the local helper-runtime loop.",
-      "parent_path": "core/control_plane/contracts/intake/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -2576,16 +2516,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/schemas/artifacts/compatibility_contract.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable compatibility-contract artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -2630,16 +2560,6 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable initiative-index artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/intake_contract.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable intake-contract artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",

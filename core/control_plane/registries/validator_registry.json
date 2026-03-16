@@ -19,20 +19,6 @@
       ]
     },
     {
-      "id": "validator.control_plane.compatibility_contract",
-      "title": "Compatibility Contract Validator",
-      "description": "Validates machine-readable compatibility contract artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "compatibility_contract",
-      "applies_to": [
-        "core/control_plane/contracts/compatibility/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1"
-      ]
-    },
-    {
       "id": "validator.control_plane.artifact_role_registry",
       "title": "Artifact Role Registry Validator",
       "description": "Validates bounded artifact-role registry artifacts.",
@@ -142,20 +128,6 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:indexes:initiative-index:v1"
-      ]
-    },
-    {
-      "id": "validator.control_plane.intake_contract",
-      "title": "Intake Contract Validator",
-      "description": "Validates machine-readable intake contract artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "intake_contract",
-      "applies_to": [
-        "core/control_plane/contracts/intake/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:contracts:intake-contract:v1"
       ]
     },
     {

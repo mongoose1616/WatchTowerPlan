@@ -77,18 +77,6 @@
       ]
     },
     {
-      "kind": "compatibility_contract",
-      "title": "Compatibility Contract",
-      "status": "active",
-      "family": "contract",
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:contracts:compatibility-contract:v1"
-      ],
-      "canonical_paths": [
-        "core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json"
-      ]
-    },
-    {
       "kind": "coordination_index",
       "title": "Coordination Index",
       "status": "active",
@@ -158,18 +146,6 @@
       ],
       "canonical_paths": [
         "core/control_plane/indexes/initiatives/initiative_index.v1.json"
-      ]
-    },
-    {
-      "kind": "intake_contract",
-      "title": "Intake Contract",
-      "status": "active",
-      "family": "contract",
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:contracts:intake-contract:v1"
-      ],
-      "canonical_paths": [
-        "core/control_plane/contracts/intake/core_python_workspace_intake.v1.json"
       ]
     },
     {
