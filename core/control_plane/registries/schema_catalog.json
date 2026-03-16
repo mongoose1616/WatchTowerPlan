@@ -280,19 +280,6 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:manifests:repository-manifest:v1",
-      "title": "Repository Manifest",
-      "description": "Schema for machine-readable repository manifest artifacts.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "repository_manifest",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/repository_manifest.v1.schema.json",
-      "aliases": [
-        "repository manifest schema"
-      ]
-    },
-    {
       "schema_id": "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1",
       "title": "Artifact Role Registry",
       "description": "Schema for the bounded artifact-role registry artifact family.",

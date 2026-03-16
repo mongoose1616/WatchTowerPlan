@@ -40,7 +40,7 @@ Prefer direct cleanup of confirmed rewrite regressions and proven-unused control
 ## Current Context and Constraints
 - `core/python/.venv/bin/pytest -q` currently fails because the workspace-standard integration test still expects retired compatibility wording.
 - `PackContext` startup fails when a required declared surface moves away from the repository-default path because `load_known_surface()` only returns typed artifacts for hard-coded locations.
-- The control-plane still validates and documents inventory-only surfaces such as `repository_manifest.v1.json`, so rewrite leftovers can remain governed even when they no longer participate in runtime behavior.
+- The control-plane can validate and document inventory-only surfaces such as `repository_manifest.v1.json`, so rewrite leftovers can remain governed even when they no longer participate in runtime behavior.
 
 ## Applied References and Implications
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): compatibility aids should be temporary and cleanup should prefer explicit boundaries once migration help is no longer needed.
@@ -74,10 +74,10 @@ Option 2 is accepted. The trace will first repair the failing workspace-standard
 ## Consequences and Follow-Up Impacts
 - Planning docs, task records, acceptance contracts, and evidence will track the bounded cleanup sequence.
 - Control-plane loader code and tests will change to make required-surface loading declaration-driven.
-- The repository-manifest family is the first retirement candidate and must either be removed cleanly or explicitly retained with a documented consumer.
+- The repository-manifest family is the first retired family in this trace, and later retirement candidates should use the same consumer-audit standard before removal.
 
 ## Risks, Dependencies, and Assumptions
-- Assumption: `repository_manifest.v1.json` is inventory-only and not required by a live runtime or external consumer.
+- Assumption confirmed in this trace: `repository_manifest.v1.json` was inventory-only and not required by a live runtime or external consumer.
 - Risk: pack-loading changes could break current default-path behavior if typed caching is not preserved.
 - Dependency: validator registries, schema catalog entries, docs, and derived indexes must be repaired in the same slice as any governed-family retirement.
 

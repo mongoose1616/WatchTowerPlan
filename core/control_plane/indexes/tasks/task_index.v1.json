@@ -3372,12 +3372,12 @@
       "title": "Retire the inventory-only repository manifest surface",
       "summary": "Remove the retained repository_manifest family if it has no runtime consumer and repair the remaining schema, validator, and docs references.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "done",
       "task_kind": "chore",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
-      "updated_at": "2026-03-16T06:46:32Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
+      "updated_at": "2026-03-16T06:53:48Z",
       "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
       "related_ids": [
         "prd.post_rewrite_core_cleanup_and_surface_reduction",
@@ -3387,9 +3387,9 @@
         "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
       ],
       "applies_to": [
-        "core/control_plane/manifests/repository_manifest.v1.json",
+        "core/control_plane/manifests/",
         "core/control_plane/registries/validator_registry.json",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+        "core/control_plane/schemas/artifacts/"
       ]
     },
     {

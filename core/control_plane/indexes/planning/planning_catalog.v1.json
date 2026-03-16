@@ -12823,32 +12823,22 @@
       "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-16T06:46:32Z",
+      "updated_at": "2026-03-16T06:53:48Z",
       "coordination": {
         "current_phase": "execution",
         "key_surface_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
-        "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-        "next_surface_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
-        "open_task_count": 2,
-        "blocked_task_count": 1,
+        "next_action": "Start or continue the active task set and keep the current task records aligned with execution progress.",
+        "next_surface_path": "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
+        "open_task_count": 1,
+        "blocked_task_count": 0,
         "primary_owner": "repository_maintainer",
         "active_owners": [
           "repository_maintainer"
         ],
         "active_task_ids": [
-          "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
           "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005"
         ],
         "active_task_summaries": [
-          {
-            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
-            "title": "Retire the inventory-only repository manifest surface",
-            "task_status": "in_progress",
-            "priority": "medium",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
-            "is_actionable": true
-          },
           {
             "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005",
             "title": "Validate and close post-rewrite core cleanup",
@@ -12856,14 +12846,11 @@
             "priority": "high",
             "owner": "repository_maintainer",
             "doc_path": "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
-            "is_actionable": false,
+            "is_actionable": true,
             "depends_on": [
               "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
             ]
           }
-        ],
-        "blocked_by_task_ids": [
-          "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004"
         ]
       },
       "prds": [
@@ -12993,12 +12980,12 @@
           "title": "Retire the inventory-only repository manifest surface",
           "summary": "Remove the retained repository_manifest family if it has no runtime consumer and repair the remaining schema, validator, and docs references.",
           "artifact_status": "active",
-          "task_status": "in_progress",
+          "task_status": "done",
           "task_kind": "chore",
           "priority": "medium",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
-          "updated_at": "2026-03-16T06:46:32Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
+          "updated_at": "2026-03-16T06:53:48Z",
           "related_ids": [
             "prd.post_rewrite_core_cleanup_and_surface_reduction",
             "design.features.post_rewrite_core_cleanup_and_surface_reduction",
@@ -13007,9 +12994,9 @@
             "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
           ],
           "applies_to": [
-            "core/control_plane/manifests/repository_manifest.v1.json",
+            "core/control_plane/manifests/",
             "core/control_plane/registries/validator_registry.json",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py"
+            "core/control_plane/schemas/artifacts/"
           ]
         },
         {
@@ -13081,7 +13068,7 @@
             "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
             "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
             "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
-            "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
             "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md"
           ],
           "related_paths": [
@@ -13160,14 +13147,14 @@
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
-        "core/control_plane/manifests/repository_manifest.v1.json",
+        "core/control_plane/manifests/",
         "core/control_plane/registries/validator_registry.json",
+        "core/control_plane/schemas/artifacts/",
         "core/python/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/control_plane/pack_context.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
         "core/python/tests/unit/test_pack_context.py",
         "docs/planning/",
@@ -13182,7 +13169,7 @@
         "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
-        "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
         "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/engineering/python_workspace_standard.md"

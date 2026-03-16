@@ -40,7 +40,7 @@ Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementa
 
 ## Assumptions and Constraints
 - Preserve the current repository-default pack behavior while making required-surface loading generic for alternate declared paths.
-- Treat `repository_manifest.v1.json` as retirement-candidate only until a consumer audit confirms it is unused.
+- The consumer audit for `repository_manifest.v1.json` must stay empty before this slice deletes the family and repairs its companion surfaces.
 
 ## Internal Standards and Canonical References Applied
 - [python_workspace_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/python_workspace_standard.md): full workspace validation remains the default completion contract for the Python boundary.

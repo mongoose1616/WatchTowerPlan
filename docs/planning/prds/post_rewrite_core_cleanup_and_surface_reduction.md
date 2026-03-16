@@ -33,7 +33,7 @@ Remediates confirmed post-rewrite regressions, pack-boundary defects, and retain
 ## Problem Statement
 - The rewritten core-plus-pack boundary currently claims a reusable startup surface, but `core/python/.venv/bin/pytest -q` fails because the workspace-standard integration test still asserts retired compatibility wording instead of the current guardrail namespace language.
 - The new `PackContext` startup path only succeeds when required surfaces stay on this repository's hard-coded paths; relocating a declared required surface in pack settings currently downgrades it to an untyped `dict` and fails startup.
-- The control-plane still carries inventory-only governed surfaces that add validation, schema, and documentation maintenance without a demonstrated runtime consumer. The first confirmed candidate is `core/control_plane/manifests/repository_manifest.v1.json`.
+- The control-plane carried inventory-only governed surfaces that added validation, schema, and documentation maintenance without a demonstrated runtime consumer. This trace retires `core/control_plane/manifests/repository_manifest.v1.json` as the first proven-unused family.
 
 ## Goals
 - Restore a clean full-workspace validation baseline after the rewrite.
@@ -57,7 +57,7 @@ Remediates confirmed post-rewrite regressions, pack-boundary defects, and retain
 
 ## Risks and Dependencies
 - Loader changes can break startup or typed caching if the new pack-surface resolution path diverges from the current default-path behavior.
-- Inventory-surface retirement must fail closed if a hidden loader, query, or external consumer still depends on the candidate family.
+- Inventory-surface retirement must fail closed if a hidden loader, query, or external consumer still depends on the family under review.
 - Derived indexes, trackers, and validation contracts must stay aligned with the repaired docs and retired surfaces in the same cleanup slices.
 
 ## References

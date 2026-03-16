@@ -2358,16 +2358,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/manifests/repository_manifest.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_file",
-      "summary": "Supporting repository inventory of top-level governed surfaces and command entrypoints.",
-      "parent_path": "core/control_plane/manifests/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/registries/",
       "kind": "directory",
       "surface_kind": "control_plane_registries",
@@ -2700,16 +2690,6 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable release-record artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/repository_manifest.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable repository-manifest artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",

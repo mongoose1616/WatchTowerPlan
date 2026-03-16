@@ -257,18 +257,6 @@
       ]
     },
     {
-      "kind": "repository_manifest",
-      "title": "Repository Manifest",
-      "status": "active",
-      "family": "manifest",
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:manifests:repository-manifest:v1"
-      ],
-      "canonical_paths": [
-        "core/control_plane/manifests/repository_manifest.v1.json"
-      ]
-    },
-    {
       "kind": "repository_path_index",
       "title": "Repository Path Index",
       "status": "active",

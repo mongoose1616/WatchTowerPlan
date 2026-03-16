@@ -24,7 +24,6 @@
 | `core/control_plane/schemas/artifacts/prd_index.v1.schema.json` | Schema for the machine-readable PRD-index artifact family. |
 | `core/control_plane/schemas/artifacts/reference_index.v1.schema.json` | Schema for the machine-readable reference-index artifact family. |
 | `core/control_plane/schemas/artifacts/release_record.v1.schema.json` | Schema for the machine-readable release-record artifact family. |
-| `core/control_plane/schemas/artifacts/repository_manifest.v1.schema.json` | Schema for the machine-readable repository-manifest artifact family. |
 | `core/control_plane/schemas/artifacts/repository_path_index.v1.schema.json` | Schema for the generated repository path index artifact family. |
 | `core/control_plane/schemas/artifacts/route_index.v1.schema.json` | Schema for the machine-readable route-index artifact family. |
 | `core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json` | Schema for the authored schema catalog registry artifact family. |
@@ -39,4 +38,4 @@
 
 ## Notes
 - `core/control_plane/schemas/interfaces/packs/` holds the pack-facing startup contracts such as `pack_settings`, `governance_surface_map`, `path_pattern_registry`, `status_registry`, `actor_registry`, and `artifact_index`.
-- This directory still carries retained repo-local support families such as `repository_manifest`, `artifact_type_registry`, `artifact_role_registry`, and the current migration or evidence record schemas consumed by the internal planning-and-implementation pack.
+- This directory still carries retained repo-local support families such as `artifact_type_registry`, `artifact_role_registry`, and the current migration or evidence record schemas consumed by the internal planning-and-implementation pack.

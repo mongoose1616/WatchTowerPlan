@@ -3,7 +3,7 @@
 ## Active Initiatives
 | Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| `trace.post_rewrite_core_cleanup_and_surface_reduction` | `execution` | repository_maintainer | `2` (`blocked=1`) | [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md) | [retire_the_inventory_only_repository_manifest_surface.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| `trace.post_rewrite_core_cleanup_and_surface_reduction` | `execution` | repository_maintainer | `1` | [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md) | [validate_and_close_post_rewrite_core_cleanup.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md) | Start or continue the active task set and keep the current task records aligned with execution progress. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -75,4 +75,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T06:46:32Z`_
+_Updated At: `2026-03-16T06:53:48Z`_

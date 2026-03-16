@@ -6,17 +6,17 @@ summary: Remove the retained repository_manifest family if it has no runtime con
   and repair the remaining schema, validator, and docs references.
 type: task
 status: active
-task_status: in_progress
+task_status: done
 task_kind: chore
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-16T06:46:32Z'
+updated_at: '2026-03-16T06:53:48Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/manifests/repository_manifest.v1.json
+- core/control_plane/manifests/
 - core/control_plane/registries/validator_registry.json
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/control_plane/schemas/artifacts/
 related_ids:
 - prd.post_rewrite_core_cleanup_and_surface_reduction
 - design.features.post_rewrite_core_cleanup_and_surface_reduction

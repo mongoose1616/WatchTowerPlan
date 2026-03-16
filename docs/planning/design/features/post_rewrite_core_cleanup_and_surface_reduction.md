@@ -35,7 +35,7 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 
 ## Scope and Feature Boundary
 - Covers the broken workspace-standard integration contract, the declaration-driven `PackContext` startup defect, and the first proven-unused inventory-only governed family found in the current review loop.
-- Excludes a wholesale planning-system replacement, broader ledger removal beyond the proven candidate family, and terminology changes made only to match STEP1 naming.
+- Excludes a wholesale planning-system replacement, broader ledger removal beyond the first proven-unused family, and terminology changes made only to match STEP1 naming.
 
 ## Current-State Context
 - The current repository review confirmed that full `pytest` fails on a stale documentation assertion and that the new pack startup path is only generic for repository-default surface paths.
@@ -70,7 +70,7 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 ### Architecture
 - Reconcile the workspace-standard wording and the integration test so the current guardrail boundary is asserted consistently.
 - Route required `PackContext` surfaces through one typed resolution path keyed by declaration metadata instead of by repository-default path alone.
-- Audit the repository-manifest family for runtime consumers and retire it if the audit stays empty, repairing validator, schema-catalog, documentation, and derived-surface references in the same slice.
+- Audit the repository-manifest family for runtime consumers and retire it when the audit stays empty, repairing validator, schema-catalog, documentation, and derived-surface references in the same slice.
 
 ### Data and Interface Impacts
 - `core/python/src/watchtower_core/control_plane/loader.py` and `pack_context.py` gain the generic typed-surface loading path.
