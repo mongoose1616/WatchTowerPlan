@@ -8,7 +8,7 @@
   "entries": [
     {
       "acceptance_id": "ac.planning_artifact_retention_and_purge.001",
-      "summary": "The planning corpus for this trace publishes the active PRD, accepted direction decision, active feature design, active implementation plan, active retention standard, aligned acceptance contract, planning-baseline evidence, closed bootstrap task, and bounded open execution tasks.",
+      "summary": "The planning corpus for this trace publishes the active PRD, accepted direction decision, active feature design, active implementation plan, active retention standard, aligned acceptance contract, planning-baseline evidence, the closed bootstrap task, and the bounded execution task set for the completed slice.",
       "source_requirement_ids": [
         "req.planning_artifact_retention_and_purge.001"
       ],
@@ -20,9 +20,9 @@
         "docs/standards/governance/planning_retention_and_purge_standard.md",
         "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
-        "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
-        "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
-        "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_planning_artifact_retention_and_purge.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -32,7 +32,7 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/coordination_tracking.md"
       ],
-      "notes": "Planning baseline contract prepared for the retention-model trace after the bootstrap task closed and the bounded execution queue was created."
+      "notes": "The retention-model trace must keep its planning chain, promoted policy, and closed execution task set coherent through terminal closeout."
     },
     {
       "acceptance_id": "ac.planning_artifact_retention_and_purge.002",
@@ -56,8 +56,11 @@
         "req.planning_artifact_retention_and_purge.005"
       ],
       "validation_targets": [
-        "core/control_plane/ledgers/",
-        "core/python/src/watchtower_core/repo_ops/",
+        "core/control_plane/ledgers/purges/",
+        "core/control_plane/schemas/artifacts/trace_purge_record.v1.schema.json",
+        "core/control_plane/examples/valid/ledgers/trace_purge_record.v1.example.json",
+        "core/python/src/watchtower_core/closeout/",
+        "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/cli/"
       ]
     },

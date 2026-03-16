@@ -6,11 +6,11 @@ summary: Add the purge ledger, safety checks, and repo-local implementation path
   removes a closed trace package only when retention criteria are satisfied.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-15T10:45:00Z'
+updated_at: '2026-03-16T03:35:24Z'
 audience: shared
 authority: authoritative
 applies_to:

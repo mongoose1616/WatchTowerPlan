@@ -1,0 +1,71 @@
+# `watchtower-core closeout purge-trace`
+
+## Summary
+This command deletes one eligible closed trace-local planning package, writes the minimal
+surviving purge ledger entry, and refreshes derived repository surfaces after the retention
+guards pass.
+
+## Use When
+- A traced initiative is already terminal and its trace-local planning package is ready to leave the repository.
+- You need a governed purge path instead of ad hoc deletion of closed PRDs, tasks, contracts, and evidence.
+- You want a dry-run check that surviving canonical surfaces no longer depend on the trace before removing it.
+
+## Command
+| Field | Value |
+|---|---|
+| Invocation | `watchtower-core closeout purge-trace` |
+| Kind | `subcommand` |
+| Workspace | `core_python` |
+| Source Surface | `core/python/src/watchtower_core/cli/closeout_family.py` |
+
+## Synopsis
+```sh
+cd core/python
+uv run watchtower-core closeout purge-trace --trace-id <trace_id> [--retained-authority-path <path>]... [--purged-at <timestamp>] [--write] [--format <human|json>]
+```
+
+## Arguments and Options
+- `--trace-id <trace_id>`: Stable trace identifier such as `trace.core_python_foundation`.
+- `--retained-authority-path <path>`: Repository-relative canonical path that remains authoritative after purge. Repeat the option to record more than one surviving path.
+- `--purged-at <timestamp>`: Explicit RFC 3339 UTC purge timestamp. Defaults to the current UTC time.
+- `--write`: Delete the trace package, write the purge ledger, and refresh derived surfaces.
+- `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
+- `-h`, `--help`: Show the command help text.
+
+## Examples
+```sh
+cd core/python
+uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path docs/standards/governance/planning_retention_and_purge_standard.md
+```
+
+```sh
+cd core/python
+uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path core/python/src/watchtower_core/repo_ops/example.py --write --format json
+```
+
+## Behavior and Outputs
+- By default the command runs in dry-run mode and does not mutate the repository.
+- The command refuses purge attempts when the target trace is not terminal, still has open tasks, still has acceptance-reconciliation drift, already has a purge ledger entry, or is still referenced by surviving canonical surfaces.
+- The purge boundary is trace-scoped: the command removes trace-local PRD, decision, design, task, acceptance-contract, and validation-evidence artifacts together rather than allowing partial family cleanup.
+- If `--retained-authority-path` is omitted, the implementation falls back to surviving non-package `related_paths` already published by the trace and records those in the purge ledger when they remain valid.
+- In write mode, the command deletes the trace package, writes one purge ledger record under `core/control_plane/ledgers/purges/`, and then runs the full derived-surface refresh path.
+- In `human` mode, the command prints the purge timestamp, removed-path count, purge-ledger path, retained-authority paths, and whether it wrote the change.
+- In `json` mode, the command prints one JSON object with the removed paths, retained-authority paths, purge-ledger path, refreshed sync targets, and write status.
+
+## Related Commands
+| Command | Relationship |
+|---|---|
+| `watchtower-core closeout` | Parent command group for closeout operations. |
+| `watchtower-core closeout initiative` | Use this first to put the trace into a terminal initiative state before purge. |
+| `watchtower-core validate acceptance` | Confirms trace-level acceptance and evidence coherence before purge. |
+| `watchtower-core sync all` | Rebuilds the derived surfaces that this command refreshes automatically in write mode. |
+| `watchtower-core query planning` | Confirms the purged trace no longer appears in the retained planning catalog. |
+| `watchtower-core query coordination` | Confirms the retained coordination surface no longer carries the purged trace as active or recent retained work. |
+
+## Source Surface
+- `core/python/src/watchtower_core/cli/closeout_family.py`
+- `core/python/src/watchtower_core/cli/closeout_handlers.py`
+- `core/python/src/watchtower_core/closeout/purge_trace.py`
+
+## Updated At
+- `2026-03-16T03:35:00Z`

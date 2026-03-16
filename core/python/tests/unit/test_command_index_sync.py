@@ -173,6 +173,10 @@ def test_registry_backed_parser_specs_require_companion_docs() -> None:
         == "core/python/src/watchtower_core/cli/closeout_family.py"
     )
     assert (
+        spec_by_id["command.watchtower_core.closeout.purge_trace"].implementation_path
+        == "core/python/src/watchtower_core/cli/closeout_family.py"
+    )
+    assert (
         spec_by_id["command.watchtower_core.validate.all"].implementation_path
         == "core/python/src/watchtower_core/cli/validate_family.py"
     )

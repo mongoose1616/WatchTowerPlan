@@ -144,3 +144,47 @@ class ValidationEvidenceArtifact:
             related_paths=tuple(document.get("related_paths", ())),
             notes=document.get("notes"),
         )
+
+
+@dataclass(frozen=True, slots=True)
+class TracePurgeRecord:
+    """Typed trace-purge ledger artifact."""
+
+    schema_id: str
+    record_id: str
+    title: str
+    status: str
+    trace_id: str
+    initiative_status: str
+    closed_at: str
+    purged_at: str
+    closure_reason: str
+    summary: str
+    doc_path: str
+    surviving_authority_paths: tuple[str, ...]
+    purged_paths: tuple[str, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(
+        cls,
+        document: dict[str, Any],
+        *,
+        doc_path: str,
+    ) -> TracePurgeRecord:
+        return cls(
+            schema_id=document["$schema"],
+            record_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            trace_id=document["trace_id"],
+            initiative_status=document["initiative_status"],
+            closed_at=document["closed_at"],
+            purged_at=document["purged_at"],
+            closure_reason=document["closure_reason"],
+            summary=document["summary"],
+            doc_path=doc_path,
+            surviving_authority_paths=tuple(document["surviving_authority_paths"]),
+            purged_paths=tuple(document["purged_paths"]),
+            notes=document.get("notes"),
+        )

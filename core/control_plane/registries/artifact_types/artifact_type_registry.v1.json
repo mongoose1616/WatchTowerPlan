@@ -305,6 +305,18 @@
       ]
     },
     {
+      "kind": "trace_purge_record",
+      "title": "Trace Purge Record",
+      "status": "active",
+      "family": "ledger",
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1"
+      ],
+      "canonical_paths": [
+        "core/control_plane/ledgers/purges/planning_projection_pipeline_modularity_hardening_purge_record.v1.json"
+      ]
+    },
+    {
       "kind": "traceability_index",
       "title": "Traceability Index",
       "status": "active",

@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 
 from watchtower_core.cli.handler_common import _emit_command_error, _print_payload
-from watchtower_core.closeout import InitiativeCloseoutService
+from watchtower_core.closeout import InitiativeCloseoutService, TracePurgeService
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 
 
@@ -71,4 +71,55 @@ def _run_closeout_initiative(args: argparse.Namespace) -> int:
         )
     else:
         print("Dry-run only. Use --write to persist the closeout state.")
+    return 0
+
+
+def _run_closeout_purge_trace(args: argparse.Namespace) -> int:
+    service = TracePurgeService(ControlPlaneLoader())
+    try:
+        result = service.purge(
+            trace_id=args.trace_id,
+            retained_authority_paths=tuple(args.retained_authority_path or ()),
+            purged_at=args.purged_at,
+            write=args.write,
+        )
+    except ValueError as exc:
+        return _emit_command_error(
+            args,
+            "watchtower-core closeout purge-trace",
+            str(exc),
+            prefix="Purge error",
+        )
+
+    payload = {
+        "command": "watchtower-core closeout purge-trace",
+        "status": "ok",
+        "trace_id": result.trace_id,
+        "title": result.title,
+        "initiative_status": result.initiative_status,
+        "closed_at": result.closed_at,
+        "closure_reason": result.closure_reason,
+        "purged_at": result.purged_at,
+        "removed_paths": list(result.removed_paths),
+        "retained_authority_paths": list(result.retained_authority_paths),
+        "purge_ledger_relative_path": result.purge_ledger_relative_path,
+        "purge_ledger_output_path": result.purge_ledger_output_path,
+        "refreshed_targets": list(result.refreshed_targets),
+        "wrote": result.wrote,
+    }
+    if _print_payload(args, payload) == 0:
+        return 0
+
+    print(f"Prepared purge for {result.trace_id}.")
+    print(f"Purged At: {result.purged_at}")
+    print(f"Removed Paths: {len(result.removed_paths)}")
+    print(f"Purge Ledger: {result.purge_ledger_relative_path}")
+    print(
+        "Retained Authority Paths: "
+        + ", ".join(result.retained_authority_paths)
+    )
+    if result.wrote:
+        print("Trace package was deleted and derived surfaces were refreshed.")
+    else:
+        print("Dry-run only. Use --write to delete the trace package and write the purge ledger.")
     return 0

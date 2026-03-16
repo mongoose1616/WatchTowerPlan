@@ -60,6 +60,7 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 | Command | Relationship |
 |---|---|
 | `watchtower-core closeout` | Parent command group for closeout operations. |
+| `watchtower-core closeout purge-trace` | Use after terminal closeout when the trace package is ready to leave the retained planning corpus. |
 | `watchtower-core query planning` | Reads the planning-catalog view this command now refreshes in write mode. |
 | `watchtower-core query initiatives` | Reads the initiative view this command refreshes in write mode. |
 | `watchtower-core query coordination` | Reads the coordination view this command refreshes in write mode. |
@@ -79,4 +80,4 @@ uv run watchtower-core closeout initiative --trace-id trace.example --initiative
 - `core/python/src/watchtower_core/closeout/initiative.py`
 
 ## Updated At
-- `2026-03-13T22:37:14Z`
+- `2026-03-16T03:35:00Z`

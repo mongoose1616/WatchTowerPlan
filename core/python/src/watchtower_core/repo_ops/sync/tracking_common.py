@@ -28,7 +28,7 @@ def terminal_initiative_status_counts_for_trace_ids(
     trace_statuses: Mapping[str, str],
 ) -> tuple[tuple[str, int], ...]:
     """Return non-zero initiative terminal-status counts by unique trace ID."""
-    counts = Counter()
+    counts: Counter[str] = Counter()
     seen_trace_ids: set[str] = set()
 
     for trace_id in trace_ids:

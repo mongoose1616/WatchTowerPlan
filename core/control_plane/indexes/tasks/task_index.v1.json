@@ -855,7 +855,7 @@
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/open/validate_and_close_core_split_compatibility_wrapper_retirement.md",
-      "updated_at": "2026-03-16T02:14:43Z",
+      "updated_at": "2026-03-16T03:31:47Z",
       "trace_id": "trace.core_split_compatibility_wrapper_retirement",
       "depends_on": [
         "task.core_split_compatibility_wrapper_retirement.boundary_proof.003"
@@ -2741,12 +2741,12 @@
       "title": "Purge one closed pilot trace and repair surviving references",
       "summary": "Run the guarded purge workflow on one closed trace, remove its related planning artifacts, and prove the surviving standards and indexes remain coherent.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
-      "updated_at": "2026-03-15T10:48:00Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
+      "updated_at": "2026-03-16T03:35:24Z",
       "trace_id": "trace.planning_artifact_retention_and_purge",
       "depends_on": [
         "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
@@ -2793,12 +2793,12 @@
       "title": "Validate and close planning artifact retention and purge",
       "summary": "Run targeted and full validation, confirm the pilot purge behavior, refresh evidence, and close the retention-model trace once the cleanup path lands cleanly.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md",
-      "updated_at": "2026-03-15T10:50:00Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_planning_artifact_retention_and_purge.md",
+      "updated_at": "2026-03-16T03:43:18Z",
       "trace_id": "trace.planning_artifact_retention_and_purge",
       "depends_on": [
         "task.planning_artifact_retention_and_purge.pilot_cleanup.004"
@@ -2821,12 +2821,12 @@
       "title": "Implement guarded trace purge workflow and minimal purge ledger",
       "summary": "Add the purge ledger, safety checks, and repo-local implementation path that removes a closed trace package only when retention criteria are satisfied.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
-      "updated_at": "2026-03-15T10:45:00Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
+      "updated_at": "2026-03-16T03:35:24Z",
       "trace_id": "trace.planning_artifact_retention_and_purge",
       "depends_on": [
         "task.planning_artifact_retention_and_purge.standard_alignment.002"
@@ -3025,121 +3025,6 @@
         "core/control_plane/",
         "core/python/",
         "docs/commands/core_python/"
-      ]
-    },
-    {
-      "task_id": "task.planning_projection_pipeline_modularity_hardening.bootstrap.001",
-      "title": "Bootstrap Planning Projection Pipeline Modularity Hardening planning chain",
-      "summary": "Bootstraps the initial planning chain for Planning Projection Pipeline Modularity Hardening.",
-      "status": "active",
-      "task_status": "done",
-      "task_kind": "governance",
-      "priority": "medium",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/planning_projection_pipeline_modularity_hardening_bootstrap.md",
-      "updated_at": "2026-03-16T00:02:15Z",
-      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
-      "related_ids": [
-        "prd.planning_projection_pipeline_modularity_hardening",
-        "design.features.planning_projection_pipeline_modularity_hardening",
-        "design.implementation.planning_projection_pipeline_modularity_hardening",
-        "decision.planning_projection_pipeline_modularity_hardening_direction",
-        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
-      ],
-      "applies_to": [
-        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
-        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
-        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
-        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py"
-      ]
-    },
-    {
-      "task_id": "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002",
-      "title": "Split planning projection serialization boundaries",
-      "summary": "Extract family-focused planning projection serializers and preserve compact payload semantics for initiative and planning outputs.",
-      "status": "active",
-      "task_status": "done",
-      "task_kind": "feature",
-      "priority": "high",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/split_planning_projection_serialization_boundaries.md",
-      "updated_at": "2026-03-16T00:46:51Z",
-      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
-      "related_ids": [
-        "prd.planning_projection_pipeline_modularity_hardening",
-        "design.features.planning_projection_pipeline_modularity_hardening",
-        "design.implementation.planning_projection_pipeline_modularity_hardening",
-        "decision.planning_projection_pipeline_modularity_hardening_direction",
-        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
-      ],
-      "applies_to": [
-        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
-        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
-        "core/python/tests/unit/test_initiative_index_sync.py",
-        "core/python/tests/unit/test_planning_catalog_sync.py"
-      ]
-    },
-    {
-      "task_id": "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
-      "title": "Tighten planning projection sync composition seams",
-      "summary": "Move planning-catalog-only aggregation and sync composition into smaller private helpers while preserving initiative-versus-planning parity.",
-      "status": "active",
-      "task_status": "done",
-      "task_kind": "feature",
-      "priority": "high",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/tighten_planning_projection_sync_composition_seams.md",
-      "updated_at": "2026-03-16T00:59:03Z",
-      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
-      "depends_on": [
-        "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002"
-      ],
-      "related_ids": [
-        "prd.planning_projection_pipeline_modularity_hardening",
-        "design.features.planning_projection_pipeline_modularity_hardening",
-        "design.implementation.planning_projection_pipeline_modularity_hardening",
-        "decision.planning_projection_pipeline_modularity_hardening_direction",
-        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
-      ],
-      "applies_to": [
-        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
-        "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
-        "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
-        "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
-        "core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py",
-        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
-        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
-        "core/python/src/watchtower_core/repo_ops/README.md",
-        "core/python/tests/unit/test_initiative_index_sync.py",
-        "core/python/tests/unit/test_planning_catalog_sync.py"
-      ]
-    },
-    {
-      "task_id": "task.planning_projection_pipeline_modularity_hardening.validation_closeout.004",
-      "title": "Validate and close planning projection pipeline modularity hardening",
-      "summary": "Run targeted and full validation, refresh acceptance evidence, and close the planning-projection modularity trace once the refactor lands cleanly.",
-      "status": "active",
-      "task_status": "done",
-      "task_kind": "governance",
-      "priority": "high",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
-      "updated_at": "2026-03-16T01:06:25Z",
-      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
-      "depends_on": [
-        "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003"
-      ],
-      "related_ids": [
-        "prd.planning_projection_pipeline_modularity_hardening",
-        "design.features.planning_projection_pipeline_modularity_hardening",
-        "design.implementation.planning_projection_pipeline_modularity_hardening",
-        "decision.planning_projection_pipeline_modularity_hardening_direction",
-        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
-      ],
-      "applies_to": [
-        "core/python/",
-        "core/control_plane/",
-        "docs/planning/"
       ]
     },
     {

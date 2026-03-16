@@ -14,6 +14,8 @@ def _args(**overrides: object) -> argparse.Namespace:
         "closure_reason": "Closed for tests.",
         "superseded_by_trace_id": None,
         "closed_at": "2026-03-10T23:59:59Z",
+        "retained_authority_path": [],
+        "purged_at": "2026-03-10T23:59:59Z",
         "write": True,
         "allow_open_tasks": False,
         "allow_acceptance_issues": False,
@@ -138,3 +140,107 @@ def test_closeout_initiative_supports_json_success(monkeypatch, capsys) -> None:
         payload["planning_catalog_output_path"]
         == "core/control_plane/indexes/planning/planning_catalog.v1.json"
     )
+
+
+def test_closeout_purge_trace_prints_human_summary(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def purge(self, **kwargs: object) -> SimpleNamespace:
+            assert kwargs["trace_id"] == "trace.example"
+            assert kwargs["retained_authority_paths"] == ()
+            assert kwargs["write"] is True
+            return SimpleNamespace(
+                trace_id="trace.example",
+                title="Example Trace",
+                initiative_status="completed",
+                closed_at="2026-03-10T21:00:00Z",
+                closure_reason="Closed for tests.",
+                purged_at="2026-03-10T23:59:59Z",
+                wrote=True,
+                removed_paths=(
+                    "docs/planning/prds/example.md",
+                    "docs/planning/tasks/closed/archive/2026/03/10/example.md",
+                ),
+                retained_authority_paths=(
+                    "docs/standards/governance/example.md",
+                    "core/python/src/watchtower_core/closeout/purge_trace.py",
+                ),
+                purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.v1.json",
+                purge_ledger_output_path="core/control_plane/ledgers/purges/example_purge_record.v1.json",
+                refreshed_targets=("repository-paths", "planning-catalog", "coordination"),
+            )
+
+    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(closeout_handlers, "TracePurgeService", FakeService)
+
+    result = closeout_handlers._run_closeout_purge_trace(_args())
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Prepared purge for trace.example." in captured.out
+    assert "Removed Paths: 2" in captured.out
+    assert (
+        "Purge Ledger: "
+        "core/control_plane/ledgers/purges/example_purge_record.v1.json"
+        in captured.out
+    )
+    assert "Trace package was deleted and derived surfaces were refreshed." in captured.out
+
+
+def test_closeout_purge_trace_supports_json_errors(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def purge(self, **kwargs: object) -> SimpleNamespace:
+            raise ValueError("surviving references remain")
+
+    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(closeout_handlers, "TracePurgeService", FakeService)
+
+    result = closeout_handlers._run_closeout_purge_trace(_args(format="json"))
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 1
+    assert payload == {
+        "command": "watchtower-core closeout purge-trace",
+        "message": "surviving references remain",
+        "status": "error",
+    }
+
+
+def test_closeout_purge_trace_supports_json_success(monkeypatch, capsys) -> None:
+    class FakeService:
+        def __init__(self, loader: object) -> None:
+            self.loader = loader
+
+        def purge(self, **kwargs: object) -> SimpleNamespace:
+            return SimpleNamespace(
+                trace_id="trace.example",
+                title="Example Trace",
+                initiative_status="completed",
+                closed_at="2026-03-10T21:00:00Z",
+                closure_reason="Closed for tests.",
+                purged_at="2026-03-10T23:59:59Z",
+                wrote=False,
+                removed_paths=("docs/planning/prds/example.md",),
+                retained_authority_paths=("docs/standards/governance/example.md",),
+                purge_ledger_relative_path="core/control_plane/ledgers/purges/example_purge_record.v1.json",
+                purge_ledger_output_path=None,
+                refreshed_targets=(),
+            )
+
+    monkeypatch.setattr(closeout_handlers, "ControlPlaneLoader", lambda: object())
+    monkeypatch.setattr(closeout_handlers, "TracePurgeService", FakeService)
+
+    result = closeout_handlers._run_closeout_purge_trace(_args(format="json", write=False))
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core closeout purge-trace"
+    assert payload["purge_ledger_relative_path"].endswith("example_purge_record.v1.json")
+    assert payload["wrote"] is False

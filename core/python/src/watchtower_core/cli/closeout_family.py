@@ -12,17 +12,20 @@ def register_closeout_family(
     subparsers: argparse._SubParsersAction,
 ) -> None:
     """Register the closeout command family."""
-    from watchtower_core.cli.closeout_handlers import _run_closeout_initiative
+    from watchtower_core.cli.closeout_handlers import (
+        _run_closeout_initiative,
+        _run_closeout_purge_trace,
+    )
     from watchtower_core.cli.handler_common import _run_help
 
     closeout_parser = subparsers.add_parser(
         "closeout",
-        help="Apply terminal closeout state to traced initiatives.",
+        help="Close traced initiatives or purge eligible closed trace packages.",
         description=dedent(
             """
-            Apply initiative-level closeout state to the governed traceability
-            index and refresh the derived initiative, coordination, and
-            human-readable planning trackers that mirror that state.
+            Apply terminal initiative state to traced planning surfaces or
+            purge one eligible closed trace package after validating the
+            repository's retention and reference-safety rules.
             """
         ).strip(),
         epilog=examples(
@@ -31,6 +34,8 @@ def register_closeout_family(
             "uv run watchtower-core closeout initiative --trace-id trace.example "
             "--initiative-status superseded --superseded-by-trace-id trace.replacement "
             "--closure-reason \"Replaced by the new initiative\" --format json",
+            "uv run watchtower-core closeout purge-trace --trace-id trace.example "
+            "--retained-authority-path docs/standards/governance/example.md --write",
         ),
         formatter_class=HelpFormatter,
     )
@@ -108,3 +113,54 @@ def register_closeout_family(
         help="Output format. Use json for scripts, workflows, or agent calls.",
     )
     closeout_initiative_parser.set_defaults(handler=_run_closeout_initiative)
+
+    closeout_purge_parser = closeout_subparsers.add_parser(
+        "purge-trace",
+        help="Purge one eligible closed trace package and write the purge ledger.",
+        description=dedent(
+            """
+            Delete one closed trace-local planning package only after verifying
+            terminal initiative state, no open tasks, clean acceptance
+            reconciliation, and no surviving canonical references to the
+            purgeable trace material.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core closeout purge-trace --trace-id trace.example "
+            "--retained-authority-path docs/standards/governance/example.md",
+            "uv run watchtower-core closeout purge-trace --trace-id trace.example "
+            "--retained-authority-path core/python/src/watchtower_core/repo_ops/example.py "
+            "--write --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    closeout_purge_parser.add_argument(
+        "--trace-id",
+        required=True,
+        help="Stable trace identifier such as trace.core_python_foundation.",
+    )
+    closeout_purge_parser.add_argument(
+        "--retained-authority-path",
+        action="append",
+        default=[],
+        help=(
+            "Repository-relative canonical path that remains authoritative after purge. "
+            "Repeat to record more than one surviving path."
+        ),
+    )
+    closeout_purge_parser.add_argument(
+        "--purged-at",
+        help="Explicit RFC 3339 UTC purge timestamp. Defaults to the current UTC time.",
+    )
+    closeout_purge_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Delete the trace package, write the purge ledger, and refresh derived surfaces.",
+    )
+    closeout_purge_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    closeout_purge_parser.set_defaults(handler=_run_closeout_purge_trace)

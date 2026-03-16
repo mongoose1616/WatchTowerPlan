@@ -3,14 +3,14 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-16T03:04:19Z",
+  "updated_at": "2026-03-16T03:47:30Z",
   "coordination_mode": "active_work",
   "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
   "recommended_next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
   "recommended_surface_path": "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
-  "active_initiative_count": 2,
-  "blocked_task_count": 4,
-  "actionable_task_count": 2,
+  "active_initiative_count": 1,
+  "blocked_task_count": 2,
+  "actionable_task_count": 1,
   "entries": [
     {
       "trace_id": "trace.core_split_compatibility_wrapper_retirement",
@@ -19,7 +19,7 @@
       "artifact_status": "active",
       "initiative_status": "active",
       "current_phase": "execution",
-      "updated_at": "2026-03-16T02:14:43Z",
+      "updated_at": "2026-03-16T03:31:47Z",
       "open_task_count": 3,
       "blocked_task_count": 2,
       "key_surface_path": "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
@@ -137,140 +137,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence published for the compatibility-wrapper retirement trace before implementation work starts. Repo-native sync, query, and validation surfaces were not refreshed in this turn because an unrelated IndentationError in core/python/src/watchtower_core/repo_ops/validation/all.py currently blocks watchtower-core command execution."
-    },
-    {
-      "trace_id": "trace.planning_artifact_retention_and_purge",
-      "title": "Planning Artifact Retention and Purge PRD",
-      "summary": "Defines a promote-then-purge retention model so closed trace-local planning artifacts do not remain in the repository indefinitely.",
-      "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-16T03:04:19Z",
-      "open_task_count": 3,
-      "blocked_task_count": 2,
-      "key_surface_path": "docs/planning/prds/planning_artifact_retention_and_purge.md",
-      "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-      "next_surface_path": "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
-        "task.planning_artifact_retention_and_purge.validation_closeout.005",
-        "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.planning_artifact_retention_and_purge.workflow_and_ledger.003",
-          "title": "Implement guarded trace purge workflow and minimal purge ledger",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.planning_artifact_retention_and_purge.standard_alignment.002"
-          ]
-        },
-        {
-          "task_id": "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
-          "title": "Purge one closed pilot trace and repair surviving references",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
-          ]
-        },
-        {
-          "task_id": "task.planning_artifact_retention_and_purge.validation_closeout.005",
-          "title": "Validate and close planning artifact retention and purge",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.planning_artifact_retention_and_purge.pilot_cleanup.004"
-          ]
-        }
-      ],
-      "blocked_by_task_ids": [
-        "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
-        "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
-      ],
-      "prd_ids": [
-        "prd.planning_artifact_retention_and_purge"
-      ],
-      "decision_ids": [
-        "decision.planning_artifact_retention_and_purge_direction"
-      ],
-      "design_ids": [
-        "design.features.planning_artifact_retention_and_purge"
-      ],
-      "plan_ids": [
-        "design.implementation.planning_artifact_retention_and_purge"
-      ],
-      "task_ids": [
-        "task.planning_artifact_retention_and_purge.bootstrap.001",
-        "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
-        "task.planning_artifact_retention_and_purge.standard_alignment.002",
-        "task.planning_artifact_retention_and_purge.validation_closeout.005",
-        "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
-      ],
-      "acceptance_ids": [
-        "ac.planning_artifact_retention_and_purge.001",
-        "ac.planning_artifact_retention_and_purge.002",
-        "ac.planning_artifact_retention_and_purge.003",
-        "ac.planning_artifact_retention_and_purge.004",
-        "ac.planning_artifact_retention_and_purge.005"
-      ],
-      "acceptance_contract_ids": [
-        "contract.acceptance.planning_artifact_retention_and_purge"
-      ],
-      "evidence_ids": [
-        "evidence.planning_artifact_retention_and_purge.planning_baseline"
-      ],
-      "related_paths": [
-        "core/control_plane/",
-        "core/control_plane/contracts/acceptance/planning_artifact_retention_and_purge_acceptance.v1.json",
-        "core/control_plane/indexes/",
-        "core/control_plane/ledgers/",
-        "core/control_plane/ledgers/validation_evidence/planning_artifact_retention_and_purge_planning_baseline.v1.json",
-        "core/python/",
-        "core/python/src/watchtower_core/",
-        "core/python/src/watchtower_core/cli/",
-        "core/python/src/watchtower_core/repo_ops/",
-        "docs/planning/",
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/decisions/decision_tracking.md",
-        "docs/planning/decisions/planning_artifact_retention_and_purge_direction.md",
-        "docs/planning/design/design_tracking.md",
-        "docs/planning/design/features/planning_artifact_retention_and_purge.md",
-        "docs/planning/design/implementation/planning_artifact_retention_and_purge.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "docs/planning/prds/planning_artifact_retention_and_purge.md",
-        "docs/planning/prds/prd_tracking.md",
-        "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
-        "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
-        "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
-        "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md",
-        "docs/planning/tasks/task_tracking.md",
-        "docs/standards/",
-        "docs/standards/governance/",
-        "docs/standards/governance/planning_retention_and_purge_standard.md",
-        "docs/standards/governance/task_tracking_standard.md",
-        "docs/standards/governance/traceability_standard.md"
-      ],
-      "tags": [
-        "traceability"
-      ],
-      "notes": "Planning baseline evidence published for the retention-model trace after the bootstrap task closed and the bounded execution queue plus retention standard were added before implementation work begins."
+      "notes": "Planning baseline evidence published for the compatibility-wrapper retirement trace before implementation work starts. Repo-native sync and query surfaces were refreshed after the planning scaffold synced successfully from the canonical Python workspace."
     }
   ],
   "actionable_tasks": [
@@ -284,30 +151,16 @@
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
       "is_actionable": true
-    },
-    {
-      "trace_id": "trace.planning_artifact_retention_and_purge",
-      "initiative_title": "Planning Artifact Retention and Purge PRD",
-      "task_id": "task.planning_artifact_retention_and_purge.workflow_and_ledger.003",
-      "title": "Implement guarded trace purge workflow and minimal purge ledger",
-      "task_status": "backlog",
-      "priority": "high",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
-      "is_actionable": true,
-      "depends_on": [
-        "task.planning_artifact_retention_and_purge.standard_alignment.002"
-      ]
     }
   ],
   "recent_closed_initiatives": [
     {
-      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
-      "title": "Planning Projection Pipeline Modularity Hardening PRD",
+      "trace_id": "trace.planning_artifact_retention_and_purge",
+      "title": "Planning Artifact Retention and Purge PRD",
       "initiative_status": "completed",
-      "closed_at": "2026-03-16T01:06:43Z",
-      "key_surface_path": "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
-      "closure_reason": "Completed the bounded refactor after splitting serializer and planning-catalog seams, refreshing acceptance evidence, and rerunning clean validation passes."
+      "closed_at": "2026-03-16T03:47:30Z",
+      "key_surface_path": "docs/planning/prds/planning_artifact_retention_and_purge.md",
+      "closure_reason": "Implemented the guarded trace purge workflow, aligned retention authority, purged the pilot trace package, and reran clean validation."
     },
     {
       "trace_id": "trace.structural_rewrite_program",

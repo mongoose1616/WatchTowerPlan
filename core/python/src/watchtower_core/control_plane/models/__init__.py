@@ -60,6 +60,7 @@ from watchtower_core.control_plane.models.planning_catalog import (
 from watchtower_core.control_plane.models.validation import (
     AcceptanceContract,
     AcceptanceContractItem,
+    TracePurgeRecord,
     ValidationEvidenceArtifact,
     ValidationEvidenceCheck,
 )
@@ -106,6 +107,7 @@ __all__ = [
     "StandardIndexEntry",
     "TaskIndex",
     "TaskIndexEntry",
+    "TracePurgeRecord",
     "TraceabilityEntry",
     "TraceabilityIndex",
     "ValidationEvidenceArtifact",

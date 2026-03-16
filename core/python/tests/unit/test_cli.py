@@ -239,3 +239,14 @@ def test_validate_group_prints_group_specific_help(capsys) -> None:
     assert "front-matter" in captured.out
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
     assert "uv run watchtower-core validate artifact" in captured.out
+
+
+def test_closeout_group_prints_group_specific_help(capsys) -> None:
+    result = main(["closeout"])
+
+    captured = capsys.readouterr()
+    assert result == 0
+    assert "Apply terminal initiative state to traced planning surfaces" in captured.out
+    assert "initiative" in captured.out
+    assert "purge-trace" in captured.out
+    assert "uv run watchtower-core closeout purge-trace" in captured.out

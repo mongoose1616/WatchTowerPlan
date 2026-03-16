@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+  "title": "Trace Purge Record",
+  "description": "Machine-readable ledger record for one purged traced planning package.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "trace_id",
+    "initiative_status",
+    "closed_at",
+    "purged_at",
+    "closure_reason",
+    "summary",
+    "surviving_authority_paths",
+    "purged_paths"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^purge\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/lifecycleStatus"
+    },
+    "trace_id": {
+      "$ref": "#/$defs/idPattern"
+    },
+    "initiative_status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "superseded",
+        "cancelled",
+        "abandoned"
+      ]
+    },
+    "closed_at": {
+      "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+    },
+    "purged_at": {
+      "$ref": "urn:watchtower:schema:common:timestamps:utc-timestamp:v1"
+    },
+    "closure_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "surviving_authority_paths": {
+      "$ref": "#/$defs/stringList"
+    },
+    "purged_paths": {
+      "$ref": "#/$defs/stringList"
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "lifecycleStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

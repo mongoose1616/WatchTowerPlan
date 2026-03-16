@@ -266,6 +266,20 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+      "title": "Trace Purge Record",
+      "description": "Schema for machine-readable trace-purge ledger artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "trace_purge_record",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/trace_purge_record.v1.schema.json",
+      "aliases": [
+        "trace purge ledger schema",
+        "planning retention purge schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:manifests:repository-manifest:v1",
       "title": "Repository Manifest",
       "description": "Schema for machine-readable repository manifest artifacts.",

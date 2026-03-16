@@ -29,7 +29,7 @@
     {
       "command_id": "command.watchtower_core.closeout",
       "command": "watchtower-core closeout",
-      "summary": "Apply initiative-level closeout state to the governed traceability index and refresh the derived initiative, coordination, and human-readable planning trackers that mirror that state.",
+      "summary": "Apply terminal initiative state to traced planning surfaces or purge one eligible closed trace package after validating the repository's retention and reference-safety rules.",
       "kind": "subcommand",
       "status": "active",
       "workspace": "core_python",
@@ -66,6 +66,31 @@
         "cli",
         "closeout",
         "initiative"
+      ]
+    },
+    {
+      "command_id": "command.watchtower_core.closeout.purge_trace",
+      "command": "watchtower-core closeout purge-trace",
+      "summary": "Delete one closed trace-local planning package only after verifying terminal initiative state, no open tasks, clean acceptance reconciliation, and no surviving canonical references to the purgeable trace material.",
+      "kind": "subcommand",
+      "status": "active",
+      "workspace": "core_python",
+      "doc_path": "docs/commands/core_python/watchtower_core_closeout_purge_trace.md",
+      "synopsis": "uv run watchtower-core closeout purge-trace [-h] --trace-id TRACE_ID [--retained-authority-path RETAINED_AUTHORITY_PATH] [--purged-at PURGED_AT] [--write] [--format {human,json}]",
+      "implementation_path": "core/python/src/watchtower_core/cli/closeout_family.py",
+      "package_entrypoint": "watchtower_core.cli.main:main",
+      "parent_command_id": "command.watchtower_core.closeout",
+      "output_formats": [
+        "human",
+        "json"
+      ],
+      "default_output_format": "human",
+      "tags": [
+        "python",
+        "cli",
+        "closeout",
+        "purge",
+        "trace"
       ]
     },
     {

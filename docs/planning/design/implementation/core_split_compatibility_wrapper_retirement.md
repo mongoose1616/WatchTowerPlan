@@ -7,7 +7,7 @@ summary: Breaks compatibility-wrapper retirement into a bounded implementation s
 type: implementation_plan
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-16T02:14:43Z'
+updated_at: '2026-03-16T03:31:47Z'
 audience: shared
 authority: supporting
 applies_to:
@@ -33,7 +33,7 @@ applies_to:
 - `Linked Decisions`: `decision.core_split_compatibility_wrapper_retirement_direction`
 - `Source Designs`: `design.features.core_split_compatibility_wrapper_retirement`
 - `Linked Acceptance Contracts`: `contract.acceptance.core_split_compatibility_wrapper_retirement`
-- `Updated At`: `2026-03-16T02:14:43Z`
+- `Updated At`: `2026-03-16T03:31:47Z`
 
 ## Summary
 Breaks compatibility-wrapper retirement into a bounded implementation slice that leaves `watchtower_core` cleaner for future extraction.
@@ -52,7 +52,7 @@ Breaks compatibility-wrapper retirement into a bounded implementation slice that
 - `repo_ops` remains the authoritative home for `WatchTowerPlan`-specific query, sync, validation, and CLI orchestration behavior.
 - Reusable validators that are genuinely export-safe must stay available from top-level validation namespaces.
 - The current dirty worktree does not change the implementation target boundary.
-- `./.venv/bin/watchtower-core sync all --write --format json`, `query`, and `validate` flows are currently blocked by an unrelated `IndentationError` in `core/python/src/watchtower_core/repo_ops/validation/all.py`, so derived-surface refresh stays deferred until that command path is healthy again.
+- Repo-native planning surfaces can be refreshed from the canonical Python workspace under `core/python/` while the trace stays in planning-only state.
 
 ## Current-State Context
 - The active initiative inventory is currently empty, so this trace becomes the next bounded split-prep slice rather than a child of an existing active initiative.
@@ -100,7 +100,7 @@ Breaks compatibility-wrapper retirement into a bounded implementation slice that
 ## Validation Plan
 - Run targeted boundary coverage for the retired wrapper modules and their direct callers.
 - Run `pytest -q`, `ruff check .`, and `python -m mypy src/watchtower_core` after the wrapper cleanup lands.
-- Refresh derived planning and task surfaces plus acceptance evidence once the unrelated `core/python/src/watchtower_core/repo_ops/validation/all.py` syntax issue is resolved and `watchtower-core sync all` plus `watchtower-core validate all` run deterministically again.
+- Refresh derived planning and task surfaces plus acceptance evidence with repo-native sync and validation reruns as the implementation slice lands.
 - Close the trace only after targeted boundary tests and the full repository validation loop pass cleanly.
 
 ## References

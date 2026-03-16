@@ -1198,6 +1198,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/examples/valid/ledgers/trace_purge_record.v1.example.json",
+      "kind": "file",
+      "surface_kind": "control_plane_example",
+      "summary": "Valid trace-purge ledger example aligned with the published artifact schema.",
+      "parent_path": "core/control_plane/examples/valid/ledgers/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
@@ -2040,6 +2050,36 @@
       "surface_kind": "control_plane_ledger",
       "summary": "Migration record for moving the structural rewrite from external prose into a traced Phase 0 and Phase 1 package with the Phase 2 review gate prepared.",
       "parent_path": "core/control_plane/ledgers/migrations/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/purges/",
+      "kind": "directory",
+      "surface_kind": "control_plane_ledgers",
+      "summary": "Minimal surviving history for traced planning packages that were explicitly purged.",
+      "parent_path": "core/control_plane/ledgers/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/purges/README.md",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Describes the purpose of the trace-purge ledger directory and its current contents.",
+      "parent_path": "core/control_plane/ledgers/purges/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/ledgers/purges/planning_projection_pipeline_modularity_hardening_purge_record.v1.json",
+      "kind": "file",
+      "surface_kind": "control_plane_ledger",
+      "summary": "Purge ledger record for the retired planning-projection modularity hardening trace package.",
+      "parent_path": "core/control_plane/ledgers/purges/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "maintainer"
@@ -3046,6 +3086,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable task-index artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/trace_purge_record.v1.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the machine-readable trace-purge ledger artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -4276,6 +4326,16 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Entry page for closeout commands used to terminally update traced initiative state.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_closeout_purge_trace.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Governed purge page for deleting one eligible closed trace package and writing the minimal purge ledger.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",

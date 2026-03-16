@@ -25,6 +25,7 @@ from watchtower_core.control_plane.models import (
     StandardIndex,
     TaskIndex,
     TraceabilityIndex,
+    TracePurgeRecord,
     ValidationEvidenceArtifact,
     ValidatorRegistry,
     WorkflowIndex,
@@ -63,6 +64,7 @@ TASK_INDEX_PATH = "core/control_plane/indexes/tasks/task_index.v1.json"
 TRACEABILITY_INDEX_PATH = "core/control_plane/indexes/traceability/traceability_index.v1.json"
 PLANNING_CATALOG_PATH = "core/control_plane/indexes/planning/planning_catalog.v1.json"
 ACCEPTANCE_CONTRACTS_DIRECTORY = "core/control_plane/contracts/acceptance"
+TRACE_PURGE_LEDGER_DIRECTORY = "core/control_plane/ledgers/purges"
 VALIDATION_EVIDENCE_DIRECTORY = "core/control_plane/ledgers/validation_evidence"
 TArtifact = TypeVar("TArtifact")
 
@@ -384,6 +386,16 @@ class ControlPlaneLoader:
         return self._load_typed_directory(
             VALIDATION_EVIDENCE_DIRECTORY,
             lambda relative_path, document: ValidationEvidenceArtifact.from_document(
+                document,
+                doc_path=relative_path,
+            ),
+        )
+
+    def load_trace_purge_records(self) -> tuple[TracePurgeRecord, ...]:
+        """Load all governed trace-purge ledger artifacts."""
+        return self._load_typed_directory(
+            TRACE_PURGE_LEDGER_DIRECTORY,
+            lambda relative_path, document: TracePurgeRecord.from_document(
                 document,
                 doc_path=relative_path,
             ),

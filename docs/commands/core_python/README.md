@@ -36,4 +36,5 @@
 | `docs/commands/core_python/watchtower_core_sync_planning_catalog.md` | Rebuild surface for the canonical planning catalog derived from trace-linked planning sources. |
 | `docs/commands/core_python/watchtower_core_validate.md` | Entry page for validation commands across artifacts, semantics, and repo-wide checks. |
 | `docs/commands/core_python/watchtower_core_closeout.md` | Entry page for closeout commands used to terminally update traced initiative state. |
+| `docs/commands/core_python/watchtower_core_closeout_purge_trace.md` | Governed purge page for deleting one eligible closed trace package and writing the minimal purge ledger. |
 | `docs/commands/core_python/watchtower_core_doctor.md` | Fastest non-mutating health snapshot for the Python workspace and governed repository surfaces. |

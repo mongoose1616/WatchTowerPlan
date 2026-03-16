@@ -6,11 +6,11 @@ summary: Run the guarded purge workflow on one closed trace, remove its related 
   artifacts, and prove the surviving standards and indexes remain coherent.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-15T10:48:00Z'
+updated_at: '2026-03-16T03:35:24Z'
 audience: shared
 authority: authoritative
 applies_to:

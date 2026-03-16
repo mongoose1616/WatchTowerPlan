@@ -67,6 +67,7 @@
 - `uv run watchtower-core sync github-tasks --repo owner/repo`
 - `uv run watchtower-core sync github-tasks --repo owner/repo --no-label-sync`
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"`
+- `uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path docs/standards/governance/planning_retention_and_purge_standard.md`
 - `uv run watchtower-core validate all --skip-acceptance`
 - `uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md`
 - `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
@@ -106,6 +107,7 @@
 - `uv run watchtower-core plan scaffold --write ...` refreshes the traced coordination slice only when the target trace already participates in coordination or already has traced task state.
 - `uv run watchtower-core plan bootstrap --include-decision --write ...` now emits a governed-valid decision scaffold with `Applied References and Implications`, and bootstrap-only traces stay in `implementation_planning` until non-bootstrap active work exists.
 - `uv run watchtower-core closeout initiative --write ...` refreshes the planning catalog in the same closeout slice as the initiative and coordination outputs.
+- `uv run watchtower-core closeout purge-trace --write ...` deletes one eligible closed trace package, writes the minimal purge ledger, and then refreshes all derived governed surfaces.
 - `uv run watchtower-core task create|update|transition --write ...` now requires `--trace-id` when traced `related_ids` are present and repairs governed acceptance/evidence task-path references when task moves change the canonical task document path.
 - `uv run watchtower-core query authority --domain planning --format json` resolves which planning or governance surface is canonical when routing is still unclear.
 - `uv run watchtower-core query references --related-path core/python/ --format json` now treats trailing-slash directory paths as descendant touchpoint filters and returns only references with real current touchpoints under that directory.

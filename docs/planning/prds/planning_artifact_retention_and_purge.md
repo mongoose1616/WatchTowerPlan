@@ -7,7 +7,7 @@ summary: Defines a promote-then-purge retention model so closed trace-local plan
 type: prd
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-15T11:00:00Z'
+updated_at: '2026-03-16T03:42:08Z'
 audience: shared
 authority: authoritative
 ---
@@ -21,7 +21,7 @@ authority: authoritative
 - `Linked Decisions`: `decision.planning_artifact_retention_and_purge_direction`
 - `Linked Designs`: `design.features.planning_artifact_retention_and_purge`
 - `Linked Implementation Plans`: `design.implementation.planning_artifact_retention_and_purge`
-- `Updated At`: `2026-03-15T11:00:00Z`
+- `Updated At`: `2026-03-16T03:42:08Z`
 
 ## Summary
 Defines a promote-then-purge retention model so closed trace-local planning artifacts do not remain in the repository indefinitely.
@@ -55,7 +55,7 @@ Defines a promote-then-purge retention model so closed trace-local planning arti
 - A guarded purge workflow must refuse to delete a trace that still has open tasks or live canonical references.
 
 ## Requirements
-- `req.planning_artifact_retention_and_purge.001`: The planning corpus must publish an accepted direction decision, an authoritative retention standard, a feature design, an implementation plan, aligned acceptance and evidence artifacts, a closed bootstrap task, and a bounded open task chain for this retention-model trace.
+- `req.planning_artifact_retention_and_purge.001`: The planning corpus must publish an accepted direction decision, an authoritative retention standard, a feature design, an implementation plan, aligned acceptance and evidence artifacts, a closed bootstrap task, and a bounded execution task set for this retention-model trace.
 - `req.planning_artifact_retention_and_purge.002`: Directly affected canonical standards, workflow-facing guidance, and planning entrypoints must not rely on purgeable trace-local artifacts as the enduring source of current policy once equivalent surviving authority exists.
 - `req.planning_artifact_retention_and_purge.003`: An explicit purge must operate at the `trace_id` boundary and remove the full closed trace package rather than deleting one file family at a time.
 - `req.planning_artifact_retention_and_purge.004`: The purge path must fail closed when a trace is active, has open tasks, lacks promoted surviving authority, or is still referenced by surviving canonical surfaces.
@@ -64,7 +64,7 @@ Defines a promote-then-purge retention model so closed trace-local planning arti
 - `req.planning_artifact_retention_and_purge.007`: Targeted validation, full repository validation, refreshed acceptance evidence, and initiative closeout must complete after the pilot purge.
 
 ## Acceptance Criteria
-- `ac.planning_artifact_retention_and_purge.001`: The planning corpus for `trace.planning_artifact_retention_and_purge` contains the active PRD, accepted direction decision, active feature design, active implementation plan, active retention standard, aligned acceptance contract, planning-baseline evidence, closed bootstrap task, and bounded open execution tasks.
+- `ac.planning_artifact_retention_and_purge.001`: The planning corpus for `trace.planning_artifact_retention_and_purge` contains the active PRD, accepted direction decision, active feature design, active implementation plan, active retention standard, aligned acceptance contract, planning-baseline evidence, closed bootstrap task, and the bounded execution task set for the completed retention-model slice.
 - `ac.planning_artifact_retention_and_purge.002`: Directly affected governance and planning guidance no longer treats purgeable trace-local artifacts as the enduring canonical source of current policy when a surviving standard or current authority surface exists.
 - `ac.planning_artifact_retention_and_purge.003`: A guarded purge workflow plus minimal purge ledger can remove one eligible closed trace package and refuses unsafe or partial purge attempts.
 - `ac.planning_artifact_retention_and_purge.004`: One closed pilot trace is purged through the guarded workflow, and the rebuilt planning trackers plus indexes no longer rely on the removed trace package.

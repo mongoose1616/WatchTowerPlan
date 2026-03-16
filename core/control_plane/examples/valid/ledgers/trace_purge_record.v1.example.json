@@ -1,0 +1,21 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1",
+  "id": "purge.example_trace",
+  "title": "Trace Purge Record for Example Trace",
+  "status": "active",
+  "trace_id": "trace.example_trace",
+  "initiative_status": "completed",
+  "closed_at": "2026-03-15T18:05:00Z",
+  "purged_at": "2026-03-16T02:14:00Z",
+  "closure_reason": "Completed the bounded planning cleanup and absorbed the lasting rule into current standards.",
+  "summary": "Removed the closed trace-local planning package after validating terminal state and surviving canonical authority.",
+  "surviving_authority_paths": [
+    "docs/standards/governance/planning_retention_and_purge_standard.md",
+    "core/python/src/watchtower_core/closeout/purge_trace.py"
+  ],
+  "purged_paths": [
+    "docs/planning/prds/example_trace.md",
+    "core/control_plane/contracts/acceptance/example_trace_acceptance.v1.json",
+    "core/control_plane/ledgers/validation_evidence/example_trace_planning_baseline.v1.json"
+  ]
+}

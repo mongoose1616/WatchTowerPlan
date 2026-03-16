@@ -243,6 +243,20 @@
       ]
     },
     {
+      "id": "validator.control_plane.trace_purge_record",
+      "title": "Trace Purge Record Validator",
+      "description": "Validates machine-readable trace-purge ledger artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "trace_purge_record",
+      "applies_to": [
+        "core/control_plane/ledgers/purges/**"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:ledgers:trace-purge-record:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.repository_manifest",
       "title": "Repository Manifest Validator",
       "description": "Validates machine-readable repository manifest artifacts.",

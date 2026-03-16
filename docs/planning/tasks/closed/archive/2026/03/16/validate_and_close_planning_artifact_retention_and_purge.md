@@ -6,11 +6,11 @@ summary: Run targeted and full validation, confirm the pilot purge behavior, ref
   evidence, and close the retention-model trace once the cleanup path lands cleanly.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-15T10:50:00Z'
+updated_at: '2026-03-16T03:43:18Z'
 audience: shared
 authority: authoritative
 applies_to:

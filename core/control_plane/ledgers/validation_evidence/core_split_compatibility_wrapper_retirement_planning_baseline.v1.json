@@ -5,7 +5,7 @@
   "status": "active",
   "trace_id": "trace.core_split_compatibility_wrapper_retirement",
   "overall_result": "passed",
-  "recorded_at": "2026-03-16T02:14:43Z",
+  "recorded_at": "2026-03-16T03:31:47Z",
   "source_prd_ids": [
     "prd.core_split_compatibility_wrapper_retirement"
   ],
@@ -53,7 +53,7 @@
         "ac.core_split_compatibility_wrapper_retirement.003",
         "ac.core_split_compatibility_wrapper_retirement.004"
       ],
-      "notes": "This planning baseline records wrapper retirement as the next split-prep slice after the closed export-readiness and export-hardening traces, with execution starting at direct import cleanup and ending at package-boundary proof plus validation closeout. It is intentionally a manual planning-chain baseline only because repo-native sync, query, and validation commands are currently blocked by an unrelated IndentationError in core/python/src/watchtower_core/repo_ops/validation/all.py."
+      "notes": "This planning baseline records wrapper retirement as the next split-prep slice after the closed export-readiness and export-hardening traces, with execution starting at direct import cleanup and ending at package-boundary proof plus validation closeout."
     }
   ],
   "related_paths": [
@@ -65,7 +65,7 @@
     "docs/planning/prds/prd_tracking.md",
     "docs/planning/tasks/task_tracking.md"
   ],
-  "notes": "Planning baseline evidence published for the compatibility-wrapper retirement trace before implementation work starts. Repo-native sync, query, and validation surfaces were not refreshed in this turn because an unrelated IndentationError in core/python/src/watchtower_core/repo_ops/validation/all.py currently blocks watchtower-core command execution.",
+  "notes": "Planning baseline evidence published for the compatibility-wrapper retirement trace before implementation work starts. Repo-native sync and query surfaces were refreshed after the planning scaffold synced successfully from the canonical Python workspace.",
   "source_decision_ids": [
     "decision.core_split_compatibility_wrapper_retirement_direction"
   ]
