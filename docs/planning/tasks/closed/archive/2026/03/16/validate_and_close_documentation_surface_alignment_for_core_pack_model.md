@@ -6,18 +6,16 @@ summary: Run validation, refresh planning surfaces, and close the documentation-
   trace once the docs refresh lands cleanly.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: governance
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-16T05:57:19Z'
+updated_at: '2026-03-16T06:16:10Z'
 audience: shared
 authority: authoritative
 related_ids:
 - prd.documentation_surface_alignment_for_core_pack_model
 - design.implementation.documentation_surface_alignment_for_core_pack_model
-depends_on:
-- task.documentation_surface_alignment_for_core_pack_model.refresh.002
 ---
 
 # Validate and close documentation surface alignment for core and pack model

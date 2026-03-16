@@ -2,7 +2,7 @@
 
 ## Summary
 This command deletes one eligible closed trace-local planning package, writes the minimal
-surviving purge ledger entry, and refreshes derived repository surfaces after the retention
+surviving purge record, and refreshes derived repository surfaces after the retention
 guards pass.
 
 ## Use When
@@ -28,7 +28,7 @@ uv run watchtower-core closeout purge-trace --trace-id <trace_id> [--retained-au
 - `--trace-id <trace_id>`: Stable trace identifier such as `trace.core_python_foundation`.
 - `--retained-authority-path <path>`: Repository-relative canonical path that remains authoritative after purge. Repeat the option to record more than one surviving path.
 - `--purged-at <timestamp>`: Explicit RFC 3339 UTC purge timestamp. Defaults to the current UTC time.
-- `--write`: Delete the trace package, write the purge ledger, and refresh derived surfaces.
+- `--write`: Delete the trace package, write the purge record, and refresh derived surfaces.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `-h`, `--help`: Show the command help text.
 
@@ -45,12 +45,12 @@ uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-
 
 ## Behavior and Outputs
 - By default the command runs in dry-run mode and does not mutate the repository.
-- The command refuses purge attempts when the target trace is not terminal, still has open tasks, still has acceptance-reconciliation drift, already has a purge ledger entry, or is still referenced by surviving canonical surfaces.
+- The command refuses purge attempts when the target trace is not terminal, still has open tasks, still has acceptance-reconciliation drift, already has a purge record, or is still referenced by surviving canonical surfaces.
 - The purge boundary is trace-scoped: the command removes trace-local PRD, decision, design, task, acceptance-contract, and validation-evidence artifacts together rather than allowing partial family cleanup.
-- If `--retained-authority-path` is omitted, the implementation falls back to surviving non-package `related_paths` already published by the trace and records those in the purge ledger when they remain valid.
-- In write mode, the command deletes the trace package, writes one purge ledger record under `core/control_plane/ledgers/purges/`, and then runs the full derived-surface refresh path.
-- In `human` mode, the command prints the purge timestamp, removed-path count, purge-ledger path, retained-authority paths, and whether it wrote the change.
-- In `json` mode, the command prints one JSON object with the removed paths, retained-authority paths, purge-ledger path, refreshed sync targets, and write status.
+- If `--retained-authority-path` is omitted, the implementation falls back to surviving non-package `related_paths` already published by the trace and records those in the purge record when they remain valid.
+- In write mode, the command deletes the trace package, writes one purge record under `core/control_plane/ledgers/purges/`, and then runs the full derived-surface refresh path.
+- In `human` mode, the command prints the purge timestamp, removed-path count, purge-record path, retained-authority paths, and whether it wrote the change.
+- In `json` mode, the command prints one JSON object with the removed paths, retained-authority paths, purge-record path, refreshed sync targets, and write status.
 
 ## Related Commands
 | Command | Relationship |

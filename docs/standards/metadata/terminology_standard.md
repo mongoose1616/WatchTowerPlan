@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "terminology"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -60,7 +60,8 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 | `index` | A derived lookup artifact that improves retrieval or navigation | Not a source of truth. |
 | `registry` | A governed authoritative catalog with stable identifiers | Use when the catalog itself is owned authority. |
 | `contract` | An explicit acceptance or compatibility boundary | Used for intake or compatibility expectations. |
-| `policy` | A machine-readable guardrail or rule set | Distinct from explanatory standards prose. |
+| `pack settings` | The pack-owned load-root declaration consumed by reusable-core startup | Current canonical startup input under `core/control_plane/manifests/pack_settings.json`. |
+| `policy` | A repository rule or decision that is usually carried by standards, authority registries, or retained records | Not a dedicated machine-readable artifact family in the current repository layout. |
 | `README` | A directory-orientation document | Quick reference, not a standards or workflow document. |
 | `foundation document` | A durable product, philosophy, standards-context, technology, or narrative document under `docs/foundations/` | Shapes later planning and standards work. |
 | `domain pack` | An external operator-facing pack that uses the shared core substrate | Not content owned inside the core control plane. |
@@ -95,4 +96,4 @@ Keep retrieval, review, and governance coherent by giving the repository one can
 - When a term is unstable or contested, resolve it in a standard or decision artifact before letting it spread through many documents.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-16T06:28:00Z`

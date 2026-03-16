@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T22:05:00Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,7 +46,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 
 ## Guidance
 - Keep all Python-specific repository surfaces under `core/python/`.
-- Keep authored machine-readable authority under `core/control_plane/`; do not move schemas, registries, contracts, policies, or indexes into the Python workspace.
+- Keep authored machine-readable authority under `core/control_plane/`; do not move schemas, registries, contracts, manifests, or indexes into the Python workspace.
 - Use one canonical Python workspace rooted at `core/python/`.
 - Use `uv` as the standard local environment and dependency-management tool.
 - Keep the pinned interpreter version in `core/python/.python-version`.
@@ -66,7 +66,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Ignore local caches, wheels, build outputs, virtual environments, and `*.egg-info` directories. Do not treat them as governed repository artifacts.
 - Do not place generated Python artifacts directly under `core/`.
 - Prefer package modules for long-lived behavior over ad hoc standalone scripts.
-- Keep the first core package surfaces focused on control-plane loading, validation, explicit compatibility boundary layers, repo-local orchestration, adapters, evidence, and operator-facing CLI or doctor commands.
+- Keep the first core package surfaces focused on control-plane loading, validation, explicit boundary-layer guardrails, repo-local orchestration, adapters, evidence, and operator-facing CLI or doctor commands.
 - Keep deterministic derived-artifact refresh and materialization logic in the dedicated repo-local sync surfaces instead of scattering it across ad hoc scripts.
 
 ## Structure or Data Model
@@ -87,10 +87,10 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 |---|---|
 | `core/python/src/watchtower_core/control_plane/` | Loaders, resolvers, and artifact access for governed control-plane surfaces. |
 | `core/python/src/watchtower_core/validation/` | Validator execution, schema-backed checks, and validation result modeling. |
-| `core/python/src/watchtower_core/query/` | Compatibility query namespace for explicit wrappers; authoritative repo-local query logic lives under `core/python/src/watchtower_core/repo_ops/query/`. |
+| `core/python/src/watchtower_core/query/` | Guardrail query namespace root only; authoritative repo-local query logic lives under `core/python/src/watchtower_core/repo_ops/query/`. |
 | `core/python/src/watchtower_core/adapters/` | Parsers and adapters for Markdown front matter, JSON artifacts, and similar inputs. |
 | `core/python/src/watchtower_core/evidence/` | Structured result, issue, and evidence helpers. |
-| `core/python/src/watchtower_core/sync/` | Compatibility sync namespace for explicit wrappers; authoritative repo-local sync logic lives under `core/python/src/watchtower_core/repo_ops/sync/`. |
+| `core/python/src/watchtower_core/sync/` | Guardrail sync namespace root only; authoritative repo-local sync logic lives under `core/python/src/watchtower_core/repo_ops/sync/`. |
 | `core/python/src/watchtower_core/repo_ops/` | WatchTowerPlan-specific planning, query, sync, validation, and document-orchestration behavior. |
 | `core/python/src/watchtower_core/cli/` | Thin entrypoints and operator-facing commands. |
 | `core/python/src/watchtower_core/utils/` | Narrow shared helpers that do not justify a first-class domain package. |
@@ -107,7 +107,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - A new schema loader belongs in `core/python/src/watchtower_core/control_plane/`.
 - A front matter validator belongs in `core/python/src/watchtower_core/validation/`.
 - A repo-local query helper that searches the repository path index belongs in `core/python/src/watchtower_core/repo_ops/query/`.
-- A compatibility import wrapper belongs in `core/python/src/watchtower_core/query/` only when the repo still needs that explicit compatibility namespace.
+- A guardrail package root that blocks repo-local query imports from leaking into reusable surfaces belongs in `core/python/src/watchtower_core/query/`.
 - A generated wheel file does not belong in `core/` or `core/python/`; it should remain ignored local output.
 
 ## Operationalization
@@ -141,4 +141,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The workspace may grow additional modules over time, but it should not grow additional package roots unless a later standard explicitly allows that change.
 
 ## Updated At
-- `2026-03-12T22:05:00Z`
+- `2026-03-16T06:28:00Z`

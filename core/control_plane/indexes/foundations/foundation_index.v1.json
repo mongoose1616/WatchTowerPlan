@@ -12,7 +12,7 @@
       "audience": "shared",
       "authority": "supporting",
       "doc_path": "docs/foundations/customer_story.md",
-      "updated_at": "2026-03-11T01:34:31Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -62,7 +62,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/engineering_design_principles.md",
-      "updated_at": "2026-03-11T01:34:31Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -354,7 +354,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/engineering_stack_direction.md",
-      "updated_at": "2026-03-12T21:26:00Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
@@ -492,7 +492,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/product_direction.md",
-      "updated_at": "2026-03-11T01:34:31Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -626,7 +626,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/repository_scope.md",
-      "updated_at": "2026-03-11T01:34:31Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -728,7 +728,7 @@
       "audience": "shared",
       "authority": "authoritative",
       "doc_path": "docs/foundations/repository_standards_posture.md",
-      "updated_at": "2026-03-11T01:34:31Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [

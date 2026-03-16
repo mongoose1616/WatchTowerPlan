@@ -1,7 +1,7 @@
 # `docs/standards/data_contracts`
 
 ## Description
-`This directory holds standards for structured data used by the planning repository. Use it for rules that define formats, schemas, registries, and status-tracking expectations for machine-readable or strongly structured content.`
+`This directory holds standards for structured data used by the reusable core and the current planning-and-implementation pack. Use it for rules that define formats, schemas, registries, indexes, and retained record families for machine-readable or strongly structured content.`
 
 ## Families
 ### Planning and Traceability Index Family
@@ -33,7 +33,7 @@
 | `docs/standards/data_contracts/schema_standard.md` | Defines schema expectations for governed structured data. |
 | `docs/standards/data_contracts/standard_index_standard.md` | Defines the standard for machine-readable standard indexes. |
 | `docs/standards/data_contracts/status_tracking_standard.md` | Defines how status values should be represented and maintained. |
-| `docs/standards/data_contracts/validation_evidence_standard.md` | Defines the standard for durable validation-evidence ledger artifacts. |
+| `docs/standards/data_contracts/validation_evidence_standard.md` | Defines the standard for durable validation-evidence records. |
 | `docs/standards/data_contracts/workflow_index_standard.md` | Defines the standard for machine-readable workflow indexes. |
 
 ## Notes

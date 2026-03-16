@@ -1,7 +1,7 @@
 # `.`
 
 ## Description
-`This repository is the governed core and planning workspace for WatchTower. Use the root as the entrypoint for repository scope, routing, current-state orientation, and top-level review. Keep the root thin: durable documentation belongs in docs/, workflow routing and task procedures belong in workflows/, and shared implementation assets belong in core/.`
+`This repository is the reusable WatchTower core plus the first internal planning-and-implementation pack workspace. Use the root as the entrypoint for repository scope, routing, current-state orientation, and top-level review. Keep the root thin: durable documentation belongs in docs/, workflow routing and task procedures belong in workflows/, and shared implementation assets belong in core/.`
 
 ## Paths
 | Path | Description |

@@ -50,7 +50,7 @@ uv run watchtower-core validate acceptance --trace-id trace.core_python_foundati
 |---|---|
 | `watchtower-core validate artifact` | Validates the underlying JSON artifacts structurally before or after semantic reconciliation. |
 | `watchtower-core query acceptance` | Shows the current acceptance contract inputs to the reconciliation step. |
-| `watchtower-core query evidence` | Shows the durable evidence artifacts that the reconciliation step inspects. |
+| `watchtower-core query evidence` | Shows the durable evidence records that the reconciliation step inspects. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/validate_family.py`

@@ -6,18 +6,16 @@ summary: Audit and refresh the documentation corpus so repository guidance match
   the current reusable-core plus plan-domain-pack boundary.
 type: task
 status: active
-task_status: ready
+task_status: done
 task_kind: documentation
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T05:57:19Z'
+updated_at: '2026-03-16T06:16:10Z'
 audience: shared
 authority: authoritative
 related_ids:
 - prd.documentation_surface_alignment_for_core_pack_model
 - design.features.documentation_surface_alignment_for_core_pack_model
-depends_on:
-- task.documentation_surface_alignment_for_core_pack_model.bootstrap.001
 ---
 
 # Refresh repository documentation for core and pack model alignment

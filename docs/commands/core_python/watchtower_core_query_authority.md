@@ -5,7 +5,7 @@ This command searches the authority map for the canonical machine surface, prefe
 
 ## Use When
 - You know the class of question you need to answer but not which machine surface is canonical.
-- You want one compact policy answer instead of scanning coordination, planning, traceability, and command docs manually.
+- You want one compact canonical-answer surface instead of scanning coordination, planning, traceability, and command docs manually.
 - You need a machine-readable lookup contract for canonical planning or governance navigation.
 
 ## Command
@@ -51,7 +51,7 @@ uv run watchtower-core query authority --artifact-kind route_index
 - The command is read-only and does not mutate repository state.
 - In `human` mode, the command prints matching authority questions, canonical artifact paths, preferred commands, optional human companion paths, and any named status fields to trust.
 - In `json` mode, the command prints one JSON object with the command name, status, result count, and authority-map entries.
-- The command is policy-oriented: it tells you which surface is canonical, not every surface that might contain related data.
+- The command is authority-oriented: it tells you which surface is canonical, not every surface that might contain related data.
 - For planning questions, the active-first navigation model still applies after authority resolution: filterless `query planning` and `query initiatives` browse calls default to active, while explicit historical lookup remains opt-in through `--initiative-status` or a known `--trace-id`.
 - If no entries match the requested filters, the command exits successfully and reports that no authority-map entries matched.
 
@@ -63,7 +63,7 @@ uv run watchtower-core query authority --artifact-kind route_index
 | `watchtower-core query initiatives` | Focused initiative-family lookup surface that the authority map may point to for history or compact phase browsing. |
 | `watchtower-core query trace` | Durable trace-linked source join when the question is IDs or closeout state rather than the full planning read model. |
 | `watchtower-core route preview` | Preferred command for workflow-routing questions resolved by the authority map. |
-| `watchtower-core query standards` | Preferred command for repository policy and standard lookup questions resolved by the authority map. |
+| `watchtower-core query standards` | Preferred command for repository rule and standard lookup questions resolved by the authority map. |
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/query_coordination_family.py`

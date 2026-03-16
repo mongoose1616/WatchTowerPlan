@@ -1456,8 +1456,10 @@
       "title": "Documentation Surface Alignment For Core and Pack Model PRD",
       "summary": "Align the repository documentation corpus with the current reusable-core plus plan-domain-pack model so entrypoints, standards, and command docs stop describing retired shapes as live.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-16T06:02:05Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-16T06:16:22Z",
+      "closed_at": "2026-03-16T06:16:22Z",
+      "closure_reason": "Aligned the repository documentation corpus with the reusable-core plus planning-and-implementation pack model, refreshed entrypoints and standards, and reran clean validation.",
       "prd_ids": [
         "prd.documentation_surface_alignment_for_core_pack_model"
       ],
@@ -1511,8 +1513,8 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md",
         "docs/planning/tasks/closed/archive/2026/03/16/documentation_surface_alignment_for_core_pack_model_bootstrap.md",
-        "docs/planning/tasks/open/refresh_repository_documentation_for_core_pack_model_alignment.md",
-        "docs/planning/tasks/open/validate_and_close_documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/refresh_repository_documentation_for_core_pack_model_alignment.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_documentation_surface_alignment_for_core_pack_model.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/"
       ],

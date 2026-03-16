@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "product_narrative"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T01:34:31Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "supporting"
 applies_to:
@@ -29,7 +29,7 @@ This document is supporting future-state product narrative. It is useful when sh
 
 - Primary audience: Product, design, and strategy stakeholders shaping the intended operator experience for future WatchTower product work.
 - Secondary audience: Reviewers who need future-state narrative context while evaluating current core and planning decisions.
-- Not written for: Contributors looking for current repository-operating policy.
+- Not written for: Contributors looking for current repository-operating guidance.
 
 ## Purpose
 
@@ -49,27 +49,27 @@ Instead of relying on scattered notes, ad hoc scripts, and operator memory, the 
 
 ## First Customer Story
 
-The first concrete future customer is a `CTF operator`.
+The first concrete future customer is a `planning and implementation maintainer`.
 
-That person does not want to build a workflow from scratch every time a new challenge appears. They want to start quickly, understand the problem, keep the work organized while moving fast, and finish with something they can learn from or hand off.
+That person does not want to rebuild a coordination system from scratch every time a new repository change, refactor, or standards cutover appears. They want to start quickly, understand the request, keep planning and validation aligned while moving fast, and finish with a reusable closeout package instead of a pile of disconnected notes.
 
 The intended future experience is:
 
-1. Start a new challenge without assembling a personal system first.
-2. Give the challenge text, constraints, and context once.
+1. Start a new implementation or refactor slice without assembling a personal system first.
+2. Give the request, constraints, and context once.
 3. Get a bounded next step instead of a vague suggestion.
-4. Keep notes, evidence, and solve progress aligned while the work is happening.
+4. Keep planning records, validation evidence, and execution progress aligned while the work is happening.
 5. Pause, resume, redirect, or ask for help without losing the thread.
 6. Finish with usable outputs instead of a dead-end scratchpad.
 
 The expected future outputs are practical and concrete:
 
-1. `challenge.md`
-2. `notes.md`
-3. `solution/`
-4. `recap.md`
+1. A scoped initiative brief
+2. Linked design and execution records
+3. Reviewable validation and closeout evidence
+4. A reusable recap of what changed and why
 
-Those outputs are future product targets, not current `WatchTowerPlan` repository artifacts.
+Those outputs are future product targets, not proof that the full product implementation already lives in `WatchTowerPlan`.
 
 ## What Using the Future Product Should Feel Like
 
@@ -104,4 +104,4 @@ Trust in the future product should come from visible properties:
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md)
 
 ## Updated At
-- `2026-03-11T01:34:31Z`
+- `2026-03-16T06:28:00Z`

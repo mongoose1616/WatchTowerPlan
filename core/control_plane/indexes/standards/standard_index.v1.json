@@ -296,7 +296,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/format_selection_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -800,7 +800,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/schema_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1053,11 +1053,11 @@
       "standard_id": "std.data_contracts.validation_evidence",
       "category": "data_contracts",
       "title": "Validation Evidence Standard",
-      "summary": "This standard defines committed validation-evidence artifacts stored under `core/control_plane/ledgers/validation_evidence/`.",
+      "summary": "This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/validation_evidence_standard.md",
-      "updated_at": "2026-03-13T04:05:00Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2045,7 +2045,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-12T22:05:00Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -3096,7 +3096,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/metadata/terminology_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-16T06:28:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

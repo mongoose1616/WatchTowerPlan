@@ -1,7 +1,7 @@
 # `core`
 
 ## Description
-`This directory contains shared implementation assets for the repository. Keep canonical machine-readable authority under core/control_plane/ and keep all Python-specific package code, tests, tooling, and local environment surfaces under core/python/. Keep planning documentation in docs/ and task procedures in workflows/.`
+`This directory contains the shared implementation assets for the reusable core and the current internal planning-and-implementation pack. Keep canonical machine-readable authority under core/control_plane/ and keep all Python-specific package code, tests, tooling, and local environment surfaces under core/python/. Keep planning documentation in docs/ and task procedures in workflows/.`
 
 ## Paths
 | Path | Description |

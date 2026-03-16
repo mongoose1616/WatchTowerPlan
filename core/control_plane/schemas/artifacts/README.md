@@ -1,7 +1,7 @@
 # `core/control_plane/schemas/artifacts`
 
 ## Description
-`This directory holds schemas for artifacts authored and owned by the control plane itself, such as registries, indexes, contracts, and committed ledgers.`
+`This directory holds schemas for artifacts authored and owned by the control plane itself, such as registries, indexes, contracts, and retained record families. Pack-facing startup interfaces live under core/control_plane/schemas/interfaces/packs/.`
 
 ## Paths
 | Path | Description |
@@ -36,3 +36,7 @@
 | `core/control_plane/schemas/artifacts/validator_registry.v1.schema.json` | Schema for the authored validator registry artifact family. |
 | `core/control_plane/schemas/artifacts/workflow_metadata_registry.v1.schema.json` | Schema for the authored workflow-metadata registry artifact family. |
 | `core/control_plane/schemas/artifacts/workflow_index.v1.schema.json` | Schema for the machine-readable workflow-index artifact family. |
+
+## Notes
+- `core/control_plane/schemas/interfaces/packs/` holds the pack-facing startup contracts such as `pack_settings`, `governance_surface_map`, `path_pattern_registry`, `status_registry`, `actor_registry`, and `artifact_index`.
+- This directory still carries retained repo-local support families such as `repository_manifest`, `artifact_type_registry`, `artifact_role_registry`, and the current migration or evidence record schemas consumed by the internal planning-and-implementation pack.

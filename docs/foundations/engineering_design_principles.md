@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "design_philosophy"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T01:34:31Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -38,12 +38,12 @@ Core is the part of the system that has to be boring in the best possible way. I
 
 - Keep core local-first and deterministic.
 - Validate manifests, registries, indexes, and contracts in a schema-first, fail-closed way.
-- Preserve clear source-of-truth boundaries between runtime state, policy surfaces, reference material, and human-readable outputs.
+- Preserve clear source-of-truth boundaries between runtime state, rule-bearing surfaces such as standards or authority registries, reference material, and human-readable outputs.
 - Keep reusable surfaces distinct from repo-specific `repo_ops` behavior so current repository maintenance rules do not quietly leak into future consumers.
 - Treat compatibility shims as temporary migration aids, not permanent public-boundary growth.
 - Concentrate infrastructure complexity inside the control plane, helper runtime, validation tools, and recovery or release surfaces.
 - Treat Python and other implementation code as helper or harness layers that improve LLM and agent efficiency, control, and validation.
-- Prefer evidence, validation artifacts, registries, and indexes over convention or operator memory.
+- Prefer validation records, registries, and indexes over convention or operator memory.
 - Do not let core absorb domain-specific language, templates, or artifact conventions unless they are truly shared across domains.
 - Treat core as support for the workflow layer, not as the human-facing product by itself.
 
@@ -68,6 +68,7 @@ The repository only works when humans and machines can both find the right level
 Future domain packs are where the broader WatchTower product becomes useful to operators. They should remain future-state context for this repository unless and until a consuming product repo mounts them for real execution.
 
 - Make domain packs the primary future operator-facing workflow surface.
+- Keep the first internal planning-and-implementation pack aligned with the same reusable-core contracts that later external packs must follow.
 - Keep prompt-first, LLM-guided interaction explicit.
 - Encode domain-specific language, domain goals, and domain artifact expectations so the operator works in native terms instead of generic system abstractions.
 - Project readable outputs such as notes, findings, reports, solutions, and recaps from governed state.
@@ -83,4 +84,4 @@ Future domain packs are where the broader WatchTower product becomes useful to o
 - [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-11T01:34:31Z`
+- `2026-03-16T06:28:00Z`

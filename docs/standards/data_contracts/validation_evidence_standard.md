@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.validation_evidence"
 title: "Validation Evidence Standard"
-summary: "This standard defines committed validation-evidence artifacts stored under `core/control_plane/ledgers/validation_evidence/`."
+summary: "This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`."
 type: "standard"
 status: "active"
 tags:
@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "validation_evidence"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T04:05:00Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -17,7 +17,7 @@ authority: "authoritative"
 # Validation Evidence Standard
 
 ## Summary
-This standard defines committed validation-evidence artifacts stored under `core/control_plane/ledgers/validation_evidence/`.
+This standard defines committed validation-evidence records stored under `core/control_plane/ledgers/validation_evidence/`.
 
 ## Purpose
 - Provide durable machine-readable records of validation outcomes tied to traces, acceptance items, validators, and governed artifacts.
@@ -25,15 +25,15 @@ This standard defines committed validation-evidence artifacts stored under `core
 - Establish the downstream half of the trace chain after PRDs, decisions, designs, and plans.
 
 ## Scope
-- Applies to validation-evidence ledger artifacts stored under `core/control_plane/ledgers/validation_evidence/`.
+- Applies to validation-evidence record artifacts stored under `core/control_plane/ledgers/validation_evidence/`.
 - Covers placement, required fields, result vocabulary, and trace-link expectations.
-- Does not define validation policy or validator identity; those remain in policies and registries.
+- Does not define validation rules or validator identity; those remain in standards and registries.
 - Does not define mutable runtime event streams or transient execution logs.
 
 ## Use When
 - Recording durable evidence that acceptance, schema, or trace-related validation checks were performed.
 - Capturing a reviewable validation result that should remain linked to a traced initiative.
-- Reviewing whether a validation outcome belongs in a committed ledger or should remain transient runtime output.
+- Reviewing whether a validation outcome belongs in a committed retained record or should remain transient runtime output.
 
 ## Related Standards and Sources
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -47,7 +47,7 @@ This standard defines committed validation-evidence artifacts stored under `core
 ## Guidance
 - Store durable validation evidence under `core/control_plane/ledgers/validation_evidence/`.
 - Use JSON for published validation-evidence artifacts.
-- Treat validation evidence as append-only historical output, not mutable current-state truth.
+- Treat validation evidence as retained historical output, not mutable current-state truth.
 - Every evidence artifact should publish:
   - `trace_id`
   - a stable `evidence_id`
@@ -59,7 +59,7 @@ This standard defines committed validation-evidence artifacts stored under `core
 - Use validation-result vocabulary such as `passed`, `failed`, `warning`, and `not_applicable` for evidence results.
 - Do not reuse lifecycle-status fields to describe validation outcomes.
 - Prefer readable deterministic evidence IDs for durable committed evidence artifacts.
-- Use UUIDs only later if the repository starts storing high-volume generated run instances rather than a curated evidence ledger.
+- Use UUIDs only later if the repository starts storing high-volume generated run instances rather than a curated evidence record family.
 - Treat `related_paths` and check-level `subject_paths` as repo-local paths that should resolve on disk after the same change set lands.
 - When governed task or planning paths move, update affected evidence path fields in the same change set so durable evidence does not retain stale targets.
 
@@ -98,7 +98,7 @@ This standard defines committed validation-evidence artifacts stored under `core
 ## Examples
 - A traceability-baseline evidence record can show that PRD, decision, design, acceptance-contract, and traceability-index links are present and valid.
 - A schema-backed check can record the validator ID and the subject artifact path it validated.
-- A transient local smoke test output does not belong in this ledger unless it is being promoted to durable evidence.
+- A transient local smoke test output does not belong in this retained record family unless it is being promoted to durable evidence.
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
@@ -125,4 +125,4 @@ This standard defines committed validation-evidence artifacts stored under `core
 - This family is intentionally narrower than a generic execution log. It should capture durable evidence only.
 
 ## Updated At
-- `2026-03-13T04:05:00Z`
+- `2026-03-16T06:28:00Z`

@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "product"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T01:34:31Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -33,7 +33,7 @@ This document defines the intended future WatchTower product shape. For current 
 
 ## Current Repository Relationship
 
-- `WatchTowerPlan` currently owns the governed core substrate, planning system, workflow-routing model, and machine-readable control plane.
+- `WatchTowerPlan` currently owns the governed core substrate, machine-readable control plane, workflow-routing model, and the first internal planning-and-implementation pack.
 - This repository does not yet own the first operator-facing domain-pack implementation.
 - The future product model in this document is still relevant because it constrains how the shared core should evolve now.
 
@@ -41,7 +41,7 @@ This document defines the intended future WatchTower product shape. For current 
 
 Core is the shared system layer of the future product. Its job is to provide the services that every domain needs so domain packs do not have to rebuild them differently each time.
 
-- Provide routing, schema enforcement, policy enforcement, compatibility checks, validation, release evidence, and recovery support.
+- Provide routing, schema enforcement, standards and contract enforcement, compatibility checks, validation, release evidence, and recovery support.
 - Give engineering and governance work a reliable home for proofs, readiness checks, contract publication, and runtime safety.
 - Make machine state and operational behavior trustworthy enough that domain workflows can depend on them.
 - Prioritize machine-usable structures that help LLMs and agents retrieve context, execute workflows, and stay inside governed boundaries.
@@ -70,9 +70,9 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - Let users start quickly, clarify scope, let the agent execute guided workflows, capture evidence, and finish with reusable closeout artifacts.
 - Own domain workflows, templates, terminology, references, knowledge surfaces, tool guidance, domain artifact expectations, and pack-local managed state.
 - Shape how the LLM or agent assists the human in that domain instead of forcing the user to translate generic system capabilities into domain process by hand.
-- Use shared core contracts instead of reimplementing routing, validation, policy, traceability, or recovery differently for each domain.
+- Use shared core contracts instead of reimplementing routing, validation, rule enforcement, traceability, or recovery differently for each domain.
 - Support future expansion through the same pack model instead of letting the first domain become the accidental default for all later work.
-- Treat offensive security as the first pack, with CTF first and pentest next as the initial delivery path.
+- Treat the planning-and-implementation pack as the first internal consumer, and require later external packs to follow the same load, validation, and governance model without importing mismatched domain vocabulary into core.
 
 ## Product Delivery Boundary
 
@@ -87,4 +87,4 @@ Domain packs are the future domain-specific operator layer of the product. They 
 - [customer_story.md](/home/j/WatchTowerPlan/docs/foundations/customer_story.md)
 
 ## Updated At
-- `2026-03-11T01:34:31Z`
+- `2026-03-16T06:28:00Z`

@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "technology_stack"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T21:26:00Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -38,7 +38,7 @@ Today the repository is still documentation-heavy, but it also has a substantive
 | Technology | Current Use | Main Surfaces | Human-Relevant Notes |
 |---|---|---|---|
 | Markdown | Primary human-facing authoring format | `docs/**`, `workflows/**`, `README.md`, `AGENTS.md` | This remains the dominant human-readable surface. |
-| JSON | Primary machine-readable artifact format | `core/control_plane/registries/**`, `core/control_plane/indexes/**`, `core/control_plane/examples/**` | Used for canonical control-plane artifacts and examples because it is explicit, diff-friendly, and easy to validate. |
+| JSON | Primary machine-readable artifact format | `core/control_plane/manifests/**`, `core/control_plane/registries/**`, `core/control_plane/contracts/**`, `core/control_plane/indexes/**`, `core/control_plane/examples/**` | Used for canonical control-plane inputs, retained machine-readable records, and supporting fixtures because it is explicit, diff-friendly, and easy to validate. |
 | JSON Schema Draft 2020-12 | Contract and validation baseline | `core/control_plane/schemas/**` | Defines governed artifact shapes and validation boundaries. |
 | YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under `docs/**` | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
 | Python 3.12 | Active runtime, validation, sync, query, and CLI baseline | `core/python/.python-version`, `core/python/src/**`, `core/python/tests/**` | The Python layer is now a real part of the repo's operating model, not just early scaffolding. |
@@ -62,7 +62,7 @@ Today the repository is still documentation-heavy, but it also has a substantive
 ## Future Candidate Tools
 
 - Use SQLite only when local durable state, indexing, or retrieval needs a lightweight embedded store.
-- Use OPA or Rego only when policy logic benefits from being explicit, testable, and separate from application code.
+- Use OPA or Rego only when externally authored rule evaluation materially improves clarity over repository standards plus Python validators.
 - Treat richer observability or provenance tooling as opt-in later additions, not default baseline requirements.
 
 ## Operational Support
@@ -100,4 +100,4 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - [in_toto_v1_0_reference.md](/home/j/WatchTowerPlan/docs/references/in_toto_v1_0_reference.md)
 
 ## Updated At
-- `2026-03-12T21:26:00Z`
+- `2026-03-16T06:28:00Z`

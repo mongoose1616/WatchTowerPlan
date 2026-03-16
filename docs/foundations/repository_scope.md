@@ -9,7 +9,7 @@ tags:
   - "scope"
   - "repository_charter"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T01:34:31Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -35,25 +35,26 @@ This document defines what `WatchTowerPlan` owns today. Use it as the authoritat
 
 ## Purpose
 
-`WatchTowerPlan` is the governed core and planning workspace for WatchTower. It owns the reusable substrate, machine-readable control plane, workflow-routing model, standards corpus, and the traced planning system that prepare the project for later product implementation.
+`WatchTowerPlan` is the reusable core and first internal planning-and-implementation pack workspace for WatchTower. It owns the reusable substrate, machine-readable control plane, workflow-routing model, standards corpus, and the traced planning system that prepare the project for later product implementation.
 
 This document is authoritative for current repository ownership. It does not replace future product direction. It defines the boundary that future product direction must respect while work remains in this repo.
 
 ## This Repository Owns Today
 
 - The shared governed core substrate under `core/control_plane/` and `core/python/`.
+- The first internal planning-and-implementation pack that currently lives in `docs/planning/` and `core/python/src/watchtower_core/repo_ops/`.
 - Repository-native workflow routing, execution modules, standards, references, templates, and planning surfaces.
-- Machine-readable authority for schemas, contracts, policies, registries, indexes, examples, and validation evidence.
+- Machine-readable authority for schemas, startup manifests, registries, contracts, indexes, supporting fixtures, and retained validation or purge records.
 - Export-ready reusable runtime behavior and repo-specific `repo_ops` behavior, with the boundary between them kept explicit.
-- Documentation and planning work required to keep the core coherent, validated, and ready for future consumption by `WatchTower`.
+- Documentation and planning work required to keep the core coherent, validated, and ready for future consumption by other packs.
 
 ## This Repository Does Not Own Yet
 
-- The first real operator-facing `WatchTower` product implementation.
-- The first external domain-pack runtime or mounted pack execution environment.
-- CTF challenge artifacts such as `challenge.md`, `notes.md`, `solution/`, or `recap.md` as live product outputs owned here.
-- Operator-authored domain content, pack-local mutable state, or product workflows that belong in a future consuming repository.
-- A claim that the current repository is already the full product rather than the governed substrate and planning workspace behind it.
+- A separate operator-facing `WatchTower` product implementation repository.
+- External domain-pack runtimes or mounted execution environments beyond the current internal planning-and-implementation pack.
+- Pack-local operator content and mutable working state that belong in a future consuming repository rather than this core-and-pack workspace.
+- Domain-specific workflows, templates, or terminology that should live in another pack instead of the current planning-and-implementation pack.
+- A claim that the current repository is already the full product rather than the governed substrate and first internal pack behind it.
 
 ## Relationship to Future WatchTower Product Work
 
@@ -81,4 +82,4 @@ This document is authoritative for current repository ownership. It does not rep
 - [product_direction.md](/home/j/WatchTowerPlan/docs/foundations/product_direction.md)
 
 ## Updated At
-- `2026-03-11T01:34:31Z`
+- `2026-03-16T06:28:00Z`

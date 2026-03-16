@@ -8,7 +8,7 @@ tags:
   - "foundation"
   - "standards"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T01:34:31Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -35,7 +35,7 @@ Standards in this repository exist to protect coherence in an LLM- and agent-dri
 
 Core standards define how shared machine-facing surfaces behave. If these rules are loose, every future consumer becomes harder to validate and easier to break.
 
-- Keep one canonical source for each important machine-facing fact, policy rule, command contract, schema, and lifecycle state.
+- Keep one canonical source for each important machine-facing fact, rule-bearing surface, command contract, schema, and lifecycle state.
 - Prefer one primary machine authority surface per question instead of several near-equivalent current-state entrypoints.
 - Use a clear authority and precedence model so specs, workflows, registries, indexes, and references do not compete as equal truth.
 - Make machine-facing surfaces schema-first, versioned, and fail-closed.
@@ -66,6 +66,7 @@ Core standards define how shared machine-facing surfaces behave. If these rules 
 Future domain-pack standards should keep packs expressive for their domain without letting them drift away from the shared control model.
 
 - Keep packs portable and primarily declarative.
+- Keep the current internal planning-and-implementation pack on the same reusable-core contract path that later external packs must use.
 - Maintain a clear boundary between user-editable surfaces and managed pack state.
 - Do not allow pack-local hidden state to become the operator-authored source of truth.
 - Require pack workflows, templates, knowledge assets, and tool guidance to follow shared structural contracts.
@@ -81,4 +82,4 @@ Future domain-pack standards should keep packs expressive for their domain witho
 - [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
 
 ## Updated At
-- `2026-03-11T01:34:31Z`
+- `2026-03-16T06:28:00Z`

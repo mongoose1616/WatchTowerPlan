@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -62,15 +62,15 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Reuse the shared UTC timestamp fragment for governed `updated_at`, `recorded_at`, and `generated_at` fields instead of open-coding separate timestamp rules.
 - Keep interface schemas separate from core-authored artifact schemas even when the fields overlap. Accepted external input is a different contract boundary from core-owned canonical state.
 - When external validation needs schemas that do not belong in the canonical catalog, load them through explicit supplemental schema paths or in-memory supplemental schema documents instead of mutating the repository-owned catalog opportunistically.
-- Pair published schemas with canonical valid and invalid examples under `core/control_plane/examples/` when the schema describes a reusable artifact family or external interface.
-- Update related contracts, registries, policies, examples, and validation logic in the same change set when a schema change alters behavior or acceptance boundaries.
+- When a schema family still relies on fixture-driven coverage, keep the supporting valid and invalid fixtures under `core/control_plane/examples/` until a stronger live validation surface replaces them.
+- Update related contracts, registries, manifests, examples, and validation logic in the same change set when a schema change alters behavior or acceptance boundaries.
 
 ## Structure or Data Model
 ### Required placement rules
 | Schema Type | Canonical Location | Notes |
 |---|---|---|
 | Shared fragment or reusable field group | `core/control_plane/schemas/common/` | Use for shared ids, refs, timestamps, status fragments, and common object shapes. |
-| Core-owned artifact schema | `core/control_plane/schemas/artifacts/` | Use for registries, policies, contracts, indexes, ledgers, or other core-authored artifacts. |
+| Core-owned artifact schema | `core/control_plane/schemas/artifacts/` | Use for registries, manifests, contracts, indexes, ledgers, or other core-authored artifacts. |
 | External validation interface | `core/control_plane/schemas/interfaces/` | Use for artifacts core validates but does not own. |
 
 ### Minimum root expectations
@@ -95,8 +95,8 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 ## Process or Workflow
 1. Decide whether the artifact is a core-owned artifact schema or an external validation interface.
 2. Author or update the schema in the correct subtree with the required root metadata and explicit object boundaries.
-3. Add or update canonical valid and invalid examples when the schema defines a reusable artifact family or external interface.
-4. Update related contracts, registries, policies, or compatibility declarations when the schema changes acceptance or behavior.
+3. Add or update supporting valid and invalid fixtures when the schema family still uses fixture-driven coverage.
+4. Update related contracts, registries, manifests, or compatibility declarations when the schema changes acceptance or behavior.
 5. Run local schema validation and any aligned typed runtime validation before treating the change as complete.
 
 ## Examples
@@ -111,8 +111,8 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 
 ## Validation
 - New or changed schemas should be validated locally with a JSON Schema validator before merge.
-- Canonical `valid/` and `invalid/` examples should prove the acceptance boundary for reusable schema families and external interfaces.
-- Reviewers should be able to identify whether a schema change also requires updates to contracts, registries, policies, or compatibility rules.
+- Supporting `valid/` and `invalid/` fixtures should prove the acceptance boundary for schema families that do not yet have stronger live artifact coverage.
+- Reviewers should be able to identify whether a schema change also requires updates to contracts, registries, manifests, or compatibility rules.
 - If runtime models reject data that the published schema accepts, tighten the schema or document the stricter runtime rule explicitly rather than leaving hidden divergence.
 - Supplemental schema loading should fail closed on missing paths, invalid JSON, invalid schemas, or duplicate `$id` values.
 
@@ -137,4 +137,4 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - If a future format standard introduces more specific serialization or naming rules for schema files, it should refine rather than weaken this standard.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-16T06:28:00Z`

@@ -1,12 +1,10 @@
 # Decision Tracking
 
 ## Active Decisions
-| Trace ID | Decision | Status | Outcome | Summary |
-| --- | --- | --- | --- | --- |
-| `trace.documentation_surface_alignment_for_core_pack_model` | [decision.documentation_surface_alignment_for_core_pack_model_direction](/home/j/WatchTowerPlan/docs/planning/decisions/documentation_surface_alignment_for_core_pack_model_direction.md) | `active` | `accepted` | Records the direction decision for aligning the documentation corpus with the current reusable-core plus plan-domain-pack model. |
+_No active decisions. Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse or `watchtower-core query decisions --trace-id <trace_id>` for one known trace._
 
 ## Terminal History
-- `completed`: 54
+- `completed`: 55
 - `cancelled`: 1
 
 Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse, and `watchtower-core query decisions --trace-id <trace_id>` for one known decision trace.

@@ -1492,16 +1492,13 @@
       "title": "Refresh repository documentation for core and pack model alignment",
       "summary": "Audit and refresh the documentation corpus so repository guidance matches the current reusable-core plus plan-domain-pack boundary.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/refresh_repository_documentation_for_core_pack_model_alignment.md",
-      "updated_at": "2026-03-16T05:57:19Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/refresh_repository_documentation_for_core_pack_model_alignment.md",
+      "updated_at": "2026-03-16T06:16:10Z",
       "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
-      "depends_on": [
-        "task.documentation_surface_alignment_for_core_pack_model.bootstrap.001"
-      ],
       "related_ids": [
         "prd.documentation_surface_alignment_for_core_pack_model",
         "design.features.documentation_surface_alignment_for_core_pack_model"
@@ -1512,16 +1509,13 @@
       "title": "Validate and close documentation surface alignment for core and pack model",
       "summary": "Run validation, refresh planning surfaces, and close the documentation-alignment trace once the docs refresh lands cleanly.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/validate_and_close_documentation_surface_alignment_for_core_pack_model.md",
-      "updated_at": "2026-03-16T05:57:19Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_documentation_surface_alignment_for_core_pack_model.md",
+      "updated_at": "2026-03-16T06:16:10Z",
       "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
-      "depends_on": [
-        "task.documentation_surface_alignment_for_core_pack_model.refresh.002"
-      ],
       "related_ids": [
         "prd.documentation_surface_alignment_for_core_pack_model",
         "design.implementation.documentation_surface_alignment_for_core_pack_model"

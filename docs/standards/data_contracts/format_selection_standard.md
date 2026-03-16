@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "format_selection"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-16T06:28:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -69,7 +69,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 ### Repository-default decisions
 - `docs/**`, `workflows/**`, and human-facing repository guidance should use Markdown.
 - `core/control_plane/schemas/**` should use JSON.
-- `core/control_plane/contracts/**`, `registries/**`, `policies/**`, `indexes/**`, `ledgers/**`, and governed examples should default to JSON.
+- `core/control_plane/contracts/**`, `manifests/**`, `registries/**`, `indexes/**`, `ledgers/**`, and supporting validation fixtures under `examples/**` should default to JSON.
 - Documentation front matter should use YAML only for the parsed metadata block, not for the document body.
 - Future append-only runtime or event records should prefer NDJSON over inventing a custom line format.
 - Future local retrieval or runtime stores should stay out of the canonical versioned control plane and only use SQLite when query needs justify it.
@@ -130,4 +130,4 @@ Keep format choices small, predictable, and aligned with the repository's author
 - The goal is not to ban every alternative format. The goal is to make deviations from the defaults explicit and justified.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-16T06:28:00Z`

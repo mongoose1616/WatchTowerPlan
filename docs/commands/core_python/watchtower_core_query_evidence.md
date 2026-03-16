@@ -1,7 +1,7 @@
 # `watchtower-core query evidence`
 
 ## Summary
-This command searches the governed validation-evidence ledger for one trace, acceptance ID, validator ID, or overall result.
+This command searches the governed validation-evidence record family for one trace, acceptance ID, validator ID, or overall result.
 
 ## Use When
 - You need to inspect durable validation proof for a traced initiative.
@@ -42,7 +42,7 @@ uv run watchtower-core query evidence --acceptance-id ac.core_python_foundation.
 ```
 
 ## Behavior and Outputs
-- The command reads governed validation-evidence artifacts directly from `core/control_plane/ledgers/validation_evidence/`.
+- The command reads governed validation-evidence records directly from `core/control_plane/ledgers/validation_evidence/`.
 - In `human` mode, the command prints matching evidence artifacts with their trace, recorded-at timestamp, and check count.
 - In `json` mode, the command prints one JSON object with matching evidence artifacts and the acceptance IDs they cover.
 

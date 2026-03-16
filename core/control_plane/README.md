@@ -1,10 +1,11 @@
 # `core/control_plane`
 
 ## Description
-`This directory is the canonical, versioned, machine-readable authority for the shared core substrate. Keep authored schemas, manifests, registries, contracts, examples, indexes, and committed ledgers here.`
+`This directory is the canonical, versioned, machine-readable authority for the shared core substrate. Keep authored schemas, startup manifests, registries, contracts, indexes, supporting fixtures, and retained governed record families here.`
 
 ## Boundaries
 - Keep domain-pack content out of this tree.
+- Treat `core/control_plane/manifests/pack_settings.json` as the reusable-core startup root; supporting manifests and retained record families live alongside it.
 - Validate external content against published interfaces and contracts rather than storing pack-owned artifacts here.
 - Do not store mutable runtime state, caches, or transient event streams here.
 
@@ -13,9 +14,9 @@
 |---|---|
 | `core/control_plane/README.md` | Describes the purpose, boundaries, and main artifact families in the control-plane tree. |
 | `core/control_plane/schemas/` | JSON Schemas for governed core artifacts and external validation interfaces. |
-| `core/control_plane/manifests/` | Authored machine-readable declarations owned by core. |
-| `core/control_plane/registries/` | Canonical lookup data owned by core. |
-| `core/control_plane/contracts/` | Versioned intake and compatibility boundaries. |
-| `core/control_plane/examples/` | Canonical valid and invalid sample artifacts. |
-| `core/control_plane/indexes/` | Deliberate denormalized lookup files when a concrete consumer exists. |
-| `core/control_plane/ledgers/` | Committed append-only history for governed changes such as migrations and releases. |
+| `core/control_plane/manifests/` | Authored startup and descriptive declarations owned by core. |
+| `core/control_plane/registries/` | Canonical lookup data and pack-startup registries owned by core. |
+| `core/control_plane/contracts/` | Versioned acceptance and compatibility boundaries. |
+| `core/control_plane/examples/` | Supporting valid and invalid fixtures for schema and validator coverage. |
+| `core/control_plane/indexes/` | Deliberate derived lookup files when a concrete consumer exists. |
+| `core/control_plane/ledgers/` | Retained governed record families for migrations, releases, purge records, and validation evidence. |

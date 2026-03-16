@@ -1,10 +1,10 @@
 # `core/python`
 
 ## Description
-`This directory contains the consolidated Python workspace for the core helper and harness layer. Keep package code, tests, tool configuration, lockfiles, and local Python environment surfaces here, and keep authored control-plane artifacts in core/control_plane/.`
+`This directory contains the consolidated Python workspace for the reusable core helper and harness layer plus the repo-local planning-and-implementation consumer built on top of it. Keep package code, tests, tool configuration, lockfiles, and local Python environment surfaces here, and keep authored control-plane artifacts in core/control_plane/.`
 
 ## Boundaries
-`Use one local virtual environment at core/python/.venv/. Keep caches, wheels, build outputs, and egg-info directories ignored. Do not place canonical schemas, registries, contracts, policies, or indexes in this subtree.`
+`Use one local virtual environment at core/python/.venv/. Keep caches, wheels, build outputs, and egg-info directories ignored. Do not place canonical schemas, registries, contracts, manifests, or indexes in this subtree.`
 
 ## Paths
 | Path | Description |
@@ -125,8 +125,8 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 | `core/python/src/watchtower_core/README.md` | `runtime_architecture_start_here` | Top-level package map and navigation. |
 | `core/python/src/watchtower_core/control_plane/README.md` | `reusable_core` | Workspace, loader, schema, and typed artifact boundary. |
 | `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services and result models; repo-local document semantics and aggregate validation stay in `repo_ops.validation`. |
-| `core/python/src/watchtower_core/query/README.md` | `boundary_layer` | Guardrail namespace root; authoritative query logic stays in `repo_ops/query/`. |
-| `core/python/src/watchtower_core/sync/README.md` | `boundary_layer` | Guardrail namespace root; authoritative sync logic stays in `repo_ops/sync/`. |
+| `core/python/src/watchtower_core/query/README.md` | `boundary_layer` | Guardrail namespace root only; repo-local query implementations live under `repo_ops/query/`. |
+| `core/python/src/watchtower_core/sync/README.md` | `boundary_layer` | Guardrail namespace root only; repo-local sync implementations live under `repo_ops/sync/`. |
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
 | `core/python/src/watchtower_core/repo_ops/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific planning, query, sync, and validation behavior. |
 | `core/python/src/watchtower_core/cli/README.md` | `repo_local_orchestration` | CLI registration and command wiring. |
@@ -142,7 +142,8 @@ Use the nested READMEs under `repo_ops/` and `integrations/github/` when you nee
 
 ## Programmatic Use
 - `watchtower_core.control_plane.WorkspaceConfig` supports alternate logical workspace prefixes through direct construction when a non-default repository layout is needed.
-- `ControlPlaneLoader.load_pack_settings()` exposes the repository's pack settings load root as a typed startup surface for future pack-shaped consumers.
+- `ControlPlaneLoader.load_pack_settings()` exposes the repository's current pack-settings load root as a typed reusable-core startup surface.
 - `ControlPlaneLoader.load_pack_context()` materializes a reusable `PackContext` by loading pack settings and the surfaces declared there.
 - `watchtower_core.control_plane.SupplementalSchemaDocument` lets external consumers register additional schemas in-memory for validation without modifying this repository's canonical schema catalog.
 - `ControlPlaneLoader(... supplemental_schema_paths=...)` and `SchemaStore.from_workspace(... supplemental_schema_paths=...)` let callers load supplemental schemas from explicit files or directories for bounded external artifact validation.
+- `watchtower_core.repo_ops` is the current internal planning-and-implementation pack consumer of the shared core; keep pack-agnostic loading and validation logic out of that namespace.
