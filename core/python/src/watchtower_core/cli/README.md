@@ -21,8 +21,6 @@ CLI parser construction, command-family registration, and handler wiring for `wa
 | `core/python/src/watchtower_core/cli/query_coordination_family.py` | Registers the planning-oriented query subcommands and their parser contracts. |
 | `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py` | Handles the coordination, initiative, and planning rendered query subcommands plus their shared payload formatting. |
 | `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py` | Handles the authority, task, and trace lookup subcommands plus their direct payload formatting. |
-| `core/python/src/watchtower_core/cli/query_coordination_handlers.py` | Compatibility facade that preserves the legacy coordination-query handler import path. |
-| `core/python/src/watchtower_core/cli/query_handlers.py` | Compatibility facade that re-exports the split query handler families for older imports. |
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/repo_ops/README.md`

@@ -7,7 +7,6 @@
 | Path | Description |
 |---|---|
 | `core/python/tests/integration/README.md` | Describes the purpose of the integration-test directory. |
-| `core/python/tests/integration/test_control_plane_artifacts.py` | Compatibility marker that preserves the historical hotspot path and points to the focused integration suites. |
 | `core/python/tests/integration/control_plane_artifact_helpers.py` | Shared JSON and front-matter helpers for the focused integration artifact suites. |
 | `core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py` | Integration tests for loader-backed artifact materialization plus foundation and entrypoint contract coverage. |
 | `core/python/tests/integration/test_control_plane_artifact_schema_contracts.py` | Integration tests for schema-backed governed artifacts, examples, front-matter profiles, and canonical path contracts. |

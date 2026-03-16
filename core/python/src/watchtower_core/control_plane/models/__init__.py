@@ -26,6 +26,16 @@ from watchtower_core.control_plane.models.coordination import (
     TraceabilityEntry,
     TraceabilityIndex,
 )
+from watchtower_core.control_plane.models.knowledge_indexes import (
+    FoundationIndex,
+    FoundationIndexEntry,
+    ReferenceIndex,
+    ReferenceIndexEntry,
+    StandardIndex,
+    StandardIndexEntry,
+    WorkflowIndex,
+    WorkflowIndexEntry,
+)
 from watchtower_core.control_plane.models.navigation import (
     CommandIndex,
     CommandIndexEntry,
@@ -47,22 +57,6 @@ from watchtower_core.control_plane.models.pack_contracts import (
     StatusRegistry,
     StatusRegistryEntry,
 )
-from watchtower_core.control_plane.models.planning import (
-    DecisionIndex,
-    DecisionIndexEntry,
-    DesignDocumentIndex,
-    DesignDocumentIndexEntry,
-    FoundationIndex,
-    FoundationIndexEntry,
-    PrdIndex,
-    PrdIndexEntry,
-    ReferenceIndex,
-    ReferenceIndexEntry,
-    StandardIndex,
-    StandardIndexEntry,
-    WorkflowIndex,
-    WorkflowIndexEntry,
-)
 from watchtower_core.control_plane.models.planning_catalog import (
     PlanningAcceptanceContractSummary,
     PlanningCatalog,
@@ -73,6 +67,14 @@ from watchtower_core.control_plane.models.planning_catalog import (
     PlanningPrdSummary,
     PlanningTaskSummary,
     PlanningValidationEvidenceSummary,
+)
+from watchtower_core.control_plane.models.planning_documents import (
+    DecisionIndex,
+    DecisionIndexEntry,
+    DesignDocumentIndex,
+    DesignDocumentIndexEntry,
+    PrdIndex,
+    PrdIndexEntry,
 )
 from watchtower_core.control_plane.models.validation import (
     AcceptanceContract,

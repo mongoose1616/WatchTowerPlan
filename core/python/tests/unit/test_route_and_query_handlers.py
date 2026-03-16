@@ -5,7 +5,6 @@ import json
 from types import SimpleNamespace
 
 from watchtower_core.cli import (
-    query_coordination_handlers,
     query_coordination_lookup_handlers,
     query_coordination_rendered_handlers,
     route_handlers,
@@ -211,18 +210,6 @@ def test_route_preview_supports_human_route_output(monkeypatch, capsys) -> None:
     assert "Selected routes:" in captured.out
     assert "workflow.repository_review" in captured.out
     assert "Warning: Prefer a bounded scope." in captured.out
-
-
-def test_legacy_coordination_handler_facade_reexports_split_modules() -> None:
-    assert (
-        query_coordination_handlers._run_query_coordination
-        is query_coordination_rendered_handlers._run_query_coordination
-    )
-    assert (
-        query_coordination_handlers._run_query_tasks
-        is query_coordination_lookup_handlers._run_query_tasks
-    )
-
 
 def test_query_tasks_prints_dependency_details(monkeypatch, capsys) -> None:
     blocker = _task_entry(task_id="task.blocker.001", title="Blocker", task_status="done")

@@ -1,20 +1,17 @@
 from __future__ import annotations
 
+import importlib
 import json
+import sys
 
 import pytest
 
-from watchtower_core.cli import handlers, query_coordination_handlers
 from watchtower_core.cli.main import main
 from watchtower_core.cli.query_coordination_lookup_handlers import (
     _run_query_tasks as split_query_tasks,
 )
 from watchtower_core.cli.query_coordination_rendered_handlers import (
     _run_query_coordination as split_query_coordination,
-)
-from watchtower_core.cli.query_handlers import (
-    _run_query_coordination,
-    _run_query_tasks,
 )
 
 
@@ -37,18 +34,23 @@ def test_doctor_command_supports_json_output(capsys) -> None:
     assert payload["status"] == "ok"
 
 
-def test_legacy_handler_facade_reexports_split_handler_modules() -> None:
-    assert handlers._run_query_coordination is _run_query_coordination
+@pytest.mark.parametrize(
+    "module_name",
+    (
+        "watchtower_core.cli.handlers",
+        "watchtower_core.cli.query_handlers",
+        "watchtower_core.cli.query_coordination_handlers",
+    ),
+)
+def test_retired_cli_facade_modules_are_not_importable(module_name: str) -> None:
+    sys.modules.pop(module_name, None)
+    with pytest.raises(ModuleNotFoundError):
+        importlib.import_module(module_name)
 
 
-def test_query_handler_facade_reexports_split_query_modules() -> None:
-    assert _run_query_coordination is split_query_coordination
-    assert _run_query_tasks is split_query_tasks
-
-
-def test_legacy_coordination_handler_facade_reexports_split_modules() -> None:
-    assert query_coordination_handlers._run_query_coordination is split_query_coordination
-    assert query_coordination_handlers._run_query_tasks is split_query_tasks
+def test_split_query_handler_modules_remain_available() -> None:
+    assert callable(split_query_coordination)
+    assert callable(split_query_tasks)
 
 
 def test_root_command_prints_help(capsys) -> None:

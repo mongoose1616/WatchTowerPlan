@@ -1,7 +1,16 @@
 from __future__ import annotations
 
-from watchtower_core.control_plane.models import PackSettings, StatusRegistry
-from watchtower_core.control_plane.models.planning import PrdIndex, WorkflowIndex
+import importlib
+import sys
+
+import pytest
+
+from watchtower_core.control_plane.models import (
+    PackSettings,
+    PrdIndex,
+    StatusRegistry,
+    WorkflowIndex,
+)
 
 
 def test_planning_module_reexports_split_typed_index_models() -> None:
@@ -16,7 +25,7 @@ def test_planning_module_reexports_split_typed_index_models() -> None:
                     "trace_id": "trace.example",
                     "prd_id": "prd.example",
                     "title": "Example PRD",
-                    "summary": "Exercises the compatibility import surface.",
+                    "summary": "Exercises the stable model export surface.",
                     "status": "active",
                     "doc_path": "docs/planning/prds/example.md",
                     "updated_at": "2026-03-13T18:03:07Z",
@@ -36,7 +45,7 @@ def test_planning_module_reexports_split_typed_index_models() -> None:
                 {
                     "workflow_id": "workflow.example",
                     "title": "Example Workflow",
-                    "summary": "Exercises the compatibility import surface.",
+                    "summary": "Exercises the stable model export surface.",
                     "status": "active",
                     "doc_path": "workflows/modules/example.md",
                     "uses_internal_references": True,
@@ -90,3 +99,9 @@ def test_control_plane_models_export_pack_contract_types() -> None:
 
     assert pack_settings.get("schema_catalog").surface_kind == "schema_collection"
     assert status_registry.get("active").summary == "Active example."
+
+
+def test_retired_planning_reexport_module_is_not_importable() -> None:
+    sys.modules.pop("watchtower_core.control_plane.models.planning", None)
+    with pytest.raises(ModuleNotFoundError):
+        importlib.import_module("watchtower_core.control_plane.models.planning")
