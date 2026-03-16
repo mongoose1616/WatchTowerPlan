@@ -15,13 +15,13 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
 - Relevant task summary, acceptance criteria, or rationale for the change
 - Current trace or task-handling outcome when the change is non-trivial
 - Internal standards and canonical references applied
-- [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md)
+- [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md)
 - Open questions about scope, breaking-change status, or related footers
 
 ## Additional Files to Load
-- [git_commit_message_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/git_commit_message_guidance_reference.md): defines the local commit-message shape this workflow should preserve when writing the final commit.
-- [conventional_commits_reference.md](/home/j/WatchTowerPlan/docs/references/conventional_commits_reference.md): provides the commit prefix guidance used when a conventional commit style is helpful.
-- [task_handling_threshold_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly instead of leaving it implicit at commit time.
+- [git_commit_message_guidance_reference.md](/docs/references/git_commit_message_guidance_reference.md): defines the local commit-message shape this workflow should preserve when writing the final commit.
+- [conventional_commits_reference.md](/docs/references/conventional_commits_reference.md): provides the commit prefix guidance used when a conventional commit style is helpful.
+- [task_handling_threshold_standard.md](/docs/standards/governance/task_handling_threshold_standard.md): non-trivial work should preserve task-handling outcome explicitly instead of leaving it implicit at commit time.
 
 ## Workflow
 1. Inspect the change set and confirm commit readiness.
@@ -30,7 +30,7 @@ Use this workflow to evaluate commit readiness, prepare a repository-compliant c
    - Check whether unresolved errors, validation failures, or decision blockers should prevent committing.
    - Confirm that the commit represents one logical change or split the work before proceeding.
 2. Apply the Git commit standard and draft the message.
-   - Use [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md) as the governing policy for type, scope, description, body, and footers.
+   - Use [git_commit_standard.md](/docs/standards/engineering/git_commit_standard.md) as the governing policy for type, scope, description, body, and footers.
    - Choose the commit type and optional scope that best reflect the dominant effect of the change.
    - Write the subject in imperative voice with 72 characters or fewer and no trailing punctuation.
    - Add a body and footers when the change is complex, risky, trace-linked, task-linked, or breaking.

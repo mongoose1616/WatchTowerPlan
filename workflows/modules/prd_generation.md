@@ -23,8 +23,8 @@ Use this workflow to turn a scoped planning request into a review-ready product 
 - Open questions
 
 ## Additional Files to Load
-- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/prd_md_standard.md): defines the required PRD structure and validation bar for the output.
-- [prd_template.md](/home/j/WatchTowerPlan/docs/templates/prd_template.md): gives the starting shape for drafting the PRD once scope and requirements are clear.
+- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): defines the required PRD structure and validation bar for the output.
+- [prd_template.md](/docs/templates/prd_template.md): gives the starting shape for drafting the PRD once scope and requirements are clear.
 
 ## Workflow
 1. Define scope.

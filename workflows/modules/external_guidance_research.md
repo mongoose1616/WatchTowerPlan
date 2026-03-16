@@ -15,7 +15,7 @@ Use this workflow to consult authoritative external guidance only when internal 
 - Candidate authoritative sources when already known
 
 ## Additional Files to Load
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): constrains how material external guidance should be normalized into repo-local references before it becomes recurring workflow input.
+- [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md): constrains how material external guidance should be normalized into repo-local references before it becomes recurring workflow input.
 
 ## Workflow
 1. Decide whether external research is necessary.

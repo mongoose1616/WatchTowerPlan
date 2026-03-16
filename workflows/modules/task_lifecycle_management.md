@@ -16,11 +16,11 @@ Use this workflow to create, update, split, unblock, or close local task records
 - Current task tracker, task index, initiative tracker or index, and traceability surfaces when the task is traced
 
 ## Additional Files to Load
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): defines the local task authority model, task-state vocabulary, and same-change rebuild expectations.
-- [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): defines the required task-record shape and placement rules.
-- [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable companion surface that must stay aligned with task records.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): traced tasks must preserve explicit links back to planning and forward to derived trace joins.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): traced task changes may shift the derived initiative phase, owner, blocker state, or next-step projection.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): defines the local task authority model, task-state vocabulary, and same-change rebuild expectations.
+- [task_md_standard.md](/docs/standards/documentation/task_md_standard.md): defines the required task-record shape and placement rules.
+- [task_index_standard.md](/docs/standards/data_contracts/task_index_standard.md): defines the machine-readable companion surface that must stay aligned with task records.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): traced tasks must preserve explicit links back to planning and forward to derived trace joins.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): traced task changes may shift the derived initiative phase, owner, blocker state, or next-step projection.
 
 ## Workflow
 1. Confirm the task-management boundary.

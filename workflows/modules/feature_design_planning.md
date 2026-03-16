@@ -19,8 +19,8 @@ Use this workflow to define design options, recommend a technical design, and ca
 - Known risks, assumptions, or open questions
 
 ## Additional Files to Load
-- [feature_design_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/feature_design_md_standard.md): defines the required feature-design structure and applied-reference capture for the output.
-- [feature_design_template.md](/home/j/WatchTowerPlan/docs/templates/feature_design_template.md): provides the drafting shape for the review-ready design artifact.
+- [feature_design_md_standard.md](/docs/standards/documentation/feature_design_md_standard.md): defines the required feature-design structure and applied-reference capture for the output.
+- [feature_design_template.md](/docs/templates/feature_design_template.md): provides the drafting shape for the review-ready design artifact.
 
 ## Workflow
 1. Define design options and tradeoffs.

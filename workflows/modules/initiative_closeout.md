@@ -17,10 +17,10 @@ Use this workflow to mark one traced initiative as completed, superseded, cancel
 - Internal standards and canonical references applied
 
 ## Additional Files to Load
-- [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): defines the allowable initiative end states and the mirrored surfaces that must stay aligned.
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): requires closeout to preserve explicit trace links rather than relying on prose-only state.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the derived initiative surfaces that must stay aligned with the terminal closeout state.
-- [watchtower_core_closeout_initiative.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout_initiative.md): documents the command surface that performs the closeout mutation and derived-surface rebuild.
+- [initiative_closeout_standard.md](/docs/standards/governance/initiative_closeout_standard.md): defines the allowable initiative end states and the mirrored surfaces that must stay aligned.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): requires closeout to preserve explicit trace links rather than relying on prose-only state.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): defines the derived initiative surfaces that must stay aligned with the terminal closeout state.
+- [watchtower_core_closeout_initiative.md](/docs/commands/core_python/watchtower_core_closeout_initiative.md): documents the command surface that performs the closeout mutation and derived-surface rebuild.
 
 ## Workflow
 1. Confirm the closeout boundary.

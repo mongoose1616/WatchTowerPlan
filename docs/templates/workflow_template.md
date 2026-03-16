@@ -7,7 +7,8 @@
 > Treat `AGENTS.md`, `workflows/ROUTING_TABLE.md`, and `workflows/modules/core.md` as already-loaded routing baseline, not as per-module load hints.
 > Do not list generic workflow standards such as `workflow_design_standard.md`, `routing_and_context_loading_standard.md`, or `workflow_md_standard.md` in `## Additional Files to Load`; they stay implicit in the routing baseline.
 > Use `## Additional Files to Load` only when the module truly needs extra repo-local files beyond the normal routing baseline.
-> When `## Additional Files to Load` is present, keep it short, use repository-native Markdown links, and write each bullet in `source: execution implication` form.
+> When `## Additional Files to Load` is present, keep it short, use repository-native Markdown links such as `/docs/...` or `/workflows/...`, and write each bullet in `source: execution implication` form.
+> Do not use filesystem-absolute checkout paths such as `/home/...` in workflow modules; they are not portable across clones, branches, or worktrees.
 > Use repo-local Markdown links only when the target already exists or is being created in the same change.
 > Treat `## Data Structure` and `## Outputs` as terse workflow-internal scaffolding. They should not imply extra repository sections, extra summaries, or extra status records unless another governed surface explicitly requires them.
 > If the workflow result is a single document, code change, validation run, or task update, say that plainly and stop.

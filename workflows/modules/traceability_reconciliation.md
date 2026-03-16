@@ -21,11 +21,11 @@ Use this workflow to reconcile traced planning and governance artifacts with the
 - Known missing links, deferred follow-up work, or open questions
 
 ## Additional Files to Load
-- [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): defines the required cross-surface links and trace-level field semantics this workflow must preserve.
-- [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md): defines the derived initiative phase, owner, and next-step projection that should stay aligned with traceability and task state.
-- [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the unified machine-readable trace join surface that should match the planning corpus.
-- [initiative_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/initiative_index_standard.md): defines the machine-readable initiative projection that should stay aligned with the same traced planning state.
-- [watchtower_core_sync.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync.md): documents the traceability, initiative-index, and initiative-tracking sync commands this workflow uses to rebuild the derived surfaces it reconciles.
+- [traceability_standard.md](/docs/standards/governance/traceability_standard.md): defines the required cross-surface links and trace-level field semantics this workflow must preserve.
+- [initiative_tracking_standard.md](/docs/standards/governance/initiative_tracking_standard.md): defines the derived initiative phase, owner, and next-step projection that should stay aligned with traceability and task state.
+- [traceability_index_standard.md](/docs/standards/data_contracts/traceability_index_standard.md): defines the unified machine-readable trace join surface that should match the planning corpus.
+- [initiative_index_standard.md](/docs/standards/data_contracts/initiative_index_standard.md): defines the machine-readable initiative projection that should stay aligned with the same traced planning state.
+- [watchtower_core_sync.md](/docs/commands/core_python/watchtower_core_sync.md): documents the traceability, initiative-index, and initiative-tracking sync commands this workflow uses to rebuild the derived surfaces it reconciles.
 
 ## Workflow
 1. Define the traceability boundary.

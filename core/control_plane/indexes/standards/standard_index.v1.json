@@ -1072,7 +1072,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/workflow_index_standard.md",
-      "updated_at": "2026-03-12T01:22:49Z",
+      "updated_at": "2026-03-16T09:39:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -3326,7 +3326,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/workflows/workflow_design_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-16T09:38:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [

@@ -16,11 +16,11 @@ Use this workflow to publish local-first task records to GitHub issues and optio
 - Available GitHub credentials and local derived task surfaces
 
 ## Additional Files to Load
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary, foreign-key set, and status mapping this workflow must preserve.
-- [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): local task records remain authoritative even when GitHub mirrors exist.
-- [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md): distills the GitHub issue and project behavior this workflow may need to map local tasks onto.
-- [watchtower_core_sync_github_tasks.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync_github_tasks.md): documents the command surface that performs the actual push-only sync.
-- [task_lifecycle_management.md](/home/j/WatchTowerPlan/workflows/modules/task_lifecycle_management.md): GitHub sync writes local task metadata and must leave the authoritative task corpus aligned afterward.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary, foreign-key set, and status mapping this workflow must preserve.
+- [task_tracking_standard.md](/docs/standards/governance/task_tracking_standard.md): local task records remain authoritative even when GitHub mirrors exist.
+- [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md): distills the GitHub issue and project behavior this workflow may need to map local tasks onto.
+- [watchtower_core_sync_github_tasks.md](/docs/commands/core_python/watchtower_core_sync_github_tasks.md): documents the command surface that performs the actual push-only sync.
+- [task_lifecycle_management.md](/workflows/modules/task_lifecycle_management.md): GitHub sync writes local task metadata and must leave the authoritative task corpus aligned afterward.
 
 ## Workflow
 1. Confirm the sync boundary and authority model.

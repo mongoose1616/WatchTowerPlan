@@ -9,7 +9,7 @@ tags:
   - "workflows"
   - "workflow_design"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-16T09:38:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,13 +33,13 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Splitting a large workflow into smaller routed modules.
 
 ## Related Standards and Sources
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules narrow, explicit, and efficient for LLM or agent use.
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): companion repository surface this standard should stay aligned with.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md): distilled external guidance for keeping workflow modules narrow, explicit, and efficient for LLM or agent use.
+- [workflow_template.md](/docs/templates/workflow_template.md): authoring scaffold that should stay aligned with this standard.
+- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md): workflow surface that operationalizes or depends on this standard.
+- [AGENTS.md](/AGENTS.md): companion repository surface this standard should stay aligned with.
 
 ## Inputs
 - The task type or execution concern the workflow is meant to govern.
@@ -64,6 +64,8 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Workflow modules may publish `Additional Files to Load` only when extra repo-local files beyond the routing baseline materially change execution.
 - `Additional Files to Load` should point to the next files an agent or maintainer should actually open, not to generic repo-wide context that routing already guarantees.
 - `Additional Files to Load` bullets should use `source: execution implication` form and remain short enough to keep the module scan-friendly.
+- `Additional Files to Load` links should use repository-native Markdown targets such as `/docs/...`, `/workflows/...`, or another repo-relative path the current checkout can resolve.
+- Filesystem-absolute targets such as `/home/...` or other machine-local checkout paths are invalid in workflow modules because they break clone, branch, and worktree portability.
 - Steps should be ordered and concrete enough that the workflow can be followed without hidden verbal context.
 - Workflows should prefer clarify-before-execute behavior when ambiguity materially affects correctness.
 - Workflow steps should call out adjacent-document updates or companion workflow loading when coherence requires it.
@@ -121,6 +123,7 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - `Data Structure` and `Outputs` should stay concise and should not imply extra deliverables beyond the requested task.
 - `Additional Files to Load` should appear only when the workflow actually needs task-specific extra files beyond the routing baseline.
 - When `Additional Files to Load` appears, it should point to concrete repo-local files and explain why each file changes execution.
+- `Additional Files to Load` links should stay checkout-portable and must not depend on one machine-local filesystem root.
 - Generic routing-baseline files should not be repeated as task-specific authorities.
 - The module should compose cleanly with the other routed workflows that are likely to be loaded with it.
 
@@ -130,17 +133,17 @@ Keep workflow modules small, composable, and explicit so routed task execution s
 - Update routing surfaces in the same change set when a workflow split, merge, or rename changes task classification.
 
 ## References
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
-- [agent_workflow_authoring_reference.md](/home/j/WatchTowerPlan/docs/references/agent_workflow_authoring_reference.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
-- [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md)
-- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md)
+- [agent_workflow_authoring_reference.md](/docs/references/agent_workflow_authoring_reference.md)
+- [workflow_template.md](/docs/templates/workflow_template.md)
+- [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md)
+- [AGENTS.md](/AGENTS.md)
 
 ## Notes
 - This standard is about workflow-module design, not about one specific workflow family.
-- File-level Markdown shape belongs in [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md).
+- File-level Markdown shape belongs in [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md).
 - Narrower workflow standards may add extra rules for specific workflow types, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-16T09:38:00Z`

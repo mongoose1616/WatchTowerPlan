@@ -15,16 +15,16 @@ Use this workflow to extract durable local guidance from external source materia
 - Distillation goal or target question
 - Relevant repository context and neighboring docs
 - Internal standards and canonical references applied
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
+- [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md)
 - Related local references, standards, or design documents
 - External guidance notes when needed
 - Version, baseline, or date-sensitivity information when relevant
 - Open questions or uncertainties in the source material
 
 ## Additional Files to Load
-- [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): defines how external source material should be normalized into repo-local reference documents.
-- [reference_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/reference_md_standard.md): defines the required structure and quality bar for the resulting reference doc.
-- [reference_template.md](/home/j/WatchTowerPlan/docs/templates/reference_template.md): provides the dense local-reference shape the output should follow.
+- [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md): defines how external source material should be normalized into repo-local reference documents.
+- [reference_md_standard.md](/docs/standards/documentation/reference_md_standard.md): defines the required structure and quality bar for the resulting reference doc.
+- [reference_template.md](/docs/templates/reference_template.md): provides the dense local-reference shape the output should follow.
 
 ## Workflow
 1. Read and verify the source material directly.

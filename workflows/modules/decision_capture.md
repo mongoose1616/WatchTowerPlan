@@ -14,14 +14,14 @@ Use this workflow to analyze viable options and record a durable repository deci
 - Relevant PRD, feature design, implementation plan, review notes, or proposal materials
 - Current-state context summary
 - Internal standards and canonical references applied
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md)
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md)
 - External guidance notes when needed
 - Known options, constraints, assumptions, risks, and stakeholders
 
 ## Additional Files to Load
-- [decision_capture_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/decision_capture_standard.md): defines what belongs in a durable repository decision and when this workflow should create one.
-- [decision_record_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/decision_record_md_standard.md): defines the required decision-record structure and applied-reference capture.
-- [decision_record_template.md](/home/j/WatchTowerPlan/docs/templates/decision_record_template.md): provides the drafting shape for the final decision document.
+- [decision_capture_standard.md](/docs/standards/governance/decision_capture_standard.md): defines what belongs in a durable repository decision and when this workflow should create one.
+- [decision_record_md_standard.md](/docs/standards/documentation/decision_record_md_standard.md): defines the required decision-record structure and applied-reference capture.
+- [decision_record_template.md](/docs/templates/decision_record_template.md): provides the drafting shape for the final decision document.
 
 ## Workflow
 1. Define the viable options and tradeoffs.

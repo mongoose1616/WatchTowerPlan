@@ -22,8 +22,8 @@ Use this workflow to turn approved planning inputs into an actionable implementa
 - Open questions
 
 ## Additional Files to Load
-- [implementation_plan_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/implementation_plan_md_standard.md): defines the required plan structure, validation expectations, and handoff sections for the output.
-- [implementation_plan_template.md](/home/j/WatchTowerPlan/docs/templates/implementation_plan_template.md): provides the drafting shape for the execution-ready implementation plan.
+- [implementation_plan_md_standard.md](/docs/standards/documentation/implementation_plan_md_standard.md): defines the required plan structure, validation expectations, and handoff sections for the output.
+- [implementation_plan_template.md](/docs/templates/implementation_plan_template.md): provides the drafting shape for the execution-ready implementation plan.
 
 ## Workflow
 1. Review the planning inputs.

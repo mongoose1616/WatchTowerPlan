@@ -158,6 +158,22 @@ def test_governed_decision_docs_explain_applied_references() -> None:
 
 
 def test_workflow_modules_publish_task_specific_additional_load_files() -> None:
+    allowed_root_relative_prefixes = (
+        "/docs/",
+        "/workflows/",
+        "/core/",
+        "/.github/",
+        "/README.md",
+        "/AGENTS.md",
+    )
+    disallowed_routing_baseline_targets = {
+        "/AGENTS.md",
+        "/workflows/ROUTING_TABLE.md",
+        "/workflows/modules/core.md",
+        "/docs/standards/workflows/workflow_design_standard.md",
+        "/docs/standards/workflows/routing_and_context_loading_standard.md",
+        "/docs/standards/documentation/workflow_md_standard.md",
+    }
     for path in sorted((REPO_ROOT / "workflows/modules").glob("*.md")):
         if path.name == "README.md":
             continue
@@ -179,17 +195,12 @@ def test_workflow_modules_publish_task_specific_additional_load_files() -> None:
         assert all(": " in bullet for bullet in bullets), (
             f"unexplained workflow additional-load bullet: {path}"
         )
+        targets = re.findall(r"\[[^\]]+\]\(([^)]+)\)", section)
+        assert targets, f"workflow additional-load section must publish markdown links: {path}"
         assert all(
-            "/home/j/WatchTowerPlan/AGENTS.md" not in bullet
-            and "/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md" not in bullet
-            and "/home/j/WatchTowerPlan/workflows/modules/core.md" not in bullet
-            and "/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md"
-            not in bullet
-            and "/home/j/WatchTowerPlan/docs/standards/workflows/"
-            "routing_and_context_loading_standard.md" not in bullet
-            and "/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md"
-            not in bullet
-            for bullet in bullets
-        ), (
-            f"workflow additional-load section repeats routing-baseline files: {path}"
-        )
+            not target.startswith("/") or target.startswith(allowed_root_relative_prefixes)
+            for target in targets
+        ), f"workflow additional-load links must stay repo-native in {path}"
+        assert all(
+            target not in disallowed_routing_baseline_targets for target in targets
+        ), f"workflow additional-load section repeats routing-baseline files: {path}"

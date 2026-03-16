@@ -10,7 +10,7 @@ tags:
   - "agents"
   - "prompt_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-12T02:46:38Z"
+updated_at: "2026-03-16T09:40:00Z"
 audience: "shared"
 authority: "reference"
 applies_to:
@@ -46,10 +46,10 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - `https://docs.anthropic.com/en/docs/claude-code/sub-agents` - verified 2026-03-10; Anthropic guidance for narrow, specialized agent responsibilities and reduced context sprawl.
 
 ## Related Standards and Sources
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md)
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_template.md](/docs/templates/workflow_template.md)
 
 ## Quick Reference or Distilled Reference
 ### Core Rules
@@ -69,6 +69,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 | How should extra context be surfaced? | Optional `Additional Files to Load` bullets | Makes the next files to open explicit without turning every module into a bibliography. |
 | What form should each extra-context bullet use? | `source: execution implication` | Tells the reader or agent why the file matters, not just that it exists. |
 | What should the extra-context section point to? | Repo-local files, especially standards, templates, command docs, and local references | Keeps execution deterministic and aligned with governed repository surfaces. |
+| What link form should those files use? | Repository-native links such as `/docs/...` or `/workflows/...` | Keeps the workflow portable across clones, branches, and worktrees instead of binding it to one machine path. |
 | What should happen when no extra files are needed? | Omit the section entirely | Avoids token-heavy filler and false precision. |
 | How should `Data Structure` and `Outputs` be written? | As terse internal workflow scaffolding | Prevents them from turning into prompts for extra low-value artifact prose. |
 
@@ -76,6 +77,7 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - Repeating `AGENTS.md`, `workflows/ROUTING_TABLE.md`, `workflows/modules/core.md`, or the generic workflow standards in every workflow module.
 - Listing files without explaining the local execution consequence of each source.
 - Using raw external URLs in workflow modules when a local reference doc can carry the same authority.
+- Using filesystem-absolute checkout paths such as `/home/...` in workflow-module links.
 - Mixing multiple execution concerns into one workflow because the task family is broad.
 - Writing long descriptive prose that leaves the actual ordered steps implicit.
 - Using `Outputs` to require meta summaries, source logs, or quality-check writeups when the resulting artifact or command outcome already captures that information.
@@ -88,12 +90,13 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - Use acceptance-evidence reconciliation for one trace's acceptance coverage and evidence linkage.
 
 ### What Good Additional Load Hints Look Like
-- [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary this workflow must preserve.
-- [task_lifecycle_management.md](/home/j/WatchTowerPlan/workflows/modules/task_lifecycle_management.md): task sync changes local task metadata and must leave the authoritative local corpus aligned afterward.
+- [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md): defines the local-versus-remote authority boundary this workflow must preserve.
+- [task_lifecycle_management.md](/workflows/modules/task_lifecycle_management.md): task sync changes local task metadata and must leave the authoritative local corpus aligned afterward.
 
 ### What Poor Additional Load Hints Look Like
 - `AGENTS.md`: already part of the routing baseline, so repeating it does not tell the agent what extra file to open.
 - `workflow_md_standard.md`: generic structure authority, not a task-specific next file for most modules.
+- `/home/.../some_checkout/docs/...`: machine-local filesystem paths that stop working as soon as the repo is opened from another clone or worktree.
 - Bare lists of links with no `: execution implication` explanation.
 
 ## Local Mapping in This Repository
@@ -101,11 +104,11 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - Supporting authority for current workflow standards, workflow modules, semantic workflow validation, and the derived workflow index.
 
 ### Current Touchpoints
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
-- [workflow_index.v1.json](/home/j/WatchTowerPlan/core/control_plane/indexes/workflows/workflow_index.v1.json)
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md)
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_template.md](/docs/templates/workflow_template.md)
+- [workflow_index.v1.json](/core/control_plane/indexes/workflows/workflow_index.v1.json)
 
 ### Why It Matters Here
 - The repository already has a routed baseline context layer. Workflow modules should only add context that is specific to the module and helpful for immediate execution.
@@ -125,10 +128,10 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - A generic code-validation workflow should usually omit `Additional Files to Load` if the routed baseline already gives enough context.
 
 ## References
-- [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)
-- [workflow_design_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/workflow_design_standard.md)
-- [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)
-- [workflow_template.md](/home/j/WatchTowerPlan/docs/templates/workflow_template.md)
+- [workflow_md_standard.md](/docs/standards/documentation/workflow_md_standard.md)
+- [workflow_design_standard.md](/docs/standards/workflows/workflow_design_standard.md)
+- [routing_and_context_loading_standard.md](/docs/standards/workflows/routing_and_context_loading_standard.md)
+- [workflow_template.md](/docs/templates/workflow_template.md)
 - `https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide`
 - `https://cookbook.openai.com/examples/prompt_caching101`
 - `https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct`
@@ -145,4 +148,4 @@ Give maintainers a compact set of practical rules for writing workflow modules t
 - The repository standards remain the authority; this document is the distilled working reference that informs them.
 
 ## Updated At
-- `2026-03-12T02:46:38Z`
+- `2026-03-16T09:40:00Z`
