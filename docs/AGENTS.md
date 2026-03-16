@@ -1,19 +1,19 @@
 # AGENTS.md
 
 ## Role
-- This file applies to the [docs](/home/j/WatchTowerPlan/docs) subtree.
-- Use it for documentation-specific rules that do not belong in the root [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md).
+- This file applies to the [docs](/docs) subtree.
+- Use it for documentation-specific rules that do not belong in the root [AGENTS.md](/AGENTS.md).
 - Keep detailed task behavior in workflow modules, standards, templates, or companion docs rather than expanding this file.
 
 ## Scope
 - Applies to `docs/**`.
 - If a more-specific `AGENTS.md` exists below this path, treat it as a more local overlay.
-- Inherit the root [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md) first and do not weaken it here.
+- Inherit the root [AGENTS.md](/AGENTS.md) first and do not weaken it here.
 
 ## Routing
 - Read this file before working in `docs/**`.
-- Use [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md) for task classification and workflow-module selection.
-- Inherit repository routing from the root [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md).
+- Use [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md) for task classification and workflow-module selection.
+- Inherit repository routing from the root [AGENTS.md](/AGENTS.md).
 - Do not turn this file into a second routing table.
 
 ## Local Rules

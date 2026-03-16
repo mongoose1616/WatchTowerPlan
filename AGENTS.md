@@ -12,7 +12,7 @@
 
 ## Routing
 - Read this file first.
-- Use [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md) to select the minimum workflow modules required for the task.
+- Use [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md) to select the minimum workflow modules required for the task.
 - Always load `workflows/modules/core.md` plus only the additional modules required by the matched task type.
 - Workflow modules are repository-available building blocks, but they are not active unless routing selects them or the active task explicitly merges them.
 - Route from the full prompt context rather than exact keyword matching alone. If multiple task types apply, load the minimum union of their module sets.
@@ -21,12 +21,12 @@
 - Do not turn this file into a second routing table.
 
 ## Local Rules
-- If work is happening under [docs](/home/j/WatchTowerPlan/docs), also apply [docs/AGENTS.md](/home/j/WatchTowerPlan/docs/AGENTS.md).
-- If work is happening under [core/python](/home/j/WatchTowerPlan/core/python), also apply [core/python/AGENTS.md](/home/j/WatchTowerPlan/core/python/AGENTS.md).
-- Use the nearest applicable [README.md](/home/j/WatchTowerPlan/README.md) as the quick reference for directory purpose and file inventory before doing broader scans.
+- If work is happening under [docs](/docs), also apply [docs/AGENTS.md](/docs/AGENTS.md).
+- If work is happening under [core/python](/core/python), also apply [core/python/AGENTS.md](/core/python/AGENTS.md).
+- Use the nearest applicable [README.md](/README.md) as the quick reference for directory purpose and file inventory before doing broader scans.
 - Keep durable documentation in `docs/`, workflow routing and task procedures in `workflows/`, and shared implementation assets in `core/`.
-- Treat [docs/planning](/home/j/WatchTowerPlan/docs/planning/README.md) as the human planning corpus. Keep PRDs, designs, implementation plans, and durable decisions linked there rather than scattering planning state across unrelated docs.
-- Treat [core/control_plane](/home/j/WatchTowerPlan/core/control_plane/README.md) as the canonical, versioned, machine-readable authority. Keep authored schemas, registries, contracts, policies, indexes, examples, and ledgers there rather than in ad hoc JSON or Python constants.
+- Treat [docs/planning](/docs/planning/README.md) as the human planning corpus. Keep PRDs, designs, implementation plans, and durable decisions linked there rather than scattering planning state across unrelated docs.
+- Treat [core/control_plane](/core/control_plane/README.md) as the canonical, versioned, machine-readable authority. Keep authored schemas, registries, contracts, policies, indexes, examples, and ledgers there rather than in ad hoc JSON or Python constants.
 - Treat `core/python/` as the canonical Python workspace for package code, tests, tooling, and local virtual-environment usage.
 - Keep human-readable and machine-readable companion surfaces aligned in the same change set when one depends on the other. Examples include planning docs plus tracking indexes, command docs plus command indexes, and schema changes plus examples, schema catalog, validator registry entries, and tests.
 - Prefer machine-readable control-plane surfaces for deterministic lookup when they exist, and use prose docs for narrative context, rationale, and operator guidance.
@@ -38,14 +38,14 @@
 
 ## Do
 - Follow the routed workflow modules for task execution.
-- Use the nearest applicable [README.md](/home/j/WatchTowerPlan/README.md) as the quick reference before broader scans.
-- Apply [docs/AGENTS.md](/home/j/WatchTowerPlan/docs/AGENTS.md) when work falls under `docs/**`.
+- Use the nearest applicable [README.md](/README.md) as the quick reference before broader scans.
+- Apply [docs/AGENTS.md](/docs/AGENTS.md) when work falls under `docs/**`.
 - Prefer structured command output such as `--format json` for agent or workflow use when a command supports it.
 - Use the coordination query and coordination tracker as the default repo-level planning entrypoints before opening deeper planning families.
 - Update adjacent indexes, trackers, examples, and validation surfaces when a governed document or control-plane artifact changes materially.
 
 ## Do Not
-- Do not bypass [ROUTING_TABLE.md](/home/j/WatchTowerPlan/workflows/ROUTING_TABLE.md) when selecting workflow modules.
+- Do not bypass [ROUTING_TABLE.md](/workflows/ROUTING_TABLE.md) when selecting workflow modules.
 - Do not place durable documentation outside `docs/` or workflow procedures outside `workflows/`.
 - Do not store mutable runtime state, caches, or transient event streams under `core/control_plane/`.
 - Do not add parallel Python package roots or alternate virtual-environment conventions outside `core/python/`.
