@@ -39,12 +39,13 @@ _EXPORT_MODULES = {
 
 _REPO_OPS_EXPORTS = {
     "DocumentSemanticsValidationService",
-    "ValidationAllRecord",
-    "ValidationAllResult",
-    "ValidationAllService",
-    "VALIDATION_FAMILY_SPECS",
-    "ValidationFamilySpec",
-    "ValidationFamilySummary",
+}
+_SUBMODULE_ONLY_EXPORTS = {
+    "ValidationAllRecord": "watchtower_core.validation.all",
+    "ValidationAllResult": "watchtower_core.validation.all",
+    "ValidationAllService": "watchtower_core.validation.all",
+    "ValidationFamilySummary": "watchtower_core.validation.all",
+    "VALIDATION_ALL_FAMILIES": "watchtower_core.validation.all",
 }
 
 
@@ -52,8 +53,12 @@ def __getattr__(name: str) -> Any:
     if name in _REPO_OPS_EXPORTS:
         raise AttributeError(
             "watchtower_core.validation exposes only reusable validation services. "
-            "Import repo-local document semantics and aggregate validation helpers "
-            "from watchtower_core.repo_ops.validation."
+            "Import repo-local document semantics from watchtower_core.repo_ops.validation."
+        )
+    if name in _SUBMODULE_ONLY_EXPORTS:
+        raise AttributeError(
+            "watchtower_core.validation keeps aggregate validate-all helpers out of the "
+            "package root. Import them from watchtower_core.validation.all."
         )
     module_name = _EXPORT_MODULES.get(name)
     if module_name is None:

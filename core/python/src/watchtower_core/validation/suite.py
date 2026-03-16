@@ -28,6 +28,10 @@ if TYPE_CHECKING:
 
 DOCUMENT_SEMANTICS_ARTIFACT_KIND = "documentation_semantics"
 DocumentSemanticsFactory = Callable[[ControlPlaneLoader], "DocumentSemanticsValidationService"]
+ValidationSuiteTargetResolver = Callable[
+    [PackValidationContext, ValidationSuiteStepDefinition],
+    tuple[str, ...] | None,
+]
 
 
 class ValidationSuiteService:
@@ -38,17 +42,20 @@ class ValidationSuiteService:
         loader: ControlPlaneLoader,
         *,
         document_semantics_factory: DocumentSemanticsFactory | None = None,
+        target_resolver: ValidationSuiteTargetResolver | None = None,
     ) -> None:
         self._loader = loader
         self._document_semantics_factory = (
             document_semantics_factory or _default_document_semantics_factory
         )
+        self._target_resolver = target_resolver
 
     def run(
         self,
         suite_id: str,
         *,
         pack_settings_path: str = PACK_SETTINGS_PATH,
+        included_step_kinds: tuple[str, ...] | None = None,
     ) -> ValidationSuiteResult:
         """Run one declared validation suite and return aggregate results."""
 
@@ -66,8 +73,17 @@ class ValidationSuiteService:
         document_semantics = self._document_semantics_factory(context.loader)
         pack_contract = PackContractValidationService(context.loader)
 
+        allowed_step_kinds = (
+            set(included_step_kinds) if included_step_kinds is not None else None
+        )
+        steps = tuple(
+            step
+            for step in suite.steps
+            if allowed_step_kinds is None or step.step_kind in allowed_step_kinds
+        )
+
         records: list[ValidationSuiteRecord] = []
-        for step in suite.steps:
+        for step in steps:
             if step.step_kind == "pack_contract":
                 records.append(
                     ValidationSuiteRecord(
@@ -128,7 +144,19 @@ class ValidationSuiteService:
         service: Any,
         suffixes: tuple[str, ...],
     ) -> tuple[ValidationSuiteRecord, ...]:
-        targets = step.paths or self._auto_discover_targets(context, step, suffixes=suffixes)
+        if step.paths:
+            targets = step.paths
+        else:
+            resolved_targets = (
+                self._target_resolver(context, step)
+                if self._target_resolver is not None
+                else None
+            )
+            targets = (
+                resolved_targets
+                if resolved_targets is not None
+                else self._auto_discover_targets(context, step, suffixes=suffixes)
+            )
         if not targets:
             return (
                 ValidationSuiteRecord(
@@ -190,7 +218,7 @@ class ValidationSuiteService:
         context: PackValidationContext,
         step: ValidationSuiteStepDefinition,
     ) -> tuple[ValidatorDefinition, ...]:
-        registry = context.loader.load_validator_registry()
+        registry = context.validator_registry
         if step.validator_id is not None:
             try:
                 validator = registry.get(step.validator_id)
@@ -269,3 +297,6 @@ def _default_document_semantics_factory(
     )
 
     return DocumentSemanticsValidationService(loader)
+
+
+__all__ = ["ValidationSuiteService", "ValidationSuiteTargetResolver"]

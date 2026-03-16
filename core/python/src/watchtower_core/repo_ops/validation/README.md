@@ -1,16 +1,16 @@
 # `watchtower_core.repo_ops.validation`
 
 ## Summary
-Repo-wide aggregate validation orchestration and repository-specific validation families.
+Repo-local Markdown semantic validators plus WatchTowerPlan-specific validation-target enumeration.
 
 ## Boundary
 - `Classification`: `repo_local_orchestration`
-- `Supported Imports`: Explicit aggregate or repo-specific validation modules such as `all` and `document_semantics`.
-- `Non-Goals`: Direct export of aggregate repo validation through `watchtower_core.validation`.
+- `Supported Imports`: Explicit repo-local semantic validators and target-enumeration helpers such as `document_semantics` and `targets`.
+- `Non-Goals`: Owning reusable validation-suite orchestration or aggregate validate-all services.
 
 ## Key Surfaces
-- `all.py`: Aggregate validation family orchestration.
 - `document_semantics.py`: Repo-native Markdown semantic validation.
+- `targets.py`: WatchTowerPlan-specific target enumeration for the repo baseline validation suite.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/validation/README.md`

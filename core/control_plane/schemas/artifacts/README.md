@@ -29,6 +29,7 @@
 | `core/control_plane/schemas/artifacts/trace_purge_record.schema.json` | Schema for the machine-readable trace-purge ledger artifact family. |
 | `core/control_plane/schemas/artifacts/traceability_index.schema.json` | Schema for the unified machine-readable traceability-index artifact family. |
 | `core/control_plane/schemas/artifacts/validation_evidence.schema.json` | Schema for the durable validation-evidence artifact family. |
+| `core/control_plane/schemas/artifacts/validation_suite_registry.schema.json` | Schema for the authored validation-suite registry artifact family. |
 | `core/control_plane/schemas/artifacts/validator_registry.schema.json` | Schema for the authored validator registry artifact family. |
 | `core/control_plane/schemas/artifacts/workflow_metadata_registry.schema.json` | Schema for the authored workflow-metadata registry artifact family. |
 | `core/control_plane/schemas/artifacts/workflow_index.schema.json` | Schema for the machine-readable workflow-index artifact family. |

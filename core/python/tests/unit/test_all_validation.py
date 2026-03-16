@@ -15,10 +15,12 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.repo_ops.sync.reference_index import ReferenceIndexSyncService
-from watchtower_core.repo_ops.validation import (
-    VALIDATION_FAMILY_SPECS,
-    ValidationAllService,
+from watchtower_core.repo_ops.validation.targets import (
+    WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
+    resolve_watchtower_plan_suite_targets,
 )
+from watchtower_core.validation.front_matter import FrontMatterValidationService
+from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 from watchtower_core.validation.errors import ValidationSelectionError
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -29,6 +31,28 @@ def _copy_control_plane_repo(tmp_path: Path) -> Path:
     copytree(REPO_ROOT / "core" / "control_plane", repo_root / "core" / "control_plane")
     (repo_root / "core/python").mkdir(parents=True)
     return repo_root
+
+
+def _service(repo_root: Path | None = None) -> ValidationAllService:
+    return ValidationAllService(
+        ControlPlaneLoader(repo_root),
+        suite_id=WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
+        suite_target_resolver=resolve_watchtower_plan_suite_targets,
+    )
+
+
+def _service_with_targets(
+    step_targets: dict[str, tuple[str, ...]],
+    repo_root: Path | None = None,
+) -> ValidationAllService:
+    def resolver(_, step) -> tuple[str, ...] | None:
+        return step_targets.get(step.step_id, ())
+
+    return ValidationAllService(
+        ControlPlaneLoader(repo_root),
+        suite_id=WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
+        suite_target_resolver=resolver,
+    )
 
 
 def _write_invalid_decision_fixture(path: Path) -> None:
@@ -108,11 +132,11 @@ def _write_invalid_decision_fixture(path: Path) -> None:
 
 
 def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
-    service = ValidationAllService(ControlPlaneLoader())
+    service = _service()
 
     result = service.run(
         included_families=tuple(
-            spec.family for spec in VALIDATION_FAMILY_SPECS if spec.family != "acceptance"
+            family for family in VALIDATION_ALL_FAMILIES if family != "acceptance"
         )
     )
 
@@ -120,7 +144,7 @@ def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
     assert result.total_count >= 1
     assert result.failed_count == 0
     assert result.included_families == tuple(
-        spec.family for spec in VALIDATION_FAMILY_SPECS if spec.family != "acceptance"
+        family for family in VALIDATION_ALL_FAMILIES if family != "acceptance"
     )
     assert any(summary.family == "front_matter" for summary in result.family_summaries)
     assert any(summary.family == "document_semantics" for summary in result.family_summaries)
@@ -128,14 +152,14 @@ def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
 
 
 def test_validate_all_passes_when_all_governed_families_are_aligned() -> None:
-    service = ValidationAllService(ControlPlaneLoader())
+    service = _service()
 
     result = service.run()
 
     assert result.passed is True
     assert result.total_count >= 1
     assert result.failed_count == 0
-    assert result.included_families == tuple(spec.family for spec in VALIDATION_FAMILY_SPECS)
+    assert result.included_families == VALIDATION_ALL_FAMILIES
     acceptance_summary = next(
         summary for summary in result.family_summaries if summary.family == "acceptance"
     )
@@ -144,18 +168,18 @@ def test_validate_all_passes_when_all_governed_families_are_aligned() -> None:
 
 
 def test_validation_family_registry_is_unique() -> None:
-    assert len({spec.family for spec in VALIDATION_FAMILY_SPECS}) == len(VALIDATION_FAMILY_SPECS)
+    assert len(set(VALIDATION_ALL_FAMILIES)) == len(VALIDATION_ALL_FAMILIES)
 
 
 def test_validate_all_rejects_unknown_family() -> None:
-    service = ValidationAllService(ControlPlaneLoader())
+    service = _service()
 
     with pytest.raises(ValueError, match="unknown validation families: imaginary"):
         service.run(included_families=("imaginary",))
 
 
 def test_validate_all_requires_at_least_one_selected_family() -> None:
-    service = ValidationAllService(ControlPlaneLoader())
+    service = _service()
 
     with pytest.raises(ValueError, match="requires at least one validation family"):
         service.run(included_families=())
@@ -164,15 +188,20 @@ def test_validate_all_requires_at_least_one_selected_family() -> None:
 def test_validate_all_records_selection_errors_as_failed_results(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    service = ValidationAllService(ControlPlaneLoader())
     target = "docs/references/example_reference.md"
+    service = _service_with_targets(
+        {"step.watchtower_plan.front_matter": (target,)},
+    )
 
-    monkeypatch.setattr(service, "_front_matter_targets", lambda: (target,))
-
-    def raise_selection_error(relative_path: str) -> object:
+    def raise_selection_error(
+        self: FrontMatterValidationService,
+        relative_path: str,
+        *,
+        validator_id: str | None = None,
+    ) -> object:
         raise ValidationSelectionError(f"No validator matched {relative_path}")
 
-    monkeypatch.setattr(service._front_matter, "validate", raise_selection_error)
+    monkeypatch.setattr(FrontMatterValidationService, "validate", raise_selection_error)
 
     result = service.run(included_families=("front_matter",))
 
@@ -180,9 +209,9 @@ def test_validate_all_records_selection_errors_as_failed_results(
     assert result.failed_count == 1
     assert result.records[0].family == "front_matter"
     assert result.records[0].target == target
-    assert result.records[0].result.validator_id == "validator.front_matter.aggregate_selection"
+    assert result.records[0].result.validator_id == "suite:front_matter:auto"
     assert result.records[0].result.issue_count == 1
-    assert result.records[0].result.issues[0].code == "validation_target_resolution_error"
+    assert result.records[0].result.issues[0].code == "validation_step_error"
 
 
 def test_validate_all_reports_missing_decision_applied_reference_section(
@@ -191,9 +220,10 @@ def test_validate_all_reports_missing_decision_applied_reference_section(
     repo_root = _copy_control_plane_repo(tmp_path)
     relative_path = "docs/planning/decisions/validate_all_decision_semantics.md"
     _write_invalid_decision_fixture(repo_root / relative_path)
-    service = ValidationAllService(ControlPlaneLoader(repo_root))
-
-    monkeypatch.setattr(service, "_document_semantics_targets", lambda: (relative_path,))
+    service = _service_with_targets(
+        {"step.watchtower_plan.document_semantics": (relative_path,)},
+        repo_root,
+    )
 
     result = service.run(included_families=("document_semantics",))
 
@@ -210,7 +240,7 @@ def test_validate_all_reports_missing_decision_applied_reference_section(
 
 
 def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
-    service = ValidationAllService(ControlPlaneLoader())
+    service = _service()
 
     result = service.run(included_families=("artifacts",))
 
@@ -226,18 +256,16 @@ def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
 def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    service = ValidationAllService(ControlPlaneLoader())
+    service = _service_with_targets(
+        {
+            "step.watchtower_plan.document_semantics": (
+                "workflows/modules/code_validation.md",
+                "workflows/modules/code_review.md",
+            )
+        }
+    )
     reference_build_count = 0
     original_build_document = ReferenceIndexSyncService.build_document
-
-    monkeypatch.setattr(
-        service,
-        "_document_semantics_targets",
-        lambda: (
-            "workflows/modules/code_validation.md",
-            "workflows/modules/code_review.md",
-        ),
-    )
 
     def wrapped_build_document(
         self: ReferenceIndexSyncService,
@@ -261,7 +289,7 @@ def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
 def test_validate_all_reuses_validator_registry_materialization(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    service = ValidationAllService(ControlPlaneLoader())
+    service = _service()
     validator_registry_document_loads = 0
     original_load_validated_document = service._loader.load_validated_document
 
@@ -286,7 +314,7 @@ def test_validate_all_reuses_validator_registry_materialization(
 def test_validate_all_reuses_acceptance_reconciliation_snapshots(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    service = ValidationAllService(ControlPlaneLoader())
+    service = _service()
     counts: Counter[str] = Counter()
 
     for name in (
@@ -334,10 +362,10 @@ def test_validate_all_reports_missing_repo_local_acceptance_paths(
     contract["entries"][0]["validation_targets"].append("docs/planning/tasks/open/missing_task.md")
     contract_path.write_text(f"{json.dumps(contract, indent=2)}\n", encoding="utf-8")
 
-    service = ValidationAllService(ControlPlaneLoader(repo_root))
+    service = _service(repo_root)
     monkeypatch.setattr(
-        service,
-        "_acceptance_targets",
+        service._acceptance,
+        "acceptance_trace_ids",
         lambda: ("trace.core_python_foundation",),
     )
     result = service.run(included_families=("acceptance",))

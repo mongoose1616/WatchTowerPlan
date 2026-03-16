@@ -75,7 +75,7 @@ This standard defines the baseline validation expectations for repository change
 
 ## Operationalization
 - `Modes`: `validation`; `documentation`; `sync`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/validation/all.py`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_all.md`; `docs/commands/core_python/watchtower_core_sync_all.md`
+- `Operational Surfaces`: `core/python/src/watchtower_core/validation/all.py`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `docs/commands/core_python/watchtower_core_validate_all.md`; `docs/commands/core_python/watchtower_core_sync_all.md`
 
 ## Validation
 - Reviewers should reject non-trivial changes that skip the broad validation tier without an explicit reason.

@@ -69,6 +69,7 @@
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"`
 - `uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path docs/standards/governance/planning_retention_and_purge_standard.md`
 - `uv run watchtower-core validate all --skip-acceptance`
+- `uv run watchtower-core validate suite --suite-id suite.watchtower_plan.validation_baseline --format json`
 - `uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md`
 - `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core validate artifact --path /tmp/pack_note.json --schema-id urn:watchtower:schema:external:pack-note:v1 --supplemental-schema-path /tmp/pack_schemas --format json`
@@ -78,6 +79,7 @@
 - Open [watchtower_core.md](/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
 - Open [watchtower_core_route.md](/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
 - Open [watchtower_core_plan.md](/docs/commands/core_python/watchtower_core_plan.md) when you need one-step planning scaffolds or traced bootstrap chains.
+- Open [watchtower_core_validate_suite.md](/docs/commands/core_python/watchtower_core_validate_suite.md) when you need the pack-declared suite runtime and `--pack-settings-path` behavior.
 - Use the group pages for deeper browsing:
   - [watchtower_core_plan.md](/docs/commands/core_python/watchtower_core_plan.md)
   - [watchtower_core_query.md](/docs/commands/core_python/watchtower_core_query.md)
@@ -124,7 +126,7 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 |---|---|---|
 | `core/python/src/watchtower_core/README.md` | `runtime_architecture_start_here` | Top-level package map and navigation. |
 | `core/python/src/watchtower_core/control_plane/README.md` | `reusable_core` | Workspace, loader, schema, and typed artifact boundary. |
-| `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services and result models; repo-local document semantics and aggregate validation stay in `repo_ops.validation`. |
+| `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services, suite orchestration, and aggregate baseline helpers; repo-local document semantics stay in `repo_ops.validation`. |
 | `core/python/src/watchtower_core/query/README.md` | `boundary_layer` | Guardrail namespace root only; repo-local query implementations live under `repo_ops/query/`. |
 | `core/python/src/watchtower_core/sync/README.md` | `boundary_layer` | Guardrail namespace root only; repo-local sync implementations live under `repo_ops/sync/`. |
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
@@ -144,6 +146,8 @@ Use the nested READMEs under `repo_ops/` and `integrations/github/` when you nee
 - `watchtower_core.control_plane.WorkspaceConfig` supports alternate logical workspace prefixes through direct construction when a non-default repository layout is needed.
 - `ControlPlaneLoader.load_pack_settings()` exposes the repository's current pack-settings load root as a typed reusable-core startup surface.
 - `ControlPlaneLoader.load_pack_context()` materializes a reusable `PackContext` by loading pack settings and the surfaces declared there.
+- `ControlPlaneLoader.load_validation_suite_registry()` exposes the active validation-suite registry, including pack-declared suite baselines.
 - `watchtower_core.control_plane.SupplementalSchemaDocument` lets external consumers register additional schemas in-memory for validation without modifying this repository's canonical schema catalog.
 - `ControlPlaneLoader(... supplemental_schema_paths=...)` and `SchemaStore.from_workspace(... supplemental_schema_paths=...)` let callers load supplemental schemas from explicit files or directories for bounded external artifact validation.
+- `watchtower_core.validation.suite.ValidationSuiteService` runs declared validation suites against the active pack settings surface, including pack-local schema and validator registries.
 - `watchtower_core.repo_ops` is the current internal planning-and-implementation pack consumer of the shared core; keep pack-agnostic loading and validation logic out of that namespace.

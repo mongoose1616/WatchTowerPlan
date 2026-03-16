@@ -127,4 +127,4 @@ Defines the technical design boundary for Acceptance Reconciliation Snapshot Reu
 - [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md)
 - [acceptance_reconciliation_snapshot_reuse.md](/docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md)
 - [acceptance.py](/core/python/src/watchtower_core/validation/acceptance.py)
-- [all.py](/core/python/src/watchtower_core/repo_ops/validation/all.py)
+- [all.py](/core/python/src/watchtower_core/validation/all.py)

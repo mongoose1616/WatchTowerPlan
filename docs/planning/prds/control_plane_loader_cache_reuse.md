@@ -107,7 +107,7 @@ traceability view if those caches had been primed earlier in the command.
 
 ## References
 - `core/python/src/watchtower_core/control_plane/loader.py`
-- `core/python/src/watchtower_core/repo_ops/validation/all.py`
+- `core/python/src/watchtower_core/validation/all.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`

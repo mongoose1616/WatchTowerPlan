@@ -10,10 +10,11 @@ import watchtower_core.validation as public_validation
 from watchtower_core.repo_ops.query.commands import CommandQueryService
 from watchtower_core.repo_ops.sync.command_index import CommandIndexSyncService
 from watchtower_core.repo_ops.validation import (
-    VALIDATION_FAMILY_SPECS,
     DocumentSemanticsValidationService,
-    ValidationAllService,
+    WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
+    resolve_watchtower_plan_suite_targets,
 )
+from watchtower_core.validation.all import ValidationAllService
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[2] / "src" / "watchtower_core"
 
@@ -29,12 +30,10 @@ def test_public_sync_root_fails_closed_with_repo_ops_guidance() -> None:
 
 
 def test_public_validation_root_fails_closed_with_repo_ops_guidance() -> None:
-    with pytest.raises(AttributeError, match="watchtower_core.repo_ops.validation"):
+    with pytest.raises(AttributeError, match="watchtower_core.validation.all"):
         _ = public_validation.ValidationAllService
     with pytest.raises(AttributeError, match="watchtower_core.repo_ops.validation"):
         _ = public_validation.DocumentSemanticsValidationService
-    with pytest.raises(AttributeError, match="watchtower_core.repo_ops.validation"):
-        _ = public_validation.VALIDATION_FAMILY_SPECS
 
 
 def test_query_and_sync_package_roots_do_not_ship_repo_specific_leaf_modules() -> None:
@@ -51,9 +50,10 @@ def test_query_and_sync_package_roots_do_not_ship_repo_specific_leaf_modules() -
         "watchtower_core.sync.all",
         "watchtower_core.sync.command_index",
         "watchtower_core.sync.traceability",
-        "watchtower_core.validation.all",
         "watchtower_core.validation.document_semantics",
         "watchtower_core.validation.registry",
+        "watchtower_core.repo_ops.validation.all",
+        "watchtower_core.repo_ops.validation.registry",
     ),
 )
 def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
@@ -65,9 +65,13 @@ def test_retired_wrapper_modules_are_not_importable(module_name: str) -> None:
 def test_repo_ops_boundary_owners_remain_available() -> None:
     assert CommandQueryService.__module__ == "watchtower_core.repo_ops.query.commands"
     assert CommandIndexSyncService.__module__ == "watchtower_core.repo_ops.sync.command_index"
-    assert ValidationAllService.__module__ == "watchtower_core.repo_ops.validation.all"
+    assert ValidationAllService.__module__ == "watchtower_core.validation.all"
     assert (
         DocumentSemanticsValidationService.__module__
         == "watchtower_core.repo_ops.validation.document_semantics"
     )
-    assert tuple(spec.family for spec in VALIDATION_FAMILY_SPECS)
+    assert (
+        resolve_watchtower_plan_suite_targets.__module__
+        == "watchtower_core.repo_ops.validation.targets"
+    )
+    assert WATCHTOWER_PLAN_VALIDATION_SUITE_ID == "suite.watchtower_plan.validation_baseline"

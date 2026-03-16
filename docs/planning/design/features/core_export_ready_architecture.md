@@ -46,7 +46,7 @@ Defines the in-repo architecture needed to separate reusable core behavior from 
 ## Current-State Context
 - [main.py](/core/python/src/watchtower_core/cli/main.py) is the dominant coupling point for CLI registration, help text, and command-family imports.
 - [loader.py](/core/python/src/watchtower_core/control_plane/loader.py) and [paths.py](/core/python/src/watchtower_core/control_plane/paths.py) still assume the `WatchTowerPlan` repository layout directly.
-- [all.py](/core/python/src/watchtower_core/repo_ops/sync/all.py) and [all.py](/core/python/src/watchtower_core/repo_ops/validation/all.py) still maintain manual family enumerations for repo-specific sync and aggregate-validation orchestration.
+- [all.py](/core/python/src/watchtower_core/repo_ops/sync/all.py) and [all.py](/core/python/src/watchtower_core/validation/all.py) still maintain manual family enumerations for repo-specific sync and aggregate-validation orchestration.
 - The control-plane typed artifact layer under [models](/core/python/src/watchtower_core/control_plane/models) concentrated many artifact families into one dense shared layer before the family split.
 - Query, sync, and validation families currently mix reusable coordination logic with repo-specific planning-doc and Markdown-semantics behavior.
 - The current workspace is healthy: `doctor`, `pytest`, `mypy`, and `ruff` all pass against the live repo, so the main problem is architecture and maintenance fan-out rather than baseline instability.

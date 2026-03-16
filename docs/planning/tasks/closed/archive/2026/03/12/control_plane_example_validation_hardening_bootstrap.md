@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - core/control_plane/indexes/
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/python/src/watchtower_core/validation/all.py
 - core/python/tests/integration/
 - docs/commands/core_python/watchtower_core_validate_all.md
 - docs/standards/validations/repository_validation_standard.md

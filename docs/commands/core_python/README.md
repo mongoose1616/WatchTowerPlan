@@ -14,6 +14,7 @@
 - Use `watchtower_core_query_coordination.md` when the main question is current planning state, next action, and active work context.
 - Use `watchtower_core_query_planning.md` when the main question is the canonical deep planning record for one trace after coordination routing.
 - Use `watchtower_core_query_authority.md` when the main question is which machine surface is canonical for a planning or governance lookup.
+- Use `watchtower_core_validate_suite.md` when the main question is how to run one pack-declared validation suite with optional `pack_settings` selection.
 - The family tracking sync pages describe compact active-first trackers. Use the paired `query` commands or `query initiatives` for exhaustive terminal-history lookup instead of expecting full closed corpora in tracker pages.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.
 
@@ -35,6 +36,7 @@
 | `docs/commands/core_python/watchtower_core_sync_foundation_index.md` | Rebuild surface for the machine-readable foundation index derived from governed foundation docs. |
 | `docs/commands/core_python/watchtower_core_sync_planning_catalog.md` | Rebuild surface for the canonical planning catalog derived from trace-linked planning sources. |
 | `docs/commands/core_python/watchtower_core_validate.md` | Entry page for validation commands across artifacts, semantics, and repo-wide checks. |
+| `docs/commands/core_python/watchtower_core_validate_suite.md` | Runs one pack-declared validation suite through the reusable-core suite runtime. |
 | `docs/commands/core_python/watchtower_core_closeout.md` | Entry page for closeout commands used to terminally update traced initiative state. |
 | `docs/commands/core_python/watchtower_core_closeout_purge_trace.md` | Governed purge page for deleting one eligible closed trace package and writing the minimal purge ledger. |
 | `docs/commands/core_python/watchtower_core_doctor.md` | Fastest non-mutating health snapshot for the Python workspace and governed repository surfaces. |

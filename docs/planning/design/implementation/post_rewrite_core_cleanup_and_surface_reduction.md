@@ -45,7 +45,7 @@ Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementa
 ## Internal Standards and Canonical References Applied
 - [python_workspace_standard.md](/docs/standards/engineering/python_workspace_standard.md): full workspace validation remains the default completion contract for the Python boundary.
 - [README.md](/core/control_plane/README.md): pack settings remain the reusable-core startup root throughout the cleanup.
-- [all.py](/core/python/src/watchtower_core/repo_ops/validation/all.py): aggregate validation must stay deterministic while dead governed surfaces are removed.
+- [all.py](/core/python/src/watchtower_core/validation/all.py): aggregate validation must stay deterministic while dead governed surfaces are removed.
 
 ## Proposed Technical Approach
 - Land each confirmed review finding in its own small slice so code, docs, tests, and governed surfaces can be committed independently.

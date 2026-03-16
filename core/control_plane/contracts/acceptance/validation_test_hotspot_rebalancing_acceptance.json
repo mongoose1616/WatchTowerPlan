@@ -42,7 +42,7 @@
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/validation/artifact.py",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+        "core/python/src/watchtower_core/validation/all.py"
       ],
       "related_paths": [
         "core/python/tests/integration/README.md",
@@ -60,7 +60,7 @@
       "validation_targets": [
         "core/python/tests/unit/",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+        "core/python/src/watchtower_core/validation/all.py"
       ],
       "related_paths": [
         "core/python/tests/unit/README.md",

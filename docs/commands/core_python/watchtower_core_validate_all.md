@@ -1,7 +1,7 @@
 # `watchtower-core validate all`
 
 ## Summary
-This command runs the registry-backed validation families across the governed repository surfaces and returns one aggregate summary.
+This command runs the current WatchTowerPlan validation baseline through the reusable-core suite runtime, then adds acceptance reconciliation and returns one aggregate summary.
 
 ## Use When
 - You want one bounded validation pass instead of running each validation family manually.
@@ -47,8 +47,9 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 ```
 
 ## Behavior and Outputs
-- The command is read-only and aggregates the registry-backed validation families rather than writing evidence or mutating control-plane artifacts.
-- The current validation families are governed front matter, governed document semantics including repo-local link integrity, schema-backed governed artifacts plus canonical valid example artifacts, and acceptance reconciliation across traceability surfaces.
+- The command is read-only and aggregates the current repo baseline validation families rather than writing evidence or mutating control-plane artifacts.
+- The current validation families are governed front matter, governed document semantics including repo-local link integrity, schema-backed governed artifacts, and acceptance reconciliation across traceability surfaces.
+- The front-matter, document-semantics, and artifact families run through `suite.watchtower_plan.validation_baseline`, which is declared in the validation-suite registry and resolved through the reusable-core suite runtime.
 - Acceptance reconciliation runs only for traces that currently publish governed acceptance state through PRDs, contracts, evidence, or traceability.
 - Use `--skip-acceptance` when you want a structural validation pass over documents and JSON artifacts only.
 - In `json` mode, the command returns per-family summary counts plus one structured result per validation target.
@@ -58,6 +59,7 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 | Command | Relationship |
 |---|---|
 | `watchtower-core validate` | Parent command group for governed validation operations. |
+| `watchtower-core validate suite` | Runs one declared validation suite directly instead of the current repo baseline plus acceptance wrapper. |
 | `watchtower-core validate front-matter` | Validates one governed Markdown document front-matter block. |
 | `watchtower-core validate document-semantics` | Validates governed Markdown documents against repo-native semantic structure rules. |
 | `watchtower-core validate artifact` | Validates one governed JSON artifact against registry-backed schema validators. |
@@ -66,12 +68,13 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/validate_family.py`
-- `core/python/src/watchtower_core/repo_ops/validation/all.py`
-- `core/python/src/watchtower_core/repo_ops/validation/registry.py`
+- `core/python/src/watchtower_core/validation/all.py`
+- `core/python/src/watchtower_core/validation/suite.py`
+- `core/python/src/watchtower_core/repo_ops/validation/targets.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
 - `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 
 ## Updated At
-- `2026-03-16T04:05:50Z`
+- `2026-03-16T23:10:00Z`

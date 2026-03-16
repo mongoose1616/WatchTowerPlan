@@ -57,7 +57,7 @@
       "subject_paths": [
         "core/control_plane/indexes/foundations/foundation_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "docs/commands/core_python/watchtower_core_validate_all.md",
         "docs/standards/validations/repository_validation_standard.md"
       ],

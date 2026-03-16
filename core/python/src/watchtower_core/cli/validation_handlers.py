@@ -13,10 +13,10 @@ from watchtower_core.cli.handler_common import (
 from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
-from watchtower_core.repo_ops.validation import (
-    VALIDATION_FAMILY_SPECS,
-    DocumentSemanticsValidationService,
-    ValidationAllService,
+from watchtower_core.repo_ops.validation import DocumentSemanticsValidationService
+from watchtower_core.repo_ops.validation.targets import (
+    WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
+    resolve_watchtower_plan_suite_targets,
 )
 from watchtower_core.validation import (
     AcceptanceReconciliationService,
@@ -28,6 +28,7 @@ from watchtower_core.validation import (
     ValidationSuiteResult,
     ValidationSuiteService,
 )
+from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 
 ValidationServiceFactory = Callable[
     [ControlPlaneLoader],
@@ -113,8 +114,10 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
 
 
 def _run_validate_suite(args: argparse.Namespace) -> int:
+    loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
     service = ValidationSuiteService(
-        ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
+        loader,
+        target_resolver=resolve_watchtower_plan_suite_targets,
     )
     try:
         result = service.run(
@@ -156,15 +159,26 @@ def _run_validate_suite(args: argparse.Namespace) -> int:
 
 
 def _run_validate_all(args: argparse.Namespace) -> int:
-    service = ValidationAllService(ControlPlaneLoader())
-    try:
-        result = service.run(
-            included_families=tuple(
-                spec.family
-                for spec in VALIDATION_FAMILY_SPECS
-                if not getattr(args, spec.cli_skip_attr)
-            ),
+    included_families = tuple(
+        family
+        for family in VALIDATION_ALL_FAMILIES
+        if not getattr(
+            args,
+            {
+                "front_matter": "skip_front_matter",
+                "document_semantics": "skip_document_semantics",
+                "artifacts": "skip_artifacts",
+                "acceptance": "skip_acceptance",
+            }[family],
         )
+    )
+    service = ValidationAllService(
+        ControlPlaneLoader(),
+        suite_id=WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
+        suite_target_resolver=resolve_watchtower_plan_suite_targets,
+    )
+    try:
+        result = service.run(included_families=included_families)
     except ValueError as exc:
         return _emit_command_error(
             args,

@@ -19,12 +19,13 @@ This command validates one Markdown document front-matter block against the gove
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core validate front-matter --path <path> [--validator-id <validator_id>] [--format <human|json>]
+uv run watchtower-core validate front-matter --path <path> [--validator-id <validator_id>] [--pack-settings-path <path>] [--format <human|json>]
 ```
 
 ## Arguments and Options
 - `--path <path>`: Repository-relative or absolute path to the Markdown document to validate.
 - `--validator-id <validator_id>`: Optional explicit validator identifier. Required for files outside the repository tree.
+- `--pack-settings-path <path>`: Optional repository-relative path to the pack settings surface that should supply the active validator registry.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `--record-evidence`: Write a durable validation-evidence artifact and synchronized traceability update.
 - `--trace-id <trace_id>`: Required with `--record-evidence`. Shared trace identifier for the evidence artifact.
@@ -58,6 +59,7 @@ uv run watchtower-core validate front-matter --path docs/standards/metadata/fron
 
 ## Behavior and Outputs
 - The command loads the validator registry and resolves the matching front-matter validator automatically when the path is repository-local.
+- If `--pack-settings-path` is provided, the command resolves the active validator registry from that pack before selecting validators.
 - If `--validator-id` is provided, the command validates against that explicit front-matter validator instead of auto-selecting by path.
 - In `human` mode, the command prints `PASS` or `FAIL`, the selected validator, and any validation issues.
 - In `json` mode, the command prints one JSON object with the execution status, pass or fail result, selected validator, schema IDs, issue count, and issue records.
@@ -80,4 +82,4 @@ uv run watchtower-core validate front-matter --path docs/standards/metadata/fron
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-14T05:37:06Z`
+- `2026-03-16T23:10:00Z`

@@ -43,7 +43,7 @@ Defines the follow-up architecture needed to make output-directory sync runs dep
 - [all.py](/core/python/src/watchtower_core/repo_ops/sync/all.py) materializes output-directory targets but keeps every sync service bound to the canonical repo loader.
 - [introspection.py](/core/python/src/watchtower_core/cli/introspection.py) hardcodes `cli/main.py` as the implementation path for every command.
 - [query/__init__.py](/core/python/src/watchtower_core/query/__init__.py) and [sync/__init__.py](/core/python/src/watchtower_core/sync/__init__.py) still advertise repo-specific services as top-level exports.
-- [all.py](/core/python/src/watchtower_core/repo_ops/validation/all.py) still concentrates repo-specific planning and document-semantic behavior in the repo-local aggregate validation surface behind the top-level reusable guardrails.
+- [all.py](/core/python/src/watchtower_core/validation/all.py) now carries aggregate validation orchestration while repo-local planning and document-semantic behavior stay behind the top-level reusable guardrails.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): fix hidden coupling instead of adding more implicit behavior.

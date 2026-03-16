@@ -76,7 +76,7 @@ This standard defines the recurring local repository-maintenance loop for keepin
 
 ## Operationalization
 - `Modes`: `workflow`; `validation`; `documentation`
-- `Operational Surfaces`: `workflows/modules/repository_review.md`; `workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/repo_ops/validation/all.py`; `docs/planning/coordination_tracking.md`
+- `Operational Surfaces`: `workflows/modules/repository_review.md`; `workflows/modules/documentation_refresh.md`; `core/python/src/watchtower_core/validation/all.py`; `docs/planning/coordination_tracking.md`
 
 ## Validation
 - Maintenance work should not leave derived trackers or indexes stale after authoritative source changes.

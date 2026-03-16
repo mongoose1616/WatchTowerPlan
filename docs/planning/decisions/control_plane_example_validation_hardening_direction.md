@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - core/control_plane/indexes/
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/python/src/watchtower_core/validation/all.py
 - core/python/tests/integration/
 - docs/commands/core_python/watchtower_core_validate_all.md
 - docs/standards/validations/repository_validation_standard.md
@@ -50,7 +50,7 @@ Repair the invalid valid examples, include the governed valid example corpus in 
 
 ## Affected Surfaces
 - retired valid example index fixture 
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/python/src/watchtower_core/validation/all.py
 - core/python/tests/integration/
 - docs/commands/core_python/watchtower_core_validate_all.md
 - docs/standards/validations/repository_validation_standard.md
@@ -89,5 +89,5 @@ Option 2 is accepted.
 ## References
 - docs/planning/prds/control_plane_example_validation_hardening.md
 - docs/planning/design/features/control_plane_example_validation_hardening.md
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/python/src/watchtower_core/validation/all.py
 - core/python/tests/integration/

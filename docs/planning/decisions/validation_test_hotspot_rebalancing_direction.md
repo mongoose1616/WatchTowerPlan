@@ -59,7 +59,7 @@ Split the remaining governed validation hotspots into focused family-oriented su
 - core/control_plane/indexes/repository_paths/repository_path_index.json
 - core/python/src/watchtower_core/repo_ops/validation/
 - core/python/src/watchtower_core/validation/
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/python/src/watchtower_core/validation/all.py
 - core/python/src/watchtower_core/cli/validation_handlers.py
 - docs/commands/core_python/watchtower_core_validate.md
 - docs/planning/

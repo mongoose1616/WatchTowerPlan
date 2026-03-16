@@ -17,7 +17,7 @@ applies_to:
 - core/python/tests/unit/
 - core/python/tests/unit/README.md
 - core/python/src/watchtower_core/repo_ops/validation/document_semantics.py
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/python/src/watchtower_core/validation/all.py
 related_ids:
 - prd.validation_test_hotspot_rebalancing
 - design.features.validation_test_hotspot_rebalancing

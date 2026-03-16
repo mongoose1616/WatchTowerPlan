@@ -20,13 +20,14 @@ This command validates one governed JSON artifact against the active schema-back
 ## Synopsis
 ```sh
 cd core/python
-uv run watchtower-core validate artifact --path <path> [--validator-id <validator_id> | --schema-id <schema_id>] [--supplemental-schema-path <path>] [--format <human|json>]
+uv run watchtower-core validate artifact --path <path> [--validator-id <validator_id> | --schema-id <schema_id>] [--pack-settings-path <path>] [--supplemental-schema-path <path>] [--format <human|json>]
 ```
 
 ## Arguments and Options
 - `--path <path>`: Repository-relative or absolute path to the JSON artifact to validate.
 - `--validator-id <validator_id>`: Optional explicit validator identifier. Use this to force one registry-backed validator.
 - `--schema-id <schema_id>`: Optional direct schema identifier. Use this to validate against a cataloged or supplemental schema without selecting a registry validator.
+- `--pack-settings-path <path>`: Optional repository-relative path to the pack settings surface that should supply the active schema catalog and validator registry.
 - `--supplemental-schema-path <path>`: Optional repository-relative or absolute path to one supplemental schema file or directory. Repeat for multiple locations.
 - `--format <human|json>`: Select human-readable or structured JSON output. Use `json` for scripts, workflows, or agent calls.
 - `--record-evidence`: Write a durable validation-evidence artifact and synchronized traceability update.
@@ -66,11 +67,17 @@ uv run watchtower-core validate artifact --path /tmp/pack_note.json --supplement
 
 ```sh
 cd core/python
+uv run watchtower-core validate artifact --path domain_packs/plan/.wt/work_items/plan_note.json --pack-settings-path domain_packs/plan/.wt/pack_settings.json --format json
+```
+
+```sh
+cd core/python
 uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json --record-evidence --trace-id trace.core_python_foundation
 ```
 
 ## Behavior and Outputs
 - The command loads the validator registry and resolves the matching schema-backed validator automatically when the path is repository-local.
+- If `--pack-settings-path` is provided, the command resolves the active schema catalog and validator registry from that pack before selecting validators.
 - If `--validator-id` is provided, the command validates against that explicit artifact validator instead of auto-selecting by path.
 - If `--schema-id` is provided, the command validates directly against that schema ID and does not require a validator-registry entry.
 - External files may also validate directly when the document declares `$schema` and any required schema definitions are supplied through `--supplemental-schema-path`.
@@ -97,4 +104,4 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
-- `2026-03-10T21:55:00Z`
+- `2026-03-16T23:10:00Z`

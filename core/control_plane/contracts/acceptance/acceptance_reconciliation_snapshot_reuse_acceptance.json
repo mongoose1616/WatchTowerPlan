@@ -40,7 +40,7 @@
       ],
       "validation_targets": [
         "core/python/src/watchtower_core/validation/acceptance.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests/unit/test_acceptance_reconciliation.py",
         "core/python/tests/unit/test_all_validation.py"
       ],
@@ -92,7 +92,7 @@
       ],
       "validation_targets": [
         "core/python/src/watchtower_core/validation/acceptance.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
         "core/python/src/watchtower_core/repo_ops/query/evidence.py",
         "core/python/tests/unit/test_acceptance_reconciliation.py",

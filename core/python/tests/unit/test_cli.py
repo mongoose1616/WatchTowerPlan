@@ -239,7 +239,9 @@ def test_validate_group_prints_group_specific_help(capsys) -> None:
     assert "artifact" in captured.out
     assert "document-semantics" in captured.out
     assert "front-matter" in captured.out
+    assert "suite" in captured.out
     assert "uv run watchtower-core validate all --skip-acceptance" in captured.out
+    assert "uv run watchtower-core validate suite --suite-id" in captured.out
     assert "uv run watchtower-core validate artifact" in captured.out
 
 

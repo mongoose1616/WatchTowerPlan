@@ -80,7 +80,7 @@
         "core/python/tests/unit/README.md",
         "core/python/tests/unit/test_cli.py",
         "core/python/src/watchtower_core/repo_ops/sync/all.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py"
       ],
       "subject_ids": [

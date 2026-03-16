@@ -13,7 +13,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - core/control_plane/indexes/
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/python/src/watchtower_core/validation/all.py
 - core/python/tests/integration/
 - docs/commands/core_python/watchtower_core_validate_all.md
 - docs/standards/validations/repository_validation_standard.md
@@ -65,7 +65,7 @@ The comprehensive project review found two live control-plane drift defects that
 ## References
 - retired valid example index fixture foundation_index.example.json
 - retired valid example index fixture traceability_index.example.json
-- core/python/src/watchtower_core/repo_ops/validation/all.py
+- core/python/src/watchtower_core/validation/all.py
 - core/python/tests/integration/
 - docs/standards/validations/repository_validation_standard.md
 - docs/standards/data_contracts/schema_standard.md
