@@ -19,6 +19,9 @@ from watchtower_core.repo_ops.validation import (
     VALIDATION_FAMILY_SPECS,
     ValidationAllService,
 )
+from watchtower_core.repo_ops.validation.governed_filenames import (
+    GovernedFilenameValidationService,
+)
 from watchtower_core.validation.errors import ValidationSelectionError
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -125,6 +128,7 @@ def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
     assert any(summary.family == "front_matter" for summary in result.family_summaries)
     assert any(summary.family == "document_semantics" for summary in result.family_summaries)
     assert any(summary.family == "artifacts" for summary in result.family_summaries)
+    assert any(summary.family == "governed_filenames" for summary in result.family_summaries)
 
 
 def test_validate_all_passes_when_all_governed_families_are_aligned() -> None:
@@ -144,9 +148,7 @@ def test_validate_all_passes_when_all_governed_families_are_aligned() -> None:
 
 
 def test_validation_family_registry_is_unique() -> None:
-    assert len({spec.family for spec in VALIDATION_FAMILY_SPECS}) == len(
-        VALIDATION_FAMILY_SPECS
-    )
+    assert len({spec.family for spec in VALIDATION_FAMILY_SPECS}) == len(VALIDATION_FAMILY_SPECS)
 
 
 def test_validate_all_rejects_unknown_family() -> None:
@@ -204,8 +206,7 @@ def test_validate_all_reports_missing_decision_applied_reference_section(
     assert result.records[0].family == "document_semantics"
     assert result.records[0].target == relative_path
     assert (
-        result.records[0].result.validator_id
-        == "validator.documentation.decision_record_semantics"
+        result.records[0].result.validator_id == "validator.documentation.decision_record_semantics"
     )
     assert "missing required sections: Applied References and Implications" in (
         result.records[0].result.issues[0].message
@@ -220,11 +221,52 @@ def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
     target_paths = {record.target for record in result.records}
     assert "core/control_plane/manifests/pack_settings.json" in target_paths
     assert "core/control_plane/registries/schema_catalog.json" in target_paths
-    assert "core/control_plane/indexes/foundations/foundation_index.v1.json" in target_paths
+    assert "core/control_plane/indexes/foundations/foundation_index.json" in target_paths
     assert all(
         not target_path.startswith("core/control_plane/examples/") for target_path in target_paths
     )
     assert result.passed is True
+
+
+def test_validate_all_governed_filenames_include_schema_targets() -> None:
+    service = ValidationAllService(ControlPlaneLoader())
+
+    result = service.run(included_families=("governed_filenames",))
+
+    target_paths = {record.target for record in result.records}
+    assert "core/control_plane/registries/schema_catalog.json" in target_paths
+    assert "core/control_plane/schemas/artifacts/schema_catalog.schema.json" in target_paths
+    assert result.passed is True
+
+
+def test_governed_filename_validation_rejects_versioned_schema_names(tmp_path: Path) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    invalid_path = (
+        repo_root / "core/control_plane/schemas/artifacts/versioned_contract.v1.schema.json"
+    )
+    invalid_path.write_text("{}", encoding="utf-8")
+    service = GovernedFilenameValidationService(ControlPlaneLoader(repo_root))
+
+    result = service.validate(
+        "core/control_plane/schemas/artifacts/versioned_contract.v1.schema.json"
+    )
+
+    assert result.passed is False
+    assert {issue.code for issue in result.issues} == {"governed_filename_version_token_forbidden"}
+
+
+def test_governed_filename_validation_rejects_noncanonical_schema_suffix(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    invalid_path = repo_root / "core/control_plane/schemas/artifacts/versioned_contract.json"
+    invalid_path.write_text("{}", encoding="utf-8")
+    service = GovernedFilenameValidationService(ControlPlaneLoader(repo_root))
+
+    result = service.validate("core/control_plane/schemas/artifacts/versioned_contract.json")
+
+    assert result.passed is False
+    assert {issue.code for issue in result.issues} == {"schema_filename_suffix_invalid"}
 
 
 def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
@@ -332,8 +374,7 @@ def test_validate_all_reports_missing_repo_local_acceptance_paths(
 ) -> None:
     repo_root = _copy_control_plane_repo(tmp_path)
     contract_path = (
-        repo_root
-        / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json"
+        repo_root / "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json"
     )
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
     contract["entries"][0]["validation_targets"].append("docs/planning/tasks/open/missing_task.md")

@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-16T17:58:38Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,15 +33,15 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Reviewing whether a schema change is breaking, incomplete, or improperly placed.
 
 ## Related Standards and Sources
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md): foundation intent this standard must remain aligned with.
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [json_schema_2020_12_reference.md](/home/j/WatchTowerPlan/docs/references/json_schema_2020_12_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [check_jsonschema_reference.md](/home/j/WatchTowerPlan/docs/references/check_jsonschema_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [pydantic_strict_mode_reference.md](/home/j/WatchTowerPlan/docs/references/pydantic_strict_mode_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md): foundation intent this standard must remain aligned with.
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md): foundation intent this standard must remain aligned with.
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [json_schema_2020_12_reference.md](/docs/references/json_schema_2020_12_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [check_jsonschema_reference.md](/docs/references/check_jsonschema_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [pydantic_strict_mode_reference.md](/docs/references/pydantic_strict_mode_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [README.md](/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Treat the schema as the canonical contract for any governed machine-readable artifact that core owns or formally accepts.
@@ -88,7 +88,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 ### File conventions
 - Store published schemas as JSON files under `core/control_plane/schemas/**`.
 - Name published schema files with the suffix `.schema.json`.
-- Use filenames that make artifact purpose and version discoverable in review.
+- Use filenames that make artifact purpose discoverable in review and keep compatibility signaling inside schema content rather than the path.
 - Keep reusable fragments small enough that reviewers can understand why they are shared.
 - Do not place generated schemas, caches, or validator output in the canonical schema tree.
 
@@ -122,19 +122,19 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Record breaking acceptance or compatibility changes in the relevant compatibility contract and committed migration history when that structure is in use.
 
 ## References
-- [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md)
-- [engineering_stack_direction.md](/home/j/WatchTowerPlan/docs/foundations/engineering_stack_direction.md)
-- [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
-- [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md)
-- [json_schema_2020_12_reference.md](/home/j/WatchTowerPlan/docs/references/json_schema_2020_12_reference.md)
-- [check_jsonschema_reference.md](/home/j/WatchTowerPlan/docs/references/check_jsonschema_reference.md)
-- [pydantic_strict_mode_reference.md](/home/j/WatchTowerPlan/docs/references/pydantic_strict_mode_reference.md)
+- [repository_standards_posture.md](/docs/foundations/repository_standards_posture.md)
+- [engineering_stack_direction.md](/docs/foundations/engineering_stack_direction.md)
+- [format_selection_standard.md](/docs/standards/data_contracts/format_selection_standard.md)
+- [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md)
+- [README.md](/core/control_plane/README.md)
+- [json_schema_2020_12_reference.md](/docs/references/json_schema_2020_12_reference.md)
+- [check_jsonschema_reference.md](/docs/references/check_jsonschema_reference.md)
+- [pydantic_strict_mode_reference.md](/docs/references/pydantic_strict_mode_reference.md)
 
 ## Notes
 - This standard deliberately keeps schema structure separate from identifier naming policy. Schema IDs must be stable now, while exact repository-wide naming patterns can be tightened later under `docs/standards/metadata/`.
 - If a future format standard introduces more specific serialization or naming rules for schema files, it should refine rather than weaken this standard.
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-16T17:58:38Z`

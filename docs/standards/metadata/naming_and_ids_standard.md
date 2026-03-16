@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "naming_and_ids"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-16T17:58:38Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -33,12 +33,12 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Defining filenames for new schemas or example artifacts.
 
 ## Related Standards and Sources
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
-- [rfc_9562_uuid_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9562_uuid_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [semantic_versioning_reference.md](/home/j/WatchTowerPlan/docs/references/semantic_versioning_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [README.md](/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [rfc_9562_uuid_reference.md](/docs/references/rfc_9562_uuid_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [semantic_versioning_reference.md](/docs/references/semantic_versioning_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
 - Treat the stable machine identifier as distinct from the path, visible title, and current lifecycle status.
@@ -63,8 +63,8 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 | Decision identifier | dotted family prefix + decision slug | `decision.validation_engine_selection` | Use for durable decision-record identity in trackers and indexes. |
 | Task identifier | dotted family prefix + task slug + sequence token | `task.local_task_tracking_foundation.001` | Use for local task-record identity in trackers and indexes. |
 | Published schema `$id` | `urn:watchtower:schema:` namespace + version token | `urn:watchtower:schema:interfaces:documentation:front-matter-base:v1` | Use for canonical schema identity rather than file paths. |
-| Schema filename | snake case concept name + version + `.schema.json` | `reference_front_matter.v1.schema.json` | Version should be obvious in review. |
-| Example filename | snake case concept name + optional case suffix + version + `.example.json` | `reference_front_matter_missing_tags.v1.example.json` | Use case suffix only when it improves clarity. |
+| Schema filename | snake case concept name + `.schema.json` | `reference_front_matter.schema.json` | Compatibility lives in schema content, not the filename. |
+| Example filename | snake case concept name + optional case suffix + `.example.json` | `reference_front_matter_missing_tags.example.json` | Use case suffix only when it improves clarity. |
 | Generated runtime or evidence instance | UUID when needed | `550e8400-e29b-41d4-a716-446655440000` | Use only for generated non-authored instances where deterministic readable IDs are not practical. |
 
 ### Document `id` rules
@@ -97,13 +97,14 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 ### Filename rules
 - Use lowercase snake_case for governed filenames unless an external standard requires otherwise.
 - Keep filenames aligned with artifact purpose so reviewers can relate the file to the logical identifier quickly.
-- Published schemas should use `.v<major>.schema.json`.
-- Published examples should use `.v<major>.example.json`.
+- Governed filenames should not encode major-version tokens such as `.v1`.
+- Published schemas should use `.schema.json`.
+- Published examples should use `.example.json`.
 - Markdown document filenames should remain readable and path-stable, but the path is not the canonical machine identity.
 
 ### Version placement rules
 - Keep full release-version semantics out of ordinary document IDs.
-- For versioned published schemas and similarly versioned machine contracts, place the major compatibility boundary in the identifier and filename as `v<major>`.
+- Place compatibility boundaries in content-level identifiers or metadata such as schema URNs, `$schema` values, `schema_id`, or other explicit governed version fields rather than in the filename.
 - If an artifact needs richer semantic versioning, keep that in explicit metadata fields or release surfaces rather than overloading the base identifier.
 
 ### UUID usage rules
@@ -131,7 +132,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - `decision.validation_engine_selection` is a stable decision-record identifier.
 - `task.local_task_tracking_foundation.001` is a stable local task identifier.
 - `urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1` is the canonical `$id` for the reference front matter schema.
-- `reference_front_matter.v1.schema.json` is the corresponding schema filename.
+- `reference_front_matter.schema.json` is the corresponding schema filename.
 - A validation run ID may use a UUID, but the related PRD, decision, design, and plan IDs should remain readable deterministic IDs.
 
 ## Operationalization
@@ -142,7 +143,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Reviewers should reject identifier changes that do not reflect a real identity or compatibility change.
 - Governed document `id` values should follow the documented dotted pattern and approved family prefixes.
 - Published schema `$id` values should follow the documented URN pattern and stay unique within the repository.
-- Filenames for schemas and examples should make artifact purpose and major version discoverable in review.
+- Filenames for schemas and examples should make artifact purpose discoverable in review while leaving compatibility signaling to artifact content.
 - Front matter and schema validation profiles should enforce identifier shape where that constraint already exists.
 
 ## Change Control
@@ -151,11 +152,11 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Record breaking schema identifier changes alongside the related compatibility and migration updates when that structure is in use.
 
 ## References
-- [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
-- [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md)
-- [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
-- [rfc_9562_uuid_reference.md](/home/j/WatchTowerPlan/docs/references/rfc_9562_uuid_reference.md)
-- [semantic_versioning_reference.md](/home/j/WatchTowerPlan/docs/references/semantic_versioning_reference.md)
+- [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md)
+- [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md)
+- [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
+- [rfc_9562_uuid_reference.md](/docs/references/rfc_9562_uuid_reference.md)
+- [semantic_versioning_reference.md](/docs/references/semantic_versioning_reference.md)
 
 ## Notes
 - This standard prefers stable readable identifiers for authored repository artifacts because they work better for review, retrieval, and traceability than opaque generated IDs.
@@ -163,4 +164,4 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Future standards may define narrower rules for specific artifact families, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-16T17:58:38Z`

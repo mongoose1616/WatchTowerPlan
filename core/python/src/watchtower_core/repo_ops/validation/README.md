@@ -11,6 +11,7 @@ Repo-wide aggregate validation orchestration and repository-specific validation 
 ## Key Surfaces
 - `all.py`: Aggregate validation family orchestration.
 - `document_semantics.py`: Repo-native Markdown semantic validation.
+- `governed_filenames.py`: Repo-native filename policy validation for governed control-plane JSON surfaces.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/validation/README.md`

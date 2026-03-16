@@ -49,9 +49,9 @@ def register_validate_family(
             "uv run watchtower-core validate document-semantics --path "
             "workflows/modules/code_validation.md",
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/indexes/traceability/traceability_index.v1.json "
+            "core/control_plane/indexes/traceability/traceability_index.json "
             "--format json",
             "uv run watchtower-core validate acceptance --trace-id "
             "trace.core_python_foundation --format json",
@@ -77,16 +77,18 @@ def register_validate_family(
 
             This command is read-only. It aggregates front-matter validation,
             document-semantic validation, schema-backed artifact validation
-            across live governed artifacts and canonical valid examples, and
-            acceptance reconciliation so you can get one bounded validation
-            summary without invoking each family manually.
+            across live governed artifacts and canonical valid examples,
+            governed control-plane filename policy validation, and acceptance
+            reconciliation so you can get one bounded validation summary
+            without invoking each family manually.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate all --skip-acceptance",
             "uv run watchtower-core validate all --format json",
             "uv run watchtower-core validate all --skip-front-matter "
-            "--skip-document-semantics --skip-artifacts",
+            "--skip-document-semantics --skip-artifacts "
+            "--skip-governed-filenames",
         ),
         formatter_class=HelpFormatter,
     )
@@ -104,6 +106,11 @@ def register_validate_family(
         "--skip-artifacts",
         action="store_true",
         help="Skip schema-backed governed JSON artifact validation targets.",
+    )
+    validate_all_parser.add_argument(
+        "--skip-governed-filenames",
+        action="store_true",
+        help="Skip governed control-plane filename policy validation targets.",
     )
     validate_all_parser.add_argument(
         "--skip-acceptance",
@@ -214,9 +221,9 @@ def register_validate_family(
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/indexes/traceability/traceability_index.v1.json "
+            "core/control_plane/indexes/traceability/traceability_index.json "
             "--format json",
             "uv run watchtower-core validate artifact --path /tmp/example.json "
             "--validator-id validator.control_plane.acceptance_contract",
@@ -226,7 +233,7 @@ def register_validate_family(
             "uv run watchtower-core validate artifact --path /tmp/pack_note.json "
             "--supplemental-schema-path /tmp/pack_schemas --format json",
             "uv run watchtower-core validate artifact --path "
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json "
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json "
             "--record-evidence --trace-id trace.core_python_foundation",
         ),
         formatter_class=HelpFormatter,
@@ -277,8 +284,7 @@ def register_validate_family(
             """
         ).strip(),
         epilog=examples(
-            "uv run watchtower-core validate acceptance --trace-id "
-            "trace.core_python_foundation",
+            "uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation",
             "uv run watchtower-core validate acceptance --trace-id "
             "trace.core_python_foundation --format json",
         ),

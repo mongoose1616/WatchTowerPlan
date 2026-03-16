@@ -34,6 +34,9 @@ from watchtower_core.repo_ops.task_documents import (
 from watchtower_core.repo_ops.validation.document_semantics import (
     DocumentSemanticsValidationService,
 )
+from watchtower_core.repo_ops.validation.governed_filenames import (
+    GovernedFilenameValidationService,
+)
 from watchtower_core.repo_ops.validation.registry import VALIDATION_FAMILY_SPECS
 from watchtower_core.validation.acceptance import AcceptanceReconciliationService
 from watchtower_core.validation.artifact import ArtifactValidationService
@@ -119,6 +122,7 @@ class ValidationAllService:
         self._front_matter = FrontMatterValidationService(loader)
         self._document_semantics = DocumentSemanticsValidationService(loader)
         self._artifact = ArtifactValidationService(loader)
+        self._governed_filenames = GovernedFilenameValidationService(loader)
         self._acceptance = AcceptanceReconciliationService(loader)
 
     def run(
@@ -211,6 +215,19 @@ class ValidationAllService:
             )
         return tuple(records)
 
+    def _validate_governed_filenames(self) -> tuple[ValidationAllRecord, ...]:
+        records: list[ValidationAllRecord] = []
+        for relative_path in self._governed_filename_targets():
+            result = self._governed_filenames.validate(relative_path)
+            records.append(
+                ValidationAllRecord(
+                    family="governed_filenames",
+                    target=relative_path,
+                    result=result,
+                )
+            )
+        return tuple(records)
+
     def _validate_acceptance(self) -> tuple[ValidationAllRecord, ...]:
         records: list[ValidationAllRecord] = []
         for trace_id in self._acceptance_targets():
@@ -294,6 +311,9 @@ class ValidationAllService:
                     seen.add(relative_path)
                     ordered_paths.append(relative_path)
         return tuple(ordered_paths)
+
+    def _governed_filename_targets(self) -> tuple[str, ...]:
+        return self._governed_filenames.iter_targets()
 
     def _document_semantics_targets(self) -> tuple[str, ...]:
         repo_root = self._loader.repo_root

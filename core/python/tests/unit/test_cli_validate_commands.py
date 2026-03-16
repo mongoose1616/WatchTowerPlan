@@ -54,11 +54,9 @@ def test_validate_front_matter_reports_validation_failure(tmp_path: Path, capsys
     assert payload["issues"][0]["code"] == "front_matter_missing"
 
 
-def test_validate_front_matter_can_record_evidence_to_temp_outputs(
-    tmp_path: Path, capsys
-) -> None:
-    evidence_output = tmp_path / "validation_evidence.v1.json"
-    traceability_output = tmp_path / "traceability_index.v1.json"
+def test_validate_front_matter_can_record_evidence_to_temp_outputs(tmp_path: Path, capsys) -> None:
+    evidence_output = tmp_path / "validation_evidence.json"
+    traceability_output = tmp_path / "traceability_index.json"
 
     result = main(
         [
@@ -116,7 +114,7 @@ def test_validate_artifact_supports_json_output(capsys) -> None:
             "validate",
             "artifact",
             "--path",
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
             "--format",
             "json",
         ]
@@ -163,8 +161,8 @@ def test_validate_artifact_supports_external_schema_id_and_supplemental_schema_p
     capsys,
     json_writer,
 ) -> None:
-    schema_path = tmp_path / "schemas" / "external_note.v1.schema.json"
-    artifact_path = tmp_path / "artifacts" / "external_note.v1.json"
+    schema_path = tmp_path / "schemas" / "external_note.schema.json"
+    artifact_path = tmp_path / "artifacts" / "external_note.json"
     schema_id = "urn:watchtower:schema:external:cli-pack-note:v1"
     json_writer(
         schema_path,
@@ -211,7 +209,7 @@ def test_validate_artifact_reports_invalid_supplemental_schema_path(
     capsys,
     json_writer,
 ) -> None:
-    artifact_path = tmp_path / "artifacts" / "external_note.v1.json"
+    artifact_path = tmp_path / "artifacts" / "external_note.json"
     missing_schema_path = tmp_path / "schemas" / "missing"
     json_writer(artifact_path, {"kind": "cli_pack_note"})
 
@@ -238,18 +236,16 @@ def test_validate_artifact_reports_invalid_supplemental_schema_path(
     assert "Supplemental schema path does not exist" in payload["message"]
 
 
-def test_validate_artifact_can_record_evidence_to_temp_outputs(
-    tmp_path: Path, capsys
-) -> None:
-    evidence_output = tmp_path / "validation_evidence.v1.json"
-    traceability_output = tmp_path / "traceability_index.v1.json"
+def test_validate_artifact_can_record_evidence_to_temp_outputs(tmp_path: Path, capsys) -> None:
+    evidence_output = tmp_path / "validation_evidence.json"
+    traceability_output = tmp_path / "traceability_index.json"
 
     result = main(
         [
             "validate",
             "artifact",
             "--path",
-            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json",
             "--record-evidence",
             "--trace-id",
             "trace.core_python_foundation",
@@ -304,12 +300,16 @@ def test_validate_all_supports_json_output_when_acceptance_is_skipped(capsys) ->
     assert payload["status"] == "ok"
     assert payload["passed"] is True
     assert payload["failed_count"] == 0
-    assert payload["included_families"] == ["front_matter", "document_semantics", "artifacts"]
+    assert payload["included_families"] == [
+        "front_matter",
+        "document_semantics",
+        "artifacts",
+        "governed_filenames",
+    ]
     assert any(summary["family"] == "front_matter" for summary in payload["family_summaries"])
-    assert any(
-        summary["family"] == "document_semantics" for summary in payload["family_summaries"]
-    )
+    assert any(summary["family"] == "document_semantics" for summary in payload["family_summaries"])
     assert any(summary["family"] == "artifacts" for summary in payload["family_summaries"])
+    assert any(summary["family"] == "governed_filenames" for summary in payload["family_summaries"])
 
 
 def test_validate_all_supports_json_output(capsys) -> None:

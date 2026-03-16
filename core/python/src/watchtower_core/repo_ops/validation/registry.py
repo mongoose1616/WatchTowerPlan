@@ -31,6 +31,11 @@ VALIDATION_FAMILY_SPECS: tuple[ValidationFamilySpec, ...] = (
         cli_skip_attr="skip_artifacts",
     ),
     ValidationFamilySpec(
+        family="governed_filenames",
+        runner_name="_validate_governed_filenames",
+        cli_skip_attr="skip_governed_filenames",
+    ),
+    ValidationFamilySpec(
         family="acceptance",
         runner_name="_validate_acceptance",
         cli_skip_attr="skip_acceptance",

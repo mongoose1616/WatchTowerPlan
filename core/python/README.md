@@ -69,22 +69,23 @@
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"`
 - `uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path docs/standards/governance/planning_retention_and_purge_standard.md`
 - `uv run watchtower-core validate all --skip-acceptance`
+- `uv run watchtower-core validate all --skip-governed-filenames`
 - `uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md`
 - `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core validate artifact --path /tmp/pack_note.json --schema-id urn:watchtower:schema:external:pack-note:v1 --supplemental-schema-path /tmp/pack_schemas --format json`
 
 ## Command Docs
-- Start with [README.md](/home/j/WatchTowerPlan/docs/commands/core_python/README.md) for command-doc navigation.
-- Open [watchtower_core.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
-- Open [watchtower_core_route.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
-- Open [watchtower_core_plan.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_plan.md) when you need one-step planning scaffolds or traced bootstrap chains.
+- Start with [README.md](/docs/commands/core_python/README.md) for command-doc navigation.
+- Open [watchtower_core.md](/docs/commands/core_python/watchtower_core.md) for the root command and shared options.
+- Open [watchtower_core_route.md](/docs/commands/core_python/watchtower_core_route.md) when you need a route preview for a request or explicit task type.
+- Open [watchtower_core_plan.md](/docs/commands/core_python/watchtower_core_plan.md) when you need one-step planning scaffolds or traced bootstrap chains.
 - Use the group pages for deeper browsing:
-  - [watchtower_core_plan.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_plan.md)
-  - [watchtower_core_query.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_query.md)
-  - [watchtower_core_task.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_task.md)
-  - [watchtower_core_sync.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_sync.md)
-  - [watchtower_core_validate.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_validate.md)
-  - [watchtower_core_closeout.md](/home/j/WatchTowerPlan/docs/commands/core_python/watchtower_core_closeout.md)
+  - [watchtower_core_plan.md](/docs/commands/core_python/watchtower_core_plan.md)
+  - [watchtower_core_query.md](/docs/commands/core_python/watchtower_core_query.md)
+  - [watchtower_core_task.md](/docs/commands/core_python/watchtower_core_task.md)
+  - [watchtower_core_sync.md](/docs/commands/core_python/watchtower_core_sync.md)
+  - [watchtower_core_validate.md](/docs/commands/core_python/watchtower_core_validate.md)
+  - [watchtower_core_closeout.md](/docs/commands/core_python/watchtower_core_closeout.md)
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the machine-readable command lookup surface.
 
 ### Commands Inside `./tools/dev_shell.sh`
@@ -97,6 +98,7 @@
 ### Notes
 - `uv run ...` is the default workflow for this repository.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
+- `uv run watchtower-core validate all` also enforces the governed filename policy over `core/control_plane/**/*.json`, including the versionless filename rule for canonical machine-readable artifacts.
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json` is the explicit preview path when a task is about keeping docs or workflow guidance aligned with repository foundations.
