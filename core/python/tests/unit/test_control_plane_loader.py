@@ -17,6 +17,7 @@ from watchtower_core.control_plane.models import (
     PackSettings,
     RenderedSurfaceRegistry,
     SchemaCatalog,
+    ValidationSuiteRegistry,
 )
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 
@@ -154,6 +155,16 @@ def test_control_plane_loader_reads_validator_registry() -> None:
     assert validator.schema_ids == (
         "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
     )
+
+
+def test_control_plane_loader_reads_validation_suite_registry() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    registry = loader.load_validation_suite_registry()
+    suite = registry.get("suite.watchtower_plan.validation_baseline")
+
+    assert isinstance(registry, ValidationSuiteRegistry)
+    assert suite.get_step("step.watchtower_plan.front_matter").step_kind == "front_matter"
 
 
 def test_control_plane_loader_reuses_validator_registry_materialization(

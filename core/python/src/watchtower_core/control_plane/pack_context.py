@@ -13,6 +13,7 @@ from watchtower_core.control_plane.models import (
     PathPatternRegistry,
     SchemaCatalog,
     StatusRegistry,
+    ValidationSuiteRegistry,
     ValidatorRegistry,
 )
 
@@ -29,6 +30,7 @@ class PackContext:
     pack_settings: PackSettings
     schema_catalog: SchemaCatalog
     validator_registry: ValidatorRegistry
+    validation_suite_registry: ValidationSuiteRegistry
     governance_surface_map: GovernanceSurfaceMap
     path_pattern_registry: PathPatternRegistry
     status_registry: StatusRegistry
@@ -75,6 +77,11 @@ class PackContext:
                 surfaces,
                 "validator_registry",
                 ValidatorRegistry,
+            ),
+            validation_suite_registry=_require_surface(
+                surfaces,
+                "validation_suite_registry",
+                ValidationSuiteRegistry,
             ),
             governance_surface_map=_require_surface(
                 surfaces,

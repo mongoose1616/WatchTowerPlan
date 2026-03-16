@@ -210,6 +210,97 @@ class ValidatorRegistry:
 
 
 @dataclass(frozen=True, slots=True)
+class ValidationSuiteStepDefinition:
+    """Validation suite step definition."""
+
+    step_id: str
+    title: str
+    description: str
+    step_kind: str
+    paths: tuple[str, ...] = ()
+    validator_id: str | None = None
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ValidationSuiteStepDefinition:
+        return cls(
+            step_id=document["id"],
+            title=document["title"],
+            description=document["description"],
+            step_kind=document["step_kind"],
+            paths=tuple(document.get("paths", ())),
+            validator_id=document.get("validator_id"),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ValidationSuiteDefinition:
+    """Validation suite definition."""
+
+    suite_id: str
+    title: str
+    description: str
+    status: str
+    steps: tuple[ValidationSuiteStepDefinition, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ValidationSuiteDefinition:
+        return cls(
+            suite_id=document["id"],
+            title=document["title"],
+            description=document["description"],
+            status=document["status"],
+            steps=tuple(
+                ValidationSuiteStepDefinition.from_document(entry)
+                for entry in document["steps"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get_step(self, step_id: str) -> ValidationSuiteStepDefinition:
+        """Return one validation suite step by identifier."""
+
+        for step in self.steps:
+            if step.step_id == step_id:
+                return step
+        raise KeyError(step_id)
+
+
+@dataclass(frozen=True, slots=True)
+class ValidationSuiteRegistry:
+    """Typed validation-suite registry artifact."""
+
+    schema_id: str
+    artifact_id: str
+    title: str
+    status: str
+    suites: tuple[ValidationSuiteDefinition, ...]
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ValidationSuiteRegistry:
+        suites = tuple(
+            ValidationSuiteDefinition.from_document(entry) for entry in document["suites"]
+        )
+        return cls(
+            schema_id=document["$schema"],
+            artifact_id=document["id"],
+            title=document["title"],
+            status=document["status"],
+            suites=suites,
+        )
+
+    def get(self, suite_id: str) -> ValidationSuiteDefinition:
+        """Return one validation suite by identifier."""
+
+        for suite in self.suites:
+            if suite.suite_id == suite_id:
+                return suite
+        raise KeyError(suite_id)
+
+
+@dataclass(frozen=True, slots=True)
 class AuthorityMapEntry:
     """Authority-map registry entry."""
 

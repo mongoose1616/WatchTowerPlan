@@ -9,9 +9,15 @@ __all__ = [
     "AcceptanceReconciliationService",
     "ArtifactValidationService",
     "FrontMatterValidationService",
+    "PackContractValidationService",
+    "PackValidationContext",
     "ValidationExecutionError",
     "ValidationIssue",
     "ValidationResult",
+    "ValidationSuiteRecord",
+    "ValidationSuiteResult",
+    "ValidationSuiteService",
+    "ValidationSuiteStepSummary",
     "ValidationSelectionError",
 ]
 
@@ -19,9 +25,15 @@ _EXPORT_MODULES = {
     "AcceptanceReconciliationService": "watchtower_core.validation.acceptance",
     "ArtifactValidationService": "watchtower_core.validation.artifact",
     "FrontMatterValidationService": "watchtower_core.validation.front_matter",
+    "PackContractValidationService": "watchtower_core.validation.pack_contract",
+    "PackValidationContext": "watchtower_core.validation.context",
     "ValidationExecutionError": "watchtower_core.validation.errors",
     "ValidationIssue": "watchtower_core.validation.models",
     "ValidationResult": "watchtower_core.validation.models",
+    "ValidationSuiteRecord": "watchtower_core.validation.models",
+    "ValidationSuiteResult": "watchtower_core.validation.models",
+    "ValidationSuiteService": "watchtower_core.validation.suite",
+    "ValidationSuiteStepSummary": "watchtower_core.validation.models",
     "ValidationSelectionError": "watchtower_core.validation.errors",
 }
 

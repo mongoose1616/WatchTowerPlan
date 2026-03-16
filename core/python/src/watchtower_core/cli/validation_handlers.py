@@ -11,7 +11,7 @@ from watchtower_core.cli.handler_common import (
     _resolve_output_path,
 )
 from watchtower_core.control_plane.errors import SchemaResolutionError
-from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.control_plane.loader import PACK_SETTINGS_PATH, ControlPlaneLoader
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
 from watchtower_core.repo_ops.validation import (
     VALIDATION_FAMILY_SPECS,
@@ -25,6 +25,8 @@ from watchtower_core.validation import (
     ValidationExecutionError,
     ValidationResult,
     ValidationSelectionError,
+    ValidationSuiteResult,
+    ValidationSuiteService,
 )
 
 ValidationServiceFactory = Callable[
@@ -60,6 +62,7 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
     try:
         loader = ControlPlaneLoader(
             supplemental_schema_paths=tuple(args.supplemental_schema_path),
+            active_pack_settings_path=getattr(args, "pack_settings_path", None),
         )
     except SchemaResolutionError as exc:
         return _emit_command_error(args, command_name, str(exc), prefix="Validation error")
@@ -107,6 +110,49 @@ def _run_validate_artifact(args: argparse.Namespace) -> int:
         evidence_write=evidence_write,
         success_message="Artifact validated successfully.",
     )
+
+
+def _run_validate_suite(args: argparse.Namespace) -> int:
+    service = ValidationSuiteService(
+        ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
+    )
+    try:
+        result = service.run(
+            args.suite_id,
+            pack_settings_path=getattr(args, "pack_settings_path", None) or PACK_SETTINGS_PATH,
+        )
+    except (SchemaResolutionError, ValidationExecutionError, ValidationSelectionError) as exc:
+        return _emit_command_error(
+            args,
+            "watchtower-core validate suite",
+            str(exc),
+            prefix="Validation error",
+        )
+
+    payload = _build_suite_validation_payload(result)
+    exit_code = 0 if result.passed else 1
+    if _print_payload(args, payload) == 0:
+        return exit_code
+
+    print(
+        "Ran validation suite "
+        f"{result.suite_id} across {result.total_count} targets: "
+        f"{result.passed_count} passed, {result.failed_count} failed."
+    )
+    for summary in result.step_summaries:
+        print(
+            f"- {summary.step_id} ({summary.step_kind}): total={summary.total_count}, "
+            f"passed={summary.passed_count}, failed={summary.failed_count}"
+        )
+    if result.failed_count:
+        print("Failed targets:")
+        for record in result.records:
+            if record.result.passed:
+                continue
+            print(f"- {record.step_id}: {record.target}")
+            if record.result.issues:
+                print(f"  {record.result.issues[0].message}")
+    return exit_code
 
 
 def _run_validate_all(args: argparse.Namespace) -> int:
@@ -221,7 +267,7 @@ def _run_validation_command(
     if message is not None:
         return _emit_command_error(args, command_name, message)
 
-    loader = ControlPlaneLoader()
+    loader = ControlPlaneLoader(active_pack_settings_path=getattr(args, "pack_settings_path", None))
     service = service_factory(loader)
     try:
         result = service.validate(args.path, validator_id=args.validator_id)
@@ -313,6 +359,52 @@ def _build_validation_payload(
             "traceability_output_path": evidence_write.traceability_output_path,
         }
     return payload
+
+
+def _build_suite_validation_payload(result: ValidationSuiteResult) -> dict[str, object]:
+    return {
+        "command": "watchtower-core validate suite",
+        "status": "ok",
+        "suite_id": result.suite_id,
+        "pack_settings_path": result.pack_settings_path,
+        "passed": result.passed,
+        "total_count": result.total_count,
+        "passed_count": result.passed_count,
+        "failed_count": result.failed_count,
+        "step_summaries": [
+            {
+                "step_id": summary.step_id,
+                "step_kind": summary.step_kind,
+                "total_count": summary.total_count,
+                "passed_count": summary.passed_count,
+                "failed_count": summary.failed_count,
+            }
+            for summary in result.step_summaries
+        ],
+        "records": [
+            {
+                "step_id": record.step_id,
+                "step_kind": record.step_kind,
+                "target": record.target,
+                "validator_id": record.result.validator_id,
+                "target_path": record.result.target_path,
+                "engine": record.result.engine,
+                "schema_ids": list(record.result.schema_ids),
+                "passed": record.result.passed,
+                "issue_count": record.issue_count,
+                "issues": [
+                    {
+                        "code": issue.code,
+                        "message": issue.message,
+                        "location": issue.location,
+                        "schema_id": issue.schema_id,
+                    }
+                    for issue in record.result.issues
+                ],
+            }
+            for record in result.records
+        ],
+    }
 
 
 def _print_validation_summary(

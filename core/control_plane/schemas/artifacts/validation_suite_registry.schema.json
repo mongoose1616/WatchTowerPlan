@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
+  "title": "Validation Suite Registry",
+  "description": "Schema for authored validation suite registry artifacts that declare reusable validation step sequences.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "title",
+    "status",
+    "suites"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1"
+    },
+    "id": {
+      "type": "string",
+      "const": "registry.validation_suites"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "suites": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/suiteRecord"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated"
+      ]
+    },
+    "idPattern": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+    },
+    "stepKind": {
+      "type": "string",
+      "enum": [
+        "pack_contract",
+        "artifact",
+        "front_matter",
+        "document_semantics"
+      ]
+    },
+    "pathString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "stepRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "step_kind"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "step_kind": {
+          "$ref": "#/$defs/stepKind"
+        },
+        "paths": {
+          "$ref": "#/$defs/stringList"
+        },
+        "validator_id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "suiteRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "status",
+        "steps"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/idPattern"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/stepRecord"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

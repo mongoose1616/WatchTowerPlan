@@ -9,6 +9,7 @@ from watchtower_core.control_plane.models import (
     PackSettings,
     PrdIndex,
     StatusRegistry,
+    ValidationSuiteRegistry,
     WorkflowIndex,
 )
 
@@ -99,6 +100,40 @@ def test_control_plane_models_export_pack_contract_types() -> None:
 
     assert pack_settings.get("schema_catalog").surface_kind == "schema_collection"
     assert status_registry.get("active").summary == "Active example."
+
+
+def test_control_plane_models_export_validation_suite_registry_types() -> None:
+    registry = ValidationSuiteRegistry.from_document(
+        {
+            "$schema": (
+                "urn:watchtower:schema:artifacts:registries:"
+                "validation-suite-registry:v1"
+            ),
+            "id": "registry.validation_suites",
+            "title": "Example Validation Suites",
+            "status": "active",
+            "suites": [
+                {
+                    "id": "suite.example.validation_baseline",
+                    "title": "Example Validation Baseline",
+                    "description": "Exercises the stable validation suite model export surface.",
+                    "status": "active",
+                    "steps": [
+                        {
+                            "id": "step.example.pack_contract",
+                            "title": "Validate pack contract",
+                            "description": "Example pack-contract step.",
+                            "step_kind": "pack_contract",
+                        }
+                    ],
+                }
+            ],
+        }
+    )
+
+    assert registry.get("suite.example.validation_baseline").get_step(
+        "step.example.pack_contract"
+    ).step_kind == "pack_contract"
 
 
 def test_retired_planning_reexport_module_is_not_importable() -> None:

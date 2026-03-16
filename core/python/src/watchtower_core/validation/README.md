@@ -1,16 +1,17 @@
 # `watchtower_core.validation`
 
 ## Summary
-Export-safe validation services, result models, and namespace guardrails that keep repo-local validation orchestration under `repo_ops.validation`.
+Export-safe validation services, suite orchestration, result models, and namespace guardrails that keep repo-local semantic rule providers under `repo_ops.validation`.
 
 ## Boundary
 - `Classification`: `reusable_core`
 - `Supported Imports`: `watchtower_core.validation` for exported validators and result types, plus explicit reusable submodules such as `acceptance`, `artifact`, and `front_matter`.
-- `Non-Goals`: Direct export of repo-local document semantics or aggregate validation families such as `DocumentSemanticsValidationService` or `ValidationAllService`; those stay under `watchtower_core.repo_ops.validation`.
+- `Non-Goals`: Direct export of repo-local document semantics implementations such as `DocumentSemanticsValidationService`; those stay under `watchtower_core.repo_ops.validation` even when reusable-core orchestration invokes them.
 
 ## Key Surfaces
-- `acceptance.py`, `artifact.py`, and `front_matter.py`: Exported validator services.
-- `models.py` and `errors.py`: Shared validation result and error types.
+- `acceptance.py`, `artifact.py`, `front_matter.py`, and `pack_contract.py`: Exported validator services.
+- `suite.py`: Registry-backed reusable-core suite orchestration.
+- `context.py`, `models.py`, and `errors.py`: Pack-aware context helpers, shared validation result models, and error types.
 - `__init__.py`: Namespace guardrail for repo-local validation helpers that do not belong in the export-safe surface.
 
 ## Related Surfaces

@@ -337,6 +337,19 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
+      "title": "Validation Suite Registry",
+      "description": "Schema for authored validation suite registry artifacts.",
+      "status": "active",
+      "schema_family": "artifact",
+      "subject_kind": "validation_suite_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/artifacts/validation_suite_registry.schema.json",
+      "aliases": [
+        "validation suite catalog schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1",
       "title": "Workflow Metadata Registry",
       "description": "Schema for authored workflow metadata registry artifacts.",

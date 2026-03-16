@@ -33,6 +33,7 @@ from watchtower_core.control_plane.models import (
     TraceabilityIndex,
     TracePurgeRecord,
     ValidationEvidenceArtifact,
+    ValidationSuiteRegistry,
     ValidatorRegistry,
     WorkflowIndex,
     WorkflowMetadataRegistry,
@@ -51,6 +52,7 @@ from watchtower_core.control_plane.workspace import (
 )
 
 VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validator_registry.json"
+VALIDATION_SUITE_REGISTRY_PATH = "core/control_plane/registries/validation_suite_registry.json"
 AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflow_metadata_registry.json"
@@ -133,6 +135,7 @@ class ControlPlaneLoader:
         self._active_pack_settings: PackSettings | None = None
         self._active_schema_catalog_path: str | None = None
         self._active_validator_registry_path: str | None = None
+        self._active_validation_suite_registry_path: str | None = None
         self.schema_store = schema_store or SchemaStore.from_workspace(
             effective_workspace,
             artifact_source=self.artifact_source,
@@ -176,6 +179,17 @@ class ControlPlaneLoader:
                 "Active pack settings must declare a validator_registry surface."
             ) from exc
         self._active_validator_registry_path = validator_registry_path
+        suite_registry_declaration = next(
+            (
+                declaration
+                for declaration in pack_settings.surfaces
+                if declaration.surface_name == "validation_suite_registry"
+            ),
+            None,
+        )
+        self._active_validation_suite_registry_path = (
+            suite_registry_declaration.path if suite_registry_declaration is not None else None
+        )
 
     def set_validated_document_override(
         self,
@@ -268,6 +282,14 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             self._current_validator_registry_path(),
             ValidatorRegistry.from_document,
+        )
+
+    def load_validation_suite_registry(self) -> ValidationSuiteRegistry:
+        """Load the current validation-suite registry."""
+
+        return self._load_typed_document(
+            self._current_validation_suite_registry_path(),
+            ValidationSuiteRegistry.from_document,
         )
 
     def load_pack_settings(self, relative_path: str = PACK_SETTINGS_PATH) -> PackSettings:
@@ -529,6 +551,11 @@ class ControlPlaneLoader:
             )
         if surface_name == "validator_registry":
             return self._load_typed_document(relative_path, ValidatorRegistry.from_document)
+        if surface_name == "validation_suite_registry":
+            return self._load_typed_document(
+                relative_path,
+                ValidationSuiteRegistry.from_document,
+            )
         if surface_name == "authority_map":
             return self._load_typed_document(relative_path, AuthorityMap.from_document)
         if surface_name == "rendered_surface_registry":
@@ -587,6 +614,8 @@ class ControlPlaneLoader:
             return self.load_schema_catalog()
         if relative_path == VALIDATOR_REGISTRY_PATH:
             return self.load_validator_registry()
+        if relative_path == VALIDATION_SUITE_REGISTRY_PATH:
+            return self.load_validation_suite_registry()
         if relative_path == AUTHORITY_MAP_PATH:
             return self.load_authority_map()
         if relative_path == RENDERED_SURFACE_REGISTRY_PATH:
@@ -600,6 +629,16 @@ class ControlPlaneLoader:
             and relative_path == self.active_pack_settings_path
         ):
             return self.load_pack_settings(relative_path)
+        if (
+            self._active_validator_registry_path is not None
+            and relative_path == self._active_validator_registry_path
+        ):
+            return self.load_validator_registry()
+        if (
+            self._active_validation_suite_registry_path is not None
+            and relative_path == self._active_validation_suite_registry_path
+        ):
+            return self.load_validation_suite_registry()
         if relative_path == GOVERNANCE_SURFACE_MAP_PATH:
             return self.load_governance_surface_map()
         if relative_path == PATH_PATTERN_REGISTRY_PATH:
@@ -653,6 +692,13 @@ class ControlPlaneLoader:
         if self._active_validator_registry_path is not None:
             return self._active_validator_registry_path
         return VALIDATOR_REGISTRY_PATH
+
+    def _current_validation_suite_registry_path(self) -> str:
+        """Return the validation-suite registry path active for this loader instance."""
+
+        if self._active_validation_suite_registry_path is not None:
+            return self._active_validation_suite_registry_path
+        return VALIDATION_SUITE_REGISTRY_PATH
 
     def load_typed_document(
         self,

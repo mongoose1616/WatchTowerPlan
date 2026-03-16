@@ -7,6 +7,7 @@ from textwrap import dedent
 
 from watchtower_core.cli.common import (
     HelpFormatter,
+    add_pack_settings_argument,
     add_common_validation_arguments,
     examples,
 )
@@ -23,6 +24,7 @@ def register_validate_family(
         _run_validate_artifact,
         _run_validate_document_semantics,
         _run_validate_front_matter,
+        _run_validate_suite,
     )
 
     validate_parser = subparsers.add_parser(
@@ -33,8 +35,9 @@ def register_validate_family(
             Run validation commands against governed repository artifacts and
             document surfaces.
 
-            Use `all` for one bounded repo-wide validation pass, `front-matter`
-            for governed Markdown metadata, `document-semantics` for governed
+            Use `all` for one bounded repo-wide validation pass, `suite` for a
+            pack-declared validation suite, `front-matter` for governed
+            Markdown metadata, `document-semantics` for governed
             document-shape and applied-reference rules, `artifact` for
             schema-backed JSON contracts, indexes, ledgers, and similar
             machine-readable artifacts, and `acceptance` for semantic reconciliation across PRDs,
@@ -44,6 +47,8 @@ def register_validate_family(
         epilog=examples(
             "uv run watchtower-core validate all --skip-acceptance",
             "uv run watchtower-core validate all --format json",
+            "uv run watchtower-core validate suite --suite-id "
+            "suite.watchtower_plan.validation_baseline --format json",
             "uv run watchtower-core validate front-matter --path "
             "docs/references/front_matter_reference.md",
             "uv run watchtower-core validate document-semantics --path "
@@ -118,6 +123,42 @@ def register_validate_family(
     )
     validate_all_parser.set_defaults(handler=_run_validate_all)
 
+    validate_suite_parser = validate_subparsers.add_parser(
+        "suite",
+        help="Run one pack-declared validation suite through reusable-core orchestration.",
+        description=dedent(
+            """
+            Run one validation suite declared in the active validation-suite
+            registry for the selected pack settings surface.
+
+            Use this when you want reusable-core orchestration over a pack's
+            declared validation steps rather than invoking each validation
+            family manually.
+            """
+        ).strip(),
+        epilog=examples(
+            "uv run watchtower-core validate suite --suite-id "
+            "suite.watchtower_plan.validation_baseline",
+            "uv run watchtower-core validate suite --suite-id "
+            "suite.plan.validation_baseline --pack-settings-path "
+            "domain_packs/plan/.wt/pack_settings.json --format json",
+        ),
+        formatter_class=HelpFormatter,
+    )
+    validate_suite_parser.add_argument(
+        "--suite-id",
+        required=True,
+        help="Stable validation suite identifier such as suite.watchtower_plan.validation_baseline.",
+    )
+    add_pack_settings_argument(validate_suite_parser)
+    validate_suite_parser.add_argument(
+        "--format",
+        choices=("human", "json"),
+        default="human",
+        help="Output format. Use json for scripts, workflows, or agent calls.",
+    )
+    validate_suite_parser.set_defaults(handler=_run_validate_suite)
+
     validate_front_matter_parser = validate_subparsers.add_parser(
         "front-matter",
         help="Validate one Markdown document front-matter block.",
@@ -156,6 +197,7 @@ def register_validate_family(
             "the repository tree."
         ),
     )
+    add_pack_settings_argument(validate_front_matter_parser)
     add_common_validation_arguments(validate_front_matter_parser)
     validate_front_matter_parser.set_defaults(handler=_run_validate_front_matter)
 
@@ -195,6 +237,7 @@ def register_validate_family(
             "the repository tree."
         ),
     )
+    add_pack_settings_argument(validate_document_semantics_parser)
     add_common_validation_arguments(validate_document_semantics_parser)
     validate_document_semantics_parser.set_defaults(handler=_run_validate_document_semantics)
 
@@ -260,6 +303,7 @@ def register_validate_family(
             "schema file or directory. Repeat for multiple locations."
         ),
     )
+    add_pack_settings_argument(validate_artifact_parser)
     add_common_validation_arguments(validate_artifact_parser)
     validate_artifact_parser.set_defaults(handler=_run_validate_artifact)
 

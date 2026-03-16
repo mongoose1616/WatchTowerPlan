@@ -27,6 +27,13 @@ def test_pack_context_loads_declared_pack_surfaces() -> None:
     assert context.actor_registry.get("actor.codex").actor_type == "agent"
     assert "rendered_surface_registry" in context.registries
     assert "validator_registry" in context.registries
+    assert "validation_suite_registry" in context.registries
+    assert (
+        context.validation_suite_registry.get("suite.watchtower_plan.validation_baseline")
+        .get_step("step.watchtower_plan.artifacts")
+        .step_kind
+        == "artifact"
+    )
     assert "route_index" in context.indexes
 
 

@@ -71,6 +71,18 @@ def add_common_validation_arguments(parser: argparse.ArgumentParser) -> None:
     )
 
 
+def add_pack_settings_argument(parser: argparse.ArgumentParser) -> None:
+    """Add one optional pack-settings-path argument to a validation command."""
+
+    parser.add_argument(
+        "--pack-settings-path",
+        help=(
+            "Optional repository-relative path to the pack settings surface that "
+            "declares the active schema, validator, and validation suite registries."
+        ),
+    )
+
+
 def add_common_sync_arguments(parser: argparse.ArgumentParser) -> None:
     """Add shared sync command arguments."""
     parser.add_argument(

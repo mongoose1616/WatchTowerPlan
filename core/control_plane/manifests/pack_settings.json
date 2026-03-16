@@ -49,6 +49,13 @@
       "visibility": "hidden"
     },
     {
+      "surface_name": "validation_suite_registry",
+      "surface_kind": "registry",
+      "path": "core/control_plane/registries/validation_suite_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
       "surface_name": "authority_map",
       "surface_kind": "registry",
       "path": "core/control_plane/registries/authority_map.json",

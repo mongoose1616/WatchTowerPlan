@@ -85,3 +85,34 @@ def iter_schema_validation_issues(
             for error in errors
         )
     return issues
+
+
+def discover_repository_targets(
+    loader: ControlPlaneLoader,
+    patterns: tuple[str, ...],
+    *,
+    suffixes: tuple[str, ...],
+) -> tuple[str, ...]:
+    """Resolve repository-local validator patterns into stable target paths."""
+
+    ordered_targets: list[str] = []
+    seen_targets: set[str] = set()
+    for pattern in patterns:
+        if any(token in pattern for token in "*?[]"):
+            candidate_paths = sorted(loader.repo_root.glob(pattern))
+        else:
+            resolved = loader.resolve_path(pattern)
+            candidate_paths = [resolved] if resolved.exists() else []
+
+        for candidate_path in candidate_paths:
+            if not candidate_path.is_file():
+                continue
+            if suffixes and candidate_path.suffix not in suffixes:
+                continue
+            relative_path = loader.workspace_config.logical_path_for(candidate_path)
+            if relative_path in seen_targets:
+                continue
+            seen_targets.add(relative_path)
+            ordered_targets.append(relative_path)
+
+    return tuple(ordered_targets)

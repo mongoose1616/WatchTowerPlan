@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import json
+import tempfile
 from pathlib import Path
 
 from watchtower_core.cli.main import main
+
+from .pack_validation_helpers import REPO_ROOT, materialize_pack_validation_suite
 
 
 def test_validate_front_matter_supports_json_output(capsys) -> None:
@@ -318,9 +321,58 @@ def test_validate_all_supports_json_output(capsys) -> None:
     assert result == 0
     assert payload["command"] == "watchtower-core validate all"
     assert payload["status"] == "ok"
-    assert payload["passed"] is True
-    assert payload["failed_count"] == 0
-    acceptance_summary = next(
-        summary for summary in payload["family_summaries"] if summary["family"] == "acceptance"
+
+
+def test_validate_suite_supports_json_output(capsys) -> None:
+    result = main(
+        [
+            "validate",
+            "suite",
+            "--suite-id",
+            "suite.watchtower_plan.validation_baseline",
+            "--format",
+            "json",
+        ]
     )
-    assert acceptance_summary["failed_count"] == 0
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core validate suite"
+    assert payload["status"] == "ok"
+    assert payload["suite_id"] == "suite.watchtower_plan.validation_baseline"
+    assert payload["passed"] is True
+    assert any(summary["step_kind"] == "front_matter" for summary in payload["step_summaries"])
+    assert any(
+        summary["step_kind"] == "document_semantics"
+        for summary in payload["step_summaries"]
+    )
+    assert any(summary["step_kind"] == "artifact" for summary in payload["step_summaries"])
+
+
+def test_validate_artifact_uses_pack_settings_path_to_select_pack_registry(capsys) -> None:
+    domain_packs_root = REPO_ROOT / "domain_packs"
+    domain_packs_root.mkdir(exist_ok=True)
+
+    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
+        surfaces = materialize_pack_validation_suite(Path(tmp_dir))
+        result = main(
+            [
+                "validate",
+                "artifact",
+                "--path",
+                surfaces["artifact_relative_path"],
+                "--pack-settings-path",
+                surfaces["pack_settings_path"],
+                "--format",
+                "json",
+            ]
+        )
+
+    captured = capsys.readouterr()
+    payload = json.loads(captured.out)
+    assert result == 0
+    assert payload["command"] == "watchtower-core validate artifact"
+    assert payload["status"] == "ok"
+    assert payload["passed"] is True
+    assert payload["validator_id"] == surfaces["validator_id"]

@@ -1,0 +1,51 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
+  "id": "registry.validation_suites",
+  "title": "Validation Suite Registry",
+  "status": "active",
+  "suites": [
+    {
+      "id": "suite.watchtower_plan.validation_baseline",
+      "title": "WatchTowerPlan Validation Baseline",
+      "description": "Reusable-core validation suite for the current repository's pack contract, front matter, document semantics, and representative schema-backed artifacts.",
+      "status": "active",
+      "steps": [
+        {
+          "id": "step.watchtower_plan.pack_contract",
+          "title": "Validate pack contract",
+          "description": "Ensure the default pack settings surface and its declared validation surfaces load successfully.",
+          "step_kind": "pack_contract"
+        },
+        {
+          "id": "step.watchtower_plan.front_matter",
+          "title": "Validate governed front matter",
+          "description": "Validate one representative governed Markdown front matter target.",
+          "step_kind": "front_matter",
+          "paths": [
+            "docs/standards/metadata/front_matter_standard.md"
+          ]
+        },
+        {
+          "id": "step.watchtower_plan.document_semantics",
+          "title": "Validate governed document semantics",
+          "description": "Validate one representative governed Markdown semantic target.",
+          "step_kind": "document_semantics",
+          "paths": [
+            "workflows/modules/code_validation.md"
+          ]
+        },
+        {
+          "id": "step.watchtower_plan.artifacts",
+          "title": "Validate governed JSON artifacts",
+          "description": "Validate representative schema-backed governed JSON artifacts.",
+          "step_kind": "artifact",
+          "paths": [
+            "core/control_plane/manifests/pack_settings.json",
+            "core/control_plane/registries/validation_suite_registry.json"
+          ]
+        }
+      ],
+      "notes": "Acceptance reconciliation remains a separate validation surface and is not part of the reusable-core suite step kinds in this baseline. Repo-wide aggregate validation continues to use repo-local orchestration until the baseline migration lands."
+    }
+  ]
+}
