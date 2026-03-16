@@ -1468,6 +1468,66 @@
       ]
     },
     {
+      "task_id": "task.documentation_surface_alignment_for_core_pack_model.bootstrap.001",
+      "title": "Bootstrap documentation surface alignment for core and pack model",
+      "summary": "Bootstraps the planning chain for the documentation-alignment follow-on.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/documentation_surface_alignment_for_core_pack_model_bootstrap.md",
+      "updated_at": "2026-03-16T05:57:19Z",
+      "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+      "related_ids": [
+        "prd.documentation_surface_alignment_for_core_pack_model",
+        "design.features.documentation_surface_alignment_for_core_pack_model",
+        "design.implementation.documentation_surface_alignment_for_core_pack_model",
+        "decision.documentation_surface_alignment_for_core_pack_model_direction",
+        "contract.acceptance.documentation_surface_alignment_for_core_pack_model"
+      ]
+    },
+    {
+      "task_id": "task.documentation_surface_alignment_for_core_pack_model.refresh.002",
+      "title": "Refresh repository documentation for core and pack model alignment",
+      "summary": "Audit and refresh the documentation corpus so repository guidance matches the current reusable-core plus plan-domain-pack boundary.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "documentation",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/refresh_repository_documentation_for_core_pack_model_alignment.md",
+      "updated_at": "2026-03-16T05:57:19Z",
+      "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+      "depends_on": [
+        "task.documentation_surface_alignment_for_core_pack_model.bootstrap.001"
+      ],
+      "related_ids": [
+        "prd.documentation_surface_alignment_for_core_pack_model",
+        "design.features.documentation_surface_alignment_for_core_pack_model"
+      ]
+    },
+    {
+      "task_id": "task.documentation_surface_alignment_for_core_pack_model.validation_closeout.003",
+      "title": "Validate and close documentation surface alignment for core and pack model",
+      "summary": "Run validation, refresh planning surfaces, and close the documentation-alignment trace once the docs refresh lands cleanly.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/validate_and_close_documentation_surface_alignment_for_core_pack_model.md",
+      "updated_at": "2026-03-16T05:57:19Z",
+      "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+      "depends_on": [
+        "task.documentation_surface_alignment_for_core_pack_model.refresh.002"
+      ],
+      "related_ids": [
+        "prd.documentation_surface_alignment_for_core_pack_model",
+        "design.implementation.documentation_surface_alignment_for_core_pack_model"
+      ]
+    },
+    {
       "task_id": "task.end_to_end_repo_review_and_rationalization.bootstrap.001",
       "title": "Bootstrap the end-to-end repo review and rationalization initiative",
       "summary": "Creates the traced planning chain, accepted direction, acceptance baseline, planning evidence, and bounded execution task set for the final pre-implementation review follow-up.",

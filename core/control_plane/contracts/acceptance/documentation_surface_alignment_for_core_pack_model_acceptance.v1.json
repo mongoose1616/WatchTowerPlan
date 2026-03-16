@@ -1,0 +1,62 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.documentation_surface_alignment_for_core_pack_model",
+  "title": "Documentation Surface Alignment For Core and Pack Model Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+  "source_prd_id": "prd.documentation_surface_alignment_for_core_pack_model",
+  "entries": [
+    {
+      "acceptance_id": "ac.documentation_surface_alignment_for_core_pack_model.001",
+      "summary": "The planning chain defines the documentation-alignment follow-on as a bounded initiative after the pack-settings convergence trace.",
+      "source_requirement_ids": [
+        "req.documentation_surface_alignment_for_core_pack_model.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/decisions/documentation_surface_alignment_for_core_pack_model_direction.md",
+        "docs/planning/design/features/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/design/implementation/documentation_surface_alignment_for_core_pack_model.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/closed/archive/2026/03/16/documentation_surface_alignment_for_core_pack_model_bootstrap.md",
+        "docs/planning/tasks/open/refresh_repository_documentation_for_core_pack_model_alignment.md",
+        "docs/planning/tasks/open/validate_and_close_documentation_surface_alignment_for_core_pack_model.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.documentation_surface_alignment_for_core_pack_model.002",
+      "summary": "The documentation corpus consistently describes the current core-plus-pack model and does not present retired live surfaces as active repository guidance.",
+      "source_requirement_ids": [
+        "req.documentation_surface_alignment_for_core_pack_model.002"
+      ],
+      "validation_targets": [
+        "docs/",
+        "core/control_plane/README.md",
+        "core/python/README.md",
+        "docs/commands/core_python/"
+      ],
+      "related_paths": [
+        "core/control_plane/manifests/README.md",
+        "core/control_plane/registries/README.md",
+        "core/control_plane/schemas/artifacts/README.md",
+        "docs/standards/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.documentation_surface_alignment_for_core_pack_model.003",
+      "summary": "The documentation refresh closes with clean validation and refreshed planning projections.",
+      "source_requirement_ids": [
+        "req.documentation_surface_alignment_for_core_pack_model.003"
+      ],
+      "validation_targets": [
+        "docs/planning/tasks/open/validate_and_close_documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/validation_evidence/documentation_surface_alignment_for_core_pack_model_planning_baseline.v1.json"
+      ]
+    }
+  ]
+}

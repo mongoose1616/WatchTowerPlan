@@ -704,6 +704,49 @@
       ]
     },
     {
+      "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+      "prd_id": "prd.documentation_surface_alignment_for_core_pack_model",
+      "title": "Documentation Surface Alignment For Core and Pack Model PRD",
+      "summary": "Align the repository documentation corpus with the current reusable-core plus plan-domain-pack model so entrypoints, standards, and command docs stop describing retired shapes as live.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md",
+      "updated_at": "2026-03-16T05:57:19Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.documentation_surface_alignment_for_core_pack_model.001",
+        "req.documentation_surface_alignment_for_core_pack_model.002",
+        "req.documentation_surface_alignment_for_core_pack_model.003"
+      ],
+      "acceptance_ids": [
+        "ac.documentation_surface_alignment_for_core_pack_model.001",
+        "ac.documentation_surface_alignment_for_core_pack_model.002",
+        "ac.documentation_surface_alignment_for_core_pack_model.003"
+      ],
+      "linked_decision_ids": [
+        "decision.documentation_surface_alignment_for_core_pack_model_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.documentation_surface_alignment_for_core_pack_model"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.documentation_surface_alignment_for_core_pack_model"
+      ],
+      "related_paths": [
+        "docs/",
+        "core/control_plane/README.md",
+        "core/control_plane/manifests/README.md",
+        "core/control_plane/registries/README.md",
+        "core/control_plane/schemas/artifacts/README.md",
+        "core/python/README.md",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/prds/validated_core_and_pack_data_shape_convergence.md"
+      ]
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "prd_id": "prd.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",

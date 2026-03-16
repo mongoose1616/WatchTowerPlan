@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
+| --- | --- | --- | --- | --- | --- | --- |
+| `trace.documentation_surface_alignment_for_core_pack_model` | `execution` | repository_maintainer | `2` (`blocked=1`) | [documentation_surface_alignment_for_core_pack_model.md](/home/j/WatchTowerPlan/docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md) | [refresh_repository_documentation_for_core_pack_model_alignment.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/refresh_repository_documentation_for_core_pack_model_alignment.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -72,4 +74,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T05:56:22Z`_
+_Updated At: `2026-03-16T06:02:05Z`_

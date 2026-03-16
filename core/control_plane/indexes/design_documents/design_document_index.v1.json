@@ -614,6 +614,36 @@
       ]
     },
     {
+      "document_id": "design.features.documentation_surface_alignment_for_core_pack_model",
+      "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+      "family": "feature_design",
+      "title": "Documentation Surface Alignment For Core and Pack Model Feature Design",
+      "summary": "Defines the technical design boundary for aligning repository documentation with the current reusable-core plus plan-domain-pack model.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/documentation_surface_alignment_for_core_pack_model.md",
+      "updated_at": "2026-03-16T05:57:19Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/",
+        "core/control_plane/README.md",
+        "core/control_plane/manifests/README.md",
+        "core/control_plane/registries/README.md",
+        "core/control_plane/schemas/artifacts/README.md",
+        "core/python/README.md",
+        "docs/commands/core_python/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md"
+      ]
+    },
+    {
       "document_id": "design.features.end_to_end_repo_rationalization",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "family": "feature_design",
@@ -2782,6 +2812,27 @@
         "docs/standards/documentation/standard_md_standard.md",
         "docs/standards/documentation/readme_md_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.documentation_surface_alignment_for_core_pack_model",
+      "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+      "family": "implementation_plan",
+      "title": "Documentation Surface Alignment For Core and Pack Model Implementation Plan",
+      "summary": "Breaks the documentation-alignment initiative into a bounded refresh and closeout sequence.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/documentation_surface_alignment_for_core_pack_model.md",
+      "updated_at": "2026-03-16T05:57:19Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/documentation/command_md_standard.md",
+        "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md"
       ]
     },
     {

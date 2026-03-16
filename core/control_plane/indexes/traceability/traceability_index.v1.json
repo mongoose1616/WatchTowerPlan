@@ -1452,6 +1452,76 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-12T01:10:26Z for trace.documentation_family_lookup_and_readme_template_alignment after the validation task and initiative closeout."
     },
     {
+      "trace_id": "trace.documentation_surface_alignment_for_core_pack_model",
+      "title": "Documentation Surface Alignment For Core and Pack Model PRD",
+      "summary": "Align the repository documentation corpus with the current reusable-core plus plan-domain-pack model so entrypoints, standards, and command docs stop describing retired shapes as live.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-16T06:02:05Z",
+      "prd_ids": [
+        "prd.documentation_surface_alignment_for_core_pack_model"
+      ],
+      "decision_ids": [
+        "decision.documentation_surface_alignment_for_core_pack_model_direction"
+      ],
+      "design_ids": [
+        "design.features.documentation_surface_alignment_for_core_pack_model"
+      ],
+      "plan_ids": [
+        "design.implementation.documentation_surface_alignment_for_core_pack_model"
+      ],
+      "task_ids": [
+        "task.documentation_surface_alignment_for_core_pack_model.bootstrap.001",
+        "task.documentation_surface_alignment_for_core_pack_model.refresh.002",
+        "task.documentation_surface_alignment_for_core_pack_model.validation_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.documentation_surface_alignment_for_core_pack_model.001",
+        "req.documentation_surface_alignment_for_core_pack_model.002",
+        "req.documentation_surface_alignment_for_core_pack_model.003"
+      ],
+      "acceptance_ids": [
+        "ac.documentation_surface_alignment_for_core_pack_model.001",
+        "ac.documentation_surface_alignment_for_core_pack_model.002",
+        "ac.documentation_surface_alignment_for_core_pack_model.003"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.documentation_surface_alignment_for_core_pack_model"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.documentation_surface_alignment_for_core_pack_model.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/README.md",
+        "core/control_plane/contracts/acceptance/documentation_surface_alignment_for_core_pack_model_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/documentation_surface_alignment_for_core_pack_model_planning_baseline.v1.json",
+        "core/control_plane/manifests/README.md",
+        "core/control_plane/registries/README.md",
+        "core/control_plane/schemas/artifacts/README.md",
+        "core/python/README.md",
+        "docs/",
+        "docs/commands/core_python/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/documentation_surface_alignment_for_core_pack_model_direction.md",
+        "docs/planning/design/features/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/design/implementation/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/documentation_surface_alignment_for_core_pack_model_bootstrap.md",
+        "docs/planning/tasks/open/refresh_repository_documentation_for_core_pack_model_alignment.md",
+        "docs/planning/tasks/open/validate_and_close_documentation_surface_alignment_for_core_pack_model.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence recorded for the documentation-alignment follow-on bootstrap at 2026-03-16T06:02:05Z."
+    },
+    {
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "title": "End-to-End Repository Review and Rationalization PRD",
       "summary": "Defines the final pre-implementation review follow-up needed to harden documentation guardrails, derived coordination metadata, external pack validation seams, and CLI modularity before WatchTower product implementation begins.",
