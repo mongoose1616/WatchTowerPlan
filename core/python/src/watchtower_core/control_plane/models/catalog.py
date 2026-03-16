@@ -74,6 +74,37 @@ class SchemaCatalog:
             records=records,
         )
 
+    @classmethod
+    def merge(cls, *catalogs: SchemaCatalog) -> SchemaCatalog:
+        """Return one schema catalog with records combined in declaration order."""
+
+        if not catalogs:
+            raise ValueError("SchemaCatalog.merge requires at least one catalog.")
+
+        primary = catalogs[0]
+        merged_records: list[SchemaCatalogRecord] = []
+        seen_schema_ids: set[str] = set()
+        for catalog in catalogs:
+            if catalog.schema_id != primary.schema_id:
+                raise ValueError("Merged schema catalogs must share the same $schema value.")
+            if catalog.artifact_id != primary.artifact_id:
+                raise ValueError("Merged schema catalogs must share the same artifact ID.")
+            for record in catalog.records:
+                if record.schema_id in seen_schema_ids:
+                    raise ValueError(
+                        f"Merged schema catalogs contain duplicate schema IDs: {record.schema_id}"
+                    )
+                seen_schema_ids.add(record.schema_id)
+                merged_records.append(record)
+
+        return cls(
+            schema_id=primary.schema_id,
+            artifact_id=primary.artifact_id,
+            title=primary.title,
+            status=primary.status,
+            records=tuple(merged_records),
+        )
+
     def get(self, schema_id: str) -> SchemaCatalogRecord:
         """Return a catalog record by schema identifier."""
         for record in self.records:
@@ -132,6 +163,42 @@ class ValidatorRegistry:
             title=document["title"],
             status=document["status"],
             validators=validators,
+        )
+
+    @classmethod
+    def merge(cls, *registries: ValidatorRegistry) -> ValidatorRegistry:
+        """Return one validator registry with entries combined in declaration order."""
+
+        if not registries:
+            raise ValueError("ValidatorRegistry.merge requires at least one registry.")
+
+        primary = registries[0]
+        merged_validators: list[ValidatorDefinition] = []
+        seen_validator_ids: set[str] = set()
+        for registry in registries:
+            if registry.schema_id != primary.schema_id:
+                raise ValueError(
+                    "Merged validator registries must share the same $schema value."
+                )
+            if registry.artifact_id != primary.artifact_id:
+                raise ValueError(
+                    "Merged validator registries must share the same artifact ID."
+                )
+            for validator in registry.validators:
+                if validator.validator_id in seen_validator_ids:
+                    raise ValueError(
+                        "Merged validator registries contain duplicate validator IDs: "
+                        f"{validator.validator_id}"
+                    )
+                seen_validator_ids.add(validator.validator_id)
+                merged_validators.append(validator)
+
+        return cls(
+            schema_id=primary.schema_id,
+            artifact_id=primary.artifact_id,
+            title=primary.title,
+            status=primary.status,
+            validators=tuple(merged_validators),
         )
 
     def get(self, validator_id: str) -> ValidatorDefinition:

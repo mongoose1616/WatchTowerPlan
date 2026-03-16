@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -20,6 +21,58 @@ def load_json(relative_path: str) -> dict[str, object]:
 def write_json(path: Path, document: dict[str, object]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
+def materialize_additional_schema_catalog(pack_root: Path) -> dict[str, str]:
+    control_plane_root = pack_root / ".wt"
+    relative_root = control_plane_root.relative_to(REPO_ROOT).as_posix()
+    schema_id = "urn:watchtower:schema:interfaces:domain-packs:schema-store-note:v1"
+    schema_relative_path = (
+        f"{relative_root}/schemas/interfaces/domain_packs/schema_store_note.schema.json"
+    )
+    catalog_path = f"{relative_root}/registries/schema_catalog.json"
+    write_json(
+        REPO_ROOT / schema_relative_path,
+        {
+            "$id": schema_id,
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "Schema Store Note",
+            "description": "Schema discovered through an additional schema catalog.",
+            "type": "object",
+            "properties": {
+                "$schema": {"const": schema_id},
+                "kind": {"const": "schema_store_note"},
+            },
+            "required": ["$schema", "kind"],
+            "additionalProperties": False,
+        },
+    )
+    write_json(
+        REPO_ROOT / catalog_path,
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+            "id": "registry.schema_catalog",
+            "title": "Additional Schema Catalog",
+            "status": "active",
+            "schemas": [
+                {
+                    "schema_id": schema_id,
+                    "title": "Schema Store Note",
+                    "description": "Pack-local schema catalog record.",
+                    "status": "active",
+                    "schema_family": "interface",
+                    "subject_kind": "schema_store_note",
+                    "version": "v1",
+                    "canonical_path": schema_relative_path,
+                }
+            ],
+        },
+    )
+    return {
+        "catalog_path": catalog_path,
+        "schema_id": schema_id,
+        "schema_relative_path": schema_relative_path,
+    }
 
 
 def test_schema_store_resolves_cataloged_schema_paths() -> None:
@@ -341,6 +394,27 @@ def test_schema_store_accepts_supplemental_schema_documents() -> None:
         store.validate_instance({"kind": "wrong"}, schema_id=schema_id)
 
     assert store.supplemental_schema_ids == (schema_id,)
+
+
+def test_schema_store_merges_additional_schema_catalog_paths() -> None:
+    domain_packs_root = REPO_ROOT / "domain_packs"
+    domain_packs_root.mkdir(exist_ok=True)
+
+    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
+        catalog = materialize_additional_schema_catalog(Path(tmp_dir))
+        base_store = SchemaStore.from_repo_root(REPO_ROOT)
+        store = base_store.with_additional_catalog_paths((catalog["catalog_path"],))
+
+    assert store.get_record(catalog["schema_id"]).canonical_relative_path == (
+        catalog["schema_relative_path"]
+    )
+    store.validate_instance(
+        {
+            "$schema": catalog["schema_id"],
+            "kind": "schema_store_note",
+        },
+        schema_id=catalog["schema_id"],
+    )
 
 
 def test_schema_store_rejects_duplicate_supplemental_schema_ids() -> None:

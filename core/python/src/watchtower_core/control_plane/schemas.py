@@ -109,6 +109,17 @@ def load_supplemental_schema_documents_from_paths(
     return tuple(documents)
 
 
+def _load_schema_catalog(
+    artifact_source: ArtifactSource,
+    workspace_config: WorkspaceConfig,
+    relative_path: str,
+) -> SchemaCatalog:
+    catalog_schema = artifact_source.load_json_object(SCHEMA_CATALOG_SCHEMA_PATH)
+    catalog_document = artifact_source.load_json_object(relative_path)
+    Draft202012Validator(catalog_schema).validate(catalog_document)
+    return SchemaCatalog.from_document(catalog_document, workspace_config)
+
+
 class SchemaStore:
     """Resolve and validate published schemas through the schema catalog."""
 
@@ -156,11 +167,7 @@ class SchemaStore:
     ) -> SchemaStore:
         """Bootstrap the schema store from one injected workspace mapping."""
         source = artifact_source or FileSystemArtifactIO(workspace_config)
-        catalog_schema = source.load_json_object(SCHEMA_CATALOG_SCHEMA_PATH)
-        catalog_document = source.load_json_object(SCHEMA_CATALOG_ARTIFACT_PATH)
-        Draft202012Validator(catalog_schema).validate(catalog_document)
-
-        catalog = SchemaCatalog.from_document(catalog_document, workspace_config)
+        catalog = _load_schema_catalog(source, workspace_config, SCHEMA_CATALOG_ARTIFACT_PATH)
         schema_documents: dict[str, dict[str, Any]] = {}
         registry = Registry()
         supplemental_schema_ids: list[str] = []
@@ -210,6 +217,70 @@ class SchemaStore:
             schema_documents=schema_documents,
             registry=registry,
             supplemental_schema_ids=tuple(supplemental_schema_ids),
+        )
+
+    def with_additional_catalog_paths(
+        self,
+        catalog_paths: Sequence[str],
+    ) -> SchemaStore:
+        """Return one schema store with additional published catalogs merged in."""
+
+        unique_paths = tuple(
+            dict.fromkeys(
+                path for path in catalog_paths if path and path != SCHEMA_CATALOG_ARTIFACT_PATH
+            )
+        )
+        if not unique_paths:
+            return self
+
+        catalogs = [self.catalog]
+        schema_documents = dict(self._schema_documents)
+        registry = self._registry
+        known_schema_ids = set(schema_documents)
+        for catalog_path in unique_paths:
+            catalog = _load_schema_catalog(
+                self.artifact_source,
+                self.workspace_config,
+                catalog_path,
+            )
+            catalogs.append(catalog)
+            for record in catalog.records:
+                if record.schema_id in known_schema_ids:
+                    raise SchemaResolutionError(
+                        "Additional schema catalog duplicates an existing schema ID: "
+                        f"{record.schema_id} from {catalog_path}"
+                    )
+
+                schema_document = self.artifact_source.load_json_object(
+                    record.canonical_relative_path
+                )
+                schema_id = schema_document.get("$id")
+                if schema_id != record.schema_id:
+                    raise SchemaResolutionError(
+                        "Cataloged schema ID does not match the schema file: "
+                        f"{record.schema_id} != {schema_id}"
+                    )
+
+                Draft202012Validator.check_schema(schema_document)
+                known_schema_ids.add(record.schema_id)
+                schema_documents[record.schema_id] = schema_document
+                registry = registry.with_resource(
+                    record.schema_id,
+                    Resource.from_contents(schema_document),
+                )
+
+        try:
+            merged_catalog = SchemaCatalog.merge(*catalogs)
+        except ValueError as exc:
+            raise SchemaResolutionError(str(exc)) from exc
+
+        return SchemaStore(
+            workspace_config=self.workspace_config,
+            artifact_source=self.artifact_source,
+            catalog=merged_catalog,
+            schema_documents=schema_documents,
+            registry=registry,
+            supplemental_schema_ids=self.supplemental_schema_ids,
         )
 
     def get_record(self, schema_id: str) -> SchemaCatalogRecord:

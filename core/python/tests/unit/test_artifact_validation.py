@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -14,6 +15,118 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def write_json(path: Path, document: dict[str, object]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
+def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
+    control_plane_root = pack_root / ".wt"
+    relative_root = control_plane_root.relative_to(REPO_ROOT).as_posix()
+    schema_id = "urn:watchtower:schema:interfaces:domain-packs:artifact-pack-note:v1"
+    schema_relative_path = (
+        f"{relative_root}/schemas/interfaces/domain_packs/artifact_pack_note.schema.json"
+    )
+    validator_id = "validator.domain_packs.artifact_pack_note"
+    artifact_relative_path = f"{relative_root}/work_items/artifact_pack_note.json"
+    write_json(
+        REPO_ROOT / schema_relative_path,
+        {
+            "$id": schema_id,
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "Artifact Pack Note",
+            "description": "Pack-local schema used by artifact validation tests.",
+            "type": "object",
+            "properties": {
+                "$schema": {"const": schema_id},
+                "kind": {"const": "artifact_pack_note"},
+                "title": {"type": "string"},
+            },
+            "required": ["$schema", "kind", "title"],
+            "additionalProperties": False,
+        },
+    )
+    write_json(
+        REPO_ROOT / f"{relative_root}/registries/schema_catalog.json",
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+            "id": "registry.schema_catalog",
+            "title": "Artifact Validation Pack Schema Catalog",
+            "status": "active",
+            "schemas": [
+                {
+                    "schema_id": schema_id,
+                    "title": "Artifact Pack Note",
+                    "description": "Schema record for pack-local artifact validation tests.",
+                    "status": "active",
+                    "schema_family": "interface",
+                    "subject_kind": "artifact_pack_note",
+                    "version": "v1",
+                    "canonical_path": schema_relative_path,
+                }
+            ],
+        },
+    )
+    write_json(
+        REPO_ROOT / f"{relative_root}/registries/validator_registry.json",
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+            "id": "registry.validators",
+            "title": "Artifact Validation Pack Validators",
+            "status": "active",
+            "validators": [
+                {
+                    "id": validator_id,
+                    "title": "Artifact Pack Note Validator",
+                    "description": "Validator selected from pack settings rather than the repo default registry.",
+                    "status": "active",
+                    "engine": "json_schema",
+                    "artifact_kind": "artifact_pack_note",
+                    "applies_to": [artifact_relative_path],
+                    "schema_ids": [schema_id],
+                }
+            ],
+        },
+    )
+    write_json(
+        REPO_ROOT / artifact_relative_path,
+        {
+            "$schema": schema_id,
+            "kind": "artifact_pack_note",
+            "title": "Artifact Pack Note",
+        },
+    )
+    pack_settings_path = f"{relative_root}/pack_settings.json"
+    write_json(
+        REPO_ROOT / pack_settings_path,
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+            "surface_name": "pack_settings",
+            "contract_version": "v1",
+            "description": "Pack settings for artifact validation tests.",
+            "updated_at": "2026-03-16T21:10:00Z",
+            "pack_id": "pack.artifact_test",
+            "surfaces": [
+                {
+                    "surface_name": "schema_catalog",
+                    "surface_kind": "schema_collection",
+                    "path": f"{relative_root}/registries/schema_catalog.json",
+                    "authority": "authoritative",
+                    "visibility": "hidden",
+                },
+                {
+                    "surface_name": "validator_registry",
+                    "surface_kind": "registry",
+                    "path": f"{relative_root}/registries/validator_registry.json",
+                    "authority": "authoritative",
+                    "visibility": "hidden",
+                },
+            ],
+        },
+    )
+    return {
+        "artifact_relative_path": artifact_relative_path,
+        "pack_settings_path": pack_settings_path,
+        "schema_id": schema_id,
+        "validator_id": validator_id,
+    }
 
 
 def test_artifact_validation_auto_selects_acceptance_contract_validator() -> None:
@@ -115,6 +228,26 @@ def test_artifact_validation_reports_invalid_pack_interface_artifact(tmp_path: P
     assert result.validator_id == "validator.interface.pack_work_item_note"
     assert result.issue_count >= 1
     assert any("work_item_id" in issue.message for issue in result.issues)
+
+
+def test_artifact_validation_uses_pack_declared_registry_when_loader_is_pack_aware() -> None:
+    domain_packs_root = REPO_ROOT / "domain_packs"
+    domain_packs_root.mkdir(exist_ok=True)
+
+    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
+        surfaces = materialize_pack_validation_surfaces(Path(tmp_dir))
+        service = ArtifactValidationService(
+            ControlPlaneLoader(
+                REPO_ROOT,
+                active_pack_settings_path=surfaces["pack_settings_path"],
+            )
+        )
+
+        result = service.validate(surfaces["artifact_relative_path"])
+
+    assert result.passed is True
+    assert result.validator_id == surfaces["validator_id"]
+    assert result.schema_ids == (surfaces["schema_id"],)
 
 
 def test_artifact_validation_supports_external_schema_id_with_supplemental_schema_path(

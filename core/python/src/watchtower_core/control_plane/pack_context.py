@@ -13,6 +13,7 @@ from watchtower_core.control_plane.models import (
     PathPatternRegistry,
     SchemaCatalog,
     StatusRegistry,
+    ValidatorRegistry,
 )
 
 if TYPE_CHECKING:
@@ -27,6 +28,7 @@ class PackContext:
     pack_settings_path: str
     pack_settings: PackSettings
     schema_catalog: SchemaCatalog
+    validator_registry: ValidatorRegistry
     governance_surface_map: GovernanceSurfaceMap
     path_pattern_registry: PathPatternRegistry
     status_registry: StatusRegistry
@@ -61,13 +63,18 @@ class PackContext:
                 indexes[declaration.surface_name] = surface
 
         return cls(
-            pack_root=loader.repo_root,
+            pack_root=loader.resolve_path(pack_settings_path).parent,
             pack_settings_path=pack_settings_path,
             pack_settings=pack_settings,
             schema_catalog=_require_surface(
                 surfaces,
                 "schema_catalog",
                 SchemaCatalog,
+            ),
+            validator_registry=_require_surface(
+                surfaces,
+                "validator_registry",
+                ValidatorRegistry,
             ),
             governance_surface_map=_require_surface(
                 surfaces,

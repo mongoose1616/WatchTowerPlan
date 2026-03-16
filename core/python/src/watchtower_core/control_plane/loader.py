@@ -99,6 +99,7 @@ class ControlPlaneLoader:
         artifact_store: ArtifactStore | None = None,
         supplemental_schema_documents: tuple[SupplementalSchemaDocument, ...] = (),
         supplemental_schema_paths: tuple[Path | str, ...] = (),
+        active_pack_settings_path: str | None = None,
     ) -> None:
         effective_workspace = workspace_config or (
             schema_store.workspace_config
@@ -128,6 +129,10 @@ class ControlPlaneLoader:
             schema_store.artifact_source if schema_store is not None else default_io
         )
         self.artifact_store = artifact_store or default_io
+        self.active_pack_settings_path = active_pack_settings_path
+        self._active_pack_settings: PackSettings | None = None
+        self._active_schema_catalog_path: str | None = None
+        self._active_validator_registry_path: str | None = None
         self.schema_store = schema_store or SchemaStore.from_workspace(
             effective_workspace,
             artifact_source=self.artifact_source,
@@ -141,6 +146,36 @@ class ControlPlaneLoader:
         self._validated_directory_cache: dict[str, tuple[tuple[str, dict[str, Any]], ...]] = {}
         self._typed_document_cache: dict[str, object] = {}
         self._typed_directory_cache: dict[str, object] = {}
+        if active_pack_settings_path is not None:
+            self._activate_pack_settings(active_pack_settings_path)
+
+    def _activate_pack_settings(self, pack_settings_path: str) -> None:
+        """Configure pack-aware validation surfaces for one active pack settings path."""
+
+        pack_settings = self.load_pack_settings(pack_settings_path)
+        self.active_pack_settings_path = pack_settings_path
+        self._active_pack_settings = pack_settings
+
+        try:
+            schema_catalog_path = pack_settings.get("schema_catalog").path
+        except KeyError as exc:
+            raise ValueError(
+                "Active pack settings must declare a schema_catalog surface."
+            ) from exc
+        self._active_schema_catalog_path = schema_catalog_path
+        if schema_catalog_path != SCHEMA_CATALOG_ARTIFACT_PATH:
+            self.schema_store = self.schema_store.with_additional_catalog_paths(
+                (schema_catalog_path,)
+            )
+            self.supplemental_schema_ids = self.schema_store.supplemental_schema_ids
+
+        try:
+            validator_registry_path = pack_settings.get("validator_registry").path
+        except KeyError as exc:
+            raise ValueError(
+                "Active pack settings must declare a validator_registry surface."
+            ) from exc
+        self._active_validator_registry_path = validator_registry_path
 
     def set_validated_document_override(
         self,
@@ -231,14 +266,15 @@ class ControlPlaneLoader:
     def load_validator_registry(self) -> ValidatorRegistry:
         """Load the current validator registry."""
         return self._load_typed_document(
-            VALIDATOR_REGISTRY_PATH,
+            self._current_validator_registry_path(),
             ValidatorRegistry.from_document,
         )
 
     def load_pack_settings(self, relative_path: str = PACK_SETTINGS_PATH) -> PackSettings:
         """Load one typed pack-settings surface."""
+        effective_path = self._current_pack_settings_path(relative_path)
         return self._load_typed_document(
-            relative_path,
+            effective_path,
             PackSettings.from_document,
         )
 
@@ -473,7 +509,10 @@ class ControlPlaneLoader:
     def load_pack_context(self, pack_settings_path: str = PACK_SETTINGS_PATH) -> PackContext:
         """Load one PackContext from pack settings and its declared governed surfaces."""
 
-        return PackContext.from_loader(self, pack_settings_path=pack_settings_path)
+        return PackContext.from_loader(
+            self,
+            pack_settings_path=self._current_pack_settings_path(pack_settings_path),
+        )
 
     def load_declared_surface(
         self,
@@ -556,6 +595,11 @@ class ControlPlaneLoader:
             return self.load_workflow_metadata_registry()
         if relative_path == PACK_SETTINGS_PATH:
             return self.load_pack_settings()
+        if (
+            self.active_pack_settings_path is not None
+            and relative_path == self.active_pack_settings_path
+        ):
+            return self.load_pack_settings(relative_path)
         if relative_path == GOVERNANCE_SURFACE_MAP_PATH:
             return self.load_governance_surface_map()
         if relative_path == PATH_PATTERN_REGISTRY_PATH:
@@ -595,6 +639,20 @@ class ControlPlaneLoader:
         if relative_path == PLANNING_CATALOG_PATH:
             return self.load_planning_catalog()
         return self.load_validated_document(relative_path)
+
+    def _current_pack_settings_path(self, relative_path: str) -> str:
+        """Resolve the effective pack-settings path for this loader instance."""
+
+        if relative_path == PACK_SETTINGS_PATH and self.active_pack_settings_path is not None:
+            return self.active_pack_settings_path
+        return relative_path
+
+    def _current_validator_registry_path(self) -> str:
+        """Return the validator registry path active for this loader instance."""
+
+        if self._active_validator_registry_path is not None:
+            return self._active_validator_registry_path
+        return VALIDATOR_REGISTRY_PATH
 
     def load_typed_document(
         self,

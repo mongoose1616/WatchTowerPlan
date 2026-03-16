@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import tempfile
 from copy import deepcopy
 from pathlib import Path
 
@@ -25,6 +26,121 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 def write_json(path: Path, document: dict[str, object]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(f"{json.dumps(document, indent=2)}\n", encoding="utf-8")
+
+
+def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
+    control_plane_root = pack_root / ".wt"
+    relative_root = control_plane_root.relative_to(REPO_ROOT).as_posix()
+    schema_id = "urn:watchtower:schema:interfaces:domain-packs:loader-pack-note:v1"
+    schema_relative_path = (
+        f"{relative_root}/schemas/interfaces/domain_packs/loader_pack_note.schema.json"
+    )
+    validator_id = "validator.domain_packs.loader_pack_note"
+    validator_registry_path = f"{relative_root}/registries/validator_registry.json"
+    artifact_relative_path = f"{relative_root}/work_items/loader_pack_note.json"
+    write_json(
+        REPO_ROOT / schema_relative_path,
+        {
+            "$id": schema_id,
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "title": "Loader Pack Note",
+            "description": "Schema published by a pack-local schema catalog.",
+            "type": "object",
+            "properties": {
+                "$schema": {"const": schema_id},
+                "kind": {"const": "loader_pack_note"},
+                "title": {"type": "string"},
+            },
+            "required": ["$schema", "kind", "title"],
+            "additionalProperties": False,
+        },
+    )
+    write_json(
+        REPO_ROOT / f"{relative_root}/registries/schema_catalog.json",
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+            "id": "registry.schema_catalog",
+            "title": "Pack Schema Catalog",
+            "status": "active",
+            "schemas": [
+                {
+                    "schema_id": schema_id,
+                    "title": "Loader Pack Note",
+                    "description": "Pack-local schema for loader tests.",
+                    "status": "active",
+                    "schema_family": "interface",
+                    "subject_kind": "loader_pack_note",
+                    "version": "v1",
+                    "canonical_path": schema_relative_path,
+                }
+            ],
+        },
+    )
+    write_json(
+        REPO_ROOT / validator_registry_path,
+        {
+            "$schema": "urn:watchtower:schema:artifacts:registries:validator-registry:v1",
+            "id": "registry.validators",
+            "title": "Pack Validator Registry",
+            "status": "active",
+            "validators": [
+                {
+                    "id": validator_id,
+                    "title": "Loader Pack Note Validator",
+                    "description": "Schema-backed validator declared by a pack.",
+                    "status": "active",
+                    "engine": "json_schema",
+                    "artifact_kind": "loader_pack_note",
+                    "applies_to": [artifact_relative_path],
+                    "schema_ids": [schema_id],
+                }
+            ],
+        },
+    )
+    write_json(
+        REPO_ROOT / artifact_relative_path,
+        {
+            "$schema": schema_id,
+            "kind": "loader_pack_note",
+            "title": "Loader Pack Note",
+        },
+    )
+    pack_settings_path = f"{relative_root}/pack_settings.json"
+    write_json(
+        REPO_ROOT / pack_settings_path,
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+            "surface_name": "pack_settings",
+            "contract_version": "v1",
+            "description": "Pack settings for active loader validation tests.",
+            "updated_at": "2026-03-16T21:10:00Z",
+            "pack_id": "pack.loader_test",
+            "surfaces": [
+                {
+                    "surface_name": "schema_catalog",
+                    "surface_kind": "schema_collection",
+                    "path": f"{relative_root}/registries/schema_catalog.json",
+                    "authority": "authoritative",
+                    "visibility": "hidden",
+                },
+                {
+                    "surface_name": "validator_registry",
+                    "surface_kind": "registry",
+                    "path": validator_registry_path,
+                    "authority": "authoritative",
+                    "visibility": "hidden",
+                },
+            ],
+        },
+    )
+    return {
+        "artifact_relative_path": artifact_relative_path,
+        "pack_settings_path": pack_settings_path,
+        "schema_id": schema_id,
+        "schema_relative_path": schema_relative_path,
+        "validator_id": validator_id,
+        "validator_registry_path": validator_registry_path,
+    }
 
 
 def test_control_plane_loader_reads_validator_registry() -> None:
@@ -60,6 +176,43 @@ def test_control_plane_loader_reuses_validator_registry_materialization(
 
     assert first is second
     assert validator_registry_loads == 1
+
+
+def test_control_plane_loader_active_pack_settings_merge_pack_schema_catalog() -> None:
+    domain_packs_root = REPO_ROOT / "domain_packs"
+    domain_packs_root.mkdir(exist_ok=True)
+
+    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
+        surfaces = materialize_pack_validation_surfaces(Path(tmp_dir))
+        loader = ControlPlaneLoader(
+            REPO_ROOT,
+            active_pack_settings_path=surfaces["pack_settings_path"],
+        )
+
+        pack_settings = loader.load_pack_settings()
+        pack_schema = loader.load_schema_catalog().get(surfaces["schema_id"])
+
+    assert pack_settings.pack_id == "pack.loader_test"
+    assert loader.active_pack_settings_path == surfaces["pack_settings_path"]
+    assert pack_schema.canonical_relative_path == surfaces["schema_relative_path"]
+
+
+def test_control_plane_loader_active_pack_settings_read_pack_validator_registry() -> None:
+    domain_packs_root = REPO_ROOT / "domain_packs"
+    domain_packs_root.mkdir(exist_ok=True)
+
+    with tempfile.TemporaryDirectory(dir=domain_packs_root) as tmp_dir:
+        surfaces = materialize_pack_validation_surfaces(Path(tmp_dir))
+        loader = ControlPlaneLoader(
+            REPO_ROOT,
+            active_pack_settings_path=surfaces["pack_settings_path"],
+        )
+
+        registry = loader.load_validator_registry()
+        validator = registry.get(surfaces["validator_id"])
+
+    assert validator.engine == "json_schema"
+    assert validator.schema_ids == (surfaces["schema_id"],)
 
 
 def test_control_plane_loader_invalidates_document_and_directory_cache_state() -> None:
