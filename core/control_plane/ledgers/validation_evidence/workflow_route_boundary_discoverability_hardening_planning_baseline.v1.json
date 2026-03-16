@@ -79,7 +79,7 @@
       "title": "Workflow lookup surfaces expose the same adjacent boundaries through realistic query terms",
       "result": "passed",
       "subject_paths": [
-        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/control_plane/registries/workflow_metadata_registry.json",
         "core/control_plane/indexes/workflows/workflow_index.v1.json",
         "docs/commands/core_python/watchtower_core_query_workflows.md",
         "core/python/tests/unit/test_cli_knowledge_query_commands.py",
@@ -105,7 +105,7 @@
         "workflows/modules/traceability_reconciliation.md",
         "workflows/modules/task_lifecycle_management.md",
         "workflows/modules/task_phase_transition.md",
-        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/control_plane/registries/workflow_metadata_registry.json",
         "core/control_plane/indexes/routes/route_index.v1.json",
         "core/control_plane/indexes/workflows/workflow_index.v1.json",
         "docs/commands/core_python/watchtower_core_route_preview.md",

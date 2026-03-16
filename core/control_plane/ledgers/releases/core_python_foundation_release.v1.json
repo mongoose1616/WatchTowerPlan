@@ -13,7 +13,7 @@
   ],
   "related_paths": [
     "core/python/",
-    "core/control_plane/policies/release/release_policy.v1.json",
+    "core/control_plane/registries/validator_registry.json",
     "docs/planning/prds/core_python_foundation.md"
   ],
   "notes": "This first release record is local and governance-oriented rather than a public package release."

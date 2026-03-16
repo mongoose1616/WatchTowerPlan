@@ -47,7 +47,7 @@ Review the Phase 0 and Phase 1 rewrite package, confirm the artifact-role metada
 - `Decision`: approved for one bounded slice only.
 - `Chosen storage shape`: small dedicated registry.
 - `Approved pilot family`: artifact-role metadata only.
-- `Approved authored-truth surface`: `core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json`
+- `Approved authored-truth surface`: `core/control_plane/registries/artifact_role_registry.json`
 
 ## Approval Guardrails
 - Keep the first slice additive and read-only.

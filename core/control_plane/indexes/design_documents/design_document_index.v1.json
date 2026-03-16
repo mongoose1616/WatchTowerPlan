@@ -22,7 +22,7 @@
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/validation/acceptance.py"
       ],
@@ -1298,12 +1298,12 @@
       "related_paths": [
         "docs/planning/design/implementation/planning_authority_unification.md",
         "core/control_plane/indexes/planning/",
-        "core/control_plane/registries/authority_map/",
+        "core/control_plane/registries/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/examples/valid/",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/artifact_type_registry.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/repo_ops/sync/",
         "core/python/src/watchtower_core/repo_ops/query/",
@@ -1457,7 +1457,7 @@
         "core/python/tests/unit/",
         "core/python/tests/integration/",
         "core/control_plane/contracts/intake/",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/control_plane/ledgers/validation_evidence/"
       ],
       "internal_reference_paths": [
@@ -1474,7 +1474,7 @@
         "docs/standards/metadata/front_matter_standard.md",
         "docs/standards/data_contracts/acceptance_contract_standard.md",
         "docs/standards/data_contracts/validation_evidence_standard.md",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/control_plane/schemas/artifacts/validator_registry.v1.schema.json",
         "workflows/modules/feature_design_planning.md"
       ],
@@ -1590,7 +1590,6 @@
         "core/control_plane/indexes/references/",
         "core/control_plane/indexes/registries/",
         "core/control_plane/indexes/schemas/",
-        "core/control_plane/policies/",
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/query/references.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
@@ -1774,13 +1773,13 @@
         "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/registries/schema_catalog/",
+        "core/control_plane/registries/",
         "core/control_plane/examples/valid/registries/",
         "core/control_plane/examples/invalid/registries/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/tests/unit/",
         "core/python/tests/integration/",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
         "core/python/src/watchtower_core/query/"
       ],
@@ -1975,7 +1974,7 @@
         "docs/standards/governance/rewrite_surface_classification_standard.md",
         "docs/standards/governance/rewrite_execution_control_standard.md",
         "docs/planning/prds/structural_rewrite_program.md",
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md"
       ]
     },
@@ -2144,16 +2143,16 @@
       "family": "feature_design",
       "title": "Validated Core and Pack Data Shape Convergence Feature Design",
       "summary": "Defines the technical design boundary for Validated Core and Pack Data Shape Convergence.",
-      "status": "draft",
+      "status": "active",
       "doc_path": "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
-      "updated_at": "2026-03-16T04:32:27Z",
+      "updated_at": "2026-03-16T05:47:10Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/validated_core_and_pack_data_shape_convergence.md",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/manifests/",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/schema_catalog.json",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/tests/unit/",
         "docs/planning/"
@@ -2213,7 +2212,7 @@
         "workflows/modules/",
         "core/python/src/watchtower_core/repo_ops/query/routes.py",
         "core/python/src/watchtower_core/repo_ops/query/workflows.py",
-        "core/control_plane/registries/workflows/",
+        "core/control_plane/registries/",
         "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/workflows/",
         "docs/commands/core_python/"
@@ -2435,8 +2434,8 @@
       ],
       "related_paths": [
         "core/python/src/watchtower_core/control_plane/",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-        "core/control_plane/registries/validators/validator_registry.v1.json"
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/validator_registry.json"
       ],
       "internal_reference_paths": [
         "core/python/",
@@ -3490,7 +3489,6 @@
         "core/control_plane/indexes/references/",
         "core/control_plane/indexes/registries/",
         "core/control_plane/indexes/schemas/",
-        "core/control_plane/policies/",
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/query/references.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
@@ -4359,9 +4357,9 @@
       "family": "implementation_plan",
       "title": "Validated Core and Pack Data Shape Convergence Implementation Plan",
       "summary": "Breaks Validated Core and Pack Data Shape Convergence into a bounded implementation slice.",
-      "status": "draft",
+      "status": "active",
       "doc_path": "docs/planning/design/implementation/validated_core_and_pack_data_shape_convergence.md",
-      "updated_at": "2026-03-16T04:32:27Z",
+      "updated_at": "2026-03-16T05:47:10Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [
@@ -4427,7 +4425,7 @@
         "workflows/modules/",
         "core/python/src/watchtower_core/repo_ops/query/routes.py",
         "core/python/src/watchtower_core/repo_ops/query/workflows.py",
-        "core/control_plane/registries/workflows/",
+        "core/control_plane/registries/",
         "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/workflows/",
         "docs/commands/core_python/"

@@ -154,7 +154,7 @@ This standard defines the parity contract, slice-control package, checkpoint wor
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
 - [structural_rewrite_program_acceptance.v1.json](/home/j/WatchTowerPlan/core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json)
-- [authority_map.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map/authority_map.v1.json)
+- [authority_map.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map.json)
 
 ## Updated At
 - `2026-03-15T15:30:00Z`

@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.authority_map"
 title: "Authority Map Standard"
-summary: "This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/authority_map/`."
+summary: "This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/`."
 type: "standard"
 status: "active"
 tags:
@@ -17,7 +17,7 @@ authority: "authoritative"
 # Authority Map Standard
 
 ## Summary
-This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/authority_map/`.
+This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/`.
 
 ## Purpose
 - Publish one machine-readable policy answer for which planning or governance surface is canonical for a recurring question.
@@ -25,7 +25,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 - Keep canonical-versus-projection relationships explicit as the planning and governance corpus grows.
 
 ## Scope
-- Applies to machine-readable authority-map artifacts stored under `core/control_plane/registries/authority_map/`.
+- Applies to machine-readable authority-map artifacts stored under `core/control_plane/registries/`.
 - Covers placement, root artifact fields, question-entry shape, preferred-command capture, and fallback-path expectations.
 - Does not replace the path index, command index, coordination index, planning catalog, or the human README and command-doc surfaces those canonical machine answers point to.
 
@@ -40,13 +40,13 @@ This standard defines the role, structure, and boundary rules for the authored a
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): defines the durable trace-linked source join the authority map should distinguish from the planning catalog.
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): defines the broader repository path lookup surface the authority map must not duplicate.
 - [schema_catalog_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_catalog_standard.md): defines schema-catalog update expectations for this registry family.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Model canonical-surface lookup as an authored registry, not as a derived index.
 - Keep the authority map narrow and question-driven.
 - Treat the authority map as policy that answers recurring planning and governance questions, not as a complete inventory of every governed artifact.
-- Store published authority maps under `core/control_plane/registries/authority_map/`.
+- Store published authority maps under `core/control_plane/registries/`.
 - Keep the companion schema under `core/control_plane/schemas/artifacts/`.
 - Use repository-relative paths for canonical and fallback surfaces.
 - Every authority entry should name:
@@ -91,7 +91,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/authority_map/`; `core/control_plane/registries/authority_map/README.md`; `core/control_plane/examples/valid/registries/authority_map*.example.json`; `core/control_plane/examples/invalid/registries/authority_map*.example.json`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `core/control_plane/registries/README.md`; `core/control_plane/examples/valid/registries/authority_map*.example.json`; `core/control_plane/examples/invalid/registries/authority_map*.example.json`
 
 ## Validation
 - The authority map should validate against its published schema.
@@ -110,7 +110,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 - [coordination_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/coordination_index_standard.md)
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map/README.md)
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/README.md)
 
 ## Updated At
 - `2026-03-12T01:22:49Z`

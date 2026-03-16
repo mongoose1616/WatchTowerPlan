@@ -116,7 +116,7 @@ This document defines the feature-level design for the acceptance and evidence r
 - `core/control_plane/contracts/acceptance/`
 - `core/control_plane/ledgers/validation_evidence/`
 - `core/control_plane/indexes/traceability/traceability_index.v1.json`
-- `core/control_plane/registries/validators/validator_registry.v1.json`
+- `core/control_plane/registries/validator_registry.json`
 - `core/python/src/watchtower_core/query/`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 

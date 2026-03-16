@@ -15,7 +15,7 @@ authority: "authoritative"
 applies_to:
   - "core/control_plane/schemas/interfaces/"
   - "core/control_plane/examples/"
-  - "core/control_plane/registries/schema_catalog/"
+  - "core/control_plane/registries/"
   - "core/python/src/watchtower_core/"
 related_ids:
   - "prd.core_export_readiness_and_optimization"

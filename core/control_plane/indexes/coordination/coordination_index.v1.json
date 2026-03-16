@@ -3,152 +3,25 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-16T05:15:28Z",
-  "coordination_mode": "active_work",
-  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
-  "recommended_next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-  "recommended_surface_path": "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-  "active_initiative_count": 1,
-  "blocked_task_count": 1,
-  "actionable_task_count": 1,
-  "entries": [
+  "updated_at": "2026-03-16T05:56:22Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
+  "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
+  "recommended_surface_path": "docs/planning/README.md",
+  "active_initiative_count": 0,
+  "blocked_task_count": 0,
+  "actionable_task_count": 0,
+  "entries": [],
+  "actionable_tasks": [],
+  "recent_closed_initiatives": [
     {
       "trace_id": "trace.validated_core_pack_data_shape_convergence",
       "title": "Validated Core and Pack Data Shape Convergence PRD",
-      "summary": "Converges the repository data model toward a validated reusable core plus pack-owned artifact shape aligned with the future pack standard.",
-      "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-16T05:15:28Z",
-      "open_task_count": 2,
-      "blocked_task_count": 1,
+      "initiative_status": "completed",
+      "closed_at": "2026-03-16T05:56:22Z",
       "key_surface_path": "docs/planning/prds/validated_core_and_pack_data_shape_convergence.md",
-      "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-      "next_surface_path": "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004",
-        "task.validated_core_pack_data_shape_convergence.validation_closeout.005"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004",
-          "title": "Align current repo data families with pack artifact and index surfaces",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.validated_core_pack_data_shape_convergence.pack_models.003"
-          ]
-        },
-        {
-          "task_id": "task.validated_core_pack_data_shape_convergence.validation_closeout.005",
-          "title": "Validate and close validated core and pack data shape convergence",
-          "task_status": "backlog",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/validate_and_close_validated_core_and_pack_data_shape_convergence.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004"
-          ]
-        }
-      ],
-      "blocked_by_task_ids": [
-        "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004"
-      ],
-      "prd_ids": [
-        "prd.validated_core_pack_data_shape_convergence"
-      ],
-      "decision_ids": [
-        "decision.validated_core_pack_data_shape_convergence_direction"
-      ],
-      "design_ids": [
-        "design.features.validated_core_pack_data_shape_convergence"
-      ],
-      "plan_ids": [
-        "design.implementation.validated_core_pack_data_shape_convergence"
-      ],
-      "task_ids": [
-        "task.validated_core_pack_data_shape_convergence.bootstrap.001",
-        "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004",
-        "task.validated_core_pack_data_shape_convergence.pack_models.003",
-        "task.validated_core_pack_data_shape_convergence.runtime_manifest.002",
-        "task.validated_core_pack_data_shape_convergence.validation_closeout.005"
-      ],
-      "acceptance_ids": [
-        "ac.validated_core_pack_data_shape_convergence.001",
-        "ac.validated_core_pack_data_shape_convergence.002",
-        "ac.validated_core_pack_data_shape_convergence.003"
-      ],
-      "acceptance_contract_ids": [
-        "contract.acceptance.validated_core_pack_data_shape_convergence"
-      ],
-      "evidence_ids": [
-        "evidence.validated_core_pack_data_shape_convergence.planning_baseline"
-      ],
-      "related_paths": [
-        "core/control_plane/contracts/acceptance/validated_core_pack_data_shape_convergence_acceptance.v1.json",
-        "core/control_plane/ledgers/validation_evidence/validated_core_pack_data_shape_convergence_planning_baseline.v1.json",
-        "core/control_plane/manifests/",
-        "core/control_plane/manifests/README.md",
-        "core/control_plane/manifests/pack_runtime_manifest.v1.json",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
-        "core/control_plane/schemas/artifacts/",
-        "core/control_plane/schemas/artifacts/README.md",
-        "core/control_plane/schemas/artifacts/pack_runtime_manifest.v1.schema.json",
-        "core/python/README.md",
-        "core/python/src/watchtower_core/control_plane/",
-        "core/python/src/watchtower_core/control_plane/README.md",
-        "core/python/src/watchtower_core/control_plane/loader.py",
-        "core/python/src/watchtower_core/control_plane/models/manifests.py",
-        "core/python/src/watchtower_core/control_plane/workspace.py",
-        "core/python/tests/unit/",
-        "core/python/tests/unit/test_control_plane_loader.py",
-        "core/python/tests/unit/test_workspace_injection.py",
-        "docs/planning/",
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/decisions/validated_core_and_pack_data_shape_convergence_direction.md",
-        "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
-        "docs/planning/design/implementation/validated_core_and_pack_data_shape_convergence.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "docs/planning/prds/validated_core_and_pack_data_shape_convergence.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/publish_pack_runtime_manifest_and_workspace_startup_boundary.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/validated_core_and_pack_data_shape_convergence_bootstrap.md",
-        "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-        "docs/planning/tasks/open/validate_and_close_validated_core_and_pack_data_shape_convergence.md",
-        "docs/planning/tasks/task_tracking.md"
-      ],
-      "tags": [
-        "traceability"
-      ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-16T04:45:06Z after replacing the bootstrap scaffold with the contract-first migration baseline and startup-boundary implementation slice."
-    }
-  ],
-  "actionable_tasks": [
-    {
-      "trace_id": "trace.validated_core_pack_data_shape_convergence",
-      "initiative_title": "Validated Core and Pack Data Shape Convergence PRD",
-      "task_id": "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004",
-      "title": "Align current repo data families with pack artifact and index surfaces",
-      "task_status": "in_progress",
-      "priority": "high",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-      "is_actionable": true,
-      "depends_on": [
-        "task.validated_core_pack_data_shape_convergence.pack_models.003"
-      ]
-    }
-  ],
-  "recent_closed_initiatives": [
+      "closure_reason": "Aligned the pack-settings startup contract, flattened registries, retired prototype pack bridges, classified current pack-local projections, and reran clean validation."
+    },
     {
       "trace_id": "trace.core_split_compatibility_wrapper_retirement",
       "title": "Core Split Compatibility Wrapper Retirement PRD",
@@ -220,14 +93,6 @@
       "closed_at": "2026-03-13T20:17:49Z",
       "key_surface_path": "docs/planning/prds/data_contract_index_family_baseline_alignment.md",
       "closure_reason": "Completed the bounded refactor review after adding the planning-index family baseline, refactoring the member standards, refreshing discoverability, repairing reopened validation-evidence drift, and rerunning clean confirmation passes."
-    },
-    {
-      "trace_id": "trace.validation_test_hotspot_rebalancing",
-      "title": "Validation Test Hotspot Rebalancing PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-13T19:19:06Z",
-      "key_surface_path": "docs/planning/prds/validation_test_hotspot_rebalancing.md",
-      "closure_reason": "Completed the bounded refactor review after splitting the remaining validation hotspots, restoring repository-path discoverability, repairing the adjacent integration import regression, and rerunning clean confirmation passes."
     }
   ]
 }

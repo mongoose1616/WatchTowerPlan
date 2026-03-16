@@ -97,7 +97,7 @@ Define the bounded next Phase 4 checkpoint for aligning the `InitiativeCloseoutS
 ## Preliminary Authored Truth and Derived Outputs
 ### Authored truth to preserve at entry
 - `docs/planning/`
-- `core/control_plane/registries/authority_map/authority_map.v1.json`
+- `core/control_plane/registries/authority_map.json`
 - `core/control_plane/indexes/traceability/traceability_index.v1.json`
 
 ### Derived outputs to keep aligned

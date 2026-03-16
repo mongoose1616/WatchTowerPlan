@@ -1,7 +1,7 @@
 # `core/control_plane/schemas/artifacts`
 
 ## Description
-`This directory holds schemas for artifacts authored and owned by the control plane itself, such as registries, policies, indexes, contracts, and committed ledgers.`
+`This directory holds schemas for artifacts authored and owned by the control plane itself, such as registries, indexes, contracts, and committed ledgers.`
 
 ## Paths
 | Path | Description |
@@ -21,11 +21,8 @@
 | `core/control_plane/schemas/artifacts/intake_contract.v1.schema.json` | Schema for the machine-readable intake-contract artifact family. |
 | `core/control_plane/schemas/artifacts/migration_record.v1.schema.json` | Schema for the machine-readable migration-record artifact family. |
 | `core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json` | Schema for the canonical machine-readable planning-catalog artifact family. |
-| `core/control_plane/schemas/artifacts/pack_runtime_manifest.v1.schema.json` | Schema for the machine-readable pack-runtime manifest artifact family. |
-| `core/control_plane/schemas/artifacts/policy_catalog.v1.schema.json` | Schema for the machine-readable policy-catalog registry artifact family. |
 | `core/control_plane/schemas/artifacts/prd_index.v1.schema.json` | Schema for the machine-readable PRD-index artifact family. |
 | `core/control_plane/schemas/artifacts/reference_index.v1.schema.json` | Schema for the machine-readable reference-index artifact family. |
-| `core/control_plane/schemas/artifacts/release_policy.v1.schema.json` | Schema for the machine-readable release-policy artifact family. |
 | `core/control_plane/schemas/artifacts/release_record.v1.schema.json` | Schema for the machine-readable release-record artifact family. |
 | `core/control_plane/schemas/artifacts/repository_manifest.v1.schema.json` | Schema for the machine-readable repository-manifest artifact family. |
 | `core/control_plane/schemas/artifacts/repository_path_index.v1.schema.json` | Schema for the generated repository path index artifact family. |

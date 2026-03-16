@@ -114,7 +114,7 @@ Define the bounded Phase 4 entry checkpoint for shared projection mechanics and 
 ## Preliminary Authored Truth and Derived Outputs
 ### Authored truth to preserve at entry
 - `docs/planning/`
-- `core/control_plane/registries/authority_map/authority_map.v1.json`
+- `core/control_plane/registries/authority_map.json`
 
 ### Derived outputs to keep aligned
 - `core/control_plane/indexes/coordination/coordination_index.v1.json`
@@ -164,7 +164,7 @@ Define the bounded Phase 4 entry checkpoint for shared projection mechanics and 
   - `./.venv/bin/watchtower-core query coordination --format json`
   - `./.venv/bin/watchtower-core query planning --trace-id trace.structural_rewrite_program --format json`
 - Inspect the current projection boundary directly in:
-  - `core/control_plane/registries/authority_map/authority_map.v1.json`
+  - `core/control_plane/registries/authority_map.json`
   - `core/control_plane/indexes/coordination/coordination_index.v1.json`
   - `core/control_plane/indexes/planning/planning_catalog.v1.json`
   - `core/control_plane/indexes/initiatives/initiative_index.v1.json`

@@ -12,8 +12,8 @@ authority: "supporting"
 applies_to:
   - "docs/planning/design/implementation/control_plane_loaders_and_schema_store.md"
   - "core/python/src/watchtower_core/control_plane/"
-  - "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
-  - "core/control_plane/registries/validators/validator_registry.v1.json"
+  - "core/control_plane/registries/schema_catalog.json"
+  - "core/control_plane/registries/validator_registry.json"
 aliases:
   - "control plane loader plan"
   - "schemastore plan"
@@ -53,8 +53,8 @@ This plan breaks the first executable `core/python` slice into concrete work for
 - The first implementation should avoid premature abstractions for engines, policies, or storage backends.
 
 ## Current-State Context
-- `core/control_plane/registries/schema_catalog/schema_catalog.v1.json` now catalogs published schema IDs and canonical local schema paths.
-- `core/control_plane/registries/validators/validator_registry.v1.json` declares validation capabilities that later code will need to load.
+- `core/control_plane/registries/schema_catalog.json` now catalogs published schema IDs and canonical local schema paths.
+- `core/control_plane/registries/validator_registry.json` declares validation capabilities that later code will need to load.
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` and `core/control_plane/indexes/commands/command_index.v1.json` now provide governed lookup surfaces.
 - `core/control_plane/contracts/acceptance/`, `core/control_plane/indexes/traceability/`, and `core/control_plane/ledgers/validation_evidence/` now publish the first downstream traceability surfaces the loader layer will eventually need to expose.
 - `core/python/src/watchtower_core/control_plane/` now publishes live loaders, typed models, and schema-resolution helpers that later query, sync, and validation slices reuse.

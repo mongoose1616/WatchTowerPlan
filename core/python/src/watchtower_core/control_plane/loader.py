@@ -18,7 +18,6 @@ from watchtower_core.control_plane.models import (
     FoundationIndex,
     GovernanceSurfaceMap,
     InitiativeIndex,
-    PackRuntimeManifest,
     PackSettings,
     PathPatternRegistry,
     PlanningCatalog,
@@ -50,12 +49,11 @@ from watchtower_core.control_plane.workspace import (
     WorkspaceConfig,
 )
 
-VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validators/validator_registry.v1.json"
-AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map/authority_map.v1.json"
+VALIDATOR_REGISTRY_PATH = "core/control_plane/registries/validator_registry.json"
+AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map.json"
 WORKFLOW_METADATA_REGISTRY_PATH = (
-    "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json"
+    "core/control_plane/registries/workflow_metadata_registry.json"
 )
-PACK_RUNTIME_MANIFEST_PATH = "core/control_plane/manifests/pack_runtime_manifest.v1.json"
 PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
 GOVERNANCE_SURFACE_MAP_PATH = "core/control_plane/registries/governance_surface_map.json"
 PATH_PATTERN_REGISTRY_PATH = "core/control_plane/registries/path_pattern_registry.json"
@@ -233,13 +231,6 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             VALIDATOR_REGISTRY_PATH,
             ValidatorRegistry.from_document,
-        )
-
-    def load_pack_runtime_manifest(self) -> PackRuntimeManifest:
-        """Load the current pack-runtime manifest."""
-        return self._load_typed_document(
-            PACK_RUNTIME_MANIFEST_PATH,
-            PackRuntimeManifest.from_document,
         )
 
     def load_pack_settings(self, relative_path: str = PACK_SETTINGS_PATH) -> PackSettings:
@@ -486,8 +477,6 @@ class ControlPlaneLoader:
             return self.load_authority_map()
         if relative_path == WORKFLOW_METADATA_REGISTRY_PATH:
             return self.load_workflow_metadata_registry()
-        if relative_path == PACK_RUNTIME_MANIFEST_PATH:
-            return self.load_pack_runtime_manifest()
         if relative_path == PACK_SETTINGS_PATH:
             return self.load_pack_settings()
         if relative_path == GOVERNANCE_SURFACE_MAP_PATH:

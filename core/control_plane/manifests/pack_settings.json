@@ -9,7 +9,7 @@
     {
       "surface_name": "schema_catalog",
       "surface_kind": "schema_collection",
-      "path": "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+      "path": "core/control_plane/registries/schema_catalog.json",
       "authority": "authoritative",
       "visibility": "hidden"
     },
@@ -44,21 +44,21 @@
     {
       "surface_name": "validator_registry",
       "surface_kind": "registry",
-      "path": "core/control_plane/registries/validators/validator_registry.v1.json",
+      "path": "core/control_plane/registries/validator_registry.json",
       "authority": "authoritative",
       "visibility": "hidden"
     },
     {
       "surface_name": "authority_map",
       "surface_kind": "registry",
-      "path": "core/control_plane/registries/authority_map/authority_map.v1.json",
+      "path": "core/control_plane/registries/authority_map.json",
       "authority": "authoritative",
       "visibility": "mixed"
     },
     {
       "surface_name": "workflow_metadata_registry",
       "surface_kind": "registry",
-      "path": "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+      "path": "core/control_plane/registries/workflow_metadata_registry.json",
       "authority": "authoritative",
       "visibility": "hidden"
     },
@@ -87,5 +87,5 @@
       "rebuildable": true
     }
   ],
-  "notes": "This is the STEP1-style load root for the reusable core boundary while repo-local planning remains outside PackContext."
+  "notes": "This is the load root for the reusable core boundary while repo-local planning remains outside PackContext."
 }

@@ -15,7 +15,7 @@ applies_to:
 - workflows/modules/
 - core/python/src/watchtower_core/repo_ops/query/routes.py
 - core/python/src/watchtower_core/repo_ops/query/workflows.py
-- core/control_plane/registries/workflows/
+- core/control_plane/registries/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/
 - docs/commands/core_python/
@@ -103,7 +103,7 @@ Defines the technical design boundary for Workflow Route Boundary Discoverabilit
 - workflows/modules/
 - core/python/src/watchtower_core/repo_ops/query/routes.py
 - core/python/src/watchtower_core/repo_ops/query/workflows.py
-- core/control_plane/registries/workflows/
+- core/control_plane/registries/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/
 - docs/commands/core_python/

@@ -19,7 +19,7 @@ applies_to:
 - core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
 - core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json
 - core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json
-- core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json
+- core/control_plane/registries/artifact_role_registry.json
 related_ids:
 - prd.structural_rewrite_program
 - design.features.structural_rewrite_program

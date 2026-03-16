@@ -1,13 +1,10 @@
 # Task Tracking
 
 ## Open Tasks
-| Task | Status | Priority | Owner | Trace ID | Summary |
-| --- | --- | --- | --- | --- | --- |
-| [task.validated_core_pack_data_shape_convergence.data_shape_alignment.004](/home/j/WatchTowerPlan/docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md) | `in_progress` | `high` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Maps current repository-local machine surfaces onto the future pack artifact-family and derived-index model. |
-| [task.validated_core_pack_data_shape_convergence.validation_closeout.005](/home/j/WatchTowerPlan/docs/planning/tasks/open/validate_and_close_validated_core_and_pack_data_shape_convergence.md) | `backlog` | `medium` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Runs final validation, captures evidence, and closes the trace once the pack-ready core boundary and data-shape migration are complete. |
+_No open tasks._
 
 ## Closed Task Summary
-- `done`: 229
+- `done`: 231
 - `cancelled`: 3
 
 Use `docs/planning/tasks/closed/archive/` for canonical terminal task records, `watchtower-core query tasks --task-status done --format json` for completed-task lookup, or `watchtower-core query tasks --task-status cancelled --format json` for cancelled-task lookup.
@@ -15,6 +12,8 @@ Use `docs/planning/tasks/closed/archive/` for canonical terminal task records, `
 ## Recently Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
 | --- | --- | --- | --- | --- | --- |
+| [task.validated_core_pack_data_shape_convergence.validation_closeout.005](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_validated_core_and_pack_data_shape_convergence.md) | `done` | `medium` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Runs final validation, captures evidence, and closes the trace once the pack-ready core boundary and data-shape migration are complete. |
+| [task.validated_core_pack_data_shape_convergence.data_shape_alignment.004](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md) | `done` | `high` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Maps current repository-local machine surfaces onto the future pack artifact-family and derived-index model. |
 | [task.validated_core_pack_data_shape_convergence.pack_models.003](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md) | `done` | `high` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Moves shared core closer to pack-facing artifact families by adding typed pack models and reducing planning-specific loader bias. |
 | [task.validated_core_pack_data_shape_convergence.runtime_manifest.002](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/publish_pack_runtime_manifest_and_workspace_startup_boundary.md) | `done` | `high` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Adds the validated pack-runtime manifest and manifest-driven workspace startup boundary for shared core. |
 | [task.validated_core_pack_data_shape_convergence.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/validated_core_and_pack_data_shape_convergence_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Bootstraps the initial planning chain for Validated Core and Pack Data Shape Convergence. |
@@ -23,7 +22,5 @@ Use `docs/planning/tasks/closed/archive/` for canonical terminal task records, `
 | [task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/retire_repo_specific_compatibility_wrappers.md) | `done` | `high` | `repository_maintainer` | `trace.core_split_compatibility_wrapper_retirement` | Remove repo-specific query, sync, and aggregate-validation wrapper modules and move remaining callers to direct repo_ops or reusable imports. |
 | [task.planning_artifact_retention_and_purge.validation_closeout.005](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_planning_artifact_retention_and_purge.md) | `done` | `high` | `repository_maintainer` | `trace.planning_artifact_retention_and_purge` | Run targeted and full validation, confirm the pilot purge behavior, refresh evidence, and close the retention-model trace once the cleanup path lands cleanly. |
 | [task.planning_artifact_retention_and_purge.workflow_and_ledger.003](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md) | `done` | `high` | `repository_maintainer` | `trace.planning_artifact_retention_and_purge` | Add the purge ledger, safety checks, and repo-local implementation path that removes a closed trace package only when retention criteria are satisfied. |
-| [task.planning_artifact_retention_and_purge.pilot_cleanup.004](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/purge_one_closed_pilot_trace_and_repair_surviving_references.md) | `done` | `high` | `repository_maintainer` | `trace.planning_artifact_retention_and_purge` | Run the guarded purge workflow on one closed trace, remove its related planning artifacts, and prove the surviving standards and indexes remain coherent. |
-| [task.planning_artifact_retention_and_purge.standard_alignment.002](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/align_retention_policy_with_canonical_standards_and_purgeability_rules.md) | `done` | `high` | `repository_maintainer` | `trace.planning_artifact_retention_and_purge` | Define the promote-then-purge standard, update directly affected guidance, and remove canonical assumptions that closed trace artifacts must be kept forever. |
 
-_Updated At: `2026-03-16T05:15:28Z`_
+_Updated At: `2026-03-16T05:55:29Z`_

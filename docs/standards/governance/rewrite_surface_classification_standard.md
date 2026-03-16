@@ -141,7 +141,7 @@ This standard defines the four-axis classification and retention-reason model th
 
 ## Operationalization
 - `Modes`: `documentation`; `workflow`
-- `Operational Surfaces`: `docs/planning/design/implementation/structural_rewrite_program.md`; `core/control_plane/contracts/compatibility/`; `docs/planning/tasks/`; `core/control_plane/registries/authority_map/authority_map.v1.json`
+- `Operational Surfaces`: `docs/planning/design/implementation/structural_rewrite_program.md`; `core/control_plane/contracts/compatibility/`; `docs/planning/tasks/`; `core/control_plane/registries/authority_map.json`
 
 ## Validation
 - Rewrite reviews should reject proposals that classify a surface with fewer than four axes.

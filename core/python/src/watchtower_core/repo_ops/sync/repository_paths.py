@@ -123,8 +123,6 @@ def _surface_kind(relative_path: str, kind: str) -> str:
         return "control_plane_registry" if kind == "file" else "control_plane_registries"
     if relative_path.startswith("core/control_plane/contracts/"):
         return "control_plane_contract" if kind == "file" else "control_plane_contracts"
-    if relative_path.startswith("core/control_plane/policies/"):
-        return "control_plane_policy" if kind == "file" else "control_plane_policies"
     if relative_path.startswith("core/control_plane/examples/"):
         return "control_plane_example" if kind == "file" else "control_plane_examples"
     if relative_path.startswith("core/control_plane/indexes/"):
@@ -157,7 +155,6 @@ def _maturity_for_surface_kind(surface_kind: str) -> str:
         "control_plane_schema",
         "control_plane_registry",
         "control_plane_contract",
-        "control_plane_policy",
         "control_plane_index",
     }:
         return "authoritative"

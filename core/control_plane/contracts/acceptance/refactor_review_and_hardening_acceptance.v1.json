@@ -49,7 +49,7 @@
         "workflows/modules/task_handoff_review.md",
         "core/control_plane/indexes/routes/route_index.v1.json",
         "core/control_plane/indexes/workflows/workflow_index.v1.json",
-        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/control_plane/registries/workflow_metadata_registry.json",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "core/python/tests/unit/test_route_index_sync.py",
         "core/python/tests/unit/test_workflow_index_sync.py"

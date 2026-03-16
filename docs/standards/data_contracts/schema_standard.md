@@ -118,7 +118,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 
 ## Change Control
 - Update this standard when the repository changes the schema baseline, schema placement model, or fail-closed rules.
-- Update related files in the same change set when schema changes affect `core/control_plane/contracts/`, `core/control_plane/registries/`, `core/control_plane/policies/`, or `core/control_plane/examples/`.
+- Update related files in the same change set when schema changes affect `core/control_plane/contracts/`, `core/control_plane/manifests/`, `core/control_plane/registries/`, `core/control_plane/indexes/`, or `core/control_plane/examples/`.
 - Record breaking acceptance or compatibility changes in the relevant compatibility contract and committed migration history when that structure is in use.
 
 ## References

@@ -83,7 +83,7 @@
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-        "core/control_plane/registries/authority_map/authority_map.v1.json"
+        "core/control_plane/registries/authority_map.json"
       ],
       "acceptance_ids": [
         "ac.structural_rewrite_program.004",

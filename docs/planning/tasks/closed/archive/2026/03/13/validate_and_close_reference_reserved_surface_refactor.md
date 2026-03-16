@@ -18,9 +18,6 @@ applies_to:
 - core/control_plane/indexes/references/
 - core/control_plane/indexes/registries/README.md
 - core/control_plane/indexes/schemas/README.md
-- core/control_plane/policies/README.md
-- core/control_plane/policies/execution/README.md
-- core/control_plane/policies/validation/README.md
 - core/python/tests/
 - docs/planning/
 related_ids:

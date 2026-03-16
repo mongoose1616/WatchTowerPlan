@@ -658,7 +658,7 @@
       "applies_to": [
         "core/control_plane/schemas/interfaces/",
         "core/control_plane/examples/",
-        "core/control_plane/registries/schema_catalog/",
+        "core/control_plane/registries/",
         "core/python/src/watchtower_core/"
       ]
     },
@@ -3593,7 +3593,7 @@
         "workflows/modules/",
         "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/workflows/",
-        "core/control_plane/registries/workflows/",
+        "core/control_plane/registries/",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "core/python/tests/unit/"
       ]
@@ -3737,7 +3737,6 @@
         "core/control_plane/indexes/references/",
         "core/control_plane/indexes/registries/",
         "core/control_plane/indexes/schemas/",
-        "core/control_plane/policies/",
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/query/references.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
@@ -3789,7 +3788,7 @@
     {
       "task_id": "task.reference_and_reserved_surface_maturity_signaling.reserved_family_signaling.003",
       "title": "Mark README-only control-plane families as reserved placeholders",
-      "summary": "Clarify reserved maturity for README-only schema-index, registry-index, execution-policy, and validation-policy families across family entrypoints and adjacent guidance.",
+      "summary": "Clarify reserved maturity for README-only schema-index and registry-index families across family entrypoints and adjacent guidance.",
       "status": "active",
       "task_status": "done",
       "task_kind": "governance",
@@ -3810,9 +3809,6 @@
         "core/control_plane/indexes/README.md",
         "core/control_plane/indexes/registries/README.md",
         "core/control_plane/indexes/schemas/README.md",
-        "core/control_plane/policies/README.md",
-        "core/control_plane/policies/execution/README.md",
-        "core/control_plane/policies/validation/README.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
       ]
@@ -3846,9 +3842,6 @@
         "core/control_plane/indexes/references/",
         "core/control_plane/indexes/registries/README.md",
         "core/control_plane/indexes/schemas/README.md",
-        "core/control_plane/policies/README.md",
-        "core/control_plane/policies/execution/README.md",
-        "core/control_plane/policies/validation/README.md",
         "core/python/tests/",
         "docs/planning/"
       ]
@@ -4661,10 +4654,10 @@
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
         "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
-        "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
-        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/registries/artifact_role_registry.json",
+        "core/control_plane/registries/artifact_type_registry.json",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
         "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
@@ -4701,7 +4694,7 @@
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
-        "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json"
+        "core/control_plane/registries/artifact_role_registry.json"
       ]
     },
     {
@@ -5883,12 +5876,12 @@
       "title": "Align current repo data families with pack artifact and index surfaces",
       "summary": "Maps current repository-local machine surfaces onto the future pack artifact-family and derived-index model.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-      "updated_at": "2026-03-16T05:15:28Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
+      "updated_at": "2026-03-16T05:53:16Z",
       "trace_id": "trace.validated_core_pack_data_shape_convergence",
       "depends_on": [
         "task.validated_core_pack_data_shape_convergence.pack_models.003"
@@ -5942,12 +5935,12 @@
       "title": "Validate and close validated core and pack data shape convergence",
       "summary": "Runs final validation, captures evidence, and closes the trace once the pack-ready core boundary and data-shape migration are complete.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/validate_and_close_validated_core_and_pack_data_shape_convergence.md",
-      "updated_at": "2026-03-16T04:43:09Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_validated_core_and_pack_data_shape_convergence.md",
+      "updated_at": "2026-03-16T05:55:29Z",
       "trace_id": "trace.validated_core_pack_data_shape_convergence",
       "depends_on": [
         "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004"
@@ -6093,7 +6086,7 @@
         "workflows/modules/",
         "core/python/src/watchtower_core/repo_ops/query/routes.py",
         "core/python/src/watchtower_core/repo_ops/query/workflows.py",
-        "core/control_plane/registries/workflows/",
+        "core/control_plane/registries/",
         "core/control_plane/indexes/routes/",
         "core/control_plane/indexes/workflows/",
         "docs/commands/core_python/"
@@ -6183,7 +6176,7 @@
       ],
       "applies_to": [
         "core/python/src/watchtower_core/repo_ops/query/workflows.py",
-        "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
+        "core/control_plane/registries/workflow_metadata_registry.json",
         "core/control_plane/indexes/workflows/workflow_index.v1.json",
         "docs/commands/core_python/watchtower_core_route_preview.md",
         "docs/commands/core_python/watchtower_core_query_workflows.md",

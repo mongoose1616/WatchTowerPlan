@@ -22,11 +22,6 @@ from watchtower_core.control_plane.models.coordination import (
     TraceabilityEntry,
     TraceabilityIndex,
 )
-from watchtower_core.control_plane.models.manifests import (
-    PackRuntimeGovernedRoots,
-    PackRuntimeManifest,
-    PackRuntimeWorkspaceRoots,
-)
 from watchtower_core.control_plane.models.navigation import (
     CommandIndex,
     CommandIndexEntry,
@@ -107,11 +102,8 @@ __all__ = [
     "InitiativeIndex",
     "InitiativeIndexEntry",
     "GovernanceSurfaceMap",
-    "PackRuntimeGovernedRoots",
-    "PackRuntimeManifest",
     "PackSettings",
     "PackSurfaceDeclaration",
-    "PackRuntimeWorkspaceRoots",
     "PathPatternEntry",
     "PathPatternRegistry",
     "PlanningAcceptanceContractSummary",

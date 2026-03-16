@@ -628,60 +628,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/examples/invalid/interfaces/knowledge_index_missing_promotion_record_id.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Invalid knowledge index example missing the promotion record link for an indexed knowledge item.",
-      "parent_path": "core/control_plane/examples/invalid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/examples/invalid/interfaces/pack_work_index_missing_note_path.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Invalid pack work index example missing the primary note path for an indexed work item.",
-      "parent_path": "core/control_plane/examples/invalid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/examples/invalid/interfaces/pack_work_item_note_missing_work_item_id.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Invalid work-item note example missing required work-item provenance.",
-      "parent_path": "core/control_plane/examples/invalid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/examples/invalid/interfaces/promoted_knowledge_missing_promotion_record_id.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Invalid promoted knowledge example missing the promotion record link.",
-      "parent_path": "core/control_plane/examples/invalid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/examples/invalid/interfaces/promotion_record_approved_missing_promoted_ids.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Invalid promotion record example that approves promotion without naming promoted knowledge.",
-      "parent_path": "core/control_plane/examples/invalid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/examples/invalid/interfaces/workspace_artifact_manifest_missing_role.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Invalid workspace artifact manifest example missing an artifact role.",
       "parent_path": "core/control_plane/examples/invalid/interfaces/",
       "maturity": "supporting",
       "priority": "medium",
@@ -1118,60 +1068,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/examples/valid/interfaces/knowledge_index.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Valid knowledge index example aligned with the generic promoted knowledge index schema.",
-      "parent_path": "core/control_plane/examples/valid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/examples/valid/interfaces/pack_work_index.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Valid pack work index example aligned with the generic pack work index schema.",
-      "parent_path": "core/control_plane/examples/valid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/examples/valid/interfaces/pack_work_item_note.v1.example.json",
       "kind": "file",
       "surface_kind": "control_plane_example",
       "summary": "Valid work-item note example aligned with the generic pack-facing note schema.",
-      "parent_path": "core/control_plane/examples/valid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/examples/valid/interfaces/promoted_knowledge.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Valid promoted knowledge example aligned with the generic reusable knowledge schema.",
-      "parent_path": "core/control_plane/examples/valid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/examples/valid/interfaces/promotion_record.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Valid promotion record example aligned with the generic promotion decision schema.",
-      "parent_path": "core/control_plane/examples/valid/interfaces/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/examples/valid/interfaces/workspace_artifact_manifest.v1.example.json",
-      "kind": "file",
-      "surface_kind": "control_plane_example",
-      "summary": "Valid workspace artifact manifest example aligned with the generic pack-facing manifest schema.",
       "parent_path": "core/control_plane/examples/valid/interfaces/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2448,20 +2348,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/manifests/pack_runtime_manifest.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_file",
-      "summary": "Pack-runtime manifest declaring the validated startup boundary and future pack-shape artifact contract for the repository.",
-      "parent_path": "core/control_plane/manifests/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/manifests/pack_settings.json",
       "kind": "file",
       "surface_kind": "control_plane_file",
-      "summary": "STEP1-style pack settings load root for the reusable core boundary.",
+      "summary": "Pack settings load root for the reusable core boundary.",
       "parent_path": "core/control_plane/manifests/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2478,105 +2368,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/policies/",
-      "kind": "directory",
-      "surface_kind": "control_plane_policies",
-      "summary": "Machine-readable guardrails for validation, execution, and release behavior.",
-      "parent_path": "core/control_plane/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer",
-      "tags": [
-        "policies",
-        "guardrails"
-      ],
-      "related_paths": [
-        "core/control_plane/policies/validation/",
-        "core/control_plane/policies/execution/",
-        "core/control_plane/policies/release/"
-      ]
-    },
-    {
-      "path": "core/control_plane/policies/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_policy",
-      "summary": "Describes the purpose of the policies directory and its main policy families.",
-      "parent_path": "core/control_plane/policies/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/policies/execution/",
-      "kind": "directory",
-      "surface_kind": "control_plane_policies",
-      "summary": "Reserved placeholder for future execution-policy artifacts. The family is README-only until published policy documents are needed.",
-      "parent_path": "core/control_plane/policies/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/policies/execution/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_policy",
-      "summary": "Describes the reserved placeholder boundary for execution policies until live artifacts exist here.",
-      "parent_path": "core/control_plane/policies/execution/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/policies/release/",
-      "kind": "directory",
-      "surface_kind": "control_plane_policies",
-      "summary": "Release publication and evidence expectations.",
-      "parent_path": "core/control_plane/policies/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/policies/release/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_policy",
-      "summary": "Describes the purpose of the release policy directory and its current contents.",
-      "parent_path": "core/control_plane/policies/release/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/policies/release/release_policy.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_policy",
-      "summary": "Release policy for the governed local Python workspace and its required release readiness evidence.",
-      "parent_path": "core/control_plane/policies/release/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/policies/validation/",
-      "kind": "directory",
-      "surface_kind": "control_plane_policies",
-      "summary": "Reserved placeholder for future validation-policy artifacts. The family is README-only until published policy documents are needed.",
-      "parent_path": "core/control_plane/policies/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/policies/validation/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_policy",
-      "summary": "Describes the reserved placeholder boundary for validation policies until live artifacts exist here.",
-      "parent_path": "core/control_plane/policies/validation/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/registries/",
       "kind": "directory",
       "surface_kind": "control_plane_registries",
@@ -2584,14 +2375,7 @@
       "parent_path": "core/control_plane/",
       "maturity": "supporting",
       "priority": "medium",
-      "audience_hint": "maintainer",
-      "tags": [
-        "registries",
-        "catalogs"
-      ],
-      "related_paths": [
-        "core/control_plane/registries/validators/"
-      ]
+      "audience_hint": "maintainer"
     },
     {
       "path": "core/control_plane/registries/README.md",
@@ -2607,98 +2391,38 @@
       "path": "core/control_plane/registries/actor_registry.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "STEP1-style actor registry for audit and actor-ref validation.",
+      "summary": "Actor registry for audit and actor-ref validation.",
       "parent_path": "core/control_plane/registries/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/registries/artifact_roles/",
-      "kind": "directory",
-      "surface_kind": "control_plane_registries",
-      "summary": "Publishes bounded rewrite metadata for artifact-role classification without changing runtime authority.",
+      "path": "core/control_plane/registries/artifact_role_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Artifact-role registry for the bounded structural rewrite classification slice.",
       "parent_path": "core/control_plane/registries/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/artifact_roles/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the artifact-role registry directory and its current contents.",
-      "parent_path": "core/control_plane/registries/artifact_roles/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Canonical artifact-role registry for the first bounded structural rewrite pilot.",
-      "parent_path": "core/control_plane/registries/artifact_roles/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/artifact_types/",
-      "kind": "directory",
-      "surface_kind": "control_plane_registries",
-      "summary": "Defines machine-recognized artifact kinds and their identifiers.",
-      "parent_path": "core/control_plane/registries/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/artifact_types/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the artifact type registry directory and its current contents.",
-      "parent_path": "core/control_plane/registries/artifact_types/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
+      "path": "core/control_plane/registries/artifact_type_registry.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
       "summary": "Registry of active governed artifact kinds, their families, schemas, and canonical paths.",
-      "parent_path": "core/control_plane/registries/artifact_types/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/authority_map/",
-      "kind": "directory",
-      "surface_kind": "control_plane_registries",
-      "summary": "Defines canonical planning and governance lookup answers, preferred commands, and fallback surfaces.",
       "parent_path": "core/control_plane/registries/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/authority_map/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the authority-map registry directory and its current contents.",
-      "parent_path": "core/control_plane/registries/authority_map/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/registries/authority_map/authority_map.v1.json",
+      "path": "core/control_plane/registries/authority_map.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
       "summary": "Canonical authored registry of supported planning and governance questions, preferred commands, and fallback surfaces.",
-      "parent_path": "core/control_plane/registries/authority_map/",
+      "parent_path": "core/control_plane/registries/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -2707,7 +2431,7 @@
       "path": "core/control_plane/registries/governance_surface_map.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "STEP1-style governance surface map for non-artifact core surfaces.",
+      "summary": "Governance surface map for non-artifact core surfaces.",
       "parent_path": "core/control_plane/registries/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2717,68 +2441,18 @@
       "path": "core/control_plane/registries/path_pattern_registry.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "STEP1-style path pattern registry for reusable core surfaces.",
+      "summary": "Path pattern registry for reusable core surfaces.",
       "parent_path": "core/control_plane/registries/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/registries/policy_catalog/",
-      "kind": "directory",
-      "surface_kind": "control_plane_registries",
-      "summary": "Catalogs published policy sets by stable identifier.",
-      "parent_path": "core/control_plane/registries/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/policy_catalog/README.md",
+      "path": "core/control_plane/registries/schema_catalog.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the policy catalog directory and its current contents.",
-      "parent_path": "core/control_plane/registries/policy_catalog/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/policy_catalog/policy_catalog.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Registry of active governed policy artifacts and their canonical paths.",
-      "parent_path": "core/control_plane/registries/policy_catalog/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/schema_catalog/",
-      "kind": "directory",
-      "surface_kind": "control_plane_registries",
       "summary": "Maps schema identifiers, versions, and canonical paths.",
       "parent_path": "core/control_plane/registries/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/schema_catalog/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the schema catalog directory and its current boundaries.",
-      "parent_path": "core/control_plane/registries/schema_catalog/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Live schema catalog artifact that maps published schema IDs to canonical local schema files.",
-      "parent_path": "core/control_plane/registries/schema_catalog/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -2787,68 +2461,28 @@
       "path": "core/control_plane/registries/status_registry.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "STEP1-style global status vocabulary for validation and enforcement.",
+      "summary": "Global status vocabulary for validation and enforcement.",
       "parent_path": "core/control_plane/registries/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/registries/validators/",
-      "kind": "directory",
-      "surface_kind": "control_plane_registries",
+      "path": "core/control_plane/registries/validator_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
       "summary": "Catalogs validator identities, capabilities, and selection metadata.",
       "parent_path": "core/control_plane/registries/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/validators/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the validator registry directory and its current contents.",
-      "parent_path": "core/control_plane/registries/validators/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/registries/validators/validator_registry.v1.json",
+      "path": "core/control_plane/registries/workflow_metadata_registry.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
-      "summary": "Canonical authored validator registry artifact.",
-      "parent_path": "core/control_plane/registries/validators/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/workflows/",
-      "kind": "directory",
-      "surface_kind": "control_plane_registries",
       "summary": "Publishes authored workflow retrieval metadata consumed by workflow indexing and route preview.",
       "parent_path": "core/control_plane/registries/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/workflows/README.md",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Describes the purpose of the workflow-registry directory and its current artifact family.",
-      "parent_path": "core/control_plane/registries/workflows/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Canonical authored workflow metadata registry consumed by workflow indexing and route preview.",
-      "parent_path": "core/control_plane/registries/workflows/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -3032,30 +2666,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/schemas/artifacts/pack_runtime_manifest.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable pack-runtime manifest artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the canonical machine-readable planning-catalog artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/policy_catalog.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable policy-catalog registry artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3076,16 +2690,6 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable reference-index artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/release_policy.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable release-policy artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3425,7 +3029,7 @@
       "path": "core/control_plane/schemas/interfaces/packs/artifact_index.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
-      "summary": "Schema for one STEP1-style artifact index.",
+      "summary": "Schema for one future pack artifact index.",
       "parent_path": "core/control_plane/schemas/interfaces/packs/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3452,30 +3056,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/schemas/interfaces/packs/knowledge_index.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for one pack-local knowledge index over promoted reusable knowledge items.",
-      "parent_path": "core/control_plane/schemas/interfaces/packs/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/schemas/interfaces/packs/pack_settings.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for one pack settings load root.",
-      "parent_path": "core/control_plane/schemas/interfaces/packs/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/interfaces/packs/pack_work_index.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for one pack-local work index over work items and their primary note surfaces.",
       "parent_path": "core/control_plane/schemas/interfaces/packs/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3502,40 +3086,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/schemas/interfaces/packs/promoted_knowledge.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for one reviewed and promoted reusable knowledge item.",
-      "parent_path": "core/control_plane/schemas/interfaces/packs/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/interfaces/packs/promotion_record.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for one reviewable promotion decision that links extraction output to promoted knowledge.",
-      "parent_path": "core/control_plane/schemas/interfaces/packs/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/schemas/interfaces/packs/status_registry.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for one global status registry.",
-      "parent_path": "core/control_plane/schemas/interfaces/packs/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/interfaces/packs/workspace_artifact_manifest.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for one metadata-only manifest of pack-local workspace artifacts.",
       "parent_path": "core/control_plane/schemas/interfaces/packs/",
       "maturity": "authoritative",
       "priority": "high",

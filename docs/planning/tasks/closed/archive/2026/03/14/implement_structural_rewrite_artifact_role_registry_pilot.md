@@ -15,10 +15,10 @@ authority: authoritative
 applies_to:
 - docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md
 - core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json
-- core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json
-- core/control_plane/registries/artifact_types/artifact_type_registry.v1.json
-- core/control_plane/registries/schema_catalog/schema_catalog.v1.json
-- core/control_plane/registries/validators/validator_registry.v1.json
+- core/control_plane/registries/artifact_role_registry.json
+- core/control_plane/registries/artifact_type_registry.json
+- core/control_plane/registries/schema_catalog.json
+- core/control_plane/registries/validator_registry.json
 - core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json
 - core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json
 - core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json

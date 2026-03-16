@@ -72,7 +72,7 @@
       ],
       "validation_targets": [
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
@@ -161,13 +161,13 @@
       ],
       "validation_targets": [
         "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
-        "core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json",
-        "core/control_plane/registries/artifact_types/artifact_type_registry.v1.json",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/registries/artifact_role_registry.json",
+        "core/control_plane/registries/artifact_type_registry.json",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
         "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
@@ -220,7 +220,7 @@
       "related_paths": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/commands/core_python/",
-        "core/control_plane/registries/authority_map/authority_map.v1.json"
+        "core/control_plane/registries/authority_map.json"
       ],
       "notes": "The Phase 3 gate authorizes one bounded command companion normalization slice only. It does not authorize broader command-authority rollout."
     },
@@ -248,7 +248,7 @@
         "docs/commands/core_python/",
         "core/python/src/watchtower_core/cli/registry.py",
         "core/python/src/watchtower_core/cli/parser.py",
-        "core/control_plane/registries/authority_map/authority_map.v1.json"
+        "core/control_plane/registries/authority_map.json"
       ],
       "notes": "The bounded slice aligns the root command page's primary Source Surface section and the 23 family-owned doctor, sync, and validate command docs with the existing command-index implementation paths. It does not authorize broader command-authority rollout."
     },
@@ -290,7 +290,7 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "related_paths": [
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/standards/governance/rewrite_execution_control_standard.md"
       ],
@@ -316,7 +316,7 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "related_paths": [
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/standards/governance/rewrite_execution_control_standard.md"
       ],
@@ -347,7 +347,7 @@
         "core/control_plane/indexes/initiatives/initiative_index.v1.json"
       ],
       "related_paths": [
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "docs/planning/coordination_tracking.md",
         "docs/planning/initiatives/initiative_tracking.md"
       ],
@@ -420,7 +420,7 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "related_paths": [
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "core/python/src/watchtower_core/closeout/initiative.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
@@ -497,7 +497,7 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "related_paths": [
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "core/python/src/watchtower_core/closeout/initiative.py",
         "docs/commands/core_python/watchtower_core_closeout_initiative.md"
@@ -521,7 +521,7 @@
         "core/python/tests/unit/test_initiative_closeout.py"
       ],
       "related_paths": [
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/standards/governance/rewrite_execution_control_standard.md"
       ],

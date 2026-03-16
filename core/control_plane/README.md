@@ -1,7 +1,7 @@
 # `core/control_plane`
 
 ## Description
-`This directory is the canonical, versioned, machine-readable authority for the shared core substrate. Keep authored schemas, manifests, registries, contracts, policies, examples, indexes, and committed ledgers here.`
+`This directory is the canonical, versioned, machine-readable authority for the shared core substrate. Keep authored schemas, manifests, registries, contracts, examples, indexes, and committed ledgers here.`
 
 ## Boundaries
 - Keep domain-pack content out of this tree.
@@ -16,7 +16,6 @@
 | `core/control_plane/manifests/` | Authored machine-readable declarations owned by core. |
 | `core/control_plane/registries/` | Canonical lookup data owned by core. |
 | `core/control_plane/contracts/` | Versioned intake and compatibility boundaries. |
-| `core/control_plane/policies/` | Machine-readable guardrails for validation, execution, and release behavior. |
 | `core/control_plane/examples/` | Canonical valid and invalid sample artifacts. |
 | `core/control_plane/indexes/` | Deliberate denormalized lookup files when a concrete consumer exists. |
 | `core/control_plane/ledgers/` | Committed append-only history for governed changes such as migrations and releases. |

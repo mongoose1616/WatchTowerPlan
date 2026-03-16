@@ -77,29 +77,6 @@ class WorkspaceConfig:
             python_workspace_root=resolved_root / DEFAULT_PYTHON_WORKSPACE_PREFIX,
         )
 
-    @classmethod
-    def from_pack_runtime_manifest_document(
-        cls,
-        document: Mapping[str, Any],
-        repo_root: Path | None = None,
-    ) -> WorkspaceConfig:
-        """Construct one workspace mapping from a validated pack-runtime manifest document."""
-
-        resolved_root = repo_root.resolve() if repo_root is not None else discover_repo_root(None)
-        workspace_roots = document.get("workspace_roots")
-        if not isinstance(workspace_roots, Mapping):
-            raise ValueError("Pack runtime manifest is missing workspace_roots.")
-
-        control_plane_prefix = _normalize_relative_path(str(workspace_roots["control_plane"]))
-        python_workspace_prefix = _normalize_relative_path(str(workspace_roots["python_workspace"]))
-        return cls(
-            repo_root=resolved_root,
-            control_plane_root=resolved_root / control_plane_prefix,
-            python_workspace_root=resolved_root / python_workspace_prefix,
-            control_plane_prefix=control_plane_prefix,
-            python_workspace_prefix=python_workspace_prefix,
-        )
-
     def resolve_path(self, relative_path: str) -> Path:
         """Resolve one repository-relative path through the current workspace mapping."""
         normalized = _normalize_relative_path(relative_path)

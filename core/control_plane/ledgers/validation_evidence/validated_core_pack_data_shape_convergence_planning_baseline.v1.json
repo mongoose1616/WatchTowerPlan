@@ -5,7 +5,7 @@
   "status": "active",
   "trace_id": "trace.validated_core_pack_data_shape_convergence",
   "overall_result": "passed",
-  "recorded_at": "2026-03-16T04:45:06Z",
+  "recorded_at": "2026-03-16T05:56:04Z",
   "source_prd_ids": [
     "prd.validated_core_pack_data_shape_convergence"
   ],
@@ -21,7 +21,7 @@
   "checks": [
     {
       "check_id": "check.validated_core_pack_data_shape_convergence.planning_baseline",
-      "title": "Contract-first planning baseline is aligned",
+      "title": "Contract-first planning baseline for the core plus plan-domain-pack split is aligned",
       "result": "passed",
       "subject_paths": [
         "docs/planning/prds/validated_core_and_pack_data_shape_convergence.md",
@@ -32,8 +32,8 @@
         "docs/planning/tasks/closed/archive/2026/03/16/validated_core_and_pack_data_shape_convergence_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/publish_pack_runtime_manifest_and_workspace_startup_boundary.md",
         "docs/planning/tasks/closed/archive/2026/03/16/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md",
-        "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-        "docs/planning/tasks/open/validate_and_close_validated_core_and_pack_data_shape_convergence.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_validated_core_and_pack_data_shape_convergence.md"
       ],
       "subject_ids": [
         "prd.validated_core_pack_data_shape_convergence",
@@ -51,22 +51,24 @@
       "acceptance_ids": [
         "ac.validated_core_pack_data_shape_convergence.001"
       ],
-      "notes": "The trace now carries the concrete contract-first migration design, the execution queue, and the refreshed acceptance contract."
+      "notes": "The trace now carries the concrete contract-first migration design, the explicit current-to-future family mapping, the completed data-shape alignment task, and the refreshed acceptance contract for WatchTowerPlan as the first plan and implementation domain pack consuming reusable core."
     },
     {
-      "check_id": "check.validated_core_pack_data_shape_convergence.runtime_boundary",
-      "title": "Pack-runtime boundary slice is covered",
+      "check_id": "check.validated_core_pack_data_shape_convergence.contract_cutover",
+      "title": "Pack-settings contract cutover is covered",
       "result": "passed",
       "subject_paths": [
-        "core/control_plane/schemas/artifacts/pack_runtime_manifest.v1.schema.json",
-        "core/control_plane/manifests/pack_runtime_manifest.v1.json",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/manifests/pack_settings.json",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/validator_registry.json",
+        "core/control_plane/registries/artifact_type_registry.json",
+        "core/control_plane/registries/README.md",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/control_plane/workspace.py",
-        "core/python/src/watchtower_core/control_plane/models/manifests.py",
+        "core/python/src/watchtower_core/control_plane/pack_context.py",
         "core/python/tests/unit/test_control_plane_loader.py",
-        "core/python/tests/unit/test_workspace_injection.py"
+        "core/python/tests/unit/test_workspace_injection.py",
+        "core/python/tests/unit/test_schema_store.py"
       ],
       "subject_ids": [
         "contract.acceptance.validated_core_pack_data_shape_convergence"
@@ -76,7 +78,7 @@
         "ac.validated_core_pack_data_shape_convergence.002",
         "ac.validated_core_pack_data_shape_convergence.003"
       ],
-      "notes": "The startup-boundary slice published the manifest artifacts, loader support, workspace support, and regression coverage required by the first migration step."
+      "notes": "The contract-cutover slice published the pack-settings load root, flattened the retained registries, removed the runtime-manifest and policy bridges, classified current planning indexes as repo-local projections, and refreshed loader and regression coverage around the simplified boundary."
     }
   ],
   "related_paths": [
@@ -85,7 +87,7 @@
     "docs/planning/initiatives/initiative_tracking.md",
     "docs/planning/tasks/task_tracking.md"
   ],
-  "notes": "Planning baseline evidence refreshed at 2026-03-16T04:45:06Z after replacing the bootstrap scaffold with the contract-first migration baseline and startup-boundary implementation slice.",
+  "notes": "Planning baseline evidence refreshed at 2026-03-16T05:56:04Z after the explicit data-family alignment slice closed and the closeout task moved to the terminal archive.",
   "source_decision_ids": [
     "decision.validated_core_pack_data_shape_convergence_direction"
   ]

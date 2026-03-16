@@ -15,7 +15,6 @@ applies_to:
 - core/control_plane/indexes/references/
 - core/control_plane/indexes/registries/
 - core/control_plane/indexes/schemas/
-- core/control_plane/policies/
 - core/python/src/watchtower_core/repo_ops/sync/reference_index.py
 - core/python/src/watchtower_core/repo_ops/query/references.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py
@@ -45,7 +44,7 @@ Defines the technical design boundary for Reference and Reserved Surface Maturit
 
 ## Scope and Feature Boundary
 - Covers the open refactor follow-up around reference-corpus maturity signaling: reference docs, the family README and template, reference standards, semantic validation, the reference-index schema and examples, sync and query behavior, typed models, CLI help, command docs, and adjacent regression coverage.
-- Covers the README-only reserved-family follow-up around control-plane schema-index, registry-index, execution-policy, and validation-policy directories plus their parent start-here entrypoints and adjacent maintenance guidance.
+- Covers the README-only reserved-family follow-up around control-plane schema-index and registry-index directories plus their parent start-here entrypoints and adjacent maintenance guidance.
 - Covers the same-change derived surfaces that must stay aligned when the governing docs or query behavior changes, including the reference index, command index, repository path index, planning trackers, and traceability joins touched by the task lifecycle.
 - Excludes broader standards-corpus boilerplate reduction, test-suite decomposition, repo-local hotspot modularity, and policy-threshold tuning from the refactor audit.
 - Excludes deleting candidate future references or retiring reserved families; the slice is about explicit maturity signaling, not authority-family removal.
@@ -54,7 +53,7 @@ Defines the technical design boundary for Reference and Reserved Surface Maturit
 - The discovery pass confirmed that the live reference corpus already uses a small status vocabulary in `Current Repository Status`: 40 reference docs say `Candidate reference`, 22 say `Supporting authority`, and 1 says `Active support`.
 - The reference-index sync path currently derives `related_paths` from both `Local Mapping in This Repository` and `References`, which means many candidate references inherit only `docs/references/README.md` as a repo-local path and still appear in query output as `internal=yes`.
 - `watchtower-core query references --related-path core/python/ --format json` currently returns zero results even though the command docs and parser examples present directory-style related-path lookup as a normal usage pattern.
-- The repository-maintenance standard already distinguishes README-only reserved families from active families, but the control-plane family entrypoints still describe the README-only schema-index, registry-index, execution-policy, and validation-policy directories in the same tone as live artifact families.
+- The repository-maintenance standard already distinguishes README-only reserved families from active families, but the control-plane family entrypoints still describe the README-only schema-index and registry-index directories in the same tone as live artifact families.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): preserve explicit governed surfaces and deterministic lookup behavior while tightening the seams that currently overstate present-tense support.
@@ -95,13 +94,13 @@ Defines the technical design boundary for Reference and Reserved Surface Maturit
 - Tighten reference semantics so reference docs must publish an approved repository-status phrase and non-candidate entries must keep explicit current touchpoints or equivalent local mapping paths.
 - Build `related_paths` and `uses_internal_references` from `applies_to` plus `Local Mapping in This Repository`, not from generic repo-local links in the `References` section.
 - Extend `watchtower-core query references` so it can filter by repository status, emit that field in JSON and human output, and treat directory-form related-path filters as descendant matches instead of file-only exact equality.
-- Mark the README-only schema-index, registry-index, execution-policy, and validation-policy directories as reserved placeholders in both their leaf READMEs and their parent family entrypoints.
+- Mark the README-only schema-index and registry-index directories as reserved placeholders in both their leaf READMEs and their parent family entrypoints.
 
 ### Data and Interface Impacts
 - `core/control_plane/schemas/artifacts/reference_index.v1.schema.json`, `core/control_plane/examples/valid/indexes/reference_index.v1.example.json`, `core/control_plane/indexes/references/reference_index.v1.json`, and the typed `ReferenceIndexEntry` model gain the derived `repository_status` field.
 - `core/python/src/watchtower_core/repo_ops/sync/reference_index.py`, `core/python/src/watchtower_core/repo_ops/query/references.py`, `core/python/src/watchtower_core/cli/query_knowledge_family.py`, and `core/python/src/watchtower_core/cli/query_knowledge_handlers.py` change together for the status derivation, related-path behavior, and query output.
 - `docs/references/README.md`, `docs/templates/reference_template.md`, `docs/standards/documentation/reference_md_standard.md`, `docs/standards/data_contracts/reference_index_standard.md`, `docs/commands/core_python/watchtower_core_query_references.md`, and nearby workspace command guidance change together for the human-facing contract.
-- `core/control_plane/indexes/README.md`, `core/control_plane/indexes/registries/README.md`, `core/control_plane/indexes/schemas/README.md`, `core/control_plane/policies/README.md`, `core/control_plane/policies/execution/README.md`, `core/control_plane/policies/validation/README.md`, and the repository-maintenance standard change together for reserved-family signaling.
+- `core/control_plane/indexes/README.md`, `core/control_plane/indexes/registries/README.md`, `core/control_plane/indexes/schemas/README.md`, and the repository-maintenance standard change together for reserved-family signaling.
 
 ### Execution Flow
 1. Publish the bounded coverage map and findings ledger for reference maturity and reserved-family signaling before touching implementation.
@@ -121,7 +120,6 @@ Defines the technical design boundary for Reference and Reserved Surface Maturit
 - core/control_plane/indexes/references/
 - core/control_plane/indexes/registries/
 - core/control_plane/indexes/schemas/
-- core/control_plane/policies/
 - core/python/src/watchtower_core/repo_ops/sync/reference_index.py
 - core/python/src/watchtower_core/repo_ops/query/references.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py

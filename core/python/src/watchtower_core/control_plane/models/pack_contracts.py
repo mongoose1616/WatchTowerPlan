@@ -1,4 +1,4 @@
-"""Typed models for STEP1-style pack contract surfaces."""
+"""Typed models for pack-facing contract surfaces."""
 
 from __future__ import annotations
 

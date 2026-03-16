@@ -41,7 +41,7 @@ def test_schema_store_resolves_cataloged_schema_paths() -> None:
     assert store.resolve_path(record.schema_id) == REPO_ROOT / record.canonical_relative_path
 
 
-def test_schema_store_validates_documentation_and_pack_interface_examples() -> None:
+def test_schema_store_validates_documentation_and_supported_pack_interface_examples() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     example_pairs = [
         (
@@ -70,34 +70,9 @@ def test_schema_store_validates_documentation_and_pack_interface_examples() -> N
             "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
         ),
         (
-            "core/control_plane/examples/valid/interfaces/workspace_artifact_manifest.v1.example.json",
-            "core/control_plane/examples/invalid/interfaces/workspace_artifact_manifest_missing_role.v1.example.json",
-            "urn:watchtower:schema:interfaces:packs:workspace-artifact-manifest:v1",
-        ),
-        (
             "core/control_plane/examples/valid/interfaces/extraction_output_envelope.v1.example.json",
             "core/control_plane/examples/invalid/interfaces/extraction_output_envelope_missing_trace_id.v1.example.json",
             "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1",
-        ),
-        (
-            "core/control_plane/examples/valid/interfaces/promoted_knowledge.v1.example.json",
-            "core/control_plane/examples/invalid/interfaces/promoted_knowledge_missing_promotion_record_id.v1.example.json",
-            "urn:watchtower:schema:interfaces:packs:promoted-knowledge:v1",
-        ),
-        (
-            "core/control_plane/examples/valid/interfaces/promotion_record.v1.example.json",
-            "core/control_plane/examples/invalid/interfaces/promotion_record_approved_missing_promoted_ids.v1.example.json",
-            "urn:watchtower:schema:interfaces:packs:promotion-record:v1",
-        ),
-        (
-            "core/control_plane/examples/valid/interfaces/pack_work_index.v1.example.json",
-            "core/control_plane/examples/invalid/interfaces/pack_work_index_missing_note_path.v1.example.json",
-            "urn:watchtower:schema:interfaces:packs:pack-work-index:v1",
-        ),
-        (
-            "core/control_plane/examples/valid/interfaces/knowledge_index.v1.example.json",
-            "core/control_plane/examples/invalid/interfaces/knowledge_index_missing_promotion_record_id.v1.example.json",
-            "urn:watchtower:schema:interfaces:packs:knowledge-index:v1",
         ),
     ]
 
@@ -111,7 +86,7 @@ def test_schema_store_validates_documentation_and_pack_interface_examples() -> N
             store.validate_instance(invalid_example, schema_id=schema_id)
 
 
-def test_schema_store_validates_step1_pack_contracts_from_inline_documents() -> None:
+def test_schema_store_validates_pack_contracts_from_inline_documents() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
     example_pairs = [
         (
@@ -126,10 +101,7 @@ def test_schema_store_validates_step1_pack_contracts_from_inline_documents() -> 
                     {
                         "surface_name": "schema_catalog",
                         "surface_kind": "schema_collection",
-                        "path": (
-                            "core/control_plane/registries/schema_catalog/"
-                            "schema_catalog.v1.json"
-                        ),
+                        "path": "core/control_plane/registries/schema_catalog.json",
                         "authority": "authoritative",
                         "visibility": "hidden",
                     }
@@ -146,10 +118,7 @@ def test_schema_store_validates_step1_pack_contracts_from_inline_documents() -> 
                     {
                         "surface_name": "schema_catalog",
                         "surface_kind": "wrong_kind",
-                        "path": (
-                            "core/control_plane/registries/schema_catalog/"
-                            "schema_catalog.v1.json"
-                        ),
+                        "path": "core/control_plane/registries/schema_catalog.json",
                         "authority": "authoritative",
                         "visibility": "hidden",
                     }

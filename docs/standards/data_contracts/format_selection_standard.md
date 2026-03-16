@@ -92,7 +92,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 5. Keep schema, validation, and companion examples aligned with the chosen format in the same change set.
 
 ## Examples
-- A new policy document under `core/control_plane/policies/` should be JSON, not YAML.
+- A new registry document under `core/control_plane/registries/` should be JSON, not YAML.
 - A new standards document under `docs/standards/**` should be Markdown, not JSON or YAML.
 - A governed reference document may use YAML front matter for metadata while keeping the body in Markdown.
 - A future append-only validation-event log could use NDJSON if it is truly line-oriented and not canonical control-plane authority.
@@ -100,7 +100,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 
 ## Operationalization
 - `Modes`: `artifact`; `workflow`; `documentation`
-- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/policies/`; `workflows/`; `docs/`
+- `Operational Surfaces`: `core/control_plane/`; `core/control_plane/registries/`; `workflows/`; `docs/`
 
 ## Validation
 - Reviewers should challenge format choices that add complexity without a concrete benefit.

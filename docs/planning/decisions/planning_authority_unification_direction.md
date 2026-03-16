@@ -52,7 +52,7 @@ Add one canonical machine planning catalog and one machine-readable authority ma
 
 ## Affected Surfaces
 - `core/control_plane/indexes/planning/`
-- `core/control_plane/registries/authority_map/`
+- `core/control_plane/registries/`
 - `core/python/src/watchtower_core/repo_ops/sync/`
 - `core/python/src/watchtower_core/repo_ops/query/`
 - `core/python/src/watchtower_core/cli/`

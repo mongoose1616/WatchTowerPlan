@@ -95,7 +95,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 ## Coverage Map
 | Coverage Area | Surfaces | Review Focus |
 |---|---|---|
-| Public planning authorities | `core/control_plane/registries/authority_map/authority_map.v1.json`; `core/control_plane/indexes/coordination/coordination_index.v1.json`; `core/control_plane/indexes/planning/planning_catalog.v1.json`; `core/control_plane/indexes/initiatives/initiative_index.v1.json`; `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/traceability/traceability_index.v1.json`; planning query command docs and trackers | Preserve the current five planning answers and classify them explicitly before later slices touch internals. |
+| Public planning authorities | `core/control_plane/registries/authority_map.json`; `core/control_plane/indexes/coordination/coordination_index.v1.json`; `core/control_plane/indexes/planning/planning_catalog.v1.json`; `core/control_plane/indexes/initiatives/initiative_index.v1.json`; `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/traceability/traceability_index.v1.json`; planning query command docs and trackers | Preserve the current five planning answers and classify them explicitly before later slices touch internals. |
 | Runtime hotspot inventory | `core/python/src/watchtower_core/repo_ops/task_lifecycle.py`; `core/python/src/watchtower_core/control_plane/loader.py`; `core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py`; `core/python/src/watchtower_core/repo_ops/planning_scaffold_specs.py`; `core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py`; `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py` | Refresh the live hotspot picture and reject stale rewrite assumptions before choosing a pilot or later hotspot slice. |
 | Compatibility surfaces | `core/python/src/watchtower_core/query/`; `core/python/src/watchtower_core/sync/`; `core/python/src/watchtower_core/validation/all.py`; `core/python/src/watchtower_core/cli/query_coordination_handlers.py`; `core/python/tests/integration/test_control_plane_artifacts.py`; `core/python/tests/unit/test_document_semantics_validation.py`; `core/python/tests/unit/test_cli_query_commands.py`; `core/control_plane/contracts/compatibility/core_python_workspace_compatibility.v1.json` | Separate intentional supported boundaries from transitional facades and historical path markers. |
 | Historical planning surfaces | `docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md`; `docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md`; `docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md`; `docs/planning/decisions/decision_supersession_and_regression_evidence_alignment_direction.md` | Confirm that current in-place historical records already use repo-native history signaling and should not be relocated casually. |
@@ -166,7 +166,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - A dedicated registry is safer than embedding additive metadata inside one existing governed family because the current classification spans multiple public planning surfaces and should not imply that any one of those families owns the rewrite metadata canonically.
 
 ### First-slice boundary
-- Publish an additive `artifact_role_registry` family under `core/control_plane/registries/artifact_roles/`.
+- Publish an additive `artifact_role_registry` family under `core/control_plane/registries/`.
 - Limit entries to the six public planning-authority surfaces already classified in Phase 1:
   - `surface.planning.current_state`
   - `surface.planning.trace_catalog`
@@ -204,7 +204,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 ## Phase 2 Gate Outcome
 - `Review Task`: [review_structural_rewrite_program_phase2_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md)
 - `Outcome`: approved for exactly one bounded slice.
-- `Approved Storage Shape`: small dedicated registry under `core/control_plane/registries/artifact_roles/`.
+- `Approved Storage Shape`: small dedicated registry under `core/control_plane/registries/`.
 - `Approval Guardrails`:
   - keep the slice additive and read-only
   - keep public planning-authority answers unchanged

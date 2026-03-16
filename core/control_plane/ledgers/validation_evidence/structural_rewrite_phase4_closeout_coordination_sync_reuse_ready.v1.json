@@ -47,7 +47,7 @@
       "title": "The approved closeout-coordination slice keeps the five public planning-authority answers unchanged",
       "result": "passed",
       "subject_paths": [
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",

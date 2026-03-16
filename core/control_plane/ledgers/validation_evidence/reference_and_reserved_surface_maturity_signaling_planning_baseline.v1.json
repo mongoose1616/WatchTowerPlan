@@ -112,15 +112,14 @@
     },
     {
       "check_id": "check.reference_and_reserved_surface_maturity_signaling.reserved_families",
-      "title": "README-only control-plane families are signaled as reserved placeholders across adjacent surfaces",
+      "title": "README-only control-plane families are signaled as reserved placeholders across adjacent surfaces and the obsolete policy family is retired",
       "result": "passed",
       "subject_paths": [
         "core/control_plane/indexes/README.md",
         "core/control_plane/indexes/registries/README.md",
         "core/control_plane/indexes/schemas/README.md",
-        "core/control_plane/policies/README.md",
-        "core/control_plane/policies/execution/README.md",
-        "core/control_plane/policies/validation/README.md",
+        "core/control_plane/README.md",
+        "core/control_plane/registries/README.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
       ],
@@ -133,7 +132,7 @@
       "acceptance_ids": [
         "ac.reference_and_reserved_surface_maturity_signaling.004"
       ],
-      "notes": "The parent and leaf control-plane entrypoints now use explicit reserved-placeholder wording, the maintenance standard tells reviewers to call that state out plainly, and the repository path index summaries for the README-only registry-index, schema-index, execution-policy, and validation-policy families project the same reserved maturity."
+      "notes": "The parent and leaf control-plane entrypoints now use explicit reserved-placeholder wording for the README-only index families, the maintenance standard tells reviewers to call that state out plainly, and the obsolete policy family has been removed from the active control-plane shape."
     },
     {
       "check_id": "check.reference_and_reserved_surface_maturity_signaling.validation_closeout",

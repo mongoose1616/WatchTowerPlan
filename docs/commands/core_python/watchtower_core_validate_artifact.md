@@ -94,7 +94,7 @@ uv run watchtower-core validate artifact --path core/control_plane/contracts/acc
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/control_plane/schemas.py`
 - `core/python/src/watchtower_core/validation/common.py`
-- `core/control_plane/registries/validators/validator_registry.v1.json`
+- `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
 - `2026-03-10T21:55:00Z`

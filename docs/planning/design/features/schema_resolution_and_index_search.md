@@ -11,7 +11,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/design/features/schema_resolution_and_index_search.md"
-  - "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
+  - "core/control_plane/registries/schema_catalog.json"
   - "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
   - "core/python/src/watchtower_core/query/"
 aliases:
@@ -47,8 +47,8 @@ This document defines the feature-level technical design for deterministic local
 
 ## Current-State Context
 - `core/control_plane/indexes/repository_paths/repository_path_index.v1.json` already defines a generated repository path index for entrypoint retrieval.
-- `core/control_plane/registries/validators/validator_registry.v1.json` already declares validation capabilities by stable validator ID.
-- `core/control_plane/registries/schema_catalog/schema_catalog.v1.json` now publishes the governed schema catalog artifact.
+- `core/control_plane/registries/validator_registry.json` already declares validation capabilities by stable validator ID.
+- `core/control_plane/registries/schema_catalog.json` now publishes the governed schema catalog artifact.
 - Published schema `$id` values are now resolved through the catalog-backed `SchemaStore` rather than only by ad hoc local wiring.
 - `core/python/src/watchtower_core/` now contains live control-plane loaders, query services, sync services, and validation services built on the same deterministic lookup boundary.
 
@@ -100,7 +100,7 @@ This document defines the feature-level technical design for deterministic local
 - Keep `rg` or direct filesystem scans as explicit fallback behavior, not as the default lookup path.
 
 ### Data and Interface Impacts
-- Add the schema catalog registry artifact family under `core/control_plane/registries/schema_catalog/`.
+- Add the schema catalog registry artifact family under `core/control_plane/registries/`.
 - Reuse the existing repository path index artifact family under `core/control_plane/indexes/repository_paths/`.
 - Future Python code in `core/python/src/watchtower_core/control_plane/` should expose schema-catalog and path-index loaders.
 - Future Python code in `core/python/src/watchtower_core/validation/` should depend on `SchemaStore` for schema-backed validation rather than manual resolver wiring.
@@ -124,7 +124,7 @@ This document defines the feature-level technical design for deterministic local
 - `docs/standards/data_contracts/schema_catalog_standard.md`
 - `docs/planning/design/features/schema_resolution_and_index_search.md`
 - `core/control_plane/schemas/artifacts/` for the schema catalog artifact schema
-- `core/control_plane/registries/schema_catalog/` for the live schema catalog artifact
+- `core/control_plane/registries/` for the live schema catalog artifact
 - `core/control_plane/examples/valid/registries/` and `core/control_plane/examples/invalid/registries/`
 - Future `core/python/src/watchtower_core/control_plane/` resolver and loader modules
 - Future `core/python/tests/unit/` and `core/python/tests/integration/` coverage for schema resolution and index search

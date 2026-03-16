@@ -19,7 +19,7 @@ applies_to:
 - workflows/modules/
 - core/control_plane/indexes/routes/
 - core/control_plane/indexes/workflows/
-- core/control_plane/registries/workflows/
+- core/control_plane/registries/
 - docs/commands/core_python/watchtower_core_route_preview.md
 - core/python/tests/unit/
 related_ids:

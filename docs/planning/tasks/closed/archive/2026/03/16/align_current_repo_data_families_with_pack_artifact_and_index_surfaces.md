@@ -6,11 +6,11 @@ summary: Maps current repository-local machine surfaces onto the future pack art
   and derived-index model.
 type: task
 status: active
-task_status: in_progress
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T05:15:28Z'
+updated_at: '2026-03-16T05:53:16Z'
 audience: shared
 authority: authoritative
 related_ids:

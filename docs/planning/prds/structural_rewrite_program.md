@@ -140,7 +140,7 @@ Phase 0 and Phase 1 have now closed those prerequisite gaps, and the first bound
 - [repository_standards_posture.md](/home/j/WatchTowerPlan/docs/foundations/repository_standards_posture.md): the rewrite must keep one canonical answer per important question and must gate risky operations explicitly.
 
 ## References
-- [authority_map.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map/authority_map.v1.json)
+- [authority_map.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/authority_map.json)
 - [coordination_tracking.md](/home/j/WatchTowerPlan/docs/planning/coordination_tracking.md)
 - [rewrite_surface_classification_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_surface_classification_standard.md)
 - [rewrite_execution_control_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/rewrite_execution_control_standard.md)

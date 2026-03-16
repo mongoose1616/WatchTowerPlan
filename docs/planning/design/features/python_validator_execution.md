@@ -12,7 +12,7 @@ authority: "authoritative"
 applies_to:
   - "docs/planning/design/features/python_validator_execution.md"
   - "core/python/src/watchtower_core/validation/"
-  - "core/control_plane/registries/validators/validator_registry.v1.json"
+  - "core/control_plane/registries/validator_registry.json"
   - "core/control_plane/ledgers/validation_evidence/"
 aliases:
   - "validator execution design"
@@ -39,7 +39,7 @@ This document defines the feature-level technical design for a Python validation
 
 ## Scope and Feature Boundary
 - Covers the Python-side execution model for registry-driven validation.
-- Covers how validator definitions in `core/control_plane/registries/validators/validator_registry.v1.json` map to Python runners and structured results.
+- Covers how validator definitions in `core/control_plane/registries/validator_registry.json` map to Python runners and structured results.
 - Covers the first wave of schema-backed validation for governed documentation front matter and JSON control-plane artifacts.
 - Covers the first durable evidence-write path that records governed validation outcomes back into the governed control plane.
 - Does not define the full intake-contract family.
@@ -47,7 +47,7 @@ This document defines the feature-level technical design for a Python validation
 - Does not implement the code in this document.
 
 ## Current-State Context
-- `core/control_plane/registries/validators/validator_registry.v1.json` now defines validator identities, engines, target artifact kinds, and schema dependencies.
+- `core/control_plane/registries/validator_registry.json` now defines validator identities, engines, target artifact kinds, and schema dependencies.
 - `core/control_plane/schemas/interfaces/documentation/` already publishes governed front matter validation interfaces for reference, standard, workflow, PRD, and decision-record documents.
 - `core/control_plane/contracts/acceptance/`, `core/control_plane/ledgers/validation_evidence/`, and `core/control_plane/indexes/traceability/` now provide the downstream contract, evidence, and join surfaces the validator layer now writes to in its first durable evidence path.
 - `core/python/src/watchtower_core/validation/` is the package boundary for validator execution and now provides registry-backed front-matter and JSON artifact validation services.
@@ -68,7 +68,7 @@ This document defines the feature-level technical design for a Python validation
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): the first validator wave needs to honor the governed documentation profiles.
 - [acceptance_contract_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/acceptance_contract_standard.md): acceptance reconciliation should consume declared machine-readable boundaries.
 - [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): durable validation outcomes need governed evidence artifacts.
-- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validators/validator_registry.v1.json): validator selection should stay declarative by governed registry ID.
+- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validator_registry.json): validator selection should stay declarative by governed registry ID.
 - [validator_registry.v1.schema.json](/home/j/WatchTowerPlan/core/control_plane/schemas/artifacts/validator_registry.v1.schema.json): validator-registry payload shape should stay schema-validated.
 
 ## Design Goals and Constraints
@@ -161,7 +161,7 @@ This document defines the feature-level technical design for a Python validation
 
 ## References
 - [feature_design_planning.md](/home/j/WatchTowerPlan/workflows/modules/feature_design_planning.md)
-- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validators/validator_registry.v1.json)
+- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validator_registry.json)
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md)
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md)
 

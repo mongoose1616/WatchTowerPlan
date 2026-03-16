@@ -64,7 +64,7 @@ def test_control_plane_models_export_pack_contract_types() -> None:
                 {
                     "surface_name": "schema_catalog",
                     "surface_kind": "schema_collection",
-                    "path": "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+                    "path": "core/control_plane/registries/schema_catalog.json",
                     "authority": "authoritative",
                     "visibility": "hidden",
                 }

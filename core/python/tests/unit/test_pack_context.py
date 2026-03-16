@@ -7,7 +7,7 @@ from watchtower_core.control_plane import ControlPlaneLoader, PackContext
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
 
-def test_pack_context_loads_declared_step1_surfaces() -> None:
+def test_pack_context_loads_declared_pack_surfaces() -> None:
     loader = ControlPlaneLoader(REPO_ROOT)
 
     context = loader.load_pack_context()

@@ -76,7 +76,7 @@
     },
     {
       "acceptance_id": "ac.reference_and_reserved_surface_maturity_signaling.004",
-      "summary": "Control-plane entrypoints and adjacent maintenance guidance describe the README-only schema-index, registry-index, execution-policy, and validation-policy families as reserved placeholders rather than live published artifact families.",
+      "summary": "Control-plane entrypoints and adjacent maintenance guidance describe the README-only schema-index and registry-index families as reserved placeholders, and the obsolete policy family is no longer treated as a live published control-plane surface.",
       "source_requirement_ids": [
         "req.reference_and_reserved_surface_maturity_signaling.004"
       ],
@@ -84,9 +84,8 @@
         "core/control_plane/indexes/README.md",
         "core/control_plane/indexes/registries/README.md",
         "core/control_plane/indexes/schemas/README.md",
-        "core/control_plane/policies/README.md",
-        "core/control_plane/policies/execution/README.md",
-        "core/control_plane/policies/validation/README.md",
+        "core/control_plane/README.md",
+        "core/control_plane/registries/README.md",
         "docs/standards/operations/repository_maintenance_loop_standard.md",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
       ]

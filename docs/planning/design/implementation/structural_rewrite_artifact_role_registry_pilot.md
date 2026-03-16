@@ -86,22 +86,22 @@ Implements the first bounded Phase 2 slice by publishing an additive, read-only 
 
 ## Proposed Technical Approach
 - Publish one new schema under `core/control_plane/schemas/artifacts/`.
-- Publish one new authored registry under `core/control_plane/registries/artifact_roles/`.
+- Publish one new authored registry under `core/control_plane/registries/`.
 - Extend the artifact-type registry, schema catalog, and validator registry so the new family participates in normal governed-artifact validation.
 - Publish one valid example and one invalid example to make the family reviewable and regression-friendly.
 - Use the existing rewrite acceptance contract, plus one dedicated migration record and one dedicated validation-evidence artifact, to record the slice without changing runtime code.
 
 ## Authored Truth and Derived Outputs
 ### Authored truth
-- `core/control_plane/registries/artifact_roles/artifact_role_registry.v1.json`
+- `core/control_plane/registries/artifact_role_registry.json`
 
 ### Derived outputs
 - None in this slice.
 - Companion publication surfaces are required same-change artifacts, not runtime-derived outputs:
   - `core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json`
-  - `core/control_plane/registries/artifact_types/artifact_type_registry.v1.json`
-  - `core/control_plane/registries/schema_catalog/schema_catalog.v1.json`
-  - `core/control_plane/registries/validators/validator_registry.v1.json`
+  - `core/control_plane/registries/artifact_type_registry.json`
+  - `core/control_plane/registries/schema_catalog.json`
+  - `core/control_plane/registries/validator_registry.json`
   - `core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json`
   - `core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json`
 
@@ -109,8 +109,8 @@ Implements the first bounded Phase 2 slice by publishing an additive, read-only 
 - Current consumers are governance and validation surfaces only:
   - `./.venv/bin/watchtower-core validate all`
   - `core/python/src/watchtower_core/validation/artifact.py`
-  - `core/control_plane/registries/validators/validator_registry.v1.json`
-  - `core/control_plane/registries/schema_catalog/schema_catalog.v1.json`
+  - `core/control_plane/registries/validator_registry.json`
+  - `core/control_plane/registries/schema_catalog.json`
   - `core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json`
   - `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json`
 - There are intentionally no runtime query, sync, loader-selection, or validator-dispatch consumers beyond schema-backed validation in this slice.

@@ -20,7 +20,7 @@ from watchtower_core.control_plane.workspace import (
 )
 
 SCHEMA_CATALOG_SCHEMA_PATH = "core/control_plane/schemas/artifacts/schema_catalog.v1.schema.json"
-SCHEMA_CATALOG_ARTIFACT_PATH = "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
+SCHEMA_CATALOG_ARTIFACT_PATH = "core/control_plane/registries/schema_catalog.json"
 
 
 @dataclass(frozen=True, slots=True)

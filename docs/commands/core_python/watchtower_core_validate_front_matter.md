@@ -77,7 +77,7 @@ uv run watchtower-core validate front-matter --path docs/standards/metadata/fron
 - `core/python/src/watchtower_core/cli/validate_family.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
 - `core/python/src/watchtower_core/adapters/front_matter.py`
-- `core/control_plane/registries/validators/validator_registry.v1.json`
+- `core/control_plane/registries/validator_registry.json`
 
 ## Updated At
 - `2026-03-14T05:37:06Z`

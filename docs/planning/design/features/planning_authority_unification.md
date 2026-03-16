@@ -91,7 +91,7 @@ Defines the technical design for a canonical planning catalog, a machine authori
   - the initiative index entry for current phase, owners, next action, and active-task summaries,
   - PRD, decision, design-document, and task index entries for document and execution detail,
   - acceptance contracts and validation evidence artifacts for validation coverage.
-- Add a new machine-readable authority-map registry under `core/control_plane/registries/authority_map/` that maps supported planning and governance questions to:
+- Add a new machine-readable authority-map registry under `core/control_plane/registries/` that maps supported planning and governance questions to:
   - the canonical artifact or document path,
   - the preferred query command,
   - the main status semantics to trust,
@@ -103,7 +103,7 @@ Defines the technical design for a canonical planning catalog, a machine authori
 - New schema: `urn:watchtower:schema:artifacts:indexes:planning-catalog:v1`.
 - New schema: `urn:watchtower:schema:artifacts:registries:authority-map:v1`.
 - New canonical artifact: `core/control_plane/indexes/planning/planning_catalog.v1.json`.
-- New canonical artifact: `core/control_plane/registries/authority_map/authority_map.v1.json`.
+- New canonical artifact: `core/control_plane/registries/authority_map.json`.
 - Loader support gains `load_planning_catalog()` and `load_authority_map()`.
 - Query support gains typed planning-catalog and authority-map query services.
 - Sync support gains `watchtower-core sync planning-catalog`.
@@ -127,12 +127,12 @@ Defines the technical design for a canonical planning catalog, a machine authori
 
 ## Affected Surfaces
 - `core/control_plane/indexes/planning/`
-- `core/control_plane/registries/authority_map/`
+- `core/control_plane/registries/`
 - `core/control_plane/schemas/artifacts/`
 - `core/control_plane/examples/valid/`
-- `core/control_plane/registries/schema_catalog/schema_catalog.v1.json`
-- `core/control_plane/registries/artifact_types/artifact_type_registry.v1.json`
-- `core/control_plane/registries/validators/validator_registry.v1.json`
+- `core/control_plane/registries/schema_catalog.json`
+- `core/control_plane/registries/artifact_type_registry.json`
+- `core/control_plane/registries/validator_registry.json`
 - `core/python/src/watchtower_core/control_plane/`
 - `core/python/src/watchtower_core/repo_ops/sync/`
 - `core/python/src/watchtower_core/repo_ops/query/`

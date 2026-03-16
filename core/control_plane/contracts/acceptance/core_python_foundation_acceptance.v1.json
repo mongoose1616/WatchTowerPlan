@@ -38,11 +38,11 @@
       ],
       "validation_targets": [
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json"
       ],
       "related_paths": [
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
       ]
     },
@@ -73,8 +73,8 @@
       ],
       "validation_targets": [
         "core/python/src/watchtower_core/control_plane/",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
         "core/control_plane/indexes/prds/prd_index.v1.json",

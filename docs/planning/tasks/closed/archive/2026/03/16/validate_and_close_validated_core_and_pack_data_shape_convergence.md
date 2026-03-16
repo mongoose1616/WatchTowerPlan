@@ -6,11 +6,11 @@ summary: Runs final validation, captures evidence, and closes the trace once the
   core boundary and data-shape migration are complete.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: governance
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-16T04:43:09Z'
+updated_at: '2026-03-16T05:55:29Z'
 audience: shared
 authority: authoritative
 related_ids:

@@ -53,7 +53,7 @@
       "standard_id": "std.data_contracts.authority_map",
       "category": "data_contracts",
       "title": "Authority Map Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/authority_map/`.",
+      "summary": "This standard defines the role, structure, and boundary rules for the authored authority-map registry stored under `core/control_plane/registries/`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/authority_map_standard.md",
@@ -66,8 +66,8 @@
       ],
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/registries/authority_map/",
-        "core/control_plane/registries/authority_map/README.md",
+        "core/control_plane/registries/",
+        "core/control_plane/registries/README.md",
         "core/control_plane/examples/valid/registries/authority_map*.example.json",
         "core/control_plane/examples/invalid/registries/authority_map*.example.json"
       ],
@@ -77,7 +77,7 @@
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
-        "core/control_plane/registries/authority_map/README.md"
+        "core/control_plane/registries/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/data_contracts/planning_catalog_standard.md",
@@ -85,7 +85,7 @@
         "docs/standards/data_contracts/traceability_index_standard.md",
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/data_contracts/schema_catalog_standard.md",
-        "core/control_plane/registries/authority_map/README.md"
+        "core/control_plane/registries/README.md"
       ],
       "tags": [
         "standard",
@@ -306,7 +306,7 @@
       ],
       "operationalization_paths": [
         "core/control_plane/",
-        "core/control_plane/policies/",
+        "core/control_plane/registries/",
         "workflows/",
         "docs/"
       ],
@@ -749,7 +749,7 @@
       "standard_id": "std.data_contracts.schema_catalog",
       "category": "data_contracts",
       "title": "Schema Catalog Standard",
-      "summary": "This standard defines the role, structure, and boundary rules for the authored schema catalog registry stored under `core/control_plane/registries/schema_catalog/`.",
+      "summary": "This standard defines the role, structure, and boundary rules for the authored schema catalog registry stored under `core/control_plane/registries/`.",
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/schema_catalog_standard.md",
@@ -764,7 +764,7 @@
         "core/control_plane/schemas/",
         "core/control_plane/schemas/common/",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/registries/schema_catalog/",
+        "core/control_plane/registries/",
         "core/control_plane/examples/valid/registries/schema_catalog*.example.json",
         "core/control_plane/examples/invalid/registries/schema_catalog*.example.json"
       ],
@@ -774,8 +774,8 @@
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
-        "core/control_plane/registries/schema_catalog/README.md"
+        "core/control_plane/registries/validator_registry.json",
+        "core/control_plane/registries/README.md"
       ],
       "applied_reference_paths": [
         "docs/standards/data_contracts/schema_standard.md",
@@ -783,8 +783,8 @@
         "docs/standards/data_contracts/repository_path_index_standard.md",
         "docs/standards/metadata/naming_and_ids_standard.md",
         "docs/standards/metadata/timestamp_standard.md",
-        "core/control_plane/registries/validators/validator_registry.v1.json",
-        "core/control_plane/registries/schema_catalog/README.md"
+        "core/control_plane/registries/validator_registry.json",
+        "core/control_plane/registries/README.md"
       ],
       "tags": [
         "standard",
@@ -1115,7 +1115,7 @@
       "operationalization_paths": [
         "core/control_plane/indexes/workflows/",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/registries/workflows/",
+        "core/control_plane/registries/",
         "core/control_plane/examples/valid/indexes/workflow_index*.example.json",
         "core/control_plane/examples/invalid/indexes/workflow_index*.example.json",
         "workflows/modules/"
@@ -1348,7 +1348,7 @@
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "docs/commands/core_python/watchtower_core_validate_document_semantics.md",
         "docs/commands/core_python/watchtower_core_validate_all.md",
-        "core/control_plane/registries/validators/validator_registry.v1.json"
+        "core/control_plane/registries/validator_registry.json"
       ],
       "reference_doc_paths": [
         "docs/references/commonmark_reference.md"
@@ -2723,7 +2723,7 @@
         "docs/foundations/engineering_design_principles.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
-        "core/control_plane/registries/authority_map/authority_map.v1.json"
+        "core/control_plane/registries/authority_map.json"
       ],
       "applied_reference_paths": [
         "docs/standards/governance/rewrite_surface_classification_standard.md",
@@ -2761,7 +2761,7 @@
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "core/control_plane/contracts/compatibility/",
         "docs/planning/tasks/",
-        "core/control_plane/registries/authority_map/authority_map.v1.json"
+        "core/control_plane/registries/authority_map.json"
       ],
       "applies_to": [
         "docs/planning/",

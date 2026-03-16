@@ -1,7 +1,7 @@
 ---
 id: "std.data_contracts.schema_catalog"
 title: "Schema Catalog Standard"
-summary: "This standard defines the role, structure, and boundary rules for the authored schema catalog registry stored under `core/control_plane/registries/schema_catalog/`."
+summary: "This standard defines the role, structure, and boundary rules for the authored schema catalog registry stored under `core/control_plane/registries/`."
 type: "standard"
 status: "active"
 tags:
@@ -17,13 +17,13 @@ authority: "authoritative"
 # Schema Catalog Standard
 
 ## Summary
-This standard defines the role, structure, and boundary rules for the authored schema catalog registry stored under `core/control_plane/registries/schema_catalog/`.
+This standard defines the role, structure, and boundary rules for the authored schema catalog registry stored under `core/control_plane/registries/`.
 
 ## Purpose
 Provide deterministic local resolution from published schema `$id` values to canonical repository files without hardcoding schema lookup tables in Python or overloading the repository path index with schema-authority concerns.
 
 ## Scope
-- Applies to authored schema catalog registry artifacts stored under `core/control_plane/registries/schema_catalog/`.
+- Applies to authored schema catalog registry artifacts stored under `core/control_plane/registries/`.
 - Covers placement, record shape, identifier use, update expectations, and the boundary between the schema catalog and the schema files it references.
 - Does not replace published schemas, schema validation, repository path indexes, or validator selection policy.
 
@@ -38,13 +38,13 @@ Provide deterministic local resolution from published schema `$id` values to can
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
-- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validators/validator_registry.v1.json): companion governed or implementation surface this standard describes or constrains.
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/schema_catalog/README.md): family entrypoint and inventory surface this standard should stay aligned with.
+- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validator_registry.json): companion governed or implementation surface this standard describes or constrains.
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
 ## Guidance
 - Model schema lookup as a registry, not as an index.
 - Treat the schema catalog as the canonical machine-readable mapping from published schema `$id` values to canonical repository paths.
-- Store published schema catalog artifacts under `core/control_plane/registries/schema_catalog/`.
+- Store published schema catalog artifacts under `core/control_plane/registries/`.
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
 - Use JSON for the published schema catalog artifact.
 - Catalog only published governed schemas that core expects automation to resolve locally.
@@ -96,7 +96,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/schemas/common/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/schema_catalog/`; `core/control_plane/examples/valid/registries/schema_catalog*.example.json`; `core/control_plane/examples/invalid/registries/schema_catalog*.example.json`
+- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/schemas/common/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `core/control_plane/examples/valid/registries/schema_catalog*.example.json`; `core/control_plane/examples/invalid/registries/schema_catalog*.example.json`
 
 ## Validation
 - The schema catalog should validate against its published artifact schema.
@@ -115,8 +115,8 @@ Provide deterministic local resolution from published schema `$id` values to can
 - [format_selection_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/format_selection_standard.md)
 - [repository_path_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/repository_path_index_standard.md)
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md)
-- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validators/validator_registry.v1.json)
-- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/schema_catalog/README.md)
+- [validator_registry.v1.json](/home/j/WatchTowerPlan/core/control_plane/registries/validator_registry.json)
+- [README.md](/home/j/WatchTowerPlan/core/control_plane/registries/README.md)
 
 ## Notes
 - The schema catalog exists because published schema identities are stable governed artifacts, not just filesystem paths.

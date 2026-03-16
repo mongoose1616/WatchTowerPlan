@@ -15,7 +15,6 @@ applies_to:
 - core/control_plane/indexes/references/
 - core/control_plane/indexes/registries/
 - core/control_plane/indexes/schemas/
-- core/control_plane/policies/
 - core/python/src/watchtower_core/repo_ops/sync/reference_index.py
 - core/python/src/watchtower_core/repo_ops/query/references.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py
@@ -65,7 +64,6 @@ Execute the next refactor slice by deriving structured reference maturity from t
 - core/control_plane/indexes/references/
 - core/control_plane/indexes/registries/
 - core/control_plane/indexes/schemas/
-- core/control_plane/policies/
 - core/python/src/watchtower_core/repo_ops/sync/reference_index.py
 - core/python/src/watchtower_core/repo_ops/query/references.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py

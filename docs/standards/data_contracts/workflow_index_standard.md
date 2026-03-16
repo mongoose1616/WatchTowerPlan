@@ -45,7 +45,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 - Treat the workflow index as a machine-readable lookup surface rather than the authority for workflow behavior.
 - Store published workflow indexes under `core/control_plane/indexes/workflows/`.
 - Keep the companion artifact schema under `core/control_plane/schemas/artifacts/`.
-- Author workflow retrieval metadata under `core/control_plane/registries/workflows/` instead of hardcoding it in Python.
+- Author workflow retrieval metadata under `core/control_plane/registries/` instead of hardcoding it in Python.
 - Use JSON for the published workflow-index artifact.
 - Every workflow index entry must point to an existing workflow module under `workflows/modules/`.
 - Carry stable `workflow_id` values derived from the workflow module filename in the form `workflow.<module_name>`.
@@ -92,7 +92,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `workflow`
-- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/workflows/`; `core/control_plane/examples/valid/indexes/workflow_index*.example.json`; `core/control_plane/examples/invalid/indexes/workflow_index*.example.json`; `workflows/modules/`
+- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `core/control_plane/examples/valid/indexes/workflow_index*.example.json`; `core/control_plane/examples/invalid/indexes/workflow_index*.example.json`; `workflows/modules/`
 
 ## Validation
 - The workflow index should validate against its published artifact schema.

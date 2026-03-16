@@ -8,7 +8,7 @@
   "entries": [
     {
       "acceptance_id": "ac.validated_core_pack_data_shape_convergence.001",
-      "summary": "The planning chain describes a contract-first migration where shared core becomes pack-ready through a validated pack-runtime startup boundary before wider repo-local data-family migration.",
+      "summary": "The planning chain describes WatchTowerPlan as a plan and implementation domain pack consuming reusable core through a pack-settings load root and simplified governed surfaces.",
       "source_requirement_ids": [
         "req.validated_core_pack_data_shape_convergence.001"
       ],
@@ -26,23 +26,26 @@
     },
     {
       "acceptance_id": "ac.validated_core_pack_data_shape_convergence.002",
-      "summary": "A governed pack-runtime manifest schema and canonical manifest artifact exist and are discoverable through the schema catalog.",
+      "summary": "The pack-settings load root, the retained flat registries, and their schemas are canonical and discoverable through the schema catalog, while the runtime-manifest and policy bridges are retired.",
       "source_requirement_ids": [
         "req.validated_core_pack_data_shape_convergence.001"
       ],
       "validation_targets": [
-        "core/control_plane/schemas/artifacts/pack_runtime_manifest.v1.schema.json",
-        "core/control_plane/manifests/pack_runtime_manifest.v1.json",
-        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
+        "core/control_plane/manifests/pack_settings.json",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/validator_registry.json",
+        "core/control_plane/registries/artifact_type_registry.json",
+        "core/control_plane/registries/README.md"
       ],
       "related_paths": [
         "core/control_plane/schemas/artifacts/README.md",
+        "core/control_plane/schemas/interfaces/packs/README.md",
         "core/control_plane/manifests/README.md"
       ]
     },
     {
       "acceptance_id": "ac.validated_core_pack_data_shape_convergence.003",
-      "summary": "Shared core can load the pack-runtime manifest as a typed artifact and build workspace mappings from manifest-declared logical prefixes.",
+      "summary": "Shared core loads the pack-settings contract and retained governed surfaces through typed loader APIs, current planning indexes remain explicit repo-local derived pack projections, and the retired prototype pack interfaces are no longer published as active core contracts.",
       "source_requirement_ids": [
         "req.validated_core_pack_data_shape_convergence.002",
         "req.validated_core_pack_data_shape_convergence.003"
@@ -50,9 +53,10 @@
       "validation_targets": [
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/control_plane/workspace.py",
-        "core/python/src/watchtower_core/control_plane/models/manifests.py",
+        "core/python/src/watchtower_core/control_plane/pack_context.py",
         "core/python/tests/unit/test_control_plane_loader.py",
-        "core/python/tests/unit/test_workspace_injection.py"
+        "core/python/tests/unit/test_workspace_injection.py",
+        "core/python/tests/unit/test_schema_store.py"
       ],
       "related_paths": [
         "core/python/README.md",

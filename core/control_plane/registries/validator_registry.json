@@ -40,7 +40,7 @@
       "engine": "json_schema",
       "artifact_kind": "artifact_role_registry",
       "applies_to": [
-        "core/control_plane/registries/artifact_roles/**"
+        "core/control_plane/registries/artifact_role_registry.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1"
@@ -54,7 +54,7 @@
       "engine": "json_schema",
       "artifact_kind": "authority_map",
       "applies_to": [
-        "core/control_plane/registries/authority_map/**"
+        "core/control_plane/registries/authority_map.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:authority-map:v1"
@@ -215,20 +215,6 @@
       ]
     },
     {
-      "id": "validator.control_plane.release_policy",
-      "title": "Release Policy Validator",
-      "description": "Validates machine-readable release policy artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "release_policy",
-      "applies_to": [
-        "core/control_plane/policies/release/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:policies:release-policy:v1"
-      ]
-    },
-    {
       "id": "validator.control_plane.release_record",
       "title": "Release Record Validator",
       "description": "Validates machine-readable release ledger artifacts.",
@@ -271,23 +257,9 @@
       ]
     },
     {
-      "id": "validator.control_plane.pack_runtime_manifest",
-      "title": "Pack Runtime Manifest Validator",
-      "description": "Validates machine-readable pack-runtime manifest artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "pack_runtime_manifest",
-      "applies_to": [
-        "core/control_plane/manifests/pack_runtime_manifest.v1.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:manifests:pack-runtime-manifest:v1"
-      ]
-    },
-    {
       "id": "validator.control_plane.pack_settings",
       "title": "Pack Settings Validator",
-      "description": "Validates STEP1-style pack settings load-root artifacts.",
+      "description": "Validates pack settings load-root artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "pack_settings",
@@ -301,7 +273,7 @@
     {
       "id": "validator.control_plane.governance_surface_map",
       "title": "Governance Surface Map Validator",
-      "description": "Validates STEP1-style governance surface map artifacts.",
+      "description": "Validates governance surface map artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "governance_surface_map",
@@ -315,7 +287,7 @@
     {
       "id": "validator.control_plane.path_pattern_registry",
       "title": "Path Pattern Registry Validator",
-      "description": "Validates STEP1-style path pattern registry artifacts.",
+      "description": "Validates path pattern registry artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "path_pattern_registry",
@@ -329,7 +301,7 @@
     {
       "id": "validator.control_plane.status_registry",
       "title": "Status Registry Validator",
-      "description": "Validates STEP1-style status registry artifacts.",
+      "description": "Validates status registry artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "status_registry",
@@ -343,7 +315,7 @@
     {
       "id": "validator.control_plane.actor_registry",
       "title": "Actor Registry Validator",
-      "description": "Validates STEP1-style actor registry artifacts.",
+      "description": "Validates actor registry artifacts.",
       "status": "active",
       "engine": "json_schema",
       "artifact_kind": "actor_registry",
@@ -390,7 +362,7 @@
       "engine": "json_schema",
       "artifact_kind": "schema_catalog",
       "applies_to": [
-        "core/control_plane/registries/schema_catalog/**"
+        "core/control_plane/registries/schema_catalog.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:schema-catalog:v1"
@@ -404,24 +376,10 @@
       "engine": "json_schema",
       "artifact_kind": "artifact_type_registry",
       "applies_to": [
-        "core/control_plane/registries/artifact_types/**"
+        "core/control_plane/registries/artifact_type_registry.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1"
-      ]
-    },
-    {
-      "id": "validator.control_plane.policy_catalog",
-      "title": "Policy Catalog Validator",
-      "description": "Validates machine-readable policy catalog registry artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "policy_catalog",
-      "applies_to": [
-        "core/control_plane/registries/policy_catalog/**"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:registries:policy-catalog:v1"
       ]
     },
     {
@@ -488,7 +446,7 @@
       "engine": "json_schema",
       "artifact_kind": "validator_registry",
       "applies_to": [
-        "core/control_plane/registries/validators/**"
+        "core/control_plane/registries/validator_registry.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:validator-registry:v1"
@@ -516,7 +474,7 @@
       "engine": "json_schema",
       "artifact_kind": "workflow_metadata_registry",
       "applies_to": [
-        "core/control_plane/registries/workflows/**"
+        "core/control_plane/registries/workflow_metadata_registry.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:workflow-metadata-registry:v1"
@@ -777,21 +735,6 @@
       "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
     },
     {
-      "id": "validator.interface.workspace_artifact_manifest",
-      "title": "Workspace Artifact Manifest Validator",
-      "description": "Validates generic pack-facing workspace artifact manifests.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "workspace_artifact_manifest",
-      "applies_to": [
-        "core/control_plane/examples/valid/interfaces/workspace_artifact_manifest.v1.example.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:packs:workspace-artifact-manifest:v1"
-      ],
-      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
-    },
-    {
       "id": "validator.interface.extraction_output_envelope",
       "title": "Extraction Output Envelope Validator",
       "description": "Validates generic structured extraction workflow output envelopes.",
@@ -803,66 +746,6 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1"
-      ],
-      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
-    },
-    {
-      "id": "validator.interface.promoted_knowledge",
-      "title": "Promoted Knowledge Validator",
-      "description": "Validates generic promoted reusable knowledge artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "promoted_knowledge",
-      "applies_to": [
-        "core/control_plane/examples/valid/interfaces/promoted_knowledge.v1.example.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:packs:promoted-knowledge:v1"
-      ],
-      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
-    },
-    {
-      "id": "validator.interface.promotion_record",
-      "title": "Promotion Record Validator",
-      "description": "Validates generic promotion record artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "promotion_record",
-      "applies_to": [
-        "core/control_plane/examples/valid/interfaces/promotion_record.v1.example.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:packs:promotion-record:v1"
-      ],
-      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
-    },
-    {
-      "id": "validator.interface.pack_work_index",
-      "title": "Pack Work Index Validator",
-      "description": "Validates generic pack-local work index artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "pack_work_index",
-      "applies_to": [
-        "core/control_plane/examples/valid/interfaces/pack_work_index.v1.example.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:packs:pack-work-index:v1"
-      ],
-      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
-    },
-    {
-      "id": "validator.interface.knowledge_index",
-      "title": "Knowledge Index Validator",
-      "description": "Validates generic pack-local promoted knowledge index artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "knowledge_index",
-      "applies_to": [
-        "core/control_plane/examples/valid/interfaces/knowledge_index.v1.example.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:interfaces:packs:knowledge-index:v1"
       ],
       "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
     }

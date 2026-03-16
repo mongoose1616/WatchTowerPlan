@@ -117,8 +117,8 @@
     }
   ],
   "related_paths": [
-    "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
-    "core/control_plane/registries/validators/validator_registry.v1.json",
+    "core/control_plane/registries/schema_catalog.json",
+    "core/control_plane/registries/validator_registry.json",
     "core/control_plane/indexes/prds/prd_index.v1.json",
     "core/control_plane/indexes/decisions/decision_index.v1.json",
     "core/control_plane/indexes/design_documents/design_document_index.v1.json",

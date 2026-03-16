@@ -43,7 +43,7 @@
       "result": "passed",
       "subject_paths": [
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
-        "core/control_plane/registries/authority_map/authority_map.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "docs/standards/governance/rewrite_execution_control_standard.md"
       ],
       "subject_ids": [
