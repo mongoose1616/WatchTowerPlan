@@ -6,11 +6,11 @@ summary: Remove repo-specific query, sync, and aggregate-validation wrapper modu
   and move remaining callers to direct repo_ops or reusable imports.
 type: task
 status: active
-task_status: ready
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T02:06:53Z'
+updated_at: '2026-03-16T04:10:51Z'
 audience: shared
 authority: authoritative
 applies_to:

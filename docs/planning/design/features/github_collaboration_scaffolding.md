@@ -6,13 +6,13 @@ summary: "Defines the hosted GitHub intake, pull request, and project-field scaf
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T03:57:14Z"
+updated_at: "2026-03-16T04:05:50Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - ".github/"
   - "docs/planning/tasks/"
-  - "core/python/src/watchtower_core/sync/github_tasks.py"
+  - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github collaboration scaffolding"
   - "github repository collaboration"
@@ -27,7 +27,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-10T03:57:14Z`
+- `Updated At`: `2026-03-16T04:05:50Z`
 
 ## Summary
 This document defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.
@@ -104,7 +104,7 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 ## Affected Surfaces
 - `.github/`
 - `docs/planning/tasks/`
-- `core/python/src/watchtower_core/sync/github_tasks.py`
+- `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 - `docs/commands/core_python/watchtower_core_sync_github_tasks.md`
 
 ## Design Guardrails
@@ -134,4 +134,4 @@ This document defines the hosted GitHub intake, pull request, and project-field 
 - [About custom fields for issues and pull requests](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-custom-fields)
 
 ## Updated At
-- `2026-03-10T03:57:14Z`
+- `2026-03-16T04:05:50Z`

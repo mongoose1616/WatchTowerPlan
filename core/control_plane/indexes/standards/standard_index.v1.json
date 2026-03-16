@@ -2330,8 +2330,7 @@
       "related_paths": [
         ".github/",
         "docs/planning/tasks/",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
-        "core/python/src/watchtower_core/sync/github_tasks.py"
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
       ],
       "reference_doc_paths": [
         "docs/references/github_collaboration_reference.md"
@@ -2399,8 +2398,7 @@
       ],
       "related_paths": [
         "docs/planning/tasks/",
-        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
-        "core/python/src/watchtower_core/sync/github_tasks.py"
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
       ],
       "reference_doc_paths": [
         "docs/references/github_collaboration_reference.md"

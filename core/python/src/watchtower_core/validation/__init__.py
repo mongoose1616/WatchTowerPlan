@@ -8,7 +8,6 @@ from typing import Any
 __all__ = [
     "AcceptanceReconciliationService",
     "ArtifactValidationService",
-    "DocumentSemanticsValidationService",
     "FrontMatterValidationService",
     "ValidationExecutionError",
     "ValidationIssue",
@@ -19,7 +18,6 @@ __all__ = [
 _EXPORT_MODULES = {
     "AcceptanceReconciliationService": "watchtower_core.validation.acceptance",
     "ArtifactValidationService": "watchtower_core.validation.artifact",
-    "DocumentSemanticsValidationService": "watchtower_core.validation.document_semantics",
     "FrontMatterValidationService": "watchtower_core.validation.front_matter",
     "ValidationExecutionError": "watchtower_core.validation.errors",
     "ValidationIssue": "watchtower_core.validation.models",
@@ -28,6 +26,7 @@ _EXPORT_MODULES = {
 }
 
 _REPO_OPS_EXPORTS = {
+    "DocumentSemanticsValidationService",
     "ValidationAllRecord",
     "ValidationAllResult",
     "ValidationAllService",
@@ -40,9 +39,9 @@ _REPO_OPS_EXPORTS = {
 def __getattr__(name: str) -> Any:
     if name in _REPO_OPS_EXPORTS:
         raise AttributeError(
-            "watchtower_core.validation does not export repo-wide aggregate validation "
-            "helpers. Import from watchtower_core.repo_ops.validation or from "
-            "watchtower_core.validation.all for the compatibility wrapper."
+            "watchtower_core.validation exposes only reusable validation services. "
+            "Import repo-local document semantics and aggregate validation helpers "
+            "from watchtower_core.repo_ops.validation."
         )
     module_name = _EXPORT_MODULES.get(name)
     if module_name is None:

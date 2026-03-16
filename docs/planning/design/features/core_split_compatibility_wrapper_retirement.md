@@ -7,7 +7,7 @@ summary: Defines the technical design boundary for retiring repo-specific compat
 type: feature_design
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-16T02:06:53Z'
+updated_at: '2026-03-16T04:05:50Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -32,7 +32,7 @@ applies_to:
 - `Linked PRDs`: `prd.core_split_compatibility_wrapper_retirement`
 - `Linked Decisions`: `decision.core_split_compatibility_wrapper_retirement_direction`
 - `Linked Implementation Plans`: `design.implementation.core_split_compatibility_wrapper_retirement`
-- `Updated At`: `2026-03-16T02:06:53Z`
+- `Updated At`: `2026-03-16T04:05:50Z`
 
 ## Summary
 Defines the technical design boundary for retiring repo-specific compatibility wrappers before splitting out reusable core surfaces.
@@ -48,9 +48,9 @@ Defines the technical design boundary for retiring repo-specific compatibility w
 
 ## Current-State Context
 - `docs/planning/prds/core_export_readiness_and_optimization.md` and `docs/planning/prds/core_export_hardening_followup.md` both closed with the reusable-versus-`repo_ops` boundary made explicit, but they intentionally left compatibility wrappers available.
-- The live package still documents `watchtower_core.query` and `watchtower_core.sync` as boundary-layer compatibility namespaces, and the directory trees still include multiple wrapper modules that forward directly to `repo_ops`.
-- Representative examples remain one-line re-exports: `core/python/src/watchtower_core/query/commands.py`, `core/python/src/watchtower_core/sync/command_index.py`, and `core/python/src/watchtower_core/validation/all.py`.
-- `core/python/tests/unit/test_repo_ops_compatibility.py` still asserts that those legacy wrapper imports remain available, which preserves extraction debt instead of proving a clean split-ready boundary.
+- The slice started from a package boundary that documented `watchtower_core.query` and `watchtower_core.sync` as compatibility namespaces while their directory trees still included multiple wrapper modules that forwarded directly to `repo_ops`.
+- Representative historical examples before retirement were one-line re-exports such as `core/python/src/watchtower_core/query/commands.py`, `core/python/src/watchtower_core/sync/command_index.py`, and `core/python/src/watchtower_core/validation/all.py`.
+- The initiating compatibility coverage in `core/python/tests/unit/test_repo_ops_compatibility.py` asserted that those legacy wrapper imports remained available, which preserved extraction debt instead of proving a clean split-ready boundary.
 
 ## Foundations References Applied
 - `docs/foundations/repository_scope.md`: reusable-core and repo-local behavior must stay explicitly separated.

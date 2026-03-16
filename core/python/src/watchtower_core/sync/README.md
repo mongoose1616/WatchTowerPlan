@@ -1,15 +1,15 @@
 # `watchtower_core.sync`
 
 ## Summary
-Compatibility namespace for explicit sync wrappers while keeping repo-local sync orchestration under `repo_ops.sync`.
+Guardrail namespace root that keeps repo-local sync orchestration out of the export-safe package surface.
 
 ## Boundary
 - `Classification`: `boundary_layer`
-- `Supported Imports`: Explicit compatibility wrappers under `watchtower_core.sync.<module>` when they exist.
-- `Non-Goals`: Direct export of repo-specific aggregate sync services from `watchtower_core.sync` itself.
+- `Supported Imports`: The namespace root only, for boundary discovery and explicit failure when callers reach for repo-local sync services from the wrong package.
+- `Non-Goals`: Supported repo-specific leaf imports under `watchtower_core.sync`.
 
 ## Key Surfaces
-- `__init__.py`: Guardrail that rejects unsupported repo-local sync imports from the namespace root.
+- `__init__.py`: Guardrail that rejects repo-local sync imports and redirects callers to `watchtower_core.repo_ops.sync`.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/repo_ops/sync/README.md`

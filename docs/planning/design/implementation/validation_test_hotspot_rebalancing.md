@@ -7,7 +7,7 @@ summary: Breaks Validation Test Hotspot Rebalancing into a bounded implementatio
 type: implementation_plan
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-13T19:19:06Z'
+updated_at: '2026-03-16T04:05:50Z'
 audience: shared
 authority: supporting
 applies_to:
@@ -30,7 +30,7 @@ applies_to:
 - `Linked Decisions`: `decision.validation_test_hotspot_rebalancing_direction`
 - `Source Designs`: `design.features.validation_test_hotspot_rebalancing`
 - `Linked Acceptance Contracts`: `contract.acceptance.validation_test_hotspot_rebalancing`
-- `Updated At`: `2026-03-13T19:19:06Z`
+- `Updated At`: `2026-03-16T04:05:50Z`
 
 ## Summary
 Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.
@@ -68,7 +68,7 @@ Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.
 | Coverage Area | Surfaces | Review Focus |
 |---|---|---|
 | Integration validation hotspot | `core/python/tests/integration/test_control_plane_artifacts.py`; new helper-backed integration suites under `core/python/tests/integration/`; `core/python/src/watchtower_core/control_plane/loader.py`; `core/python/src/watchtower_core/validation/artifact.py`; example-artifact helpers | Failure locality, live loader or schema coverage preservation, helper minimalism, compatibility-path strategy |
-| Document-semantics hotspot | `core/python/tests/unit/test_document_semantics_validation.py`; new fixture-backed unit suites under `core/python/tests/unit/`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`; `core/python/src/watchtower_core/validation/document_semantics.py` | Validator-selection coverage, explicit fixture writing, fail-closed semantic rule preservation, path canonicalization coverage |
+| Document-semantics hotspot | `core/python/tests/unit/test_document_semantics_validation.py`; new fixture-backed unit suites under `core/python/tests/unit/`; `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py` | Validator-selection coverage, explicit fixture writing, fail-closed semantic rule preservation, path canonicalization coverage |
 | Validation orchestration boundaries | `core/python/src/watchtower_core/repo_ops/validation/all.py`; `core/python/src/watchtower_core/cli/validation_handlers.py`; `docs/commands/core_python/watchtower_core_validate.md` | No runtime behavior drift, no output-contract drift, adjacency review around aggregate validation |
 | Discoverability and indexing | `core/python/tests/unit/README.md`; `core/python/tests/integration/README.md`; `core/control_plane/indexes/repository_paths/repository_path_index.v1.json`; `watchtower-core query paths` | README inventory truth, repository-path index coherence, historical-path compatibility, query discoverability |
 | Traced governance surfaces | `docs/planning/**`; `core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.v1.json` | Coverage-map durability, findings ledger, acceptance alignment, evidence coverage, closeout state |

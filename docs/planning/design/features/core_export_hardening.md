@@ -6,7 +6,7 @@ summary: "Defines the follow-up architecture needed to make output-directory syn
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T15:24:07Z"
+updated_at: "2026-03-16T04:05:50Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -25,7 +25,7 @@ aliases:
 - `Linked PRDs`: `prd.core_export_hardening_followup`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `design.implementation.core_export_hardening_execution`
-- `Updated At`: `2026-03-10T15:24:07Z`
+- `Updated At`: `2026-03-16T04:05:50Z`
 
 ## Summary
 Defines the follow-up architecture needed to make output-directory sync runs dependency-correct, restore accurate command implementation metadata, and tighten the public export-safe boundary around repo-specific services.
@@ -43,7 +43,7 @@ Defines the follow-up architecture needed to make output-directory sync runs dep
 - [all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/sync/all.py) materializes output-directory targets but keeps every sync service bound to the canonical repo loader.
 - [introspection.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/cli/introspection.py) hardcodes `cli/main.py` as the implementation path for every command.
 - [query/__init__.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/query/__init__.py) and [sync/__init__.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/sync/__init__.py) still advertise repo-specific services as top-level exports.
-- [validation/all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/validation/all.py) still embeds repo-specific planning and document-semantic behavior in the public aggregate validation surface.
+- [all.py](/home/j/WatchTowerPlan/core/python/src/watchtower_core/repo_ops/validation/all.py) still concentrates repo-specific planning and document-semantic behavior in the repo-local aggregate validation surface behind the top-level reusable guardrails.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): fix hidden coupling instead of adding more implicit behavior.
@@ -125,4 +125,4 @@ Defines the follow-up architecture needed to make output-directory sync runs dep
 - [core_export_ready_architecture.md](/home/j/WatchTowerPlan/docs/planning/design/features/core_export_ready_architecture.md)
 
 ## Updated At
-- `2026-03-10T15:24:07Z`
+- `2026-03-16T04:05:50Z`

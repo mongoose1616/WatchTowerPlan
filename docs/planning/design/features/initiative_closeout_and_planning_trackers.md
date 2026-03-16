@@ -6,7 +6,7 @@ summary: "Defines the first initiative closeout model, its traceability fields, 
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-10T03:57:14Z"
+updated_at: "2026-03-16T04:05:50Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -28,7 +28,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-10T03:57:14Z`
+- `Updated At`: `2026-03-16T04:05:50Z`
 
 ## Summary
 This document defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.
@@ -115,9 +115,9 @@ This document defines the first initiative closeout model, its traceability fiel
 - `docs/planning/decisions/decision_tracking.md`
 - `docs/planning/design/design_tracking.md`
 - `core/python/src/watchtower_core/closeout/initiative.py`
-- `core/python/src/watchtower_core/sync/prd_tracking.py`
-- `core/python/src/watchtower_core/sync/decision_tracking.py`
-- `core/python/src/watchtower_core/sync/design_tracking.py`
+- `core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py`
+- `core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py`
+- `core/python/src/watchtower_core/repo_ops/sync/design_tracking.py`
 
 ## Design Guardrails
 - Keep initiative closeout state at the trace layer, not copied into every family index.
@@ -148,4 +148,4 @@ This document defines the first initiative closeout model, its traceability fiel
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
 
 ## Updated At
-- `2026-03-10T03:57:14Z`
+- `2026-03-16T04:05:50Z`

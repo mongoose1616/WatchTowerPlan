@@ -124,9 +124,9 @@ Start with `core/python/src/watchtower_core/README.md` when you need the runtime
 |---|---|---|
 | `core/python/src/watchtower_core/README.md` | `runtime_architecture_start_here` | Top-level package map and navigation. |
 | `core/python/src/watchtower_core/control_plane/README.md` | `reusable_core` | Workspace, loader, schema, and typed artifact boundary. |
-| `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services and namespace guardrails. |
-| `core/python/src/watchtower_core/query/README.md` | `boundary_layer` | Compatibility query namespace; authoritative query logic stays in `repo_ops/query/`. |
-| `core/python/src/watchtower_core/sync/README.md` | `boundary_layer` | Compatibility sync namespace; authoritative sync logic stays in `repo_ops/sync/`. |
+| `core/python/src/watchtower_core/validation/README.md` | `reusable_core` | Export-safe validation services and result models; repo-local document semantics and aggregate validation stay in `repo_ops.validation`. |
+| `core/python/src/watchtower_core/query/README.md` | `boundary_layer` | Guardrail namespace root; authoritative query logic stays in `repo_ops/query/`. |
+| `core/python/src/watchtower_core/sync/README.md` | `boundary_layer` | Guardrail namespace root; authoritative sync logic stays in `repo_ops/sync/`. |
 | `core/python/src/watchtower_core/integrations/README.md` | `boundary_layer` | External-system client boundary, currently including GitHub. |
 | `core/python/src/watchtower_core/repo_ops/README.md` | `repo_local_orchestration` | WatchTowerPlan-specific planning, query, sync, and validation behavior. |
 | `core/python/src/watchtower_core/cli/README.md` | `repo_local_orchestration` | CLI registration and command wiring. |

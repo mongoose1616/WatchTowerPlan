@@ -272,7 +272,7 @@
       "summary": "Defines the follow-up architecture needed to make output-directory sync runs dependency-correct, restore accurate command implementation metadata, and tighten the public export-safe boundary around repo-specific services.",
       "status": "active",
       "doc_path": "docs/planning/design/features/core_export_hardening.md",
-      "updated_at": "2026-03-10T15:24:07Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -306,7 +306,7 @@
       "summary": "Defines the in-repo architecture needed to separate reusable core behavior from WatchTowerPlan repo-operations, reduce maintenance fan-out, and publish generic pack-facing contracts.",
       "status": "active",
       "doc_path": "docs/planning/design/features/core_export_ready_architecture.md",
-      "updated_at": "2026-03-10T04:28:34Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -397,7 +397,7 @@
       "summary": "Defines the technical design boundary for retiring repo-specific compatibility wrappers before splitting out reusable core surfaces.",
       "status": "active",
       "doc_path": "docs/planning/design/features/core_split_compatibility_wrapper_retirement.md",
-      "updated_at": "2026-03-16T02:06:53Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -855,13 +855,13 @@
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
       "status": "active",
       "doc_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
-      "updated_at": "2026-03-10T03:57:14Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
         ".github/",
         "docs/planning/tasks/",
-        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "docs/commands/core_python/watchtower_core_sync_github_tasks.md"
       ],
       "internal_reference_paths": [
@@ -890,7 +890,7 @@
       "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
       "status": "active",
       "doc_path": "docs/planning/design/features/github_task_push_sync.md",
-      "updated_at": "2026-03-09T18:25:06Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "related_paths": [
@@ -901,7 +901,7 @@
         "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
         "core/control_plane/schemas/artifacts/task_index.v1.schema.json",
         "core/python/src/watchtower_core/integrations/github/",
-        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "core/control_plane/indexes/tasks/task_index.v1.json"
       ],
       "internal_reference_paths": [
@@ -957,7 +957,7 @@
       "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
       "status": "active",
       "doc_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-      "updated_at": "2026-03-10T03:57:14Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "related_paths": [
@@ -967,9 +967,9 @@
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/design/design_tracking.md",
         "core/python/src/watchtower_core/closeout/initiative.py",
-        "core/python/src/watchtower_core/sync/prd_tracking.py",
-        "core/python/src/watchtower_core/sync/decision_tracking.py",
-        "core/python/src/watchtower_core/sync/design_tracking.py"
+        "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -4335,7 +4335,7 @@
       "summary": "Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.",
       "status": "active",
       "doc_path": "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
-      "updated_at": "2026-03-13T19:19:06Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "source_paths": [

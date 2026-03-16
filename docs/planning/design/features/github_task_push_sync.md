@@ -6,13 +6,13 @@ summary: "Defines the first push-only sync from local task records to GitHub iss
 type: "feature_design"
 status: "active"
 owner: "repository_maintainer"
-updated_at: "2026-03-09T18:25:06Z"
+updated_at: "2026-03-16T04:05:50Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
   - "docs/planning/tasks/"
   - "core/control_plane/indexes/tasks/task_index.v1.json"
-  - "core/python/src/watchtower_core/sync/github_tasks.py"
+  - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 aliases:
   - "github task push sync"
   - "github issues sync"
@@ -27,7 +27,7 @@ aliases:
 - `Linked PRDs`: `None`
 - `Linked Decisions`: `None`
 - `Linked Implementation Plans`: `None`
-- `Updated At`: `2026-03-09T18:25:06Z`
+- `Updated At`: `2026-03-16T04:05:50Z`
 
 ## Summary
 This document defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.
@@ -119,7 +119,7 @@ This document defines the first push-only sync from local task records to GitHub
 - `core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json`
 - `core/control_plane/schemas/artifacts/task_index.v1.schema.json`
 - `core/python/src/watchtower_core/integrations/github/`
-- `core/python/src/watchtower_core/sync/github_tasks.py`
+- `core/python/src/watchtower_core/repo_ops/sync/github_tasks.py`
 
 ## Design Guardrails
 - Keep GitHub sync push-only until the local model has stable usage and enough conflict evidence to justify two-way reconciliation.
@@ -132,7 +132,7 @@ This document defines the first push-only sync from local task records to GitHub
 - Regenerate local derived task surfaces automatically after task metadata changes.
 
 ## Dependencies
-- Existing task-document parsing and validation in `core/python/src/watchtower_core/sync/task_documents.py`.
+- Existing task-document parsing and validation in `core/python/src/watchtower_core/repo_ops/task_documents.py`.
 - Existing task index and traceability sync flows.
 - GitHub Issues REST API and GitHub Project GraphQL surfaces.
 
@@ -156,4 +156,4 @@ This document defines the first push-only sync from local task records to GitHub
 - [github_collaboration_reference.md](/home/j/WatchTowerPlan/docs/references/github_collaboration_reference.md)
 
 ## Updated At
-- `2026-03-09T18:25:06Z`
+- `2026-03-16T04:05:50Z`

@@ -1861,7 +1861,7 @@
       "summary": "Defines the follow-up work needed to make export-oriented sync snapshots dependency-correct, repair command implementation metadata, and harden the public boundary around repo-specific services.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T17:12:30Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/core_export_hardening_followup.md",
@@ -1907,7 +1907,7 @@
           "summary": "Defines the follow-up architecture needed to make output-directory sync runs dependency-correct, restore accurate command implementation metadata, and tighten the public export-safe boundary around repo-specific services.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/core_export_hardening.md",
-          "updated_at": "2026-03-10T15:24:07Z"
+          "updated_at": "2026-03-16T04:05:50Z"
         },
         {
           "document_id": "design.implementation.core_export_hardening_execution",
@@ -2194,7 +2194,7 @@
       "summary": "Defines the product and engineering requirements for making WatchTowerPlan core export-ready, lower-fan-out to maintain, and prepared to publish generic pack-facing contracts for future WatchTower work.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T06:46:17Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/core_export_readiness_and_optimization.md",
@@ -2245,7 +2245,7 @@
           "summary": "Defines the in-repo architecture needed to separate reusable core behavior from WatchTowerPlan repo-operations, reduce maintenance fan-out, and publish generic pack-facing contracts.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/core_export_ready_architecture.md",
-          "updated_at": "2026-03-10T04:28:34Z"
+          "updated_at": "2026-03-16T04:05:50Z"
         },
         {
           "document_id": "design.implementation.core_export_readiness_execution",
@@ -2307,7 +2307,7 @@
           ],
           "applies_to": [
             "core/python/src/watchtower_core/cli/",
-            "core/python/src/watchtower_core/sync/command_index.py",
+            "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
             "docs/commands/core_python/",
             "core/control_plane/indexes/commands/command_index.v1.json"
           ]
@@ -2602,8 +2602,8 @@
         "core/python/src/watchtower_core/evidence/",
         "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
         "core/python/src/watchtower_core/sync/",
-        "core/python/src/watchtower_core/sync/command_index.py",
         "core/python/src/watchtower_core/validation/",
         "core/python/tests/",
         "docs/commands/core_python/",
@@ -2972,63 +2972,15 @@
       "title": "Core Split Compatibility Wrapper Retirement PRD",
       "summary": "Retire repo-specific compatibility wrapper modules from export-safe `watchtower_core` namespaces so a future core split exposes only reusable surfaces.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-16T03:31:47Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-16T04:15:30Z",
       "coordination": {
-        "current_phase": "execution",
+        "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
-        "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-        "next_surface_path": "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
-        "open_task_count": 3,
-        "blocked_task_count": 2,
-        "primary_owner": "repository_maintainer",
-        "active_owners": [
-          "repository_maintainer"
-        ],
-        "active_task_ids": [
-          "task.core_split_compatibility_wrapper_retirement.boundary_proof.003",
-          "task.core_split_compatibility_wrapper_retirement.validation_closeout.004",
-          "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002"
-        ],
-        "active_task_summaries": [
-          {
-            "task_id": "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002",
-            "title": "Retire repo-specific compatibility wrappers from export-safe namespaces",
-            "task_status": "ready",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
-            "is_actionable": true
-          },
-          {
-            "task_id": "task.core_split_compatibility_wrapper_retirement.boundary_proof.003",
-            "title": "Prove core boundary after wrapper retirement",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/prove_core_boundary_after_wrapper_retirement.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002"
-            ]
-          },
-          {
-            "task_id": "task.core_split_compatibility_wrapper_retirement.validation_closeout.004",
-            "title": "Validate and close core split compatibility wrapper retirement",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/validate_and_close_core_split_compatibility_wrapper_retirement.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.core_split_compatibility_wrapper_retirement.boundary_proof.003"
-            ]
-          }
-        ],
-        "blocked_by_task_ids": [
-          "task.core_split_compatibility_wrapper_retirement.boundary_proof.003",
-          "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002"
-        ]
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
       },
       "prds": [
         {
@@ -3090,7 +3042,7 @@
           "summary": "Defines the technical design boundary for retiring repo-specific compatibility wrappers before splitting out reusable core surfaces.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/core_split_compatibility_wrapper_retirement.md",
-          "updated_at": "2026-03-16T02:06:53Z"
+          "updated_at": "2026-03-16T04:05:50Z"
         },
         {
           "document_id": "design.implementation.core_split_compatibility_wrapper_retirement",
@@ -3138,15 +3090,12 @@
           "title": "Prove core boundary after wrapper retirement",
           "summary": "Align runtime package docs and boundary-proof tests with the smaller split-ready surface after compatibility wrapper retirement.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/prove_core_boundary_after_wrapper_retirement.md",
-          "updated_at": "2026-03-16T02:06:53Z",
-          "depends_on": [
-            "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002"
-          ],
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/prove_core_boundary_after_wrapper_retirement.md",
+          "updated_at": "2026-03-16T04:11:09Z",
           "related_ids": [
             "prd.core_split_compatibility_wrapper_retirement",
             "design.features.core_split_compatibility_wrapper_retirement",
@@ -3168,15 +3117,12 @@
           "title": "Validate and close core split compatibility wrapper retirement",
           "summary": "Run targeted and full validation, refresh derived planning surfaces, and close the compatibility-wrapper retirement trace once the boundary lands cleanly.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "done",
           "task_kind": "governance",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/validate_and_close_core_split_compatibility_wrapper_retirement.md",
-          "updated_at": "2026-03-16T03:31:47Z",
-          "depends_on": [
-            "task.core_split_compatibility_wrapper_retirement.boundary_proof.003"
-          ],
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_core_split_compatibility_wrapper_retirement.md",
+          "updated_at": "2026-03-16T04:15:18Z",
           "related_ids": [
             "prd.core_split_compatibility_wrapper_retirement",
             "design.features.core_split_compatibility_wrapper_retirement",
@@ -3195,12 +3141,12 @@
           "title": "Retire repo-specific compatibility wrappers from export-safe namespaces",
           "summary": "Remove repo-specific query, sync, and aggregate-validation wrapper modules and move remaining callers to direct repo_ops or reusable imports.",
           "artifact_status": "active",
-          "task_status": "ready",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
-          "updated_at": "2026-03-16T02:06:53Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_repo_specific_compatibility_wrappers.md",
+          "updated_at": "2026-03-16T04:10:51Z",
           "related_ids": [
             "prd.core_split_compatibility_wrapper_retirement",
             "design.features.core_split_compatibility_wrapper_retirement",
@@ -3253,9 +3199,9 @@
             "docs/planning/design/implementation/core_split_compatibility_wrapper_retirement.md",
             "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
             "docs/planning/tasks/closed/archive/2026/03/16/core_split_compatibility_wrapper_retirement_bootstrap.md",
-            "docs/planning/tasks/open/prove_core_boundary_after_wrapper_retirement.md",
-            "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
-            "docs/planning/tasks/open/validate_and_close_core_split_compatibility_wrapper_retirement.md"
+            "docs/planning/tasks/closed/archive/2026/03/16/prove_core_boundary_after_wrapper_retirement.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/retire_repo_specific_compatibility_wrappers.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_core_split_compatibility_wrapper_retirement.md"
           ],
           "related_paths": [
             "docs/planning/coordination_tracking.md",
@@ -3273,7 +3219,7 @@
           "title": "Core Split Compatibility Wrapper Retirement Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-16T03:31:47Z",
+          "recorded_at": "2026-03-16T04:15:30Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/core_split_compatibility_wrapper_retirement_planning_baseline.v1.json",
           "check_ids": [
             "check.core_split_compatibility_wrapper_retirement.planning_baseline"
@@ -3289,6 +3235,9 @@
           ],
           "related_paths": [
             "core/control_plane/contracts/acceptance/core_split_compatibility_wrapper_retirement_acceptance.v1.json",
+            "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+            "core/control_plane/indexes/traceability/traceability_index.v1.json",
             "docs/planning/coordination_tracking.md",
             "docs/planning/decisions/decision_tracking.md",
             "docs/planning/design/design_tracking.md",
@@ -3342,6 +3291,9 @@
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/core_split_compatibility_wrapper_retirement_acceptance.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/core_split_compatibility_wrapper_retirement_planning_baseline.v1.json",
         "core/python/",
         "core/python/README.md",
@@ -3365,9 +3317,9 @@
         "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/archive/2026/03/16/core_split_compatibility_wrapper_retirement_bootstrap.md",
-        "docs/planning/tasks/open/prove_core_boundary_after_wrapper_retirement.md",
-        "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
-        "docs/planning/tasks/open/validate_and_close_core_split_compatibility_wrapper_retirement.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/prove_core_boundary_after_wrapper_retirement.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_repo_specific_compatibility_wrappers.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_core_split_compatibility_wrapper_retirement.md",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [
@@ -3377,7 +3329,9 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence published for the compatibility-wrapper retirement trace before implementation work starts. Repo-native sync and query surfaces were refreshed after the planning scaffold synced successfully from the canonical Python workspace."
+      "notes": "Evidence refreshed at 2026-03-16T04:15:30Z after wrapper retirement, boundary-proof completion, full repo validation, final sync, and terminal initiative closeout for trace.core_split_compatibility_wrapper_retirement.",
+      "closed_at": "2026-03-16T04:15:30Z",
+      "closure_reason": "Delivered and validated"
     },
     {
       "trace_id": "trace.data_contract_example_operationalization_alignment",
@@ -7897,7 +7851,7 @@
       "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T03:59:28Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
@@ -7914,7 +7868,7 @@
           "summary": "Defines the hosted GitHub intake, pull request, and project-field scaffolding that complements the repo-local planning and task model.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/github_collaboration_scaffolding.md",
-          "updated_at": "2026-03-10T03:57:14Z"
+          "updated_at": "2026-03-16T04:05:50Z"
         }
       ],
       "tasks": [
@@ -7935,7 +7889,7 @@
           "applies_to": [
             ".github/",
             "docs/planning/design/features/github_collaboration_scaffolding.md",
-            "core/python/src/watchtower_core/sync/github_tasks.py"
+            "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
           ]
         }
       ],
@@ -7947,7 +7901,7 @@
       ],
       "related_paths": [
         ".github/",
-        "core/python/src/watchtower_core/sync/github_tasks.py",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "docs/commands/core_python/watchtower_core_sync_github_tasks.md",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
         "docs/planning/tasks/",
@@ -8358,7 +8312,7 @@
       "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T03:59:28Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
@@ -8375,7 +8329,7 @@
           "summary": "Defines the first initiative closeout model, its traceability fields, and the generated planning trackers that mirror initiative outcome for humans.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
-          "updated_at": "2026-03-10T03:57:14Z"
+          "updated_at": "2026-03-16T04:05:50Z"
         }
       ],
       "tasks": [
@@ -8411,9 +8365,9 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/schemas/artifacts/traceability_index.v1.schema.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
-        "core/python/src/watchtower_core/sync/decision_tracking.py",
-        "core/python/src/watchtower_core/sync/design_tracking.py",
-        "core/python/src/watchtower_core/sync/prd_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/decision_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
+        "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/initiative_closeout_and_planning_trackers.md",
@@ -10140,7 +10094,7 @@
       "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-10T02:30:31Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/design/features/github_task_push_sync.md",
@@ -10157,7 +10111,7 @@
           "summary": "Defines the first push-only sync from local task records to GitHub issues and optional project items while preserving local task authority.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/features/github_task_push_sync.md",
-          "updated_at": "2026-03-09T18:25:06Z"
+          "updated_at": "2026-03-16T04:05:50Z"
         },
         {
           "document_id": "design.features.local_task_tracking_and_github_sync",
@@ -10227,8 +10181,8 @@
         "core/control_plane/schemas/interfaces/documentation/task_front_matter.v1.schema.json",
         "core/python/src/watchtower_core/integrations/github/",
         "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "core/python/src/watchtower_core/sync/",
-        "core/python/src/watchtower_core/sync/github_tasks.py",
         "docs/planning/design/features/github_task_push_sync.md",
         "docs/planning/design/features/local_task_tracking_and_github_sync.md",
         "docs/planning/tasks/",
@@ -10865,10 +10819,14 @@
           "title": "Planning Artifact Retention and Purge Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-15T11:00:00Z",
+          "recorded_at": "2026-03-16T03:47:30Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/planning_artifact_retention_and_purge_planning_baseline.v1.json",
           "check_ids": [
-            "check.planning_artifact_retention_and_purge.planning_baseline"
+            "check.planning_artifact_retention_and_purge.planning_chain",
+            "check.planning_artifact_retention_and_purge.policy_alignment",
+            "check.planning_artifact_retention_and_purge.purge_workflow",
+            "check.planning_artifact_retention_and_purge.pilot_purge",
+            "check.planning_artifact_retention_and_purge.validation_closeout"
           ],
           "acceptance_ids": [
             "ac.planning_artifact_retention_and_purge.001",
@@ -10941,17 +10899,36 @@
         "core/control_plane/contracts/acceptance/planning_artifact_retention_and_purge_acceptance.v1.json",
         "core/control_plane/examples/valid/ledgers/trace_purge_record.v1.example.json",
         "core/control_plane/indexes/",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/decisions/decision_index.v1.json",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/prds/prd_index.v1.json",
+        "core/control_plane/indexes/tasks/task_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/",
         "core/control_plane/ledgers/purges/",
+        "core/control_plane/ledgers/purges/README.md",
+        "core/control_plane/ledgers/purges/planning_projection_pipeline_modularity_hardening_purge_record.v1.json",
         "core/control_plane/ledgers/validation_evidence/planning_artifact_retention_and_purge_planning_baseline.v1.json",
         "core/control_plane/schemas/artifacts/trace_purge_record.v1.schema.json",
         "core/python/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/closeout_family.py",
+        "core/python/src/watchtower_core/cli/closeout_handlers.py",
         "core/python/src/watchtower_core/closeout/",
+        "core/python/src/watchtower_core/closeout/purge_trace.py",
         "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/control_plane/models/validation.py",
+        "core/python/tests/unit/test_closeout_handlers.py",
+        "core/python/tests/unit/test_trace_purge.py",
+        "docs/commands/core_python/watchtower_core_closeout_purge_trace.md",
         "docs/planning/",
+        "docs/planning/README.md",
         "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/README.md",
         "docs/planning/decisions/decision_tracking.md",
         "docs/planning/decisions/planning_artifact_retention_and_purge_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -10960,6 +10937,7 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/planning_artifact_retention_and_purge.md",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/README.md",
         "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
         "docs/planning/tasks/closed/archive/2026/03/16/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
@@ -10968,7 +10946,10 @@
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/",
         "docs/standards/governance/",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
         "docs/standards/governance/planning_retention_and_purge_standard.md",
+        "docs/standards/governance/rewrite_execution_control_standard.md",
         "docs/standards/governance/task_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md"
       ],
@@ -10979,7 +10960,7 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence published for the retention-model trace after the bootstrap task closed and the bounded execution queue plus retention standard were added before implementation work begins.",
+      "notes": "Evidence refreshed at 2026-03-16T03:47:30Z after retention-policy alignment, guarded purge workflow implementation, pilot purge of `trace.planning_projection_pipeline_modularity_hardening`, clean targeted and full validation, and terminal initiative closeout for `trace.planning_artifact_retention_and_purge`.",
       "closed_at": "2026-03-16T03:47:30Z",
       "closure_reason": "Implemented the guarded trace purge workflow, aligned retention authority, purged the pilot trace package, and reran clean validation."
     },
@@ -21483,7 +21464,7 @@
       "summary": "Review and refactor the remaining governed validation test hotspots so artifact and document-semantics coverage become more modular without reducing live repository contract validation.",
       "artifact_status": "active",
       "initiative_status": "completed",
-      "updated_at": "2026-03-13T19:19:06Z",
+      "updated_at": "2026-03-16T04:05:50Z",
       "coordination": {
         "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/validation_test_hotspot_rebalancing.md",
@@ -21562,7 +21543,7 @@
           "summary": "Breaks Validation Test Hotspot Rebalancing into a bounded implementation slice.",
           "artifact_status": "active",
           "doc_path": "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
-          "updated_at": "2026-03-13T19:19:06Z",
+          "updated_at": "2026-03-16T04:05:50Z",
           "source_paths": [
             "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
             "docs/planning/prds/validation_test_hotspot_rebalancing.md",
@@ -21621,7 +21602,6 @@
             "core/python/tests/unit/test_document_semantics_validation.py",
             "core/python/tests/unit/README.md",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-            "core/python/src/watchtower_core/validation/document_semantics.py",
             "core/python/src/watchtower_core/repo_ops/validation/all.py"
           ]
         },
@@ -21705,7 +21685,6 @@
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
             "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
             "core/python/src/watchtower_core/validation/artifact.py",
-            "core/python/src/watchtower_core/validation/document_semantics.py",
             "core/python/tests/integration/",
             "core/python/tests/integration/README.md",
             "core/python/tests/unit/",
@@ -21825,7 +21804,6 @@
         "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/validation/artifact.py",
-        "core/python/src/watchtower_core/validation/document_semantics.py",
         "core/python/tests/integration/",
         "core/python/tests/integration/README.md",
         "core/python/tests/integration/control_plane_artifact_helpers.py",

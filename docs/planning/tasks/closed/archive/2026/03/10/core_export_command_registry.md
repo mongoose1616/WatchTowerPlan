@@ -14,7 +14,7 @@ audience: "shared"
 authority: "authoritative"
 applies_to:
   - "core/python/src/watchtower_core/cli/"
-  - "core/python/src/watchtower_core/sync/command_index.py"
+  - "core/python/src/watchtower_core/repo_ops/sync/command_index.py"
   - "docs/commands/core_python/"
   - "core/control_plane/indexes/commands/command_index.v1.json"
 related_ids:

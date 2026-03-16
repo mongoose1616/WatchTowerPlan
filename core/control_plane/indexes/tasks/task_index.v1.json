@@ -629,7 +629,7 @@
       ],
       "applies_to": [
         "core/python/src/watchtower_core/cli/",
-        "core/python/src/watchtower_core/sync/command_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
         "docs/commands/core_python/",
         "core/control_plane/indexes/commands/command_index.v1.json"
       ]
@@ -819,16 +819,13 @@
       "title": "Prove core boundary after wrapper retirement",
       "summary": "Align runtime package docs and boundary-proof tests with the smaller split-ready surface after compatibility wrapper retirement.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/prove_core_boundary_after_wrapper_retirement.md",
-      "updated_at": "2026-03-16T02:06:53Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/prove_core_boundary_after_wrapper_retirement.md",
+      "updated_at": "2026-03-16T04:11:09Z",
       "trace_id": "trace.core_split_compatibility_wrapper_retirement",
-      "depends_on": [
-        "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002"
-      ],
       "related_ids": [
         "prd.core_split_compatibility_wrapper_retirement",
         "design.features.core_split_compatibility_wrapper_retirement",
@@ -850,16 +847,13 @@
       "title": "Validate and close core split compatibility wrapper retirement",
       "summary": "Run targeted and full validation, refresh derived planning surfaces, and close the compatibility-wrapper retirement trace once the boundary lands cleanly.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/validate_and_close_core_split_compatibility_wrapper_retirement.md",
-      "updated_at": "2026-03-16T03:31:47Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_core_split_compatibility_wrapper_retirement.md",
+      "updated_at": "2026-03-16T04:15:18Z",
       "trace_id": "trace.core_split_compatibility_wrapper_retirement",
-      "depends_on": [
-        "task.core_split_compatibility_wrapper_retirement.boundary_proof.003"
-      ],
       "related_ids": [
         "prd.core_split_compatibility_wrapper_retirement",
         "design.features.core_split_compatibility_wrapper_retirement",
@@ -878,12 +872,12 @@
       "title": "Retire repo-specific compatibility wrappers from export-safe namespaces",
       "summary": "Remove repo-specific query, sync, and aggregate-validation wrapper modules and move remaining callers to direct repo_ops or reusable imports.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
-      "updated_at": "2026-03-16T02:06:53Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_repo_specific_compatibility_wrappers.md",
+      "updated_at": "2026-03-16T04:10:51Z",
       "trace_id": "trace.core_split_compatibility_wrapper_retirement",
       "related_ids": [
         "prd.core_split_compatibility_wrapper_retirement",
@@ -2089,7 +2083,7 @@
       "applies_to": [
         ".github/",
         "docs/planning/design/features/github_collaboration_scaffolding.md",
-        "core/python/src/watchtower_core/sync/github_tasks.py"
+        "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
       ]
     },
     {
@@ -5916,7 +5910,6 @@
         "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/README.md",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/src/watchtower_core/validation/document_semantics.py",
         "core/python/src/watchtower_core/repo_ops/validation/all.py"
       ]
     },

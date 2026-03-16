@@ -9,7 +9,7 @@ from watchtower_core.repo_ops.validation.all import (
 from watchtower_core.repo_ops.validation.document_semantics import (
     DocumentSemanticsValidationService,
 )
-from watchtower_core.validation.registry import (
+from watchtower_core.repo_ops.validation.registry import (
     VALIDATION_FAMILY_SPECS,
     ValidationFamilySpec,
 )

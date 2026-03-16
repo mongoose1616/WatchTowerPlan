@@ -6,11 +6,11 @@ summary: Align runtime package docs and boundary-proof tests with the smaller sp
   surface after compatibility wrapper retirement.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T02:06:53Z'
+updated_at: '2026-03-16T04:11:09Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -26,8 +26,6 @@ related_ids:
 - design.implementation.core_split_compatibility_wrapper_retirement
 - decision.core_split_compatibility_wrapper_retirement_direction
 - contract.acceptance.core_split_compatibility_wrapper_retirement
-depends_on:
-- task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002
 ---
 
 # Prove core boundary after wrapper retirement

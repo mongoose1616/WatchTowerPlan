@@ -60,7 +60,6 @@
       "validation_targets": [
         "core/python/tests/unit/",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/src/watchtower_core/validation/document_semantics.py",
         "core/python/src/watchtower_core/repo_ops/validation/all.py"
       ],
       "related_paths": [

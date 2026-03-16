@@ -13,11 +13,14 @@ from watchtower_core.cli.handler_common import (
 from watchtower_core.control_plane.errors import SchemaResolutionError
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.evidence import EvidenceWriteResult, ValidationEvidenceRecorder
-from watchtower_core.repo_ops.validation import VALIDATION_FAMILY_SPECS, ValidationAllService
+from watchtower_core.repo_ops.validation import (
+    VALIDATION_FAMILY_SPECS,
+    DocumentSemanticsValidationService,
+    ValidationAllService,
+)
 from watchtower_core.validation import (
     AcceptanceReconciliationService,
     ArtifactValidationService,
-    DocumentSemanticsValidationService,
     FrontMatterValidationService,
     ValidationExecutionError,
     ValidationResult,

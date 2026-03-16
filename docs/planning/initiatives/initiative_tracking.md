@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.core_split_compatibility_wrapper_retirement` | `execution` | repository_maintainer | `3` (`blocked=2`) | [core_split_compatibility_wrapper_retirement.md](/home/j/WatchTowerPlan/docs/planning/prds/core_split_compatibility_wrapper_retirement.md) | [retire_repo_specific_compatibility_wrappers.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.core_split_compatibility_wrapper_retirement` | `completed` | [core_split_compatibility_wrapper_retirement.md](/home/j/WatchTowerPlan/docs/planning/prds/core_split_compatibility_wrapper_retirement.md) | `2026-03-16T04:15:30Z` | Delivered and validated |
 | `trace.planning_artifact_retention_and_purge` | `completed` | [planning_artifact_retention_and_purge.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_artifact_retention_and_purge.md) | `2026-03-16T03:47:30Z` | Implemented the guarded trace purge workflow, aligned retention authority, purged the pilot trace package, and reran clean validation. |
 | `trace.structural_rewrite_program` | `completed` | [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md) | `2026-03-15T09:55:03Z` | Final closeout-tracking outcome review passed after the last approved private seam landed, and no further named rewrite checkpoint remains. |
 | `trace.planning_query_efficiency_and_handler_modularity` | `completed` | [planning_query_efficiency_and_coordination_handler_modularity.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md) | `2026-03-13T23:40:00Z` | Completed the runtime-layer planning query redesign, split the coordination handler family, repaired the validation-loop drift, and reran clean confirmation passes. |
@@ -72,4 +71,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T03:47:30Z`_
+_Updated At: `2026-03-16T04:15:30Z`_

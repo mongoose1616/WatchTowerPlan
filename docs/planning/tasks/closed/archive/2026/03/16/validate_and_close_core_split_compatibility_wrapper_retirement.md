@@ -6,11 +6,11 @@ summary: Run targeted and full validation, refresh derived planning surfaces, an
   close the compatibility-wrapper retirement trace once the boundary lands cleanly.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T03:31:47Z'
+updated_at: '2026-03-16T04:15:18Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -23,8 +23,6 @@ related_ids:
 - design.implementation.core_split_compatibility_wrapper_retirement
 - decision.core_split_compatibility_wrapper_retirement_direction
 - contract.acceptance.core_split_compatibility_wrapper_retirement
-depends_on:
-- task.core_split_compatibility_wrapper_retirement.boundary_proof.003
 ---
 
 # Validate and close core split compatibility wrapper retirement

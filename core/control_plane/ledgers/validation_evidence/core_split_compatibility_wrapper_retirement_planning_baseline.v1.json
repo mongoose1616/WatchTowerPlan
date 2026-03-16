@@ -5,7 +5,7 @@
   "status": "active",
   "trace_id": "trace.core_split_compatibility_wrapper_retirement",
   "overall_result": "passed",
-  "recorded_at": "2026-03-16T03:31:47Z",
+  "recorded_at": "2026-03-16T04:15:30Z",
   "source_prd_ids": [
     "prd.core_split_compatibility_wrapper_retirement"
   ],
@@ -21,7 +21,7 @@
   "checks": [
     {
       "check_id": "check.core_split_compatibility_wrapper_retirement.planning_baseline",
-      "title": "Planning chain, accepted direction, and bounded execution queue are aligned",
+      "title": "Planning chain, completed task set, and terminal closeout reconcile",
       "result": "passed",
       "subject_paths": [
         "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
@@ -30,9 +30,9 @@
         "docs/planning/decisions/core_split_compatibility_wrapper_retirement_direction.md",
         "core/control_plane/contracts/acceptance/core_split_compatibility_wrapper_retirement_acceptance.v1.json",
         "docs/planning/tasks/closed/archive/2026/03/16/core_split_compatibility_wrapper_retirement_bootstrap.md",
-        "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
-        "docs/planning/tasks/open/prove_core_boundary_after_wrapper_retirement.md",
-        "docs/planning/tasks/open/validate_and_close_core_split_compatibility_wrapper_retirement.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_repo_specific_compatibility_wrappers.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/prove_core_boundary_after_wrapper_retirement.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_core_split_compatibility_wrapper_retirement.md"
       ],
       "subject_ids": [
         "prd.core_split_compatibility_wrapper_retirement",
@@ -53,11 +53,14 @@
         "ac.core_split_compatibility_wrapper_retirement.003",
         "ac.core_split_compatibility_wrapper_retirement.004"
       ],
-      "notes": "This planning baseline records wrapper retirement as the next split-prep slice after the closed export-readiness and export-hardening traces, with execution starting at direct import cleanup and ending at package-boundary proof plus validation closeout."
+      "notes": "Wrapper retirement closed with all four task slices terminal, `watchtower-core sync all --write --format json` refreshing 21 derived targets, `python -m mypy src/watchtower_core`, `ruff check .`, `watchtower-core validate acceptance --trace-id trace.core_split_compatibility_wrapper_retirement --format json`, `watchtower-core validate all --format json`, and a clean `pytest -q` run, followed by initiative closeout at 2026-03-16T04:15:30Z."
     }
   ],
   "related_paths": [
     "core/control_plane/contracts/acceptance/core_split_compatibility_wrapper_retirement_acceptance.v1.json",
+    "core/control_plane/indexes/coordination/coordination_index.v1.json",
+    "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
     "docs/planning/coordination_tracking.md",
     "docs/planning/decisions/decision_tracking.md",
     "docs/planning/design/design_tracking.md",
@@ -65,7 +68,7 @@
     "docs/planning/prds/prd_tracking.md",
     "docs/planning/tasks/task_tracking.md"
   ],
-  "notes": "Planning baseline evidence published for the compatibility-wrapper retirement trace before implementation work starts. Repo-native sync and query surfaces were refreshed after the planning scaffold synced successfully from the canonical Python workspace.",
+  "notes": "Evidence refreshed at 2026-03-16T04:15:30Z after wrapper retirement, boundary-proof completion, full repo validation, final sync, and terminal initiative closeout for trace.core_split_compatibility_wrapper_retirement.",
   "source_decision_ids": [
     "decision.core_split_compatibility_wrapper_retirement_direction"
   ]

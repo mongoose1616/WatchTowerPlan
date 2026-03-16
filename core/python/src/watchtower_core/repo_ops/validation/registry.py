@@ -1,4 +1,4 @@
-"""Canonical registry for aggregate validation families."""
+"""Canonical registry for repo-wide aggregate validation families."""
 
 from __future__ import annotations
 

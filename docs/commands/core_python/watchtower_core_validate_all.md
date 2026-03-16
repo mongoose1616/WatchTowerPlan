@@ -66,12 +66,12 @@ uv run watchtower-core validate all --skip-front-matter --skip-document-semantic
 
 ## Source Surface
 - `core/python/src/watchtower_core/cli/validate_family.py`
-- `core/python/src/watchtower_core/validation/all.py`
-- `core/python/src/watchtower_core/validation/registry.py`
+- `core/python/src/watchtower_core/repo_ops/validation/all.py`
+- `core/python/src/watchtower_core/repo_ops/validation/registry.py`
 - `core/python/src/watchtower_core/validation/front_matter.py`
-- `core/python/src/watchtower_core/validation/document_semantics.py`
+- `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`
 - `core/python/src/watchtower_core/validation/artifact.py`
 - `core/python/src/watchtower_core/validation/acceptance.py`
 
 ## Updated At
-- `2026-03-14T05:37:06Z`
+- `2026-03-16T04:05:50Z`

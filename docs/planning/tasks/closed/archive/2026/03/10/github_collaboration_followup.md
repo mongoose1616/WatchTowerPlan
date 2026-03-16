@@ -15,7 +15,7 @@ authority: "authoritative"
 applies_to:
   - ".github/"
   - "docs/planning/design/features/github_collaboration_scaffolding.md"
-  - "core/python/src/watchtower_core/sync/github_tasks.py"
+  - "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py"
 related_ids:
   - "design.features.github_collaboration_scaffolding"
 aliases:

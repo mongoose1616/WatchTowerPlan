@@ -1,15 +1,15 @@
 # `watchtower_core.query`
 
 ## Summary
-Compatibility namespace for explicit query wrappers that avoids exporting repo-local query orchestration from the package root.
+Guardrail namespace root that keeps repo-local query orchestration out of the export-safe package surface.
 
 ## Boundary
 - `Classification`: `boundary_layer`
-- `Supported Imports`: Explicit compatibility wrappers under `watchtower_core.query.<module>` when they exist.
-- `Non-Goals`: Direct export of repo-specific query services from `watchtower_core.query` itself.
+- `Supported Imports`: The namespace root only, for boundary discovery and explicit failure when callers reach for repo-local query services from the wrong package.
+- `Non-Goals`: Supported repo-specific leaf imports under `watchtower_core.query`.
 
 ## Key Surfaces
-- `__init__.py`: Guardrail that rejects unsupported repo-local imports from the namespace root.
+- `__init__.py`: Guardrail that rejects repo-local query imports and redirects callers to `watchtower_core.repo_ops.query`.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/repo_ops/query/README.md`

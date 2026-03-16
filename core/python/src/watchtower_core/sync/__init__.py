@@ -7,7 +7,6 @@ __all__: list[str] = []
 
 def __getattr__(name: str) -> object:
     raise AttributeError(
-        "watchtower_core.sync does not export repo-specific sync services. "
-        "Import from watchtower_core.repo_ops.sync or from an explicit "
-        "watchtower_core.sync.<module> compatibility wrapper instead."
+        "watchtower_core.sync is a guardrail namespace root and does not export "
+        "repo-specific sync services. Import from watchtower_core.repo_ops.sync."
     )

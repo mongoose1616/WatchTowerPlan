@@ -38,12 +38,12 @@ from watchtower_core.repo_ops.validation.example_artifacts import (
     iter_control_plane_example_paths,
     schema_id_for_control_plane_example,
 )
+from watchtower_core.repo_ops.validation.registry import VALIDATION_FAMILY_SPECS
 from watchtower_core.validation.acceptance import AcceptanceReconciliationService
 from watchtower_core.validation.artifact import ArtifactValidationService
 from watchtower_core.validation.errors import ValidationExecutionError, ValidationSelectionError
 from watchtower_core.validation.front_matter import FrontMatterValidationService
 from watchtower_core.validation.models import ValidationIssue, ValidationResult
-from watchtower_core.validation.registry import VALIDATION_FAMILY_SPECS
 
 
 @dataclass(frozen=True, slots=True)
