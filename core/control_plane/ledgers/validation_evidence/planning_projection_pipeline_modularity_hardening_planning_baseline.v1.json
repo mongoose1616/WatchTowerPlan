@@ -1,0 +1,69 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.planning_projection_pipeline_modularity_hardening.planning_baseline",
+  "title": "Planning Projection Pipeline Modularity Hardening Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-15T23:55:21Z",
+  "source_prd_ids": [
+    "prd.planning_projection_pipeline_modularity_hardening"
+  ],
+  "source_design_ids": [
+    "design.features.planning_projection_pipeline_modularity_hardening"
+  ],
+  "source_plan_ids": [
+    "design.implementation.planning_projection_pipeline_modularity_hardening"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.planning_projection_pipeline_modularity_hardening"
+  ],
+  "checks": [
+    {
+      "check_id": "check.planning_projection_pipeline_modularity_hardening.planning_baseline",
+      "title": "Planning chain, accepted direction, and bounded execution queue are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/design/features/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/design/implementation/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/decisions/planning_projection_pipeline_modularity_hardening_direction.md",
+        "core/control_plane/contracts/acceptance/planning_projection_pipeline_modularity_hardening_acceptance.v1.json",
+        "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
+        "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
+        "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md"
+      ],
+      "subject_ids": [
+        "prd.planning_projection_pipeline_modularity_hardening",
+        "design.features.planning_projection_pipeline_modularity_hardening",
+        "design.implementation.planning_projection_pipeline_modularity_hardening",
+        "task.planning_projection_pipeline_modularity_hardening.bootstrap.001",
+        "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002",
+        "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
+        "task.planning_projection_pipeline_modularity_hardening.validation_closeout.004",
+        "contract.acceptance.planning_projection_pipeline_modularity_hardening",
+        "decision.planning_projection_pipeline_modularity_hardening_direction",
+        "evidence.planning_projection_pipeline_modularity_hardening.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_projection_pipeline_modularity_hardening.001"
+      ],
+      "notes": "The March 15, 2026 live hotspot check confirmed that the earlier Phase 4 snapshot slice already shrank source assembly and coordination policy, so this trace narrows the remaining hotspot to serialization boundaries first and sync-surface alignment second."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/planning_projection_pipeline_modularity_hardening_acceptance.v1.json",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-15T23:55:21Z after replacing the bootstrap placeholders with the current planning-projection hotspot boundary, the accepted direction, and the bounded execution queue.",
+  "source_decision_ids": [
+    "decision.planning_projection_pipeline_modularity_hardening_direction"
+  ]
+}

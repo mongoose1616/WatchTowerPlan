@@ -1,0 +1,83 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.planning_projection_pipeline_modularity_hardening",
+  "title": "Planning Projection Pipeline Modularity Hardening Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+  "source_prd_id": "prd.planning_projection_pipeline_modularity_hardening",
+  "entries": [
+    {
+      "acceptance_id": "ac.planning_projection_pipeline_modularity_hardening.001",
+      "summary": "The trace publishes the active PRD, accepted direction decision, active feature design, active implementation plan, aligned acceptance contract, planning-baseline evidence, closed bootstrap task, and bounded open execution tasks for the remaining hotspot.",
+      "source_requirement_ids": [
+        "req.planning_projection_pipeline_modularity_hardening.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/design/features/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/design/implementation/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/decisions/planning_projection_pipeline_modularity_hardening_direction.md",
+        "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
+        "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
+        "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The bootstrap placeholders were replaced after the March 15, 2026 live hotspot check confirmed that the remaining seam now centers on serialization and planning-catalog composition rather than the earlier snapshot extraction."
+    },
+    {
+      "acceptance_id": "ac.planning_projection_pipeline_modularity_hardening.002",
+      "summary": "The private serialization surface no longer owns all projection payload families in one file, and initiative or planning payloads stay stable under focused regression coverage.",
+      "source_requirement_ids": [
+        "req.planning_projection_pipeline_modularity_hardening.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_projection_pipeline_modularity_hardening.003",
+      "summary": "Planning catalog and initiative sync consume smaller private composition helpers, and coordination parity plus validator or related-path or tag projection semantics stay stable.",
+      "source_requirement_ids": [
+        "req.planning_projection_pipeline_modularity_hardening.003"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_projection_pipeline_modularity_hardening.004",
+      "summary": "Targeted sync or query tests, repo-wide validation, acceptance or evidence refresh, and initiative closeout complete without a new actionable issue in this private seam.",
+      "source_requirement_ids": [
+        "req.planning_projection_pipeline_modularity_hardening.004"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ]
+    }
+  ]
+}

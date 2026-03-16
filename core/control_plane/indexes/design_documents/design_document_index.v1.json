@@ -1265,6 +1265,43 @@
       ]
     },
     {
+      "document_id": "design.features.planning_projection_pipeline_modularity_hardening",
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "family": "feature_design",
+      "title": "Planning Projection Pipeline Modularity Hardening Feature Design",
+      "summary": "Defines the technical design boundary for Planning Projection Pipeline Modularity Hardening.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/planning_projection_pipeline_modularity_hardening.md",
+      "updated_at": "2026-03-15T23:55:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/planning_projection_pipeline_modularity_hardening.md",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md"
+      ]
+    },
+    {
       "document_id": "design.features.planning_query_efficiency_and_handler_modularity",
       "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
       "family": "feature_design",
@@ -3130,6 +3167,45 @@
         "docs/standards/documentation/command_md_standard.md",
         "docs/planning/prds/planning_authority_unification.md",
         "docs/planning/design/features/planning_authority_unification.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.planning_projection_pipeline_modularity_hardening",
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "family": "implementation_plan",
+      "title": "Planning Projection Pipeline Modularity Hardening Implementation Plan",
+      "summary": "Breaks Planning Projection Pipeline Modularity Hardening into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/planning_projection_pipeline_modularity_hardening.md",
+      "updated_at": "2026-03-15T23:55:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/decisions/planning_projection_pipeline_modularity_hardening_direction.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/data_contracts/authority_map_standard.md",
+        "docs/standards/governance/initiative_tracking_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md"
       ]
     },
     {

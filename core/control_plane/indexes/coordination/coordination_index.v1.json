@@ -3,16 +3,149 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-15T09:55:03Z",
-  "coordination_mode": "ready_for_bootstrap",
-  "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
-  "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
-  "recommended_surface_path": "docs/planning/README.md",
-  "active_initiative_count": 0,
-  "blocked_task_count": 0,
-  "actionable_task_count": 0,
-  "entries": [],
-  "actionable_tasks": [],
+  "updated_at": "2026-03-16T00:46:51Z",
+  "coordination_mode": "active_work",
+  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
+  "recommended_next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
+  "recommended_surface_path": "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
+  "active_initiative_count": 1,
+  "blocked_task_count": 1,
+  "actionable_task_count": 1,
+  "entries": [
+    {
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "title": "Planning Projection Pipeline Modularity Hardening PRD",
+      "summary": "Reduce remaining responsibility concentration in the private planning-projection pipeline by narrowing shared serialization, catalog-summary assembly, and sync composition seams without changing public planning outputs.",
+      "artifact_status": "active",
+      "initiative_status": "active",
+      "current_phase": "execution",
+      "updated_at": "2026-03-16T00:46:51Z",
+      "open_task_count": 2,
+      "blocked_task_count": 1,
+      "key_surface_path": "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
+      "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
+      "next_surface_path": "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
+      "primary_owner": "repository_maintainer",
+      "active_owners": [
+        "repository_maintainer"
+      ],
+      "active_task_ids": [
+        "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
+        "task.planning_projection_pipeline_modularity_hardening.validation_closeout.004"
+      ],
+      "active_task_summaries": [
+        {
+          "task_id": "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
+          "title": "Tighten planning projection sync composition seams",
+          "task_status": "in_progress",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
+          "is_actionable": true,
+          "depends_on": [
+            "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002"
+          ]
+        },
+        {
+          "task_id": "task.planning_projection_pipeline_modularity_hardening.validation_closeout.004",
+          "title": "Validate and close planning projection pipeline modularity hardening",
+          "task_status": "backlog",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
+          "is_actionable": false,
+          "depends_on": [
+            "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003"
+          ]
+        }
+      ],
+      "blocked_by_task_ids": [
+        "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003"
+      ],
+      "prd_ids": [
+        "prd.planning_projection_pipeline_modularity_hardening"
+      ],
+      "decision_ids": [
+        "decision.planning_projection_pipeline_modularity_hardening_direction"
+      ],
+      "design_ids": [
+        "design.features.planning_projection_pipeline_modularity_hardening"
+      ],
+      "plan_ids": [
+        "design.implementation.planning_projection_pipeline_modularity_hardening"
+      ],
+      "task_ids": [
+        "task.planning_projection_pipeline_modularity_hardening.bootstrap.001",
+        "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002",
+        "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
+        "task.planning_projection_pipeline_modularity_hardening.validation_closeout.004"
+      ],
+      "acceptance_ids": [
+        "ac.planning_projection_pipeline_modularity_hardening.001",
+        "ac.planning_projection_pipeline_modularity_hardening.002",
+        "ac.planning_projection_pipeline_modularity_hardening.003",
+        "ac.planning_projection_pipeline_modularity_hardening.004"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
+      ],
+      "evidence_ids": [
+        "evidence.planning_projection_pipeline_modularity_hardening.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/planning_projection_pipeline_modularity_hardening_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/planning_projection_pipeline_modularity_hardening_planning_baseline.v1.json",
+        "core/python/",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/planning_projection_pipeline_modularity_hardening_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/design/implementation/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
+        "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
+        "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-15T23:55:21Z after replacing the bootstrap placeholders with the current planning-projection hotspot boundary, the accepted direction, and the bounded execution queue."
+    }
+  ],
+  "actionable_tasks": [
+    {
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "initiative_title": "Planning Projection Pipeline Modularity Hardening PRD",
+      "task_id": "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
+      "title": "Tighten planning projection sync composition seams",
+      "task_status": "in_progress",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
+      "is_actionable": true,
+      "depends_on": [
+        "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002"
+      ]
+    }
+  ],
   "recent_closed_initiatives": [
     {
       "trace_id": "trace.structural_rewrite_program",

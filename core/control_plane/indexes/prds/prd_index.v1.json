@@ -1354,6 +1354,53 @@
       ]
     },
     {
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "prd_id": "prd.planning_projection_pipeline_modularity_hardening",
+      "title": "Planning Projection Pipeline Modularity Hardening PRD",
+      "summary": "Reduce remaining responsibility concentration in the private planning-projection pipeline by narrowing shared serialization, catalog-summary assembly, and sync composition seams without changing public planning outputs.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
+      "updated_at": "2026-03-15T23:55:21Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.planning_projection_pipeline_modularity_hardening.001",
+        "req.planning_projection_pipeline_modularity_hardening.002",
+        "req.planning_projection_pipeline_modularity_hardening.003",
+        "req.planning_projection_pipeline_modularity_hardening.004"
+      ],
+      "acceptance_ids": [
+        "ac.planning_projection_pipeline_modularity_hardening.001",
+        "ac.planning_projection_pipeline_modularity_hardening.002",
+        "ac.planning_projection_pipeline_modularity_hardening.003",
+        "ac.planning_projection_pipeline_modularity_hardening.004"
+      ],
+      "linked_decision_ids": [
+        "decision.planning_projection_pipeline_modularity_hardening_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_projection_pipeline_modularity_hardening"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_projection_pipeline_modularity_hardening"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/design/implementation/structural_rewrite_program.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
+        "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md"
+      ]
+    },
+    {
       "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
       "prd_id": "prd.planning_query_efficiency_and_handler_modularity",
       "title": "Planning Query Efficiency and Coordination Handler Modularity PRD",

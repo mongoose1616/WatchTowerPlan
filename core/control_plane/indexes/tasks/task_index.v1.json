@@ -2788,6 +2788,120 @@
       ]
     },
     {
+      "task_id": "task.planning_projection_pipeline_modularity_hardening.bootstrap.001",
+      "title": "Bootstrap Planning Projection Pipeline Modularity Hardening planning chain",
+      "summary": "Bootstraps the initial planning chain for Planning Projection Pipeline Modularity Hardening.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
+      "updated_at": "2026-03-16T00:02:15Z",
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "related_ids": [
+        "prd.planning_projection_pipeline_modularity_hardening",
+        "design.features.planning_projection_pipeline_modularity_hardening",
+        "design.implementation.planning_projection_pipeline_modularity_hardening",
+        "decision.planning_projection_pipeline_modularity_hardening_direction",
+        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py"
+      ]
+    },
+    {
+      "task_id": "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002",
+      "title": "Split planning projection serialization boundaries",
+      "summary": "Extract family-focused planning projection serializers and preserve compact payload semantics for initiative and planning outputs.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
+      "updated_at": "2026-03-16T00:46:51Z",
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "related_ids": [
+        "prd.planning_projection_pipeline_modularity_hardening",
+        "design.features.planning_projection_pipeline_modularity_hardening",
+        "design.implementation.planning_projection_pipeline_modularity_hardening",
+        "decision.planning_projection_pipeline_modularity_hardening_direction",
+        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py"
+      ]
+    },
+    {
+      "task_id": "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
+      "title": "Tighten planning projection sync composition seams",
+      "summary": "Move planning-catalog-only aggregation and sync composition into smaller private helpers while preserving initiative-versus-planning parity.",
+      "status": "active",
+      "task_status": "in_progress",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
+      "updated_at": "2026-03-16T00:46:51Z",
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "depends_on": [
+        "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002"
+      ],
+      "related_ids": [
+        "prd.planning_projection_pipeline_modularity_hardening",
+        "design.features.planning_projection_pipeline_modularity_hardening",
+        "design.implementation.planning_projection_pipeline_modularity_hardening",
+        "decision.planning_projection_pipeline_modularity_hardening_direction",
+        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
+        "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
+        "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
+        "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/tests/unit/test_initiative_index_sync.py",
+        "core/python/tests/unit/test_planning_catalog_sync.py"
+      ]
+    },
+    {
+      "task_id": "task.planning_projection_pipeline_modularity_hardening.validation_closeout.004",
+      "title": "Validate and close planning projection pipeline modularity hardening",
+      "summary": "Run targeted and full validation, refresh acceptance evidence, and close the planning-projection modularity trace once the refactor lands cleanly.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
+      "updated_at": "2026-03-16T00:02:05Z",
+      "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
+      "depends_on": [
+        "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003"
+      ],
+      "related_ids": [
+        "prd.planning_projection_pipeline_modularity_hardening",
+        "design.features.planning_projection_pipeline_modularity_hardening",
+        "design.implementation.planning_projection_pipeline_modularity_hardening",
+        "decision.planning_projection_pipeline_modularity_hardening_direction",
+        "contract.acceptance.planning_projection_pipeline_modularity_hardening"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ]
+    },
+    {
       "task_id": "task.planning_query_efficiency_and_handler_modularity.bootstrap.001",
       "title": "Bootstrap Planning Query Efficiency and Coordination Handler Modularity planning chain",
       "summary": "Bootstraps the initial planning chain for Planning Query Efficiency and Coordination Handler Modularity.",
