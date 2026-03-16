@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
+| --- | --- | --- | --- | --- | --- | --- |
+| `trace.post_rewrite_core_cleanup_and_surface_reduction` | `execution` | repository_maintainer | `3` (`blocked=2`) | [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md) | [generalize_pack_context_surface_loading.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/generalize_pack_context_surface_loading.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -73,4 +75,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T06:16:22Z`_
+_Updated At: `2026-03-16T06:40:30Z`_

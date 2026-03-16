@@ -1582,6 +1582,46 @@
       ]
     },
     {
+      "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
+      "prd_id": "prd.post_rewrite_core_cleanup_and_surface_reduction",
+      "title": "Post-Rewrite Core Cleanup and Surface Reduction PRD",
+      "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
+      "updated_at": "2026-03-16T06:28:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.post_rewrite_core_cleanup_and_surface_reduction.001",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.002",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.003",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.004",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.005"
+      ],
+      "acceptance_ids": [
+        "ac.post_rewrite_core_cleanup_and_surface_reduction.001"
+      ],
+      "linked_decision_ids": [
+        "decision.post_rewrite_core_cleanup_and_surface_reduction_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.post_rewrite_core_cleanup_and_surface_reduction"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.post_rewrite_core_cleanup_and_surface_reduction"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
+        "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md"
+      ]
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "prd_id": "prd.preimplementation_repo_review_and_hardening",
       "title": "Pre-Implementation Repository Review and Hardening PRD",

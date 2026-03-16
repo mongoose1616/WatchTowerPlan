@@ -1,0 +1,59 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.post_rewrite_core_cleanup_and_surface_reduction.planning_baseline",
+  "title": "Post-Rewrite Core Cleanup and Surface Reduction Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-16T06:28:27Z",
+  "source_prd_ids": [
+    "prd.post_rewrite_core_cleanup_and_surface_reduction"
+  ],
+  "source_design_ids": [
+    "design.features.post_rewrite_core_cleanup_and_surface_reduction"
+  ],
+  "source_plan_ids": [
+    "design.implementation.post_rewrite_core_cleanup_and_surface_reduction"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
+  ],
+  "checks": [
+    {
+      "check_id": "check.post_rewrite_core_cleanup_and_surface_reduction.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
+        "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
+        "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md"
+      ],
+      "subject_ids": [
+        "prd.post_rewrite_core_cleanup_and_surface_reduction",
+        "design.features.post_rewrite_core_cleanup_and_surface_reduction",
+        "design.implementation.post_rewrite_core_cleanup_and_surface_reduction",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.bootstrap.001",
+        "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction",
+        "decision.post_rewrite_core_cleanup_and_surface_reduction_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.post_rewrite_core_cleanup_and_surface_reduction.001"
+      ],
+      "notes": "Bootstrap write mode published the initial planning chain, acceptance contract, evidence artifact, and bootstrap task in canonical repository paths."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence prepared at 2026-03-16T06:28:27Z for trace.post_rewrite_core_cleanup_and_surface_reduction.",
+  "source_decision_ids": [
+    "decision.post_rewrite_core_cleanup_and_surface_reduction_direction"
+  ]
+}

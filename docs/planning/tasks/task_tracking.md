@@ -1,10 +1,14 @@
 # Task Tracking
 
 ## Open Tasks
-_No open tasks._
+| Task | Status | Priority | Owner | Trace ID | Summary |
+| --- | --- | --- | --- | --- | --- |
+| [task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003](/home/j/WatchTowerPlan/docs/planning/tasks/open/generalize_pack_context_surface_loading.md) | `in_progress` | `high` | `repository_maintainer` | `trace.post_rewrite_core_cleanup_and_surface_reduction` | Make pack-context startup resolve typed required surfaces from declared paths instead of repo-specific loader constants. |
+| [task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005](/home/j/WatchTowerPlan/docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md) | `backlog` | `high` | `repository_maintainer` | `trace.post_rewrite_core_cleanup_and_surface_reduction` | Run full validation, perform one more review loop, and close the trace when no new concrete issue remains in scope. |
+| [task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md) | `backlog` | `medium` | `repository_maintainer` | `trace.post_rewrite_core_cleanup_and_surface_reduction` | Remove the retained repository_manifest family if it has no runtime consumer and repair the remaining schema, validator, and docs references. |
 
 ## Closed Task Summary
-- `done`: 234
+- `done`: 236
 - `cancelled`: 3
 
 Use `docs/planning/tasks/closed/archive/` for canonical terminal task records, `watchtower-core query tasks --task-status done --format json` for completed-task lookup, or `watchtower-core query tasks --task-status cancelled --format json` for cancelled-task lookup.
@@ -12,6 +16,8 @@ Use `docs/planning/tasks/closed/archive/` for canonical terminal task records, `
 ## Recently Closed Tasks
 | Task | Status | Priority | Owner | Trace ID | Summary |
 | --- | --- | --- | --- | --- | --- |
+| [task.post_rewrite_core_cleanup_and_surface_reduction.workspace_validation_contract.002](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md) | `done` | `high` | `repository_maintainer` | `trace.post_rewrite_core_cleanup_and_surface_reduction` | Reconcile the rewritten Python workspace standard with the integration assertion so full pytest passes again. |
+| [task.post_rewrite_core_cleanup_and_surface_reduction.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.post_rewrite_core_cleanup_and_surface_reduction` | Bootstraps the initial planning chain for Post-Rewrite Core Cleanup and Surface Reduction. |
 | [task.documentation_surface_alignment_for_core_pack_model.validation_closeout.003](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_documentation_surface_alignment_for_core_pack_model.md) | `done` | `medium` | `repository_maintainer` | `trace.documentation_surface_alignment_for_core_pack_model` | Run validation, refresh planning surfaces, and close the documentation-alignment trace once the docs refresh lands cleanly. |
 | [task.documentation_surface_alignment_for_core_pack_model.refresh.002](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/refresh_repository_documentation_for_core_pack_model_alignment.md) | `done` | `high` | `repository_maintainer` | `trace.documentation_surface_alignment_for_core_pack_model` | Audit and refresh the documentation corpus so repository guidance matches the current reusable-core plus plan-domain-pack boundary. |
 | [task.documentation_surface_alignment_for_core_pack_model.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/documentation_surface_alignment_for_core_pack_model_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.documentation_surface_alignment_for_core_pack_model` | Bootstraps the planning chain for the documentation-alignment follow-on. |
@@ -20,7 +26,5 @@ Use `docs/planning/tasks/closed/archive/` for canonical terminal task records, `
 | [task.validated_core_pack_data_shape_convergence.pack_models.003](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md) | `done` | `high` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Moves shared core closer to pack-facing artifact families by adding typed pack models and reducing planning-specific loader bias. |
 | [task.validated_core_pack_data_shape_convergence.runtime_manifest.002](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/publish_pack_runtime_manifest_and_workspace_startup_boundary.md) | `done` | `high` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Adds the validated pack-runtime manifest and manifest-driven workspace startup boundary for shared core. |
 | [task.validated_core_pack_data_shape_convergence.bootstrap.001](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/validated_core_and_pack_data_shape_convergence_bootstrap.md) | `done` | `high` | `repository_maintainer` | `trace.validated_core_pack_data_shape_convergence` | Bootstraps the initial planning chain for Validated Core and Pack Data Shape Convergence. |
-| [task.core_split_compatibility_wrapper_retirement.validation_closeout.004](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_core_split_compatibility_wrapper_retirement.md) | `done` | `high` | `repository_maintainer` | `trace.core_split_compatibility_wrapper_retirement` | Run targeted and full validation, refresh derived planning surfaces, and close the compatibility-wrapper retirement trace once the boundary lands cleanly. |
-| [task.core_split_compatibility_wrapper_retirement.boundary_proof.003](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/16/prove_core_boundary_after_wrapper_retirement.md) | `done` | `high` | `repository_maintainer` | `trace.core_split_compatibility_wrapper_retirement` | Align runtime package docs and boundary-proof tests with the smaller split-ready surface after compatibility wrapper retirement. |
 
-_Updated At: `2026-03-16T06:16:10Z`_
+_Updated At: `2026-03-16T06:40:30Z`_

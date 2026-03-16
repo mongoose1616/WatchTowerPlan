@@ -3446,6 +3446,87 @@
       "notes": "Planning baseline evidence refreshed at 2026-03-11T21:01:23Z for trace.planning_semantics_and_decision_contract_alignment after initiative closeout and final validation alignment."
     },
     {
+      "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
+      "title": "Post-Rewrite Core Cleanup and Surface Reduction PRD",
+      "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-16T06:40:30Z",
+      "prd_ids": [
+        "prd.post_rewrite_core_cleanup_and_surface_reduction"
+      ],
+      "decision_ids": [
+        "decision.post_rewrite_core_cleanup_and_surface_reduction_direction"
+      ],
+      "design_ids": [
+        "design.features.post_rewrite_core_cleanup_and_surface_reduction"
+      ],
+      "plan_ids": [
+        "design.implementation.post_rewrite_core_cleanup_and_surface_reduction"
+      ],
+      "task_ids": [
+        "task.post_rewrite_core_cleanup_and_surface_reduction.bootstrap.001",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.workspace_validation_contract.002"
+      ],
+      "requirement_ids": [
+        "req.post_rewrite_core_cleanup_and_surface_reduction.001",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.002",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.003",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.004",
+        "req.post_rewrite_core_cleanup_and_surface_reduction.005"
+      ],
+      "acceptance_ids": [
+        "ac.post_rewrite_core_cleanup_and_surface_reduction.001"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.post_rewrite_core_cleanup_and_surface_reduction.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
+        "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
+        "core/control_plane/manifests/repository_manifest.v1.json",
+        "core/control_plane/registries/validator_registry.json",
+        "core/python/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/control_plane/pack_context.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
+        "core/python/tests/unit/test_pack_context.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
+        "docs/planning/tasks/open/generalize_pack_context_surface_loading.md",
+        "docs/planning/tasks/open/retire_the_inventory_only_repository_manifest_surface.md",
+        "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence prepared at 2026-03-16T06:28:27Z for trace.post_rewrite_core_cleanup_and_surface_reduction."
+    },
+    {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "title": "Pre-Implementation Repository Review and Hardening PRD",
       "summary": "Defines the review-driven work needed to streamline planning coordination, shrink low-value documentation entrypoints, and harden watchtower_core for future configurable external pack use before product implementation begins.",

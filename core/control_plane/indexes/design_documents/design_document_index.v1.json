@@ -1421,6 +1421,33 @@
       ]
     },
     {
+      "document_id": "design.features.post_rewrite_core_cleanup_and_surface_reduction",
+      "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
+      "family": "feature_design",
+      "title": "Post-Rewrite Core Cleanup and Surface Reduction Feature Design",
+      "summary": "Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface Reduction.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
+      "updated_at": "2026-03-16T06:28:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "core/control_plane/README.md",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md"
+      ]
+    },
+    {
       "document_id": "design.features.preimplementation_repo_readiness",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "family": "feature_design",
@@ -3396,6 +3423,34 @@
       "internal_reference_paths": [
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/standards/documentation/documentation_semantics_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.post_rewrite_core_cleanup_and_surface_reduction",
+      "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
+      "family": "implementation_plan",
+      "title": "Post-Rewrite Core Cleanup and Surface Reduction Implementation Plan",
+      "summary": "Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
+      "updated_at": "2026-03-16T06:28:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "docs/standards/engineering/python_workspace_standard.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/engineering/python_workspace_standard.md",
+        "core/control_plane/README.md",
+        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
+        "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md"
       ]
     },
     {
