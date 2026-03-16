@@ -94,6 +94,39 @@ def test_extract_repo_path_references_resolves_document_relative_links_with_sour
     assert result == ("docs/references/example_reference.md",)
 
 
+def test_extract_repo_path_references_resolves_repo_root_links(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(reference_path)
+
+    result = extract_repo_path_references(
+        "- [example_reference.md](/docs/references/example_reference.md): governed reference.",
+        repo_root,
+    )
+
+    assert result == ("docs/references/example_reference.md",)
+
+
+def test_extract_repo_path_references_maps_legacy_checkout_absolute_links(
+    tmp_path: Path,
+) -> None:
+    repo_root = _copy_control_plane_repo(tmp_path)
+    reference_path = repo_root / "docs/references/example_reference.md"
+    _write_reference_fixture(reference_path)
+    legacy_checkout = tmp_path / "legacy_checkout"
+    legacy_reference = legacy_checkout / "docs/references/example_reference.md"
+    _write_reference_fixture(legacy_reference)
+
+    result = extract_repo_path_references(
+        f"- [example_reference.md]({legacy_reference}): governed reference.",
+        repo_root,
+    )
+
+    assert result == ("docs/references/example_reference.md",)
+
+
 def test_collect_reference_indicators_resolves_document_relative_paths(
     tmp_path: Path,
 ) -> None:

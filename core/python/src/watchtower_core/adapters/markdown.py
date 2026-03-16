@@ -192,6 +192,18 @@ def normalize_repo_path_reference(
 
     repo_root = repo_root.resolve()
     preserve_trailing_slash = without_fragment.endswith("/")
+    normalized_candidate = without_fragment.lstrip("/")
+    if normalized_candidate:
+        repo_relative_candidate = (repo_root / normalized_candidate).resolve()
+        try:
+            relative_path = repo_relative_candidate.relative_to(repo_root).as_posix()
+        except ValueError:
+            relative_path = None
+        if relative_path is not None and repo_relative_candidate.exists():
+            if preserve_trailing_slash and not relative_path.endswith("/"):
+                return f"{relative_path}/"
+            return relative_path
+
     candidate = Path(without_fragment)
     if candidate.is_absolute():
         try:
@@ -203,9 +215,19 @@ def normalize_repo_path_reference(
                 return f"{relative_path}/"
             return relative_path
         except ValueError:
+            top_level_names = {child.name for child in repo_root.iterdir()}
+            for index, part in enumerate(resolved.parts):
+                if part not in top_level_names:
+                    continue
+                fallback_relative = Path(*resolved.parts[index:]).as_posix()
+                fallback_path = (repo_root / fallback_relative).resolve()
+                if not fallback_path.exists():
+                    continue
+                if preserve_trailing_slash and not fallback_relative.endswith("/"):
+                    return f"{fallback_relative}/"
+                return fallback_relative
             return None
 
-    normalized_candidate = without_fragment.lstrip("/")
     if not normalized_candidate:
         return None
 

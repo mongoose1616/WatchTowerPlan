@@ -83,8 +83,8 @@ def test_workflow_index_sync_writes_temp_output(tmp_path: Path) -> None:
 
 def test_validate_workflow_additional_load_section_accepts_task_specific_files() -> None:
     section = (
-        "- [prd_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/"
-        "prd_md_standard.md): defines the required PRD structure for the output.\n"
+        "- [prd_md_standard.md](/docs/standards/documentation/prd_md_standard.md): "
+        "defines the required PRD structure for the output.\n"
     )
 
     result = validate_workflow_additional_load_section(
@@ -97,7 +97,7 @@ def test_validate_workflow_additional_load_section_accepts_task_specific_files()
 
 
 def test_validate_workflow_additional_load_section_rejects_routing_baseline_files() -> None:
-    section = "- [AGENTS.md](/home/j/WatchTowerPlan/AGENTS.md): already loaded.\n"
+    section = "- [AGENTS.md](/AGENTS.md): already loaded.\n"
 
     with pytest.raises(ValueError, match="routing-baseline files"):
         validate_workflow_additional_load_section(
@@ -109,8 +109,7 @@ def test_validate_workflow_additional_load_section_rejects_routing_baseline_file
 
 def test_validate_workflow_additional_load_section_rejects_generic_workflow_standards() -> None:
     section = (
-        "- [routing_and_context_loading_standard.md]("
-        "/home/j/WatchTowerPlan/docs/standards/workflows/"
+        "- [routing_and_context_loading_standard.md](/docs/standards/workflows/"
         "routing_and_context_loading_standard.md): generic workflow baseline.\n"
     )
 

@@ -7,14 +7,27 @@ from pathlib import Path
 from watchtower_core.control_plane.errors import RepoRootNotFoundError
 
 
-def discover_repo_root(start: Path | None = None) -> Path:
-    """Discover the repository root from a starting path."""
-    candidate = start.resolve() if start is not None else Path(__file__).resolve()
+def _find_repo_root(candidate: Path) -> Path | None:
+    """Return the enclosing repo root for one starting path when present."""
     search_root = candidate if candidate.is_dir() else candidate.parent
 
     for parent in (search_root, *search_root.parents):
         if (parent / "core/control_plane").is_dir() and (parent / "core/python").is_dir():
             return parent
+    return None
+
+
+def discover_repo_root(start: Path | None = None) -> Path:
+    """Discover the repository root from a starting path."""
+    candidates = (
+        (start.resolve(),)
+        if start is not None
+        else (Path.cwd().resolve(), Path(__file__).resolve())
+    )
+    for candidate in candidates:
+        repo_root = _find_repo_root(candidate)
+        if repo_root is not None:
+            return repo_root
 
     raise RepoRootNotFoundError(
         "Could not discover the repository root from the current Python workspace."
