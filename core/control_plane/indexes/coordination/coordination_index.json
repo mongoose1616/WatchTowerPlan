@@ -3,196 +3,25 @@
   "id": "index.coordination",
   "title": "Coordination Index",
   "status": "active",
-  "updated_at": "2026-03-16T20:37:39Z",
-  "coordination_mode": "active_work",
-  "summary": "Active initiatives exist and the coordination surface points to the most actionable next work.",
-  "recommended_next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-  "recommended_surface_path": "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-  "active_initiative_count": 1,
-  "blocked_task_count": 4,
-  "actionable_task_count": 1,
-  "entries": [
+  "updated_at": "2026-03-16T21:41:48Z",
+  "coordination_mode": "ready_for_bootstrap",
+  "summary": "No active initiatives are open. The repository is ready for one new bounded initiative.",
+  "recommended_next_action": "Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work.",
+  "recommended_surface_path": "docs/planning/README.md",
+  "active_initiative_count": 0,
+  "blocked_task_count": 0,
+  "actionable_task_count": 0,
+  "entries": [],
+  "actionable_tasks": [],
+  "recent_closed_initiatives": [
     {
       "trace_id": "trace.plan_domain_pack_core_validation",
       "title": "Plan Domain Pack Core Validation PRD",
-      "summary": "Move validation into reusable core with pack-aware schema, validator, and suite loading, then prove it end to end with a plan domain-pack fixture.",
-      "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-16T20:37:39Z",
-      "open_task_count": 5,
-      "blocked_task_count": 4,
+      "initiative_status": "completed",
+      "closed_at": "2026-03-16T21:41:48Z",
       "key_surface_path": "docs/planning/prds/plan_domain_pack_core_validation.md",
-      "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-      "next_surface_path": "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.plan_domain_pack_core_validation.core_suite_runtime.003",
-        "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-        "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-        "task.plan_domain_pack_core_validation.repo_migration.005",
-        "task.plan_domain_pack_core_validation.validation_closeout.006"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-          "title": "Implement pack-aware schema and validator loading",
-          "task_status": "in_progress",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.plan_domain_pack_core_validation.bootstrap.001"
-          ]
-        },
-        {
-          "task_id": "task.plan_domain_pack_core_validation.core_suite_runtime.003",
-          "title": "Add core validation suite runtime and pack contract validation",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.plan_domain_pack_core_validation.pack_aware_loading.002"
-          ]
-        },
-        {
-          "task_id": "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-          "title": "Add plan fixture pack and end-to-end suite coverage",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.plan_domain_pack_core_validation.core_suite_runtime.003"
-          ]
-        },
-        {
-          "task_id": "task.plan_domain_pack_core_validation.repo_migration.005",
-          "title": "Migrate repo validation onto core suite runtime",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.plan_domain_pack_core_validation.core_suite_runtime.003"
-          ]
-        },
-        {
-          "task_id": "task.plan_domain_pack_core_validation.validation_closeout.006",
-          "title": "Validate and close plan domain pack core validation",
-          "task_status": "backlog",
-          "priority": "medium",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-            "task.plan_domain_pack_core_validation.repo_migration.005"
-          ]
-        }
-      ],
-      "blocked_by_task_ids": [
-        "task.plan_domain_pack_core_validation.core_suite_runtime.003",
-        "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-        "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-        "task.plan_domain_pack_core_validation.repo_migration.005"
-      ],
-      "prd_ids": [
-        "prd.plan_domain_pack_core_validation"
-      ],
-      "decision_ids": [
-        "decision.plan_domain_pack_core_validation_direction"
-      ],
-      "design_ids": [
-        "design.features.plan_domain_pack_core_validation"
-      ],
-      "plan_ids": [
-        "design.implementation.plan_domain_pack_core_validation"
-      ],
-      "task_ids": [
-        "task.plan_domain_pack_core_validation.bootstrap.001",
-        "task.plan_domain_pack_core_validation.core_suite_runtime.003",
-        "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-        "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-        "task.plan_domain_pack_core_validation.repo_migration.005",
-        "task.plan_domain_pack_core_validation.validation_closeout.006"
-      ],
-      "acceptance_ids": [
-        "ac.plan_domain_pack_core_validation.001",
-        "ac.plan_domain_pack_core_validation.002",
-        "ac.plan_domain_pack_core_validation.003",
-        "ac.plan_domain_pack_core_validation.004",
-        "ac.plan_domain_pack_core_validation.005"
-      ],
-      "acceptance_contract_ids": [
-        "contract.acceptance.plan_domain_pack_core_validation"
-      ],
-      "evidence_ids": [
-        "evidence.plan_domain_pack_core_validation.planning_baseline"
-      ],
-      "related_paths": [
-        "core/control_plane/contracts/acceptance/",
-        "core/control_plane/contracts/acceptance/plan_domain_pack_core_validation_acceptance.json",
-        "core/control_plane/ledgers/validation_evidence/",
-        "core/control_plane/ledgers/validation_evidence/plan_domain_pack_core_validation_planning_baseline.json",
-        "core/control_plane/manifests/pack_settings.json",
-        "core/control_plane/registries/",
-        "core/control_plane/schemas/artifacts/",
-        "core/python/src/watchtower_core/cli/",
-        "core/python/src/watchtower_core/control_plane/",
-        "core/python/src/watchtower_core/repo_ops/validation/",
-        "core/python/src/watchtower_core/validation/",
-        "core/python/tests/",
-        "core/python/tests/fixtures/",
-        "docs/commands/core_python/",
-        "docs/planning/",
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/decisions/plan_domain_pack_core_validation_direction.md",
-        "docs/planning/design/design_tracking.md",
-        "docs/planning/design/features/plan_domain_pack_core_validation.md",
-        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "docs/planning/prds/plan_domain_pack_core_validation.md",
-        "docs/planning/prds/prd_tracking.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/plan_domain_pack_core_validation_bootstrap.md",
-        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
-        "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
-        "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-        "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
-        "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md",
-        "docs/planning/tasks/task_tracking.md"
-      ],
-      "tags": [
-        "traceability"
-      ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-16T20:32:05Z after replacing the bootstrap placeholders with the concrete reusable-core validation initiative contract and task chain."
-    }
-  ],
-  "actionable_tasks": [
-    {
-      "trace_id": "trace.plan_domain_pack_core_validation",
-      "initiative_title": "Plan Domain Pack Core Validation PRD",
-      "task_id": "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-      "title": "Implement pack-aware schema and validator loading",
-      "task_status": "in_progress",
-      "priority": "high",
-      "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-      "is_actionable": true,
-      "depends_on": [
-        "task.plan_domain_pack_core_validation.bootstrap.001"
-      ]
-    }
-  ],
-  "recent_closed_initiatives": [
+      "closure_reason": "Delivered reusable-core pack-aware validation loading, suite orchestration, the plan fixture pack, and repo validation migration with clean sync, acceptance, validation, test, typecheck, and lint passes."
+    },
     {
       "trace_id": "trace.transition_surface_retirement",
       "title": "Transition Surface Retirement PRD",
@@ -264,14 +93,6 @@
       "closed_at": "2026-03-15T09:55:03Z",
       "key_surface_path": "docs/planning/prds/structural_rewrite_program.md",
       "closure_reason": "Final closeout-tracking outcome review passed after the last approved private seam landed, and no further named rewrite checkpoint remains."
-    },
-    {
-      "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
-      "title": "Planning Query Efficiency and Coordination Handler Modularity PRD",
-      "initiative_status": "completed",
-      "closed_at": "2026-03-13T23:40:00Z",
-      "key_surface_path": "docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md",
-      "closure_reason": "Completed the runtime-layer planning query redesign, split the coordination handler family, repaired the validation-loop drift, and reran clean confirmation passes."
     }
   ]
 }

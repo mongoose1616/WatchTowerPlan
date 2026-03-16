@@ -6,11 +6,11 @@ summary: Publishes the validation suite registry, reusable-core suite runtime, a
   pack-contract validator.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T20:36:19Z'
+updated_at: '2026-03-16T21:40:41Z'
 audience: shared
 authority: authoritative
 applies_to:

@@ -6,11 +6,11 @@ summary: Refreshes derived surfaces, runs the final validation stack, updates ev
   and closes the trace.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: governance
 priority: medium
 owner: repository_maintainer
-updated_at: '2026-03-16T20:37:06Z'
+updated_at: '2026-03-16T21:41:48Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -38,3 +38,8 @@ Refreshes derived surfaces, runs the final validation stack, updates evidence, a
 ## Done When
 - The final validation stack passes and the initiative can close cleanly.
 - Acceptance, evidence, task, and coordination surfaces reflect the completed initiative state.
+
+## Outcome
+- `watchtower-core sync all --write --format json`, `watchtower-core validate acceptance --trace-id trace.plan_domain_pack_core_validation --format json`, and `watchtower-core validate all --format json` passed after the reusable-core validation migration and task closeout landed.
+- `python -m pytest`, `python -m mypy src`, and `ruff check src tests/unit tests/integration` all passed after the final lint-only cleanup on the validation CLI and test imports.
+- `watchtower-core closeout initiative --trace-id trace.plan_domain_pack_core_validation --initiative-status completed --closure-reason "Delivered reusable-core pack-aware validation loading, suite orchestration, the plan fixture pack, and repo validation migration with clean sync, acceptance, validation, test, typecheck, and lint passes." --closed-at 2026-03-16T21:41:48Z --write --format json` completed with zero acceptance issues and zero open tasks, and the coordination surface returned to `ready_for_bootstrap`.

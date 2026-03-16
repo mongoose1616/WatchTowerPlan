@@ -1487,6 +1487,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/registries/validation_suite_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "Catalogs declared validation suites and their ordered validation steps.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/registries/validator_registry.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
@@ -1769,6 +1779,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the durable validation-evidence artifact family.",
+      "parent_path": "core/control_plane/schemas/artifacts/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/artifacts/validation_suite_registry.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for the authored validation-suite registry artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2345,6 +2365,16 @@
       "surface_kind": "python_test_file",
       "summary": "Describes the purpose of the Python test-fixtures directory.",
       "parent_path": "core/python/tests/fixtures/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/python/tests/fixtures/domain_packs/plan/",
+      "kind": "directory",
+      "surface_kind": "python_tests",
+      "summary": "Source fixture pack used to materialize a `plan` domain pack into temporary repos for validation-suite tests.",
+      "parent_path": "core/python/tests/fixtures/domain_packs/",
       "maturity": "supporting",
       "priority": "medium",
       "audience_hint": "maintainer"
@@ -3078,6 +3108,16 @@
       "kind": "file",
       "surface_kind": "command_doc",
       "summary": "Entry page for validation commands across artifacts, semantics, and repo-wide checks.",
+      "parent_path": "docs/commands/core_python/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "shared"
+    },
+    {
+      "path": "docs/commands/core_python/watchtower_core_validate_suite.md",
+      "kind": "file",
+      "surface_kind": "command_doc",
+      "summary": "Runs one pack-declared validation suite through the reusable-core suite runtime.",
       "parent_path": "docs/commands/core_python/",
       "maturity": "authoritative",
       "priority": "high",

@@ -7,8 +7,8 @@ from textwrap import dedent
 
 from watchtower_core.cli.common import (
     HelpFormatter,
-    add_pack_settings_argument,
     add_common_validation_arguments,
+    add_pack_settings_argument,
     examples,
 )
 
@@ -148,7 +148,10 @@ def register_validate_family(
     validate_suite_parser.add_argument(
         "--suite-id",
         required=True,
-        help="Stable validation suite identifier such as suite.watchtower_plan.validation_baseline.",
+        help=(
+            "Stable validation suite identifier such as "
+            "suite.watchtower_plan.validation_baseline."
+        ),
     )
     add_pack_settings_argument(validate_suite_parser)
     validate_suite_parser.add_argument(

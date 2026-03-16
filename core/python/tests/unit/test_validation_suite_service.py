@@ -5,14 +5,13 @@ from pathlib import Path
 
 import pytest
 
+from tests.pack_fixture_support import REPO_ROOT, materialize_pack_validation_suite
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.validation import (
     PackContractValidationService,
     ValidationSelectionError,
     ValidationSuiteService,
 )
-
-from tests.pack_fixture_support import REPO_ROOT, materialize_pack_validation_suite
 
 
 def test_pack_contract_validation_passes_for_repo_pack_settings() -> None:

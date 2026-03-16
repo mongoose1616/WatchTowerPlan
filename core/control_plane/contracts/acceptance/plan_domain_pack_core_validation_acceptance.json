@@ -40,10 +40,10 @@
         "docs/planning/prds/plan_domain_pack_core_validation.md",
         "docs/planning/design/features/plan_domain_pack_core_validation.md",
         "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
-        "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/implement_pack_aware_schema_and_validator_loading.md"
       ],
       "related_paths": [
-        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/add_core_validation_suite_runtime_and_pack_contract_validation.md"
       ]
     },
     {
@@ -57,10 +57,10 @@
         "docs/planning/prds/plan_domain_pack_core_validation.md",
         "docs/planning/design/features/plan_domain_pack_core_validation.md",
         "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
-        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/add_core_validation_suite_runtime_and_pack_contract_validation.md"
       ],
       "related_paths": [
-        "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/migrate_repo_validation_onto_core_suite_runtime.md"
       ]
     },
     {
@@ -73,10 +73,10 @@
         "docs/planning/prds/plan_domain_pack_core_validation.md",
         "docs/planning/design/features/plan_domain_pack_core_validation.md",
         "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
-        "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/add_plan_fixture_pack_and_end_to_end_suite_coverage.md"
       ],
       "related_paths": [
-        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/add_core_validation_suite_runtime_and_pack_contract_validation.md"
       ]
     },
     {
@@ -90,8 +90,8 @@
         "docs/planning/prds/plan_domain_pack_core_validation.md",
         "docs/planning/design/features/plan_domain_pack_core_validation.md",
         "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
-        "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
-        "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/migrate_repo_validation_onto_core_suite_runtime.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_plan_domain_pack_core_validation.md"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md",

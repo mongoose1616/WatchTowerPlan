@@ -3164,7 +3164,7 @@
       "operationalization_paths": [
         "workflows/modules/repository_review.md",
         "workflows/modules/documentation_refresh.md",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "docs/planning/coordination_tracking.md"
       ],
       "applies_to": [
@@ -3219,7 +3219,7 @@
         "sync"
       ],
       "operationalization_paths": [
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "docs/commands/core_python/watchtower_core_validate_all.md",
         "docs/commands/core_python/watchtower_core_sync_all.md"

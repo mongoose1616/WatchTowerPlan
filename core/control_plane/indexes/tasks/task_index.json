@@ -256,7 +256,7 @@
       ],
       "applies_to": [
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_validate_all.md",
         "docs/standards/validations/repository_validation_standard.md"
@@ -283,7 +283,7 @@
       ],
       "applies_to": [
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests/integration/",
         "core/python/tests/unit/"
       ]
@@ -2865,12 +2865,12 @@
       "title": "Add core validation suite runtime and pack contract validation",
       "summary": "Publishes the validation suite registry, reusable-core suite runtime, and pack-contract validator.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
-      "updated_at": "2026-03-16T20:36:19Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/add_core_validation_suite_runtime_and_pack_contract_validation.md",
+      "updated_at": "2026-03-16T21:40:41Z",
       "trace_id": "trace.plan_domain_pack_core_validation",
       "depends_on": [
         "task.plan_domain_pack_core_validation.pack_aware_loading.002"
@@ -2892,12 +2892,12 @@
       "title": "Implement pack-aware schema and validator loading",
       "summary": "Adds pack-aware schema catalog merge and pack-declared validator selection to reusable core validation.",
       "status": "active",
-      "task_status": "in_progress",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-      "updated_at": "2026-03-16T20:37:39Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/implement_pack_aware_schema_and_validator_loading.md",
+      "updated_at": "2026-03-16T21:40:31Z",
       "trace_id": "trace.plan_domain_pack_core_validation",
       "depends_on": [
         "task.plan_domain_pack_core_validation.bootstrap.001"
@@ -2919,12 +2919,12 @@
       "title": "Add plan fixture pack and end-to-end suite coverage",
       "summary": "Adds the plan pack test fixture, temp-repo materialization, and end-to-end suite validation coverage.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
-      "updated_at": "2026-03-16T20:36:31Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
+      "updated_at": "2026-03-16T21:40:50Z",
       "trace_id": "trace.plan_domain_pack_core_validation",
       "depends_on": [
         "task.plan_domain_pack_core_validation.core_suite_runtime.003"
@@ -2945,12 +2945,12 @@
       "title": "Migrate repo validation onto core suite runtime",
       "summary": "Routes the WatchTowerPlan validation entrypoints and docs through the reusable-core suite runtime.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
-      "updated_at": "2026-03-16T20:36:49Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/migrate_repo_validation_onto_core_suite_runtime.md",
+      "updated_at": "2026-03-16T21:40:56Z",
       "trace_id": "trace.plan_domain_pack_core_validation",
       "depends_on": [
         "task.plan_domain_pack_core_validation.core_suite_runtime.003"
@@ -2972,12 +2972,12 @@
       "title": "Validate and close plan domain pack core validation",
       "summary": "Refreshes derived surfaces, runs the final validation stack, updates evidence, and closes the trace.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md",
-      "updated_at": "2026-03-16T20:37:06Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_plan_domain_pack_core_validation.md",
+      "updated_at": "2026-03-16T21:41:48Z",
       "trace_id": "trace.plan_domain_pack_core_validation",
       "depends_on": [
         "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
@@ -6681,7 +6681,7 @@
         "core/python/tests/unit/",
         "core/python/tests/unit/README.md",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+        "core/python/src/watchtower_core/validation/all.py"
       ]
     },
     {
@@ -6709,7 +6709,7 @@
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/validation/artifact.py",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+        "core/python/src/watchtower_core/validation/all.py"
       ]
     },
     {

@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.plan_domain_pack_core_validation` | `execution` | repository_maintainer | `5` (`blocked=4`) | [plan_domain_pack_core_validation.md](/docs/planning/prds/plan_domain_pack_core_validation.md) | [implement_pack_aware_schema_and_validator_loading.md](/docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.plan_domain_pack_core_validation` | `completed` | [plan_domain_pack_core_validation.md](/docs/planning/prds/plan_domain_pack_core_validation.md) | `2026-03-16T21:41:48Z` | Delivered reusable-core pack-aware validation loading, suite orchestration, the plan fixture pack, and repo validation migration with clean sync, acceptance, validation, test, typecheck, and lint passes. |
 | `trace.transition_surface_retirement` | `completed` | [transition_surface_retirement.md](/docs/planning/prds/transition_surface_retirement.md) | `2026-03-16T19:39:28Z` | Retired the remaining transition facades, bridge modules, marker tests, stale current path references, and temporary audit leftovers; refreshed governed discovery surfaces; and reran clean acceptance, validation, test, typecheck, and lint passes. |
 | `trace.governed_filename_canonicalization` | `completed` | [governed_filename_canonicalization.md](/docs/planning/prds/governed_filename_canonicalization.md) | `2026-03-16T18:17:19Z` | Delivered the versionless governed filename standard, renamed the canonical control-plane tree, enforced the no-compatibility filename policy, and validated the repo clean with no remaining active transition artifacts in scope. |
 | `trace.rendered_surface_contract_enforcement` | `completed` | [rendered_surface_contract_enforcement.md](/docs/planning/prds/rendered_surface_contract_enforcement.md) | `2026-03-16T17:40:06Z` | Delivered the governed rendered-surface registry, generic tracker renderer, runtime terminology rename, and clean validation with no remaining active projection compatibility surface in scope. |
@@ -79,4 +78,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T20:37:39Z`_
+_Updated At: `2026-03-16T21:41:48Z`_

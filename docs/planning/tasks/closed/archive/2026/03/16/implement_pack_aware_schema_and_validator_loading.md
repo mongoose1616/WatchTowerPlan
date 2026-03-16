@@ -6,11 +6,11 @@ summary: Adds pack-aware schema catalog merge and pack-declared validator select
   to reusable core validation.
 type: task
 status: active
-task_status: in_progress
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T20:37:39Z'
+updated_at: '2026-03-16T21:40:31Z'
 audience: shared
 authority: authoritative
 applies_to:

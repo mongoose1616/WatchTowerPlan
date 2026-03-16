@@ -291,7 +291,7 @@ class ValidationSuiteService:
 
 def _default_document_semantics_factory(
     loader: ControlPlaneLoader,
-) -> "DocumentSemanticsValidationService":
+) -> DocumentSemanticsValidationService:
     from watchtower_core.repo_ops.validation.document_semantics import (
         DocumentSemanticsValidationService,
     )

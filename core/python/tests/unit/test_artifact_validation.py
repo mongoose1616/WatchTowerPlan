@@ -75,7 +75,10 @@ def materialize_pack_validation_surfaces(pack_root: Path) -> dict[str, str]:
                 {
                     "id": validator_id,
                     "title": "Artifact Pack Note Validator",
-                    "description": "Validator selected from pack settings rather than the repo default registry.",
+                    "description": (
+                        "Validator selected from pack settings rather than "
+                        "the repo default registry."
+                    ),
                     "status": "active",
                     "engine": "json_schema",
                     "artifact_kind": "artifact_pack_note",

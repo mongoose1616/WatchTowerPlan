@@ -1,17 +1,13 @@
 # Design Tracking
 
 ## Active Feature Designs
-| Trace ID | Design | Status | Summary | Linked Plans |
-| --- | --- | --- | --- | --- |
-| `trace.plan_domain_pack_core_validation` | [design.features.plan_domain_pack_core_validation](/docs/planning/design/features/plan_domain_pack_core_validation.md) | `active` | Defines the technical design boundary for Plan Domain Pack Core Validation. | [plan_domain_pack_core_validation.md](/docs/planning/design/implementation/plan_domain_pack_core_validation.md) |
+_No active feature designs. Use `watchtower-core query designs --trace-id <trace_id>` for one known trace or `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse._
 
 ## Active Implementation Plans
-| Trace ID | Plan | Status | Summary | Sources | Notes |
-| --- | --- | --- | --- | --- | --- |
-| `trace.plan_domain_pack_core_validation` | [design.implementation.plan_domain_pack_core_validation](/docs/planning/design/implementation/plan_domain_pack_core_validation.md) | `active` | Breaks Plan Domain Pack Core Validation into a bounded implementation slice. | [plan_domain_pack_core_validation.md](/docs/planning/design/features/plan_domain_pack_core_validation.md); [plan_domain_pack_core_validation.md](/docs/planning/prds/plan_domain_pack_core_validation.md) | - |
+_No active implementation plans. Use `watchtower-core query designs --family implementation_plan --trace-id <trace_id>` for one known trace or `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse._
 
 ## Terminal History
-- `completed`: 69
+- `completed`: 70
 - `cancelled`: 1
 
 Use `watchtower-core query initiatives --initiative-status <status> --format json` for terminal trace browse and `watchtower-core query designs --trace-id <trace_id>` for one known design trace.

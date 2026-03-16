@@ -273,8 +273,8 @@
             "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.json",
             "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
             "core/python/src/watchtower_core/repo_ops/query/evidence.py",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py",
             "core/python/src/watchtower_core/validation/acceptance.py",
+            "core/python/src/watchtower_core/validation/all.py",
             "core/python/tests/unit/test_acceptance_reconciliation.py",
             "core/python/tests/unit/test_all_validation.py",
             "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
@@ -377,9 +377,9 @@
         "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
         "core/python/src/watchtower_core/repo_ops/query/evidence.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/validation/acceptance.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests/",
         "core/python/tests/unit/test_acceptance_reconciliation.py",
         "core/python/tests/unit/test_all_validation.py",
@@ -964,7 +964,7 @@
           ],
           "applies_to": [
             "core/control_plane/indexes/",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/src/watchtower_core/validation/all.py",
             "core/python/tests/integration/",
             "docs/commands/core_python/watchtower_core_validate_all.md",
             "docs/standards/validations/repository_validation_standard.md"
@@ -990,7 +990,7 @@
           ],
           "applies_to": [
             "core/control_plane/indexes/",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/src/watchtower_core/validation/all.py",
             "core/python/tests/integration/",
             "core/python/tests/unit/"
           ]
@@ -1041,7 +1041,7 @@
             "core/control_plane/indexes/foundations/foundation_index.json",
             "core/control_plane/indexes/traceability/traceability_index.json",
             "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.json",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/src/watchtower_core/validation/all.py",
             "core/python/tests/integration/",
             "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
             "core/python/tests/unit/test_all_validation.py",
@@ -1141,7 +1141,7 @@
         "core/control_plane/indexes/foundations/foundation_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.json",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests/integration/",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/unit/",
@@ -1370,8 +1370,8 @@
             "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
             "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
             "core/python/src/watchtower_core/repo_ops/query/evidence.py",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/src/watchtower_core/validation/all.py",
             "core/python/src/watchtower_core/validation/artifact.py",
             "core/python/src/watchtower_core/validation/front_matter.py",
             "core/python/tests/unit/test_all_validation.py",
@@ -1480,9 +1480,9 @@
         "core/python/src/watchtower_core/repo_ops/query/acceptance.py",
         "core/python/src/watchtower_core/repo_ops/query/evidence.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/src/watchtower_core/validation/artifact.py",
         "core/python/src/watchtower_core/validation/front_matter.py",
         "core/python/tests/",
@@ -11171,95 +11171,15 @@
       "title": "Plan Domain Pack Core Validation PRD",
       "summary": "Move validation into reusable core with pack-aware schema, validator, and suite loading, then prove it end to end with a plan domain-pack fixture.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-16T20:37:39Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-16T21:41:48Z",
       "coordination": {
-        "current_phase": "execution",
+        "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/plan_domain_pack_core_validation.md",
-        "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-        "next_surface_path": "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-        "open_task_count": 5,
-        "blocked_task_count": 4,
-        "primary_owner": "repository_maintainer",
-        "active_owners": [
-          "repository_maintainer"
-        ],
-        "active_task_ids": [
-          "task.plan_domain_pack_core_validation.core_suite_runtime.003",
-          "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-          "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-          "task.plan_domain_pack_core_validation.repo_migration.005",
-          "task.plan_domain_pack_core_validation.validation_closeout.006"
-        ],
-        "active_task_summaries": [
-          {
-            "task_id": "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-            "title": "Implement pack-aware schema and validator loading",
-            "task_status": "in_progress",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-            "is_actionable": true,
-            "depends_on": [
-              "task.plan_domain_pack_core_validation.bootstrap.001"
-            ]
-          },
-          {
-            "task_id": "task.plan_domain_pack_core_validation.core_suite_runtime.003",
-            "title": "Add core validation suite runtime and pack contract validation",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.plan_domain_pack_core_validation.pack_aware_loading.002"
-            ]
-          },
-          {
-            "task_id": "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-            "title": "Add plan fixture pack and end-to-end suite coverage",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.plan_domain_pack_core_validation.core_suite_runtime.003"
-            ]
-          },
-          {
-            "task_id": "task.plan_domain_pack_core_validation.repo_migration.005",
-            "title": "Migrate repo validation onto core suite runtime",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.plan_domain_pack_core_validation.core_suite_runtime.003"
-            ]
-          },
-          {
-            "task_id": "task.plan_domain_pack_core_validation.validation_closeout.006",
-            "title": "Validate and close plan domain pack core validation",
-            "task_status": "backlog",
-            "priority": "medium",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-              "task.plan_domain_pack_core_validation.repo_migration.005"
-            ]
-          }
-        ],
-        "blocked_by_task_ids": [
-          "task.plan_domain_pack_core_validation.core_suite_runtime.003",
-          "task.plan_domain_pack_core_validation.pack_aware_loading.002",
-          "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
-          "task.plan_domain_pack_core_validation.repo_migration.005"
-        ]
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
       },
       "prds": [
         {
@@ -11363,12 +11283,12 @@
           "title": "Add core validation suite runtime and pack contract validation",
           "summary": "Publishes the validation suite registry, reusable-core suite runtime, and pack-contract validator.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
-          "updated_at": "2026-03-16T20:36:19Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/add_core_validation_suite_runtime_and_pack_contract_validation.md",
+          "updated_at": "2026-03-16T21:40:41Z",
           "depends_on": [
             "task.plan_domain_pack_core_validation.pack_aware_loading.002"
           ],
@@ -11389,12 +11309,12 @@
           "title": "Implement pack-aware schema and validator loading",
           "summary": "Adds pack-aware schema catalog merge and pack-declared validator selection to reusable core validation.",
           "artifact_status": "active",
-          "task_status": "in_progress",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-          "updated_at": "2026-03-16T20:37:39Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/implement_pack_aware_schema_and_validator_loading.md",
+          "updated_at": "2026-03-16T21:40:31Z",
           "depends_on": [
             "task.plan_domain_pack_core_validation.bootstrap.001"
           ],
@@ -11415,12 +11335,12 @@
           "title": "Add plan fixture pack and end-to-end suite coverage",
           "summary": "Adds the plan pack test fixture, temp-repo materialization, and end-to-end suite validation coverage.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
-          "updated_at": "2026-03-16T20:36:31Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
+          "updated_at": "2026-03-16T21:40:50Z",
           "depends_on": [
             "task.plan_domain_pack_core_validation.core_suite_runtime.003"
           ],
@@ -11440,12 +11360,12 @@
           "title": "Migrate repo validation onto core suite runtime",
           "summary": "Routes the WatchTowerPlan validation entrypoints and docs through the reusable-core suite runtime.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
-          "updated_at": "2026-03-16T20:36:49Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/migrate_repo_validation_onto_core_suite_runtime.md",
+          "updated_at": "2026-03-16T21:40:56Z",
           "depends_on": [
             "task.plan_domain_pack_core_validation.core_suite_runtime.003"
           ],
@@ -11466,12 +11386,12 @@
           "title": "Validate and close plan domain pack core validation",
           "summary": "Refreshes derived surfaces, runs the final validation stack, updates evidence, and closes the trace.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "done",
           "task_kind": "governance",
           "priority": "medium",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md",
-          "updated_at": "2026-03-16T20:37:06Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_plan_domain_pack_core_validation.md",
+          "updated_at": "2026-03-16T21:41:48Z",
           "depends_on": [
             "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
             "task.plan_domain_pack_core_validation.repo_migration.005"
@@ -11507,12 +11427,12 @@
             "docs/planning/design/features/plan_domain_pack_core_validation.md",
             "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
             "docs/planning/prds/plan_domain_pack_core_validation.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/add_core_validation_suite_runtime_and_pack_contract_validation.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/implement_pack_aware_schema_and_validator_loading.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/migrate_repo_validation_onto_core_suite_runtime.md",
             "docs/planning/tasks/closed/archive/2026/03/16/plan_domain_pack_core_validation_bootstrap.md",
-            "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
-            "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
-            "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-            "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
-            "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md"
+            "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_plan_domain_pack_core_validation.md"
           ],
           "related_paths": [
             "core/control_plane/ledgers/validation_evidence/plan_domain_pack_core_validation_planning_baseline.json",
@@ -11520,8 +11440,8 @@
             "docs/planning/design/design_tracking.md",
             "docs/planning/initiatives/initiative_tracking.md",
             "docs/planning/prds/prd_tracking.md",
-            "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
-            "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/add_core_validation_suite_runtime_and_pack_contract_validation.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/migrate_repo_validation_onto_core_suite_runtime.md",
             "docs/planning/tasks/task_tracking.md"
           ]
         }
@@ -11532,10 +11452,15 @@
           "title": "Plan Domain Pack Core Validation Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-16T20:32:05Z",
+          "recorded_at": "2026-03-16T21:41:48Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/plan_domain_pack_core_validation_planning_baseline.json",
           "check_ids": [
-            "check.plan_domain_pack_core_validation.planning_baseline"
+            "check.plan_domain_pack_core_validation.planning_chain_and_closed_task_set",
+            "check.plan_domain_pack_core_validation.pack_aware_loading_live",
+            "check.plan_domain_pack_core_validation.suite_runtime_and_cli_live",
+            "check.plan_domain_pack_core_validation.plan_fixture_pack_proven",
+            "check.plan_domain_pack_core_validation.repo_validation_and_closeout_green",
+            "check.plan_domain_pack_core_validation.closeout_record_complete"
           ],
           "acceptance_ids": [
             "ac.plan_domain_pack_core_validation.001",
@@ -11601,18 +11526,42 @@
       "related_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/plan_domain_pack_core_validation_acceptance.json",
+        "core/control_plane/indexes/coordination/coordination_index.json",
+        "core/control_plane/indexes/initiatives/initiative_index.json",
+        "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/plan_domain_pack_core_validation_planning_baseline.json",
         "core/control_plane/manifests/pack_settings.json",
         "core/control_plane/registries/",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/registries/validation_suite_registry.json",
+        "core/control_plane/registries/validator_registry.json",
         "core/control_plane/schemas/artifacts/",
+        "core/control_plane/schemas/artifacts/validation_suite_registry.schema.json",
         "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/validate_family.py",
         "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/control_plane/schemas.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/targets.py",
         "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/all.py",
+        "core/python/src/watchtower_core/validation/context.py",
+        "core/python/src/watchtower_core/validation/pack_contract.py",
+        "core/python/src/watchtower_core/validation/suite.py",
         "core/python/tests/",
         "core/python/tests/fixtures/",
+        "core/python/tests/fixtures/domain_packs/plan/.wt/pack_settings.json",
+        "core/python/tests/fixtures/domain_packs/plan/.wt/registries/schema_catalog.json",
+        "core/python/tests/fixtures/domain_packs/plan/.wt/registries/validation_suite_registry.json",
+        "core/python/tests/fixtures/domain_packs/plan/.wt/registries/validator_registry.json",
+        "core/python/tests/integration/test_validate_all_cli.py",
+        "core/python/tests/integration/test_validation_pack_commands.py",
+        "core/python/tests/pack_fixture_support.py",
+        "core/python/tests/unit/test_all_validation.py",
         "docs/commands/core_python/",
+        "docs/commands/core_python/watchtower_core_validate_suite.md",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/plan_domain_pack_core_validation_direction.md",
@@ -11622,12 +11571,12 @@
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/plan_domain_pack_core_validation.md",
         "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/add_core_validation_suite_runtime_and_pack_contract_validation.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/implement_pack_aware_schema_and_validator_loading.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/migrate_repo_validation_onto_core_suite_runtime.md",
         "docs/planning/tasks/closed/archive/2026/03/16/plan_domain_pack_core_validation_bootstrap.md",
-        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
-        "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
-        "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
-        "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
-        "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_plan_domain_pack_core_validation.md",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [
@@ -11637,7 +11586,9 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-16T20:32:05Z after replacing the bootstrap placeholders with the concrete reusable-core validation initiative contract and task chain."
+      "notes": "Evidence refreshed for `trace.plan_domain_pack_core_validation` at 2026-03-16T21:41:48Z after pack-aware reusable-core validation loading, suite orchestration, the `plan` fixture-pack proof, repo-baseline migration, terminal task closeout, completed initiative closeout, and the final sync, acceptance, repository validation, pytest, mypy, and ruff passes all completed cleanly.",
+      "closed_at": "2026-03-16T21:41:48Z",
+      "closure_reason": "Delivered reusable-core pack-aware validation loading, suite orchestration, the plan fixture pack, and repo validation migration with clean sync, acceptance, validation, test, typecheck, and lint passes."
     },
     {
       "trace_id": "trace.planning_artifact_retention_and_purge",
@@ -23739,7 +23690,7 @@
         "core/python/src/watchtower_core/repo_ops/sync/github_tasks.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests",
         "core/python/tests/",
         "core/python/tests/fixtures/",
@@ -24257,7 +24208,7 @@
             "core/python/tests/unit/",
             "core/python/tests/unit/README.md",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py"
+            "core/python/src/watchtower_core/validation/all.py"
           ]
         },
         {
@@ -24284,7 +24235,7 @@
             "core/python/src/watchtower_core/control_plane/loader.py",
             "core/python/src/watchtower_core/validation/artifact.py",
             "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py"
+            "core/python/src/watchtower_core/validation/all.py"
           ]
         },
         {
@@ -24336,8 +24287,8 @@
             "core/control_plane/ledgers/validation_evidence/validation_test_hotspot_rebalancing_planning_baseline.json",
             "core/python/",
             "core/python/src/watchtower_core/control_plane/loader.py",
-            "core/python/src/watchtower_core/repo_ops/validation/all.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/src/watchtower_core/validation/all.py",
             "core/python/src/watchtower_core/validation/artifact.py",
             "core/python/tests/integration/",
             "core/python/tests/integration/README.md",
@@ -24454,9 +24405,9 @@
         "core/python/src/watchtower_core/cli/validation_handlers.py",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/repo_ops/validation/",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/src/watchtower_core/validation/artifact.py",
         "core/python/tests/integration/",
         "core/python/tests/integration/README.md",

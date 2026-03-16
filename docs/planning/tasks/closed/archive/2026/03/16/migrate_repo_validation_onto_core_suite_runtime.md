@@ -6,11 +6,11 @@ summary: Routes the WatchTowerPlan validation entrypoints and docs through the r
   suite runtime.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T20:36:49Z'
+updated_at: '2026-03-16T21:40:56Z'
 audience: shared
 authority: authoritative
 applies_to:

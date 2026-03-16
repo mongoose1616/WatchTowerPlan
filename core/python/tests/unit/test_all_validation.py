@@ -19,9 +19,9 @@ from watchtower_core.repo_ops.validation.targets import (
     WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
     resolve_watchtower_plan_suite_targets,
 )
-from watchtower_core.validation.front_matter import FrontMatterValidationService
 from watchtower_core.validation.all import VALIDATION_ALL_FAMILIES, ValidationAllService
 from watchtower_core.validation.errors import ValidationSelectionError
+from watchtower_core.validation.front_matter import FrontMatterValidationService
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 

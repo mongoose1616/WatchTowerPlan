@@ -73,7 +73,7 @@
         "docs/planning/prds/acceptance_reconciliation_snapshot_reuse.md",
         "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
         "core/python/src/watchtower_core/validation/acceptance.py",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py"
+        "core/python/src/watchtower_core/validation/all.py"
       ]
     },
     {
@@ -195,7 +195,7 @@
       "related_paths": [
         "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_validate_all.md",
         "docs/standards/validations/repository_validation_standard.md"
@@ -1501,7 +1501,7 @@
         "docs/foundations/repository_standards_posture.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "core/control_plane/README.md",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md"
       ]
@@ -2547,7 +2547,7 @@
       ],
       "related_paths": [
         "core/control_plane/indexes/",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_validate_all.md",
         "docs/standards/validations/repository_validation_standard.md"
@@ -3617,7 +3617,7 @@
       "internal_reference_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
         "core/control_plane/README.md",
-        "core/python/src/watchtower_core/repo_ops/validation/all.py",
+        "core/python/src/watchtower_core/validation/all.py",
         "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md"
       ]

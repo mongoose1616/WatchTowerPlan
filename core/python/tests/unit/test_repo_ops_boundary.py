@@ -10,8 +10,8 @@ import watchtower_core.validation as public_validation
 from watchtower_core.repo_ops.query.commands import CommandQueryService
 from watchtower_core.repo_ops.sync.command_index import CommandIndexSyncService
 from watchtower_core.repo_ops.validation import (
-    DocumentSemanticsValidationService,
     WATCHTOWER_PLAN_VALIDATION_SUITE_ID,
+    DocumentSemanticsValidationService,
     resolve_watchtower_plan_suite_targets,
 )
 from watchtower_core.validation.all import ValidationAllService

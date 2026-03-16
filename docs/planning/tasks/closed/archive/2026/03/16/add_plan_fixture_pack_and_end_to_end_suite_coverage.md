@@ -6,11 +6,11 @@ summary: Adds the plan pack test fixture, temp-repo materialization, and end-to-
   suite validation coverage.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T20:36:31Z'
+updated_at: '2026-03-16T21:40:50Z'
 audience: shared
 authority: authoritative
 applies_to:
