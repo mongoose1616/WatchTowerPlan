@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T05:45:00Z"
+updated_at: "2026-03-15T15:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -46,6 +46,7 @@ This standard defines the repository's baseline traceability model so product in
 - [validation_evidence_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/validation_evidence_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when closed trace-local artifacts remain retained history versus becoming purge-eligible.
 
 ## Guidance
 - Use one shared `trace_id` to tie the artifacts of a single initiative, feature, or change boundary together.
@@ -68,6 +69,8 @@ This standard defines the repository's baseline traceability model so product in
 - Use the initiative index and initiative tracker as derived coordination projections over the traceability layer plus current planning and task state.
 - Use the authority map when you need to resolve whether traceability or another planning surface is canonical for a recurring lookup question.
 - Keep family-specific human trackers active-first by default. Route terminal trace browsing to explicit initiative, planning, or family query surfaces instead of inlining the full closed trace corpus in every tracker.
+- Do not treat retained closed trace packages as the enduring source of current policy when equivalent standards, current planning documents, or machine-readable authority surfaces already exist.
+- If a closed trace is later purged under the planning retention standard, remove stale canonical references to its trace-local paths and keep only the surviving authority surfaces plus the minimal purge record.
 - Use `initiative_status` on the traceability entry for initiative outcome instead of overloading artifact lifecycle `status`.
 - Treat initiative closeout metadata as a meaningful traceability change; when terminal closeout is recorded, effective `updated_at` should be at least `closed_at`.
 - Keep family-specific indexes as their local lookup surfaces and keep them aligned with the unified traceability index.
@@ -145,6 +148,7 @@ This standard defines the repository's baseline traceability model so product in
 - Active trace entries should carry linked task IDs instead of relying on implied execution state.
 - Terminal trace entries should not leave `updated_at` earlier than `closed_at`.
 - Family trackers should not default to exhaustive terminal-trace tables when the repository already provides explicit history query surfaces.
+- Canonical standards, README entrypoints, and trackers should not rely on purgeable trace-local paths as the enduring source of current policy.
 
 ## Change Control
 - Update this standard when the repository changes the baseline trace chain or introduces a new first-class traced artifact family.
@@ -155,6 +159,7 @@ This standard defines the repository's baseline traceability model so product in
 - [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
 - [initiative_closeout_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_closeout_standard.md)
 - [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Updated At
-- `2026-03-15T05:45:00Z`
+- `2026-03-15T15:30:00Z`

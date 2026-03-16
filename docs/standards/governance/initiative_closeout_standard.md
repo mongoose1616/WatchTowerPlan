@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "initiative_closeout"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T22:37:14Z"
+updated_at: "2026-03-15T15:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -50,6 +50,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when a terminal trace can later become purge-eligible.
 - [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md): workflow surface that operationalizes or depends on this standard.
 
 ## Guidance
@@ -63,6 +64,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
   - `abandoned`
 - Use `active` for initiatives that are still underway.
 - Use terminal closeout states only when the initiative outcome is explicit and durable.
+- Treat terminal closeout as a precondition for later purge consideration, not as a purge action by itself.
 - Every terminal initiative closeout must record:
   - `closed_at`
   - `closure_reason`
@@ -74,6 +76,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - When terminal closeout metadata changes the traceability entry, `updated_at` should advance to the effective closeout timestamp.
 - Mirror initiative closeout status into the PRD, decision, and design trackers from the traceability index rather than maintaining a second human-authored closeout source.
 - Mirror initiative closeout status into the derived initiative index, coordination surfaces, and initiative tracker from the traceability index rather than maintaining a second initiative-closeout authority.
+- If a terminal trace later becomes purge-eligible, keep the surviving authority in current standards, indexes, and any purge ledger rather than in removed trace-local artifacts.
 
 ## Structure or Data Model
 | Field | Meaning |
@@ -115,6 +118,7 @@ This standard defines how traced initiatives move to a terminal closeout state w
 - [initiative_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/initiative_tracking_standard.md)
 - [traceability_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/traceability_index_standard.md)
 - [initiative_closeout.md](/home/j/WatchTowerPlan/workflows/modules/initiative_closeout.md)
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Updated At
-- `2026-03-13T22:37:14Z`
+- `2026-03-15T15:30:00Z`

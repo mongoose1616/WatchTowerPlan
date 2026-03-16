@@ -6,11 +6,11 @@ summary: Define the promote-then-purge standard, update directly affected guidan
   and remove canonical assumptions that closed trace artifacts must be kept forever.
 type: task
 status: active
-task_status: ready
+task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-15T10:42:00Z'
+updated_at: '2026-03-16T03:04:19Z'
 audience: shared
 authority: authoritative
 applies_to:

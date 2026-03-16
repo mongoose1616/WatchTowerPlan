@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "task_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T06:35:00Z"
+updated_at: "2026-03-15T15:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -42,6 +42,7 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when retained closed task documents can later be removed with the full trace package.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [compact_document_authoring_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/compact_document_authoring_standard.md): companion standard that constrains this standard's default section density and compact-authoring expectations.
 - [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md): authoring scaffold that should stay aligned with this standard.
@@ -52,11 +53,12 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - Use a stable `task_id` in front matter instead of relying on the filename for identity.
 - Keep execution status in `task_status`, not in the document `status` field.
 - Keep active or non-terminal tasks in `open/`.
-- Keep `done` and `cancelled` tasks in dated archive paths beneath `closed/archive/`.
+- Keep `done` and `cancelled` tasks in dated archive paths beneath `closed/archive/` while the parent trace remains retained.
 - Use front matter as the primary structured metadata surface for tasks.
 - Keep GitHub sync metadata in front matter when a task has been published externally.
 - Keep the body focused on why the task exists, what is in scope, what counts as done, and which planning or implementation surfaces it touches.
 - Keep task prose short and execution-oriented.
+- Treat archived task documents as retained execution history, not as the enduring home of active policy or operational guidance.
 - Use real repository paths and stable IDs in front matter or optional links rather than informal notes.
 - `Context` and `Links` are optional when the title, summary, front matter, and scope already make the task legible.
 - Do not hand-maintain `task_tracking.md` as if it were the source of truth for task state.
@@ -76,7 +78,7 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 | Document Type | Canonical Location | Notes |
 |---|---|---|
 | Active or non-terminal task | `docs/planning/tasks/open/<task_name>.md` | Use stable snake_case filenames derived from the task topic. |
-| Closed task | `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/<task_name>.md` | Move the file when the task reaches a terminal state and preserve the dated archive directory on later closed-task edits. |
+| Closed task | `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/<task_name>.md` | Default retained home while the parent trace remains in the planning corpus; preserve the dated archive directory on later closed-task edits until an explicit trace purge removes the package. |
 | Task tracker | `docs/planning/tasks/task_tracking.md` | Generated human-readable task board. |
 
 ## Operationalization
@@ -99,8 +101,9 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
 - [task_template.md](/home/j/WatchTowerPlan/docs/templates/task_template.md)
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-15T06:35:00Z`
+- `2026-03-15T15:30:00Z`

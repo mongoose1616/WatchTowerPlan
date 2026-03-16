@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T06:35:00Z"
+updated_at: "2026-03-15T15:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -48,6 +48,7 @@ This standard defines the repository's local-first task tracking model so multip
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when retained closed task packages can later be removed at the trace boundary.
 - [front_matter_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [naming_and_ids_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/naming_and_ids_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [timestamp_standard.md](/home/j/WatchTowerPlan/docs/standards/metadata/timestamp_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -57,7 +58,7 @@ This standard defines the repository's local-first task tracking model so multip
 - Treat local task records as the authoritative local execution surface.
 - Store one task per Markdown file.
 - Keep active or non-terminal tasks under `docs/planning/tasks/open/`.
-- Keep terminal tasks under dated archive paths beneath `docs/planning/tasks/closed/archive/`.
+- Keep terminal tasks under dated archive paths beneath `docs/planning/tasks/closed/archive/` while the parent trace remains retained.
 - Use `task_status` for task execution state and keep document `status` reserved for artifact lifecycle.
 - Use only these task execution states:
   - `backlog`
@@ -84,7 +85,9 @@ This standard defines the repository's local-first task tracking model so multip
 - Use `blocked_by` and `depends_on` to express task-to-task coordination explicitly instead of burying blockers in prose.
 - Treat `docs/planning/tasks/task_tracking.md` as a derived human summary, not as the task source of truth.
 - Keep `task_tracking.md` scan-first and compact. Prefer short zero-state text and high-signal columns over placeholder rows or repeated footer prose.
-- Keep terminal task history compact in `task_tracking.md`. Summarize closed status counts, show only a small recent-closeout preview, and route exhaustive closed-task lookup to `docs/planning/tasks/closed/archive/` or explicit `watchtower-core query tasks --task-status ...` calls.
+- Keep terminal task history compact in `task_tracking.md`. Summarize closed status counts, show only a small recent-closeout preview, and route retained closed-task lookup to `docs/planning/tasks/closed/archive/` or explicit `watchtower-core query tasks --task-status ...` calls.
+- Treat archived task documents as retained execution history, not as the enduring source of current policy once equivalent standards, plans, or other canonical artifacts exist.
+- An explicit trace purge may later remove the full retained closed-task package after the surviving authority surfaces are reconciled.
 - Treat `core/control_plane/indexes/tasks/task_index.v1.json` as the machine-readable lookup surface derived from task records.
 - Keep optional GitHub foreign keys in task front matter when a later sync surface needs them:
   - `github_repository`
@@ -138,6 +141,7 @@ This standard defines the repository's local-first task tracking model so multip
 - A task in `open/` should not use terminal task statuses.
 - A task under `docs/planning/tasks/closed/**` should use only `done` or `cancelled`.
 - The human tracker should summarize terminal task history without inlining the full closed corpus by default.
+- Canonical standards and README entrypoints should not rely on a specific purgeable closed task document as the enduring operational authority.
 - Task IDs referenced by `blocked_by` or `depends_on` should exist in the current task corpus.
 - A task that lists any `trace.*` value in `related_ids` should also publish the matching `trace_id`.
 
@@ -151,7 +155,8 @@ This standard defines the repository's local-first task tracking model so multip
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
 - [task_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/task_index_standard.md)
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md)
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-15T06:35:00Z`
+- `2026-03-15T15:30:00Z`

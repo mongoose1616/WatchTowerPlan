@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "decision_capture"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-15T15:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -43,6 +43,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [git_commit_standard.md](/home/j/WatchTowerPlan/docs/standards/engineering/git_commit_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when closed decision traces can be removed after their durable policy survives elsewhere.
 - [decision_capture.md](/home/j/WatchTowerPlan/workflows/modules/decision_capture.md): workflow surface that operationalizes or depends on this standard.
 - [documentation_generation.md](/home/j/WatchTowerPlan/workflows/modules/documentation_generation.md): workflow surface that operationalizes or depends on this standard.
 - [documentation_refresh.md](/home/j/WatchTowerPlan/workflows/modules/documentation_refresh.md): workflow surface that operationalizes or depends on this standard.
@@ -64,6 +65,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - Distinguish clearly between:
   - the decision record as history and rationale
   - canonical repository artifacts that define the active current policy or guidance
+- Treat an accepted decision record as durable rationale, not as the only allowed home of current policy. Once the active rule and enough rationale survive in canonical artifacts, the trace-local decision record can become purge-eligible under the planning retention standard.
 - If an accepted decision changes repository policy, standards, workflows, templates, or design expectations, update those canonical artifacts in the same change set when practical.
 - If canonical updates are deferred, record the follow-up work explicitly so the decision does not become the only place where the active rule exists.
 - Surface unresolved questions, dependencies, and risks explicitly rather than hiding them inside vague rationale text.
@@ -111,6 +113,7 @@ This standard defines how durable repository decisions should be recorded so rat
 - Viable options, tradeoffs, and rationale are visible rather than implied.
 - Consequences, follow-up work, and unresolved questions are explicit.
 - Accepted decisions are reflected in canonical repository artifacts or have explicit follow-up to make that happen.
+- Reviewers should reject a decision record that remains the only home of active policy once equivalent canonical artifacts should already exist.
 - A future contributor can understand the decision without relying on undocumented verbal context.
 - Superseded decisions are marked clearly enough that stale records are not mistaken for active policy.
 
@@ -123,10 +126,12 @@ This standard defines how durable repository decisions should be recorded so rat
 - [decision_capture.md](/home/j/WatchTowerPlan/workflows/modules/decision_capture.md)
 - [adr_guidance_reference.md](/home/j/WatchTowerPlan/docs/references/adr_guidance_reference.md)
 - [reference_distillation_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/reference_distillation_standard.md)
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
 
 ## Notes
 - A decision record preserves why a choice was made. The repository's active operating rules should still live in the canonical artifacts that govern current behavior.
+- Closed decision traces may remain retained history by default, but they should not be required as the enduring source of active policy once that policy has been promoted into current canonical artifacts.
 - Not every local implementation choice needs durable decision capture. Use it when the rationale, alternatives, or downstream consequences are important enough to matter later.
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-15T15:30:00Z`

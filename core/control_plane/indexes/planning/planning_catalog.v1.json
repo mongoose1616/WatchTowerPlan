@@ -3279,7 +3279,10 @@
             "check.core_split_compatibility_wrapper_retirement.planning_baseline"
           ],
           "acceptance_ids": [
-            "ac.core_split_compatibility_wrapper_retirement.001"
+            "ac.core_split_compatibility_wrapper_retirement.001",
+            "ac.core_split_compatibility_wrapper_retirement.002",
+            "ac.core_split_compatibility_wrapper_retirement.003",
+            "ac.core_split_compatibility_wrapper_retirement.004"
           ],
           "validator_ids": [
             "validator.control_plane.validation_evidence"
@@ -10590,33 +10593,35 @@
       "summary": "Defines a promote-then-purge retention model so closed trace-local planning artifacts do not remain in the repository indefinitely.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-15T11:00:00Z",
+      "updated_at": "2026-03-16T03:04:19Z",
       "coordination": {
         "current_phase": "execution",
         "key_surface_path": "docs/planning/prds/planning_artifact_retention_and_purge.md",
         "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-        "next_surface_path": "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
-        "open_task_count": 4,
-        "blocked_task_count": 3,
+        "next_surface_path": "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
+        "open_task_count": 3,
+        "blocked_task_count": 2,
         "primary_owner": "repository_maintainer",
         "active_owners": [
           "repository_maintainer"
         ],
         "active_task_ids": [
           "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
-          "task.planning_artifact_retention_and_purge.standard_alignment.002",
           "task.planning_artifact_retention_and_purge.validation_closeout.005",
           "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
         ],
         "active_task_summaries": [
           {
-            "task_id": "task.planning_artifact_retention_and_purge.standard_alignment.002",
-            "title": "Align retention policy with canonical standards and purgeability rules",
-            "task_status": "ready",
+            "task_id": "task.planning_artifact_retention_and_purge.workflow_and_ledger.003",
+            "title": "Implement guarded trace purge workflow and minimal purge ledger",
+            "task_status": "backlog",
             "priority": "high",
             "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
-            "is_actionable": true
+            "doc_path": "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
+            "is_actionable": true,
+            "depends_on": [
+              "task.planning_artifact_retention_and_purge.standard_alignment.002"
+            ]
           },
           {
             "task_id": "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
@@ -10641,23 +10646,10 @@
             "depends_on": [
               "task.planning_artifact_retention_and_purge.pilot_cleanup.004"
             ]
-          },
-          {
-            "task_id": "task.planning_artifact_retention_and_purge.workflow_and_ledger.003",
-            "title": "Implement guarded trace purge workflow and minimal purge ledger",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.planning_artifact_retention_and_purge.standard_alignment.002"
-            ]
           }
         ],
         "blocked_by_task_ids": [
           "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
-          "task.planning_artifact_retention_and_purge.standard_alignment.002",
           "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
         ]
       },
@@ -10792,12 +10784,12 @@
           "title": "Align retention policy with canonical standards and purgeability rules",
           "summary": "Define the promote-then-purge standard, update directly affected guidance, and remove canonical assumptions that closed trace artifacts must be kept forever.",
           "artifact_status": "active",
-          "task_status": "ready",
+          "task_status": "done",
           "task_kind": "governance",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
-          "updated_at": "2026-03-15T10:42:00Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
+          "updated_at": "2026-03-16T03:04:19Z",
           "related_ids": [
             "prd.planning_artifact_retention_and_purge",
             "design.features.planning_artifact_retention_and_purge",
@@ -10886,7 +10878,7 @@
           "validation_targets": [
             "core/control_plane/",
             "core/control_plane/indexes/",
-            "core/control_plane/ledgers/purges/",
+            "core/control_plane/ledgers/",
             "core/python/",
             "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/repo_ops/",
@@ -10896,7 +10888,7 @@
             "docs/planning/design/implementation/planning_artifact_retention_and_purge.md",
             "docs/planning/prds/planning_artifact_retention_and_purge.md",
             "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
-            "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
             "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
             "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
             "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md",
@@ -10926,7 +10918,11 @@
             "check.planning_artifact_retention_and_purge.planning_baseline"
           ],
           "acceptance_ids": [
-            "ac.planning_artifact_retention_and_purge.001"
+            "ac.planning_artifact_retention_and_purge.001",
+            "ac.planning_artifact_retention_and_purge.002",
+            "ac.planning_artifact_retention_and_purge.003",
+            "ac.planning_artifact_retention_and_purge.004",
+            "ac.planning_artifact_retention_and_purge.005"
           ],
           "validator_ids": [
             "validator.control_plane.validation_evidence"
@@ -10991,6 +10987,7 @@
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/planning_artifact_retention_and_purge_acceptance.v1.json",
         "core/control_plane/indexes/",
+        "core/control_plane/ledgers/",
         "core/control_plane/ledgers/validation_evidence/planning_artifact_retention_and_purge_planning_baseline.v1.json",
         "core/python/",
         "core/python/src/watchtower_core/",
@@ -11007,7 +11004,7 @@
         "docs/planning/prds/planning_artifact_retention_and_purge.md",
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
-        "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
         "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
         "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
         "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md",

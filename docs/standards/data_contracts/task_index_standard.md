@@ -10,7 +10,7 @@ tags:
   - "task_index"
   - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-15T06:35:00Z"
+updated_at: "2026-03-15T15:30:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -44,6 +44,7 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [github_task_sync_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/github_task_sync_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [traceability_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/traceability_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md): companion standard that constrains when retained closed-task entries can disappear from the current index because the full trace was purged.
 - [schema_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 
@@ -51,10 +52,11 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - Apply the shared planning-index-family baseline in [planning_index_family_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/planning_index_family_standard.md).
 - Keep the authoritative task content in the task Markdown records under `docs/planning/tasks/`.
 - Keep the task tracker and task index derived from those records.
-- Every task-index entry must point to an existing task document.
+- Every task-index entry must point to an existing task document while the task's parent trace remains retained in the planning corpus.
 - Keep optional GitHub identifiers as foreign-key metadata only; do not make them the local task identity.
 - Keep task execution state in `task_status` and artifact lifecycle state in `status`.
 - Update the task index in the same change set whenever task records change materially.
+- Remove task-index entries instead of leaving dead `doc_path` values behind when an explicit trace purge removes the retained task package.
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -104,7 +106,8 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 
 ## Examples
 - A backlog task for GitHub sync should appear as a non-terminal task entry with `task_status` set to `backlog`.
-- A closed implementation task should remain in the task index with `task_status` set to `done` and a `doc_path` under `docs/planning/tasks/closed/archive/`.
+- A closed implementation task should remain in the task index with `task_status` set to `done` and a `doc_path` under `docs/planning/tasks/closed/archive/` while its parent trace remains retained.
+- A purged trace should no longer leave orphaned closed-task entries in the current task index.
 - A task can carry a local `task_id` plus a future `github_issue_number` without changing its stable local identity.
 
 ## Operationalization
@@ -126,7 +129,8 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 ## References
 - [task_tracking_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/task_tracking_standard.md)
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
+- [planning_retention_and_purge_standard.md](/home/j/WatchTowerPlan/docs/standards/governance/planning_retention_and_purge_standard.md)
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md)
 
 ## Updated At
-- `2026-03-15T06:35:00Z`
+- `2026-03-15T15:30:00Z`

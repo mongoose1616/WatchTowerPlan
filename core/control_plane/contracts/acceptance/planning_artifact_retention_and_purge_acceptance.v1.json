@@ -19,7 +19,7 @@
         "docs/planning/decisions/planning_artifact_retention_and_purge_direction.md",
         "docs/standards/governance/planning_retention_and_purge_standard.md",
         "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
-        "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
         "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
         "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
         "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md"
