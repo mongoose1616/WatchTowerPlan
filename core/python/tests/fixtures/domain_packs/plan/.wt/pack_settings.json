@@ -1,0 +1,32 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+  "surface_name": "pack_settings",
+  "contract_version": "v1",
+  "description": "Pack settings for the plan domain-pack validation fixture.",
+  "updated_at": "2026-03-16T21:40:00Z",
+  "pack_id": "pack.plan",
+  "surfaces": [
+    {
+      "surface_name": "schema_catalog",
+      "surface_kind": "schema_collection",
+      "path": "domain_packs/plan/.wt/registries/schema_catalog.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validator_registry",
+      "surface_kind": "registry",
+      "path": "domain_packs/plan/.wt/registries/validator_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    },
+    {
+      "surface_name": "validation_suite_registry",
+      "surface_kind": "registry",
+      "path": "domain_packs/plan/.wt/registries/validation_suite_registry.json",
+      "authority": "authoritative",
+      "visibility": "hidden"
+    }
+  ],
+  "notes": "This fixture pack keeps the reusable-core validation surfaces minimal so tests can materialize it into temporary repos."
+}

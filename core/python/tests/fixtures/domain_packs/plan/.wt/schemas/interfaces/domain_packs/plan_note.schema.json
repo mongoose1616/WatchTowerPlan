@@ -1,0 +1,24 @@
+{
+  "$id": "urn:watchtower:schema:interfaces:domain-packs:plan-note:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plan Note",
+  "description": "Pack-local schema used by validation suite tests.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:domain-packs:plan-note:v1"
+    },
+    "kind": {
+      "const": "plan_note"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "$schema",
+    "kind",
+    "title"
+  ],
+  "additionalProperties": false
+}

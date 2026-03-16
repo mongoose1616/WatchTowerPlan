@@ -1,0 +1,32 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:validation-suite-registry:v1",
+  "id": "registry.validation_suites",
+  "title": "Plan Validation Suites",
+  "status": "active",
+  "suites": [
+    {
+      "id": "suite.plan.validation_baseline",
+      "title": "Plan Validation Baseline",
+      "description": "Pack-contract plus schema-backed plan note validation.",
+      "status": "active",
+      "steps": [
+        {
+          "id": "step.plan.pack_contract",
+          "title": "Validate plan pack contract",
+          "description": "Ensure the pack publishes the governed surfaces reusable core expects.",
+          "step_kind": "pack_contract"
+        },
+        {
+          "id": "step.plan.artifacts",
+          "title": "Validate plan note artifacts",
+          "description": "Validate the pack-local plan note artifacts.",
+          "step_kind": "artifact",
+          "paths": [
+            "domain_packs/plan/.wt/work_items/plan_note.json"
+          ],
+          "validator_id": "validator.domain_packs.plan_note"
+        }
+      ]
+    }
+  ]
+}

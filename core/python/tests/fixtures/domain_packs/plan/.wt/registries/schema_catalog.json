@@ -1,0 +1,18 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:registries:schema-catalog:v1",
+  "id": "registry.schema_catalog",
+  "title": "Plan Pack Schema Catalog",
+  "status": "active",
+  "schemas": [
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:domain-packs:plan-note:v1",
+      "title": "Plan Note",
+      "description": "Pack-local schema for plan note artifacts.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "plan_note",
+      "version": "v1",
+      "canonical_path": "domain_packs/plan/.wt/schemas/interfaces/domain_packs/plan_note.schema.json"
+    }
+  ]
+}

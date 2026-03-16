@@ -6,7 +6,7 @@ from pathlib import Path
 
 from watchtower_core.cli.main import main
 
-from .pack_validation_helpers import REPO_ROOT, materialize_pack_validation_suite
+from tests.pack_fixture_support import REPO_ROOT, materialize_pack_validation_suite
 
 
 def test_validate_front_matter_supports_json_output(capsys) -> None:

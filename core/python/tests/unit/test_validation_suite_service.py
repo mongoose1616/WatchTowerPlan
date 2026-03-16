@@ -12,7 +12,7 @@ from watchtower_core.validation import (
     ValidationSuiteService,
 )
 
-from .pack_validation_helpers import REPO_ROOT, materialize_pack_validation_suite
+from tests.pack_fixture_support import REPO_ROOT, materialize_pack_validation_suite
 
 
 def test_pack_contract_validation_passes_for_repo_pack_settings() -> None:
