@@ -38,7 +38,7 @@
       ],
       "validation_targets": [
         "docs/templates/standard_document_template.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "related_paths": [
         "docs/standards/documentation/standard_md_standard.md"
@@ -53,7 +53,7 @@
       "validation_targets": [
         "docs/standards/documentation/standard_md_standard.md",
         "core/control_plane/indexes/standards/standard_index.json",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "docs/commands/core_python/watchtower_core_query_standards.md"
@@ -66,8 +66,8 @@
         "req.standard_authoring_surface_alignment.004"
       ],
       "validation_targets": [
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/integration/",
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "docs/templates/standard_document_template.md",

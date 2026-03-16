@@ -29,7 +29,7 @@
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/commands/core_python/watchtower_core_sync.md",
         "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.foundations_docs_boundary_alignment.documentation.001"
@@ -76,7 +76,7 @@
         "docs/commands/core_python/watchtower_core_sync_task_tracking.md",
         "docs/commands/core_python/watchtower_core_sync_traceability_index.md",
         "docs/commands/core_python/watchtower_core_sync_workflow_index.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.foundations_docs_boundary_alignment.documentation.001"
@@ -99,7 +99,7 @@
         "docs/references/github_collaboration_reference.md",
         "core/python/README.md",
         "core/python/src/watchtower_core/repo_ops/README.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.foundations_docs_boundary_alignment.documentation.001"
@@ -119,8 +119,8 @@
         "core/control_plane/contracts/acceptance/foundations_docs_boundary_alignment_acceptance.json",
         "core/control_plane/ledgers/validation_evidence/foundations_docs_boundary_alignment_planning_baseline.json",
         "core/python/tests/unit/test_cli.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
+        "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "workflows/modules/foundations_context_review.md",

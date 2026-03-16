@@ -67,7 +67,7 @@
         "docs/references/cyclonedx_1_7_reference.md",
         "docs/references/sigstore_reference.md",
         "docs/references/slsa_1_1_reference.md",
-        "docs/references/in_toto_v1_0_reference.md"
+        "docs/references/in_toto_reference.md"
       ],
       "notes": "The engineering stack foundation entry should project non-empty reference_doc_paths and external_reference_urls after sync."
     },
@@ -81,7 +81,7 @@
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "core/python/tests/unit/test_cli.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py"
@@ -101,7 +101,7 @@
         "core/control_plane/ledgers/validation_evidence/foundations_documentation_completeness_alignment_planning_baseline.json"
       ],
       "related_paths": [
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "docs/planning/coordination_tracking.md"
       ],
       "notes": "Closeout requires targeted regressions, sync all, acceptance validation, full repository validation, and two clean follow-up review passes."

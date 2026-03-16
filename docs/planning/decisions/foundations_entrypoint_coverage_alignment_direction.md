@@ -15,7 +15,7 @@ applies_to:
 - docs/foundations/repository_scope.md
 - workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 ---
 
 # Foundations Entrypoint Coverage Alignment Direction Decision
@@ -65,7 +65,7 @@ companions for the review contexts the foundations layer already advertises.
 - docs/foundations/repository_scope.md
 - workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 
 ## Options Considered
 ### Option 1

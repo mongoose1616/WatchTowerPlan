@@ -25,7 +25,7 @@
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/unit/test_task_lifecycle.py",
         "core/python/tests/unit/test_planning_scaffolds.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_compact_document_authoring.py"
       ],
       "related_paths": [
@@ -58,8 +58,8 @@
         "docs/planning/tasks/closed/archive/2026/03/12/expand_orchestration_and_derivation_failure_coverage.md",
         "docs/references/commonmark_reference.md",
         "docs/standards/documentation/readme_md_standard.md",
-        "core/python/tests/unit/test_cli_query_commands.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/unit/",
+        "core/python/tests/integration/"
       ],
       "related_paths": [
         "docs/standards/metadata/front_matter_standard.md",

@@ -12,8 +12,8 @@ updated_at: '2026-03-13T18:46:53Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - core/python/src/watchtower_core/repo_ops/validation/
 - core/python/src/watchtower_core/validation/
 - core/python/src/watchtower_core/cli/validation_handlers.py
@@ -36,7 +36,7 @@ applies_to:
 Review and refactor the remaining governed validation test hotspots so artifact and document-semantics coverage become more modular without reducing live repository contract validation.
 
 ## Problem Statement
-- The March 13, 2026 refactor audit still reproduces the remaining live portion of `RF-TST-001` after the earlier CLI-query hotspot split, concentrating broad repository-contract coverage into `core/python/tests/integration/test_control_plane_artifacts.py` and `core/python/tests/unit/test_document_semantics_validation.py`.
+- The March 13, 2026 refactor audit still reproduces the remaining live portion of `RF-TST-001` after the earlier CLI-query hotspot split, concentrating broad repository-contract coverage into `core/python/tests/integration/` and `core/python/tests/unit/`.
 - `test_control_plane_artifacts.py` is still a 1171-line mixed-family integration surface spanning loader coverage, schema-backed artifact validation, foundations and entrypoint checks, standards and template contracts, workflow authoring checks, and front-matter assertions, which weakens failure locality and raises the cost of extending one family safely.
 - `test_document_semantics_validation.py` is still a 1053-line mixed-family unit surface with multiple inline fixture writers and cross-family semantic rules for references, standards, workflows, and planning docs, making targeted maintenance noisy and obscuring the direct validator seams it exercises.
 - Adjacent discoverability surfaces are also stale: the unit and integration README inventories do not list these hotspots, so the repository path index and `watchtower-core query paths` cannot resolve either file even though more than 400 planning references still point to them.

@@ -1,0 +1,137 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.transition_surface_retirement.planning_baseline",
+  "title": "Transition Surface Retirement Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.transition_surface_retirement",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-16T19:39:28Z",
+  "source_prd_ids": [
+    "prd.transition_surface_retirement"
+  ],
+  "source_design_ids": [
+    "design.features.transition_surface_retirement"
+  ],
+  "source_plan_ids": [
+    "design.implementation.transition_surface_retirement"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.transition_surface_retirement"
+  ],
+  "checks": [
+    {
+      "check_id": "check.transition_surface_retirement.planning_baseline",
+      "title": "Bootstrap planning baseline is aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/transition_surface_retirement.md",
+        "docs/planning/design/features/transition_surface_retirement.md",
+        "docs/planning/design/implementation/transition_surface_retirement.md",
+        "docs/planning/decisions/transition_surface_retirement_direction.md",
+        "core/control_plane/contracts/acceptance/transition_surface_retirement_acceptance.json",
+        "docs/planning/tasks/closed/archive/2026/03/16/transition_surface_retirement_bootstrap.md"
+      ],
+      "subject_ids": [
+        "prd.transition_surface_retirement",
+        "design.features.transition_surface_retirement",
+        "design.implementation.transition_surface_retirement",
+        "task.transition_surface_retirement.bootstrap.001",
+        "contract.acceptance.transition_surface_retirement",
+        "decision.transition_surface_retirement_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.transition_surface_retirement.001"
+      ],
+      "notes": "Bootstrap write mode published the initial planning chain, acceptance contract, evidence artifact, and bootstrap task in canonical repository paths."
+    },
+    {
+      "check_id": "check.transition_surface_retirement.runtime_surface_cleanup",
+      "title": "Retired runtime facades and bridge are gone from the live tree",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_control_plane_model_exports.py"
+      ],
+      "subject_ids": [
+        "contract.acceptance.transition_surface_retirement"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.transition_surface_retirement.002"
+      ],
+      "notes": "Direct runtime owners remain in place, negative import coverage guards the retired CLI facades and model bridge, and no scoped retired runtime path matches remain in the repository audit."
+    },
+    {
+      "check_id": "check.transition_surface_retirement.test_surface_cleanup",
+      "title": "Focused suites replace the retired hotspot marker tests",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/tests/integration/",
+        "core/python/tests/integration/README.md",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/unit/test_repo_ops_boundary.py"
+      ],
+      "subject_ids": [
+        "contract.acceptance.transition_surface_retirement"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.transition_surface_retirement.003"
+      ],
+      "notes": "The live test tree now routes through the focused unit and integration suites, and the boundary test uses current repo-ops boundary naming instead of wrapper-era compatibility naming."
+    },
+    {
+      "check_id": "check.transition_surface_retirement.discovery_surface_cleanup",
+      "title": "Current governance and discovery surfaces no longer advertise retired transition paths",
+      "result": "passed",
+      "subject_paths": [
+        "core/control_plane/contracts/acceptance/transition_surface_retirement_acceptance.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.json",
+        "core/control_plane/ledgers/validation_evidence/transition_surface_retirement_planning_baseline.json",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "subject_ids": [
+        "contract.acceptance.transition_surface_retirement",
+        "evidence.transition_surface_retirement.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.transition_surface_retirement.004"
+      ],
+      "notes": "The current acceptance contract, evidence ledger, coordination tracker, repository-path index, and runtime validation package align on the cleaned surface set with no retained transition-helper file or scoped retired-path matches."
+    },
+    {
+      "check_id": "check.transition_surface_retirement.validation_closeout",
+      "title": "Full validation stack passes on the cleaned transition-retirement state",
+      "result": "passed",
+      "subject_paths": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ],
+      "subject_ids": [
+        "contract.acceptance.transition_surface_retirement"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.transition_surface_retirement.005"
+      ],
+      "notes": "The final cleanup state passed sync, acceptance validation, validate all with 1346 of 1346 checks green, pytest, mypy, ruff, and the scoped retired-path audits with no matches."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/transition_surface_retirement_acceptance.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline and closeout evidence refreshed at 2026-03-16T19:39:28Z for trace.transition_surface_retirement after the transition-surface cleanup, discovery-surface rewrite, and final clean validation pass.",
+  "source_decision_ids": [
+    "decision.transition_surface_retirement_direction"
+  ]
+}

@@ -93,8 +93,8 @@ Defines the technical design boundary for Data Contract Example Operationalizati
 - docs/standards/data_contracts/
 - the retired control-plane example corpus
 - core/control_plane/indexes/standards/standard_index.json
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 
 ## Design Guardrails
 - Prefer family-specific valid and invalid example globs over broad example-directory operationalization paths.

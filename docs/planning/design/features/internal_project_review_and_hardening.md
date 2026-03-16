@@ -109,7 +109,7 @@ Defines the review-backed design for validation-compatible planning bootstrap ou
 - `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`
 - `core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py`
 - `core/python/src/watchtower_core/cli/plan_handlers.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/`
 - `core/python/tests/unit/`
 - `core/python/tests/integration/`
 - `docs/commands/core_python/watchtower_core_plan_bootstrap.md`

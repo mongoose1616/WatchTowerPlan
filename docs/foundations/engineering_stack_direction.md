@@ -41,7 +41,7 @@ Today the repository is still documentation-heavy, but it also has a substantive
 | JSON | Primary machine-readable artifact format | `core/control_plane/manifests/**`, `core/control_plane/registries/**`, `core/control_plane/contracts/**`, `core/control_plane/indexes/**`, `core/control_plane/ledgers/**` | Used for canonical control-plane inputs and retained machine-readable records because it is explicit, diff-friendly, and easy to validate. |
 | JSON Schema Draft 2020-12 | Contract and validation baseline | `core/control_plane/schemas/**` | Defines governed artifact shapes and validation boundaries. |
 | YAML front matter | Document metadata layer where governed metadata is useful | Governed docs under `docs/**` | Used as a small metadata wrapper for routing, indexing, ownership, and lifecycle signals. |
-| Python 3.12 | Active runtime, validation, sync, query, and CLI baseline | `core/python/.python-version`, `core/python/src/**`, `core/python/tests/**` | The Python layer is now a real part of the repo's operating model, not just early scaffolding. |
+| Python 3.12 | Active runtime, validation, sync, query, and CLI baseline | `core/python/pyproject.toml` and `core/python/uv.lock`, `core/python/src/**`, `core/python/tests/**` | The Python layer is now a real part of the repo's operating model, not just early scaffolding. |
 | Hatchling | Python build backend | `core/python/pyproject.toml` | Keeps packaging minimal and standard. |
 | pytest | Test runner baseline for Python code | `core/python/pyproject.toml`, `core/python/tests/**` | Standard test surface for the consolidated Python workspace. |
 
@@ -97,7 +97,7 @@ Today the repository is still documentation-heavy, but it also has a substantive
 - [cyclonedx_1_7_reference.md](/docs/references/cyclonedx_1_7_reference.md)
 - [sigstore_reference.md](/docs/references/sigstore_reference.md)
 - [slsa_1_1_reference.md](/docs/references/slsa_1_1_reference.md)
-- [in_toto_v1_0_reference.md](/docs/references/in_toto_v1_0_reference.md)
+- [in_toto_reference.md](/docs/references/in_toto_reference.md)
 
 ## Updated At
 - `2026-03-16T06:28:00Z`

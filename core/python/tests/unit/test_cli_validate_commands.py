@@ -304,12 +304,10 @@ def test_validate_all_supports_json_output_when_acceptance_is_skipped(capsys) ->
         "front_matter",
         "document_semantics",
         "artifacts",
-        "governed_filenames",
     ]
     assert any(summary["family"] == "front_matter" for summary in payload["family_summaries"])
     assert any(summary["family"] == "document_semantics" for summary in payload["family_summaries"])
     assert any(summary["family"] == "artifacts" for summary in payload["family_summaries"])
-    assert any(summary["family"] == "governed_filenames" for summary in payload["family_summaries"])
 
 
 def test_validate_all_supports_json_output(capsys) -> None:

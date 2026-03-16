@@ -25,7 +25,7 @@ applies_to:
 - docs/planning/tasks/
 - core/control_plane/contracts/acceptance/
 - core/control_plane/ledgers/validation_evidence/
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - core/python/tests/unit/test_traceability_index_sync.py
 related_ids:
 - trace.summary_surface_retirement

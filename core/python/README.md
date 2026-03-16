@@ -11,7 +11,7 @@
 |---|---|
 | `core/python/AGENTS.md` | Defines Python-workspace-specific instructions for agents working under this subtree. |
 | `core/python/README.md` | Describes the purpose of the Python workspace and the standard onboarding flow. |
-| `core/python/.python-version` | Pins the expected Python interpreter version for the workspace. |
+| `core/python/pyproject.toml` | Declares the supported Python interpreter range and the canonical package or tool configuration. |
 | `core/python/.gitignore` | Ignores the local virtual environment, caches, and build outputs. |
 | `core/python/pyproject.toml` | Canonical Python project and tool configuration for the core helper and harness package. |
 | `core/python/uv.lock` | Locked dependency graph used for repeatable local onboarding. |
@@ -69,7 +69,6 @@
 - `uv run watchtower-core closeout initiative --trace-id trace.example --initiative-status completed --closure-reason "Delivered and validated"`
 - `uv run watchtower-core closeout purge-trace --trace-id trace.example --retained-authority-path docs/standards/governance/planning_retention_and_purge_standard.md`
 - `uv run watchtower-core validate all --skip-acceptance`
-- `uv run watchtower-core validate all --skip-governed-filenames`
 - `uv run watchtower-core validate document-semantics --path workflows/modules/code_validation.md`
 - `uv run watchtower-core validate acceptance --trace-id trace.core_python_foundation --format json`
 - `uv run watchtower-core validate artifact --path /tmp/pack_note.json --schema-id urn:watchtower:schema:external:pack-note:v1 --supplemental-schema-path /tmp/pack_schemas --format json`
@@ -98,7 +97,6 @@
 ### Notes
 - `uv run ...` is the default workflow for this repository.
 - `uv run watchtower-core doctor` is the fastest non-mutating baseline health snapshot before a full `sync all` or `validate all` run.
-- `uv run watchtower-core validate all` also enforces the governed filename policy over `core/control_plane/**/*.json`, including the versionless filename rule for canonical machine-readable artifacts.
 - `uv run watchtower-core route preview --request "<text>"` is the fastest advisory check for how the current routing surfaces map a request onto workflow modules.
 - Bounded documentation and standards review prompts now route to `Documentation Review` instead of requiring repository-review wording.
 - `uv run watchtower-core route preview --task-type "Foundations Alignment Review" --format json` is the explicit preview path when a task is about keeping docs or workflow guidance aligned with repository foundations.

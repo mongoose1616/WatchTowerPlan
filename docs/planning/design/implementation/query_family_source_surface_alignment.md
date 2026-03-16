@@ -53,7 +53,7 @@ Breaks Query Family Source Surface Alignment into a bounded implementation slice
   `core/python/src/watchtower_core/cli/query_knowledge_family.py`;
   `core/python/src/watchtower_core/cli/query_records_family.py`;
   `core/python/src/watchtower_core/cli/query_coordination_family.py`;
-  `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+  `core/python/src/watchtower_core/cli/`
 - Human and machine command lookup surfaces:
   `docs/commands/core_python/watchtower_core_query*.md`;
   `core/control_plane/indexes/commands/command_index.json`

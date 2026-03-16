@@ -46,7 +46,7 @@
         "req.foundations_entrypoint_coverage_alignment.003"
       ],
       "validation_targets": [
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "docs/planning/prds/foundations_entrypoint_coverage_alignment.md",
         "docs/planning/design/features/foundations_entrypoint_coverage_alignment.md",
         "docs/planning/design/implementation/foundations_entrypoint_coverage_alignment.md",

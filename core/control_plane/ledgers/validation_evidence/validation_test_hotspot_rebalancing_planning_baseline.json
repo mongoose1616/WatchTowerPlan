@@ -57,7 +57,7 @@
       "result": "passed",
       "subject_paths": [
         "core/python/tests/integration/control_plane_artifact_helpers.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/integration/test_standard_and_template_authoring_contracts.py",
@@ -82,7 +82,7 @@
       "result": "passed",
       "subject_paths": [
         "core/python/tests/unit/document_semantics_fixtures.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_document_semantics_validator_selection.py",
         "core/python/tests/unit/test_document_semantics_reference_rules.py",
         "core/python/tests/unit/test_document_semantics_standard_rules.py",

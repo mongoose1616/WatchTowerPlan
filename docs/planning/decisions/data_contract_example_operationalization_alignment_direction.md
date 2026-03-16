@@ -46,8 +46,8 @@ Update the affected data-contract standards to publish family-specific valid and
 ## Affected Surfaces
 - docs/standards/data_contracts/
 - core/control_plane/indexes/standards/standard_index.json
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - docs/planning/prds/data_contract_example_operationalization_alignment.md
 - docs/planning/design/features/data_contract_example_operationalization_alignment.md
 - docs/planning/design/implementation/data_contract_example_operationalization_alignment.md

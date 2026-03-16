@@ -13,10 +13,9 @@ authority: supporting
 applies_to:
 - core/python/src/watchtower_core/repo_ops/standards.py
 - core/python/src/watchtower_core/repo_ops/query/standards.py
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/unit/test_document_semantics_validation.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - docs/commands/core_python/watchtower_core_query_standards.md
 - docs/standards/data_contracts/standard_index_standard.md
 - docs/standards/documentation/standard_md_standard.md

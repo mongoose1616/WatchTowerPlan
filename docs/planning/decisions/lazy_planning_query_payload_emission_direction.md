@@ -101,4 +101,4 @@ handlers through it.
 - `docs/planning/prds/lazy_planning_query_payload_emission.md`
 - `docs/planning/design/features/lazy_planning_query_payload_emission.md`
 - `core/python/src/watchtower_core/cli/handler_common.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/`

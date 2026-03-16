@@ -12,8 +12,8 @@ authority: supporting
 applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - docs/templates/standard_document_template.md
-- core/python/tests/unit/test_cli_query_commands.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/unit/
+- core/python/tests/integration/
 - core/control_plane/indexes/standards/standard_index.json
 ---
 
@@ -56,8 +56,8 @@ Align the standard-authoring scaffold, the governing Standard Document Standard,
 - `docs/standards/documentation/standard_md_standard.md`
 - `docs/templates/standard_document_template.md`
 - `core/control_plane/indexes/standards/standard_index.json`
-- `core/python/tests/unit/test_cli_query_commands.py`
-- `core/python/tests/integration/test_control_plane_artifacts.py`
+- `core/python/tests/unit/`
+- `core/python/tests/integration/`
 - `docs/planning/`
 
 ## Options Considered
@@ -98,5 +98,5 @@ Adopt option 3. The repository should preserve the current standard-document con
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/data_contracts/standard_index_standard.md
 - docs/templates/standard_document_template.md
-- core/python/tests/unit/test_cli_query_commands.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/unit/
+- core/python/tests/integration/

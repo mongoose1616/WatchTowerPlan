@@ -12,9 +12,9 @@ audience: shared
 authority: supporting
 applies_to:
 - core/python/src/watchtower_core/repo_ops/standards.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
@@ -53,9 +53,9 @@ Standard operationalization metadata will treat exact files and directories as d
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/standards.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
@@ -94,6 +94,6 @@ Accept Option 2. Tighten the shared standards parser so non-canonical directory 
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
 - core/python/src/watchtower_core/repo_ops/standards.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/

@@ -67,7 +67,7 @@ Break the natural maintenance-request route matching fix into one bounded implem
 ## Validation Plan
 - Run `./core/python/.venv/bin/watchtower-core sync route-index --write --format json`.
 - Run `./core/python/.venv/bin/watchtower-core route preview --request "review the regression findings and fix the valid issues with planning, tasks, validation, and commits" --format json`.
-- Run `./core/python/.venv/bin/pytest -q core/python/tests/unit/test_route_index_sync.py core/python/tests/unit/test_cli_query_commands.py`.
+- Run `./core/python/.venv/bin/pytest -q core/python/tests/unit/test_route_index_sync.py core/python/tests/unit/`.
 - Run `./core/python/.venv/bin/watchtower-core validate all --skip-acceptance --format json`.
 - Run `./core/python/.venv/bin/watchtower-core validate acceptance --trace-id trace.route_preview_natural_request_matching --format json`.
 - Run `./core/python/.venv/bin/python -m mypy src` and `./core/python/.venv/bin/ruff check .`.

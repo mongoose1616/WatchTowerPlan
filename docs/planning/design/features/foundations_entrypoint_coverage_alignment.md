@@ -15,7 +15,7 @@ applies_to:
 - docs/foundations/repository_scope.md
 - workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 ---
 
 # Foundations Entrypoint Coverage Alignment Feature Design
@@ -124,7 +124,7 @@ Defines the technical design boundary for Foundations Entrypoint Coverage Alignm
 - docs/foundations/repository_scope.md
 - workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 
 ## Design Guardrails
 - Keep the slice bounded to entrypoint coverage and review-workflow alignment.

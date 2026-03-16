@@ -11,7 +11,7 @@ updated_at: '2026-03-13T23:32:17Z'
 audience: shared
 authority: supporting
 applies_to:
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_family.py
@@ -68,7 +68,7 @@ query contracts stable in this trace.
   proved it remained a live issue. This trace is that later pass.
 
 ## Affected Surfaces
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_family.py

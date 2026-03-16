@@ -66,6 +66,6 @@ The comprehensive project review found two live control-plane drift defects that
 - retired valid example index fixture foundation_index.example.json
 - retired valid example index fixture traceability_index.example.json
 - core/python/src/watchtower_core/repo_ops/validation/all.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - docs/standards/validations/repository_validation_standard.md
 - docs/standards/data_contracts/schema_standard.md

@@ -1,0 +1,103 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.transition_surface_retirement",
+  "title": "Transition Surface Retirement Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.transition_surface_retirement",
+  "source_prd_id": "prd.transition_surface_retirement",
+  "entries": [
+    {
+      "acceptance_id": "ac.transition_surface_retirement.001",
+      "summary": "The trace publishes a concrete PRD, accepted decision, active feature design, active implementation plan, aligned acceptance contract, planning-baseline evidence, and bounded task chain with no scaffold placeholders left in the active planning corpus.",
+      "source_requirement_ids": [
+        "req.transition_surface_retirement.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/transition_surface_retirement.md",
+        "docs/planning/design/features/transition_surface_retirement.md",
+        "docs/planning/design/implementation/transition_surface_retirement.md",
+        "docs/planning/decisions/transition_surface_retirement_direction.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/transition_surface_retirement_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_remaining_transition_modules_and_marker_tests.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_transition_surface_retirement.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "The active planning chain must stay concrete and current through implementation and closeout; the trace does not accept scaffold placeholders as terminal state."
+    },
+    {
+      "acceptance_id": "ac.transition_surface_retirement.002",
+      "summary": "The retired runtime facades and the retired control-plane model bridge no longer exist in the live tree, and direct boundary tests prove the deleted import paths stay gone.",
+      "source_requirement_ids": [
+        "req.transition_surface_retirement.002"
+      ],
+      "validation_targets": [
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_control_plane_model_exports.py"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/cli/README.md",
+        "core/python/src/watchtower_core/control_plane/models/__init__.py"
+      ]
+    },
+    {
+      "acceptance_id": "ac.transition_surface_retirement.003",
+      "summary": "The retired hotspot marker tests are removed, current focused suites remain the only live test entrypoints in scope, and the boundary-proof test uses current naming and ownership.",
+      "source_requirement_ids": [
+        "req.transition_surface_retirement.003"
+      ],
+      "validation_targets": [
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/test_repo_ops_boundary.py"
+      ],
+      "related_paths": [
+        "core/python/tests/integration/README.md",
+        "core/python/tests/unit/README.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.transition_surface_retirement.004",
+      "summary": "Current docs, contracts, evidence, trackers, indexes, and repository-path discovery surfaces no longer advertise retired transition paths or retain temporary audit helpers in scope.",
+      "source_requirement_ids": [
+        "req.transition_surface_retirement.004"
+      ],
+      "validation_targets": [
+        "docs/planning/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/indexes/repository_paths/repository_path_index.json",
+        "core/python/src/watchtower_core/repo_ops/validation/"
+      ],
+      "related_paths": [
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/metadata/naming_and_ids_standard.md"
+      ],
+      "notes": "Temporary audit or transition helpers are allowed only during execution and must be absent from the final live tree."
+    },
+    {
+      "acceptance_id": "ac.transition_surface_retirement.005",
+      "summary": "Sync, acceptance validation, full validation, tests, typechecking, linting, and the scoped retired-path audit all pass on the cleaned final state before closeout.",
+      "source_requirement_ids": [
+        "req.transition_surface_retirement.005"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ]
+    }
+  ]
+}

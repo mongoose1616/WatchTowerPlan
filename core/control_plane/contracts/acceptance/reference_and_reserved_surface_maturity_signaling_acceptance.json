@@ -46,11 +46,11 @@
         "core/control_plane/schemas/artifacts/reference_index.schema.json",
         "core/control_plane/indexes/references/reference_index.json",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/unit/test_reference_index_sync.py",
-        "core/python/tests/unit/test_document_semantics_validation.py"
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "docs/references/",
@@ -70,7 +70,7 @@
         "docs/commands/core_python/watchtower_core_query_references.md",
         "docs/commands/core_python/watchtower_core_query.md",
         "core/python/README.md",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ]
     },
     {

@@ -58,7 +58,7 @@
       "title": "Planning and initiative browse defaults align with the active-first navigation model",
       "result": "passed",
       "subject_paths": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/query_coordination_family.py",
         "core/python/src/watchtower_core/repo_ops/query/planning.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
@@ -78,7 +78,7 @@
       "title": "Structured payloads and human-facing query behavior expose the applied default status",
       "result": "passed",
       "subject_paths": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/query_coordination_family.py",
         "core/python/tests/unit/test_cli_planning_query_commands.py",
         "docs/commands/core_python/watchtower_core_query_planning.md",

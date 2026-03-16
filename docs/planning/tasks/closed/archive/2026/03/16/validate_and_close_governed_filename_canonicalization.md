@@ -1,6 +1,6 @@
 ---
-id: task.versionless_governed_artifact_filenames.validation_and_closeout.003
-trace_id: trace.versionless_governed_artifact_filenames
+id: task.governed_filename_canonicalization.validation_and_closeout.003
+trace_id: trace.governed_filename_canonicalization
 title: Validate and close versionless governed artifact filenames
 summary: Refreshes derived surfaces, validates the versionless governed-filename migration,
   and closes the trace after the renamed repository state is clean.
@@ -19,11 +19,11 @@ applies_to:
 - docs/planning/
 - docs/standards/
 related_ids:
-- prd.versionless_governed_artifact_filenames
-- design.features.versionless_governed_artifact_filenames
-- design.implementation.versionless_governed_artifact_filenames
-- decision.versionless_governed_artifact_filenames_direction
-- contract.acceptance.versionless_governed_artifact_filenames
+- prd.governed_filename_canonicalization
+- design.features.governed_filename_canonicalization
+- design.implementation.governed_filename_canonicalization
+- decision.governed_filename_canonicalization_direction
+- contract.acceptance.governed_filename_canonicalization
 ---
 
 # Validate and close versionless governed artifact filenames

@@ -9,9 +9,6 @@ from watchtower_core.repo_ops.validation.all import (
 from watchtower_core.repo_ops.validation.document_semantics import (
     DocumentSemanticsValidationService,
 )
-from watchtower_core.repo_ops.validation.governed_filenames import (
-    GovernedFilenameValidationService,
-)
 from watchtower_core.repo_ops.validation.registry import (
     VALIDATION_FAMILY_SPECS,
     ValidationFamilySpec,
@@ -19,7 +16,6 @@ from watchtower_core.repo_ops.validation.registry import (
 
 __all__ = [
     "DocumentSemanticsValidationService",
-    "GovernedFilenameValidationService",
     "VALIDATION_FAMILY_SPECS",
     "ValidationAllRecord",
     "ValidationAllResult",

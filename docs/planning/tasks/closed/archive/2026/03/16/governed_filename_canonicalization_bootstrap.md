@@ -1,6 +1,6 @@
 ---
-id: task.versionless_governed_artifact_filenames.bootstrap.001
-trace_id: trace.versionless_governed_artifact_filenames
+id: task.governed_filename_canonicalization.bootstrap.001
+trace_id: trace.governed_filename_canonicalization
 title: Bootstrap Versionless Governed Artifact Filenames planning chain
 summary: Bootstraps the initial planning chain for Versionless Governed Artifact Filenames.
 type: task
@@ -18,11 +18,11 @@ applies_to:
 - docs/standards/
 - docs/planning/
 related_ids:
-- prd.versionless_governed_artifact_filenames
-- design.features.versionless_governed_artifact_filenames
-- design.implementation.versionless_governed_artifact_filenames
-- decision.versionless_governed_artifact_filenames_direction
-- contract.acceptance.versionless_governed_artifact_filenames
+- prd.governed_filename_canonicalization
+- design.features.governed_filename_canonicalization
+- design.implementation.governed_filename_canonicalization
+- decision.governed_filename_canonicalization_direction
+- contract.acceptance.governed_filename_canonicalization
 ---
 
 # Bootstrap Versionless Governed Artifact Filenames planning chain

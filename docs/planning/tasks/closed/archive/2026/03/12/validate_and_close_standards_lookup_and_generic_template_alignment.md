@@ -18,7 +18,7 @@ applies_to:
 - core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.json
 - core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.json
 - core/control_plane/indexes/
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - core/python/tests/unit/
 depends_on:
 - task.standards_lookup_and_generic_template_alignment.lookup_resolution.001

@@ -13,8 +13,8 @@ authority: supporting
 applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - docs/templates/standard_document_template.md
-- core/python/tests/unit/test_cli_query_commands.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/unit/
+- core/python/tests/integration/
 - core/control_plane/indexes/standards/standard_index.json
 ---
 
@@ -72,8 +72,8 @@ Breaks Standard Authoring Surface Alignment into a bounded implementation slice.
 - Template-focused tests need to check contract shape rather than exact prose so future wording improvements do not create noisy failures.
 
 ## Validation Plan
-- `./.venv/bin/pytest -q core/python/tests/unit/test_cli_query_commands.py`
-- `./.venv/bin/pytest -q core/python/tests/integration/test_control_plane_artifacts.py`
+- `./.venv/bin/pytest -q core/python/tests/unit/`
+- `./.venv/bin/pytest -q core/python/tests/integration/`
 - `./.venv/bin/python -m mypy src/watchtower_core`
 - `./.venv/bin/ruff check`
 - `./.venv/bin/watchtower-core validate acceptance --trace-id trace.standard_authoring_surface_alignment --format json`
@@ -83,5 +83,5 @@ Breaks Standard Authoring Surface Alignment into a bounded implementation slice.
 ## References
 - docs/standards/documentation/standard_md_standard.md
 - docs/templates/standard_document_template.md
-- core/python/tests/unit/test_cli_query_commands.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/unit/
+- core/python/tests/integration/

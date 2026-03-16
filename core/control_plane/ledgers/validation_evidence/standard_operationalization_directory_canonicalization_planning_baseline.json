@@ -74,9 +74,9 @@
       "title": "Regression coverage protects canonical operationalization-path behavior",
       "result": "passed",
       "subject_paths": [
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/control_plane/indexes/standards/standard_index.json"
       ],
       "subject_ids": [

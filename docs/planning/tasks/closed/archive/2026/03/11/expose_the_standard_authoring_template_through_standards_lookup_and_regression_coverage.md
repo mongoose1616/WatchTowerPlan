@@ -18,7 +18,7 @@ applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - core/control_plane/indexes/standards/standard_index.json
 - core/python/tests/unit/
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 related_ids:
 - prd.standard_authoring_surface_alignment
 - design.features.standard_authoring_surface_alignment

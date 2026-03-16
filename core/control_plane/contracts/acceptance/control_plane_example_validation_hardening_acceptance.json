@@ -57,7 +57,7 @@
         "req.control_plane_example_validation_hardening.003"
       ],
       "validation_targets": [
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/test_all_validation.py",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py"
       ],

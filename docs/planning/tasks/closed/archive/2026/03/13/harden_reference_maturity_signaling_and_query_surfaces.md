@@ -21,13 +21,12 @@ applies_to:
 - core/control_plane/indexes/references/reference_index.json
 - core/python/src/watchtower_core/repo_ops/sync/reference_index.py
 - core/python/src/watchtower_core/repo_ops/query/references.py
-- core/python/src/watchtower_core/control_plane/models/planning.py
+- core/python/src/watchtower_core/control_plane/models/
 - core/python/src/watchtower_core/repo_ops/validation/document_semantics.py
 - core/python/src/watchtower_core/cli/query_knowledge_family.py
 - core/python/src/watchtower_core/cli/query_knowledge_handlers.py
 - core/python/tests/unit/test_reference_index_sync.py
 - core/python/tests/unit/
-- core/python/tests/unit/test_document_semantics_validation.py
 - docs/commands/core_python/watchtower_core_query_references.md
 related_ids:
 - trace.reference_and_reserved_surface_maturity_signaling

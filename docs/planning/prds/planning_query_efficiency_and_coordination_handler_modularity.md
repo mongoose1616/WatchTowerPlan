@@ -12,7 +12,7 @@ updated_at: '2026-03-13T23:32:17Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_family.py
@@ -48,7 +48,7 @@ pressure points in that boundary.
   `repo_ops/query/coordination.py`, even though those services search adjacent
   projections with nearly the same trace, status, owner, and query semantics.
 - The runtime coordination-query handler family remains concentrated in
-  `core/python/src/watchtower_core/cli/query_coordination_handlers.py` at `591` lines,
+  `core/python/src/watchtower_core/cli/` at `591` lines,
   with `query_coordination_family.py` at `392` lines, even after earlier lazy-payload
   and source-surface fixes.
 

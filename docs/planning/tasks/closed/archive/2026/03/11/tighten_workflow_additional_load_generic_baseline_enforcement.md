@@ -18,7 +18,7 @@ applies_to:
 - docs/standards/documentation/workflow_md_standard.md
 - docs/templates/workflow_template.md
 - core/python/src/watchtower_core/repo_ops/sync/workflow_index.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - core/python/tests/unit/test_workflow_index_sync.py
 depends_on:
 - task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001

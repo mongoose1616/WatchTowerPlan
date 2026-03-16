@@ -13,8 +13,8 @@ authority: authoritative
 applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - docs/templates/standard_document_template.md
-- core/python/tests/unit/test_cli_query_commands.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/unit/
+- core/python/tests/integration/
 - core/control_plane/indexes/standards/standard_index.json
 - docs/commands/core_python/watchtower_core_query_standards.md
 ---
@@ -79,5 +79,5 @@ Together these defects weaken the standards family at the point contributors act
 - docs/standards/documentation/standard_md_standard.md
 - docs/templates/standard_document_template.md
 - docs/commands/core_python/watchtower_core_query_standards.md
-- core/python/tests/unit/test_cli_query_commands.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/unit/
+- core/python/tests/integration/

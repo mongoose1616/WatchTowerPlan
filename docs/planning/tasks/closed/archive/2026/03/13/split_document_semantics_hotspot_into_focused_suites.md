@@ -14,7 +14,7 @@ updated_at: '2026-03-13T19:10:03Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/README.md
 - core/python/src/watchtower_core/repo_ops/validation/document_semantics.py
 - core/python/src/watchtower_core/repo_ops/validation/all.py

@@ -2112,16 +2112,6 @@
       "audience_hint": "shared"
     },
     {
-      "path": "core/python/.python-version",
-      "kind": "file",
-      "surface_kind": "python_workspace_file",
-      "summary": "Pins the expected Python interpreter version for the workspace.",
-      "parent_path": "core/python/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "shared"
-    },
-    {
       "path": "core/python/AGENTS.md",
       "kind": "file",
       "surface_kind": "instruction",
@@ -2240,16 +2230,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
-      "kind": "file",
-      "surface_kind": "python_source_file",
-      "summary": "Compatibility facade that preserves the legacy coordination-query handler import path.",
-      "parent_path": "core/python/src/watchtower_core/cli/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
       "kind": "file",
       "surface_kind": "python_source_file",
@@ -2264,16 +2244,6 @@
       "kind": "file",
       "surface_kind": "python_source_file",
       "summary": "Handles the coordination, initiative, and planning rendered query subcommands plus their shared payload formatting.",
-      "parent_path": "core/python/src/watchtower_core/cli/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/src/watchtower_core/cli/query_handlers.py",
-      "kind": "file",
-      "surface_kind": "python_source_file",
-      "summary": "Compatibility facade that re-exports the split query handler families for older imports.",
       "parent_path": "core/python/src/watchtower_core/cli/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2420,16 +2390,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/integration/test_control_plane_artifacts.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Compatibility marker that preserves the historical hotspot path and points to the focused integration suites.",
-      "parent_path": "core/python/tests/integration/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
       "kind": "file",
       "surface_kind": "python_test_file",
@@ -2543,7 +2503,7 @@
       "path": "core/python/tests/unit/test_cli.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Thin smoke tests for the watchtower-core entrypoint, help output, and compatibility facades.",
+      "summary": "Thin smoke tests for the watchtower-core entrypoint, help output, and the absence of retired CLI facade modules.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2574,16 +2534,6 @@
       "kind": "file",
       "surface_kind": "python_test_file",
       "summary": "Parser-level JSON contract tests for PRD, decision, design, task, initiative, coordination, authority, acceptance, evidence, and trace query families.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/python/tests/unit/test_cli_query_commands.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Compatibility marker that redirects historical references to the focused CLI family suites.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",
@@ -2690,16 +2640,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/unit/test_document_semantics_validation.py",
-      "kind": "file",
-      "surface_kind": "python_test_file",
-      "summary": "Compatibility marker that preserves the historical document-semantics hotspot path and points to the focused suites.",
-      "parent_path": "core/python/tests/unit/",
-      "maturity": "supporting",
-      "priority": "medium",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/python/tests/unit/test_document_semantics_validator_selection.py",
       "kind": "file",
       "surface_kind": "python_test_file",
@@ -2780,10 +2720,10 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/python/tests/unit/test_repo_ops_compatibility.py",
+      "path": "core/python/tests/unit/test_repo_ops_boundary.py",
       "kind": "file",
       "surface_kind": "python_test_file",
-      "summary": "Unit tests for the explicit repo-ops boundary and its compatibility shims.",
+      "summary": "Unit tests for the explicit repo-ops boundary and the absence of retired wrapper modules.",
       "parent_path": "core/python/tests/unit/",
       "maturity": "supporting",
       "priority": "medium",

@@ -41,7 +41,7 @@
         "req.active_first_planning_query_history_alignment.004"
       ],
       "validation_targets": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/query_coordination_family.py",
         "core/python/src/watchtower_core/repo_ops/query/planning.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
@@ -60,7 +60,7 @@
         "req.active_first_planning_query_history_alignment.003"
       ],
       "validation_targets": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/query_coordination_family.py",
         "core/python/tests/unit/test_cli_planning_query_commands.py",
         "docs/commands/core_python/watchtower_core_query_planning.md",

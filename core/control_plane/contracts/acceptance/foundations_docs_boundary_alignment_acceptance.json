@@ -72,7 +72,7 @@
         "req.foundations_docs_boundary_alignment.004"
       ],
       "validation_targets": [
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "docs/planning/prds/foundations_docs_boundary_alignment.md",
         "docs/planning/design/features/foundations_docs_boundary_alignment.md",
         "docs/planning/design/implementation/foundations_docs_boundary_alignment.md",

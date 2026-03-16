@@ -89,7 +89,7 @@
       "result": "passed",
       "subject_paths": [
         "core/python/src/watchtower_core/control_plane/loader.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "prd.core_python_foundation"
@@ -123,7 +123,7 @@
     "core/control_plane/indexes/decisions/decision_index.json",
     "core/control_plane/indexes/design_documents/design_document_index.json",
     "core/python/src/watchtower_core/control_plane/loader.py",
-    "core/python/tests/integration/test_control_plane_artifacts.py"
+    "core/python/tests/integration/"
   ],
   "notes": "Initial durable evidence record for the first end-to-end traceability slice. It covers the current traceability baseline, not the full future Python loader acceptance scope."
 }

@@ -12,9 +12,9 @@ audience: shared
 authority: supporting
 applies_to:
 - core/python/src/watchtower_core/repo_ops/standards.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
@@ -66,7 +66,7 @@ Breaks Standard Operationalization Directory Canonicalization into a bounded imp
 - Final closeout depends on the post-fix standards review pass finding no additional actionable issues in the standards corpus.
 
 ## Validation Plan
-- Run targeted regressions: `pytest -q core/python/tests/unit/test_document_semantics_validation.py core/python/tests/unit/test_standard_index_sync.py core/python/tests/integration/test_control_plane_artifacts.py`.
+- Run targeted regressions: `pytest -q core/python/tests/unit/ core/python/tests/unit/test_standard_index_sync.py core/python/tests/integration/`.
 - Rebuild and validate repository surfaces with `core/python/.venv/bin/watchtower-core sync standard-index --write --format json`, `core/python/.venv/bin/watchtower-core validate all --format json`, `core/python/.venv/bin/pytest -q`, `cd core/python && .venv/bin/python -m mypy src/watchtower_core`, and `core/python/.venv/bin/ruff check .`.
 - Re-run the expansive standards audit after closeout to confirm no additional actionable issues remain.
 
@@ -75,6 +75,6 @@ Breaks Standard Operationalization Directory Canonicalization into a bounded imp
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/templates/standard_document_template.md
 - core/python/src/watchtower_core/repo_ops/standards.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/

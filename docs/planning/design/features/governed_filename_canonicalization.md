@@ -1,6 +1,6 @@
 ---
-trace_id: trace.versionless_governed_artifact_filenames
-id: design.features.versionless_governed_artifact_filenames
+trace_id: trace.governed_filename_canonicalization
+id: design.features.governed_filename_canonicalization
 title: Versionless Governed Artifact Filenames Feature Design
 summary: Defines the technical design boundary for Versionless Governed Artifact Filenames.
 type: feature_design
@@ -19,12 +19,12 @@ applies_to:
 # Versionless Governed Artifact Filenames Feature Design
 
 ## Record Metadata
-- `Trace ID`: `trace.versionless_governed_artifact_filenames`
-- `Design ID`: `design.features.versionless_governed_artifact_filenames`
+- `Trace ID`: `trace.governed_filename_canonicalization`
+- `Design ID`: `design.features.governed_filename_canonicalization`
 - `Design Status`: `active`
-- `Linked PRDs`: `prd.versionless_governed_artifact_filenames`
-- `Linked Decisions`: `decision.versionless_governed_artifact_filenames_direction`
-- `Linked Implementation Plans`: `design.implementation.versionless_governed_artifact_filenames`
+- `Linked PRDs`: `prd.governed_filename_canonicalization`
+- `Linked Decisions`: `decision.governed_filename_canonicalization_direction`
+- `Linked Implementation Plans`: `design.implementation.governed_filename_canonicalization`
 - `Updated At`: `2026-03-16T17:55:05Z`
 
 ## Summary
@@ -107,6 +107,6 @@ Defines the technical design boundary for Versionless Governed Artifact Filename
 - Bulk repo-wide path rewrites can miss edge-case test fixtures or historical planning references unless the final search and validation passes are comprehensive.
 
 ## References
-- [versionless_governed_artifact_filenames.md](/docs/planning/prds/versionless_governed_artifact_filenames.md)
+- [governed_filename_canonicalization.md](/docs/planning/prds/governed_filename_canonicalization.md)
 - [naming_and_ids_standard.md](/docs/standards/metadata/naming_and_ids_standard.md)
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)

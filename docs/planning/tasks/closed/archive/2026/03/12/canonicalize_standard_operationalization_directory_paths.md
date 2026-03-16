@@ -18,9 +18,9 @@ applies_to:
 - core/python/src/watchtower_core/repo_ops/standards.py
 - docs/standards/engineering/cli_help_text_standard.md
 - docs/standards/documentation/standard_md_standard.md
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 related_ids:
 - prd.standard_operationalization_directory_canonicalization
 - design.features.standard_operationalization_directory_canonicalization

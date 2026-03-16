@@ -96,5 +96,5 @@ case.
 ## References
 - `docs/planning/prds/task_query_dependency_lookup_hardening.md`
 - `docs/planning/design/features/task_query_dependency_lookup_hardening.md`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/`
 - `core/python/src/watchtower_core/repo_ops/query/tasks.py`

@@ -20,7 +20,7 @@ applies_to:
 - core/python/src/watchtower_core/validation/README.md
 - core/python/src/watchtower_core/cli/
 - core/python/README.md
-- core/python/tests/unit/test_repo_ops_compatibility.py
+- core/python/tests/unit/test_repo_ops_boundary.py
 ---
 
 # Core Split Compatibility Wrapper Retirement PRD

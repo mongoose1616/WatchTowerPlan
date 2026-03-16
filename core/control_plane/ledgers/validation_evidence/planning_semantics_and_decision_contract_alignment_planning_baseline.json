@@ -58,7 +58,7 @@
       "subject_paths": [
         "docs/standards/documentation/decision_record_md_standard.md",
         "docs/templates/decision_record_template.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001"
@@ -78,8 +78,8 @@
         "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/templates/implementation_plan_template.md",
         "core/python/src/watchtower_core/repo_ops/planning_documents.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/unit/",
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.planning_semantics_and_decision_contract_alignment.decision_contract_alignment.001"
@@ -103,7 +103,7 @@
         "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_decision_index_sync.py",
         "core/python/tests/unit/test_workflow_index_sync.py"
       ],

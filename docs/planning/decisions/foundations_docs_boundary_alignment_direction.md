@@ -56,7 +56,7 @@ Update the current authoritative command docs, README navigation surface, standa
 - [github_collaboration_standard.md](/docs/standards/governance/github_collaboration_standard.md)
 - [github_task_sync_standard.md](/docs/standards/governance/github_task_sync_standard.md)
 - [github_collaboration_reference.md](/docs/references/github_collaboration_reference.md)
-- [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py)
+- [README.md](/core/python/tests/integration/README.md)
 
 ## Options Considered
 ### Option 1

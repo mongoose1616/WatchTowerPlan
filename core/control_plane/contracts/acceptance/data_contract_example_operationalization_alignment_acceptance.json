@@ -78,8 +78,8 @@
         "req.data_contract_example_operationalization_alignment.003"
       ],
       "validation_targets": [
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
         "core/control_plane/indexes/standards/standard_index.json"
       ],
       "related_paths": [

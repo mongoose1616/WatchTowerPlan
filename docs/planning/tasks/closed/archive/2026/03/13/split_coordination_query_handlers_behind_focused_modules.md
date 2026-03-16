@@ -15,11 +15,10 @@ updated_at: '2026-03-13T23:24:35Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_family.py
-- core/python/src/watchtower_core/cli/query_handlers.py
 - docs/commands/core_python/
 related_ids:
 - prd.planning_query_efficiency_and_handler_modularity

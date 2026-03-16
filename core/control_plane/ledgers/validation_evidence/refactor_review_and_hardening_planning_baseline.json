@@ -92,14 +92,14 @@
         "docs/commands/core_python/watchtower_core_query_coordination.md",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
         "core/control_plane/indexes/coordination/coordination_index.json",
         "docs/planning/coordination_tracking.md",
         "core/python/tests/unit/test_coordination_index_sync.py",
         "core/python/tests/unit/test_coordination_tracking_sync.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "subject_ids": [
         "task.refactor_review_and_hardening.current_state_surface_simplification.003",

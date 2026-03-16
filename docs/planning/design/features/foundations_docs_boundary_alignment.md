@@ -101,7 +101,7 @@ Defines the technical design boundary for Foundations Documentation Boundary Ali
 - `docs/standards/governance/github_collaboration_standard.md`
 - `docs/standards/governance/github_task_sync_standard.md`
 - `docs/references/github_collaboration_reference.md`
-- `core/python/tests/integration/test_control_plane_artifacts.py`
+- `core/python/tests/integration/`
 
 ## Design Guardrails
 - Do not rewrite closed planning history just to normalize old path references.

@@ -521,7 +521,7 @@
           ],
           "applies_to": [
             "core/python/src/watchtower_core/repo_ops/query/",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/",
             "docs/commands/core_python/",
             "docs/planning/"
           ]
@@ -575,7 +575,7 @@
             "contract.acceptance.active_first_planning_query_history_alignment"
           ],
           "applies_to": [
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/cli/query_coordination_family.py",
             "core/python/tests/unit/test_cli_planning_query_commands.py"
           ]
@@ -624,8 +624,8 @@
             "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.json",
             "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.json",
             "core/python/",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/cli/query_coordination_family.py",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
             "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
             "core/python/src/watchtower_core/repo_ops/query/planning.py",
             "core/python/tests/unit/test_cli_planning_query_commands.py",
@@ -737,8 +737,8 @@
         "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.json",
         "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.json",
         "core/python/",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/query_coordination_family.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/query/planning.py",
@@ -1042,8 +1042,8 @@
             "core/control_plane/indexes/traceability/traceability_index.json",
             "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.json",
             "core/python/src/watchtower_core/repo_ops/validation/all.py",
+            "core/python/tests/integration/",
             "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
             "core/python/tests/unit/test_all_validation.py",
             "docs/planning/coordination_tracking.md",
             "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
@@ -1144,7 +1144,6 @@
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/tests/integration/",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_all_validation.py",
         "core/python/tests/unit/test_schema_store.py",
@@ -2856,7 +2855,7 @@
             "core/control_plane/indexes/decisions/decision_index.json",
             "core/control_plane/indexes/design_documents/design_document_index.json",
             "core/python/src/watchtower_core/control_plane/loader.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         }
       ],
@@ -2929,7 +2928,6 @@
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/validation/",
         "core/python/tests/integration/",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/unit/",
         "docs/planning/decisions/core_python_workspace_root.md",
         "docs/planning/design/",
@@ -3078,7 +3076,7 @@
             "core/python/src/watchtower_core/query/",
             "core/python/src/watchtower_core/sync/",
             "core/python/src/watchtower_core/validation/",
-            "core/python/tests/unit/test_repo_ops_compatibility.py"
+            "core/python/tests/unit/test_repo_ops_boundary.py"
           ]
         },
         {
@@ -3105,7 +3103,7 @@
             "core/python/src/watchtower_core/sync/README.md",
             "core/python/src/watchtower_core/validation/README.md",
             "core/python/README.md",
-            "core/python/tests/unit/test_repo_ops_compatibility.py"
+            "core/python/tests/unit/test_repo_ops_boundary.py"
           ]
         },
         {
@@ -3155,7 +3153,7 @@
             "core/python/src/watchtower_core/sync/",
             "core/python/src/watchtower_core/validation/",
             "core/python/src/watchtower_core/cli/",
-            "core/python/tests/unit/test_repo_ops_compatibility.py"
+            "core/python/tests/unit/test_repo_ops_boundary.py"
           ]
         }
       ],
@@ -3188,7 +3186,7 @@
             "core/python/src/watchtower_core/sync/README.md",
             "core/python/src/watchtower_core/validation/",
             "core/python/src/watchtower_core/validation/README.md",
-            "core/python/tests/unit/test_repo_ops_compatibility.py",
+            "core/python/tests/unit/test_repo_ops_boundary.py",
             "docs/planning/",
             "docs/planning/decisions/core_split_compatibility_wrapper_retirement_direction.md",
             "docs/planning/design/features/core_split_compatibility_wrapper_retirement.md",
@@ -3301,7 +3299,7 @@
         "core/python/src/watchtower_core/sync/README.md",
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/validation/README.md",
-        "core/python/tests/unit/test_repo_ops_compatibility.py",
+        "core/python/tests/unit/test_repo_ops_boundary.py",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/core_split_compatibility_wrapper_retirement_direction.md",
@@ -3478,7 +3476,7 @@
             "contract.acceptance.data_contract_example_operationalization_alignment"
           ],
           "applies_to": [
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "core/python/tests/unit/"
           ]
         },
@@ -3523,8 +3521,8 @@
             "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.json",
             "core/control_plane/indexes/standards/standard_index.json",
             "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.json",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md",
             "docs/planning/design/features/data_contract_example_operationalization_alignment.md",
             "docs/planning/design/implementation/data_contract_example_operationalization_alignment.md",
@@ -3646,9 +3644,8 @@
         "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.json",
         "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.json",
         "core/control_plane/registries/authority_map.json",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md",
         "docs/planning/design/design_tracking.md",
@@ -4268,7 +4265,7 @@
             "docs/templates/decision_record_template.md",
             "docs/standards/data_contracts/decision_index_standard.md",
             "core/control_plane/schemas/artifacts/decision_index.schema.json",
-            "core/python/src/watchtower_core/control_plane/models/planning.py",
+            "core/python/src/watchtower_core/control_plane/models/",
             "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
             "core/python/src/watchtower_core/repo_ops/query/decisions.py",
             "core/python/src/watchtower_core/cli/query_records_handlers.py",
@@ -4403,7 +4400,7 @@
         "core/control_plane/ledgers/validation_evidence/decision_supersession_and_regression_evidence_alignment_planning_baseline.json",
         "core/control_plane/schemas/artifacts/decision_index.schema.json",
         "core/python/src/watchtower_core/cli/query_records_handlers.py",
-        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/repo_ops/query/decisions.py",
         "core/python/src/watchtower_core/repo_ops/sync/decision_index.py",
         "docs/commands/core_python/watchtower_core_query_decisions.md",
@@ -4614,7 +4611,7 @@
             "core/control_plane/schemas/artifacts/coordination_index.schema.json",
             "core/control_plane/schemas/artifacts/initiative_index.schema.json",
             "core/python/",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/repo_ops/query/coordination.py",
             "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
             "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
@@ -4629,8 +4626,8 @@
             "core/control_plane/indexes/coordination/coordination_index.json",
             "core/control_plane/indexes/initiatives/initiative_index.json",
             "core/python/tests/",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_coordination_index_sync.py",
             "docs/planning/decisions/derived_projection_status_semantics_alignment_direction.md",
             "docs/planning/prds/derived_projection_status_semantics_alignment.md",
@@ -4715,13 +4712,13 @@
         "core/control_plane/schemas/artifacts/initiative_index.schema.json",
         "core/python/",
         "core/python/src/watchtower_core/",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/tests/",
+        "core/python/tests/integration/",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_coordination_index_sync.py",
         "docs/",
         "docs/commands/core_python/",
@@ -5215,8 +5212,7 @@
             "core/python/src/watchtower_core/repo_ops/query/standards.py",
             "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "docs/commands/core_python/watchtower_core_query_standards.md",
             "docs/standards/data_contracts/standard_index_standard.md",
             "docs/standards/documentation/standard_md_standard.md",
@@ -5249,7 +5245,6 @@
             "core/python/src/watchtower_core/repo_ops/query/standards.py",
             "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
             "docs/commands/core_python/watchtower_core_query_standards.md",
             "docs/standards/data_contracts/standard_index_standard.md",
             "docs/standards/documentation/standard_md_standard.md",
@@ -5278,7 +5273,7 @@
           ],
           "applies_to": [
             "docs/templates/readme_template.md",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "docs/standards/documentation/readme_md_standard.md"
           ]
         },
@@ -5325,9 +5320,8 @@
             "core/control_plane/ledgers/validation_evidence/documentation_family_lookup_and_readme_template_alignment_planning_baseline.json",
             "core/python/src/watchtower_core/repo_ops/query/standards.py",
             "core/python/src/watchtower_core/repo_ops/standards.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
             "docs/commands/core_python/watchtower_core_query_standards.md",
             "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_documentation_family_lookup_and_readme_template_alignment.md",
@@ -5431,10 +5425,8 @@
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/src/watchtower_core/repo_ops/standards.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/",
-        "core/python/tests/unit/test_cli_query_commands.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_standard_index_sync.py",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/planning/README.md",
@@ -6111,7 +6103,6 @@
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/query_family.py",
-        "core/python/src/watchtower_core/cli/query_handlers.py",
         "core/python/src/watchtower_core/cli/validate_family.py",
         "core/python/src/watchtower_core/cli/validation_handlers.py",
         "core/python/src/watchtower_core/closeout/",
@@ -6275,7 +6266,7 @@
             "core/control_plane/indexes/standards/standard_index.json",
             "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -6301,7 +6292,7 @@
             "core/control_plane/indexes/standards/standard_index.json",
             "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -6341,8 +6332,8 @@
           ],
           "validation_targets": [
             "core/control_plane/indexes/standards/standard_index.json",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
             "docs/foundations/README.md",
             "docs/foundations/customer_story.md",
@@ -6361,7 +6352,7 @@
             "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.json",
             "core/python/src/watchtower_core/repo_ops/query/foundations.py",
             "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/",
             "docs/templates/foundation_document_template.md"
           ]
         }
@@ -6437,9 +6428,8 @@
         "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.json",
         "core/python/src/watchtower_core/repo_ops/query/foundations.py",
         "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_standard_index_sync.py",
         "docs/foundations/README.md",
         "docs/foundations/customer_story.md",
@@ -6658,8 +6648,8 @@
             "core/control_plane/indexes/standards/standard_index.json",
             "core/python/src/watchtower_core/repo_ops/query/foundations.py",
             "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
             "docs/commands/core_python/watchtower_core_query_foundations.md",
             "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
@@ -6673,7 +6663,7 @@
             "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.json",
             "core/python/src/watchtower_core/repo_ops/query/foundations.py",
             "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
-            "core/python/tests/unit/test_cli_query_commands.py"
+            "core/python/tests/unit/"
           ]
         }
       ],
@@ -6751,8 +6741,8 @@
         "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.json",
         "core/python/src/watchtower_core/repo_ops/query/foundations.py",
         "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
@@ -7278,7 +7268,7 @@
           "validation_targets": [
             "core/python/README.md",
             "core/python/src/watchtower_core/repo_ops/README.md",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "docs/commands/core_python/README.md",
             "docs/commands/core_python/watchtower_core_query_commands.md",
             "docs/commands/core_python/watchtower_core_query_foundations.md",
@@ -7392,9 +7382,10 @@
         "core/python/src/watchtower_core/repo_ops/sync/",
         "core/python/src/watchtower_core/sync/README.md",
         "core/python/tests/",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
+        "core/python/tests/integration/README.md",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "docs/commands/core_python/",
         "docs/commands/core_python/README.md",
         "docs/commands/core_python/watchtower_core_query.md",
@@ -7647,8 +7638,8 @@
             "core/control_plane/indexes/foundations/foundation_index.json",
             "core/control_plane/ledgers/validation_evidence/foundations_documentation_completeness_alignment_planning_baseline.json",
             "core/python/src/watchtower_core/cli/query_knowledge_family.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_cli.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
             "docs/commands/core_python/watchtower_core_query_foundations.md",
             "docs/foundations/README.md",
             "docs/foundations/engineering_stack_direction.md",
@@ -7663,14 +7654,14 @@
           ],
           "related_paths": [
             "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "docs/planning/coordination_tracking.md",
             "docs/planning/design/design_tracking.md",
             "docs/planning/initiatives/initiative_tracking.md",
             "docs/planning/prds/prd_tracking.md",
             "docs/planning/tasks/task_tracking.md",
             "docs/references/cyclonedx_1_7_reference.md",
-            "docs/references/in_toto_v1_0_reference.md",
+            "docs/references/in_toto_reference.md",
             "docs/references/json_schema_2020_12_reference.md",
             "docs/references/mypy_reference.md",
             "docs/references/opa_rego_reference.md",
@@ -7766,9 +7757,9 @@
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
         "core/python/tests/",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/foundations/",
         "docs/foundations/README.md",
@@ -7787,7 +7778,7 @@
         "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_foundations_documentation_completeness_alignment.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/references/cyclonedx_1_7_reference.md",
-        "docs/references/in_toto_v1_0_reference.md",
+        "docs/references/in_toto_reference.md",
         "docs/references/json_schema_2020_12_reference.md",
         "docs/references/mypy_reference.md",
         "docs/references/opa_rego_reference.md",
@@ -7924,7 +7915,7 @@
             "docs/foundations/repository_scope.md",
             "workflows/modules/foundations_context_review.md",
             "core/control_plane/indexes/foundations/README.md",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -7948,7 +7939,7 @@
             "docs/foundations/repository_scope.md",
             "workflows/modules/foundations_context_review.md",
             "core/control_plane/indexes/foundations/README.md",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -7991,7 +7982,7 @@
           ],
           "validation_targets": [
             "core/control_plane/indexes/foundations/README.md",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "docs/foundations/README.md",
             "docs/foundations/customer_story.md",
             "docs/foundations/repository_scope.md",
@@ -8080,7 +8071,7 @@
         "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.json",
         "core/control_plane/indexes/foundations/README.md",
         "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.json",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_query_foundations.md",
         "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
         "docs/foundations/README.md",
@@ -8178,6 +8169,380 @@
       ],
       "closed_at": "2026-03-10T03:59:28Z",
       "closure_reason": "Delivered and validated; future GitHub-hosted collaboration work belongs to a new bounded initiative"
+    },
+    {
+      "trace_id": "trace.governed_filename_canonicalization",
+      "title": "Versionless Governed Artifact Filenames PRD",
+      "summary": "Removes filename-embedded v1 tokens from governed schemas and control-plane artifacts so compatibility signaling lives inside the artifact content instead of the path.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-16T18:17:19Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/governed_filename_canonicalization.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/governed_filename_canonicalization.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.governed_filename_canonicalization",
+          "title": "Versionless Governed Artifact Filenames PRD",
+          "summary": "Removes filename-embedded v1 tokens from governed schemas and control-plane artifacts so compatibility signaling lives inside the artifact content instead of the path.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/governed_filename_canonicalization.md",
+          "updated_at": "2026-03-16T17:55:05Z",
+          "requirement_ids": [
+            "req.governed_filename_canonicalization.001",
+            "req.governed_filename_canonicalization.002",
+            "req.governed_filename_canonicalization.003",
+            "req.governed_filename_canonicalization.004",
+            "req.governed_filename_canonicalization.005",
+            "req.governed_filename_canonicalization.006"
+          ],
+          "acceptance_ids": [
+            "ac.governed_filename_canonicalization.001",
+            "ac.governed_filename_canonicalization.002",
+            "ac.governed_filename_canonicalization.003",
+            "ac.governed_filename_canonicalization.004",
+            "ac.governed_filename_canonicalization.005",
+            "ac.governed_filename_canonicalization.006"
+          ],
+          "linked_decision_ids": [
+            "decision.governed_filename_canonicalization_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.governed_filename_canonicalization"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.governed_filename_canonicalization"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.governed_filename_canonicalization_direction",
+          "title": "Versionless Governed Artifact Filenames Direction Decision",
+          "summary": "Records the decision to remove filename-embedded major-version tokens from governed artifacts and keep compatibility signaling inside artifact content.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/governed_filename_canonicalization_direction.md",
+          "updated_at": "2026-03-16T17:55:05Z",
+          "linked_prd_ids": [
+            "prd.governed_filename_canonicalization"
+          ],
+          "linked_design_ids": [
+            "design.features.governed_filename_canonicalization"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.governed_filename_canonicalization"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.governed_filename_canonicalization",
+          "family": "feature_design",
+          "title": "Versionless Governed Artifact Filenames Feature Design",
+          "summary": "Defines the technical design boundary for Versionless Governed Artifact Filenames.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/governed_filename_canonicalization.md",
+          "updated_at": "2026-03-16T17:55:05Z"
+        },
+        {
+          "document_id": "design.implementation.governed_filename_canonicalization",
+          "family": "implementation_plan",
+          "title": "Versionless Governed Artifact Filenames Implementation Plan",
+          "summary": "Breaks Versionless Governed Artifact Filenames into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/governed_filename_canonicalization.md",
+          "updated_at": "2026-03-16T17:55:05Z",
+          "source_paths": [
+            "docs/planning/design/features/governed_filename_canonicalization.md",
+            "docs/planning/prds/governed_filename_canonicalization.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.governed_filename_canonicalization.bootstrap.001",
+          "title": "Bootstrap Versionless Governed Artifact Filenames planning chain",
+          "summary": "Bootstraps the initial planning chain for Versionless Governed Artifact Filenames.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/governed_filename_canonicalization_bootstrap.md",
+          "updated_at": "2026-03-16T18:16:35Z",
+          "related_ids": [
+            "prd.governed_filename_canonicalization",
+            "design.features.governed_filename_canonicalization",
+            "design.implementation.governed_filename_canonicalization",
+            "decision.governed_filename_canonicalization_direction",
+            "contract.acceptance.governed_filename_canonicalization"
+          ],
+          "applies_to": [
+            "core/control_plane/",
+            "core/python/",
+            "docs/standards/",
+            "docs/planning/"
+          ]
+        },
+        {
+          "task_id": "task.governed_filename_canonicalization.rename_and_repair.002",
+          "title": "Rename governed artifact filenames and repair consumers",
+          "summary": "Renames the governed `.v1` file set to versionless paths and updates runtime, tests, docs, registries, and planning references to the new canonical names.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "feature",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/rename_governed_artifact_filenames_and_repair_consumers.md",
+          "updated_at": "2026-03-16T18:16:42Z",
+          "related_ids": [
+            "prd.governed_filename_canonicalization",
+            "design.features.governed_filename_canonicalization",
+            "design.implementation.governed_filename_canonicalization",
+            "decision.governed_filename_canonicalization_direction",
+            "contract.acceptance.governed_filename_canonicalization"
+          ],
+          "applies_to": [
+            "core/control_plane/",
+            "core/python/",
+            "docs/standards/",
+            "docs/planning/"
+          ]
+        },
+        {
+          "task_id": "task.governed_filename_canonicalization.validation_and_closeout.003",
+          "title": "Validate and close versionless governed artifact filenames",
+          "summary": "Refreshes derived surfaces, validates the versionless governed-filename migration, and closes the trace after the renamed repository state is clean.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_governed_filename_canonicalization.md",
+          "updated_at": "2026-03-16T18:16:47Z",
+          "related_ids": [
+            "prd.governed_filename_canonicalization",
+            "design.features.governed_filename_canonicalization",
+            "design.implementation.governed_filename_canonicalization",
+            "decision.governed_filename_canonicalization_direction",
+            "contract.acceptance.governed_filename_canonicalization"
+          ],
+          "applies_to": [
+            "core/control_plane/",
+            "core/python/",
+            "docs/planning/",
+            "docs/standards/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.governed_filename_canonicalization",
+          "title": "Versionless Governed Artifact Filenames Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.governed_filename_canonicalization",
+          "doc_path": "core/control_plane/contracts/acceptance/governed_filename_canonicalization_acceptance.json",
+          "acceptance_ids": [
+            "ac.governed_filename_canonicalization.001",
+            "ac.governed_filename_canonicalization.002",
+            "ac.governed_filename_canonicalization.003",
+            "ac.governed_filename_canonicalization.004",
+            "ac.governed_filename_canonicalization.005",
+            "ac.governed_filename_canonicalization.006"
+          ],
+          "validation_targets": [
+            "core/control_plane/contracts/acceptance/governed_filename_canonicalization_acceptance.json",
+            "core/control_plane/indexes/commands/command_index.json",
+            "core/control_plane/indexes/coordination/coordination_index.json",
+            "core/control_plane/indexes/initiatives/initiative_index.json",
+            "core/control_plane/indexes/tasks/task_index.json",
+            "core/control_plane/indexes/traceability/traceability_index.json",
+            "core/control_plane/ledgers/validation_evidence/governed_filename_canonicalization_planning_baseline.json",
+            "core/control_plane/manifests/pack_settings.json",
+            "core/control_plane/registries/schema_catalog.json",
+            "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
+            "core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json",
+            "core/python/README.md",
+            "core/python/src/watchtower_core/closeout/purge_trace.py",
+            "core/python/src/watchtower_core/control_plane/loader.py",
+            "core/python/src/watchtower_core/control_plane/schemas.py",
+            "core/python/src/watchtower_core/evidence/validation_evidence.py",
+            "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
+            "core/python/tests/unit/test_all_validation.py",
+            "docs/commands/core_python/watchtower_core_validate.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/governed_filename_canonicalization_direction.md",
+            "docs/planning/design/features/governed_filename_canonicalization.md",
+            "docs/planning/design/implementation/governed_filename_canonicalization.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/governed_filename_canonicalization.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/data_contracts/schema_standard.md",
+            "docs/standards/metadata/naming_and_ids_standard.md"
+          ],
+          "related_paths": [
+            "core/control_plane/",
+            "core/control_plane/README.md",
+            "core/control_plane/contracts/acceptance/",
+            "core/control_plane/indexes/",
+            "core/control_plane/ledgers/",
+            "core/control_plane/manifests/",
+            "core/control_plane/registries/",
+            "core/control_plane/registries/schema_catalog.json",
+            "core/control_plane/schemas/",
+            "core/python/",
+            "docs/planning/",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.governed_filename_canonicalization.planning_baseline",
+          "title": "Versionless Governed Artifact Filenames Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-16T18:17:19Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/governed_filename_canonicalization_planning_baseline.json",
+          "check_ids": [
+            "check.governed_filename_canonicalization.planning_chain_aligned",
+            "check.governed_filename_canonicalization.standards_and_repo_consumers_aligned",
+            "check.governed_filename_canonicalization.canonical_file_tree_versionless",
+            "check.governed_filename_canonicalization.validation_stack_green",
+            "check.governed_filename_canonicalization.closeout_and_no_compatibility_leftovers"
+          ],
+          "acceptance_ids": [
+            "ac.governed_filename_canonicalization.001",
+            "ac.governed_filename_canonicalization.002",
+            "ac.governed_filename_canonicalization.003",
+            "ac.governed_filename_canonicalization.004",
+            "ac.governed_filename_canonicalization.005",
+            "ac.governed_filename_canonicalization.006"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/governed_filename_canonicalization_acceptance.json",
+            "core/control_plane/registries/schema_catalog.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.governed_filename_canonicalization"
+      ],
+      "decision_ids": [
+        "decision.governed_filename_canonicalization_direction"
+      ],
+      "design_ids": [
+        "design.features.governed_filename_canonicalization"
+      ],
+      "plan_ids": [
+        "design.implementation.governed_filename_canonicalization"
+      ],
+      "task_ids": [
+        "task.governed_filename_canonicalization.bootstrap.001",
+        "task.governed_filename_canonicalization.rename_and_repair.002",
+        "task.governed_filename_canonicalization.validation_and_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.governed_filename_canonicalization.001",
+        "req.governed_filename_canonicalization.002",
+        "req.governed_filename_canonicalization.003",
+        "req.governed_filename_canonicalization.004",
+        "req.governed_filename_canonicalization.005",
+        "req.governed_filename_canonicalization.006"
+      ],
+      "acceptance_ids": [
+        "ac.governed_filename_canonicalization.001",
+        "ac.governed_filename_canonicalization.002",
+        "ac.governed_filename_canonicalization.003",
+        "ac.governed_filename_canonicalization.004",
+        "ac.governed_filename_canonicalization.005",
+        "ac.governed_filename_canonicalization.006"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.governed_filename_canonicalization"
+      ],
+      "evidence_ids": [
+        "evidence.governed_filename_canonicalization.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/README.md",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/governed_filename_canonicalization_acceptance.json",
+        "core/control_plane/indexes/",
+        "core/control_plane/indexes/commands/command_index.json",
+        "core/control_plane/indexes/coordination/coordination_index.json",
+        "core/control_plane/indexes/initiatives/initiative_index.json",
+        "core/control_plane/indexes/tasks/task_index.json",
+        "core/control_plane/indexes/traceability/traceability_index.json",
+        "core/control_plane/ledgers/",
+        "core/control_plane/ledgers/validation_evidence/governed_filename_canonicalization_planning_baseline.json",
+        "core/control_plane/manifests/",
+        "core/control_plane/manifests/pack_settings.json",
+        "core/control_plane/registries/",
+        "core/control_plane/registries/schema_catalog.json",
+        "core/control_plane/schemas/",
+        "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
+        "core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json",
+        "core/python/",
+        "core/python/README.md",
+        "core/python/src/watchtower_core/cli/validate_family.py",
+        "core/python/src/watchtower_core/closeout/purge_trace.py",
+        "core/python/src/watchtower_core/control_plane/loader.py",
+        "core/python/src/watchtower_core/control_plane/schemas.py",
+        "core/python/src/watchtower_core/evidence/validation_evidence.py",
+        "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
+        "core/python/tests/unit/test_all_validation.py",
+        "docs/commands/core_python/watchtower_core_validate.md",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/governed_filename_canonicalization_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/governed_filename_canonicalization.md",
+        "docs/planning/design/implementation/governed_filename_canonicalization.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/governed_filename_canonicalization.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/governed_filename_canonicalization_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/rename_governed_artifact_filenames_and_repair_consumers.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_governed_filename_canonicalization.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/standards/documentation/reference_md_standard.md",
+        "docs/standards/metadata/naming_and_ids_standard.md"
+      ],
+      "tags": [
+        "feature",
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Evidence refreshed for trace.governed_filename_canonicalization after the versionless governed filename standard change, physical rename, consumer repair, transition-helper removal, terminal task archival, initiative closeout, and a fully green validation stack all completed in one bounded slice.",
+      "closed_at": "2026-03-16T18:17:19Z",
+      "closure_reason": "Delivered the versionless governed filename standard, renamed the canonical control-plane tree, enforced the no-compatibility filename policy, and validated the repo clean with no remaining active transition artifacts in scope."
     },
     {
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
@@ -8389,10 +8754,9 @@
             "core/python/src/watchtower_core/repo_ops/task_documents.py",
             "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_compact_document_authoring.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
             "core/python/tests/unit/test_planning_scaffolds.py",
             "core/python/tests/unit/test_task_lifecycle.py",
             "docs/planning/decisions/governed_front_matter_directory_canonicalization_direction.md",
@@ -8517,10 +8881,9 @@
         "core/python/src/watchtower_core/repo_ops/task_documents.py",
         "core/python/src/watchtower_core/repo_ops/task_lifecycle.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_compact_document_authoring.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_planning_scaffolds.py",
         "core/python/tests/unit/test_task_lifecycle.py",
         "docs/",
@@ -9111,9 +9474,9 @@
             "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
             "core/python/src/watchtower_core/repo_ops/planning_documents.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_planning_scaffolds.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -9166,9 +9529,9 @@
             "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
             "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "core/python/tests/integration/test_planning_scaffolds_service.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_initiative_index_sync.py",
             "core/python/tests/unit/test_planning_scaffolds.py",
             "docs/",
@@ -9278,10 +9641,10 @@
         "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/integration/test_planning_scaffolds_service.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_all_validation.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_initiative_index_sync.py",
         "core/python/tests/unit/test_planning_scaffolds.py",
         "docs/",
@@ -9474,7 +9837,7 @@
           "applies_to": [
             "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/",
             "core/python/tests/unit/"
           ]
         }
@@ -9500,15 +9863,15 @@
           "validation_targets": [
             "core/control_plane/",
             "core/python/",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/cli/plan_handlers.py",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
             "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
             "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
             "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
             "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
             "core/python/tests/integration/test_planning_scaffolds_service.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_initiative_index_sync.py",
             "core/python/tests/unit/test_plan_and_task_handlers.py",
             "core/python/tests/unit/test_planning_catalog_sync.py",
@@ -9621,8 +9984,8 @@
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/internal_project_review_and_hardening_planning_baseline.json",
         "core/python/",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/plan_handlers.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
         "core/python/src/watchtower_core/evidence/validation_evidence.py",
         "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
         "core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py",
@@ -9632,7 +9995,6 @@
         "core/python/tests/integration/",
         "core/python/tests/integration/test_planning_scaffolds_service.py",
         "core/python/tests/unit/",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_initiative_index_sync.py",
         "core/python/tests/unit/test_plan_and_task_handlers.py",
         "core/python/tests/unit/test_planning_catalog_sync.py",
@@ -9863,9 +10225,9 @@
             "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/README.md",
             "core/python/tests/unit/test_decision_index_sync.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
             "core/python/tests/unit/test_governed_markdown_reference_resolution.py",
             "core/python/tests/unit/test_reference_index_sync.py",
             "core/python/tests/unit/test_standard_index_sync.py",
@@ -9991,9 +10353,9 @@
         "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/",
+        "core/python/tests/unit/",
         "core/python/tests/unit/README.md",
         "core/python/tests/unit/test_decision_index_sync.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_governed_markdown_reference_resolution.py",
         "core/python/tests/unit/test_reference_index_sync.py",
         "core/python/tests/unit/test_standard_index_sync.py",
@@ -10214,13 +10576,13 @@
           "validation_targets": [
             "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.json",
             "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.json",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/cli/handler_common.py",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
             "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
             "core/python/src/watchtower_core/repo_ops/query/coordination.py",
             "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
             "core/python/src/watchtower_core/repo_ops/query/planning.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_route_and_query_handlers.py",
             "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
             "docs/planning/design/features/lazy_planning_query_payload_emission.md",
@@ -10319,13 +10681,12 @@
         "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.json",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/handler_common.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
         "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/query/planning.py",
         "core/python/tests/",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_route_and_query_handlers.py",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
@@ -12097,7 +12458,7 @@
             "contract.acceptance.planning_query_efficiency_and_handler_modularity"
           ],
           "applies_to": [
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/cli/query_coordination_family.py",
             "core/python/src/watchtower_core/repo_ops/query/",
             "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
@@ -12126,11 +12487,10 @@
             "decision.planning_query_efficiency_and_handler_modularity_direction"
           ],
           "applies_to": [
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py",
             "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
             "core/python/src/watchtower_core/cli/query_coordination_family.py",
-            "core/python/src/watchtower_core/cli/query_handlers.py",
             "docs/commands/core_python/"
           ]
         },
@@ -12209,12 +12569,11 @@
             "core/control_plane/indexes/repository_paths/repository_path_index.json",
             "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.json",
             "core/python/",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/cli/README.md",
             "core/python/src/watchtower_core/cli/query_coordination_family.py",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
             "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
             "core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py",
-            "core/python/src/watchtower_core/cli/query_handlers.py",
             "core/python/src/watchtower_core/repo_ops/query/common.py",
             "core/python/src/watchtower_core/repo_ops/query/coordination.py",
             "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
@@ -12335,12 +12694,11 @@
         "core/control_plane/indexes/repository_paths/repository_path_index.json",
         "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.json",
         "core/python/",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/README.md",
         "core/python/src/watchtower_core/cli/query_coordination_family.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
         "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
         "core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py",
-        "core/python/src/watchtower_core/cli/query_handlers.py",
         "core/python/src/watchtower_core/control_plane/models/planning_catalog.py",
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/query/common.py",
@@ -12540,7 +12898,7 @@
             "docs/templates/feature_design_template.md",
             "docs/templates/implementation_plan_template.md",
             "core/python/src/watchtower_core/repo_ops/planning_documents.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -12572,7 +12930,7 @@
             "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
             "core/python/tests/unit/test_decision_index_sync.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_workflow_index_sync.py"
           ]
         },
@@ -12630,9 +12988,9 @@
             "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_decision_index_sync.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
             "core/python/tests/unit/test_workflow_index_sync.py",
             "docs/planning/coordination_tracking.md",
             "docs/planning/decisions/planning_semantics_and_decision_contract_alignment_direction.md",
@@ -12759,10 +13117,10 @@
         "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_decision_index_sync.py",
         "core/python/tests/unit/test_design_document_index_sync.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_workflow_index_sync.py",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
@@ -13622,7 +13980,6 @@
         "core/python/README.md",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/cli/",
-        "core/python/src/watchtower_core/cli/handlers.py",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/control_plane/schemas.py",
@@ -13883,8 +14240,8 @@
             "core/control_plane/indexes/commands/command_index.json",
             "core/control_plane/ledgers/validation_evidence/query_family_source_surface_alignment_planning_baseline.json",
             "core/python/",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/cli/introspection.py",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
             "core/python/src/watchtower_core/cli/registry.py",
             "core/python/tests/unit/test_cli_knowledge_query_commands.py",
             "core/python/tests/unit/test_command_index_sync.py",
@@ -14010,7 +14367,6 @@
         "core/python/",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/introspection.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
         "core/python/src/watchtower_core/cli/registry.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_knowledge_query_commands.py",
@@ -14299,11 +14655,11 @@
             "core/control_plane/registries/workflow_metadata_registry.json",
             "core/python/",
             "core/python/README.md",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/repo_ops/query/coordination.py",
             "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_coordination_index_sync.py",
             "core/python/tests/unit/test_coordination_tracking_sync.py",
             "core/python/tests/unit/test_route_and_query_handlers.py",
@@ -14440,13 +14796,12 @@
         "core/control_plane/registries/workflow_metadata_registry.json",
         "core/python/",
         "core/python/README.md",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
         "core/python/tests/",
         "core/python/tests/unit/",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_coordination_index_sync.py",
         "core/python/tests/unit/test_coordination_tracking_sync.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
@@ -15029,13 +15384,12 @@
             "core/control_plane/indexes/references/reference_index.json",
             "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
             "core/python/src/watchtower_core/repo_ops/query/references.py",
-            "core/python/src/watchtower_core/control_plane/models/planning.py",
+            "core/python/src/watchtower_core/control_plane/models/",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
             "core/python/src/watchtower_core/cli/query_knowledge_family.py",
             "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
             "core/python/tests/unit/test_reference_index_sync.py",
             "core/python/tests/unit/",
-            "core/python/tests/unit/test_document_semantics_validation.py",
             "docs/commands/core_python/watchtower_core_query_references.md"
           ]
         },
@@ -15131,13 +15485,12 @@
             "core/python/README.md",
             "core/python/src/watchtower_core/cli/query_knowledge_family.py",
             "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
-            "core/python/src/watchtower_core/control_plane/models/planning.py",
+            "core/python/src/watchtower_core/control_plane/models/",
             "core/python/src/watchtower_core/repo_ops/query/references.py",
             "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
             "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_reference_index_sync.py",
             "docs/",
             "docs/commands/core_python/watchtower_core_query.md",
@@ -15267,7 +15620,7 @@
         "core/python/README.md",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/cli/query_knowledge_handlers.py",
-        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/repo_ops/query/references.py",
         "core/python/src/watchtower_core/repo_ops/reference_semantics.py",
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
@@ -15275,8 +15628,6 @@
         "core/python/tests/",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/unit/",
-        "core/python/tests/unit/test_cli_query_commands.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_reference_index_sync.py",
         "docs/",
         "docs/commands/core_python/",
@@ -15455,8 +15806,8 @@
           "applies_to": [
             "docs/standards/documentation/reference_md_standard.md",
             "docs/templates/reference_template.md",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_document_semantics_validation.py"
+            "core/python/tests/integration/",
+            "core/python/tests/unit/"
           ]
         },
         {
@@ -15486,8 +15837,8 @@
             "core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.json",
             "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.json",
             "core/control_plane/indexes/",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_workflow_index_sync.py"
           ]
         },
@@ -15516,7 +15867,7 @@
             "docs/standards/documentation/workflow_md_standard.md",
             "docs/templates/workflow_template.md",
             "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "core/python/tests/unit/test_workflow_index_sync.py"
           ]
         }
@@ -15537,8 +15888,8 @@
           "validation_targets": [
             "core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.json",
             "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_workflow_index_sync.py",
             "docs/planning/coordination_tracking.md",
             "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
@@ -15654,8 +16005,8 @@
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_workflow_index_sync.py",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
@@ -17420,7 +17771,7 @@
             "core/control_plane/indexes/traceability/traceability_index.json",
             "core/python/",
             "core/python/src/watchtower_core/repo_ops/query/routes.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_route_index_sync.py",
             "docs/",
             "docs/commands/core_python/watchtower_core_route_preview.md",
@@ -17530,7 +17881,7 @@
         "core/control_plane/ledgers/validation_evidence/route_preview_natural_request_matching_validation_baseline.json",
         "core/python/",
         "core/python/src/watchtower_core/repo_ops/query/routes.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_route_index_sync.py",
         "docs/",
         "docs/commands/core_python/watchtower_core_route_preview.md",
@@ -17695,7 +18046,7 @@
             "docs/standards/documentation/standard_md_standard.md",
             "core/control_plane/indexes/standards/standard_index.json",
             "core/python/tests/unit/",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -17739,8 +18090,8 @@
           "validation_targets": [
             "core/control_plane/indexes/standards/standard_index.json",
             "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.json",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "docs/planning/coordination_tracking.md",
             "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
             "docs/planning/design/features/standard_authoring_surface_alignment.md",
@@ -17851,9 +18202,8 @@
         "core/control_plane/indexes/tasks/task_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/ledgers/validation_evidence/standard_authoring_surface_alignment_planning_baseline.json",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
@@ -18013,9 +18363,9 @@
             "core/python/src/watchtower_core/repo_ops/standards.py",
             "docs/standards/engineering/cli_help_text_standard.md",
             "docs/standards/documentation/standard_md_standard.md",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -18064,8 +18414,8 @@
             "core/control_plane/indexes/standards/standard_index.json",
             "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.json",
             "core/python/src/watchtower_core/repo_ops/standards.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
             "docs/planning/decisions/standard_operationalization_directory_canonicalization_direction.md",
             "docs/planning/design/features/standard_operationalization_directory_canonicalization.md",
@@ -18080,8 +18430,8 @@
           ],
           "related_paths": [
             "core/control_plane/indexes/traceability/traceability_index.json",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_standard_index_sync.py",
             "docs/planning/coordination_tracking.md",
             "docs/planning/design/design_tracking.md",
@@ -18168,8 +18518,8 @@
         "core/control_plane/indexes/traceability/traceability_index.json",
         "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.json",
         "core/python/src/watchtower_core/repo_ops/standards.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
         "docs/planning/coordination_tracking.md",
         "docs/planning/decisions/standard_operationalization_directory_canonicalization_direction.md",
@@ -18435,7 +18785,7 @@
             "core/python/src/watchtower_core/query/README.md",
             "core/python/src/watchtower_core/sync/README.md",
             "core/python/src/watchtower_core/validation/README.md",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_control_plane_loader.py",
             "core/python/tests/unit/test_route_and_query_handlers.py",
             "core/python/tests/unit/test_standard_index_sync.py",
@@ -18536,7 +18886,7 @@
         "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
         "core/python/src/watchtower_core/sync/README.md",
         "core/python/src/watchtower_core/validation/README.md",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_control_plane_loader.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
         "core/python/tests/unit/test_route_index_sync.py",
@@ -18686,7 +19036,7 @@
           "applies_to": [
             "core/python/src/watchtower_core/repo_ops/query/standards.py",
             "core/python/tests/unit/",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "docs/commands/core_python/watchtower_core_query_standards.md",
             "docs/templates/documentation_template.md",
             "docs/templates/README.md"
@@ -18716,7 +19066,7 @@
           "applies_to": [
             "docs/templates/documentation_template.md",
             "docs/templates/README.md",
-            "core/python/tests/integration/test_control_plane_artifacts.py"
+            "core/python/tests/integration/"
           ]
         },
         {
@@ -18774,7 +19124,7 @@
             "core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.json",
             "core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.json",
             "core/control_plane/indexes/",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "core/python/tests/unit/"
           ]
         }
@@ -18796,8 +19146,8 @@
             "core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.json",
             "core/python/src/watchtower_core/cli/query_knowledge_family.py",
             "core/python/src/watchtower_core/repo_ops/query/standards.py",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "docs/commands/core_python/watchtower_core_query_standards.md",
             "docs/planning/coordination_tracking.md",
             "docs/planning/decisions/standards_lookup_and_generic_template_alignment_direction.md",
@@ -18911,9 +19261,8 @@
         "core/control_plane/ledgers/validation_evidence/standards_lookup_and_generic_template_alignment_planning_baseline.json",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
@@ -20677,7 +21026,7 @@
             "docs/planning/design/implementation/summary_surface_retirement.md",
             "core/control_plane/contracts/acceptance/summary_surface_retirement_acceptance.json",
             "core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.json",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "core/python/tests/unit/test_traceability_index_sync.py"
           ]
         },
@@ -20706,7 +21055,7 @@
             "docs/planning/tasks/",
             "core/control_plane/contracts/acceptance/",
             "core/control_plane/ledgers/validation_evidence/",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "core/python/tests/unit/test_traceability_index_sync.py"
           ]
         },
@@ -20748,7 +21097,7 @@
             "core/control_plane/contracts/acceptance/foundation_scope_and_entrypoint_realignment_acceptance.json",
             "core/control_plane/contracts/acceptance/foundations_entrypoint_coverage_alignment_acceptance.json",
             "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.json",
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "core/python/tests/unit/test_traceability_index_sync.py",
             "docs/foundations/README.md",
             "docs/foundations/repository_scope.md",
@@ -20852,7 +21201,7 @@
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/foundations_entrypoint_coverage_alignment_planning_baseline.json",
         "core/control_plane/ledgers/validation_evidence/summary_surface_retirement_planning_baseline.json",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/test_traceability_index_sync.py",
         "docs/foundations/README.md",
         "docs/foundations/repository_scope.md",
@@ -21076,12 +21425,12 @@
           "validation_targets": [
             "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.json",
             "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.json",
-            "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+            "core/python/src/watchtower_core/cli/",
             "core/python/src/watchtower_core/control_plane/loader.py",
             "core/python/src/watchtower_core/repo_ops/query/coordination.py",
             "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
             "core/python/src/watchtower_core/repo_ops/query/tasks.py",
-            "core/python/tests/unit/test_cli_query_commands.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/test_route_and_query_handlers.py",
             "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
             "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
@@ -21180,14 +21529,13 @@
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.json",
         "core/python/src/watchtower_core/cli/",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/query/tasks.py",
         "core/python/tests/",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_route_and_query_handlers.py",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
@@ -21862,6 +22210,357 @@
       "closure_reason": "Implemented and validated template and output efficiency improvements."
     },
     {
+      "trace_id": "trace.transition_surface_retirement",
+      "title": "Transition Surface Retirement PRD",
+      "summary": "Retires the remaining live compatibility facades, re-export bridges, and marker-only test surfaces now that direct runtime and focused test consumers already exist.",
+      "artifact_status": "active",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-16T19:39:28Z",
+      "coordination": {
+        "current_phase": "closed",
+        "key_surface_path": "docs/planning/prds/transition_surface_retirement.md",
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/transition_surface_retirement.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
+      },
+      "prds": [
+        {
+          "prd_id": "prd.transition_surface_retirement",
+          "title": "Transition Surface Retirement PRD",
+          "summary": "Retires the remaining live compatibility facades, re-export bridges, and marker-only test surfaces now that direct runtime and focused test consumers already exist.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/prds/transition_surface_retirement.md",
+          "updated_at": "2026-03-16T19:23:51Z",
+          "requirement_ids": [
+            "req.transition_surface_retirement.001",
+            "req.transition_surface_retirement.002",
+            "req.transition_surface_retirement.003",
+            "req.transition_surface_retirement.004",
+            "req.transition_surface_retirement.005"
+          ],
+          "acceptance_ids": [
+            "ac.transition_surface_retirement.001",
+            "ac.transition_surface_retirement.002",
+            "ac.transition_surface_retirement.003",
+            "ac.transition_surface_retirement.004",
+            "ac.transition_surface_retirement.005"
+          ],
+          "linked_decision_ids": [
+            "decision.transition_surface_retirement_direction"
+          ],
+          "linked_design_ids": [
+            "design.features.transition_surface_retirement"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.transition_surface_retirement"
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "decision_id": "decision.transition_surface_retirement_direction",
+          "title": "Transition Surface Retirement Direction Decision",
+          "summary": "Records the initial direction decision for Transition Surface Retirement.",
+          "record_status": "active",
+          "decision_status": "accepted",
+          "doc_path": "docs/planning/decisions/transition_surface_retirement_direction.md",
+          "updated_at": "2026-03-16T19:23:51Z",
+          "linked_prd_ids": [
+            "prd.transition_surface_retirement"
+          ],
+          "linked_design_ids": [
+            "design.features.transition_surface_retirement"
+          ],
+          "linked_plan_ids": [
+            "design.implementation.transition_surface_retirement"
+          ]
+        }
+      ],
+      "design_documents": [
+        {
+          "document_id": "design.features.transition_surface_retirement",
+          "family": "feature_design",
+          "title": "Transition Surface Retirement Feature Design",
+          "summary": "Defines the technical design boundary for Transition Surface Retirement.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/features/transition_surface_retirement.md",
+          "updated_at": "2026-03-16T19:23:51Z"
+        },
+        {
+          "document_id": "design.implementation.transition_surface_retirement",
+          "family": "implementation_plan",
+          "title": "Transition Surface Retirement Implementation Plan",
+          "summary": "Breaks Transition Surface Retirement into a bounded implementation slice.",
+          "artifact_status": "active",
+          "doc_path": "docs/planning/design/implementation/transition_surface_retirement.md",
+          "updated_at": "2026-03-16T19:23:51Z",
+          "source_paths": [
+            "docs/planning/design/features/transition_surface_retirement.md",
+            "docs/planning/prds/transition_surface_retirement.md"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "task_id": "task.transition_surface_retirement.bootstrap.001",
+          "title": "Bootstrap Transition Surface Retirement planning chain",
+          "summary": "Bootstraps the initial planning chain for Transition Surface Retirement.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/transition_surface_retirement_bootstrap.md",
+          "updated_at": "2026-03-16T19:30:12Z",
+          "related_ids": [
+            "prd.transition_surface_retirement",
+            "design.features.transition_surface_retirement",
+            "design.implementation.transition_surface_retirement",
+            "decision.transition_surface_retirement_direction",
+            "contract.acceptance.transition_surface_retirement"
+          ],
+          "applies_to": [
+            "core/python/src/",
+            "core/python/tests/",
+            "docs/planning/",
+            "docs/standards/"
+          ]
+        },
+        {
+          "task_id": "task.transition_surface_retirement.implementation.002",
+          "title": "Retire remaining transition modules and marker tests",
+          "summary": "Removes the remaining compatibility facades, re-export bridges, and marker-only test files and repairs direct consumers.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_remaining_transition_modules_and_marker_tests.md",
+          "updated_at": "2026-03-16T19:38:33Z",
+          "related_ids": [
+            "prd.transition_surface_retirement",
+            "design.features.transition_surface_retirement",
+            "design.implementation.transition_surface_retirement",
+            "decision.transition_surface_retirement_direction",
+            "contract.acceptance.transition_surface_retirement"
+          ],
+          "applies_to": [
+            "core/python/src/",
+            "core/python/tests/",
+            "docs/planning/"
+          ]
+        },
+        {
+          "task_id": "task.transition_surface_retirement.validation_closeout.003",
+          "title": "Validate and close transition surface retirement",
+          "summary": "Refreshes derived surfaces, runs the full validation stack, and closes the trace once no transition leftovers remain in scope.",
+          "artifact_status": "active",
+          "task_status": "done",
+          "task_kind": "governance",
+          "priority": "high",
+          "owner": "repository_maintainer",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_transition_surface_retirement.md",
+          "updated_at": "2026-03-16T19:38:33Z",
+          "depends_on": [
+            "task.transition_surface_retirement.implementation.002"
+          ],
+          "related_ids": [
+            "prd.transition_surface_retirement",
+            "design.features.transition_surface_retirement",
+            "design.implementation.transition_surface_retirement",
+            "decision.transition_surface_retirement_direction",
+            "contract.acceptance.transition_surface_retirement"
+          ],
+          "applies_to": [
+            "core/python/",
+            "core/control_plane/",
+            "docs/planning/"
+          ]
+        }
+      ],
+      "acceptance_contracts": [
+        {
+          "contract_id": "contract.acceptance.transition_surface_retirement",
+          "title": "Transition Surface Retirement Acceptance Contract",
+          "artifact_status": "active",
+          "source_prd_id": "prd.transition_surface_retirement",
+          "doc_path": "core/control_plane/contracts/acceptance/transition_surface_retirement_acceptance.json",
+          "acceptance_ids": [
+            "ac.transition_surface_retirement.001",
+            "ac.transition_surface_retirement.002",
+            "ac.transition_surface_retirement.003",
+            "ac.transition_surface_retirement.004",
+            "ac.transition_surface_retirement.005"
+          ],
+          "required_validator_ids": [
+            "validator.control_plane.acceptance_contract",
+            "validator.control_plane.validation_evidence"
+          ],
+          "validation_targets": [
+            "core/control_plane/",
+            "core/control_plane/contracts/acceptance/",
+            "core/control_plane/indexes/repository_paths/repository_path_index.json",
+            "core/control_plane/ledgers/validation_evidence/",
+            "core/python/",
+            "core/python/src/watchtower_core/cli/",
+            "core/python/src/watchtower_core/control_plane/models/",
+            "core/python/src/watchtower_core/repo_ops/validation/",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
+            "core/python/tests/unit/test_cli.py",
+            "core/python/tests/unit/test_control_plane_model_exports.py",
+            "core/python/tests/unit/test_repo_ops_boundary.py",
+            "docs/planning/",
+            "docs/planning/decisions/transition_surface_retirement_direction.md",
+            "docs/planning/design/features/transition_surface_retirement.md",
+            "docs/planning/design/implementation/transition_surface_retirement.md",
+            "docs/planning/prds/transition_surface_retirement.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/retire_remaining_transition_modules_and_marker_tests.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/transition_surface_retirement_bootstrap.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_transition_surface_retirement.md"
+          ],
+          "related_paths": [
+            "core/python/src/watchtower_core/cli/README.md",
+            "core/python/src/watchtower_core/control_plane/models/__init__.py",
+            "core/python/tests/integration/README.md",
+            "core/python/tests/unit/README.md",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/decisions/decision_tracking.md",
+            "docs/planning/design/design_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/prds/prd_tracking.md",
+            "docs/planning/tasks/task_tracking.md",
+            "docs/standards/governance/rewrite_surface_classification_standard.md",
+            "docs/standards/metadata/naming_and_ids_standard.md"
+          ]
+        }
+      ],
+      "validation_evidence": [
+        {
+          "evidence_id": "evidence.transition_surface_retirement.planning_baseline",
+          "title": "Transition Surface Retirement Planning Baseline Evidence",
+          "artifact_status": "active",
+          "overall_result": "passed",
+          "recorded_at": "2026-03-16T19:34:00Z",
+          "doc_path": "core/control_plane/ledgers/validation_evidence/transition_surface_retirement_planning_baseline.json",
+          "check_ids": [
+            "check.transition_surface_retirement.planning_baseline",
+            "check.transition_surface_retirement.runtime_surface_cleanup",
+            "check.transition_surface_retirement.test_surface_cleanup",
+            "check.transition_surface_retirement.discovery_surface_cleanup",
+            "check.transition_surface_retirement.validation_closeout"
+          ],
+          "acceptance_ids": [
+            "ac.transition_surface_retirement.001",
+            "ac.transition_surface_retirement.002",
+            "ac.transition_surface_retirement.003",
+            "ac.transition_surface_retirement.004",
+            "ac.transition_surface_retirement.005"
+          ],
+          "validator_ids": [
+            "validator.control_plane.validation_evidence"
+          ],
+          "related_paths": [
+            "core/control_plane/contracts/acceptance/transition_surface_retirement_acceptance.json",
+            "docs/planning/coordination_tracking.md",
+            "docs/planning/initiatives/initiative_tracking.md",
+            "docs/planning/tasks/task_tracking.md"
+          ]
+        }
+      ],
+      "prd_ids": [
+        "prd.transition_surface_retirement"
+      ],
+      "decision_ids": [
+        "decision.transition_surface_retirement_direction"
+      ],
+      "design_ids": [
+        "design.features.transition_surface_retirement"
+      ],
+      "plan_ids": [
+        "design.implementation.transition_surface_retirement"
+      ],
+      "task_ids": [
+        "task.transition_surface_retirement.bootstrap.001",
+        "task.transition_surface_retirement.implementation.002",
+        "task.transition_surface_retirement.validation_closeout.003"
+      ],
+      "requirement_ids": [
+        "req.transition_surface_retirement.001",
+        "req.transition_surface_retirement.002",
+        "req.transition_surface_retirement.003",
+        "req.transition_surface_retirement.004",
+        "req.transition_surface_retirement.005"
+      ],
+      "acceptance_ids": [
+        "ac.transition_surface_retirement.001",
+        "ac.transition_surface_retirement.002",
+        "ac.transition_surface_retirement.003",
+        "ac.transition_surface_retirement.004",
+        "ac.transition_surface_retirement.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.transition_surface_retirement"
+      ],
+      "evidence_ids": [
+        "evidence.transition_surface_retirement.planning_baseline"
+      ],
+      "validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/transition_surface_retirement_acceptance.json",
+        "core/control_plane/indexes/repository_paths/repository_path_index.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/transition_surface_retirement_planning_baseline.json",
+        "core/python/",
+        "core/python/src/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/cli/README.md",
+        "core/python/src/watchtower_core/control_plane/models/",
+        "core/python/src/watchtower_core/control_plane/models/__init__.py",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/tests/",
+        "core/python/tests/integration/",
+        "core/python/tests/integration/README.md",
+        "core/python/tests/unit/",
+        "core/python/tests/unit/README.md",
+        "core/python/tests/unit/test_cli.py",
+        "core/python/tests/unit/test_control_plane_model_exports.py",
+        "core/python/tests/unit/test_repo_ops_boundary.py",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/decisions/transition_surface_retirement_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/transition_surface_retirement.md",
+        "docs/planning/design/implementation/transition_surface_retirement.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/prds/transition_surface_retirement.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_remaining_transition_modules_and_marker_tests.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/transition_surface_retirement_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_transition_surface_retirement.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/standards/",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/metadata/naming_and_ids_standard.md"
+      ],
+      "tags": [
+        "feature_design",
+        "governance",
+        "implementation_plan",
+        "traceability"
+      ],
+      "notes": "Planning baseline and closeout evidence refreshed at 2026-03-16T19:34:00Z for trace.transition_surface_retirement after the transition-surface cleanup and discovery-surface rewrite.",
+      "closed_at": "2026-03-16T19:39:28Z",
+      "closure_reason": "Retired the remaining transition facades, bridge modules, marker tests, stale current path references, and temporary audit leftovers; refreshed governed discovery surfaces; and reran clean acceptance, validation, test, typecheck, and lint passes."
+    },
+    {
       "trace_id": "trace.typed_query_surface_modularity_hardening",
       "title": "Typed Query Surface Modularity Hardening PRD",
       "summary": "Review and refactor the typed planning and documentation retrieval surface so index models, loader consumers, and query test coverage become more modular without changing query behavior, validation fidelity, or governed authority boundaries.",
@@ -22194,7 +22893,6 @@
         "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/control_plane/models/_index_helpers.py",
         "core/python/src/watchtower_core/control_plane/models/knowledge_indexes.py",
-        "core/python/src/watchtower_core/control_plane/models/planning.py",
         "core/python/src/watchtower_core/control_plane/models/planning_documents.py",
         "core/python/src/watchtower_core/repo_ops/query/",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
@@ -22206,7 +22904,6 @@
         "core/python/tests/unit/test_cli_dry_run_authoring_commands.py",
         "core/python/tests/unit/test_cli_knowledge_query_commands.py",
         "core/python/tests/unit/test_cli_planning_query_commands.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_cli_route_and_path_commands.py",
         "core/python/tests/unit/test_control_plane_loader.py",
         "core/python/tests/unit/test_control_plane_model_exports.py",
@@ -23056,8 +23753,8 @@
             "contract.acceptance.validation_test_hotspot_rebalancing"
           ],
           "applies_to": [
-            "core/python/tests/integration/test_control_plane_artifacts.py",
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/integration/",
+            "core/python/tests/unit/",
             "core/python/src/watchtower_core/repo_ops/validation/",
             "core/python/src/watchtower_core/validation/",
             "core/python/src/watchtower_core/cli/validation_handlers.py",
@@ -23084,7 +23781,7 @@
             "contract.acceptance.validation_test_hotspot_rebalancing"
           ],
           "applies_to": [
-            "core/python/tests/unit/test_document_semantics_validation.py",
+            "core/python/tests/unit/",
             "core/python/tests/unit/README.md",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
             "core/python/src/watchtower_core/repo_ops/validation/all.py"
@@ -23109,7 +23806,7 @@
             "contract.acceptance.validation_test_hotspot_rebalancing"
           ],
           "applies_to": [
-            "core/python/tests/integration/test_control_plane_artifacts.py",
+            "core/python/tests/integration/",
             "core/python/tests/integration/README.md",
             "core/python/src/watchtower_core/control_plane/loader.py",
             "core/python/src/watchtower_core/validation/artifact.py",
@@ -23292,7 +23989,6 @@
         "core/python/tests/integration/README.md",
         "core/python/tests/integration/control_plane_artifact_helpers.py",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/integration/test_control_plane_loader_and_foundation_contracts.py",
         "core/python/tests/integration/test_planning_and_workflow_authoring_contracts.py",
         "core/python/tests/integration/test_standard_and_template_authoring_contracts.py",
@@ -23302,7 +23998,6 @@
         "core/python/tests/unit/test_document_semantics_planning_rules.py",
         "core/python/tests/unit/test_document_semantics_reference_rules.py",
         "core/python/tests/unit/test_document_semantics_standard_rules.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
         "core/python/tests/unit/test_document_semantics_validator_selection.py",
         "docs/commands/core_python/",
         "docs/commands/core_python/watchtower_core_validate.md",
@@ -23331,381 +24026,6 @@
       "notes": "Validation evidence refreshed at 2026-03-13T19:19:06Z after the integration and document-semantics hotspot splits, README-driven repository-path rebuild, the reopened loop that repaired the adjacent `fixture_repo_support` import regression, the acceptance-evidence reconciliation repair, and the final clean validation or confirmation reruns on the closed trace.",
       "closed_at": "2026-03-13T19:19:06Z",
       "closure_reason": "Completed the bounded refactor review after splitting the remaining validation hotspots, restoring repository-path discoverability, repairing the adjacent integration import regression, and rerunning clean confirmation passes."
-    },
-    {
-      "trace_id": "trace.versionless_governed_artifact_filenames",
-      "title": "Versionless Governed Artifact Filenames PRD",
-      "summary": "Removes filename-embedded v1 tokens from governed schemas and control-plane artifacts so compatibility signaling lives inside the artifact content instead of the path.",
-      "artifact_status": "active",
-      "initiative_status": "completed",
-      "updated_at": "2026-03-16T18:17:19Z",
-      "coordination": {
-        "current_phase": "closed",
-        "key_surface_path": "docs/planning/prds/versionless_governed_artifact_filenames.md",
-        "next_action": "No further default action. Initiative is completed.",
-        "next_surface_path": "docs/planning/prds/versionless_governed_artifact_filenames.md",
-        "open_task_count": 0,
-        "blocked_task_count": 0
-      },
-      "prds": [
-        {
-          "prd_id": "prd.versionless_governed_artifact_filenames",
-          "title": "Versionless Governed Artifact Filenames PRD",
-          "summary": "Removes filename-embedded v1 tokens from governed schemas and control-plane artifacts so compatibility signaling lives inside the artifact content instead of the path.",
-          "artifact_status": "active",
-          "doc_path": "docs/planning/prds/versionless_governed_artifact_filenames.md",
-          "updated_at": "2026-03-16T17:55:05Z",
-          "requirement_ids": [
-            "req.versionless_governed_artifact_filenames.001",
-            "req.versionless_governed_artifact_filenames.002",
-            "req.versionless_governed_artifact_filenames.003",
-            "req.versionless_governed_artifact_filenames.004",
-            "req.versionless_governed_artifact_filenames.005",
-            "req.versionless_governed_artifact_filenames.006"
-          ],
-          "acceptance_ids": [
-            "ac.versionless_governed_artifact_filenames.001",
-            "ac.versionless_governed_artifact_filenames.002",
-            "ac.versionless_governed_artifact_filenames.003",
-            "ac.versionless_governed_artifact_filenames.004",
-            "ac.versionless_governed_artifact_filenames.005",
-            "ac.versionless_governed_artifact_filenames.006"
-          ],
-          "linked_decision_ids": [
-            "decision.versionless_governed_artifact_filenames_direction"
-          ],
-          "linked_design_ids": [
-            "design.features.versionless_governed_artifact_filenames"
-          ],
-          "linked_plan_ids": [
-            "design.implementation.versionless_governed_artifact_filenames"
-          ]
-        }
-      ],
-      "decisions": [
-        {
-          "decision_id": "decision.versionless_governed_artifact_filenames_direction",
-          "title": "Versionless Governed Artifact Filenames Direction Decision",
-          "summary": "Records the decision to remove filename-embedded major-version tokens from governed artifacts and keep compatibility signaling inside artifact content.",
-          "record_status": "active",
-          "decision_status": "accepted",
-          "doc_path": "docs/planning/decisions/versionless_governed_artifact_filenames_direction.md",
-          "updated_at": "2026-03-16T17:55:05Z",
-          "linked_prd_ids": [
-            "prd.versionless_governed_artifact_filenames"
-          ],
-          "linked_design_ids": [
-            "design.features.versionless_governed_artifact_filenames"
-          ],
-          "linked_plan_ids": [
-            "design.implementation.versionless_governed_artifact_filenames"
-          ]
-        }
-      ],
-      "design_documents": [
-        {
-          "document_id": "design.features.versionless_governed_artifact_filenames",
-          "family": "feature_design",
-          "title": "Versionless Governed Artifact Filenames Feature Design",
-          "summary": "Defines the technical design boundary for Versionless Governed Artifact Filenames.",
-          "artifact_status": "active",
-          "doc_path": "docs/planning/design/features/versionless_governed_artifact_filenames.md",
-          "updated_at": "2026-03-16T17:55:05Z"
-        },
-        {
-          "document_id": "design.implementation.versionless_governed_artifact_filenames",
-          "family": "implementation_plan",
-          "title": "Versionless Governed Artifact Filenames Implementation Plan",
-          "summary": "Breaks Versionless Governed Artifact Filenames into a bounded implementation slice.",
-          "artifact_status": "active",
-          "doc_path": "docs/planning/design/implementation/versionless_governed_artifact_filenames.md",
-          "updated_at": "2026-03-16T17:55:05Z",
-          "source_paths": [
-            "docs/planning/design/features/versionless_governed_artifact_filenames.md",
-            "docs/planning/prds/versionless_governed_artifact_filenames.md"
-          ]
-        }
-      ],
-      "tasks": [
-        {
-          "task_id": "task.versionless_governed_artifact_filenames.bootstrap.001",
-          "title": "Bootstrap Versionless Governed Artifact Filenames planning chain",
-          "summary": "Bootstraps the initial planning chain for Versionless Governed Artifact Filenames.",
-          "artifact_status": "active",
-          "task_status": "done",
-          "task_kind": "governance",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/versionless_governed_artifact_filenames_bootstrap.md",
-          "updated_at": "2026-03-16T18:16:35Z",
-          "related_ids": [
-            "prd.versionless_governed_artifact_filenames",
-            "design.features.versionless_governed_artifact_filenames",
-            "design.implementation.versionless_governed_artifact_filenames",
-            "decision.versionless_governed_artifact_filenames_direction",
-            "contract.acceptance.versionless_governed_artifact_filenames"
-          ],
-          "applies_to": [
-            "core/control_plane/",
-            "core/python/",
-            "docs/standards/",
-            "docs/planning/"
-          ]
-        },
-        {
-          "task_id": "task.versionless_governed_artifact_filenames.rename_and_repair.002",
-          "title": "Rename governed artifact filenames and repair consumers",
-          "summary": "Renames the governed `.v1` file set to versionless paths and updates runtime, tests, docs, registries, and planning references to the new canonical names.",
-          "artifact_status": "active",
-          "task_status": "done",
-          "task_kind": "feature",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/rename_governed_artifact_filenames_and_repair_consumers.md",
-          "updated_at": "2026-03-16T18:16:42Z",
-          "related_ids": [
-            "prd.versionless_governed_artifact_filenames",
-            "design.features.versionless_governed_artifact_filenames",
-            "design.implementation.versionless_governed_artifact_filenames",
-            "decision.versionless_governed_artifact_filenames_direction",
-            "contract.acceptance.versionless_governed_artifact_filenames"
-          ],
-          "applies_to": [
-            "core/control_plane/",
-            "core/python/",
-            "docs/standards/",
-            "docs/planning/"
-          ]
-        },
-        {
-          "task_id": "task.versionless_governed_artifact_filenames.validation_and_closeout.003",
-          "title": "Validate and close versionless governed artifact filenames",
-          "summary": "Refreshes derived surfaces, validates the versionless governed-filename migration, and closes the trace after the renamed repository state is clean.",
-          "artifact_status": "active",
-          "task_status": "done",
-          "task_kind": "governance",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_versionless_governed_artifact_filenames.md",
-          "updated_at": "2026-03-16T18:16:47Z",
-          "related_ids": [
-            "prd.versionless_governed_artifact_filenames",
-            "design.features.versionless_governed_artifact_filenames",
-            "design.implementation.versionless_governed_artifact_filenames",
-            "decision.versionless_governed_artifact_filenames_direction",
-            "contract.acceptance.versionless_governed_artifact_filenames"
-          ],
-          "applies_to": [
-            "core/control_plane/",
-            "core/python/",
-            "docs/planning/",
-            "docs/standards/"
-          ]
-        }
-      ],
-      "acceptance_contracts": [
-        {
-          "contract_id": "contract.acceptance.versionless_governed_artifact_filenames",
-          "title": "Versionless Governed Artifact Filenames Acceptance Contract",
-          "artifact_status": "active",
-          "source_prd_id": "prd.versionless_governed_artifact_filenames",
-          "doc_path": "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
-          "acceptance_ids": [
-            "ac.versionless_governed_artifact_filenames.001",
-            "ac.versionless_governed_artifact_filenames.002",
-            "ac.versionless_governed_artifact_filenames.003",
-            "ac.versionless_governed_artifact_filenames.004",
-            "ac.versionless_governed_artifact_filenames.005",
-            "ac.versionless_governed_artifact_filenames.006"
-          ],
-          "validation_targets": [
-            "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
-            "core/control_plane/indexes/commands/command_index.json",
-            "core/control_plane/indexes/coordination/coordination_index.json",
-            "core/control_plane/indexes/initiatives/initiative_index.json",
-            "core/control_plane/indexes/tasks/task_index.json",
-            "core/control_plane/indexes/traceability/traceability_index.json",
-            "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json",
-            "core/control_plane/manifests/pack_settings.json",
-            "core/control_plane/registries/schema_catalog.json",
-            "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
-            "core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json",
-            "core/python/README.md",
-            "core/python/src/watchtower_core/closeout/purge_trace.py",
-            "core/python/src/watchtower_core/control_plane/loader.py",
-            "core/python/src/watchtower_core/control_plane/schemas.py",
-            "core/python/src/watchtower_core/evidence/validation_evidence.py",
-            "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
-            "core/python/src/watchtower_core/repo_ops/validation/governed_filenames.py",
-            "core/python/tests/unit/test_all_validation.py",
-            "docs/commands/core_python/watchtower_core_validate.md",
-            "docs/planning/coordination_tracking.md",
-            "docs/planning/decisions/versionless_governed_artifact_filenames_direction.md",
-            "docs/planning/design/features/versionless_governed_artifact_filenames.md",
-            "docs/planning/design/implementation/versionless_governed_artifact_filenames.md",
-            "docs/planning/initiatives/initiative_tracking.md",
-            "docs/planning/prds/versionless_governed_artifact_filenames.md",
-            "docs/planning/tasks/task_tracking.md",
-            "docs/standards/data_contracts/schema_standard.md",
-            "docs/standards/metadata/naming_and_ids_standard.md"
-          ],
-          "related_paths": [
-            "core/control_plane/",
-            "core/control_plane/README.md",
-            "core/control_plane/contracts/acceptance/",
-            "core/control_plane/indexes/",
-            "core/control_plane/ledgers/",
-            "core/control_plane/manifests/",
-            "core/control_plane/registries/",
-            "core/control_plane/registries/schema_catalog.json",
-            "core/control_plane/schemas/",
-            "core/python/",
-            "docs/planning/",
-            "docs/planning/coordination_tracking.md",
-            "docs/planning/design/design_tracking.md",
-            "docs/planning/initiatives/initiative_tracking.md",
-            "docs/planning/prds/prd_tracking.md",
-            "docs/planning/tasks/task_tracking.md",
-            "docs/standards/"
-          ]
-        }
-      ],
-      "validation_evidence": [
-        {
-          "evidence_id": "evidence.versionless_governed_artifact_filenames.planning_baseline",
-          "title": "Versionless Governed Artifact Filenames Planning Baseline Evidence",
-          "artifact_status": "active",
-          "overall_result": "passed",
-          "recorded_at": "2026-03-16T18:17:19Z",
-          "doc_path": "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json",
-          "check_ids": [
-            "check.versionless_governed_artifact_filenames.planning_chain_aligned",
-            "check.versionless_governed_artifact_filenames.standards_and_repo_policy_enforced",
-            "check.versionless_governed_artifact_filenames.canonical_file_tree_versionless",
-            "check.versionless_governed_artifact_filenames.validation_stack_green",
-            "check.versionless_governed_artifact_filenames.closeout_and_no_compatibility_leftovers"
-          ],
-          "acceptance_ids": [
-            "ac.versionless_governed_artifact_filenames.001",
-            "ac.versionless_governed_artifact_filenames.002",
-            "ac.versionless_governed_artifact_filenames.003",
-            "ac.versionless_governed_artifact_filenames.004",
-            "ac.versionless_governed_artifact_filenames.005",
-            "ac.versionless_governed_artifact_filenames.006"
-          ],
-          "validator_ids": [
-            "validator.control_plane.validation_evidence"
-          ],
-          "related_paths": [
-            "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
-            "core/control_plane/registries/schema_catalog.json",
-            "docs/planning/coordination_tracking.md",
-            "docs/planning/initiatives/initiative_tracking.md",
-            "docs/planning/prds/prd_tracking.md",
-            "docs/planning/tasks/task_tracking.md"
-          ]
-        }
-      ],
-      "prd_ids": [
-        "prd.versionless_governed_artifact_filenames"
-      ],
-      "decision_ids": [
-        "decision.versionless_governed_artifact_filenames_direction"
-      ],
-      "design_ids": [
-        "design.features.versionless_governed_artifact_filenames"
-      ],
-      "plan_ids": [
-        "design.implementation.versionless_governed_artifact_filenames"
-      ],
-      "task_ids": [
-        "task.versionless_governed_artifact_filenames.bootstrap.001",
-        "task.versionless_governed_artifact_filenames.rename_and_repair.002",
-        "task.versionless_governed_artifact_filenames.validation_and_closeout.003"
-      ],
-      "requirement_ids": [
-        "req.versionless_governed_artifact_filenames.001",
-        "req.versionless_governed_artifact_filenames.002",
-        "req.versionless_governed_artifact_filenames.003",
-        "req.versionless_governed_artifact_filenames.004",
-        "req.versionless_governed_artifact_filenames.005",
-        "req.versionless_governed_artifact_filenames.006"
-      ],
-      "acceptance_ids": [
-        "ac.versionless_governed_artifact_filenames.001",
-        "ac.versionless_governed_artifact_filenames.002",
-        "ac.versionless_governed_artifact_filenames.003",
-        "ac.versionless_governed_artifact_filenames.004",
-        "ac.versionless_governed_artifact_filenames.005",
-        "ac.versionless_governed_artifact_filenames.006"
-      ],
-      "acceptance_contract_ids": [
-        "contract.acceptance.versionless_governed_artifact_filenames"
-      ],
-      "evidence_ids": [
-        "evidence.versionless_governed_artifact_filenames.planning_baseline"
-      ],
-      "validator_ids": [
-        "validator.control_plane.validation_evidence"
-      ],
-      "related_paths": [
-        "core/control_plane/",
-        "core/control_plane/README.md",
-        "core/control_plane/contracts/acceptance/",
-        "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
-        "core/control_plane/indexes/",
-        "core/control_plane/indexes/commands/command_index.json",
-        "core/control_plane/indexes/coordination/coordination_index.json",
-        "core/control_plane/indexes/initiatives/initiative_index.json",
-        "core/control_plane/indexes/tasks/task_index.json",
-        "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/ledgers/",
-        "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json",
-        "core/control_plane/manifests/",
-        "core/control_plane/manifests/pack_settings.json",
-        "core/control_plane/registries/",
-        "core/control_plane/registries/schema_catalog.json",
-        "core/control_plane/schemas/",
-        "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
-        "core/control_plane/schemas/interfaces/documentation/prd_front_matter.schema.json",
-        "core/python/",
-        "core/python/README.md",
-        "core/python/src/watchtower_core/cli/validate_family.py",
-        "core/python/src/watchtower_core/closeout/purge_trace.py",
-        "core/python/src/watchtower_core/control_plane/loader.py",
-        "core/python/src/watchtower_core/control_plane/schemas.py",
-        "core/python/src/watchtower_core/evidence/validation_evidence.py",
-        "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
-        "core/python/src/watchtower_core/repo_ops/validation/governed_filenames.py",
-        "core/python/tests/unit/test_all_validation.py",
-        "docs/commands/core_python/watchtower_core_validate.md",
-        "docs/planning/",
-        "docs/planning/coordination_tracking.md",
-        "docs/planning/decisions/versionless_governed_artifact_filenames_direction.md",
-        "docs/planning/design/design_tracking.md",
-        "docs/planning/design/features/versionless_governed_artifact_filenames.md",
-        "docs/planning/design/implementation/versionless_governed_artifact_filenames.md",
-        "docs/planning/initiatives/initiative_tracking.md",
-        "docs/planning/prds/prd_tracking.md",
-        "docs/planning/prds/versionless_governed_artifact_filenames.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/rename_governed_artifact_filenames_and_repair_consumers.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_versionless_governed_artifact_filenames.md",
-        "docs/planning/tasks/closed/archive/2026/03/16/versionless_governed_artifact_filenames_bootstrap.md",
-        "docs/planning/tasks/task_tracking.md",
-        "docs/standards/",
-        "docs/standards/data_contracts/schema_standard.md",
-        "docs/standards/metadata/naming_and_ids_standard.md"
-      ],
-      "tags": [
-        "feature",
-        "feature_design",
-        "governance",
-        "implementation_plan",
-        "traceability"
-      ],
-      "notes": "Evidence refreshed for trace.versionless_governed_artifact_filenames after the versionless governed filename standard change, physical rename, repo-local filename policy validation, consumer repair, terminal task archival, initiative closeout, and a fully green validation stack all completed in one bounded slice.",
-      "closed_at": "2026-03-16T18:17:19Z",
-      "closure_reason": "Delivered the versionless governed filename standard, renamed the canonical control-plane tree, enforced the no-compatibility filename policy, and validated the repo clean with no remaining active transition artifacts in scope."
     },
     {
       "trace_id": "trace.workflow_route_boundary_discoverability_hardening",

@@ -9,7 +9,7 @@ tags:
   - "metadata"
   - "naming_and_ids"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T17:58:38Z"
+updated_at: "2026-03-16T20:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -24,13 +24,13 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 
 ## Scope
 - Applies to stable machine-usable identifiers for governed documents and governed machine-readable artifacts.
-- Covers traceability IDs, document front matter `id` values, schema `$id` values, and filename conventions for published schemas and example artifacts.
+- Covers traceability IDs, document front matter `id` values, schema `$id` values, and the repository filename rules that keep path-level compatibility or version signaling out of filenames.
 - Does not define every visible title, heading, or free-form label used in the repository.
 
 ## Use When
 - Assigning a new stable identifier to a governed artifact.
 - Reviewing whether an identifier change is appropriate or unnecessarily breaking.
-- Defining filenames for new schemas or example artifacts.
+- Defining filenames for new governed artifacts, references, or other repository-managed files.
 
 ## Related Standards and Sources
 - [front_matter_standard.md](/docs/standards/metadata/front_matter_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
@@ -38,7 +38,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md): companion standard that constrains this standard's boundary, validation, or change-control expectations.
 - [README.md](/core/control_plane/README.md): family entrypoint and inventory surface this standard should stay aligned with.
 - [rfc_9562_uuid_reference.md](/docs/references/rfc_9562_uuid_reference.md): local reference surface for the external or canonical guidance this standard depends on.
-- [semantic_versioning_reference.md](/docs/references/semantic_versioning_reference.md): local reference surface for the external or canonical guidance this standard depends on.
+- [semver_reference.md](/docs/references/semver_reference.md): local reference surface for the external or canonical guidance this standard depends on.
 
 ## Guidance
 - Treat the stable machine identifier as distinct from the path, visible title, and current lifecycle status.
@@ -97,10 +97,12 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 ### Filename rules
 - Use lowercase snake_case for governed filenames unless an external standard requires otherwise.
 - Keep filenames aligned with artifact purpose so reviewers can relate the file to the logical identifier quickly.
-- Governed filenames should not encode major-version tokens such as `.v1`.
+- Repository-managed filenames must not include the literal word `version`.
+- Repository-managed filenames must not encode path-level version markers such as `.v1`, `_v4`, or `_v1_0`.
 - Published schemas should use `.schema.json`.
 - Published examples should use `.example.json`.
 - Markdown document filenames should remain readable and path-stable, but the path is not the canonical machine identity.
+- When a document covers a versioned upstream standard, keep that upstream version in the title, summary, `Canonical Upstream`, `Updated At`, or document body rather than the filename.
 
 ### Version placement rules
 - Keep full release-version semantics out of ordinary document IDs.
@@ -143,7 +145,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Reviewers should reject identifier changes that do not reflect a real identity or compatibility change.
 - Governed document `id` values should follow the documented dotted pattern and approved family prefixes.
 - Published schema `$id` values should follow the documented URN pattern and stay unique within the repository.
-- Filenames for schemas and examples should make artifact purpose discoverable in review while leaving compatibility signaling to artifact content.
+- Filenames should make artifact purpose discoverable in review while leaving compatibility signaling to content, titles, or explicit metadata instead of the path.
 - Front matter and schema validation profiles should enforce identifier shape where that constraint already exists.
 
 ## Change Control
@@ -156,7 +158,7 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - [timestamp_standard.md](/docs/standards/metadata/timestamp_standard.md)
 - [schema_standard.md](/docs/standards/data_contracts/schema_standard.md)
 - [rfc_9562_uuid_reference.md](/docs/references/rfc_9562_uuid_reference.md)
-- [semantic_versioning_reference.md](/docs/references/semantic_versioning_reference.md)
+- [semver_reference.md](/docs/references/semver_reference.md)
 
 ## Notes
 - This standard prefers stable readable identifiers for authored repository artifacts because they work better for review, retrieval, and traceability than opaque generated IDs.
@@ -164,4 +166,4 @@ Keep identifiers predictable enough for retrieval, validation, linking, registry
 - Future standards may define narrower rules for specific artifact families, but they should refine rather than weaken this baseline.
 
 ## Updated At
-- `2026-03-16T17:58:38Z`
+- `2026-03-16T20:30:00Z`

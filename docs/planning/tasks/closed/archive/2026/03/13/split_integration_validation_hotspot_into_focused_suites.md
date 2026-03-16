@@ -14,7 +14,7 @@ updated_at: '2026-03-13T19:10:03Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - core/python/tests/integration/README.md
 - core/python/src/watchtower_core/control_plane/loader.py
 - core/python/src/watchtower_core/validation/artifact.py

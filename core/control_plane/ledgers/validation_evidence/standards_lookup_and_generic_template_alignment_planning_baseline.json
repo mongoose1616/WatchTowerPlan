@@ -58,7 +58,7 @@
       "subject_paths": [
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "docs/commands/core_python/watchtower_core_query_standards.md"
       ],
       "subject_ids": [
@@ -76,7 +76,7 @@
       "subject_paths": [
         "docs/templates/documentation_template.md",
         "docs/templates/README.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.standards_lookup_and_generic_template_alignment.generic_template_scope.001"

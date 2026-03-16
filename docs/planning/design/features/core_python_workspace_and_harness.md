@@ -106,7 +106,7 @@ This document defines the feature-level technical design for the consolidated Py
   - `utils/` for narrow shared helpers
 
 ### Data and Interface Impacts
-- The Python workspace becomes the canonical home for `.python-version`, `pyproject.toml`, `uv.lock`, `.venv`, `src/`, `tests/`, and small helper tools.
+- The Python workspace becomes the canonical home for `pyproject.toml`, `uv.lock`, `.venv`, `src/`, `tests/`, and small helper tools.
 - Existing feature designs that referenced `core/src/` and `core/tests/` should point to `core/python/src/` and `core/python/tests/` instead.
 - The repository path index should advertise `core/python/` as the Python entrypoint rather than the old flat layout.
 - The initial CLI should stay thin and package-local rather than growing a second source tree.
@@ -114,7 +114,7 @@ This document defines the feature-level technical design for the consolidated Py
 
 ### Execution Flow
 1. An engineer enters `core/python/`.
-2. `uv` resolves the pinned Python version from `.python-version` and syncs the workspace from `pyproject.toml` and `uv.lock`.
+2. `uv` resolves the supported Python range from `pyproject.toml` and syncs the workspace from `pyproject.toml` and `uv.lock`.
 3. The local `.venv/` becomes the standard execution environment for tests, linting, typing, and CLI commands.
 4. The Python package loads governed artifacts from `core/control_plane/` rather than redefining them.
 5. Feature modules such as validation and query compose on top of the same loaders and structured result surfaces.

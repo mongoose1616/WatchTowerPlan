@@ -32,7 +32,7 @@
         "docs/foundations/repository_scope.md",
         "docs/foundations/repository_standards_posture.md",
         "docs/foundations/README.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.foundation_document_standard_boundary_alignment.contract.001",
@@ -53,7 +53,7 @@
         "core/control_plane/indexes/standards/standard_index.json",
         "core/python/src/watchtower_core/repo_ops/query/foundations.py",
         "core/python/src/watchtower_core/repo_ops/sync/foundation_index.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
         "docs/foundations/customer_story.md",
         "docs/foundations/engineering_design_principles.md",
@@ -86,9 +86,9 @@
         "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_foundation_document_standard_boundary_alignment.md",
         "core/control_plane/contracts/acceptance/foundation_document_standard_boundary_alignment_acceptance.json",
         "core/control_plane/ledgers/validation_evidence/foundation_document_standard_boundary_alignment_planning_baseline.json",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "docs/planning/coordination_tracking.md"
       ],
       "subject_ids": [

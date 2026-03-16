@@ -20,7 +20,7 @@ applies_to:
 - docs/planning/tasks/
 - core/control_plane/contracts/acceptance/
 - core/control_plane/ledgers/validation_evidence/
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - core/python/tests/unit/test_traceability_index_sync.py
 ---
 
@@ -58,7 +58,7 @@ Breaks Summary Surface Retirement into a bounded implementation slice.
 ## Internal Standards and Canonical References Applied
 - [docs/planning/README.md](/docs/planning/README.md): the work should reinforce coordination tracking and query coordination as the live planning entrypoints.
 - [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): root surfaces should remain compact routers.
-- [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py): this provides the targeted regression boundary for the retired summary route.
+- [README.md](/core/python/tests/integration/README.md): this inventories the focused integration suites that provide the targeted regression boundary for the retired summary route.
 
 ## Proposed Technical Approach
 - Rewrite active root, foundations, workflow, and regression-test surfaces to
@@ -85,7 +85,7 @@ Breaks Summary Surface Retirement into a bounded implementation slice.
 
 ## Validation Plan
 - Run targeted integration coverage for
-  [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py).
+  [README.md](/core/python/tests/integration/README.md).
 - Run `watchtower-core sync all --write --format json`,
   `watchtower-core validate all --skip-acceptance --format json`,
   `python -m mypy src`, `ruff check .`, `watchtower-core validate acceptance

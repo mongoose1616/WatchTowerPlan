@@ -1,6 +1,6 @@
 ---
-trace_id: trace.versionless_governed_artifact_filenames
-id: design.implementation.versionless_governed_artifact_filenames
+trace_id: trace.governed_filename_canonicalization
+id: design.implementation.governed_filename_canonicalization
 title: Versionless Governed Artifact Filenames Implementation Plan
 summary: Breaks Versionless Governed Artifact Filenames into a bounded implementation
   slice.
@@ -20,20 +20,20 @@ applies_to:
 # Versionless Governed Artifact Filenames Implementation Plan
 
 ## Record Metadata
-- `Trace ID`: `trace.versionless_governed_artifact_filenames`
-- `Plan ID`: `design.implementation.versionless_governed_artifact_filenames`
+- `Trace ID`: `trace.governed_filename_canonicalization`
+- `Plan ID`: `design.implementation.governed_filename_canonicalization`
 - `Plan Status`: `active`
-- `Linked PRDs`: `prd.versionless_governed_artifact_filenames`
-- `Linked Decisions`: `decision.versionless_governed_artifact_filenames_direction`
-- `Source Designs`: `design.features.versionless_governed_artifact_filenames`
-- `Linked Acceptance Contracts`: `contract.acceptance.versionless_governed_artifact_filenames`
+- `Linked PRDs`: `prd.governed_filename_canonicalization`
+- `Linked Decisions`: `decision.governed_filename_canonicalization_direction`
+- `Source Designs`: `design.features.governed_filename_canonicalization`
+- `Linked Acceptance Contracts`: `contract.acceptance.governed_filename_canonicalization`
 - `Updated At`: `2026-03-16T17:55:05Z`
 
 ## Summary
 Breaks Versionless Governed Artifact Filenames into a bounded implementation slice.
 
 ## Source Request or Design
-- design.features.versionless_governed_artifact_filenames
+- design.features.governed_filename_canonicalization
 
 ## Scope Summary
 - Covers the standards change, governed file rename, runtime and test path repair, planning reconciliation, and final validation needed to remove filename-embedded `.v1` tokens from governed artifacts.
@@ -64,11 +64,11 @@ Breaks Versionless Governed Artifact Filenames into a bounded implementation sli
 
 ## Validation Plan
 - Run `./.venv/bin/watchtower-core sync all --write --format json`.
-- Run `./.venv/bin/watchtower-core validate acceptance --trace-id trace.versionless_governed_artifact_filenames --format json`.
+- Run `./.venv/bin/watchtower-core validate acceptance --trace-id trace.governed_filename_canonicalization --format json`.
 - Run `./.venv/bin/watchtower-core validate all --format json`.
 - Run `./.venv/bin/pytest -q`, `./.venv/bin/mypy src`, and `./.venv/bin/ruff check .`.
 - Run scoped `rg` audits for versioned governed filenames after the rename to confirm no active `.v1` path convention remains.
 
 ## References
-- [versionless_governed_artifact_filenames.md](/docs/planning/prds/versionless_governed_artifact_filenames.md)
-- [versionless_governed_artifact_filenames.md](/docs/planning/design/features/versionless_governed_artifact_filenames.md)
+- [governed_filename_canonicalization.md](/docs/planning/prds/governed_filename_canonicalization.md)
+- [governed_filename_canonicalization.md](/docs/planning/design/features/governed_filename_canonicalization.md)

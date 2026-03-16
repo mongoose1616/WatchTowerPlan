@@ -14,9 +14,9 @@ applies_to:
 - docs/standards/documentation/foundation_md_standard.md
 - docs/foundations/README.md
 - core/control_plane/indexes/standards/standard_index.json
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 ---
 
 # Foundation Document Standard Boundary Alignment Implementation Plan
@@ -75,7 +75,7 @@ Breaks Foundation Document Standard Boundary Alignment into a bounded implementa
 - If tests only check the README exclusion and not complete positive coverage, future doc additions could drift silently.
 
 ## Validation Plan
-- Run targeted pytest coverage for [test_cli_query_commands.py](/core/python/tests/unit/test_cli_query_commands.py), [test_standard_index_sync.py](/core/python/tests/unit/test_standard_index_sync.py), and [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py).
+- Run targeted pytest coverage for the focused CLI suites listed in [README.md](/core/python/tests/unit/README.md), [test_standard_index_sync.py](/core/python/tests/unit/test_standard_index_sync.py), and the focused integration suites listed in [README.md](/core/python/tests/integration/README.md).
 - Run `watchtower-core validate document-semantics --path docs/standards/documentation/foundation_md_standard.md --format json`.
 - Run full repository validation, type checking, and linting after the targeted checks pass.
 - Re-run themed confirmation passes over the touched docs, standard index, standards-query behavior, and adjacent foundations surfaces to confirm no new actionable issues remain.

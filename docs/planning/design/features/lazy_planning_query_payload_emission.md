@@ -132,5 +132,5 @@ Defines the technical design boundary for Lazy Planning Query Payload Emission.
 ## References
 - `docs/planning/prds/lazy_planning_query_payload_emission.md`
 - `core/python/src/watchtower_core/cli/handler_common.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/`
 - `core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py`

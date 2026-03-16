@@ -88,7 +88,7 @@ Defines the technical design boundary for Derived Projection Status Semantics Al
 - `core/python/src/watchtower_core/control_plane/models/coordination.py`
 - `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`
 - `core/python/src/watchtower_core/repo_ops/query/initiatives.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/`
 - initiative and coordination command docs, standards, and tests
 
 ### Execution Flow

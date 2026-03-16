@@ -16,7 +16,7 @@ authority: authoritative
 applies_to:
 - core/python/src/watchtower_core/repo_ops/sync/initiative_index.py
 - core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - core/python/tests/unit/
 related_ids:
 - prd.internal_project_review_and_hardening

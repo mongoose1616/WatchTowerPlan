@@ -13,8 +13,8 @@ updated_at: '2026-03-13T18:51:07Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - core/python/src/watchtower_core/repo_ops/validation/
 - core/python/src/watchtower_core/validation/
 - core/python/src/watchtower_core/cli/validation_handlers.py

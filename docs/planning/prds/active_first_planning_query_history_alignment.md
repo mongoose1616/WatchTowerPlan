@@ -13,7 +13,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - core/python/src/watchtower_core/repo_ops/query/
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - docs/commands/core_python/
 - docs/planning/
 ---

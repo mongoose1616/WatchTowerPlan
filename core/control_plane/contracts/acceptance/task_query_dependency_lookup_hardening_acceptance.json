@@ -39,7 +39,7 @@
         "req.task_query_dependency_lookup_hardening.001"
       ],
       "validation_targets": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/tests/unit/test_route_and_query_handlers.py"
       ],
       "related_paths": [
@@ -56,9 +56,9 @@
       ],
       "validation_targets": [
         "core/python/src/watchtower_core/repo_ops/query/tasks.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.json"
@@ -90,13 +90,13 @@
         "req.task_query_dependency_lookup_hardening.004"
       ],
       "validation_targets": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/query/tasks.py",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md"

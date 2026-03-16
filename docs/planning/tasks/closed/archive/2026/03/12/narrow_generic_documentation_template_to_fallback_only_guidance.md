@@ -17,7 +17,7 @@ authority: authoritative
 applies_to:
 - docs/templates/documentation_template.md
 - docs/templates/README.md
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 depends_on:
 - task.standards_lookup_and_generic_template_alignment.bootstrap.001
 related_ids:

@@ -14,9 +14,9 @@ applies_to:
 - docs/standards/documentation/foundation_md_standard.md
 - docs/foundations/README.md
 - core/control_plane/indexes/standards/standard_index.json
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 ---
 
 # Foundation Document Standard Boundary Alignment Direction Decision
@@ -56,9 +56,9 @@ Repair the foundations-family boundary by narrowing the authored foundation docu
 - docs/standards/documentation/foundation_md_standard.md
 - docs/foundations/README.md
 - core/control_plane/indexes/standards/standard_index.json
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 
 ## Options Considered
 ### Option 1

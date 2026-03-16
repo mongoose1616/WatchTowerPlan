@@ -40,11 +40,6 @@ uv run watchtower-core validate all --skip-acceptance
 
 ```sh
 cd core/python
-uv run watchtower-core validate all --skip-governed-filenames
-```
-
-```sh
-cd core/python
 uv run watchtower-core validate artifact --path core/control_plane/contracts/acceptance/core_python_foundation_acceptance.json
 ```
 
@@ -82,7 +77,6 @@ uv run watchtower-core validate acceptance --trace-id trace.core_python_foundati
 - With no leaf command, the current implementation prints validate-specific help and exits successfully.
 - The command group is a stable entrypoint for governed validation behavior rather than a one-off script surface.
 - The current leaf commands are `all` for aggregate repo validation, `front-matter` for governed Markdown metadata, `document-semantics` for governed Markdown structure, repo-local link integrity, and applied-reference rules, `artifact` for schema-backed JSON artifacts or direct external schema validation, and `acceptance` for semantic reconciliation across PRD acceptance, contracts, evidence, validators, and traceability.
-- `watchtower-core validate all` also enforces the governed filename policy for `core/control_plane/**/*.json`, including versionless canonical filenames and `.schema.json` or `.example.json` suffix rules where applicable.
 - Individual leaf commands may return a non-zero exit code when validation fails even if the command itself executed successfully.
 - Leaf commands may optionally emit durable evidence artifacts and synchronized traceability updates when they explicitly support that behavior.
 
@@ -103,4 +97,4 @@ uv run watchtower-core validate acceptance --trace-id trace.core_python_foundati
 - `core/python/src/watchtower_core/validation/`
 
 ## Updated At
-- `2026-03-16T18:18:00Z`
+- `2026-03-16T20:30:00Z`

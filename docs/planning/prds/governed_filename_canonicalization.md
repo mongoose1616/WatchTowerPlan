@@ -1,6 +1,6 @@
 ---
-trace_id: trace.versionless_governed_artifact_filenames
-id: prd.versionless_governed_artifact_filenames
+trace_id: trace.governed_filename_canonicalization
+id: prd.governed_filename_canonicalization
 title: Versionless Governed Artifact Filenames PRD
 summary: Removes filename-embedded v1 tokens from governed schemas and control-plane
   artifacts so compatibility signaling lives inside the artifact content instead of
@@ -21,12 +21,12 @@ applies_to:
 # Versionless Governed Artifact Filenames PRD
 
 ## Record Metadata
-- `Trace ID`: `trace.versionless_governed_artifact_filenames`
-- `PRD ID`: `prd.versionless_governed_artifact_filenames`
+- `Trace ID`: `trace.governed_filename_canonicalization`
+- `PRD ID`: `prd.governed_filename_canonicalization`
 - `Status`: `active`
-- `Linked Decisions`: `decision.versionless_governed_artifact_filenames_direction`
-- `Linked Designs`: `design.features.versionless_governed_artifact_filenames`
-- `Linked Implementation Plans`: `design.implementation.versionless_governed_artifact_filenames`
+- `Linked Decisions`: `decision.governed_filename_canonicalization_direction`
+- `Linked Designs`: `design.features.governed_filename_canonicalization`
+- `Linked Implementation Plans`: `design.implementation.governed_filename_canonicalization`
 - `Updated At`: `2026-03-16T17:55:05Z`
 
 ## Summary
@@ -50,20 +50,20 @@ Removes filename-embedded v1 tokens from governed schemas and control-plane arti
 - Reworking artifact semantics beyond the filename and path convention change needed to keep the repository coherent.
 
 ## Requirements
-- `req.versionless_governed_artifact_filenames.001`: The initiative must publish a traced planning chain, direction decision, acceptance contract, evidence artifact, and bounded task set for the versionless governed-filename migration.
-- `req.versionless_governed_artifact_filenames.002`: The metadata naming and schema standards must explicitly prohibit filename-embedded major-version tokens for governed artifact files and must state that compatibility signaling lives in artifact content rather than the path.
-- `req.versionless_governed_artifact_filenames.003`: Governed control-plane schemas, contracts, indexes, ledgers, manifests, registries, and related generated outputs must remove `.v1` filename tokens from their canonical repository paths.
-- `req.versionless_governed_artifact_filenames.004`: Runtime loaders, sync services, bootstrap or closeout helpers, tests, command docs, and planning records that reference governed filenames must be updated in the same slice so no active path consumer depends on the retired `.v1` filenames.
-- `req.versionless_governed_artifact_filenames.005`: The migration must not leave active compatibility copies, duplicate physical files, or mixed filename conventions behind in the governed tree.
-- `req.versionless_governed_artifact_filenames.006`: The repository must remain green on sync, acceptance reconciliation, artifact validation, document validation, tests, type checking, and linting after the rename lands.
+- `req.governed_filename_canonicalization.001`: The initiative must publish a traced planning chain, direction decision, acceptance contract, evidence artifact, and bounded task set for the versionless governed-filename migration.
+- `req.governed_filename_canonicalization.002`: The metadata naming and schema standards must explicitly prohibit filename-embedded major-version tokens for governed artifact files and must state that compatibility signaling lives in artifact content rather than the path.
+- `req.governed_filename_canonicalization.003`: Governed control-plane schemas, contracts, indexes, ledgers, manifests, registries, and related generated outputs must remove `.v1` filename tokens from their canonical repository paths.
+- `req.governed_filename_canonicalization.004`: Runtime loaders, sync services, bootstrap or closeout helpers, tests, command docs, and planning records that reference governed filenames must be updated in the same slice so no active path consumer depends on the retired `.v1` filenames.
+- `req.governed_filename_canonicalization.005`: The migration must not leave active compatibility copies, duplicate physical files, or mixed filename conventions behind in the governed tree.
+- `req.governed_filename_canonicalization.006`: The repository must remain green on sync, acceptance reconciliation, artifact validation, document validation, tests, type checking, and linting after the rename lands.
 
 ## Acceptance Criteria
-- `ac.versionless_governed_artifact_filenames.001`: The trace publishes an active PRD, accepted decision, active feature design, active implementation plan, aligned acceptance contract, evidence artifact, and bounded execution tasks for the versionless filename migration.
-- `ac.versionless_governed_artifact_filenames.002`: The naming and schema standards explicitly reject `.v1` or similar major-version tokens in governed filenames and direct compatibility signaling into artifact content.
-- `ac.versionless_governed_artifact_filenames.003`: The canonical governed file tree under `core/control_plane/` uses versionless filenames for schemas, contracts, indexes, ledgers, and related governed artifacts in scope.
-- `ac.versionless_governed_artifact_filenames.004`: Runtime code, tests, registries, generated docs, and planning records resolve the new versionless governed paths without active compatibility aliases for the old `.v1` filenames.
-- `ac.versionless_governed_artifact_filenames.005`: `watchtower-core sync all --write --format json`, `watchtower-core validate acceptance --trace-id trace.versionless_governed_artifact_filenames --format json`, `watchtower-core validate all --format json`, `pytest -q`, `mypy src`, and `ruff check .` pass after the migration lands.
-- `ac.versionless_governed_artifact_filenames.006`: Initiative closeout records that the governed-filename migration is complete and that no active `.v1` filename convention remains in the governed artifact tree.
+- `ac.governed_filename_canonicalization.001`: The trace publishes an active PRD, accepted decision, active feature design, active implementation plan, aligned acceptance contract, evidence artifact, and bounded execution tasks for the versionless filename migration.
+- `ac.governed_filename_canonicalization.002`: The naming and schema standards explicitly reject `.v1` or similar major-version tokens in governed filenames and direct compatibility signaling into artifact content.
+- `ac.governed_filename_canonicalization.003`: The canonical governed file tree under `core/control_plane/` uses versionless filenames for schemas, contracts, indexes, ledgers, and related governed artifacts in scope.
+- `ac.governed_filename_canonicalization.004`: Runtime code, tests, registries, generated docs, and planning records resolve the new versionless governed paths without active compatibility aliases for the old `.v1` filenames.
+- `ac.governed_filename_canonicalization.005`: `watchtower-core sync all --write --format json`, `watchtower-core validate acceptance --trace-id trace.governed_filename_canonicalization --format json`, `watchtower-core validate all --format json`, `pytest -q`, `mypy src`, and `ruff check .` pass after the migration lands.
+- `ac.governed_filename_canonicalization.006`: Initiative closeout records that the governed-filename migration is complete and that no active `.v1` filename convention remains in the governed artifact tree.
 
 ## Risks and Dependencies
 - The migration is intentionally breaking and touches `209` governed files plus thousands of path references, so any missed consumer will surface as path or validation drift.

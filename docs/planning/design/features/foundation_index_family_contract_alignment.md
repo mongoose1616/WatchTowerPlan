@@ -84,7 +84,7 @@ Defines the technical design boundary for Foundation Index Family Contract Align
 ### Data and Interface Impacts
 - Updates the authored standard in [foundation_index_standard.md](/docs/standards/data_contracts/foundation_index_standard.md).
 - Regenerates [standard_index.json](/core/control_plane/indexes/standards/standard_index.json) and adjacent planning/coordination trackers through normal sync flows.
-- Extends [test_cli_query_commands.py](/core/python/tests/unit/test_cli_query_commands.py), [test_standard_index_sync.py](/core/python/tests/unit/test_standard_index_sync.py), and [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py).
+- Extends the focused CLI suites listed in [README.md](/core/python/tests/unit/README.md), [test_standard_index_sync.py](/core/python/tests/unit/test_standard_index_sync.py), and the focused integration suites listed in [README.md](/core/python/tests/integration/README.md).
 
 ### Execution Flow
 1. Update the traced planning and decision artifacts to record the confirmed standards-lookup gap and the chosen bounded repair.

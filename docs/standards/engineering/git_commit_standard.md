@@ -257,7 +257,7 @@ fi
 - [git_workflow_standard.md](/docs/standards/engineering/git_workflow_standard.md)
 - [conventional_commits_reference.md](/docs/references/conventional_commits_reference.md)
 - [git_commit_message_guidance_reference.md](/docs/references/git_commit_message_guidance_reference.md)
-- [semantic_versioning_reference.md](/docs/references/semantic_versioning_reference.md)
+- [semver_reference.md](/docs/references/semver_reference.md)
 - [reference_distillation_standard.md](/docs/standards/governance/reference_distillation_standard.md)
 
 ## Notes

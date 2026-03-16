@@ -42,7 +42,7 @@
         "core/control_plane/indexes/routes/route_index.json",
         "core/python/src/watchtower_core/repo_ops/query/routes.py",
         "core/python/tests/unit/test_route_index_sync.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ]
     },
     {

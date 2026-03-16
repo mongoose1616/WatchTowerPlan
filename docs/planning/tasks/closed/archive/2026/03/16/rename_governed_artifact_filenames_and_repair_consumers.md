@@ -1,6 +1,6 @@
 ---
-id: task.versionless_governed_artifact_filenames.rename_and_repair.002
-trace_id: trace.versionless_governed_artifact_filenames
+id: task.governed_filename_canonicalization.rename_and_repair.002
+trace_id: trace.governed_filename_canonicalization
 title: Rename governed artifact filenames and repair consumers
 summary: Renames the governed `.v1` file set to versionless paths and updates runtime,
   tests, docs, registries, and planning references to the new canonical names.
@@ -19,11 +19,11 @@ applies_to:
 - docs/standards/
 - docs/planning/
 related_ids:
-- prd.versionless_governed_artifact_filenames
-- design.features.versionless_governed_artifact_filenames
-- design.implementation.versionless_governed_artifact_filenames
-- decision.versionless_governed_artifact_filenames_direction
-- contract.acceptance.versionless_governed_artifact_filenames
+- prd.governed_filename_canonicalization
+- design.features.governed_filename_canonicalization
+- design.implementation.governed_filename_canonicalization
+- decision.governed_filename_canonicalization_direction
+- contract.acceptance.governed_filename_canonicalization
 ---
 
 # Rename governed artifact filenames and repair consumers

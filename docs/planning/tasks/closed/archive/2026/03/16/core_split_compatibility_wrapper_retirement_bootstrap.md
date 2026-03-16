@@ -17,7 +17,7 @@ applies_to:
 - core/python/src/watchtower_core/query/
 - core/python/src/watchtower_core/sync/
 - core/python/src/watchtower_core/validation/
-- core/python/tests/unit/test_repo_ops_compatibility.py
+- core/python/tests/unit/test_repo_ops_boundary.py
 related_ids:
 - prd.core_split_compatibility_wrapper_retirement
 - design.features.core_split_compatibility_wrapper_retirement

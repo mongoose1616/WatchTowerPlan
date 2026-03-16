@@ -14,9 +14,9 @@ applies_to:
 - docs/standards/documentation/foundation_md_standard.md
 - docs/foundations/README.md
 - core/control_plane/indexes/standards/standard_index.json
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 ---
 
 # Foundation Document Standard Boundary Alignment Feature Design
@@ -100,9 +100,9 @@ Defines the technical design boundary for Foundation Document Standard Boundary 
 - docs/standards/documentation/foundation_md_standard.md
 - docs/foundations/README.md
 - core/control_plane/indexes/standards/standard_index.json
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 
 ## Design Guardrails
 - Do not change the public CLI contract or repository-wide standards-query matching behavior to solve this slice.

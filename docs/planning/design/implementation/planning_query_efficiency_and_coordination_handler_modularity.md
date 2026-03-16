@@ -12,7 +12,7 @@ updated_at: '2026-03-13T23:40:35Z'
 audience: shared
 authority: supporting
 applies_to:
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py
 - core/python/src/watchtower_core/cli/query_coordination_family.py
@@ -57,9 +57,9 @@ Breaks Planning Query Efficiency and Coordination Handler Modularity into a boun
   `core/python/src/watchtower_core/repo_ops/query/coordination.py`;
   `core/python/src/watchtower_core/repo_ops/query/common.py`
 - Concentrated CLI family:
-  `core/python/src/watchtower_core/cli/query_coordination_handlers.py`;
+  `core/python/src/watchtower_core/cli/`;
   `core/python/src/watchtower_core/cli/query_coordination_family.py`;
-  `core/python/src/watchtower_core/cli/query_handlers.py`;
+  `core/python/src/watchtower_core/cli/`;
   `core/python/src/watchtower_core/cli/handler_common.py`
 - Loader, projection, and adjacent read-model surfaces:
   `core/python/src/watchtower_core/control_plane/loader.py`;
@@ -118,7 +118,7 @@ Breaks Planning Query Efficiency and Coordination Handler Modularity into a boun
 | Finding | Severity | Status | Affected Surfaces | Verification Target |
 |---|---|---|---|---|
 | `finding.001` | `high` | `resolved` | `core/python/src/watchtower_core/repo_ops/query/common.py`; `core/python/src/watchtower_core/repo_ops/query/initiatives.py`; `core/python/src/watchtower_core/repo_ops/query/planning.py`; `core/python/src/watchtower_core/repo_ops/query/coordination.py` | Initiative, planning, and coordination query services now share one explicit runtime helper for the duplicated filter and ranking mechanics while preserving service-specific term selection and ordering. |
-| `finding.002` | `high` | `resolved` | `core/python/src/watchtower_core/cli/query_coordination_handlers.py`; `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`; `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`; direct tests and command docs | The concentrated coordination-query handler file is now a compatibility facade and the current subcommands live in focused modules without breaking current imports or CLI behavior. |
+| `finding.002` | `high` | `resolved` | `core/python/src/watchtower_core/cli/`; `core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py`; `core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py`; direct tests and command docs | The concentrated coordination-query handler file is now a compatibility facade and the current subcommands live in focused modules without breaking current imports or CLI behavior. |
 | `finding.003` | `medium` | `resolved` | `docs/commands/core_python/watchtower_core_query_coordination.md`; `docs/commands/core_python/watchtower_core_query_planning.md`; `docs/commands/core_python/watchtower_core_query_initiatives.md`; `docs/commands/core_python/watchtower_core_query_authority.md`; `docs/commands/core_python/watchtower_core_query_tasks.md`; `docs/commands/core_python/watchtower_core_query_trace.md`; `core/python/tests/unit/test_cli.py`; `core/python/tests/unit/test_route_and_query_handlers.py` | The handler split stayed aligned with command docs and direct consumer tests so source-surface or compatibility drift did not replace the current hotspot. |
 | `finding.004` | `medium` | `resolved` | `core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.json`; `core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.json`; `docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_query_efficiency_and_handler_modularity.md` | Acceptance-aware validation now covers the final closed validation task path and all five acceptance IDs instead of stopping at bootstrap-only evidence. |
 | `finding.005` | `low` | `resolved` | `docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md`; `docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md`; `docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md`; `docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md` | Front matter `updated_at` values and Record Metadata `Updated At` lines now stay aligned across the traced planning corpus. |

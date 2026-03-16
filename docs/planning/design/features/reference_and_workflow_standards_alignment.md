@@ -145,8 +145,8 @@ authoring rules and workflow additional-load enforcement.
 - core/python/src/watchtower_core/repo_ops/validation/document_semantics.py
 - core/python/src/watchtower_core/repo_ops/sync/reference_index.py
 - core/python/src/watchtower_core/repo_ops/sync/workflow_index.py
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - core/python/tests/unit/test_workflow_index_sync.py
 
 ## Design Guardrails

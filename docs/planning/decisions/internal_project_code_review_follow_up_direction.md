@@ -60,7 +60,7 @@ Keep the existing repository standards strict, make shared decision scaffolds em
 - `core/python/src/watchtower_core/repo_ops/planning_documents.py`
 - `core/python/src/watchtower_core/repo_ops/validation/document_semantics.py`
 - `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`
-- `core/python/tests/unit/test_document_semantics_validation.py`
+- `core/python/tests/unit/`
 - `core/python/tests/unit/test_planning_scaffolds.py`
 - `core/python/tests/unit/test_initiative_index_sync.py`
 - `core/python/tests/integration/test_planning_scaffolds_service.py`

@@ -49,7 +49,7 @@ Defines the review-backed design for documentation link guardrails, closeout-con
 - Repo-local markdown links appear clean today, but there is no dedicated validation rule preventing future broken absolute repo links.
 - `initiative_tracking.md` and `coordination_tracking.md` can change on closeout while still showing `_Updated At` values that trail the effective closeout timestamp.
 - `SchemaStore` and `ControlPlaneLoader` accept programmatic supplemental schema documents, but future external pack consumers still lack a first-class file-system-driven loading path and CLI affordance.
-- The largest remaining Python hotspots are [query_handlers.py](/core/python/src/watchtower_core/cli/query_handlers.py) and [query_family.py](/core/python/src/watchtower_core/cli/query_family.py), which are materially larger than the rest of the CLI workspace.
+- The largest remaining Python hotspots are [query_handlers.py](/core/python/src/watchtower_core/cli/) and [query_family.py](/core/python/src/watchtower_core/cli/query_family.py), which are materially larger than the rest of the CLI workspace.
 
 ## Foundations References Applied
 - [engineering_design_principles.md](/docs/foundations/engineering_design_principles.md): new seams should be explicit, small, and deterministic.
@@ -122,7 +122,7 @@ Defines the review-backed design for documentation link guardrails, closeout-con
 - `core/python/src/watchtower_core/control_plane/schemas.py`
 - `core/python/src/watchtower_core/control_plane/loader.py`
 - `core/python/src/watchtower_core/cli/query_family.py`
-- `core/python/src/watchtower_core/cli/query_handlers.py`
+- `core/python/src/watchtower_core/cli/`
 - `core/python/src/watchtower_core/cli/validate_family.py`
 - `core/python/src/watchtower_core/cli/validation_handlers.py`
 - `docs/commands/core_python/`

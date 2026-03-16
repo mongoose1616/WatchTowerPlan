@@ -44,8 +44,8 @@ Split the typed planning and documentation retrieval models into domain-focused 
 - The discovery pass confirmed that `RF-PY-003` and `RF-TST-001` still reproduce under one retrieval-modularity slice after earlier refactor traces were already closed.
 
 ## Current Context and Constraints
-- `core/python/src/watchtower_core/control_plane/models/planning.py` still carries seven near-parallel typed index families in one mixed-domain file.
-- `core/python/tests/unit/test_cli_query_commands.py` still mixes unrelated command families in one large regression file.
+- `core/python/src/watchtower_core/control_plane/models/` still carries seven near-parallel typed index families in one mixed-domain file.
+- `core/python/tests/unit/` still mixes unrelated command families in one large regression file.
 - The repository foundations require explicit, inspectable typed models and deterministic real-command validation, so the refactor cannot trade clarity for generic magic.
 
 ## Applied References and Implications

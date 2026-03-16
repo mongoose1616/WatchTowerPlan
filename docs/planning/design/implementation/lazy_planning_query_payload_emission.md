@@ -84,5 +84,5 @@ Breaks Lazy Planning Query Payload Emission into a bounded implementation slice.
 
 ## References
 - `docs/planning/design/features/lazy_planning_query_payload_emission.md`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/`
 - `core/python/tests/unit/test_route_and_query_handlers.py`

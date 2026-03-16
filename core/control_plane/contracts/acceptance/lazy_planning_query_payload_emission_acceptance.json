@@ -40,7 +40,7 @@
       ],
       "validation_targets": [
         "core/python/src/watchtower_core/cli/handler_common.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/tests/unit/test_route_and_query_handlers.py"
       ],
       "related_paths": [
@@ -57,10 +57,10 @@
       ],
       "validation_targets": [
         "core/python/src/watchtower_core/cli/handler_common.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "docs/planning/tasks/closed/archive/2026/03/12/implement_lazy_planning_query_payload_emission.md"
@@ -93,13 +93,13 @@
       ],
       "validation_targets": [
         "core/python/src/watchtower_core/cli/handler_common.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
         "core/python/src/watchtower_core/repo_ops/query/planning.py",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md"

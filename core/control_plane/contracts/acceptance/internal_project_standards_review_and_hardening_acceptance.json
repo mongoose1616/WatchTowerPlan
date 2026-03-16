@@ -40,7 +40,7 @@
         "core/python/src/watchtower_core/repo_ops/standards.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py"
       ],
       "related_paths": [

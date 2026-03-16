@@ -37,8 +37,8 @@ Review and refactor the typed planning and documentation retrieval surface so in
 
 ## Problem Statement
 - The March 13, 2026 refactor audit still reproduces `RF-PY-003` and `RF-TST-001` under the typed retrieval surface even after the earlier coordination, reference-signaling, and planning-authoring refactor traces were closed.
-- `core/python/src/watchtower_core/control_plane/models/planning.py` remains a 548-line mixed-domain hotspot that defines seven index entry or index pairs with repeated `from_document()` and `get()` patterns, making low-level index-shape maintenance noisier than it needs to be.
-- `core/python/tests/unit/test_cli_query_commands.py` remains a 912-line mixed-family suite with 35 tests spanning route previews, dry-run authoring commands, knowledge queries, planning queries, and coordination queries, which weakens failure locality and makes same-theme query changes harder to review.
+- `core/python/src/watchtower_core/control_plane/models/` remains a 548-line mixed-domain hotspot that defines seven index entry or index pairs with repeated `from_document()` and `get()` patterns, making low-level index-shape maintenance noisier than it needs to be.
+- `core/python/tests/unit/` remains a 912-line mixed-family suite with 35 tests spanning route previews, dry-run authoring commands, knowledge queries, planning queries, and coordination queries, which weakens failure locality and makes same-theme query changes harder to review.
 - Direct consumers remain stable today, but they span `ControlPlaneLoader`, repo-local query services, planning-sync consumers, acceptance validation, and CLI handlers, so a sloppy refactor would risk import drift or behavior drift across a wide retrieval boundary.
 
 ## Goals

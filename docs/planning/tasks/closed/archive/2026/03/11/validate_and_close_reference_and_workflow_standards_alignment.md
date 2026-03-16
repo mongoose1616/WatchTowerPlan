@@ -18,8 +18,8 @@ applies_to:
 - core/control_plane/contracts/acceptance/reference_and_workflow_standards_alignment_acceptance.json
 - core/control_plane/ledgers/validation_evidence/reference_and_workflow_standards_alignment_planning_baseline.json
 - core/control_plane/indexes/
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - core/python/tests/unit/test_workflow_index_sync.py
 depends_on:
 - task.reference_and_workflow_standards_alignment.reference_authoring_alignment.001

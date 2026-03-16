@@ -102,6 +102,6 @@ becomes unnecessary CPU and allocation work on the default operator path.
 
 ## References
 - `core/python/src/watchtower_core/cli/handler_common.py`
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/`
 - `core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py`
 - `core/python/tests/unit/test_route_and_query_handlers.py`

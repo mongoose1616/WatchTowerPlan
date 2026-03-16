@@ -24,7 +24,7 @@ applies_to:
 - core/python/src/watchtower_core/repo_ops/sync/standard_index.py
 - core/python/src/watchtower_core/repo_ops/sync/workflow_index.py
 - core/python/tests/unit/test_decision_index_sync.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_workflow_index_sync.py
 related_ids:
 - prd.planning_semantics_and_decision_contract_alignment

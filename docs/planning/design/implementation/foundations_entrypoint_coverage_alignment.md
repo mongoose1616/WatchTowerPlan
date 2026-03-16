@@ -15,7 +15,7 @@ applies_to:
 - docs/foundations/repository_scope.md
 - workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 ---
 
 # Foundations Entrypoint Coverage Alignment Implementation Plan
@@ -70,7 +70,7 @@ Breaks Foundations Entrypoint Coverage Alignment into a bounded implementation s
    `docs/planning/coordination_tracking.md` for the relevant review contexts
    and points reviewers to `watchtower-core query foundations` for
    deterministic discovery.
-3. Extend [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py),
+3. Extend the focused integration suites listed in [README.md](/core/python/tests/integration/README.md),
    run targeted validation, then run full repository validation and repeated
    foundations-themed confirmation passes.
 

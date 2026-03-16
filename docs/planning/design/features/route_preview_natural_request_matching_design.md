@@ -96,7 +96,7 @@ Define the bounded governed-keyword and regression-coverage changes needed for n
 - core/python/src/watchtower_core/repo_ops/query/routes.py
 - docs/commands/core_python/watchtower_core_route_preview.md
 - core/python/tests/unit/test_route_index_sync.py
-- core/python/tests/unit/test_cli_query_commands.py
+- core/python/tests/unit/
 
 ## Design Guardrails
 - Keep the fix in governed route metadata, docs, and regression tests.

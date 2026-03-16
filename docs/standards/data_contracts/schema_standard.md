@@ -9,7 +9,7 @@ tags:
   - "data_contracts"
   - "schema"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T17:58:38Z"
+updated_at: "2026-03-16T20:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -89,6 +89,7 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - Store published schemas as JSON files under `core/control_plane/schemas/**`.
 - Name published schema files with the suffix `.schema.json`.
 - Use filenames that make artifact purpose discoverable in review and keep compatibility signaling inside schema content rather than the path.
+- Do not place the literal word `version` or path-level version tokens such as `.v1` or `_v1_0` in schema filenames.
 - Keep reusable fragments small enough that reviewers can understand why they are shared.
 - Do not place generated schemas, caches, or validator output in the canonical schema tree.
 
@@ -137,4 +138,4 @@ Define one consistent schema baseline so core-owned artifacts and externally val
 - If a future format standard introduces more specific serialization or naming rules for schema files, it should refine rather than weaken this standard.
 
 ## Updated At
-- `2026-03-16T17:58:38Z`
+- `2026-03-16T20:30:00Z`

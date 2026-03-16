@@ -37,7 +37,7 @@ Defines the technical design boundary for Typed Query Surface Modularity Hardeni
 
 ## Source Request
 - The user requested another comprehensive internal refactor review using the March 13, 2026 external audit at `/home/j/WatchTower/REFACTOR.md`, with a stable same-theme review loop that continues until no new actionable issue remains.
-- The discovery pass confirmed two still-actionable audit clusters under one bounded retrieval theme: `RF-PY-003` for `core/python/src/watchtower_core/control_plane/models/planning.py` and `RF-TST-001` for `core/python/tests/unit/test_cli_query_commands.py`.
+- The discovery pass confirmed two still-actionable audit clusters under one bounded retrieval theme: `RF-PY-003` for `core/python/src/watchtower_core/control_plane/models/` and `RF-TST-001` for `core/python/tests/unit/`.
 
 ## Scope and Feature Boundary
 - Covers typed index-entry and index models for PRDs, decisions, design docs, references, foundations, standards, and workflows; their direct loader or query consumers; runtime-boundary docs; and the broad CLI query regression suite that exercises the same retrieval surface.
@@ -45,8 +45,8 @@ Defines the technical design boundary for Typed Query Surface Modularity Hardeni
 - Excludes command or schema redesign, broader workflow-routing refactors, and the separate giant artifact-validation or document-semantics hotspot families unless the confirmation loop finds a direct same-theme dependency.
 
 ## Current-State Context
-- `core/python/src/watchtower_core/control_plane/models/planning.py` currently holds seven near-parallel typed index entry or index pairs inside one 548-line file with repeated tuple-coercion, artifact materialization, and linear `get()` lookup logic.
-- `core/python/tests/unit/test_cli_query_commands.py` currently groups 35 tests across paths, route preview, task create, plan scaffold, knowledge queries, planning queries, coordination queries, and authority or trace queries into one 912-line file with repeated `main([...])`, `capsys`, and JSON-assertion patterns.
+- `core/python/src/watchtower_core/control_plane/models/` currently holds seven near-parallel typed index entry or index pairs inside one 548-line file with repeated tuple-coercion, artifact materialization, and linear `get()` lookup logic.
+- `core/python/tests/unit/` currently groups 35 tests across paths, route preview, task create, plan scaffold, knowledge queries, planning queries, coordination queries, and authority or trace queries into one 912-line file with repeated `main([...])`, `capsys`, and JSON-assertion patterns.
 - Direct consumer pressure is real: `ControlPlaneLoader`, multiple `repo_ops/query/*.py` services, planning-sync code, acceptance validation, and CLI handlers all depend on the typed model export surface staying stable.
 
 ## Foundations References Applied

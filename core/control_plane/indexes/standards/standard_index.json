@@ -772,7 +772,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/schema_standard.md",
-      "updated_at": "2026-03-16T17:58:38Z",
+      "updated_at": "2026-03-16T20:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -1567,7 +1567,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/reference_md_standard.md",
-      "updated_at": "2026-03-13T18:05:00Z",
+      "updated_at": "2026-03-16T20:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1918,7 +1918,7 @@
       "reference_doc_paths": [
         "docs/references/git_commit_message_guidance_reference.md",
         "docs/references/conventional_commits_reference.md",
-        "docs/references/semantic_versioning_reference.md"
+        "docs/references/semver_reference.md"
       ],
       "internal_reference_paths": [
         "docs/standards/engineering/git_workflow_standard.md",
@@ -1928,7 +1928,7 @@
         "docs/references/git_commit_message_guidance_reference.md",
         "workflows/modules/commit_closeout.md",
         "docs/references/conventional_commits_reference.md",
-        "docs/references/semantic_versioning_reference.md",
+        "docs/references/semver_reference.md",
         "docs/standards/governance/reference_distillation_standard.md"
       ],
       "applied_reference_paths": [
@@ -2011,7 +2011,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/engineering/python_workspace_standard.md",
-      "updated_at": "2026-03-16T06:28:00Z",
+      "updated_at": "2026-03-16T20:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -3005,7 +3005,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/metadata/naming_and_ids_standard.md",
-      "updated_at": "2026-03-16T17:58:38Z",
+      "updated_at": "2026-03-16T20:30:00Z",
       "uses_internal_references": true,
       "uses_external_references": true,
       "operationalization_modes": [
@@ -3021,7 +3021,7 @@
       ],
       "reference_doc_paths": [
         "docs/references/rfc_9562_uuid_reference.md",
-        "docs/references/semantic_versioning_reference.md"
+        "docs/references/semver_reference.md"
       ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
@@ -3029,7 +3029,7 @@
         "docs/standards/data_contracts/schema_standard.md",
         "core/control_plane/README.md",
         "docs/references/rfc_9562_uuid_reference.md",
-        "docs/references/semantic_versioning_reference.md"
+        "docs/references/semver_reference.md"
       ],
       "applied_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
@@ -3037,7 +3037,7 @@
         "docs/standards/data_contracts/schema_standard.md",
         "core/control_plane/README.md",
         "docs/references/rfc_9562_uuid_reference.md",
-        "docs/references/semantic_versioning_reference.md"
+        "docs/references/semver_reference.md"
       ],
       "external_reference_urls": [
         "https://www.rfc-editor.org/info/rfc9562",

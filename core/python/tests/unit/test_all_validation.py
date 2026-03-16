@@ -19,9 +19,6 @@ from watchtower_core.repo_ops.validation import (
     VALIDATION_FAMILY_SPECS,
     ValidationAllService,
 )
-from watchtower_core.repo_ops.validation.governed_filenames import (
-    GovernedFilenameValidationService,
-)
 from watchtower_core.validation.errors import ValidationSelectionError
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -128,7 +125,6 @@ def test_validate_all_can_pass_when_acceptance_is_skipped() -> None:
     assert any(summary.family == "front_matter" for summary in result.family_summaries)
     assert any(summary.family == "document_semantics" for summary in result.family_summaries)
     assert any(summary.family == "artifacts" for summary in result.family_summaries)
-    assert any(summary.family == "governed_filenames" for summary in result.family_summaries)
 
 
 def test_validate_all_passes_when_all_governed_families_are_aligned() -> None:
@@ -226,48 +222,6 @@ def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
         not target_path.startswith("core/control_plane/examples/") for target_path in target_paths
     )
     assert result.passed is True
-
-
-def test_validate_all_governed_filenames_include_schema_targets() -> None:
-    service = ValidationAllService(ControlPlaneLoader())
-
-    result = service.run(included_families=("governed_filenames",))
-
-    target_paths = {record.target for record in result.records}
-    assert "core/control_plane/registries/schema_catalog.json" in target_paths
-    assert "core/control_plane/schemas/artifacts/schema_catalog.schema.json" in target_paths
-    assert result.passed is True
-
-
-def test_governed_filename_validation_rejects_versioned_schema_names(tmp_path: Path) -> None:
-    repo_root = _copy_control_plane_repo(tmp_path)
-    invalid_path = (
-        repo_root / "core/control_plane/schemas/artifacts/versioned_contract.v1.schema.json"
-    )
-    invalid_path.write_text("{}", encoding="utf-8")
-    service = GovernedFilenameValidationService(ControlPlaneLoader(repo_root))
-
-    result = service.validate(
-        "core/control_plane/schemas/artifacts/versioned_contract.v1.schema.json"
-    )
-
-    assert result.passed is False
-    assert {issue.code for issue in result.issues} == {"governed_filename_version_token_forbidden"}
-
-
-def test_governed_filename_validation_rejects_noncanonical_schema_suffix(
-    tmp_path: Path,
-) -> None:
-    repo_root = _copy_control_plane_repo(tmp_path)
-    invalid_path = repo_root / "core/control_plane/schemas/artifacts/versioned_contract.json"
-    invalid_path.write_text("{}", encoding="utf-8")
-    service = GovernedFilenameValidationService(ControlPlaneLoader(repo_root))
-
-    result = service.validate("core/control_plane/schemas/artifacts/versioned_contract.json")
-
-    assert result.passed is False
-    assert {issue.code for issue in result.issues} == {"schema_filename_suffix_invalid"}
-
 
 def test_validate_all_reuses_reference_index_build_across_workflow_semantics(
     monkeypatch: pytest.MonkeyPatch,

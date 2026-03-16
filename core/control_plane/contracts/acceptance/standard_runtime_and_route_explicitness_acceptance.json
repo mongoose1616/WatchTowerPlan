@@ -37,7 +37,7 @@
         "docs/commands/core_python/watchtower_core_query_standards.md"
       ],
       "related_paths": [
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "docs/commands/core_python/watchtower_core_sync_standard_index.md"
       ]
     },
@@ -72,7 +72,7 @@
         "core/python/tests/unit/test_route_index_sync.py"
       ],
       "related_paths": [
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_route_and_query_handlers.py"
       ]
     },

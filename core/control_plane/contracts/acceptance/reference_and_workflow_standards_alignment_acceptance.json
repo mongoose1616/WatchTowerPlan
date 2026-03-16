@@ -41,8 +41,8 @@
       "validation_targets": [
         "docs/standards/documentation/reference_md_standard.md",
         "docs/templates/reference_template.md",
-        "core/python/tests/unit/test_document_semantics_validation.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/unit/",
+        "core/python/tests/integration/"
       ],
       "related_paths": [
         "docs/standards/data_contracts/reference_index_standard.md",
@@ -62,7 +62,7 @@
         "docs/templates/workflow_template.md",
         "core/python/src/watchtower_core/repo_ops/sync/workflow_index.py",
         "core/python/tests/unit/test_workflow_index_sync.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "related_paths": [
         "docs/standards/data_contracts/workflow_index_standard.md"

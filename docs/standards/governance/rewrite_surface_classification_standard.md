@@ -137,7 +137,7 @@ This standard defines the four-axis classification and retention-reason model th
 - `core/control_plane/indexes/coordination/coordination_index.json` is `active`, `canonical_machine_answer`, `active_family_location`, and `n/a`.
 - `docs/planning/prds/decision_supersession_and_regression_evidence_alignment.md` is `deprecated`, `historical_record`, `active_family_location`, and `n/a` when retained as explicit historical context.
 - `core/python/src/watchtower_core/query/` is `active`, `compatibility_surface`, `compatibility_namespace_or_marker`, and usually `supported` while the repo still publishes the namespace as a current boundary-layer import surface.
-- `core/python/tests/integration/test_control_plane_artifacts.py` can remain `active`, `compatibility_surface`, `compatibility_namespace_or_marker`, and `supported` when repository-path continuity and query-path discoverability still depend on it.
+- `core/python/tests/integration/` can remain `active`, `supporting`, `active_family_location`, and `n/a` when the focused suite family is the canonical regression surface after a hotspot split.
 
 ## Operationalization
 - `Modes`: `documentation`; `workflow`

@@ -18,9 +18,9 @@ applies_to:
 - core/python/src/watchtower_core/repo_ops/planning_scaffold_support.py
 - core/python/src/watchtower_core/repo_ops/planning_documents.py
 - core/python/src/watchtower_core/repo_ops/validation/document_semantics.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/unit/
 - core/python/tests/unit/test_planning_scaffolds.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 related_ids:
 - prd.internal_project_code_review_followup
 - decision.internal_project_code_review_followup_direction

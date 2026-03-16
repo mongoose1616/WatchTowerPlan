@@ -15,7 +15,7 @@ updated_at: '2026-03-13T20:38:41Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - core/python/src/watchtower_core/cli/query_coordination_family.py
 - core/python/tests/unit/test_cli_planning_query_commands.py
 related_ids:

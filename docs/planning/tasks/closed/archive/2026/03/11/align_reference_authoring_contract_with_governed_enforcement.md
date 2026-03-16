@@ -17,8 +17,8 @@ authority: authoritative
 applies_to:
 - docs/standards/documentation/reference_md_standard.md
 - docs/templates/reference_template.md
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 related_ids:
 - prd.reference_and_workflow_standards_alignment
 - design.features.reference_and_workflow_standards_alignment

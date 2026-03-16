@@ -1,24 +1,24 @@
 {
   "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
-  "id": "contract.acceptance.versionless_governed_artifact_filenames",
+  "id": "contract.acceptance.governed_filename_canonicalization",
   "title": "Versionless Governed Artifact Filenames Acceptance Contract",
   "status": "active",
-  "trace_id": "trace.versionless_governed_artifact_filenames",
-  "source_prd_id": "prd.versionless_governed_artifact_filenames",
+  "trace_id": "trace.governed_filename_canonicalization",
+  "source_prd_id": "prd.governed_filename_canonicalization",
   "entries": [
     {
-      "acceptance_id": "ac.versionless_governed_artifact_filenames.001",
+      "acceptance_id": "ac.governed_filename_canonicalization.001",
       "summary": "The trace publishes the full planning chain, aligned acceptance or evidence artifacts, and a bounded execution task set for the governed filename migration.",
       "source_requirement_ids": [
-        "req.versionless_governed_artifact_filenames.001"
+        "req.governed_filename_canonicalization.001"
       ],
       "validation_targets": [
-        "docs/planning/prds/versionless_governed_artifact_filenames.md",
-        "docs/planning/design/features/versionless_governed_artifact_filenames.md",
-        "docs/planning/design/implementation/versionless_governed_artifact_filenames.md",
-        "docs/planning/decisions/versionless_governed_artifact_filenames_direction.md",
-        "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
-        "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json"
+        "docs/planning/prds/governed_filename_canonicalization.md",
+        "docs/planning/design/features/governed_filename_canonicalization.md",
+        "docs/planning/design/implementation/governed_filename_canonicalization.md",
+        "docs/planning/decisions/governed_filename_canonicalization_direction.md",
+        "core/control_plane/contracts/acceptance/governed_filename_canonicalization_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/governed_filename_canonicalization_planning_baseline.json"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -30,10 +30,10 @@
       "notes": "The trace must stay internally aligned while the breaking filename migration is executed and closed."
     },
     {
-      "acceptance_id": "ac.versionless_governed_artifact_filenames.002",
+      "acceptance_id": "ac.governed_filename_canonicalization.002",
       "summary": "The naming and schema standards reject filename-embedded major-version tokens and direct compatibility signaling into artifact content instead of the path.",
       "source_requirement_ids": [
-        "req.versionless_governed_artifact_filenames.002"
+        "req.governed_filename_canonicalization.002"
       ],
       "validation_targets": [
         "docs/standards/metadata/naming_and_ids_standard.md",
@@ -46,17 +46,17 @@
       "notes": "Compatibility metadata remains in schema URNs, `$schema` references, artifact IDs, and explicit version fields, not in governed filenames."
     },
     {
-      "acceptance_id": "ac.versionless_governed_artifact_filenames.003",
+      "acceptance_id": "ac.governed_filename_canonicalization.003",
       "summary": "The canonical governed file tree uses versionless filenames across schemas, contracts, indexes, ledgers, manifests, registries, and related governed artifacts in scope.",
       "source_requirement_ids": [
-        "req.versionless_governed_artifact_filenames.003",
-        "req.versionless_governed_artifact_filenames.005"
+        "req.governed_filename_canonicalization.003",
+        "req.governed_filename_canonicalization.005"
       ],
       "validation_targets": [
-        "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
+        "core/control_plane/contracts/acceptance/governed_filename_canonicalization_acceptance.json",
         "core/control_plane/indexes/commands/command_index.json",
         "core/control_plane/indexes/traceability/traceability_index.json",
-        "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json",
+        "core/control_plane/ledgers/validation_evidence/governed_filename_canonicalization_planning_baseline.json",
         "core/control_plane/manifests/pack_settings.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/schemas/artifacts/schema_catalog.schema.json",
@@ -73,11 +73,11 @@
       "notes": "No active compatibility copies, duplicate physical governed files, or mixed filename conventions may remain in the canonical control-plane tree."
     },
     {
-      "acceptance_id": "ac.versionless_governed_artifact_filenames.004",
-      "summary": "Runtime code, validation logic, tests, command docs, and planning records resolve only the versionless governed paths with no retained compatibility aliases, wrappers, or shims.",
+      "acceptance_id": "ac.governed_filename_canonicalization.004",
+      "summary": "Runtime code, tests, command docs, and planning records resolve only the versionless governed paths with no retained compatibility aliases, wrappers, shims, or transition helpers.",
       "source_requirement_ids": [
-        "req.versionless_governed_artifact_filenames.004",
-        "req.versionless_governed_artifact_filenames.005"
+        "req.governed_filename_canonicalization.004",
+        "req.governed_filename_canonicalization.005"
       ],
       "validation_targets": [
         "core/python/src/watchtower_core/control_plane/loader.py",
@@ -85,7 +85,6 @@
         "core/python/src/watchtower_core/evidence/validation_evidence.py",
         "core/python/src/watchtower_core/closeout/purge_trace.py",
         "core/python/src/watchtower_core/repo_ops/planning_bootstrap_support.py",
-        "core/python/src/watchtower_core/repo_ops/validation/governed_filenames.py",
         "core/python/tests/unit/test_all_validation.py",
         "docs/commands/core_python/watchtower_core_validate.md",
         "core/python/README.md"
@@ -98,14 +97,14 @@
       "notes": "Temporary migration helpers are allowed only during execution and must be removed before initiative closeout."
     },
     {
-      "acceptance_id": "ac.versionless_governed_artifact_filenames.005",
+      "acceptance_id": "ac.governed_filename_canonicalization.005",
       "summary": "The governed filename migration lands with sync, acceptance reconciliation, full repository validation, tests, typing, and linting all green.",
       "source_requirement_ids": [
-        "req.versionless_governed_artifact_filenames.006"
+        "req.governed_filename_canonicalization.006"
       ],
       "validation_targets": [
-        "core/control_plane/contracts/acceptance/versionless_governed_artifact_filenames_acceptance.json",
-        "core/control_plane/ledgers/validation_evidence/versionless_governed_artifact_filenames_planning_baseline.json",
+        "core/control_plane/contracts/acceptance/governed_filename_canonicalization_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/governed_filename_canonicalization_planning_baseline.json",
         "docs/planning/coordination_tracking.md"
       ],
       "related_paths": [
@@ -113,14 +112,14 @@
         "core/python/",
         "docs/planning/"
       ],
-      "notes": "The explicit validation bar is `watchtower-core sync all --write --format json`, `watchtower-core validate acceptance --trace-id trace.versionless_governed_artifact_filenames --format json`, `watchtower-core validate all --format json`, `pytest -q`, `mypy src`, and `ruff check .`."
+      "notes": "The explicit validation bar is `watchtower-core sync all --write --format json`, `watchtower-core validate acceptance --trace-id trace.governed_filename_canonicalization --format json`, `watchtower-core validate all --format json`, `pytest -q`, `mypy src`, and `ruff check .`."
     },
     {
-      "acceptance_id": "ac.versionless_governed_artifact_filenames.006",
+      "acceptance_id": "ac.governed_filename_canonicalization.006",
       "summary": "Closeout records that the migration is complete and that no active `.v1` filename convention, compatibility shim, duplicate governed file, or similar transitional artifact remains in scope.",
       "source_requirement_ids": [
-        "req.versionless_governed_artifact_filenames.005",
-        "req.versionless_governed_artifact_filenames.006"
+        "req.governed_filename_canonicalization.005",
+        "req.governed_filename_canonicalization.006"
       ],
       "validation_targets": [
         "core/control_plane/indexes/coordination/coordination_index.json",

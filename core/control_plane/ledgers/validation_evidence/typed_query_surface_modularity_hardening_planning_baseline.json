@@ -59,7 +59,7 @@
         "core/python/src/watchtower_core/control_plane/models/_index_helpers.py",
         "core/python/src/watchtower_core/control_plane/models/planning_documents.py",
         "core/python/src/watchtower_core/control_plane/models/knowledge_indexes.py",
-        "core/python/src/watchtower_core/control_plane/models/planning.py",
+        "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/control_plane/README.md",
         "core/python/tests/unit/test_control_plane_model_exports.py"
       ],
@@ -104,7 +104,7 @@
       "result": "passed",
       "subject_paths": [
         "core/python/tests/unit/cli_command_helpers.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_route_and_path_commands.py",
         "core/python/tests/unit/test_cli_dry_run_authoring_commands.py",
         "core/python/tests/unit/test_cli_knowledge_query_commands.py",

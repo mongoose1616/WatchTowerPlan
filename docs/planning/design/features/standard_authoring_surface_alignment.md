@@ -12,8 +12,8 @@ authority: authoritative
 applies_to:
 - docs/standards/documentation/standard_md_standard.md
 - docs/templates/standard_document_template.md
-- core/python/tests/unit/test_cli_query_commands.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/unit/
+- core/python/tests/integration/
 - core/control_plane/indexes/standards/standard_index.json
 ---
 
@@ -111,8 +111,8 @@ Defines the technical design boundary for Standard Authoring Surface Alignment.
 - `docs/standards/documentation/standard_md_standard.md`
 - `docs/templates/standard_document_template.md`
 - `core/control_plane/indexes/standards/standard_index.json`
-- `core/python/tests/unit/test_cli_query_commands.py`
-- `core/python/tests/integration/test_control_plane_artifacts.py`
+- `core/python/tests/unit/`
+- `core/python/tests/integration/`
 - `docs/planning/`
 
 ## Design Guardrails
@@ -129,5 +129,5 @@ Defines the technical design boundary for Standard Authoring Surface Alignment.
 - docs/standards/documentation/standard_md_standard.md
 - docs/standards/data_contracts/standard_index_standard.md
 - docs/templates/standard_document_template.md
-- core/python/tests/unit/test_cli_query_commands.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/unit/
+- core/python/tests/integration/

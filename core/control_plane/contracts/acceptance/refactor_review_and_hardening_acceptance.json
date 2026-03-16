@@ -66,13 +66,13 @@
         "docs/standards/governance/coordination_tracking_standard.md",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_index.py",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/sync/coordination_tracking.py",
         "core/control_plane/indexes/coordination/coordination_index.json",
         "core/python/tests/unit/test_coordination_index_sync.py",
         "core/python/tests/unit/test_coordination_tracking_sync.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md",

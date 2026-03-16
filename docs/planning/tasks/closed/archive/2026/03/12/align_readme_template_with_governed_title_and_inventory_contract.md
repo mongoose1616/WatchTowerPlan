@@ -15,7 +15,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/templates/readme_template.md
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - docs/standards/documentation/readme_md_standard.md
 related_ids:
 - prd.documentation_family_lookup_and_readme_template_alignment

@@ -29,8 +29,8 @@
       "subject_paths": [
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/unit/",
         "docs/commands/core_python/watchtower_core_query_initiatives.md",
         "docs/commands/core_python/watchtower_core_query_coordination.md"
       ],

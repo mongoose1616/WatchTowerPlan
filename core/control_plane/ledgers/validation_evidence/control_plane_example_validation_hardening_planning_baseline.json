@@ -75,7 +75,7 @@
       "result": "passed",
       "subject_paths": [
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/test_all_validation.py"
       ],
       "subject_ids": [

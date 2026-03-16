@@ -88,7 +88,7 @@ detailed path to one bounded reverse-dependency pass.
   rather than introducing separate dependency metadata.
 
 ## References
-- `core/python/src/watchtower_core/cli/query_coordination_handlers.py`
+- `core/python/src/watchtower_core/cli/`
 - `core/python/src/watchtower_core/repo_ops/query/tasks.py`
 - `core/python/tests/unit/test_route_and_query_handlers.py`
-- `core/python/tests/unit/test_cli_query_commands.py`
+- `core/python/tests/unit/`

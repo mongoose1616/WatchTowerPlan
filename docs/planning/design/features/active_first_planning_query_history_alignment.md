@@ -12,7 +12,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - core/python/src/watchtower_core/repo_ops/query/
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - docs/commands/core_python/
 - docs/planning/
 ---
@@ -103,7 +103,7 @@ Defines the technical design boundary for Active-First Planning Query History Al
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/query/
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - docs/commands/core_python/
 - docs/planning/
 - core/python/tests/unit/test_cli_planning_query_commands.py

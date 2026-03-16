@@ -10,8 +10,8 @@ updated_at: '2026-03-13T18:46:53Z'
 audience: shared
 authority: supporting
 applies_to:
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - core/python/src/watchtower_core/repo_ops/validation/
 - core/python/src/watchtower_core/validation/
 - core/python/src/watchtower_core/cli/validation_handlers.py
@@ -52,8 +52,8 @@ Split the remaining governed validation hotspots into focused family-oriented su
 - [repository_path_index_standard.md](/docs/standards/data_contracts/repository_path_index_standard.md): means README inventory changes are part of the authoritative discoverability contract, not optional documentation cleanup.
 
 ## Affected Surfaces
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - core/python/tests/integration/README.md
 - core/python/tests/unit/README.md
 - core/control_plane/indexes/repository_paths/repository_path_index.json

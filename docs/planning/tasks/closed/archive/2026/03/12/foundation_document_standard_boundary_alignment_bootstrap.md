@@ -19,7 +19,7 @@ applies_to:
 - core/control_plane/indexes/standards/standard_index.json
 - core/python/tests/unit/
 - core/python/tests/unit/test_standard_index_sync.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 related_ids:
 - prd.foundation_document_standard_boundary_alignment
 - design.features.foundation_document_standard_boundary_alignment

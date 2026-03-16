@@ -95,7 +95,7 @@
         "core/python/tests/unit/test_command_index_sync.py",
         "core/python/tests/unit/test_control_plane_loader.py",
         "core/python/tests/unit/test_cli_knowledge_query_commands.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py"
+        "core/python/src/watchtower_core/cli/"
       ],
       "related_paths": [
         "docs/planning/tasks/closed/archive/2026/03/13/harden_query_family_command_implementation_path_mapping.md",

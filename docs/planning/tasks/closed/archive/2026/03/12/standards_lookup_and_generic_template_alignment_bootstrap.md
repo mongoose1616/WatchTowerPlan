@@ -16,7 +16,7 @@ authority: authoritative
 applies_to:
 - core/python/src/watchtower_core/repo_ops/query/standards.py
 - core/python/tests/unit/
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - docs/commands/core_python/watchtower_core_query_standards.md
 - docs/templates/documentation_template.md
 - docs/templates/README.md

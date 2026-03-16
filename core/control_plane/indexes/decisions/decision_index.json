@@ -65,7 +65,7 @@
       ],
       "related_paths": [
         "core/python/src/watchtower_core/repo_ops/query/",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "docs/commands/core_python/",
         "docs/planning/"
       ],
@@ -276,7 +276,7 @@
         "core/python/src/watchtower_core/validation/README.md",
         "core/python/src/watchtower_core/cli/",
         "core/python/README.md",
-        "core/python/tests/unit/test_repo_ops_compatibility.py"
+        "core/python/tests/unit/test_repo_ops_boundary.py"
       ],
       "internal_reference_paths": [
         "docs/planning/prds/core_export_readiness_and_optimization.md",
@@ -525,10 +525,9 @@
       "related_paths": [
         "core/python/src/watchtower_core/repo_ops/standards.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/standards/data_contracts/standard_index_standard.md",
         "docs/standards/documentation/standard_md_standard.md",
@@ -663,9 +662,9 @@
         "docs/standards/documentation/foundation_md_standard.md",
         "docs/foundations/README.md",
         "core/control_plane/indexes/standards/standard_index.json",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -792,7 +791,8 @@
         "docs/standards/governance/github_collaboration_standard.md",
         "docs/standards/governance/github_task_sync_standard.md",
         "docs/references/github_collaboration_reference.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/README.md",
+        "core/python/tests/integration/"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -886,7 +886,7 @@
         "docs/foundations/repository_scope.md",
         "workflows/modules/foundations_context_review.md",
         "core/control_plane/indexes/foundations/README.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "internal_reference_paths": [
         "docs/foundations/repository_scope.md",
@@ -902,6 +902,45 @@
         "docs/foundations/customer_story.md",
         "docs/standards/data_contracts/foundation_index_standard.md",
         "docs/standards/documentation/workflow_md_standard.md"
+      ]
+    },
+    {
+      "trace_id": "trace.governed_filename_canonicalization",
+      "decision_id": "decision.governed_filename_canonicalization_direction",
+      "title": "Versionless Governed Artifact Filenames Direction Decision",
+      "summary": "Records the decision to remove filename-embedded major-version tokens from governed artifacts and keep compatibility signaling inside artifact content.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/governed_filename_canonicalization_direction.md",
+      "updated_at": "2026-03-16T17:55:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.governed_filename_canonicalization"
+      ],
+      "linked_design_ids": [
+        "design.features.governed_filename_canonicalization"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.governed_filename_canonicalization"
+      ],
+      "related_paths": [
+        "core/control_plane/",
+        "core/python/",
+        "docs/standards/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/metadata/naming_and_ids_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/foundations/repository_standards_posture.md",
+        "docs/planning/prds/governed_filename_canonicalization.md",
+        "docs/planning/design/features/governed_filename_canonicalization.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/metadata/naming_and_ids_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/foundations/repository_standards_posture.md"
       ]
     },
     {
@@ -1015,7 +1054,7 @@
         "core/python/src/watchtower_core/repo_ops/planning_documents.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_planning_scaffolds.py",
         "core/python/tests/unit/test_initiative_index_sync.py",
         "core/python/tests/integration/test_planning_scaffolds_service.py",
@@ -1164,7 +1203,7 @@
         "docs/planning/prds/lazy_planning_query_payload_emission.md",
         "docs/planning/design/features/lazy_planning_query_payload_emission.md",
         "core/python/src/watchtower_core/cli/handler_common.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py"
+        "core/python/src/watchtower_core/cli/"
       ],
       "applied_reference_paths": [
         "docs/standards/engineering/python_workspace_standard.md",
@@ -1352,7 +1391,7 @@
         "design.implementation.planning_query_efficiency_and_handler_modularity"
       ],
       "related_paths": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/query_coordination_rendered_handlers.py",
         "core/python/src/watchtower_core/cli/query_coordination_lookup_handlers.py",
         "core/python/src/watchtower_core/cli/query_coordination_family.py",
@@ -1935,8 +1974,8 @@
       "related_paths": [
         "docs/standards/documentation/standard_md_standard.md",
         "docs/templates/standard_document_template.md",
-        "core/python/tests/unit/test_cli_query_commands.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
+        "core/python/tests/integration/",
         "core/control_plane/indexes/standards/standard_index.json",
         "docs/planning/"
       ],
@@ -1975,9 +2014,9 @@
       ],
       "related_paths": [
         "core/python/src/watchtower_core/repo_ops/standards.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "docs/standards/documentation/standard_md_standard.md",
         "docs/standards/engineering/cli_help_text_standard.md",
         "docs/templates/standard_document_template.md",
@@ -2061,8 +2100,8 @@
       "related_paths": [
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/unit/",
+        "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_query_standards.md",
         "docs/templates/documentation_template.md",
         "docs/templates/README.md"
@@ -2112,7 +2151,7 @@
         "docs/planning/tasks/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/validation_evidence/",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/test_traceability_index_sync.py"
       ],
       "internal_reference_paths": [
@@ -2160,7 +2199,7 @@
         "docs/standards/governance/traceability_standard.md",
         "docs/planning/prds/task_query_dependency_lookup_hardening.md",
         "docs/planning/design/features/task_query_dependency_lookup_hardening.md",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/query/tasks.py"
       ],
       "applied_reference_paths": [
@@ -2203,6 +2242,46 @@
       "applied_reference_paths": [
         "docs/standards/governance/task_tracking_standard.md",
         "docs/foundations/engineering_design_principles.md"
+      ]
+    },
+    {
+      "trace_id": "trace.transition_surface_retirement",
+      "decision_id": "decision.transition_surface_retirement_direction",
+      "title": "Transition Surface Retirement Direction Decision",
+      "summary": "Records the initial direction decision for Transition Surface Retirement.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/transition_surface_retirement_direction.md",
+      "updated_at": "2026-03-16T19:23:51Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.transition_surface_retirement"
+      ],
+      "linked_design_ids": [
+        "design.features.transition_surface_retirement"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.transition_surface_retirement"
+      ],
+      "related_paths": [
+        "core/python/src/",
+        "core/python/tests/",
+        "docs/planning/",
+        "docs/standards/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md",
+        "docs/planning/prds/transition_surface_retirement.md",
+        "docs/planning/design/features/transition_surface_retirement.md",
+        "docs/planning/design/implementation/transition_surface_retirement.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/governance/rewrite_surface_classification_standard.md",
+        "docs/standards/engineering/python_workspace_standard.md"
       ]
     },
     {
@@ -2307,8 +2386,8 @@
         "design.implementation.validation_test_hotspot_rebalancing"
       ],
       "related_paths": [
-        "core/python/tests/integration/test_control_plane_artifacts.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/integration/",
+        "core/python/tests/unit/",
         "core/python/src/watchtower_core/repo_ops/validation/",
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/cli/validation_handlers.py",
@@ -2325,45 +2404,6 @@
         "docs/foundations/engineering_design_principles.md",
         "docs/foundations/engineering_stack_direction.md",
         "docs/standards/data_contracts/repository_path_index_standard.md"
-      ]
-    },
-    {
-      "trace_id": "trace.versionless_governed_artifact_filenames",
-      "decision_id": "decision.versionless_governed_artifact_filenames_direction",
-      "title": "Versionless Governed Artifact Filenames Direction Decision",
-      "summary": "Records the decision to remove filename-embedded major-version tokens from governed artifacts and keep compatibility signaling inside artifact content.",
-      "record_status": "active",
-      "decision_status": "accepted",
-      "doc_path": "docs/planning/decisions/versionless_governed_artifact_filenames_direction.md",
-      "updated_at": "2026-03-16T17:55:05Z",
-      "uses_internal_references": true,
-      "uses_external_references": false,
-      "linked_prd_ids": [
-        "prd.versionless_governed_artifact_filenames"
-      ],
-      "linked_design_ids": [
-        "design.features.versionless_governed_artifact_filenames"
-      ],
-      "linked_plan_ids": [
-        "design.implementation.versionless_governed_artifact_filenames"
-      ],
-      "related_paths": [
-        "core/control_plane/",
-        "core/python/",
-        "docs/standards/",
-        "docs/planning/"
-      ],
-      "internal_reference_paths": [
-        "docs/standards/metadata/naming_and_ids_standard.md",
-        "docs/standards/data_contracts/schema_standard.md",
-        "docs/foundations/repository_standards_posture.md",
-        "docs/planning/prds/versionless_governed_artifact_filenames.md",
-        "docs/planning/design/features/versionless_governed_artifact_filenames.md"
-      ],
-      "applied_reference_paths": [
-        "docs/standards/metadata/naming_and_ids_standard.md",
-        "docs/standards/data_contracts/schema_standard.md",
-        "docs/foundations/repository_standards_posture.md"
       ]
     },
     {

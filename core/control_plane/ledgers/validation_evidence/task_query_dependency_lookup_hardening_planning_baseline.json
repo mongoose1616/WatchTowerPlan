@@ -55,7 +55,7 @@
       "title": "Default task-query path skips reverse dependency work",
       "result": "passed",
       "subject_paths": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/tests/unit/test_route_and_query_handlers.py"
       ],
       "subject_ids": [
@@ -73,9 +73,9 @@
       "result": "passed",
       "subject_paths": [
         "core/python/src/watchtower_core/repo_ops/query/tasks.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "subject_ids": [
         "task.task_query_dependency_lookup_hardening.reverse_dependency_batching.002"
@@ -110,13 +110,13 @@
       "title": "Follow-up review found no new issues in adjacent surfaces",
       "result": "passed",
       "subject_paths": [
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/query/tasks.py",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "subject_ids": [
         "task.task_query_dependency_lookup_hardening.validation_closeout.003"

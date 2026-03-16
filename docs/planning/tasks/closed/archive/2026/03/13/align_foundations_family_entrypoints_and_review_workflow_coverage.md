@@ -18,7 +18,7 @@ applies_to:
 - docs/foundations/repository_scope.md
 - workflows/modules/foundations_context_review.md
 - core/control_plane/indexes/foundations/README.md
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 related_ids:
 - prd.foundations_entrypoint_coverage_alignment
 - design.implementation.foundations_entrypoint_coverage_alignment

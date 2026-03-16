@@ -90,4 +90,4 @@ Option 2 is accepted.
 - docs/planning/prds/control_plane_example_validation_hardening.md
 - docs/planning/design/features/control_plane_example_validation_hardening.md
 - core/python/src/watchtower_core/repo_ops/validation/all.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/

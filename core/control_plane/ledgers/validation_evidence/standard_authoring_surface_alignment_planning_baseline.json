@@ -55,7 +55,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/templates/standard_document_template.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.standard_authoring_surface_alignment.template_contract.001"
@@ -72,7 +72,7 @@
       "subject_paths": [
         "docs/standards/documentation/standard_md_standard.md",
         "core/control_plane/indexes/standards/standard_index.json",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "subject_ids": [
         "task.standard_authoring_surface_alignment.lookup_alignment.001"

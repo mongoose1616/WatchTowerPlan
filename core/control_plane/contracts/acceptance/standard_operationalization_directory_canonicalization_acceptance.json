@@ -47,9 +47,9 @@
         "core/control_plane/indexes/standards/standard_index.json"
       ],
       "related_paths": [
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "notes": "The parser must fail closed on directory paths that omit `/`, and the live standards corpus must publish only canonical exact-file and directory forms for this slice."
     },
@@ -61,9 +61,9 @@
         "req.standard_operationalization_directory_canonicalization.003"
       ],
       "validation_targets": [
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/control_plane/indexes/standards/standard_index.json"
       ],
       "related_paths": [

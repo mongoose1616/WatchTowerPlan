@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "reference_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T18:05:00Z"
+updated_at: "2026-03-16T20:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -67,6 +67,7 @@ Keep reference documents focused on durable lookup content by separating reader-
 - Keep process guidance brief and limited to how the reader should apply the reference locally.
 - Keep examples focused on correct local use rather than broad tutorials.
 - Keep lifecycle checks, refresh steps, change-control notes, and authoring checklists in documentation workflows or standards rather than in the reference document body.
+- Keep local reference filenames topic-stable and versionless. If the upstream source is versioned, record that version in the title, canonical upstream note, `Updated At`, or body rather than the filename.
 - Use `Updated At` in the document body when the topic depends on time-sensitive or version-sensitive source material, and record it as an RFC 3339 UTC timestamp in the form `YYYY-MM-DDTHH:MM:SSZ`.
 - Update the governed reference index in the same change set when a reference document is added, renamed, removed, or materially retargeted.
 
@@ -122,4 +123,4 @@ Keep reference documents focused on durable lookup content by separating reader-
 - If a document’s main value is action sequencing or concept explanation, it should probably not be a reference document.
 
 ## Updated At
-- `2026-03-13T18:05:00Z`
+- `2026-03-16T20:30:00Z`

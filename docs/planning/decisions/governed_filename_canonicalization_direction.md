@@ -1,6 +1,6 @@
 ---
-trace_id: trace.versionless_governed_artifact_filenames
-id: decision.versionless_governed_artifact_filenames_direction
+trace_id: trace.governed_filename_canonicalization
+id: decision.governed_filename_canonicalization_direction
 title: Versionless Governed Artifact Filenames Direction Decision
 summary: Records the decision to remove filename-embedded major-version tokens from
   governed artifacts and keep compatibility signaling inside artifact content.
@@ -20,13 +20,13 @@ applies_to:
 # Versionless Governed Artifact Filenames Direction Decision
 
 ## Record Metadata
-- `Trace ID`: `trace.versionless_governed_artifact_filenames`
-- `Decision ID`: `decision.versionless_governed_artifact_filenames_direction`
+- `Trace ID`: `trace.governed_filename_canonicalization`
+- `Decision ID`: `decision.governed_filename_canonicalization_direction`
 - `Record Status`: `active`
 - `Decision Status`: `accepted`
-- `Linked PRDs`: `prd.versionless_governed_artifact_filenames`
-- `Linked Designs`: `design.features.versionless_governed_artifact_filenames`
-- `Linked Implementation Plans`: `design.implementation.versionless_governed_artifact_filenames`
+- `Linked PRDs`: `prd.governed_filename_canonicalization`
+- `Linked Designs`: `design.features.governed_filename_canonicalization`
+- `Linked Implementation Plans`: `design.implementation.governed_filename_canonicalization`
 - `Updated At`: `2026-03-16T17:55:05Z`
 
 ## Summary
@@ -87,5 +87,5 @@ Governed artifact filenames will stop carrying `.v1` or similar major-version to
 - The decision depends on a repo-wide path rewrite and full validation pass; missing even one active consumer will surface as broken validation or stale links.
 
 ## References
-- [versionless_governed_artifact_filenames.md](/docs/planning/prds/versionless_governed_artifact_filenames.md)
-- [versionless_governed_artifact_filenames.md](/docs/planning/design/features/versionless_governed_artifact_filenames.md)
+- [governed_filename_canonicalization.md](/docs/planning/prds/governed_filename_canonicalization.md)
+- [governed_filename_canonicalization.md](/docs/planning/design/features/governed_filename_canonicalization.md)

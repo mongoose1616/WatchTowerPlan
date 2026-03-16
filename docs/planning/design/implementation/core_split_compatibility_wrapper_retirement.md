@@ -20,7 +20,7 @@ applies_to:
 - core/python/src/watchtower_core/validation/README.md
 - core/python/src/watchtower_core/cli/
 - core/python/README.md
-- core/python/tests/unit/test_repo_ops_compatibility.py
+- core/python/tests/unit/test_repo_ops_boundary.py
 ---
 
 # Core Split Compatibility Wrapper Retirement Implementation Plan
@@ -83,7 +83,7 @@ Breaks compatibility-wrapper retirement into a bounded implementation slice that
 | Finding ID | Severity | Status | Affected Surfaces | Verification Evidence |
 |---|---|---|---|---|
 | `finding.core_split_compatibility_wrapper_retirement.001` | `high` | `open` | `watchtower_core.query`; `watchtower_core.sync`; `watchtower_core.validation.all` | Representative leaf modules remain direct `repo_ops` re-exports from export-safe namespaces. |
-| `finding.core_split_compatibility_wrapper_retirement.002` | `high` | `open` | `core/python/tests/unit/test_repo_ops_compatibility.py` | The current regression test still asserts that the legacy compatibility wrappers remain available. |
+| `finding.core_split_compatibility_wrapper_retirement.002` | `high` | `open` | `core/python/tests/unit/test_repo_ops_boundary.py` | The current regression test still asserts that the legacy compatibility wrappers remain available. |
 | `finding.core_split_compatibility_wrapper_retirement.003` | `medium` | `open` | package READMEs; `core/python/README.md` | Runtime-boundary docs still describe supported compatibility-wrapper imports for query and sync. |
 
 ## Work Breakdown

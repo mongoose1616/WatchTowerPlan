@@ -92,11 +92,11 @@
         "core/python/src/watchtower_core/repo_ops/planning_rendered_serialization.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/tests/unit/test_initiative_index_sync.py",
         "core/python/tests/unit/test_planning_catalog_sync.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ],
       "subject_ids": [
         "task.internal_project_review_and_hardening.projection_canonicalization.001"

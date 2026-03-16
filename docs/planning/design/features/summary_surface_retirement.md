@@ -20,7 +20,7 @@ applies_to:
 - docs/planning/tasks/
 - core/control_plane/contracts/acceptance/
 - core/control_plane/ledgers/validation_evidence/
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - core/python/tests/unit/test_traceability_index_sync.py
 ---
 
@@ -66,7 +66,7 @@ Defines the technical design boundary for Summary Surface Retirement.
 ## Internal Standards and Canonical References Applied
 - [docs/planning/README.md](/docs/planning/README.md): current planning state should route through coordination tracking and the machine coordination query.
 - [readme_md_standard.md](/docs/standards/documentation/readme_md_standard.md): the root README should stay a thin router instead of accumulating one-off historical reports.
-- [test_control_plane_artifacts.py](/core/python/tests/integration/test_control_plane_artifacts.py): this is the bounded fail-closed regression surface for the repaired entrypoints.
+- [README.md](/core/python/tests/integration/README.md): this inventories the bounded fail-closed regression suites for the repaired entrypoints.
 
 ## Design Goals and Constraints
 - Remove the redundant root summary surface without degrading current review or
@@ -135,7 +135,7 @@ Defines the technical design boundary for Summary Surface Retirement.
 - docs/planning/tasks/
 - core/control_plane/contracts/acceptance/
 - core/control_plane/ledgers/validation_evidence/
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - core/python/tests/unit/test_traceability_index_sync.py
 
 ## Design Guardrails

@@ -15,7 +15,7 @@ updated_at: '2026-03-13T23:07:33Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - core/python/src/watchtower_core/cli/query_coordination_family.py
 - core/python/src/watchtower_core/repo_ops/query/
 - core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py

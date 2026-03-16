@@ -68,7 +68,7 @@
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/unit/test_task_lifecycle.py",
         "core/python/tests/unit/test_planning_scaffolds.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_compact_document_authoring.py"
       ],
       "subject_ids": [
@@ -99,8 +99,8 @@
         "docs/references/commonmark_reference.md",
         "docs/standards/documentation/readme_md_standard.md",
         "core/control_plane/indexes/standards/standard_index.json",
-        "core/python/tests/unit/test_cli_query_commands.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/unit/",
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.governed_front_matter_directory_canonicalization.normalization.002"

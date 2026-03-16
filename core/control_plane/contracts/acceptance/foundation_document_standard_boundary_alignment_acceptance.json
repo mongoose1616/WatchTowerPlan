@@ -46,7 +46,7 @@
         "core/control_plane/indexes/standards/standard_index.json"
       ],
       "related_paths": [
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ]
     },
     {
@@ -56,9 +56,9 @@
         "req.foundation_document_standard_boundary_alignment.003"
       ],
       "validation_targets": [
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "docs/planning/prds/foundation_document_standard_boundary_alignment.md",
         "docs/planning/design/features/foundation_document_standard_boundary_alignment.md",
         "docs/planning/design/implementation/foundation_document_standard_boundary_alignment.md",

@@ -77,18 +77,16 @@ def register_validate_family(
 
             This command is read-only. It aggregates front-matter validation,
             document-semantic validation, schema-backed artifact validation
-            across live governed artifacts and canonical valid examples,
-            governed control-plane filename policy validation, and acceptance
-            reconciliation so you can get one bounded validation summary
-            without invoking each family manually.
+            across live governed artifacts and canonical valid examples, and
+            acceptance reconciliation so you can get one bounded validation
+            summary without invoking each family manually.
             """
         ).strip(),
         epilog=examples(
             "uv run watchtower-core validate all --skip-acceptance",
             "uv run watchtower-core validate all --format json",
             "uv run watchtower-core validate all --skip-front-matter "
-            "--skip-document-semantics --skip-artifacts "
-            "--skip-governed-filenames",
+            "--skip-document-semantics --skip-artifacts",
         ),
         formatter_class=HelpFormatter,
     )
@@ -106,11 +104,6 @@ def register_validate_family(
         "--skip-artifacts",
         action="store_true",
         help="Skip schema-backed governed JSON artifact validation targets.",
-    )
-    validate_all_parser.add_argument(
-        "--skip-governed-filenames",
-        action="store_true",
-        help="Skip governed control-plane filename policy validation targets.",
     )
     validate_all_parser.add_argument(
         "--skip-acceptance",

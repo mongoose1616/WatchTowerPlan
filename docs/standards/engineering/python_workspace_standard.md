@@ -9,7 +9,7 @@ tags:
   - "engineering"
   - "python_workspace"
 owner: "repository_maintainer"
-updated_at: "2026-03-16T06:28:00Z"
+updated_at: "2026-03-16T20:30:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -49,7 +49,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - Keep authored machine-readable authority under `core/control_plane/`; do not move schemas, registries, contracts, manifests, or indexes into the Python workspace.
 - Use one canonical Python workspace rooted at `core/python/`.
 - Use `uv` as the standard local environment and dependency-management tool.
-- Keep the pinned interpreter version in `core/python/.python-version`.
+- Keep the supported interpreter range in `core/python/pyproject.toml` and keep the locked dependency graph in `core/python/uv.lock`.
 - Keep canonical package and tool configuration in `core/python/pyproject.toml`.
 - Keep the locked dependency graph in `core/python/uv.lock`.
 - Keep the local virtual environment at `core/python/.venv/`.
@@ -75,7 +75,7 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 |---|---|---|
 | `core/python/AGENTS.md` | Required | Local instruction layer for agents working in the Python workspace. |
 | `core/python/README.md` | Required | Human-readable onboarding and workspace orientation. |
-| `core/python/.python-version` | Required | Pins the expected Python major and minor version. |
+| `core/python/pyproject.toml` and `core/python/uv.lock` | Required | Define the supported interpreter range and the locked dependency set. |
 | `core/python/pyproject.toml` | Required | Canonical project metadata, dependencies, and tool configuration. |
 | `core/python/uv.lock` | Required | Locked dependency graph for repeatable onboarding. |
 | `core/python/.gitignore` | Required | Ignores local envs, caches, and build outputs. |
@@ -141,4 +141,4 @@ Keep the Python workspace deterministic, easy to onboard, and isolated from the 
 - The workspace may grow additional modules over time, but it should not grow additional package roots unless a later standard explicitly allows that change.
 
 ## Updated At
-- `2026-03-16T06:28:00Z`
+- `2026-03-16T20:30:00Z`

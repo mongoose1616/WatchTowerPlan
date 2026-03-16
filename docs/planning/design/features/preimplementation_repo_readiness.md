@@ -51,7 +51,7 @@ Defines the review-backed design for compact documentation entrypoints, a clear 
   - [docs/commands/core_python/README.md](/docs/commands/core_python/README.md)
   - [core/python/README.md](/core/python/README.md)
 - The repository already has a derived machine coordination artifact in the initiative index, but agent navigation is still ambiguous because that surface is not clearly elevated above the other family indexes for traced coordination.
-- At review start, the core package concentrated too much behavior in [handlers.py](/core/python/src/watchtower_core/cli/handlers.py) and the old single-file model surface now exported from [models](/core/python/src/watchtower_core/control_plane/models).
+- At review start, the core package concentrated too much behavior in [handlers.py](/core/python/src/watchtower_core/cli/) and the old single-file model surface now exported from [models](/core/python/src/watchtower_core/control_plane/models).
 - Workspace injection exists, but [schemas.py](/core/python/src/watchtower_core/control_plane/schemas.py) still assumes one local schema catalog and does not provide a first-class extension seam for future external schema sets.
 
 ## Foundations References Applied

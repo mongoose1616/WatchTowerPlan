@@ -113,7 +113,7 @@
       "subject_paths": [
         "docs/planning/decisions/query_family_source_surface_alignment_direction.md",
         "docs/planning/design/implementation/query_family_source_surface_alignment.md",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/tests/unit/test_command_index_sync.py",
         "core/python/tests/unit/test_control_plane_loader.py",
         "core/python/tests/unit/test_cli_knowledge_query_commands.py"

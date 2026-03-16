@@ -14,7 +14,7 @@ updated_at: '2026-03-12T01:26:39Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 - core/python/tests/unit/
 related_ids:
 - prd.data_contract_example_operationalization_alignment

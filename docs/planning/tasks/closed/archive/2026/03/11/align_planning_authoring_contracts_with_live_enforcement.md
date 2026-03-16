@@ -22,7 +22,7 @@ applies_to:
 - docs/templates/feature_design_template.md
 - docs/templates/implementation_plan_template.md
 - core/python/src/watchtower_core/repo_ops/planning_documents.py
-- core/python/tests/integration/test_control_plane_artifacts.py
+- core/python/tests/integration/
 related_ids:
 - prd.planning_semantics_and_decision_contract_alignment
 - design.features.planning_semantics_and_decision_contract_alignment

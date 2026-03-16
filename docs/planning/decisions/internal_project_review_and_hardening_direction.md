@@ -58,7 +58,7 @@ Keep the current validation and governance rules intact, fix `watchtower-core pl
 - core/python/src/watchtower_core/repo_ops/sync/initiative_index.py
 - core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py
 - core/python/src/watchtower_core/cli/plan_handlers.py
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - docs/commands/core_python/watchtower_core_plan_bootstrap.md
 - core/control_plane/contracts/acceptance/
 - core/control_plane/ledgers/validation_evidence/

@@ -16,14 +16,14 @@
       "validation_targets": [
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
-        "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "docs/commands/core_python/watchtower_core_query_initiatives.md",
         "docs/commands/core_python/watchtower_core_query_coordination.md"
       ],
       "related_paths": [
         "core/control_plane/indexes/initiatives/initiative_index.json",
         "core/control_plane/indexes/coordination/coordination_index.json",
-        "core/python/tests/unit/test_cli_query_commands.py"
+        "core/python/tests/unit/"
       ]
     },
     {
@@ -41,7 +41,7 @@
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py"
       ],
       "related_paths": [
-        "core/python/tests/integration/test_control_plane_artifacts.py",
+        "core/python/tests/integration/",
         "core/python/tests/unit/test_coordination_index_sync.py"
       ]
     },

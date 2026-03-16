@@ -10,8 +10,8 @@ updated_at: '2026-03-13T18:46:53Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - core/python/src/watchtower_core/repo_ops/validation/
 - core/python/src/watchtower_core/validation/
 - core/python/src/watchtower_core/cli/validation_handlers.py
@@ -43,8 +43,8 @@ Defines the technical design boundary for Validation Test Hotspot Rebalancing.
 - Excludes changes to validation runtime behavior, validator registry contracts, schema shapes, control-plane artifact families, or the broad command-surface design outside documentation and indexing updates required by the test split.
 
 ## Current-State Context
-- `core/python/tests/integration/test_control_plane_artifacts.py` is still 1171 lines long and mixes loader, schema, example, foundations, standards, template, front-matter, and workflow checks in one file with only two small local helpers.
-- `core/python/tests/unit/test_document_semantics_validation.py` is still 1053 lines long, contains six large inline fixture-writing helpers, and mixes validator selection, reference semantics, standard semantics, planning semantics, and canonical path rules in one file.
+- `core/python/tests/integration/` is still 1171 lines long and mixes loader, schema, example, foundations, standards, template, front-matter, and workflow checks in one file with only two small local helpers.
+- `core/python/tests/unit/` is still 1053 lines long, contains six large inline fixture-writing helpers, and mixes validator selection, reference semantics, standard semantics, planning semantics, and canonical path rules in one file.
 - `core/python/tests/unit/README.md` does not list `test_document_semantics_validation.py`, `core/python/tests/integration/README.md` does not list `test_control_plane_artifacts.py`, and `watchtower-core query paths --query test_control_plane_artifacts --format json` plus the same probe for `test_document_semantics_validation` both return `result_count: 0`.
 - More than 300 planning references still mention `test_control_plane_artifacts.py`, and more than 100 still mention `test_document_semantics_validation.py`, so the design must preserve historical path compatibility instead of simply deleting the old filenames.
 
@@ -103,8 +103,8 @@ Defines the technical design boundary for Validation Test Hotspot Rebalancing.
 - README inventory drift is a fail-closed concern because it changes repository-path indexing and query-path discovery for the touched test surfaces.
 
 ## Affected Surfaces
-- core/python/tests/integration/test_control_plane_artifacts.py
-- core/python/tests/unit/test_document_semantics_validation.py
+- core/python/tests/integration/
+- core/python/tests/unit/
 - core/python/tests/integration/README.md
 - core/python/tests/unit/README.md
 - core/control_plane/indexes/repository_paths/repository_path_index.json

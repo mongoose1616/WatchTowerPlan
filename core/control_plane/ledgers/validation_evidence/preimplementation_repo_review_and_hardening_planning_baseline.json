@@ -57,7 +57,7 @@
         "docs/commands/core_python/README.md",
         "core/python/README.md",
         "core/control_plane/indexes/initiatives/initiative_index.json",
-        "core/python/src/watchtower_core/cli/handlers.py",
+        "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/control_plane/models/",
         "core/python/src/watchtower_core/control_plane/schemas.py"
       ],

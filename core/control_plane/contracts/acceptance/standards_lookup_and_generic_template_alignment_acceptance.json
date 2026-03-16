@@ -41,7 +41,7 @@
       "validation_targets": [
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "docs/commands/core_python/watchtower_core_query_standards.md"
       ],
       "related_paths": [
@@ -60,7 +60,7 @@
       "validation_targets": [
         "docs/templates/documentation_template.md",
         "docs/templates/README.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "related_paths": [
         "docs/standards/documentation/compact_document_authoring_standard.md",

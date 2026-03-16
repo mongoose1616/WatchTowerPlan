@@ -61,8 +61,7 @@
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/python/src/watchtower_core/cli/query_knowledge_family.py",
         "core/python/tests/unit/test_standard_index_sync.py",
-        "core/python/tests/unit/test_document_semantics_validation.py",
-        "core/python/tests/unit/test_cli_query_commands.py",
+        "core/python/tests/unit/",
         "docs/commands/core_python/watchtower_core_query_standards.md"
       ],
       "subject_ids": [
@@ -84,8 +83,8 @@
         "docs/standards/documentation/reference_md_standard.md",
         "docs/standards/documentation/standard_md_standard.md",
         "core/control_plane/indexes/standards/standard_index.json",
-        "core/python/tests/unit/test_cli_query_commands.py",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/unit/",
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.documentation_family_lookup_and_readme_template_alignment.operationalization_lookup.001"
@@ -102,7 +101,7 @@
       "subject_paths": [
         "docs/templates/readme_template.md",
         "docs/standards/documentation/readme_md_standard.md",
-        "core/python/tests/integration/test_control_plane_artifacts.py"
+        "core/python/tests/integration/"
       ],
       "subject_ids": [
         "task.documentation_family_lookup_and_readme_template_alignment.readme_template_alignment.001"

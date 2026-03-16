@@ -12,7 +12,7 @@ audience: shared
 authority: supporting
 applies_to:
 - core/python/src/watchtower_core/repo_ops/query/
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - docs/commands/core_python/
 - docs/planning/
 ---
@@ -52,7 +52,7 @@ Adopt an active-default browse policy for filterless `watchtower-core query plan
 
 ## Affected Surfaces
 - core/python/src/watchtower_core/repo_ops/query/
-- core/python/src/watchtower_core/cli/query_coordination_handlers.py
+- core/python/src/watchtower_core/cli/
 - docs/commands/core_python/
 - docs/planning/
 
