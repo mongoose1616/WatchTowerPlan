@@ -111,7 +111,6 @@
         "core/control_plane/registries/",
         "core/control_plane/contracts/",
         "core/control_plane/ledgers/",
-        "core/control_plane/policies/",
         "core/control_plane/indexes/"
       ]
     },
@@ -1428,26 +1427,6 @@
       "audience_hint": "maintainer"
     },
     {
-      "path": "core/control_plane/registries/artifact_role_registry.json",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Retained repo-local artifact-role catalog from the structural rewrite classification slice.",
-      "parent_path": "core/control_plane/registries/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/registries/artifact_type_registry.json",
-      "kind": "file",
-      "surface_kind": "control_plane_registry",
-      "summary": "Retained repo-local catalog of governed artifact kinds, schemas, and canonical paths.",
-      "parent_path": "core/control_plane/registries/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
       "path": "core/control_plane/registries/authority_map.json",
       "kind": "file",
       "surface_kind": "control_plane_registry",
@@ -1570,26 +1549,6 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for the machine-readable acceptance-contract artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the bounded artifact-role registry artifact family.",
-      "parent_path": "core/control_plane/schemas/artifacts/",
-      "maturity": "authoritative",
-      "priority": "high",
-      "audience_hint": "maintainer"
-    },
-    {
-      "path": "core/control_plane/schemas/artifacts/artifact_type_registry.v1.schema.json",
-      "kind": "file",
-      "surface_kind": "control_plane_schema",
-      "summary": "Schema for the machine-readable artifact-type registry artifact family.",
       "parent_path": "core/control_plane/schemas/artifacts/",
       "maturity": "authoritative",
       "priority": "high",
@@ -2367,8 +2326,7 @@
         "python"
       ],
       "related_paths": [
-        "core/python/src/",
-        "core/control_plane/examples/"
+        "core/python/src/"
       ]
     },
     {

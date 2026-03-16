@@ -26,7 +26,7 @@
     },
     {
       "acceptance_id": "ac.validated_core_pack_data_shape_convergence.002",
-      "summary": "The pack-settings load root, the retained flat registries, and their schemas are canonical and discoverable through the schema catalog, while the runtime-manifest and policy bridges are retired.",
+      "summary": "The pack-settings load root and the retained flat startup registries are canonical and discoverable through the schema catalog, while the inventory-only runtime-manifest, policy, and registry bridges are retired.",
       "source_requirement_ids": [
         "req.validated_core_pack_data_shape_convergence.001"
       ],
@@ -34,7 +34,6 @@
         "core/control_plane/manifests/pack_settings.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
-        "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/README.md"
       ],
       "related_paths": [

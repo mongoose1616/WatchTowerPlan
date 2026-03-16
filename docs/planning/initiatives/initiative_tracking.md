@@ -1,13 +1,12 @@
 # Initiative Tracking
 
 ## Active Initiatives
-| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
-| --- | --- | --- | --- | --- | --- | --- |
-| `trace.post_rewrite_core_cleanup_and_surface_reduction` | `execution` | repository_maintainer | `2` (`blocked=1`) | [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md) | [retire_inventory_only_artifact_type_and_role_registries.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+_No active initiatives._
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
 | --- | --- | --- | --- | --- |
+| `trace.post_rewrite_core_cleanup_and_surface_reduction` | `completed` | [post_rewrite_core_cleanup_and_surface_reduction.md](/home/j/WatchTowerPlan/docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md) | `2026-03-16T07:50:26Z` | Repaired the workspace validation regression, generalized pack-surface loading, retired inventory-only control-plane families and example validation, reconciled stale historical references, and reran clean validation. |
 | `trace.documentation_surface_alignment_for_core_pack_model` | `completed` | [documentation_surface_alignment_for_core_pack_model.md](/home/j/WatchTowerPlan/docs/planning/prds/documentation_surface_alignment_for_core_pack_model.md) | `2026-03-16T06:16:22Z` | Aligned the repository documentation corpus with the reusable-core plus planning-and-implementation pack model, refreshed entrypoints and standards, and reran clean validation. |
 | `trace.validated_core_pack_data_shape_convergence` | `completed` | [validated_core_and_pack_data_shape_convergence.md](/home/j/WatchTowerPlan/docs/planning/prds/validated_core_and_pack_data_shape_convergence.md) | `2026-03-16T05:56:22Z` | Aligned the pack-settings startup contract, flattened registries, retired prototype pack bridges, classified current pack-local projections, and reran clean validation. |
 | `trace.core_split_compatibility_wrapper_retirement` | `completed` | [core_split_compatibility_wrapper_retirement.md](/home/j/WatchTowerPlan/docs/planning/prds/core_split_compatibility_wrapper_retirement.md) | `2026-03-16T04:15:30Z` | Delivered and validated |
@@ -75,4 +74,4 @@
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T08:12:00Z`_
+_Updated At: `2026-03-16T09:10:00Z`_

@@ -129,9 +129,7 @@ Defines the technical design for a canonical planning catalog, a machine authori
 - `core/control_plane/indexes/planning/`
 - `core/control_plane/registries/`
 - `core/control_plane/schemas/artifacts/`
-- `core/control_plane/examples/valid/`
 - `core/control_plane/registries/schema_catalog.json`
-- `core/control_plane/registries/artifact_type_registry.json`
 - `core/control_plane/registries/validator_registry.json`
 - `core/python/src/watchtower_core/control_plane/`
 - `core/python/src/watchtower_core/repo_ops/sync/`

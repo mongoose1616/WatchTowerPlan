@@ -7,11 +7,11 @@ summary: Remove the retained artifact type and artifact role registries if no li
   references.
 type: task
 status: active
-task_status: ready
+task_status: done
 task_kind: chore
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T08:12:00Z'
+updated_at: '2026-03-16T08:38:00Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -42,3 +42,8 @@ Remove the retained artifact type and artifact role registries if no live reusab
 ## Done When
 - The retained artifact type and artifact role registries are either removed cleanly or explicitly justified as still required by a live consumer.
 - The cleanup does not leave broken acceptance or traceability references behind.
+
+## Outcome
+- Runtime and test consumer audit stayed empty across `core/python/src` and `core/python/tests`.
+- The artifact type and artifact role registries, their schemas, and their validator and schema-catalog entries were retired.
+- Historical acceptance, evidence, and task surfaces were reconciled so the repo no longer advertises the retired families as active control-plane artifacts.

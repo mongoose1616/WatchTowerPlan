@@ -199,6 +199,18 @@ def _entry_to_document(entry: RepositoryPathEntry) -> dict[str, object]:
     return document
 
 
+def _filter_existing_related_paths(
+    repo_root: Path, related_paths: tuple[str, ...] | list[str]
+) -> tuple[str, ...]:
+    retained: list[str] = []
+    for related_path in related_paths:
+        resolved_path = repo_root / related_path.rstrip("/")
+        directory_path = repo_root / related_path
+        if resolved_path.exists() or directory_path.exists():
+            retained.append(related_path)
+    return tuple(retained)
+
+
 class RepositoryPathIndexSyncService:
     """Build and write the curated repository path index from README inventories."""
 
@@ -238,7 +250,11 @@ class RepositoryPathIndexSyncService:
                     audience_hint=_audience_hint(row.path, surface_kind),
                     aliases=current.aliases if current is not None else (),
                     tags=current.tags if current is not None else (),
-                    related_paths=current.related_paths if current is not None else (),
+                    related_paths=(
+                        _filter_existing_related_paths(self._repo_root, current.related_paths)
+                        if current is not None
+                        else ()
+                    ),
                 )
 
         entries = [

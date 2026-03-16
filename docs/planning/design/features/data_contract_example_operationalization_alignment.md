@@ -30,7 +30,7 @@ Defines the technical design boundary for Data Contract Example Operationalizati
 - An expansive internal standards review confirmed that concrete control-plane example artifacts do not reliably resolve back to their governing data-contract standards through standards lookup.
 
 ## Scope and Feature Boundary
-- Cover the data-contract standards whose governed artifact families have concrete example files under `core/control_plane/examples/**` but do not currently publish family-specific example operationalization coverage.
+- Cover the data-contract standards whose governed artifact families have concrete example files under `the retired control-plane example corpus` but do not currently publish family-specific example operationalization coverage.
 - Cover the companion regression surfaces needed to prove that example-file lookup resolves to the governing standard through the live standard index and query path.
 - Exclude any schema or example-payload content changes; the defect is in standards operationalization coverage, not the artifact payloads themselves.
 
@@ -65,7 +65,7 @@ Defines the technical design boundary for Data Contract Example Operationalizati
 - Requires coordinated updates across many data-contract standards plus synced derived surfaces and tests.
 
 ### Option 3
-- Add broad directory-level example paths such as `core/control_plane/examples/valid/indexes/` to every affected index standard.
+- Add broad directory-level example paths such as `retired valid example index fixture ` to every affected index standard.
 - Minimizes the number of new operationalization entries.
 - Overmatches unrelated example families and weakens lookup precision by making multiple index standards govern the same concrete example file.
 
@@ -91,7 +91,7 @@ Defines the technical design boundary for Data Contract Example Operationalizati
 
 ## Affected Surfaces
 - docs/standards/data_contracts/
-- core/control_plane/examples/
+- the retired control-plane example corpus
 - core/control_plane/indexes/standards/standard_index.v1.json
 - core/python/tests/integration/test_control_plane_artifacts.py
 - core/python/tests/unit/test_cli_query_commands.py
@@ -107,5 +107,5 @@ Defines the technical design boundary for Data Contract Example Operationalizati
 ## References
 - docs/standards/data_contracts/standard_index_standard.md
 - docs/standards/data_contracts/schema_standard.md
-- core/control_plane/examples/valid/indexes/standard_index.v1.example.json
-- core/control_plane/examples/valid/registries/authority_map.v1.example.json
+- retired valid example index fixture standard_index.v1.example.json
+- retired valid example registry fixture authority_map.v1.example.json

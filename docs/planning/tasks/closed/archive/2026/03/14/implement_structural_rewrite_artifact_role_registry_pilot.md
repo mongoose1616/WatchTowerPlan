@@ -14,9 +14,6 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md
-- core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json
-- core/control_plane/registries/artifact_role_registry.json
-- core/control_plane/registries/artifact_type_registry.json
 - core/control_plane/registries/schema_catalog.json
 - core/control_plane/registries/validator_registry.json
 - core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json

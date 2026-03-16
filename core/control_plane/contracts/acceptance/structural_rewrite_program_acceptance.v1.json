@@ -154,14 +154,14 @@
     },
     {
       "acceptance_id": "ac.structural_rewrite_program.009",
-      "summary": "The first approved Phase 2 slice publishes the dedicated artifact-role registry family and its schema-backed companions without changing the five public planning-authority answers.",
+      "summary": "The first approved Phase 2 slice remains recorded through its surviving pilot documents and companion control-plane evidence without changing the five public planning-authority answers, even after the dedicated registry family itself was later retired.",
       "source_requirement_ids": [
         "req.structural_rewrite_program.007"
       ],
       "validation_targets": [
-        "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
-        "core/control_plane/registries/artifact_role_registry.json",
-        "core/control_plane/registries/artifact_type_registry.json",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",

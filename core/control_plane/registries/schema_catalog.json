@@ -254,32 +254,6 @@
       ]
     },
     {
-      "schema_id": "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1",
-      "title": "Artifact Role Registry",
-      "description": "Schema for the bounded artifact-role registry artifact family.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "artifact_role_registry",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
-      "aliases": [
-        "artifact role metadata schema"
-      ]
-    },
-    {
-      "schema_id": "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1",
-      "title": "Artifact Type Registry",
-      "description": "Schema for machine-readable artifact-type registry artifacts.",
-      "status": "active",
-      "schema_family": "artifact",
-      "subject_kind": "artifact_type_registry",
-      "version": "v1",
-      "canonical_path": "core/control_plane/schemas/artifacts/artifact_type_registry.v1.schema.json",
-      "aliases": [
-        "artifact kind catalog schema"
-      ]
-    },
-    {
       "schema_id": "urn:watchtower:schema:artifacts:indexes:task-index:v1",
       "title": "Task Index",
       "description": "Schema for machine-readable task index artifacts.",

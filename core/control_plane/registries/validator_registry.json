@@ -19,20 +19,6 @@
       ]
     },
     {
-      "id": "validator.control_plane.artifact_role_registry",
-      "title": "Artifact Role Registry Validator",
-      "description": "Validates bounded artifact-role registry artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "artifact_role_registry",
-      "applies_to": [
-        "core/control_plane/registries/artifact_role_registry.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:registries:artifact-role-registry:v1"
-      ]
-    },
-    {
       "id": "validator.control_plane.authority_map",
       "title": "Authority Map Validator",
       "description": "Validates authored authority-map registry artifacts.",
@@ -324,20 +310,6 @@
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:registries:schema-catalog:v1"
-      ]
-    },
-    {
-      "id": "validator.control_plane.artifact_type_registry",
-      "title": "Artifact Type Registry Validator",
-      "description": "Validates machine-readable artifact-type registry artifacts.",
-      "status": "active",
-      "engine": "json_schema",
-      "artifact_kind": "artifact_type_registry",
-      "applies_to": [
-        "core/control_plane/registries/artifact_type_registry.json"
-      ],
-      "schema_ids": [
-        "urn:watchtower:schema:artifacts:registries:artifact-type-registry:v1"
       ]
     },
     {

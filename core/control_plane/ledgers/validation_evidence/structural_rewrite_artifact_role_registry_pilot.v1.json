@@ -42,12 +42,11 @@
     },
     {
       "check_id": "check.structural_rewrite_program.artifact_role_registry_family",
-      "title": "Dedicated artifact-role registry family published",
+      "title": "Dedicated artifact-role registry pilot was published and remains documented after retirement",
       "result": "passed",
       "subject_paths": [
-        "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
-        "core/control_plane/registries/artifact_role_registry.json",
-        "core/control_plane/registries/artifact_type_registry.json",
+        "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
+        "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
         "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
@@ -57,7 +56,7 @@
         "ac.structural_rewrite_program.008",
         "ac.structural_rewrite_program.009"
       ],
-      "notes": "The first slice publishes the schema-backed family and its required companions without introducing runtime consumers."
+      "notes": "The first slice published the schema-backed family and its required companions without introducing runtime consumers, and the surviving pilot records remain aligned after the later retirement of the unused registry family."
     },
     {
       "check_id": "check.structural_rewrite_program.public_planning_parity_unchanged",

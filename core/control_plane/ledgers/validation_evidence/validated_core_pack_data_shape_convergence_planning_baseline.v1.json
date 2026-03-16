@@ -55,13 +55,12 @@
     },
     {
       "check_id": "check.validated_core_pack_data_shape_convergence.contract_cutover",
-      "title": "Pack-settings contract cutover is covered",
+      "title": "Pack-settings contract cutover and retained startup registry set are covered",
       "result": "passed",
       "subject_paths": [
         "core/control_plane/manifests/pack_settings.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
-        "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/README.md",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/control_plane/workspace.py",
@@ -78,7 +77,7 @@
         "ac.validated_core_pack_data_shape_convergence.002",
         "ac.validated_core_pack_data_shape_convergence.003"
       ],
-      "notes": "The contract-cutover slice published the pack-settings load root, flattened the retained registries, removed the runtime-manifest and policy bridges, classified current planning indexes as repo-local projections, and refreshed loader and regression coverage around the simplified boundary."
+      "notes": "The contract-cutover slice published the pack-settings load root, flattened the retained startup registries, removed the runtime-manifest and policy bridges, later retired the unused artifact inventory registries, classified current planning indexes as repo-local projections, and refreshed loader and regression coverage around the simplified boundary."
     }
   ],
   "related_paths": [

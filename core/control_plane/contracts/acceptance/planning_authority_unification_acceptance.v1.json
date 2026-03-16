@@ -39,7 +39,6 @@
         "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
         "core/control_plane/registries/schema_catalog.json",
-        "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/validator_registry.json",
         "docs/planning/tasks/closed/archive/2026/03/11/planning_catalog_and_query.md"
       ],

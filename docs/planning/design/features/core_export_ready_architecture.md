@@ -140,7 +140,7 @@ Defines the in-repo architecture needed to separate reusable core behavior from 
 - `core/python/src/watchtower_core/evidence/`
 - `core/python/src/watchtower_core/integrations/github/`
 - `core/control_plane/schemas/interfaces/`
-- `core/control_plane/examples/`
+- `the retired control-plane example corpus`
 - `core/control_plane/indexes/`
 - `docs/commands/core_python/`
 - `docs/standards/`

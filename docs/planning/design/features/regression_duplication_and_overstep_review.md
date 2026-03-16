@@ -122,7 +122,7 @@ Defines the review and remediation design for traceability joins, governed compa
 - core/control_plane/ledgers/validation_evidence/
 - core/control_plane/indexes/
 - core/control_plane/schemas/interfaces/documentation/
-- core/control_plane/examples/
+- the retired control-plane example corpus
 - core/python/src/watchtower_core/repo_ops/
 - core/python/src/watchtower_core/validation/
 - core/python/tests/

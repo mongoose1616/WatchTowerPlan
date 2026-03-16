@@ -38,7 +38,7 @@ Defines the technical design boundary for Control Plane Example Validation Harde
 
 ## Scope and Feature Boundary
 - Cover the governed control-plane valid example corpus, the aggregate validation path that should catch valid-example drift, and the integration audits that prove canonicality and invalid-example behavior.
-- Do not redesign artifact schemas or broaden validation to pack-owned artifacts outside `core/control_plane/examples/`.
+- Do not redesign artifact schemas or broaden validation to pack-owned artifacts outside `the retired control-plane example corpus`.
 
 ## Current-State Context
 - `watchtower-core validate all` currently passes even while two canonical valid examples are schema-invalid because the artifact family only walks live governed artifact targets and a small subset of interface examples.
@@ -94,7 +94,7 @@ Defines the technical design boundary for Control Plane Example Validation Harde
 - If a governed example cannot resolve to one explicit schema ID, the validation flow must fail rather than silently skipping or guessing.
 
 ## Affected Surfaces
-- core/control_plane/examples/valid/indexes/
+- retired valid example index fixture 
 - core/python/src/watchtower_core/repo_ops/validation/all.py
 - core/python/tests/integration/
 - docs/commands/core_python/watchtower_core_validate_all.md
@@ -110,7 +110,7 @@ Defines the technical design boundary for Control Plane Example Validation Harde
 
 ## References
 - docs/planning/prds/control_plane_example_validation_hardening.md
-- core/control_plane/examples/valid/indexes/foundation_index.v1.example.json
-- core/control_plane/examples/valid/indexes/traceability_index.v1.example.json
+- retired valid example index fixture foundation_index.v1.example.json
+- retired valid example index fixture traceability_index.v1.example.json
 - core/python/src/watchtower_core/repo_ops/validation/all.py
 - docs/standards/data_contracts/schema_standard.md

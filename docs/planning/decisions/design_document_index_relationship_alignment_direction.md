@@ -66,7 +66,7 @@ Align the design-document index to the authored standards contract by projecting
 - `docs/standards/documentation/feature_design_md_standard.md`
 - `docs/standards/documentation/implementation_plan_md_standard.md`
 - `docs/templates/implementation_plan_template.md`
-- `core/control_plane/examples/valid/indexes/design_document_index.v1.example.json`
+- `retired valid example index fixture design_document_index.v1.example.json`
 - `core/python/src/watchtower_core/repo_ops/sync/design_document_index.py`
 - `core/python/src/watchtower_core/repo_ops/sync/design_tracking.py`
 - `core/python/tests/`
@@ -110,4 +110,4 @@ Adopt option 3. The repository should preserve the broader authored relationship
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- core/control_plane/examples/valid/indexes/design_document_index.v1.example.json
+- retired valid example index fixture design_document_index.v1.example.json

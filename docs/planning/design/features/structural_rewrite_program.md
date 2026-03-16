@@ -150,7 +150,7 @@ Defines the repo-native execution design for completing rewrite Phase 0 and Phas
 - `core/control_plane/ledgers/validation_evidence/`
 - `core/control_plane/schemas/artifacts/`
 - `core/control_plane/registries/`
-- `core/control_plane/examples/`
+- `the retired control-plane example corpus`
 
 ## Design Guardrails
 - Do not treat prior hotspot counts as authoritative once the live repo has moved.

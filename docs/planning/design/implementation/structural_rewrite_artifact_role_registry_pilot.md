@@ -92,17 +92,15 @@ Implements the first bounded Phase 2 slice by publishing an additive, read-only 
 
 ## Authored Truth and Derived Outputs
 ### Authored truth
-- `core/control_plane/registries/artifact_role_registry.json`
+- Historical authored truth for this slice was the dedicated artifact-role registry family, which was later retired after consumer audit confirmed it never became a live runtime dependency.
 
 ### Derived outputs
 - None in this slice.
-- Companion publication surfaces are required same-change artifacts, not runtime-derived outputs:
-  - `core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json`
-  - `core/control_plane/registries/artifact_type_registry.json`
+- Companion publication surfaces were required same-change artifacts, not runtime-derived outputs. The surviving companion records after the later retirement are:
   - `core/control_plane/registries/schema_catalog.json`
   - `core/control_plane/registries/validator_registry.json`
-  - `core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json`
-  - `core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json`
+  - `core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json`
+  - `core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json`
 
 ## Current Consumers
 - Current consumers are governance and validation surfaces only:

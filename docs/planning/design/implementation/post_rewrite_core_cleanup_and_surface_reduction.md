@@ -7,7 +7,7 @@ summary: Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded i
 type: implementation_plan
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-16T07:00:01Z'
+updated_at: '2026-03-16T08:45:00Z'
 audience: shared
 authority: supporting
 applies_to:
@@ -26,7 +26,7 @@ applies_to:
 - `Linked Decisions`: `decision.post_rewrite_core_cleanup_and_surface_reduction_direction`
 - `Source Designs`: `design.features.post_rewrite_core_cleanup_and_surface_reduction`
 - `Linked Acceptance Contracts`: `None`
-- `Updated At`: `2026-03-16T07:00:01Z`
+- `Updated At`: `2026-03-16T08:45:00Z`
 
 ## Summary
 Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementation slice.
@@ -57,7 +57,8 @@ Breaks Post-Rewrite Core Cleanup and Surface Reduction into a bounded implementa
 3. Audit and retire the compatibility and intake contract families if no live consumer exists, repair companion surfaces, rerun validation, and commit the slice.
 4. Remove example-driven validation from the active baseline, reconcile standards and historical acceptance surfaces that still point at fixtures, rerun validation, and commit the slice.
 5. Audit and retire the retained artifact type and artifact role registries if no live consumer exists, repair companion surfaces, rerun validation, and commit the slice.
-6. Run full validation plus a confirmation-pass review loop, create follow-on tasks only if a new concrete issue remains, otherwise close the trace.
+6. Reconcile stale historical planning and repository-path references that still advertise the retired example corpus as a live repository family.
+7. Run full validation plus a confirmation-pass review loop, create follow-on tasks only if a new concrete issue remains, otherwise close the trace.
 
 ## Risks
 - Contract, fixture, or registry retirements could uncover hidden documentation or query dependencies outside the initial audit set.

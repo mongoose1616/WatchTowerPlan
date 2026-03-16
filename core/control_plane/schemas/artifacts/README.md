@@ -8,8 +8,6 @@
 |---|---|
 | `core/control_plane/schemas/artifacts/README.md` | Describes the purpose of the artifact schema directory and its current contents. |
 | `core/control_plane/schemas/artifacts/acceptance_contract.v1.schema.json` | Schema for the machine-readable acceptance-contract artifact family. |
-| `core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json` | Schema for the bounded artifact-role registry artifact family. |
-| `core/control_plane/schemas/artifacts/artifact_type_registry.v1.schema.json` | Schema for the machine-readable artifact-type registry artifact family. |
 | `core/control_plane/schemas/artifacts/authority_map.v1.schema.json` | Schema for the authored authority-map registry artifact family. |
 | `core/control_plane/schemas/artifacts/command_index.v1.schema.json` | Schema for the machine-readable command-index artifact family. |
 | `core/control_plane/schemas/artifacts/coordination_index.v1.schema.json` | Schema for the machine-readable coordination-index artifact family. |
@@ -36,4 +34,4 @@
 
 ## Notes
 - `core/control_plane/schemas/interfaces/packs/` holds the pack-facing startup contracts such as `pack_settings`, `governance_surface_map`, `path_pattern_registry`, `status_registry`, `actor_registry`, and `artifact_index`.
-- This directory still carries retained repo-local support families such as `artifact_type_registry`, `artifact_role_registry`, and the current migration or evidence record schemas consumed by the internal planning-and-implementation pack.
+- This directory carries the active control-plane artifact schemas plus the current migration and evidence record schemas consumed by the internal planning-and-implementation pack.

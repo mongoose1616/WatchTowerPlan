@@ -125,7 +125,7 @@ This document defines the feature-level technical design for deterministic local
 - `docs/planning/design/features/schema_resolution_and_index_search.md`
 - `core/control_plane/schemas/artifacts/` for the schema catalog artifact schema
 - `core/control_plane/registries/` for the live schema catalog artifact
-- `core/control_plane/examples/valid/registries/` and `core/control_plane/examples/invalid/registries/`
+- `retired valid example registry fixture ` and `retired invalid example registry fixture `
 - Future `core/python/src/watchtower_core/control_plane/` resolver and loader modules
 - Future `core/python/tests/unit/` and `core/python/tests/integration/` coverage for schema resolution and index search
 

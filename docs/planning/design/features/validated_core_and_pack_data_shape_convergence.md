@@ -75,15 +75,15 @@ Defines the technical design boundary for Validated Core and Pack Data Shape Con
 | `docs/planning/**` | Pack-owned human source artifacts for the plan and implementation domain. |
 | `core/control_plane/manifests/pack_settings.json` | Reusable-core load root for one domain pack. |
 | `core/control_plane/registries/schema_catalog.json`, `validator_registry.json`, `governance_surface_map.json`, `path_pattern_registry.json`, `status_registry.json`, `actor_registry.json` | Retained reusable-core governance and validation surfaces that `PackContext` loads directly. |
-| `core/control_plane/registries/artifact_type_registry.json`, `artifact_role_registry.json`, `authority_map.json`, `workflow_metadata_registry.json` | Current pack-owned governance metadata retained during transition; not yet the future generic pack artifact or workflow index model. |
+| `core/control_plane/registries/authority_map.json`, `workflow_metadata_registry.json` | Current pack-owned governance metadata retained during transition; not yet the future generic pack artifact or workflow index model. |
 | `core/control_plane/indexes/commands/`, `routes/`, `repository_paths/` | Derived helper indexes that support reusable-core lookup and routing behavior. |
 | `core/control_plane/indexes/prds/`, `decisions/`, `design_documents/`, `tasks/`, `initiatives/`, `planning/`, `coordination/`, `traceability/` | Current plan-domain pack projections derived from local planning artifacts; they remain repo-local and are outside `PackContext`. |
-| `core/control_plane/examples/**` | Transitional schema-proof fixtures; useful for current validation but not part of the pack load root. |
+| `the retired control-plane example corpus` | Transitional schema-proof fixtures; useful for current validation but not part of the pack load root. |
 | `core/control_plane/ledgers/**` | Transitional pack-local history and evidence surfaces; retained for current governance flows but not part of the reusable-core contract. |
 
 ### Data and Interface Impacts
 - New pack-settings-driven load root plus supporting registries for path patterns, statuses, actors, governance surfaces, validators, workflows, and schema lookup.
-- Updated schema catalog, validator registry, and artifact type registry reflecting the reduced active contract set.
+- Updated schema catalog and validator registry reflecting the reduced active contract set.
 - Removed runtime-manifest, policy-catalog, release-policy, and retired prototype interface families.
 - Explicit classification of current planning indexes as repo-local derived pack projections and of current examples or ledgers as transitional support surfaces rather than startup inputs.
 

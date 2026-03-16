@@ -34,7 +34,7 @@ Update the affected data-contract standards to publish family-specific valid and
 - Another expansive internal standards review confirmed that concrete control-plane example artifacts do not resolve back to their governing family standards through standards lookup.
 
 ## Current Context and Constraints
-- `watchtower-core query standards --operationalization-path core/control_plane/examples/valid/indexes/standard_index.v1.example.json --format json` omits `std.data_contracts.standard_index`.
+- `watchtower-core query standards --operationalization-path retired valid example index fixture standard_index.v1.example.json --format json` omits `std.data_contracts.standard_index`.
 - The same lookup blind spot reproduces for representative command-index, initiative-index, design-document-index, and traceability-index example artifacts, and the pattern extends beyond indexes into contract, ledger, and registry example families.
 - The standards query path already supports bounded repo-relative glob matching, so the gap is authored operationalization coverage rather than missing runtime capability.
 
@@ -59,7 +59,7 @@ Update the affected data-contract standards to publish family-specific valid and
 - Preserves the blind spot where the governing data-contract family standard is undiscoverable from the example artifact itself.
 
 ### Option 2
-- Add broad example-directory operationalization paths such as `core/control_plane/examples/valid/indexes/` to the affected standards.
+- Add broad example-directory operationalization paths such as `retired valid example index fixture ` to the affected standards.
 - Reduces the number of new operationalization entries.
 - Overmatches neighboring example families and weakens the precision of standards lookup.
 
@@ -88,5 +88,5 @@ Accept option 3. Publish family-specific valid and invalid example globs in the 
 ## References
 - docs/standards/data_contracts/standard_index_standard.md
 - docs/standards/data_contracts/schema_standard.md
-- core/control_plane/examples/valid/indexes/standard_index.v1.example.json
-- core/control_plane/examples/valid/contracts/acceptance_contract.v1.example.json
+- retired valid example index fixture standard_index.v1.example.json
+- retired valid example contract fixture acceptance_contract.v1.example.json

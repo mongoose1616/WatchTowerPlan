@@ -38,7 +38,7 @@ The comprehensive project review found two live control-plane drift defects that
 
 ## Goals
 - Repair the invalid canonical valid examples so they again prove their schemas correctly.
-- Extend the aggregate validation baseline to cover the governed valid example corpus under `core/control_plane/examples/valid/`.
+- Extend the aggregate validation baseline to cover the governed valid example corpus under `the retired valid example corpus `.
 - Add exhaustive regression coverage for valid and invalid examples and restore the markdown `applies_to` canonicality audit to real recursive coverage.
 
 ## Non-Goals
@@ -63,8 +63,8 @@ The comprehensive project review found two live control-plane drift defects that
 - The follow-up review pass must confirm the fix closes the example-validation gap rather than only patching the two currently broken examples.
 
 ## References
-- core/control_plane/examples/valid/indexes/foundation_index.v1.example.json
-- core/control_plane/examples/valid/indexes/traceability_index.v1.example.json
+- retired valid example index fixture foundation_index.v1.example.json
+- retired valid example index fixture traceability_index.v1.example.json
 - core/python/src/watchtower_core/repo_ops/validation/all.py
 - core/python/tests/integration/test_control_plane_artifacts.py
 - docs/standards/validations/repository_validation_standard.md

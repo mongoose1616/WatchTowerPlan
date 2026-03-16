@@ -49,7 +49,7 @@ Repair the invalid valid examples, include the governed valid example corpus in 
 - [engineering_design_principles.md](/home/j/WatchTowerPlan/docs/foundations/engineering_design_principles.md): fix the reproduced drift at the narrowest coherent boundary and keep the system fail closed.
 
 ## Affected Surfaces
-- core/control_plane/examples/valid/indexes/
+- retired valid example index fixture 
 - core/python/src/watchtower_core/repo_ops/validation/all.py
 - core/python/tests/integration/
 - docs/commands/core_python/watchtower_core_validate_all.md

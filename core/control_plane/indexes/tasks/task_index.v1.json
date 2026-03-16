@@ -3322,12 +3322,12 @@
       "title": "Retire inventory-only artifact type and role registries",
       "summary": "Remove the retained artifact type and artifact role registries if no live reusable-core or pack consumer still reads them and reconcile their historical references.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
-      "updated_at": "2026-03-16T08:12:00Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_artifact_type_and_role_registries.md",
+      "updated_at": "2026-03-16T08:38:00Z",
       "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
       "depends_on": [
         "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
@@ -3369,6 +3369,34 @@
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/repo_ops/validation/",
         "docs/standards/engineering/python_workspace_standard.md"
+      ]
+    },
+    {
+      "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.example_history_reconciliation.009",
+      "title": "Reconcile retired example corpus historical references",
+      "summary": "Remove stale planning and derived-surface references that still name the retired control-plane example corpus as a live repository path.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "chore",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/reconcile_retired_example_corpus_historical_references.md",
+      "updated_at": "2026-03-16T09:02:00Z",
+      "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
+      "depends_on": [
+        "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008"
+      ],
+      "related_ids": [
+        "prd.post_rewrite_core_cleanup_and_surface_reduction",
+        "design.features.post_rewrite_core_cleanup_and_surface_reduction",
+        "design.implementation.post_rewrite_core_cleanup_and_surface_reduction",
+        "decision.post_rewrite_core_cleanup_and_surface_reduction_direction",
+        "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
+      ],
+      "applies_to": [
+        "docs/planning/",
+        "core/control_plane/indexes/repository_paths/",
+        "core/python/tests/"
       ]
     },
     {
@@ -3485,15 +3513,15 @@
       "title": "Validate and close post-rewrite core cleanup",
       "summary": "Run full validation, perform one more review loop, and close the trace when the added cleanup slices land and no new concrete issue remains in scope.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "done",
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
-      "updated_at": "2026-03-16T07:00:01Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_post_rewrite_core_cleanup.md",
+      "updated_at": "2026-03-16T09:10:00Z",
       "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
       "depends_on": [
-        "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008"
+        "task.post_rewrite_core_cleanup_and_surface_reduction.example_history_reconciliation.009"
       ],
       "related_ids": [
         "prd.post_rewrite_core_cleanup_and_surface_reduction",
@@ -4921,9 +4949,6 @@
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
-        "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
-        "core/control_plane/registries/artifact_role_registry.json",
-        "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
@@ -4959,8 +4984,7 @@
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
-        "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json",
-        "core/control_plane/registries/artifact_role_registry.json"
+        "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ]
     },
     {

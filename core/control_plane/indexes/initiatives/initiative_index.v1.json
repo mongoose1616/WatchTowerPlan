@@ -3117,7 +3117,6 @@
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/planning_authority_unification_planning_baseline.v1.json",
         "core/control_plane/registries/",
-        "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/authority_map.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
@@ -3363,51 +3362,14 @@
       "title": "Post-Rewrite Core Cleanup and Surface Reduction PRD",
       "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "current_phase": "execution",
-      "updated_at": "2026-03-16T08:12:00Z",
-      "open_task_count": 2,
-      "blocked_task_count": 1,
+      "initiative_status": "completed",
+      "current_phase": "closed",
+      "updated_at": "2026-03-16T09:10:00Z",
+      "open_task_count": 0,
+      "blocked_task_count": 0,
       "key_surface_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
-      "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-      "next_surface_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
-      "primary_owner": "repository_maintainer",
-      "active_owners": [
-        "repository_maintainer"
-      ],
-      "active_task_ids": [
-        "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
-        "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005"
-      ],
-      "active_task_summaries": [
-        {
-          "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
-          "title": "Retire inventory-only artifact type and role registries",
-          "task_status": "ready",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
-          "is_actionable": true,
-          "depends_on": [
-            "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
-          ]
-        },
-        {
-          "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005",
-          "title": "Validate and close post-rewrite core cleanup",
-          "task_status": "backlog",
-          "priority": "high",
-          "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
-          "is_actionable": false,
-          "depends_on": [
-            "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008"
-          ]
-        }
-      ],
-      "blocked_by_task_ids": [
-        "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008"
-      ],
+      "next_action": "No further default action. Initiative is completed.",
+      "next_surface_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
       "prd_ids": [
         "prd.post_rewrite_core_cleanup_and_surface_reduction"
       ],
@@ -3423,6 +3385,7 @@
       "task_ids": [
         "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
         "task.post_rewrite_core_cleanup_and_surface_reduction.bootstrap.001",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.example_history_reconciliation.009",
         "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
         "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
         "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006",
@@ -3439,11 +3402,17 @@
       "evidence_ids": [
         "evidence.post_rewrite_core_cleanup_and_surface_reduction.planning_baseline"
       ],
+      "closed_at": "2026-03-16T07:50:26Z",
+      "closure_reason": "Repaired the workspace validation regression, generalized pack-surface loading, retired inventory-only control-plane families and example validation, reconciled stale historical references, and reran clean validation.",
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+        "core/control_plane/indexes/repository_paths/",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
         "core/control_plane/manifests/",
         "core/control_plane/registries/",
@@ -3460,6 +3429,7 @@
         "core/python/tests/unit/test_pack_context.py",
         "docs/planning/",
         "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
         "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
         "docs/planning/design/design_tracking.md",
         "docs/planning/design/features/post_rewrite_core_cleanup_and_surface_reduction.md",
@@ -3470,12 +3440,13 @@
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/reconcile_retired_example_corpus_historical_references.md",
         "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
         "docs/planning/tasks/closed/archive/2026/03/16/retire_example_driven_validation_and_fixture_corpus.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_artifact_type_and_role_registries.md",
         "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_compatibility_and_intake_contract_families.md",
         "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
-        "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
-        "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_post_rewrite_core_cleanup.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/standards/data_contracts/",
         "docs/standards/engineering/python_workspace_standard.md"
@@ -3483,7 +3454,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence prepared at 2026-03-16T06:28:27Z for trace.post_rewrite_core_cleanup_and_surface_reduction."
+      "notes": "Evidence refreshed at 2026-03-16T07:50:26Z after all cleanup slices reached terminal state, the initiative was closed as completed, and the canonical planning surfaces were refreshed for trace.post_rewrite_core_cleanup_and_surface_reduction."
     },
     {
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
@@ -4935,13 +4906,10 @@
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
         "core/control_plane/registries/",
-        "core/control_plane/registries/artifact_role_registry.json",
-        "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/authority_map.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/schemas/artifacts/artifact_role_registry.v1.schema.json",
         "core/python/",
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/cli/closeout_handlers.py",
@@ -5596,7 +5564,6 @@
         "core/control_plane/manifests/README.md",
         "core/control_plane/manifests/pack_settings.json",
         "core/control_plane/registries/README.md",
-        "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
         "core/control_plane/schemas/artifacts/",

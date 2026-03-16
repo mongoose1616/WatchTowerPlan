@@ -84,4 +84,4 @@ Together these defects make the design-document index less trustworthy as the ma
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- core/control_plane/examples/valid/indexes/design_document_index.v1.example.json
+- retired valid example index fixture design_document_index.v1.example.json

@@ -114,8 +114,8 @@ Defines the technical design boundary for Standard, Runtime, and Route Explicitn
 - workflows/ROUTING_TABLE.md
 - core/python/tests/
 - core/control_plane/schemas/artifacts/standard_index.v1.schema.json
-- core/control_plane/examples/valid/indexes/standard_index.v1.example.json
-- core/control_plane/examples/invalid/indexes/standard_index_external_without_urls.v1.example.json
+- retired valid example index fixture standard_index.v1.example.json
+- retired invalid example index fixture standard_index_external_without_urls.v1.example.json
 
 ## Design Guardrails
 - Do not move standard-operationalization authority into a new standalone registry when the standard docs themselves can carry the source metadata.

@@ -5,7 +5,7 @@
   "status": "active",
   "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
   "overall_result": "passed",
-  "recorded_at": "2026-03-16T06:28:27Z",
+  "recorded_at": "2026-03-16T07:50:26Z",
   "source_prd_ids": [
     "prd.post_rewrite_core_cleanup_and_surface_reduction"
   ],
@@ -21,7 +21,7 @@
   "checks": [
     {
       "check_id": "check.post_rewrite_core_cleanup_and_surface_reduction.planning_baseline",
-      "title": "Bootstrap planning baseline is aligned",
+      "title": "Planning chain, completed cleanup task set, and terminal closeout reconcile",
       "result": "passed",
       "subject_paths": [
         "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
@@ -29,30 +29,53 @@
         "docs/planning/design/implementation/post_rewrite_core_cleanup_and_surface_reduction.md",
         "docs/planning/decisions/post_rewrite_core_cleanup_and_surface_reduction_direction.md",
         "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
-        "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_compatibility_and_intake_contract_families.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_example_driven_validation_and_fixture_corpus.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_artifact_type_and_role_registries.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/reconcile_retired_example_corpus_historical_references.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_post_rewrite_core_cleanup.md"
       ],
       "subject_ids": [
         "prd.post_rewrite_core_cleanup_and_surface_reduction",
         "design.features.post_rewrite_core_cleanup_and_surface_reduction",
         "design.implementation.post_rewrite_core_cleanup_and_surface_reduction",
         "task.post_rewrite_core_cleanup_and_surface_reduction.bootstrap.001",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.workspace_validation_contract.002",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.generic_pack_surface_loading.003",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_manifest_retirement.004",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
+        "task.post_rewrite_core_cleanup_and_surface_reduction.example_history_reconciliation.009",
         "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction",
-        "decision.post_rewrite_core_cleanup_and_surface_reduction_direction"
+        "decision.post_rewrite_core_cleanup_and_surface_reduction_direction",
+        "evidence.post_rewrite_core_cleanup_and_surface_reduction.planning_baseline"
       ],
       "validator_id": "validator.control_plane.validation_evidence",
       "acceptance_ids": [
         "ac.post_rewrite_core_cleanup_and_surface_reduction.001"
       ],
-      "notes": "Bootstrap write mode published the initial planning chain, acceptance contract, evidence artifact, and bootstrap task in canonical repository paths."
+      "notes": "The cleanup trace closed after the workspace validation repair, pack-surface loading generalization, retirement of inventory-only manifest, contract, example-corpus, and artifact-registry families, the stale historical-example reconciliation slice, `watchtower-core sync all --write --format json`, `watchtower-core validate acceptance --trace-id trace.post_rewrite_core_cleanup_and_surface_reduction --format json`, and terminal initiative closeout at 2026-03-16T07:50:26Z."
     }
   ],
   "related_paths": [
     "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
+    "core/control_plane/indexes/coordination/coordination_index.v1.json",
+    "core/control_plane/indexes/initiatives/initiative_index.v1.json",
+    "core/control_plane/indexes/traceability/traceability_index.v1.json",
     "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
     "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
     "docs/planning/tasks/task_tracking.md"
   ],
-  "notes": "Planning baseline evidence prepared at 2026-03-16T06:28:27Z for trace.post_rewrite_core_cleanup_and_surface_reduction.",
+  "notes": "Evidence refreshed at 2026-03-16T07:50:26Z after all cleanup slices reached terminal state, the initiative was closed as completed, and the canonical planning surfaces were refreshed for trace.post_rewrite_core_cleanup_and_surface_reduction.",
   "source_decision_ids": [
     "decision.post_rewrite_core_cleanup_and_surface_reduction_direction"
   ]

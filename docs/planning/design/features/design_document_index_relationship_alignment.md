@@ -121,7 +121,7 @@ Defines the technical design boundary for Design Document Index Relationship Ali
 - `docs/standards/documentation/feature_design_md_standard.md`
 - `docs/standards/documentation/implementation_plan_md_standard.md`
 - `docs/templates/implementation_plan_template.md`
-- `core/control_plane/examples/valid/indexes/design_document_index.v1.example.json`
+- `retired valid example index fixture design_document_index.v1.example.json`
 - `core/python/src/watchtower_core/repo_ops/sync/design_document_index.py`
 - `core/python/src/watchtower_core/repo_ops/sync/design_tracking.py`
 - `core/python/tests/`
@@ -141,4 +141,4 @@ Defines the technical design boundary for Design Document Index Relationship Ali
 - docs/standards/documentation/feature_design_md_standard.md
 - docs/standards/documentation/implementation_plan_md_standard.md
 - docs/templates/implementation_plan_template.md
-- core/control_plane/examples/valid/indexes/design_document_index.v1.example.json
+- retired valid example index fixture design_document_index.v1.example.json

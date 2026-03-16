@@ -41,5 +41,5 @@ Remove rewrite-era example-fixture validation from the active baseline and recon
 - Repair standards, acceptance contracts, and historical docs that currently point at example paths as active enforcement surfaces.
 
 ## Done When
-- The active validation baseline no longer depends on `core/control_plane/examples/**`.
+- The active validation baseline no longer depends on `the retired control-plane example corpus`.
 - Example-fixture references are reconciled across code, tests, standards, and acceptance surfaces in the same slice.

@@ -7,7 +7,7 @@ summary: Defines the technical design boundary for Post-Rewrite Core Cleanup and
 type: feature_design
 status: active
 owner: repository_maintainer
-updated_at: '2026-03-16T07:00:01Z'
+updated_at: '2026-03-16T08:45:00Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -25,7 +25,7 @@ applies_to:
 - `Linked PRDs`: `prd.post_rewrite_core_cleanup_and_surface_reduction`
 - `Linked Decisions`: `decision.post_rewrite_core_cleanup_and_surface_reduction_direction`
 - `Linked Implementation Plans`: `design.implementation.post_rewrite_core_cleanup_and_surface_reduction`
-- `Updated At`: `2026-03-16T07:00:01Z`
+- `Updated At`: `2026-03-16T08:45:00Z`
 
 ## Summary
 Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface Reduction.
@@ -87,6 +87,7 @@ Defines the technical design boundary for Post-Rewrite Core Cleanup and Surface 
 3. Audit, retire, and repair the next proven-unused inventory-only governed families, starting with compatibility and intake contracts.
 4. Remove example-driven validation from the active baseline and reconcile the standards, acceptance contracts, and tests that still point at fixtures.
 5. Retire retained repo-local artifact type or role catalogs if the consumer audit remains empty after the earlier slices.
+6. Reconcile stale historical planning and derived metadata that still point at the retired example corpus.
 
 ### Invariants and Failure Cases
 - The current default `pack_settings.json` must continue to load successfully without changing its declared paths.
