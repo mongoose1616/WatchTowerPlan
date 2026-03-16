@@ -10945,52 +10945,15 @@
       "title": "Planning Projection Pipeline Modularity Hardening PRD",
       "summary": "Reduce remaining responsibility concentration in the private planning-projection pipeline by narrowing shared serialization, catalog-summary assembly, and sync composition seams without changing public planning outputs.",
       "artifact_status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-16T00:46:51Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-16T01:06:43Z",
       "coordination": {
-        "current_phase": "execution",
+        "current_phase": "closed",
         "key_surface_path": "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
-        "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-        "next_surface_path": "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
-        "open_task_count": 2,
-        "blocked_task_count": 1,
-        "primary_owner": "repository_maintainer",
-        "active_owners": [
-          "repository_maintainer"
-        ],
-        "active_task_ids": [
-          "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
-          "task.planning_projection_pipeline_modularity_hardening.validation_closeout.004"
-        ],
-        "active_task_summaries": [
-          {
-            "task_id": "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003",
-            "title": "Tighten planning projection sync composition seams",
-            "task_status": "in_progress",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
-            "is_actionable": true,
-            "depends_on": [
-              "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002"
-            ]
-          },
-          {
-            "task_id": "task.planning_projection_pipeline_modularity_hardening.validation_closeout.004",
-            "title": "Validate and close planning projection pipeline modularity hardening",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
-            "is_actionable": false,
-            "depends_on": [
-              "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003"
-            ]
-          }
-        ],
-        "blocked_by_task_ids": [
-          "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003"
-        ]
+        "next_action": "No further default action. Initiative is completed.",
+        "next_surface_path": "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
+        "open_task_count": 0,
+        "blocked_task_count": 0
       },
       "prds": [
         {
@@ -11124,12 +11087,12 @@
           "title": "Tighten planning projection sync composition seams",
           "summary": "Move planning-catalog-only aggregation and sync composition into smaller private helpers while preserving initiative-versus-planning parity.",
           "artifact_status": "active",
-          "task_status": "in_progress",
+          "task_status": "done",
           "task_kind": "feature",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
-          "updated_at": "2026-03-16T00:46:51Z",
+          "doc_path": "docs/planning/tasks/closed/tighten_planning_projection_sync_composition_seams.md",
+          "updated_at": "2026-03-16T00:59:03Z",
           "depends_on": [
             "task.planning_projection_pipeline_modularity_hardening.serialization_boundary.002"
           ],
@@ -11145,6 +11108,7 @@
             "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
             "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
             "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
+            "core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py",
             "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
             "core/python/src/watchtower_core/repo_ops/README.md",
@@ -11157,12 +11121,12 @@
           "title": "Validate and close planning projection pipeline modularity hardening",
           "summary": "Run targeted and full validation, refresh acceptance evidence, and close the planning-projection modularity trace once the refactor lands cleanly.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "done",
           "task_kind": "governance",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
-          "updated_at": "2026-03-16T00:02:05Z",
+          "doc_path": "docs/planning/tasks/closed/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
+          "updated_at": "2026-03-16T01:06:25Z",
           "depends_on": [
             "task.planning_projection_pipeline_modularity_hardening.sync_surface_alignment.003"
           ],
@@ -11201,6 +11165,7 @@
             "core/control_plane/",
             "core/python/",
             "core/python/src/watchtower_core/repo_ops/README.md",
+            "core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py",
             "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
             "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
             "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
@@ -11218,8 +11183,8 @@
             "docs/planning/prds/planning_projection_pipeline_modularity_hardening.md",
             "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
             "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
-            "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
-            "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md"
+            "docs/planning/tasks/closed/tighten_planning_projection_sync_composition_seams.md",
+            "docs/planning/tasks/closed/validate_and_close_planning_projection_pipeline_modularity_hardening.md"
           ],
           "related_paths": [
             "docs/planning/coordination_tracking.md",
@@ -11237,13 +11202,19 @@
           "title": "Planning Projection Pipeline Modularity Hardening Planning Baseline Evidence",
           "artifact_status": "active",
           "overall_result": "passed",
-          "recorded_at": "2026-03-15T23:55:21Z",
+          "recorded_at": "2026-03-16T01:05:57Z",
           "doc_path": "core/control_plane/ledgers/validation_evidence/planning_projection_pipeline_modularity_hardening_planning_baseline.v1.json",
           "check_ids": [
-            "check.planning_projection_pipeline_modularity_hardening.planning_baseline"
+            "check.planning_projection_pipeline_modularity_hardening.planning_baseline",
+            "check.planning_projection_pipeline_modularity_hardening.serialization_boundary",
+            "check.planning_projection_pipeline_modularity_hardening.sync_surface_alignment",
+            "check.planning_projection_pipeline_modularity_hardening.validation_closeout"
           ],
           "acceptance_ids": [
-            "ac.planning_projection_pipeline_modularity_hardening.001"
+            "ac.planning_projection_pipeline_modularity_hardening.001",
+            "ac.planning_projection_pipeline_modularity_hardening.002",
+            "ac.planning_projection_pipeline_modularity_hardening.003",
+            "ac.planning_projection_pipeline_modularity_hardening.004"
           ],
           "validator_ids": [
             "validator.control_plane.validation_evidence"
@@ -11305,6 +11276,7 @@
         "core/control_plane/ledgers/validation_evidence/planning_projection_pipeline_modularity_hardening_planning_baseline.v1.json",
         "core/python/",
         "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py",
         "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
         "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
         "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
@@ -11327,8 +11299,8 @@
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
         "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
-        "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
-        "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/tasks/closed/tighten_planning_projection_sync_composition_seams.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [
@@ -11338,7 +11310,9 @@
         "implementation_plan",
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-15T23:55:21Z after replacing the bootstrap placeholders with the current planning-projection hotspot boundary, the accepted direction, and the bounded execution queue."
+      "notes": "Validation evidence refreshed for the planning-projection modularity trace after the serializer helper split, the catalog-composition extraction, the acceptance-target expansion, the acceptance-evidence coverage repair, and the final clean reruns of the acceptance, validation, pytest, Ruff, and mypy checks.",
+      "closed_at": "2026-03-16T01:06:43Z",
+      "closure_reason": "Completed the bounded refactor after splitting serializer and planning-catalog seams, refreshing acceptance evidence, and rerunning clean validation passes."
     },
     {
       "trace_id": "trace.planning_query_efficiency_and_handler_modularity",

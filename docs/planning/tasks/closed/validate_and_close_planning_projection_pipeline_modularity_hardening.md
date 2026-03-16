@@ -6,11 +6,11 @@ summary: Run targeted and full validation, refresh acceptance evidence, and clos
   the planning-projection modularity trace once the refactor lands cleanly.
 type: task
 status: active
-task_status: backlog
+task_status: done
 task_kind: governance
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T00:02:05Z'
+updated_at: '2026-03-16T01:06:25Z'
 audience: shared
 authority: authoritative
 applies_to:

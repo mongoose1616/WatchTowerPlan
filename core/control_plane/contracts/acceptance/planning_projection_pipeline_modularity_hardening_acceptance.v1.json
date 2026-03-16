@@ -19,8 +19,8 @@
         "docs/planning/decisions/planning_projection_pipeline_modularity_hardening_direction.md",
         "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
         "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
-        "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
-        "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md"
+        "docs/planning/tasks/closed/tighten_planning_projection_sync_composition_seams.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_projection_pipeline_modularity_hardening.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -56,6 +56,7 @@
         "core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py",
         "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
         "core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py",
         "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
         "core/python/src/watchtower_core/repo_ops/README.md",

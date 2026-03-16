@@ -6,11 +6,11 @@ summary: Move planning-catalog-only aggregation and sync composition into smalle
   private helpers while preserving initiative-versus-planning parity.
 type: task
 status: active
-task_status: in_progress
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T00:46:51Z'
+updated_at: '2026-03-16T00:59:03Z'
 audience: shared
 authority: authoritative
 applies_to:
@@ -18,6 +18,7 @@ applies_to:
 - core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py
 - core/python/src/watchtower_core/repo_ops/planning_projection_policy.py
 - core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py
+- core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py
 - core/python/src/watchtower_core/repo_ops/sync/initiative_index.py
 - core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py
 - core/python/src/watchtower_core/repo_ops/README.md

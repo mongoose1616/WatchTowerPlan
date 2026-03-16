@@ -17,6 +17,7 @@ applies_to:
 - core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py
 - core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py
 - core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py
+- core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py
 - core/python/src/watchtower_core/repo_ops/sync/initiative_index.py
 - core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py
 - core/python/src/watchtower_core/repo_ops/README.md
@@ -63,6 +64,7 @@ Keep the existing private trace-scoped snapshot boundary, then refactor the rema
 - core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py
 - core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py
 - core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py
+- core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py
 - core/python/src/watchtower_core/repo_ops/sync/initiative_index.py
 - core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py
 - core/python/src/watchtower_core/repo_ops/README.md

@@ -2967,8 +2967,8 @@
       "title": "Planning Projection Pipeline Modularity Hardening PRD",
       "summary": "Reduce remaining responsibility concentration in the private planning-projection pipeline by narrowing shared serialization, catalog-summary assembly, and sync composition seams without changing public planning outputs.",
       "status": "active",
-      "initiative_status": "active",
-      "updated_at": "2026-03-16T00:46:51Z",
+      "initiative_status": "completed",
+      "updated_at": "2026-03-16T01:06:43Z",
       "prd_ids": [
         "prd.planning_projection_pipeline_modularity_hardening"
       ],
@@ -3015,6 +3015,7 @@
         "core/control_plane/ledgers/validation_evidence/planning_projection_pipeline_modularity_hardening_planning_baseline.v1.json",
         "core/python/",
         "core/python/src/watchtower_core/repo_ops/README.md",
+        "core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py",
         "core/python/src/watchtower_core/repo_ops/planning_projection_policy.py",
         "core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py",
         "core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py",
@@ -3037,14 +3038,16 @@
         "docs/planning/prds/prd_tracking.md",
         "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
         "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
-        "docs/planning/tasks/open/tighten_planning_projection_sync_composition_seams.md",
-        "docs/planning/tasks/open/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
+        "docs/planning/tasks/closed/tighten_planning_projection_sync_composition_seams.md",
+        "docs/planning/tasks/closed/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
         "docs/planning/tasks/task_tracking.md"
       ],
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline evidence refreshed at 2026-03-15T23:55:21Z after replacing the bootstrap placeholders with the current planning-projection hotspot boundary, the accepted direction, and the bounded execution queue."
+      "notes": "Validation evidence refreshed for the planning-projection modularity trace after the serializer helper split, the catalog-composition extraction, the acceptance-target expansion, the acceptance-evidence coverage repair, and the final clean reruns of the acceptance, validation, pytest, Ruff, and mypy checks.",
+      "closed_at": "2026-03-16T01:06:43Z",
+      "closure_reason": "Completed the bounded refactor after splitting serializer and planning-catalog seams, refreshing acceptance evidence, and rerunning clean validation passes."
     },
     {
       "trace_id": "trace.planning_query_efficiency_and_handler_modularity",

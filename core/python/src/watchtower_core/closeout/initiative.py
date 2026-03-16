@@ -9,8 +9,8 @@ from watchtower_core.control_plane.loader import (
     ControlPlaneLoader,
 )
 from watchtower_core.control_plane.models import TaskIndexEntry
-from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
 from watchtower_core.repo_ops.sync.all import AllSyncRecord
+from watchtower_core.repo_ops.sync.coordination import CoordinationSyncService
 from watchtower_core.repo_ops.sync.decision_tracking import DecisionTrackingSyncService
 from watchtower_core.repo_ops.sync.design_tracking import DesignTrackingSyncService
 from watchtower_core.repo_ops.sync.prd_tracking import PrdTrackingSyncService

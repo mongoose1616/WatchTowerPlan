@@ -17,6 +17,7 @@ applies_to:
 - core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py
 - core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py
 - core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py
+- core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py
 - core/python/src/watchtower_core/repo_ops/sync/initiative_index.py
 - core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py
 - core/python/src/watchtower_core/repo_ops/README.md
@@ -72,7 +73,7 @@ Breaks Planning Projection Pipeline Modularity Hardening into a bounded implemen
 |---|---|---|
 | Upstream private snapshot boundary | `core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py`; `core/python/src/watchtower_core/repo_ops/planning_projection_source_assembly.py`; `core/python/src/watchtower_core/repo_ops/planning_projection_policy.py`; `core/python/src/watchtower_core/repo_ops/planning_projection_task_selection.py` | Preserve the current private graph boundary and avoid needlessly widening back into source assembly or phase policy work. |
 | Shared serialization surface | `core/python/src/watchtower_core/repo_ops/planning_projection_serialization.py`; `core/python/src/watchtower_core/repo_ops/planning_projection_serialization_helpers.py`; adjacent private serializer helpers if introduced | Family boundaries, compact semantics, and payload parity. |
-| Sync consumers | `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`; `core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py` | Smaller orchestration, stable coordination parity, and isolated catalog-only aggregation. |
+| Sync consumers and catalog composition | `core/python/src/watchtower_core/repo_ops/planning_projection_catalog_composition.py`; `core/python/src/watchtower_core/repo_ops/sync/initiative_index.py`; `core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py` | Smaller orchestration, stable coordination parity, and isolated catalog-only aggregation. |
 | Runtime docs and trace surfaces | `core/python/src/watchtower_core/repo_ops/README.md`; `docs/planning/**`; `core/control_plane/contracts/acceptance/planning_projection_pipeline_modularity_hardening_acceptance.v1.json`; `core/control_plane/ledgers/validation_evidence/planning_projection_pipeline_modularity_hardening_planning_baseline.v1.json` | Same-change documentation, tracker, and traceability alignment. |
 | Regression coverage and validation | `core/python/tests/unit/test_initiative_index_sync.py`; `core/python/tests/unit/test_planning_catalog_sync.py`; any new focused serializer or catalog-helper tests; `watchtower-core sync all`; `watchtower-core query initiatives`; `watchtower-core query planning`; `watchtower-core validate all` | Payload drift detection and clean closeout evidence. |
 

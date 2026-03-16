@@ -4,6 +4,13 @@ from pathlib import Path
 from shutil import copytree
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
+from watchtower_core.repo_ops.planning_projection_catalog_composition import (
+    build_trace_planning_catalog_aggregation,
+)
+from watchtower_core.repo_ops.planning_projection_snapshot import (
+    build_trace_planning_coordination_snapshot,
+    build_trace_planning_projection_snapshots,
+)
 from watchtower_core.repo_ops.query.planning import (
     PlanningCatalogQueryService,
     PlanningCatalogSearchParams,
@@ -96,6 +103,50 @@ def test_planning_catalog_sync_embeds_acceptance_and_evidence_sections(
     assert entry["validation_evidence"]
     assert entry["acceptance_contract_ids"]
     assert entry["evidence_ids"]
+
+
+def test_planning_catalog_aggregation_collects_catalog_only_metadata(
+    tmp_path: Path,
+) -> None:
+    repo_root = _build_control_plane_fixture_repo(tmp_path)
+    loader = ControlPlaneLoader(repo_root)
+    snapshot = next(
+        item
+        for item in build_trace_planning_projection_snapshots(loader)
+        if item.trace_entry.trace_id == "trace.planning_authority_unification"
+    )
+    coordination = build_trace_planning_coordination_snapshot(snapshot)
+
+    aggregation = build_trace_planning_catalog_aggregation(snapshot, coordination)
+
+    expected_validator_ids = {
+        *snapshot.trace_entry.validator_ids,
+        *(
+            validator_id
+            for contract in snapshot.acceptance_contracts
+            for item in contract.entries
+            for validator_id in item.required_validator_ids
+        ),
+        *(
+            check.validator_id
+            for evidence in snapshot.validation_evidence
+            for check in evidence.checks
+            if check.validator_id is not None
+        ),
+    }
+    expected_tags = {
+        *snapshot.trace_entry.tags,
+        *(entry.family for entry in snapshot.design_entries),
+        *(task_entry.task_kind for task_entry in snapshot.task_entries),
+    }
+
+    assert aggregation.validator_ids == tuple(sorted(expected_validator_ids))
+    assert aggregation.tags == tuple(sorted(expected_tags))
+    assert coordination.key_surface_path in aggregation.related_paths
+    assert coordination.next_surface_path in aggregation.related_paths
+    assert snapshot.acceptance_contracts[0].doc_path in aggregation.related_paths
+    assert snapshot.validation_evidence[0].doc_path in aggregation.related_paths
+    assert snapshot.task_entries[0].doc_path in aggregation.related_paths
 
 
 def test_planning_catalog_coordination_matches_initiative_projection(
