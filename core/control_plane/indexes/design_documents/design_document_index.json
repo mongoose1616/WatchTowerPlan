@@ -1289,6 +1289,41 @@
       ]
     },
     {
+      "document_id": "design.features.plan_domain_pack_core_validation",
+      "trace_id": "trace.plan_domain_pack_core_validation",
+      "family": "feature_design",
+      "title": "Plan Domain Pack Core Validation Feature Design",
+      "summary": "Defines the technical design boundary for Plan Domain Pack Core Validation.",
+      "status": "active",
+      "doc_path": "docs/planning/design/features/plan_domain_pack_core_validation.md",
+      "updated_at": "2026-03-16T20:32:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/registries/",
+        "core/control_plane/manifests/pack_settings.json",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/",
+        "docs/commands/core_python/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/engineering_design_principles.md",
+        "core/python/README.md",
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/python_validator_execution.md"
+      ]
+    },
+    {
       "document_id": "design.features.planning_artifact_retention_and_purge",
       "trace_id": "trace.planning_artifact_retention_and_purge",
       "family": "feature_design",
@@ -3390,6 +3425,31 @@
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/planning/prds/machine_first_coordination_surface.md",
         "docs/planning/design/features/machine_first_coordination_surface.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.plan_domain_pack_core_validation",
+      "trace_id": "trace.plan_domain_pack_core_validation",
+      "family": "implementation_plan",
+      "title": "Plan Domain Pack Core Validation Implementation Plan",
+      "summary": "Breaks Plan Domain Pack Core Validation into a bounded implementation slice.",
+      "status": "active",
+      "doc_path": "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+      "updated_at": "2026-03-16T20:32:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/prds/plan_domain_pack_core_validation.md"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/validations/repository_validation_standard.md",
+        "docs/standards/data_contracts/schema_standard.md",
+        "core/python/README.md",
+        "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/decisions/plan_domain_pack_core_validation_direction.md",
+        "docs/planning/design/features/python_validator_execution.md"
       ]
     },
     {

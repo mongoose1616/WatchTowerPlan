@@ -1,0 +1,103 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.plan_domain_pack_core_validation",
+  "title": "Plan Domain Pack Core Validation Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.plan_domain_pack_core_validation",
+  "source_prd_id": "prd.plan_domain_pack_core_validation",
+  "entries": [
+    {
+      "acceptance_id": "ac.plan_domain_pack_core_validation.001",
+      "summary": "The traced planning chain, accepted direction decision, planning-baseline evidence, and bounded task set describe the initiative as reusable-core validation hardening plus one test-fixture `plan` domain pack.",
+      "source_requirement_ids": [
+        "req.plan_domain_pack_core_validation.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "docs/planning/decisions/plan_domain_pack_core_validation_direction.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/plan_domain_pack_core_validation_bootstrap.md"
+      ],
+      "related_paths": [
+        "core/control_plane/ledgers/validation_evidence/plan_domain_pack_core_validation_planning_baseline.json",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline updated at 2026-03-16T20:32:05Z after replacing the bootstrap placeholders with the real initiative contract."
+    },
+    {
+      "acceptance_id": "ac.plan_domain_pack_core_validation.002",
+      "summary": "Pack-aware validation can resolve a pack-declared schema catalog, validator registry, and validation suite registry through `pack_settings` without replacing the repository-default core schema catalog.",
+      "source_requirement_ids": [
+        "req.plan_domain_pack_core_validation.001",
+        "req.plan_domain_pack_core_validation.002"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.plan_domain_pack_core_validation.003",
+      "summary": "Reusable core publishes generic suite and pack-contract validation services, and `watchtower-core validate suite` executes declared validation step kinds with fail-closed behavior.",
+      "source_requirement_ids": [
+        "req.plan_domain_pack_core_validation.002",
+        "req.plan_domain_pack_core_validation.003"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.plan_domain_pack_core_validation.004",
+      "summary": "A `plan` fixture pack materialized into `domain_packs/plan/.wt/` validates end to end through the reusable-core suite runner, and invalid schema, validator, or suite references fail closed in tests.",
+      "source_requirement_ids": [
+        "req.plan_domain_pack_core_validation.005"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md"
+      ],
+      "related_paths": [
+        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md"
+      ]
+    },
+    {
+      "acceptance_id": "ac.plan_domain_pack_core_validation.005",
+      "summary": "WatchTowerPlan's `validate all` path stays practical by wrapping the reusable-core suite runtime, and the repository remains green on sync, aggregate validation, pytest, mypy, and ruff after the migration.",
+      "source_requirement_ids": [
+        "req.plan_domain_pack_core_validation.004",
+        "req.plan_domain_pack_core_validation.005"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
+        "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md"
+      ],
+      "related_paths": [
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/tasks/task_tracking.md"
+      ]
+    }
+  ]
+}

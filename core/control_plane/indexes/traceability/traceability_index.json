@@ -3006,6 +3006,93 @@
       "notes": "Planning-baseline evidence for the machine-first coordination surface initiative."
     },
     {
+      "trace_id": "trace.plan_domain_pack_core_validation",
+      "title": "Plan Domain Pack Core Validation PRD",
+      "summary": "Move validation into reusable core with pack-aware schema, validator, and suite loading, then prove it end to end with a plan domain-pack fixture.",
+      "status": "active",
+      "initiative_status": "active",
+      "updated_at": "2026-03-16T20:37:39Z",
+      "prd_ids": [
+        "prd.plan_domain_pack_core_validation"
+      ],
+      "decision_ids": [
+        "decision.plan_domain_pack_core_validation_direction"
+      ],
+      "design_ids": [
+        "design.features.plan_domain_pack_core_validation"
+      ],
+      "plan_ids": [
+        "design.implementation.plan_domain_pack_core_validation"
+      ],
+      "task_ids": [
+        "task.plan_domain_pack_core_validation.bootstrap.001",
+        "task.plan_domain_pack_core_validation.core_suite_runtime.003",
+        "task.plan_domain_pack_core_validation.pack_aware_loading.002",
+        "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
+        "task.plan_domain_pack_core_validation.repo_migration.005",
+        "task.plan_domain_pack_core_validation.validation_closeout.006"
+      ],
+      "requirement_ids": [
+        "req.plan_domain_pack_core_validation.001",
+        "req.plan_domain_pack_core_validation.002",
+        "req.plan_domain_pack_core_validation.003",
+        "req.plan_domain_pack_core_validation.004",
+        "req.plan_domain_pack_core_validation.005"
+      ],
+      "acceptance_ids": [
+        "ac.plan_domain_pack_core_validation.001",
+        "ac.plan_domain_pack_core_validation.002",
+        "ac.plan_domain_pack_core_validation.003",
+        "ac.plan_domain_pack_core_validation.004",
+        "ac.plan_domain_pack_core_validation.005"
+      ],
+      "acceptance_contract_ids": [
+        "contract.acceptance.plan_domain_pack_core_validation"
+      ],
+      "validator_ids": [
+        "validator.control_plane.validation_evidence"
+      ],
+      "evidence_ids": [
+        "evidence.plan_domain_pack_core_validation.planning_baseline"
+      ],
+      "related_paths": [
+        "core/control_plane/contracts/acceptance/",
+        "core/control_plane/contracts/acceptance/plan_domain_pack_core_validation_acceptance.json",
+        "core/control_plane/ledgers/validation_evidence/",
+        "core/control_plane/ledgers/validation_evidence/plan_domain_pack_core_validation_planning_baseline.json",
+        "core/control_plane/manifests/pack_settings.json",
+        "core/control_plane/registries/",
+        "core/control_plane/schemas/artifacts/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/repo_ops/validation/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/",
+        "core/python/tests/fixtures/",
+        "docs/commands/core_python/",
+        "docs/planning/",
+        "docs/planning/coordination_tracking.md",
+        "docs/planning/decisions/plan_domain_pack_core_validation_direction.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/plan_domain_pack_core_validation_bootstrap.md",
+        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
+        "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
+        "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
+        "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
+        "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md",
+        "docs/planning/tasks/task_tracking.md"
+      ],
+      "tags": [
+        "traceability"
+      ],
+      "notes": "Planning baseline evidence refreshed at 2026-03-16T20:32:05Z after replacing the bootstrap placeholders with the concrete reusable-core validation initiative contract and task chain."
+    },
+    {
       "trace_id": "trace.planning_artifact_retention_and_purge",
       "title": "Planning Artifact Retention and Purge PRD",
       "summary": "Defines a promote-then-purge retention model so closed trace-local planning artifacts do not remain in the repository indefinitely.",
@@ -5697,6 +5784,8 @@
       "status": "active",
       "initiative_status": "completed",
       "updated_at": "2026-03-16T19:39:28Z",
+      "closed_at": "2026-03-16T19:39:28Z",
+      "closure_reason": "Retired the remaining transition facades, bridge modules, marker tests, stale current path references, and temporary audit leftovers; refreshed governed discovery surfaces; and reran clean acceptance, validation, test, typecheck, and lint passes.",
       "prd_ids": [
         "prd.transition_surface_retirement"
       ],
@@ -5781,9 +5870,7 @@
       "tags": [
         "traceability"
       ],
-      "notes": "Planning baseline and closeout evidence refreshed at 2026-03-16T19:34:00Z for trace.transition_surface_retirement after the transition-surface cleanup and discovery-surface rewrite.",
-      "closed_at": "2026-03-16T19:39:28Z",
-      "closure_reason": "Retired the remaining transition facades, bridge modules, marker tests, stale current path references, and temporary audit leftovers; refreshed governed discovery surfaces; and reran clean acceptance, validation, test, typecheck, and lint passes."
+      "notes": "Planning baseline and closeout evidence refreshed at 2026-03-16T19:39:28Z for trace.transition_surface_retirement after the transition-surface cleanup, discovery-surface rewrite, and final clean validation pass."
     },
     {
       "trace_id": "trace.typed_query_surface_modularity_hardening",

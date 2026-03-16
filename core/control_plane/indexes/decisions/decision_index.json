@@ -1254,6 +1254,48 @@
       ]
     },
     {
+      "trace_id": "trace.plan_domain_pack_core_validation",
+      "decision_id": "decision.plan_domain_pack_core_validation_direction",
+      "title": "Plan Domain Pack Core Validation Direction Decision",
+      "summary": "Records the initial direction decision for Plan Domain Pack Core Validation.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/plan_domain_pack_core_validation_direction.md",
+      "updated_at": "2026-03-16T20:32:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.plan_domain_pack_core_validation"
+      ],
+      "linked_design_ids": [
+        "design.features.plan_domain_pack_core_validation"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.plan_domain_pack_core_validation"
+      ],
+      "related_paths": [
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "core/control_plane/registries/",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/repo_ops/validation/"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
+        "docs/planning/design/features/python_validator_execution.md"
+      ]
+    },
+    {
       "trace_id": "trace.planning_artifact_retention_and_purge",
       "decision_id": "decision.planning_artifact_retention_and_purge_direction",
       "title": "Planning Artifact Retention and Purge Direction Decision",

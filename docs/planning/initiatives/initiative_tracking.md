@@ -1,7 +1,9 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
+| --- | --- | --- | --- | --- | --- | --- |
+| `trace.plan_domain_pack_core_validation` | `execution` | repository_maintainer | `5` (`blocked=4`) | [plan_domain_pack_core_validation.md](/docs/planning/prds/plan_domain_pack_core_validation.md) | [implement_pack_aware_schema_and_validator_loading.md](/docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -77,4 +79,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T19:39:28Z`_
+_Updated At: `2026-03-16T20:37:39Z`_

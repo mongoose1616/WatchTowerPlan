@@ -1,0 +1,73 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.plan_domain_pack_core_validation.planning_baseline",
+  "title": "Plan Domain Pack Core Validation Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.plan_domain_pack_core_validation",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-16T20:32:05Z",
+  "source_prd_ids": [
+    "prd.plan_domain_pack_core_validation"
+  ],
+  "source_design_ids": [
+    "design.features.plan_domain_pack_core_validation"
+  ],
+  "source_plan_ids": [
+    "design.implementation.plan_domain_pack_core_validation"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.plan_domain_pack_core_validation"
+  ],
+  "checks": [
+    {
+      "check_id": "check.plan_domain_pack_core_validation.planning_baseline",
+      "title": "The traced planning baseline and task chain are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/plan_domain_pack_core_validation.md",
+        "docs/planning/design/features/plan_domain_pack_core_validation.md",
+        "docs/planning/design/implementation/plan_domain_pack_core_validation.md",
+        "docs/planning/decisions/plan_domain_pack_core_validation_direction.md",
+        "core/control_plane/contracts/acceptance/plan_domain_pack_core_validation_acceptance.json",
+        "docs/planning/tasks/closed/archive/2026/03/16/plan_domain_pack_core_validation_bootstrap.md",
+        "docs/planning/tasks/open/implement_pack_aware_schema_and_validator_loading.md",
+        "docs/planning/tasks/open/add_core_validation_suite_runtime_and_pack_contract_validation.md",
+        "docs/planning/tasks/open/add_plan_fixture_pack_and_end_to_end_suite_coverage.md",
+        "docs/planning/tasks/open/migrate_repo_validation_onto_core_suite_runtime.md",
+        "docs/planning/tasks/open/validate_and_close_plan_domain_pack_core_validation.md"
+      ],
+      "subject_ids": [
+        "prd.plan_domain_pack_core_validation",
+        "design.features.plan_domain_pack_core_validation",
+        "design.implementation.plan_domain_pack_core_validation",
+        "task.plan_domain_pack_core_validation.bootstrap.001",
+        "task.plan_domain_pack_core_validation.pack_aware_loading.002",
+        "task.plan_domain_pack_core_validation.core_suite_runtime.003",
+        "task.plan_domain_pack_core_validation.plan_fixture_pack.004",
+        "task.plan_domain_pack_core_validation.repo_migration.005",
+        "task.plan_domain_pack_core_validation.validation_closeout.006",
+        "contract.acceptance.plan_domain_pack_core_validation",
+        "decision.plan_domain_pack_core_validation_direction"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.plan_domain_pack_core_validation.001",
+        "ac.plan_domain_pack_core_validation.002",
+        "ac.plan_domain_pack_core_validation.003",
+        "ac.plan_domain_pack_core_validation.004",
+        "ac.plan_domain_pack_core_validation.005"
+      ],
+      "notes": "The initiative now carries the real PRD, accepted direction decision, implementation plan, refreshed acceptance contract, and bounded execution-task chain for reusable-core validation plus the `plan` fixture pack proof."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/plan_domain_pack_core_validation_acceptance.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence refreshed at 2026-03-16T20:32:05Z after replacing the bootstrap placeholders with the concrete reusable-core validation initiative contract and task chain.",
+  "source_decision_ids": [
+    "decision.plan_domain_pack_core_validation_direction"
+  ]
+}

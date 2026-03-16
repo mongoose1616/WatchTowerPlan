@@ -1413,6 +1413,46 @@
       ]
     },
     {
+      "trace_id": "trace.plan_domain_pack_core_validation",
+      "prd_id": "prd.plan_domain_pack_core_validation",
+      "title": "Plan Domain Pack Core Validation PRD",
+      "summary": "Move validation into reusable core with pack-aware schema, validator, and suite loading, then prove it end to end with a plan domain-pack fixture.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/plan_domain_pack_core_validation.md",
+      "updated_at": "2026-03-16T20:32:05Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.plan_domain_pack_core_validation.001",
+        "req.plan_domain_pack_core_validation.002",
+        "req.plan_domain_pack_core_validation.003",
+        "req.plan_domain_pack_core_validation.004",
+        "req.plan_domain_pack_core_validation.005"
+      ],
+      "acceptance_ids": [
+        "ac.plan_domain_pack_core_validation.001",
+        "ac.plan_domain_pack_core_validation.002",
+        "ac.plan_domain_pack_core_validation.003",
+        "ac.plan_domain_pack_core_validation.004",
+        "ac.plan_domain_pack_core_validation.005"
+      ],
+      "linked_decision_ids": [
+        "decision.plan_domain_pack_core_validation_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.plan_domain_pack_core_validation"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.plan_domain_pack_core_validation"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
+        "docs/planning/design/features/python_validator_execution.md",
+        "docs/standards/validations/repository_validation_standard.md"
+      ]
+    },
+    {
       "trace_id": "trace.planning_artifact_retention_and_purge",
       "prd_id": "prd.planning_artifact_retention_and_purge",
       "title": "Planning Artifact Retention and Purge PRD",
