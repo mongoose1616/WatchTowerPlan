@@ -2543,6 +2543,37 @@
       ]
     },
     {
+      "trace_id": "trace.validated_core_pack_data_shape_convergence",
+      "prd_id": "prd.validated_core_pack_data_shape_convergence",
+      "title": "Validated Core and Pack Data Shape Convergence PRD",
+      "summary": "Converges the repository data model toward a validated reusable core plus pack-owned artifact shape aligned with the future pack standard.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/validated_core_and_pack_data_shape_convergence.md",
+      "updated_at": "2026-03-16T04:32:27Z",
+      "uses_internal_references": false,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.validated_core_pack_data_shape_convergence.001",
+        "req.validated_core_pack_data_shape_convergence.002",
+        "req.validated_core_pack_data_shape_convergence.003",
+        "req.validated_core_pack_data_shape_convergence.004"
+      ],
+      "acceptance_ids": [
+        "ac.validated_core_pack_data_shape_convergence.001",
+        "ac.validated_core_pack_data_shape_convergence.002",
+        "ac.validated_core_pack_data_shape_convergence.003"
+      ],
+      "linked_decision_ids": [
+        "decision.validated_core_pack_data_shape_convergence_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.validated_core_pack_data_shape_convergence"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.validated_core_pack_data_shape_convergence"
+      ]
+    },
+    {
       "trace_id": "trace.validation_test_hotspot_rebalancing",
       "prd_id": "prd.validation_test_hotspot_rebalancing",
       "title": "Validation Test Hotspot Rebalancing PRD",

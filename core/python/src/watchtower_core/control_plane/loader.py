@@ -16,6 +16,7 @@ from watchtower_core.control_plane.models import (
     DesignDocumentIndex,
     FoundationIndex,
     InitiativeIndex,
+    PackRuntimeManifest,
     PlanningCatalog,
     PrdIndex,
     ReferenceIndex,
@@ -44,6 +45,7 @@ AUTHORITY_MAP_PATH = "core/control_plane/registries/authority_map/authority_map.
 WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json"
 )
+PACK_RUNTIME_MANIFEST_PATH = "core/control_plane/manifests/pack_runtime_manifest.v1.json"
 REPOSITORY_PATH_INDEX_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
 )
@@ -216,6 +218,13 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             VALIDATOR_REGISTRY_PATH,
             ValidatorRegistry.from_document,
+        )
+
+    def load_pack_runtime_manifest(self) -> PackRuntimeManifest:
+        """Load the current pack-runtime manifest."""
+        return self._load_typed_document(
+            PACK_RUNTIME_MANIFEST_PATH,
+            PackRuntimeManifest.from_document,
         )
 
     def load_authority_map(self) -> AuthorityMap:

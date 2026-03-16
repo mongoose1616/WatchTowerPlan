@@ -11,8 +11,8 @@ from typing import Any, Protocol
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.paths import discover_repo_root
 
-CONTROL_PLANE_PREFIX = "core/control_plane"
-PYTHON_WORKSPACE_PREFIX = "core/python"
+DEFAULT_CONTROL_PLANE_PREFIX = "core/control_plane"
+DEFAULT_PYTHON_WORKSPACE_PREFIX = "core/python"
 
 
 def _normalize_relative_path(relative_path: str) -> str:
@@ -44,11 +44,23 @@ class WorkspaceConfig:
     repo_root: Path
     control_plane_root: Path
     python_workspace_root: Path
+    control_plane_prefix: str = DEFAULT_CONTROL_PLANE_PREFIX
+    python_workspace_prefix: str = DEFAULT_PYTHON_WORKSPACE_PREFIX
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "repo_root", self.repo_root.resolve())
         object.__setattr__(self, "control_plane_root", self.control_plane_root.resolve())
         object.__setattr__(self, "python_workspace_root", self.python_workspace_root.resolve())
+        object.__setattr__(
+            self,
+            "control_plane_prefix",
+            _normalize_relative_path(self.control_plane_prefix),
+        )
+        object.__setattr__(
+            self,
+            "python_workspace_prefix",
+            _normalize_relative_path(self.python_workspace_prefix),
+        )
 
     @classmethod
     def discover(cls, start: Path | None = None) -> WorkspaceConfig:
@@ -61,20 +73,45 @@ class WorkspaceConfig:
         resolved_root = discover_repo_root(repo_root)
         return cls(
             repo_root=resolved_root,
-            control_plane_root=resolved_root / CONTROL_PLANE_PREFIX,
-            python_workspace_root=resolved_root / PYTHON_WORKSPACE_PREFIX,
+            control_plane_root=resolved_root / DEFAULT_CONTROL_PLANE_PREFIX,
+            python_workspace_root=resolved_root / DEFAULT_PYTHON_WORKSPACE_PREFIX,
+        )
+
+    @classmethod
+    def from_pack_runtime_manifest_document(
+        cls,
+        document: Mapping[str, Any],
+        repo_root: Path | None = None,
+    ) -> WorkspaceConfig:
+        """Construct one workspace mapping from a validated pack-runtime manifest document."""
+
+        resolved_root = repo_root.resolve() if repo_root is not None else discover_repo_root(None)
+        workspace_roots = document.get("workspace_roots")
+        if not isinstance(workspace_roots, Mapping):
+            raise ValueError("Pack runtime manifest is missing workspace_roots.")
+
+        control_plane_prefix = _normalize_relative_path(str(workspace_roots["control_plane"]))
+        python_workspace_prefix = _normalize_relative_path(str(workspace_roots["python_workspace"]))
+        return cls(
+            repo_root=resolved_root,
+            control_plane_root=resolved_root / control_plane_prefix,
+            python_workspace_root=resolved_root / python_workspace_prefix,
+            control_plane_prefix=control_plane_prefix,
+            python_workspace_prefix=python_workspace_prefix,
         )
 
     def resolve_path(self, relative_path: str) -> Path:
         """Resolve one repository-relative path through the current workspace mapping."""
         normalized = _normalize_relative_path(relative_path)
-        if normalized == CONTROL_PLANE_PREFIX or normalized.startswith(f"{CONTROL_PLANE_PREFIX}/"):
-            suffix = normalized.removeprefix(CONTROL_PLANE_PREFIX).lstrip("/")
-            return self.control_plane_root if not suffix else self.control_plane_root / suffix
-        if normalized == PYTHON_WORKSPACE_PREFIX or normalized.startswith(
-            f"{PYTHON_WORKSPACE_PREFIX}/"
+        if normalized == self.control_plane_prefix or normalized.startswith(
+            f"{self.control_plane_prefix}/"
         ):
-            suffix = normalized.removeprefix(PYTHON_WORKSPACE_PREFIX).lstrip("/")
+            suffix = normalized.removeprefix(self.control_plane_prefix).lstrip("/")
+            return self.control_plane_root if not suffix else self.control_plane_root / suffix
+        if normalized == self.python_workspace_prefix or normalized.startswith(
+            f"{self.python_workspace_prefix}/"
+        ):
+            suffix = normalized.removeprefix(self.python_workspace_prefix).lstrip("/")
             return self.python_workspace_root if not suffix else self.python_workspace_root / suffix
         return self.repo_root / normalized
 
@@ -82,8 +119,8 @@ class WorkspaceConfig:
         """Return the repository-logical path for one resolved workspace path."""
         resolved_path = path.resolve()
         candidates = (
-            (self.control_plane_root, CONTROL_PLANE_PREFIX),
-            (self.python_workspace_root, PYTHON_WORKSPACE_PREFIX),
+            (self.control_plane_root, self.control_plane_prefix),
+            (self.python_workspace_root, self.python_workspace_prefix),
             (self.repo_root, ""),
         )
         for root, prefix in candidates:

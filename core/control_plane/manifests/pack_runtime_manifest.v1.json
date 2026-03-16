@@ -1,0 +1,65 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:manifests:pack-runtime-manifest:v1",
+  "id": "manifest.pack_runtime.watchtower_plan",
+  "title": "WatchTowerPlan Pack Runtime Manifest",
+  "status": "active",
+  "manifest_kind": "pack_runtime",
+  "pack_id": "pack.watchtower_plan",
+  "core_package": "watchtower_core",
+  "workspace_roots": {
+    "repo_root": ".",
+    "control_plane": "core/control_plane",
+    "python_workspace": "core/python"
+  },
+  "governed_roots": {
+    "manifest_root": "core/control_plane/manifests",
+    "schema_catalog": "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+    "registry_root": "core/control_plane/registries",
+    "contract_root": "core/control_plane/contracts",
+    "index_root": "core/control_plane/indexes",
+    "ledger_root": "core/control_plane/ledgers"
+  },
+  "human_companion_roots": [
+    "docs/planning",
+    "docs/commands/core_python",
+    "workflows"
+  ],
+  "supported_artifact_families": [
+    "pack_work_item_note",
+    "workspace_artifact_manifest",
+    "extraction_output_envelope",
+    "promoted_knowledge",
+    "promotion_record",
+    "pack_work_index",
+    "knowledge_index",
+    "execution_event_stream",
+    "command_io_stream",
+    "session_mode_change_ledger",
+    "airgap_transfer_ledger",
+    "error_discrepancy_ledger"
+  ],
+  "derived_index_surfaces": [
+    "repository_paths",
+    "routes",
+    "work_items",
+    "promoted_knowledge",
+    "extraction_outputs",
+    "environment_context",
+    "session_context"
+  ],
+  "extension_points": [
+    "supplemental_schemas",
+    "semantic_validators",
+    "query_builders",
+    "sync_builders",
+    "workflow_modules",
+    "environment_adapters"
+  ],
+  "related_paths": [
+    "core/control_plane/README.md",
+    "core/python/src/watchtower_core/control_plane/workspace.py",
+    "core/python/src/watchtower_core/control_plane/loader.py",
+    "docs/planning/prds/validated_core_and_pack_data_shape_convergence.md"
+  ],
+  "notes": "This manifest records the validated startup and artifact-shape boundary that the current repository will converge toward as shared core becomes pack-ready."
+}

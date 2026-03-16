@@ -21,6 +21,7 @@
 | `core/control_plane/schemas/artifacts/intake_contract.v1.schema.json` | Schema for the machine-readable intake-contract artifact family. |
 | `core/control_plane/schemas/artifacts/migration_record.v1.schema.json` | Schema for the machine-readable migration-record artifact family. |
 | `core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json` | Schema for the canonical machine-readable planning-catalog artifact family. |
+| `core/control_plane/schemas/artifacts/pack_runtime_manifest.v1.schema.json` | Schema for the machine-readable pack-runtime manifest artifact family. |
 | `core/control_plane/schemas/artifacts/policy_catalog.v1.schema.json` | Schema for the machine-readable policy-catalog registry artifact family. |
 | `core/control_plane/schemas/artifacts/prd_index.v1.schema.json` | Schema for the machine-readable PRD-index artifact family. |
 | `core/control_plane/schemas/artifacts/reference_index.v1.schema.json` | Schema for the machine-readable reference-index artifact family. |

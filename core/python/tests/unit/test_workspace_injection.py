@@ -45,6 +45,28 @@ def test_schema_store_loads_from_injected_workspace(tmp_path: Path) -> None:
     )
 
 
+def test_workspace_config_can_load_prefixes_from_pack_runtime_manifest(tmp_path: Path) -> None:
+    workspace_config = WorkspaceConfig.from_pack_runtime_manifest_document(
+        {
+            "workspace_roots": {
+                "repo_root": ".",
+                "control_plane": "machine_artifacts",
+                "python_workspace": "runtime/python",
+            }
+        },
+        repo_root=tmp_path / "pack_repo",
+    )
+
+    assert workspace_config.control_plane_root == (tmp_path / "pack_repo" / "machine_artifacts")
+    assert workspace_config.python_workspace_root == (tmp_path / "pack_repo" / "runtime/python")
+    assert workspace_config.resolve_path("machine_artifacts/registries/example.json") == (
+        tmp_path / "pack_repo" / "machine_artifacts/registries/example.json"
+    )
+    assert workspace_config.logical_path_for(tmp_path / "pack_repo" / "runtime/python") == (
+        "runtime/python"
+    )
+
+
 def test_control_plane_loader_validates_logical_control_plane_path_in_custom_workspace(
     tmp_path: Path,
 ) -> None:

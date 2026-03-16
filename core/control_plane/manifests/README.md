@@ -7,4 +7,5 @@
 | Path | Description |
 |---|---|
 | `core/control_plane/manifests/README.md` | Describes the purpose of the manifests directory and its current contents. |
+| `core/control_plane/manifests/pack_runtime_manifest.v1.json` | Pack-runtime manifest declaring the validated startup boundary and future pack-shape artifact contract for the repository. |
 | `core/control_plane/manifests/repository_manifest.v1.json` | Repository manifest describing the canonical top-level governed surfaces and command entrypoints. |

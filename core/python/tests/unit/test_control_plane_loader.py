@@ -652,3 +652,15 @@ def test_control_plane_loader_reads_foundation_index() -> None:
         "docs/standards/engineering/engineering_best_practices_standard.md"
         in entry.applied_by_paths
     )
+
+
+def test_control_plane_loader_reads_pack_runtime_manifest() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    manifest = loader.load_pack_runtime_manifest()
+
+    assert manifest.manifest_id == "manifest.pack_runtime.watchtower_plan"
+    assert manifest.pack_id == "pack.watchtower_plan"
+    assert manifest.workspace_roots.control_plane == "core/control_plane"
+    assert "pack_work_item_note" in manifest.supported_artifact_families
+    assert "workflow_modules" in manifest.extension_points

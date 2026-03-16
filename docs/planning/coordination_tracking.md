@@ -3,17 +3,21 @@
 ## Current State
 | Field | Value |
 | --- | --- |
-| Mode | `ready_for_bootstrap` |
-| Summary | No active initiatives are open. The repository is ready for one new bounded initiative. |
-| Next | Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work. |
-| Open First | [docs/planning/README.md](/home/j/WatchTowerPlan/docs/planning/README.md) |
+| Mode | `active_work` |
+| Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
+| Next | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| Open First | [docs/planning/tasks/open/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Next | Action |
+| --- | --- | --- | --- | --- |
+| `trace.validated_core_pack_data_shape_convergence` | `execution` | repository_maintainer | [introduce_pack_facing_typed_models_and_generic_loader_surfaces.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Actionable Tasks
-_No actionable tasks._
+| Task | Initiative | Status | Priority | Owner |
+| --- | --- | --- | --- | --- |
+| [task.validated_core_pack_data_shape_convergence.pack_models.003](/home/j/WatchTowerPlan/docs/planning/tasks/open/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md) | `trace.validated_core_pack_data_shape_convergence` | `ready` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -24,4 +28,4 @@ _No actionable tasks._
 | `trace.planning_query_efficiency_and_handler_modularity` | `completed` | `2026-03-13T23:40:00Z` | [planning_query_efficiency_and_coordination_handler_modularity.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_query_efficiency_and_coordination_handler_modularity.md) |
 | `trace.refactor_umbrella_regression_and_growth_control` | `completed` | `2026-03-13T22:49:56Z` | [refactor_umbrella_regression_and_growth_control.md](/home/j/WatchTowerPlan/docs/planning/prds/refactor_umbrella_regression_and_growth_control.md) |
 
-_Updated At: `2026-03-16T04:15:30Z`_
+_Updated At: `2026-03-16T04:46:03Z`_

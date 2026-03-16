@@ -264,10 +264,24 @@
       "engine": "json_schema",
       "artifact_kind": "repository_manifest",
       "applies_to": [
-        "core/control_plane/manifests/**"
+        "core/control_plane/manifests/repository_manifest.v1.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:artifacts:manifests:repository-manifest:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.pack_runtime_manifest",
+      "title": "Pack Runtime Manifest Validator",
+      "description": "Validates machine-readable pack-runtime manifest artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_runtime_manifest",
+      "applies_to": [
+        "core/control_plane/manifests/pack_runtime_manifest.v1.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:artifacts:manifests:pack-runtime-manifest:v1"
       ]
     },
     {

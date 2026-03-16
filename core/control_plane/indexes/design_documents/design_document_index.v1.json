@@ -2139,6 +2139,32 @@
       ]
     },
     {
+      "document_id": "design.features.validated_core_pack_data_shape_convergence",
+      "trace_id": "trace.validated_core_pack_data_shape_convergence",
+      "family": "feature_design",
+      "title": "Validated Core and Pack Data Shape Convergence Feature Design",
+      "summary": "Defines the technical design boundary for Validated Core and Pack Data Shape Convergence.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
+      "updated_at": "2026-03-16T04:32:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "related_paths": [
+        "docs/planning/design/implementation/validated_core_and_pack_data_shape_convergence.md",
+        "core/control_plane/schemas/artifacts/",
+        "core/control_plane/manifests/",
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json",
+        "core/python/src/watchtower_core/control_plane/",
+        "core/python/tests/unit/",
+        "docs/planning/"
+      ],
+      "internal_reference_paths": [
+        "core/control_plane/README.md",
+        "core/control_plane",
+        "docs/planning/design/features/core_export_ready_architecture.md"
+      ]
+    },
+    {
       "document_id": "design.features.validation_test_hotspot_rebalancing",
       "trace_id": "trace.validation_test_hotspot_rebalancing",
       "family": "feature_design",
@@ -4325,6 +4351,27 @@
         "docs/standards/engineering/engineering_best_practices_standard.md",
         "docs/standards/engineering/python_workspace_standard.md",
         "docs/standards/governance/traceability_standard.md"
+      ]
+    },
+    {
+      "document_id": "design.implementation.validated_core_pack_data_shape_convergence",
+      "trace_id": "trace.validated_core_pack_data_shape_convergence",
+      "family": "implementation_plan",
+      "title": "Validated Core and Pack Data Shape Convergence Implementation Plan",
+      "summary": "Breaks Validated Core and Pack Data Shape Convergence into a bounded implementation slice.",
+      "status": "draft",
+      "doc_path": "docs/planning/design/implementation/validated_core_and_pack_data_shape_convergence.md",
+      "updated_at": "2026-03-16T04:32:27Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "source_paths": [
+        "docs/planning/design/features/validated_core_and_pack_data_shape_convergence.md",
+        "docs/planning/prds/validated_core_and_pack_data_shape_convergence.md"
+      ],
+      "internal_reference_paths": [
+        "core/control_plane/README.md",
+        "core/control_plane",
+        "core/python/README.md"
       ]
     },
     {

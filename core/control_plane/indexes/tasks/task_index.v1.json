@@ -5859,6 +5859,105 @@
       ]
     },
     {
+      "task_id": "task.validated_core_pack_data_shape_convergence.bootstrap.001",
+      "title": "Bootstrap Validated Core and Pack Data Shape Convergence planning chain",
+      "summary": "Bootstraps the initial planning chain for Validated Core and Pack Data Shape Convergence.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validated_core_and_pack_data_shape_convergence_bootstrap.md",
+      "updated_at": "2026-03-16T04:46:02Z",
+      "trace_id": "trace.validated_core_pack_data_shape_convergence",
+      "related_ids": [
+        "prd.validated_core_pack_data_shape_convergence",
+        "design.features.validated_core_pack_data_shape_convergence",
+        "design.implementation.validated_core_pack_data_shape_convergence",
+        "decision.validated_core_pack_data_shape_convergence_direction",
+        "contract.acceptance.validated_core_pack_data_shape_convergence"
+      ]
+    },
+    {
+      "task_id": "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004",
+      "title": "Align current repo data families with pack artifact and index surfaces",
+      "summary": "Maps current repository-local machine surfaces onto the future pack artifact-family and derived-index model.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
+      "updated_at": "2026-03-16T04:42:59Z",
+      "trace_id": "trace.validated_core_pack_data_shape_convergence",
+      "depends_on": [
+        "task.validated_core_pack_data_shape_convergence.pack_models.003"
+      ],
+      "related_ids": [
+        "prd.validated_core_pack_data_shape_convergence",
+        "design.features.validated_core_pack_data_shape_convergence"
+      ]
+    },
+    {
+      "task_id": "task.validated_core_pack_data_shape_convergence.pack_models.003",
+      "title": "Introduce pack-facing typed models and generic loader surfaces",
+      "summary": "Moves shared core closer to pack-facing artifact families by adding typed pack models and reducing planning-specific loader bias.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md",
+      "updated_at": "2026-03-16T04:46:03Z",
+      "trace_id": "trace.validated_core_pack_data_shape_convergence",
+      "depends_on": [
+        "task.validated_core_pack_data_shape_convergence.runtime_manifest.002"
+      ],
+      "related_ids": [
+        "prd.validated_core_pack_data_shape_convergence",
+        "design.features.validated_core_pack_data_shape_convergence"
+      ]
+    },
+    {
+      "task_id": "task.validated_core_pack_data_shape_convergence.runtime_manifest.002",
+      "title": "Publish pack runtime manifest and workspace startup boundary",
+      "summary": "Adds the validated pack-runtime manifest and manifest-driven workspace startup boundary for shared core.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/publish_pack_runtime_manifest_and_workspace_startup_boundary.md",
+      "updated_at": "2026-03-16T04:46:03Z",
+      "trace_id": "trace.validated_core_pack_data_shape_convergence",
+      "related_ids": [
+        "prd.validated_core_pack_data_shape_convergence",
+        "design.features.validated_core_pack_data_shape_convergence",
+        "design.implementation.validated_core_pack_data_shape_convergence",
+        "decision.validated_core_pack_data_shape_convergence_direction"
+      ]
+    },
+    {
+      "task_id": "task.validated_core_pack_data_shape_convergence.validation_closeout.005",
+      "title": "Validate and close validated core and pack data shape convergence",
+      "summary": "Runs final validation, captures evidence, and closes the trace once the pack-ready core boundary and data-shape migration are complete.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/validate_and_close_validated_core_and_pack_data_shape_convergence.md",
+      "updated_at": "2026-03-16T04:43:09Z",
+      "trace_id": "trace.validated_core_pack_data_shape_convergence",
+      "depends_on": [
+        "task.validated_core_pack_data_shape_convergence.data_shape_alignment.004"
+      ],
+      "related_ids": [
+        "prd.validated_core_pack_data_shape_convergence",
+        "design.implementation.validated_core_pack_data_shape_convergence"
+      ]
+    },
+    {
       "task_id": "task.validation_test_hotspot_rebalancing.bootstrap.001",
       "title": "Bootstrap Validation Test Hotspot Rebalancing planning chain",
       "summary": "Bootstraps the initial planning chain for Validation Test Hotspot Rebalancing.",
