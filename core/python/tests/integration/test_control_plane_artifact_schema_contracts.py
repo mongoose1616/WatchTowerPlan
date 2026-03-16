@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from copy import deepcopy
+
 import pytest
 from jsonschema import ValidationError
 
@@ -11,10 +13,6 @@ from tests.integration.control_plane_artifact_helpers import (
 )
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.schemas import SchemaStore
-from watchtower_core.repo_ops.validation.example_artifacts import (
-    iter_control_plane_example_paths,
-    schema_id_for_control_plane_example,
-)
 from watchtower_core.validation.artifact import ArtifactValidationService
 
 
@@ -51,38 +49,28 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
             assert result.passed, f"{path} failed schema validation: {result.issues}"
 
 
-def test_initiative_index_examples_validate_against_the_schema() -> None:
+def test_initiative_index_rejects_missing_current_phase() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-
-    valid_example = load_json_object(
-        REPO_ROOT / "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json"
+    initiative_index = load_json_object(
+        REPO_ROOT / "core/control_plane/indexes/initiatives/initiative_index.v1.json"
     )
-    invalid_example = load_json_object(
-        REPO_ROOT
-        / "core/control_plane/examples/invalid/indexes/"
-        "initiative_index_missing_phase.v1.example.json"
-    )
+    invalid_index = deepcopy(initiative_index)
+    del invalid_index["entries"][0]["current_phase"]
 
-    store.validate_instance(valid_example)
     with pytest.raises(ValidationError):
-        store.validate_instance(invalid_example)
+        store.validate_instance(invalid_index)
 
 
-def test_coordination_index_examples_validate_against_the_schema() -> None:
+def test_coordination_index_rejects_missing_coordination_mode() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-
-    valid_example = load_json_object(
-        REPO_ROOT / "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json"
+    coordination_index = load_json_object(
+        REPO_ROOT / "core/control_plane/indexes/coordination/coordination_index.v1.json"
     )
-    invalid_example = load_json_object(
-        REPO_ROOT
-        / "core/control_plane/examples/invalid/indexes/"
-        "coordination_index_missing_mode.v1.example.json"
-    )
+    invalid_index = deepcopy(coordination_index)
+    del invalid_index["coordination_mode"]
 
-    store.validate_instance(valid_example)
     with pytest.raises(ValidationError):
-        store.validate_instance(invalid_example)
+        store.validate_instance(invalid_index)
 
 
 def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
@@ -123,118 +111,40 @@ def test_live_governed_applies_to_directory_paths_are_canonical() -> None:
                         f"{path} file applies_to path must not end in '/': {value}"
                     )
 
-    for path in sorted((REPO_ROOT / "core/control_plane/examples").rglob("*.json")):
-        payload = load_json_object(path)
-        applies_to = payload.get("applies_to")
-        if not isinstance(applies_to, list):
-            continue
-        for value in applies_to:
-            assert isinstance(value, str)
-            if "/" not in value or "*" in value or "<" in value:
-                continue
-            target = REPO_ROOT / value.rstrip("/")
-            assert target.exists(), f"{path} applies_to path does not exist: {value}"
-            if target.is_dir():
-                assert value.endswith("/"), (
-                    f"{path} directory applies_to path must end in '/': {value}"
-                )
-            else:
-                assert not value.endswith("/"), (
-                    f"{path} file applies_to path must not end in '/': {value}"
-                )
-
-
-def test_all_valid_control_plane_examples_validate_against_their_schemas() -> None:
+def test_planning_catalog_rejects_missing_coordination_section() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-
-    for relative_path in iter_control_plane_example_paths(REPO_ROOT, validity="valid"):
-        payload = load_json_object(REPO_ROOT / relative_path)
-        store.validate_instance(
-            payload,
-            schema_id=schema_id_for_control_plane_example(REPO_ROOT, relative_path),
-        )
-
-
-def test_all_invalid_control_plane_examples_fail_against_their_schemas() -> None:
-    store = SchemaStore.from_repo_root(REPO_ROOT)
-
-    for relative_path in iter_control_plane_example_paths(REPO_ROOT, validity="invalid"):
-        payload = load_json_object(REPO_ROOT / relative_path)
-        with pytest.raises(ValidationError):
-            store.validate_instance(
-                payload,
-                schema_id=schema_id_for_control_plane_example(REPO_ROOT, relative_path),
-            )
-
-
-def test_planning_catalog_examples_validate_against_the_schema() -> None:
-    store = SchemaStore.from_repo_root(REPO_ROOT)
-
-    valid_example = load_json_object(
-        REPO_ROOT / "core/control_plane/examples/valid/indexes/planning_catalog.v1.example.json"
+    planning_catalog = load_json_object(
+        REPO_ROOT / "core/control_plane/indexes/planning/planning_catalog.v1.json"
     )
-    invalid_example = load_json_object(
-        REPO_ROOT
-        / "core/control_plane/examples/invalid/indexes/"
-        "planning_catalog_missing_coordination.v1.example.json"
-    )
+    invalid_catalog = deepcopy(planning_catalog)
+    del invalid_catalog["entries"][0]["coordination"]
 
-    store.validate_instance(valid_example)
     with pytest.raises(ValidationError):
-        store.validate_instance(invalid_example)
+        store.validate_instance(invalid_catalog)
 
 
-def test_route_index_examples_validate_against_the_schema() -> None:
+def test_route_index_rejects_missing_required_workflow_ids() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-
-    valid_example = load_json_object(
-        REPO_ROOT / "core/control_plane/examples/valid/indexes/route_index.v1.example.json"
+    route_index = load_json_object(
+        REPO_ROOT / "core/control_plane/indexes/routes/route_index.v1.json"
     )
-    invalid_example = load_json_object(
-        REPO_ROOT
-        / "core/control_plane/examples/invalid/indexes/"
-        "route_index_missing_workflow_ids.v1.example.json"
-    )
+    invalid_index = deepcopy(route_index)
+    del invalid_index["entries"][0]["required_workflow_ids"]
 
-    store.validate_instance(valid_example)
     with pytest.raises(ValidationError):
-        store.validate_instance(invalid_example)
+        store.validate_instance(invalid_index)
 
 
-def test_workflow_metadata_registry_examples_validate_against_the_schema() -> None:
+def test_authority_map_rejects_missing_preferred_command() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-
-    valid_example = load_json_object(
-        REPO_ROOT
-        / "core/control_plane/examples/valid/registries/"
-        "workflow_metadata_registry.v1.example.json"
+    authority_map = load_json_object(
+        REPO_ROOT / "core/control_plane/registries/authority_map.json"
     )
-    invalid_example = load_json_object(
-        REPO_ROOT
-        / "core/control_plane/examples/invalid/registries/"
-        "workflow_metadata_registry_missing_phase_type.v1.example.json"
-    )
+    invalid_map = deepcopy(authority_map)
+    del invalid_map["entries"][0]["preferred_command"]
 
-    store.validate_instance(valid_example)
     with pytest.raises(ValidationError):
-        store.validate_instance(invalid_example)
-
-
-def test_authority_map_examples_validate_against_the_schema() -> None:
-    store = SchemaStore.from_repo_root(REPO_ROOT)
-
-    valid_example = load_json_object(
-        REPO_ROOT / "core/control_plane/examples/valid/registries/authority_map.v1.example.json"
-    )
-    invalid_example = load_json_object(
-        REPO_ROOT
-        / "core/control_plane/examples/invalid/registries/"
-        "authority_map_missing_command.v1.example.json"
-    )
-
-    store.validate_instance(valid_example)
-    with pytest.raises(ValidationError):
-        store.validate_instance(invalid_example)
+        store.validate_instance(invalid_map)
 
 
 def test_governed_document_front_matter_profiles_validate() -> None:
@@ -318,9 +228,9 @@ def test_governed_document_front_matter_profiles_validate() -> None:
 def test_utc_timestamp_fields_reject_offset_timestamps() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
 
-    prd_front_matter = load_json_object(
+    prd_front_matter = load_front_matter(
         REPO_ROOT
-        / "core/control_plane/examples/valid/documentation/prd_front_matter.v1.example.json"
+        / "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md"
     )
     prd_front_matter["updated_at"] = "2026-03-09T05:06:54-04:00"
     with pytest.raises(ValidationError):
@@ -331,7 +241,8 @@ def test_utc_timestamp_fields_reject_offset_timestamps() -> None:
 
     validation_evidence = load_json_object(
         REPO_ROOT
-        / "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json"
+        / "core/control_plane/ledgers/validation_evidence/"
+        "post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json"
     )
     validation_evidence["recorded_at"] = "2026-03-09T05:06:54+01:00"
     with pytest.raises(ValidationError):

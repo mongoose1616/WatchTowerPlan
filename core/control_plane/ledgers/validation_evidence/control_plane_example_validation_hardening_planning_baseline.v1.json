@@ -55,8 +55,8 @@
       "title": "The repaired valid examples and aggregate validator coverage stay aligned",
       "result": "passed",
       "subject_paths": [
-        "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
-        "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "docs/commands/core_python/watchtower_core_validate_all.md",
         "docs/standards/validations/repository_validation_standard.md"
@@ -74,7 +74,7 @@
       "title": "Exhaustive example and canonicality regressions are in place",
       "result": "passed",
       "subject_paths": [
-        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/unit/test_all_validation.py"
       ],

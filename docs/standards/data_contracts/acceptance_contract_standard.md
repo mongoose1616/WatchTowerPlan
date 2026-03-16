@@ -98,7 +98,7 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/contracts/acceptance/`; `core/control_plane/contracts/acceptance/README.md`; `core/control_plane/examples/valid/contracts/acceptance_contract*.example.json`; `core/control_plane/examples/invalid/contracts/acceptance_contract*.example.json`; `docs/planning/prds/core_python_foundation.md`
+- `Operational Surfaces`: `core/control_plane/contracts/acceptance/`; `core/control_plane/contracts/acceptance/README.md`; `docs/planning/prds/core_python_foundation.md`
 
 ## Validation
 - The acceptance contract should validate against its published artifact schema.
@@ -109,7 +109,7 @@ This standard defines machine-readable acceptance contracts stored under `core/c
 
 ## Change Control
 - Update this standard when the repository changes how acceptance contracts are shaped or when acceptance becomes part of a broader contract family.
-- Update the companion schema, examples, and live acceptance contracts in the same change set when this family changes structurally.
+- Update the companion schema and live acceptance contracts in the same change set when this family changes structurally.
 - Update the source PRD, traceability surfaces, and related evidence expectations in the same change set when acceptance meaning changes materially.
 
 ## References

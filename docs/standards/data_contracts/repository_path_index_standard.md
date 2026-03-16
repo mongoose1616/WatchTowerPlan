@@ -91,7 +91,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 2. Gather the current repository paths in scope and the README or standards context that should inform the entry summaries.
 3. Generate or refresh the index artifact in `core/control_plane/indexes/repository_paths/`.
 4. Validate the artifact against its published schema.
-5. Update the path-index standard, schema, examples, and README inventory surfaces in the same change set when the artifact family changes structurally.
+5. Update the path-index standard, schema, and README inventory surfaces in the same change set when the artifact family changes structurally.
 
 ## Examples
 - A curated list of the repository root, `docs/`, `workflows/`, `core/`, and the key control-plane subtrees is an `entrypoints` path index.
@@ -100,7 +100,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`
-- `Operational Surfaces`: `core/control_plane/indexes/`; `core/control_plane/indexes/README.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/repository_paths/`; `core/control_plane/examples/valid/indexes/repository_path_index*.example.json`; `core/control_plane/examples/invalid/indexes/repository_path_index*.example.json`
+- `Operational Surfaces`: `core/control_plane/indexes/`; `core/control_plane/indexes/README.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/repository_paths/`
 
 ## Validation
 - The path index should validate against its published schema.
@@ -112,7 +112,7 @@ Provide a machine-readable lookup surface for repository paths and entrypoints w
 
 ## Change Control
 - Update the index when repository entrypoints, major directory surfaces, or other indexed paths change materially.
-- Update the companion schema and examples in the same change set when the path-index artifact shape changes.
+- Update the companion schema in the same change set when the path-index artifact shape changes.
 - Prefer regenerating the index over hand-editing drift when the index is intended to be machine-produced.
 
 ## References

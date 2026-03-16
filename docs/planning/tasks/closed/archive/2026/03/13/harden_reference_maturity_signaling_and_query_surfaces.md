@@ -18,8 +18,7 @@ applies_to:
 - docs/references/
 - core/control_plane/indexes/references/
 - core/control_plane/schemas/artifacts/reference_index.v1.schema.json
-- core/control_plane/examples/valid/indexes/reference_index.v1.example.json
-- core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json
+- core/control_plane/indexes/references/reference_index.v1.json
 - core/python/src/watchtower_core/repo_ops/sync/reference_index.py
 - core/python/src/watchtower_core/repo_ops/query/references.py
 - core/python/src/watchtower_core/control_plane/models/planning.py

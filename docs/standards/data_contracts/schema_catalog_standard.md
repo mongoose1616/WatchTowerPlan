@@ -85,7 +85,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 1. Add or update the published schema under `core/control_plane/schemas/`.
 2. Add or update the matching schema catalog record in the same change set.
 3. Validate that the catalog record points to the correct schema file and that the schema file publishes the same `$id`.
-4. Update related validators, contracts, examples, or local loaders in the same change set when schema-resolution behavior changes.
+4. Update related validators, contracts, or local loaders in the same change set when schema-resolution behavior changes.
 5. Validate the schema catalog artifact against its published artifact schema before treating the change as complete.
 
 ## Examples
@@ -96,7 +96,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/schemas/common/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `core/control_plane/examples/valid/registries/schema_catalog*.example.json`; `core/control_plane/examples/invalid/registries/schema_catalog*.example.json`
+- `Operational Surfaces`: `core/control_plane/schemas/`; `core/control_plane/schemas/common/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`
 
 ## Validation
 - The schema catalog should validate against its published artifact schema.
@@ -107,7 +107,7 @@ Provide deterministic local resolution from published schema `$id` values to can
 
 ## Change Control
 - Update this standard when the repository changes how published schemas are cataloged or resolved locally.
-- Update the companion artifact schema, examples, and live catalog in the same change set when the schema-catalog artifact family changes structurally.
+- Update the companion artifact schema and live catalog in the same change set when the schema-catalog artifact family changes structurally.
 - Update related validator, contract, or loader surfaces in the same change set when schema lookup behavior changes materially.
 
 ## References

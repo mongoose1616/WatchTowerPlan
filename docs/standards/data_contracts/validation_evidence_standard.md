@@ -102,7 +102,7 @@ This standard defines committed validation-evidence records stored under `core/c
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `core/control_plane/examples/valid/ledgers/validation_evidence*.example.json`; `core/control_plane/examples/invalid/ledgers/validation_evidence*.example.json`; `docs/planning/prds/core_python_foundation.md`
+- `Operational Surfaces`: `core/control_plane/ledgers/validation_evidence/`; `core/control_plane/ledgers/validation_evidence/README.md`; `docs/planning/prds/core_python_foundation.md`
 
 ## Validation
 - Validation-evidence artifacts should validate against their published schema.
@@ -113,7 +113,7 @@ This standard defines committed validation-evidence records stored under `core/c
 
 ## Change Control
 - Update this standard when the repository changes the durable evidence shape or result vocabulary materially.
-- Update the companion schema, examples, and live evidence artifacts in the same change set when this family changes structurally.
+- Update the companion schema and live evidence artifacts in the same change set when this family changes structurally.
 - Update the unified traceability index in the same change set when durable evidence is added, renamed, or removed.
 
 ## References

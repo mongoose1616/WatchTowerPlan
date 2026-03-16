@@ -685,12 +685,12 @@
       "engine": "json_schema",
       "artifact_kind": "pack_work_item_note",
       "applies_to": [
-        "core/control_plane/examples/valid/interfaces/pack_work_item_note.v1.example.json"
+        "**/pack_work_item_note*.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1"
       ],
-      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
+      "notes": "Supports explicit validation or repo-local auto-selection for pack-owned work-item note artifacts without requiring repo-local example fixtures."
     },
     {
       "id": "validator.interface.extraction_output_envelope",
@@ -700,12 +700,12 @@
       "engine": "json_schema",
       "artifact_kind": "extraction_output_envelope",
       "applies_to": [
-        "core/control_plane/examples/valid/interfaces/extraction_output_envelope.v1.example.json"
+        "**/extraction_output_envelope*.json"
       ],
       "schema_ids": [
         "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1"
       ],
-      "notes": "Targets the canonical valid example until future pack-owned artifact roots are governed."
+      "notes": "Supports explicit validation or repo-local auto-selection for pack-owned extraction envelopes without requiring repo-local example fixtures."
     }
   ]
 }

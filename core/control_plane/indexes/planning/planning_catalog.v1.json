@@ -963,7 +963,7 @@
             "contract.acceptance.control_plane_example_validation_hardening"
           ],
           "applies_to": [
-            "core/control_plane/examples/valid/indexes/",
+            "core/control_plane/indexes/",
             "core/python/src/watchtower_core/repo_ops/validation/all.py",
             "core/python/tests/integration/",
             "docs/commands/core_python/watchtower_core_validate_all.md",
@@ -989,7 +989,7 @@
             "contract.acceptance.control_plane_example_validation_hardening"
           ],
           "applies_to": [
-            "core/control_plane/examples/valid/indexes/",
+            "core/control_plane/indexes/",
             "core/python/src/watchtower_core/repo_ops/validation/all.py",
             "core/python/tests/integration/",
             "core/python/tests/unit/"
@@ -1037,13 +1037,12 @@
           ],
           "validation_targets": [
             "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
-            "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
-            "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
             "core/control_plane/indexes/coordination/coordination_index.v1.json",
+            "core/control_plane/indexes/foundations/foundation_index.v1.json",
             "core/control_plane/indexes/traceability/traceability_index.v1.json",
             "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
             "core/python/src/watchtower_core/repo_ops/validation/all.py",
-            "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+            "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
             "core/python/tests/integration/test_control_plane_artifacts.py",
             "core/python/tests/unit/test_all_validation.py",
             "docs/planning/coordination_tracking.md",
@@ -1137,15 +1136,14 @@
       ],
       "related_paths": [
         "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
-        "core/control_plane/examples/valid/indexes/",
-        "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
-        "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
+        "core/control_plane/indexes/",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json",
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
-        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
         "core/python/tests/integration/",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_all_validation.py",
@@ -2334,7 +2332,7 @@
           ],
           "applies_to": [
             "core/control_plane/schemas/interfaces/",
-            "core/control_plane/examples/",
+            "core/control_plane/schemas/interfaces/packs/",
             "core/control_plane/registries/",
             "core/python/src/watchtower_core/"
           ]
@@ -2458,10 +2456,10 @@
           ],
           "validation_targets": [
             "core/control_plane/",
-            "core/control_plane/examples/",
             "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
             "core/control_plane/indexes/workflows/workflow_index.v1.json",
             "core/control_plane/schemas/interfaces/",
+            "core/control_plane/schemas/interfaces/packs/",
             "core/python/",
             "core/python/src/watchtower_core/",
             "core/python/src/watchtower_core/cli/",
@@ -2582,7 +2580,6 @@
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/core_export_readiness_and_optimization_acceptance.v1.json",
-        "core/control_plane/examples/",
         "core/control_plane/indexes/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/repository_paths/",
@@ -2593,6 +2590,7 @@
         "core/control_plane/ledgers/validation_evidence/core_export_readiness_and_optimization_planning_baseline.v1.json",
         "core/control_plane/registries/",
         "core/control_plane/schemas/interfaces/",
+        "core/control_plane/schemas/interfaces/packs/",
         "core/python/",
         "core/python/src/watchtower_core/",
         "core/python/src/watchtower_core/adapters/",
@@ -2911,8 +2909,6 @@
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
         "core/control_plane/contracts/intake/",
-        "core/control_plane/examples/invalid/registries/",
-        "core/control_plane/examples/valid/registries/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/indexes/decisions/decision_index.v1.json",
         "core/control_plane/indexes/design_documents/design_document_index.v1.json",
@@ -3558,12 +3554,12 @@
             "docs/standards/data_contracts/workflow_index_standard.md"
           ],
           "related_paths": [
-            "core/control_plane/examples/valid/contracts/acceptance_contract.v1.example.json",
-            "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
-            "core/control_plane/examples/valid/indexes/workflow_index.v1.example.json",
-            "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
-            "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
+            "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+            "core/control_plane/indexes/standards/standard_index.v1.json",
             "core/control_plane/indexes/traceability/traceability_index.v1.json",
+            "core/control_plane/indexes/workflows/workflow_index.v1.json",
+            "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
+            "core/control_plane/registries/authority_map.json",
             "docs/planning/coordination_tracking.md",
             "docs/planning/design/design_tracking.md",
             "docs/planning/initiatives/initiative_tracking.md",
@@ -3642,15 +3638,14 @@
         "validator.control_plane.validation_evidence"
       ],
       "related_paths": [
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
         "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.v1.json",
-        "core/control_plane/examples/valid/contracts/acceptance_contract.v1.example.json",
-        "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
-        "core/control_plane/examples/valid/indexes/workflow_index.v1.example.json",
-        "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
-        "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
         "core/control_plane/indexes/standards/standard_index.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.v1.json",
+        "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
+        "core/control_plane/registries/authority_map.json",
         "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
@@ -4614,9 +4609,6 @@
           ],
           "validation_targets": [
             "core/control_plane/",
-            "core/control_plane/examples/invalid/indexes/initiative_index_missing_phase.v1.example.json",
-            "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json",
-            "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json",
             "core/control_plane/indexes/coordination/coordination_index.v1.json",
             "core/control_plane/indexes/initiatives/initiative_index.v1.json",
             "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
@@ -4625,6 +4617,7 @@
             "core/python/src/watchtower_core/cli/query_coordination_handlers.py",
             "core/python/src/watchtower_core/repo_ops/query/coordination.py",
             "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
+            "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
             "docs/",
             "docs/commands/core_python/watchtower_core_query_coordination.md",
             "docs/commands/core_python/watchtower_core_query_initiatives.md",
@@ -4711,9 +4704,6 @@
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/derived_projection_status_semantics_acceptance.v1.json",
-        "core/control_plane/examples/invalid/indexes/initiative_index_missing_phase.v1.example.json",
-        "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json",
-        "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json",
         "core/control_plane/indexes/coordination/",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/initiatives/",
@@ -4729,6 +4719,7 @@
         "core/python/src/watchtower_core/repo_ops/query/coordination.py",
         "core/python/src/watchtower_core/repo_ops/query/initiatives.py",
         "core/python/tests/",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_coordination_index_sync.py",
@@ -4932,7 +4923,7 @@
             "docs/standards/data_contracts/design_document_index_standard.md",
             "docs/standards/documentation/implementation_plan_md_standard.md",
             "docs/templates/implementation_plan_template.md",
-            "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+            "core/control_plane/indexes/design_documents/design_document_index.v1.json",
             "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
             "core/python/tests/"
@@ -4954,7 +4945,7 @@
             "ac.design_document_index_relationship_alignment.005"
           ],
           "validation_targets": [
-            "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+            "core/control_plane/indexes/design_documents/design_document_index.v1.json",
             "core/control_plane/ledgers/validation_evidence/design_document_index_relationship_alignment_planning_baseline.v1.json",
             "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
@@ -5071,7 +5062,6 @@
       ],
       "related_paths": [
         "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
-        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/design_documents/design_document_index.v1.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
@@ -8390,8 +8380,6 @@
             "ac.governed_front_matter_directory_canonicalization.003"
           ],
           "validation_targets": [
-            "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json",
-            "core/control_plane/examples/valid/documentation/standard_front_matter.v1.example.json",
             "core/python/src/watchtower_core/repo_ops/front_matter_paths.py",
             "core/python/src/watchtower_core/repo_ops/planning_documents.py",
             "core/python/src/watchtower_core/repo_ops/planning_scaffolds.py",
@@ -8422,7 +8410,9 @@
             "docs/planning/tasks/closed/archive/2026/03/12/rebalance_unit_suite_structure_and_docs.md",
             "docs/planning/tasks/closed/archive/2026/03/12/unit_test_hardening_and_rebalancing_bootstrap.md",
             "docs/references/agent_workflow_authoring_reference.md",
+            "docs/references/commonmark_reference.md",
             "docs/references/front_matter_reference.md",
+            "docs/standards/documentation/readme_md_standard.md",
             "docs/standards/engineering/cli_help_text_standard.md"
           ],
           "related_paths": [
@@ -8515,8 +8505,6 @@
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/governed_front_matter_directory_canonicalization_acceptance.v1.json",
-        "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json",
-        "core/control_plane/examples/valid/documentation/standard_front_matter.v1.example.json",
         "core/control_plane/indexes/standards/standard_index.v1.json",
         "core/control_plane/ledgers/validation_evidence/governed_front_matter_directory_canonicalization_planning_baseline.v1.json",
         "core/python/src/watchtower_core/",
@@ -8559,8 +8547,10 @@
         "docs/planning/tasks/closed/archive/2026/03/12/unit_test_hardening_and_rebalancing_bootstrap.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/references/agent_workflow_authoring_reference.md",
+        "docs/references/commonmark_reference.md",
         "docs/references/front_matter_reference.md",
         "docs/standards/data_contracts/standard_index_standard.md",
+        "docs/standards/documentation/readme_md_standard.md",
         "docs/standards/engineering/cli_help_text_standard.md",
         "docs/standards/metadata/front_matter_standard.md",
         "docs/templates/decision_record_template.md",
@@ -11054,10 +11044,10 @@
           ],
           "validation_targets": [
             "core/control_plane/",
-            "core/control_plane/examples/valid/ledgers/trace_purge_record.v1.example.json",
             "core/control_plane/indexes/",
             "core/control_plane/ledgers/",
             "core/control_plane/ledgers/purges/",
+            "core/control_plane/ledgers/purges/planning_projection_pipeline_modularity_hardening_purge_record.v1.json",
             "core/control_plane/schemas/artifacts/trace_purge_record.v1.schema.json",
             "core/python/",
             "core/python/src/watchtower_core/cli/",
@@ -11171,7 +11161,6 @@
       "related_paths": [
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/planning_artifact_retention_and_purge_acceptance.v1.json",
-        "core/control_plane/examples/valid/ledgers/trace_purge_record.v1.example.json",
         "core/control_plane/indexes/",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
         "core/control_plane/indexes/decisions/decision_index.v1.json",
@@ -11828,8 +11817,6 @@
           "validation_targets": [
             "README.md",
             "core/control_plane/",
-            "core/control_plane/examples/valid/indexes/planning_catalog.v1.example.json",
-            "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
             "core/control_plane/indexes/planning/planning_catalog.v1.json",
             "core/control_plane/registries/artifact_type_registry.json",
             "core/control_plane/registries/authority_map.json",
@@ -11946,9 +11933,6 @@
         "README.md",
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/planning_authority_unification_acceptance.v1.json",
-        "core/control_plane/examples/valid/",
-        "core/control_plane/examples/valid/indexes/planning_catalog.v1.example.json",
-        "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
         "core/control_plane/indexes/planning/",
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
         "core/control_plane/indexes/traceability/traceability_index.v1.json",
@@ -12823,44 +12807,31 @@
       "summary": "Remediates confirmed post-rewrite regressions, pack-boundary defects, and retained low-value control-plane surfaces found in the repository review.",
       "artifact_status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-16T07:07:33Z",
+      "updated_at": "2026-03-16T08:12:00Z",
       "coordination": {
         "current_phase": "execution",
         "key_surface_path": "docs/planning/prds/post_rewrite_core_cleanup_and_surface_reduction.md",
         "next_action": "Resolve blockers on the active task set and keep task state current before opening new follow-up work.",
-        "next_surface_path": "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
-        "open_task_count": 3,
-        "blocked_task_count": 2,
+        "next_surface_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
+        "open_task_count": 2,
+        "blocked_task_count": 1,
         "primary_owner": "repository_maintainer",
         "active_owners": [
           "repository_maintainer"
         ],
         "active_task_ids": [
           "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
-          "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
           "task.post_rewrite_core_cleanup_and_surface_reduction.validation_closeout.005"
         ],
         "active_task_summaries": [
           {
-            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007",
-            "title": "Retire example-driven validation and fixture corpus",
+            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
+            "title": "Retire inventory-only artifact type and role registries",
             "task_status": "ready",
             "priority": "high",
             "owner": "repository_maintainer",
-            "doc_path": "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
-            "is_actionable": true,
-            "depends_on": [
-              "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006"
-            ]
-          },
-          {
-            "task_id": "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
-            "title": "Retire inventory-only artifact type and role registries",
-            "task_status": "backlog",
-            "priority": "high",
-            "owner": "repository_maintainer",
             "doc_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
-            "is_actionable": false,
+            "is_actionable": true,
             "depends_on": [
               "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
             ]
@@ -12879,8 +12850,7 @@
           }
         ],
         "blocked_by_task_ids": [
-          "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008",
-          "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
+          "task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008"
         ]
       },
       "prds": [
@@ -12963,12 +12933,12 @@
           "title": "Retire inventory-only artifact type and role registries",
           "summary": "Remove the retained artifact type and artifact role registries if no live reusable-core or pack consumer still reads them and reconcile their historical references.",
           "artifact_status": "active",
-          "task_status": "backlog",
+          "task_status": "ready",
           "task_kind": "chore",
           "priority": "high",
           "owner": "repository_maintainer",
           "doc_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
-          "updated_at": "2026-03-16T07:00:01Z",
+          "updated_at": "2026-03-16T08:12:00Z",
           "depends_on": [
             "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
           ],
@@ -13015,12 +12985,12 @@
           "title": "Retire example-driven validation and fixture corpus",
           "summary": "Remove rewrite-era example-fixture validation from the active baseline and reconcile standards, tests, and historical references that still treat the corpus as authoritative.",
           "artifact_status": "active",
-          "task_status": "ready",
+          "task_status": "done",
           "task_kind": "chore",
           "priority": "high",
           "owner": "repository_maintainer",
-          "doc_path": "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
-          "updated_at": "2026-03-16T07:07:33Z",
+          "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_example_driven_validation_and_fixture_corpus.md",
+          "updated_at": "2026-03-16T08:12:00Z",
           "depends_on": [
             "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006"
           ],
@@ -13032,7 +13002,7 @@
             "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
           ],
           "applies_to": [
-            "core/control_plane/examples/",
+            "core/control_plane/",
             "core/python/src/watchtower_core/repo_ops/validation/",
             "core/python/tests/",
             "docs/standards/data_contracts/",
@@ -13184,10 +13154,10 @@
             "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
             "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
             "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/retire_example_driven_validation_and_fixture_corpus.md",
+            "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_compatibility_and_intake_contract_families.md",
             "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
-            "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
             "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
-            "docs/planning/tasks/open/retire_inventory_only_compatibility_and_intake_contract_families.md",
             "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md"
           ],
           "related_paths": [
@@ -13271,7 +13241,6 @@
         "core/control_plane/contracts/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/post_rewrite_core_cleanup_and_surface_reduction_acceptance.v1.json",
-        "core/control_plane/examples/",
         "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
         "core/control_plane/manifests/",
         "core/control_plane/registries/",
@@ -13299,9 +13268,9 @@
         "docs/planning/tasks/closed/archive/2026/03/16/generalize_pack_context_surface_loading.md",
         "docs/planning/tasks/closed/archive/2026/03/16/post_rewrite_core_cleanup_and_surface_reduction_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/16/repair_workspace_standard_validation_contract.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/retire_example_driven_validation_and_fixture_corpus.md",
         "docs/planning/tasks/closed/archive/2026/03/16/retire_inventory_only_compatibility_and_intake_contract_families.md",
         "docs/planning/tasks/closed/archive/2026/03/16/retire_the_inventory_only_repository_manifest_surface.md",
-        "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
         "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
         "docs/planning/tasks/open/validate_and_close_post_rewrite_core_cleanup.md",
         "docs/planning/tasks/task_tracking.md",
@@ -15053,8 +15022,7 @@
             "docs/references/",
             "core/control_plane/indexes/references/",
             "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
-            "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
-            "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+            "core/control_plane/indexes/references/reference_index.v1.json",
             "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
             "core/python/src/watchtower_core/repo_ops/query/references.py",
             "core/python/src/watchtower_core/control_plane/models/planning.py",
@@ -15148,8 +15116,6 @@
           "validation_targets": [
             "core/control_plane/",
             "core/control_plane/README.md",
-            "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
-            "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
             "core/control_plane/indexes/README.md",
             "core/control_plane/indexes/references/reference_index.v1.json",
             "core/control_plane/indexes/registries/README.md",
@@ -15165,6 +15131,7 @@
             "core/python/src/watchtower_core/repo_ops/query/references.py",
             "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
+            "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
             "core/python/tests/unit/test_cli_query_commands.py",
             "core/python/tests/unit/test_document_semantics_validation.py",
             "core/python/tests/unit/test_reference_index_sync.py",
@@ -15280,8 +15247,6 @@
         "core/control_plane/",
         "core/control_plane/README.md",
         "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
-        "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
-        "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
         "core/control_plane/indexes/README.md",
         "core/control_plane/indexes/references/",
         "core/control_plane/indexes/references/README.md",
@@ -15304,6 +15269,7 @@
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
         "core/python/tests/",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/tests/unit/",
         "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/unit/test_document_semantics_validation.py",
@@ -18831,8 +18797,6 @@
             "core/control_plane/registries/artifact_type_registry.json",
             "core/control_plane/registries/schema_catalog.json",
             "core/control_plane/registries/validator_registry.json",
-            "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
-            "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
             "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
             "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
           ]
@@ -19456,8 +19420,6 @@
           ],
           "validation_targets": [
             "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
-            "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
-            "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
             "core/control_plane/indexes/commands/command_index.v1.json",
             "core/control_plane/indexes/coordination/coordination_index.v1.json",
             "core/control_plane/indexes/initiatives/initiative_index.v1.json",
@@ -19509,6 +19471,8 @@
             "core/python/src/watchtower_core/repo_ops/sync/initiative_index.py",
             "core/python/src/watchtower_core/repo_ops/sync/planning_catalog.py",
             "core/python/src/watchtower_core/repo_ops/sync/prd_tracking.py",
+            "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
+            "core/python/tests/unit/test_all_validation.py",
             "core/python/tests/unit/test_command_index_sync.py",
             "core/python/tests/unit/test_coordination_index_sync.py",
             "core/python/tests/unit/test_initiative_closeout.py",
@@ -20032,9 +19996,6 @@
         "core/control_plane/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
-        "core/control_plane/examples/",
-        "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
-        "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
         "core/control_plane/indexes/",
         "core/control_plane/indexes/commands/",
         "core/control_plane/indexes/commands/command_index.v1.json",
@@ -20107,6 +20068,8 @@
         "core/python/src/watchtower_core/sync/README.md",
         "core/python/src/watchtower_core/validation/README.md",
         "core/python/tests/",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
+        "core/python/tests/unit/test_all_validation.py",
         "core/python/tests/unit/test_command_index_sync.py",
         "core/python/tests/unit/test_coordination_index_sync.py",
         "core/python/tests/unit/test_initiative_closeout.py",
@@ -22732,7 +22695,7 @@
             "core/python/tests/integration/README.md",
             "core/python/src/watchtower_core/control_plane/loader.py",
             "core/python/src/watchtower_core/validation/artifact.py",
-            "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+            "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
             "core/python/src/watchtower_core/repo_ops/validation/all.py"
           ]
         },
@@ -22787,10 +22750,10 @@
             "core/python/src/watchtower_core/control_plane/loader.py",
             "core/python/src/watchtower_core/repo_ops/validation/all.py",
             "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-            "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
             "core/python/src/watchtower_core/validation/artifact.py",
             "core/python/tests/integration/",
             "core/python/tests/integration/README.md",
+            "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
             "core/python/tests/unit/",
             "core/python/tests/unit/README.md",
             "docs/commands/core_python/watchtower_core_validate.md",
@@ -22905,7 +22868,6 @@
         "core/python/src/watchtower_core/repo_ops/validation/",
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/src/watchtower_core/repo_ops/validation/document_semantics.py",
-        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
         "core/python/src/watchtower_core/validation/",
         "core/python/src/watchtower_core/validation/artifact.py",
         "core/python/tests/integration/",

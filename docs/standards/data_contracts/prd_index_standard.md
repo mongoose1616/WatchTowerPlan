@@ -86,7 +86,7 @@ Provide a compact lookup and tracking surface for PRDs, their trace IDs, and the
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/prds/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/prds/README.md`; `core/control_plane/examples/valid/indexes/prd_index*.example.json`; `core/control_plane/examples/invalid/indexes/prd_index*.example.json`; `docs/planning/prds/`
+- `Operational Surfaces`: `core/control_plane/indexes/prds/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/prds/README.md`; `docs/planning/prds/`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:

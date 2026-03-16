@@ -23,7 +23,7 @@ This standard defines how the repository chooses data and document formats for g
 Keep format choices small, predictable, and aligned with the repository's authority model so human-facing guidance stays readable, machine-facing artifacts stay validatable, and operational data does not drift into opaque ad hoc storage.
 
 ## Scope
-- Applies to durable formats used for governed documents, governed machine-readable artifacts, examples, and future operational records.
+- Applies to durable formats used for governed documents, governed machine-readable artifacts, and future operational records.
 - Covers the repository-preferred formats and the decision rules for when each should be used.
 - Does not define every serialization detail, schema rule, or storage configuration by itself.
 
@@ -69,7 +69,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 ### Repository-default decisions
 - `docs/**`, `workflows/**`, and human-facing repository guidance should use Markdown.
 - `core/control_plane/schemas/**` should use JSON.
-- `core/control_plane/contracts/**`, `manifests/**`, `registries/**`, `indexes/**`, `ledgers/**`, and supporting validation fixtures under `examples/**` should default to JSON.
+- `core/control_plane/contracts/**`, `manifests/**`, `registries/**`, `indexes/**`, and `ledgers/**` should default to JSON.
 - Documentation front matter should use YAML only for the parsed metadata block, not for the document body.
 - Future append-only runtime or event records should prefer NDJSON over inventing a custom line format.
 - Future local retrieval or runtime stores should stay out of the canonical versioned control plane and only use SQLite when query needs justify it.
@@ -89,7 +89,7 @@ Keep format choices small, predictable, and aligned with the repository's author
 2. Start with the repository default for that class of artifact.
 3. Challenge any move away from Markdown for prose or away from JSON for governed machine artifacts.
 4. If choosing YAML, NDJSON, or SQLite, record the concrete reason the default format is insufficient.
-5. Keep schema, validation, and companion examples aligned with the chosen format in the same change set.
+5. Keep schema, validation, and companion governed artifacts aligned with the chosen format in the same change set.
 
 ## Examples
 - A new registry document under `core/control_plane/registries/` should be JSON, not YAML.

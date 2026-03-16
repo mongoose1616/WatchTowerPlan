@@ -212,17 +212,17 @@ def test_validate_all_reports_missing_decision_applied_reference_section(
     )
 
 
-def test_validate_all_artifacts_include_valid_control_plane_examples() -> None:
+def test_validate_all_artifacts_include_live_control_plane_targets() -> None:
     service = ValidationAllService(ControlPlaneLoader())
 
     result = service.run(included_families=("artifacts",))
 
     target_paths = {record.target for record in result.records}
-    assert "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json" in (
-        target_paths
-    )
-    assert "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json" in (
-        target_paths
+    assert "core/control_plane/manifests/pack_settings.json" in target_paths
+    assert "core/control_plane/registries/schema_catalog.json" in target_paths
+    assert "core/control_plane/indexes/foundations/foundation_index.v1.json" in target_paths
+    assert all(
+        not target_path.startswith("core/control_plane/examples/") for target_path in target_paths
     )
     assert result.passed is True
 

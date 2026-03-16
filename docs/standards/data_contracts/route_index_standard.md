@@ -71,7 +71,7 @@ Provide a compact machine-readable projection of the routing table so route-prev
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `workflow`
-- `Operational Surfaces`: `core/control_plane/indexes/routes/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/examples/valid/indexes/route_index*.example.json`; `core/control_plane/examples/invalid/indexes/route_index*.example.json`; `workflows/modules/`; `workflows/ROUTING_TABLE.md`
+- `Operational Surfaces`: `core/control_plane/indexes/routes/`; `core/control_plane/schemas/artifacts/`; `workflows/modules/`; `workflows/ROUTING_TABLE.md`
 
 ## Validation
 - The route index should validate against its published artifact schema.
@@ -82,7 +82,7 @@ Provide a compact machine-readable projection of the routing table so route-prev
 
 ## Change Control
 - Update this standard when the repository changes how task routing is indexed or previewed.
-- Update the companion artifact schema, examples, live route index, command docs, and routing guidance in the same change set when the route-index family changes structurally.
+- Update the companion artifact schema, live route index, command docs, and routing guidance in the same change set when the route-index family changes structurally.
 
 ## References
 - [routing_and_context_loading_standard.md](/home/j/WatchTowerPlan/docs/standards/workflows/routing_and_context_loading_standard.md)

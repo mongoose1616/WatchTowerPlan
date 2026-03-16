@@ -105,7 +105,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/initiatives/`; `core/control_plane/indexes/initiatives/README.md`; `core/control_plane/examples/valid/indexes/initiative_index*.example.json`; `core/control_plane/examples/invalid/indexes/initiative_index*.example.json`; `docs/planning/initiatives/initiative_tracking.md`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/initiatives/`; `core/control_plane/indexes/initiatives/README.md`; `docs/planning/initiatives/initiative_tracking.md`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:

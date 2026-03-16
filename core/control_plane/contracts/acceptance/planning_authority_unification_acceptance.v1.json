@@ -30,7 +30,7 @@
     },
     {
       "acceptance_id": "ac.planning_authority_unification.002",
-      "summary": "The repo publishes a governed planning-catalog artifact family with schema, canonical artifact, validator coverage, typed loader support, sync support, and examples.",
+      "summary": "The repo publishes a governed planning-catalog artifact family with schema, canonical artifact, validator coverage, typed loader support, and sync support.",
       "source_requirement_ids": [
         "req.planning_authority_unification.001",
         "req.planning_authority_unification.005"
@@ -38,7 +38,6 @@
       "validation_targets": [
         "core/control_plane/schemas/artifacts/planning_catalog.v1.schema.json",
         "core/control_plane/indexes/planning/planning_catalog.v1.json",
-        "core/control_plane/examples/valid/indexes/planning_catalog.v1.example.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/validator_registry.json",
@@ -77,7 +76,6 @@
       "validation_targets": [
         "core/control_plane/schemas/artifacts/authority_map.v1.schema.json",
         "core/control_plane/registries/authority_map.json",
-        "core/control_plane/examples/valid/registries/authority_map.v1.example.json",
         "docs/commands/core_python/watchtower_core_query_authority.md",
         "docs/planning/tasks/closed/archive/2026/03/11/machine_authority_map_and_navigation.md"
       ],

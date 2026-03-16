@@ -40,8 +40,8 @@
         "req.control_plane_example_validation_hardening.002"
       ],
       "validation_targets": [
-        "core/control_plane/examples/valid/indexes/foundation_index.v1.example.json",
-        "core/control_plane/examples/valid/indexes/traceability_index.v1.example.json",
+        "core/control_plane/indexes/foundations/foundation_index.v1.json",
+        "core/control_plane/indexes/traceability/traceability_index.v1.json",
         "core/python/src/watchtower_core/repo_ops/validation/all.py"
       ],
       "related_paths": [
@@ -59,7 +59,7 @@
       "validation_targets": [
         "core/python/tests/integration/test_control_plane_artifacts.py",
         "core/python/tests/unit/test_all_validation.py",
-        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py"
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py"
       ],
       "related_paths": [
         "core/python/tests/unit/test_schema_store.py"

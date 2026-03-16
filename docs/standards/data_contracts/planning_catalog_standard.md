@@ -89,7 +89,7 @@ This standard defines the role, structure, and boundary rules for the canonical 
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`
-- `Operational Surfaces`: `core/control_plane/indexes/planning/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/planning/README.md`; `core/control_plane/examples/valid/indexes/planning_catalog*.example.json`; `core/control_plane/examples/invalid/indexes/planning_catalog*.example.json`
+- `Operational Surfaces`: `core/control_plane/indexes/planning/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/planning/README.md`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:

@@ -89,7 +89,7 @@ This standard defines the role, structure, and boundary rules for machine-readab
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/coordination/`; `core/control_plane/indexes/coordination/README.md`; `core/control_plane/examples/valid/indexes/coordination_index*.example.json`; `core/control_plane/examples/invalid/indexes/coordination_index*.example.json`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/coordination/`; `core/control_plane/indexes/coordination/README.md`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:

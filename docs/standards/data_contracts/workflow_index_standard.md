@@ -92,7 +92,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `workflow`
-- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `core/control_plane/examples/valid/indexes/workflow_index*.example.json`; `core/control_plane/examples/invalid/indexes/workflow_index*.example.json`; `workflows/modules/`
+- `Operational Surfaces`: `core/control_plane/indexes/workflows/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `workflows/modules/`
 
 ## Validation
 - The workflow index should validate against its published artifact schema.
@@ -108,7 +108,7 @@ Provide a compact lookup and governance surface for workflow modules and their t
 
 ## Change Control
 - Update this standard when the repository changes how workflows are indexed, queried, or audited.
-- Update the companion artifact schema, workflow metadata registry, examples, live workflow index, command docs, and query or sync surfaces in the same change set when the workflow-index family changes structurally.
+- Update the companion artifact schema, workflow metadata registry, live workflow index, command docs, and query or sync surfaces in the same change set when the workflow-index family changes structurally.
 
 ## References
 - [workflow_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/workflow_md_standard.md)

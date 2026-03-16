@@ -123,8 +123,6 @@ def _surface_kind(relative_path: str, kind: str) -> str:
         return "control_plane_registry" if kind == "file" else "control_plane_registries"
     if relative_path.startswith("core/control_plane/contracts/"):
         return "control_plane_contract" if kind == "file" else "control_plane_contracts"
-    if relative_path.startswith("core/control_plane/examples/"):
-        return "control_plane_example" if kind == "file" else "control_plane_examples"
     if relative_path.startswith("core/control_plane/indexes/"):
         return "control_plane_index" if kind == "file" else "control_plane_indexes"
     if relative_path.startswith("core/control_plane/ledgers/"):

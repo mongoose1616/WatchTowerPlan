@@ -91,7 +91,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `core/control_plane/registries/README.md`; `core/control_plane/examples/valid/registries/authority_map*.example.json`; `core/control_plane/examples/invalid/registries/authority_map*.example.json`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/registries/`; `core/control_plane/registries/README.md`
 
 ## Validation
 - The authority map should validate against its published schema.
@@ -102,7 +102,7 @@ This standard defines the role, structure, and boundary rules for the authored a
 
 ## Change Control
 - Update this standard when the repository changes how canonical planning or governance surfaces are resolved.
-- Update the companion schema, live registry, examples, command docs, root and planning entrypoints, and affected governance standards in the same change set when authority precedence changes materially.
+- Update the companion schema, live registry, command docs, root and planning entrypoints, and affected governance standards in the same change set when authority precedence changes materially.
 - Prefer updating the authority map over scattering canonical-surface policy across several READMEs.
 
 ## References

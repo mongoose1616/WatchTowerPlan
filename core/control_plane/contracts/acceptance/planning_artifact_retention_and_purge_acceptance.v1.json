@@ -58,7 +58,7 @@
       "validation_targets": [
         "core/control_plane/ledgers/purges/",
         "core/control_plane/schemas/artifacts/trace_purge_record.v1.schema.json",
-        "core/control_plane/examples/valid/ledgers/trace_purge_record.v1.example.json",
+        "core/control_plane/ledgers/purges/planning_projection_pipeline_modularity_hardening_purge_record.v1.json",
         "core/python/src/watchtower_core/closeout/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/src/watchtower_core/cli/"

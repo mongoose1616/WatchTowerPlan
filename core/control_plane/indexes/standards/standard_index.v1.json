@@ -22,8 +22,6 @@
       "operationalization_paths": [
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/contracts/acceptance/README.md",
-        "core/control_plane/examples/valid/contracts/acceptance_contract*.example.json",
-        "core/control_plane/examples/invalid/contracts/acceptance_contract*.example.json",
         "docs/planning/prds/core_python_foundation.md"
       ],
       "internal_reference_paths": [
@@ -67,9 +65,7 @@
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/",
-        "core/control_plane/registries/README.md",
-        "core/control_plane/examples/valid/registries/authority_map*.example.json",
-        "core/control_plane/examples/invalid/registries/authority_map*.example.json"
+        "core/control_plane/registries/README.md"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_catalog_standard.md",
@@ -113,8 +109,6 @@
         "core/control_plane/indexes/commands/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/commands/README.md",
-        "core/control_plane/examples/valid/indexes/command_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/command_index*.example.json",
         "docs/commands/"
       ],
       "internal_reference_paths": [
@@ -155,9 +149,7 @@
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/coordination/",
-        "core/control_plane/indexes/coordination/README.md",
-        "core/control_plane/examples/valid/indexes/coordination_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/coordination_index*.example.json"
+        "core/control_plane/indexes/coordination/README.md"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
@@ -208,8 +200,6 @@
         "core/control_plane/indexes/decisions/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/decisions/README.md",
-        "core/control_plane/examples/valid/indexes/decision_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/decision_index*.example.json",
         "docs/planning/decisions/"
       ],
       "internal_reference_paths": [
@@ -257,8 +247,6 @@
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/design_documents/",
         "core/control_plane/indexes/design_documents/README.md",
-        "core/control_plane/examples/valid/indexes/design_document_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/design_document_index*.example.json",
         "docs/planning/design/"
       ],
       "internal_reference_paths": [
@@ -384,9 +372,7 @@
         "docs/commands/core_python/watchtower_core_sync_foundation_index.md",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/foundations/",
-        "core/control_plane/indexes/foundations/README.md",
-        "core/control_plane/examples/valid/indexes/foundation_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/foundation_index*.example.json"
+        "core/control_plane/indexes/foundations/README.md"
       ],
       "internal_reference_paths": [
         "docs/standards/documentation/foundation_md_standard.md",
@@ -430,8 +416,6 @@
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/initiatives/",
         "core/control_plane/indexes/initiatives/README.md",
-        "core/control_plane/examples/valid/indexes/initiative_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/initiative_index*.example.json",
         "docs/planning/initiatives/initiative_tracking.md"
       ],
       "internal_reference_paths": [
@@ -483,9 +467,7 @@
       "operationalization_paths": [
         "core/control_plane/indexes/planning/",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/planning/README.md",
-        "core/control_plane/examples/valid/indexes/planning_catalog*.example.json",
-        "core/control_plane/examples/invalid/indexes/planning_catalog*.example.json"
+        "core/control_plane/indexes/planning/README.md"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
@@ -584,8 +566,6 @@
         "core/control_plane/indexes/prds/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/prds/README.md",
-        "core/control_plane/examples/valid/indexes/prd_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/prd_index*.example.json",
         "docs/planning/prds/"
       ],
       "internal_reference_paths": [
@@ -631,9 +611,7 @@
       "operationalization_paths": [
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/indexes/references/",
-        "core/control_plane/indexes/references/README.md",
-        "core/control_plane/examples/valid/indexes/reference_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/reference_index*.example.json"
+        "core/control_plane/indexes/references/README.md"
       ],
       "reference_doc_paths": [
         "docs/references/README.md"
@@ -679,9 +657,7 @@
         "core/control_plane/indexes/",
         "core/control_plane/indexes/README.md",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/indexes/repository_paths/",
-        "core/control_plane/examples/valid/indexes/repository_path_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/repository_path_index*.example.json"
+        "core/control_plane/indexes/repository_paths/"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/format_selection_standard.md",
@@ -722,8 +698,6 @@
       "operationalization_paths": [
         "core/control_plane/indexes/routes/",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/examples/valid/indexes/route_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/route_index*.example.json",
         "workflows/modules/",
         "workflows/ROUTING_TABLE.md"
       ],
@@ -764,9 +738,7 @@
         "core/control_plane/schemas/",
         "core/control_plane/schemas/common/",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/registries/",
-        "core/control_plane/examples/valid/registries/schema_catalog*.example.json",
-        "core/control_plane/examples/invalid/registries/schema_catalog*.example.json"
+        "core/control_plane/registries/"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/schema_standard.md",
@@ -811,7 +783,11 @@
         "core/control_plane/",
         "core/control_plane/schemas/",
         "core/control_plane/README.md",
-        "core/control_plane/examples/"
+        "core/control_plane/contracts/",
+        "core/control_plane/manifests/",
+        "core/control_plane/registries/",
+        "core/control_plane/indexes/",
+        "core/control_plane/ledgers/"
       ],
       "reference_doc_paths": [
         "docs/references/json_schema_2020_12_reference.md",
@@ -879,9 +855,7 @@
         "core/python/src/watchtower_core/repo_ops/sync/standard_index.py",
         "core/python/src/watchtower_core/repo_ops/query/standards.py",
         "core/control_plane/indexes/standards/",
-        "core/control_plane/schemas/artifacts/",
-        "core/control_plane/examples/valid/indexes/standard_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/standard_index*.example.json"
+        "core/control_plane/schemas/artifacts/"
       ],
       "internal_reference_paths": [
         "docs/standards/metadata/front_matter_standard.md",
@@ -961,8 +935,6 @@
         "core/control_plane/indexes/tasks/task_index.v1.json",
         "core/control_plane/indexes/tasks/",
         "core/control_plane/indexes/tasks/README.md",
-        "core/control_plane/examples/valid/indexes/task_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/task_index*.example.json",
         "docs/planning/tasks/"
       ],
       "applies_to": [
@@ -1014,9 +986,7 @@
       ],
       "operationalization_paths": [
         "core/control_plane/indexes/traceability/",
-        "core/control_plane/indexes/traceability/README.md",
-        "core/control_plane/examples/valid/indexes/traceability_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/traceability_index*.example.json"
+        "core/control_plane/indexes/traceability/README.md"
       ],
       "internal_reference_paths": [
         "docs/standards/data_contracts/planning_index_family_standard.md",
@@ -1067,8 +1037,6 @@
       "operationalization_paths": [
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/ledgers/validation_evidence/README.md",
-        "core/control_plane/examples/valid/ledgers/validation_evidence*.example.json",
-        "core/control_plane/examples/invalid/ledgers/validation_evidence*.example.json",
         "docs/planning/prds/core_python_foundation.md"
       ],
       "internal_reference_paths": [
@@ -1116,8 +1084,6 @@
         "core/control_plane/indexes/workflows/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/",
-        "core/control_plane/examples/valid/indexes/workflow_index*.example.json",
-        "core/control_plane/examples/invalid/indexes/workflow_index*.example.json",
         "workflows/modules/"
       ],
       "reference_doc_paths": [

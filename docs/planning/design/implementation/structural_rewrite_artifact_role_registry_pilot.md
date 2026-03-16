@@ -14,7 +14,6 @@ applies_to:
   - "docs/planning/tasks/"
   - "core/control_plane/schemas/artifacts/"
   - "core/control_plane/registries/"
-  - "core/control_plane/examples/"
   - "core/control_plane/contracts/acceptance/"
   - "core/control_plane/ledgers/migrations/"
   - "core/control_plane/ledgers/validation_evidence/"

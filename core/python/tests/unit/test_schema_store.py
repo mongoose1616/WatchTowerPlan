@@ -41,49 +41,158 @@ def test_schema_store_resolves_cataloged_schema_paths() -> None:
     assert store.resolve_path(record.schema_id) == REPO_ROOT / record.canonical_relative_path
 
 
-def test_schema_store_validates_documentation_and_supported_pack_interface_examples() -> None:
+def test_schema_store_validates_inline_documentation_and_pack_interface_payloads() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
-    example_pairs = [
+    document_pairs = [
         (
-            "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json",
-            "core/control_plane/examples/invalid/documentation/reference_front_matter_missing_tags.v1.example.json",
+            {
+                "id": "ref.example.inline_payload",
+                "title": "Inline Reference",
+                "summary": "Inline reference front matter payload.",
+                "type": "reference",
+                "status": "active",
+                "tags": ["inline"],
+                "owner": "repository_maintainer",
+                "updated_at": "2026-03-16T07:15:00Z",
+                "audience": "shared",
+            },
+            {
+                "id": "ref.example.inline_payload",
+                "title": "Inline Reference",
+                "summary": "Missing tags should fail.",
+                "type": "reference",
+                "status": "active",
+                "owner": "repository_maintainer",
+                "updated_at": "2026-03-16T07:15:00Z",
+                "audience": "shared",
+            },
             "urn:watchtower:schema:interfaces:documentation:reference-front-matter:v1",
         ),
         (
-            "core/control_plane/examples/valid/documentation/feature_design_front_matter.v1.example.json",
-            "core/control_plane/examples/invalid/documentation/feature_design_front_matter_missing_trace_id.v1.example.json",
-            "urn:watchtower:schema:interfaces:documentation:feature-design-front-matter:v1",
-        ),
-        (
-            "core/control_plane/examples/valid/documentation/implementation_plan_front_matter.v1.example.json",
-            "core/control_plane/examples/invalid/documentation/implementation_plan_front_matter_wrong_type.v1.example.json",
-            "urn:watchtower:schema:interfaces:documentation:implementation-plan-front-matter:v1",
-        ),
-        (
-            "core/control_plane/examples/valid/documentation/task_front_matter.v1.example.json",
-            "core/control_plane/examples/invalid/documentation/task_front_matter_missing_trace_id_for_traced_related_ids.v1.example.json",
+            {
+                "trace_id": "trace.example.inline_task",
+                "id": "task.example.inline_task",
+                "title": "Inline Task",
+                "summary": "Inline task front matter payload.",
+                "type": "task",
+                "status": "active",
+                "task_status": "ready",
+                "task_kind": "chore",
+                "priority": "high",
+                "owner": "repository_maintainer",
+                "updated_at": "2026-03-16T07:15:00Z",
+                "audience": "shared",
+                "authority": "authoritative",
+                "related_ids": ["trace.example.inline_task"],
+            },
+            {
+                "id": "task.example.inline_task",
+                "title": "Inline Task",
+                "summary": "Missing trace_id should fail when related_ids carries a trace.",
+                "type": "task",
+                "status": "active",
+                "task_status": "ready",
+                "task_kind": "chore",
+                "priority": "high",
+                "owner": "repository_maintainer",
+                "updated_at": "2026-03-16T07:15:00Z",
+                "audience": "shared",
+                "authority": "authoritative",
+                "related_ids": ["trace.example.inline_task"],
+            },
             "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1",
         ),
         (
-            "core/control_plane/examples/valid/interfaces/pack_work_item_note.v1.example.json",
-            "core/control_plane/examples/invalid/interfaces/pack_work_item_note_missing_work_item_id.v1.example.json",
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+                "id": "note.example.inline_payload",
+                "title": "Inline Work Item Note",
+                "summary": "Inline pack-facing note.",
+                "status": "active",
+                "pack_id": "pack.example",
+                "work_item_id": "task.example.inline_payload",
+                "work_item_type": "task",
+                "lifecycle_stage": "active",
+                "updated_at": "2026-03-16T07:15:00Z",
+            },
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+                "id": "note.example.inline_payload",
+                "title": "Inline Work Item Note",
+                "summary": "Missing work_item_id should fail.",
+                "status": "active",
+                "pack_id": "pack.example",
+                "work_item_type": "task",
+                "lifecycle_stage": "active",
+                "updated_at": "2026-03-16T07:15:00Z",
+            },
             "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
         ),
         (
-            "core/control_plane/examples/valid/interfaces/extraction_output_envelope.v1.example.json",
-            "core/control_plane/examples/invalid/interfaces/extraction_output_envelope_missing_trace_id.v1.example.json",
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1",
+                "id": "envelope.example.inline_payload",
+                "title": "Inline Extraction Envelope",
+                "summary": "Inline extraction payload.",
+                "status": "active",
+                "pack_id": "pack.example",
+                "work_item_id": "task.example.inline_payload",
+                "trace_id": "trace.example.inline_payload",
+                "source_note_id": "note.example.inline_payload",
+                "workflow_run_id": "run.example.inline_payload",
+                "extraction_method": "manual",
+                "created_at": "2026-03-16T07:15:00Z",
+                "observations": [
+                    {
+                        "observation_id": "observation.example.inline_payload",
+                        "summary": "Observed one durable fact.",
+                    }
+                ],
+                "candidate_knowledge": [
+                    {
+                        "candidate_id": "candidate.example.inline_payload",
+                        "title": "Inline Candidate",
+                        "summary": "Candidate knowledge extracted from the note.",
+                        "knowledge_family": "reference",
+                    }
+                ],
+            },
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1",
+                "id": "envelope.example.inline_payload",
+                "title": "Inline Extraction Envelope",
+                "summary": "Missing trace_id should fail.",
+                "status": "active",
+                "pack_id": "pack.example",
+                "work_item_id": "task.example.inline_payload",
+                "source_note_id": "note.example.inline_payload",
+                "workflow_run_id": "run.example.inline_payload",
+                "extraction_method": "manual",
+                "created_at": "2026-03-16T07:15:00Z",
+                "observations": [
+                    {
+                        "observation_id": "observation.example.inline_payload",
+                        "summary": "Observed one durable fact.",
+                    }
+                ],
+                "candidate_knowledge": [
+                    {
+                        "candidate_id": "candidate.example.inline_payload",
+                        "title": "Inline Candidate",
+                        "summary": "Candidate knowledge extracted from the note.",
+                        "knowledge_family": "reference",
+                    }
+                ],
+            },
             "urn:watchtower:schema:interfaces:packs:extraction-output-envelope:v1",
         ),
     ]
 
-    for valid_path, invalid_path, schema_id in example_pairs:
-        valid_example = load_json(valid_path)
-        invalid_example = load_json(invalid_path)
-
-        store.validate_instance(valid_example, schema_id=schema_id)
+    for valid_document, invalid_document, schema_id in document_pairs:
+        store.validate_instance(valid_document, schema_id=schema_id)
 
         with pytest.raises(ValidationError):
-            store.validate_instance(invalid_example, schema_id=schema_id)
+            store.validate_instance(invalid_document, schema_id=schema_id)
 
 
 def test_schema_store_validates_pack_contracts_from_inline_documents() -> None:

@@ -86,7 +86,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/references/`; `core/control_plane/indexes/references/README.md`; `core/control_plane/examples/valid/indexes/reference_index*.example.json`; `core/control_plane/examples/invalid/indexes/reference_index*.example.json`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/references/`; `core/control_plane/indexes/references/README.md`
 
 ## Validation
 - The reference index should validate against its published artifact schema.
@@ -100,7 +100,7 @@ Provide a compact lookup and discovery surface for governed reference documents,
 
 ## Change Control
 - Update this standard when the repository changes how references are indexed or queried.
-- Update the companion artifact schema, examples, and live reference index in the same change set when the reference-index family changes structurally.
+- Update the companion artifact schema and live reference index in the same change set when the reference-index family changes structurally.
 - Update reference-command docs and lookup surfaces in the same change set when the reference index changes how engineers or agents are expected to use it.
 
 ## References

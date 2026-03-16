@@ -56,8 +56,8 @@
         "docs/planning/tasks/closed/archive/2026/03/12/unit_test_hardening_and_rebalancing_bootstrap.md",
         "docs/planning/tasks/closed/archive/2026/03/12/harden_github_integration_and_sync_coverage.md",
         "docs/planning/tasks/closed/archive/2026/03/12/expand_orchestration_and_derivation_failure_coverage.md",
-        "core/control_plane/examples/valid/documentation/reference_front_matter.v1.example.json",
-        "core/control_plane/examples/valid/documentation/standard_front_matter.v1.example.json",
+        "docs/references/commonmark_reference.md",
+        "docs/standards/documentation/readme_md_standard.md",
         "core/python/tests/unit/test_cli_query_commands.py",
         "core/python/tests/integration/test_control_plane_artifacts.py"
       ],

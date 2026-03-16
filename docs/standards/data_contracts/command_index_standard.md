@@ -103,7 +103,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 
 ## Operationalization
 - `Modes`: `artifact`; `schema`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/commands/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/commands/README.md`; `core/control_plane/examples/valid/indexes/command_index*.example.json`; `core/control_plane/examples/invalid/indexes/command_index*.example.json`; `docs/commands/`
+- `Operational Surfaces`: `core/control_plane/indexes/commands/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/commands/README.md`; `docs/commands/`
 
 ## Validation
 - The command index should validate against its published artifact schema.
@@ -115,7 +115,7 @@ Provide a compact lookup surface that maps available commands and subcommands to
 
 ## Change Control
 - Update this standard when the repository changes how commands are indexed or looked up.
-- Update the companion artifact schema, examples, and live command index in the same change set when the command-index family changes structurally.
+- Update the companion artifact schema and live command index in the same change set when the command-index family changes structurally.
 - Update command docs, command-family READMEs, and relevant path indexes in the same change set when command lookup surfaces change materially.
 
 ## References

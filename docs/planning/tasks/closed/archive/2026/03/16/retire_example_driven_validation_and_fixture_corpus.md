@@ -7,15 +7,15 @@ summary: Remove rewrite-era example-fixture validation from the active baseline 
   as authoritative.
 type: task
 status: active
-task_status: ready
+task_status: done
 task_kind: chore
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T07:07:33Z'
+updated_at: '2026-03-16T08:12:00Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/examples/
+- core/control_plane/
 - core/python/src/watchtower_core/repo_ops/validation/
 - core/python/tests/
 - docs/standards/data_contracts/

@@ -28,12 +28,28 @@ def test_artifact_validation_auto_selects_acceptance_contract_validator() -> Non
     assert result.issue_count == 0
 
 
-def test_artifact_validation_auto_selects_pack_work_item_note_validator() -> None:
+def test_artifact_validation_supports_explicit_pack_work_item_note_validator(
+    tmp_path: Path,
+) -> None:
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
-
-    result = service.validate(
-        "core/control_plane/examples/valid/interfaces/pack_work_item_note.v1.example.json"
+    artifact_path = tmp_path / "pack_work_item_note.v1.json"
+    write_json(
+        artifact_path,
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+            "id": "note.example.work_item",
+            "title": "Example Work Item Note",
+            "summary": "Valid pack-facing work item note.",
+            "status": "active",
+            "pack_id": "pack.example",
+            "work_item_id": "task.example.work_item",
+            "work_item_type": "task",
+            "lifecycle_stage": "active",
+            "updated_at": "2026-03-16T07:15:00Z",
+        },
     )
+
+    result = service.validate(artifact_path, validator_id="validator.interface.pack_work_item_note")
 
     assert result.passed is True
     assert result.validator_id == "validator.interface.pack_work_item_note"
@@ -72,11 +88,26 @@ def test_artifact_validation_reports_invalid_json(tmp_path: Path) -> None:
     assert result.issues[0].code == "json_parse_invalid"
 
 
-def test_artifact_validation_reports_invalid_pack_interface_example() -> None:
+def test_artifact_validation_reports_invalid_pack_interface_artifact(tmp_path: Path) -> None:
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+    artifact_path = tmp_path / "pack_work_item_note_invalid.v1.json"
+    write_json(
+        artifact_path,
+        {
+            "$schema": "urn:watchtower:schema:interfaces:packs:pack-work-item-note:v1",
+            "id": "note.example.work_item",
+            "title": "Invalid Work Item Note",
+            "summary": "Missing work item provenance.",
+            "status": "active",
+            "pack_id": "pack.example",
+            "work_item_type": "task",
+            "lifecycle_stage": "active",
+            "updated_at": "2026-03-16T07:15:00Z",
+        },
+    )
 
     result = service.validate(
-        "core/control_plane/examples/invalid/interfaces/pack_work_item_note_missing_work_item_id.v1.example.json",
+        artifact_path,
         validator_id="validator.interface.pack_work_item_note",
     )
 

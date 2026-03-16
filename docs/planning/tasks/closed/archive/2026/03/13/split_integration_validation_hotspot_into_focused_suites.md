@@ -18,7 +18,7 @@ applies_to:
 - core/python/tests/integration/README.md
 - core/python/src/watchtower_core/control_plane/loader.py
 - core/python/src/watchtower_core/validation/artifact.py
-- core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py
+- core/python/tests/integration/test_control_plane_artifact_schema_contracts.py
 - core/python/src/watchtower_core/repo_ops/validation/all.py
 related_ids:
 - prd.validation_test_hotspot_rebalancing

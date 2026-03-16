@@ -6,18 +6,18 @@
 | Mode | `active_work` |
 | Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
 | Next | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
-| Open First | [docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md) |
+| Open First | [docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
 | Trace ID | Phase | Owners | Next | Action |
 | --- | --- | --- | --- | --- |
-| `trace.post_rewrite_core_cleanup_and_surface_reduction` | `execution` | repository_maintainer | [retire_example_driven_validation_and_fixture_corpus.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| `trace.post_rewrite_core_cleanup_and_surface_reduction` | `execution` | repository_maintainer | [retire_inventory_only_artifact_type_and_role_registries.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Actionable Tasks
 | Task | Initiative | Status | Priority | Owner |
 | --- | --- | --- | --- | --- |
-| [task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md) | `trace.post_rewrite_core_cleanup_and_surface_reduction` | `ready` | `high` | `repository_maintainer` |
+| [task.post_rewrite_core_cleanup_and_surface_reduction.artifact_registry_retirement.008](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md) | `trace.post_rewrite_core_cleanup_and_surface_reduction` | `ready` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -28,4 +28,4 @@
 | `trace.planning_artifact_retention_and_purge` | `completed` | `2026-03-16T03:47:30Z` | [planning_artifact_retention_and_purge.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_artifact_retention_and_purge.md) |
 | `trace.structural_rewrite_program` | `completed` | `2026-03-15T09:55:03Z` | [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/prds/structural_rewrite_program.md) |
 
-_Updated At: `2026-03-16T07:07:33Z`_
+_Updated At: `2026-03-16T08:12:00Z`_

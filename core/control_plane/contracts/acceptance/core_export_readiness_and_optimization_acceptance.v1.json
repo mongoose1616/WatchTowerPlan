@@ -91,7 +91,7 @@
       ],
       "validation_targets": [
         "core/control_plane/schemas/interfaces/",
-        "core/control_plane/examples/",
+        "core/control_plane/schemas/interfaces/packs/",
         "docs/planning/tasks/closed/archive/2026/03/10/core_export_pack_interfaces.md"
       ],
       "related_paths": [

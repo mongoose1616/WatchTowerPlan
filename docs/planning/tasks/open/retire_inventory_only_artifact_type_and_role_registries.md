@@ -7,11 +7,11 @@ summary: Remove the retained artifact type and artifact role registries if no li
   references.
 type: task
 status: active
-task_status: backlog
+task_status: ready
 task_kind: chore
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T07:00:01Z'
+updated_at: '2026-03-16T08:12:00Z'
 audience: shared
 authority: authoritative
 applies_to:

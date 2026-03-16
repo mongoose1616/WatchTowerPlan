@@ -19,8 +19,6 @@ applies_to:
 - core/control_plane/registries/artifact_type_registry.json
 - core/control_plane/registries/schema_catalog.json
 - core/control_plane/registries/validator_registry.json
-- core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json
-- core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json
 - core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json
 - core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json
 related_ids:

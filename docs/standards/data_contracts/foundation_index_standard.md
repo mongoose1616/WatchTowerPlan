@@ -89,7 +89,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `documentation`; `schema`; `artifact`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`; `docs/commands/core_python/watchtower_core_query_foundations.md`; `docs/commands/core_python/watchtower_core_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`; `core/control_plane/examples/valid/indexes/foundation_index*.example.json`; `core/control_plane/examples/invalid/indexes/foundation_index*.example.json`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/foundation_index.py`; `core/python/src/watchtower_core/repo_ops/query/foundations.py`; `docs/commands/core_python/watchtower_core_query_foundations.md`; `docs/commands/core_python/watchtower_core_sync_foundation_index.md`; `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/foundations/`; `core/control_plane/indexes/foundations/README.md`
 
 ## Validation
 - The foundation index should validate against its published artifact schema.
@@ -103,7 +103,7 @@ Provide a compact lookup and governance-audit surface for the repository's inten
 
 ## Change Control
 - Update this standard when the repository changes how foundation documents are indexed, queried, or audited.
-- Update the companion artifact schema, examples, live foundation index, family README, command docs, and query or sync surfaces in the same change set when the foundation-index family changes structurally.
+- Update the companion artifact schema, live foundation index, family README, command docs, and query or sync surfaces in the same change set when the foundation-index family changes structurally.
 
 ## References
 - [foundation_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/foundation_md_standard.md)

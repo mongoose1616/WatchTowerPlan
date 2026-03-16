@@ -60,7 +60,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 
 ## Operationalization
 - `Modes`: `sync`; `query`; `artifact`; `schema`
-- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `core/control_plane/indexes/standards/`; `core/control_plane/schemas/artifacts/`; `core/control_plane/examples/valid/indexes/standard_index*.example.json`; `core/control_plane/examples/invalid/indexes/standard_index*.example.json`
+- `Operational Surfaces`: `core/python/src/watchtower_core/repo_ops/sync/standard_index.py`; `core/python/src/watchtower_core/repo_ops/query/standards.py`; `core/control_plane/indexes/standards/`; `core/control_plane/schemas/artifacts/`
 
 ## Structure or Data Model
 ### Root artifact fields
@@ -111,7 +111,7 @@ Provide a compact lookup and governance surface for repository standards and bes
 
 ## Change Control
 - Update this standard when the repository changes how standards are indexed, queried, or audited.
-- Update the companion artifact schema, examples, live standard index, command docs, and query or sync surfaces in the same change set when the standard-index family changes structurally.
+- Update the companion artifact schema, live standard index, command docs, and query or sync surfaces in the same change set when the standard-index family changes structurally.
 
 ## References
 - [reference_index_standard.md](/home/j/WatchTowerPlan/docs/standards/data_contracts/reference_index_standard.md)

@@ -104,7 +104,7 @@ Provide a compact lookup and tracking surface for feature designs and implementa
 
 ## Operationalization
 - `Modes`: `schema`; `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/design_documents/`; `core/control_plane/indexes/design_documents/README.md`; `core/control_plane/examples/valid/indexes/design_document_index*.example.json`; `core/control_plane/examples/invalid/indexes/design_document_index*.example.json`; `docs/planning/design/`
+- `Operational Surfaces`: `core/control_plane/schemas/artifacts/`; `core/control_plane/indexes/design_documents/`; `core/control_plane/indexes/design_documents/README.md`; `docs/planning/design/`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:

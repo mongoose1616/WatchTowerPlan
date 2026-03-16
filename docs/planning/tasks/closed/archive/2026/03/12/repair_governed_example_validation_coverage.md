@@ -14,7 +14,7 @@ updated_at: '2026-03-12T14:46:57Z'
 audience: shared
 authority: authoritative
 applies_to:
-- core/control_plane/examples/valid/indexes/
+- core/control_plane/indexes/
 - core/python/src/watchtower_core/repo_ops/validation/all.py
 - core/python/tests/integration/
 - core/python/tests/unit/

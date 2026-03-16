@@ -34,10 +34,6 @@ from watchtower_core.repo_ops.task_documents import (
 from watchtower_core.repo_ops.validation.document_semantics import (
     DocumentSemanticsValidationService,
 )
-from watchtower_core.repo_ops.validation.example_artifacts import (
-    iter_control_plane_example_paths,
-    schema_id_for_control_plane_example,
-)
 from watchtower_core.repo_ops.validation.registry import VALIDATION_FAMILY_SPECS
 from watchtower_core.validation.acceptance import AcceptanceReconciliationService
 from watchtower_core.validation.artifact import ArtifactValidationService
@@ -189,18 +185,6 @@ class ValidationAllService:
                 target=relative_path,
                 runner=self._artifact.validate,
             )
-            records.append(
-                ValidationAllRecord(
-                    family="artifacts",
-                    target=relative_path,
-                    result=result,
-                )
-            )
-        for relative_path in iter_control_plane_example_paths(
-            self._loader.repo_root,
-            validity="valid",
-        ):
-            result = self._validate_valid_example_artifact(relative_path)
             records.append(
                 ValidationAllRecord(
                     family="artifacts",
@@ -379,23 +363,6 @@ class ValidationAllService:
 
     def _acceptance_targets(self) -> tuple[str, ...]:
         return self._acceptance.acceptance_trace_ids()
-
-    def _validate_valid_example_artifact(self, relative_path: str) -> ValidationResult:
-        schema_id = schema_id_for_control_plane_example(
-            self._loader.repo_root,
-            relative_path,
-        )
-        return self._safe_validate_path(
-            family="artifacts",
-            target=relative_path,
-            runner=self._make_schema_runner(schema_id),
-        )
-
-    def _make_schema_runner(self, schema_id: str) -> Callable[[str], ValidationResult]:
-        def _runner(relative_path: str) -> ValidationResult:
-            return self._artifact.validate(relative_path, schema_id=schema_id)
-
-        return _runner
 
     def _safe_validate_path(
         self,

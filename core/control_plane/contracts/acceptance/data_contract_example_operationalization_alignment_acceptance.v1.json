@@ -63,10 +63,10 @@
         "core/control_plane/indexes/standards/standard_index.v1.json"
       ],
       "related_paths": [
-        "core/control_plane/examples/valid/contracts/acceptance_contract.v1.example.json",
-        "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
-        "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
-        "core/control_plane/examples/valid/registries/authority_map.v1.example.json"
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
+        "core/control_plane/registries/authority_map.json"
       ],
       "notes": "The affected data-contract standards now operationalize valid and invalid example families with bounded repo-relative glob patterns, and the live standard index preserves that coverage."
     },
@@ -83,11 +83,11 @@
         "core/control_plane/indexes/standards/standard_index.v1.json"
       ],
       "related_paths": [
-        "core/control_plane/examples/valid/contracts/acceptance_contract.v1.example.json",
-        "core/control_plane/examples/valid/indexes/workflow_index.v1.example.json",
-        "core/control_plane/examples/valid/indexes/standard_index.v1.example.json",
-        "core/control_plane/examples/valid/ledgers/validation_evidence.v1.example.json",
-        "core/control_plane/examples/valid/registries/authority_map.v1.example.json"
+        "core/control_plane/contracts/acceptance/core_python_foundation_acceptance.v1.json",
+        "core/control_plane/indexes/workflows/workflow_index.v1.json",
+        "core/control_plane/indexes/standards/standard_index.v1.json",
+        "core/control_plane/ledgers/validation_evidence/post_rewrite_core_cleanup_and_surface_reduction_planning_baseline.v1.json",
+        "core/control_plane/registries/authority_map.json"
       ],
       "notes": "Regression coverage protects representative example-file lookups across contract, index, ledger, and registry families."
     },

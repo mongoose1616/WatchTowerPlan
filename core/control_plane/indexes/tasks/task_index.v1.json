@@ -255,7 +255,7 @@
         "contract.acceptance.control_plane_example_validation_hardening"
       ],
       "applies_to": [
-        "core/control_plane/examples/valid/indexes/",
+        "core/control_plane/indexes/",
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_validate_all.md",
@@ -282,7 +282,7 @@
         "contract.acceptance.control_plane_example_validation_hardening"
       ],
       "applies_to": [
-        "core/control_plane/examples/valid/indexes/",
+        "core/control_plane/indexes/",
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/tests/integration/",
         "core/python/tests/unit/"
@@ -657,7 +657,7 @@
       ],
       "applies_to": [
         "core/control_plane/schemas/interfaces/",
-        "core/control_plane/examples/",
+        "core/control_plane/schemas/interfaces/packs/",
         "core/control_plane/registries/",
         "core/python/src/watchtower_core/"
       ]
@@ -1343,7 +1343,7 @@
         "docs/standards/data_contracts/design_document_index_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/templates/implementation_plan_template.md",
-        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json",
         "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
         "core/python/tests/"
@@ -3322,12 +3322,12 @@
       "title": "Retire inventory-only artifact type and role registries",
       "summary": "Remove the retained artifact type and artifact role registries if no live reusable-core or pack consumer still reads them and reconcile their historical references.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "ready",
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/open/retire_inventory_only_artifact_type_and_role_registries.md",
-      "updated_at": "2026-03-16T07:00:01Z",
+      "updated_at": "2026-03-16T08:12:00Z",
       "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
       "depends_on": [
         "task.post_rewrite_core_cleanup_and_surface_reduction.example_validation_retirement.007"
@@ -3376,12 +3376,12 @@
       "title": "Retire example-driven validation and fixture corpus",
       "summary": "Remove rewrite-era example-fixture validation from the active baseline and reconcile standards, tests, and historical references that still treat the corpus as authoritative.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/retire_example_driven_validation_and_fixture_corpus.md",
-      "updated_at": "2026-03-16T07:07:33Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/retire_example_driven_validation_and_fixture_corpus.md",
+      "updated_at": "2026-03-16T08:12:00Z",
       "trace_id": "trace.post_rewrite_core_cleanup_and_surface_reduction",
       "depends_on": [
         "task.post_rewrite_core_cleanup_and_surface_reduction.inventory_contract_retirement.006"
@@ -3394,7 +3394,7 @@
         "contract.acceptance.post_rewrite_core_cleanup_and_surface_reduction"
       ],
       "applies_to": [
-        "core/control_plane/examples/",
+        "core/control_plane/",
         "core/python/src/watchtower_core/repo_ops/validation/",
         "core/python/tests/",
         "docs/standards/data_contracts/",
@@ -4040,8 +4040,7 @@
         "docs/references/",
         "core/control_plane/indexes/references/",
         "core/control_plane/schemas/artifacts/reference_index.v1.schema.json",
-        "core/control_plane/examples/valid/indexes/reference_index.v1.example.json",
-        "core/control_plane/examples/invalid/indexes/reference_index_missing_upstream.v1.example.json",
+        "core/control_plane/indexes/references/reference_index.v1.json",
         "core/python/src/watchtower_core/repo_ops/sync/reference_index.py",
         "core/python/src/watchtower_core/repo_ops/query/references.py",
         "core/python/src/watchtower_core/control_plane/models/planning.py",
@@ -4927,8 +4926,6 @@
         "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/validator_registry.json",
-        "core/control_plane/examples/valid/registries/artifact_role_registry.v1.example.json",
-        "core/control_plane/examples/invalid/registries/artifact_role_registry_missing_retention_reasons.v1.example.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ]
@@ -6298,7 +6295,7 @@
         "core/python/tests/integration/README.md",
         "core/python/src/watchtower_core/control_plane/loader.py",
         "core/python/src/watchtower_core/validation/artifact.py",
-        "core/python/src/watchtower_core/repo_ops/validation/example_artifacts.py",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py",
         "core/python/src/watchtower_core/repo_ops/validation/all.py"
       ]
     },

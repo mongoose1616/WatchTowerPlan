@@ -28,7 +28,7 @@
     },
     {
       "acceptance_id": "ac.derived_projection_status_semantics.002",
-      "summary": "The initiative-index and coordination-index contracts, schemas, and examples validate after the initiative-entry field rename.",
+      "summary": "The initiative-index and coordination-index contracts, schemas, and live validation coverage validate after the initiative-entry field rename.",
       "source_requirement_ids": [
         "req.derived_projection_status_semantics.001",
         "req.derived_projection_status_semantics.003"
@@ -36,11 +36,9 @@
       "validation_targets": [
         "core/control_plane/schemas/artifacts/initiative_index.v1.schema.json",
         "core/control_plane/schemas/artifacts/coordination_index.v1.schema.json",
-        "core/control_plane/examples/valid/indexes/initiative_index.v1.example.json",
-        "core/control_plane/examples/valid/indexes/coordination_index.v1.example.json",
-        "core/control_plane/examples/invalid/indexes/initiative_index_missing_phase.v1.example.json",
         "core/control_plane/indexes/initiatives/initiative_index.v1.json",
-        "core/control_plane/indexes/coordination/coordination_index.v1.json"
+        "core/control_plane/indexes/coordination/coordination_index.v1.json",
+        "core/python/tests/integration/test_control_plane_artifact_schema_contracts.py"
       ],
       "related_paths": [
         "core/python/tests/integration/test_control_plane_artifacts.py",

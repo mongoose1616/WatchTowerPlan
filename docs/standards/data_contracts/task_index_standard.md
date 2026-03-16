@@ -112,7 +112,7 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 
 ## Operationalization
 - `Modes`: `artifact`; `documentation`
-- `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `core/control_plane/examples/valid/indexes/task_index*.example.json`; `core/control_plane/examples/invalid/indexes/task_index*.example.json`; `docs/planning/tasks/`
+- `Operational Surfaces`: `core/control_plane/indexes/tasks/task_index.v1.json`; `core/control_plane/indexes/tasks/`; `core/control_plane/indexes/tasks/README.md`; `docs/planning/tasks/`
 
 ## Validation
 - In addition to the shared planning-index-family validation contract:

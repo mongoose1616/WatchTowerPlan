@@ -194,7 +194,7 @@
       "uses_external_references": false,
       "related_paths": [
         "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
-        "core/control_plane/examples/valid/indexes/",
+        "core/control_plane/indexes/",
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_validate_all.md",
@@ -320,7 +320,6 @@
         "core/python/src/watchtower_core/evidence/",
         "core/python/src/watchtower_core/integrations/github/",
         "core/control_plane/schemas/interfaces/",
-        "core/control_plane/examples/",
         "core/control_plane/indexes/",
         "docs/commands/core_python/",
         "docs/standards/",
@@ -562,10 +561,10 @@
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/templates/implementation_plan_template.md",
-        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
         "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
-        "core/python/tests/"
+        "core/python/tests/",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json"
       ],
       "internal_reference_paths": [
         "docs/foundations/engineering_design_principles.md",
@@ -1330,7 +1329,6 @@
         "core/control_plane/indexes/planning/",
         "core/control_plane/registries/",
         "core/control_plane/schemas/artifacts/",
-        "core/control_plane/examples/valid/",
         "core/control_plane/registries/schema_catalog.json",
         "core/control_plane/registries/artifact_type_registry.json",
         "core/control_plane/registries/validator_registry.json",
@@ -1831,8 +1829,6 @@
         "docs/standards/data_contracts/schema_catalog_standard.md",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/",
-        "core/control_plane/examples/valid/registries/",
-        "core/control_plane/examples/invalid/registries/",
         "core/python/src/watchtower_core/control_plane/",
         "core/python/tests/unit/",
         "core/python/tests/integration/",
@@ -2012,7 +2008,6 @@
         "core/control_plane/ledgers/validation_evidence/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/",
-        "core/control_plane/examples/",
         "docs/standards/",
         "docs/planning/",
         "core/control_plane/",
@@ -2430,7 +2425,7 @@
         "docs/planning/prds/control_plane_example_validation_hardening.md"
       ],
       "related_paths": [
-        "core/control_plane/examples/valid/indexes/",
+        "core/control_plane/indexes/",
         "core/python/src/watchtower_core/repo_ops/validation/all.py",
         "core/python/tests/integration/",
         "docs/commands/core_python/watchtower_core_validate_all.md",
@@ -2791,7 +2786,7 @@
         "docs/standards/documentation/feature_design_md_standard.md",
         "docs/standards/documentation/implementation_plan_md_standard.md",
         "docs/templates/implementation_plan_template.md",
-        "core/control_plane/examples/valid/indexes/design_document_index.v1.example.json",
+        "core/control_plane/indexes/design_documents/design_document_index.v1.json",
         "core/python/src/watchtower_core/repo_ops/sync/design_document_index.py",
         "core/python/src/watchtower_core/repo_ops/sync/design_tracking.py",
         "core/python/tests/"
@@ -3910,7 +3905,6 @@
         "docs/planning/tasks/",
         "core/control_plane/schemas/artifacts/",
         "core/control_plane/registries/",
-        "core/control_plane/examples/",
         "core/control_plane/contracts/acceptance/",
         "core/control_plane/ledgers/migrations/",
         "core/control_plane/ledgers/validation_evidence/"
