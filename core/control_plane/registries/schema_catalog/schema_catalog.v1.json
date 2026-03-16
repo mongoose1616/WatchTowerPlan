@@ -602,6 +602,84 @@
       ]
     },
     {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+      "title": "Pack Settings",
+      "description": "Schema for one pack-owned settings surface that acts as the load root for pack-governed schemas, registries, path registries, and indexes.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "pack_settings",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/pack_settings.schema.json",
+      "aliases": [
+        "pack load root schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:governance-surface-map:v1",
+      "title": "Governance Surface Map",
+      "description": "Schema for one pack-owned governance surface map over non-artifact governed surfaces.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "governance_surface_map",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/governance_surface_map.schema.json",
+      "aliases": [
+        "governed non-artifact surface schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:path-pattern-registry:v1",
+      "title": "Path Pattern Registry",
+      "description": "Schema for one pack-owned path-pattern registry that maps artifact families to canonical user, hidden, and rendered paths.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "path_pattern_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/path_pattern_registry.schema.json",
+      "aliases": [
+        "pack path pattern schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:status-registry:v1",
+      "title": "Status Registry",
+      "description": "Schema for one pack-owned global status registry with per-family allowed subsets.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "status_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/status_registry.schema.json",
+      "aliases": [
+        "global status schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:actor-registry:v1",
+      "title": "Actor Registry",
+      "description": "Schema for one hidden authoritative actor registry used for actor lookup and actor-ref validation.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "actor_registry",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/actor_registry.schema.json",
+      "aliases": [
+        "actor lookup schema"
+      ]
+    },
+    {
+      "schema_id": "urn:watchtower:schema:interfaces:packs:artifact-index:v1",
+      "title": "Artifact Index",
+      "description": "Schema for one pack-owned artifact index that provides authoritative cataloging and query metadata across artifact families.",
+      "status": "active",
+      "schema_family": "interface",
+      "subject_kind": "artifact_index",
+      "version": "v1",
+      "canonical_path": "core/control_plane/schemas/interfaces/packs/artifact_index.schema.json",
+      "aliases": [
+        "pack artifact catalog schema"
+      ]
+    },
+    {
       "schema_id": "urn:watchtower:schema:interfaces:packs:workspace-artifact-manifest:v1",
       "title": "Workspace Artifact Manifest",
       "description": "Schema for one metadata-only manifest of pack-local workspace artifacts.",

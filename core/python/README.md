@@ -141,7 +141,9 @@ Use the nested READMEs under `repo_ops/` and `integrations/github/` when you nee
 - Keep `pyproject.toml`, `uv.lock`, and command docs aligned when the Python execution contract changes.
 
 ## Programmatic Use
-- `watchtower_core.control_plane.WorkspaceConfig` supports alternate logical workspace prefixes and can now be built from a validated pack-runtime manifest document instead of relying only on the repository defaults.
-- `ControlPlaneLoader.load_pack_runtime_manifest()` exposes the repository's current pack-runtime contract as a typed startup surface for future pack-shaped consumers.
+- `watchtower_core.control_plane.WorkspaceConfig` supports alternate logical workspace prefixes and can still be built from a validated pack-runtime manifest document when the repository-specific startup bridge is needed.
+- `ControlPlaneLoader.load_pack_settings()` exposes the repository's STEP1-style pack settings load root as a typed startup surface for future pack-shaped consumers.
+- `ControlPlaneLoader.load_pack_context()` materializes a reusable `PackContext` by loading pack settings and the surfaces declared there.
+- `ControlPlaneLoader.load_pack_runtime_manifest()` remains available only while the repository transitions off the older runtime-manifest bridge.
 - `watchtower_core.control_plane.SupplementalSchemaDocument` lets external consumers register additional schemas in-memory for validation without modifying this repository's canonical schema catalog.
 - `ControlPlaneLoader(... supplemental_schema_paths=...)` and `SchemaStore.from_workspace(... supplemental_schema_paths=...)` let callers load supplemental schemas from explicit files or directories for bounded external artifact validation.

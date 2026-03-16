@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+  "title": "Pack Settings",
+  "description": "Schema for one pack-owned settings surface that acts as the load root for pack-governed schemas, registries, path registries, and indexes.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "surface_name",
+    "contract_version",
+    "description",
+    "updated_at",
+    "pack_id",
+    "surfaces"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:packs:pack-settings:v1"
+    },
+    "surface_name": {
+      "const": "pack_settings"
+    },
+    "contract_version": {
+      "const": "v1"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pack_id": {
+      "type": "string",
+      "pattern": "^pack\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+    },
+    "surfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/surfaceDeclaration"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "surfaceDeclaration": {
+      "type": "object",
+      "required": [
+        "surface_name",
+        "surface_kind",
+        "path",
+        "authority",
+        "visibility"
+      ],
+      "properties": {
+        "surface_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface_kind": {
+          "type": "string",
+          "enum": [
+            "schema_collection",
+            "governance_surface_map",
+            "path_pattern_registry",
+            "status_registry",
+            "actor_registry",
+            "artifact_index",
+            "index",
+            "registry"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority": {
+          "type": "string",
+          "enum": ["authoritative", "derived"]
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["hidden", "user", "mixed"]
+        },
+        "rebuildable": {
+          "type": "boolean"
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "builder": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_surface": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -2458,6 +2458,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/manifests/pack_settings.json",
+      "kind": "file",
+      "surface_kind": "control_plane_file",
+      "summary": "STEP1-style pack settings load root for the reusable core boundary.",
+      "parent_path": "core/control_plane/manifests/",
+      "maturity": "supporting",
+      "priority": "medium",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/manifests/repository_manifest.v1.json",
       "kind": "file",
       "surface_kind": "control_plane_file",
@@ -2594,6 +2604,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/registries/actor_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "STEP1-style actor registry for audit and actor-ref validation.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/registries/artifact_roles/",
       "kind": "directory",
       "surface_kind": "control_plane_registries",
@@ -2684,6 +2704,26 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/registries/governance_surface_map.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "STEP1-style governance surface map for non-artifact core surfaces.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/path_pattern_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "STEP1-style path pattern registry for reusable core surfaces.",
+      "parent_path": "core/control_plane/registries/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/registries/policy_catalog/",
       "kind": "directory",
       "surface_kind": "control_plane_registries",
@@ -2739,6 +2779,16 @@
       "surface_kind": "control_plane_registry",
       "summary": "Live schema catalog artifact that maps published schema IDs to canonical local schema files.",
       "parent_path": "core/control_plane/registries/schema_catalog/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/registries/status_registry.json",
+      "kind": "file",
+      "surface_kind": "control_plane_registry",
+      "summary": "STEP1-style global status vocabulary for validation and enforcement.",
+      "parent_path": "core/control_plane/registries/",
       "maturity": "authoritative",
       "priority": "high",
       "audience_hint": "maintainer"
@@ -3362,6 +3412,26 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/schemas/interfaces/packs/actor_registry.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one actor registry.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/artifact_index.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one STEP1-style artifact index.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/schemas/interfaces/packs/extraction_output_envelope.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -3372,10 +3442,30 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/schemas/interfaces/packs/governance_surface_map.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one governance surface map over non-artifact governed surfaces.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/schemas/interfaces/packs/knowledge_index.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for one pack-local knowledge index over promoted reusable knowledge items.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/pack_settings.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one pack settings load root.",
       "parent_path": "core/control_plane/schemas/interfaces/packs/",
       "maturity": "authoritative",
       "priority": "high",
@@ -3402,6 +3492,16 @@
       "audience_hint": "maintainer"
     },
     {
+      "path": "core/control_plane/schemas/interfaces/packs/path_pattern_registry.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one path pattern registry.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
       "path": "core/control_plane/schemas/interfaces/packs/promoted_knowledge.v1.schema.json",
       "kind": "file",
       "surface_kind": "control_plane_schema",
@@ -3416,6 +3516,16 @@
       "kind": "file",
       "surface_kind": "control_plane_schema",
       "summary": "Schema for one reviewable promotion decision that links extraction output to promoted knowledge.",
+      "parent_path": "core/control_plane/schemas/interfaces/packs/",
+      "maturity": "authoritative",
+      "priority": "high",
+      "audience_hint": "maintainer"
+    },
+    {
+      "path": "core/control_plane/schemas/interfaces/packs/status_registry.schema.json",
+      "kind": "file",
+      "surface_kind": "control_plane_schema",
+      "summary": "Schema for one global status registry.",
       "parent_path": "core/control_plane/schemas/interfaces/packs/",
       "maturity": "authoritative",
       "priority": "high",

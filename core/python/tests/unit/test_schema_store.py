@@ -111,6 +111,123 @@ def test_schema_store_validates_documentation_and_pack_interface_examples() -> N
             store.validate_instance(invalid_example, schema_id=schema_id)
 
 
+def test_schema_store_validates_step1_pack_contracts_from_inline_documents() -> None:
+    store = SchemaStore.from_repo_root(REPO_ROOT)
+    example_pairs = [
+        (
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+                "surface_name": "pack_settings",
+                "contract_version": "v1",
+                "description": "Inline pack settings payload.",
+                "updated_at": "2026-03-16T05:15:00Z",
+                "pack_id": "pack.example",
+                "surfaces": [
+                    {
+                        "surface_name": "schema_catalog",
+                        "surface_kind": "schema_collection",
+                        "path": (
+                            "core/control_plane/registries/schema_catalog/"
+                            "schema_catalog.v1.json"
+                        ),
+                        "authority": "authoritative",
+                        "visibility": "hidden",
+                    }
+                ],
+            },
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+                "surface_name": "pack_settings",
+                "contract_version": "v1",
+                "description": "Invalid pack settings payload.",
+                "updated_at": "2026-03-16T05:15:00Z",
+                "pack_id": "pack.example",
+                "surfaces": [
+                    {
+                        "surface_name": "schema_catalog",
+                        "surface_kind": "wrong_kind",
+                        "path": (
+                            "core/control_plane/registries/schema_catalog/"
+                            "schema_catalog.v1.json"
+                        ),
+                        "authority": "authoritative",
+                        "visibility": "hidden",
+                    }
+                ],
+            },
+            "urn:watchtower:schema:interfaces:packs:pack-settings:v1",
+        ),
+        (
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:status-registry:v1",
+                "surface_name": "status_registry",
+                "contract_version": "v1",
+                "description": "Inline status registry payload.",
+                "updated_at": "2026-03-16T05:15:00Z",
+                "statuses": [
+                    {
+                        "value": "active",
+                        "entry_status": "active",
+                        "summary": "Currently open.",
+                    }
+                ],
+            },
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:status-registry:v1",
+                "surface_name": "status_registry",
+                "contract_version": "v1",
+                "description": "Invalid status registry payload.",
+                "updated_at": "2026-03-16T05:15:00Z",
+                "statuses": [
+                    {
+                        "value": "active",
+                        "entry_status": "unsupported",
+                        "summary": "Currently open.",
+                    }
+                ],
+            },
+            "urn:watchtower:schema:interfaces:packs:status-registry:v1",
+        ),
+        (
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:actor-registry:v1",
+                "surface_name": "actor_registry",
+                "contract_version": "v1",
+                "description": "Inline actor registry payload.",
+                "updated_at": "2026-03-16T05:15:00Z",
+                "actors": [
+                    {
+                        "actor_id": "actor.example",
+                        "actor_type": "agent",
+                        "label": "Example Agent",
+                    }
+                ],
+            },
+            {
+                "$schema": "urn:watchtower:schema:interfaces:packs:actor-registry:v1",
+                "surface_name": "actor_registry",
+                "contract_version": "v1",
+                "description": "Invalid actor registry payload.",
+                "updated_at": "2026-03-16T05:15:00Z",
+                "actors": [
+                    {
+                        "actor_id": "example",
+                        "actor_type": "agent",
+                        "label": "Example Agent",
+                    }
+                ],
+            },
+            "urn:watchtower:schema:interfaces:packs:actor-registry:v1",
+        ),
+    ]
+
+    for valid_document, invalid_document, schema_id in example_pairs:
+        store.validate_instance(valid_document, schema_id=schema_id)
+
+        with pytest.raises(ValidationError):
+            store.validate_instance(invalid_document, schema_id=schema_id)
+
+
 def test_schema_store_rejects_unknown_schema_id() -> None:
     store = SchemaStore.from_repo_root(REPO_ROOT)
 

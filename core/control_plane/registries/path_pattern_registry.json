@@ -1,0 +1,58 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:path-pattern-registry:v1",
+  "surface_name": "path_pattern_registry",
+  "contract_version": "v1",
+  "description": "Canonical path patterns for the reusable core boundary surfaces and their human-visible companions.",
+  "updated_at": "2026-03-16T05:15:00Z",
+  "patterns": [
+    {
+      "family_name": "pack_settings",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/manifests/pack_settings.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "governance_surface_map",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/registries/governance_surface_map.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "status_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/registries/status_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "actor_registry",
+      "path_kind": "hidden_authoritative",
+      "path_pattern": "core/control_plane/registries/actor_registry.json",
+      "entity_shape": "file",
+      "visibility": "hidden",
+      "authoritative": true
+    },
+    {
+      "family_name": "workflow_module",
+      "path_kind": "user_visible",
+      "path_pattern": "workflows/modules/*.md",
+      "entity_shape": "file",
+      "visibility": "user",
+      "authoritative": true
+    },
+    {
+      "family_name": "route_index",
+      "path_kind": "rendered_view",
+      "path_pattern": "docs/commands/core_python/watchtower_core_route_preview.md",
+      "entity_shape": "file",
+      "visibility": "user",
+      "authoritative": false
+    }
+  ],
+  "notes": "The current repository only publishes the reusable-core subset of STEP1 path patterns in this slice."
+}

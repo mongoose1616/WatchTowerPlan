@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:packs:actor-registry:v1",
+  "title": "Actor Registry",
+  "description": "Schema for one hidden authoritative actor registry used for actor lookup and actor-ref validation.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "surface_name",
+    "contract_version",
+    "description",
+    "updated_at",
+    "actors"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:packs:actor-registry:v1"
+    },
+    "surface_name": {
+      "const": "actor_registry"
+    },
+    "contract_version": {
+      "const": "v1"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/actorEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "actorEntry": {
+      "type": "object",
+      "required": [
+        "actor_id",
+        "actor_type",
+        "label"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "pattern": "^actor\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+        },
+        "actor_type": {
+          "type": "string",
+          "enum": ["user", "agent", "system"]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "external_account_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

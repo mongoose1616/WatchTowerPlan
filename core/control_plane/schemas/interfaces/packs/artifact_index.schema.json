@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:watchtower:schema:interfaces:packs:artifact-index:v1",
+  "title": "Artifact Index",
+  "description": "Schema for one pack-owned artifact index that provides authoritative cataloging and query metadata across artifact families.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "surface_name",
+    "contract_version",
+    "description",
+    "updated_at",
+    "artifacts"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "urn:watchtower:schema:interfaces:packs:artifact-index:v1"
+    },
+    "surface_name": {
+      "const": "artifact_index"
+    },
+    "contract_version": {
+      "const": "v1"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/artifactEntry"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "artifactEntry": {
+      "type": "object",
+      "required": [
+        "artifact_id",
+        "artifact_family",
+        "path",
+        "pack",
+        "status",
+        "authoritative",
+        "hidden",
+        "derived",
+        "created_at",
+        "updated_at"
+      ],
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)+$"
+        },
+        "artifact_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pack": {
+          "type": "string",
+          "pattern": "^pack\\.[a-z0-9]+(?:_[a-z0-9]+)*(?:\\.[a-z0-9]+(?:_[a-z0-9]+)*)*$"
+        },
+        "subdomain": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authoritative": {
+          "type": "boolean"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "derived": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "challenge_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_artifact_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "related_artifact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "route_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rendered_view_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workflow_surface": {
+          "type": "string",
+          "enum": ["user", "internal"]
+        },
+        "review_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_platform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_type": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

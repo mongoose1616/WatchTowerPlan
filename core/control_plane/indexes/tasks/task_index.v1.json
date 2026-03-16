@@ -5883,12 +5883,12 @@
       "title": "Align current repo data families with pack artifact and index surfaces",
       "summary": "Maps current repository-local machine surfaces onto the future pack artifact-family and derived-index model.",
       "status": "active",
-      "task_status": "backlog",
+      "task_status": "in_progress",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
       "doc_path": "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-      "updated_at": "2026-03-16T04:42:59Z",
+      "updated_at": "2026-03-16T05:15:28Z",
       "trace_id": "trace.validated_core_pack_data_shape_convergence",
       "depends_on": [
         "task.validated_core_pack_data_shape_convergence.pack_models.003"
@@ -5903,12 +5903,12 @@
       "title": "Introduce pack-facing typed models and generic loader surfaces",
       "summary": "Moves shared core closer to pack-facing artifact families by adding typed pack models and reducing planning-specific loader bias.",
       "status": "active",
-      "task_status": "ready",
+      "task_status": "done",
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/open/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md",
-      "updated_at": "2026-03-16T04:46:03Z",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md",
+      "updated_at": "2026-03-16T05:15:28Z",
       "trace_id": "trace.validated_core_pack_data_shape_convergence",
       "depends_on": [
         "task.validated_core_pack_data_shape_convergence.runtime_manifest.002"

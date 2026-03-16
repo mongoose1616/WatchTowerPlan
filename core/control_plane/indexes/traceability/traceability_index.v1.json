@@ -5529,7 +5529,7 @@
       "summary": "Converges the repository data model toward a validated reusable core plus pack-owned artifact shape aligned with the future pack standard.",
       "status": "active",
       "initiative_status": "active",
-      "updated_at": "2026-03-16T04:46:03Z",
+      "updated_at": "2026-03-16T05:15:28Z",
       "prd_ids": [
         "prd.validated_core_pack_data_shape_convergence"
       ],
@@ -5596,10 +5596,10 @@
         "docs/planning/design/implementation/validated_core_and_pack_data_shape_convergence.md",
         "docs/planning/initiatives/initiative_tracking.md",
         "docs/planning/prds/validated_core_and_pack_data_shape_convergence.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md",
         "docs/planning/tasks/closed/archive/2026/03/16/publish_pack_runtime_manifest_and_workspace_startup_boundary.md",
         "docs/planning/tasks/closed/archive/2026/03/16/validated_core_and_pack_data_shape_convergence_bootstrap.md",
         "docs/planning/tasks/open/align_current_repo_data_families_with_pack_artifact_and_index_surfaces.md",
-        "docs/planning/tasks/open/introduce_pack_facing_typed_models_and_generic_loader_surfaces.md",
         "docs/planning/tasks/open/validate_and_close_validated_core_and_pack_data_shape_convergence.md",
         "docs/planning/tasks/task_tracking.md"
       ],

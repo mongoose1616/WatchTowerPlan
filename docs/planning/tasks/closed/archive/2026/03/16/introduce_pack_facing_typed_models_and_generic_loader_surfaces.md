@@ -6,11 +6,11 @@ summary: Moves shared core closer to pack-facing artifact families by adding typ
   pack models and reducing planning-specific loader bias.
 type: task
 status: active
-task_status: ready
+task_status: done
 task_kind: feature
 priority: high
 owner: repository_maintainer
-updated_at: '2026-03-16T04:46:03Z'
+updated_at: '2026-03-16T05:15:28Z'
 audience: shared
 authority: authoritative
 related_ids:

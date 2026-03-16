@@ -1,7 +1,7 @@
 # `watchtower_core.control_plane`
 
 ## Summary
-Workspace-aware artifact loading, schema validation, typed models, and filesystem abstraction for governed control-plane data.
+Workspace-aware artifact loading, schema validation, typed models, PackContext loading, and filesystem abstraction for governed control-plane data.
 
 ## Boundary
 - `Classification`: `reusable_core`
@@ -9,10 +9,11 @@ Workspace-aware artifact loading, schema validation, typed models, and filesyste
 - `Non-Goals`: Repo-local planning semantics, Markdown document rules, or task orchestration policy.
 
 ## Key Surfaces
-- `loader.py`: High-level governed artifact loader.
+- `loader.py`: High-level governed artifact loader, including generic typed loading and pack-settings-driven context loading.
+- `pack_context.py`: STEP1-style PackContext materialization from pack settings and declared governed surfaces.
 - `schemas.py`: Schema store and supplemental-schema registration.
 - `workspace.py`: Workspace configuration, artifact source, and artifact store abstractions.
-- `models/`: Typed artifact models grouped by artifact family, including the pack-runtime manifest used to describe the reusable-core startup boundary.
+- `models/`: Typed artifact models grouped by artifact family, including the pack-runtime manifest and STEP1-style pack contract surfaces.
 
 ## Related Surfaces
 - `core/python/src/watchtower_core/adapters/README.md`

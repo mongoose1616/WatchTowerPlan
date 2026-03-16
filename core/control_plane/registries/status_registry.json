@@ -1,0 +1,80 @@
+{
+  "$schema": "urn:watchtower:schema:interfaces:packs:status-registry:v1",
+  "surface_name": "status_registry",
+  "contract_version": "v1",
+  "description": "Global status vocabulary for STEP1-style validation and enforcement.",
+  "updated_at": "2026-03-16T05:15:00Z",
+  "statuses": [
+    {
+      "value": "active",
+      "entry_status": "active",
+      "summary": "Currently in effect or open for work."
+    },
+    {
+      "value": "blocked",
+      "entry_status": "active",
+      "summary": "Cannot proceed until an external blocker is resolved.",
+      "allowed_families": [
+        "challenge",
+        "task"
+      ]
+    },
+    {
+      "value": "solved",
+      "entry_status": "active",
+      "summary": "Work reached the intended solution outcome.",
+      "allowed_families": [
+        "challenge"
+      ]
+    },
+    {
+      "value": "unresolved",
+      "entry_status": "active",
+      "summary": "Work ended without a satisfactory resolution.",
+      "allowed_families": [
+        "challenge"
+      ]
+    },
+    {
+      "value": "closed",
+      "entry_status": "active",
+      "summary": "Terminal state for active work items."
+    },
+    {
+      "value": "in_review",
+      "entry_status": "active",
+      "summary": "Awaiting or undergoing review."
+    },
+    {
+      "value": "needs_review",
+      "entry_status": "active",
+      "summary": "Requires follow-up review before reuse or acceptance."
+    },
+    {
+      "value": "candidate",
+      "entry_status": "active",
+      "summary": "Identified as a possible reusable or accepted artifact."
+    },
+    {
+      "value": "accepted",
+      "entry_status": "active",
+      "summary": "Approved as the current accepted artifact state."
+    },
+    {
+      "value": "archived",
+      "entry_status": "active",
+      "summary": "Retained only for historical or low-frequency lookup."
+    },
+    {
+      "value": "superseded",
+      "entry_status": "active",
+      "summary": "Replaced by a newer canonical artifact or rule."
+    },
+    {
+      "value": "deprecated",
+      "entry_status": "active",
+      "summary": "Still queryable but not recommended for new use."
+    }
+  ],
+  "notes": "Status subsets remain family-specific even though the vocabulary is globally queryable."
+}

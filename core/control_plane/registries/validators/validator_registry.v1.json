@@ -285,6 +285,76 @@
       ]
     },
     {
+      "id": "validator.control_plane.pack_settings",
+      "title": "Pack Settings Validator",
+      "description": "Validates STEP1-style pack settings load-root artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "pack_settings",
+      "applies_to": [
+        "core/control_plane/manifests/pack_settings.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:pack-settings:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.governance_surface_map",
+      "title": "Governance Surface Map Validator",
+      "description": "Validates STEP1-style governance surface map artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "governance_surface_map",
+      "applies_to": [
+        "core/control_plane/registries/governance_surface_map.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:governance-surface-map:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.path_pattern_registry",
+      "title": "Path Pattern Registry Validator",
+      "description": "Validates STEP1-style path pattern registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "path_pattern_registry",
+      "applies_to": [
+        "core/control_plane/registries/path_pattern_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:path-pattern-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.status_registry",
+      "title": "Status Registry Validator",
+      "description": "Validates STEP1-style status registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "status_registry",
+      "applies_to": [
+        "core/control_plane/registries/status_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:status-registry:v1"
+      ]
+    },
+    {
+      "id": "validator.control_plane.actor_registry",
+      "title": "Actor Registry Validator",
+      "description": "Validates STEP1-style actor registry artifacts.",
+      "status": "active",
+      "engine": "json_schema",
+      "artifact_kind": "actor_registry",
+      "applies_to": [
+        "core/control_plane/registries/actor_registry.json"
+      ],
+      "schema_ids": [
+        "urn:watchtower:schema:interfaces:packs:actor-registry:v1"
+      ]
+    },
+    {
       "id": "validator.control_plane.repository_path_index",
       "title": "Repository Path Index Validator",
       "description": "Validates machine-readable repository path index artifacts.",

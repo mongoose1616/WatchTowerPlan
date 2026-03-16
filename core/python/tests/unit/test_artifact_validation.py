@@ -40,6 +40,16 @@ def test_artifact_validation_auto_selects_pack_work_item_note_validator() -> Non
     assert result.issue_count == 0
 
 
+def test_artifact_validation_auto_selects_pack_settings_validator() -> None:
+    service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
+
+    result = service.validate("core/control_plane/manifests/pack_settings.json")
+
+    assert result.passed is True
+    assert result.validator_id == "validator.control_plane.pack_settings"
+    assert result.issue_count == 0
+
+
 def test_artifact_validation_rejects_unsupported_path_without_validator() -> None:
     service = ArtifactValidationService(ControlPlaneLoader(REPO_ROOT))
 

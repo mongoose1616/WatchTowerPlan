@@ -9,14 +9,18 @@ from typing import Any, TypeVar, cast
 from watchtower_core.control_plane.errors import ArtifactLoadError
 from watchtower_core.control_plane.models import (
     AcceptanceContract,
+    ActorRegistry,
     AuthorityMap,
     CommandIndex,
     CoordinationIndex,
     DecisionIndex,
     DesignDocumentIndex,
     FoundationIndex,
+    GovernanceSurfaceMap,
     InitiativeIndex,
     PackRuntimeManifest,
+    PackSettings,
+    PathPatternRegistry,
     PlanningCatalog,
     PrdIndex,
     ReferenceIndex,
@@ -24,6 +28,7 @@ from watchtower_core.control_plane.models import (
     RouteIndex,
     SchemaCatalog,
     StandardIndex,
+    StatusRegistry,
     TaskIndex,
     TraceabilityIndex,
     TracePurgeRecord,
@@ -32,7 +37,12 @@ from watchtower_core.control_plane.models import (
     WorkflowIndex,
     WorkflowMetadataRegistry,
 )
-from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
+from watchtower_core.control_plane.pack_context import PackContext
+from watchtower_core.control_plane.schemas import (
+    SCHEMA_CATALOG_ARTIFACT_PATH,
+    SchemaStore,
+    SupplementalSchemaDocument,
+)
 from watchtower_core.control_plane.workspace import (
     ArtifactSource,
     ArtifactStore,
@@ -46,6 +56,11 @@ WORKFLOW_METADATA_REGISTRY_PATH = (
     "core/control_plane/registries/workflows/workflow_metadata_registry.v1.json"
 )
 PACK_RUNTIME_MANIFEST_PATH = "core/control_plane/manifests/pack_runtime_manifest.v1.json"
+PACK_SETTINGS_PATH = "core/control_plane/manifests/pack_settings.json"
+GOVERNANCE_SURFACE_MAP_PATH = "core/control_plane/registries/governance_surface_map.json"
+PATH_PATTERN_REGISTRY_PATH = "core/control_plane/registries/path_pattern_registry.json"
+STATUS_REGISTRY_PATH = "core/control_plane/registries/status_registry.json"
+ACTOR_REGISTRY_PATH = "core/control_plane/registries/actor_registry.json"
 REPOSITORY_PATH_INDEX_PATH = (
     "core/control_plane/indexes/repository_paths/repository_path_index.v1.json"
 )
@@ -225,6 +240,51 @@ class ControlPlaneLoader:
         return self._load_typed_document(
             PACK_RUNTIME_MANIFEST_PATH,
             PackRuntimeManifest.from_document,
+        )
+
+    def load_pack_settings(self, relative_path: str = PACK_SETTINGS_PATH) -> PackSettings:
+        """Load one typed pack-settings surface."""
+        return self._load_typed_document(
+            relative_path,
+            PackSettings.from_document,
+        )
+
+    def load_governance_surface_map(
+        self,
+        relative_path: str = GOVERNANCE_SURFACE_MAP_PATH,
+    ) -> GovernanceSurfaceMap:
+        """Load one typed governance-surface map."""
+
+        return self._load_typed_document(
+            relative_path,
+            GovernanceSurfaceMap.from_document,
+        )
+
+    def load_path_pattern_registry(
+        self,
+        relative_path: str = PATH_PATTERN_REGISTRY_PATH,
+    ) -> PathPatternRegistry:
+        """Load one typed path-pattern registry."""
+
+        return self._load_typed_document(
+            relative_path,
+            PathPatternRegistry.from_document,
+        )
+
+    def load_status_registry(self, relative_path: str = STATUS_REGISTRY_PATH) -> StatusRegistry:
+        """Load one typed status registry."""
+
+        return self._load_typed_document(
+            relative_path,
+            StatusRegistry.from_document,
+        )
+
+    def load_actor_registry(self, relative_path: str = ACTOR_REGISTRY_PATH) -> ActorRegistry:
+        """Load one typed actor registry."""
+
+        return self._load_typed_document(
+            relative_path,
+            ActorRegistry.from_document,
         )
 
     def load_authority_map(self) -> AuthorityMap:
@@ -409,6 +469,84 @@ class ControlPlaneLoader:
                 doc_path=relative_path,
             ),
         )
+
+    def load_pack_context(self, pack_settings_path: str = PACK_SETTINGS_PATH) -> PackContext:
+        """Load one PackContext from pack settings and its declared governed surfaces."""
+
+        return PackContext.from_loader(self, pack_settings_path=pack_settings_path)
+
+    def load_known_surface(self, relative_path: str) -> object:
+        """Load one known governed surface as a typed artifact when available."""
+
+        if relative_path == SCHEMA_CATALOG_ARTIFACT_PATH:
+            return self.load_schema_catalog()
+        if relative_path == VALIDATOR_REGISTRY_PATH:
+            return self.load_validator_registry()
+        if relative_path == AUTHORITY_MAP_PATH:
+            return self.load_authority_map()
+        if relative_path == WORKFLOW_METADATA_REGISTRY_PATH:
+            return self.load_workflow_metadata_registry()
+        if relative_path == PACK_RUNTIME_MANIFEST_PATH:
+            return self.load_pack_runtime_manifest()
+        if relative_path == PACK_SETTINGS_PATH:
+            return self.load_pack_settings()
+        if relative_path == GOVERNANCE_SURFACE_MAP_PATH:
+            return self.load_governance_surface_map()
+        if relative_path == PATH_PATTERN_REGISTRY_PATH:
+            return self.load_path_pattern_registry()
+        if relative_path == STATUS_REGISTRY_PATH:
+            return self.load_status_registry()
+        if relative_path == ACTOR_REGISTRY_PATH:
+            return self.load_actor_registry()
+        if relative_path == REPOSITORY_PATH_INDEX_PATH:
+            return self.load_repository_path_index()
+        if relative_path == COMMAND_INDEX_PATH:
+            return self.load_command_index()
+        if relative_path == ROUTE_INDEX_PATH:
+            return self.load_route_index()
+        if relative_path == REFERENCE_INDEX_PATH:
+            return self.load_reference_index()
+        if relative_path == FOUNDATION_INDEX_PATH:
+            return self.load_foundation_index()
+        if relative_path == INITIATIVE_INDEX_PATH:
+            return self.load_initiative_index()
+        if relative_path == COORDINATION_INDEX_PATH:
+            return self.load_coordination_index()
+        if relative_path == STANDARD_INDEX_PATH:
+            return self.load_standard_index()
+        if relative_path == WORKFLOW_INDEX_PATH:
+            return self.load_workflow_index()
+        if relative_path == PRD_INDEX_PATH:
+            return self.load_prd_index()
+        if relative_path == DECISION_INDEX_PATH:
+            return self.load_decision_index()
+        if relative_path == DESIGN_DOCUMENT_INDEX_PATH:
+            return self.load_design_document_index()
+        if relative_path == TASK_INDEX_PATH:
+            return self.load_task_index()
+        if relative_path == TRACEABILITY_INDEX_PATH:
+            return self.load_traceability_index()
+        if relative_path == PLANNING_CATALOG_PATH:
+            return self.load_planning_catalog()
+        return self.load_validated_document(relative_path)
+
+    def load_typed_document(
+        self,
+        relative_path: str,
+        builder: Callable[[dict[str, Any]], TArtifact],
+    ) -> TArtifact:
+        """Load one typed governed document through the loader cache."""
+
+        return self._load_typed_document(relative_path, builder)
+
+    def load_typed_directory(
+        self,
+        relative_directory: str,
+        builder: Callable[[str, dict[str, Any]], TArtifact],
+    ) -> tuple[TArtifact, ...]:
+        """Load one typed governed directory through the loader cache."""
+
+        return self._load_typed_directory(relative_directory, builder)
 
     def _load_typed_document(
         self,

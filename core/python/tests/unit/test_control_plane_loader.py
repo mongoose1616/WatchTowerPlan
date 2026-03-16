@@ -8,9 +8,11 @@ import pytest
 
 from watchtower_core.control_plane.loader import (
     ACCEPTANCE_CONTRACTS_DIRECTORY,
+    PACK_SETTINGS_PATH,
     VALIDATOR_REGISTRY_PATH,
     ControlPlaneLoader,
 )
+from watchtower_core.control_plane.models import PackSettings, SchemaCatalog
 from watchtower_core.control_plane.schemas import SchemaStore, SupplementalSchemaDocument
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -664,3 +666,38 @@ def test_control_plane_loader_reads_pack_runtime_manifest() -> None:
     assert manifest.workspace_roots.control_plane == "core/control_plane"
     assert "pack_work_item_note" in manifest.supported_artifact_families
     assert "workflow_modules" in manifest.extension_points
+
+
+def test_control_plane_loader_reads_pack_settings() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    pack_settings = loader.load_pack_settings()
+
+    assert pack_settings.pack_id == "pack.watchtower_plan"
+    assert pack_settings.get("schema_catalog").path == (
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
+    )
+    assert pack_settings.get("status_registry").surface_kind == "status_registry"
+    assert pack_settings.get("route_index").rebuildable is True
+
+
+def test_control_plane_loader_exposes_generic_typed_document_path() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    typed = loader.load_typed_document(
+        PACK_SETTINGS_PATH,
+        PackSettings.from_document,
+    )
+
+    assert typed.surface_name == "pack_settings"
+
+
+def test_control_plane_loader_load_known_surface_materializes_schema_catalog() -> None:
+    loader = ControlPlaneLoader(REPO_ROOT)
+
+    surface = loader.load_known_surface(
+        "core/control_plane/registries/schema_catalog/schema_catalog.v1.json"
+    )
+
+    assert isinstance(surface, SchemaCatalog)
+    assert surface.get("urn:watchtower:schema:interfaces:packs:pack-settings:v1").version == "v1"

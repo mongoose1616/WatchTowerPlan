@@ -1,0 +1,383 @@
+"""Typed models for STEP1-style pack contract surfaces."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any
+
+
+def _tuple_of_strings(document: dict[str, Any], key: str) -> tuple[str, ...]:
+    """Return one optional tuple-of-string field from a raw document."""
+
+    return tuple(document.get(key, ()))
+
+
+@dataclass(frozen=True, slots=True)
+class PackSurfaceDeclaration:
+    """Shared declaration shape used by pack settings and governance surface maps."""
+
+    surface_name: str
+    surface_kind: str
+    path: str
+    authority: str
+    visibility: str
+    rebuildable: bool | None = None
+    depends_on: tuple[str, ...] = ()
+    builder: str | None = None
+    source_surface: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PackSurfaceDeclaration:
+        return cls(
+            surface_name=document["surface_name"],
+            surface_kind=document["surface_kind"],
+            path=document["path"],
+            authority=document["authority"],
+            visibility=document["visibility"],
+            rebuildable=document.get("rebuildable"),
+            depends_on=_tuple_of_strings(document, "depends_on"),
+            builder=document.get("builder"),
+            source_surface=document.get("source_surface"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PackSettings:
+    """Typed pack-settings load root."""
+
+    schema_id: str
+    surface_name: str
+    contract_version: str
+    description: str
+    updated_at: str
+    pack_id: str
+    surfaces: tuple[PackSurfaceDeclaration, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PackSettings:
+        return cls(
+            schema_id=document["$schema"],
+            surface_name=document["surface_name"],
+            contract_version=document["contract_version"],
+            description=document["description"],
+            updated_at=document["updated_at"],
+            pack_id=document["pack_id"],
+            surfaces=tuple(
+                PackSurfaceDeclaration.from_document(entry)
+                for entry in document["surfaces"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get(self, surface_name: str) -> PackSurfaceDeclaration:
+        """Return one declared surface by name."""
+
+        for declaration in self.surfaces:
+            if declaration.surface_name == surface_name:
+                return declaration
+        raise KeyError(surface_name)
+
+
+@dataclass(frozen=True, slots=True)
+class GovernanceSurfaceMap:
+    """Typed governance-surface map."""
+
+    schema_id: str
+    surface_name: str
+    contract_version: str
+    description: str
+    updated_at: str
+    surfaces: tuple[PackSurfaceDeclaration, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> GovernanceSurfaceMap:
+        return cls(
+            schema_id=document["$schema"],
+            surface_name=document["surface_name"],
+            contract_version=document["contract_version"],
+            description=document["description"],
+            updated_at=document["updated_at"],
+            surfaces=tuple(
+                PackSurfaceDeclaration.from_document(entry)
+                for entry in document["surfaces"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get(self, surface_name: str) -> PackSurfaceDeclaration:
+        """Return one declared governance surface by name."""
+
+        for declaration in self.surfaces:
+            if declaration.surface_name == surface_name:
+                return declaration
+        raise KeyError(surface_name)
+
+
+@dataclass(frozen=True, slots=True)
+class PathPatternEntry:
+    """Typed path-pattern registry entry."""
+
+    family_name: str
+    path_kind: str
+    path_pattern: str
+    entity_shape: str
+    visibility: str
+    authoritative: bool
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PathPatternEntry:
+        return cls(
+            family_name=document["family_name"],
+            path_kind=document["path_kind"],
+            path_pattern=document["path_pattern"],
+            entity_shape=document["entity_shape"],
+            visibility=document["visibility"],
+            authoritative=document["authoritative"],
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class PathPatternRegistry:
+    """Typed path-pattern registry."""
+
+    schema_id: str
+    surface_name: str
+    contract_version: str
+    description: str
+    updated_at: str
+    patterns: tuple[PathPatternEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> PathPatternRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            surface_name=document["surface_name"],
+            contract_version=document["contract_version"],
+            description=document["description"],
+            updated_at=document["updated_at"],
+            patterns=tuple(
+                PathPatternEntry.from_document(entry) for entry in document["patterns"]
+            ),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class StatusRegistryEntry:
+    """Typed status-registry entry."""
+
+    value: str
+    entry_status: str
+    summary: str
+    allowed_families: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> StatusRegistryEntry:
+        return cls(
+            value=document["value"],
+            entry_status=document["entry_status"],
+            summary=document["summary"],
+            allowed_families=_tuple_of_strings(document, "allowed_families"),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class StatusRegistry:
+    """Typed status registry."""
+
+    schema_id: str
+    surface_name: str
+    contract_version: str
+    description: str
+    updated_at: str
+    statuses: tuple[StatusRegistryEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> StatusRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            surface_name=document["surface_name"],
+            contract_version=document["contract_version"],
+            description=document["description"],
+            updated_at=document["updated_at"],
+            statuses=tuple(
+                StatusRegistryEntry.from_document(entry)
+                for entry in document["statuses"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get(self, value: str) -> StatusRegistryEntry:
+        """Return one status entry by value."""
+
+        for entry in self.statuses:
+            if entry.value == value:
+                return entry
+        raise KeyError(value)
+
+
+@dataclass(frozen=True, slots=True)
+class ActorEntry:
+    """Typed actor-registry entry."""
+
+    actor_id: str
+    actor_type: str
+    label: str
+    role: str | None = None
+    scope: str | None = None
+    external_account_ref: str | None = None
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ActorEntry:
+        return cls(
+            actor_id=document["actor_id"],
+            actor_type=document["actor_type"],
+            label=document["label"],
+            role=document.get("role"),
+            scope=document.get("scope"),
+            external_account_ref=document.get("external_account_ref"),
+            notes=document.get("notes"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ActorRegistry:
+    """Typed actor registry."""
+
+    schema_id: str
+    surface_name: str
+    contract_version: str
+    description: str
+    updated_at: str
+    actors: tuple[ActorEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ActorRegistry:
+        return cls(
+            schema_id=document["$schema"],
+            surface_name=document["surface_name"],
+            contract_version=document["contract_version"],
+            description=document["description"],
+            updated_at=document["updated_at"],
+            actors=tuple(ActorEntry.from_document(entry) for entry in document["actors"]),
+            notes=document.get("notes"),
+        )
+
+    def get(self, actor_id: str) -> ActorEntry:
+        """Return one actor entry by identifier."""
+
+        for entry in self.actors:
+            if entry.actor_id == actor_id:
+                return entry
+        raise KeyError(actor_id)
+
+
+@dataclass(frozen=True, slots=True)
+class ArtifactIndexEntry:
+    """Typed artifact-index entry."""
+
+    artifact_id: str
+    artifact_family: str
+    path: str
+    pack: str
+    status: str
+    authoritative: bool
+    hidden: bool
+    derived: bool
+    created_at: str
+    updated_at: str
+    subdomain: str | None = None
+    challenge_id: str | None = None
+    session_id: str | None = None
+    title: str | None = None
+    summary: str | None = None
+    parent_artifact_id: str | None = None
+    related_artifact_ids: tuple[str, ...] = ()
+    route_id: str | None = None
+    rendered_view_path: str | None = None
+    workflow_surface: str | None = None
+    review_status: str | None = None
+    source_summary: str | None = None
+    source_platform: str | None = None
+    source_event: str | None = None
+    source_url: str | None = None
+    source_ref: str | None = None
+    source_type: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ArtifactIndexEntry:
+        return cls(
+            artifact_id=document["artifact_id"],
+            artifact_family=document["artifact_family"],
+            path=document["path"],
+            pack=document["pack"],
+            status=document["status"],
+            authoritative=document["authoritative"],
+            hidden=document["hidden"],
+            derived=document["derived"],
+            created_at=document["created_at"],
+            updated_at=document["updated_at"],
+            subdomain=document.get("subdomain"),
+            challenge_id=document.get("challenge_id"),
+            session_id=document.get("session_id"),
+            title=document.get("title"),
+            summary=document.get("summary"),
+            parent_artifact_id=document.get("parent_artifact_id"),
+            related_artifact_ids=_tuple_of_strings(document, "related_artifact_ids"),
+            route_id=document.get("route_id"),
+            rendered_view_path=document.get("rendered_view_path"),
+            workflow_surface=document.get("workflow_surface"),
+            review_status=document.get("review_status"),
+            source_summary=document.get("source_summary"),
+            source_platform=document.get("source_platform"),
+            source_event=document.get("source_event"),
+            source_url=document.get("source_url"),
+            source_ref=document.get("source_ref"),
+            source_type=document.get("source_type"),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ArtifactIndex:
+    """Typed artifact index."""
+
+    schema_id: str
+    surface_name: str
+    contract_version: str
+    description: str
+    updated_at: str
+    artifacts: tuple[ArtifactIndexEntry, ...]
+    notes: str | None = None
+
+    @classmethod
+    def from_document(cls, document: dict[str, Any]) -> ArtifactIndex:
+        return cls(
+            schema_id=document["$schema"],
+            surface_name=document["surface_name"],
+            contract_version=document["contract_version"],
+            description=document["description"],
+            updated_at=document["updated_at"],
+            artifacts=tuple(
+                ArtifactIndexEntry.from_document(entry)
+                for entry in document["artifacts"]
+            ),
+            notes=document.get("notes"),
+        )
+
+    def get(self, artifact_id: str) -> ArtifactIndexEntry:
+        """Return one artifact entry by identifier."""
+
+        for entry in self.artifacts:
+            if entry.artifact_id == artifact_id:
+                return entry
+        raise KeyError(artifact_id)

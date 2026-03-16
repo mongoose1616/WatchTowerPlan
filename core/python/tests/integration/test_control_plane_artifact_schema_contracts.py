@@ -44,6 +44,7 @@ def test_live_governed_json_artifacts_have_active_schema_validation_coverage() -
         REPO_ROOT / "core/control_plane/ledgers/releases",
         REPO_ROOT / "core/control_plane/ledgers/validation_evidence",
         REPO_ROOT / "core/control_plane/manifests",
+        REPO_ROOT / "core/control_plane/registries",
         REPO_ROOT / "core/control_plane/policies/release",
         REPO_ROOT / "core/control_plane/registries/artifact_types",
         REPO_ROOT / "core/control_plane/registries/authority_map",
