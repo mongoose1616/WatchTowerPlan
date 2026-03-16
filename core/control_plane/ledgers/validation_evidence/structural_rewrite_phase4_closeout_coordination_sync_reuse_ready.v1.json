@@ -26,10 +26,10 @@
       "title": "The closeout-coordination entry review records an explicit approval outcome and opens one bounded implementation slice",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md"
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md"
       ],
       "subject_ids": [
         "task.structural_rewrite_program.phase4_closeout_coordination_entry_review.012",
@@ -66,7 +66,7 @@
       "title": "The review names the explicit closeout result-contract boundary for the approved seam",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "core/python/src/watchtower_core/closeout/initiative.py",
@@ -83,7 +83,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "core/python/src/watchtower_core/closeout/initiative.py",
         "core/python/src/watchtower_core/repo_ops/sync/coordination.py",
         "core/python/src/watchtower_core/repo_ops/sync/registry.py"

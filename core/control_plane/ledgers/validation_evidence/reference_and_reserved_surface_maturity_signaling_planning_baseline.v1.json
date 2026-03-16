@@ -32,10 +32,10 @@
         "docs/planning/design/features/reference_and_reserved_surface_maturity_signaling.md",
         "docs/planning/design/implementation/reference_and_reserved_surface_maturity_signaling.md",
         "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
-        "docs/planning/tasks/closed/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
-        "docs/planning/tasks/closed/harden_reference_maturity_signaling_and_query_surfaces.md",
-        "docs/planning/tasks/closed/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
-        "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/harden_reference_maturity_signaling_and_query_surfaces.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_reference_reserved_surface_refactor.md"
       ],
       "subject_ids": [
         "prd.reference_and_reserved_surface_maturity_signaling",
@@ -140,7 +140,7 @@
       "title": "Validation, repeated review passes, evidence refresh, and closeout remain aligned in one clean slice",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_reference_reserved_surface_refactor.md",
         "core/control_plane/contracts/acceptance/reference_and_reserved_surface_maturity_signaling_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/reference_and_reserved_surface_maturity_signaling_planning_baseline.v1.json",
         "core/python/",

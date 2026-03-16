@@ -11,8 +11,8 @@
   "related_paths": [
     "docs/planning/design/implementation/structural_rewrite_program.md",
     "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-    "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
-    "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+    "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+    "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
     "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
     "core/control_plane/indexes/coordination/coordination_index.v1.json",
     "core/control_plane/indexes/initiatives/initiative_index.v1.json",

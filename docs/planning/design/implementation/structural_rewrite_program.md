@@ -70,7 +70,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - That closeout-coordination entry review then passed. The approved post-traceability closeout seam landed by reusing `CoordinationSyncService` for the five shared planning and coordination outputs while keeping the PRD, decision, and design tracking outputs direct for that slice.
 - The closeout coordination sync-reuse outcome review has now also passed, reaffirmed that shared seam and result-contract boundary, and named the remaining direct PRD, decision, and design tracking refresh step as the next bounded entry question.
 - The closeout-tracking entry review has now also passed, and the bounded closeout-tracking refresh-boundary slice has now landed by routing the remaining tracker refresh step through one private closeout-local helper while preserving the approved shared seam and explicit closeout result-contract fields.
-- The final controlling surface was [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md), and that closed review recorded the explicit program-closeout decision instead of opening broader Phase 4 rollout or later-phase work.
+- The final controlling surface was [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md), and that closed review recorded the explicit program-closeout decision instead of opening broader Phase 4 rollout or later-phase work.
 - The rewrite-relevant hotspot picture now centers on `planning_projection_snapshot.py` (`513`), `document_semantics.py` (`494`), `task_lifecycle.py` (`492`), `acceptance.py` (`471`), `workflow_index.py` (`463`), `planning_scaffold_specs.py` (`431`), `loader.py` (`431`), and `planning_projection_serialization.py` (`419`) rather than the older hotspot examples from earlier rewrite prose.
 
 ## Internal Standards and Canonical References Applied
@@ -202,7 +202,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - For the bounded artifact-role registry slice, rollback means removing the new schema, registry, validator, artifact-type, schema-catalog, example, and slice-specific checkpoint surfaces, then rebuilding derived planning indexes with no public parity changes required.
 
 ## Phase 2 Gate Outcome
-- `Review Task`: [review_structural_rewrite_program_phase2_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md)
+- `Review Task`: [review_structural_rewrite_program_phase2_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md)
 - `Outcome`: approved for exactly one bounded slice.
 - `Approved Storage Shape`: small dedicated registry under `core/control_plane/registries/artifact_roles/`.
 - `Approval Guardrails`:
@@ -219,49 +219,49 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Historical Gate Evidence`: [structural_rewrite_program_phase0_phase1_baseline.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json)
 - `Slice Migration`: [structural_rewrite_artifact_role_registry_pilot.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json)
 - `Slice Evidence`: [structural_rewrite_artifact_role_registry_pilot.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json)
-- `Pilot Review Task`: [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
+- `Pilot Review Task`: [review_structural_rewrite_artifact_role_registry_pilot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md)
 - `Phase 3 Entry Package`: [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
 - `Phase 3 Slice Plan`: [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
 - `Phase 3 Entry Migration`: [structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json)
 - `Phase 3 Entry Evidence`: [structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json)
-- `Closed Phase 3 Review Task`: [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md)
+- `Closed Phase 3 Review Task`: [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md)
 - `Phase 3 Slice Migration`: [structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json)
 - `Phase 3 Slice Evidence`: [structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json)
-- `Closed Phase 3 Implementation Task`: [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
-- `Closed Phase 3 Outcome Review Task`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- `Closed Phase 3 Implementation Task`: [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- `Closed Phase 3 Outcome Review Task`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 - `Phase 4 Entry Package`: [structural_rewrite_phase4_shared_projection_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
 - `Phase 4 Entry Migration`: [structural_rewrite_phase4_shared_projection_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json)
 - `Phase 4 Entry Evidence`: [structural_rewrite_phase4_shared_projection_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json)
-- `Closed Phase 4 Review Task`: [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md)
+- `Closed Phase 4 Review Task`: [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md)
 - `Phase 4 Slice Plan`: [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
 - `Phase 4 Slice Ready Migration`: [structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json)
 - `Phase 4 Slice Ready Evidence`: [structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json)
 - `Phase 4 Slice Migration`: [structural_rewrite_phase4_planning_projection_snapshot.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json)
 - `Phase 4 Slice Evidence`: [structural_rewrite_phase4_planning_projection_snapshot.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json)
-- `Closed Phase 4 Implementation Task`: [implement_structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md)
-- `Closed Phase 4 Outcome Review Task`: [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
+- `Closed Phase 4 Implementation Task`: [implement_structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md)
+- `Closed Phase 4 Outcome Review Task`: [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
 - `Next Phase 4 Entry Package`: [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
 - `Next Phase 4 Entry Migration`: [structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json)
 - `Next Phase 4 Entry Evidence`: [structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json)
-- `Closed Next Phase 4 Review Task`: [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
+- `Closed Next Phase 4 Review Task`: [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
 - `Historical Phase 4 Closeout Slice Plan`: [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 - `Historical Phase 4 Closeout Slice Ready Migration`: [structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json)
 - `Historical Phase 4 Closeout Slice Ready Evidence`: [structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json)
 - `Historical Phase 4 Closeout Slice Migration`: [structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json)
 - `Historical Phase 4 Closeout Slice Evidence`: [structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json)
-- `Closed Historical Phase 4 Closeout Implementation Task`: [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
-- `Closed Historical Phase 4 Closeout Outcome Review Task`: [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
+- `Closed Historical Phase 4 Closeout Implementation Task`: [implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
+- `Closed Historical Phase 4 Closeout Outcome Review Task`: [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
 - `Historical Phase 4 Tracking Entry Package`: [structural_rewrite_phase4_closeout_tracking_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md)
 - `Historical Phase 4 Tracking Entry Migration`: [structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json)
 - `Historical Phase 4 Tracking Entry Evidence`: [structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json)
-- `Closed Historical Phase 4 Tracking Review Task`: [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
+- `Closed Historical Phase 4 Tracking Review Task`: [review_structural_rewrite_phase4_closeout_tracking_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md)
 - `Final Phase 4 Tracking Slice Plan`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
 - `Final Phase 4 Tracking Slice Ready Migration`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json)
 - `Final Phase 4 Tracking Slice Ready Evidence`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json)
 - `Final Phase 4 Tracking Slice Migration`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json)
 - `Final Phase 4 Tracking Slice Evidence`: [structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json](/home/j/WatchTowerPlan/core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json)
-- `Closed Final Phase 4 Tracking Implementation Task`: [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
-- `Closed Final Phase 4 Tracking Outcome Review Task`: [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md)
+- `Closed Final Phase 4 Tracking Implementation Task`: [implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md)
+- `Closed Final Phase 4 Tracking Outcome Review Task`: [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md)
 
 ## Pilot Review Outcome
 - `Decision`: passed.
@@ -273,13 +273,13 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Current command-authority boundary`: unchanged. `registry.py` plus `parser.py` remain the only accepted machine authority for command presence and hierarchy.
 - `Approved first slice`: [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
 - `Classification sufficiency`: no additional command-adjacent workflow, route, or compatibility classification addendum is required for the first slice because it stays inside already-classified command companion surfaces.
-- `Entry checkpoint hard stop`: [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- `Entry checkpoint hard stop`: [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
 
 ## Phase 3 Slice Outcome
 - `Decision`: implemented as one bounded companion-only slice.
 - `Bounded doc set`: the root command page's primary Source Surface section plus the `23` affected `doctor`, `sync`, and `validate` command docs now align with the parser-owned or family-owned implementation paths already published in the command index.
 - `Drift guard`: `core/python/src/watchtower_core/repo_ops/sync/command_index.py` now fails closed when a companion command doc Command table or primary Source Surface entry drifts from the registry-backed implementation path, and `core/python/tests/unit/test_command_index_sync.py` covers that guard directly.
-- `Outcome-review handoff`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
+- `Outcome-review handoff`: [review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md)
 
 ## Phase 3 Outcome Review Outcome
 - `Decision`: passed.
@@ -302,7 +302,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Shared helper boundary`: `core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py` now owns the trace-scoped planning source assembly and coordination derivation used by `initiative_index` and `planning_catalog`.
 - `Public planning parity`: held. `watchtower-core query authority --domain planning --format json`, `watchtower-core query coordination --format json`, and `watchtower-core query planning --trace-id trace.structural_rewrite_program --format json` continue to resolve the same public planning answers after the slice lands.
 - `Direct parity coverage`: `core/python/tests/unit/test_planning_catalog_sync.py` now asserts that the planning-catalog coordination section matches the initiative projection, and the bounded sync plus closeout suite passed cleanly.
-- `Outcome-review handoff`: [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
+- `Outcome-review handoff`: [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
 
 ## Phase 4 Slice Outcome Review Outcome
 - `Decision`: passed.
@@ -323,7 +323,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Shared orchestration seam`: `InitiativeCloseoutService.close` now writes traceability first, then reuses `CoordinationSyncService.run_closeout_shared_outputs` for exactly `initiative-index`, `planning-catalog`, `coordination-index`, `initiative-tracking`, and `coordination-tracking` without widening into `task-index`, `traceability-index`, or `task-tracking`.
 - `Closeout result contract`: held. `traceability_output_path` remains the pre-seam canonical write, and `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain direct outputs outside the approved seam while the closeout CLI payload keeps the full output-path contract explicit.
 - `Direct parity coverage`: `core/python/tests/unit/test_initiative_closeout.py` now pins the exact shared coordination target subset plus the preserved direct tracker outputs, and the closeout-plus-sync regression suite passed cleanly before the repo-wide reruns.
-- `Outcome-review handoff`: [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
+- `Outcome-review handoff`: [review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md)
 
 ## Phase 4 Closeout Coordination Sync-Reuse Outcome Review Outcome
 - `Decision`: passed.
@@ -344,7 +344,7 @@ Records the completed Phase 0 and Phase 1 rewrite package, closes the Phase 2 en
 - `Decision`: implemented as one bounded private closeout-local tracker-refresh slice.
 - `Private boundary`: `InitiativeCloseoutService.close` now routes the remaining `prd-tracking`, `decision-tracking`, and `design-tracking` refresh step through `_run_closeout_tracking_refresh_boundary()` after the approved shared coordination seam completes.
 - `Closeout result contract`: held. `traceability_output_path` remains pre-seam, the approved shared coordination outputs remain fixed, and `prd_tracking_output_path`, `decision_tracking_output_path`, and `design_tracking_output_path` remain explicit result and CLI payload fields outside the shared seam.
-- `Outcome-review handoff`: [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md)
+- `Outcome-review handoff`: [review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md)
 
 ## Phase 4 Closeout Tracking Refresh-Boundary Outcome Review Outcome
 - `Decision`: passed.

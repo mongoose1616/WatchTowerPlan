@@ -1,7 +1,7 @@
 # `watchtower-core sync prd-tracking`
 
 ## Summary
-This command rebuilds the human-readable PRD tracker from the governed PRD index and the initiative-closeout state stored in traceability.
+This command rebuilds the human-readable active-first PRD tracker from the governed PRD index and the initiative-closeout state stored in traceability.
 
 ## Use When
 - You changed a PRD or initiative closeout state and need the PRD tracker to match.
@@ -42,6 +42,7 @@ uv run watchtower-core sync prd-tracking --write
 
 ## Behavior and Outputs
 - The command is derived from the PRD index and the traceability closeout layer rather than hand-maintained tracker text.
+- The rebuilt tracker inlines active PRDs, summarizes terminal trace history by initiative status, and points closed-trace lookup to `watchtower-core query initiatives`, `watchtower-core query prds`, and `watchtower-core query planning`.
 - By default the command runs in dry-run mode and does not mutate the canonical tracker.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many PRDs it tracked.
 - In `json` mode, the command prints one JSON object with the command name, status, PRD count, write flag, and output path when one was written.
@@ -52,6 +53,8 @@ uv run watchtower-core sync prd-tracking --write
 | `watchtower-core sync prd-index` | Rebuilds the machine-readable PRD index that this tracker reads. |
 | `watchtower-core sync traceability-index` | Rebuilds the traceability layer that provides initiative closeout state to this tracker. |
 | `watchtower-core closeout initiative` | Updates the initiative-closeout state that this tracker mirrors. |
+| `watchtower-core query initiatives` | Browses active or terminal trace state when the compact tracker is not enough. |
+| `watchtower-core query planning` | Loads the canonical joined planning record for one known trace. |
 | `watchtower-core query prds` | Reads the PRD index directly when you need machine-readable lookup rather than the human tracker. |
 
 ## Source Surface
@@ -60,4 +63,4 @@ uv run watchtower-core sync prd-tracking --write
 - `docs/planning/prds/prd_tracking.md`
 
 ## Updated At
-- `2026-03-14T05:37:06Z`
+- `2026-03-15T05:45:00Z`

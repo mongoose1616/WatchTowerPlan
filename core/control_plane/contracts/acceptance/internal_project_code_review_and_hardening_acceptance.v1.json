@@ -17,9 +17,9 @@
         "docs/planning/decisions/internal_project_code_review_and_hardening_direction.md",
         "docs/planning/design/features/internal_project_code_review_and_hardening.md",
         "docs/planning/design/implementation/internal_project_code_review_and_hardening.md",
-        "docs/planning/tasks/closed/internal_project_code_review_and_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/internal_project_code_review_scaffold_coordination_sync.md",
-        "docs/planning/tasks/closed/internal_project_code_review_closeout_planning_catalog_sync.md"
+        "docs/planning/tasks/closed/archive/2026/03/11/internal_project_code_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/internal_project_code_review_scaffold_coordination_sync.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/internal_project_code_review_closeout_planning_catalog_sync.md"
       ],
       "related_paths": [
         "core/control_plane/ledgers/validation_evidence/internal_project_code_review_and_hardening_planning_baseline.v1.json",

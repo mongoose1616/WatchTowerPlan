@@ -14,7 +14,7 @@ audience: shared
 authority: authoritative
 applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md
-- docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md
+- docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md
 - core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
 - core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json
 - core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json
@@ -60,8 +60,8 @@ Introduce one private trace-scoped planning projection snapshot behind initiativ
 ## Links
 - [structural_rewrite_phase4_shared_projection_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
 - [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
-- [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md)
-- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
+- [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md)
+- [review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md)
 - [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
 
 ## Updated At

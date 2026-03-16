@@ -41,7 +41,7 @@ Implement the first bounded Phase 3 slice by reconciling command-doc source-surf
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/features/structural_rewrite_program.md)
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
 - [structural_rewrite_phase3_command_authority_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md)
-- [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md)
+- [review_structural_rewrite_phase3_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md)
 
 ## Scope Summary
 - Reconcile the `Source Surface` fields in the first bounded set of command companion docs whose current source-surface metadata still points at `core/python/src/watchtower_core/cli/main.py` while the command index already points at the owning family module.

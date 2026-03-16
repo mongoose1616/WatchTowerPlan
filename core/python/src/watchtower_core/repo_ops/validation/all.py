@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+from pathlib import Path
 from typing import cast
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
@@ -284,9 +285,9 @@ class ValidationAllService:
                 TASK_OPEN_ROOT,
                 excluded_names=TASK_EXCLUDED_NAMES,
             ),
-            *iter_markdown_documents(
-                repo_root,
+            *_iter_recursive_markdown_documents(
                 TASK_CLOSED_ROOT,
+                repo_root,
                 excluded_names=TASK_EXCLUDED_NAMES,
             ),
         )
@@ -420,3 +421,19 @@ class ValidationAllService:
                     ),
                 ),
             )
+
+
+def _iter_recursive_markdown_documents(
+    relative_directory: str,
+    repo_root: Path,
+    *,
+    excluded_names: set[str],
+) -> tuple[str, ...]:
+    """Return sorted repository-relative Markdown paths for one recursive directory tree."""
+
+    directory = repo_root / relative_directory
+    return tuple(
+        path.relative_to(repo_root).as_posix()
+        for path in sorted(directory.rglob("*.md"))
+        if path.is_file() and path.name not in excluded_names
+    )

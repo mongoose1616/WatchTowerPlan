@@ -17,9 +17,9 @@
         "docs/planning/design/features/reference_resolution_reuse_hardening.md",
         "docs/planning/design/implementation/reference_resolution_reuse_hardening.md",
         "docs/planning/decisions/reference_resolution_reuse_hardening_direction.md",
-        "docs/planning/tasks/closed/reference_resolution_reuse_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
-        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/reference_resolution_reuse_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_reference_resolution_reuse_hardening.md",
         "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json"
       ],
@@ -46,7 +46,7 @@
         "core/python/tests/unit/test_all_validation.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/reuse_shared_reference_resolution_context_in_validation_and_sync.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/reuse_shared_reference_resolution_context_in_validation_and_sync.md"
       ],
       "notes": "Direct instrumentation should show document-semantics aggregate validation rebuilding the reference index once instead of once per workflow module."
     },
@@ -83,7 +83,7 @@
       "validation_targets": [
         "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_reference_resolution_reuse_hardening.md"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md",

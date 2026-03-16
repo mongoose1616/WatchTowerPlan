@@ -17,10 +17,10 @@
         "docs/planning/design/features/reference_and_workflow_standards_alignment.md",
         "docs/planning/design/implementation/reference_and_workflow_standards_alignment.md",
         "docs/planning/decisions/reference_and_workflow_standards_alignment_direction.md",
-        "docs/planning/tasks/closed/reference_and_workflow_standards_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/align_reference_authoring_contract_with_governed_enforcement.md",
-        "docs/planning/tasks/closed/tighten_workflow_additional_load_generic_baseline_enforcement.md",
-        "docs/planning/tasks/closed/validate_and_close_reference_and_workflow_standards_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/11/reference_and_workflow_standards_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/align_reference_authoring_contract_with_governed_enforcement.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/tighten_workflow_additional_load_generic_baseline_enforcement.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/validate_and_close_reference_and_workflow_standards_alignment.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",

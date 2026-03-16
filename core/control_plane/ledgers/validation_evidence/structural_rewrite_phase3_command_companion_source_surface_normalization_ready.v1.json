@@ -26,7 +26,7 @@
       "title": "Phase 3 entry review recorded an explicit approval outcome",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md"
       ],
@@ -61,7 +61,7 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/commands/core_python/watchtower_core_doctor.md",
         "docs/commands/core_python/watchtower_core_sync_command_index.md",
         "docs/commands/core_python/watchtower_core_validate_all.md"

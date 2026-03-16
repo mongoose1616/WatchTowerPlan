@@ -29,10 +29,10 @@
         "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
         "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md",
         "core/control_plane/contracts/acceptance/validation_test_hotspot_rebalancing_acceptance.v1.json",
-        "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md",
-        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
-        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
-        "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/validation_test_hotspot_rebalancing_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_document_semantics_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_validation_test_hotspot_rebalancing.md"
       ],
       "subject_ids": [
         "prd.validation_test_hotspot_rebalancing",
@@ -63,7 +63,7 @@
         "core/python/tests/integration/test_standard_and_template_authoring_contracts.py",
         "core/python/tests/integration/test_planning_and_workflow_authoring_contracts.py",
         "core/python/tests/integration/README.md",
-        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/split_integration_validation_hotspot_into_focused_suites.md"
       ],
       "subject_ids": [
         "task.validation_test_hotspot_rebalancing.integration_suite_split.002",
@@ -88,7 +88,7 @@
         "core/python/tests/unit/test_document_semantics_standard_rules.py",
         "core/python/tests/unit/test_document_semantics_planning_rules.py",
         "core/python/tests/unit/README.md",
-        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/split_document_semantics_hotspot_into_focused_suites.md"
       ],
       "subject_ids": [
         "task.validation_test_hotspot_rebalancing.document_semantics_suite_split.003",
@@ -109,8 +109,8 @@
         "core/python/tests/integration/README.md",
         "core/python/tests/unit/README.md",
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
-        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
-        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_document_semantics_hotspot_into_focused_suites.md"
       ],
       "subject_ids": [
         "task.validation_test_hotspot_rebalancing.integration_suite_split.002",

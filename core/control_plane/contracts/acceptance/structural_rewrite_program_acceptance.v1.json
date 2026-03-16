@@ -17,9 +17,9 @@
         "docs/planning/prds/structural_rewrite_program.md",
         "docs/planning/design/features/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
-        "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
-        "docs/planning/tasks/closed/complete_structural_rewrite_program_phase0_and_phase1_package.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/structural_rewrite_program_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/complete_structural_rewrite_program_phase0_and_phase1_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json"
@@ -125,7 +125,7 @@
         "req.structural_rewrite_program.006"
       ],
       "validation_targets": [
-        "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md"
       ],
@@ -144,8 +144,8 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_artifact_role_registry_pilot.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ],
@@ -189,9 +189,9 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_artifact_role_registry_pilot.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_artifact_role_registry_pilot.v1.json"
       ],
       "related_paths": [
@@ -209,8 +209,8 @@
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase3_command_authority_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization_ready.v1.json",
         "core/control_plane/indexes/commands/command_index.v1.json",
@@ -232,8 +232,8 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
         "docs/commands/core_python/watchtower_core.md",
@@ -259,9 +259,9 @@
         "req.structural_rewrite_program.011"
       ],
       "validation_targets": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json"
       ],
@@ -280,7 +280,7 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_shared_projection_entry_ready.v1.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
@@ -305,8 +305,8 @@
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot_ready.v1.json",
         "core/control_plane/indexes/coordination/coordination_index.v1.json",
@@ -330,8 +330,8 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/python/src/watchtower_core/repo_ops/planning_projection_snapshot.py",
@@ -360,9 +360,9 @@
         "req.structural_rewrite_program.015"
       ],
       "validation_targets": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json"
       ],
@@ -382,10 +382,10 @@
         "req.structural_rewrite_program.016"
       ],
       "validation_targets": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse_ready.v1.json"
       ],
@@ -406,8 +406,8 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
@@ -435,9 +435,9 @@
         "req.structural_rewrite_program.018"
       ],
       "validation_targets": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json"
       ],
@@ -459,10 +459,10 @@
         "req.structural_rewrite_program.019"
       ],
       "validation_targets": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary_ready.v1.json"
       ],
@@ -482,7 +482,7 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
@@ -512,8 +512,8 @@
       ],
       "validation_targets": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/python/src/watchtower_core/closeout/initiative.py",
@@ -534,7 +534,7 @@
         "req.structural_rewrite_program.022"
       ],
       "validation_targets": [
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json"

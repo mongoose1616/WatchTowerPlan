@@ -29,10 +29,10 @@
         "docs/planning/design/implementation/standards_lookup_and_generic_template_alignment.md",
         "docs/planning/decisions/standards_lookup_and_generic_template_alignment_direction.md",
         "core/control_plane/contracts/acceptance/standards_lookup_and_generic_template_alignment_acceptance.v1.json",
-        "docs/planning/tasks/closed/standards_lookup_and_generic_template_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/resolve_descendant_standard_lookup_for_directory_scoped_operationalization_paths.md",
-        "docs/planning/tasks/closed/narrow_generic_documentation_template_to_fallback_only_guidance.md",
-        "docs/planning/tasks/closed/validate_and_close_standards_lookup_and_generic_template_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/standards_lookup_and_generic_template_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/resolve_descendant_standard_lookup_for_directory_scoped_operationalization_paths.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/narrow_generic_documentation_template_to_fallback_only_guidance.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_standards_lookup_and_generic_template_alignment.md"
       ],
       "subject_ids": [
         "prd.standards_lookup_and_generic_template_alignment",

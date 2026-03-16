@@ -4,10 +4,13 @@ from __future__ import annotations
 
 import re
 from collections.abc import Iterable
+from datetime import date
+from pathlib import PurePosixPath
 
 from watchtower_core.adapters import extract_first_paragraph, extract_updated_at_from_section
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.repo_ops.task_documents import (
+    TASK_CLOSED_ARCHIVE_ROOT,
     TASK_CLOSED_ROOT,
     TASK_FRONT_MATTER_SCHEMA_ID,
     TASK_OPEN_ROOT,
@@ -152,12 +155,45 @@ def apply_optional_list_field(
     return False
 
 
-def task_relative_path(file_stem_source: str, *, task_status: str) -> str:
+def task_relative_path(
+    file_stem_source: str,
+    *,
+    task_status: str,
+    updated_at: str,
+    current_relative_path: str | None = None,
+) -> str:
     """Return the canonical task path for the current status."""
 
-    root = TASK_CLOSED_ROOT if task_status in TERMINAL_TASK_STATUSES else TASK_OPEN_ROOT
     file_stem = slugify_file_stem(file_stem_source)
-    return f"{root}/{file_stem}.md"
+    if task_status not in TERMINAL_TASK_STATUSES:
+        return f"{TASK_OPEN_ROOT}/{file_stem}.md"
+
+    if (
+        current_relative_path is not None
+        and current_relative_path.startswith(f"{TASK_CLOSED_ROOT}/")
+    ):
+        current_parent = PurePosixPath(current_relative_path).parent.as_posix()
+        if current_parent != TASK_CLOSED_ROOT:
+            return f"{current_parent}/{file_stem}.md"
+
+    archive_directory = _closed_task_archive_directory(updated_at)
+    return f"{archive_directory}/{file_stem}.md"
+
+
+def _closed_task_archive_directory(updated_at: str) -> str:
+    """Return the dated archive directory for one terminal task timestamp."""
+
+    try:
+        archived_on = date.fromisoformat(updated_at[:10])
+    except ValueError as exc:
+        raise ValueError(
+            f"Task updated_at must begin with an RFC 3339 UTC date: {updated_at!r}"
+        ) from exc
+
+    return (
+        f"{TASK_CLOSED_ARCHIVE_ROOT}/"
+        f"{archived_on.year:04d}/{archived_on.month:02d}/{archived_on.day:02d}"
+    )
 
 
 def ensure_available_path(

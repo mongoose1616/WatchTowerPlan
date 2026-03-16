@@ -29,9 +29,9 @@
         "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
         "docs/planning/decisions/internal_project_standards_review_and_hardening_direction.md",
         "core/control_plane/contracts/acceptance/internal_project_standards_review_and_hardening_acceptance.v1.json",
-        "docs/planning/tasks/closed/internal_project_standards_review_and_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
-        "docs/planning/tasks/closed/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md"
+        "docs/planning/tasks/closed/archive/2026/03/11/internal_project_standards_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md"
       ],
       "subject_ids": [
         "prd.internal_project_standards_review_and_hardening",
@@ -98,8 +98,8 @@
         "docs/planning/decisions/internal_project_standards_review_and_hardening_direction.md",
         "docs/planning/design/features/internal_project_standards_review_and_hardening.md",
         "docs/planning/design/implementation/internal_project_standards_review_and_hardening.md",
-        "docs/planning/tasks/closed/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
-        "docs/planning/tasks/closed/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md",
         "core/python/tests/unit/README.md"
       ],
       "subject_ids": [

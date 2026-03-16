@@ -30,9 +30,9 @@
         "docs/planning/decisions/reference_resolution_reuse_hardening_direction.md",
         "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/reference_resolution_reuse_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
-        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/reference_resolution_reuse_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_reference_resolution_reuse_hardening.md"
       ],
       "subject_ids": [
         "prd.reference_resolution_reuse_hardening",
@@ -96,7 +96,7 @@
       "subject_paths": [
         "core/control_plane/contracts/acceptance/reference_resolution_reuse_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/reference_resolution_reuse_hardening_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_reference_resolution_reuse_hardening.md",
         "docs/planning/coordination_tracking.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/planning/initiatives/initiative_tracking.md"

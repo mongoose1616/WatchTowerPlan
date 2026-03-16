@@ -22,10 +22,12 @@
 - Treat coordination as an active-first start-here projection plus compact recent-closeout context, not as the exhaustive historical planning view.
 - Filterless `uv run watchtower-core query initiatives --format json` and `uv run watchtower-core query planning --format json` now default to `initiative_status=active`; use explicit `--initiative-status <status>` for terminal history and `--trace-id <trace_id>` when you already know the closed trace you need.
 - Use `docs/planning/initiatives/initiative_tracking.md` or `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need filtered terminal history, broader initiative-family browsing, or explicit non-active status lookup.
+- Treat the PRD, design, and decision family trackers as active-first views with compact terminal-history summaries, not as exhaustive closed-trace ledgers.
 - Use `uv run watchtower-core query planning --trace-id <trace_id> --format json` when the main question is the canonical deep planning record for one known trace rather than the filterless active browse.
 - Machine-readable planning projections use explicit status fields such as `artifact_status`, `initiative_status`, `record_status`, `decision_status`, and `task_status`; do not collapse them into one generic status concept.
 - Use `uv run watchtower-core query authority --domain planning --format json` when the main question is which planning or governance surface is canonical for a recurring lookup question.
 - Use `docs/planning/initiatives/initiative_tracking.md` when you need the deeper initiative-family view instead of the compact root tracker.
 - Keep upstream product intent in `prds/`, solution design in `design/`, and durable choice history in `decisions/` after current repository scope is clear.
 - Keep engineer-sized execution work in `tasks/` rather than overloading PRD or design trackers as task boards.
+- Treat `docs/planning/tasks/task_tracking.md` as an open-work board with compact terminal context; use `docs/planning/tasks/closed/archive/` or explicit task queries for exhaustive closed-task lookup.
 - Keep standards in `docs/standards/`, references in `docs/references/`, and workflows in `workflows/`.

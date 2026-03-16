@@ -24,6 +24,14 @@ def _build_fixture_repo(tmp_path: Path) -> Path:
     return repo_root
 
 
+def _github_task_path(repo_root: Path) -> str:
+    return (
+        next((repo_root / "docs/planning/tasks/closed").rglob("github_task_sync.md"))
+        .relative_to(repo_root)
+        .as_posix()
+    )
+
+
 def test_github_task_sync_dry_run_includes_managed_labels() -> None:
     service = GitHubTaskSyncService(ControlPlaneLoader(REPO_ROOT))
 
@@ -81,7 +89,7 @@ def test_github_task_sync_dry_run_reports_missing_repository() -> None:
 def test_github_task_sync_write_updates_local_bindings_and_indexes(tmp_path: Path) -> None:
     repo_root = _build_fixture_repo(tmp_path)
     service = GitHubTaskSyncService(ControlPlaneLoader(repo_root))
-    task_path = "docs/planning/tasks/closed/github_task_sync.md"
+    task_path = _github_task_path(repo_root)
 
     class FakeClient:
         def __init__(self) -> None:
@@ -204,7 +212,7 @@ def test_github_task_sync_write_updates_local_bindings_and_indexes(tmp_path: Pat
 def test_github_task_sync_write_updates_existing_issue_and_project_item(tmp_path: Path) -> None:
     repo_root = _build_fixture_repo(tmp_path)
     service = GitHubTaskSyncService(ControlPlaneLoader(repo_root))
-    task_path = "docs/planning/tasks/closed/github_task_sync.md"
+    task_path = _github_task_path(repo_root)
     update_task_document_front_matter(
         ControlPlaneLoader(repo_root),
         task_path,
@@ -314,7 +322,7 @@ def test_github_task_sync_reports_binding_validation_errors(tmp_path: Path) -> N
     service = GitHubTaskSyncService(loader)
     update_task_document_front_matter(
         loader,
-        "docs/planning/tasks/closed/github_task_sync.md",
+        _github_task_path(repo_root),
         updates={"github_repository": "bound/repo"},
     )
 

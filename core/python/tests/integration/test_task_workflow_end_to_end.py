@@ -233,11 +233,13 @@ def test_initiative_closeout_fails_closed_until_task_state_is_terminal(
     repo_root = _copy_repo_subset(tmp_path)
     task_id = "task.core_python_foundation.closeout.validation.001"
     open_relative_path = "docs/planning/tasks/open/core_python_closeout.md"
-    closed_relative_path = "docs/planning/tasks/closed/core_python_closeout.md"
+    closed_relative_path = (
+        "docs/planning/tasks/closed/archive/2026/03/10/core_python_closeout.md"
+    )
     baseline_task_id = "task.core_python_foundation.closeout.001"
     baseline_open_relative_path = "docs/planning/tasks/open/core_python_foundation_closeout.md"
     baseline_closed_relative_path = (
-        "docs/planning/tasks/closed/core_python_foundation_closeout.md"
+        "docs/planning/tasks/closed/archive/2026/03/10/core_python_foundation_closeout.md"
     )
 
     _write_task(

@@ -29,10 +29,10 @@
         "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md",
         "docs/planning/decisions/typed_query_surface_modularity_hardening_direction.md",
         "core/control_plane/contracts/acceptance/typed_query_surface_modularity_hardening_acceptance.v1.json",
-        "docs/planning/tasks/closed/typed_query_surface_modularity_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/split_typed_retrieval_models_into_focused_modules.md",
-        "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
-        "docs/planning/tasks/closed/validate_and_close_typed_query_surface_modularity_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/typed_query_surface_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_typed_retrieval_models_into_focused_modules.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_cli_query_regressions_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_typed_query_surface_modularity_hardening.md"
       ],
       "subject_ids": [
         "prd.typed_query_surface_modularity_hardening",
@@ -110,7 +110,7 @@
         "core/python/tests/unit/test_cli_knowledge_query_commands.py",
         "core/python/tests/unit/test_cli_planning_query_commands.py",
         "core/python/tests/unit/README.md",
-        "docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/add_regressions_for_data_contract_example_lookup_coverage.md"
       ],
       "subject_ids": [
         "task.typed_query_surface_modularity_hardening.query_suite_modularity.003"

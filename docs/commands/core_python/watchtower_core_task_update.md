@@ -5,7 +5,7 @@ This command applies structured field or body updates to one governed local task
 
 ## Use When
 - You need to change task metadata, scope, completion criteria, blockers, dependencies, or path placement without hand-editing front matter.
-- You want to move a task between `open/` and `closed/` based on terminal or non-terminal status.
+- You want to move a task between `open/` and the dated closed-task archive based on terminal or non-terminal status.
 - You want dry-run preview before mutating the canonical task document.
 
 ## Command
@@ -69,7 +69,7 @@ uv run watchtower-core task update --task-id task.example.001 --clear-blocked-by
 - Replacement list flags overwrite the current value set. Use the matching clear flag when you want to remove a list field or `trace_id`.
 - The command rejects path collisions, invalid task-state vocabulary, conflicting replacement and clear flags, and unresolved blocker or dependency task IDs.
 - If `related_ids` include any `trace.*` value, the resulting task must keep the matching `trace_id`.
-- If the resulting task status changes terminality, write mode moves the task document between `docs/planning/tasks/open/` and `docs/planning/tasks/closed/`.
+- If the resulting task status changes terminality, write mode moves the task document between `docs/planning/tasks/open/` and the dated `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/` tree.
 - When write mode moves the task document, the command also repairs matching repo-local task-path references in governed acceptance contracts and validation evidence before coordination refreshes.
 - In `json` mode, the command prints one JSON object with the resulting task metadata, path outcome, write state, and `closeout_recommended` hint.
 

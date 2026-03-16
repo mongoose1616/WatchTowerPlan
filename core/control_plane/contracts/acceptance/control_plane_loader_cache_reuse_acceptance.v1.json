@@ -17,9 +17,9 @@
         "docs/planning/design/features/control_plane_loader_cache_reuse.md",
         "docs/planning/design/implementation/control_plane_loader_cache_reuse.md",
         "docs/planning/decisions/control_plane_loader_cache_reuse_direction.md",
-        "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md",
-        "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
-        "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/control_plane_loader_cache_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/implement_command_scoped_loader_cache_reuse.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_control_plane_loader_cache_reuse.md",
         "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json"
       ],
@@ -44,7 +44,7 @@
         "core/python/tests/unit/test_all_validation.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/implement_command_scoped_loader_cache_reuse.md"
       ],
       "notes": "Direct instrumentation should show validator-registry rematerialization dropping from 799 to 1 during aggregate repository validation."
     },
@@ -75,7 +75,7 @@
       "validation_targets": [
         "core/control_plane/contracts/acceptance/control_plane_loader_cache_reuse_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/control_plane_loader_cache_reuse_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_control_plane_loader_cache_reuse.md"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md",

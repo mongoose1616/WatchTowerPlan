@@ -102,6 +102,7 @@
 - `uv run watchtower-core query coordination --format json` is the default machine-readable current-state entrypoint and stays useful even when no initiative is active.
 - Use `uv run watchtower-core query coordination --initiative-status <status> --format json` or `uv run watchtower-core query initiatives --initiative-status <status> --format json` when you need explicit non-active initiative lookup without treating the default coordination payload as a full history surface.
 - `uv run watchtower-core query planning --trace-id <trace_id> --format json` is the canonical deep planning read path after coordination identifies the active trace.
+- The PRD, design, decision, and task tracking sync commands rebuild compact active-first human trackers. Terminal task writes now land in the dated `docs/planning/tasks/closed/archive/` tree; use the paired `query` commands or `query initiatives` for exhaustive terminal-history lookup.
 - `uv run watchtower-core plan scaffold --write ...` refreshes the traced coordination slice only when the target trace already participates in coordination or already has traced task state.
 - `uv run watchtower-core plan bootstrap --include-decision --write ...` now emits a governed-valid decision scaffold with `Applied References and Implications`, and bootstrap-only traces stay in `implementation_planning` until non-bootstrap active work exists.
 - `uv run watchtower-core closeout initiative --write ...` refreshes the planning catalog in the same closeout slice as the initiative and coordination outputs.

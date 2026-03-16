@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "compact_authoring"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-15T05:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -47,6 +47,7 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - Treat front matter as the primary machine surface for stable identity, lifecycle state, ownership, and timestamps when the document family uses governed front matter.
 - A body `Updated At` section is optional when the family already carries `updated_at` in front matter and `Updated At` in record metadata.
 - Generated human-readable trackers should prefer dense tables and brief zero-state text over placeholder `None` rows or repeated footer prose.
+- Generated human-readable planning trackers should default to active-first or actionable-first slices and route exhaustive closed history to explicit query paths or canonical family directories when those lookup surfaces already exist.
 - Remove sections, bullets, or notes that restate obvious context without helping review, routing, or execution.
 
 ## Operationalization
@@ -71,4 +72,4 @@ Reduce low-value boilerplate in authored documents and generated human-readable 
 - [task_md_standard.md](/home/j/WatchTowerPlan/docs/standards/documentation/task_md_standard.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-15T05:45:00Z`

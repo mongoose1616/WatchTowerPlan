@@ -8,10 +8,13 @@ from pathlib import Path
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
 from watchtower_core.repo_ops.sync.tracking_common import (
+    ACTIVE_INITIATIVE_STATUS,
     initiative_status_map,
     latest_timestamp,
     markdown_repo_link,
+    render_bullet_summary,
     render_markdown_table,
+    terminal_initiative_status_counts_for_trace_ids,
 )
 
 DECISION_TRACKING_DOCUMENT_PATH = "docs/planning/decisions/decision_tracking.md"
@@ -40,13 +43,27 @@ class DecisionTrackingSyncService:
         decision_index = self._loader.load_decision_index()
         trace_statuses = initiative_status_map(self._loader)
         updated_at = latest_timestamp(tuple(entry.updated_at for entry in decision_index.entries))
+        active_entries = tuple(
+            entry
+            for entry in decision_index.entries
+            if trace_statuses.get(entry.trace_id, ACTIVE_INITIATIVE_STATUS)
+            == ACTIVE_INITIATIVE_STATUS
+        )
+        terminal_counts = terminal_initiative_status_counts_for_trace_ids(
+            tuple(entry.trace_id for entry in decision_index.entries),
+            trace_statuses,
+        )
 
-        lines = ["# Decision Tracking", "", "## Decisions"]
-        if not decision_index.entries:
-            lines.append("_No decision records._")
+        lines = ["# Decision Tracking", "", "## Active Decisions"]
+        if not active_entries:
+            lines.append(
+                "_No active decisions. Use `watchtower-core query initiatives "
+                "--initiative-status <status> --format json` for terminal trace browse "
+                "or `watchtower-core query decisions --trace-id <trace_id>` for one known trace._"
+            )
         else:
             rows: list[tuple[str, ...]] = []
-            for entry in decision_index.entries:
+            for entry in active_entries:
                 initiative_status = trace_statuses.get(entry.trace_id, "active")
                 rows.append(
                     (
@@ -67,6 +84,21 @@ class DecisionTrackingSyncService:
                     tuple(rows),
                 )
             )
+        lines.extend(
+            [
+                "",
+                "## Terminal History",
+                *render_bullet_summary(
+                    terminal_counts,
+                    empty_message="_No terminal decision traces._",
+                ),
+                "",
+                "Use `watchtower-core query initiatives --initiative-status <status> "
+                "--format json` for terminal trace browse, and "
+                "`watchtower-core query decisions --trace-id <trace_id>` "
+                "for one known decision trace.",
+            ]
+        )
         lines.extend(["", f"_Updated At: `{updated_at}`_", ""])
         return DecisionTrackingBuildResult(
             content="\n".join(lines),

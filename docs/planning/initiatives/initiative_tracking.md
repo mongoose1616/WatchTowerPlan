@@ -1,7 +1,10 @@
 # Initiative Tracking
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Open Tasks | Key | Next | Action |
+| --- | --- | --- | --- | --- | --- | --- |
+| `trace.core_split_compatibility_wrapper_retirement` | `execution` | repository_maintainer | `3` (`blocked=2`) | [core_split_compatibility_wrapper_retirement.md](/home/j/WatchTowerPlan/docs/planning/prds/core_split_compatibility_wrapper_retirement.md) | [retire_repo_specific_compatibility_wrappers.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| `trace.planning_artifact_retention_and_purge` | `execution` | repository_maintainer | `4` (`blocked=3`) | [planning_artifact_retention_and_purge.md](/home/j/WatchTowerPlan/docs/planning/prds/planning_artifact_retention_and_purge.md) | [align_retention_policy_with_canonical_standards_and_purgeability_rules.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Closed Initiatives
 | Trace ID | Status | Key | Closed At | Reason |
@@ -70,4 +73,4 @@ _No active initiatives._
 | `trace.acceptance_evidence_reconciliation` | `completed` | [acceptance_evidence_reconciliation.md](/home/j/WatchTowerPlan/docs/planning/design/features/acceptance_evidence_reconciliation.md) | `2026-03-10T03:58:40Z` | Delivered and validated; future expansion belongs to a new bounded initiative |
 | `trace.local_task_tracking` | `completed` | [github_task_push_sync.md](/home/j/WatchTowerPlan/docs/planning/design/features/github_task_push_sync.md) | `2026-03-09T16:14:50Z` | Delivered and validated |
 
-_Updated At: `2026-03-16T01:06:43Z`_
+_Updated At: `2026-03-16T02:14:43Z`_

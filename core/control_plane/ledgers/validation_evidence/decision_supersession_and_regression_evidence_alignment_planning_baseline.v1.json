@@ -32,7 +32,7 @@
         "docs/planning/design/features/decision_supersession_and_regression_evidence_alignment.md",
         "docs/planning/design/implementation/decision_supersession_and_regression_evidence_alignment.md",
         "core/control_plane/contracts/acceptance/decision_supersession_and_regression_evidence_alignment_acceptance.v1.json",
-        "docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/decision_supersession_and_regression_evidence_alignment_bootstrap.md"
       ],
       "subject_ids": [
         "prd.decision_supersession_and_regression_evidence_alignment",
@@ -52,9 +52,9 @@
       "title": "All remaining execution tasks are closed as cancelled",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/closed/add_explicit_decision_supersession_support.md",
-        "docs/planning/tasks/closed/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
-        "docs/planning/tasks/closed/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/add_explicit_decision_supersession_support.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/planning/coordination_tracking.md",
         "docs/planning/initiatives/initiative_tracking.md"

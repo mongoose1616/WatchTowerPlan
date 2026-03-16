@@ -32,9 +32,9 @@
         "docs/planning/design/features/regression_duplication_and_overstep_review.md",
         "docs/planning/design/implementation/regression_duplication_and_overstep_review.md",
         "core/control_plane/contracts/acceptance/regression_duplication_and_overstep_review_acceptance.v1.json",
-        "docs/planning/tasks/closed/regression_duplication_and_overstep_review_bootstrap.md",
-        "docs/planning/tasks/closed/remediate_confirmed_regression_and_duplication_findings.md",
-        "docs/planning/tasks/closed/validate_and_close_regression_duplication_review.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/regression_duplication_and_overstep_review_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/remediate_confirmed_regression_and_duplication_findings.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_regression_duplication_review.md"
       ],
       "subject_ids": [
         "prd.regression_duplication_and_overstep_review",

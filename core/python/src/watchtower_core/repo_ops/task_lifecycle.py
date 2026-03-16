@@ -326,12 +326,21 @@ class TaskLifecycleService:
             changed = True
 
         file_stem = params.file_stem or Path(document.relative_path).stem
-        relative_path = task_relative_path(file_stem, task_status=task_status)
+        updated_at = params.updated_at or (
+            utc_timestamp_now()
+            if changed or file_stem != Path(document.relative_path).stem
+            else document.updated_at
+        )
+        relative_path = task_relative_path(
+            file_stem,
+            task_status=task_status,
+            updated_at=updated_at,
+            current_relative_path=document.relative_path,
+        )
         moved = relative_path != document.relative_path
         if moved:
             changed = True
 
-        updated_at = params.updated_at or (utc_timestamp_now() if changed else document.updated_at)
         if updated_at != document.updated_at:
             front_matter["updated_at"] = updated_at
             changed = True
@@ -459,6 +468,7 @@ class TaskLifecycleService:
         relative_path = task_relative_path(
             params.file_stem or title,
             task_status=task_status,
+            updated_at=updated_at,
         )
         return front_matter, sections, relative_path
 

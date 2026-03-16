@@ -17,10 +17,10 @@
         "docs/planning/design/features/active_first_planning_query_history_alignment.md",
         "docs/planning/design/implementation/active_first_planning_query_history_alignment.md",
         "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
-        "docs/planning/tasks/closed/active_first_planning_query_history_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
-        "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
-        "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/active_first_planning_query_history_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/align_filterless_planning_and_initiative_query_defaults.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/align_planning_navigation_docs_with_active_first_query_defaults.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_active_first_planning_query_history_alignment.md",
         "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json"
       ],
@@ -48,7 +48,7 @@
         "core/python/tests/unit/test_cli_planning_query_commands.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/align_filterless_planning_and_initiative_query_defaults.md",
         "docs/planning/design/implementation/active_first_planning_query_history_alignment.md"
       ],
       "notes": "Covers the bounded query-entrypoint change and the preserved explicit-history path without widening the lower-level query-service or loader boundary."
@@ -67,7 +67,7 @@
         "docs/commands/core_python/watchtower_core_query_initiatives.md"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/align_planning_navigation_docs_with_active_first_query_defaults.md"
       ],
       "notes": "Covers JSON payload signaling, command help text, and the empty-state guidance that now points operators to explicit history-browse options."
     },

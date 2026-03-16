@@ -15,7 +15,7 @@ authority: authoritative
 applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md
 - docs/planning/design/implementation/structural_rewrite_program.md
-- docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md
+- docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md
 - core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json
 - core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json
 - core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json
@@ -69,10 +69,10 @@ Review the bounded Phase 4 planning projection snapshot slice, confirm the share
 
 ## Links
 - [structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md)
-- [implement_structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md)
+- [implement_structural_rewrite_phase4_planning_projection_snapshot.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md)
 - [structural_rewrite_program.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_program.md)
 - [structural_rewrite_phase4_closeout_coordination_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md)
-- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
+- [review_structural_rewrite_phase4_closeout_coordination_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md)
 - [structural_rewrite_phase4_closeout_coordination_sync_reuse.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md)
 
 ## Updated At

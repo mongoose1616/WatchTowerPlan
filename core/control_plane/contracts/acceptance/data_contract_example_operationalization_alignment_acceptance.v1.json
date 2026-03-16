@@ -19,10 +19,10 @@
         "docs/planning/decisions/data_contract_example_operationalization_alignment_direction.md",
         "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/data_contract_example_operationalization_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/publish_data_contract_example_operationalization_coverage.md",
-        "docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md",
-        "docs/planning/tasks/closed/validate_and_close_data_contract_example_operationalization_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/data_contract_example_operationalization_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/publish_data_contract_example_operationalization_coverage.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/add_regressions_for_data_contract_example_lookup_coverage.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_data_contract_example_operationalization_alignment.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -102,7 +102,7 @@
       "validation_targets": [
         "core/control_plane/contracts/acceptance/data_contract_example_operationalization_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/data_contract_example_operationalization_alignment_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_data_contract_example_operationalization_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_data_contract_example_operationalization_alignment.md"
       ],
       "related_paths": [
         "docs/planning/tasks/task_tracking.md",

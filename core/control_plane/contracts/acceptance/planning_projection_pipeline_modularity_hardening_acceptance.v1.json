@@ -17,10 +17,10 @@
         "docs/planning/design/features/planning_projection_pipeline_modularity_hardening.md",
         "docs/planning/design/implementation/planning_projection_pipeline_modularity_hardening.md",
         "docs/planning/decisions/planning_projection_pipeline_modularity_hardening_direction.md",
-        "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
-        "docs/planning/tasks/closed/tighten_planning_projection_sync_composition_seams.md",
-        "docs/planning/tasks/closed/validate_and_close_planning_projection_pipeline_modularity_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/16/planning_projection_pipeline_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/split_planning_projection_serialization_boundaries.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/tighten_planning_projection_sync_composition_seams.md",
+        "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_planning_projection_pipeline_modularity_hardening.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",

@@ -14,6 +14,7 @@
 - Use `watchtower_core_query_coordination.md` when the main question is current planning state, next action, and active work context.
 - Use `watchtower_core_query_planning.md` when the main question is the canonical deep planning record for one trace after coordination routing.
 - Use `watchtower_core_query_authority.md` when the main question is which machine surface is canonical for a planning or governance lookup.
+- The family tracking sync pages describe compact active-first trackers. Use the paired `query` commands or `query initiatives` for exhaustive terminal-history lookup instead of expecting full closed corpora in tracker pages.
 - Prefer `uv run watchtower-core query commands --query <term> --format json` when you want the governed machine lookup surface instead of browsing this directory.
 
 ## Files

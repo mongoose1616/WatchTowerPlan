@@ -16,7 +16,7 @@
         "docs/planning/prds/core_export_hardening_followup.md",
         "docs/planning/design/features/core_export_hardening.md",
         "docs/planning/design/implementation/core_export_hardening_execution.md",
-        "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_hardening_bootstrap.md",
         "docs/planning/tasks/"
       ],
       "related_paths": [
@@ -36,7 +36,7 @@
       "validation_targets": [
         "core/python/src/watchtower_core/control_plane/workspace.py",
         "core/python/src/watchtower_core/repo_ops/sync/",
-        "docs/planning/tasks/closed/core_export_sync_output_snapshots.md"
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_sync_output_snapshots.md"
       ],
       "related_paths": [
         "core/python/tests/unit/test_all_sync.py",
@@ -54,7 +54,7 @@
       "validation_targets": [
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/repo_ops/sync/command_index.py",
-        "docs/planning/tasks/closed/core_export_command_source_metadata.md"
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_command_source_metadata.md"
       ],
       "related_paths": [
         "core/control_plane/indexes/commands/command_index.v1.json",
@@ -72,7 +72,7 @@
         "core/python/src/watchtower_core/query/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/validation/",
-        "docs/planning/tasks/closed/core_export_public_api_boundary.md"
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_public_api_boundary.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/repo_ops/",

@@ -1,0 +1,76 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:ledgers:validation-evidence:v1",
+  "id": "evidence.planning_artifact_retention_and_purge.planning_baseline",
+  "title": "Planning Artifact Retention and Purge Planning Baseline Evidence",
+  "status": "active",
+  "trace_id": "trace.planning_artifact_retention_and_purge",
+  "overall_result": "passed",
+  "recorded_at": "2026-03-15T11:00:00Z",
+  "source_prd_ids": [
+    "prd.planning_artifact_retention_and_purge"
+  ],
+  "source_design_ids": [
+    "design.features.planning_artifact_retention_and_purge"
+  ],
+  "source_plan_ids": [
+    "design.implementation.planning_artifact_retention_and_purge"
+  ],
+  "source_acceptance_contract_ids": [
+    "contract.acceptance.planning_artifact_retention_and_purge"
+  ],
+  "checks": [
+    {
+      "check_id": "check.planning_artifact_retention_and_purge.planning_baseline",
+      "title": "Planning chain, accepted direction, retention standard, and bounded execution queue are aligned",
+      "result": "passed",
+      "subject_paths": [
+        "docs/planning/prds/planning_artifact_retention_and_purge.md",
+        "docs/planning/design/features/planning_artifact_retention_and_purge.md",
+        "docs/planning/design/implementation/planning_artifact_retention_and_purge.md",
+        "docs/planning/decisions/planning_artifact_retention_and_purge_direction.md",
+        "docs/standards/governance/planning_retention_and_purge_standard.md",
+        "core/control_plane/contracts/acceptance/planning_artifact_retention_and_purge_acceptance.v1.json",
+        "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
+        "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
+        "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
+        "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
+        "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md"
+      ],
+      "subject_ids": [
+        "prd.planning_artifact_retention_and_purge",
+        "design.features.planning_artifact_retention_and_purge",
+        "design.implementation.planning_artifact_retention_and_purge",
+        "task.planning_artifact_retention_and_purge.bootstrap.001",
+        "task.planning_artifact_retention_and_purge.standard_alignment.002",
+        "task.planning_artifact_retention_and_purge.workflow_and_ledger.003",
+        "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
+        "task.planning_artifact_retention_and_purge.validation_closeout.005",
+        "contract.acceptance.planning_artifact_retention_and_purge",
+        "decision.planning_artifact_retention_and_purge_direction",
+        "evidence.planning_artifact_retention_and_purge.planning_baseline"
+      ],
+      "validator_id": "validator.control_plane.validation_evidence",
+      "acceptance_ids": [
+        "ac.planning_artifact_retention_and_purge.001",
+        "ac.planning_artifact_retention_and_purge.002",
+        "ac.planning_artifact_retention_and_purge.003",
+        "ac.planning_artifact_retention_and_purge.004",
+        "ac.planning_artifact_retention_and_purge.005"
+      ],
+      "notes": "This planning baseline records the accepted promote-then-purge direction, the authoritative retention standard, the closed bootstrap task, and the bounded execution queue for standards alignment, guarded purge implementation, pilot cleanup, and final validation closeout."
+    }
+  ],
+  "related_paths": [
+    "core/control_plane/contracts/acceptance/planning_artifact_retention_and_purge_acceptance.v1.json",
+    "docs/planning/coordination_tracking.md",
+    "docs/planning/decisions/decision_tracking.md",
+    "docs/planning/design/design_tracking.md",
+    "docs/planning/initiatives/initiative_tracking.md",
+    "docs/planning/prds/prd_tracking.md",
+    "docs/planning/tasks/task_tracking.md"
+  ],
+  "notes": "Planning baseline evidence published for the retention-model trace after the bootstrap task closed and the bounded execution queue plus retention standard were added before implementation work begins.",
+  "source_decision_ids": [
+    "decision.planning_artifact_retention_and_purge_direction"
+  ]
+}

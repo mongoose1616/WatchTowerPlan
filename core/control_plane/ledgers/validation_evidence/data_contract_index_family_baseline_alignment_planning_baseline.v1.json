@@ -29,10 +29,10 @@
         "docs/planning/design/implementation/data_contract_index_family_baseline_alignment.md",
         "docs/planning/decisions/data_contract_index_family_baseline_alignment_direction.md",
         "core/control_plane/contracts/acceptance/data_contract_index_family_baseline_alignment_acceptance.v1.json",
-        "docs/planning/tasks/closed/data_contract_index_family_baseline_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/publish_planning_index_family_baseline_and_refactor_member_standards.md",
-        "docs/planning/tasks/closed/refresh_standard_index_discoverability_and_query_validation.md",
-        "docs/planning/tasks/closed/validate_and_close_data_contract_index_family_baseline_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/data_contract_index_family_baseline_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/publish_planning_index_family_baseline_and_refactor_member_standards.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/refresh_standard_index_discoverability_and_query_validation.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_data_contract_index_family_baseline_alignment.md"
       ],
       "subject_ids": [
         "prd.data_contract_index_family_baseline_alignment",

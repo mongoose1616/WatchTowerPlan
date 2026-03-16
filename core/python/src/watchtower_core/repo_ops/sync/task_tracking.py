@@ -7,7 +7,11 @@ from pathlib import Path
 
 from watchtower_core.control_plane.loader import ControlPlaneLoader
 from watchtower_core.control_plane.paths import discover_repo_root
-from watchtower_core.repo_ops.sync.tracking_common import markdown_repo_link, render_markdown_table
+from watchtower_core.repo_ops.sync.tracking_common import (
+    latest_timestamp,
+    markdown_repo_link,
+    render_markdown_table,
+)
 from watchtower_core.repo_ops.task_documents import (
     TERMINAL_TASK_STATUSES,
     TaskDocument,
@@ -64,7 +68,12 @@ class TaskTrackingSyncService:
             (task for task in tasks if task.task_status in TERMINAL_TASK_STATUSES),
             key=_sort_key,
         )
-        updated_at = max((task.updated_at for task in tasks), default="None")
+        recent_closed_tasks = sorted(
+            closed_tasks,
+            key=lambda task: (task.updated_at, task.task_id),
+            reverse=True,
+        )[:10]
+        updated_at = latest_timestamp(tuple(task.updated_at for task in tasks))
         content = "\n".join(
             [
                 "# Task Tracking",
@@ -72,8 +81,15 @@ class TaskTrackingSyncService:
                 "## Open Tasks",
                 _table_for_tasks(self._repo_root, open_tasks, empty_message="_No open tasks._"),
                 "",
-                "## Closed Tasks",
-                _table_for_tasks(self._repo_root, closed_tasks, empty_message="_No closed tasks._"),
+                "## Closed Task Summary",
+                *_closed_task_summary(closed_tasks),
+                "",
+                "## Recently Closed Tasks",
+                _table_for_tasks(
+                    self._repo_root,
+                    recent_closed_tasks,
+                    empty_message="_No recently closed tasks._",
+                ),
                 "",
                 f"_Updated At: `{updated_at}`_",
                 "",
@@ -132,3 +148,21 @@ def _table_for_tasks(repo_root: Path, tasks: list[TaskDocument], *, empty_messag
             row.append(blocked_by)
         rows.append(tuple(row))
     return "\n".join(render_markdown_table(tuple(headers), tuple(rows)))
+
+
+def _closed_task_summary(closed_tasks: list[TaskDocument]) -> tuple[str, ...]:
+    if not closed_tasks:
+        return ("_No closed tasks._",)
+
+    done_count = sum(task.task_status == "done" for task in closed_tasks)
+    cancelled_count = sum(task.task_status == "cancelled" for task in closed_tasks)
+    return (
+        f"- `done`: {done_count}",
+        f"- `cancelled`: {cancelled_count}",
+        "",
+        "Use `docs/planning/tasks/closed/archive/` for canonical terminal task records, "
+        "`watchtower-core query tasks --task-status done --format json` "
+        "for completed-task lookup, or "
+        "`watchtower-core query tasks --task-status cancelled --format json` "
+        "for cancelled-task lookup.",
+    )

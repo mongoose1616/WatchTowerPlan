@@ -17,10 +17,10 @@
         "docs/planning/decisions/refactor_review_and_hardening_direction.md",
         "docs/planning/design/features/refactor_review_and_hardening.md",
         "docs/planning/design/implementation/refactor_review_and_hardening.md",
-        "docs/planning/tasks/closed/refactor_review_and_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/clarify_workflow_route_discrimination_and_documentation_review_routing.md",
-        "docs/planning/tasks/closed/slim_coordination_current_state_payload_and_thin_route_first_entrypoints.md",
-        "docs/planning/tasks/closed/validate_and_close_phase_one_refactor_simplification.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/refactor_review_and_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/clarify_workflow_route_discrimination_and_documentation_review_routing.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/slim_coordination_current_state_payload_and_thin_route_first_entrypoints.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_phase_one_refactor_simplification.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",

@@ -30,9 +30,9 @@
         "docs/planning/decisions/standard_operationalization_directory_canonicalization_direction.md",
         "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/standard_operationalization_directory_canonicalization_bootstrap.md",
-        "docs/planning/tasks/closed/canonicalize_standard_operationalization_directory_paths.md",
-        "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/standard_operationalization_directory_canonicalization_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/canonicalize_standard_operationalization_directory_paths.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_standard_operationalization_directory_canonicalization.md"
       ],
       "subject_ids": [
         "prd.standard_operationalization_directory_canonicalization",
@@ -94,7 +94,7 @@
       "subject_paths": [
         "core/control_plane/contracts/acceptance/standard_operationalization_directory_canonicalization_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/standard_operationalization_directory_canonicalization_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_standard_operationalization_directory_canonicalization.md"
       ],
       "subject_ids": [
         "task.standard_operationalization_directory_canonicalization.validation_closeout.001",

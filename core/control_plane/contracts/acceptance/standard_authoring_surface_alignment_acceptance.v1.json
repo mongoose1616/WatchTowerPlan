@@ -17,9 +17,9 @@
         "docs/planning/design/features/standard_authoring_surface_alignment.md",
         "docs/planning/design/implementation/standard_authoring_surface_alignment.md",
         "docs/planning/decisions/standard_authoring_surface_alignment_direction.md",
-        "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
-        "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md"
+        "docs/planning/tasks/closed/archive/2026/03/11/standard_authoring_surface_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/align_standard_document_template_with_governed_authoring_contract.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",

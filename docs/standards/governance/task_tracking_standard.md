@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "task_tracking"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T04:05:00Z"
+updated_at: "2026-03-15T06:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -57,7 +57,7 @@ This standard defines the repository's local-first task tracking model so multip
 - Treat local task records as the authoritative local execution surface.
 - Store one task per Markdown file.
 - Keep active or non-terminal tasks under `docs/planning/tasks/open/`.
-- Keep terminal tasks under `docs/planning/tasks/closed/`.
+- Keep terminal tasks under dated archive paths beneath `docs/planning/tasks/closed/archive/`.
 - Use `task_status` for task execution state and keep document `status` reserved for artifact lifecycle.
 - Use only these task execution states:
   - `backlog`
@@ -84,6 +84,7 @@ This standard defines the repository's local-first task tracking model so multip
 - Use `blocked_by` and `depends_on` to express task-to-task coordination explicitly instead of burying blockers in prose.
 - Treat `docs/planning/tasks/task_tracking.md` as a derived human summary, not as the task source of truth.
 - Keep `task_tracking.md` scan-first and compact. Prefer short zero-state text and high-signal columns over placeholder rows or repeated footer prose.
+- Keep terminal task history compact in `task_tracking.md`. Summarize closed status counts, show only a small recent-closeout preview, and route exhaustive closed-task lookup to `docs/planning/tasks/closed/archive/` or explicit `watchtower-core query tasks --task-status ...` calls.
 - Treat `core/control_plane/indexes/tasks/task_index.v1.json` as the machine-readable lookup surface derived from task records.
 - Keep optional GitHub foreign keys in task front matter when a later sync surface needs them:
   - `github_repository`
@@ -110,20 +111,20 @@ This standard defines the repository's local-first task tracking model so multip
 | Task State Class | Canonical Location |
 |---|---|
 | Non-terminal task | `docs/planning/tasks/open/` |
-| Terminal task | `docs/planning/tasks/closed/` |
+| Terminal task | `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/` |
 | Human tracker | `docs/planning/tasks/task_tracking.md` |
 
 ## Process or Workflow
 1. Create one task file per engineer-sized work item.
 2. Evaluate the task-handling threshold before leaving the task outcome implicit.
-3. Put the task in `open/` or `closed/` based on its execution status class.
+3. Put the task in `open/` or the dated `closed/archive/` tree based on its execution status class.
 4. Keep the task front matter current when the task owner, task status, blockers, or linked planning surfaces change.
 5. Rebuild the human tracker and task index in the same change set after task changes.
 6. Rebuild the traceability index in the same change set when traced tasks are added, removed, or materially retargeted.
 
 ## Examples
 - A new implementation slice with one owner and one bounded outcome should be one task file under `open/`.
-- A closed task that is complete should move to `closed/` and keep its `task_status` as `done`.
+- A closed task that is complete should move to the dated `closed/archive/` tree and keep its `task_status` as `done`.
 - A task that belongs to a traced initiative should carry the matching `trace_id` and any related design, PRD, or trace IDs coherently.
 - A future GitHub-synced task can add GitHub issue metadata without changing its stable local `task_id`.
 
@@ -135,7 +136,8 @@ This standard defines the repository's local-first task tracking model so multip
 - Task records should validate against the published task front-matter profile.
 - `task_tracking.md` and `task_index.v1.json` should agree with the current task-record corpus.
 - A task in `open/` should not use terminal task statuses.
-- A task in `closed/` should use only `done` or `cancelled`.
+- A task under `docs/planning/tasks/closed/**` should use only `done` or `cancelled`.
+- The human tracker should summarize terminal task history without inlining the full closed corpus by default.
 - Task IDs referenced by `blocked_by` or `depends_on` should exist in the current task corpus.
 - A task that lists any `trace.*` value in `related_ids` should also publish the matching `trace_id`.
 
@@ -152,4 +154,4 @@ This standard defines the repository's local-first task tracking model so multip
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-13T04:05:00Z`
+- `2026-03-15T06:35:00Z`

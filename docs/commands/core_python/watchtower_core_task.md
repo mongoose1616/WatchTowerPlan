@@ -55,7 +55,7 @@ uv run watchtower-core task transition --task-id task.example.001 --task-status 
 - `update` applies bounded front-matter or body-section changes without manual editing.
 - `transition` is a narrower handoff-oriented wrapper for status, owner, and blocker changes.
 - If a task links to any `trace.*` value through `related_ids`, the task must also publish the matching `trace_id`.
-- When write mode moves a task between `open/` and `closed/`, the lifecycle service also repairs matching repo-local paths in governed acceptance contracts and validation evidence before it refreshes coordination.
+- When write mode moves a task between `open/` and the dated `closed/archive/` tree, the lifecycle service also repairs matching repo-local paths in governed acceptance contracts and validation evidence before it refreshes coordination.
 - In write mode, all leaf commands refresh the deterministic coordination slice so task, traceability, initiative, and coordination views stay aligned.
 
 ## Related Commands

@@ -17,9 +17,9 @@
         "docs/planning/design/features/lazy_planning_query_payload_emission.md",
         "docs/planning/design/implementation/lazy_planning_query_payload_emission.md",
         "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
-        "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
-        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
-        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/lazy_planning_query_payload_emission_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/implement_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_lazy_planning_query_payload_emission.md",
         "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json"
       ],
@@ -44,7 +44,7 @@
         "core/python/tests/unit/test_route_and_query_handlers.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/implement_lazy_planning_query_payload_emission.md"
       ],
       "notes": "Measured handler instrumentation should show zero planning serializer calls on the human query planning path."
     },
@@ -63,7 +63,7 @@
         "core/python/tests/unit/test_cli_query_commands.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/implement_lazy_planning_query_payload_emission.md"
       ],
       "notes": "Targeted regressions and measurement should show the human initiative and coordination paths skipping serializer work while JSON output still uses the existing serializer contract."
     },
@@ -76,7 +76,7 @@
       "validation_targets": [
         "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_lazy_planning_query_payload_emission.md"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md",

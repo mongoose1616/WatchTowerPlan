@@ -17,10 +17,10 @@
         "docs/planning/design/features/typed_query_surface_modularity_hardening.md",
         "docs/planning/design/implementation/typed_query_surface_modularity_hardening.md",
         "docs/planning/decisions/typed_query_surface_modularity_hardening_direction.md",
-        "docs/planning/tasks/closed/typed_query_surface_modularity_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/split_typed_retrieval_models_into_focused_modules.md",
-        "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
-        "docs/planning/tasks/closed/validate_and_close_typed_query_surface_modularity_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/typed_query_surface_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_typed_retrieval_models_into_focused_modules.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_cli_query_regressions_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_typed_query_surface_modularity_hardening.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -87,7 +87,7 @@
         "core/python/src/watchtower_core/control_plane/README.md"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_cli_query_regressions_into_focused_suites.md",
         "docs/planning/design/features/typed_query_surface_modularity_hardening.md"
       ],
       "notes": "Covers the CLI query regression hotspot and its shared helper boundary."

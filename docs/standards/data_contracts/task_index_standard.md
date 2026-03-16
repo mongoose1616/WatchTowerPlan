@@ -10,7 +10,7 @@ tags:
   - "task_index"
   - "planning_index_family"
 owner: "repository_maintainer"
-updated_at: "2026-03-13T20:01:23Z"
+updated_at: "2026-03-15T06:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -104,7 +104,7 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 
 ## Examples
 - A backlog task for GitHub sync should appear as a non-terminal task entry with `task_status` set to `backlog`.
-- A closed implementation task should remain in the task index with `task_status` set to `done` and a `doc_path` under `docs/planning/tasks/closed/`.
+- A closed implementation task should remain in the task index with `task_status` set to `done` and a `doc_path` under `docs/planning/tasks/closed/archive/`.
 - A task can carry a local `task_id` plus a future `github_issue_number` without changing its stable local identity.
 
 ## Operationalization
@@ -115,7 +115,7 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - In addition to the shared planning-index-family validation contract:
 - Every `doc_path` should exist and point to a task document under `docs/planning/tasks/`.
 - A task-index entry under `docs/planning/tasks/open/` should not use `done` or `cancelled`.
-- A task-index entry under `docs/planning/tasks/closed/` should use only `done` or `cancelled`.
+- A task-index entry under `docs/planning/tasks/closed/**` should use only `done` or `cancelled`.
 - `blocked_by` and `depends_on` references should point to existing task IDs in the current index.
 
 ## Change Control
@@ -129,4 +129,4 @@ Provide a compact machine-readable lookup surface for local tasks so Python tool
 - [README.md](/home/j/WatchTowerPlan/core/control_plane/indexes/tasks/README.md)
 
 ## Updated At
-- `2026-03-13T20:01:23Z`
+- `2026-03-15T06:35:00Z`

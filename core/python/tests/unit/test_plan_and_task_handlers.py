@@ -329,7 +329,7 @@ def test_task_transition_prints_move_and_closeout_guidance(monkeypatch, capsys) 
                 priority="high",
                 owner="repository_maintainer",
                 updated_at="2026-03-10T23:59:59Z",
-                doc_path="docs/planning/tasks/closed/example.md",
+                doc_path="docs/planning/tasks/closed/archive/2026/03/10/example.md",
                 previous_doc_path="docs/planning/tasks/open/example.md",
                 moved=True,
                 changed=True,

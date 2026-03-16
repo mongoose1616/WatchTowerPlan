@@ -73,8 +73,8 @@
       "result": "passed",
       "subject_paths": [
         "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json"
       ],
       "subject_ids": [

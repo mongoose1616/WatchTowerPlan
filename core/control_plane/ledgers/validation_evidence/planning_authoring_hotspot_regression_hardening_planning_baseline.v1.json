@@ -29,10 +29,10 @@
         "docs/planning/design/implementation/planning_authoring_hotspot_regression_hardening.md",
         "docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md",
         "core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.v1.json",
-        "docs/planning/tasks/closed/planning_authoring_hotspot_regression_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/planning_scaffold_helper_seams.md",
-        "docs/planning/tasks/closed/isolate_task_companion_path_repair.md",
-        "docs/planning/tasks/closed/validate_and_close_planning_authoring_hotspot_regression_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/planning_authoring_hotspot_regression_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/planning_scaffold_helper_seams.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/isolate_task_companion_path_repair.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_authoring_hotspot_regression_hardening.md"
       ],
       "subject_ids": [
         "prd.planning_authoring_hotspot_regression_hardening",
@@ -137,7 +137,7 @@
       "title": "Targeted validation, full-repo checks, and the reopened evidence loop close in one bounded slice",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/closed/validate_and_close_planning_authoring_hotspot_regression_hardening.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_authoring_hotspot_regression_hardening.md",
         "core/control_plane/contracts/acceptance/planning_authoring_hotspot_regression_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/planning_authoring_hotspot_regression_hardening_planning_baseline.v1.json",
         "core/python/",

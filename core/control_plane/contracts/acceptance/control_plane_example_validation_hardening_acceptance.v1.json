@@ -17,9 +17,9 @@
         "docs/planning/design/features/control_plane_example_validation_hardening.md",
         "docs/planning/design/implementation/control_plane_example_validation_hardening.md",
         "docs/planning/decisions/control_plane_example_validation_hardening_direction.md",
-        "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
-        "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/control_plane_example_validation_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/repair_governed_example_validation_coverage.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_example_validation_hardening.md",
         "core/control_plane/contracts/acceptance/control_plane_example_validation_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/control_plane_example_validation_hardening_planning_baseline.v1.json"
       ],

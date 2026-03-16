@@ -17,9 +17,9 @@
         "docs/planning/design/features/acceptance_reconciliation_snapshot_reuse.md",
         "docs/planning/design/implementation/acceptance_reconciliation_snapshot_reuse.md",
         "docs/planning/decisions/acceptance_reconciliation_snapshot_reuse_direction.md",
-        "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
-        "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
-        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/reuse_acceptance_reconciliation_snapshots.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
         "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json"
       ],
@@ -45,7 +45,7 @@
         "core/python/tests/unit/test_all_validation.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/reuse_acceptance_reconciliation_snapshots.md"
       ],
       "notes": "Direct instrumentation should show aggregate acceptance validation no longer rereads shared traceability, PRD, acceptance-contract, validation-evidence, and validator-registry inputs once per trace."
     },
@@ -75,7 +75,7 @@
       "validation_targets": [
         "core/control_plane/contracts/acceptance/acceptance_reconciliation_snapshot_reuse_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/acceptance_reconciliation_snapshot_reuse_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_acceptance_reconciliation_snapshot_reuse.md"
       ],
       "related_paths": [
         "docs/planning/coordination_tracking.md",

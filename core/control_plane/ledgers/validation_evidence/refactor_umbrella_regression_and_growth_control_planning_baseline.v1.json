@@ -29,8 +29,8 @@
         "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
         "docs/planning/decisions/refactor_umbrella_regression_and_growth_control_direction.md",
         "core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.v1.json",
-        "docs/planning/tasks/closed/refactor_umbrella_regression_and_growth_control_bootstrap.md",
-        "docs/planning/tasks/closed/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/refactor_umbrella_regression_and_growth_control_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md"
       ],
       "subject_ids": [
         "prd.refactor_umbrella_regression_and_growth_control",
@@ -107,7 +107,7 @@
       "title": "Validation and confirmation close the umbrella refactor root-cause slice cleanly",
       "result": "passed",
       "subject_paths": [
-        "docs/planning/tasks/closed/validate_and_close_refactor_umbrella_regression_and_growth_control.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_refactor_umbrella_regression_and_growth_control.md",
         "core/python/tests/unit/test_initiative_closeout.py",
         "core/python/tests/unit/test_closeout_handlers.py",
         "core/python/tests/integration/test_task_workflow_end_to_end.py",
@@ -121,7 +121,7 @@
       "acceptance_ids": [
         "ac.refactor_umbrella_regression_and_growth_control.005"
       ],
-      "notes": "Targeted closeout pytest, acceptance validation, full validate-all, full pytest, Ruff, and mypy all passed before the validation task moved to docs/planning/tasks/closed/validate_and_close_refactor_umbrella_regression_and_growth_control.md. A live dry-run closeout probe failed while the task was still open, and the final write-mode closeout completed at 2026-03-13T22:49:56Z with zero acceptance issues and zero open tasks."
+      "notes": "Targeted closeout pytest, acceptance validation, full validate-all, full pytest, Ruff, and mypy all passed before the validation task moved to docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_refactor_umbrella_regression_and_growth_control.md. A live dry-run closeout probe failed while the task was still open, and the final write-mode closeout completed at 2026-03-13T22:49:56Z with zero acceptance issues and zero open tasks."
     }
   ],
   "related_paths": [

@@ -16,7 +16,7 @@
     "docs/standards/governance/rewrite_execution_control_standard.md",
     "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
     "core/control_plane/ledgers/validation_evidence/structural_rewrite_program_phase0_phase1_baseline.v1.json",
-    "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md"
+    "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md"
   ],
   "notes": "This transition records governance and gate-readiness only. The later bounded Phase 2 implementation slice is recorded separately."
 }

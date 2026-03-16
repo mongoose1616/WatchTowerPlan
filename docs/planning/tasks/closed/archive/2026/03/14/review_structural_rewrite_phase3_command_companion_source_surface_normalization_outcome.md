@@ -15,7 +15,7 @@ authority: authoritative
 applies_to:
 - docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md
 - docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md
-- docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md
+- docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md
 - docs/commands/core_python/
 - core/control_plane/indexes/commands/command_index.v1.json
 - core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json
@@ -62,9 +62,9 @@ Review the bounded Phase 3 command companion source-surface normalization slice,
 
 ## Links
 - [structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md)
-- [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
+- [implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md)
 - [structural_rewrite_phase4_shared_projection_entry.md](/home/j/WatchTowerPlan/docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md)
-- [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md)
+- [review_structural_rewrite_phase4_shared_projection_entry_package.md](/home/j/WatchTowerPlan/docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md)
 
 ## Updated At
 - `2026-03-14T06:44:15Z`

@@ -13,7 +13,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/acceptance_evidence_reconciliation_followup.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/acceptance_evidence_reconciliation_followup.md",
       "updated_at": "2026-03-10T03:53:14Z",
       "trace_id": "trace.acceptance_evidence_reconciliation",
       "related_ids": [
@@ -34,7 +34,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/acceptance_reconciliation_snapshot_reuse_bootstrap.md",
       "updated_at": "2026-03-12T17:03:15Z",
       "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
       "related_ids": [
@@ -59,7 +59,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/reuse_acceptance_reconciliation_snapshots.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/reuse_acceptance_reconciliation_snapshots.md",
       "updated_at": "2026-03-12T17:10:02Z",
       "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
       "depends_on": [
@@ -87,7 +87,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_acceptance_reconciliation_snapshot_reuse.md",
       "updated_at": "2026-03-12T17:17:13Z",
       "trace_id": "trace.acceptance_reconciliation_snapshot_reuse",
       "depends_on": [
@@ -115,7 +115,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/active_first_planning_query_history_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/active_first_planning_query_history_alignment_bootstrap.md",
       "updated_at": "2026-03-13T20:35:02Z",
       "trace_id": "trace.active_first_planning_query_history_alignment",
       "related_ids": [
@@ -141,7 +141,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/align_planning_navigation_docs_with_active_first_query_defaults.md",
       "updated_at": "2026-03-13T20:38:41Z",
       "trace_id": "trace.active_first_planning_query_history_alignment",
       "depends_on": [
@@ -172,7 +172,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/align_filterless_planning_and_initiative_query_defaults.md",
       "updated_at": "2026-03-13T20:38:41Z",
       "trace_id": "trace.active_first_planning_query_history_alignment",
       "related_ids": [
@@ -197,7 +197,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_active_first_planning_query_history_alignment.md",
       "updated_at": "2026-03-13T20:53:52Z",
       "trace_id": "trace.active_first_planning_query_history_alignment",
       "related_ids": [
@@ -223,7 +223,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/command_documentation_and_lookup_followup.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/command_documentation_and_lookup_followup.md",
       "updated_at": "2026-03-10T03:53:14Z",
       "trace_id": "trace.command_documentation_and_lookup",
       "related_ids": [
@@ -244,7 +244,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/control_plane_example_validation_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/control_plane_example_validation_hardening_bootstrap.md",
       "updated_at": "2026-03-12T14:42:55Z",
       "trace_id": "trace.control_plane_example_validation_hardening",
       "related_ids": [
@@ -271,7 +271,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/repair_governed_example_validation_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/repair_governed_example_validation_coverage.md",
       "updated_at": "2026-03-12T14:46:57Z",
       "trace_id": "trace.control_plane_example_validation_hardening",
       "related_ids": [
@@ -297,7 +297,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_example_validation_hardening.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_example_validation_hardening.md",
       "updated_at": "2026-03-12T14:47:21Z",
       "trace_id": "trace.control_plane_example_validation_hardening",
       "depends_on": [
@@ -324,7 +324,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/control_plane_loader_cache_reuse_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/control_plane_loader_cache_reuse_bootstrap.md",
       "updated_at": "2026-03-12T19:13:21Z",
       "trace_id": "trace.control_plane_loader_cache_reuse",
       "related_ids": [
@@ -349,7 +349,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/implement_command_scoped_loader_cache_reuse.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/implement_command_scoped_loader_cache_reuse.md",
       "updated_at": "2026-03-12T19:33:27Z",
       "trace_id": "trace.control_plane_loader_cache_reuse",
       "depends_on": [
@@ -377,7 +377,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_control_plane_loader_cache_reuse.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_control_plane_loader_cache_reuse.md",
       "updated_at": "2026-03-12T19:37:54Z",
       "trace_id": "trace.control_plane_loader_cache_reuse",
       "depends_on": [
@@ -408,7 +408,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/coordination_projection_source_reuse_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/coordination_projection_source_reuse_bootstrap.md",
       "updated_at": "2026-03-12T15:55:07Z",
       "trace_id": "trace.coordination_projection_source_reuse",
       "related_ids": [
@@ -433,7 +433,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/reuse_coordination_projection_sources_in_sync_orchestration.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/reuse_coordination_projection_sources_in_sync_orchestration.md",
       "updated_at": "2026-03-12T16:16:44Z",
       "trace_id": "trace.coordination_projection_source_reuse",
       "depends_on": [
@@ -460,7 +460,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_coordination_projection_source_reuse.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_coordination_projection_source_reuse.md",
       "updated_at": "2026-03-12T16:22:53Z",
       "trace_id": "trace.coordination_projection_source_reuse",
       "depends_on": [
@@ -488,7 +488,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_hardening_bootstrap.md",
       "updated_at": "2026-03-10T15:24:07Z",
       "trace_id": "trace.core_export_hardening_followup",
       "related_ids": [
@@ -514,7 +514,7 @@
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_command_source_metadata.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_command_source_metadata.md",
       "updated_at": "2026-03-10T16:18:44Z",
       "trace_id": "trace.core_export_hardening_followup",
       "depends_on": [
@@ -540,7 +540,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_public_api_boundary.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_public_api_boundary.md",
       "updated_at": "2026-03-10T17:04:57Z",
       "trace_id": "trace.core_export_hardening_followup",
       "depends_on": [
@@ -568,7 +568,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_sync_output_snapshots.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_sync_output_snapshots.md",
       "updated_at": "2026-03-10T16:02:31Z",
       "trace_id": "trace.core_export_hardening_followup",
       "related_ids": [
@@ -591,7 +591,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_initiative_bootstrap.md",
       "updated_at": "2026-03-10T04:44:27Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "related_ids": [
@@ -619,7 +619,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_command_registry.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_command_registry.md",
       "updated_at": "2026-03-10T05:14:33Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "related_ids": [
@@ -643,7 +643,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_pack_interfaces.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_pack_interfaces.md",
       "updated_at": "2026-03-10T06:42:17Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "depends_on": [
@@ -671,7 +671,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_repo_ops_boundary.md",
       "updated_at": "2026-03-10T05:45:03Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "related_ids": [
@@ -695,7 +695,7 @@
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_retrieval_and_coordination.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_retrieval_and_coordination.md",
       "updated_at": "2026-03-10T06:26:48Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "depends_on": [
@@ -723,7 +723,7 @@
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_sync_validation_registries.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_sync_validation_registries.md",
       "updated_at": "2026-03-10T05:24:43Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "depends_on": [
@@ -749,7 +749,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_export_workspace_injection.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_export_workspace_injection.md",
       "updated_at": "2026-03-10T05:58:19Z",
       "trace_id": "trace.core_export_readiness_and_optimization",
       "depends_on": [
@@ -775,7 +775,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/core_python_foundation_closeout.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/core_python_foundation_closeout.md",
       "updated_at": "2026-03-10T03:53:14Z",
       "trace_id": "trace.core_python_foundation",
       "related_ids": [
@@ -789,6 +789,118 @@
       ]
     },
     {
+      "task_id": "task.core_split_compatibility_wrapper_retirement.bootstrap.001",
+      "title": "Bootstrap Core Split Compatibility Wrapper Retirement planning chain",
+      "summary": "Bootstraps the initial planning chain for Core Split Compatibility Wrapper Retirement.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/core_split_compatibility_wrapper_retirement_bootstrap.md",
+      "updated_at": "2026-03-16T02:06:53Z",
+      "trace_id": "trace.core_split_compatibility_wrapper_retirement",
+      "related_ids": [
+        "prd.core_split_compatibility_wrapper_retirement",
+        "design.features.core_split_compatibility_wrapper_retirement",
+        "design.implementation.core_split_compatibility_wrapper_retirement",
+        "decision.core_split_compatibility_wrapper_retirement_direction",
+        "contract.acceptance.core_split_compatibility_wrapper_retirement"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/tests/unit/test_repo_ops_compatibility.py"
+      ]
+    },
+    {
+      "task_id": "task.core_split_compatibility_wrapper_retirement.boundary_proof.003",
+      "title": "Prove core boundary after wrapper retirement",
+      "summary": "Align runtime package docs and boundary-proof tests with the smaller split-ready surface after compatibility wrapper retirement.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/prove_core_boundary_after_wrapper_retirement.md",
+      "updated_at": "2026-03-16T02:06:53Z",
+      "trace_id": "trace.core_split_compatibility_wrapper_retirement",
+      "depends_on": [
+        "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002"
+      ],
+      "related_ids": [
+        "prd.core_split_compatibility_wrapper_retirement",
+        "design.features.core_split_compatibility_wrapper_retirement",
+        "design.implementation.core_split_compatibility_wrapper_retirement",
+        "decision.core_split_compatibility_wrapper_retirement_direction",
+        "contract.acceptance.core_split_compatibility_wrapper_retirement"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/README.md",
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/sync/README.md",
+        "core/python/src/watchtower_core/validation/README.md",
+        "core/python/README.md",
+        "core/python/tests/unit/test_repo_ops_compatibility.py"
+      ]
+    },
+    {
+      "task_id": "task.core_split_compatibility_wrapper_retirement.validation_closeout.004",
+      "title": "Validate and close core split compatibility wrapper retirement",
+      "summary": "Run targeted and full validation, refresh derived planning surfaces, and close the compatibility-wrapper retirement trace once the boundary lands cleanly.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/validate_and_close_core_split_compatibility_wrapper_retirement.md",
+      "updated_at": "2026-03-16T02:14:43Z",
+      "trace_id": "trace.core_split_compatibility_wrapper_retirement",
+      "depends_on": [
+        "task.core_split_compatibility_wrapper_retirement.boundary_proof.003"
+      ],
+      "related_ids": [
+        "prd.core_split_compatibility_wrapper_retirement",
+        "design.features.core_split_compatibility_wrapper_retirement",
+        "design.implementation.core_split_compatibility_wrapper_retirement",
+        "decision.core_split_compatibility_wrapper_retirement_direction",
+        "contract.acceptance.core_split_compatibility_wrapper_retirement"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ]
+    },
+    {
+      "task_id": "task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002",
+      "title": "Retire repo-specific compatibility wrappers from export-safe namespaces",
+      "summary": "Remove repo-specific query, sync, and aggregate-validation wrapper modules and move remaining callers to direct repo_ops or reusable imports.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md",
+      "updated_at": "2026-03-16T02:06:53Z",
+      "trace_id": "trace.core_split_compatibility_wrapper_retirement",
+      "related_ids": [
+        "prd.core_split_compatibility_wrapper_retirement",
+        "design.features.core_split_compatibility_wrapper_retirement",
+        "design.implementation.core_split_compatibility_wrapper_retirement",
+        "decision.core_split_compatibility_wrapper_retirement_direction",
+        "contract.acceptance.core_split_compatibility_wrapper_retirement"
+      ],
+      "applies_to": [
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/tests/unit/test_repo_ops_compatibility.py"
+      ]
+    },
+    {
       "task_id": "task.data_contract_example_operationalization_alignment.bootstrap.001",
       "title": "Bootstrap Data Contract Example Operationalization Alignment planning chain",
       "summary": "Bootstraps the initial planning chain for Data Contract Example Operationalization Alignment.",
@@ -797,7 +909,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/data_contract_example_operationalization_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/data_contract_example_operationalization_alignment_bootstrap.md",
       "updated_at": "2026-03-12T01:22:06Z",
       "trace_id": "trace.data_contract_example_operationalization_alignment",
       "related_ids": [
@@ -817,7 +929,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/publish_data_contract_example_operationalization_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/publish_data_contract_example_operationalization_coverage.md",
       "updated_at": "2026-03-12T01:26:07Z",
       "trace_id": "trace.data_contract_example_operationalization_alignment",
       "related_ids": [
@@ -840,7 +952,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/add_regressions_for_data_contract_example_lookup_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/add_regressions_for_data_contract_example_lookup_coverage.md",
       "updated_at": "2026-03-12T01:26:39Z",
       "trace_id": "trace.data_contract_example_operationalization_alignment",
       "related_ids": [
@@ -863,7 +975,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_data_contract_example_operationalization_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_data_contract_example_operationalization_alignment.md",
       "updated_at": "2026-03-12T01:35:05Z",
       "trace_id": "trace.data_contract_example_operationalization_alignment",
       "related_ids": [
@@ -887,7 +999,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/data_contract_index_family_baseline_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/data_contract_index_family_baseline_alignment_bootstrap.md",
       "updated_at": "2026-03-13T20:00:55Z",
       "trace_id": "trace.data_contract_index_family_baseline_alignment",
       "related_ids": [
@@ -913,7 +1025,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/publish_planning_index_family_baseline_and_refactor_member_standards.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/publish_planning_index_family_baseline_and_refactor_member_standards.md",
       "updated_at": "2026-03-13T20:07:34Z",
       "trace_id": "trace.data_contract_index_family_baseline_alignment",
       "related_ids": [
@@ -937,7 +1049,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/refresh_standard_index_discoverability_and_query_validation.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/refresh_standard_index_discoverability_and_query_validation.md",
       "updated_at": "2026-03-13T20:07:34Z",
       "trace_id": "trace.data_contract_index_family_baseline_alignment",
       "depends_on": [
@@ -966,7 +1078,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_data_contract_index_family_baseline_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_data_contract_index_family_baseline_alignment.md",
       "updated_at": "2026-03-13T20:17:38Z",
       "trace_id": "trace.data_contract_index_family_baseline_alignment",
       "depends_on": [
@@ -996,7 +1108,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/decision_supersession_and_regression_evidence_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/decision_supersession_and_regression_evidence_alignment_bootstrap.md",
       "updated_at": "2026-03-13T01:10:32Z",
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "related_ids": [
@@ -1031,7 +1143,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/preserve_regression_audit_evidence_as_a_governed_local_reference.md",
       "updated_at": "2026-03-13T03:30:46Z",
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "related_ids": [
@@ -1060,7 +1172,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/add_explicit_decision_supersession_support.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/add_explicit_decision_supersession_support.md",
       "updated_at": "2026-03-13T03:30:46Z",
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "related_ids": [
@@ -1091,7 +1203,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_decision_supersession_and_regression_evidence_alignment.md",
       "updated_at": "2026-03-13T03:30:46Z",
       "trace_id": "trace.decision_supersession_and_regression_evidence_alignment",
       "related_ids": [
@@ -1112,7 +1224,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/derived_projection_status_semantics_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/derived_projection_status_semantics_alignment_bootstrap.md",
       "updated_at": "2026-03-11T03:19:22Z",
       "trace_id": "trace.derived_projection_status_semantics",
       "related_ids": [
@@ -1138,7 +1250,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_derived_initiative_projection_status_contracts.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/align_derived_initiative_projection_status_contracts.md",
       "updated_at": "2026-03-11T03:36:57Z",
       "trace_id": "trace.derived_projection_status_semantics",
       "related_ids": [
@@ -1165,7 +1277,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/design_document_index_relationship_alignment_bootstrap.md",
       "updated_at": "2026-03-11T19:28:10Z",
       "trace_id": "trace.design_document_index_relationship_alignment",
       "related_ids": [
@@ -1195,7 +1307,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
       "updated_at": "2026-03-11T19:36:07Z",
       "trace_id": "trace.design_document_index_relationship_alignment",
       "related_ids": [
@@ -1222,7 +1334,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/broaden_implementation_plan_source_paths_beyond_source_designs.md",
       "updated_at": "2026-03-11T19:36:07Z",
       "trace_id": "trace.design_document_index_relationship_alignment",
       "related_ids": [
@@ -1252,7 +1364,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/documentation_family_lookup_and_readme_template_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/documentation_family_lookup_and_readme_template_alignment_bootstrap.md",
       "updated_at": "2026-03-12T00:51:35Z",
       "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
       "related_ids": [
@@ -1287,7 +1399,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/extend_standards_operationalization_lookup_for_recurring_documentation_families.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/extend_standards_operationalization_lookup_for_recurring_documentation_families.md",
       "updated_at": "2026-03-12T00:57:22Z",
       "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
       "related_ids": [
@@ -1320,7 +1432,7 @@
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_readme_template_with_governed_title_and_inventory_contract.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/align_readme_template_with_governed_title_and_inventory_contract.md",
       "updated_at": "2026-03-12T00:57:23Z",
       "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
       "related_ids": [
@@ -1345,7 +1457,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_documentation_family_lookup_and_readme_template_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_documentation_family_lookup_and_readme_template_alignment.md",
       "updated_at": "2026-03-12T01:07:06Z",
       "trace_id": "trace.documentation_family_lookup_and_readme_template_alignment",
       "related_ids": [
@@ -1370,7 +1482,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/end_to_end_repo_review_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/end_to_end_repo_review_bootstrap.md",
       "updated_at": "2026-03-10T19:43:34Z",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "related_ids": [
@@ -1398,7 +1510,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/end_to_end_derived_metadata.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/end_to_end_derived_metadata.md",
       "updated_at": "2026-03-10T21:24:00Z",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "depends_on": [
@@ -1425,7 +1537,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/end_to_end_doc_guardrails.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/end_to_end_doc_guardrails.md",
       "updated_at": "2026-03-10T20:42:00Z",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "depends_on": [
@@ -1452,7 +1564,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/end_to_end_external_pack_validation.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/end_to_end_external_pack_validation.md",
       "updated_at": "2026-03-10T21:58:00Z",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "depends_on": [
@@ -1481,7 +1593,7 @@
       "task_kind": "chore",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/end_to_end_query_cli_modularity.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/end_to_end_query_cli_modularity.md",
       "updated_at": "2026-03-10T22:12:00Z",
       "trace_id": "trace.end_to_end_repo_review_and_rationalization",
       "depends_on": [
@@ -1508,7 +1620,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/foundation_document_standard_boundary_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/foundation_document_standard_boundary_alignment_bootstrap.md",
       "updated_at": "2026-03-12T23:40:27Z",
       "trace_id": "trace.foundation_document_standard_boundary_alignment",
       "related_ids": [
@@ -1536,7 +1648,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_foundation_document_standard_boundary_and_lookup_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/align_foundation_document_standard_boundary_and_lookup_coverage.md",
       "updated_at": "2026-03-12T23:48:07Z",
       "trace_id": "trace.foundation_document_standard_boundary_alignment",
       "related_ids": [
@@ -1563,7 +1675,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_foundation_document_standard_boundary_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_foundation_document_standard_boundary_alignment.md",
       "updated_at": "2026-03-13T00:04:27Z",
       "trace_id": "trace.foundation_document_standard_boundary_alignment",
       "related_ids": [
@@ -1586,7 +1698,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/foundation_index_family_contract_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/foundation_index_family_contract_alignment_bootstrap.md",
       "updated_at": "2026-03-12T23:10:03Z",
       "trace_id": "trace.foundation_index_family_contract_alignment",
       "related_ids": [
@@ -1614,7 +1726,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_foundation_index_family_standards_and_command_surfaces.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/align_foundation_index_family_standards_and_command_surfaces.md",
       "updated_at": "2026-03-12T23:17:39Z",
       "trace_id": "trace.foundation_index_family_contract_alignment",
       "depends_on": [
@@ -1643,7 +1755,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_foundation_index_family_contract_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_foundation_index_family_contract_alignment.md",
       "updated_at": "2026-03-12T23:22:32Z",
       "trace_id": "trace.foundation_index_family_contract_alignment",
       "depends_on": [
@@ -1669,7 +1781,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/foundation_scope_and_entrypoint_realignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/foundation_scope_and_entrypoint_realignment_bootstrap.md",
       "updated_at": "2026-03-11T01:33:06Z",
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "related_ids": [
@@ -1697,7 +1809,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/foundation_scope_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/foundation_scope_alignment.md",
       "updated_at": "2026-03-11T01:38:04Z",
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "related_ids": [
@@ -1719,7 +1831,7 @@
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/root_entrypoint_contract.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/root_entrypoint_contract.md",
       "updated_at": "2026-03-11T01:39:27Z",
       "trace_id": "trace.foundation_scope_and_entrypoint_realignment",
       "depends_on": [
@@ -1746,7 +1858,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/foundations_docs_boundary_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/foundations_docs_boundary_alignment_bootstrap.md",
       "updated_at": "2026-03-12T22:09:03Z",
       "trace_id": "trace.foundations_docs_boundary_alignment",
       "related_ids": [
@@ -1766,7 +1878,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_foundations_adjacent_command_and_standards_docs.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/align_foundations_adjacent_command_and_standards_docs.md",
       "updated_at": "2026-03-12T22:08:55Z",
       "trace_id": "trace.foundations_docs_boundary_alignment",
       "related_ids": [
@@ -1789,7 +1901,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_foundations_documentation_boundary_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_foundations_documentation_boundary_alignment.md",
       "updated_at": "2026-03-12T22:14:25Z",
       "trace_id": "trace.foundations_docs_boundary_alignment",
       "related_ids": [
@@ -1811,7 +1923,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/foundations_documentation_completeness_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/foundations_documentation_completeness_alignment_bootstrap.md",
       "updated_at": "2026-03-12T21:24:55Z",
       "trace_id": "trace.foundations_documentation_completeness_alignment",
       "related_ids": [
@@ -1843,7 +1955,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_foundations_documentation_and_query_surfaces.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/align_foundations_documentation_and_query_surfaces.md",
       "updated_at": "2026-03-12T21:28:39Z",
       "trace_id": "trace.foundations_documentation_completeness_alignment",
       "related_ids": [
@@ -1868,7 +1980,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_foundations_documentation_completeness_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_foundations_documentation_completeness_alignment.md",
       "updated_at": "2026-03-12T21:31:36Z",
       "trace_id": "trace.foundations_documentation_completeness_alignment",
       "related_ids": [
@@ -1890,7 +2002,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/foundations_entrypoint_coverage_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/foundations_entrypoint_coverage_alignment_bootstrap.md",
       "updated_at": "2026-03-13T00:25:46Z",
       "trace_id": "trace.foundations_entrypoint_coverage_alignment",
       "related_ids": [
@@ -1917,7 +2029,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_foundations_family_entrypoints_and_review_workflow_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/align_foundations_family_entrypoints_and_review_workflow_coverage.md",
       "updated_at": "2026-03-13T00:33:01Z",
       "trace_id": "trace.foundations_entrypoint_coverage_alignment",
       "related_ids": [
@@ -1942,7 +2054,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_foundations_entrypoint_coverage_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_foundations_entrypoint_coverage_alignment.md",
       "updated_at": "2026-03-13T00:36:52Z",
       "trace_id": "trace.foundations_entrypoint_coverage_alignment",
       "depends_on": [
@@ -1968,7 +2080,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/github_collaboration_followup.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/github_collaboration_followup.md",
       "updated_at": "2026-03-10T03:53:14Z",
       "trace_id": "trace.github_collaboration",
       "related_ids": [
@@ -1989,7 +2101,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/governed_front_matter_directory_canonicalization_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/governed_front_matter_directory_canonicalization_bootstrap.md",
       "updated_at": "2026-03-12T03:09:28Z",
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
       "related_ids": [
@@ -2014,7 +2126,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_compact_authoring_fixture_support.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/harden_compact_authoring_fixture_support.md",
       "updated_at": "2026-03-12T03:17:13Z",
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
       "related_ids": [
@@ -2038,7 +2150,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/implement_governed_applies_to_directory_canonicalization.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/implement_governed_applies_to_directory_canonicalization.md",
       "updated_at": "2026-03-12T03:09:28Z",
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
       "related_ids": [
@@ -2063,7 +2175,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/normalize_live_governed_applies_to_directory_metadata.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/normalize_live_governed_applies_to_directory_metadata.md",
       "updated_at": "2026-03-12T03:09:38Z",
       "trace_id": "trace.governed_front_matter_directory_canonicalization",
       "depends_on": [
@@ -2090,7 +2202,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/initiative_closeout_followup.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/initiative_closeout_followup.md",
       "updated_at": "2026-03-10T03:53:14Z",
       "trace_id": "trace.initiative_closeout",
       "related_ids": [
@@ -2111,7 +2223,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/internal_project_code_review_and_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/internal_project_code_review_and_hardening_bootstrap.md",
       "updated_at": "2026-03-11T16:17:08Z",
       "trace_id": "trace.internal_project_code_review_and_hardening",
       "related_ids": [
@@ -2131,7 +2243,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/internal_project_code_review_closeout_planning_catalog_sync.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/internal_project_code_review_closeout_planning_catalog_sync.md",
       "updated_at": "2026-03-11T16:17:09Z",
       "trace_id": "trace.internal_project_code_review_and_hardening",
       "related_ids": [
@@ -2155,7 +2267,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/internal_project_code_review_scaffold_coordination_sync.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/internal_project_code_review_scaffold_coordination_sync.md",
       "updated_at": "2026-03-11T16:17:08Z",
       "trace_id": "trace.internal_project_code_review_and_hardening",
       "related_ids": [
@@ -2179,7 +2291,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/internal_project_code_review_follow_up_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/internal_project_code_review_follow_up_bootstrap.md",
       "updated_at": "2026-03-11T17:09:44Z",
       "trace_id": "trace.internal_project_code_review_followup",
       "related_ids": [
@@ -2199,7 +2311,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_bootstrap_decision_scaffold_output.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/harden_bootstrap_decision_scaffold_output.md",
       "updated_at": "2026-03-11T17:13:25Z",
       "trace_id": "trace.internal_project_code_review_followup",
       "related_ids": [
@@ -2226,7 +2338,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_bootstrap_coordination_phase_semantics.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/align_bootstrap_coordination_phase_semantics.md",
       "updated_at": "2026-03-11T17:13:25Z",
       "trace_id": "trace.internal_project_code_review_followup",
       "related_ids": [
@@ -2250,7 +2362,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/internal_project_review_and_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/internal_project_review_and_hardening_bootstrap.md",
       "updated_at": "2026-03-11T15:36:26Z",
       "trace_id": "trace.internal_project_review_and_hardening",
       "related_ids": [
@@ -2275,7 +2387,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/internal_project_review_bootstrap_hardening.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/internal_project_review_bootstrap_hardening.md",
       "updated_at": "2026-03-11T15:36:35Z",
       "trace_id": "trace.internal_project_review_and_hardening",
       "related_ids": [
@@ -2300,7 +2412,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/internal_project_review_projection_canonicalization.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/internal_project_review_projection_canonicalization.md",
       "updated_at": "2026-03-11T15:36:40Z",
       "trace_id": "trace.internal_project_review_and_hardening",
       "related_ids": [
@@ -2325,7 +2437,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/internal_project_standards_review_and_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/internal_project_standards_review_and_hardening_bootstrap.md",
       "updated_at": "2026-03-11T17:32:42Z",
       "trace_id": "trace.internal_project_standards_review_and_hardening",
       "related_ids": [
@@ -2352,7 +2464,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/make_governed_repo_path_extraction_source_aware_for_document_relative_links.md",
       "updated_at": "2026-03-11T18:00:40Z",
       "trace_id": "trace.internal_project_standards_review_and_hardening",
       "related_ids": [
@@ -2379,7 +2491,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/align_standard_semantic_validation_with_standard_index_reference_accounting.md",
       "updated_at": "2026-03-11T18:00:36Z",
       "trace_id": "trace.internal_project_standards_review_and_hardening",
       "related_ids": [
@@ -2406,7 +2518,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/lazy_planning_query_payload_emission_bootstrap.md",
       "updated_at": "2026-03-12T20:54:44Z",
       "trace_id": "trace.lazy_planning_query_payload_emission",
       "related_ids": [
@@ -2433,7 +2545,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/implement_lazy_planning_query_payload_emission.md",
       "updated_at": "2026-03-12T20:58:20Z",
       "trace_id": "trace.lazy_planning_query_payload_emission",
       "related_ids": [
@@ -2456,7 +2568,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_lazy_planning_query_payload_emission.md",
       "updated_at": "2026-03-12T21:01:14Z",
       "trace_id": "trace.lazy_planning_query_payload_emission",
       "depends_on": [
@@ -2485,7 +2597,7 @@
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/github_task_sync.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/09/github_task_sync.md",
       "updated_at": "2026-03-09T16:14:14Z",
       "trace_id": "trace.local_task_tracking",
       "related_ids": [
@@ -2506,7 +2618,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/local_task_tracking_foundation.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/09/local_task_tracking_foundation.md",
       "updated_at": "2026-03-09T14:41:51Z",
       "trace_id": "trace.local_task_tracking",
       "related_ids": [
@@ -2528,7 +2640,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/machine_first_coordination_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/machine_first_coordination_bootstrap.md",
       "updated_at": "2026-03-10T18:54:43Z",
       "trace_id": "trace.machine_first_coordination_surface",
       "related_ids": [
@@ -2556,7 +2668,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/machine_first_coordination_index.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/machine_first_coordination_index.md",
       "updated_at": "2026-03-10T19:20:47Z",
       "trace_id": "trace.machine_first_coordination_surface",
       "depends_on": [
@@ -2585,7 +2697,7 @@
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/machine_first_coordination_entrypoints.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/machine_first_coordination_entrypoints.md",
       "updated_at": "2026-03-10T19:29:01Z",
       "trace_id": "trace.machine_first_coordination_surface",
       "depends_on": [
@@ -2605,6 +2717,134 @@
       ]
     },
     {
+      "task_id": "task.planning_artifact_retention_and_purge.bootstrap.001",
+      "title": "Bootstrap Planning Artifact Retention and Purge planning chain",
+      "summary": "Bootstraps the initial planning chain for Planning Artifact Retention and Purge.",
+      "status": "active",
+      "task_status": "done",
+      "task_kind": "governance",
+      "priority": "medium",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
+      "updated_at": "2026-03-15T10:40:00Z",
+      "trace_id": "trace.planning_artifact_retention_and_purge",
+      "related_ids": [
+        "prd.planning_artifact_retention_and_purge",
+        "design.features.planning_artifact_retention_and_purge",
+        "design.implementation.planning_artifact_retention_and_purge",
+        "decision.planning_artifact_retention_and_purge_direction",
+        "contract.acceptance.planning_artifact_retention_and_purge"
+      ]
+    },
+    {
+      "task_id": "task.planning_artifact_retention_and_purge.pilot_cleanup.004",
+      "title": "Purge one closed pilot trace and repair surviving references",
+      "summary": "Run the guarded purge workflow on one closed trace, remove its related planning artifacts, and prove the surviving standards and indexes remain coherent.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
+      "updated_at": "2026-03-15T10:48:00Z",
+      "trace_id": "trace.planning_artifact_retention_and_purge",
+      "depends_on": [
+        "task.planning_artifact_retention_and_purge.workflow_and_ledger.003"
+      ],
+      "related_ids": [
+        "prd.planning_artifact_retention_and_purge",
+        "design.features.planning_artifact_retention_and_purge",
+        "design.implementation.planning_artifact_retention_and_purge",
+        "decision.planning_artifact_retention_and_purge_direction",
+        "contract.acceptance.planning_artifact_retention_and_purge"
+      ],
+      "applies_to": [
+        "docs/planning/",
+        "docs/standards/",
+        "core/control_plane/"
+      ]
+    },
+    {
+      "task_id": "task.planning_artifact_retention_and_purge.standard_alignment.002",
+      "title": "Align retention policy with canonical standards and purgeability rules",
+      "summary": "Define the promote-then-purge standard, update directly affected guidance, and remove canonical assumptions that closed trace artifacts must be kept forever.",
+      "status": "active",
+      "task_status": "ready",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
+      "updated_at": "2026-03-15T10:42:00Z",
+      "trace_id": "trace.planning_artifact_retention_and_purge",
+      "related_ids": [
+        "prd.planning_artifact_retention_and_purge",
+        "design.features.planning_artifact_retention_and_purge",
+        "design.implementation.planning_artifact_retention_and_purge",
+        "decision.planning_artifact_retention_and_purge_direction",
+        "contract.acceptance.planning_artifact_retention_and_purge"
+      ],
+      "applies_to": [
+        "docs/standards/governance/",
+        "docs/planning/"
+      ]
+    },
+    {
+      "task_id": "task.planning_artifact_retention_and_purge.validation_closeout.005",
+      "title": "Validate and close planning artifact retention and purge",
+      "summary": "Run targeted and full validation, confirm the pilot purge behavior, refresh evidence, and close the retention-model trace once the cleanup path lands cleanly.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "governance",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md",
+      "updated_at": "2026-03-15T10:50:00Z",
+      "trace_id": "trace.planning_artifact_retention_and_purge",
+      "depends_on": [
+        "task.planning_artifact_retention_and_purge.pilot_cleanup.004"
+      ],
+      "related_ids": [
+        "prd.planning_artifact_retention_and_purge",
+        "design.features.planning_artifact_retention_and_purge",
+        "design.implementation.planning_artifact_retention_and_purge",
+        "decision.planning_artifact_retention_and_purge_direction",
+        "contract.acceptance.planning_artifact_retention_and_purge"
+      ],
+      "applies_to": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ]
+    },
+    {
+      "task_id": "task.planning_artifact_retention_and_purge.workflow_and_ledger.003",
+      "title": "Implement guarded trace purge workflow and minimal purge ledger",
+      "summary": "Add the purge ledger, safety checks, and repo-local implementation path that removes a closed trace package only when retention criteria are satisfied.",
+      "status": "active",
+      "task_status": "backlog",
+      "task_kind": "feature",
+      "priority": "high",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
+      "updated_at": "2026-03-15T10:45:00Z",
+      "trace_id": "trace.planning_artifact_retention_and_purge",
+      "depends_on": [
+        "task.planning_artifact_retention_and_purge.standard_alignment.002"
+      ],
+      "related_ids": [
+        "prd.planning_artifact_retention_and_purge",
+        "design.features.planning_artifact_retention_and_purge",
+        "design.implementation.planning_artifact_retention_and_purge",
+        "decision.planning_artifact_retention_and_purge_direction",
+        "contract.acceptance.planning_artifact_retention_and_purge"
+      ],
+      "applies_to": [
+        "core/control_plane/",
+        "core/python/src/watchtower_core/",
+        "docs/planning/"
+      ]
+    },
+    {
       "task_id": "task.planning_authoring_hotspot_regression_hardening.bootstrap.001",
       "title": "Bootstrap Planning Authoring Hotspot Regression Hardening planning chain",
       "summary": "Bootstraps the initial planning chain for Planning Authoring Hotspot Regression Hardening.",
@@ -2613,7 +2853,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/planning_authoring_hotspot_regression_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/planning_authoring_hotspot_regression_hardening_bootstrap.md",
       "updated_at": "2026-03-13T17:14:49Z",
       "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
       "related_ids": [
@@ -2633,7 +2873,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/planning_scaffold_helper_seams.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/planning_scaffold_helper_seams.md",
       "updated_at": "2026-03-13T17:36:16Z",
       "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
       "related_ids": [
@@ -2665,7 +2905,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/isolate_task_companion_path_repair.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/isolate_task_companion_path_repair.md",
       "updated_at": "2026-03-13T17:36:16Z",
       "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
       "related_ids": [
@@ -2694,7 +2934,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_planning_authoring_hotspot_regression_hardening.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_authoring_hotspot_regression_hardening.md",
       "updated_at": "2026-03-13T17:45:31Z",
       "trace_id": "trace.planning_authoring_hotspot_regression_hardening",
       "depends_on": [
@@ -2723,7 +2963,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/machine_authority_map_and_navigation.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/machine_authority_map_and_navigation.md",
       "updated_at": "2026-03-11T03:11:35Z",
       "trace_id": "trace.planning_authority_unification",
       "depends_on": [
@@ -2753,7 +2993,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/planning_authority_unification_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/planning_authority_unification_bootstrap.md",
       "updated_at": "2026-03-11T01:58:37Z",
       "trace_id": "trace.planning_authority_unification",
       "related_ids": [
@@ -2772,7 +3012,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/planning_catalog_and_query.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/planning_catalog_and_query.md",
       "updated_at": "2026-03-11T02:56:51Z",
       "trace_id": "trace.planning_authority_unification",
       "related_ids": [
@@ -2796,7 +3036,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/planning_projection_pipeline_modularity_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/planning_projection_pipeline_modularity_hardening_bootstrap.md",
       "updated_at": "2026-03-16T00:02:15Z",
       "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
       "related_ids": [
@@ -2822,7 +3062,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_planning_projection_serialization_boundaries.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/split_planning_projection_serialization_boundaries.md",
       "updated_at": "2026-03-16T00:46:51Z",
       "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
       "related_ids": [
@@ -2848,7 +3088,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/tighten_planning_projection_sync_composition_seams.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/tighten_planning_projection_sync_composition_seams.md",
       "updated_at": "2026-03-16T00:59:03Z",
       "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
       "depends_on": [
@@ -2883,7 +3123,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/16/validate_and_close_planning_projection_pipeline_modularity_hardening.md",
       "updated_at": "2026-03-16T01:06:25Z",
       "trace_id": "trace.planning_projection_pipeline_modularity_hardening",
       "depends_on": [
@@ -2911,7 +3151,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
       "updated_at": "2026-03-13T23:07:33Z",
       "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
       "related_ids": [
@@ -2939,7 +3179,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/split_coordination_query_handlers_behind_focused_modules.md",
       "updated_at": "2026-03-13T23:24:35Z",
       "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
       "depends_on": [
@@ -2969,7 +3209,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/unify_planning_and_initiative_query_projection_search_mechanics.md",
       "updated_at": "2026-03-13T23:24:35Z",
       "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
       "related_ids": [
@@ -2996,7 +3236,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_planning_query_efficiency_and_handler_modularity.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_query_efficiency_and_handler_modularity.md",
       "updated_at": "2026-03-13T23:39:47Z",
       "trace_id": "trace.planning_query_efficiency_and_handler_modularity",
       "depends_on": [
@@ -3025,7 +3265,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/planning_semantics_and_decision_contract_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/planning_semantics_and_decision_contract_alignment_bootstrap.md",
       "updated_at": "2026-03-11T20:31:23Z",
       "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
       "related_ids": [
@@ -3058,7 +3298,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_planning_authoring_contracts_with_live_enforcement.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/align_planning_authoring_contracts_with_live_enforcement.md",
       "updated_at": "2026-03-11T20:49:38Z",
       "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
       "related_ids": [
@@ -3088,7 +3328,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/enforce_shared_heading_separation_semantics_across_governed_docs.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/enforce_shared_heading_separation_semantics_across_governed_docs.md",
       "updated_at": "2026-03-11T20:49:38Z",
       "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
       "related_ids": [
@@ -3122,7 +3362,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_planning_semantics_and_decision_contract_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/validate_and_close_planning_semantics_and_decision_contract_alignment.md",
       "updated_at": "2026-03-11T21:00:02Z",
       "trace_id": "trace.planning_semantics_and_decision_contract_alignment",
       "depends_on": [
@@ -3153,7 +3393,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/preimplementation_repo_review_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/preimplementation_repo_review_bootstrap.md",
       "updated_at": "2026-03-10T17:55:24Z",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "related_ids": [
@@ -3181,7 +3421,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/preimplementation_core_modularity.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/preimplementation_core_modularity.md",
       "updated_at": "2026-03-10T18:47:27Z",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "depends_on": [
@@ -3209,7 +3449,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/preimplementation_machine_coordination.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/preimplementation_machine_coordination.md",
       "updated_at": "2026-03-10T18:20:44Z",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "related_ids": [
@@ -3237,7 +3477,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/preimplementation_readme_entrypoints.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/preimplementation_readme_entrypoints.md",
       "updated_at": "2026-03-10T18:05:14Z",
       "trace_id": "trace.preimplementation_repo_review_and_hardening",
       "related_ids": [
@@ -3262,7 +3502,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/query_family_source_surface_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/query_family_source_surface_alignment_bootstrap.md",
       "updated_at": "2026-03-13T21:55:35Z",
       "trace_id": "trace.query_family_source_surface_alignment",
       "related_ids": [
@@ -3287,7 +3527,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/reconcile_query_command_docs_and_command_index_source_surfaces.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/reconcile_query_command_docs_and_command_index_source_surfaces.md",
       "updated_at": "2026-03-13T22:04:28Z",
       "trace_id": "trace.query_family_source_surface_alignment",
       "depends_on": [
@@ -3314,7 +3554,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_query_family_command_implementation_path_mapping.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/harden_query_family_command_implementation_path_mapping.md",
       "updated_at": "2026-03-13T22:04:28Z",
       "trace_id": "trace.query_family_source_surface_alignment",
       "related_ids": [
@@ -3339,7 +3579,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_query_family_source_surface_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_query_family_source_surface_alignment.md",
       "updated_at": "2026-03-13T22:08:31Z",
       "trace_id": "trace.query_family_source_surface_alignment",
       "depends_on": [
@@ -3367,7 +3607,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/refactor_review_and_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/refactor_review_and_hardening_bootstrap.md",
       "updated_at": "2026-03-13T14:25:08Z",
       "trace_id": "trace.refactor_review_and_hardening",
       "related_ids": [
@@ -3396,7 +3636,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/slim_coordination_current_state_payload_and_thin_route_first_entrypoints.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/slim_coordination_current_state_payload_and_thin_route_first_entrypoints.md",
       "updated_at": "2026-03-13T14:42:27Z",
       "trace_id": "trace.refactor_review_and_hardening",
       "related_ids": [
@@ -3429,7 +3669,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_phase_one_refactor_simplification.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_phase_one_refactor_simplification.md",
       "updated_at": "2026-03-13T14:53:51Z",
       "trace_id": "trace.refactor_review_and_hardening",
       "related_ids": [
@@ -3458,7 +3698,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/clarify_workflow_route_discrimination_and_documentation_review_routing.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/clarify_workflow_route_discrimination_and_documentation_review_routing.md",
       "updated_at": "2026-03-13T14:38:36Z",
       "trace_id": "trace.refactor_review_and_hardening",
       "related_ids": [
@@ -3488,7 +3728,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md",
       "updated_at": "2026-03-13T22:33:28Z",
       "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
       "related_ids": [
@@ -3513,7 +3753,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/refactor_umbrella_regression_and_growth_control_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/refactor_umbrella_regression_and_growth_control_bootstrap.md",
       "updated_at": "2026-03-13T22:34:01Z",
       "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
       "related_ids": [
@@ -3542,7 +3782,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_initiative_closeout_with_acceptance_reconciliation_gate.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/harden_initiative_closeout_with_acceptance_reconciliation_gate.md",
       "updated_at": "2026-03-13T22:39:40Z",
       "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
       "depends_on": [
@@ -3575,7 +3815,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_refactor_umbrella_regression_and_growth_control.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_refactor_umbrella_regression_and_growth_control.md",
       "updated_at": "2026-03-13T22:49:36Z",
       "trace_id": "trace.refactor_umbrella_regression_and_growth_control",
       "depends_on": [
@@ -3603,7 +3843,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/reference_and_reserved_surface_maturity_signaling_bootstrap.md",
       "updated_at": "2026-03-13T15:43:04Z",
       "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
       "related_ids": [
@@ -3638,7 +3878,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_reference_maturity_signaling_and_query_surfaces.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/harden_reference_maturity_signaling_and_query_surfaces.md",
       "updated_at": "2026-03-13T16:08:13Z",
       "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
       "related_ids": [
@@ -3676,7 +3916,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/mark_readme_only_control_plane_families_as_reserved_placeholders.md",
       "updated_at": "2026-03-13T16:08:13Z",
       "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
       "related_ids": [
@@ -3707,7 +3947,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_reference_reserved_surface_refactor.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_reference_reserved_surface_refactor.md",
       "updated_at": "2026-03-13T16:13:27Z",
       "trace_id": "trace.reference_and_reserved_surface_maturity_signaling",
       "depends_on": [
@@ -3743,7 +3983,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/reference_and_workflow_standards_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/reference_and_workflow_standards_alignment_bootstrap.md",
       "updated_at": "2026-03-11T23:19:00Z",
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "related_ids": [
@@ -3771,7 +4011,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_reference_authoring_contract_with_governed_enforcement.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/align_reference_authoring_contract_with_governed_enforcement.md",
       "updated_at": "2026-03-11T23:25:32Z",
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "related_ids": [
@@ -3797,7 +4037,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_reference_and_workflow_standards_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/validate_and_close_reference_and_workflow_standards_alignment.md",
       "updated_at": "2026-03-11T23:29:23Z",
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "depends_on": [
@@ -3830,7 +4070,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/tighten_workflow_additional_load_generic_baseline_enforcement.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/tighten_workflow_additional_load_generic_baseline_enforcement.md",
       "updated_at": "2026-03-11T23:25:32Z",
       "trace_id": "trace.reference_and_workflow_standards_alignment",
       "depends_on": [
@@ -3860,7 +4100,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/reference_resolution_reuse_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/reference_resolution_reuse_hardening_bootstrap.md",
       "updated_at": "2026-03-12T15:12:34Z",
       "trace_id": "trace.reference_resolution_reuse_hardening",
       "related_ids": [
@@ -3885,7 +4125,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/reuse_shared_reference_resolution_context_in_validation_and_sync.md",
       "updated_at": "2026-03-12T15:14:07Z",
       "trace_id": "trace.reference_resolution_reuse_hardening",
       "depends_on": [
@@ -3912,7 +4152,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_reference_resolution_reuse_hardening.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_reference_resolution_reuse_hardening.md",
       "updated_at": "2026-03-12T15:15:23Z",
       "trace_id": "trace.reference_resolution_reuse_hardening",
       "depends_on": [
@@ -3940,7 +4180,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/regression_duplication_and_overstep_review_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/regression_duplication_and_overstep_review_bootstrap.md",
       "updated_at": "2026-03-13T03:30:46Z",
       "trace_id": "trace.regression_duplication_and_overstep_review",
       "related_ids": [
@@ -3960,7 +4200,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/remediate_confirmed_regression_and_duplication_findings.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/remediate_confirmed_regression_and_duplication_findings.md",
       "updated_at": "2026-03-13T03:45:03Z",
       "trace_id": "trace.regression_duplication_and_overstep_review",
       "related_ids": [
@@ -3990,7 +4230,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_regression_duplication_review.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_regression_duplication_review.md",
       "updated_at": "2026-03-13T03:46:37Z",
       "trace_id": "trace.regression_duplication_and_overstep_review",
       "related_ids": [
@@ -4018,7 +4258,7 @@
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/repo_local_hotspot_modularity_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/repo_local_hotspot_modularity_hardening_bootstrap.md",
       "updated_at": "2026-03-11T05:46:23Z",
       "trace_id": "trace.repo_local_hotspot_modularity",
       "related_ids": [
@@ -4042,7 +4282,7 @@
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_github_sync_and_client_hotspots_into_helper_backed_modules.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/split_github_sync_and_client_hotspots_into_helper_backed_modules.md",
       "updated_at": "2026-03-11T06:19:10Z",
       "trace_id": "trace.repo_local_hotspot_modularity",
       "depends_on": [
@@ -4068,7 +4308,7 @@
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_planning_scaffolds_and_task_lifecycle_hotspots_into_helper_backed_modules.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/split_planning_scaffolds_and_task_lifecycle_hotspots_into_helper_backed_modules.md",
       "updated_at": "2026-03-11T06:19:00Z",
       "trace_id": "trace.repo_local_hotspot_modularity",
       "depends_on": [
@@ -4094,7 +4334,7 @@
       "task_kind": "chore",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_sync_cli_and_traceability_hotspots_into_grouped_helper_modules.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/split_sync_cli_and_traceability_hotspots_into_grouped_helper_modules.md",
       "updated_at": "2026-03-11T06:19:10Z",
       "trace_id": "trace.repo_local_hotspot_modularity",
       "depends_on": [
@@ -4121,7 +4361,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/bootstrap_the_route_preview_natural_request_matching_trace.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/bootstrap_the_route_preview_natural_request_matching_trace.md",
       "updated_at": "2026-03-11T13:50:20Z",
       "trace_id": "trace.route_preview_natural_request_matching",
       "related_ids": [
@@ -4140,7 +4380,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_route_preview_for_natural_maintenance_requests.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/harden_route_preview_for_natural_maintenance_requests.md",
       "updated_at": "2026-03-11T14:16:05Z",
       "trace_id": "trace.route_preview_natural_request_matching",
       "related_ids": [
@@ -4164,7 +4404,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/standard_authoring_surface_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/standard_authoring_surface_alignment_bootstrap.md",
       "updated_at": "2026-03-11T20:02:06Z",
       "trace_id": "trace.standard_authoring_surface_alignment",
       "related_ids": [
@@ -4184,7 +4424,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/expose_the_standard_authoring_template_through_standards_lookup_and_regression_coverage.md",
       "updated_at": "2026-03-11T20:04:18Z",
       "trace_id": "trace.standard_authoring_surface_alignment",
       "related_ids": [
@@ -4210,7 +4450,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_standard_document_template_with_governed_authoring_contract.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/align_standard_document_template_with_governed_authoring_contract.md",
       "updated_at": "2026-03-11T20:04:18Z",
       "trace_id": "trace.standard_authoring_surface_alignment",
       "related_ids": [
@@ -4234,7 +4474,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/standard_operationalization_directory_canonicalization_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/standard_operationalization_directory_canonicalization_bootstrap.md",
       "updated_at": "2026-03-12T02:14:44Z",
       "trace_id": "trace.standard_operationalization_directory_canonicalization",
       "related_ids": [
@@ -4254,7 +4494,7 @@
       "task_kind": "bug",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/canonicalize_standard_operationalization_directory_paths.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/canonicalize_standard_operationalization_directory_paths.md",
       "updated_at": "2026-03-12T02:17:16Z",
       "trace_id": "trace.standard_operationalization_directory_canonicalization",
       "related_ids": [
@@ -4282,7 +4522,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_standard_operationalization_directory_canonicalization.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_standard_operationalization_directory_canonicalization.md",
       "updated_at": "2026-03-12T02:26:01Z",
       "trace_id": "trace.standard_operationalization_directory_canonicalization",
       "depends_on": [
@@ -4310,7 +4550,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/standard_runtime_and_route_explicitness_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/standard_runtime_and_route_explicitness_hardening_bootstrap.md",
       "updated_at": "2026-03-11T04:16:28Z",
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "related_ids": [
@@ -4336,7 +4576,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_advisory_route_preview_matching.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/harden_advisory_route_preview_matching.md",
       "updated_at": "2026-03-11T04:46:44Z",
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "related_ids": [
@@ -4360,7 +4600,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/document_runtime_package_boundaries.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/document_runtime_package_boundaries.md",
       "updated_at": "2026-03-11T04:46:44Z",
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "related_ids": [
@@ -4383,7 +4623,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/add_standard_operationalization_metadata.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/11/add_standard_operationalization_metadata.md",
       "updated_at": "2026-03-11T06:26:00Z",
       "trace_id": "trace.standard_runtime_and_route_explicitness",
       "related_ids": [
@@ -4409,7 +4649,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/standards_lookup_and_generic_template_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/standards_lookup_and_generic_template_alignment_bootstrap.md",
       "updated_at": "2026-03-12T00:15:16Z",
       "trace_id": "trace.standards_lookup_and_generic_template_alignment",
       "related_ids": [
@@ -4437,7 +4677,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/narrow_generic_documentation_template_to_fallback_only_guidance.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/narrow_generic_documentation_template_to_fallback_only_guidance.md",
       "updated_at": "2026-03-12T00:20:44Z",
       "trace_id": "trace.standards_lookup_and_generic_template_alignment",
       "depends_on": [
@@ -4465,7 +4705,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/resolve_descendant_standard_lookup_for_directory_scoped_operationalization_paths.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/resolve_descendant_standard_lookup_for_directory_scoped_operationalization_paths.md",
       "updated_at": "2026-03-12T00:20:44Z",
       "trace_id": "trace.standards_lookup_and_generic_template_alignment",
       "depends_on": [
@@ -4494,7 +4734,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_standards_lookup_and_generic_template_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_standards_lookup_and_generic_template_alignment.md",
       "updated_at": "2026-03-12T00:25:34Z",
       "trace_id": "trace.standards_lookup_and_generic_template_alignment",
       "depends_on": [
@@ -4526,7 +4766,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_artifact_role_registry_pilot.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_artifact_role_registry_pilot.md",
       "updated_at": "2026-03-14T04:31:59Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4561,7 +4801,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
       "updated_at": "2026-03-14T05:41:11Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4594,7 +4834,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/structural_rewrite_program_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/structural_rewrite_program_bootstrap.md",
       "updated_at": "2026-03-14T02:37:25Z",
       "trace_id": "trace.structural_rewrite_program",
       "related_ids": [
@@ -4621,7 +4861,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/complete_structural_rewrite_program_phase0_and_phase1_package.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/complete_structural_rewrite_program_phase0_and_phase1_package.md",
       "updated_at": "2026-03-14T02:37:25Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4651,7 +4891,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md",
       "updated_at": "2026-03-14T03:56:23Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4681,7 +4921,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
       "updated_at": "2026-03-14T05:41:11Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4717,7 +4957,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
       "updated_at": "2026-03-14T06:44:15Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4733,7 +4973,7 @@
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_shared_projection_entry.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
         "docs/commands/core_python/",
         "core/control_plane/indexes/commands/command_index.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase3_command_companion_source_surface_normalization.v1.json",
@@ -4751,7 +4991,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md",
       "updated_at": "2026-03-14T05:41:11Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4784,7 +5024,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
       "updated_at": "2026-03-15T06:18:27Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4802,7 +5042,7 @@
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_entry_ready.v1.json",
@@ -4831,7 +5071,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
       "updated_at": "2026-03-15T06:18:27Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4847,7 +5087,7 @@
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
@@ -4870,7 +5110,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
       "updated_at": "2026-03-15T09:04:41Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4887,7 +5127,7 @@
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_coordination_sync_reuse.v1.json",
@@ -4916,7 +5156,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
       "updated_at": "2026-03-15T09:04:41Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4935,8 +5175,8 @@
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_entry_ready.v1.json",
@@ -4963,7 +5203,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
       "updated_at": "2026-03-15T09:55:03Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -4979,8 +5219,8 @@
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
@@ -5001,7 +5241,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
       "updated_at": "2026-03-15T09:55:03Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -5017,7 +5257,7 @@
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_closeout_tracking_refresh_boundary.v1.json",
@@ -5042,7 +5282,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md",
       "updated_at": "2026-03-14T18:27:09Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -5079,7 +5319,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
       "updated_at": "2026-03-14T18:27:09Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -5095,7 +5335,7 @@
       ],
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
@@ -5118,7 +5358,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
       "updated_at": "2026-03-15T03:11:32Z",
       "trace_id": "trace.structural_rewrite_program",
       "depends_on": [
@@ -5134,7 +5374,7 @@
       "applies_to": [
         "docs/planning/design/implementation/structural_rewrite_phase4_planning_projection_snapshot.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
         "core/control_plane/ledgers/validation_evidence/structural_rewrite_phase4_planning_projection_snapshot.v1.json",
@@ -5160,7 +5400,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/summary_surface_retirement_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/summary_surface_retirement_bootstrap.md",
       "updated_at": "2026-03-13T01:18:10Z",
       "trace_id": "trace.summary_surface_retirement",
       "related_ids": [
@@ -5194,7 +5434,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/retire_summary_md_and_direct_dependency_surfaces.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/retire_summary_md_and_direct_dependency_surfaces.md",
       "updated_at": "2026-03-13T01:46:46Z",
       "trace_id": "trace.summary_surface_retirement",
       "related_ids": [
@@ -5224,7 +5464,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_summary_surface_retirement.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_summary_surface_retirement.md",
       "updated_at": "2026-03-13T01:47:55Z",
       "trace_id": "trace.summary_surface_retirement",
       "related_ids": [
@@ -5245,7 +5485,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/task_query_dependency_lookup_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/task_query_dependency_lookup_hardening_bootstrap.md",
       "updated_at": "2026-03-12T20:12:31Z",
       "trace_id": "trace.task_query_dependency_lookup_hardening",
       "related_ids": [
@@ -5270,7 +5510,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/optimize_task_query_dependency_lookups.md",
       "updated_at": "2026-03-12T20:12:31Z",
       "trace_id": "trace.task_query_dependency_lookup_hardening",
       "depends_on": [
@@ -5297,7 +5537,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_task_query_dependency_lookup_hardening.md",
       "updated_at": "2026-03-12T20:22:54Z",
       "trace_id": "trace.task_query_dependency_lookup_hardening",
       "depends_on": [
@@ -5327,7 +5567,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/task_sync_disappearing_file_resilience_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/task_sync_disappearing_file_resilience_bootstrap.md",
       "updated_at": "2026-03-12T12:57:31Z",
       "trace_id": "trace.task_sync_disappearing_file_resilience",
       "related_ids": [
@@ -5354,7 +5594,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_task_sync_iteration_against_disappearing_files.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/harden_task_sync_iteration_against_disappearing_files.md",
       "updated_at": "2026-03-12T13:00:27Z",
       "trace_id": "trace.task_sync_disappearing_file_resilience",
       "related_ids": [
@@ -5381,7 +5621,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_task_sync_disappearing_file_resilience.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_task_sync_disappearing_file_resilience.md",
       "updated_at": "2026-03-12T13:01:08Z",
       "trace_id": "trace.task_sync_disappearing_file_resilience",
       "depends_on": [
@@ -5411,7 +5651,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/template_output_efficiency_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/template_output_efficiency_bootstrap.md",
       "updated_at": "2026-03-10T16:00:54Z",
       "trace_id": "trace.template_and_output_efficiency",
       "related_ids": [
@@ -5437,7 +5677,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/template_output_efficiency_compact_authoring.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/template_output_efficiency_compact_authoring.md",
       "updated_at": "2026-03-10T16:19:08Z",
       "trace_id": "trace.template_and_output_efficiency",
       "related_ids": [
@@ -5461,7 +5701,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/template_output_efficiency_tracker_compaction.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/template_output_efficiency_tracker_compaction.md",
       "updated_at": "2026-03-10T16:27:59Z",
       "trace_id": "trace.template_and_output_efficiency",
       "depends_on": [
@@ -5487,7 +5727,7 @@
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/template_output_efficiency_workflow_guidance.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/template_output_efficiency_workflow_guidance.md",
       "updated_at": "2026-03-10T16:34:28Z",
       "trace_id": "trace.template_and_output_efficiency",
       "depends_on": [
@@ -5513,7 +5753,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/typed_query_surface_modularity_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/typed_query_surface_modularity_hardening_bootstrap.md",
       "updated_at": "2026-03-13T18:02:54Z",
       "trace_id": "trace.typed_query_surface_modularity_hardening",
       "related_ids": [
@@ -5533,7 +5773,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_typed_retrieval_models_into_focused_modules.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/split_typed_retrieval_models_into_focused_modules.md",
       "updated_at": "2026-03-13T18:21:56Z",
       "trace_id": "trace.typed_query_surface_modularity_hardening",
       "related_ids": [
@@ -5561,7 +5801,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_cli_query_regressions_into_focused_suites.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/split_cli_query_regressions_into_focused_suites.md",
       "updated_at": "2026-03-13T18:21:56Z",
       "trace_id": "trace.typed_query_surface_modularity_hardening",
       "depends_on": [
@@ -5589,7 +5829,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_typed_query_surface_modularity_hardening.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_typed_query_surface_modularity_hardening.md",
       "updated_at": "2026-03-13T18:23:59Z",
       "trace_id": "trace.typed_query_surface_modularity_hardening",
       "depends_on": [
@@ -5618,7 +5858,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/unit_test_hardening_and_rebalancing_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/unit_test_hardening_and_rebalancing_bootstrap.md",
       "updated_at": "2026-03-12T02:46:38Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "related_ids": [
@@ -5642,7 +5882,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_command_and_lifecycle_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/harden_command_and_lifecycle_coverage.md",
       "updated_at": "2026-03-12T02:46:38Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "depends_on": [
@@ -5670,7 +5910,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_github_integration_and_sync_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/harden_github_integration_and_sync_coverage.md",
       "updated_at": "2026-03-12T02:46:38Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "depends_on": [
@@ -5696,7 +5936,7 @@
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/expand_orchestration_and_derivation_failure_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/expand_orchestration_and_derivation_failure_coverage.md",
       "updated_at": "2026-03-12T02:46:38Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "depends_on": [
@@ -5722,7 +5962,7 @@
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/rebalance_unit_suite_structure_and_docs.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/rebalance_unit_suite_structure_and_docs.md",
       "updated_at": "2026-03-12T02:46:38Z",
       "trace_id": "trace.unit_test_hardening_and_rebalancing",
       "depends_on": [
@@ -5748,7 +5988,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validation_test_hotspot_rebalancing_bootstrap.md",
       "updated_at": "2026-03-13T18:51:07Z",
       "trace_id": "trace.validation_test_hotspot_rebalancing",
       "related_ids": [
@@ -5777,7 +6017,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/split_document_semantics_hotspot_into_focused_suites.md",
       "updated_at": "2026-03-13T19:10:03Z",
       "trace_id": "trace.validation_test_hotspot_rebalancing",
       "related_ids": [
@@ -5804,7 +6044,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/split_integration_validation_hotspot_into_focused_suites.md",
       "updated_at": "2026-03-13T19:10:03Z",
       "trace_id": "trace.validation_test_hotspot_rebalancing",
       "related_ids": [
@@ -5832,7 +6072,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_validation_test_hotspot_rebalancing.md",
       "updated_at": "2026-03-13T19:18:52Z",
       "trace_id": "trace.validation_test_hotspot_rebalancing",
       "depends_on": [
@@ -5861,7 +6101,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/workflow_route_boundary_discoverability_hardening_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/workflow_route_boundary_discoverability_hardening_bootstrap.md",
       "updated_at": "2026-03-13T21:21:00Z",
       "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
       "related_ids": [
@@ -5891,7 +6131,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
       "updated_at": "2026-03-13T21:37:07Z",
       "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
       "depends_on": [
@@ -5919,7 +6159,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_workflow_route_boundary_discoverability_hardening.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_workflow_route_boundary_discoverability_hardening.md",
       "updated_at": "2026-03-13T21:40:07Z",
       "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
       "depends_on": [
@@ -5951,7 +6191,7 @@
       "task_kind": "documentation",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/align_workflow_lookup_metadata_and_boundary_guidance.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/13/align_workflow_lookup_metadata_and_boundary_guidance.md",
       "updated_at": "2026-03-13T21:37:07Z",
       "trace_id": "trace.workflow_route_boundary_discoverability_hardening",
       "depends_on": [
@@ -5982,7 +6222,7 @@
       "task_kind": "governance",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/workflow_routing_review_accuracy_alignment_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/workflow_routing_review_accuracy_alignment_bootstrap.md",
       "updated_at": "2026-03-12T03:46:25Z",
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "related_ids": [
@@ -6008,7 +6248,7 @@
       "task_kind": "bug",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/harden_workflow_route_scoring_and_review_coverage.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/harden_workflow_route_scoring_and_review_coverage.md",
       "updated_at": "2026-03-12T03:46:25Z",
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "related_ids": [
@@ -6034,7 +6274,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/validate_and_close_workflow_routing_review_alignment.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_workflow_routing_review_alignment.md",
       "updated_at": "2026-03-12T03:46:25Z",
       "trace_id": "trace.workflow_routing_review_accuracy_alignment",
       "depends_on": [
@@ -6063,7 +6303,7 @@
       "task_kind": "governance",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/workflow_system_bootstrap.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/workflow_system_bootstrap.md",
       "updated_at": "2026-03-10T21:59:21Z",
       "trace_id": "trace.workflow_system_operationalization",
       "related_ids": [
@@ -6090,7 +6330,7 @@
       "task_kind": "feature",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/workflow_planning_scaffolds.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/workflow_planning_scaffolds.md",
       "updated_at": "2026-03-10T23:17:55Z",
       "trace_id": "trace.workflow_system_operationalization",
       "depends_on": [
@@ -6117,7 +6357,7 @@
       "task_kind": "documentation",
       "priority": "medium",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/workflow_reconciliation_guidance.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/workflow_reconciliation_guidance.md",
       "updated_at": "2026-03-10T23:23:39Z",
       "trace_id": "trace.workflow_system_operationalization",
       "depends_on": [
@@ -6143,7 +6383,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/workflow_route_preview_and_metadata.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/workflow_route_preview_and_metadata.md",
       "updated_at": "2026-03-10T23:00:00Z",
       "trace_id": "trace.workflow_system_operationalization",
       "depends_on": [
@@ -6170,7 +6410,7 @@
       "task_kind": "feature",
       "priority": "high",
       "owner": "repository_maintainer",
-      "doc_path": "docs/planning/tasks/closed/workflow_task_cli.md",
+      "doc_path": "docs/planning/tasks/closed/archive/2026/03/10/workflow_task_cli.md",
       "updated_at": "2026-03-10T23:01:32Z",
       "trace_id": "trace.workflow_system_operationalization",
       "depends_on": [

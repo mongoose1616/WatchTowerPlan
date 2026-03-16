@@ -3,17 +3,23 @@
 ## Current State
 | Field | Value |
 | --- | --- |
-| Mode | `ready_for_bootstrap` |
-| Summary | No active initiatives are open. The repository is ready for one new bounded initiative. |
-| Next | Bootstrap a traced initiative with a PRD, supporting design and plan documents, and a bounded task set before starting new execution work. |
-| Open First | [docs/planning/README.md](/home/j/WatchTowerPlan/docs/planning/README.md) |
+| Mode | `active_work` |
+| Summary | Active initiatives exist and the coordination surface points to the most actionable next work. |
+| Next | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| Open First | [docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md) |
 | Companion Views | [initiative_tracking.md](/home/j/WatchTowerPlan/docs/planning/initiatives/initiative_tracking.md), [task_tracking.md](/home/j/WatchTowerPlan/docs/planning/tasks/task_tracking.md) |
 
 ## Active Initiatives
-_No active initiatives._
+| Trace ID | Phase | Owners | Next | Action |
+| --- | --- | --- | --- | --- |
+| `trace.core_split_compatibility_wrapper_retirement` | `execution` | repository_maintainer | [retire_repo_specific_compatibility_wrappers.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
+| `trace.planning_artifact_retention_and_purge` | `execution` | repository_maintainer | [align_retention_policy_with_canonical_standards_and_purgeability_rules.md](/home/j/WatchTowerPlan/docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md) | Resolve blockers on the active task set and keep task state current before opening new follow-up work. |
 
 ## Actionable Tasks
-_No actionable tasks._
+| Task | Initiative | Status | Priority | Owner |
+| --- | --- | --- | --- | --- |
+| [task.core_split_compatibility_wrapper_retirement.wrapper_retirement.002](/home/j/WatchTowerPlan/docs/planning/tasks/open/retire_repo_specific_compatibility_wrappers.md) | `trace.core_split_compatibility_wrapper_retirement` | `ready` | `high` | `repository_maintainer` |
+| [task.planning_artifact_retention_and_purge.standard_alignment.002](/home/j/WatchTowerPlan/docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md) | `trace.planning_artifact_retention_and_purge` | `ready` | `high` | `repository_maintainer` |
 
 ## Recent Closeouts
 | Trace ID | Status | Closed At | Key |
@@ -24,4 +30,4 @@ _No actionable tasks._
 | `trace.refactor_umbrella_regression_and_growth_control` | `completed` | `2026-03-13T22:49:56Z` | [refactor_umbrella_regression_and_growth_control.md](/home/j/WatchTowerPlan/docs/planning/prds/refactor_umbrella_regression_and_growth_control.md) |
 | `trace.query_family_source_surface_alignment` | `completed` | `2026-03-13T22:13:22Z` | [query_family_source_surface_alignment.md](/home/j/WatchTowerPlan/docs/planning/prds/query_family_source_surface_alignment.md) |
 
-_Updated At: `2026-03-16T01:06:43Z`_
+_Updated At: `2026-03-16T02:14:43Z`_

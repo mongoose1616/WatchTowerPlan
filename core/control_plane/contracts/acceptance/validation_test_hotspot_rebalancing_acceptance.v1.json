@@ -17,10 +17,10 @@
         "docs/planning/design/features/validation_test_hotspot_rebalancing.md",
         "docs/planning/design/implementation/validation_test_hotspot_rebalancing.md",
         "docs/planning/decisions/validation_test_hotspot_rebalancing_direction.md",
-        "docs/planning/tasks/closed/validation_test_hotspot_rebalancing_bootstrap.md",
-        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
-        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md",
-        "docs/planning/tasks/closed/validate_and_close_validation_test_hotspot_rebalancing.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/validation_test_hotspot_rebalancing_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_document_semantics_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_validation_test_hotspot_rebalancing.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",
@@ -83,8 +83,8 @@
         "docs/commands/core_python/watchtower_core_validate.md"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/split_integration_validation_hotspot_into_focused_suites.md",
-        "docs/planning/tasks/closed/split_document_semantics_hotspot_into_focused_suites.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/split_integration_validation_hotspot_into_focused_suites.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_document_semantics_hotspot_into_focused_suites.md"
       ],
       "notes": "Covers historical path compatibility and README-driven repository-path discoverability."
     },

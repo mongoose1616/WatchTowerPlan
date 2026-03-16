@@ -73,7 +73,7 @@
         "docs/planning/design/features/foundation_index_family_contract_alignment.md",
         "docs/planning/design/implementation/foundation_index_family_contract_alignment.md",
         "docs/planning/decisions/foundation_index_family_contract_alignment_direction.md",
-        "docs/planning/tasks/closed/validate_and_close_foundation_index_family_contract_alignment.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_foundation_index_family_contract_alignment.md",
         "core/control_plane/contracts/acceptance/foundation_index_family_contract_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/foundation_index_family_contract_alignment_planning_baseline.v1.json",
         "core/python/tests/unit/test_cli_query_commands.py",

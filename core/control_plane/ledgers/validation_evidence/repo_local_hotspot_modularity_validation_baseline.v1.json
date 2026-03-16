@@ -31,10 +31,10 @@
         "docs/planning/decisions/repo_local_hotspot_modularity_hardening_direction.md",
         "docs/planning/design/features/repo_local_hotspot_modularity_hardening.md",
         "docs/planning/design/implementation/repo_local_hotspot_modularity_hardening.md",
-        "docs/planning/tasks/closed/repo_local_hotspot_modularity_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/split_planning_scaffolds_and_task_lifecycle_hotspots_into_helper_backed_modules.md",
-        "docs/planning/tasks/closed/split_sync_cli_and_traceability_hotspots_into_grouped_helper_modules.md",
-        "docs/planning/tasks/closed/split_github_sync_and_client_hotspots_into_helper_backed_modules.md"
+        "docs/planning/tasks/closed/archive/2026/03/11/repo_local_hotspot_modularity_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/split_planning_scaffolds_and_task_lifecycle_hotspots_into_helper_backed_modules.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/split_sync_cli_and_traceability_hotspots_into_grouped_helper_modules.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/split_github_sync_and_client_hotspots_into_helper_backed_modules.md"
       ],
       "subject_ids": [
         "prd.repo_local_hotspot_modularity",

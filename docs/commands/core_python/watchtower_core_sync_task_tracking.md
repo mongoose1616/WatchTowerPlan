@@ -47,7 +47,7 @@ uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --forma
 
 ## Behavior and Outputs
 - The command reads the governed task documents under `docs/planning/tasks/` and rebuilds the human-readable task tracker deterministically.
-- The tracker groups tasks into open and closed sections and summarizes task status, priority, owner, trace, path, and blockers.
+- The tracker groups tasks into open tasks, a compact closed-task summary, and a small recent-closeout preview instead of inlining the full closed archive corpus.
 - By default the command runs in dry-run mode and does not mutate the canonical tracker.
 - In `human` mode, the command prints whether it ran in dry-run or write mode and how many tasks were summarized.
 - In `json` mode, the command prints one JSON object with the command name, status, task counts, write flag, and output path when one was written.
@@ -68,4 +68,4 @@ uv run watchtower-core sync task-tracking --output /tmp/task_tracking.md --forma
 - `docs/planning/tasks/task_tracking.md`
 
 ## Updated At
-- `2026-03-14T05:37:06Z`
+- `2026-03-15T05:45:00Z`

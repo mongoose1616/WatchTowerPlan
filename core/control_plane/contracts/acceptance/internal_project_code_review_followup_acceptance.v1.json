@@ -17,9 +17,9 @@
         "docs/planning/decisions/internal_project_code_review_follow_up_direction.md",
         "docs/planning/design/features/internal_project_code_review_follow_up.md",
         "docs/planning/design/implementation/internal_project_code_review_follow_up.md",
-        "docs/planning/tasks/closed/internal_project_code_review_follow_up_bootstrap.md",
-        "docs/planning/tasks/closed/harden_bootstrap_decision_scaffold_output.md",
-        "docs/planning/tasks/closed/align_bootstrap_coordination_phase_semantics.md"
+        "docs/planning/tasks/closed/archive/2026/03/11/internal_project_code_review_follow_up_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/harden_bootstrap_decision_scaffold_output.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/align_bootstrap_coordination_phase_semantics.md"
       ],
       "related_paths": [
         "core/control_plane/ledgers/validation_evidence/internal_project_code_review_followup_planning_baseline.v1.json",

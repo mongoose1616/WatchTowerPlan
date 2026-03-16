@@ -9,7 +9,7 @@ tags:
   - "documentation"
   - "task_md"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-15T06:35:00Z"
 audience: "shared"
 authority: "authoritative"
 applies_to:
@@ -52,7 +52,7 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - Use a stable `task_id` in front matter instead of relying on the filename for identity.
 - Keep execution status in `task_status`, not in the document `status` field.
 - Keep active or non-terminal tasks in `open/`.
-- Keep `done` and `cancelled` tasks in `closed/`.
+- Keep `done` and `cancelled` tasks in dated archive paths beneath `closed/archive/`.
 - Use front matter as the primary structured metadata surface for tasks.
 - Keep GitHub sync metadata in front matter when a task has been published externally.
 - Keep the body focused on why the task exists, what is in scope, what counts as done, and which planning or implementation surfaces it touches.
@@ -76,7 +76,7 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 | Document Type | Canonical Location | Notes |
 |---|---|---|
 | Active or non-terminal task | `docs/planning/tasks/open/<task_name>.md` | Use stable snake_case filenames derived from the task topic. |
-| Closed task | `docs/planning/tasks/closed/<task_name>.md` | Move the file when the task reaches a terminal state. |
+| Closed task | `docs/planning/tasks/closed/archive/<yyyy>/<mm>/<dd>/<task_name>.md` | Move the file when the task reaches a terminal state and preserve the dated archive directory on later closed-task edits. |
 | Task tracker | `docs/planning/tasks/task_tracking.md` | Generated human-readable task board. |
 
 ## Operationalization
@@ -103,4 +103,4 @@ Keep local tasks readable for humans, structured for agents, and modular enough 
 - [README.md](/home/j/WatchTowerPlan/docs/planning/tasks/README.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-15T06:35:00Z`

@@ -30,10 +30,10 @@
         "docs/planning/decisions/documentation_family_lookup_and_readme_template_alignment_direction.md",
         "core/control_plane/contracts/acceptance/documentation_family_lookup_and_readme_template_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/documentation_family_lookup_and_readme_template_alignment_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/documentation_family_lookup_and_readme_template_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/extend_standards_operationalization_lookup_for_recurring_documentation_families.md",
-        "docs/planning/tasks/closed/align_readme_template_with_governed_title_and_inventory_contract.md",
-        "docs/planning/tasks/closed/validate_and_close_documentation_family_lookup_and_readme_template_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/documentation_family_lookup_and_readme_template_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/extend_standards_operationalization_lookup_for_recurring_documentation_families.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/align_readme_template_with_governed_title_and_inventory_contract.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_documentation_family_lookup_and_readme_template_alignment.md"
       ],
       "subject_ids": [
         "prd.documentation_family_lookup_and_readme_template_alignment",

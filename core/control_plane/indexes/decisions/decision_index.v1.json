@@ -247,6 +247,53 @@
       ]
     },
     {
+      "trace_id": "trace.core_split_compatibility_wrapper_retirement",
+      "decision_id": "decision.core_split_compatibility_wrapper_retirement_direction",
+      "title": "Core Split Compatibility Wrapper Retirement Direction Decision",
+      "summary": "Records the direction decision for retiring repo-specific compatibility wrappers before splitting out reusable core surfaces.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/core_split_compatibility_wrapper_retirement_direction.md",
+      "updated_at": "2026-03-16T02:06:53Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.core_split_compatibility_wrapper_retirement"
+      ],
+      "linked_design_ids": [
+        "design.features.core_split_compatibility_wrapper_retirement"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.core_split_compatibility_wrapper_retirement"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/README.md",
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/sync/README.md",
+        "core/python/src/watchtower_core/validation/README.md",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/README.md",
+        "core/python/tests/unit/test_repo_ops_compatibility.py"
+      ],
+      "internal_reference_paths": [
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/product_direction.md",
+        "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
+        "docs/planning/design/features/core_export_ready_architecture.md"
+      ],
+      "applied_reference_paths": [
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/product_direction.md"
+      ]
+    },
+    {
       "trace_id": "trace.data_contract_example_operationalization_alignment",
       "decision_id": "decision.data_contract_example_operationalization_alignment_direction",
       "title": "Data Contract Example Operationalization Alignment Direction Decision",
@@ -1125,6 +1172,41 @@
         "docs/standards/governance/initiative_tracking_standard.md",
         "docs/standards/governance/traceability_standard.md",
         "docs/standards/documentation/compact_document_authoring_standard.md"
+      ]
+    },
+    {
+      "trace_id": "trace.planning_artifact_retention_and_purge",
+      "decision_id": "decision.planning_artifact_retention_and_purge_direction",
+      "title": "Planning Artifact Retention and Purge Direction Decision",
+      "summary": "Records the accepted direction decision for Planning Artifact Retention and Purge.",
+      "record_status": "active",
+      "decision_status": "accepted",
+      "doc_path": "docs/planning/decisions/planning_artifact_retention_and_purge_direction.md",
+      "updated_at": "2026-03-15T11:00:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "linked_prd_ids": [
+        "prd.planning_artifact_retention_and_purge"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_artifact_retention_and_purge"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_artifact_retention_and_purge"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/design/features/summary_surface_retirement.md"
+      ],
+      "applied_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/planning/design/features/summary_surface_retirement.md"
       ]
     },
     {

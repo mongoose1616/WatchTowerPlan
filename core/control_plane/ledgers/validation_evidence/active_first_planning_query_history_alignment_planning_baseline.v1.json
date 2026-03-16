@@ -30,10 +30,10 @@
         "docs/planning/decisions/active_first_planning_query_history_alignment_direction.md",
         "core/control_plane/contracts/acceptance/active_first_planning_query_history_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/active_first_planning_query_history_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/align_filterless_planning_and_initiative_query_defaults.md",
-        "docs/planning/tasks/closed/align_planning_navigation_docs_with_active_first_query_defaults.md",
-        "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/active_first_planning_query_history_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/align_filterless_planning_and_initiative_query_defaults.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/align_planning_navigation_docs_with_active_first_query_defaults.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_active_first_planning_query_history_alignment.md"
       ],
       "subject_ids": [
         "prd.active_first_planning_query_history_alignment",
@@ -127,7 +127,7 @@
         "core/control_plane/ledgers/validation_evidence/active_first_planning_query_history_alignment_planning_baseline.v1.json",
         "core/python/tests/unit/test_cli_planning_query_commands.py",
         "core/python/tests/unit/test_route_and_query_handlers.py",
-        "docs/planning/tasks/closed/validate_and_close_active_first_planning_query_history_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_active_first_planning_query_history_alignment.md"
       ],
       "subject_ids": [
         "task.active_first_planning_query_history_alignment.validation_closeout.004",

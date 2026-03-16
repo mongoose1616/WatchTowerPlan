@@ -14,6 +14,7 @@ from watchtower_core.repo_ops.task_lifecycle import (
     TaskLifecycleService,
     TaskUpdateParams,
 )
+from watchtower_core.repo_ops.task_lifecycle_support import task_relative_path
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -52,7 +53,11 @@ def test_task_create_can_recommend_closeout_for_terminal_single_trace(tmp_path: 
     assert result.changed is True
     assert result.wrote is False
     assert result.closeout_recommended is True
-    assert result.doc_path == "docs/planning/tasks/closed/unit_test_trace_done.md"
+    assert result.doc_path == task_relative_path(
+        "unit_test_trace_done",
+        task_status="done",
+        updated_at="2026-03-10T23:59:59Z",
+    )
 
 
 def test_task_create_canonicalizes_directory_applies_to_paths(tmp_path: Path) -> None:
@@ -128,7 +133,11 @@ def test_task_update_can_move_task_and_clear_optional_fields(tmp_path: Path) -> 
     assert result.moved is True
     assert result.wrote is True
     assert result.previous_doc_path == "docs/planning/tasks/open/lifecycle_task.md"
-    assert result.doc_path == "docs/planning/tasks/closed/lifecycle_task_complete.md"
+    assert result.doc_path == task_relative_path(
+        "lifecycle_task_complete",
+        task_status="done",
+        updated_at="2026-03-11T00:00:00Z",
+    )
     assert not (repo_root / result.previous_doc_path).exists()
 
     written_text = (repo_root / result.doc_path).read_text(encoding="utf-8")
@@ -198,7 +207,11 @@ def test_task_update_write_tolerates_other_task_disappearing_during_sync(
 
     assert triggered is True
     assert result.wrote is True
-    assert result.doc_path == "docs/planning/tasks/closed/disappearing_sync_task.md"
+    assert result.doc_path == task_relative_path(
+        "disappearing_sync_task",
+        task_status="done",
+        updated_at="2026-03-11T00:00:00Z",
+    )
     assert (repo_root / result.doc_path).exists()
 
 

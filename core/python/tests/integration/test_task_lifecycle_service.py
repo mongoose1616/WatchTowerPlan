@@ -15,6 +15,7 @@ from watchtower_core.repo_ops.task_lifecycle import (
     TaskTransitionParams,
     TaskUpdateParams,
 )
+from watchtower_core.repo_ops.task_lifecycle_support import task_relative_path
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
@@ -98,7 +99,11 @@ def test_task_update_write_moves_terminal_task_to_closed(tmp_path: Path) -> None
     assert result.wrote is True
     assert result.moved is True
     assert result.previous_doc_path == create_result.doc_path
-    assert result.doc_path == "docs/planning/tasks/closed/finish_the_task_lifecycle_slice.md"
+    assert result.doc_path == task_relative_path(
+        "finish_the_task_lifecycle_slice",
+        task_status="done",
+        updated_at=result.updated_at,
+    )
     assert not (repo_root / create_result.doc_path).exists()
     assert (repo_root / result.doc_path).exists()
 
@@ -258,7 +263,11 @@ def test_task_update_write_repairs_governed_companion_paths_when_task_moves(
         write=True,
     )
 
-    assert result.doc_path == "docs/planning/tasks/closed/repair_companion_task_paths.md"
+    assert result.doc_path == task_relative_path(
+        "repair_companion_task_paths",
+        task_status="done",
+        updated_at=result.updated_at,
+    )
 
     contract = json.loads((repo_root / contract_relative_path).read_text(encoding="utf-8"))
     targets = contract["entries"][0]["validation_targets"]

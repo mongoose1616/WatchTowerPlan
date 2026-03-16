@@ -17,10 +17,10 @@
         "docs/planning/design/features/workflow_route_boundary_discoverability_hardening.md",
         "docs/planning/design/implementation/workflow_route_boundary_discoverability_hardening.md",
         "docs/planning/decisions/workflow_route_boundary_discoverability_hardening_direction.md",
-        "docs/planning/tasks/closed/workflow_route_boundary_discoverability_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
-        "docs/planning/tasks/closed/align_workflow_lookup_metadata_and_boundary_guidance.md",
-        "docs/planning/tasks/closed/validate_and_close_workflow_route_boundary_discoverability_hardening.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/workflow_route_boundary_discoverability_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/align_workflow_lookup_metadata_and_boundary_guidance.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_workflow_route_boundary_discoverability_hardening.md",
         "core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/workflow_route_boundary_discoverability_hardening_planning_baseline.v1.json"
       ],
@@ -49,7 +49,7 @@
         "core/python/tests/unit/test_route_index_sync.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
         "workflows/modules/task_lifecycle_management.md",
         "workflows/modules/task_phase_transition.md"
       ],
@@ -69,7 +69,7 @@
         "core/python/tests/unit/test_workflow_index_sync.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/align_workflow_lookup_metadata_and_boundary_guidance.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/align_workflow_lookup_metadata_and_boundary_guidance.md",
         "workflows/modules/documentation_implementation_reconciliation.md",
         "workflows/modules/task_phase_transition.md"
       ],

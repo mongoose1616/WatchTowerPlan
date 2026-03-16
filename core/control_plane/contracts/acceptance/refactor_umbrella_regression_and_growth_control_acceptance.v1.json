@@ -17,8 +17,8 @@
         "docs/planning/design/features/refactor_umbrella_regression_and_growth_control.md",
         "docs/planning/design/implementation/refactor_umbrella_regression_and_growth_control.md",
         "docs/planning/decisions/refactor_umbrella_regression_and_growth_control_direction.md",
-        "docs/planning/tasks/closed/refactor_umbrella_regression_and_growth_control_bootstrap.md",
-        "docs/planning/tasks/closed/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/refactor_umbrella_regression_and_growth_control_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/publish_umbrella_refactor_audit_matrix_and_master_findings_ledger.md",
         "core/control_plane/contracts/acceptance/refactor_umbrella_regression_and_growth_control_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/refactor_umbrella_regression_and_growth_control_planning_baseline.v1.json"
       ],

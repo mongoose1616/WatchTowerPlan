@@ -1,0 +1,93 @@
+{
+  "$schema": "urn:watchtower:schema:artifacts:contracts:acceptance-contract:v1",
+  "id": "contract.acceptance.planning_artifact_retention_and_purge",
+  "title": "Planning Artifact Retention and Purge Acceptance Contract",
+  "status": "active",
+  "trace_id": "trace.planning_artifact_retention_and_purge",
+  "source_prd_id": "prd.planning_artifact_retention_and_purge",
+  "entries": [
+    {
+      "acceptance_id": "ac.planning_artifact_retention_and_purge.001",
+      "summary": "The planning corpus for this trace publishes the active PRD, accepted direction decision, active feature design, active implementation plan, active retention standard, aligned acceptance contract, planning-baseline evidence, closed bootstrap task, and bounded open execution tasks.",
+      "source_requirement_ids": [
+        "req.planning_artifact_retention_and_purge.001"
+      ],
+      "validation_targets": [
+        "docs/planning/prds/planning_artifact_retention_and_purge.md",
+        "docs/planning/design/features/planning_artifact_retention_and_purge.md",
+        "docs/planning/design/implementation/planning_artifact_retention_and_purge.md",
+        "docs/planning/decisions/planning_artifact_retention_and_purge_direction.md",
+        "docs/standards/governance/planning_retention_and_purge_standard.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/planning_artifact_retention_and_purge_bootstrap.md",
+        "docs/planning/tasks/open/align_retention_policy_with_canonical_standards_and_purgeability_rules.md",
+        "docs/planning/tasks/open/implement_guarded_trace_purge_workflow_and_minimal_purge_ledger.md",
+        "docs/planning/tasks/open/purge_one_closed_pilot_trace_and_repair_surviving_references.md",
+        "docs/planning/tasks/open/validate_and_close_planning_artifact_retention_and_purge.md"
+      ],
+      "related_paths": [
+        "docs/planning/prds/prd_tracking.md",
+        "docs/planning/design/design_tracking.md",
+        "docs/planning/decisions/decision_tracking.md",
+        "docs/planning/tasks/task_tracking.md",
+        "docs/planning/initiatives/initiative_tracking.md",
+        "docs/planning/coordination_tracking.md"
+      ],
+      "notes": "Planning baseline contract prepared for the retention-model trace after the bootstrap task closed and the bounded execution queue was created."
+    },
+    {
+      "acceptance_id": "ac.planning_artifact_retention_and_purge.002",
+      "summary": "Directly affected governance and planning guidance no longer treats purgeable trace-local artifacts as the enduring canonical source of current policy when a surviving standard or current authority surface exists.",
+      "source_requirement_ids": [
+        "req.planning_artifact_retention_and_purge.002"
+      ],
+      "validation_targets": [
+        "docs/standards/governance/planning_retention_and_purge_standard.md",
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/planning/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_artifact_retention_and_purge.003",
+      "summary": "A guarded purge workflow plus minimal purge ledger can remove one eligible closed trace package and refuses unsafe or partial purge attempts.",
+      "source_requirement_ids": [
+        "req.planning_artifact_retention_and_purge.003",
+        "req.planning_artifact_retention_and_purge.004",
+        "req.planning_artifact_retention_and_purge.005"
+      ],
+      "validation_targets": [
+        "core/control_plane/ledgers/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/cli/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_artifact_retention_and_purge.004",
+      "summary": "One closed pilot trace is purged through the guarded workflow, and the rebuilt planning trackers plus indexes no longer rely on the removed trace package.",
+      "source_requirement_ids": [
+        "req.planning_artifact_retention_and_purge.006"
+      ],
+      "validation_targets": [
+        "docs/planning/",
+        "core/control_plane/indexes/",
+        "core/control_plane/ledgers/"
+      ]
+    },
+    {
+      "acceptance_id": "ac.planning_artifact_retention_and_purge.005",
+      "summary": "Targeted validation, full repository validation, refreshed evidence, and initiative closeout complete without a new planning-retention regression.",
+      "source_requirement_ids": [
+        "req.planning_artifact_retention_and_purge.007"
+      ],
+      "required_validator_ids": [
+        "validator.control_plane.acceptance_contract",
+        "validator.control_plane.validation_evidence"
+      ],
+      "validation_targets": [
+        "core/python/",
+        "core/control_plane/",
+        "docs/planning/"
+      ]
+    }
+  ]
+}

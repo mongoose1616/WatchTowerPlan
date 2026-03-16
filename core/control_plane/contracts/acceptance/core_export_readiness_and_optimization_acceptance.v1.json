@@ -16,7 +16,7 @@
         "docs/planning/prds/core_export_readiness_and_optimization.md",
         "docs/planning/design/features/core_export_ready_architecture.md",
         "docs/planning/design/implementation/core_export_readiness_execution.md",
-        "docs/planning/tasks/closed/core_export_initiative_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_initiative_bootstrap.md",
         "docs/planning/tasks/"
       ],
       "related_paths": [
@@ -37,8 +37,8 @@
       "validation_targets": [
         "core/python/src/watchtower_core/",
         "docs/planning/design/features/core_export_ready_architecture.md",
-        "docs/planning/tasks/closed/core_export_repo_ops_boundary.md",
-        "docs/planning/tasks/closed/core_export_workspace_injection.md"
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_repo_ops_boundary.md",
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_workspace_injection.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/control_plane/",
@@ -57,8 +57,8 @@
         "core/python/src/watchtower_core/cli/",
         "core/python/src/watchtower_core/sync/",
         "core/python/src/watchtower_core/validation/",
-        "docs/planning/tasks/closed/core_export_command_registry.md",
-        "docs/planning/tasks/closed/core_export_sync_validation_registries.md"
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_command_registry.md",
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_sync_validation_registries.md"
       ],
       "related_paths": [
         "docs/commands/core_python/",
@@ -75,7 +75,7 @@
       "validation_targets": [
         "core/control_plane/indexes/repository_paths/repository_path_index.v1.json",
         "core/control_plane/indexes/workflows/workflow_index.v1.json",
-        "docs/planning/tasks/closed/core_export_retrieval_and_coordination.md"
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_retrieval_and_coordination.md"
       ],
       "related_paths": [
         "core/python/src/watchtower_core/query/",
@@ -92,7 +92,7 @@
       "validation_targets": [
         "core/control_plane/schemas/interfaces/",
         "core/control_plane/examples/",
-        "docs/planning/tasks/closed/core_export_pack_interfaces.md"
+        "docs/planning/tasks/closed/archive/2026/03/10/core_export_pack_interfaces.md"
       ],
       "related_paths": [
         "docs/planning/design/features/core_export_ready_architecture.md",

@@ -17,10 +17,10 @@
         "docs/planning/design/features/planning_query_efficiency_and_coordination_handler_modularity.md",
         "docs/planning/design/implementation/planning_query_efficiency_and_coordination_handler_modularity.md",
         "docs/planning/decisions/planning_query_efficiency_and_coordination_handler_modularity_direction.md",
-        "docs/planning/tasks/closed/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
-        "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md",
-        "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
-        "docs/planning/tasks/closed/validate_and_close_planning_query_efficiency_and_handler_modularity.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/planning_query_efficiency_and_coordination_handler_modularity_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/unify_planning_and_initiative_query_projection_search_mechanics.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_coordination_query_handlers_behind_focused_modules.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_query_efficiency_and_handler_modularity.md",
         "core/control_plane/contracts/acceptance/planning_query_efficiency_and_handler_modularity_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/planning_query_efficiency_and_handler_modularity_planning_baseline.v1.json"
       ],
@@ -49,7 +49,7 @@
         "core/python/tests/unit/test_coordination_index_sync.py"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/unify_planning_and_initiative_query_projection_search_mechanics.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/unify_planning_and_initiative_query_projection_search_mechanics.md"
       ],
       "notes": "Covers the shared runtime helper, the refactored query services, and the focused regressions that guard the preserved filtering and deterministic sort behavior."
     },
@@ -79,7 +79,7 @@
         "core/control_plane/indexes/commands/command_index.v1.json"
       ],
       "related_paths": [
-        "docs/planning/tasks/closed/split_coordination_query_handlers_behind_focused_modules.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/split_coordination_query_handlers_behind_focused_modules.md",
         "core/python/tests/unit/README.md"
       ],
       "notes": "Covers the handler-family split, compatibility facade preservation, command-doc updates, README inventory refresh, repository-path discoverability, and direct test alignment."

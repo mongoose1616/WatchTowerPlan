@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 from watchtower_core.adapters import (
@@ -22,6 +23,7 @@ from watchtower_core.repo_ops.front_matter_paths import normalize_front_matter_a
 TASK_FRONT_MATTER_SCHEMA_ID = "urn:watchtower:schema:interfaces:documentation:task-front-matter:v1"
 TASK_OPEN_ROOT = "docs/planning/tasks/open"
 TASK_CLOSED_ROOT = "docs/planning/tasks/closed"
+TASK_CLOSED_ARCHIVE_ROOT = f"{TASK_CLOSED_ROOT}/archive"
 TASK_EXCLUDED_NAMES = {"README.md"}
 TERMINAL_TASK_STATUSES = {"done", "cancelled"}
 TASK_REQUIRED_SECTIONS = ("Summary", "Scope", "Done When")
@@ -176,18 +178,27 @@ def iter_task_documents(
 ) -> tuple[TaskDocument, ...]:
     """Return all governed task documents in deterministic path order."""
     documents: list[TaskDocument] = []
-    for root in (TASK_OPEN_ROOT, TASK_CLOSED_ROOT):
-        directory = loader.repo_root / root
-        for path in sorted(directory.glob("*.md")):
-            if path.name in TASK_EXCLUDED_NAMES:
-                continue
-            relative_path = path.relative_to(loader.repo_root).as_posix()
-            try:
-                documents.append(load_task_document(loader, relative_path))
-            except FileNotFoundError:
-                # Task lifecycle moves can relocate a task between discovery and load.
-                continue
+    for path in (
+        *_iter_task_markdown_paths(loader.repo_root / TASK_OPEN_ROOT, recursive=False),
+        *_iter_task_markdown_paths(loader.repo_root / TASK_CLOSED_ROOT, recursive=True),
+    ):
+        if path.name in TASK_EXCLUDED_NAMES:
+            continue
+        relative_path = path.relative_to(loader.repo_root).as_posix()
+        try:
+            documents.append(load_task_document(loader, relative_path))
+        except FileNotFoundError:
+            # Task lifecycle moves can relocate a task between discovery and load.
+            continue
     return tuple(documents)
+
+
+def _iter_task_markdown_paths(directory: Path, *, recursive: bool) -> tuple[Path, ...]:
+    """Return deterministic task-document paths for one task root."""
+    if not directory.exists():
+        return ()
+    iterator = directory.rglob("*.md") if recursive else directory.glob("*.md")
+    return tuple(path for path in sorted(iterator) if path.is_file())
 
 
 def load_task_document(loader: ControlPlaneLoader, relative_path: str) -> TaskDocument:

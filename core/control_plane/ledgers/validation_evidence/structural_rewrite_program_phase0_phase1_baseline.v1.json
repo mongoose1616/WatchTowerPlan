@@ -79,7 +79,7 @@
       "subject_paths": [
         "docs/planning/design/features/structural_rewrite_program.md",
         "docs/planning/design/implementation/structural_rewrite_program.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md",
         "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json"
       ],
       "subject_ids": [

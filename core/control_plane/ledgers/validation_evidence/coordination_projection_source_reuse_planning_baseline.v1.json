@@ -29,9 +29,9 @@
         "docs/planning/design/implementation/coordination_projection_source_reuse.md",
         "docs/planning/decisions/coordination_projection_source_reuse_direction.md",
         "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json",
-        "docs/planning/tasks/closed/coordination_projection_source_reuse_bootstrap.md",
-        "docs/planning/tasks/closed/reuse_coordination_projection_sources_in_sync_orchestration.md",
-        "docs/planning/tasks/closed/validate_and_close_coordination_projection_source_reuse.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/coordination_projection_source_reuse_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/reuse_coordination_projection_sources_in_sync_orchestration.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_coordination_projection_source_reuse.md"
       ],
       "subject_ids": [
         "prd.coordination_projection_source_reuse",
@@ -94,7 +94,7 @@
       "subject_paths": [
         "core/control_plane/contracts/acceptance/coordination_projection_source_reuse_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/coordination_projection_source_reuse_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_coordination_projection_source_reuse.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_coordination_projection_source_reuse.md"
       ],
       "subject_ids": [
         "task.coordination_projection_source_reuse.validation_closeout.003",

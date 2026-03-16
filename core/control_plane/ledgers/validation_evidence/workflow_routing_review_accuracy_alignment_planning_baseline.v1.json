@@ -30,9 +30,9 @@
         "docs/planning/decisions/workflow_routing_review_accuracy_alignment_direction.md",
         "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/workflow_routing_review_accuracy_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/harden_workflow_route_scoring_and_review_coverage.md",
-        "docs/planning/tasks/closed/validate_and_close_workflow_routing_review_alignment.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/workflow_routing_review_accuracy_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/harden_workflow_route_scoring_and_review_coverage.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_workflow_routing_review_alignment.md"
       ],
       "subject_ids": [
         "prd.workflow_routing_review_accuracy_alignment",
@@ -95,7 +95,7 @@
       "subject_paths": [
         "core/control_plane/contracts/acceptance/workflow_routing_review_accuracy_alignment_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/workflow_routing_review_accuracy_alignment_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_workflow_routing_review_alignment.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_workflow_routing_review_alignment.md",
         "docs/planning/coordination_tracking.md",
         "docs/planning/tasks/task_tracking.md",
         "docs/planning/initiatives/initiative_tracking.md"

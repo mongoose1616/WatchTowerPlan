@@ -381,6 +381,64 @@
       ]
     },
     {
+      "trace_id": "trace.core_split_compatibility_wrapper_retirement",
+      "prd_id": "prd.core_split_compatibility_wrapper_retirement",
+      "title": "Core Split Compatibility Wrapper Retirement PRD",
+      "summary": "Retire repo-specific compatibility wrapper modules from export-safe `watchtower_core` namespaces so a future core split exposes only reusable surfaces.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/core_split_compatibility_wrapper_retirement.md",
+      "updated_at": "2026-03-16T02:06:53Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.core_split_compatibility_wrapper_retirement.001",
+        "req.core_split_compatibility_wrapper_retirement.002",
+        "req.core_split_compatibility_wrapper_retirement.003",
+        "req.core_split_compatibility_wrapper_retirement.004",
+        "req.core_split_compatibility_wrapper_retirement.005"
+      ],
+      "acceptance_ids": [
+        "ac.core_split_compatibility_wrapper_retirement.001",
+        "ac.core_split_compatibility_wrapper_retirement.002",
+        "ac.core_split_compatibility_wrapper_retirement.003",
+        "ac.core_split_compatibility_wrapper_retirement.004"
+      ],
+      "linked_decision_ids": [
+        "decision.core_split_compatibility_wrapper_retirement_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.core_split_compatibility_wrapper_retirement"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.core_split_compatibility_wrapper_retirement"
+      ],
+      "related_paths": [
+        "core/python/src/watchtower_core/query/",
+        "core/python/src/watchtower_core/sync/",
+        "core/python/src/watchtower_core/validation/",
+        "core/python/src/watchtower_core/README.md",
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/sync/README.md",
+        "core/python/src/watchtower_core/validation/README.md",
+        "core/python/src/watchtower_core/cli/",
+        "core/python/README.md",
+        "core/python/tests/unit/test_repo_ops_compatibility.py"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_scope.md",
+        "docs/foundations/product_direction.md",
+        "docs/foundations/engineering_design_principles.md",
+        "docs/planning/prds/core_export_readiness_and_optimization.md",
+        "docs/planning/prds/core_export_hardening_followup.md",
+        "docs/planning/design/features/core_export_ready_architecture.md",
+        "docs/planning/design/features/core_export_hardening.md",
+        "core/python/src/watchtower_core/README.md",
+        "core/python/src/watchtower_core/query/README.md",
+        "core/python/src/watchtower_core/sync/README.md",
+        "core/python/src/watchtower_core/validation/README.md"
+      ]
+    },
+    {
       "trace_id": "trace.data_contract_example_operationalization_alignment",
       "prd_id": "prd.data_contract_example_operationalization_alignment",
       "title": "Data Contract Example Operationalization Alignment PRD",
@@ -1263,6 +1321,46 @@
         "docs/foundations/product_direction.md",
         "docs/planning/prds/preimplementation_repo_review_and_hardening.md",
         "docs/planning/design/features/core_export_ready_architecture.md"
+      ]
+    },
+    {
+      "trace_id": "trace.planning_artifact_retention_and_purge",
+      "prd_id": "prd.planning_artifact_retention_and_purge",
+      "title": "Planning Artifact Retention and Purge PRD",
+      "summary": "Defines a promote-then-purge retention model so closed trace-local planning artifacts do not remain in the repository indefinitely.",
+      "status": "active",
+      "doc_path": "docs/planning/prds/planning_artifact_retention_and_purge.md",
+      "updated_at": "2026-03-15T11:00:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "requirement_ids": [
+        "req.planning_artifact_retention_and_purge.001",
+        "req.planning_artifact_retention_and_purge.002",
+        "req.planning_artifact_retention_and_purge.003",
+        "req.planning_artifact_retention_and_purge.004",
+        "req.planning_artifact_retention_and_purge.005",
+        "req.planning_artifact_retention_and_purge.006",
+        "req.planning_artifact_retention_and_purge.007"
+      ],
+      "acceptance_ids": [
+        "ac.planning_artifact_retention_and_purge.001",
+        "ac.planning_artifact_retention_and_purge.002",
+        "ac.planning_artifact_retention_and_purge.003",
+        "ac.planning_artifact_retention_and_purge.004",
+        "ac.planning_artifact_retention_and_purge.005"
+      ],
+      "linked_decision_ids": [
+        "decision.planning_artifact_retention_and_purge_direction"
+      ],
+      "linked_design_ids": [
+        "design.features.planning_artifact_retention_and_purge"
+      ],
+      "linked_plan_ids": [
+        "design.implementation.planning_artifact_retention_and_purge"
+      ],
+      "internal_reference_paths": [
+        "docs/foundations/repository_standards_posture.md",
+        "docs/foundations/engineering_design_principles.md"
       ]
     },
     {

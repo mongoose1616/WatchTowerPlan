@@ -950,7 +950,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/data_contracts/task_index_standard.md",
-      "updated_at": "2026-03-13T20:01:23Z",
+      "updated_at": "2026-03-15T06:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1246,7 +1246,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/compact_document_authoring_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-15T05:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -1723,7 +1723,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/documentation/task_md_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-15T06:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2558,6 +2558,65 @@
       ]
     },
     {
+      "standard_id": "std.governance.planning_retention_and_purge",
+      "category": "governance",
+      "title": "Planning Retention and Purge Standard",
+      "summary": "This standard defines the promote-then-purge retention model for closed traced planning artifacts so active policy lives in current canonical surfaces instead of accumulating indefinitely in historical trace packages.",
+      "status": "active",
+      "owner": "repository_maintainer",
+      "doc_path": "docs/standards/governance/planning_retention_and_purge_standard.md",
+      "updated_at": "2026-03-15T11:00:00Z",
+      "uses_internal_references": true,
+      "uses_external_references": false,
+      "operationalization_modes": [
+        "documentation",
+        "artifact",
+        "workflow"
+      ],
+      "operationalization_paths": [
+        "docs/planning/",
+        "core/control_plane/ledgers/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/cli/"
+      ],
+      "applies_to": [
+        "docs/planning/",
+        "core/control_plane/ledgers/",
+        "core/control_plane/indexes/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/cli/"
+      ],
+      "related_paths": [
+        "docs/planning/",
+        "core/control_plane/ledgers/",
+        "core/control_plane/indexes/",
+        "core/python/src/watchtower_core/repo_ops/",
+        "core/python/src/watchtower_core/cli/"
+      ],
+      "internal_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/planning/design/features/summary_surface_retirement.md"
+      ],
+      "applied_reference_paths": [
+        "docs/standards/governance/traceability_standard.md",
+        "docs/standards/governance/decision_capture_standard.md",
+        "docs/standards/governance/initiative_closeout_standard.md",
+        "docs/standards/governance/task_tracking_standard.md",
+        "docs/standards/documentation/compact_document_authoring_standard.md",
+        "docs/planning/design/features/summary_surface_retirement.md"
+      ],
+      "tags": [
+        "standard",
+        "governance",
+        "planning_retention",
+        "purge"
+      ]
+    },
+    {
       "standard_id": "std.governance.reference_distillation",
       "category": "governance",
       "title": "Reference Distillation Standard",
@@ -2637,20 +2696,20 @@
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_entry.md",
         "docs/planning/design/implementation/structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_program_phase2_entry_package.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase3_entry_package.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_shared_projection_entry_package.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
-        "docs/planning/tasks/closed/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
-        "docs/planning/tasks/closed/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_program_phase2_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_artifact_role_registry_pilot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase3_command_companion_source_surface_normalization.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase3_command_companion_source_surface_normalization_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/review_structural_rewrite_phase4_shared_projection_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/14/implement_structural_rewrite_phase4_planning_projection_snapshot.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_planning_projection_snapshot_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_coordination_sync_reuse.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_coordination_sync_reuse_outcome.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_entry_package.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/implement_structural_rewrite_phase4_closeout_tracking_refresh_boundary.md",
+        "docs/planning/tasks/closed/archive/2026/03/15/review_structural_rewrite_phase4_closeout_tracking_refresh_boundary_outcome.md",
         "core/control_plane/contracts/acceptance/structural_rewrite_program_acceptance.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_program_phase0_phase1_ready.v1.json",
         "core/control_plane/ledgers/migrations/structural_rewrite_artifact_role_registry_pilot.v1.json",
@@ -2844,7 +2903,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/task_tracking_standard.md",
-      "updated_at": "2026-03-13T04:05:00Z",
+      "updated_at": "2026-03-15T06:35:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [
@@ -2901,7 +2960,7 @@
       "status": "active",
       "owner": "repository_maintainer",
       "doc_path": "docs/standards/governance/traceability_standard.md",
-      "updated_at": "2026-03-11T06:00:00Z",
+      "updated_at": "2026-03-15T05:45:00Z",
       "uses_internal_references": true,
       "uses_external_references": false,
       "operationalization_modes": [

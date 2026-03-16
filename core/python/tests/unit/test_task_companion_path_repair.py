@@ -25,7 +25,9 @@ def test_repair_governed_task_path_references_updates_matching_paths_only(
     repo_root = _build_fixture_repo(tmp_path)
     loader = ControlPlaneLoader(repo_root)
     previous_doc_path = "docs/planning/tasks/open/example_task.md"
-    current_doc_path = "docs/planning/tasks/closed/example_task.md"
+    current_doc_path = (
+        "docs/planning/tasks/closed/archive/2026/03/15/example_task.md"
+    )
     untouched_path = "docs/planning/tasks/open/other_task.md"
 
     contract_relative_path = (

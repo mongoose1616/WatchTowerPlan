@@ -30,9 +30,9 @@
         "docs/planning/decisions/lazy_planning_query_payload_emission_direction.md",
         "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/lazy_planning_query_payload_emission_bootstrap.md",
-        "docs/planning/tasks/closed/implement_lazy_planning_query_payload_emission.md",
-        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/lazy_planning_query_payload_emission_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/implement_lazy_planning_query_payload_emission.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_lazy_planning_query_payload_emission.md"
       ],
       "subject_ids": [
         "prd.lazy_planning_query_payload_emission",
@@ -95,7 +95,7 @@
       "subject_paths": [
         "core/control_plane/contracts/acceptance/lazy_planning_query_payload_emission_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/lazy_planning_query_payload_emission_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_lazy_planning_query_payload_emission.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_lazy_planning_query_payload_emission.md"
       ],
       "subject_ids": [
         "task.lazy_planning_query_payload_emission.validation_closeout.003",

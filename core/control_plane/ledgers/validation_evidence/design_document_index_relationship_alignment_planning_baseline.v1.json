@@ -29,9 +29,9 @@
         "docs/planning/design/implementation/design_document_index_relationship_alignment.md",
         "docs/planning/decisions/design_document_index_relationship_alignment_direction.md",
         "core/control_plane/contracts/acceptance/design_document_index_relationship_alignment_acceptance.v1.json",
-        "docs/planning/tasks/closed/design_document_index_relationship_alignment_bootstrap.md",
-        "docs/planning/tasks/closed/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
-        "docs/planning/tasks/closed/broaden_implementation_plan_source_paths_beyond_source_designs.md"
+        "docs/planning/tasks/closed/archive/2026/03/11/design_document_index_relationship_alignment_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/project_feature_design_affected_surfaces_into_design_index_related_paths.md",
+        "docs/planning/tasks/closed/archive/2026/03/11/broaden_implementation_plan_source_paths_beyond_source_designs.md"
       ],
       "subject_ids": [
         "prd.design_document_index_relationship_alignment",

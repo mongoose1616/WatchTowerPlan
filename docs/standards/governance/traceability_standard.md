@@ -9,7 +9,7 @@ tags:
   - "governance"
   - "traceability"
 owner: "repository_maintainer"
-updated_at: "2026-03-11T06:00:00Z"
+updated_at: "2026-03-15T05:45:00Z"
 audience: "shared"
 authority: "authoritative"
 ---
@@ -67,6 +67,7 @@ This standard defines the repository's baseline traceability model so product in
 - Use the planning catalog as the preferred deep-planning read model above the traceability index when the question needs joined planning, task, acceptance, and evidence context.
 - Use the initiative index and initiative tracker as derived coordination projections over the traceability layer plus current planning and task state.
 - Use the authority map when you need to resolve whether traceability or another planning surface is canonical for a recurring lookup question.
+- Keep family-specific human trackers active-first by default. Route terminal trace browsing to explicit initiative, planning, or family query surfaces instead of inlining the full closed trace corpus in every tracker.
 - Use `initiative_status` on the traceability entry for initiative outcome instead of overloading artifact lifecycle `status`.
 - Treat initiative closeout metadata as a meaningful traceability change; when terminal closeout is recorded, effective `updated_at` should be at least `closed_at`.
 - Keep family-specific indexes as their local lookup surfaces and keep them aligned with the unified traceability index.
@@ -143,6 +144,7 @@ This standard defines the repository's baseline traceability model so product in
 - Trace links should be updated when a planning artifact is renamed or materially retargeted.
 - Active trace entries should carry linked task IDs instead of relying on implied execution state.
 - Terminal trace entries should not leave `updated_at` earlier than `closed_at`.
+- Family trackers should not default to exhaustive terminal-trace tables when the repository already provides explicit history query surfaces.
 
 ## Change Control
 - Update this standard when the repository changes the baseline trace chain or introduces a new first-class traced artifact family.
@@ -155,4 +157,4 @@ This standard defines the repository's baseline traceability model so product in
 - [design_tracking.md](/home/j/WatchTowerPlan/docs/planning/design/design_tracking.md)
 
 ## Updated At
-- `2026-03-11T06:00:00Z`
+- `2026-03-15T05:45:00Z`

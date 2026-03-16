@@ -30,10 +30,10 @@
         "docs/planning/decisions/workflow_route_boundary_discoverability_hardening_direction.md",
         "core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/workflow_route_boundary_discoverability_hardening_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/workflow_route_boundary_discoverability_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
-        "docs/planning/tasks/closed/align_workflow_lookup_metadata_and_boundary_guidance.md",
-        "docs/planning/tasks/closed/validate_and_close_workflow_route_boundary_discoverability_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/workflow_route_boundary_discoverability_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/harden_workflow_route_preview_discrimination_for_adjacent_routes.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/align_workflow_lookup_metadata_and_boundary_guidance.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_workflow_route_boundary_discoverability_hardening.md"
       ],
       "subject_ids": [
         "prd.workflow_route_boundary_discoverability_hardening",
@@ -132,7 +132,7 @@
         "docs/planning/",
         "core/control_plane/contracts/acceptance/workflow_route_boundary_discoverability_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/workflow_route_boundary_discoverability_hardening_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_workflow_route_boundary_discoverability_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_workflow_route_boundary_discoverability_hardening.md"
       ],
       "subject_ids": [
         "task.workflow_route_boundary_discoverability_hardening.validation_closeout.004",

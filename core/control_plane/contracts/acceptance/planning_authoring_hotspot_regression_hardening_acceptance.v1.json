@@ -17,10 +17,10 @@
         "docs/planning/design/features/planning_authoring_hotspot_regression_hardening.md",
         "docs/planning/design/implementation/planning_authoring_hotspot_regression_hardening.md",
         "docs/planning/decisions/planning_authoring_hotspot_regression_hardening_direction.md",
-        "docs/planning/tasks/closed/planning_authoring_hotspot_regression_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/planning_scaffold_helper_seams.md",
-        "docs/planning/tasks/closed/isolate_task_companion_path_repair.md",
-        "docs/planning/tasks/closed/validate_and_close_planning_authoring_hotspot_regression_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/13/planning_authoring_hotspot_regression_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/planning_scaffold_helper_seams.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/isolate_task_companion_path_repair.md",
+        "docs/planning/tasks/closed/archive/2026/03/13/validate_and_close_planning_authoring_hotspot_regression_hardening.md"
       ],
       "related_paths": [
         "docs/planning/prds/prd_tracking.md",

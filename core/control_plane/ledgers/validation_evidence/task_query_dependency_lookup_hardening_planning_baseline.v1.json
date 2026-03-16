@@ -30,9 +30,9 @@
         "docs/planning/decisions/task_query_dependency_lookup_hardening_direction.md",
         "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/task_query_dependency_lookup_hardening_bootstrap.md",
-        "docs/planning/tasks/closed/optimize_task_query_dependency_lookups.md",
-        "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/task_query_dependency_lookup_hardening_bootstrap.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/optimize_task_query_dependency_lookups.md",
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_task_query_dependency_lookup_hardening.md"
       ],
       "subject_ids": [
         "prd.task_query_dependency_lookup_hardening",
@@ -93,7 +93,7 @@
       "subject_paths": [
         "core/control_plane/contracts/acceptance/task_query_dependency_lookup_hardening_acceptance.v1.json",
         "core/control_plane/ledgers/validation_evidence/task_query_dependency_lookup_hardening_planning_baseline.v1.json",
-        "docs/planning/tasks/closed/validate_and_close_task_query_dependency_lookup_hardening.md"
+        "docs/planning/tasks/closed/archive/2026/03/12/validate_and_close_task_query_dependency_lookup_hardening.md"
       ],
       "subject_ids": [
         "task.task_query_dependency_lookup_hardening.validation_closeout.003",
